@@ -20,14 +20,25 @@ El sitio estará disponible en `http://localhost:3000`
 
 ```
 SquareAnto/
-├── index.html          # Página principal
-├── styles/
-│   └── main.css        # Estilos principales
-├── scripts/
-│   └── main.js         # JavaScript principal
-├── package.json        # Configuración del proyecto
-└── README.md          # Este archivo
+├── assets/              # Recursos estáticos (imágenes, iconos)
+├── docs/                # Documentación
+│   └── ARQUITECTURA.md  # Documentación de arquitectura
+├── scripts/             # JavaScript modular
+│   ├── modules/         # Módulos de funcionalidad
+│   ├── utils/           # Utilidades
+│   └── main.js          # Punto de entrada
+├── styles/              # CSS modular
+│   ├── base/            # Variables y reset
+│   ├── layout/          # Layout (header, footer)
+│   ├── components/      # Componentes reutilizables
+│   ├── utilities/       # Animaciones y responsive
+│   └── main.css         # Archivo principal (imports)
+├── index.html           # Página principal
+├── privacidad.html     # Página de privacidad
+└── README.md           # Este archivo
 ```
+
+> 📖 **Documentación completa de arquitectura:** [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md)
 
 ## 🌐 Configurar el Dominio (antoapps.com)
 

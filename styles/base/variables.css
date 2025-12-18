@@ -1,0 +1,52 @@
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+
+:root {
+    /* Colores Principales */
+    --primary-color: #1ADDDB;
+    --bg-dark: #030A24;
+    --white: #FFFFFF;
+    --secondary-color: #A3B8E8;
+    
+    /* Colores de Tarjetas */
+    --card-bg: rgba(29, 43, 95, 0.8);
+    --card-border: rgba(26, 221, 219, 0.15);
+    
+    /* Colores de Estado */
+    --success: #4CAF50;
+    --error: #FF6B6B;
+    --warning: #FFD93D;
+    --info: #6BCB77;
+    
+    /* Tipografía */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-size-base: 16px;
+    --line-height-base: 1.6;
+    
+    /* Espaciado */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+    
+    /* Transiciones */
+    --transition: all 0.3s ease;
+    --transition-fast: all 0.2s ease;
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(26, 221, 219, 0.1);
+    --shadow-md: 0 4px 16px rgba(26, 221, 219, 0.15);
+    --shadow-lg: 0 8px 32px rgba(26, 221, 219, 0.2);
+    --shadow-glow: 0 0 20px rgba(26, 221, 219, 0.3);
+    
+    /* Z-index Layers */
+    --z-base: 1;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 300;
+    --z-modal: 400;
+    --z-tooltip: 500;
+}
+
