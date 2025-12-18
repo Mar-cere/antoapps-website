@@ -3,23 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AntoApps - Desarrollo de aplicaciones y soluciones digitales">
-    <title>AntoApps</title>
+    <meta name="description" content="Anto - Tu apoyo emocional 24/7. Aplicación móvil de salud mental con asistente AI terapéutico, análisis emocional y herramientas de bienestar.">
+    <meta name="keywords" content="salud mental, terapia, AI, asistente virtual, bienestar emocional, apoyo emocional">
+    <title>Anto - Tu apoyo emocional 24/7</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Header / Navigation -->
     <header class="header">
         <nav class="nav">
             <div class="container">
                 <div class="nav-brand">
-                    <a href="/" class="logo">AntoApps</a>
+                    <a href="/" class="logo">Anto</a>
                 </div>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
-                    <li><a href="#sobre" class="nav-link">Sobre Nosotros</a></li>
-                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="#caracteristicas" class="nav-link">Características</a></li>
+                    <li><a href="#como-funciona" class="nav-link">Cómo Funciona</a></li>
+                    <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
+                    <li><a href="#precios" class="nav-link">Precios</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
                 </ul>
+                <div class="nav-actions">
+                    <a href="#descargar" class="btn btn-secondary">Descargar App</a>
+                </div>
                 <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
@@ -30,77 +40,445 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section id="inicio" class="hero">
+            <div class="particles" id="particles"></div>
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Bienvenido a AntoApps</h1>
-                    <p class="hero-subtitle">Desarrollo de aplicaciones y soluciones digitales innovadoras</p>
-                    <a href="#contacto" class="btn btn-primary">Contáctanos</a>
+                    <h1 class="hero-title">Tu apoyo emocional 24/7, siempre disponible</h1>
+                    <p class="hero-subtitle">Salud mental accesible para todos. IA que entiende, escucha y apoya.</p>
+                    <div class="hero-cta">
+                        <a href="#descargar" class="btn btn-primary btn-large">Comenzar Prueba Gratis</a>
+                        <a href="#como-funciona" class="btn btn-secondary btn-large">Saber Más</a>
+                    </div>
+                    <div class="hero-badges">
+                        <a href="#" class="badge" aria-label="Descargar en App Store">
+                            <svg width="120" height="40" viewBox="0 0 120 40" fill="none">
+                                <rect width="120" height="40" rx="8" fill="#000"/>
+                                <text x="60" y="25" fill="#fff" text-anchor="middle" font-size="12" font-weight="600">App Store</text>
+                            </svg>
+                        </a>
+                        <a href="#" class="badge" aria-label="Descargar en Google Play">
+                            <svg width="120" height="40" viewBox="0 0 120 40" fill="none">
+                                <rect width="120" height="40" rx="8" fill="#000"/>
+                                <text x="60" y="25" fill="#fff" text-anchor="middle" font-size="12" font-weight="600">Google Play</text>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="app-preview"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="servicios" class="services">
+        <!-- Características Principales -->
+        <section id="caracteristicas" class="features">
             <div class="container">
-                <h2 class="section-title">Nuestros Servicios</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">💻</div>
-                        <h3>Desarrollo Web</h3>
-                        <p>Creación de sitios web modernos y responsivos</p>
+                <h2 class="section-title">Características Principales</h2>
+                <p class="section-subtitle">Todo lo que necesitas para tu bienestar mental en un solo lugar</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>Asistente AI Terapéutico</h3>
+                        <p>Conversaciones inteligentes y empáticas adaptadas a tu situación emocional</p>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon">📱</div>
-                        <h3>Aplicaciones Móviles</h3>
-                        <p>Desarrollo de apps para iOS y Android</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚨</div>
+                        <h3>Detección de Crisis</h3>
+                        <p>Identificación temprana de señales de crisis con apoyo inmediato</p>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon">⚡</div>
-                        <h3>Soluciones Personalizadas</h3>
-                        <p>Desarrollo a medida según tus necesidades</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Análisis Emocional</h3>
+                        <p>Seguimiento detallado de tu estado emocional y progreso</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧘</div>
+                        <h3>Herramientas de Bienestar</h3>
+                        <p>Ejercicios de mindfulness, meditación y técnicas de relajación</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Privacidad Total</h3>
+                        <p>Conversaciones completamente confidenciales y seguras</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⏰</div>
+                        <h3>Disponible 24/7</h3>
+                        <p>Acceso inmediato cuando lo necesites, sin esperas ni citas</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="sobre" class="about">
+        <!-- Cómo Funciona -->
+        <section id="como-funciona" class="how-it-works">
             <div class="container">
-                <h2 class="section-title">Sobre Nosotros</h2>
-                <div class="about-content">
-                    <p>Somos un equipo dedicado a crear soluciones digitales innovadoras que impulsen tu negocio.</p>
+                <h2 class="section-title">Cómo Funciona</h2>
+                <p class="section-subtitle">En solo 4 pasos simples, comienza tu camino al bienestar</p>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Descarga la App</h3>
+                            <p>Disponible en App Store y Google Play. Instalación rápida y sencilla</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Crea tu Perfil</h3>
+                            <p>Configura tu perfil de forma privada y segura en menos de 2 minutos</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Comienza a Chatear</h3>
+                            <p>Inicia una conversación con nuestro asistente AI que entiende tus emociones</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Recibe Apoyo Personalizado</h3>
+                            <p>Obtén respuestas adaptadas, herramientas de bienestar y seguimiento continuo</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="contacto" class="contact">
+        <!-- Beneficios -->
+        <section id="beneficios" class="benefits">
             <div class="container">
-                <h2 class="section-title">Contacto</h2>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Nombre</label>
-                        <input type="text" id="name" name="name" required>
+                <h2 class="section-title">Beneficios para Todos</h2>
+                <div class="benefits-tabs">
+                    <button class="tab-btn active" data-tab="usuarios">Para Usuarios</button>
+                    <button class="tab-btn" data-tab="profesionales">Para Profesionales</button>
+                    <button class="tab-btn" data-tab="organizaciones">Para Organizaciones</button>
+                </div>
+                <div class="benefits-content">
+                    <div class="tab-content active" id="usuarios">
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Acceso Inmediato</h4>
+                                    <p>Sin esperas, sin citas, disponible cuando lo necesites</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Privacidad Garantizada</h4>
+                                    <p>Tus conversaciones son completamente confidenciales</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Personalización Total</h4>
+                                    <p>Respuestas adaptadas a tu situación y necesidades específicas</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Herramientas Prácticas</h4>
+                                    <p>Ejercicios y técnicas que puedes aplicar en tu día a día</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="tab-content" id="profesionales">
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Complemento Terapéutico</h4>
+                                    <p>Herramienta de apoyo entre sesiones para tus pacientes</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Seguimiento Continuo</h4>
+                                    <p>Monitoreo del progreso emocional de tus pacientes</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Alertas de Crisis</h4>
+                                    <p>Notificaciones tempranas para intervención oportuna</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Mensaje</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                    <div class="tab-content" id="organizaciones">
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Bienestar Corporativo</h4>
+                                    <p>Mejora el bienestar mental de tu equipo</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Reducción de Ausentismo</h4>
+                                    <p>Menos días de baja por salud mental</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Dashboard de Analytics</h4>
+                                    <p>Insights sobre el bienestar de tu organización</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Valores de la Marca -->
+        <section id="valores" class="values">
+            <div class="container">
+                <h2 class="section-title">Nuestros Valores</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">💚</div>
+                        <h3>Empatía</h3>
+                        <p>Entendemos que cada persona es única y merece un apoyo personalizado y comprensivo</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🛡️</div>
+                        <h3>Privacidad</h3>
+                        <p>Tu información es sagrada. Garantizamos la máxima seguridad y confidencialidad</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">💡</div>
+                        <h3>Innovación</h3>
+                        <p>Utilizamos tecnología de vanguardia para ofrecerte la mejor experiencia posible</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Accesibilidad</h3>
+                        <p>Creemos que el bienestar mental debe estar al alcance de todos, sin barreras</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Precios / Planes -->
+        <section id="precios" class="pricing">
+            <div class="container">
+                <h2 class="section-title">Planes y Precios</h2>
+                <p class="section-subtitle">Elige el plan que mejor se adapte a tus necesidades</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Básico</h3>
+                            <div class="pricing-price">
+                                <span class="price">$9.99</span>
+                                <span class="period">/mes</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>✓ Acceso al asistente AI</li>
+                            <li>✓ Análisis emocional básico</li>
+                            <li>✓ Herramientas de bienestar</li>
+                            <li>✓ Soporte 24/7</li>
+                        </ul>
+                        <a href="#descargar" class="btn btn-secondary btn-block">Comenzar Ahora</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">Más Popular</div>
+                        <div class="pricing-header">
+                            <h3>Premium</h3>
+                            <div class="pricing-price">
+                                <span class="price">$19.99</span>
+                                <span class="period">/mes</span>
+                            </div>
+                            <div class="pricing-trial">3 días gratis</div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>✓ Todo del plan Básico</li>
+                            <li>✓ Análisis emocional avanzado</li>
+                            <li>✓ Detección de crisis proactiva</li>
+                            <li>✓ Sesiones de seguimiento</li>
+                            <li>✓ Reportes detallados</li>
+                        </ul>
+                        <a href="#descargar" class="btn btn-primary btn-block">Comenzar Prueba Gratis</a>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Empresarial</h3>
+                            <div class="pricing-price">
+                                <span class="price">Personalizado</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>✓ Todo del plan Premium</li>
+                            <li>✓ Dashboard de analytics</li>
+                            <li>✓ Gestión de usuarios</li>
+                            <li>✓ Soporte prioritario</li>
+                            <li>✓ Integraciones personalizadas</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-secondary btn-block">Contactar Ventas</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>¿Mis conversaciones son realmente privadas?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí, absolutamente. Todas tus conversaciones están encriptadas de extremo a extremo y nunca compartimos tu información con terceros. Tu privacidad es nuestra prioridad.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>¿Cómo funciona el asistente AI?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Nuestro asistente AI utiliza tecnología de procesamiento de lenguaje natural avanzada, entrenada con principios terapéuticos. Aprende de cada conversación para ofrecerte respuestas cada vez más personalizadas y empáticas.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>¿Puedo usar Anto si ya tengo un terapeuta?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Por supuesto. Anto está diseñado para complementar, no reemplazar, la terapia tradicional. Muchos usuarios lo usan como apoyo entre sesiones o como herramienta adicional de bienestar.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>¿Qué pasa si detecto una crisis?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Nuestro sistema detecta automáticamente señales de crisis y te ofrece recursos inmediatos, incluyendo líneas de ayuda y contactos de emergencia. En casos graves, podemos ayudarte a contactar servicios de emergencia.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>¿Hay un período de prueba gratis?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí, ofrecemos 3 días de prueba gratis en el plan Premium. No se requiere tarjeta de crédito para comenzar.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>¿En qué dispositivos está disponible?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Anto está disponible para iOS (iPhone y iPad) y Android. Estamos trabajando en una versión web que estará disponible pronto.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final / Descargar -->
+        <section id="descargar" class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Comienza tu camino al bienestar hoy</h2>
+                    <p>Únete a miles de personas que ya están mejorando su salud mental con Anto</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary btn-large">Descargar Ahora</a>
+                        <a href="privacidad.html" class="btn btn-secondary btn-large">Ver Política de Privacidad</a>
+                    </div>
+                    <div class="cta-badges">
+                        <a href="#" class="badge" aria-label="Descargar en App Store">
+                            <svg width="120" height="40" viewBox="0 0 120 40" fill="none">
+                                <rect width="120" height="40" rx="8" fill="#000"/>
+                                <text x="60" y="25" fill="#fff" text-anchor="middle" font-size="12" font-weight="600">App Store</text>
+                            </svg>
+                        </a>
+                        <a href="#" class="badge" aria-label="Descargar en Google Play">
+                            <svg width="120" height="40" viewBox="0 0 120 40" fill="none">
+                                <rect width="120" height="40" rx="8" fill="#000"/>
+                                <text x="60" y="25" fill="#fff" text-anchor="middle" font-size="12" font-weight="600">Google Play</text>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 AntoApps. Todos los derechos reservados.</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Anto</h3>
+                    <p>Mejorando la salud mental, una conversación a la vez.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">Facebook</a>
+                        <a href="#" aria-label="Twitter">Twitter</a>
+                        <a href="#" aria-label="Instagram">Instagram</a>
+                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Producto</h4>
+                    <ul>
+                        <li><a href="#caracteristicas">Características</a></li>
+                        <li><a href="#precios">Precios</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="privacidad.html">Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#valores">Sobre Nosotros</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Carreras</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacidad.html">Política de Privacidad</a></li>
+                        <li><a href="#">Términos de Servicio</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Anto. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
 
     <script src="scripts/main.js"></script>
 </body>
 </html>
-
