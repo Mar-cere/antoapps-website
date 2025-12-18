@@ -29,11 +29,38 @@
     color: var(--primary-color);
     text-decoration: none;
     transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
 }
 
 .logo:hover {
     color: var(--white);
     text-shadow: 0 0 10px var(--primary-color);
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.logo:hover .logo-icon {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 8px var(--primary-color));
+}
+
+@media (max-width: 767px) {
+    .logo-icon {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .logo span {
+        font-size: 1.25rem;
+    }
 }
 
 .nav-menu {

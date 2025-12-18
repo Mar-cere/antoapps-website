@@ -254,5 +254,5 @@ npm run deploy
 
 ---
 
-**Última actualización**: Enero 2024
+**Última actualización**: Diciembre 2025
 
