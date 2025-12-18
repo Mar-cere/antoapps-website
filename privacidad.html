@@ -2,13 +2,55 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Política de Privacidad de Anto - Tu información es sagrada. Garantizamos la máxima seguridad y confidencialidad.">
-    <title>Política de Privacidad - Anto</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    
+    <!-- Primary Meta Tags -->
+    <title>Política de Privacidad - Anto | Protección de Datos y Confidencialidad</title>
+    <meta name="title" content="Política de Privacidad - Anto | Protección de Datos y Confidencialidad">
+    <meta name="description" content="Política de Privacidad de Anto. Tu información es sagrada. Garantizamos la máxima seguridad, confidencialidad y protección de tus datos de salud mental. Encriptación de extremo a extremo.">
+    <meta name="keywords" content="política de privacidad, protección de datos, confidencialidad, seguridad, GDPR, privacidad salud mental, encriptación">
+    <meta name="author" content="Anto">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://antoapps.com/privacidad.html">
+    <meta property="og:title" content="Política de Privacidad - Anto">
+    <meta property="og:description" content="Tu información es sagrada. Garantizamos la máxima seguridad y confidencialidad de tus datos de salud mental.">
+    <meta property="og:image" content="https://antoapps.com/assets/images/antoIcon.png">
+    <meta property="og:site_name" content="Anto">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://antoapps.com/privacidad.html">
+    <meta property="twitter:title" content="Política de Privacidad - Anto">
+    <meta property="twitter:description" content="Tu información es sagrada. Garantizamos la máxima seguridad y confidencialidad.">
+    <meta property="twitter:image" content="https://antoapps.com/assets/images/antoIcon.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#030A24">
+    
+    <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://antoapps.com/privacidad.html">
 </head>
 <body>
     <!-- Header / Navigation -->
@@ -37,143 +79,555 @@
     </header>
 
     <main>
-        <section class="privacy-page" style="padding-top: 120px; min-height: 100vh;">
+        <section class="privacy-page">
             <div class="container">
-                <div class="privacy-content" style="max-width: 900px; margin: 0 auto;">
-                    <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 2rem; color: var(--primary-color);">Política de Privacidad</h1>
-                    <p style="color: var(--secondary-color); margin-bottom: 3rem; font-size: 1.125rem;">
-                        <strong>Última actualización:</strong> Enero 2024
-                    </p>
-
-                    <div class="privacy-section" style="margin-bottom: 3rem;">
-                        <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--white);">1. Introducción</h2>
-                        <p style="color: var(--secondary-color); line-height: 1.8; margin-bottom: 1rem;">
-                            En Anto, tu privacidad es nuestra prioridad. Esta Política de Privacidad explica cómo recopilamos, 
-                            usamos, divulgamos y protegemos tu información cuando utilizas nuestra aplicación móvil y servicios.
-                        </p>
-                        <p style="color: var(--secondary-color); line-height: 1.8;">
-                            Al usar Anto, aceptas las prácticas descritas en esta política. Si no estás de acuerdo con esta política, 
-                            por favor no uses nuestros servicios.
-                        </p>
+                <div class="privacy-content">
+                    <!-- Hero Section -->
+                    <div class="privacy-hero">
+                        <h1>Política de Privacidad</h1>
+                        <p class="last-updated">Última actualización: Diciembre 2024</p>
+                        <div style="margin-top: var(--spacing-md);">
+                            <span class="privacy-badge">🔒 Encriptación E2E</span>
+                            <span class="privacy-badge">🛡️ GDPR Compliant</span>
+                            <span class="privacy-badge">🔐 Confidencialidad Total</span>
+                        </div>
                     </div>
 
-                    <div class="privacy-section" style="margin-bottom: 3rem;">
-                        <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--white);">2. Información que Recopilamos</h2>
+                    <!-- Table of Contents -->
+                    <div class="privacy-toc">
+                        <h3>Índice de Contenidos</h3>
+                        <ul>
+                            <li><a href="#introduccion">1. Introducción</a></li>
+                            <li><a href="#informacion-recopilada">2. Información que Recopilamos</a></li>
+                            <li><a href="#uso-informacion">3. Cómo Usamos tu Información</a></li>
+                            <li><a href="#base-legal">4. Base Legal para el Procesamiento</a></li>
+                            <li><a href="#confidencialidad">5. Confidencialidad y Seguridad</a></li>
+                            <li><a href="#compartir-datos">6. Compartir Información con Terceros</a></li>
+                            <li><a href="#derechos">7. Tus Derechos</a></li>
+                            <li><a href="#retencion">8. Retención de Datos</a></li>
+                            <li><a href="#transferencias">9. Transferencias Internacionales</a></li>
+                            <li><a href="#menores">10. Menores de Edad</a></li>
+                            <li><a href="#cookies">11. Cookies y Tecnologías Similares</a></li>
+                            <li><a href="#cambios">12. Cambios a esta Política</a></li>
+                            <li><a href="#contacto">13. Contacto</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Introduction -->
+                    <div class="privacy-section" id="introduccion">
+                        <h2>1. Introducción</h2>
+                        <div class="privacy-intro">
+                            <p>
+                                En <strong>Anto</strong>, tu privacidad y la confidencialidad de tu información de salud mental 
+                                son nuestra máxima prioridad. Esta Política de Privacidad explica de manera detallada cómo 
+                                recopilamos, usamos, almacenamos, protegemos y divulgamos tu información personal cuando 
+                                utilizas nuestra aplicación móvil y servicios relacionados.
+                            </p>
+                            <p>
+                                Esta política se aplica a todos los usuarios de Anto, independientemente de su ubicación, 
+                                y cumple con las regulaciones internacionales de protección de datos, incluyendo el 
+                                Reglamento General de Protección de Datos (GDPR) de la Unión Europea y otras leyes 
+                                aplicables de protección de datos.
+                            </p>
+                            <p>
+                                <strong>Al usar Anto, aceptas las prácticas descritas en esta política.</strong> Si no estás 
+                                de acuerdo con esta política, por favor no uses nuestros servicios. Te recomendamos leer 
+                                esta política cuidadosamente para entender cómo protegemos tu información.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Information Collected -->
+                    <div class="privacy-section" id="informacion-recopilada">
+                        <h2>2. Información que Recopilamos</h2>
                         
-                        <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; margin-top: 2rem; color: var(--white);">2.1 Información Personal</h3>
-                        <ul style="color: var(--secondary-color); line-height: 1.8; margin-left: 2rem; margin-bottom: 1.5rem;">
-                            <li>Nombre y apellido</li>
-                            <li>Dirección de correo electrónico</li>
-                            <li>Número de teléfono (opcional)</li>
-                            <li>Fecha de nacimiento (opcional)</li>
+                        <p>
+                            Recopilamos diferentes tipos de información para proporcionarte un servicio personalizado 
+                            y efectivo. Esta información se clasifica en las siguientes categorías:
+                        </p>
+
+                        <h3>2.1 Información Personal de Identificación</h3>
+                        <ul>
+                            <li><strong>Nombre completo</strong> - Para personalizar tu experiencia</li>
+                            <li><strong>Dirección de correo electrónico</strong> - Para comunicación y recuperación de cuenta</li>
+                            <li><strong>Número de teléfono</strong> (opcional) - Para verificación y notificaciones</li>
+                            <li><strong>Fecha de nacimiento</strong> (opcional) - Para verificar edad y personalización</li>
+                            <li><strong>Género</strong> (opcional) - Para análisis personalizado</li>
+                            <li><strong>Ubicación geográfica</strong> (general, no precisa) - Para cumplir con regulaciones locales</li>
                         </ul>
 
-                        <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; margin-top: 2rem; color: var(--white);">2.2 Información de Salud Mental</h3>
-                        <ul style="color: var(--secondary-color); line-height: 1.8; margin-left: 2rem; margin-bottom: 1.5rem;">
-                            <li>Conversaciones con el asistente AI</li>
-                            <li>Registros de estado emocional</li>
-                            <li>Respuestas a cuestionarios y evaluaciones</li>
-                            <li>Notas y reflexiones personales</li>
+                        <h3>2.2 Información de Salud Mental y Bienestar</h3>
+                        <div class="privacy-highlight">
+                            <p>Información Altamente Sensible</p>
+                            <p>
+                                Esta categoría contiene información extremadamente sensible que tratamos con el máximo nivel 
+                                de seguridad y confidencialidad.
+                            </p>
+                        </div>
+                        <ul>
+                            <li><strong>Conversaciones con el asistente AI</strong> - Todas las interacciones están encriptadas</li>
+                            <li><strong>Registros de estado emocional</strong> - Diarios de ánimo y emociones</li>
+                            <li><strong>Respuestas a cuestionarios y evaluaciones</strong> - Tests de salud mental</li>
+                            <li><strong>Notas y reflexiones personales</strong> - Contenido que compartes voluntariamente</li>
+                            <li><strong>Historial de crisis</strong> - Registros de situaciones de emergencia (si aplica)</li>
+                            <li><strong>Objetivos de bienestar</strong> - Metas y progreso personal</li>
+                            <li><strong>Preferencias terapéuticas</strong> - Estilo de apoyo preferido</li>
                         </ul>
 
-                        <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; margin-top: 2rem; color: var(--white);">2.3 Información Técnica</h3>
-                        <ul style="color: var(--secondary-color); line-height: 1.8; margin-left: 2rem; margin-bottom: 1.5rem;">
-                            <li>Dirección IP</li>
-                            <li>Tipo de dispositivo y sistema operativo</li>
-                            <li>Identificadores únicos del dispositivo</li>
-                            <li>Datos de uso de la aplicación</li>
+                        <h3>2.3 Información Técnica y de Uso</h3>
+                        <ul>
+                            <li><strong>Dirección IP</strong> - Para seguridad y prevención de fraude</li>
+                            <li><strong>Tipo de dispositivo y sistema operativo</strong> - Para optimización técnica</li>
+                            <li><strong>Identificadores únicos del dispositivo</strong> - Para autenticación segura</li>
+                            <li><strong>Datos de uso de la aplicación</strong> - Para mejorar el servicio</li>
+                            <li><strong>Registros de errores y rendimiento</strong> - Para diagnóstico técnico</li>
+                            <li><strong>Preferencias de notificaciones</strong> - Para personalización</li>
+                        </ul>
+
+                        <h3>2.4 Información de Pago (si aplica)</h3>
+                        <ul>
+                            <li><strong>Información de suscripción</strong> - Plan y estado de suscripción</li>
+                            <li><strong>Datos de facturación</strong> - Procesados por proveedores de pago seguros (no almacenamos números de tarjeta)</li>
+                            <li><strong>Historial de transacciones</strong> - Para soporte y contabilidad</li>
                         </ul>
                     </div>
 
-                    <div class="privacy-section" style="margin-bottom: 3rem;">
-                        <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--white);">3. Cómo Usamos tu Información</h2>
-                        <ul style="color: var(--secondary-color); line-height: 1.8; margin-left: 2rem;">
-                            <li>Proporcionar y mejorar nuestros servicios de salud mental</li>
-                            <li>Personalizar tu experiencia con el asistente AI</li>
-                            <li>Analizar tu estado emocional y proporcionar insights</li>
-                            <li>Detectar situaciones de crisis y proporcionar apoyo</li>
-                            <li>Enviar notificaciones importantes sobre el servicio</li>
-                            <li>Cumplir con obligaciones legales y regulatorias</li>
+                    <!-- How We Use Information -->
+                    <div class="privacy-section" id="uso-informacion">
+                        <h2>3. Cómo Usamos tu Información</h2>
+                        
+                        <p>
+                            Utilizamos tu información exclusivamente para los siguientes propósitos legítimos:
+                        </p>
+
+                        <div class="privacy-grid">
+                            <div class="privacy-card">
+                                <h4>💬 Servicio Principal</h4>
+                                <p>Proporcionar y mejorar nuestros servicios de salud mental, incluyendo el asistente AI terapéutico y análisis emocional.</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>🎯 Personalización</h4>
+                                <p>Personalizar tu experiencia con el asistente AI según tus necesidades, historial y preferencias únicas.</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>📊 Análisis y Insights</h4>
+                                <p>Analizar tu estado emocional y proporcionar insights personalizados sobre tu bienestar mental.</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>🚨 Detección de Crisis</h4>
+                                <p>Detectar situaciones de crisis y proporcionar apoyo inmediato y recursos de emergencia cuando sea necesario.</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>🔔 Comunicación</h4>
+                                <p>Enviar notificaciones importantes sobre el servicio, actualizaciones y recordatorios de bienestar.</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>⚖️ Cumplimiento Legal</h4>
+                                <p>Cumplir con obligaciones legales y regulatorias, incluyendo reportes de seguridad y auditorías.</p>
+                            </div>
+                        </div>
+
+                        <div class="privacy-highlight">
+                            <p>Principio de Minimización</p>
+                            <p>
+                                Solo recopilamos y procesamos la información estrictamente necesaria para proporcionar 
+                                nuestros servicios. No utilizamos tu información para fines no relacionados con tu bienestar mental.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Legal Basis -->
+                    <div class="privacy-section" id="base-legal">
+                        <h2>4. Base Legal para el Procesamiento</h2>
+                        
+                        <p>
+                            Procesamos tu información personal basándonos en las siguientes bases legales según el GDPR:
+                        </p>
+
+                        <table class="privacy-table">
+                            <thead>
+                                <tr>
+                                    <th>Base Legal</th>
+                                    <th>Propósito</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="Base Legal"><strong>Consentimiento</strong></td>
+                                    <td data-label="Propósito">Has dado tu consentimiento explícito para el procesamiento de tus datos personales y de salud mental.</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Base Legal"><strong>Ejecución de Contrato</strong></td>
+                                    <td data-label="Propósito">El procesamiento es necesario para proporcionarte los servicios solicitados bajo nuestros términos de servicio.</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Base Legal"><strong>Interés Legítimo</strong></td>
+                                    <td data-label="Propósito">Mejorar nuestros servicios, prevenir fraude y garantizar la seguridad de la plataforma.</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Base Legal"><strong>Obligación Legal</strong></td>
+                                    <td data-label="Propósito">Cumplir con obligaciones legales, como reportes de seguridad o requerimientos judiciales.</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Base Legal"><strong>Protección de Intereses Vitales</strong></td>
+                                    <td data-label="Propósito">En situaciones de emergencia o crisis donde es necesario proteger tu vida o salud.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Confidentiality and Security -->
+                    <div class="privacy-section" id="confidencialidad">
+                        <h2>5. Confidencialidad y Seguridad</h2>
+                        
+                        <p>
+                            La seguridad de tu información, especialmente tus datos de salud mental, es nuestra máxima prioridad. 
+                            Implementamos múltiples capas de protección:
+                        </p>
+
+                        <h3>5.1 Encriptación de Extremo a Extremo</h3>
+                        <div class="privacy-highlight">
+                            <p>🔐 Protección Máxima</p>
+                            <p>
+                                Todas tus conversaciones con el asistente AI están encriptadas de extremo a extremo (E2E) 
+                                utilizando estándares de encriptación de grado militar (AES-256). Esto significa que solo tú 
+                                y el sistema pueden leer tus mensajes. Ni siquiera nuestros administradores pueden acceder 
+                                al contenido de tus conversaciones.
+                            </p>
+                        </div>
+
+                        <h3>5.2 Almacenamiento Seguro</h3>
+                        <ul>
+                            <li>Utilizamos servidores seguros con certificaciones de seguridad de nivel empresarial (SOC 2, ISO 27001)</li>
+                            <li>Datos almacenados en centros de datos con medidas físicas de seguridad avanzadas</li>
+                            <li>Copias de seguridad encriptadas almacenadas en múltiples ubicaciones geográficas</li>
+                            <li>Monitoreo 24/7 de seguridad y detección de intrusiones</li>
                         </ul>
+
+                        <h3>5.3 Medidas de Seguridad Técnicas</h3>
+                        <div class="privacy-grid">
+                            <div class="privacy-card">
+                                <h4>🔑 Autenticación</h4>
+                                <p>Autenticación de dos factores (2FA) disponible, contraseñas hasheadas con bcrypt.</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>🛡️ Firewall</h4>
+                                <p>Firewalls avanzados y sistemas de prevención de intrusiones (IPS/IDS).</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>🔍 Monitoreo</h4>
+                                <p>Monitoreo continuo de seguridad y alertas en tiempo real.</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>🔄 Actualizaciones</h4>
+                                <p>Actualizaciones regulares de seguridad y parches de vulnerabilidades.</p>
+                            </div>
+                        </div>
+
+                        <h3>5.4 Política de No Compartir</h3>
+                        <div class="privacy-highlight">
+                            <p>Compromiso Absoluto</p>
+                            <p>
+                                <strong>Nunca vendemos, alquilamos, compartimos o comercializamos tu información personal 
+                                o de salud mental con terceros para fines comerciales.</strong> Tu información es tuya y solo 
+                                se utiliza para proporcionarte el mejor servicio posible.
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="privacy-section" style="margin-bottom: 3rem;">
-                        <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--white);">4. Confidencialidad y Seguridad</h2>
-                        <p style="color: var(--secondary-color); line-height: 1.8; margin-bottom: 1rem;">
-                            <strong>Encriptación de Extremo a Extremo:</strong> Todas tus conversaciones están encriptadas 
-                            de extremo a extremo, lo que significa que solo tú puedes leer tus mensajes.
+                    <!-- Sharing with Third Parties -->
+                    <div class="privacy-section" id="compartir-datos">
+                        <h2>6. Compartir Información con Terceros</h2>
+                        
+                        <p>
+                            Como regla general, <strong>no compartimos tu información personal o de salud mental con terceros</strong>. 
+                            Sin embargo, en circunstancias muy específicas y limitadas, podemos compartir información:
                         </p>
-                        <p style="color: var(--secondary-color); line-height: 1.8; margin-bottom: 1rem;">
-                            <strong>Almacenamiento Seguro:</strong> Utilizamos servidores seguros con certificaciones 
-                            de seguridad de nivel empresarial para almacenar tu información.
-                        </p>
-                        <p style="color: var(--secondary-color); line-height: 1.8;">
-                            <strong>Sin Compartir con Terceros:</strong> Nunca vendemos, alquilamos o compartimos tu información 
-                            personal o de salud mental con terceros para fines comerciales.
-                        </p>
-                    </div>
 
-                    <div class="privacy-section" style="margin-bottom: 3rem;">
-                        <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--white);">5. Tus Derechos</h2>
-                        <p style="color: var(--secondary-color); line-height: 1.8; margin-bottom: 1rem;">
-                            Tienes derecho a:
+                        <h3>6.1 Proveedores de Servicios</h3>
+                        <p>
+                            Trabajamos con proveedores de servicios de confianza que nos ayudan a operar la plataforma. 
+                            Estos proveedores están contractualmente obligados a:
                         </p>
-                        <ul style="color: var(--secondary-color); line-height: 1.8; margin-left: 2rem;">
-                            <li>Acceder a tu información personal</li>
-                            <li>Corregir información inexacta</li>
-                            <li>Solicitar la eliminación de tu información</li>
-                            <li>Exportar tus datos</li>
-                            <li>Retirar tu consentimiento en cualquier momento</li>
-                            <li>Presentar una queja ante las autoridades de protección de datos</li>
+                        <ul>
+                            <li>Mantener la confidencialidad de tu información</li>
+                            <li>Usar tu información solo para los fines especificados</li>
+                            <li>Implementar medidas de seguridad apropiadas</li>
+                            <li>Cumplir con todas las leyes de protección de datos aplicables</li>
                         </ul>
+                        <p><strong>Ejemplos de proveedores:</strong> servicios de hosting en la nube, procesadores de pago, servicios de análisis (datos anonimizados).</p>
+
+                        <h3>6.2 Requerimientos Legales</h3>
+                        <p>
+                            Podemos divulgar información si es requerido por ley, orden judicial, o proceso legal, o si 
+                            creemos de buena fe que la divulgación es necesaria para:
+                        </p>
+                        <ul>
+                            <li>Cumplir con una obligación legal</li>
+                            <li>Proteger nuestros derechos o propiedad</li>
+                            <li>Prevenir o investigar posibles violaciones de nuestros términos de servicio</li>
+                            <li>Proteger la seguridad de usuarios o del público</li>
+                        </ul>
+
+                        <h3>6.3 Emergencias y Protección de Vida</h3>
+                        <div class="privacy-highlight">
+                            <p>⚠️ Situaciones de Emergencia</p>
+                            <p>
+                                En situaciones donde detectamos un riesgo inminente de daño a ti o a otros, podemos 
+                                compartir información limitada con servicios de emergencia o profesionales de salud mental 
+                                para garantizar tu seguridad. Esto solo ocurre en circunstancias extremas y siempre 
+                                priorizando tu bienestar.
+                            </p>
+                        </div>
+
+                        <h3>6.4 Transferencias de Negocio</h3>
+                        <p>
+                            En el caso de una fusión, adquisición, o venta de activos, tu información puede ser transferida. 
+                            Te notificaremos de cualquier cambio de propiedad o uso de tu información personal.
+                        </p>
                     </div>
 
-                    <div class="privacy-section" style="margin-bottom: 3rem;">
-                        <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--white);">6. Retención de Datos</h2>
-                        <p style="color: var(--secondary-color); line-height: 1.8;">
+                    <!-- User Rights -->
+                    <div class="privacy-section" id="derechos">
+                        <h2>7. Tus Derechos</h2>
+                        
+                        <p>
+                            Tienes derechos significativos sobre tu información personal. Estos derechos incluyen:
+                        </p>
+
+                        <div class="privacy-grid">
+                            <div class="privacy-card">
+                                <h4>👁️ Derecho de Acceso</h4>
+                                <p>Puedes solicitar una copia de toda la información personal que tenemos sobre ti en cualquier momento.</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>✏️ Derecho de Rectificación</h4>
+                                <p>Puedes corregir cualquier información inexacta o incompleta en tu cuenta.</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>🗑️ Derecho de Eliminación</h4>
+                                <p>Puedes solicitar la eliminación completa de tu información personal ("derecho al olvido").</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>📤 Derecho de Portabilidad</h4>
+                                <p>Puedes exportar tus datos en un formato estructurado y de uso común (JSON, CSV).</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>🚫 Derecho de Oposición</h4>
+                                <p>Puedes oponerte al procesamiento de tu información para ciertos fines.</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>⏸️ Derecho de Restricción</h4>
+                                <p>Puedes solicitar que limitemos el procesamiento de tu información en ciertas circunstancias.</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>🔄 Retirar Consentimiento</h4>
+                                <p>Puedes retirar tu consentimiento para el procesamiento de datos en cualquier momento.</p>
+                            </div>
+                            <div class="privacy-card">
+                                <h4>📋 Presentar Queja</h4>
+                                <p>Puedes presentar una queja ante las autoridades de protección de datos de tu país.</p>
+                            </div>
+                        </div>
+
+                        <div class="privacy-highlight">
+                            <p>Ejercer tus Derechos</p>
+                            <p>
+                                Para ejercer cualquiera de estos derechos, puedes contactarnos en 
+                                <strong>privacidad@antoapps.com</strong> o a través de la configuración de la aplicación. 
+                                Responderemos a tu solicitud dentro de 30 días (o según lo requerido por la ley aplicable).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Data Retention -->
+                    <div class="privacy-section" id="retencion">
+                        <h2>8. Retención de Datos</h2>
+                        
+                        <p>
                             Conservamos tu información mientras tu cuenta esté activa o según sea necesario para 
-                            proporcionarte nuestros servicios. Puedes solicitar la eliminación de tu cuenta y datos 
-                            en cualquier momento desde la configuración de la aplicación.
+                            proporcionarte nuestros servicios. Los períodos de retención específicos son:
+                        </p>
+
+                        <table class="privacy-table">
+                            <thead>
+                                <tr>
+                                    <th>Tipo de Información</th>
+                                    <th>Período de Retención</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="Tipo de Información">Información de cuenta activa</td>
+                                    <td data-label="Período de Retención">Mientras la cuenta esté activa</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Tipo de Información">Conversaciones y datos de salud mental</td>
+                                    <td data-label="Período de Retención">Hasta que solicites eliminación o cierres tu cuenta</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Tipo de Información">Datos de pago</td>
+                                    <td data-label="Período de Retención">Según requerimientos legales y fiscales (típicamente 7 años)</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Tipo de Información">Registros de seguridad y acceso</td>
+                                    <td data-label="Período de Retención">Hasta 2 años para fines de seguridad</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Tipo de Información">Datos después de cierre de cuenta</td>
+                                    <td data-label="Período de Retención">Eliminados dentro de 30 días, excepto cuando la ley requiera retención</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>
+                            <strong>Eliminación de Datos:</strong> Cuando solicitas la eliminación de tu cuenta, eliminamos 
+                            permanentemente tu información personal y de salud mental de nuestros sistemas activos. 
+                            Las copias de seguridad pueden retener información por hasta 90 días adicionales antes de 
+                            la eliminación permanente.
                         </p>
                     </div>
 
-                    <div class="privacy-section" style="margin-bottom: 3rem;">
-                        <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--white);">7. Menores de Edad</h2>
-                        <p style="color: var(--secondary-color); line-height: 1.8;">
-                            Anto no está dirigido a menores de 18 años. No recopilamos intencionalmente información 
-                            personal de menores. Si descubrimos que hemos recopilado información de un menor, 
-                            tomaremos medidas para eliminarla inmediatamente.
+                    <!-- International Transfers -->
+                    <div class="privacy-section" id="transferencias">
+                        <h2>9. Transferencias Internacionales de Datos</h2>
+                        
+                        <p>
+                            Tu información puede ser procesada y almacenada en servidores ubicados fuera de tu país de residencia. 
+                            Cuando transferimos datos internacionalmente, implementamos las siguientes protecciones:
                         </p>
-                    </div>
 
-                    <div class="privacy-section" style="margin-bottom: 3rem;">
-                        <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--white);">8. Cambios a esta Política</h2>
-                        <p style="color: var(--secondary-color); line-height: 1.8;">
-                            Podemos actualizar esta Política de Privacidad ocasionalmente. Te notificaremos sobre 
-                            cambios significativos mediante una notificación en la aplicación o por correo electrónico. 
-                            La fecha de "Última actualización" al inicio de esta política indica cuándo se realizó 
-                            la última revisión.
-                        </p>
-                    </div>
-
-                    <div class="privacy-section" style="margin-bottom: 3rem;">
-                        <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--white);">9. Contacto</h2>
-                        <p style="color: var(--secondary-color); line-height: 1.8; margin-bottom: 1rem;">
-                            Si tienes preguntas sobre esta Política de Privacidad o sobre cómo manejamos tu información, 
-                            puedes contactarnos:
-                        </p>
-                        <ul style="color: var(--secondary-color); line-height: 1.8; margin-left: 2rem;">
-                            <li><strong>Email:</strong> privacidad@antoapp.com</li>
-                            <li><strong>Dirección:</strong> [Dirección de la empresa]</li>
+                        <ul>
+                            <li><strong>Cláusulas Contractuales Estándar (SCC):</strong> Utilizamos cláusulas contractuales aprobadas por la UE para garantizar protección adecuada</li>
+                            <li><strong>Certificaciones de Seguridad:</strong> Nuestros proveedores de servicios tienen certificaciones internacionales de seguridad</li>
+                            <li><strong>Marco de Privacidad:</strong> Cumplimos con marcos internacionales de privacidad como el Privacy Shield Framework (donde aplicable)</li>
                         </ul>
+
+                        <p>
+                            Si tienes preguntas sobre las transferencias internacionales de tus datos, contáctanos en 
+                            <strong>privacidad@antoapps.com</strong>.
+                        </p>
                     </div>
 
-                    <div style="margin-top: 4rem; padding: 2rem; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; text-align: center;">
-                        <p style="color: var(--secondary-color); margin-bottom: 1.5rem;">
-                            Tu privacidad es nuestra prioridad. Estamos comprometidos a proteger tu información 
-                            y mantener tu confianza.
+                    <!-- Minors -->
+                    <div class="privacy-section" id="menores">
+                        <h2>10. Menores de Edad</h2>
+                        
+                        <div class="privacy-highlight">
+                            <p>🔞 Restricción de Edad</p>
+                            <p>
+                                Anto está diseñado para usuarios de 18 años o más. No recopilamos intencionalmente información 
+                                personal de menores de 18 años sin el consentimiento explícito de los padres o tutores legales.
+                            </p>
+                        </div>
+
+                        <p>
+                            Si descubrimos que hemos recopilado información de un menor sin el consentimiento apropiado, 
+                            tomaremos medidas inmediatas para:
                         </p>
-                        <a href="/" class="btn btn-primary">Volver al Inicio</a>
+                        <ul>
+                            <li>Eliminar toda la información recopilada del menor</li>
+                            <li>Cerrar cualquier cuenta asociada</li>
+                            <li>Notificar a los padres o tutores legales si es apropiado</li>
+                        </ul>
+
+                        <p>
+                            Si eres padre o tutor y crees que tu hijo menor de edad ha proporcionado información a Anto, 
+                            contáctanos inmediatamente en <strong>privacidad@antoapps.com</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Cookies -->
+                    <div class="privacy-section" id="cookies">
+                        <h2>11. Cookies y Tecnologías Similares</h2>
+                        
+                        <p>
+                            Utilizamos cookies y tecnologías similares para mejorar tu experiencia, analizar el uso de la 
+                            aplicación y personalizar el contenido. Los tipos de cookies que utilizamos incluyen:
+                        </p>
+
+                        <h3>11.1 Tipos de Cookies</h3>
+                        <ul>
+                            <li><strong>Cookies Esenciales:</strong> Necesarias para el funcionamiento básico de la aplicación</li>
+                            <li><strong>Cookies de Rendimiento:</strong> Nos ayudan a entender cómo los usuarios interactúan con la aplicación</li>
+                            <li><strong>Cookies de Funcionalidad:</strong> Recuerdan tus preferencias y personalizan tu experiencia</li>
+                            <li><strong>Cookies de Análisis:</strong> Recopilan información anonimizada sobre el uso (solo en versión web)</li>
+                        </ul>
+
+                        <p>
+                            Puedes gestionar tus preferencias de cookies a través de la configuración de tu navegador o 
+                            dispositivo. Ten en cuenta que deshabilitar ciertas cookies puede afectar la funcionalidad de la aplicación.
+                        </p>
+                    </div>
+
+                    <!-- Changes to Policy -->
+                    <div class="privacy-section" id="cambios">
+                        <h2>12. Cambios a esta Política</h2>
+                        
+                        <p>
+                            Podemos actualizar esta Política de Privacidad ocasionalmente para reflejar cambios en nuestras 
+                            prácticas, servicios, requisitos legales o por otras razones operativas, legales o regulatorias.
+                        </p>
+
+                        <p>
+                            Cuando realicemos cambios significativos a esta política:
+                        </p>
+                        <ul>
+                            <li>Te notificaremos mediante una notificación prominente en la aplicación</li>
+                            <li>Te enviaremos un correo electrónico a la dirección asociada con tu cuenta</li>
+                            <li>Actualizaremos la fecha de "Última actualización" al inicio de esta política</li>
+                            <li>Te daremos la oportunidad de revisar los cambios antes de que entren en vigor</li>
+                        </ul>
+
+                        <p>
+                            <strong>Tu uso continuado de Anto después de que los cambios entren en vigor constituye tu 
+                            aceptación de la política revisada.</strong> Si no estás de acuerdo con los cambios, puedes 
+                            cerrar tu cuenta en cualquier momento.
+                        </p>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="privacy-section" id="contacto">
+                        <h2>13. Contacto</h2>
+                        
+                        <p>
+                            Si tienes preguntas, inquietudes o solicitudes relacionadas con esta Política de Privacidad 
+                            o sobre cómo manejamos tu información, estamos aquí para ayudarte.
+                        </p>
+
+                        <div class="privacy-contact">
+                            <h2>Información de Contacto</h2>
+                            <div class="privacy-contact-info">
+                                <div class="privacy-contact-item">
+                                    <strong>📧 Email de Privacidad</strong>
+                                    <a href="mailto:privacidad@antoapps.com">privacidad@antoapps.com</a>
+                                </div>
+                                <div class="privacy-contact-item">
+                                    <strong>🌐 Sitio Web</strong>
+                                    <a href="https://antoapps.com">antoapps.com</a>
+                                </div>
+                                <div class="privacy-contact-item">
+                                    <strong>⏰ Tiempo de Respuesta</strong>
+                                    <span>30 días hábiles</span>
+                                </div>
+                            </div>
+                            <p style="margin-top: var(--spacing-md); color: var(--secondary-color);">
+                                Para solicitudes relacionadas con tus derechos de privacidad, por favor incluye "Solicitud de Privacidad" 
+                                en el asunto del correo y proporciona detalles sobre tu solicitud.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="privacy-cta">
+                        <p>
+                            <strong>Tu privacidad es nuestra prioridad.</strong> Estamos comprometidos a proteger tu información 
+                            y mantener tu confianza. Si tienes alguna pregunta o inquietud, no dudes en contactarnos.
+                        </p>
+                        <div style="margin-top: var(--spacing-md);">
+                            <a href="/" class="btn btn-primary">Volver al Inicio</a>
+                            <a href="/#descargar" class="btn btn-secondary" style="margin-left: var(--spacing-sm);">Descargar App</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -206,4 +660,3 @@
     <script src="scripts/main.js"></script>
 </body>
 </html>
-

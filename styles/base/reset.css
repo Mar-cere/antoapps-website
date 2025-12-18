@@ -21,6 +21,27 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Prevenir zoom en iOS al hacer doble tap */
+    touch-action: manipulation;
+}
+
+/* Prevenir zoom automático en inputs en iOS */
+input,
+textarea,
+select {
+    font-size: 16px; /* Tamaño mínimo para prevenir zoom en iOS */
+}
+
+@media (max-width: 767px) {
+    body {
+        font-size: 16px; /* Asegurar tamaño legible en móviles */
+    }
+    
+    /* Mejorar legibilidad en móviles */
+    p, li, span {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
 }
 
 img {

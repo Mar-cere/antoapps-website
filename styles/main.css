@@ -15,6 +15,7 @@
 @import url('./components/buttons.css');
 @import url('./components/cards.css');
 @import url('./components/sections.css');
+@import url('./components/privacy.css');
 
 /* Utilities */
 @import url('./utilities/animations.css');

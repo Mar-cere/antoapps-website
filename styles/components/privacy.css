@@ -1,0 +1,377 @@
+/* ============================================
+   PRIVACY PAGE STYLES
+   ============================================ */
+
+.privacy-page {
+    padding-top: 120px;
+    min-height: 100vh;
+    background: var(--bg-dark);
+    position: relative;
+}
+
+.privacy-hero {
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+    margin-bottom: var(--spacing-xl);
+    background: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.05) 100%);
+    border-radius: 20px;
+    margin-bottom: var(--spacing-xl);
+}
+
+.privacy-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--white) 0%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.privacy-hero .last-updated {
+    color: var(--secondary-color);
+    font-size: 1.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+}
+
+.privacy-hero .last-updated::before {
+    content: "📅";
+    font-size: 1.25rem;
+}
+
+.privacy-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.privacy-intro {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    backdrop-filter: blur(10px);
+}
+
+.privacy-intro p {
+    color: var(--secondary-color);
+    line-height: 1.8;
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.privacy-intro p:last-child {
+    margin-bottom: 0;
+}
+
+.privacy-section {
+    margin-bottom: var(--spacing-xl);
+    animation: fadeInUp 0.6s ease;
+}
+
+.privacy-section h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--card-border);
+}
+
+.privacy-section h2::before {
+    content: "🔒";
+    font-size: 2rem;
+}
+
+.privacy-section h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.privacy-section h3::before {
+    content: "→";
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.privacy-section p {
+    color: var(--secondary-color);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.0625rem;
+}
+
+.privacy-section p strong {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.privacy-section ul,
+.privacy-section ol {
+    color: var(--secondary-color);
+    line-height: 1.8;
+    margin-left: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.0625rem;
+}
+
+.privacy-section li {
+    margin-bottom: var(--spacing-xs);
+    padding-left: var(--spacing-xs);
+}
+
+.privacy-section li::marker {
+    color: var(--primary-color);
+}
+
+.privacy-highlight {
+    background: var(--card-bg);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    backdrop-filter: blur(10px);
+}
+
+.privacy-highlight p {
+    margin-bottom: 0;
+    color: var(--white);
+    font-weight: 500;
+}
+
+.privacy-highlight p:first-child {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.privacy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+}
+
+.privacy-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: var(--spacing-md);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.privacy-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+}
+
+.privacy-card h4 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.privacy-card p {
+    color: var(--secondary-color);
+    font-size: 0.9375rem;
+    margin-bottom: 0;
+}
+
+.privacy-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-md) 0;
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    display: table;
+}
+
+.privacy-table thead {
+    background: rgba(26, 221, 219, 0.1);
+    display: table-header-group;
+}
+
+.privacy-table tbody {
+    display: table-row-group;
+}
+
+.privacy-table tr {
+    display: table-row;
+}
+
+.privacy-table th {
+    padding: var(--spacing-sm);
+    text-align: left;
+    color: var(--white);
+    font-weight: 600;
+    border-bottom: 2px solid var(--card-border);
+    display: table-cell;
+}
+
+.privacy-table td {
+    padding: var(--spacing-sm);
+    color: var(--secondary-color);
+    border-bottom: 1px solid var(--card-border);
+    display: table-cell;
+}
+
+.privacy-table tr:last-child td {
+    border-bottom: none;
+}
+
+.privacy-table tr:hover {
+    background: rgba(26, 221, 219, 0.05);
+}
+
+.privacy-table td[data-label]::before {
+    display: none;
+}
+
+.privacy-contact {
+    background: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+    text-align: center;
+}
+
+.privacy-contact h2 {
+    border: none;
+    padding: 0;
+    margin-bottom: var(--spacing-md);
+}
+
+.privacy-contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+}
+
+.privacy-contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.privacy-contact-item strong {
+    color: var(--primary-color);
+    font-size: 1.125rem;
+}
+
+.privacy-contact-item a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.privacy-contact-item a:hover {
+    color: var(--primary-color);
+}
+
+.privacy-cta {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.privacy-cta p {
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.125rem;
+}
+
+.privacy-badge {
+    display: inline-block;
+    background: rgba(26, 221, 219, 0.1);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    color: var(--primary-color);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: var(--spacing-xs);
+}
+
+.privacy-toc {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    backdrop-filter: blur(10px);
+}
+
+.privacy-toc h3 {
+    color: var(--white);
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+}
+
+.privacy-toc h3::before {
+    content: "📑";
+    margin-right: var(--spacing-xs);
+}
+
+.privacy-toc ul {
+    list-style: none;
+    margin-left: 0;
+}
+
+.privacy-toc li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.privacy-toc a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.privacy-toc a:hover {
+    color: var(--primary-color);
+    transform: translateX(4px);
+}
+
+.privacy-toc a::before {
+    content: "→";
+    color: var(--primary-color);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.privacy-toc a:hover::before {
+    opacity: 1;
+}
+
+/* Responsive - Moved to responsive.css for consistency */
+
