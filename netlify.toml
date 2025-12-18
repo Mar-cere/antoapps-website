@@ -3,11 +3,22 @@
   # Netlify detectará automáticamente que es un sitio estático
   publish = "."
 
-# Redirecciones
+# Redirecciones - URLs sin extensión
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/privacidad"
+  to = "/privacidad.html"
   status = 200
+
+[[redirects]]
+  from = "/privacidad/"
+  to = "/privacidad.html"
+  status = 200
+
+# Redirecciones - URLs antiguas con .html a nuevas sin extensión
+[[redirects]]
+  from = "/privacidad.html"
+  to = "/privacidad"
+  status = 301
 
 # Headers de seguridad
 [[headers]]

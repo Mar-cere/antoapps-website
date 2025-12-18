@@ -1,8 +1,19 @@
 {
+  "redirects": [
+    {
+      "source": "/privacidad.html",
+      "destination": "/privacidad",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/$1"
+      "source": "/privacidad",
+      "destination": "/privacidad.html"
+    },
+    {
+      "source": "/privacidad/",
+      "destination": "/privacidad.html"
     }
   ],
   "headers": [
