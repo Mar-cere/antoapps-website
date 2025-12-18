@@ -1,0 +1,24 @@
+{
+  "name": "antoapps",
+  "version": "1.0.0",
+  "description": "Sitio web de AntoApps - Desarrollo desde cero",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve . -l 3000",
+    "start": "npx serve . -l 3000",
+    "deploy": "vercel --prod",
+    "deploy:preview": "vercel",
+    "logs": "vercel logs"
+  },
+  "keywords": [
+    "web",
+    "development",
+    "antoapps"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
+
