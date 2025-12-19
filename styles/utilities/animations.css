@@ -143,11 +143,12 @@
     }
 }
 
-/* Utility Classes */
+/* Utility Classes - Reducido para evitar espacios */
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    min-height: fit-content;
 }
 
 .animate-on-scroll.animated {

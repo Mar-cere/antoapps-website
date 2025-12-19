@@ -93,9 +93,17 @@
 .faq-item {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 12px;
+    border-radius: 16px;
     margin-bottom: var(--spacing-sm);
     overflow: hidden;
     backdrop-filter: blur(10px);
+    transition: var(--transition);
+    opacity: 1 !important; /* Asegurar visibilidad */
+    transform: none !important; /* Evitar que se muevan con animaciones */
+}
+
+.faq-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
 }
 

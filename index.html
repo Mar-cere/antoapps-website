@@ -154,8 +154,25 @@
             <div class="particles" id="particles"></div>
             <div class="container">
                 <div class="hero-content reveal-on-scroll">
-                    <h1 class="hero-title text-reveal">Tu apoyo emocional 24/7, siempre disponible</h1>
-                    <p class="hero-subtitle reveal-on-scroll">Salud mental accesible para todos. IA que entiende, escucha y apoya.</p>
+                    <h1 class="hero-title">Tu apoyo emocional 24/7, siempre disponible</h1>
+                    <p class="hero-subtitle reveal-on-scroll">Salud mental accesible para todos. IA que entiende, escucha y apoya. Más de 10,000 usuarios confían en Anto para su bienestar mental diario.</p>
+                    <div class="hero-stats" style="display: flex; gap: var(--spacing-md); margin-bottom: var(--spacing-md); flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: var(--spacing-xs);">
+                            <span style="color: var(--primary-color); font-size: 1.5rem;">⭐</span>
+                            <span style="color: var(--white); font-weight: 600;">4.8/5</span>
+                            <span style="color: var(--secondary-color);">(1,250+ reseñas)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--spacing-xs);">
+                            <span style="color: var(--primary-color); font-size: 1.5rem;">👥</span>
+                            <span style="color: var(--white); font-weight: 600;">10,000+</span>
+                            <span style="color: var(--secondary-color);">usuarios activos</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--spacing-xs);">
+                            <span style="color: var(--primary-color); font-size: 1.5rem;">🔒</span>
+                            <span style="color: var(--white); font-weight: 600;">100%</span>
+                            <span style="color: var(--secondary-color);">privado y seguro</span>
+                        </div>
+                    </div>
                     <div class="hero-cta">
                         <a href="#descargar" class="btn btn-primary btn-large">Comenzar Prueba Gratis</a>
                         <a href="#como-funciona" class="btn btn-secondary btn-large">Saber Más</a>
@@ -334,47 +351,56 @@
         </section>
 
         <!-- Cómo Funciona -->
-        <section id="como-funciona" class="how-it-works">
+        <section id="como-funciona" class="how-it-works" data-fade-section>
             <div class="container">
-                <h2 class="section-title">Cómo Funciona</h2>
-                <p class="section-subtitle">En solo 4 pasos simples, comienza tu camino al bienestar</p>
-                <div class="steps">
-                    <div class="step">
+                <h2 class="section-title reveal-on-scroll">Cómo Funciona</h2>
+                <p class="section-subtitle reveal-on-scroll">En solo 4 pasos simples, comienza tu camino al bienestar. Anto está diseñado para ser intuitivo y accesible, sin importar tu nivel de experiencia con tecnología.</p>
+                <div class="steps" data-stagger>
+                    <div class="step" data-stagger-item>
                         <div class="step-number">1</div>
                         <div class="step-content">
                             <h3>Descarga la App</h3>
-                            <p>Disponible en App Store y Google Play. Instalación rápida y sencilla</p>
+                            <p>Disponible gratis en App Store y Google Play. La descarga es rápida (menos de 50MB) y la instalación toma menos de un minuto. Compatible con iOS 13+ y Android 8.0+.</p>
                         </div>
                     </div>
-                    <div class="step">
+                    <div class="step" data-stagger-item>
                         <div class="step-number">2</div>
                         <div class="step-content">
                             <h3>Crea tu Perfil</h3>
-                            <p>Configura tu perfil de forma privada y segura en menos de 2 minutos</p>
+                            <p>Configura tu perfil de forma privada y segura en menos de 2 minutos. Solo necesitas un email y puedes empezar. Toda tu información está encriptada desde el primer momento.</p>
                         </div>
                     </div>
-                    <div class="step">
+                    <div class="step" data-stagger-item>
                         <div class="step-number">3</div>
                         <div class="step-content">
                             <h3>Comienza a Chatear</h3>
-                            <p>Inicia una conversación con nuestro asistente AI que entiende tus emociones</p>
+                            <p>Inicia una conversación con nuestro asistente AI que entiende tus emociones. Puedes escribir libremente, hacer preguntas, o usar nuestras guías de conversación sugeridas.</p>
                         </div>
                     </div>
-                    <div class="step">
+                    <div class="step" data-stagger-item>
                         <div class="step-number">4</div>
                         <div class="step-content">
                             <h3>Recibe Apoyo Personalizado</h3>
-                            <p>Obtén respuestas adaptadas, herramientas de bienestar y seguimiento continuo</p>
+                            <p>Obtén respuestas adaptadas, herramientas de bienestar y seguimiento continuo. El sistema aprende de cada interacción para ofrecerte un apoyo cada vez más personalizado.</p>
                         </div>
                     </div>
+                </div>
+                <div style="margin-top: var(--spacing-xl); padding: var(--spacing-lg); background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; text-align: center; backdrop-filter: blur(10px);">
+                    <h3 style="color: var(--white); margin-bottom: var(--spacing-sm); font-size: 1.5rem;">💡 Consejo Pro</h3>
+                    <p style="color: var(--secondary-color); line-height: 1.7; font-size: 1.0625rem;">
+                        Para obtener los mejores resultados, usa Anto regularmente. El asistente AI aprende más sobre ti con cada conversación, 
+                        permitiéndole ofrecerte insights y recomendaciones cada vez más precisas. Muchos usuarios reportan mejoras significativas 
+                        después de usar la app durante 2-3 semanas de forma consistente.
+                    </p>
                 </div>
             </div>
         </section>
 
         <!-- Beneficios -->
-        <section id="beneficios" class="benefits">
+        <section id="beneficios" class="benefits" data-fade-section>
             <div class="container">
-                <h2 class="section-title">Beneficios para Todos</h2>
+                <h2 class="section-title reveal-on-scroll">Beneficios para Todos</h2>
+                <p class="section-subtitle reveal-on-scroll">Anto ofrece beneficios únicos según tus necesidades. Descubre cómo podemos ayudarte.</p>
                 <div class="benefits-tabs">
                     <button class="tab-btn active" data-tab="usuarios">Para Usuarios</button>
                     <button class="tab-btn" data-tab="profesionales">Para Profesionales</button>
@@ -386,29 +412,43 @@
                             <div class="benefit-item">
                                 <span class="check-icon">✓</span>
                                 <div>
-                                    <h4>Acceso Inmediato</h4>
-                                    <p>Sin esperas, sin citas, disponible cuando lo necesites</p>
+                                    <h4>Acceso Inmediato 24/7</h4>
+                                    <p>Sin esperas, sin citas, disponible cuando lo necesites. El asistente AI está siempre disponible, incluso en horarios nocturnos o fines de semana cuando otros servicios no están disponibles.</p>
                                 </div>
                             </div>
                             <div class="benefit-item">
                                 <span class="check-icon">✓</span>
                                 <div>
                                     <h4>Privacidad Garantizada</h4>
-                                    <p>Tus conversaciones son completamente confidenciales</p>
+                                    <p>Tus conversaciones son completamente confidenciales con encriptación de extremo a extremo. Nunca compartimos tu información y cumplimos con todas las regulaciones de protección de datos.</p>
                                 </div>
                             </div>
                             <div class="benefit-item">
                                 <span class="check-icon">✓</span>
                                 <div>
                                     <h4>Personalización Total</h4>
-                                    <p>Respuestas adaptadas a tu situación y necesidades específicas</p>
+                                    <p>Respuestas adaptadas a tu situación y necesidades específicas. El sistema aprende de ti y se adapta a tu estilo de comunicación, historial emocional y preferencias personales.</p>
                                 </div>
                             </div>
                             <div class="benefit-item">
                                 <span class="check-icon">✓</span>
                                 <div>
                                     <h4>Herramientas Prácticas</h4>
-                                    <p>Ejercicios y técnicas que puedes aplicar en tu día a día</p>
+                                    <p>Más de 100 ejercicios y técnicas que puedes aplicar en tu día a día, incluyendo mindfulness, meditación, técnicas de respiración y ejercicios de relajación diseñados por profesionales.</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Seguimiento de Progreso</h4>
+                                    <p>Visualiza tu bienestar emocional a lo largo del tiempo con gráficos detallados, reportes semanales y mensuales, e insights personalizados sobre tu progreso.</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Detección Proactiva de Crisis</h4>
+                                    <p>El sistema identifica señales de riesgo y te ofrece recursos inmediatos, líneas de ayuda, y apoyo de emergencia cuando lo necesites.</p>
                                 </div>
                             </div>
                         </div>
@@ -419,21 +459,35 @@
                                 <span class="check-icon">✓</span>
                                 <div>
                                     <h4>Complemento Terapéutico</h4>
-                                    <p>Herramienta de apoyo entre sesiones para tus pacientes</p>
+                                    <p>Herramienta de apoyo entre sesiones para tus pacientes. Permite que tus pacientes tengan acceso a apoyo continuo y herramientas de bienestar cuando no están en sesión contigo.</p>
                                 </div>
                             </div>
                             <div class="benefit-item">
                                 <span class="check-icon">✓</span>
                                 <div>
                                     <h4>Seguimiento Continuo</h4>
-                                    <p>Monitoreo del progreso emocional de tus pacientes</p>
+                                    <p>Monitoreo del progreso emocional de tus pacientes con reportes agregados y anonimizados. Visualiza tendencias y patrones que pueden enriquecer tus sesiones.</p>
                                 </div>
                             </div>
                             <div class="benefit-item">
                                 <span class="check-icon">✓</span>
                                 <div>
                                     <h4>Alertas de Crisis</h4>
-                                    <p>Notificaciones tempranas para intervención oportuna</p>
+                                    <p>Notificaciones tempranas para intervención oportuna. Recibe alertas cuando el sistema detecta señales de riesgo en tus pacientes, permitiéndote intervenir proactivamente.</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Dashboard Profesional</h4>
+                                    <p>Accede a un panel de control completo con analytics, reportes detallados, y herramientas de gestión para múltiples pacientes de forma segura y privada.</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Integración con Práctica</h4>
+                                    <p>Los pacientes pueden compartir sus reportes y análisis contigo de forma segura, enriqueciendo vuestras sesiones con datos objetivos sobre su bienestar.</p>
                                 </div>
                             </div>
                         </div>
@@ -443,22 +497,43 @@
                             <div class="benefit-item">
                                 <span class="check-icon">✓</span>
                                 <div>
-                                    <h4>Bienestar Corporativo</h4>
-                                    <p>Mejora el bienestar mental de tu equipo</p>
+                                    <h4>Bienestar Corporativo Integral</h4>
+                                    <p>Mejora el bienestar mental de tu equipo con acceso 24/7 a apoyo emocional. Ofrece a tus empleados una herramienta discreta y accesible para gestionar su salud mental.</p>
                                 </div>
                             </div>
                             <div class="benefit-item">
                                 <span class="check-icon">✓</span>
                                 <div>
                                     <h4>Reducción de Ausentismo</h4>
-                                    <p>Menos días de baja por salud mental</p>
+                                    <p>Estudios muestran que el acceso a herramientas de salud mental reduce significativamente los días de baja. Organizaciones que usan Anto reportan hasta un 30% de reducción en ausentismo relacionado con salud mental.</p>
                                 </div>
                             </div>
                             <div class="benefit-item">
                                 <span class="check-icon">✓</span>
                                 <div>
                                     <h4>Dashboard de Analytics</h4>
-                                    <p>Insights sobre el bienestar de tu organización</p>
+                                    <p>Insights agregados y anonimizados sobre el bienestar de tu organización. Identifica tendencias, áreas de mejora, y el impacto de tus programas de bienestar sin comprometer la privacidad individual.</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Gestión Centralizada</h4>
+                                    <p>Administra usuarios, configura políticas de uso, y gestiona suscripciones desde un panel centralizado. Ideal para departamentos de RRHH y programas de bienestar corporativo.</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>ROI Medible</h4>
+                                    <p>Mide el retorno de inversión de tus programas de bienestar con métricas claras: reducción de ausentismo, mejora de productividad, y satisfacción de empleados.</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <h4>Privacidad Garantizada</h4>
+                                    <p>Los datos individuales nunca son accesibles. Solo recibes reportes agregados y anonimizados que respetan completamente la privacidad de tus empleados.</p>
                                 </div>
                             </div>
                         </div>
@@ -468,30 +543,42 @@
         </section>
 
         <!-- Valores de la Marca -->
-        <section id="valores" class="values">
+        <section id="valores" class="values" data-fade-section>
             <div class="container">
-                <h2 class="section-title">Nuestros Valores</h2>
-                <div class="values-grid">
-                    <div class="value-card">
+                <h2 class="section-title reveal-on-scroll">Nuestros Valores</h2>
+                <p class="section-subtitle reveal-on-scroll">Los principios que guían todo lo que hacemos en Anto</p>
+                <div class="values-grid" data-stagger>
+                    <div class="value-card" data-stagger-item data-magnetic="0.1">
                         <div class="value-icon">💚</div>
                         <h3>Empatía</h3>
-                        <p>Entendemos que cada persona es única y merece un apoyo personalizado y comprensivo</p>
+                        <p>Entendemos que cada persona es única y merece un apoyo personalizado y comprensivo. Nuestro asistente AI está entrenado para reconocer y responder a las emociones humanas con genuina empatía, no solo con respuestas preprogramadas. Creemos en escuchar activamente y en validar las experiencias emocionales de cada usuario.</p>
                     </div>
-                    <div class="value-card">
+                    <div class="value-card" data-stagger-item data-magnetic="0.1">
                         <div class="value-icon">🛡️</div>
                         <h3>Privacidad</h3>
-                        <p>Tu información es sagrada. Garantizamos la máxima seguridad y confidencialidad</p>
+                        <p>Tu información es sagrada. Garantizamos la máxima seguridad y confidencialidad con encriptación de extremo a extremo, cumplimiento estricto de GDPR y HIPAA, y una política de cero compartir datos. Tu privacidad no es negociable: es un derecho fundamental que protegemos con tecnología de grado militar.</p>
                     </div>
-                    <div class="value-card">
+                    <div class="value-card" data-stagger-item data-magnetic="0.1">
                         <div class="value-icon">💡</div>
                         <h3>Innovación</h3>
-                        <p>Utilizamos tecnología de vanguardia para ofrecerte la mejor experiencia posible</p>
+                        <p>Utilizamos tecnología de vanguardia para ofrecerte la mejor experiencia posible. Nuestro equipo de ingenieros y profesionales de salud mental trabajan constantemente en mejorar el asistente AI, agregar nuevas funcionalidades, y aplicar los últimos avances en tecnología de salud mental para tu beneficio.</p>
                     </div>
-                    <div class="value-card">
+                    <div class="value-card" data-stagger-item data-magnetic="0.1">
                         <div class="value-icon">🤝</div>
                         <h3>Accesibilidad</h3>
-                        <p>Creemos que el bienestar mental debe estar al alcance de todos, sin barreras</p>
+                        <p>Creemos que el bienestar mental debe estar al alcance de todos, sin barreras económicas, geográficas o de idioma. Por eso ofrecemos planes accesibles, soporte en múltiples idiomas, y una interfaz diseñada para ser intuitiva para usuarios de todos los niveles de experiencia tecnológica.</p>
                     </div>
+                </div>
+                <div style="margin-top: var(--spacing-xl); padding: var(--spacing-lg); background: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%); border: 1px solid var(--card-border); border-radius: 20px; text-align: center; backdrop-filter: blur(10px);">
+                    <h3 style="color: var(--white); margin-bottom: var(--spacing-sm); font-size: 1.75rem;">Nuestra Misión</h3>
+                    <p style="color: var(--secondary-color); line-height: 1.8; font-size: 1.125rem; max-width: 800px; margin: 0 auto;">
+                        En Anto, nuestra misión es democratizar el acceso a la salud mental de calidad. Creemos que cada persona, 
+                        independientemente de su situación económica, ubicación geográfica, o circunstancias personales, merece 
+                        acceso a apoyo emocional profesional. Utilizamos la tecnología no para reemplazar la conexión humana, 
+                        sino para amplificar nuestra capacidad de ayudar a más personas, más rápido, y de manera más accesible. 
+                        Cada conversación, cada mejora en el bienestar de un usuario, nos acerca más a un mundo donde la salud 
+                        mental es una prioridad, no un lujo.
+                    </p>
                 </div>
             </div>
         </section>
@@ -591,10 +678,18 @@
         </section>
 
         <!-- Precios / Planes -->
-        <section id="precios" class="pricing">
+        <section id="precios" class="pricing" data-fade-section>
             <div class="container">
-                <h2 class="section-title">Planes y Precios</h2>
-                <p class="section-subtitle">Elige el plan que mejor se adapte a tus necesidades</p>
+                <h2 class="section-title reveal-on-scroll">Planes y Precios</h2>
+                <p class="section-subtitle reveal-on-scroll">Elige el plan que mejor se adapte a tus necesidades. Todos los planes incluyen soporte 24/7, actualizaciones regulares, y acceso a nuestra biblioteca de bienestar.</p>
+                <div style="text-align: center; margin-bottom: var(--spacing-lg); padding: var(--spacing-md); background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; max-width: 600px; margin-left: auto; margin-right: auto; backdrop-filter: blur(10px);">
+                    <p style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">
+                        <strong style="color: var(--primary-color);">💰 Garantía de Satisfacción</strong>
+                    </p>
+                    <p style="color: var(--white); font-size: 1.0625rem;">
+                        Si no estás satisfecho en los primeros 30 días, te devolvemos el 100% de tu dinero. Sin preguntas.
+                    </p>
+                </div>
                 <div class="pricing-grid">
                     <div class="pricing-card">
                         <div class="pricing-header">
@@ -652,62 +747,171 @@
         </section>
 
         <!-- FAQ -->
-        <section id="faq" class="faq">
+        <section id="faq" class="faq" data-fade-section>
             <div class="container">
-                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <h2 class="section-title reveal-on-scroll">Preguntas Frecuentes</h2>
+                <p class="section-subtitle reveal-on-scroll">Encuentra respuestas a las preguntas más comunes sobre Anto</p>
                 <div class="faq-list">
-                    <div class="faq-item">
+                    <div class="faq-item" data-stagger-item>
                         <button class="faq-question">
                             <span>¿Mis conversaciones son realmente privadas?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Sí, absolutamente. Todas tus conversaciones están encriptadas de extremo a extremo y nunca compartimos tu información con terceros. Tu privacidad es nuestra prioridad.</p>
+                            <p>Sí, absolutamente. Todas tus conversaciones están encriptadas de extremo a extremo (E2E) utilizando estándares de grado militar (AES-256). Esto significa que solo tú y el sistema pueden leer tus mensajes. Ni siquiera nuestros administradores pueden acceder al contenido de tus conversaciones. Nunca compartimos, vendemos o comercializamos tu información con terceros. Tu privacidad es nuestra máxima prioridad y cumplimos con todas las regulaciones internacionales de protección de datos, incluyendo GDPR y HIPAA.</p>
                         </div>
                     </div>
-                    <div class="faq-item">
+                    <div class="faq-item" data-stagger-item>
                         <button class="faq-question">
                             <span>¿Cómo funciona el asistente AI?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Nuestro asistente AI utiliza tecnología de procesamiento de lenguaje natural avanzada, entrenada con principios terapéuticos. Aprende de cada conversación para ofrecerte respuestas cada vez más personalizadas y empáticas.</p>
+                            <p>Nuestro asistente AI utiliza tecnología de procesamiento de lenguaje natural (NLP) de última generación, entrenada específicamente con principios terapéuticos y técnicas de psicología cognitivo-conductual. El sistema aprende de cada conversación para ofrecerte respuestas cada vez más personalizadas y empáticas. No es un chatbot simple: entiende el contexto emocional, recuerda conversaciones anteriores, y se adapta a tu estilo de comunicación único. La IA está supervisada por profesionales de salud mental y se actualiza constantemente con las mejores prácticas terapéuticas.</p>
                         </div>
                     </div>
-                    <div class="faq-item">
+                    <div class="faq-item" data-stagger-item>
                         <button class="faq-question">
                             <span>¿Puedo usar Anto si ya tengo un terapeuta?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Por supuesto. Anto está diseñado para complementar, no reemplazar, la terapia tradicional. Muchos usuarios lo usan como apoyo entre sesiones o como herramienta adicional de bienestar.</p>
+                            <p>Por supuesto. Anto está diseñado específicamente para complementar, no reemplazar, la terapia tradicional. Muchos usuarios lo usan como apoyo entre sesiones, para hacer seguimiento diario de su estado emocional, o como herramienta adicional de bienestar. Algunos terapeutas incluso recomiendan Anto a sus pacientes como complemento. Puedes compartir tus reportes y análisis con tu terapeuta si lo deseas, lo que puede enriquecer vuestras sesiones.</p>
                         </div>
                     </div>
-                    <div class="faq-item">
+                    <div class="faq-item" data-stagger-item>
                         <button class="faq-question">
-                            <span>¿Qué pasa si detecto una crisis?</span>
+                            <span>¿Qué pasa si el sistema detecta una crisis?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Nuestro sistema detecta automáticamente señales de crisis y te ofrece recursos inmediatos, incluyendo líneas de ayuda y contactos de emergencia. En casos graves, podemos ayudarte a contactar servicios de emergencia.</p>
+                            <p>Nuestro sistema de detección de crisis utiliza algoritmos avanzados para identificar señales de riesgo. Si detectamos una situación de crisis, inmediatamente te ofrecemos recursos de apoyo, incluyendo líneas de ayuda 24/7, contactos de emergencia locales, y técnicas de estabilización. En casos graves donde detectamos riesgo inminente, podemos ayudarte a contactar servicios de emergencia. El sistema está diseñado para ser proactivo pero respetuoso, priorizando siempre tu seguridad y bienestar.</p>
                         </div>
                     </div>
-                    <div class="faq-item">
+                    <div class="faq-item" data-stagger-item>
                         <button class="faq-question">
                             <span>¿Hay un período de prueba gratis?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Sí, ofrecemos 3 días de prueba gratis en el plan Premium. No se requiere tarjeta de crédito para comenzar.</p>
+                            <p>Sí, ofrecemos 3 días completos de prueba gratis en el plan Premium. No se requiere tarjeta de crédito para comenzar, y puedes cancelar en cualquier momento sin compromiso. Durante la prueba tendrás acceso completo a todas las funciones Premium, incluyendo análisis emocional avanzado, detección de crisis proactiva, y todas las herramientas de bienestar. Si decides continuar después de la prueba, tu suscripción comenzará automáticamente.</p>
                         </div>
                     </div>
-                    <div class="faq-item">
+                    <div class="faq-item" data-stagger-item>
                         <button class="faq-question">
                             <span>¿En qué dispositivos está disponible?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Anto está disponible para iOS (iPhone y iPad) y Android. Estamos trabajando en una versión web que estará disponible pronto.</p>
+                            <p>Anto está disponible actualmente para iOS (iPhone y iPad con iOS 13 o superior) y Android (versión 8.0 o superior). Estamos trabajando activamente en una versión web que estará disponible en los próximos meses. La aplicación está optimizada para funcionar en todos los tamaños de pantalla, desde teléfonos pequeños hasta tablets grandes. Todos tus datos se sincronizan automáticamente entre dispositivos de forma segura.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-stagger-item>
+                        <button class="faq-question">
+                            <span>¿Cuánto cuesta usar Anto?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ofrecemos tres planes flexibles: Básico ($9.99/mes), Premium ($19.99/mes con 3 días gratis), y Empresarial (precio personalizado). El plan Básico incluye acceso al asistente AI y análisis emocional básico. El Premium añade análisis avanzado, detección de crisis proactiva, y reportes detallados. El plan Empresarial está diseñado para organizaciones y incluye dashboards de analytics y gestión de usuarios. Todos los planes incluyen soporte 24/7 y actualizaciones regulares.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-stagger-item>
+                        <button class="faq-question">
+                            <span>¿Necesito conexión a internet para usar Anto?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí, Anto requiere conexión a internet para la mayoría de las funciones, ya que el procesamiento del asistente AI y el análisis emocional se realizan en servidores seguros. Sin embargo, algunas funciones básicas como ejercicios de mindfulness y técnicas de relajación están disponibles offline. Estamos trabajando en una versión offline más completa que permitirá guardar conversaciones localmente y sincronizarlas cuando tengas conexión.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-stagger-item>
+                        <button class="faq-question">
+                            <span>¿Cómo funciona el análisis emocional?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>El análisis emocional de Anto utiliza procesamiento de lenguaje natural y machine learning para analizar tus conversaciones, patrones de uso, y respuestas a cuestionarios. El sistema identifica emociones, detecta patrones a lo largo del tiempo, y te proporciona insights personalizados sobre tu bienestar mental. Recibirás gráficos visuales de tu estado emocional, alertas proactivas cuando detectemos cambios significativos, y reportes semanales y mensuales con recomendaciones personalizadas.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-stagger-item>
+                        <button class="faq-question">
+                            <span>¿Puedo exportar mis datos?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí, tienes control total sobre tus datos. Puedes exportar toda tu información en cualquier momento en formatos estándar (JSON, CSV, PDF). Esto incluye tus conversaciones, análisis emocionales, y reportes. También puedes solicitar la eliminación completa de tus datos en cualquier momento desde la configuración de la aplicación. Cumplimos con el derecho al olvido (GDPR) y eliminaremos permanentemente tu información dentro de 30 días tras tu solicitud.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-stagger-item>
+                        <button class="faq-question">
+                            <span>¿Anto puede diagnosticar condiciones de salud mental?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No, Anto no puede y no debe usarse para diagnosticar condiciones de salud mental. Anto es una herramienta de apoyo y bienestar, no un reemplazo para el diagnóstico profesional. Si tienes preocupaciones sobre tu salud mental, te recomendamos consultar con un profesional de salud mental licenciado. Anto puede ayudarte a identificar patrones y proporcionar apoyo, pero el diagnóstico debe ser realizado por un profesional cualificado.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-stagger-item>
+                        <button class="faq-question">
+                            <span>¿Qué idiomas soporta Anto?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Actualmente, Anto está disponible completamente en español e inglés. Estamos trabajando en agregar más idiomas, incluyendo portugués, francés, alemán e italiano. El asistente AI puede entender y responder en múltiples idiomas, y la interfaz se adapta automáticamente según tu configuración de idioma del dispositivo. Si tu idioma no está disponible aún, puedes usar Anto en inglés o español y te notificaremos cuando tu idioma esté disponible.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-stagger-item>
+                        <button class="faq-question">
+                            <span>¿Cómo puedo cancelar mi suscripción?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Puedes cancelar tu suscripción en cualquier momento desde la configuración de la aplicación o contactándonos directamente. Si cancelas, seguirás teniendo acceso hasta el final del período de facturación actual. No hay penalizaciones ni cargos por cancelación. Si cancelas durante el período de prueba, no se te cobrará nada. Tu cuenta se convertirá automáticamente en una cuenta gratuita limitada, y podrás reactivar tu suscripción en cualquier momento.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-stagger-item>
+                        <button class="faq-question">
+                            <span>¿Anto es adecuado para adolescentes?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Anto está diseñado para usuarios de 18 años o más. Para menores de 18 años, recomendamos que usen la aplicación bajo la supervisión de un padre o tutor legal. Estamos desarrollando una versión específica para adolescentes (13-17 años) con contenido adaptado y controles parentales, que estará disponible próximamente. Si eres padre o tutor y tienes preguntas sobre el uso de Anto por parte de un menor, contáctanos en privacidad@antoapps.com.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-stagger-item>
+                        <button class="faq-question">
+                            <span>¿Qué tipo de ejercicios de bienestar incluye Anto?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Anto incluye una biblioteca completa de más de 100 ejercicios de bienestar, incluyendo meditaciones guiadas personalizadas, técnicas de respiración (4-7-8, respiración diafragmática), ejercicios de mindfulness, técnicas de relajación muscular progresiva, visualizaciones guiadas, ejercicios de gratitud, y técnicas de grounding. Todos los ejercicios están diseñados por profesionales de salud mental y se adaptan a tu estado emocional actual. Puedes acceder a ellos en cualquier momento, incluso offline.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-stagger-item>
+                        <button class="faq-question">
+                            <span>¿Cómo se compara Anto con otras apps de salud mental?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Anto se diferencia por su enfoque en privacidad total (encriptación E2E), su asistente AI terapéutico avanzado que aprende y se adapta, su sistema de detección de crisis proactivo, y su análisis emocional detallado. A diferencia de muchas apps, no vendemos datos de usuarios, ofrecemos transparencia total sobre cómo funcionamos, y priorizamos la seguridad y privacidad. Además, nuestro modelo de precios es más accesible y ofrecemos un período de prueba generoso sin requerir tarjeta de crédito.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-stagger-item>
+                        <button class="faq-question">
+                            <span>¿Puedo usar Anto en múltiples dispositivos?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí, puedes usar Anto en tantos dispositivos como quieras con una sola cuenta. Todos tus datos, conversaciones, y análisis se sincronizan automáticamente entre dispositivos de forma segura y encriptada. Puedes comenzar una conversación en tu iPhone y continuarla en tu iPad o Android sin problemas. La sincronización es instantánea y segura, utilizando encriptación de extremo a extremo para proteger tus datos durante la transferencia.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-stagger-item>
+                        <button class="faq-question">
+                            <span>¿Qué hago si tengo problemas técnicos?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ofrecemos soporte técnico 24/7 a través de la aplicación, email (soporte@antoapps.com), y chat en vivo. Nuestro equipo de soporte responde típicamente en menos de 2 horas. También tenemos una sección de ayuda dentro de la aplicación con guías paso a paso y solución de problemas comunes. Si encuentras un bug o problema, puedes reportarlo directamente desde la app y lo solucionaremos lo antes posible.</p>
                         </div>
                     </div>
                 </div>
@@ -715,11 +919,28 @@
         </section>
 
         <!-- CTA Final / Descargar -->
-        <section id="descargar" class="cta">
+        <section id="descargar" class="cta" data-fade-section>
             <div class="container">
                 <div class="cta-content">
-                    <h2>Comienza tu camino al bienestar hoy</h2>
-                    <p>Únete a miles de personas que ya están mejorando su salud mental con Anto</p>
+                    <h2 class="reveal-on-scroll">Comienza tu camino al bienestar hoy</h2>
+                    <p class="reveal-on-scroll">Únete a más de 10,000 personas que ya están mejorando su salud mental con Anto. Descarga la app ahora y obtén 3 días gratis de acceso Premium.</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md); margin: var(--spacing-lg) auto; max-width: 800px;">
+                        <div style="text-align: center; padding: var(--spacing-sm);">
+                            <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: var(--spacing-xs);">📱</div>
+                            <h4 style="color: var(--white); margin-bottom: var(--spacing-xs);">Fácil de Usar</h4>
+                            <p style="color: var(--secondary-color); font-size: 0.9375rem;">Interfaz intuitiva diseñada para todos</p>
+                        </div>
+                        <div style="text-align: center; padding: var(--spacing-sm);">
+                            <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: var(--spacing-xs);">⚡</div>
+                            <h4 style="color: var(--white); margin-bottom: var(--spacing-xs);">Configuración Rápida</h4>
+                            <p style="color: var(--secondary-color); font-size: 0.9375rem;">Listo en menos de 2 minutos</p>
+                        </div>
+                        <div style="text-align: center; padding: var(--spacing-sm);">
+                            <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: var(--spacing-xs);">🎁</div>
+                            <h4 style="color: var(--white); margin-bottom: var(--spacing-xs);">3 Días Gratis</h4>
+                            <p style="color: var(--secondary-color); font-size: 0.9375rem;">Prueba Premium sin tarjeta</p>
+                        </div>
+                    </div>
                     <div class="cta-buttons">
                         <a href="#" class="btn btn-primary btn-large">Descargar Ahora</a>
                         <a href="/privacidad" class="btn btn-secondary btn-large">Ver Política de Privacidad</a>

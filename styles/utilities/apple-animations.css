@@ -2,34 +2,38 @@
    APPLE-STYLE ANIMATIONS
    ============================================ */
 
-/* Smooth Reveal */
+/* Smooth Reveal - Reducido para evitar espacios vacíos */
 .reveal-on-scroll {
     opacity: 0;
-    transform: translateY(60px) scale(0.95);
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Mantener el espacio del elemento */
+    min-height: fit-content;
 }
 
 .reveal-on-scroll.revealed {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
 }
 
-/* Text Reveal */
+/* Text Reveal - Visible inicialmente para evitar espacios */
 .text-reveal {
-    opacity: 0;
+    opacity: 1; /* Visible desde el inicio */
 }
 
 .text-reveal span {
     display: inline-block;
 }
 
-/* Staggered Animations */
+/* Staggered Animations - Reducido para evitar espacios */
 [data-stagger-item] {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(15px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Mantener el espacio del elemento */
+    min-height: fit-content;
 }
 
 [data-stagger-item].stagger-animated {
@@ -37,23 +41,20 @@
     transform: translateY(0);
 }
 
-/* Image Reveal */
+/* Image Reveal - Sin scale para evitar cambios de tamaño */
 img[data-reveal] {
     opacity: 0;
-    transform: scale(1.1);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 img[data-reveal].image-revealed {
     opacity: 1;
-    transform: scale(1);
 }
 
-/* Section Fade */
+/* Section Fade - Inicialmente visible para evitar espacios */
 section[data-fade-section] {
-    opacity: 0;
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 section[data-fade-section].section-visible {
@@ -116,19 +117,19 @@ section[data-fade-section].section-visible {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Smooth fade in from sides */
+/* Smooth fade in from sides - Reducido */
 .fade-in-left {
     opacity: 0;
-    transform: translateX(-60px);
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fade-in-right {
     opacity: 0;
-    transform: translateX(60px);
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fade-in-left.visible,
@@ -137,12 +138,12 @@ section[data-fade-section].section-visible {
     transform: translateX(0);
 }
 
-/* Scale fade */
+/* Scale fade - Reducido para evitar cambios de tamaño */
 .scale-fade {
     opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(0.95);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scale-fade.visible {

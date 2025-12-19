@@ -12,15 +12,16 @@ export function initSmoothReveal() {
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
+                // Animación más rápida, menos delay
                 setTimeout(() => {
                     entry.target.classList.add('revealed');
-                }, index * 100); // Staggered animation
+                }, index * 50); // Staggered animation reducido
                 revealObserver.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.05, // Activar antes
+        rootMargin: '0px 0px -50px 0px' // Menos margen
     });
 
     revealElements.forEach(el => {
@@ -72,11 +73,13 @@ export function initTextReveal() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Hacer visible inmediatamente, luego animar texto
+                    entry.target.style.opacity = '1';
                     revealText(entry.target);
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.2 });
 
         observer.observe(el);
     });
@@ -92,14 +95,14 @@ function revealText(element) {
         const span = document.createElement('span');
         span.textContent = word + ' ';
         span.style.opacity = '0';
-        span.style.transform = 'translateY(20px)';
-        span.style.transition = `opacity 0.6s ease ${index * 0.05}s, transform 0.6s ease ${index * 0.05}s`;
+        span.style.transform = 'translateY(10px)'; // Reducido
+        span.style.transition = `opacity 0.4s ease ${index * 0.03}s, transform 0.4s ease ${index * 0.03}s`; // Más rápido
         element.appendChild(span);
 
         setTimeout(() => {
             span.style.opacity = '1';
             span.style.transform = 'translateY(0)';
-        }, 50);
+        }, 30); // Menos delay
     });
 }
 
@@ -267,12 +270,12 @@ export function initStaggeredAnimations() {
                     children.forEach((child, index) => {
                         setTimeout(() => {
                             child.classList.add('stagger-animated');
-                        }, index * 100);
+                        }, index * 50); // Delay reducido
                     });
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.1 }); // Activar antes
 
         observer.observe(container);
     });

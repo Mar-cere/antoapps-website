@@ -26,16 +26,17 @@ export function initScrollAnimations() {
         });
     }, observerOptions);
 
-    // Observe elements for animation
+    // Observe elements for animation (excluyendo FAQ items para evitar problemas de visibilidad)
     const animatedElements = document.querySelectorAll(
-        '.feature-card, .step, .value-card, .pricing-card, .benefit-item, .faq-item, .testimonial-card, .feature-detail-card, .animate-on-scroll'
+        '.feature-card, .step, .value-card, .pricing-card, .benefit-item, .testimonial-card, .feature-detail-card, .animate-on-scroll'
     );
 
     animatedElements.forEach((el, index) => {
-        if (!el.classList.contains('animate-on-scroll')) {
+        if (!el.classList.contains('animate-on-scroll') && !el.classList.contains('reveal-on-scroll')) {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            el.style.transform = 'translateY(15px)';
+            el.style.transition = `opacity 0.5s ease ${index * 0.05}s, transform 0.5s ease ${index * 0.05}s`;
+            el.style.minHeight = 'fit-content';
         }
         observer.observe(el);
     });

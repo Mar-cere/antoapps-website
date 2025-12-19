@@ -415,11 +415,22 @@
 /* FAQ */
 .faq {
     background: var(--bg-dark);
+    padding: var(--spacing-xl) 0;
 }
 
 .faq-list {
-    max-width: 800px;
+    max-width: 900px;
     margin: var(--spacing-lg) auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+/* Asegurar que FAQ items sean visibles */
+.faq-list .faq-item {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
 }
 
 .faq-question {
@@ -457,11 +468,11 @@
 .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .faq-item.active .faq-answer {
-    max-height: 500px;
+    max-height: 1000px; /* Aumentado para contenido más largo */
 }
 
 .faq-answer p {
