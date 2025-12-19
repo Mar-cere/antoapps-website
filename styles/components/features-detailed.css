@@ -1,0 +1,121 @@
+/* ============================================
+   FEATURES DETAILED SECTION
+   ============================================ */
+
+.features-detailed {
+    background: var(--bg-dark);
+    padding: var(--spacing-xl) 0;
+    position: relative;
+}
+
+.feature-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.feature-detail-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: var(--spacing-lg);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.feature-detail-card:hover::before {
+    transform: scaleX(1);
+}
+
+.feature-detail-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-glow);
+}
+
+.feature-detail-icon {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-md);
+    display: block;
+    animation: float 6s ease-in-out infinite;
+}
+
+.feature-detail-card:nth-child(even) .feature-detail-icon {
+    animation-delay: -3s;
+}
+
+.feature-detail-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: var(--spacing-sm);
+}
+
+.feature-detail-card p {
+    color: var(--secondary-color);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.0625rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li {
+    color: var(--secondary-color);
+    padding: var(--spacing-xs) 0;
+    padding-left: var(--spacing-md);
+    position: relative;
+    line-height: 1.6;
+    transition: var(--transition);
+}
+
+.feature-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.feature-detail-card:hover .feature-list li {
+    color: var(--white);
+    transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .feature-detail-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .feature-detail-card {
+        padding: var(--spacing-md);
+    }
+    
+    .feature-detail-icon {
+        font-size: 2.5rem;
+    }
+}
+

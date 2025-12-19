@@ -12,23 +12,63 @@ export function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('animated');
+                
+                // Si es una tarjeta de estadísticas, iniciar contador
+                if (entry.target.classList.contains('stat-card')) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    if (statNumber && !statNumber.dataset.animated) {
+                        animateCounter(statNumber);
+                        statNumber.dataset.animated = 'true';
+                    }
+                }
             }
         });
     }, observerOptions);
 
     // Observe elements for animation
     const animatedElements = document.querySelectorAll(
-        '.feature-card, .step, .value-card, .pricing-card, .benefit-item, .faq-item'
+        '.feature-card, .step, .value-card, .pricing-card, .benefit-item, .faq-item, .testimonial-card, .feature-detail-card, .animate-on-scroll'
     );
 
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    animatedElements.forEach((el, index) => {
+        if (!el.classList.contains('animate-on-scroll')) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        }
         observer.observe(el);
     });
+}
+
+/**
+ * Animate counter numbers
+ */
+function animateCounter(element) {
+    const target = parseInt(element.dataset.target) || 0;
+    const duration = 2000; // 2 seconds
+    const increment = target / (duration / 16); // 60fps
+    let current = 0;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = formatNumber(target);
+            clearInterval(timer);
+        } else {
+            element.textContent = formatNumber(Math.floor(current));
+        }
+    }, 16);
+}
+
+/**
+ * Format number with commas
+ */
+function formatNumber(num) {
+    if (num >= 1000) {
+        return num.toLocaleString('es-ES');
+    }
+    return num.toString();
 }
 
 export function initHeaderScroll() {
