@@ -14,6 +14,7 @@ import { initLazyLoading } from './modules/lazy-loading.js';
 import { initAnalytics } from './modules/analytics.js';
 import { initCookieConsent } from './modules/cookie-consent.js';
 import { initTracking } from './modules/tracking.js';
+import { initAppleAnimations } from './modules/apple-animations.js';
 
 /**
  * Initialize all modules when DOM is ready
@@ -31,6 +32,9 @@ function init() {
     initScrollAnimations();
     initHeaderScroll();
     initParticles();
+    
+    // Apple-style animations
+    initAppleAnimations();
     
     // Forms
     initForms();

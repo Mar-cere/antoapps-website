@@ -1,0 +1,314 @@
+/* ============================================
+   APPLE-STYLE ANIMATIONS
+   ============================================ */
+
+/* Smooth Reveal */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Text Reveal */
+.text-reveal {
+    opacity: 0;
+}
+
+.text-reveal span {
+    display: inline-block;
+}
+
+/* Staggered Animations */
+[data-stagger-item] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-stagger-item].stagger-animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Image Reveal */
+img[data-reveal] {
+    opacity: 0;
+    transform: scale(1.1);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+img[data-reveal].image-revealed {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Section Fade */
+section[data-fade-section] {
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+section[data-fade-section].section-visible {
+    opacity: 1;
+}
+
+/* Magnetic Effect */
+[data-magnetic] {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+}
+
+/* Smooth Scale */
+[data-scale-on-scroll] {
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+/* Blur Effect */
+[data-blur-on-scroll] {
+    transition: filter 0.3s ease-out, opacity 0.3s ease-out;
+    will-change: filter, opacity;
+}
+
+/* Apple-style button hover */
+.btn-apple {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-apple::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-apple:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-apple:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(26, 221, 219, 0.3);
+}
+
+/* Glassmorphism effect (Apple-style) */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth fade in from sides */
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-left.visible,
+.fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Scale fade */
+.scale-fade {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scale-fade.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Rotate fade */
+.rotate-fade {
+    opacity: 0;
+    transform: rotate(-5deg) scale(0.9);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rotate-fade.visible {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+/* Smooth number counter */
+[data-counter] {
+    font-variant-numeric: tabular-nums;
+    transition: all 0.3s ease;
+}
+
+/* Parallax container */
+.parallax-container {
+    overflow: hidden;
+    position: relative;
+}
+
+/* Apple-style section transitions */
+section {
+    position: relative;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(26, 221, 219, 0.03) 50%,
+        transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+section:hover::before {
+    opacity: 1;
+}
+
+/* Smooth scroll indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 40px;
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    opacity: 0.6;
+    animation: scrollBounce 2s infinite;
+}
+
+.scroll-indicator::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 2px;
+    animation: scrollIndicator 2s infinite;
+}
+
+@keyframes scrollBounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+@keyframes scrollIndicator {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(16px);
+    }
+}
+
+/* Apple-style loading animation */
+@keyframes appleLoad {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.apple-load {
+    animation: appleLoad 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Smooth gradient animation */
+.gradient-animate {
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Performance optimizations */
+[data-parallax],
+[data-scale-on-scroll],
+[data-blur-on-scroll],
+[data-magnetic] {
+    will-change: transform;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll,
+    [data-stagger-item],
+    img[data-reveal],
+    section[data-fade-section],
+    .fade-in-left,
+    .fade-in-right,
+    .scale-fade,
+    .rotate-fade {
+        transition: none;
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
