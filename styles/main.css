@@ -20,6 +20,9 @@
 @import url('./components/testimonials.css');
 @import url('./components/stats.css');
 @import url('./components/features-detailed.css');
+@import url('./components/use-cases.css');
+@import url('./components/technologies.css');
+@import url('./components/coming-soon.css');
 
 /* Utilities */
 @import url('./utilities/animations.css');

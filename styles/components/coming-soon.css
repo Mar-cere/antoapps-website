@@ -1,0 +1,102 @@
+/* ============================================
+   COMING SOON SECTION
+   ============================================ */
+
+.coming-soon {
+    background: var(--bg-dark);
+    padding: var(--spacing-xl) 0;
+}
+
+.coming-soon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.coming-soon-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: var(--spacing-lg);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+    text-align: center;
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    overflow: hidden;
+}
+
+.coming-soon-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(26, 221, 219, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.coming-soon-card:hover::before {
+    left: 100%;
+}
+
+.coming-soon-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.coming-soon-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    display: block;
+    opacity: 0.8;
+}
+
+.coming-soon-card h3 {
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.coming-soon-card p {
+    color: var(--secondary-color);
+    line-height: 1.6;
+    font-size: 0.9375rem;
+}
+
+/* Badge "Próximamente" */
+.coming-soon-card::after {
+    content: 'Próximamente';
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background: rgba(26, 221, 219, 0.2);
+    color: var(--primary-color);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .coming-soon-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .coming-soon-card {
+        padding: var(--spacing-md);
+    }
+    
+    .coming-soon-icon {
+        font-size: 2.5rem;
+    }
+}
+

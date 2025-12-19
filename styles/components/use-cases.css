@@ -1,0 +1,112 @@
+/* ============================================
+   USE CASES SECTION
+   ============================================ */
+
+.use-cases {
+    background: var(--bg-dark);
+    padding: var(--spacing-xl) 0;
+}
+
+.use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.use-case-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: var(--spacing-lg);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.use-case-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
+}
+
+.use-case-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    display: block;
+}
+
+.use-case-card h3 {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+
+.use-case-situation,
+.use-case-solution {
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+.use-case-situation strong,
+.use-case-solution strong {
+    color: var(--primary-color);
+}
+
+.use-case-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0;
+}
+
+.use-case-list li {
+    color: var(--secondary-color);
+    padding: var(--spacing-xs) 0;
+    padding-left: var(--spacing-md);
+    position: relative;
+    line-height: 1.6;
+}
+
+.use-case-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.use-case-result {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(26, 221, 219, 0.1);
+    border-left: 3px solid var(--primary-color);
+    border-radius: 8px;
+}
+
+.use-case-result strong {
+    color: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .use-cases-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .use-case-card {
+        padding: var(--spacing-md);
+    }
+    
+    .use-case-icon {
+        font-size: 2.5rem;
+    }
+    
+    .use-case-card h3 {
+        font-size: 1.25rem;
+    }
+}
+
