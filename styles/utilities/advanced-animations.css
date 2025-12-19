@@ -1,15 +1,22 @@
 /* ============================================
-   APPLE-STYLE ANIMATIONS
+   ADVANCED ANIMATIONS
+   Animaciones avanzadas y suaves para una experiencia moderna
    ============================================ */
 
-/* Smooth Reveal - Reducido para evitar espacios vacíos */
+/* Smooth Reveal - Visible por defecto, animación sutil */
 .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1; /* Visible por defecto */
+    transform: translateY(0); /* Sin transformación inicial */
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     /* Mantener el espacio del elemento */
     min-height: fit-content;
+}
+
+/* Solo aplicar animación si el elemento está fuera del viewport inicial */
+.reveal-on-scroll:not(.revealed) {
+    opacity: 0.3; /* Parcialmente visible */
+    transform: translateY(10px); /* Movimiento muy sutil */
 }
 
 .reveal-on-scroll.revealed {
@@ -26,14 +33,20 @@
     display: inline-block;
 }
 
-/* Staggered Animations - Reducido para evitar espacios */
+/* Staggered Animations - Visible por defecto */
 [data-stagger-item] {
-    opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1; /* Visible por defecto */
+    transform: translateY(0); /* Sin transformación inicial */
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     /* Mantener el espacio del elemento */
     min-height: fit-content;
+}
+
+/* Solo aplicar animación si el elemento está fuera del viewport inicial */
+[data-stagger-item]:not(.stagger-animated) {
+    opacity: 0.4; /* Parcialmente visible */
+    transform: translateY(8px); /* Movimiento muy sutil */
 }
 
 [data-stagger-item].stagger-animated {
@@ -41,9 +54,9 @@
     transform: translateY(0);
 }
 
-/* Image Reveal - Sin scale para evitar cambios de tamaño */
+/* Image Reveal - Visible por defecto */
 img[data-reveal] {
-    opacity: 0;
+    opacity: 0.7; /* Parcialmente visible por defecto */
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -79,14 +92,14 @@ section[data-fade-section].section-visible {
     will-change: filter, opacity;
 }
 
-/* Apple-style button hover */
-.btn-apple {
+/* Modern button hover effect */
+.btn-modern {
     position: relative;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.btn-apple::before {
+.btn-modern::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -99,17 +112,17 @@ section[data-fade-section].section-visible {
     transition: width 0.6s ease, height 0.6s ease;
 }
 
-.btn-apple:hover::before {
+.btn-modern:hover::before {
     width: 300px;
     height: 300px;
 }
 
-.btn-apple:hover {
+.btn-modern:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 40px rgba(26, 221, 219, 0.3);
 }
 
-/* Glassmorphism effect (Apple-style) */
+/* Glassmorphism effect */
 .glass-effect {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px) saturate(180%);
@@ -117,17 +130,17 @@ section[data-fade-section].section-visible {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Smooth fade in from sides - Reducido */
+/* Smooth fade in from sides - Visible por defecto */
 .fade-in-left {
-    opacity: 0;
-    transform: translateX(-20px);
+    opacity: 0.6; /* Parcialmente visible */
+    transform: translateX(-10px); /* Movimiento reducido */
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fade-in-right {
-    opacity: 0;
-    transform: translateX(20px);
+    opacity: 0.6; /* Parcialmente visible */
+    transform: translateX(10px); /* Movimiento reducido */
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -138,10 +151,10 @@ section[data-fade-section].section-visible {
     transform: translateX(0);
 }
 
-/* Scale fade - Reducido para evitar cambios de tamaño */
+/* Scale fade - Visible por defecto */
 .scale-fade {
-    opacity: 0;
-    transform: scale(0.95);
+    opacity: 0.7; /* Parcialmente visible */
+    transform: scale(0.98); /* Escala mínima */
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -151,10 +164,10 @@ section[data-fade-section].section-visible {
     transform: scale(1);
 }
 
-/* Rotate fade */
+/* Rotate fade - Visible por defecto */
 .rotate-fade {
-    opacity: 0;
-    transform: rotate(-5deg) scale(0.9);
+    opacity: 0.7; /* Parcialmente visible */
+    transform: rotate(-2deg) scale(0.98); /* Rotación y escala mínimas */
     transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -176,7 +189,7 @@ section[data-fade-section].section-visible {
     position: relative;
 }
 
-/* Apple-style section transitions */
+/* Smooth section transitions */
 section {
     position: relative;
 }
@@ -251,8 +264,8 @@ section:hover::before {
     }
 }
 
-/* Apple-style loading animation */
-@keyframes appleLoad {
+/* Smooth loading animation */
+@keyframes smoothLoad {
     0% {
         transform: scale(0.8);
         opacity: 0;
@@ -266,8 +279,8 @@ section:hover::before {
     }
 }
 
-.apple-load {
-    animation: appleLoad 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.smooth-load {
+    animation: smoothLoad 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Smooth gradient animation */

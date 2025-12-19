@@ -433,6 +433,63 @@
     visibility: visible !important;
 }
 
+/* Asegurar visibilidad de títulos y subtítulos */
+.section-title,
+.section-subtitle {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Asegurar visibilidad de testimonios */
+.testimonials-grid,
+.testimonial-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Asegurar visibilidad de tabs y contenido de beneficios */
+.benefit-tabs,
+.tab-button,
+.benefit-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Asegurar visibilidad de pricing cards */
+.pricing-grid,
+.pricing-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Asegurar visibilidad de stats */
+.stats-grid,
+.stat-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Asegurar visibilidad de feature cards */
+.features-grid,
+.feature-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Asegurar visibilidad de steps */
+.steps-grid,
+.step {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Asegurar visibilidad de values */
+.values-grid,
+.value-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
 .faq-question {
     width: 100%;
     padding: var(--spacing-md);

@@ -1,10 +1,10 @@
 /**
- * Apple-Style Animations Module
- * Animaciones avanzadas inspiradas en el estilo de Apple
+ * Advanced Animations Module
+ * Animaciones avanzadas y suaves para una experiencia moderna
  */
 
 /**
- * Smooth reveal animations on scroll (Apple-style)
+ * Smooth reveal animations on scroll
  */
 export function initSmoothReveal() {
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
@@ -12,16 +12,25 @@ export function initSmoothReveal() {
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                // Animación más rápida, menos delay
-                setTimeout(() => {
-                    entry.target.classList.add('revealed');
-                }, index * 50); // Staggered animation reducido
+                // Activar inmediatamente si está visible
+                entry.target.classList.add('revealed');
                 revealObserver.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.05, // Activar antes
-        rootMargin: '0px 0px -50px 0px' // Menos margen
+        threshold: 0.1, // Activar cuando 10% es visible
+        rootMargin: '100px 0px 0px 0px' // Activar antes de entrar al viewport
+    });
+    
+    // Activar elementos que ya están en el viewport al cargar
+    revealElements.forEach((el, index) => {
+        const rect = el.getBoundingClientRect();
+        const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+        if (isInViewport) {
+            setTimeout(() => {
+                el.classList.add('revealed');
+            }, index * 30);
+        }
     });
 
     revealElements.forEach(el => {
@@ -30,7 +39,7 @@ export function initSmoothReveal() {
 }
 
 /**
- * Parallax scrolling effect (Apple-style)
+ * Parallax scrolling effect
  */
 export function initParallax() {
     const parallaxElements = document.querySelectorAll('[data-parallax]');
@@ -64,7 +73,7 @@ export function initParallax() {
 }
 
 /**
- * Text reveal animation (Apple-style typewriter/reveal)
+ * Text reveal animation (typewriter/reveal effect)
  */
 export function initTextReveal() {
     const textElements = document.querySelectorAll('.text-reveal');
@@ -107,7 +116,7 @@ function revealText(element) {
 }
 
 /**
- * Scale on scroll (Apple-style zoom effect)
+ * Scale on scroll (zoom effect)
  */
 export function initScaleOnScroll() {
     const scaleElements = document.querySelectorAll('[data-scale-on-scroll]');
@@ -143,7 +152,7 @@ export function initScaleOnScroll() {
 }
 
 /**
- * Blur on scroll (Apple-style depth effect)
+ * Blur on scroll (depth effect)
  */
 export function initBlurOnScroll() {
     const blurElements = document.querySelectorAll('[data-blur-on-scroll]');
@@ -176,7 +185,7 @@ export function initBlurOnScroll() {
 }
 
 /**
- * Magnetic cursor effect (Apple-style hover)
+ * Magnetic cursor effect (interactive hover)
  */
 export function initMagneticEffect() {
     const magneticElements = document.querySelectorAll('[data-magnetic]');
@@ -199,7 +208,7 @@ export function initMagneticEffect() {
 }
 
 /**
- * Smooth number counter (Apple-style)
+ * Smooth number counter
  */
 export function initSmoothCounter() {
     const counters = document.querySelectorAll('[data-counter]');
@@ -264,25 +273,41 @@ export function initStaggeredAnimations() {
     
     containers.forEach(container => {
         const children = container.querySelectorAll('[data-stagger-item]');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    children.forEach((child, index) => {
-                        setTimeout(() => {
-                            child.classList.add('stagger-animated');
-                        }, index * 50); // Delay reducido
-                    });
-                    observer.unobserve(entry.target);
-                }
+        
+        // Activar elementos que ya están en el viewport al cargar
+        const rect = container.getBoundingClientRect();
+        const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        if (isInViewport) {
+            children.forEach((child, index) => {
+                setTimeout(() => {
+                    child.classList.add('stagger-animated');
+                }, index * 30);
             });
-        }, { threshold: 0.1 }); // Activar antes
+        } else {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        children.forEach((child, index) => {
+                            setTimeout(() => {
+                                child.classList.add('stagger-animated');
+                            }, index * 30); // Delay reducido
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { 
+                threshold: 0.1, // Activar cuando 10% es visible
+                rootMargin: '100px 0px 0px 0px' // Activar antes de entrar al viewport
+            });
 
-        observer.observe(container);
+            observer.observe(container);
+        }
     });
 }
 
 /**
- * Smooth scroll with easing (Apple-style)
+ * Smooth scroll with easing
  */
 export function initSmoothScrollEasing() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -330,7 +355,7 @@ function smoothScrollTo(target, duration) {
 }
 
 /**
- * Image reveal on scroll (Apple-style)
+ * Image reveal on scroll
  */
 export function initImageReveal() {
     const images = document.querySelectorAll('img[data-reveal]');
@@ -350,7 +375,7 @@ export function initImageReveal() {
 }
 
 /**
- * Section fade in (Apple-style)
+ * Section fade in
  */
 export function initSectionFade() {
     const sections = document.querySelectorAll('section[data-fade-section]');
@@ -371,9 +396,43 @@ export function initSectionFade() {
 }
 
 /**
- * Initialize all Apple-style animations
+ * Activate visible elements on page load
  */
-export function initAppleAnimations() {
+function activateVisibleElementsOnLoad() {
+    // Activar todos los elementos reveal-on-scroll que ya están visibles
+    const revealElements = document.querySelectorAll('.reveal-on-scroll:not(.revealed)');
+    revealElements.forEach((el, index) => {
+        const rect = el.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 1.5 && rect.bottom > -window.innerHeight * 0.5;
+        if (isVisible) {
+            setTimeout(() => {
+                el.classList.add('revealed');
+            }, index * 20);
+        }
+    });
+
+    // Activar todos los elementos stagger que ya están visibles
+    const staggerElements = document.querySelectorAll('[data-stagger-item]:not(.stagger-animated)');
+    staggerElements.forEach((el, index) => {
+        const rect = el.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 1.5 && rect.bottom > -window.innerHeight * 0.5;
+        if (isVisible) {
+            setTimeout(() => {
+                el.classList.add('stagger-animated');
+            }, index * 30);
+        }
+    });
+}
+
+export function initAdvancedAnimations() {
+    // Primero activar elementos visibles al cargar
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', activateVisibleElementsOnLoad);
+    } else {
+        activateVisibleElementsOnLoad();
+    }
+    
+    // Luego inicializar todas las animaciones
     initSmoothReveal();
     initParallax();
     initTextReveal();
@@ -385,5 +444,8 @@ export function initAppleAnimations() {
     initSmoothScrollEasing();
     initImageReveal();
     initSectionFade();
+    
+    // Activar elementos visibles después de un breve delay para asegurar que el DOM esté listo
+    setTimeout(activateVisibleElementsOnLoad, 100);
 }
 
