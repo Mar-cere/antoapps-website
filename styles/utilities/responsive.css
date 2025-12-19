@@ -438,6 +438,22 @@
         width: 100%;
     }
 
+    /* Testimonials Mobile */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .testimonial-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .testimonial-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
     /* Privacy Page Mobile */
     .privacy-page {
         padding-top: 80px;

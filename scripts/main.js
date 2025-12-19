@@ -11,6 +11,9 @@ import { initScrollAnimations, initHeaderScroll } from './modules/animations.js'
 import { initParticles } from './modules/particles.js';
 import { initForms } from './modules/forms.js';
 import { initLazyLoading } from './modules/lazy-loading.js';
+import { initAnalytics } from './modules/analytics.js';
+import { initCookieConsent } from './modules/cookie-consent.js';
+import { initTracking } from './modules/tracking.js';
 
 /**
  * Initialize all modules when DOM is ready
@@ -34,6 +37,19 @@ function init() {
     
     // Performance
     initLazyLoading();
+    
+    // Analytics (solo si cookies aceptadas)
+    if (localStorage.getItem('cookieConsent') === 'accepted') {
+        initAnalytics();
+    }
+    
+    // Cookie Consent
+    initCookieConsent();
+    
+    // Tracking (solo si cookies aceptadas)
+    if (localStorage.getItem('cookieConsent') === 'accepted') {
+        initTracking();
+    }
     
     // Console message
     console.log('%cAnto App', 'color: #1ADDDB; font-size: 24px; font-weight: bold;');

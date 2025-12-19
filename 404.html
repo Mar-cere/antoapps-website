@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    
+    <title>404 - Página no encontrada | Anto</title>
+    <meta name="description" content="La página que buscas no existe. Regresa al inicio de Anto.">
+    <meta name="robots" content="noindex, follow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-brand">
+                    <a href="/" class="logo">
+                        <img src="assets/images/antoIcon.png" alt="Anto" class="logo-icon" />
+                        <span>Anto</span>
+                    </a>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="/#caracteristicas" class="nav-link">Características</a></li>
+                    <li><a href="/#precios" class="nav-link">Precios</a></li>
+                    <li><a href="/#faq" class="nav-link">FAQ</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="/#descargar" class="btn btn-secondary">Descargar App</a>
+                </div>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="error-404" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 120px;">
+            <div class="container">
+                <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                    <div style="font-size: 8rem; font-weight: 700; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: var(--spacing-md);">
+                        404
+                    </div>
+                    <h1 style="font-size: 2.5rem; font-weight: 700; color: var(--white); margin-bottom: var(--spacing-sm);">
+                        Página no encontrada
+                    </h1>
+                    <p style="font-size: 1.125rem; color: var(--secondary-color); margin-bottom: var(--spacing-lg); line-height: 1.6;">
+                        Lo sentimos, la página que buscas no existe o ha sido movida. 
+                        Pero no te preocupes, estamos aquí para ayudarte.
+                    </p>
+                    <div style="display: flex; gap: var(--spacing-sm); justify-content: center; flex-wrap: wrap;">
+                        <a href="/" class="btn btn-primary btn-large">Volver al Inicio</a>
+                        <a href="/#descargar" class="btn btn-secondary btn-large">Descargar App</a>
+                    </div>
+                    <div style="margin-top: var(--spacing-xl); padding-top: var(--spacing-lg); border-top: 1px solid var(--card-border);">
+                        <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Enlaces útiles:</h3>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: center;">
+                            <li><a href="/#caracteristicas" style="color: var(--primary-color); text-decoration: none;">Características</a></li>
+                            <li><a href="/#precios" style="color: var(--primary-color); text-decoration: none;">Precios</a></li>
+                            <li><a href="/#faq" style="color: var(--primary-color); text-decoration: none;">Preguntas Frecuentes</a></li>
+                            <li><a href="/privacidad" style="color: var(--primary-color); text-decoration: none;">Política de Privacidad</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Anto</h3>
+                    <p>Mejorando la salud mental, una conversación a la vez.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacidad">Política de Privacidad</a></li>
+                        <li><a href="#">Términos de Servicio</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Anto. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
+
