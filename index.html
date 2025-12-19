@@ -880,7 +880,7 @@
                             <li>✓ Soporte prioritario</li>
                             <li>✓ Integraciones personalizadas</li>
                         </ul>
-                        <a href="#contacto" class="btn btn-secondary btn-block">Contactar Ventas</a>
+                        <a href="/contacto" class="btn btn-secondary btn-block">Contactar Ventas</a>
                     </div>
                 </div>
             </div>
@@ -1177,7 +1177,7 @@
                     <h4>Empresa</h4>
                     <ul>
                         <li><a href="#valores">Sobre Nosotros</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="/contacto">Contacto</a></li>
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Carreras</a></li>
                     </ul>
@@ -1197,6 +1197,41 @@
         </div>
     </footer>
 
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Volver arriba" style="display: none;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <script type="module" src="scripts/main.js"></script>
+    <script>
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        const scrollProgress = document.getElementById('scrollProgress');
+        
+        if (scrollToTopBtn && scrollProgress) {
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                scrollProgress.style.width = Math.min(scrollPercent, 100) + '%';
+                
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('show');
+                } else {
+                    scrollToTopBtn.classList.remove('show');
+                }
+            });
+            
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    </script>
 </body>
 </html>

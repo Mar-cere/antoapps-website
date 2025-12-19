@@ -20,6 +20,21 @@
     {
       "source": "/privacidad/",
       "destination": "/privacidad.html"
+    },
+    {
+      "source": "/contacto",
+      "destination": "/contacto.html"
+    },
+    {
+      "source": "/contacto/",
+      "destination": "/contacto.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/contacto.html",
+      "destination": "/contacto",
+      "permanent": true
     }
   ],
   "headers": [

@@ -23,6 +23,8 @@
 @import url('./components/use-cases.css');
 @import url('./components/technologies.css');
 @import url('./components/coming-soon.css');
+@import url('./components/contact.css');
+@import url('./components/scroll-ui.css');
 
 /* Utilities */
 @import url('./utilities/animations.css');
