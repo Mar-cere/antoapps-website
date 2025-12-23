@@ -15,6 +15,7 @@ import { initAnalytics } from './modules/analytics.js';
 import { initCookieConsent } from './modules/cookie-consent.js';
 import { initTracking } from './modules/tracking.js';
 import { initAdvancedAnimations } from './modules/advanced-animations.js';
+import { initEnhancedAnimations } from './modules/enhanced-animations.js';
 
 /**
  * Initialize all modules when DOM is ready
@@ -35,6 +36,9 @@ function init() {
     
     // Advanced animations
     initAdvancedAnimations();
+    
+    // Enhanced animations
+    initEnhancedAnimations();
     
     // Forms
     initForms();

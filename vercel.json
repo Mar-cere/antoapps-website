@@ -28,12 +28,38 @@
     {
       "source": "/contacto/",
       "destination": "/contacto.html"
+    },
+    {
+      "source": "/terminos",
+      "destination": "/terminos.html"
+    },
+    {
+      "source": "/terminos/",
+      "destination": "/terminos.html"
+    },
+    {
+      "source": "/sobre-nosotros",
+      "destination": "/sobre-nosotros.html"
+    },
+    {
+      "source": "/sobre-nosotros/",
+      "destination": "/sobre-nosotros.html"
     }
   ],
   "redirects": [
     {
       "source": "/contacto.html",
       "destination": "/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/terminos.html",
+      "destination": "/terminos",
+      "permanent": true
+    },
+    {
+      "source": "/sobre-nosotros.html",
+      "destination": "/sobre-nosotros",
       "permanent": true
     }
   ],

@@ -235,6 +235,8 @@ function animateCounter(element) {
     const startValue = 0;
     const suffix = element.dataset.suffix || '';
     const prefix = element.dataset.prefix || '';
+    const isDecimal = target % 1 !== 0;
+    const decimals = isDecimal ? 1 : 0;
 
     function updateCounter(currentTime) {
         const elapsed = currentTime - startTime;
@@ -242,14 +244,22 @@ function animateCounter(element) {
         
         // Easing function (ease-out)
         const easeOut = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(startValue + (target - startValue) * easeOut);
+        const current = startValue + (target - startValue) * easeOut;
         
-        element.textContent = prefix + formatNumber(current) + suffix;
+        if (isDecimal) {
+            element.textContent = prefix + current.toFixed(decimals) + suffix;
+        } else {
+            element.textContent = prefix + formatNumber(Math.floor(current)) + suffix;
+        }
         
         if (progress < 1) {
             requestAnimationFrame(updateCounter);
         } else {
-            element.textContent = prefix + formatNumber(target) + suffix;
+            if (isDecimal) {
+                element.textContent = prefix + target.toFixed(decimals) + suffix;
+            } else {
+                element.textContent = prefix + formatNumber(target) + suffix;
+            }
         }
     }
 

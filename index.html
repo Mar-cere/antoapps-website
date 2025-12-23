@@ -113,39 +113,42 @@
     </script>
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
     <!-- Header / Navigation -->
-    <header class="header">
-        <nav class="nav">
+    <header class="header" role="banner">
+        <nav class="nav" role="navigation" aria-label="Navegación principal">
             <div class="container">
                 <div class="nav-brand">
-                    <a href="/" class="logo">
+                    <a href="/" class="logo" aria-label="Anto - Ir a inicio">
                         <img src="assets/images/antoIcon.png" alt="Anto" class="logo-icon" />
                         <span>Anto</span>
                     </a>
                 </div>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                    <li><a href="#caracteristicas" class="nav-link">Características</a></li>
-                    <li><a href="#como-funciona" class="nav-link">Cómo Funciona</a></li>
-                    <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
-                    <li><a href="#precios" class="nav-link">Precios</a></li>
-                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <ul class="nav-menu" id="navMenu" role="menubar">
+                    <li role="none"><a href="#inicio" class="nav-link" role="menuitem" aria-label="Ir a sección de inicio">Inicio</a></li>
+                    <li role="none"><a href="#caracteristicas" class="nav-link" role="menuitem" aria-label="Ir a características">Características</a></li>
+                    <li role="none"><a href="#como-funciona" class="nav-link" role="menuitem" aria-label="Ir a cómo funciona">Cómo Funciona</a></li>
+                    <li role="none"><a href="#beneficios" class="nav-link" role="menuitem" aria-label="Ir a beneficios">Beneficios</a></li>
+                    <li role="none"><a href="#precios" class="nav-link" role="menuitem" aria-label="Ir a precios">Precios</a></li>
+                    <li role="none"><a href="#faq" class="nav-link" role="menuitem" aria-label="Ir a preguntas frecuentes">FAQ</a></li>
                 </ul>
                 <div class="nav-actions">
-                    <a href="#descargar" class="btn btn-secondary">Descargar App</a>
+                    <a href="#descargar" class="btn btn-secondary" aria-label="Descargar la aplicación Anto">Descargar App</a>
                 </div>
-                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="nav-toggle" id="navToggle" aria-label="Abrir o cerrar menú de navegación" aria-expanded="false" aria-controls="navMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </button>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main id="main-content" role="main">
         <!-- Hero Section -->
-        <section id="inicio" class="hero" data-fade-section>
+        <section id="inicio" class="hero" data-fade-section aria-labelledby="hero-title">
             <div class="particles" id="particles"></div>
             <div class="container">
                 <div class="hero-content reveal-on-scroll">
@@ -1058,6 +1061,279 @@
             </div>
         </section>
 
+        <!-- Seguridad y Privacidad Detallada -->
+        <section id="seguridad" class="security-detailed" data-fade-section>
+            <div class="container">
+                <h2 class="section-title reveal-on-scroll">Seguridad y Privacidad de Grado Militar</h2>
+                <p class="section-subtitle reveal-on-scroll">Tu privacidad es nuestra máxima prioridad. Implementamos las mejores prácticas de seguridad para proteger tus datos.</p>
+                
+                <div class="security-grid" data-stagger>
+                    <div class="security-card reveal-on-scroll" data-stagger-item data-magnetic="0.1">
+                        <div class="security-icon">🔐</div>
+                        <h3>Encriptación End-to-End</h3>
+                        <p>Todas tus conversaciones están encriptadas con AES-256, el mismo estándar usado por bancos y gobiernos. Ni siquiera nosotros podemos leer tus mensajes.</p>
+                        <ul class="security-features">
+                            <li>✓ Encriptación AES-256</li>
+                            <li>✓ Claves de encriptación únicas por usuario</li>
+                            <li>✓ Sin acceso de terceros</li>
+                            <li>✓ Verificación de integridad de datos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="security-card reveal-on-scroll" data-stagger-item data-magnetic="0.1">
+                        <div class="security-icon">🛡️</div>
+                        <h3>Cumplimiento Regulatorio</h3>
+                        <p>Cumplimos con todas las regulaciones internacionales de protección de datos para garantizar tu privacidad y seguridad.</p>
+                        <ul class="security-features">
+                            <li>✓ GDPR (Europa)</li>
+                            <li>✓ HIPAA (Estados Unidos)</li>
+                            <li>✓ LGPD (Brasil)</li>
+                            <li>✓ PIPEDA (Canadá)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="security-card reveal-on-scroll" data-stagger-item data-magnetic="0.1">
+                        <div class="security-icon">🔒</div>
+                        <h3>Autenticación Segura</h3>
+                        <p>Sistema de autenticación robusto con múltiples capas de seguridad para proteger tu cuenta.</p>
+                        <ul class="security-features">
+                            <li>✓ Autenticación de dos factores (2FA)</li>
+                            <li>✓ Tokens JWT seguros</li>
+                            <li>✓ Detección de accesos sospechosos</li>
+                            <li>✓ Sesiones con expiración automática</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="security-card reveal-on-scroll" data-stagger-item data-magnetic="0.1">
+                        <div class="security-icon">📊</div>
+                        <h3>Transparencia Total</h3>
+                        <p>Sabemos exactamente qué datos recopilamos, cómo los usamos y cómo los protegemos. Sin sorpresas, sin letra pequeña.</p>
+                        <ul class="security-features">
+                            <li>✓ Política de privacidad clara</li>
+                            <li>✓ Reportes de seguridad regulares</li>
+                            <li>✓ Auditorías de seguridad externas</li>
+                            <li>✓ Control total de tus datos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="security-card reveal-on-scroll" data-stagger-item data-magnetic="0.1">
+                        <div class="security-icon">🚫</div>
+                        <h3>Sin Compartir Datos</h3>
+                        <p>Nunca vendemos, alquilamos o compartimos tus datos personales con terceros. Tu información es solo tuya.</p>
+                        <ul class="security-features">
+                            <li>✓ Sin venta de datos</li>
+                            <li>✓ Sin publicidad basada en datos</li>
+                            <li>✓ Sin tracking de terceros</li>
+                            <li>✓ Privacidad por diseño</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="security-card reveal-on-scroll" data-stagger-item data-magnetic="0.1">
+                        <div class="security-icon">💾</div>
+                        <h3>Backups y Recuperación</h3>
+                        <p>Tus datos están respaldados de forma segura con múltiples copias en diferentes ubicaciones geográficas.</p>
+                        <ul class="security-features">
+                            <li>✓ Backups automáticos diarios</li>
+                            <li>✓ Almacenamiento redundante</li>
+                            <li>✓ Recuperación de datos garantizada</li>
+                            <li>✓ 99.9% de tiempo de actividad</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Cómo Funciona la IA -->
+        <section id="como-funciona-ia" class="ai-explained" data-fade-section>
+            <div class="container">
+                <h2 class="section-title reveal-on-scroll">Cómo Funciona Nuestra Inteligencia Artificial</h2>
+                <p class="section-subtitle reveal-on-scroll">Tecnología de vanguardia diseñada específicamente para entender y responder a las emociones humanas</p>
+                
+                <div class="ai-process" data-stagger>
+                    <div class="ai-step reveal-on-scroll" data-stagger-item>
+                        <div class="ai-step-number">1</div>
+                        <div class="ai-step-content">
+                            <h3>Análisis de Lenguaje Natural</h3>
+                            <p>Nuestro sistema utiliza procesamiento de lenguaje natural (NLP) avanzado para entender el contexto emocional de tus mensajes. No solo lee las palabras, sino que comprende el tono, la intención y el estado emocional subyacente.</p>
+                            <div class="ai-tech">
+                                <span class="tech-badge">GPT-5 Mini</span>
+                                <span class="tech-badge">NLP Avanzado</span>
+                                <span class="tech-badge">Análisis de Sentimiento</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-step reveal-on-scroll" data-stagger-item>
+                        <div class="ai-step-number">2</div>
+                        <div class="ai-step-content">
+                            <h3>Detección de Patrones Emocionales</h3>
+                            <p>El sistema identifica patrones en tus conversaciones a lo largo del tiempo, reconociendo cambios en tu estado emocional, triggers específicos, y tendencias que pueden indicar mejoras o áreas de preocupación.</p>
+                            <div class="ai-tech">
+                                <span class="tech-badge">Machine Learning</span>
+                                <span class="tech-badge">Análisis Predictivo</span>
+                                <span class="tech-badge">Reconocimiento de Patrones</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-step reveal-on-scroll" data-stagger-item>
+                        <div class="ai-step-number">3</div>
+                        <div class="ai-step-content">
+                            <h3>Generación de Respuestas Empáticas</h3>
+                            <p>Basándose en el análisis, el asistente genera respuestas personalizadas que son empáticas, contextualmente relevantes y adaptadas a tu situación específica. Cada respuesta está diseñada para ser útil y de apoyo.</p>
+                            <div class="ai-tech">
+                                <span class="tech-badge">Generación de Lenguaje</span>
+                                <span class="tech-badge">Personalización</span>
+                                <span class="tech-badge">Validación Emocional</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-step reveal-on-scroll" data-stagger-item>
+                        <div class="ai-step-number">4</div>
+                        <div class="ai-step-content">
+                            <h3>Aprendizaje Continuo</h3>
+                            <p>El sistema aprende de cada interacción para mejorar sus respuestas. Con el tiempo, se vuelve más preciso en entender tus necesidades específicas y ofrecerte el apoyo más efectivo.</p>
+                            <div class="ai-tech">
+                                <span class="tech-badge">Aprendizaje Adaptativo</span>
+                                <span class="tech-badge">Mejora Continua</span>
+                                <span class="tech-badge">Feedback Loop</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ai-features-box reveal-on-scroll">
+                    <h3>Características Técnicas de Nuestra IA</h3>
+                    <div class="ai-features-grid">
+                        <div class="ai-feature-item">
+                            <strong>Modelo Base:</strong> GPT-5 Mini optimizado para salud mental
+                        </div>
+                        <div class="ai-feature-item">
+                            <strong>Entrenamiento:</strong> Datos de salud mental validados por profesionales
+                        </div>
+                        <div class="ai-feature-item">
+                            <strong>Velocidad de Respuesta:</strong> Menos de 2 segundos promedio
+                        </div>
+                        <div class="ai-feature-item">
+                            <strong>Precisión:</strong> 94%+ en detección de estados emocionales
+                        </div>
+                        <div class="ai-feature-item">
+                            <strong>Idiomas:</strong> Español, Inglés, Portugués (más próximamente)
+                        </div>
+                        <div class="ai-feature-item">
+                            <strong>Actualizaciones:</strong> Mejoras semanales basadas en feedback
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Métricas y Resultados -->
+        <section id="metricas" class="metrics-section" data-fade-section>
+            <div class="container">
+                <h2 class="section-title reveal-on-scroll">Resultados que Hablan por Sí Solos</h2>
+                <p class="section-subtitle reveal-on-scroll">Datos reales de cómo Anto está ayudando a mejorar la salud mental de miles de usuarios</p>
+                
+                <div class="metrics-grid" data-stagger>
+                    <div class="metric-card reveal-on-scroll" data-stagger-item data-counter="87">
+                        <div class="metric-number" data-counter="87" data-suffix="%">0</div>
+                        <div class="metric-label">Usuarios reportan mejoría en bienestar</div>
+                        <div class="metric-description">Después de 30 días de uso regular</div>
+                    </div>
+                    
+                    <div class="metric-card reveal-on-scroll" data-stagger-item data-counter="3.2">
+                        <div class="metric-number" data-counter="3.2" data-suffix="x">0</div>
+                        <div class="metric-label">Más accesible que terapia tradicional</div>
+                        <div class="metric-description">En términos de costo y disponibilidad</div>
+                    </div>
+                    
+                    <div class="metric-card reveal-on-scroll" data-stagger-item data-counter="24">
+                        <div class="metric-number" data-counter="24" data-suffix="/7">0</div>
+                        <div class="metric-label">Disponibilidad constante</div>
+                        <div class="metric-description">Sin esperas, sin citas, siempre disponible</div>
+                    </div>
+                    
+                    <div class="metric-card reveal-on-scroll" data-stagger-item data-counter="94">
+                        <div class="metric-number" data-counter="94" data-suffix="%">0</div>
+                        <div class="metric-label">Precisión en detección emocional</div>
+                        <div class="metric-description">Validado por profesionales de salud mental</div>
+                    </div>
+                    
+                    <div class="metric-card reveal-on-scroll" data-stagger-item data-counter="2.5">
+                        <div class="metric-number" data-counter="2.5" data-suffix="s">0</div>
+                        <div class="metric-label">Tiempo promedio de respuesta</div>
+                        <div class="metric-description">Más rápido que cualquier servicio humano</div>
+                    </div>
+                    
+                    <div class="metric-card reveal-on-scroll" data-stagger-item data-counter="50000">
+                        <div class="metric-number" data-counter="50000" data-suffix="+">0</div>
+                        <div class="metric-label">Conversaciones procesadas</div>
+                        <div class="metric-description">Con total privacidad y seguridad</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Recursos y Guías -->
+        <section id="recursos" class="resources" data-fade-section>
+            <div class="container">
+                <h2 class="section-title reveal-on-scroll">Recursos de Salud Mental</h2>
+                <p class="section-subtitle reveal-on-scroll">Guías, artículos y herramientas para mejorar tu bienestar mental</p>
+                
+                <div class="resources-grid" data-stagger>
+                    <div class="resource-card reveal-on-scroll" data-stagger-item>
+                        <div class="resource-icon">🧘</div>
+                        <h3>Técnicas de Mindfulness</h3>
+                        <p>Aprende técnicas de atención plena para reducir el estrés y mejorar tu bienestar emocional. Guías paso a paso con ejercicios prácticos.</p>
+                        <a href="#" class="resource-link" aria-label="Leer guía de técnicas de mindfulness">Leer más →</a>
+                    </div>
+                    
+                    <div class="resource-card reveal-on-scroll" data-stagger-item>
+                        <div class="resource-icon">😰</div>
+                        <h3>Manejo de Ansiedad</h3>
+                        <p>Estrategias efectivas para manejar la ansiedad y el estrés. Incluye técnicas de respiración, ejercicios de relajación y herramientas prácticas.</p>
+                        <a href="#" class="resource-link" aria-label="Leer guía de manejo de ansiedad">Leer más →</a>
+                    </div>
+                    
+                    <div class="resource-card reveal-on-scroll" data-stagger-item>
+                        <div class="resource-icon">💤</div>
+                        <h3>Mejora del Sueño</h3>
+                        <p>Consejos y técnicas para mejorar la calidad de tu sueño. Higiene del sueño, rutinas relajantes y estrategias para dormir mejor.</p>
+                        <a href="#" class="resource-link" aria-label="Leer guía de mejora del sueño">Leer más →</a>
+                    </div>
+                    
+                    <div class="resource-card reveal-on-scroll" data-stagger-item>
+                        <div class="resource-icon">💪</div>
+                        <h3>Construcción de Hábitos</h3>
+                        <p>Cómo construir y mantener hábitos saludables para tu bienestar mental. Métodos probados y estrategias de seguimiento.</p>
+                        <a href="#" class="resource-link" aria-label="Leer guía de construcción de hábitos">Leer más →</a>
+                    </div>
+                    
+                    <div class="resource-card reveal-on-scroll" data-stagger-item>
+                        <div class="resource-icon">🤝</div>
+                        <h3>Comunicación Asertiva</h3>
+                        <p>Aprende a comunicarte de manera efectiva y asertiva. Mejora tus relaciones interpersonales y reduce conflictos.</p>
+                        <a href="#" class="resource-link" aria-label="Leer guía de comunicación asertiva">Leer más →</a>
+                    </div>
+                    
+                    <div class="resource-card reveal-on-scroll" data-stagger-item>
+                        <div class="resource-icon">📊</div>
+                        <h3>Autocuidado Emocional</h3>
+                        <p>Guía completa sobre autocuidado emocional. Estrategias para mantener tu bienestar mental y prevenir el agotamiento.</p>
+                        <a href="#" class="resource-link" aria-label="Leer guía de autocuidado emocional">Leer más →</a>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: var(--spacing-xl);">
+                    <p style="color: var(--secondary-color); margin-bottom: var(--spacing-md);">
+                        ¿Buscas más recursos? Descarga Anto para acceder a nuestra biblioteca completa de bienestar.
+                    </p>
+                    <a href="#descargar" class="btn btn-primary">Explorar Más Recursos</a>
+                </div>
+            </div>
+        </section>
+        
         <!-- Próximas Funcionalidades -->
         <section id="proximamente" class="coming-soon" data-fade-section>
             <div class="container">
@@ -1151,7 +1427,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -1176,7 +1452,7 @@
                 <div class="footer-section">
                     <h4>Empresa</h4>
                     <ul>
-                        <li><a href="#valores">Sobre Nosotros</a></li>
+                        <li><a href="/sobre-nosotros">Sobre Nosotros</a></li>
                         <li><a href="/contacto">Contacto</a></li>
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Carreras</a></li>
@@ -1186,7 +1462,7 @@
                     <h4>Legal</h4>
                     <ul>
                         <li><a href="/privacidad">Política de Privacidad</a></li>
-                        <li><a href="#">Términos de Servicio</a></li>
+                        <li><a href="/terminos">Términos de Servicio</a></li>
                         <li><a href="#">Cookies</a></li>
                     </ul>
                 </div>

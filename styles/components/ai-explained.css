@@ -1,0 +1,202 @@
+/* ============================================
+   AI EXPLAINED SECTION STYLES
+   ============================================ */
+
+.ai-explained {
+    padding: var(--spacing-xl) 0;
+    background: var(--bg-dark);
+}
+
+.ai-process {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
+    position: relative;
+}
+
+.ai-process::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    opacity: 0.3;
+}
+
+.ai-step {
+    display: flex;
+    gap: var(--spacing-lg);
+    position: relative;
+    padding-left: var(--spacing-xl);
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.ai-step-number {
+    position: absolute;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(26, 221, 219, 0.4);
+    flex-shrink: 0;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.ai-step:hover .ai-step-number {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(26, 221, 219, 0.6);
+}
+
+.ai-step-content {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: var(--spacing-lg);
+    backdrop-filter: blur(10px);
+    flex: 1;
+    transition: var(--transition);
+}
+
+.ai-step:hover .ai-step-content {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+    transform: translateX(10px);
+}
+
+.ai-step-content h3 {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.ai-step-content p {
+    color: var(--secondary-color);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.0625rem;
+}
+
+.ai-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-md);
+}
+
+.tech-badge {
+    background: rgba(26, 221, 219, 0.1);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.ai-step:hover .tech-badge {
+    background: rgba(26, 221, 219, 0.2);
+    transform: translateY(-2px);
+}
+
+.ai-features-box {
+    margin-top: var(--spacing-xl);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: var(--spacing-xl);
+    backdrop-filter: blur(10px);
+}
+
+.ai-features-box h3 {
+    color: var(--white);
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.ai-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.ai-feature-item {
+    padding: var(--spacing-md);
+    background: rgba(26, 221, 219, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    color: var(--secondary-color);
+    line-height: 1.6;
+    transition: var(--transition);
+}
+
+.ai-feature-item:hover {
+    background: rgba(26, 221, 219, 0.1);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.ai-feature-item strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.9375rem;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .ai-process::before {
+        left: 20px;
+    }
+    
+    .ai-step {
+        padding-left: var(--spacing-lg);
+    }
+    
+    .ai-step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-process::before {
+        display: none;
+    }
+    
+    .ai-step {
+        flex-direction: column;
+        padding-left: 0;
+        gap: var(--spacing-md);
+    }
+    
+    .ai-step-number {
+        position: relative;
+        align-self: flex-start;
+    }
+    
+    .ai-step:hover .ai-step-content {
+        transform: translateY(-5px);
+    }
+    
+    .ai-features-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

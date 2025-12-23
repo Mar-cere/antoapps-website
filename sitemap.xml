@@ -20,6 +20,30 @@
         <priority>0.8</priority>
     </url>
     
+    <!-- Contact -->
+    <url>
+        <loc>https://antoapps.com/contacto</loc>
+        <lastmod>2025-12-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Terms of Service -->
+    <url>
+        <loc>https://antoapps.com/terminos</loc>
+        <lastmod>2025-12-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- About Us -->
+    <url>
+        <loc>https://antoapps.com/sobre-nosotros</loc>
+        <lastmod>2025-12-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
     <!-- 404 Page -->
     <url>
         <loc>https://antoapps.com/404</loc>
