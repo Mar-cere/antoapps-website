@@ -1,0 +1,726 @@
+/* ============================================
+   MOBILE & TABLET OPTIMIZATIONS
+   Mejoras específicas para móvil y tablet
+   ============================================ */
+
+/* ============================================
+   MOBILE: max-width 767px
+   ============================================ */
+@media (max-width: 767px) {
+    
+    /* Breadcrumbs Mobile */
+    .breadcrumbs {
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .breadcrumb-list {
+        font-size: 0.8125rem;
+        gap: var(--spacing-xs);
+    }
+    
+    /* Comparison Page Mobile */
+    .comparison-hero {
+        padding: calc(var(--spacing-lg) + 60px) 0 var(--spacing-lg);
+    }
+    
+    .comparison-title {
+        font-size: 1.75rem;
+        line-height: 1.3;
+    }
+    
+    .comparison-subtitle {
+        font-size: 1.125rem;
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .comparison-tabs {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .comparison-tab {
+        width: 100%;
+        padding: var(--spacing-sm) var(--spacing-md);
+        min-height: var(--touch-target-min);
+        font-size: 1rem;
+    }
+    
+    .comparison-table-wrapper {
+        margin: 0 calc(-1 * var(--spacing-sm));
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .comparison-table {
+        font-size: 0.875rem;
+        min-width: 600px;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    .comparison-table th {
+        font-size: 0.9375rem;
+    }
+    
+    .brand-icon {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .insights-grid,
+    .apps-comparison {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .insight-card,
+    .app-comparison-card {
+        padding: var(--spacing-md);
+    }
+    
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .advantage-item {
+        padding: var(--spacing-md);
+    }
+    
+    .advantage-icon {
+        font-size: 2.5rem;
+    }
+    
+    /* Security Page Mobile */
+    .security-hero {
+        padding: calc(var(--spacing-lg) + 60px) 0 var(--spacing-lg);
+    }
+    
+    .security-title {
+        font-size: 1.75rem;
+        line-height: 1.3;
+    }
+    
+    .security-subtitle {
+        font-size: 1.125rem;
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .security-badges {
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .badge-cert {
+        font-size: 0.8125rem;
+        padding: 6px 12px;
+    }
+    
+    .certifications-grid,
+    .measures-grid,
+    .reports-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .cert-card,
+    .measure-card,
+    .report-card {
+        padding: var(--spacing-md);
+    }
+    
+    .cert-icon,
+    .measure-icon {
+        font-size: 2.5rem;
+    }
+    
+    .measure-card h3,
+    .cert-card h4,
+    .report-card h3 {
+        font-size: 1.25rem;
+    }
+    
+    /* Research Page Mobile */
+    .research-hero {
+        padding: calc(var(--spacing-lg) + 60px) 0 var(--spacing-lg);
+    }
+    
+    .research-title {
+        font-size: 1.75rem;
+        line-height: 1.3;
+    }
+    
+    .research-subtitle {
+        font-size: 1.125rem;
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .findings-grid,
+    .studies-grid,
+    .collaborations-grid,
+    .methodology-steps {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .finding-card,
+    .study-card,
+    .collab-card,
+    .method-step {
+        padding: var(--spacing-md);
+    }
+    
+    .finding-number {
+        font-size: 2.5rem;
+    }
+    
+    .study-card h3 {
+        font-size: 1.125rem;
+        padding-right: 0;
+    }
+    
+    .study-badge {
+        font-size: 0.6875rem;
+        padding: 3px 8px;
+        top: var(--spacing-xs);
+        right: var(--spacing-xs);
+    }
+    
+    .collab-icon {
+        font-size: 2.5rem;
+    }
+    
+    .method-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+    
+    /* Case Studies Mobile */
+    .case-studies-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .case-study-card {
+        padding: var(--spacing-md);
+    }
+    
+    .case-study-avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+    
+    .case-study-info h3 {
+        font-size: 1.125rem;
+    }
+    
+    .case-study-metrics {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .case-study-metric {
+        min-width: auto;
+    }
+    
+    .case-study-metric-value {
+        font-size: 1.25rem;
+    }
+    
+    /* FAQ Categories Mobile */
+    .faq-categories {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        padding: var(--spacing-sm);
+    }
+    
+    .faq-category-btn {
+        width: 100%;
+        padding: var(--spacing-sm);
+        min-height: var(--touch-target-min);
+        font-size: 0.9375rem;
+    }
+    
+    /* Tooltips Mobile */
+    [data-tooltip]::before {
+        font-size: 0.8125rem;
+        padding: 6px 10px;
+        max-width: 200px;
+    }
+    
+    /* Toast Mobile */
+    .toast {
+        right: var(--spacing-sm);
+        left: var(--spacing-sm);
+        max-width: none;
+        transform: translateY(100px);
+    }
+    
+    .toast.show {
+        transform: translateY(0);
+    }
+    
+    /* Loading States Mobile */
+    .loading-spinner {
+        width: 30px;
+        height: 30px;
+        border-width: 3px;
+    }
+    
+    .skeleton-card {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* ============================================
+   TABLET: 768px - 1023px
+   ============================================ */
+@media (min-width: 768px) and (max-width: 1023px) {
+    
+    /* Container Tablet */
+    .container {
+        max-width: 720px;
+        padding: 0 var(--spacing-md);
+    }
+    
+    /* Hero Tablet */
+    .hero-title {
+        font-size: 2.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    /* Comparison Page Tablet */
+    .comparison-title {
+        font-size: 2.5rem;
+    }
+    
+    .comparison-subtitle {
+        font-size: 1.375rem;
+    }
+    
+    .comparison-tabs {
+        gap: var(--spacing-md);
+    }
+    
+    .comparison-table {
+        font-size: 0.9375rem;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .insights-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .apps-comparison {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Security Page Tablet */
+    .security-title {
+        font-size: 2.5rem;
+    }
+    
+    .security-subtitle {
+        font-size: 1.375rem;
+    }
+    
+    .certifications-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .measures-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .reports-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Research Page Tablet */
+    .research-title {
+        font-size: 2.5rem;
+    }
+    
+    .research-subtitle {
+        font-size: 1.375rem;
+    }
+    
+    .findings-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .studies-grid {
+        grid-template-columns: 1fr;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .collaborations-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .methodology-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Case Studies Tablet */
+    .case-studies-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .case-study-metrics {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .case-study-metric {
+        flex: 1;
+        min-width: 120px;
+    }
+    
+    /* FAQ Categories Tablet */
+    .faq-categories {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .faq-category-btn {
+        flex: 0 1 auto;
+        min-width: 120px;
+    }
+    
+    /* Features Tablet */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Pricing Tablet */
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .pricing-card.featured {
+        transform: none;
+        order: -1;
+    }
+    
+    /* Steps Tablet */
+    .steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Values Tablet */
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Resources Tablet */
+    .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Metrics Tablet */
+    .metrics-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Use Cases Tablet */
+    .use-cases-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Technologies Tablet */
+    .technologies-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Contact Form Tablet */
+    .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    /* About Page Tablet */
+    .about-values-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Privacy Page Tablet */
+    .privacy-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Navigation Tablet */
+    .nav-menu {
+        gap: var(--spacing-sm);
+    }
+    
+    .nav-link {
+        font-size: 0.9375rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    /* Buttons Tablet */
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.9375rem;
+    }
+    
+    .btn-large {
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+    
+    /* Cards Tablet */
+    .feature-card,
+    .value-card,
+    .pricing-card {
+        padding: var(--spacing-md);
+    }
+    
+    /* Section Titles Tablet */
+    .section-title {
+        font-size: 2.25rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.125rem;
+    }
+}
+
+/* ============================================
+   TABLET LANDSCAPE: 768px - 1023px landscape
+   ============================================ */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+    
+    .hero {
+        min-height: auto;
+        padding-top: 100px;
+        padding-bottom: var(--spacing-lg);
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .comparison-hero,
+    .security-hero,
+    .research-hero {
+        padding: calc(var(--spacing-lg) + 70px) 0 var(--spacing-lg);
+    }
+    
+    .phone-mockup {
+        width: 250px;
+        height: 500px;
+    }
+}
+
+/* ============================================
+   SMALL TABLET: 600px - 767px
+   ============================================ */
+@media (min-width: 600px) and (max-width: 767px) {
+    
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .comparison-table {
+        min-width: 550px;
+    }
+    
+    .insights-grid,
+    .apps-comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .certifications-grid,
+    .measures-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .findings-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .case-studies-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   LARGE MOBILE: 480px - 599px
+   ============================================ */
+@media (min-width: 480px) and (max-width: 599px) {
+    
+    .hero-title {
+        font-size: 2.25rem;
+    }
+    
+    .section-title {
+        font-size: 1.875rem;
+    }
+    
+    .comparison-title,
+    .security-title,
+    .research-title {
+        font-size: 2rem;
+    }
+    
+    .comparison-table {
+        min-width: 500px;
+    }
+    
+    .advantages-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   TOUCH OPTIMIZATIONS FOR TABLET
+   ============================================ */
+@media (min-width: 768px) and (max-width: 1023px) and (hover: none) and (pointer: coarse) {
+    
+    /* Aumentar área táctil en tablet */
+    .nav-link {
+        min-height: 44px;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    .btn {
+        min-height: 44px;
+        padding: 12px 24px;
+    }
+    
+    .comparison-tab {
+        min-height: 44px;
+    }
+    
+    .faq-category-btn {
+        min-height: 44px;
+    }
+    
+    .faq-question {
+        min-height: 48px;
+    }
+    
+    /* Mejorar espaciado en cards */
+    .feature-card,
+    .value-card,
+    .pricing-card,
+    .cert-card,
+    .measure-card {
+        padding: var(--spacing-md);
+    }
+}
+
+/* ============================================
+   HIGH DPI DISPLAYS (Retina, etc.)
+   ============================================ */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    
+    /* Asegurar que los bordes sean nítidos */
+    .card,
+    .feature-card,
+    .value-card,
+    .pricing-card {
+        border-width: 0.5px;
+    }
+    
+    /* Mejorar renderizado de texto */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* ============================================
+   ORIENTATION SPECIFIC
+   ============================================ */
+@media (max-width: 767px) and (orientation: portrait) {
+    
+    .hero {
+        padding-top: 100px;
+        padding-bottom: var(--spacing-xl);
+    }
+    
+    .comparison-hero,
+    .security-hero,
+    .research-hero {
+        padding-top: calc(var(--spacing-lg) + 60px);
+        padding-bottom: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 767px) and (orientation: landscape) {
+    
+    .hero {
+        padding-top: 80px;
+        padding-bottom: var(--spacing-md);
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .comparison-hero,
+    .security-hero,
+    .research-hero {
+        padding-top: calc(var(--spacing-md) + 50px);
+        padding-bottom: var(--spacing-md);
+    }
+    
+    .comparison-title,
+    .security-title,
+    .research-title {
+        font-size: 1.5rem;
+    }
+}
+

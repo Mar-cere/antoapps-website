@@ -1,0 +1,148 @@
+/* ============================================
+   MOBILE TABLE FIXES
+   Mejoras específicas para tablas en móvil
+   ============================================ */
+
+/* ============================================
+   MOBILE: max-width 767px
+   ============================================ */
+@media (max-width: 767px) {
+    
+    /* Comparison Table Mobile - Card Layout */
+    .comparison-table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 calc(-1 * var(--spacing-sm));
+        padding: 0 var(--spacing-sm);
+    }
+    
+    /* Alternative: Stack table rows on very small screens */
+    @media (max-width: 480px) {
+        .comparison-table {
+            display: block;
+        }
+        
+        .comparison-table thead {
+            display: none;
+        }
+        
+        .comparison-table tbody,
+        .comparison-table tr,
+        .comparison-table td {
+            display: block;
+            width: 100%;
+        }
+        
+        .comparison-table tr {
+            margin-bottom: var(--spacing-md);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: var(--spacing-sm);
+            backdrop-filter: blur(10px);
+        }
+        
+        .comparison-table td {
+            border: none;
+            padding: var(--spacing-xs) 0;
+            text-align: left;
+            position: relative;
+            padding-left: 40%;
+        }
+        
+        .comparison-table td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: 600;
+            color: var(--primary-color);
+            width: 35%;
+            text-align: left;
+        }
+        
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: var(--white);
+            padding-left: 0;
+            margin-bottom: var(--spacing-xs);
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: var(--spacing-xs);
+        }
+        
+        .comparison-table td:first-child::before {
+            display: none;
+        }
+    }
+    
+    /* Security FAQ Mobile */
+    .security-faq .faq-item {
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .security-faq .faq-question {
+        font-size: 0.9375rem;
+        padding: var(--spacing-sm);
+    }
+    
+    .security-faq .faq-answer {
+        font-size: 0.875rem;
+        padding: 0 var(--spacing-sm) var(--spacing-sm);
+    }
+}
+
+/* ============================================
+   TABLET: 768px - 1023px
+   ============================================ */
+@media (min-width: 768px) and (max-width: 1023px) {
+    
+    /* Comparison Table Tablet */
+    .comparison-table {
+        font-size: 0.9375rem;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    /* Ensure table fits on tablet */
+    .comparison-table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ============================================
+   TOUCH SCROLLING IMPROVEMENTS
+   ============================================ */
+.comparison-table-wrapper,
+.privacy-table-wrapper {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--card-bg);
+}
+
+.comparison-table-wrapper::-webkit-scrollbar,
+.privacy-table-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.comparison-table-wrapper::-webkit-scrollbar-track,
+.privacy-table-wrapper::-webkit-scrollbar-track {
+    background: var(--card-bg);
+    border-radius: 4px;
+}
+
+.comparison-table-wrapper::-webkit-scrollbar-thumb,
+.privacy-table-wrapper::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.comparison-table-wrapper::-webkit-scrollbar-thumb:hover,
+.privacy-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+

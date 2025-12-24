@@ -16,6 +16,8 @@ import { initCookieConsent } from './modules/cookie-consent.js';
 import { initTracking } from './modules/tracking.js';
 import { initAdvancedAnimations } from './modules/advanced-animations.js';
 import { initEnhancedAnimations } from './modules/enhanced-animations.js';
+import { initTooltips } from './modules/tooltips.js';
+import { initMicrointeractions } from './modules/microinteractions.js';
 
 /**
  * Initialize all modules when DOM is ready
@@ -39,6 +41,10 @@ function init() {
     
     // Enhanced animations
     initEnhancedAnimations();
+    
+    // Microinteractions
+    initMicrointeractions();
+    initTooltips();
     
     // Forms
     initForms();

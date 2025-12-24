@@ -30,10 +30,21 @@
 @import url('./components/security.css');
 @import url('./components/ai-explained.css');
 @import url('./components/metrics.css');
+@import url('./components/breadcrumbs.css');
+@import url('./components/comparison.css');
+@import url('./components/security-page.css');
+@import url('./components/research.css');
+@import url('./components/loading.css');
+@import url('./components/tooltips.css');
+@import url('./components/microinteractions.css');
+@import url('./components/case-studies.css');
+@import url('./components/faq-categories.css');
+@import url('./components/mobile-table-fixes.css');
 
 /* Utilities */
 @import url('./utilities/animations.css');
 @import url('./utilities/advanced-animations.css');
 @import url('./utilities/responsive.css');
+@import url('./utilities/mobile-tablet-optimizations.css');
 @import url('./utilities/accessibility.css');
 @import url('./utilities/enhanced-animations.css');

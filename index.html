@@ -894,8 +894,19 @@
             <div class="container">
                 <h2 class="section-title reveal-on-scroll">Preguntas Frecuentes</h2>
                 <p class="section-subtitle reveal-on-scroll">Encuentra respuestas a las preguntas más comunes sobre Anto</p>
+                
+                <!-- FAQ Categories -->
+                <div class="faq-categories" data-stagger>
+                    <button class="faq-category-btn active" data-category="all">Todas</button>
+                    <button class="faq-category-btn" data-category="privacidad">Privacidad</button>
+                    <button class="faq-category-btn" data-category="funcionalidad">Funcionalidad</button>
+                    <button class="faq-category-btn" data-category="precios">Precios</button>
+                    <button class="faq-category-btn" data-category="tecnica">Técnica</button>
+                    <button class="faq-category-btn" data-category="empresarial">Empresarial</button>
+                </div>
+                
                 <div class="faq-list">
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="privacidad">
                         <button class="faq-question">
                             <span>¿Mis conversaciones son realmente privadas?</span>
                             <span class="faq-icon">+</span>
@@ -904,7 +915,16 @@
                             <p>Sí, absolutamente. Todas tus conversaciones están encriptadas de extremo a extremo (E2E) utilizando estándares de grado militar (AES-256). Esto significa que solo tú y el sistema pueden leer tus mensajes. Ni siquiera nuestros administradores pueden acceder al contenido de tus conversaciones. Nunca compartimos, vendemos o comercializamos tu información con terceros. Tu privacidad es nuestra máxima prioridad y cumplimos con todas las regulaciones internacionales de protección de datos, incluyendo GDPR y HIPAA.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="privacidad">
+                        <button class="faq-question">
+                            <span>¿Mis conversaciones son realmente privadas?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí, absolutamente. Todas tus conversaciones están encriptadas de extremo a extremo (E2E) utilizando estándares de grado militar (AES-256). Esto significa que solo tú y el sistema pueden leer tus mensajes. Ni siquiera nuestros administradores pueden acceder al contenido de tus conversaciones. Nunca compartimos, vendemos o comercializamos tu información con terceros. Tu privacidad es nuestra máxima prioridad y cumplimos con todas las regulaciones internacionales de protección de datos, incluyendo GDPR y HIPAA.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-stagger-item data-category="funcionalidad">
                         <button class="faq-question">
                             <span>¿Cómo funciona el asistente AI?</span>
                             <span class="faq-icon">+</span>
@@ -913,7 +933,7 @@
                             <p>Nuestro asistente AI utiliza tecnología de procesamiento de lenguaje natural (NLP) de última generación, entrenada específicamente con principios terapéuticos y técnicas de psicología cognitivo-conductual. El sistema aprende de cada conversación para ofrecerte respuestas cada vez más personalizadas y empáticas. No es un chatbot simple: entiende el contexto emocional, recuerda conversaciones anteriores, y se adapta a tu estilo de comunicación único. La IA está supervisada por profesionales de salud mental y se actualiza constantemente con las mejores prácticas terapéuticas.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="funcionalidad">
                         <button class="faq-question">
                             <span>¿Puedo usar Anto si ya tengo un terapeuta?</span>
                             <span class="faq-icon">+</span>
@@ -922,7 +942,7 @@
                             <p>Por supuesto. Anto está diseñado específicamente para complementar, no reemplazar, la terapia tradicional. Muchos usuarios lo usan como apoyo entre sesiones, para hacer seguimiento diario de su estado emocional, o como herramienta adicional de bienestar. Algunos terapeutas incluso recomiendan Anto a sus pacientes como complemento. Puedes compartir tus reportes y análisis con tu terapeuta si lo deseas, lo que puede enriquecer vuestras sesiones.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="funcionalidad">
                         <button class="faq-question">
                             <span>¿Qué pasa si el sistema detecta una crisis?</span>
                             <span class="faq-icon">+</span>
@@ -931,7 +951,7 @@
                             <p>Nuestro sistema de detección de crisis utiliza algoritmos avanzados para identificar señales de riesgo. Si detectamos una situación de crisis, inmediatamente te ofrecemos recursos de apoyo, incluyendo líneas de ayuda 24/7, contactos de emergencia locales, y técnicas de estabilización. En casos graves donde detectamos riesgo inminente, podemos ayudarte a contactar servicios de emergencia. El sistema está diseñado para ser proactivo pero respetuoso, priorizando siempre tu seguridad y bienestar.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="precios">
                         <button class="faq-question">
                             <span>¿Hay un período de prueba gratis?</span>
                             <span class="faq-icon">+</span>
@@ -940,7 +960,7 @@
                             <p>Sí, ofrecemos 3 días completos de prueba gratis en el plan Premium. No se requiere tarjeta de crédito para comenzar, y puedes cancelar en cualquier momento sin compromiso. Durante la prueba tendrás acceso completo a todas las funciones Premium, incluyendo análisis emocional avanzado, detección de crisis proactiva, y todas las herramientas de bienestar. Si decides continuar después de la prueba, tu suscripción comenzará automáticamente.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="tecnica">
                         <button class="faq-question">
                             <span>¿En qué dispositivos está disponible?</span>
                             <span class="faq-icon">+</span>
@@ -949,7 +969,7 @@
                             <p>Anto está disponible actualmente para iOS (iPhone y iPad con iOS 13 o superior) y Android (versión 8.0 o superior). Estamos trabajando activamente en una versión web que estará disponible en los próximos meses. La aplicación está optimizada para funcionar en todos los tamaños de pantalla, desde teléfonos pequeños hasta tablets grandes. Todos tus datos se sincronizan automáticamente entre dispositivos de forma segura.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="precios">
                         <button class="faq-question">
                             <span>¿Cuánto cuesta usar Anto?</span>
                             <span class="faq-icon">+</span>
@@ -958,7 +978,7 @@
                             <p>Ofrecemos tres planes flexibles: Básico ($9.99/mes), Premium ($19.99/mes con 3 días gratis), y Empresarial (precio personalizado). El plan Básico incluye acceso al asistente AI y análisis emocional básico. El Premium añade análisis avanzado, detección de crisis proactiva, y reportes detallados. El plan Empresarial está diseñado para organizaciones y incluye dashboards de analytics y gestión de usuarios. Todos los planes incluyen soporte 24/7 y actualizaciones regulares.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="tecnica">
                         <button class="faq-question">
                             <span>¿Necesito conexión a internet para usar Anto?</span>
                             <span class="faq-icon">+</span>
@@ -967,7 +987,7 @@
                             <p>Sí, Anto requiere conexión a internet para la mayoría de las funciones, ya que el procesamiento del asistente AI y el análisis emocional se realizan en servidores seguros. Sin embargo, algunas funciones básicas como ejercicios de mindfulness y técnicas de relajación están disponibles offline. Estamos trabajando en una versión offline más completa que permitirá guardar conversaciones localmente y sincronizarlas cuando tengas conexión.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="funcionalidad">
                         <button class="faq-question">
                             <span>¿Cómo funciona el análisis emocional?</span>
                             <span class="faq-icon">+</span>
@@ -976,7 +996,7 @@
                             <p>El análisis emocional de Anto utiliza procesamiento de lenguaje natural y machine learning para analizar tus conversaciones, patrones de uso, y respuestas a cuestionarios. El sistema identifica emociones, detecta patrones a lo largo del tiempo, y te proporciona insights personalizados sobre tu bienestar mental. Recibirás gráficos visuales de tu estado emocional, alertas proactivas cuando detectemos cambios significativos, y reportes semanales y mensuales con recomendaciones personalizadas.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="privacidad">
                         <button class="faq-question">
                             <span>¿Puedo exportar mis datos?</span>
                             <span class="faq-icon">+</span>
@@ -985,7 +1005,7 @@
                             <p>Sí, tienes control total sobre tus datos. Puedes exportar toda tu información en cualquier momento en formatos estándar (JSON, CSV, PDF). Esto incluye tus conversaciones, análisis emocionales, y reportes. También puedes solicitar la eliminación completa de tus datos en cualquier momento desde la configuración de la aplicación. Cumplimos con el derecho al olvido (GDPR) y eliminaremos permanentemente tu información dentro de 30 días tras tu solicitud.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="funcionalidad">
                         <button class="faq-question">
                             <span>¿Anto puede diagnosticar condiciones de salud mental?</span>
                             <span class="faq-icon">+</span>
@@ -994,7 +1014,7 @@
                             <p>No, Anto no puede y no debe usarse para diagnosticar condiciones de salud mental. Anto es una herramienta de apoyo y bienestar, no un reemplazo para el diagnóstico profesional. Si tienes preocupaciones sobre tu salud mental, te recomendamos consultar con un profesional de salud mental licenciado. Anto puede ayudarte a identificar patrones y proporcionar apoyo, pero el diagnóstico debe ser realizado por un profesional cualificado.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="tecnica">
                         <button class="faq-question">
                             <span>¿Qué idiomas soporta Anto?</span>
                             <span class="faq-icon">+</span>
@@ -1003,7 +1023,7 @@
                             <p>Actualmente, Anto está disponible completamente en español e inglés. Estamos trabajando en agregar más idiomas, incluyendo portugués, francés, alemán e italiano. El asistente AI puede entender y responder en múltiples idiomas, y la interfaz se adapta automáticamente según tu configuración de idioma del dispositivo. Si tu idioma no está disponible aún, puedes usar Anto en inglés o español y te notificaremos cuando tu idioma esté disponible.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="precios">
                         <button class="faq-question">
                             <span>¿Cómo puedo cancelar mi suscripción?</span>
                             <span class="faq-icon">+</span>
@@ -1012,7 +1032,7 @@
                             <p>Puedes cancelar tu suscripción en cualquier momento desde la configuración de la aplicación o contactándonos directamente. Si cancelas, seguirás teniendo acceso hasta el final del período de facturación actual. No hay penalizaciones ni cargos por cancelación. Si cancelas durante el período de prueba, no se te cobrará nada. Tu cuenta se convertirá automáticamente en una cuenta gratuita limitada, y podrás reactivar tu suscripción en cualquier momento.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="funcionalidad">
                         <button class="faq-question">
                             <span>¿Anto es adecuado para adolescentes?</span>
                             <span class="faq-icon">+</span>
@@ -1021,7 +1041,7 @@
                             <p>Anto está diseñado para usuarios de 18 años o más. Para menores de 18 años, recomendamos que usen la aplicación bajo la supervisión de un padre o tutor legal. Estamos desarrollando una versión específica para adolescentes (13-17 años) con contenido adaptado y controles parentales, que estará disponible próximamente. Si eres padre o tutor y tienes preguntas sobre el uso de Anto por parte de un menor, contáctanos en privacidad@antoapps.com.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="funcionalidad">
                         <button class="faq-question">
                             <span>¿Qué tipo de ejercicios de bienestar incluye Anto?</span>
                             <span class="faq-icon">+</span>
@@ -1030,7 +1050,7 @@
                             <p>Anto incluye una biblioteca completa de más de 100 ejercicios de bienestar, incluyendo meditaciones guiadas personalizadas, técnicas de respiración (4-7-8, respiración diafragmática), ejercicios de mindfulness, técnicas de relajación muscular progresiva, visualizaciones guiadas, ejercicios de gratitud, y técnicas de grounding. Todos los ejercicios están diseñados por profesionales de salud mental y se adaptan a tu estado emocional actual. Puedes acceder a ellos en cualquier momento, incluso offline.</p>
                         </div>
                     </div>
-                    <div class="faq-item" data-stagger-item>
+                    <div class="faq-item" data-stagger-item data-category="funcionalidad">
                         <button class="faq-question">
                             <span>¿Cómo se compara Anto con otras apps de salud mental?</span>
                             <span class="faq-icon">+</span>
@@ -1289,6 +1309,106 @@
                         <div class="metric-number" data-counter="50000" data-suffix="+">0</div>
                         <div class="metric-label">Conversaciones procesadas</div>
                         <div class="metric-description">Con total privacidad y seguridad</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Estudios de Caso -->
+        <section id="estudios-caso" class="case-studies-section" data-fade-section>
+            <div class="container">
+                <h2 class="section-title reveal-on-scroll">Estudios de Caso Reales</h2>
+                <p class="section-subtitle reveal-on-scroll">Historias reales de cómo Anto está transformando vidas y mejorando el bienestar mental</p>
+                
+                <div class="case-studies-grid" data-stagger>
+                    <div class="case-study-card reveal-on-scroll" data-stagger-item>
+                        <div class="case-study-header">
+                            <div class="case-study-avatar">M</div>
+                            <div class="case-study-info">
+                                <h3>María, 32 años</h3>
+                                <p>Profesional de Marketing</p>
+                            </div>
+                        </div>
+                        <div class="case-study-content">
+                            <p>María comenzó a usar Anto durante un período de alto estrés laboral. Después de 2 meses de uso regular, reportó una reducción del 60% en sus niveles de ansiedad y mejoró significativamente su calidad de sueño.</p>
+                        </div>
+                        <div class="case-study-metrics">
+                            <div class="case-study-metric">
+                                <span class="case-study-metric-value">60%</span>
+                                <span class="case-study-metric-label">Reducción ansiedad</span>
+                            </div>
+                            <div class="case-study-metric">
+                                <span class="case-study-metric-value">2 meses</span>
+                                <span class="case-study-metric-label">Tiempo de uso</span>
+                            </div>
+                        </div>
+                        <div class="case-study-tags">
+                            <span class="case-study-tag">Ansiedad</span>
+                            <span class="case-study-tag">Estrés laboral</span>
+                        </div>
+                        <div class="case-study-quote">
+                            "Anto me ayudó a entender mejor mis emociones y a desarrollar estrategias efectivas para manejar el estrés. Ahora me siento más en control."
+                        </div>
+                    </div>
+                    
+                    <div class="case-study-card reveal-on-scroll" data-stagger-item>
+                        <div class="case-study-header">
+                            <div class="case-study-avatar">J</div>
+                            <div class="case-study-info">
+                                <h3>Juan, 28 años</h3>
+                                <p>Estudiante Universitario</p>
+                            </div>
+                        </div>
+                        <div class="case-study-content">
+                            <p>Juan usó Anto como complemento a su terapia tradicional. El análisis emocional le ayudó a identificar patrones que luego discutió con su terapeuta, acelerando su proceso de recuperación.</p>
+                        </div>
+                        <div class="case-study-metrics">
+                            <div class="case-study-metric">
+                                <span class="case-study-metric-value">40%</span>
+                                <span class="case-study-metric-label">Mejora bienestar</span>
+                            </div>
+                            <div class="case-study-metric">
+                                <span class="case-study-metric-value">3 meses</span>
+                                <span class="case-study-metric-label">Tiempo de uso</span>
+                            </div>
+                        </div>
+                        <div class="case-study-tags">
+                            <span class="case-study-tag">Depresión</span>
+                            <span class="case-study-tag">Terapia complementaria</span>
+                        </div>
+                        <div class="case-study-quote">
+                            "Anto me dio el apoyo que necesitaba entre sesiones. Los reportes me ayudaron a tener conversaciones más productivas con mi terapeuta."
+                        </div>
+                    </div>
+                    
+                    <div class="case-study-card reveal-on-scroll" data-stagger-item>
+                        <div class="case-study-header">
+                            <div class="case-study-avatar">A</div>
+                            <div class="case-study-info">
+                                <h3>Ana, 45 años</h3>
+                                <p>Madre y Emprendedora</p>
+                            </div>
+                        </div>
+                        <div class="case-study-content">
+                            <p>Ana comenzó a usar Anto después de un episodio de agotamiento. El sistema de detección de crisis le ayudó a identificar señales tempranas y prevenir episodios más graves.</p>
+                        </div>
+                        <div class="case-study-metrics">
+                            <div class="case-study-metric">
+                                <span class="case-study-metric-value">3</span>
+                                <span class="case-study-metric-label">Crisis prevenidas</span>
+                            </div>
+                            <div class="case-study-metric">
+                                <span class="case-study-metric-value">4 meses</span>
+                                <span class="case-study-metric-label">Tiempo de uso</span>
+                            </div>
+                        </div>
+                        <div class="case-study-tags">
+                            <span class="case-study-tag">Burnout</span>
+                            <span class="case-study-tag">Prevención</span>
+                        </div>
+                        <div class="case-study-quote">
+                            "La detección proactiva de Anto me salvó de varios episodios difíciles. Me siento más segura sabiendo que tengo apoyo 24/7."
+                        </div>
                     </div>
                 </div>
             </div>

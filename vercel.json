@@ -44,6 +44,30 @@
     {
       "source": "/sobre-nosotros/",
       "destination": "/sobre-nosotros.html"
+    },
+    {
+      "source": "/comparar",
+      "destination": "/comparar.html"
+    },
+    {
+      "source": "/comparar/",
+      "destination": "/comparar.html"
+    },
+    {
+      "source": "/seguridad",
+      "destination": "/seguridad.html"
+    },
+    {
+      "source": "/seguridad/",
+      "destination": "/seguridad.html"
+    },
+    {
+      "source": "/investigacion",
+      "destination": "/investigacion.html"
+    },
+    {
+      "source": "/investigacion/",
+      "destination": "/investigacion.html"
     }
   ],
   "redirects": [
@@ -60,6 +84,21 @@
     {
       "source": "/sobre-nosotros.html",
       "destination": "/sobre-nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/comparar.html",
+      "destination": "/comparar",
+      "permanent": true
+    },
+    {
+      "source": "/seguridad.html",
+      "destination": "/seguridad",
+      "permanent": true
+    },
+    {
+      "source": "/investigacion.html",
+      "destination": "/investigacion",
       "permanent": true
     }
   ],
