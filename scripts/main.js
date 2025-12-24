@@ -18,6 +18,13 @@ import { initAdvancedAnimations } from './modules/advanced-animations.js';
 import { initEnhancedAnimations } from './modules/enhanced-animations.js';
 import { initTooltips } from './modules/tooltips.js';
 import { initMicrointeractions } from './modules/microinteractions.js';
+import { registerServiceWorker, initPWAInstall } from './modules/service-worker.js';
+import { initPerformanceOptimizations } from './modules/performance.js';
+import { initEnhancedParticles } from './modules/enhanced-particles.js';
+import { initPageTransitions } from './modules/page-transitions.js';
+import { init3DEffects } from './modules/3d-effects.js';
+import { initTouchOptimizations } from './modules/touch-optimizations.js';
+import { initEnhancedScrollAnimations } from './modules/enhanced-scroll-animations.js';
 
 /**
  * Initialize all modules when DOM is ready
@@ -51,6 +58,20 @@ function init() {
     
     // Performance
     initLazyLoading();
+    initPerformanceOptimizations();
+    
+    // Service Worker & PWA
+    registerServiceWorker();
+    initPWAInstall();
+    
+    // Enhanced animations
+    initEnhancedParticles();
+    initEnhancedScrollAnimations();
+    init3DEffects();
+    initPageTransitions();
+    
+    // Touch optimizations
+    initTouchOptimizations();
     
     // Analytics (solo si cookies aceptadas)
     if (localStorage.getItem('cookieConsent') === 'accepted') {

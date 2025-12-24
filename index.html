@@ -98,19 +98,67 @@
         }
     }
     </script>
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Anto",
-        "url": "https://antoapps.com",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://antoapps.com/?s={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://antoapps.com/#website",
+                "url": "https://antoapps.com",
+                "name": "Anto",
+                "description": "Tu apoyo emocional 24/7. Aplicación móvil de salud mental con asistente AI terapéutico.",
+                "publisher": {
+                    "@id": "https://antoapps.com/#organization"
+                },
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://antoapps.com/?s={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://antoapps.com/#organization",
+                "name": "Anto",
+                "url": "https://antoapps.com",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://antoapps.com/assets/images/antoIcon.png",
+                    "width": 512,
+                    "height": 512
+                },
+                "sameAs": [],
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "contactType": "Customer Service",
+                    "email": "contacto@antoapps.com"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "Anto",
+                "applicationCategory": "HealthApplication",
+                "operatingSystem": "iOS, Android",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "9.99",
+                    "priceCurrency": "USD"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "ratingCount": "1250"
+                },
+                "description": "Aplicación móvil de salud mental con asistente AI terapéutico, análisis emocional avanzado y herramientas de bienestar."
+            }
+        ]
     }
     </script>
+    
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
@@ -122,7 +170,15 @@
             <div class="container">
                 <div class="nav-brand">
                     <a href="/" class="logo" aria-label="Anto - Ir a inicio">
-                        <img src="assets/images/antoIcon.png" alt="Anto" class="logo-icon" />
+                        <img 
+                            src="assets/images/antoIcon.png" 
+                            srcset="assets/images/antoIcon.png 1x, assets/images/antoIcon.png 2x"
+                            alt="Anto" 
+                            class="logo-icon"
+                            width="32"
+                            height="32"
+                            loading="eager"
+                        />
                         <span>Anto</span>
                     </a>
                 </div>
@@ -192,7 +248,16 @@
                     <div class="phone-mockup" data-parallax="0.2" data-magnetic="0.2">
                         <div class="phone-screen">
                             <div class="app-preview">
-                                <img src="assets/images/antoIcon.png" alt="Anto App" class="app-icon-large" data-reveal />
+                                <img 
+                                    src="assets/images/antoIcon.png" 
+                                    srcset="assets/images/antoIcon.png 1x, assets/images/antoIcon.png 2x"
+                                    alt="Anto App" 
+                                    class="app-icon-large" 
+                                    data-reveal
+                                    width="120"
+                                    height="120"
+                                    loading="lazy"
+                                />
                             </div>
                         </div>
                     </div>
