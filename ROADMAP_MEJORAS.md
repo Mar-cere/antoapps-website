@@ -2,6 +2,29 @@
 
 Documento completo con ideas y mejoras para seguir desarrollando el sitio web de Anto.
 
+**Última actualización:** Enero 2025
+
+---
+
+## ✅ LO QUE YA ESTÁ IMPLEMENTADO
+
+### Páginas Completadas
+- ✅ Página de Comparación (`/comparar`)
+- ✅ Página de Investigación (`/investigacion`)
+- ✅ Página de Seguridad (`/seguridad`)
+- ✅ Página de Sobre Nosotros (`/sobre-nosotros`)
+- ✅ Breadcrumbs (migas de pan) en todas las páginas
+
+### Funcionalidades Implementadas
+- ✅ Tooltips informativos
+- ✅ Microinteracciones avanzadas (ripple effects, confetti, toast notifications)
+- ✅ Loading states mejorados
+- ✅ PWA completo (Service Worker, offline mode, install prompt)
+- ✅ Optimizaciones táctiles (áreas táctiles, gestos swipe, feedback háptico)
+- ✅ Animaciones avanzadas (3D effects, partículas, scroll animations)
+- ✅ Performance optimizations básicas (lazy loading, service worker)
+- ✅ SEO básico (Schema.org, sitemap.xml, robots.txt)
+
 ---
 
 ## 📄 NUEVAS PÁGINAS Y SUBPÁGINAS
@@ -21,8 +44,9 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 **Estructura:**
 - Lista de artículos con filtros (categorías, tags)
 - Páginas individuales de artículos
-- Sistema de búsqueda
+- Sistema de búsqueda integrado
 - Suscripción a newsletter
+- Compartir en redes sociales
 
 #### 2. **Página de Ayuda/Soporte** (`/ayuda` o `/soporte`)
 **Propósito:** Reducir tickets de soporte, mejorar UX
@@ -39,17 +63,9 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 - Categorías de ayuda
 - Artículos más útiles
 - Sistema de feedback (¿fue útil?)
+- Historial de búsquedas
 
-#### 3. **Página de Comparación** (`/comparar` o `/vs-terapia-tradicional`)
-**Propósito:** Convertir usuarios indecisos
-**Contenido:**
-- Tabla comparativa: Anto vs Terapia Tradicional
-- Anto vs Otras apps de salud mental
-- Ventajas y desventajas
-- Casos de uso para cada opción
-- Calculadora de costos
-
-#### 4. **Página de Precios Detallada** (`/precios`)
+#### 3. **Página de Precios Detallada** (`/precios`)
 **Propósito:** Más espacio para explicar planes
 **Contenido:**
 - Comparador interactivo de planes
@@ -57,10 +73,11 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 - Preguntas frecuentes sobre precios
 - Testimonios por plan
 - Garantía y políticas de reembolso
+- Comparación de características detallada
 
 ### 🟡 Media Prioridad
 
-#### 5. **Página de Socios/Afiliados** (`/socios` o `/afiliados`)
+#### 4. **Página de Socios/Afiliados** (`/socios` o `/afiliados`)
 **Propósito:** Programa de referidos y partnerships
 **Contenido:**
 - Programa de referidos
@@ -68,8 +85,9 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 - Partnerships con profesionales
 - Partnerships con empresas
 - Formulario de aplicación
+- Dashboard de referidos
 
-#### 6. **Página de Prensa/Media** (`/prensa` o `/media`)
+#### 5. **Página de Prensa/Media** (`/prensa` o `/media`)
 **Propósito:** Recursos para periodistas y medios
 **Contenido:**
 - Kit de prensa (press kit)
@@ -79,7 +97,7 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 - Datos y estadísticas
 - Fotos del equipo (opcional)
 
-#### 7. **Página de Carreras** (`/carreras` o `/trabaja-con-nosotros`)
+#### 6. **Página de Carreras** (`/carreras` o `/trabaja-con-nosotros`)
 **Propósito:** Reclutamiento
 **Contenido:**
 - Ofertas de trabajo
@@ -87,33 +105,27 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 - Beneficios para empleados
 - Proceso de selección
 - Formulario de aplicación
-
-#### 8. **Página de Seguridad Detallada** (`/seguridad`)
-**Propósito:** Transparencia y confianza
-**Contenido:**
-- Certificaciones de seguridad
-- Reportes de seguridad
-- Política de divulgación responsable
-- Auditorías de seguridad
-- Compliance (GDPR, HIPAA, etc.)
+- Testimonios de empleados
 
 ### 🟢 Baja Prioridad
 
-#### 9. **Página de Partners/Integraciones** (`/partners`)
+#### 7. **Página de Partners/Integraciones** (`/partners`)
 **Propósito:** Mostrar integraciones y partnerships
 **Contenido:**
 - Integraciones disponibles
 - Partners tecnológicos
 - Partners de salud mental
 - Cómo integrar con Anto (para desarrolladores)
+- API documentation
 
-#### 10. **Página de Investigación** (`/investigacion`)
-**Propósito:** Credibilidad científica
+#### 8. **Página de Testimonios Expandida** (`/testimonios`)
+**Propósito:** Social proof y credibilidad
 **Contenido:**
-- Estudios y papers
-- Métricas y resultados
-- Colaboraciones con universidades
-- Publicaciones científicas
+- Testimonios en video
+- Casos de éxito detallados
+- Filtros por tipo de usuario
+- Estadísticas de satisfacción
+- Formulario para enviar testimonio
 
 ---
 
@@ -126,59 +138,59 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 - Búsqueda de contenido (FAQ, recursos, blog)
 - Resultados con snippets
 - Búsqueda por categorías
+- Búsqueda por voz (opcional)
+- Sugerencias mientras escribes
 
 #### 2. **Modo Oscuro/Claro Toggle**
 - Switch en header
 - Preferencia guardada en localStorage
 - Transición suave entre modos
 - Respetar `prefers-color-scheme`
+- Tema automático según hora del día
 
-#### 3. **Breadcrumbs (Migas de Pan)**
-- Navegación contextual
-- Mejor UX en páginas profundas
-- Mejor SEO
-
-#### 4. **Loading States Mejorados**
-- Skeleton screens
-- Spinners más elegantes
-- Progress bars para formularios
-- Estados de carga por sección
-
-#### 5. **Microinteracciones Avanzadas**
-- Hover effects más sofisticados
-- Ripple effects en botones
-- Confetti en acciones exitosas
-- Animaciones de éxito/error
-- Feedback táctil (vibración en móvil)
-
-### 🟡 Media Prioridad
-
-#### 6. **Tooltips Informativos**
-- Explicaciones contextuales
-- Información adicional sin saturar
-- Tooltips en iconos y términos técnicos
-
-#### 7. **Sistema de Notificaciones In-Site**
-- Notificaciones toast
-- Alertas importantes
-- Confirmaciones de acciones
-
-#### 8. **Mejoras en Formularios**
-- Validación en tiempo real
+#### 3. **Mejoras en Formularios**
+- Validación en tiempo real mejorada
 - Autocompletado inteligente
 - Campos con ayuda contextual
-- Indicadores de progreso
+- Indicadores de progreso mejorados
 - Guardado automático de borradores
+- Confirmación visual de envío
 
-#### 9. **Video Backgrounds**
+#### 4. **Video Backgrounds**
 - Videos sutiles en hero section
 - Demos de la app
 - Testimonios en video
+- Controles de reproducción
+- Optimización de carga
 
-#### 10. **Galería de Screenshots**
+#### 5. **Galería de Screenshots**
 - Screenshots de la app
 - Lightbox para ver imágenes
 - Filtros por funcionalidad
+- Comparación antes/después
+- Zoom interactivo
+
+### 🟡 Media Prioridad
+
+#### 6. **Sistema de Notificaciones In-Site Mejorado**
+- Notificaciones toast más sofisticadas
+- Centro de notificaciones
+- Alertas importantes persistentes
+- Confirmaciones de acciones mejoradas
+- Notificaciones de progreso
+
+#### 7. **Accesibilidad Avanzada**
+- Navegación por teclado mejorada
+- Screen reader optimizations
+- Alto contraste mode
+- Tamaño de fuente ajustable
+- Reducción de movimiento (prefers-reduced-motion)
+
+#### 8. **Personalización de UI**
+- Temas de color personalizables
+- Tamaño de fuente ajustable
+- Densidad de información (compacto/espacioso)
+- Preferencias guardadas por usuario
 
 ---
 
@@ -192,13 +204,15 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 - Recomendaciones basadas en respuestas
 - Compartir resultados (opcional)
 - CTA para descargar app
+- Guardar resultados para seguimiento
 
 #### 2. **Calculadora de Bienestar**
 - Calculadora de estrés
 - Calculadora de ansiedad
 - Calculadora de hábitos saludables
-- Resultados con gráficos
+- Resultados con gráficos interactivos
 - Recomendaciones personalizadas
+- Historial de resultados
 
 #### 3. **Comparador Interactivo de Planes**
 - Tabla comparativa interactiva
@@ -206,50 +220,61 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 - Toggle de características
 - Calculadora de ahorro
 - CTA directo por plan
+- Comparación lado a lado
 
 #### 4. **Demo Interactivo de la App**
 - Simulador de conversación con IA
 - Preview de funcionalidades
 - Interacción sin descargar
 - Screenshots interactivos
+- Tour guiado de la app
+- Múltiples escenarios de uso
 
-#### 5. **Sistema de Citas/Agenda (para profesionales)**
-- Calendario de disponibilidad
-- Reserva de consultas
-- Recordatorios
-- Integración con calendario
-
-### 🟡 Media Prioridad
-
-#### 6. **Calculadora de ROI (para empresas)**
+#### 5. **Calculadora de ROI (para empresas)**
 - Inputs: número de empleados, industria
 - Cálculo de ahorro potencial
 - Métricas de retorno
-- Reporte descargable
+- Reporte descargable (PDF)
+- Comparación con competencia
+- Casos de estudio integrados
 
-#### 7. **Generador de Reportes Personalizados**
+### 🟡 Media Prioridad
+
+#### 6. **Generador de Reportes Personalizados**
 - Selección de métricas
 - Período de tiempo
-- Exportación en PDF
+- Exportación en PDF/Excel
 - Compartir reportes
+- Programación de reportes automáticos
 
-#### 8. **Sistema de Referidos**
+#### 7. **Sistema de Referidos**
 - Link único de referido
 - Dashboard de referidos
 - Tracking de conversiones
 - Recompensas y badges
+- Estadísticas en tiempo real
 
-#### 9. **Chat en Vivo (Soporte)**
+#### 8. **Chat en Vivo (Soporte)**
 - Widget de chat
 - Horarios de disponibilidad
-- Chatbot inicial
+- Chatbot inicial inteligente
 - Escalamiento a humano
+- Historial de conversaciones
+- Soporte multilingüe
 
-#### 10. **Sistema de Notificaciones Push (Web)**
+#### 9. **Sistema de Notificaciones Push (Web)**
 - Notificaciones del navegador
 - Recordatorios de bienestar
 - Actualizaciones importantes
 - Personalización
+- Gestión de preferencias
+
+#### 10. **Sistema de Citas/Agenda (para profesionales)**
+- Calendario de disponibilidad
+- Reserva de consultas
+- Recordatorios automáticos
+- Integración con calendario (Google, Outlook)
+- Videollamadas integradas
 
 ---
 
@@ -262,63 +287,80 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 - Métricas antes/después
 - Testimonios con contexto
 - Resultados medibles
+- Filtros por industria/tipo
+- Compartir casos de éxito
 
 #### 2. **Timeline de Desarrollo**
 - Historia de la app
 - Hitos importantes
-- Roadmap público
+- Roadmap público interactivo
 - Actualizaciones y mejoras
+- Timeline visual interactivo
 
-#### 3. **Sección de Certificaciones y Compliance**
-- Badges de certificaciones
-- Logos de compliance (GDPR, HIPAA)
-- Explicación de cada certificación
-- Enlaces a documentos oficiales
-
-#### 4. **FAQ Expandida por Categorías**
+#### 3. **FAQ Expandida por Categorías**
 - FAQ técnica
 - FAQ de privacidad
 - FAQ de precios
 - FAQ de funcionalidades
 - FAQ empresarial
+- Búsqueda en FAQ
 
-#### 5. **Sección de Comparación con Competidores**
-- Tabla comparativa
+#### 4. **Sección de Comparación con Competidores**
+- Tabla comparativa detallada
 - Ventajas de Anto
 - Cuándo elegir cada opción
 - Transparente y honesto
+- Actualización regular
 
 ### 🟡 Media Prioridad
 
-#### 6. **Galería de Funcionalidades**
+#### 5. **Galería de Funcionalidades**
 - Screenshots de cada función
 - GIFs animados
 - Videos cortos
 - Descripciones detalladas
+- Filtros por categoría
+- Búsqueda de funcionalidades
 
-#### 7. **Sección de Estadísticas en Tiempo Real**
+#### 6. **Sección de Estadísticas en Tiempo Real**
 - Contador de usuarios activos
 - Conversaciones procesadas
 - Tiempo de respuesta promedio
 - Métricas actualizadas
+- Gráficos interactivos
+- Exportación de datos
 
-#### 8. **Sección de Equipo**
+#### 7. **Sección de Equipo**
 - Fotos del equipo
-- Biografías
+- Biografías detalladas
 - Valores compartidos
 - Cultura de empresa
+- Testimonios del equipo
+- Oportunidades de trabajo
 
-#### 9. **Newsletter y Contenido Exclusivo**
+#### 8. **Newsletter y Contenido Exclusivo**
 - Formulario de suscripción
 - Contenido premium
 - Ebooks descargables
 - Guías exclusivas
+- Seguimiento de engagement
+- Segmentación de audiencia
 
-#### 10. **Sección de Eventos/Webinars**
+#### 9. **Sección de Eventos/Webinars**
 - Próximos eventos
 - Webinars pasados (grabaciones)
 - Registro a eventos
-- Calendario
+- Calendario interactivo
+- Recordatorios automáticos
+- Materiales descargables
+
+#### 10. **Biblioteca de Recursos**
+- Ebooks descargables
+- Guías PDF
+- Checklists interactivos
+- Plantillas descargables
+- Videos educativos
+- Podcasts (opcional)
 
 ---
 
@@ -326,62 +368,71 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 
 ### 🔴 Alta Prioridad
 
-#### 1. **Performance Optimization**
-- Lazy loading mejorado
-- Code splitting
-- Minificación de CSS/JS
-- Compresión de imágenes (WebP)
+#### 1. **Performance Optimization Avanzada**
+- Code splitting más granular
+- Minificación de CSS/JS mejorada
+- Compresión de imágenes (WebP, AVIF)
 - CDN para assets estáticos
-- Service Worker para cache
+- Prefetching inteligente
+- Critical CSS inline
 
 #### 2. **SEO Avanzado**
-- Schema.org expandido
+- Schema.org expandido (más tipos)
 - Open Graph mejorado
 - Sitemap dinámico
-- Robots.txt optimizado
-- Canonical URLs
+- Canonical URLs mejoradas
 - Meta descriptions únicas por página
+- Rich snippets mejorados
 
-#### 3. **PWA Completo**
-- Service Worker
-- Offline functionality
-- Install prompt
-- Push notifications
-- App-like experience
-
-#### 4. **Analytics Avanzado**
+#### 3. **Analytics Avanzado**
 - Event tracking detallado
 - Funnels de conversión
 - Heatmaps (Hotjar/Clarity)
 - Session recordings
-- A/B testing
+- A/B testing framework
+- Cohort analysis
 
-#### 5. **Seguridad Web**
+#### 4. **Seguridad Web Avanzada**
 - HTTPS estricto
-- CSP headers
+- CSP headers mejorados
 - Subresource Integrity
-- Rate limiting
-- Bot protection
+- Rate limiting avanzado
+- Bot protection (reCAPTCHA v3)
+- Security headers completos
 
 ### 🟡 Media Prioridad
 
-#### 6. **Internacionalización (i18n)**
+#### 5. **Internacionalización (i18n)**
 - Múltiples idiomas
 - Selector de idioma
 - Contenido localizado
 - Formato de fechas/números
+- RTL support (si aplica)
+- Traducción automática (opcional)
 
-#### 7. **Optimización de Imágenes**
-- Responsive images (srcset)
-- Lazy loading nativo
+#### 6. **Optimización de Imágenes Avanzada**
+- Responsive images (srcset completo)
+- Lazy loading nativo mejorado
 - Formatos modernos (WebP, AVIF)
 - Sprites para iconos
+- Image CDN
+- Compresión adaptativa
 
-#### 8. **Caché Inteligente**
-- Estrategia de caché
-- Invalidación de caché
-- Prefetching de recursos
-- Preloading crítico
+#### 7. **Caché Inteligente**
+- Estrategia de caché avanzada
+- Invalidación de caché automática
+- Prefetching de recursos críticos
+- Preloading estratégico
+- Service Worker mejorado
+- Cache API optimizado
+
+#### 8. **Monitoreo y Observabilidad**
+- Error tracking (Sentry)
+- Performance monitoring
+- Uptime monitoring
+- Real User Monitoring (RUM)
+- Alertas automáticas
+- Dashboards de métricas
 
 ---
 
@@ -390,31 +441,34 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 ### 🔴 Alta Prioridad
 
 #### 1. **Animaciones de Scroll Más Avanzadas**
-- Scroll-triggered animations
+- Scroll-triggered animations mejoradas
 - Parallax mejorado
 - Reveal animations más sofisticadas
-- Sticky elements
+- Sticky elements avanzados
+- Scroll snap mejorado
 
-#### 2. **Efectos de Partículas Mejorados**
-- Partículas interactivas
-- Efectos de cursor
-- Backgrounds animados
-- Transiciones entre secciones
-
-#### 3. **Transiciones de Página**
+#### 2. **Transiciones de Página Mejoradas**
 - Smooth page transitions
 - Loading states entre páginas
 - Animaciones de entrada/salida
+- Preloading de páginas
+- Transiciones contextuales
 
-#### 4. **Efectos 3D**
-- Cards con perspectiva 3D
-- Transformaciones 3D
-- Efectos de profundidad
+#### 3. **Efectos Visuales Interactivos**
+- Cursor personalizado
+- Efectos hover avanzados
+- Backgrounds animados interactivos
+- Transiciones entre secciones mejoradas
+- Efectos de glassmorphism
 
-#### 5. **Animaciones de Carga**
+### 🟡 Media Prioridad
+
+#### 4. **Animaciones de Carga Mejoradas**
 - Loading screens personalizados
-- Skeleton screens animados
-- Progress indicators
+- Skeleton screens animados avanzados
+- Progress indicators mejorados
+- Estados de carga contextuales
+- Animaciones de éxito/error
 
 ---
 
@@ -422,23 +476,29 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 
 ### 🔴 Alta Prioridad
 
-#### 1. **PWA Completo para Móvil**
-- Instalable como app
-- Iconos y splash screens
-- Offline mode
-- Push notifications
+#### 1. **PWA Mejorado**
+- Push notifications implementadas
+- Offline mode mejorado
+- Background sync
+- Share API
+- Badge API
+- App shortcuts
 
-#### 2. **Optimización Táctil**
-- Áreas táctiles más grandes
-- Gestos (swipe, pinch)
-- Feedback háptico
-- Touch optimizations
-
-#### 3. **Vista Móvil Mejorada**
+#### 2. **Vista Móvil Mejorada**
 - Navegación móvil optimizada
 - Menús desplegables mejorados
 - Formularios móviles optimizados
 - Imágenes optimizadas para móvil
+- Touch gestures avanzados
+
+### 🟡 Media Prioridad
+
+#### 3. **Optimizaciones Específicas por Dispositivo**
+- Optimizaciones para tablets
+- Optimizaciones para foldables
+- Soporte para pantallas grandes
+- Adaptación a diferentes resoluciones
+- Optimización de batería
 
 ---
 
@@ -451,30 +511,35 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 - Landing para profesionales
 - Landing para usuarios individuales
 - Landing para partners
+- A/B testing de landing pages
 
 #### 2. **Sistema de CTAs Inteligentes**
 - CTAs contextuales
 - Personalización por sección
 - A/B testing de CTAs
 - Tracking de conversiones
+- Optimización automática
 
 #### 3. **Exit Intent Popups**
 - Ofertas especiales
 - Newsletter signup
 - Descuentos
 - Contenido exclusivo
+- Personalización por comportamiento
 
 #### 4. **Sistema de Referidos**
 - Links de referido únicos
 - Dashboard de referidos
 - Recompensas
 - Tracking de conversiones
+- Gamificación
 
 #### 5. **Integración con CRM**
 - Captura de leads
 - Sincronización con CRM
 - Segmentación de usuarios
 - Email marketing
+- Automatización de marketing
 
 ---
 
@@ -487,17 +552,21 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 - Calculadora de estrés
 - Calculadora de hábitos
 - Calculadora de ROI empresarial
+- Calculadora de compatibilidad
 
 #### 2. **Generadores de Contenido**
 - Generador de planes de bienestar
 - Generador de rutinas
 - Generador de objetivos
+- Generador de reportes
+- Generador de contenido personalizado
 
 #### 3. **Herramientas Interactivas**
 - Diario de emociones (preview)
 - Meditación guiada (preview)
 - Ejercicios de respiración
 - Tests de bienestar
+- Herramientas de mindfulness
 
 ---
 
@@ -505,23 +574,27 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 
 ### 🔴 Alta Prioridad
 
-#### 1. **A/B Testing**
+#### 1. **A/B Testing Framework**
 - Testing de headlines
 - Testing de CTAs
 - Testing de layouts
 - Testing de colores
+- Testing de copy
+- Análisis estadístico
 
 #### 2. **Heatmaps y Session Recordings**
 - Hotjar o Microsoft Clarity
 - Análisis de comportamiento
 - Identificación de fricciones
 - Optimización basada en datos
+- User journey analysis
 
 #### 3. **Funnels de Conversión**
 - Tracking de embudo
 - Identificación de drop-offs
 - Optimización de conversión
 - Métricas de ROI
+- Análisis de cohortes
 
 ---
 
@@ -534,18 +607,24 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 - Certificaciones
 - Materiales descargables
 - Videos educativos
+- Progreso del usuario
+- Certificados descargables
 
-#### 2. **Biblioteca de Recursos**
+#### 2. **Biblioteca de Recursos Expandida**
 - Ebooks descargables
 - Guías PDF
-- Checklists
+- Checklists interactivos
 - Plantillas
+- Videos tutoriales
+- Podcasts
 
-#### 3. **Webinars y Eventos**
+#### 3. **Webinars y Eventos Mejorados**
 - Calendario de eventos
 - Registro a webinars
 - Grabaciones pasadas
 - Materiales de eventos
+- Q&A sessions
+- Networking
 
 ---
 
@@ -558,79 +637,120 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 - Preguntas y respuestas
 - Compartir experiencias
 - Moderación
+- Badges y reputación
+- Búsqueda en foro
 
 #### 2. **Programa de Embajadores**
 - Programa de embajadores
 - Beneficios y recompensas
 - Contenido exclusivo
 - Eventos especiales
+- Dashboard de embajadores
+- Recursos para embajadores
 
 #### 3. **Gamificación**
 - Badges y logros
 - Puntos y niveles
 - Leaderboards (opcional)
 - Recompensas
+- Desafíos
+- Progreso visual
+
+---
+
+## 💡 NUEVAS IDEAS CREATIVAS
+
+### 🔴 Alta Prioridad
+
+#### 1. **Mapa Interactivo de Impacto**
+- Mapa mundial mostrando usuarios
+- Estadísticas por región
+- Historias de impacto
+- Filtros interactivos
+- Timeline de crecimiento
+
+#### 2. **Timeline Interactivo**
+- Historia de la empresa
+- Hitos importantes
+- Roadmap futuro
+- Visualización interactiva
+- Navegación por fechas
+
+#### 3. **Calculadora de Compatibilidad**
+- "¿Es Anto para ti?"
+- Quiz de compatibilidad
+- Recomendaciones personalizadas
+- Resultados visuales
+- Compartir resultados
+
+### 🟡 Media Prioridad
+
+#### 4. **Sistema de Badges/Logros**
+- Badges por acciones
+- Compartir logros
+- Gamificación
+- Progreso visual
+- Recompensas
+
+#### 5. **Integración con Redes Sociales**
+- Feed de redes sociales
+- Compartir contenido fácilmente
+- Social proof
+- Embed de testimonios
+- Social login
+
+#### 6. **Asistente Virtual en el Sitio**
+- Chatbot en el sitio
+- Respuestas inteligentes
+- Escalamiento a humano
+- Personalización
+- Aprendizaje continuo
+
+#### 7. **Sistema de Recomendaciones**
+- Contenido recomendado
+- Artículos relacionados
+- Productos relacionados
+- Personalización basada en comportamiento
+- Machine learning
+
+#### 8. **Gamificación del Sitio**
+- Puntos por acciones
+- Niveles de usuario
+- Desafíos semanales
+- Recompensas
+- Leaderboard
 
 ---
 
 ## 📋 PRIORIZACIÓN RECOMENDADA
 
 ### Fase 1 (Inmediato - 1-2 semanas)
-1. ✅ Página de Blog/Recursos (con 3-5 artículos iniciales)
-2. ✅ Quiz Interactivo de Bienestar
-3. ✅ Comparador Interactivo de Planes
-4. ✅ Sistema de Búsqueda
-5. ✅ Modo Oscuro/Claro
+1. ✅ Modo Oscuro/Claro Toggle
+2. ✅ Sistema de Búsqueda en el Sitio
+3. ✅ Página de Blog/Recursos (con 3-5 artículos iniciales)
+4. ✅ Quiz Interactivo de Bienestar
+5. ✅ Comparador Interactivo de Planes
 
 ### Fase 2 (Corto Plazo - 1 mes)
 1. ✅ Página de Ayuda/Soporte
 2. ✅ Página de Precios Detallada
 3. ✅ Calculadora de Bienestar
 4. ✅ Demo Interactivo
-5. ✅ Performance Optimization
+5. ✅ Performance Optimization Avanzada
 
 ### Fase 3 (Mediano Plazo - 2-3 meses)
-1. ✅ Página de Comparación
-2. ✅ Página de Prensa
-3. ✅ Landing Pages Específicas
-4. ✅ A/B Testing
-5. ✅ Analytics Avanzado
+1. ✅ Landing Pages Específicas
+2. ✅ A/B Testing Framework
+3. ✅ Analytics Avanzado
+4. ✅ Sistema de Referidos
+5. ✅ Calculadora de ROI
 
 ### Fase 4 (Largo Plazo - 3-6 meses)
 1. ✅ Página de Carreras
-2. ✅ Programa de Referidos
-3. ✅ Internacionalización
-4. ✅ Foro de Comunidad
-5. ✅ Academia Online
-
----
-
-## 💡 IDEAS CREATIVAS ADICIONALES
-
-1. **Mapa Interactivo de Impacto**
-   - Mapa mundial mostrando usuarios
-   - Estadísticas por región
-   - Historias de impacto
-
-2. **Timeline Interactivo**
-   - Historia de la empresa
-   - Hitos y logros
-   - Roadmap futuro
-
-3. **Calculadora de Compatibilidad**
-   - "¿Es Anto para ti?"
-   - Quiz de compatibilidad
-   - Recomendaciones personalizadas
-
-4. **Sistema de Badges/Logros**
-   - Badges por acciones
-   - Compartir logros
-   - Gamificación
-
-5. **Integración con Redes Sociales**
-   - Feed de redes sociales
-   - Compartir contenido fácilmente
-   - Social proof
+2. ✅ Internacionalización
+3. ✅ Foro de Comunidad
+4. ✅ Academia Online
+5. ✅ Chat en Vivo
 
 ---
 
@@ -638,17 +758,24 @@ Documento completo con ideas y mejoras para seguir desarrollando el sitio web de
 
 Para medir el impacto de las mejoras:
 
-- **Conversión:** Tasa de descargas
-- **Engagement:** Tiempo en sitio
-- **SEO:** Rankings y tráfico orgánico
-- **UX:** Tasa de rebote, páginas por sesión
-- **Performance:** Core Web Vitals
-- **Satisfacción:** Encuestas de usuario
+- **Conversión:** Tasa de descargas, tasa de conversión de CTAs
+- **Engagement:** Tiempo en sitio, páginas por sesión, scroll depth
+- **SEO:** Rankings y tráfico orgánico, CTR en SERP
+- **UX:** Tasa de rebote, tiempo de carga, Core Web Vitals
+- **Satisfacción:** Encuestas de usuario, NPS, CSAT
+- **Performance:** Lighthouse score, tiempo de carga, First Contentful Paint
 
 ---
 
-**¿Por dónde empezamos?** Te recomiendo comenzar con:
-1. Página de Blog/Recursos (SEO y contenido)
-2. Quiz Interactivo (engagement y conversión)
-3. Comparador de Planes (conversión directa)
+## 🚀 PRÓXIMOS PASOS INMEDIATOS
 
+**Recomendación para comenzar:**
+1. **Modo Oscuro/Claro** - Mejora rápida de UX, alta demanda
+2. **Sistema de Búsqueda** - Mejora significativa de usabilidad
+3. **Página de Blog/Recursos** - Impacto en SEO y contenido
+4. **Quiz Interactivo** - Alto engagement y conversión
+5. **Comparador de Planes** - Conversión directa
+
+---
+
+**Nota:** Este roadmap es un documento vivo que se actualiza regularmente según las necesidades del negocio y feedback de usuarios.

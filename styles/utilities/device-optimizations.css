@@ -1,0 +1,343 @@
+/**
+ * DEVICE-SPECIFIC OPTIMIZATIONS
+ * Optimizations for tablets, foldables, and other specific devices
+ */
+
+/* ============================================
+   TABLET OPTIMIZATIONS
+   ============================================ */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    /* Tablet-specific container adjustments */
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    
+    /* Better spacing for tablet screens */
+    .section {
+        padding: 4rem 0;
+    }
+    
+    /* Grid adjustments for tablets */
+    .grid,
+    .features-grid,
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    /* Cards on tablets */
+    .card {
+        padding: 2rem;
+    }
+    
+    /* Navigation for tablets */
+    .nav-menu {
+        gap: 1.5rem;
+    }
+    
+    /* Hero section on tablets */
+    .hero {
+        padding: 6rem 0 4rem;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+        line-height: 1.2;
+    }
+    
+    /* Tables on tablets */
+    .comparison-table-wrapper,
+    .privacy-table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Forms on tablets */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 1rem;
+    }
+    
+    /* Buttons on tablets */
+    .btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        min-height: 48px; /* Better touch target */
+    }
+    
+    /* Touch targets optimization */
+    button,
+    a,
+    [role="button"] {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* ============================================
+   FOLDABLE DEVICES
+   ============================================ */
+
+/* Single screen mode (folded) */
+@media screen and (max-width: 767px) {
+    /* Ensure content fits in single screen */
+    .container {
+        max-width: 100%;
+        padding: 1rem;
+    }
+    
+    /* Optimize for narrow screens */
+    .hero-title {
+        font-size: 2rem;
+    }
+}
+
+/* Dual screen mode (unfolded) */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 600px) {
+    /* Optimize layout for dual screen */
+    .container {
+        max-width: 1400px;
+        padding: 2rem 3rem;
+    }
+    
+    /* Two-column layout for dual screen */
+    .dual-screen-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    
+    /* Hero section for dual screen */
+    .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 3rem;
+    }
+    
+    .hero-content {
+        padding-right: 2rem;
+    }
+    
+    .hero-image {
+        padding-left: 2rem;
+    }
+}
+
+/* Foldable detection using environment variables */
+@supports (env(fold-top) env(fold-left) env(fold-width) env(fold-height)) {
+    /* Content in the fold area */
+    .fold-area {
+        padding: env(fold-height) env(fold-width);
+    }
+    
+    /* Avoid content in fold */
+    .avoid-fold {
+        margin-top: env(fold-height);
+        margin-left: env(fold-width);
+    }
+}
+
+/* ============================================
+   LARGE TABLETS (iPad Pro, etc.)
+   ============================================ */
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+    .container {
+        max-width: 1200px;
+        padding: 2rem 3rem;
+    }
+    
+    .grid,
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+    
+    .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+}
+
+/* ============================================
+   LANDSCAPE TABLET
+   ============================================ */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .hero {
+        padding: 3rem 0;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    /* More compact layout in landscape */
+    .section {
+        padding: 3rem 0;
+    }
+}
+
+/* ============================================
+   TABLET-SPECIFIC COMPONENTS
+   ============================================ */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    /* Comparison table on tablets */
+    .comparison-table {
+        font-size: 0.9rem;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: 1rem 0.75rem;
+    }
+    
+    /* FAQ on tablets */
+    .faq-item {
+        padding: 1.5rem;
+    }
+    
+    /* Testimonials on tablets */
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Stats on tablets */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
+   TOUCH OPTIMIZATIONS FOR TABLETS
+   ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    .btn,
+    button,
+    a[role="button"] {
+        min-height: 48px;
+        min-width: 48px;
+        padding: 1rem 1.5rem;
+    }
+    
+    /* Better spacing for touch */
+    .nav-link {
+        padding: 1rem;
+    }
+    
+    /* Card interactions */
+    .card {
+        transition: transform 0.2s ease;
+    }
+    
+    .card:active {
+        transform: scale(0.98);
+    }
+    
+    /* Form inputs */
+    input,
+    textarea,
+    select {
+        min-height: 48px;
+        padding: 1rem;
+    }
+}
+
+/* ============================================
+   FOLDABLE-SPECIFIC UTILITIES
+   ============================================ */
+
+/* Class to apply when device is foldable */
+.foldable-device {
+    /* Adjustments for foldable */
+}
+
+/* Content that should span both screens */
+.span-screens {
+    width: 100vw;
+    max-width: none;
+}
+
+/* Content that should be on one screen */
+.single-screen {
+    max-width: 50vw;
+}
+
+/* ============================================
+   RESPONSIVE IMAGES FOR TABLETS
+   ============================================ */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Hero images */
+    .hero-image img {
+        max-width: 100%;
+    }
+}
+
+/* ============================================
+   TABLET NAVIGATION
+   ============================================ */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    /* Sticky navigation for tablets */
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    /* Better mobile menu for tablets */
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .nav-toggle {
+        display: none;
+    }
+}
+
+/* ============================================
+   PRINT STYLES FOR TABLETS
+   ============================================ */
+
+@media print {
+    .header,
+    .footer,
+    .btn,
+    .nav-toggle {
+        display: none;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+    }
+}
+

@@ -68,6 +68,14 @@
         <priority>0.7</priority>
     </url>
     
+    <!-- Resources -->
+    <url>
+        <loc>https://antoapps.com/recursos</loc>
+        <lastmod>2025-12-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
     <!-- 404 Page -->
     <url>
         <loc>https://antoapps.com/404</loc>

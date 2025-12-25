@@ -40,11 +40,15 @@
 @import url('./components/case-studies.css');
 @import url('./components/faq-categories.css');
 @import url('./components/mobile-table-fixes.css');
+@import url('./components/resources-library.css');
+@import url('./components/i18n.css');
+@import url('./components/accessibility.css');
 
 /* Utilities */
 @import url('./utilities/animations.css');
 @import url('./utilities/advanced-animations.css');
 @import url('./utilities/responsive.css');
 @import url('./utilities/mobile-tablet-optimizations.css');
+@import url('./utilities/device-optimizations.css');
 @import url('./utilities/accessibility.css');
 @import url('./utilities/enhanced-animations.css');

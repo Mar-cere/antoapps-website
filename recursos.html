@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    
+    <!-- Primary Meta Tags -->
+    <title>Recursos - Anto | Biblioteca de Recursos de Salud Mental</title>
+    <meta name="title" content="Recursos - Anto | Biblioteca de Recursos de Salud Mental">
+    <meta name="description" content="Accede a nuestra biblioteca completa de recursos de salud mental: ebooks, guías PDF, videos, podcasts, checklists y más.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://antoapps.com/recursos">
+    <meta property="og:title" content="Recursos - Anto">
+    <meta property="og:description" content="Biblioteca completa de recursos de salud mental.">
+    <meta property="og:image" content="https://antoapps.com/assets/images/antoIcon.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#030A24">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="canonical" href="https://antoapps.com/recursos">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-brand">
+                    <a href="/" class="logo">
+                        <img src="assets/images/antoIcon.png" alt="Anto" class="logo-icon" />
+                        <span>Anto</span>
+                    </a>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="/#caracteristicas" class="nav-link">Características</a></li>
+                    <li><a href="/#precios" class="nav-link">Precios</a></li>
+                    <li><a href="/recursos" class="nav-link active">Recursos</a></li>
+                    <li><a href="/contacto" class="nav-link">Contacto</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="/#descargar" class="btn btn-secondary">Descargar App</a>
+                </div>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <ol class="breadcrumb-list">
+                    <li><a href="/">Inicio</a></li>
+                    <li aria-current="page">Recursos</li>
+                </ol>
+            </div>
+        </nav>
+
+        <!-- Resources Hero -->
+        <section class="resources-hero" data-fade-section>
+            <div class="container">
+                <h1 class="resources-title reveal-on-scroll">Biblioteca de Recursos</h1>
+                <p class="resources-subtitle reveal-on-scroll">Accede a nuestra colección completa de recursos educativos sobre salud mental</p>
+            </div>
+        </section>
+
+        <!-- Resources Filters -->
+        <section class="resources-filters" data-fade-section>
+            <div class="container">
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">Todos</button>
+                    <button class="filter-tab" data-filter="ebook">Ebooks</button>
+                    <button class="filter-tab" data-filter="pdf">Guías PDF</button>
+                    <button class="filter-tab" data-filter="video">Videos</button>
+                    <button class="filter-tab" data-filter="podcast">Podcasts</button>
+                    <button class="filter-tab" data-filter="checklist">Checklists</button>
+                    <button class="filter-tab" data-filter="template">Plantillas</button>
+                </div>
+                
+                <div class="search-box">
+                    <input type="search" id="resource-search" placeholder="Buscar recursos..." aria-label="Buscar recursos">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Grid -->
+        <section class="resources-grid-section" data-fade-section>
+            <div class="container">
+                <div class="resources-grid" id="resources-grid">
+                    <!-- Ebook -->
+                    <div class="resource-card" data-type="ebook" data-category="ansiedad">
+                        <div class="resource-icon">📚</div>
+                        <h3>Guía Completa de Manejo de Ansiedad</h3>
+                        <p>Ebook de 50 páginas con técnicas probadas para manejar la ansiedad de forma efectiva.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Ebook</span>
+                            <span class="resource-size">2.5 MB</span>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-block" download>Descargar</a>
+                    </div>
+
+                    <!-- PDF Guide -->
+                    <div class="resource-card" data-type="pdf" data-category="mindfulness">
+                        <div class="resource-icon">📄</div>
+                        <h3>Guía de Mindfulness para Principiantes</h3>
+                        <p>PDF con ejercicios prácticos de mindfulness que puedes hacer en casa.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">PDF</span>
+                            <span class="resource-size">1.2 MB</span>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-block" download>Descargar</a>
+                    </div>
+
+                    <!-- Video -->
+                    <div class="resource-card" data-type="video" data-category="meditacion">
+                        <div class="resource-icon">🎥</div>
+                        <h3>Meditación Guiada: Reducción de Estrés</h3>
+                        <p>Video de 20 minutos con meditación guiada para reducir el estrés diario.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Video</span>
+                            <span class="resource-duration">20 min</span>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-block">Ver Video</a>
+                    </div>
+
+                    <!-- Podcast -->
+                    <div class="resource-card" data-type="podcast" data-category="bienestar">
+                        <div class="resource-icon">🎙️</div>
+                        <h3>Podcast: Hábitos para el Bienestar Mental</h3>
+                        <p>Episodio sobre cómo construir hábitos saludables para mejorar tu bienestar mental.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Podcast</span>
+                            <span class="resource-duration">35 min</span>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-block">Escuchar</a>
+                    </div>
+
+                    <!-- Checklist -->
+                    <div class="resource-card" data-type="checklist" data-category="autocuidado">
+                        <div class="resource-icon">✅</div>
+                        <h3>Checklist de Autocuidado Diario</h3>
+                        <p>Lista imprimible con actividades de autocuidado para cada día de la semana.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Checklist</span>
+                            <span class="resource-size">PDF</span>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-block" download>Descargar</a>
+                    </div>
+
+                    <!-- Template -->
+                    <div class="resource-card" data-type="template" data-category="diario">
+                        <div class="resource-icon">📝</div>
+                        <h3>Plantilla de Diario de Emociones</h3>
+                        <p>Plantilla editable para llevar un registro diario de tus emociones y pensamientos.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Plantilla</span>
+                            <span class="resource-size">Word/PDF</span>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-block" download>Descargar</a>
+                    </div>
+
+                    <!-- Ebook -->
+                    <div class="resource-card" data-type="ebook" data-category="depresion">
+                        <div class="resource-icon">📚</div>
+                        <h3>Entendiendo la Depresión</h3>
+                        <p>Ebook educativo sobre la depresión, sus síntomas y estrategias de afrontamiento.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Ebook</span>
+                            <span class="resource-size">3.1 MB</span>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-block" download>Descargar</a>
+                    </div>
+
+                    <!-- Video -->
+                    <div class="resource-card" data-type="video" data-category="ejercicios">
+                        <div class="resource-icon">🎥</div>
+                        <h3>Ejercicios de Respiración para la Ansiedad</h3>
+                        <p>Tutorial en video con ejercicios prácticos de respiración para momentos de ansiedad.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">Video</span>
+                            <span class="resource-duration">15 min</span>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-block">Ver Video</a>
+                    </div>
+
+                    <!-- PDF Guide -->
+                    <div class="resource-card" data-type="pdf" data-category="sueno">
+                        <div class="resource-icon">📄</div>
+                        <h3>Guía para Mejorar el Sueño</h3>
+                        <p>PDF con consejos y técnicas para mejorar la calidad del sueño.</p>
+                        <div class="resource-meta">
+                            <span class="resource-type">PDF</span>
+                            <span class="resource-size">1.8 MB</span>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-block" download>Descargar</a>
+                    </div>
+                </div>
+
+                <div class="resources-empty" id="resources-empty" style="display: none;">
+                    <p>No se encontraron recursos con los filtros seleccionados.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup -->
+        <section class="resources-newsletter" data-fade-section>
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>Recibe Nuevos Recursos</h2>
+                    <p>Suscríbete a nuestro newsletter y recibe nuevos recursos de salud mental directamente en tu correo.</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" required aria-label="Correo electrónico">
+                        <button type="submit" class="btn btn-primary">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Anto</h4>
+                    <p>Tu apoyo emocional 24/7, siempre disponible.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="/#caracteristicas">Características</a></li>
+                        <li><a href="/#precios">Precios</a></li>
+                        <li><a href="/recursos">Recursos</a></li>
+                        <li><a href="/privacidad">Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="/sobre-nosotros">Sobre Nosotros</a></li>
+                        <li><a href="/contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacidad">Política de Privacidad</a></li>
+                        <li><a href="/terminos">Términos de Servicio</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Anto. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="scripts/main.js"></script>
+    <script src="scripts/modules/resources.js"></script>
+</body>
+</html>
+

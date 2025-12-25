@@ -25,6 +25,10 @@ import { initPageTransitions } from './modules/page-transitions.js';
 import { init3DEffects } from './modules/3d-effects.js';
 import { initTouchOptimizations } from './modules/touch-optimizations.js';
 import { initEnhancedScrollAnimations } from './modules/enhanced-scroll-animations.js';
+import { initMonitoring } from './modules/monitoring.js';
+import { initDeviceDetection } from './modules/device-detection.js';
+import { initI18n } from './modules/i18n.js';
+import { initAccessibility } from './modules/accessibility.js';
 
 /**
  * Initialize all modules when DOM is ready
@@ -72,6 +76,18 @@ function init() {
     
     // Touch optimizations
     initTouchOptimizations();
+    
+    // Device detection
+    initDeviceDetection();
+    
+    // Monitoring and observability
+    initMonitoring();
+    
+    // Internationalization
+    initI18n();
+    
+    // Accessibility
+    initAccessibility();
     
     // Analytics (solo si cookies aceptadas)
     if (localStorage.getItem('cookieConsent') === 'accepted') {
