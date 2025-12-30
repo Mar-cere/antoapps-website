@@ -241,47 +241,6 @@ SquareAnto/
 
 > 📖 **Documentación completa de arquitectura:** [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md)
 
-## 🌐 Despliegue
-
-### Opción 1: Vercel (Recomendado - Gratis)
-
-```bash
-# Instalar Vercel CLI
-npm i -g vercel
-
-# Desplegar
-vercel
-```
-
-**Configuración DNS:**
-- Tipo: `A` | Nombre: `@` | Datos: `76.76.21.21`
-- Tipo: `CNAME` | Nombre: `www` | Datos: `cname.vercel-dns.com`
-
-### Opción 2: Netlify (Gratis)
-
-```bash
-# Instalar Netlify CLI
-npm i -g netlify-cli
-
-# Desplegar
-netlify deploy --prod
-```
-
-### Opción 3: GitHub Pages (Gratis)
-
-1. Subir código a GitHub
-2. Settings → Pages → Source: `main branch`
-3. Configurar dominio personalizado
-
-**Configuración DNS:**
-- Tipo: `A` | Datos: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-- Tipo: `CNAME` | Nombre: `www` | Datos: `[tu-usuario].github.io`
-
-### Opción 4: Hosting Tradicional
-
-1. Subir archivos vía FTP/SFTP a `public_html` o `www`
-2. Configurar DNS según las instrucciones del proveedor
-
 ## 👨‍💻 Desarrollador
 
 **Marcelo Ull Marambio**  
