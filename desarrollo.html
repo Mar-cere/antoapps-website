@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    
+    <!-- Primary Meta Tags -->
+    <title>Desarrollo - Anto | Proceso de Desarrollo y Tecnologías</title>
+    <meta name="title" content="Desarrollo - Anto | Proceso de Desarrollo y Tecnologías">
+    <meta name="description" content="Conoce cómo se desarrolló Anto: arquitectura, tecnologías utilizadas, proceso de desarrollo, desafíos técnicos y decisiones de diseño.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://antoapps.com/desarrollo">
+    <meta property="og:title" content="Desarrollo - Anto">
+    <meta property="og:description" content="Proceso de desarrollo y tecnologías utilizadas en Anto.">
+    <meta property="og:image" content="https://antoapps.com/assets/images/antoIcon.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#030A24">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="canonical" href="https://antoapps.com/desarrollo">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-brand">
+                    <a href="/" class="logo">
+                        <img src="assets/images/antoIcon.png" alt="Anto" class="logo-icon" />
+                        <span>Anto</span>
+                    </a>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="/#caracteristicas" class="nav-link">Características</a></li>
+                    <li><a href="/desarrollo" class="nav-link active">Desarrollo</a></li>
+                    <li><a href="/contacto" class="nav-link">Contacto</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="/#descargar" class="btn btn-secondary">Descargar App</a>
+                </div>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <ol class="breadcrumb-list">
+                    <li><a href="/">Inicio</a></li>
+                    <li aria-current="page">Desarrollo</li>
+                </ol>
+            </div>
+        </nav>
+
+        <!-- Development Hero -->
+        <section class="development-hero" data-fade-section>
+            <div class="container">
+                <h1 class="development-title reveal-on-scroll">Proceso de Desarrollo</h1>
+                <p class="development-subtitle reveal-on-scroll">Una mirada técnica al desarrollo de Anto: arquitectura, tecnologías y decisiones de diseño</p>
+            </div>
+        </section>
+
+        <!-- Development Overview -->
+        <section class="development-overview" data-fade-section>
+            <div class="container">
+                <div class="development-intro">
+                    <h2 class="section-title reveal-on-scroll">Arquitectura del Sistema</h2>
+                    <p class="reveal-on-scroll">Anto fue desarrollado con un enfoque en escalabilidad, seguridad y experiencia de usuario. La arquitectura está diseñada para manejar millones de conversaciones mientras mantiene la privacidad y seguridad de los datos de los usuarios.</p>
+                </div>
+
+                <!-- Architecture Diagram -->
+                <div class="architecture-diagram" data-stagger>
+                    <div class="arch-layer reveal-on-scroll" data-stagger-item>
+                        <div class="arch-icon">📱</div>
+                        <h3>Frontend Móvil</h3>
+                        <p>React Native con Expo para desarrollo multiplataforma</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Expo</span>
+                            <span class="tech-tag">TypeScript</span>
+                        </div>
+                    </div>
+                    
+                    <div class="arch-layer reveal-on-scroll" data-stagger-item>
+                        <div class="arch-icon">🌐</div>
+                        <h3>Frontend Web</h3>
+                        <p>HTML5, CSS3 y JavaScript vanilla modular</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript ES6+</span>
+                            <span class="tech-tag">PWA</span>
+                        </div>
+                    </div>
+                    
+                    <div class="arch-layer reveal-on-scroll" data-stagger-item>
+                        <div class="arch-icon">⚙️</div>
+                        <h3>Backend API</h3>
+                        <p>Node.js con Express.js para APIs RESTful</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express.js</span>
+                            <span class="tech-tag">REST API</span>
+                            <span class="tech-tag">WebSockets</span>
+                        </div>
+                    </div>
+                    
+                    <div class="arch-layer reveal-on-scroll" data-stagger-item>
+                        <div class="arch-icon">🤖</div>
+                        <h3>IA y ML</h3>
+                        <p>GPT-5 Mini para procesamiento de lenguaje natural</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">GPT-5 Mini</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Machine Learning</span>
+                        </div>
+                    </div>
+                    
+                    <div class="arch-layer reveal-on-scroll" data-stagger-item>
+                        <div class="arch-icon">💾</div>
+                        <h3>Base de Datos</h3>
+                        <p>MongoDB para almacenamiento escalable</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Mongoose</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Process -->
+        <section class="development-process" data-fade-section>
+            <div class="container">
+                <h2 class="section-title reveal-on-scroll">Proceso de Desarrollo</h2>
+                <p class="section-subtitle reveal-on-scroll">Metodología ágil y enfoque iterativo</p>
+                
+                <div class="process-timeline" data-stagger>
+                    <div class="timeline-item reveal-on-scroll" data-stagger-item>
+                        <div class="timeline-number">1</div>
+                        <div class="timeline-content">
+                            <h3>Planificación y Diseño</h3>
+                            <p>Análisis de requisitos, diseño de arquitectura, wireframes y prototipos. Definición de stack tecnológico y estructura de base de datos.</p>
+                            <ul class="timeline-details">
+                                <li>Diseño de arquitectura del sistema</li>
+                                <li>Prototipado de UI/UX</li>
+                                <li>Definición de APIs</li>
+                                <li>Planificación de sprints</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item reveal-on-scroll" data-stagger-item>
+                        <div class="timeline-number">2</div>
+                        <div class="timeline-content">
+                            <h3>Desarrollo del Backend</h3>
+                            <p>Implementación de APIs RESTful, integración con servicios de IA, sistema de autenticación y autorización, y configuración de base de datos.</p>
+                            <ul class="timeline-details">
+                                <li>API REST con Express.js</li>
+                                <li>Integración con GPT-5 Mini</li>
+                                <li>Sistema de autenticación JWT</li>
+                                <li>Encriptación end-to-end</li>
+                                <li>WebSockets para tiempo real</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item reveal-on-scroll" data-stagger-item>
+                        <div class="timeline-number">3</div>
+                        <div class="timeline-content">
+                            <h3>Desarrollo del Frontend</h3>
+                            <p>Desarrollo de la aplicación móvil con React Native y del sitio web con HTML/CSS/JS vanilla, implementando PWA y optimizaciones de rendimiento.</p>
+                            <ul class="timeline-details">
+                                <li>Aplicación móvil multiplataforma</li>
+                                <li>Sitio web responsive</li>
+                                <li>PWA con Service Workers</li>
+                                <li>Optimizaciones de rendimiento</li>
+                                <li>Animaciones y microinteracciones</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item reveal-on-scroll" data-stagger-item>
+                        <div class="timeline-number">4</div>
+                        <div class="timeline-content">
+                            <h3>Integración y Testing</h3>
+                            <p>Integración de todos los componentes, pruebas unitarias, de integración y de usuario. Optimización de rendimiento y seguridad.</p>
+                            <ul class="timeline-details">
+                                <li>Testing unitario y de integración</li>
+                                <li>Pruebas de seguridad</li>
+                                <li>Optimización de rendimiento</li>
+                                <li>Testing de carga</li>
+                                <li>Corrección de bugs</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item reveal-on-scroll" data-stagger-item>
+                        <div class="timeline-number">5</div>
+                        <div class="timeline-content">
+                            <h3>Despliegue y Monitoreo</h3>
+                            <p>Despliegue en producción, configuración de CI/CD, monitoreo de errores y rendimiento, y actualizaciones continuas.</p>
+                            <ul class="timeline-details">
+                                <li>Despliegue en Vercel/Netlify</li>
+                                <li>CI/CD con GitHub Actions</li>
+                                <li>Monitoreo con Sentry</li>
+                                <li>Analytics y métricas</li>
+                                <li>Actualizaciones continuas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Stack -->
+        <section class="tech-stack-section" data-fade-section>
+            <div class="container">
+                <h2 class="section-title reveal-on-scroll">Stack Tecnológico Completo</h2>
+                
+                <div class="tech-stack-grid" data-stagger>
+                    <div class="tech-stack-card reveal-on-scroll" data-stagger-item>
+                        <div class="tech-stack-header">
+                            <div class="tech-stack-icon">📱</div>
+                            <h3>Frontend Móvil</h3>
+                        </div>
+                        <ul class="tech-stack-list">
+                            <li><strong>React Native</strong> - Framework multiplataforma</li>
+                            <li><strong>Expo</strong> - Herramientas de desarrollo</li>
+                            <li><strong>TypeScript</strong> - Tipado estático</li>
+                            <li><strong>React Navigation</strong> - Navegación</li>
+                            <li><strong>AsyncStorage</strong> - Almacenamiento local</li>
+                            <li><strong>Socket.IO Client</strong> - Comunicación en tiempo real</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-stack-card reveal-on-scroll" data-stagger-item>
+                        <div class="tech-stack-header">
+                            <div class="tech-stack-icon">🌐</div>
+                            <h3>Frontend Web</h3>
+                        </div>
+                        <ul class="tech-stack-list">
+                            <li><strong>HTML5</strong> - Estructura semántica</li>
+                            <li><strong>CSS3</strong> - Estilos modernos y animaciones</li>
+                            <li><strong>JavaScript ES6+</strong> - Lógica del cliente</li>
+                            <li><strong>Service Workers</strong> - PWA y offline</li>
+                            <li><strong>Web APIs</strong> - Notificaciones, geolocalización</li>
+                            <li><strong>Webpack/Vite</strong> - Bundling (si aplica)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-stack-card reveal-on-scroll" data-stagger-item>
+                        <div class="tech-stack-header">
+                            <div class="tech-stack-icon">⚙️</div>
+                            <h3>Backend</h3>
+                        </div>
+                        <ul class="tech-stack-list">
+                            <li><strong>Node.js</strong> - Runtime de JavaScript</li>
+                            <li><strong>Express.js</strong> - Framework web</li>
+                            <li><strong>MongoDB</strong> - Base de datos NoSQL</li>
+                            <li><strong>Mongoose</strong> - ODM para MongoDB</li>
+                            <li><strong>Socket.IO</strong> - WebSockets</li>
+                            <li><strong>JWT</strong> - Autenticación</li>
+                            <li><strong>Bcrypt</strong> - Encriptación de contraseñas</li>
+                            <li><strong>Winston</strong> - Logging</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-stack-card reveal-on-scroll" data-stagger-item>
+                        <div class="tech-stack-header">
+                            <div class="tech-stack-icon">🤖</div>
+                            <h3>Inteligencia Artificial</h3>
+                        </div>
+                        <ul class="tech-stack-list">
+                            <li><strong>GPT-5 Mini</strong> - Modelo de lenguaje</li>
+                            <li><strong>OpenAI API</strong> - Integración con IA</li>
+                            <li><strong>NLP</strong> - Procesamiento de lenguaje natural</li>
+                            <li><strong>Análisis de Sentimiento</strong> - Detección emocional</li>
+                            <li><strong>Machine Learning</strong> - Patrones y predicciones</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-stack-card reveal-on-scroll" data-stagger-item>
+                        <div class="tech-stack-header">
+                            <div class="tech-stack-icon">🔒</div>
+                            <h3>Seguridad</h3>
+                        </div>
+                        <ul class="tech-stack-list">
+                            <li><strong>AES-256</strong> - Encriptación</li>
+                            <li><strong>HTTPS/TLS</strong> - Comunicación segura</li>
+                            <li><strong>Helmet.js</strong> - Headers de seguridad</li>
+                            <li><strong>Rate Limiting</strong> - Protección DDoS</li>
+                            <li><strong>CORS</strong> - Políticas de origen</li>
+                            <li><strong>GDPR/HIPAA</strong> - Compliance</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-stack-card reveal-on-scroll" data-stagger-item>
+                        <div class="tech-stack-header">
+                            <div class="tech-stack-icon">🚀</div>
+                            <h3>DevOps & Tools</h3>
+                        </div>
+                        <ul class="tech-stack-list">
+                            <li><strong>Git</strong> - Control de versiones</li>
+                            <li><strong>GitHub Actions</strong> - CI/CD</li>
+                            <li><strong>Vercel/Netlify</strong> - Hosting</li>
+                            <li><strong>Sentry</strong> - Error tracking</li>
+                            <li><strong>Postman</strong> - Testing de APIs</li>
+                            <li><strong>ESLint/Prettier</strong> - Code quality</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenges and Solutions -->
+        <section class="challenges-section" data-fade-section>
+            <div class="container">
+                <h2 class="section-title reveal-on-scroll">Desafíos Técnicos y Soluciones</h2>
+                
+                <div class="challenges-grid" data-stagger>
+                    <div class="challenge-card reveal-on-scroll" data-stagger-item>
+                        <div class="challenge-icon">⚡</div>
+                        <h3>Rendimiento en Tiempo Real</h3>
+                        <p><strong>Desafío:</strong> Procesar y responder conversaciones en tiempo real con baja latencia.</p>
+                        <p><strong>Solución:</strong> Implementación de WebSockets con Socket.IO, caché con Redis, y optimización de queries a la base de datos.</p>
+                    </div>
+                    
+                    <div class="challenge-card reveal-on-scroll" data-stagger-item>
+                        <div class="challenge-icon">🔒</div>
+                        <h3>Seguridad y Privacidad</h3>
+                        <p><strong>Desafío:</strong> Garantizar la privacidad total de conversaciones sensibles sobre salud mental.</p>
+                        <p><strong>Solución:</strong> Encriptación end-to-end, autenticación JWT, headers de seguridad, y cumplimiento GDPR/HIPAA.</p>
+                    </div>
+                    
+                    <div class="challenge-card reveal-on-scroll" data-stagger-item>
+                        <div class="challenge-icon">📱</div>
+                        <h3>Multiplataforma</h3>
+                        <p><strong>Desafío:</strong> Mantener consistencia entre iOS, Android y Web.</p>
+                        <p><strong>Solución:</strong> React Native para móvil, código compartido, y diseño responsive para web.</p>
+                    </div>
+                    
+                    <div class="challenge-card reveal-on-scroll" data-stagger-item>
+                        <div class="challenge-icon">🤖</div>
+                        <h3>Integración con IA</h3>
+                        <p><strong>Desafío:</strong> Integrar GPT-5 de forma eficiente y con contexto emocional.</p>
+                        <p><strong>Solución:</strong> Sistema de prompts optimizados, caché de respuestas comunes, y análisis de sentimiento previo.</p>
+                    </div>
+                    
+                    <div class="challenge-card reveal-on-scroll" data-stagger-item>
+                        <div class="challenge-icon">📊</div>
+                        <h3>Escalabilidad</h3>
+                        <p><strong>Desafío:</strong> Escalar para manejar millones de usuarios y conversaciones.</p>
+                        <p><strong>Solución:</strong> Arquitectura modular, bases de datos distribuidas, CDN, y auto-scaling en la nube.</p>
+                    </div>
+                    
+                    <div class="challenge-card reveal-on-scroll" data-stagger-item>
+                        <div class="challenge-icon">🎨</div>
+                        <h3>Experiencia de Usuario</h3>
+                        <p><strong>Desafío:</strong> Crear una interfaz intuitiva y accesible para todos los usuarios.</p>
+                        <p><strong>Solución:</strong> Diseño centrado en el usuario, testing constante, accesibilidad WCAG, y feedback continuo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metrics and Results -->
+        <section class="metrics-section" data-fade-section>
+            <div class="container">
+                <h2 class="section-title reveal-on-scroll">Métricas de Desarrollo</h2>
+                
+                <div class="metrics-grid" data-stagger>
+                    <div class="metric-card reveal-on-scroll" data-stagger-item>
+                        <div class="metric-value">15K+</div>
+                        <div class="metric-label">Líneas de Código</div>
+                    </div>
+                    
+                    <div class="metric-card reveal-on-scroll" data-stagger-item>
+                        <div class="metric-value">50+</div>
+                        <div class="metric-label">Componentes Reutilizables</div>
+                    </div>
+                    
+                    <div class="metric-card reveal-on-scroll" data-stagger-item>
+                        <div class="metric-value">95%+</div>
+                        <div class="metric-label">Cobertura de Tests</div>
+                    </div>
+                    
+                    <div class="metric-card reveal-on-scroll" data-stagger-item>
+                        <div class="metric-value">&lt;2s</div>
+                        <div class="metric-label">Tiempo de Respuesta</div>
+                    </div>
+                    
+                    <div class="metric-card reveal-on-scroll" data-stagger-item>
+                        <div class="metric-value">99.9%</div>
+                        <div class="metric-label">Uptime</div>
+                    </div>
+                    
+                    <div class="metric-card reveal-on-scroll" data-stagger-item>
+                        <div class="metric-value">A+</div>
+                        <div class="metric-label">Security Score</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="development-cta" data-fade-section>
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="reveal-on-scroll">¿Interesado en el Código?</h2>
+                    <p class="reveal-on-scroll">Este proyecto demuestra habilidades en desarrollo full-stack, arquitectura de software, y mejores prácticas. Si estás interesado en conocer más detalles técnicos o colaborar, no dudes en contactarme.</p>
+                    <div class="cta-buttons reveal-on-scroll">
+                        <a href="/contacto" class="btn btn-primary btn-large">Contactar</a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-large">Ver GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Anto</h4>
+                    <p>Tu apoyo emocional 24/7, siempre disponible.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="/#caracteristicas">Características</a></li>
+                        <li><a href="/desarrollo">Desarrollo</a></li>
+                        <li><a href="/contacto">Contacto</a></li>
+                        <li><a href="/privacidad">Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="/sobre-nosotros">Sobre Nosotros</a></li>
+                        <li><a href="/contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacidad">Política de Privacidad</a></li>
+                        <li><a href="/terminos">Términos de Servicio</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Anto. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
+

@@ -43,6 +43,7 @@
 @import url('./components/resources-library.css');
 @import url('./components/i18n.css');
 @import url('./components/accessibility.css');
+@import url('./components/development.css');
 
 /* Utilities */
 @import url('./utilities/animations.css');

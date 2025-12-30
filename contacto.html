@@ -47,8 +47,7 @@
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="/#inicio" class="nav-link">Inicio</a></li>
                     <li><a href="/#caracteristicas" class="nav-link">Características</a></li>
-                    <li><a href="/#precios" class="nav-link">Precios</a></li>
-                    <li><a href="/#faq" class="nav-link">FAQ</a></li>
+                    <li><a href="/desarrollo" class="nav-link">Desarrollo</a></li>
                     <li><a href="/contacto" class="nav-link active">Contacto</a></li>
                 </ul>
                 <div class="nav-actions">
@@ -187,11 +186,34 @@
                             <p>Sábados: 10:00 AM - 2:00 PM</p>
                             <p>Domingos: Cerrado</p>
                         </div>
+                        
+                        <div class="contact-social">
+                            <h3>Redes Sociales</h3>
+                            <div class="social-links">
+                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">
+                                    <span>💼</span>
+                                    <span>LinkedIn</span>
+                                </a>
+                                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">
+                                    <span>💻</span>
+                                    <span>GitHub</span>
+                                </a>
+                                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link">
+                                    <span>🐦</span>
+                                    <span>Twitter</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    
+    <!-- Quick Contact CTA -->
+    <a href="#contactForm" class="quick-contact-cta" aria-label="Ir al formulario de contacto">
+        <div class="quick-contact-btn">💬</div>
+    </a>
 
     <!-- Footer -->
     <footer class="footer">
@@ -265,6 +287,9 @@
                         successMsg.style.display = 'block';
                         form.reset();
                         
+                        // Scroll to success message
+                        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        
                         // Track form submission
                         if (window.gtag) {
                             gtag('event', 'form_submit', {
@@ -273,6 +298,23 @@
                             });
                         }
                     }, 1500);
+                });
+            }
+            
+            // Quick contact button smooth scroll
+            const quickContactBtn = document.querySelector('.quick-contact-cta');
+            if (quickContactBtn) {
+                quickContactBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const form = document.getElementById('contactForm');
+                    if (form) {
+                        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Focus on first input after scroll
+                        setTimeout(() => {
+                            const firstInput = form.querySelector('input, textarea, select');
+                            if (firstInput) firstInput.focus();
+                        }, 500);
+                    }
                 });
             }
         });
