@@ -1,0 +1,77 @@
+{
+  "name": "Anto - Tu apoyo emocional 24/7",
+  "short_name": "Anto",
+  "description": "Aplicación móvil de salud mental con asistente AI terapéutico, análisis emocional avanzado y herramientas de bienestar mental",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#030A24",
+  "theme_color": "#1ADDDB",
+  "orientation": "portrait-primary",
+  "dir": "ltr",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/assets/images/antoIcon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/antoIcon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["health", "medical", "lifestyle", "wellness"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Inicio",
+      "short_name": "Inicio",
+      "description": "Ir a la página principal",
+      "url": "/",
+      "icons": [
+        {
+          "src": "/assets/images/antoIcon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contacto",
+      "short_name": "Contacto",
+      "description": "Contactar con el equipo",
+      "url": "/contacto",
+      "icons": [
+        {
+          "src": "/assets/images/antoIcon.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

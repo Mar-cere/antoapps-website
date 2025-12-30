@@ -1,89 +1,13 @@
 {
-  "redirects": [
-    {
-      "source": "/privacidad.html",
-      "destination": "/privacidad",
-      "permanent": true
-    }
-  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "devCommand": "npm run dev",
   "rewrites": [
     {
       "source": "/404",
-      "destination": "/404.html"
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/privacidad",
-      "destination": "/privacidad.html"
-    },
-    {
-      "source": "/privacidad/",
-      "destination": "/privacidad.html"
-    },
-    {
-      "source": "/contacto",
-      "destination": "/contacto.html"
-    },
-    {
-      "source": "/contacto/",
-      "destination": "/contacto.html"
-    },
-    {
-      "source": "/terminos",
-      "destination": "/terminos.html"
-    },
-    {
-      "source": "/terminos/",
-      "destination": "/terminos.html"
-    },
-    {
-      "source": "/sobre-nosotros",
-      "destination": "/sobre-nosotros.html"
-    },
-    {
-      "source": "/sobre-nosotros/",
-      "destination": "/sobre-nosotros.html"
-    },
-    {
-      "source": "/comparar",
-      "destination": "/comparar.html"
-    },
-    {
-      "source": "/comparar/",
-      "destination": "/comparar.html"
-    },
-    {
-      "source": "/seguridad",
-      "destination": "/seguridad.html"
-    },
-    {
-      "source": "/seguridad/",
-      "destination": "/seguridad.html"
-    },
-    {
-      "source": "/investigacion",
-      "destination": "/investigacion.html"
-    },
-    {
-      "source": "/investigacion/",
-      "destination": "/investigacion.html"
-    },
-    {
-      "source": "/desarrollo",
-      "destination": "/desarrollo.html"
-    },
-    {
-      "source": "/desarrollo/",
-      "destination": "/desarrollo.html"
-    },
-    {
-      "source": "/recursos",
-      "destination": "/recursos.html"
-    },
-    {
-      "source": "/recursos/",
-      "destination": "/recursos.html"
+      "destination": "/404"
     }
   ],
   "redirects": [
@@ -126,6 +50,16 @@
       "source": "/recursos.html",
       "destination": "/recursos",
       "permanent": true
+    },
+    {
+      "source": "/privacidad.html",
+      "destination": "/privacidad",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "headers": [
@@ -153,10 +87,6 @@
           "value": "geolocation=(), microphone=(), camera=()"
         },
         {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none';"
-        },
-        {
           "key": "Strict-Transport-Security",
           "value": "max-age=31536000; includeSubDomains; preload"
         }
@@ -176,7 +106,16 @@
       ]
     },
     {
-      "source": "/(.*)\\.(js|css|jpg|jpeg|png|gif|svg|webp|woff|woff2|ttf|eot)$",
+      "source": "/_next/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(js|css|jpg|jpeg|png|gif|svg|webp|woff|woff2|ttf|eot|avif)$",
       "headers": [
         {
           "key": "Cache-Control",
@@ -186,4 +125,3 @@
     }
   ]
 }
-
