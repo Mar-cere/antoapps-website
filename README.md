@@ -289,6 +289,12 @@ Desarrollador Principal
 
 - 📧 Email: [marcelo.ull@antoapps.com](mailto:marcelo.ull@antoapps.com)
 - 🌐 Sitio: [antoapps.com](https://antoapps.com)
+- 💻 GitHub: [@Mar-cere](https://github.com/Mar-cere)
+
+### 🔗 Repositorios
+
+- 📱 **Aplicación Anto**: [github.com/Mar-cere/Anto](https://github.com/Mar-cere/Anto)
+- 🌐 **Sitio Web**: [github.com/Mar-cere/antoapps-website](https://github.com/Mar-cere/antoapps-website)
 
 > 💼 Este sitio web fue desarrollado como parte del portafolio profesional, demostrando habilidades en desarrollo web moderno, UX/UI, accesibilidad y optimización de rendimiento.
 
