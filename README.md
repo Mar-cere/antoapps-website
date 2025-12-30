@@ -182,9 +182,14 @@ SquareAnto/
 **Marcelo Ull Marambio**  
 Desarrollador Principal
 
-- 📧 Email: [marcelo.ull@antoapps.com](mailto:marcelo.ull@antoapps.com)
-- 🌐 Sitio: [antoapps.com](https://antoapps.com)
-- 💻 GitHub: [@Mar-cere](https://github.com/Mar-cere)
+### 📧 Contacto
+
+- 📧 **Email Corporativo**: [marcelo.ull@antoapps.com](mailto:marcelo.ull@antoapps.com)
+- 📧 **Email Personal**: [marcelo0.nicolas@gmail.com](mailto:marcelo0.nicolas@gmail.com)
+- 💼 **LinkedIn**: [linkedin.com/in/marcelo-ull-marambio-7314a6177](https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/)
+- 💬 **Telegram**: [t.me/marcere23](https://t.me/marcere23)
+- 💻 **GitHub**: [@Mar-cere](https://github.com/Mar-cere)
+- 🌐 **Sitio Web**: [antoapps.com](https://antoapps.com)
 
 ### 🔗 Repositorios
 
@@ -223,7 +228,11 @@ Anto ofrece planes flexibles basados en duración:
 
 ## 🤝 Contribuir
 
-Este es un proyecto privado, pero si tienes sugerencias o encuentras problemas, puedes contactar al desarrollador principal.
+Este es un proyecto privado, pero si tienes sugerencias o encuentras problemas, puedes contactar al desarrollador principal a través de:
+
+- 📧 Email: [marcelo.ull@antoapps.com](mailto:marcelo.ull@antoapps.com) o [marcelo0.nicolas@gmail.com](mailto:marcelo0.nicolas@gmail.com)
+- 💼 LinkedIn: [linkedin.com/in/marcelo-ull-marambio-7314a6177](https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/)
+- 💬 Telegram: [t.me/marcere23](https://t.me/marcere23)
 
 ## 📄 Licencia
 
@@ -240,4 +249,12 @@ Este proyecto es privado y propiedad de AntoApps.
 
 **Desarrollado con ❤️ por Marcelo Ull Marambio**
 
-Para más información, visita [antoapps.com](https://antoapps.com) o contacta a [marcelo.ull@antoapps.com](mailto:marcelo.ull@antoapps.com)
+### 📞 ¿Necesitas contactarme?
+
+- 📧 **Email Corporativo**: [marcelo.ull@antoapps.com](mailto:marcelo.ull@antoapps.com)
+- 📧 **Email Personal**: [marcelo0.nicolas@gmail.com](mailto:marcelo0.nicolas@gmail.com)
+- 💼 **LinkedIn**: [linkedin.com/in/marcelo-ull-marambio-7314a6177](https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/)
+- 💬 **Telegram**: [t.me/marcere23](https://t.me/marcere23)
+- 💻 **GitHub**: [@Mar-cere](https://github.com/Mar-cere)
+
+Para más información, visita [antoapps.com](https://antoapps.com)
