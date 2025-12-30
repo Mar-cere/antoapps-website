@@ -1,8 +1,8 @@
 # 🧠 Anto - Sitio Web Oficial
 
-Sitio web moderno y profesional para **Anto**, una aplicación móvil de salud mental con asistente AI terapéutico. Desarrollado desde cero con tecnologías web modernas, optimizado para rendimiento, accesibilidad y SEO.
+Sitio web moderno y profesional para **Anto**, una aplicación móvil de salud mental con asistente AI terapéutico. Desarrollado con **Next.js 14**, TypeScript, y optimizado para rendimiento, accesibilidad y SEO.
 
-![Anto Logo](assets/images/antoIcon.png)
+![Anto Logo](public/assets/images/antoIcon.png)
 
 ## 📋 Sobre Anto
 
@@ -23,7 +23,7 @@ Anto está respaldado por estudios científicos publicados en revistas reconocid
 - **Vaidyam et al. (2022)** - Chatbots de IA en salud mental (npj Digital Medicine)
 - **Torok et al. (2023)** - Prevención de suicidio con intervenciones digitales (JAMA Network Open)
 
-> 📖 Ver todos los estudios: [Página de Investigación](./investigacion.html)
+> 📖 Ver todos los estudios: [Página de Investigación](/investigacion)
 
 ## ✨ Características del Sitio Web
 
@@ -45,12 +45,6 @@ Anto está respaldado por estudios científicos publicados en revistas reconocid
 - ✅ Modo de alto contraste
 - ✅ Reducción de animaciones (respetando `prefers-reduced-motion`)
 
-### 🌍 Internacionalización
-- ✅ Soporte multiidioma (Español, Inglés, Árabe)
-- ✅ Soporte RTL (Right-to-Left)
-- ✅ Detección automática del idioma del navegador
-- ✅ Selector de idioma persistente
-
 ### 📱 PWA (Progressive Web App)
 - ✅ Service Worker para funcionamiento offline
 - ✅ Instalable en dispositivos móviles
@@ -58,24 +52,25 @@ Anto está respaldado por estudios científicos publicados en revistas reconocid
 - ✅ Iconos y splash screens
 
 ### 🚀 Performance
+- ✅ Optimización de imágenes con Next.js Image (AVIF, WebP)
+- ✅ Code splitting automático
+- ✅ Prefetching inteligente de rutas
 - ✅ Lazy loading de imágenes y recursos
-- ✅ Optimización de assets
 - ✅ Service Worker para caché
-- ✅ Preconnect y DNS prefetch
-- ✅ Monitoreo y observabilidad integrado
+- ✅ Monitoreo de Web Vitals (LCP, FID, CLS)
 
 ### 🔍 SEO
+- ✅ Metadata dinámica con Next.js
+- ✅ Sitemap.ts generado automáticamente
+- ✅ Robots.ts configurado
 - ✅ Schema.org markup
-- ✅ Sitemap.xml
-- ✅ Robots.txt
-- ✅ Meta tags optimizados
 - ✅ Open Graph y Twitter Cards
 - ✅ URLs canónicas
 
 ### 📊 Monitoreo
 - ✅ Error tracking (JavaScript errors, unhandled promises)
 - ✅ Real User Monitoring (RUM) - LCP, FID, CLS
-- ✅ API monitoring
+- ✅ Google Analytics integrado
 - ✅ User metrics (clicks, scroll depth, time on page)
 
 ### 📱 Optimizaciones por Dispositivo
@@ -99,11 +94,11 @@ Anto está respaldado por estudios científicos publicados en revistas reconocid
 
 ## 🛠️ Tecnologías Utilizadas
 
-- **HTML5** - Estructura semántica
-- **CSS3** - Estilos modulares con variables CSS
-- **JavaScript (ES6+)** - Funcionalidad modular
-- **PWA** - Service Worker y Manifest
-- **Vercel/Netlify** - Hosting y despliegue
+### Frontend
+- **Next.js 14** - Framework React con App Router
+- **React 18** - Biblioteca de UI
+- **TypeScript** - Tipado estático
+- **CSS Modules** - Estilos modulares
 
 ### Estructura de Estilos
 - CSS modular por componentes
@@ -111,135 +106,76 @@ Anto está respaldado por estudios científicos publicados en revistas reconocid
 - Animaciones CSS optimizadas
 - Responsive design con media queries
 
-### Estructura de Scripts
-- Módulos ES6 separados por funcionalidad
-- Utilidades reutilizables
+### Estructura de Código
+- Componentes React reutilizables
+- Hooks personalizados para lógica
+- Utilidades TypeScript
 - Inicialización centralizada
-
-## 🚀 Inicio Rápido
-
-### Prerrequisitos
-
-- Node.js (v14 o superior) - Opcional, solo para servidor de desarrollo
-- npm o yarn
-
-### Instalación
-
-```bash
-# Clonar el repositorio
-git clone https://github.com/tu-usuario/SquareAnto.git
-cd SquareAnto
-
-# Instalar dependencias (opcional, solo para servidor de desarrollo)
-npm install
-```
-
-### Desarrollo Local
-
-```bash
-# Iniciar servidor de desarrollo local
-npm run dev
-```
-
-El sitio estará disponible en `http://localhost:3000`
-
-### Scripts Disponibles
-
-```bash
-# Desarrollo
-npm run dev          # Iniciar servidor de desarrollo
-npm start            # Alias de npm run dev
-
-# Despliegue
-npm run deploy       # Desplegar a producción (Vercel)
-npm run deploy:preview  # Desplegar preview (Vercel)
-npm run logs         # Ver logs de Vercel
-```
 
 ## 📁 Estructura del Proyecto
 
 ```
 SquareAnto/
-├── assets/                    # Recursos estáticos
-│   ├── icons/                 # Iconos
-│   └── images/                # Imágenes
-│       └── antoIcon.png       # Logo principal
-├── docs/                      # Documentación
-│   ├── ARQUITECTURA.md        # Arquitectura del proyecto
-│   └── ICONOS.md              # Guía de iconos
-├── scripts/                    # JavaScript
-│   ├── modules/               # Módulos de funcionalidad
-│   │   ├── accessibility.js  # Funciones de accesibilidad
-│   │   ├── analytics.js       # Analytics y tracking
-│   │   ├── animations.js      # Animaciones
-│   │   ├── cookie-consent.js  # Consentimiento de cookies
-│   │   ├── device-detection.js # Detección de dispositivos
-│   │   ├── faq.js             # Preguntas frecuentes
-│   │   ├── forms.js           # Manejo de formularios
-│   │   ├── i18n.js            # Internacionalización
-│   │   ├── lazy-loading.js    # Carga diferida
-│   │   ├── monitoring.js      # Monitoreo y observabilidad
-│   │   ├── navigation.js      # Navegación
-│   │   ├── particles.js       # Efectos de partículas
-│   │   ├── performance.js     # Optimizaciones de rendimiento
-│   │   ├── resources.js       # Biblioteca de recursos
-│   │   ├── service-worker.js  # Service Worker
-│   │   ├── tabs.js            # Sistema de pestañas
-│   │   ├── tooltips.js        # Tooltips
-│   │   └── tracking.js        # Tracking de eventos
-│   ├── utils/                 # Utilidades
-│   │   └── debounce.js        # Función debounce
-│   └── main.js                # Punto de entrada principal
-├── styles/                    # CSS modular
-│   ├── base/                  # Base y variables
-│   │   ├── reset.css          # Reset CSS
-│   │   └── variables.css      # Variables CSS
-│   ├── components/            # Componentes
-│   │   ├── about.css          # Estilos de "Sobre Nosotros"
-│   │   ├── accessibility.css  # Panel de accesibilidad
-│   │   ├── buttons.css        # Botones
-│   │   ├── cards.css          # Tarjetas
-│   │   ├── contact.css        # Página de contacto
-│   │   ├── developer.css      # Sección de desarrollador
-│   │   ├── faq-categories.css # Categorías de FAQ
-│   │   ├── i18n.css           # Selector de idioma
-│   │   ├── loading.css        # Estados de carga
-│   │   ├── privacy.css        # Página de privacidad
-│   │   ├── research.css       # Página de investigación
-│   │   ├── resources-library.css # Biblioteca de recursos
-│   │   ├── sections.css       # Secciones principales
-│   │   └── tooltips.css       # Tooltips
-│   ├── layout/                # Layout
-│   │   ├── container.css      # Contenedores
-│   │   ├── footer.css         # Footer
-│   │   └── header.css         # Header
-│   ├── utilities/             # Utilidades
-│   │   ├── accessibility.css  # Utilidades de accesibilidad
-│   │   ├── animations.css     # Animaciones
-│   │   ├── device-optimizations.css # Optimizaciones por dispositivo
-│   │   └── responsive.css     # Media queries responsive
-│   └── main.css               # Archivo principal (imports)
-├── index.html                 # Página principal
-├── comparar.html              # Página de comparación
-├── contacto.html              # Página de contacto
-├── desarrollo.html            # Página de desarrollo
-├── investigacion.html         # Página de investigación
-├── privacidad.html            # Política de privacidad
-├── recursos.html              # Biblioteca de recursos
-├── seguridad.html             # Página de seguridad
-├── sobre-nosotros.html        # Sobre nosotros
-├── terminos.html              # Términos y condiciones
-├── manifest.json              # PWA manifest
-├── sw.js                      # Service Worker
-├── sitemap.xml                # Sitemap para SEO
-├── robots.txt                 # Robots.txt
-├── package.json               # Dependencias y scripts
-├── netlify.toml               # Configuración de Netlify
+├── app/                        # Next.js App Router
+│   ├── layout.tsx             # Layout principal
+│   ├── page.tsx               # Página principal
+│   ├── contacto/              # Página de contacto
+│   ├── desarrollo/            # Página de desarrollo
+│   ├── privacidad/            # Política de privacidad
+│   ├── terminos/              # Términos de servicio
+│   ├── sobre-nosotros/        # Sobre nosotros
+│   ├── comparar/              # Página de comparación
+│   ├── seguridad/             # Página de seguridad
+│   ├── investigacion/         # Página de investigación
+│   ├── recursos/              # Biblioteca de recursos
+│   ├── sitemap.ts             # Sitemap generado
+│   ├── robots.ts              # Robots.txt generado
+│   └── 404.tsx                # Página 404
+├── components/                 # Componentes React
+│   ├── layout/               # Header, Footer
+│   ├── sections/              # Secciones de la página principal
+│   ├── forms/                 # Formularios
+│   ├── resources/             # Componentes de recursos
+│   ├── ClientInitializer.tsx  # Inicializador de hooks
+│   ├── CookieConsent.tsx      # Banner de cookies
+│   └── AccessibilityPanel.tsx # Panel de accesibilidad
+├── lib/                        # Utilidades y lógica
+│   ├── hooks/                 # Hooks personalizados
+│   │   ├── useNavigation.ts
+│   │   ├── useParticles.ts
+│   │   ├── useDeviceDetection.ts
+│   │   ├── useAccessibility.ts
+│   │   ├── useForms.ts
+│   │   ├── useCookieConsent.ts
+│   │   ├── useAnalytics.ts
+│   │   └── usePerformanceMonitoring.ts
+│   └── utils/                 # Utilidades
+│       ├── seo.ts             # Generación de metadata
+│       └── performance.ts     # Utilidades de performance
+├── public/                     # Archivos estáticos
+│   ├── assets/                # Imágenes e iconos
+│   ├── sw.js                  # Service Worker
+│   ├── manifest.json          # PWA manifest
+│   └── favicon.*              # Favicons
+├── styles/                     # CSS modular
+│   ├── base/                  # Reset y variables
+│   ├── components/            # Estilos de componentes
+│   ├── layout/                # Estilos de layout
+│   └── utilities/             # Utilidades CSS
+├── scripts/                    # Scripts legacy (referencia)
+│   └── modules/               # Módulos JavaScript originales
+├── docs/                       # Documentación
+│   ├── ARQUITECTURA.md
+│   └── ICONOS.md
+├── next.config.js              # Configuración de Next.js
+├── tsconfig.json              # Configuración de TypeScript
 ├── vercel.json                # Configuración de Vercel
+├── package.json               # Dependencias
 └── README.md                  # Este archivo
 ```
 
-> 📖 **Documentación completa de arquitectura:** [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md)
+> 📖 **Documentación de migración:** [MIGRACION_NEXTJS.md](./MIGRACION_NEXTJS.md)  
+> 📖 **Guía de deployment:** [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 ## 👨‍💻 Desarrollador
 
@@ -255,10 +191,12 @@ Desarrollador Principal
 - 📱 **Aplicación Anto**: [github.com/Mar-cere/Anto](https://github.com/Mar-cere/Anto)
 - 🌐 **Sitio Web**: [github.com/Mar-cere/antoapps-website](https://github.com/Mar-cere/antoapps-website)
 
-> 💼 Este sitio web fue desarrollado como parte del portafolio profesional, demostrando habilidades en desarrollo web moderno, UX/UI, accesibilidad y optimización de rendimiento.
+> 💼 Este sitio web fue desarrollado como parte del portafolio profesional, demostrando habilidades en desarrollo web moderno, Next.js, TypeScript, UX/UI, accesibilidad y optimización de rendimiento.
 
 ## 📚 Documentación Adicional
 
+- [Migración a Next.js](./MIGRACION_NEXTJS.md) - Progreso de la migración
+- [Guía de Deployment](./DEPLOYMENT.md) - Instrucciones de deployment
 - [Arquitectura del Proyecto](./docs/ARQUITECTURA.md)
 - [Roadmap de Mejoras](./ROADMAP_MEJORAS.md)
 - [Mejoras Implementadas](./MEJORAS_IMPLEMENTADAS.md)
@@ -269,7 +207,7 @@ Desarrollador Principal
 - Todos los datos de usuarios están protegidos con encriptación
 - Cumplimiento con normativas de privacidad (GDPR, CCPA)
 - No se comparten datos con terceros sin consentimiento
-- Política de privacidad completa: [privacidad.html](./privacidad.html)
+- Política de privacidad completa: [/privacidad](/privacidad)
 
 ## 📊 Precios
 
@@ -281,7 +219,7 @@ Anto ofrece planes flexibles basados en duración:
 - **6 Meses**: $20.990 CLP
 - **1 Año**: $39.990 CLP
 
-> 💰 Ver comparación de planes: [comparar.html](./comparar.html)
+> 💰 Ver comparación de planes: [/comparar](/comparar)
 
 ## 🤝 Contribuir
 
@@ -296,6 +234,7 @@ Este proyecto es privado y propiedad de AntoApps.
 - Estudios científicos que respaldan la efectividad de las intervenciones digitales en salud mental
 - Comunidad de desarrolladores web por las mejores prácticas
 - Usuarios de Anto por su feedback continuo
+- Next.js y React por las herramientas increíbles
 
 ---
 
