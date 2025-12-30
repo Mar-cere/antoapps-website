@@ -50,15 +50,10 @@ export function initEnhancedParticles() {
         });
     }
     
-    // Efecto de cursor interactivo
+    // Tracking de posición del mouse (sin efectos visuales)
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        
-        // Crear partícula en la posición del cursor
-        if (Math.random() > 0.95) {
-            createCursorParticle(mouseX, mouseY);
-        }
     });
     
     // Animación de partículas
@@ -72,16 +67,6 @@ export function initEnhancedParticles() {
             if (particle.x < 0 || particle.x > 100) particle.vx *= -1;
             if (particle.y < 0 || particle.y > 100) particle.vy *= -1;
             
-            // Interacción con cursor
-            const dx = (mouseX / window.innerWidth) * 100 - particle.x;
-            const dy = (mouseY / window.innerHeight) * 100 - particle.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            if (distance < 20) {
-                const force = (20 - distance) / 20;
-                particle.vx -= (dx / distance) * force * 0.1;
-                particle.vy -= (dy / distance) * force * 0.1;
-            }
             
             particle.element.style.left = particle.x + '%';
             particle.element.style.top = particle.y + '%';
@@ -90,29 +75,6 @@ export function initEnhancedParticles() {
         animationFrameId = requestAnimationFrame(animateParticles);
     }
     
-    // Crear partícula en posición del cursor
-    function createCursorParticle(x, y) {
-        const particle = document.createElement('div');
-        particle.className = 'particle-cursor';
-        particle.style.cssText = `
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background: rgba(26, 221, 219, 0.8);
-            border-radius: 50%;
-            left: ${x}px;
-            top: ${y}px;
-            pointer-events: none;
-            z-index: 9999;
-            animation: cursorParticle 1s ease-out forwards;
-        `;
-        
-        document.body.appendChild(particle);
-        
-        setTimeout(() => {
-            particle.remove();
-        }, 1000);
-    }
     
     // Agregar estilos CSS
     if (!document.getElementById('enhanced-particles-styles')) {
@@ -138,16 +100,6 @@ export function initEnhancedParticles() {
                 }
             }
             
-            @keyframes cursorParticle {
-                0% {
-                    transform: scale(1);
-                    opacity: 1;
-                }
-                100% {
-                    transform: scale(3);
-                    opacity: 0;
-                }
-            }
             
             .particle-enhanced {
                 will-change: transform, opacity;

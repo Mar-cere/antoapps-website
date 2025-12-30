@@ -68,6 +68,22 @@
     {
       "source": "/investigacion/",
       "destination": "/investigacion.html"
+    },
+    {
+      "source": "/desarrollo",
+      "destination": "/desarrollo.html"
+    },
+    {
+      "source": "/desarrollo/",
+      "destination": "/desarrollo.html"
+    },
+    {
+      "source": "/recursos",
+      "destination": "/recursos.html"
+    },
+    {
+      "source": "/recursos/",
+      "destination": "/recursos.html"
     }
   ],
   "redirects": [
@@ -99,6 +115,16 @@
     {
       "source": "/investigacion.html",
       "destination": "/investigacion",
+      "permanent": true
+    },
+    {
+      "source": "/desarrollo.html",
+      "destination": "/desarrollo",
+      "permanent": true
+    },
+    {
+      "source": "/recursos.html",
+      "destination": "/recursos",
       "permanent": true
     }
   ],

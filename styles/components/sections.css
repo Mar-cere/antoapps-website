@@ -238,7 +238,7 @@
 
 /* Benefits */
 .benefits {
-    background: linear-gradient(180deg, rgba(3, 10, 36, 0.5) 0%, var(--bg-dark) 100%);
+    background: var(--bg-dark);
 }
 
 .benefits-tabs {
