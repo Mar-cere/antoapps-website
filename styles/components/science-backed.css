@@ -1,0 +1,175 @@
+/* ============================================
+   SCIENCE BACKED SECTION (Homepage)
+   ============================================ */
+
+.science-backed {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.science-backed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(26, 221, 219, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(163, 184, 232, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.science-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
+}
+
+.science-badge {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+.science-header .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: var(--spacing-md);
+    background: linear-gradient(135deg, var(--white) 0%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.science-header .section-subtitle {
+    font-size: 1.25rem;
+    color: var(--secondary-color);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.studies-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
+}
+
+.study-preview-card {
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    border-radius: 20px;
+    padding: var(--spacing-lg);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.study-preview-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.study-preview-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 40px rgba(26, 221, 219, 0.2);
+    transform: translateY(-5px);
+}
+
+.study-preview-card:hover::before {
+    transform: scaleX(1);
+}
+
+.study-preview-badge {
+    display: inline-block;
+    background: rgba(26, 221, 219, 0.2);
+    color: var(--primary-color);
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--primary-color);
+}
+
+.study-preview-card h3 {
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.4;
+}
+
+.study-preview-authors {
+    color: var(--primary-color);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+}
+
+.study-preview-abstract {
+    color: var(--secondary-color);
+    line-height: 1.7;
+    font-size: 0.9375rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.study-preview-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.metric-badge {
+    background: rgba(26, 221, 219, 0.1);
+    color: var(--primary-color);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid var(--primary-color);
+}
+
+.science-cta {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .science-header .section-title {
+        font-size: 2rem;
+    }
+    
+    .science-header .section-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    .studies-preview-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .science-badge {
+        font-size: 3rem;
+    }
+}
+
