@@ -96,8 +96,8 @@ const faqMoreData = [
   {
     id: 13,
     question: '¿Anto es adecuado para adolescentes?',
-    answer:
-      'Anto está diseñado para usuarios de 18 años o más. Para menores de 18 años, recomendamos que usen la aplicación bajo la supervisión de un padre o tutor legal. Estamos desarrollando una versión específica para adolescentes (13-17 años) con contenido adaptado y controles parentales, que estará disponible próximamente. Si eres padre o tutor y tienes preguntas sobre el uso de Anto por parte de un menor, contáctanos en marcelo.ull@antoapps.com.',
+        answer:
+          'Anto está diseñado para usuarios de 18 años o más. Para menores de 18 años, recomendamos que usen la aplicación bajo la supervisión de un padre o tutor legal. Estamos desarrollando una versión específica para adolescentes (13-17 años) con contenido adaptado y controles parentales, que estará disponible próximamente. Si eres padre o tutor y tienes preguntas sobre el uso de Anto por parte de un menor, contáctanos en marcelo.ull@antoapps.com o a través de nuestro Telegram: t.me/marcere23.',
     category: 'funcionalidad',
   },
   {
@@ -124,8 +124,8 @@ const faqMoreData = [
   {
     id: 17,
     question: '¿Qué hago si tengo problemas técnicos?',
-    answer:
-      'Ofrecemos soporte técnico 24/7 a través de la aplicación, email (marcelo.ull@antoapps.com), y chat en vivo. Nuestro equipo de soporte responde típicamente en menos de 2 horas. También tenemos una sección de ayuda dentro de la aplicación con guías paso a paso y solución de problemas comunes. Si encuentras un bug o problema, puedes reportarlo directamente desde la app y lo solucionaremos lo antes posible.',
+        answer:
+          'Ofrecemos soporte técnico 24/7 a través de múltiples canales: email corporativo (marcelo.ull@antoapps.com), email personal (marcelo0.nicolas@gmail.com), Telegram (t.me/marcere23), y LinkedIn. Nuestro equipo de soporte responde típicamente en menos de 2 horas. También tenemos una sección de ayuda dentro de la aplicación con guías paso a paso y solución de problemas comunes. Si encuentras un bug o problema, puedes reportarlo directamente desde la app y lo solucionaremos lo antes posible.',
     category: 'tecnica',
   },
 ];

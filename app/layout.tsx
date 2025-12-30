@@ -114,8 +114,8 @@ export default function RootLayout({
               logo: 'https://antoapps.com/assets/images/antoIcon.png',
               description: 'Mejorando la salud mental, una conversación a la vez.',
               sameAs: [
-                'https://www.instagram.com/antoapps',
-                'https://www.linkedin.com/company/antoapps',
+                'https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/',
+                'https://t.me/marcere23',
               ],
               contactPoint: {
                 '@type': 'ContactPoint',

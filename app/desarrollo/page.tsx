@@ -51,14 +51,44 @@ export default function DesarrolloPage() {
                   rel="noopener noreferrer"
                   className="btn btn-secondary"
                 >
-                  GitHub Profile
+                  GitHub
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://t.me/marcere23"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary"
+                >
+                  Telegram
                 </a>
                 <a
                   href="mailto:marcelo.ull@antoapps.com"
                   className="btn btn-primary"
                 >
-                  Contactar
+                  Email
                 </a>
+              </div>
+              <div style={{ marginTop: 'var(--spacing-md)' }}>
+                <p style={{ color: 'var(--secondary-color)', marginBottom: 'var(--spacing-xs)' }}>
+                  <strong style={{ color: 'var(--white)' }}>Email Corporativo:</strong>{' '}
+                  <a href="mailto:marcelo.ull@antoapps.com" style={{ color: 'var(--primary-color)' }}>
+                    marcelo.ull@antoapps.com
+                  </a>
+                </p>
+                <p style={{ color: 'var(--secondary-color)' }}>
+                  <strong style={{ color: 'var(--white)' }}>Email Personal:</strong>{' '}
+                  <a href="mailto:marcelo0.nicolas@gmail.com" style={{ color: 'var(--primary-color)' }}>
+                    marcelo0.nicolas@gmail.com
+                  </a>
+                </p>
               </div>
             </div>
 

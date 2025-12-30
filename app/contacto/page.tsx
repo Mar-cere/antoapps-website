@@ -51,8 +51,16 @@ export default function ContactoPage() {
                   <div className="contact-detail-item">
                     <div className="contact-icon">📧</div>
                     <div>
-                      <h3>Email</h3>
+                      <h3>Email Corporativo</h3>
                       <a href="mailto:marcelo.ull@antoapps.com">marcelo.ull@antoapps.com</a>
+                    </div>
+                  </div>
+
+                  <div className="contact-detail-item">
+                    <div className="contact-icon">📧</div>
+                    <div>
+                      <h3>Email Personal</h3>
+                      <a href="mailto:marcelo0.nicolas@gmail.com">marcelo0.nicolas@gmail.com</a>
                     </div>
                   </div>
 
@@ -67,21 +75,21 @@ export default function ContactoPage() {
                   <div className="contact-detail-item">
                     <div className="contact-icon">🌐</div>
                     <div>
-                      <h3>Redes Sociales</h3>
+                      <h3>Redes Sociales y Contacto</h3>
                       <div className="social-links">
                         <a
-                          href="https://www.instagram.com/antoapps"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Instagram
-                        </a>
-                        <a
-                          href="https://www.linkedin.com/company/antoapps"
+                          href="https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           LinkedIn
+                        </a>
+                        <a
+                          href="https://t.me/marcere23"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Telegram
                         </a>
                         <a
                           href="https://github.com/Mar-cere"

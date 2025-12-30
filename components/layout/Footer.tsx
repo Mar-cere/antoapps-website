@@ -11,20 +11,26 @@ export default function Footer() {
             <p>Mejorando la salud mental, una conversación a la vez.</p>
             <div className="social-links">
               <a
-                href="https://www.instagram.com/antoapps"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-              >
-                Instagram
-              </a>
-              <a
-                href="https://www.linkedin.com/company/antoapps"
+                href="https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
               >
                 LinkedIn
+              </a>
+              <a
+                href="https://t.me/marcere23"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Telegram"
+              >
+                Telegram
+              </a>
+              <a
+                href="mailto:marcelo.ull@antoapps.com"
+                aria-label="Email Corporativo"
+              >
+                Email
               </a>
             </div>
           </div>
