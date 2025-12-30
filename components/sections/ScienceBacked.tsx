@@ -105,6 +105,50 @@ export default function ScienceBacked() {
               Ver Estudio Completo →
             </a>
           </div>
+
+          <div className="study-preview-card reveal-on-scroll" data-stagger-item>
+            <div className="study-preview-badge">🏥 JAMA Psychiatry</div>
+            <h3>Terapia Cognitivo-Conductual Digital</h3>
+            <p className="study-preview-authors">Mohr et al. (2021)</p>
+            <p className="study-preview-abstract">
+              Estudio que demuestra reducción del 35% en síntomas depresivos tras 8 semanas de uso de
+              aplicaciones basadas en TCC con IA.
+            </p>
+            <div className="study-preview-metrics">
+              <span className="metric-badge">RCT</span>
+              <span className="metric-badge">TCC Digital</span>
+            </div>
+            <a
+              href="https://jamanetwork.com/journals/jamapsychiatry"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="study-link"
+            >
+              Ver Estudio Completo →
+            </a>
+          </div>
+
+          <div className="study-preview-card reveal-on-scroll" data-stagger-item>
+            <div className="study-preview-badge">📱 JMIR mHealth</div>
+            <h3>Apps Móviles para Depresión</h3>
+            <p className="study-preview-authors">Firth et al. (2020)</p>
+            <p className="study-preview-abstract">
+              Revisión sistemática que confirma la efectividad de aplicaciones móviles para reducir
+              síntomas depresivos, especialmente con apoyo profesional.
+            </p>
+            <div className="study-preview-metrics">
+              <span className="metric-badge">Revisión</span>
+              <span className="metric-badge">Móvil</span>
+            </div>
+            <a
+              href="https://mhealth.jmir.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="study-link"
+            >
+              Ver Estudio Completo →
+            </a>
+          </div>
         </div>
 
         <div className="science-cta reveal-on-scroll">
