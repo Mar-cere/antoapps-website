@@ -36,14 +36,12 @@
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
-    line-height: 1.2;
+    line-height: var(--line-height-tight);
     margin-bottom: var(--spacing-md);
-    background: linear-gradient(135deg, var(--white) 0%, var(--primary-color) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--white);
+    letter-spacing: -0.02em;
 }
 
 .hero-subtitle {
@@ -74,10 +72,9 @@
     align-items: center;
     gap: var(--spacing-xs);
     padding: var(--spacing-sm) var(--spacing-md);
-    background: rgba(26, 221, 219, 0.15);
-    border: 1px solid rgba(26, 221, 219, 0.3);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
 }
 
 .hero-stat-icon {
@@ -157,13 +154,12 @@
 .phone-screen {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--bg-dark) 0%, rgba(26, 221, 219, 0.1) 100%);
-    border-radius: 20px;
+    background: var(--bg-dark);
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: hidden;
 }
 
 .app-preview {
@@ -183,7 +179,6 @@
     height: 100%;
     object-fit: contain;
     border-radius: 12px;
-    animation: pulse 3s ease-in-out infinite;
 }
 
 @keyframes pulse {
@@ -389,7 +384,7 @@
 
 /* Pricing */
 .pricing {
-    background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(3, 10, 36, 0.7) 100%);
+    background: var(--bg-dark);
 }
 
 .pricing-grid {
@@ -592,7 +587,9 @@
 
 /* CTA Section */
 .cta {
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.18) 0%, rgba(163, 184, 232, 0.18) 100%);
+    background: var(--card-bg);
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
     text-align: center;
     padding: var(--spacing-xl) 0;
 }
