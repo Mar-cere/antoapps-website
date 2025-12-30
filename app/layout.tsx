@@ -52,17 +52,18 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/manifest.json',
-  themeColor: '#030A24',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
   metadataBase: new URL('https://antoapps.com'),
   alternates: {
     canonical: 'https://antoapps.com',
   },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: '#030A24',
 };
 
 export default function RootLayout({

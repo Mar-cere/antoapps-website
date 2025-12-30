@@ -74,11 +74,17 @@ export function usePerformanceMonitoring() {
       };
     }
 
-    // Page load time
-    if (window.performance && window.performance.timing) {
-      const loadTime =
-        window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;
-      console.log('Page Load Time:', loadTime, 'ms');
+    // Page load time (usando Navigation Timing API)
+    try {
+      const perfEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+      if (perfEntries.length > 0) {
+        const navTiming = perfEntries[0];
+        const loadTime = navTiming.loadEventEnd - navTiming.fetchStart;
+        console.log('Page Load Time:', loadTime, 'ms');
+      }
+    } catch (e) {
+      // Fallback para navegadores que no soportan Navigation Timing API
+      console.log('Navigation Timing API no disponible');
     }
   }, [pathname]);
 }

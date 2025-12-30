@@ -13,9 +13,10 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   // Code splitting y optimizaciones
-  experimental: {
-    optimizeCss: true,
-  },
+  // optimizeCss deshabilitado temporalmente debido a dependencias faltantes
+  // experimental: {
+  //   optimizeCss: true,
+  // },
   // Compresión
   compress: true,
   // Production optimizations

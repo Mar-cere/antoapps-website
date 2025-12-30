@@ -5,6 +5,8 @@ import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import AccessibilityPanel from '@/components/AccessibilityPanel';
 
+export const dynamic = 'force-dynamic';
+
 export default function NotFound() {
   return (
     <>
