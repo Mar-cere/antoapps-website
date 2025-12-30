@@ -24,6 +24,7 @@ export default function Pricing() {
             marginLeft: 'auto',
             marginRight: 'auto',
             backdropFilter: 'blur(10px)',
+            opacity: 1,
           }}
         >
           <p style={{ color: 'var(--secondary-color)', marginBottom: 'var(--spacing-xs)' }}>

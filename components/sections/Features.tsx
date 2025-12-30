@@ -182,6 +182,7 @@ export default function Features() {
               borderRadius: '16px',
               textAlign: 'center',
               backdropFilter: 'blur(10px)',
+              opacity: 1,
             }}
           >
             <h3

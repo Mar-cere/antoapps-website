@@ -28,6 +28,14 @@ export default function ScienceBacked() {
               <span className="metric-badge">RCT</span>
               <span className="metric-badge">70 participantes</span>
             </div>
+            <a
+              href="https://www.jmir.org/2017/6/e19/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="study-link"
+            >
+              Ver Estudio Completo →
+            </a>
           </div>
 
           <div className="study-preview-card reveal-on-scroll" data-stagger-item>
@@ -42,6 +50,14 @@ export default function ScienceBacked() {
               <span className="metric-badge">Meta-análisis</span>
               <span className="metric-badge">83 estudios</span>
             </div>
+            <a
+              href="https://onlinelibrary.wiley.com/doi/10.1002/wps.20673"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="study-link"
+            >
+              Ver Estudio Completo →
+            </a>
           </div>
 
           <div className="study-preview-card reveal-on-scroll" data-stagger-item>
@@ -56,6 +72,14 @@ export default function ScienceBacked() {
               <span className="metric-badge">Nature</span>
               <span className="metric-badge">Revisión</span>
             </div>
+            <a
+              href="https://www.nature.com/articles/s41746-022-00642-8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="study-link"
+            >
+              Ver Estudio Completo →
+            </a>
           </div>
 
           <div className="study-preview-card reveal-on-scroll" data-stagger-item>
@@ -70,6 +94,14 @@ export default function ScienceBacked() {
               <span className="metric-badge">Meta-análisis</span>
               <span className="metric-badge">28 estudios</span>
             </div>
+            <a
+              href="https://jamanetwork.com/journals/jamanetworkopen/article-abstract/2809992"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="study-link"
+            >
+              Ver Estudio Completo →
+            </a>
           </div>
         </div>
 

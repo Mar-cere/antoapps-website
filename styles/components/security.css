@@ -4,7 +4,7 @@
 
 .security-detailed {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.05) 0%, rgba(163, 184, 232, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(26, 221, 219, 0.12) 0%, rgba(163, 184, 232, 0.12) 100%);
 }
 
 .security-grid {

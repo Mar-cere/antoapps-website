@@ -48,7 +48,7 @@ export default function Values() {
             marginTop: 'var(--spacing-xl)',
             padding: 'var(--spacing-lg)',
             background:
-              'linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%)',
+              'linear-gradient(135deg, rgba(26, 221, 219, 0.18) 0%, rgba(163, 184, 232, 0.18) 100%)',
             border: '1px solid var(--card-border)',
             borderRadius: '20px',
             textAlign: 'center',

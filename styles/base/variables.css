@@ -10,8 +10,8 @@
     --secondary-color: #A3B8E8;
     
     /* Colores de Tarjetas */
-    --card-bg: rgba(29, 43, 95, 0.8);
-    --card-border: rgba(26, 221, 219, 0.15);
+    --card-bg: rgba(29, 43, 95, 0.9);
+    --card-border: rgba(26, 221, 219, 0.25);
     
     /* Colores de Estado */
     --success: #4CAF50;

@@ -15,7 +15,7 @@
 
 /* Solo aplicar animación si el elemento está fuera del viewport inicial */
 .reveal-on-scroll:not(.revealed) {
-    opacity: 0.3; /* Parcialmente visible */
+    opacity: 0.7; /* Parcialmente visible pero legible */
     transform: translateY(10px); /* Movimiento muy sutil */
 }
 
