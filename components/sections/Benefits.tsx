@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useScrollAnimations } from '@/lib/hooks/useScrollAnimations';
+import Tabs from '@/components/ui/Tabs';
 
 export default function Benefits() {
-  const [activeTab, setActiveTab] = useState('usuarios');
+  useScrollAnimations();
 
   const benefits = {
     usuarios: [
@@ -99,6 +100,60 @@ export default function Benefits() {
     ],
   };
 
+  const tabs = [
+    {
+      id: 'usuarios',
+      label: 'Para Usuarios',
+      content: (
+        <div className="benefits-list">
+          {benefits.usuarios.map((benefit, index) => (
+            <div key={index} className="benefit-item" data-stagger-item>
+              <span className="check-icon">✓</span>
+              <div>
+                <h4>{benefit.title}</h4>
+                <p>{benefit.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      id: 'profesionales',
+      label: 'Para Profesionales',
+      content: (
+        <div className="benefits-list">
+          {benefits.profesionales.map((benefit, index) => (
+            <div key={index} className="benefit-item" data-stagger-item>
+              <span className="check-icon">✓</span>
+              <div>
+                <h4>{benefit.title}</h4>
+                <p>{benefit.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      id: 'organizaciones',
+      label: 'Para Organizaciones',
+      content: (
+        <div className="benefits-list">
+          {benefits.organizaciones.map((benefit, index) => (
+            <div key={index} className="benefit-item" data-stagger-item>
+              <span className="check-icon">✓</span>
+              <div>
+                <h4>{benefit.title}</h4>
+                <p>{benefit.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+  ];
+
   return (
     <section id="beneficios" className="benefits" data-fade-section>
       <div className="container">
@@ -106,50 +161,7 @@ export default function Benefits() {
         <p className="section-subtitle reveal-on-scroll">
           Anto ofrece beneficios únicos según tus necesidades. Descubre cómo podemos ayudarte.
         </p>
-        <div className="benefits-tabs">
-          <button
-            className={`tab-btn ${activeTab === 'usuarios' ? 'active' : ''}`}
-            onClick={() => setActiveTab('usuarios')}
-            data-tab="usuarios"
-          >
-            Para Usuarios
-          </button>
-          <button
-            className={`tab-btn ${activeTab === 'profesionales' ? 'active' : ''}`}
-            onClick={() => setActiveTab('profesionales')}
-            data-tab="profesionales"
-          >
-            Para Profesionales
-          </button>
-          <button
-            className={`tab-btn ${activeTab === 'organizaciones' ? 'active' : ''}`}
-            onClick={() => setActiveTab('organizaciones')}
-            data-tab="organizaciones"
-          >
-            Para Organizaciones
-          </button>
-        </div>
-        <div className="benefits-content">
-          {Object.entries(benefits).map(([tab, items]) => (
-            <div
-              key={tab}
-              className={`tab-content ${activeTab === tab ? 'active' : ''}`}
-              id={tab}
-            >
-              <div className="benefits-list">
-                {items.map((benefit, index) => (
-                  <div key={index} className="benefit-item">
-                    <span className="check-icon">✓</span>
-                    <div>
-                      <h4>{benefit.title}</h4>
-                      <p>{benefit.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <Tabs tabs={tabs} defaultTab="usuarios" />
       </div>
     </section>
   );

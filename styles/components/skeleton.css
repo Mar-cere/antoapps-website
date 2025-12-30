@@ -1,0 +1,108 @@
+/* ============================================
+   SKELETON LOADERS
+   ============================================ */
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        rgba(26, 221, 219, 0.1) 0%,
+        rgba(26, 221, 219, 0.2) 50%,
+        rgba(26, 221, 219, 0.1) 100%
+    );
+    background-size: 200% 100%;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.skeleton.animated {
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.skeleton.text {
+    height: 1rem;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.skeleton.circular {
+    border-radius: 50%;
+    aspect-ratio: 1;
+}
+
+.skeleton.rectangular {
+    border-radius: 8px;
+}
+
+.skeleton-text-container {
+    width: 100%;
+}
+
+.skeleton-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.skeleton-study-card {
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    border-radius: 24px;
+    padding: var(--spacing-xl);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.skeleton-study-card .skeleton:first-child {
+    align-self: flex-start;
+}
+
+/* Skeleton para imágenes */
+.image-skeleton {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+}
+
+/* Skeleton para listas */
+.skeleton-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.skeleton-list-item {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+}
+
+.skeleton-list-item .skeleton.circular {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.skeleton-list-item .skeleton.text {
+    flex: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .skeleton-study-card {
+        padding: var(--spacing-lg);
+    }
+}
+

@@ -1,8 +1,10 @@
 'use client';
 
+import { useScrollAnimations } from '@/lib/hooks/useScrollAnimations';
 import Link from 'next/link';
 
 export default function ScienceBacked() {
+  useScrollAnimations();
   return (
     <section id="investigacion" className="science-backed" data-fade-section>
       <div className="container">
