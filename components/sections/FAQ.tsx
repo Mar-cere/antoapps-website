@@ -1,7 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useFAQ } from '@/lib/hooks/useFAQ';
+import { useScrollAnimations } from '@/lib/hooks/useScrollAnimations';
+import FAQSearch, { useFAQHighlight } from '@/components/ui/FAQSearch';
 
 const faqData = [
   {
@@ -129,9 +131,12 @@ const faqMoreData = [
 ];
 
 export default function FAQ() {
+  useFAQ();
+  useScrollAnimations();
   const [showMore, setShowMore] = useState(false);
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
-  const [activeCategory, setActiveCategory] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   const categories = [
     { id: 'all', label: 'Todas' },
@@ -143,10 +148,19 @@ export default function FAQ() {
   ];
 
   const allFAQs = showMore ? [...faqData, ...faqMoreData] : faqData;
-  const displayedFAQs =
-    activeCategory === 'all'
-      ? allFAQs
-      : allFAQs.filter((faq) => faq.category === activeCategory);
+
+  const displayedFAQs = useMemo(() => {
+    return allFAQs.filter((faq) => {
+      const matchesCategory = selectedCategory === 'all' || faq.category === selectedCategory;
+      const matchesSearch =
+        searchQuery === '' ||
+        faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [allFAQs, searchQuery, selectedCategory]);
+
+  const highlightText = useFAQHighlight(searchQuery);
 
   const toggleFAQ = (id: number) => {
     setActiveFAQ(activeFAQ === id ? null : id);
@@ -160,18 +174,56 @@ export default function FAQ() {
           Encuentra respuestas a las preguntas más comunes sobre Anto
         </p>
 
+        <div className="faq-search-bar">
+          <div className="search-input-wrapper">
+            <span className="search-icon">🔍</span>
+            <input
+              type="text"
+              placeholder="Buscar en preguntas frecuentes..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="faq-search-input"
+              aria-label="Buscar preguntas frecuentes"
+            />
+            {searchQuery && (
+              <button
+                className="clear-search"
+                onClick={() => setSearchQuery('')}
+                aria-label="Limpiar búsqueda"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+          {searchQuery && (
+            <div className="search-results-count">
+              {displayedFAQs.length} {displayedFAQs.length === 1 ? 'resultado' : 'resultados'} encontrado
+              {displayedFAQs.length === 1 ? '' : 's'}
+            </div>
+          )}
+        </div>
+
         <div className="faq-categories" data-stagger>
           {categories.map((cat) => (
             <button
               key={cat.id}
-              className={`faq-category-btn ${activeCategory === cat.id ? 'active' : ''}`}
-              onClick={() => setActiveCategory(cat.id)}
+              className={`faq-category-btn ${selectedCategory === cat.id ? 'active' : ''}`}
+              onClick={() => setSelectedCategory(cat.id)}
               data-category={cat.id}
             >
               {cat.label}
             </button>
           ))}
         </div>
+
+        {displayedFAQs.length === 0 && searchQuery && (
+          <div className="no-results">
+            <p>No se encontraron resultados para &quot;{searchQuery}&quot;</p>
+            <button onClick={() => setSearchQuery('')} className="btn btn-secondary">
+              Limpiar búsqueda
+            </button>
+          </div>
+        )}
 
         <div className="faq-list" id="faqList">
           {displayedFAQs.map((faq) => (
@@ -182,11 +234,11 @@ export default function FAQ() {
               data-category={faq.category}
             >
               <button className="faq-question" onClick={() => toggleFAQ(faq.id)}>
-                <span>{faq.question}</span>
-                <span className="faq-icon">+</span>
+                <span>{highlightText(faq.question)}</span>
+                <span className="faq-icon">{activeFAQ === faq.id ? '−' : '+'}</span>
               </button>
               <div className={`faq-answer ${activeFAQ === faq.id ? 'active' : ''}`}>
-                <p>{faq.answer}</p>
+                <p>{highlightText(faq.answer)}</p>
               </div>
             </div>
           ))}

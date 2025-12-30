@@ -1,8 +1,11 @@
 'use client';
 
+import { useScrollAnimations } from '@/lib/hooks/useScrollAnimations';
 import Link from 'next/link';
+import PricingCalculator from '@/components/ui/PricingCalculator';
 
 export default function Pricing() {
+  useScrollAnimations();
   return (
     <section id="precios" className="pricing" data-fade-section>
       <div className="container">
@@ -12,28 +15,9 @@ export default function Pricing() {
           funcionalidades: asistente AI, análisis emocional, detección de crisis, herramientas de bienestar
           y soporte 24/7.
         </p>
-        <div
-          style={{
-            textAlign: 'center',
-            marginBottom: 'var(--spacing-lg)',
-            padding: 'var(--spacing-md)',
-            background: 'var(--card-bg)',
-            border: '1px solid var(--card-border)',
-            borderRadius: '16px',
-            maxWidth: '600px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            backdropFilter: 'blur(10px)',
-            opacity: 1,
-          }}
-        >
-          <p style={{ color: 'var(--secondary-color)', marginBottom: 'var(--spacing-xs)' }}>
-            <strong style={{ color: 'var(--primary-color)' }}>💰 Mejor Valor</strong>
-          </p>
-          <p style={{ color: 'var(--white)', fontSize: '1.0625rem' }}>
-            Ahorra hasta un 17% con planes de mayor duración. Todos los planes incluyen las mismas
-            funcionalidades premium.
-          </p>
+
+        <div style={{ marginBottom: 'var(--spacing-xl)' }}>
+          <PricingCalculator />
         </div>
         <div className="pricing-grid">
           <div className="pricing-card">

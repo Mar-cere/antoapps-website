@@ -10,7 +10,12 @@ export default function ContactForm() {
     email: '',
     message: '',
   });
-  const { errors, isSubmitting, handleSubmit } = useFormValidation();
+  const { errors, touched, isSubmitting, handleFieldBlur, handleFieldChange, handleSubmit } =
+    useFormValidation({
+      name: { required: true, minLength: 2 },
+      email: { required: true, email: true },
+      message: { required: true, minLength: 10 },
+    });
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const onSubmit = async (data: Record<string, string>) => {
@@ -49,12 +54,24 @@ export default function ContactForm() {
           name="name"
           required
           aria-required="true"
+          aria-invalid={touched.name && errors.name ? 'true' : 'false'}
+          aria-describedby={touched.name && errors.name ? 'name-error' : undefined}
           value={formData.name}
-          onChange={(e) =>
-            setFormData({ ...formData, name: e.target.value })
-          }
+          onChange={(e) => {
+            setFormData({ ...formData, name: e.target.value });
+            handleFieldChange('name', e.target.value);
+          }}
+          onBlur={(e) => handleFieldBlur('name', e.target.value)}
+          className={touched.name && errors.name ? 'error' : touched.name && !errors.name ? 'valid' : ''}
         />
-        {errors.name && <span className="error-message">{errors.name}</span>}
+        {touched.name && errors.name && (
+          <span id="name-error" className="error-message" role="alert">
+            {errors.name}
+          </span>
+        )}
+        {touched.name && !errors.name && formData.name && (
+          <span className="success-message">✓</span>
+        )}
       </div>
 
       <div className="form-group">
@@ -67,17 +84,32 @@ export default function ContactForm() {
           name="email"
           required
           aria-required="true"
+          aria-invalid={touched.email && errors.email ? 'true' : 'false'}
+          aria-describedby={touched.email && errors.email ? 'email-error' : undefined}
           value={formData.email}
-          onChange={(e) =>
-            setFormData({ ...formData, email: e.target.value })
-          }
+          onChange={(e) => {
+            setFormData({ ...formData, email: e.target.value });
+            handleFieldChange('email', e.target.value);
+          }}
+          onBlur={(e) => handleFieldBlur('email', e.target.value)}
+          className={touched.email && errors.email ? 'error' : touched.email && !errors.email ? 'valid' : ''}
         />
-        {errors.email && <span className="error-message">{errors.email}</span>}
+        {touched.email && errors.email && (
+          <span id="email-error" className="error-message" role="alert">
+            {errors.email}
+          </span>
+        )}
+        {touched.email && !errors.email && formData.email && (
+          <span className="success-message">✓</span>
+        )}
       </div>
 
       <div className="form-group">
         <label htmlFor="message">
           Mensaje <span className="required">*</span>
+          <span className="char-count">
+            {formData.message.length}/500
+          </span>
         </label>
         <textarea
           id="message"
@@ -85,28 +117,56 @@ export default function ContactForm() {
           rows={6}
           required
           aria-required="true"
+          aria-invalid={touched.message && errors.message ? 'true' : 'false'}
+          aria-describedby={touched.message && errors.message ? 'message-error' : undefined}
+          maxLength={500}
           value={formData.message}
-          onChange={(e) =>
-            setFormData({ ...formData, message: e.target.value })
-          }
+          onChange={(e) => {
+            setFormData({ ...formData, message: e.target.value });
+            handleFieldChange('message', e.target.value);
+          }}
+          onBlur={(e) => handleFieldBlur('message', e.target.value)}
+          className={touched.message && errors.message ? 'error' : touched.message && !errors.message ? 'valid' : ''}
         ></textarea>
-        {errors.message && (
-          <span className="error-message">{errors.message}</span>
+        {touched.message && errors.message && (
+          <span id="message-error" className="error-message" role="alert">
+            {errors.message}
+          </span>
+        )}
+        {touched.message && !errors.message && formData.message && (
+          <span className="success-message">✓</span>
         )}
       </div>
 
+      {errors.submit && (
+        <div className="form-error" role="alert">
+          {errors.submit}
+        </div>
+      )}
+
       {submitSuccess && (
-        <div className="form-success">
-          ¡Gracias por tu mensaje! Te contactaremos pronto.
+        <div className="form-success" role="alert">
+          <span className="success-icon">✓</span>
+          <div>
+            <strong>¡Gracias por tu mensaje!</strong>
+            <p>Te contactaremos pronto.</p>
+          </div>
         </div>
       )}
 
       <button
         type="submit"
         className="btn btn-primary btn-large"
-        disabled={isSubmitting}
+        disabled={isSubmitting || Object.keys(errors).length > 0}
       >
-        {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+        {isSubmitting ? (
+          <>
+            <span className="spinner"></span>
+            Enviando...
+          </>
+        ) : (
+          'Enviar Mensaje'
+        )}
       </button>
     </form>
   );

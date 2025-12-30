@@ -1,0 +1,160 @@
+/* ============================================
+   FORM VALIDATION STYLES
+   ============================================ */
+
+.form-group {
+    position: relative;
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xs);
+    color: var(--white);
+    font-weight: 500;
+}
+
+.char-count {
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+    font-weight: 400;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: var(--spacing-md);
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    border-radius: 12px;
+    color: var(--white);
+    font-size: 1rem;
+    font-family: var(--font-family);
+    transition: var(--transition);
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 221, 219, 0.1);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+    border-color: var(--error);
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.form-group input.valid,
+.form-group textarea.valid {
+    border-color: var(--info);
+    box-shadow: 0 0 0 3px rgba(107, 203, 119, 0.1);
+}
+
+.error-message {
+    display: block;
+    color: var(--error);
+    font-size: 0.875rem;
+    margin-top: var(--spacing-xs);
+    padding-left: var(--spacing-xs);
+    animation: slideDown 0.3s ease;
+}
+
+.success-message {
+    position: absolute;
+    right: var(--spacing-md);
+    top: calc(var(--spacing-md) + 1.5rem);
+    color: var(--info);
+    font-size: 1.25rem;
+    font-weight: 700;
+    animation: fadeIn 0.3s ease;
+}
+
+.form-error {
+    background: rgba(255, 107, 107, 0.1);
+    border: 2px solid var(--error);
+    border-radius: 12px;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    color: var(--error);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    animation: slideDown 0.3s ease;
+}
+
+.form-success {
+    background: rgba(107, 203, 119, 0.1);
+    border: 2px solid var(--info);
+    border-radius: 12px;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    color: var(--info);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    animation: slideDown 0.3s ease;
+}
+
+.form-success .success-icon {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.form-success strong {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.125rem;
+}
+
+.form-success p {
+    margin: 0;
+    color: var(--secondary-color);
+    font-size: 0.9375rem;
+}
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--white);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    margin-right: var(--spacing-xs);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.9375rem;
+        padding: var(--spacing-sm);
+    }
+
+    .success-message {
+        right: var(--spacing-sm);
+        top: calc(var(--spacing-sm) + 1.5rem);
+    }
+}
+
