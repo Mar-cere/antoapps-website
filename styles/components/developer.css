@@ -1,0 +1,128 @@
+/**
+ * DEVELOPER INFO COMPONENT
+ * Styles for developer information section
+ */
+
+.developer-info {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, white 100%);
+}
+
+.developer-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e0e0e0;
+}
+
+.developer-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.developer-avatar {
+    font-size: 5rem;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1ADDDB 0%, #A3B8E8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(26, 221, 219, 0.3);
+}
+
+.developer-details {
+    flex: 1;
+}
+
+.developer-details h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.developer-details h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #030A24;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #1ADDDB 0%, #A3B8E8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.developer-details p {
+    color: #666;
+    line-height: 1.7;
+    font-size: 1.0625rem;
+}
+
+.developer-contact {
+    text-align: center;
+}
+
+.developer-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #1ADDDB 0%, #A3B8E8 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(26, 221, 219, 0.3);
+}
+
+.developer-email:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 221, 219, 0.4);
+}
+
+.developer-email span:first-child {
+    font-size: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .developer-card {
+        padding: 2rem;
+    }
+    
+    .developer-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .developer-avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 4rem;
+    }
+    
+    .developer-details h3 {
+        font-size: 1.5rem;
+    }
+    
+    .developer-email {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+

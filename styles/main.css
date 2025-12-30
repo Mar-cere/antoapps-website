@@ -44,6 +44,7 @@
 @import url('./components/i18n.css');
 @import url('./components/accessibility.css');
 @import url('./components/development.css');
+@import url('./components/developer.css');
 
 /* Utilities */
 @import url('./utilities/animations.css');

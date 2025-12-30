@@ -355,7 +355,7 @@
 
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--spacing-md);
     margin-top: var(--spacing-lg);
 }
@@ -389,6 +389,19 @@
 .period {
     font-size: 1rem;
     color: var(--secondary-color);
+}
+
+.currency {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.pricing-period {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
 }
 
 .pricing-trial {
