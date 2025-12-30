@@ -156,8 +156,6 @@
     }
     </script>
     
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
@@ -1375,20 +1373,13 @@
         </svg>
     </button>
 
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
     <script type="module" src="scripts/main.js"></script>
     <script>
         // Scroll to top button
         const scrollToTopBtn = document.getElementById('scrollToTop');
-        const scrollProgress = document.getElementById('scrollProgress');
         
-        if (scrollToTopBtn && scrollProgress) {
+        if (scrollToTopBtn) {
             window.addEventListener('scroll', () => {
-                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-                scrollProgress.style.width = Math.min(scrollPercent, 100) + '%';
-                
                 if (window.scrollY > 300) {
                     scrollToTopBtn.classList.add('show');
                 } else {

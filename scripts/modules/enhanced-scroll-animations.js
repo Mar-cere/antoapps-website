@@ -14,7 +14,6 @@ export function initEnhancedScrollAnimations() {
     initSophisticatedReveals();
     
     // Scroll progress indicator
-    initScrollProgress();
 }
 
 function initStickyElements() {

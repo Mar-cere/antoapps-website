@@ -27,7 +27,6 @@ import { initTouchOptimizations } from './modules/touch-optimizations.js';
 import { initEnhancedScrollAnimations } from './modules/enhanced-scroll-animations.js';
 import { initMonitoring } from './modules/monitoring.js';
 import { initDeviceDetection } from './modules/device-detection.js';
-import { initI18n } from './modules/i18n.js';
 import { initAccessibility } from './modules/accessibility.js';
 
 /**
@@ -44,7 +43,6 @@ function init() {
     
     // Animations
     initScrollAnimations();
-    initHeaderScroll();
     initParticles();
     
     // Advanced animations
@@ -82,9 +80,6 @@ function init() {
     
     // Monitoring and observability
     initMonitoring();
-    
-    // Internationalization
-    initI18n();
     
     // Accessibility
     initAccessibility();

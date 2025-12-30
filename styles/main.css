@@ -24,7 +24,6 @@
 @import url('./components/technologies.css');
 @import url('./components/coming-soon.css');
 @import url('./components/contact.css');
-@import url('./components/scroll-ui.css');
 @import url('./components/about.css');
 @import url('./components/resources.css');
 @import url('./components/security.css');
@@ -42,7 +41,6 @@
 @import url('./components/faq-categories.css');
 @import url('./components/mobile-table-fixes.css');
 @import url('./components/resources-library.css');
-@import url('./components/i18n.css');
 @import url('./components/accessibility.css');
 @import url('./components/development.css');
 @import url('./components/developer.css');
