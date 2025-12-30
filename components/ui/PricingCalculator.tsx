@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 
 interface Plan {
   id: string;
@@ -132,6 +133,11 @@ export default function PricingCalculator() {
                                 : 12)
                     )}
                   </span>
+                </div>
+                <div style={{ marginTop: 'var(--spacing-lg)', textAlign: 'center' }}>
+                  <Link href="#descargar" className="btn btn-primary btn-large">
+                    Comenzar con {selectedPlanData.name}
+                  </Link>
                 </div>
               </div>
             </div>
