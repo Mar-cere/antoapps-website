@@ -78,18 +78,6 @@ export function initMicrointeractions() {
         }, 3000);
     };
     
-    // Scroll progress indicator
-    const scrollIndicator = document.createElement('div');
-    scrollIndicator.className = 'scroll-indicator';
-    document.body.appendChild(scrollIndicator);
-    
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        scrollIndicator.style.width = scrollPercent + '%';
-    });
-    
     // Loading states for forms
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {

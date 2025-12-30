@@ -111,19 +111,6 @@ function initSophisticatedReveals() {
     });
 }
 
-function initScrollProgress() {
-    const progressBar = document.querySelector('.scroll-progress');
-    if (!progressBar) return;
-    
-    window.addEventListener('scroll', () => {
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const progress = (scrollTop / (documentHeight - windowHeight)) * 100;
-        
-        progressBar.style.width = progress + '%';
-    }, { passive: true });
-}
 
 // Agregar estilos
 if (!document.getElementById('enhanced-scroll-styles')) {
@@ -158,16 +145,6 @@ if (!document.getElementById('enhanced-scroll-styles')) {
         
         [data-reveal-sophisticated].reveal-scale {
             transform: scale(1);
-        }
-        
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            z-index: 9999;
-            transition: width 0.1s ease;
         }
     `;
     document.head.appendChild(style);
