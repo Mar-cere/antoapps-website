@@ -80,12 +80,13 @@
 .finding-number {
     font-size: 3.5rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-color);
     margin-bottom: var(--spacing-sm);
     line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
 }
 
 .finding-card h4 {
@@ -197,6 +198,20 @@
     text-decoration: underline;
 }
 
+.study-citation {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--card-border);
+}
+
+.study-citation small {
+    color: var(--secondary-color);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    font-style: italic;
+    display: block;
+}
+
 .research-collaborations {
     padding: var(--spacing-xl) 0;
     background: var(--bg-dark);
@@ -293,9 +308,85 @@
     margin: 0;
 }
 
-.research-cta {
+.research-references {
     padding: var(--spacing-xl) 0;
     background: var(--bg-dark);
+}
+
+.references-list {
+    max-width: 900px;
+    margin: var(--spacing-xl) auto 0;
+}
+
+.reference-item {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.reference-item:hover {
+    border-color: var(--primary-color);
+    background: rgba(26, 221, 219, 0.05);
+}
+
+.reference-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 1.125rem;
+}
+
+.reference-content {
+    flex: 1;
+}
+
+.reference-content p {
+    color: var(--white);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.9375rem;
+}
+
+.reference-content strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.reference-content em {
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+.reference-link {
+    color: var(--primary-color);
+    font-size: 0.875rem;
+    text-decoration: none;
+    word-break: break-all;
+    display: inline-block;
+    margin-top: var(--spacing-xs);
+    transition: var(--transition);
+}
+
+.reference-link:hover {
+    text-decoration: underline;
+    color: var(--secondary-color);
+}
+
+.research-cta {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, rgba(26, 221, 219, 0.05) 0%, rgba(163, 184, 232, 0.05) 100%);
     text-align: center;
 }
 
