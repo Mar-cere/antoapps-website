@@ -34,7 +34,7 @@ export default function Header() {
   };
 
   return (
-    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+    <header className={`header sticky-header ${isScrolled ? 'scrolled' : ''}`}>
       <nav className="nav" role="navigation" aria-label="Navegación principal">
         <div className="container">
           <div className="nav-brand">

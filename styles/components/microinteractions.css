@@ -1,4 +1,234 @@
 /* ============================================
+   MICROINTERACTIONS MEJORADAS
+   ============================================ */
+
+/* Hover States Mejorados para Cards */
+.feature-card,
+.value-card,
+.pricing-card,
+.insight-card,
+.screenshot-card,
+.advanced-feature,
+.tech-spec-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover,
+.value-card:hover,
+.pricing-card:hover,
+.insight-card:hover,
+.screenshot-card:hover,
+.advanced-feature:hover,
+.tech-spec-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(26, 221, 219, 0.15);
+    border-color: var(--primary-color);
+}
+
+.feature-card::before,
+.value-card::before,
+.pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(26, 221, 219, 0.1),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.feature-card:hover::before,
+.value-card:hover::before,
+.pricing-card:hover::before {
+    left: 100%;
+}
+
+/* Iconos con Animación Sutil */
+.feature-icon,
+.value-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover .feature-icon,
+.value-card:hover .value-icon {
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 4px 8px rgba(26, 221, 219, 0.3));
+}
+
+/* Ripple Effect Mejorado para Botones */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary::after {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Pulse Animation para CTAs Importantes */
+.btn-primary.btn-large,
+.btn-primary.btn-cta {
+    animation: pulseCTA 2s ease-in-out infinite;
+}
+
+@keyframes pulseCTA {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(26, 221, 219, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(26, 221, 219, 0);
+    }
+}
+
+.btn-primary.btn-large:hover,
+.btn-primary.btn-cta:hover {
+    animation: none;
+}
+
+/* Feedback Visual Inmediato en Formularios */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 221, 219, 0.1);
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+input:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+    border-color: var(--success);
+}
+
+input:invalid:not(:placeholder-shown):not(:focus),
+textarea:invalid:not(:placeholder-shown):not(:focus) {
+    border-color: var(--error);
+    animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Transiciones de Color Más Suaves */
+a,
+button,
+.btn {
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease,
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+/* Loading States Mejorados */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(3, 10, 36, 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-radius: inherit;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Scroll Animations Refinadas */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Parallax Sutil */
+[data-parallax] {
+    transition: transform 0.1s ease-out;
+}
+
+/* Sticky Elements con Transiciones */
+.sticky-element {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sticky-element.scrolled {
+    background: rgba(3, 10, 36, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .btn-primary.btn-large,
+    .btn-primary.btn-cta {
+        animation: none;
+    }
+
+    .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+    }
+
+    * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================
    MICROINTERACTIONS COMPONENT
    ============================================ */
 

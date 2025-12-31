@@ -2,6 +2,8 @@
 
 import { useEffect } from 'react';
 
+// Hook mejorado para scroll animations refinadas
+
 export function useScrollAnimations() {
   useEffect(() => {
     const observerOptions = {
@@ -13,6 +15,17 @@ export function useScrollAnimations() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('revealed');
+          // Agregar clase para animaciones escalonadas
+          if (entry.target.hasAttribute('data-stagger')) {
+            const siblings = Array.from(entry.target.parentElement?.children || []);
+            siblings.forEach((sibling, index) => {
+              if (sibling === entry.target) {
+                setTimeout(() => {
+                  sibling.classList.add('revealed');
+                }, index * 100);
+              }
+            });
+          }
           observer.unobserve(entry.target);
         }
       });

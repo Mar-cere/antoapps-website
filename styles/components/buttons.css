@@ -3,7 +3,10 @@
    ============================================ */
 
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
     padding: 12px 24px;
     border-radius: 12px;
     text-decoration: none;
@@ -16,6 +19,8 @@
     font-family: var(--font-family);
     line-height: var(--line-height-tight);
     letter-spacing: 0.01em;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-primary {

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { ToastProvider } from '@/components/ui/ToastContainer';
 import '../styles/main.css';
 
 const inter = Inter({ 

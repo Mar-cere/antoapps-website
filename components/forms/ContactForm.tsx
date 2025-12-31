@@ -3,8 +3,11 @@
 import { useState, FormEvent } from 'react';
 import { useFormValidation } from '@/lib/hooks/useForms';
 import { trackFormSubmit } from '@/lib/hooks/useAnalytics';
+import { useToast } from '@/components/ui/ToastContainer';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
 
 export default function ContactForm() {
+  const toast = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,23 +19,22 @@ export default function ContactForm() {
       email: { required: true, email: true },
       message: { required: true, minLength: 10 },
     });
-  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const onSubmit = async (data: Record<string, string>) => {
-    // Aquí puedes agregar la lógica para enviar el formulario
-    // Por ejemplo, usando Fetch API o un servicio de backend
-    console.log('Formulario enviado:', data);
+    try {
+      // Aquí puedes agregar la lógica para enviar el formulario
+      // Por ejemplo, usando Fetch API o un servicio de backend
+      console.log('Formulario enviado:', data);
 
-    // Simular envío
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Simular envío
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    trackFormSubmit('contact');
-    setSubmitSuccess(true);
-    setFormData({ name: '', email: '', message: '' });
-
-    setTimeout(() => {
-      setSubmitSuccess(false);
-    }, 5000);
+      trackFormSubmit('contact');
+      toast.success('¡Mensaje enviado exitosamente! Te responderemos pronto.');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      toast.error('Error al enviar el mensaje. Por favor, intenta nuevamente.');
+    }
   };
 
   return (
@@ -62,7 +64,7 @@ export default function ContactForm() {
             handleFieldChange('name', e.target.value);
           }}
           onBlur={(e) => handleFieldBlur('name', e.target.value)}
-          className={touched.name && errors.name ? 'error' : touched.name && !errors.name ? 'valid' : ''}
+          className={`form-field ${touched.name && errors.name ? 'error' : touched.name && !errors.name ? 'valid' : ''}`}
         />
         {touched.name && errors.name && (
           <span id="name-error" className="error-message" role="alert">
@@ -92,7 +94,7 @@ export default function ContactForm() {
             handleFieldChange('email', e.target.value);
           }}
           onBlur={(e) => handleFieldBlur('email', e.target.value)}
-          className={touched.email && errors.email ? 'error' : touched.email && !errors.email ? 'valid' : ''}
+          className={`form-field ${touched.email && errors.email ? 'error' : touched.email && !errors.email ? 'valid' : ''}`}
         />
         {touched.email && errors.email && (
           <span id="email-error" className="error-message" role="alert">
@@ -126,7 +128,7 @@ export default function ContactForm() {
             handleFieldChange('message', e.target.value);
           }}
           onBlur={(e) => handleFieldBlur('message', e.target.value)}
-          className={touched.message && errors.message ? 'error' : touched.message && !errors.message ? 'valid' : ''}
+          className={`form-field ${touched.message && errors.message ? 'error' : touched.message && !errors.message ? 'valid' : ''}`}
         ></textarea>
         {touched.message && errors.message && (
           <span id="message-error" className="error-message" role="alert">
@@ -144,16 +146,6 @@ export default function ContactForm() {
         </div>
       )}
 
-      {submitSuccess && (
-        <div className="form-success" role="alert">
-          <span className="success-icon">✓</span>
-          <div>
-            <strong>¡Gracias por tu mensaje!</strong>
-            <p>Te contactaremos pronto.</p>
-          </div>
-        </div>
-      )}
-
       <button
         type="submit"
         className="btn btn-primary btn-large"
@@ -161,8 +153,8 @@ export default function ContactForm() {
       >
         {isSubmitting ? (
           <>
-            <span className="spinner"></span>
-            Enviando...
+            <LoadingSpinner size="sm" />
+            <span>Enviando...</span>
           </>
         ) : (
           'Enviar Mensaje'

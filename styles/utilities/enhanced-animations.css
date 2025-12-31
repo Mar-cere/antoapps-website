@@ -1,4 +1,152 @@
 /* ============================================
+   ENHANCED ANIMATIONS - SCROLL REFINADAS
+   ============================================ */
+
+/* Parallax Sutil en Elementos Clave */
+[data-parallax] {
+    will-change: transform;
+}
+
+.parallax-slow {
+    transform: translateZ(0);
+    transition: transform 0.1s ease-out;
+}
+
+.parallax-medium {
+    transform: translateZ(0);
+    transition: transform 0.15s ease-out;
+}
+
+.parallax-fast {
+    transform: translateZ(0);
+    transition: transform 0.2s ease-out;
+}
+
+/* Fade-in Más Suave y Escalonado */
+.fade-in-stagger {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-stagger.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-stagger:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.fade-in-stagger:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.fade-in-stagger:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.fade-in-stagger:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.fade-in-stagger:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.fade-in-stagger:nth-child(6) {
+    transition-delay: 0.6s;
+}
+
+/* Sticky Elements con Transiciones */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sticky-header.scrolled {
+    background: rgba(3, 10, 36, 0.98);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+}
+
+.sticky-section {
+    position: sticky;
+    top: 80px;
+    z-index: calc(var(--z-sticky) - 1);
+    transition: all 0.3s ease;
+}
+
+/* Scroll Reveal Mejorado */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Scale Reveal */
+.scale-reveal {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.scale-reveal.revealed {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Slide Reveal */
+.slide-reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-reveal-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in-stagger,
+    .scroll-reveal,
+    .scale-reveal,
+    .slide-reveal-left,
+    .slide-reveal-right {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    [data-parallax] {
+        transform: none !important;
+    }
+}
+
+/* ============================================
    ENHANCED ANIMATIONS
    ============================================ */
 

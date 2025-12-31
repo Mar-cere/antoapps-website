@@ -1,4 +1,129 @@
 /* ============================================
+   FORM VALIDATION MEJORADA
+   ============================================ */
+
+/* Indicadores de Progreso en Formularios Largos */
+.form-progress {
+    width: 100%;
+    height: 4px;
+    background: var(--card-bg);
+    border-radius: 2px;
+    margin-bottom: var(--spacing-md);
+    overflow: hidden;
+}
+
+.form-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+/* Confirmación Visual de Envío Exitoso */
+.form-success {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid var(--success);
+    border-radius: 12px;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    animation: formSuccessSlideIn 0.3s ease;
+}
+
+.form-success-icon {
+    font-size: 1.5rem;
+    color: var(--success);
+    flex-shrink: 0;
+}
+
+.form-success-message {
+    color: var(--white);
+    font-weight: var(--font-weight-medium);
+}
+
+@keyframes formSuccessSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mensajes de Error Contextuales Mejorados */
+.form-error-message {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--error);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+    animation: formErrorShake 0.3s ease;
+}
+
+.form-error-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+@keyframes formErrorShake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-3px);
+    }
+    75% {
+        transform: translateX(3px);
+    }
+}
+
+/* Validación en Tiempo Real Más Visible */
+.form-field {
+    position: relative;
+}
+
+.form-field.valid input,
+.form-field.valid textarea {
+    border-color: var(--success);
+    padding-right: 40px;
+}
+
+.form-field.valid::after {
+    content: '✓';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--success);
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    pointer-events: none;
+}
+
+.form-field.error input,
+.form-field.error textarea {
+    border-color: var(--error);
+    padding-right: 40px;
+}
+
+.form-field.error::after {
+    content: '✕';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--error);
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    pointer-events: none;
+}
+
+/* ============================================
    FORM VALIDATION STYLES
    ============================================ */
 
