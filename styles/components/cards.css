@@ -84,3 +84,23 @@
     box-shadow: var(--shadow-md);
 }
 
+/* Tipografía para tarjetas */
+.feature-card h3,
+.value-card h3,
+.pricing-card h3 {
+    font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+    font-weight: var(--font-weight-semibold);
+    color: var(--white);
+    margin-bottom: var(--spacing-sm);
+    line-height: var(--line-height-tight);
+}
+
+.feature-card p,
+.value-card p,
+.pricing-card p {
+    color: var(--secondary-color);
+    line-height: var(--line-height-base);
+    font-size: clamp(0.9375rem, 1.5vw, 1rem);
+    font-weight: var(--font-weight-normal);
+}
+

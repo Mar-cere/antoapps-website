@@ -7,13 +7,15 @@
     padding: 12px 24px;
     border-radius: 12px;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: var(--font-weight-semibold);
+    font-size: clamp(0.9375rem, 1.5vw, 1rem);
     transition: var(--transition);
     border: none;
     cursor: pointer;
     text-align: center;
     font-family: var(--font-family);
+    line-height: var(--line-height-tight);
+    letter-spacing: 0.01em;
 }
 
 .btn-primary {
@@ -41,7 +43,7 @@
 
 .btn-large {
     padding: 16px 32px;
-    font-size: 1.125rem;
+    font-size: clamp(1rem, 2vw, 1.125rem);
 }
 
 .btn-primary:hover {

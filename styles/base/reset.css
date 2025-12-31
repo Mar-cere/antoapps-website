@@ -15,14 +15,81 @@ html {
 body {
     font-family: var(--font-family);
     font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
     line-height: var(--line-height-base);
     color: var(--white);
     background-color: var(--bg-dark);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     /* Prevenir zoom en iOS al hacer doble tap */
     touch-action: manipulation;
+}
+
+/* Jerarquía tipográfica mejorada */
+h1, .h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-sm);
+}
+
+h2, .h2 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    letter-spacing: -0.01em;
+    margin-bottom: var(--spacing-sm);
+}
+
+h3, .h3 {
+    font-size: clamp(1.375rem, 3vw, 1.875rem);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--spacing-xs);
+}
+
+h4, .h4 {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-base);
+    margin-bottom: var(--spacing-xs);
+}
+
+h5, .h5 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-base);
+    margin-bottom: var(--spacing-xs);
+}
+
+h6, .h6 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-base);
+    margin-bottom: var(--spacing-xs);
+}
+
+p {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    margin-bottom: var(--spacing-sm);
+    font-weight: var(--font-weight-normal);
+}
+
+a {
+    font-weight: var(--font-weight-medium);
+    transition: color 0.2s ease;
+}
+
+strong, b {
+    font-weight: var(--font-weight-semibold);
+}
+
+em, i {
+    font-style: italic;
 }
 
 /* Prevenir zoom automático en inputs en iOS */
@@ -34,13 +101,26 @@ select {
 
 @media (max-width: 767px) {
     body {
-        font-size: 16px; /* Asegurar tamaño legible en móviles */
+        font-size: 17px; /* Tamaño base ligeramente mayor para mejor legibilidad */
     }
     
     /* Mejorar legibilidad en móviles */
     p, li, span {
         -webkit-text-size-adjust: 100%;
         text-size-adjust: 100%;
+    }
+    
+    /* Ajustes tipográficos para móviles */
+    h1, .h1 {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+    }
+    
+    h2, .h2 {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+    
+    h3, .h3 {
+        font-size: clamp(1.25rem, 4vw, 1.5rem);
     }
 }
 

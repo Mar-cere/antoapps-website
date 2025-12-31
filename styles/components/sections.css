@@ -36,19 +36,20 @@
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
+    font-size: clamp(2rem, 5.5vw, 3.75rem);
+    font-weight: var(--font-weight-bold);
     line-height: var(--line-height-tight);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
     color: var(--white);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    font-weight: var(--font-weight-normal);
     color: var(--secondary-color);
-    margin-bottom: var(--spacing-lg);
-    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    line-height: var(--line-height-base);
 }
 
 .hero-cta {

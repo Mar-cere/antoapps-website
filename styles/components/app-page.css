@@ -16,18 +16,20 @@
 }
 
 .app-hero-title {
-    font-size: 3.5rem;
-    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: var(--font-weight-bold);
     color: var(--white);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
     line-height: var(--line-height-tight);
+    letter-spacing: -0.02em;
 }
 
 .app-hero-subtitle {
-    font-size: 1.375rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: var(--font-weight-normal);
     color: var(--secondary-color);
-    margin-bottom: var(--spacing-lg);
-    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+    line-height: var(--line-height-base);
 }
 
 .app-hero-badges {
@@ -167,22 +169,24 @@
 }
 
 .screenshot-label {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+    font-weight: var(--font-weight-semibold);
     color: var(--white);
     margin-bottom: var(--spacing-xs);
     position: relative;
     z-index: 1;
+    line-height: var(--line-height-tight);
 }
 
 .screenshot-description {
     color: var(--secondary-color);
-    font-size: 0.9375rem;
-    line-height: 1.6;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    line-height: var(--line-height-base);
     max-width: 250px;
     margin: 0;
     position: relative;
     z-index: 1;
+    font-weight: var(--font-weight-normal);
 }
 
 .screenshots-note {
@@ -244,16 +248,19 @@
 }
 
 .advanced-feature h3 {
-    font-size: 1.375rem;
-    font-weight: 600;
+    font-size: clamp(1.25rem, 2.5vw, 1.375rem);
+    font-weight: var(--font-weight-semibold);
     color: var(--white);
     margin: 0;
+    line-height: var(--line-height-tight);
 }
 
 .advanced-feature p {
     color: var(--secondary-color);
-    line-height: 1.7;
+    font-size: clamp(0.9375rem, 1.5vw, 1rem);
+    line-height: var(--line-height-base);
     margin-bottom: var(--spacing-md);
+    font-weight: var(--font-weight-normal);
 }
 
 .feature-list {
@@ -308,10 +315,11 @@
 }
 
 .tech-spec-card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+    font-weight: var(--font-weight-semibold);
     color: var(--white);
     margin-bottom: var(--spacing-md);
+    line-height: var(--line-height-tight);
 }
 
 .tech-spec-card ul {
