@@ -22,13 +22,20 @@
 }
 
 .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-6);
     position: relative;
     z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
+    justify-content: center;
+}
+
+.stat-card {
+    flex: 0 1 calc(33.333% - var(--spacing-6));
+    min-width: 200px;
+    max-width: 300px;
 }
 
 .stat-card {

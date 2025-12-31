@@ -8,10 +8,17 @@
 }
 
 .impact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-6);
     margin-top: var(--spacing-6);
+    justify-content: center;
+}
+
+.impact-category {
+    flex: 0 1 calc(25% - var(--spacing-6));
+    min-width: 300px;
+    max-width: 350px;
 }
 
 .impact-category {
@@ -85,7 +92,7 @@
 .impact-achievement-metric {
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
+    color: #0369A1; /* Azul oscuro para mejor contraste */
     line-height: var(--line-height-tight);
 }
 
@@ -117,9 +124,16 @@
 }
 
 .summary-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-6);
+    justify-content: center;
+}
+
+.summary-item {
+    flex: 0 1 calc(25% - var(--spacing-6));
+    min-width: 200px;
+    max-width: 250px;
 }
 
 .summary-item {
@@ -132,7 +146,7 @@
 .summary-value {
     font-size: var(--font-size-5xl);
     font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
+    color: #0369A1; /* Azul oscuro para mejor contraste */
     line-height: var(--line-height-tight);
 }
 

@@ -8,10 +8,17 @@
 }
 
 .tech-metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-6);
     margin-top: var(--spacing-6);
+    justify-content: center;
+}
+
+.tech-metric-card {
+    flex: 0 1 calc(33.333% - var(--spacing-6));
+    min-width: 280px;
+    max-width: 320px;
 }
 
 .tech-metric-card {
@@ -65,7 +72,7 @@
 .tech-metric-value {
     font-size: var(--font-size-5xl);
     font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
+    color: #0369A1; /* Azul oscuro para mejor contraste */
     line-height: var(--line-height-tight);
     margin-bottom: var(--spacing-2);
     letter-spacing: var(--letter-spacing-tight);

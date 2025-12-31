@@ -8,10 +8,17 @@
 }
 
 .challenges-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-6);
     margin-top: var(--spacing-6);
+    justify-content: center;
+}
+
+.challenge-card {
+    flex: 0 1 calc(25% - var(--spacing-6));
+    min-width: 350px;
+    max-width: 400px;
 }
 
 .challenge-card {
@@ -83,13 +90,12 @@
 }
 
 .challenge-section-title {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
-    color: var(--color-primary);
+    color: #0369A1; /* Azul oscuro para mejor contraste */
     margin: 0;
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-wide);
-    font-size: var(--font-size-sm);
 }
 
 .challenge-text {
@@ -106,15 +112,23 @@
     margin-top: var(--spacing-2);
 }
 
+.challenge-tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+    margin-top: var(--spacing-2);
+    justify-content: center;
+}
+
 .tech-badge {
     display: inline-block;
     padding: var(--spacing-1) var(--spacing-3);
-    background: var(--color-primary-light);
-    color: var(--color-primary);
+    background: #F0F9FF;
+    color: #0369A1; /* Azul oscuro para mejor contraste */
     border-radius: var(--radius-full);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-medium);
-    border: var(--border-width-1) solid var(--color-primary);
+    border: 1px solid #BAE6FD;
     transition: var(--transition-base);
 }
 
@@ -127,16 +141,16 @@
 .challenge-impact {
     margin-top: var(--spacing-3);
     padding: var(--spacing-3);
-    background: var(--color-primary-light);
-    border-left: var(--border-width-4) solid var(--color-primary);
+    background: #F0F9FF;
+    border-left: var(--border-width-4) solid #0369A1; /* Azul oscuro */
     border-radius: var(--radius-md);
     font-size: var(--font-size-sm);
-    color: var(--color-text-primary);
+    color: #1D1D1F; /* Texto oscuro para mejor legibilidad */
     line-height: var(--line-height-relaxed);
 }
 
 .challenge-impact strong {
-    color: var(--color-primary);
+    color: #0369A1; /* Azul oscuro para mejor contraste */
     font-weight: var(--font-weight-semibold);
 }
 

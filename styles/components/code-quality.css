@@ -8,10 +8,17 @@
 }
 
 .quality-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-6);
     margin-top: var(--spacing-6);
+    justify-content: center;
+}
+
+.quality-category {
+    flex: 0 1 calc(25% - var(--spacing-6));
+    min-width: 300px;
+    max-width: 350px;
 }
 
 .quality-category {
@@ -82,7 +89,7 @@
 .quality-metric-value {
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
+    color: #0369A1; /* Azul oscuro para mejor contraste */
     line-height: var(--line-height-tight);
 }
 

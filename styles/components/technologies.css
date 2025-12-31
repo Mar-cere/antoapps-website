@@ -11,8 +11,8 @@
 /* Tech Grid */
 .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-6);
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--spacing-4);
     margin-top: var(--spacing-6);
 }
 
@@ -154,9 +154,16 @@
 }
 
 .comparison-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-4);
+    justify-content: center;
+}
+
+.comparison-card {
+    flex: 0 1 calc(25% - var(--spacing-4));
+    min-width: 200px;
+    max-width: 250px;
 }
 
 .comparison-card {
@@ -190,7 +197,7 @@
 .comparison-score {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
+    color: #0369A1; /* Azul oscuro para mejor contraste */
     line-height: var(--line-height-tight);
 }
 
@@ -234,6 +241,13 @@
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+    .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-4);
+    }
+}
+
 @media (max-width: 768px) {
     .tech-grid {
         grid-template-columns: 1fr;

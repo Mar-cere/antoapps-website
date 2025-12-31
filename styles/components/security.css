@@ -7,10 +7,17 @@
 }
 
 .security-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-6);
     margin-top: var(--spacing-6);
+    justify-content: center;
+}
+
+.security-card {
+    flex: 0 1 calc(33.333% - var(--spacing-6));
+    min-width: 350px;
+    max-width: 400px;
 }
 
 .security-card {
@@ -95,7 +102,7 @@
     transform: translateY(-50%);
     width: 6px;
     height: 6px;
-    background: var(--color-primary);
+    background: #0369A1; /* Azul oscuro para mejor contraste */
     border-radius: var(--radius-full);
     transition: var(--transition);
 }
