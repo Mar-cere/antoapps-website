@@ -23,7 +23,7 @@
 }
 
 .nav {
-    padding: var(--spacing-2) 0;
+    padding: var(--spacing-1) 0;
 }
 
 .nav .container {
@@ -33,7 +33,7 @@
 }
 
 .logo {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
     text-decoration: none;
@@ -49,8 +49,8 @@
 }
 
 .logo-icon {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
     border-radius: var(--radius-md);
     transition: var(--transition-base);
@@ -64,17 +64,17 @@
 /* Menú móvil mejorado */
 @media (max-width: 767px) {
     .logo-icon {
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
     }
     
     .logo span {
-        font-size: var(--font-size-base);
+        font-size: var(--font-size-sm);
     }
 
     .nav-menu {
         position: fixed;
-        top: 56px;
+        top: 48px;
         left: 0;
         right: 0;
         background: rgba(255, 255, 255, 0.98); /* Estilo Apple */
@@ -149,11 +149,11 @@
     font-weight: var(--font-weight-medium);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    padding: var(--spacing-2) var(--spacing-3);
+    padding: var(--spacing-1) var(--spacing-2);
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
-    gap: var(--spacing-2);
+    gap: var(--spacing-1);
     font-size: var(--font-size-sm);
 }
 
@@ -216,7 +216,7 @@
 
 .nav-actions {
     display: flex;
-    gap: var(--spacing-3);
+    gap: var(--spacing-2);
     align-items: center;
 }
 

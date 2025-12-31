@@ -86,8 +86,8 @@ export default function Header() {
               <Image
                 src="/assets/images/antoIcon.png"
                 alt="Anto Logo"
-                width={32}
-                height={32}
+                width={28}
+                height={28}
                 className="logo-icon"
                 priority
                 quality={90}
