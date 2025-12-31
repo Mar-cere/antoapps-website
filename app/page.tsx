@@ -74,9 +74,6 @@ export default function Home() {
           <AIExplained />
         </Suspense>
         <Suspense fallback={<SectionSkeleton />}>
-          <ComingSoon />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
           <FAQ />
         </Suspense>
         <Suspense fallback={<SectionSkeleton />}>

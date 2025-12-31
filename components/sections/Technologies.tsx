@@ -80,9 +80,9 @@ export default function Technologies() {
             </ul>
           </div>
         </div>
-        <div style={{ textAlign: 'center', marginTop: 'var(--spacing-xl)' }}>
+        <div style={{ textAlign: 'center', marginTop: 'var(--spacing-8)' }}>
           <a href="/desarrollo" className="btn btn-secondary">
-            Ver detalles técnicos →
+            Ver detalles técnicos completos →
           </a>
         </div>
       </div>

@@ -63,21 +63,10 @@ export default function AIExplained() {
           </div>
         </div>
 
-        <div className="ai-features-box reveal-on-scroll" style={{ marginTop: 'var(--spacing-xl)' }}>
-          <div className="ai-features-grid">
-            <div className="ai-feature-item">
-              <strong>API:</strong> OpenAI GPT-5 Mini
-            </div>
-            <div className="ai-feature-item">
-              <strong>Velocidad:</strong> &lt;2.5s promedio
-            </div>
-            <div className="ai-feature-item">
-              <strong>Comunicación:</strong> Socket.IO WebSockets
-            </div>
-            <div className="ai-feature-item">
-              <strong>Base de Datos:</strong> MongoDB
-            </div>
-          </div>
+        <div style={{ textAlign: 'center', marginTop: 'var(--spacing-8)' }}>
+          <a href="/desarrollo" className="btn btn-secondary">
+            Ver detalles técnicos completos →
+          </a>
         </div>
       </div>
     </section>
