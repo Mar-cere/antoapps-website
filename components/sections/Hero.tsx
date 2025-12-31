@@ -35,8 +35,8 @@ export default function Hero() {
             <Link href="#descargar" className="btn btn-primary btn-large">
               Comenzar Prueba Gratis
             </Link>
-            <Link href="#como-funciona" className="btn btn-secondary btn-large">
-              Saber Más
+            <Link href="https://github.com/Mar-cere/Anto" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-large">
+              Ver Código en GitHub
             </Link>
           </div>
           <div className="hero-badges">

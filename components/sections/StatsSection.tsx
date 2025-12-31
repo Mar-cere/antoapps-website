@@ -24,6 +24,9 @@ export default function StatsSection() {
           <StatCard target={24} suffix="/7" label="Horas Disponibles" />
           <StatCard target={100} suffix="%" label="Privacidad Garantizada" />
           <StatCard target={2.5} suffix="s" label="Tiempo de Respuesta" />
+          <StatCard target={95} suffix="%" label="Cobertura de Tests" />
+          <StatCard target={99.9} suffix="%" label="Uptime" />
+          <StatCard target={15000} suffix="+" label="Líneas de Código" />
         </div>
       </div>
     </section>

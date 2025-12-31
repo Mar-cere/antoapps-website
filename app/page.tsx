@@ -9,6 +9,8 @@ import Hero from '@/components/sections/Hero';
 import Features from '@/components/sections/Features';
 import Benefits from '@/components/sections/Benefits';
 import Technologies from '@/components/sections/Technologies';
+import TechMetrics from '@/components/sections/TechMetrics';
+import TechChallenges from '@/components/sections/TechChallenges';
 import Skeleton from '@/components/ui/Skeleton';
 
 // Lazy load secciones no críticas para mejorar FCP
@@ -61,6 +63,10 @@ export default function Home() {
           <ScienceBacked />
         </Suspense>
         <Technologies />
+        <TechMetrics />
+        <Suspense fallback={<SectionSkeleton />}>
+          <TechChallenges />
+        </Suspense>
         <Suspense fallback={<SectionSkeleton />}>
           <Values />
         </Suspense>
