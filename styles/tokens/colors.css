@@ -1,0 +1,59 @@
+/* ============================================
+   DESIGN TOKENS - COLORS
+   ============================================ */
+
+:root {
+    /* Colores Principales */
+    --color-primary: #1ADDDB;
+    --color-primary-hover: #1BE8E6;
+    --color-primary-light: rgba(26, 221, 219, 0.1);
+    --color-primary-dark: #15B8B6;
+    
+    --color-secondary: #A3B8E8;
+    --color-secondary-hover: #B8C9F0;
+    --color-secondary-light: rgba(163, 184, 232, 0.1);
+    
+    --color-bg-dark: #030A24;
+    --color-bg-darker: #010512;
+    --color-bg-light: rgba(3, 10, 36, 0.8);
+    
+    /* Colores de Texto */
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #A3B8E8;
+    --color-text-tertiary: rgba(163, 184, 232, 0.6);
+    --color-text-disabled: rgba(163, 184, 232, 0.4);
+    
+    /* Colores de Estado */
+    --color-success: #4CAF50;
+    --color-success-light: rgba(76, 175, 80, 0.1);
+    --color-success-dark: #45A049;
+    
+    --color-error: #FF6B6B;
+    --color-error-light: rgba(255, 107, 107, 0.1);
+    --color-error-dark: #E55A5A;
+    
+    --color-warning: #FFD93D;
+    --color-warning-light: rgba(255, 217, 61, 0.1);
+    --color-warning-dark: #E6C435;
+    
+    --color-info: #6BCB77;
+    --color-info-light: rgba(107, 203, 119, 0.1);
+    --color-info-dark: #5BB567;
+    
+    /* Colores de Superficie */
+    --color-surface: rgba(15, 23, 42, 0.8);
+    --color-surface-hover: rgba(15, 23, 42, 0.95);
+    --color-surface-elevated: rgba(15, 23, 42, 0.95);
+    
+    /* Colores de Borde */
+    --color-border: rgba(26, 221, 219, 0.2);
+    --color-border-hover: rgba(26, 221, 219, 0.4);
+    --color-border-focus: rgba(26, 221, 219, 0.6);
+    --color-border-error: rgba(255, 107, 107, 0.4);
+    --color-border-success: rgba(76, 175, 80, 0.4);
+    
+    /* Colores de Overlay */
+    --color-overlay: rgba(3, 10, 36, 0.7);
+    --color-overlay-dark: rgba(3, 10, 36, 0.9);
+}
+

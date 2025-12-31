@@ -1,0 +1,42 @@
+/* ============================================
+   DESIGN TOKENS - SPACING
+   ============================================ */
+
+:root {
+    /* Espaciado Base (4px grid system) */
+    --spacing-0: 0;
+    --spacing-1: 0.25rem;  /* 4px */
+    --spacing-2: 0.5rem;   /* 8px */
+    --spacing-3: 0.75rem;  /* 12px */
+    --spacing-4: 1rem;     /* 16px */
+    --spacing-5: 1.25rem;  /* 20px */
+    --spacing-6: 1.5rem;   /* 24px */
+    --spacing-8: 2rem;     /* 32px */
+    --spacing-10: 2.5rem;  /* 40px */
+    --spacing-12: 3rem;    /* 48px */
+    --spacing-16: 4rem;    /* 64px */
+    --spacing-20: 5rem;    /* 80px */
+    --spacing-24: 6rem;    /* 96px */
+    
+    /* Espaciado Semántico (usando variables existentes) */
+    --spacing-xs: var(--spacing-2);   /* 8px */
+    --spacing-sm: var(--spacing-4);   /* 16px */
+    --spacing-md: var(--spacing-8);   /* 32px */
+    --spacing-lg: var(--spacing-12);  /* 48px */
+    --spacing-xl: var(--spacing-20);  /* 80px */
+    
+    /* Espaciado de Componentes */
+    --spacing-component-xs: var(--spacing-2);
+    --spacing-component-sm: var(--spacing-3);
+    --spacing-component-md: var(--spacing-4);
+    --spacing-component-lg: var(--spacing-6);
+    --spacing-component-xl: var(--spacing-8);
+    
+    /* Espaciado de Layout */
+    --spacing-section-xs: var(--spacing-8);
+    --spacing-section-sm: var(--spacing-12);
+    --spacing-section-md: var(--spacing-16);
+    --spacing-section-lg: var(--spacing-20);
+    --spacing-section-xl: var(--spacing-24);
+}
+

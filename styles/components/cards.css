@@ -1,4 +1,114 @@
 /* ============================================
+   CARDS - DESIGN SYSTEM VARIANTS
+   ============================================ */
+
+/* Base Card */
+.card {
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-6);
+    transition: var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Card Variants */
+.card-elevated {
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+}
+
+.card-outlined {
+    background: transparent;
+    border-color: var(--color-border);
+}
+
+.card-filled {
+    background: var(--color-surface-hover);
+    border-color: transparent;
+}
+
+.card-interactive {
+    cursor: pointer;
+}
+
+.card-interactive:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-border-hover);
+}
+
+.card-interactive:active {
+    transform: translateY(-2px);
+}
+
+/* Card Sizes */
+.card-sm {
+    padding: var(--spacing-4);
+    border-radius: var(--radius-lg);
+}
+
+.card-md {
+    padding: var(--spacing-6);
+    border-radius: var(--radius-xl);
+}
+
+.card-lg {
+    padding: var(--spacing-8);
+    border-radius: var(--radius-2xl);
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-4);
+    padding-bottom: var(--spacing-4);
+    border-bottom: var(--border-width-1) solid var(--color-border);
+}
+
+.card-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: var(--line-height-tight);
+}
+
+.card-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-top: var(--spacing-1);
+}
+
+/* Card Content */
+.card-content {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Card Footer */
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--spacing-3);
+    margin-top: var(--spacing-6);
+    padding-top: var(--spacing-4);
+    border-top: var(--border-width-1) solid var(--color-border);
+}
+
+/* Card Actions */
+.card-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    margin-top: var(--spacing-4);
+}
+
+/* ============================================
    CARDS
    ============================================ */
 

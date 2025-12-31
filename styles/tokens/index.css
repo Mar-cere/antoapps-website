@@ -1,0 +1,12 @@
+/* ============================================
+   DESIGN TOKENS - INDEX
+   ============================================ */
+
+/* Importar todos los tokens */
+@import url('./colors.css');
+@import url('./spacing.css');
+@import url('./typography.css');
+@import url('./shadows.css');
+@import url('./borders.css');
+@import url('./transitions.css');
+
