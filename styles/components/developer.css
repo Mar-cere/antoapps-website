@@ -45,7 +45,7 @@
 }
 
 .developer-details h2 {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
     font-weight: 600;
     color: #666;
     margin-bottom: 0.5rem;
@@ -67,7 +67,7 @@
 .developer-details p {
     color: #666;
     line-height: 1.7;
-    font-size: 1.0625rem;
+    font-size: var(--font-size-base);
 }
 
 .developer-contact {
@@ -84,7 +84,7 @@
     text-decoration: none;
     border-radius: 12px;
     font-weight: 600;
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(26, 221, 219, 0.3);
     margin-bottom: 1.5rem;
@@ -96,7 +96,7 @@
 }
 
 .developer-email span:first-child {
-    font-size: 1.5rem;
+    font-size: var(--font-size-2xl);
 }
 
 .developer-social {
@@ -125,7 +125,7 @@
 }
 
 .social-link span:first-child {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
 }
 
 .developer-repos {
@@ -135,7 +135,7 @@
 }
 
 .developer-repos h4 {
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
     font-weight: 600;
     color: #030A24;
     margin-bottom: 1rem;
@@ -151,7 +151,7 @@
     text-decoration: none;
     border-radius: 10px;
     font-weight: 500;
-    font-size: 0.9375rem;
+    font-size: var(--font-size-base);
     transition: all 0.3s ease;
     border: 1px solid rgba(26, 221, 219, 0.2);
     text-align: left;
@@ -182,7 +182,7 @@
     }
     
     .developer-details h3 {
-        font-size: 1.5rem;
+        font-size: var(--font-size-2xl);
     }
     
     .developer-email {

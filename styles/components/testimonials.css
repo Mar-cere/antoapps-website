@@ -4,7 +4,6 @@
 
 .testimonials {
     background: var(--color-bg-primary);
-    padding: var(--section-padding-lg) 0;
     border-top: var(--border-width-1) solid var(--color-border-light);
     border-bottom: var(--border-width-1) solid var(--color-border-light);
 }
@@ -12,8 +11,8 @@
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
+    gap: var(--spacing-6);
+    margin-top: var(--spacing-6);
 }
 
 .testimonial-card {
@@ -36,7 +35,7 @@
 
 .testimonial-rating {
     color: #FFD700;
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-xs);
 }
 

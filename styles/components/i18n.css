@@ -20,7 +20,7 @@
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
 }
 
 .language-selector-btn:hover {
@@ -28,7 +28,7 @@
 }
 
 .language-flag {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
 }
 
 .language-code {
@@ -36,7 +36,7 @@
 }
 
 .language-arrow {
-    font-size: 0.75rem;
+    font-size: var(--font-size-xs);
     transition: transform 0.3s ease;
 }
 
@@ -76,7 +76,7 @@
     text-align: left;
     cursor: pointer;
     transition: background 0.2s ease;
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     color: #333;
 }
 
@@ -149,7 +149,7 @@
     
     .language-selector-btn {
         padding: 0.5rem;
-        font-size: 0.75rem;
+        font-size: var(--font-size-xs);
     }
     
     .language-code {

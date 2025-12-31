@@ -4,14 +4,13 @@
 
 .technologies {
     background: var(--color-bg-secondary);
-    padding: var(--section-padding-lg) 0;
 }
 
 .tech-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
+    gap: var(--spacing-6);
+    margin-top: var(--spacing-6);
 }
 
 .tech-category {
@@ -74,7 +73,7 @@
     }
     
     .tech-category h3 {
-        font-size: 1.25rem;
+        font-size: var(--font-size-xl);
     }
 }
 

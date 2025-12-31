@@ -4,15 +4,14 @@
 
 .features-detailed {
     background: var(--color-bg-primary);
-    padding: var(--section-padding-lg) 0;
     position: relative;
 }
 
 .feature-detail-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
+    gap: var(--spacing-6);
+    margin-top: var(--spacing-6);
 }
 
 .feature-detail-card {
@@ -50,8 +49,8 @@
 }
 
 .feature-detail-icon {
-    font-size: 3.5rem;
-    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-5xl);
+    margin-bottom: var(--spacing-4);
     display: block;
     animation: float 6s ease-in-out infinite;
 }
@@ -115,7 +114,7 @@
     }
     
     .feature-detail-icon {
-        font-size: 2.5rem;
+        font-size: var(--font-size-4xl);
     }
 }
 

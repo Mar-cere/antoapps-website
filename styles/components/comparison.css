@@ -4,7 +4,7 @@
 
 .comparison-hero {
     background: var(--color-bg-secondary);
-    padding: calc(var(--section-padding-lg) + 80px) 0 var(--section-padding-lg);
+    padding: calc(56px + var(--spacing-8)) 0 var(--spacing-12);
     text-align: center;
 }
 
@@ -23,7 +23,6 @@
 }
 
 .comparison-section {
-    padding: var(--section-padding-lg) 0;
     background: var(--color-bg-primary);
 }
 
@@ -143,8 +142,8 @@
 .insights-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
+    gap: var(--spacing-6);
+    margin-bottom: var(--spacing-6);
 }
 
 .insight-card {
@@ -311,7 +310,7 @@
 .advantages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
+    gap: var(--spacing-6);
 }
 
 .advantage-item {

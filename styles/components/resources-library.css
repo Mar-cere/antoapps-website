@@ -11,7 +11,7 @@
 }
 
 .resources-title {
-    font-size: 3.5rem;
+    font-size: var(--font-size-5xl);
     font-weight: 700;
     margin-bottom: 1rem;
     background: linear-gradient(135deg, #1ADDDB 0%, #A3B8E8 100%);
@@ -21,7 +21,7 @@
 }
 
 .resources-subtitle {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
     color: rgba(255, 255, 255, 0.8);
     max-width: 600px;
     margin: 0 auto;
@@ -89,7 +89,7 @@
     left: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
 }
 
 /* Resources Grid */
@@ -125,7 +125,7 @@
 }
 
 .resource-card h3 {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
     font-weight: 600;
     margin-bottom: 0.75rem;
     color: #030A24;
@@ -142,7 +142,7 @@
     display: flex;
     gap: 1rem;
     margin-bottom: 1.5rem;
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     color: #888;
 }
 
@@ -173,12 +173,12 @@
 }
 
 .newsletter-content h2 {
-    font-size: 2.5rem;
+    font-size: var(--font-size-4xl);
     margin-bottom: 1rem;
 }
 
 .newsletter-content p {
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
     margin-bottom: 2rem;
     opacity: 0.9;
 }
@@ -206,7 +206,7 @@
 /* Responsive */
 @media (max-width: 768px) {
     .resources-title {
-        font-size: 2.5rem;
+        font-size: var(--font-size-4xl);
     }
     
     .resources-grid {

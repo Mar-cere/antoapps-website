@@ -189,15 +189,15 @@
 /* Responsive */
 @media (max-width: 768px) {
     [data-tooltip]::before {
-        font-size: 0.8125rem;
-        padding: 6px 10px;
+        font-size: var(--font-size-xs);
+        padding: var(--spacing-2) var(--spacing-3);
         max-width: 200px;
         white-space: normal;
     }
     
     .tooltip-content {
         max-width: 200px;
-        font-size: 0.8125rem;
+        font-size: var(--font-size-xs);
     }
 }
 

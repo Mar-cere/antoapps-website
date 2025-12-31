@@ -4,7 +4,6 @@
 
 .coming-soon {
     background: var(--color-bg-primary);
-    padding: var(--section-padding-lg) 0;
     border-top: var(--border-width-1) solid var(--color-border-light);
     border-bottom: var(--border-width-1) solid var(--color-border-light);
 }
@@ -12,8 +11,8 @@
 .coming-soon-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
+    gap: var(--spacing-6);
+    margin-top: var(--spacing-6);
 }
 
 .coming-soon-card {
@@ -99,7 +98,7 @@
     }
     
     .coming-soon-icon {
-        font-size: 2.5rem;
+        font-size: var(--font-size-4xl);
     }
 }
 

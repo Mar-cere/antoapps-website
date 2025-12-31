@@ -4,7 +4,7 @@
 
 .security-hero {
     background: var(--color-bg-secondary);
-    padding: calc(var(--section-padding-lg) + 80px) 0 var(--section-padding-lg);
+    padding: calc(56px + var(--spacing-8)) 0 var(--spacing-12);
     text-align: center;
 }
 
@@ -41,7 +41,6 @@
 }
 
 .security-overview {
-    padding: var(--section-padding-lg) 0;
     background: var(--color-bg-primary);
 }
 
@@ -72,7 +71,7 @@
 .certifications-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-lg);
+    gap: var(--spacing-6);
 }
 
 .cert-card {
@@ -134,7 +133,6 @@
 }
 
 .security-measures {
-    padding: var(--section-padding-lg) 0;
     background: var(--color-bg-secondary);
 }
 
@@ -201,7 +199,6 @@
 }
 
 .security-reports {
-    padding: var(--section-padding-lg) 0;
     background: var(--color-bg-primary);
 }
 
@@ -244,18 +241,17 @@
 }
 
 .security-faq {
-    padding: var(--section-padding-lg) 0;
     background: var(--color-bg-secondary);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
     .security-title {
-        font-size: 2rem;
+        font-size: var(--font-size-3xl);
     }
     
     .security-subtitle {
-        font-size: 1.25rem;
+        font-size: var(--font-size-xl);
     }
     
     .measures-grid {

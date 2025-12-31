@@ -3,14 +3,13 @@
    ============================================ */
 
 .science-backed {
-    padding: var(--section-padding-lg) 0;
     background: var(--color-bg-primary);
     position: relative;
 }
 
 .science-header {
     text-align: center;
-    margin-bottom: var(--spacing-8);
+    margin-bottom: var(--spacing-6);
     position: relative;
     z-index: 1;
 }
@@ -41,8 +40,8 @@
 .studies-preview-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-xl);
-    margin-bottom: var(--spacing-8);
+    gap: var(--spacing-6);
+    margin-bottom: var(--spacing-6);
     position: relative;
     z-index: 1;
 }
@@ -165,10 +164,10 @@
 
 .science-cta {
     text-align: center;
-    margin-top: var(--spacing-8);
+    margin-top: var(--spacing-6);
     position: relative;
     z-index: 1;
-    padding-top: var(--spacing-8);
+    padding-top: var(--spacing-6);
     border-top: var(--border-width-1) solid var(--color-border);
 }
 
@@ -183,20 +182,20 @@
     }
     
     .science-header .section-title {
-        font-size: 2rem;
+        font-size: var(--font-size-3xl);
     }
     
     .science-header .section-subtitle {
-        font-size: 1.125rem;
+        font-size: var(--font-size-lg);
     }
     
     .studies-preview-grid {
         grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
+        gap: var(--spacing-6);
     }
     
     .science-badge {
-        font-size: 3.5rem;
+        font-size: var(--font-size-5xl);
     }
     
     .study-preview-card {

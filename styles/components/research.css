@@ -4,7 +4,7 @@
 
 .research-hero {
     background: var(--color-bg-secondary);
-    padding: calc(var(--section-padding-lg) + 80px) 0 var(--section-padding-lg);
+    padding: calc(56px + var(--spacing-8)) 0 var(--spacing-12);
     text-align: center;
 }
 
@@ -23,7 +23,6 @@
 }
 
 .research-overview {
-    padding: var(--section-padding-lg) 0;
     background: var(--color-bg-primary);
 }
 
@@ -54,7 +53,7 @@
 .findings-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-lg);
+    gap: var(--spacing-6);
 }
 
 .finding-card {
@@ -100,7 +99,6 @@
 }
 
 .research-studies {
-    padding: var(--section-padding-lg) 0;
     background: var(--color-bg-secondary);
 }
 
@@ -277,7 +275,6 @@
 }
 
 .research-collaborations {
-    padding: var(--section-padding-lg) 0;
     background: var(--color-bg-primary);
 }
 
@@ -324,7 +321,6 @@
 }
 
 .research-methodology {
-    padding: var(--section-padding-lg) 0;
     background: var(--color-bg-secondary);
 }
 
@@ -374,7 +370,6 @@
 }
 
 .research-references {
-    padding: var(--section-padding-lg) 0;
     background: var(--color-bg-primary);
 }
 
@@ -454,7 +449,6 @@
 }
 
 .research-cta {
-    padding: var(--section-padding-lg) 0;
     background: var(--color-bg-secondary);
     text-align: center;
 }
@@ -462,11 +456,11 @@
 /* Responsive */
 @media (max-width: 768px) {
     .research-title {
-        font-size: 2rem;
+        font-size: var(--font-size-3xl);
     }
     
     .research-subtitle {
-        font-size: 1.25rem;
+        font-size: var(--font-size-xl);
     }
     
     .studies-grid {

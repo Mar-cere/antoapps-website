@@ -68,8 +68,8 @@
 
 .cookie-consent-actions .btn {
     min-width: 120px;
-    padding: 12px 24px;
-    font-size: 0.9375rem;
+    padding: var(--spacing-3) var(--spacing-6);
+    font-size: var(--font-size-base);
 }
 
 /* Responsive */

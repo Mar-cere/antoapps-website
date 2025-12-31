@@ -4,14 +4,13 @@
 
 .use-cases {
     background: var(--color-bg-primary);
-    padding: var(--section-padding-lg) 0;
 }
 
 .use-cases-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
+    gap: var(--spacing-6);
+    margin-top: var(--spacing-6);
 }
 
 .use-case-card {
@@ -30,8 +29,8 @@
 }
 
 .use-case-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-4);
     display: block;
 }
 
@@ -100,11 +99,11 @@
     }
     
     .use-case-icon {
-        font-size: 2.5rem;
+        font-size: var(--font-size-4xl);
     }
     
     .use-case-card h3 {
-        font-size: 1.25rem;
+        font-size: var(--font-size-xl);
     }
 }
 

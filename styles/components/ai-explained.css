@@ -3,15 +3,14 @@
    ============================================ */
 
 .ai-explained {
-    padding: var(--section-padding-lg) 0;
     background: var(--color-bg-primary);
 }
 
 .ai-process {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xl);
-    margin-top: var(--spacing-lg);
+    gap: var(--spacing-8);
+    margin-top: var(--spacing-6);
     position: relative;
 }
 
@@ -173,7 +172,7 @@
     .ai-step-number {
         width: 50px;
         height: 50px;
-        font-size: 1.5rem;
+        font-size: var(--font-size-2xl);
     }
 }
 
