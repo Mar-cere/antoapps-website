@@ -2,13 +2,17 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { useMobileMenu } from '@/lib/hooks/useNavigation';
 import '@/styles/layout/header.css';
 
 export default function Header() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLUListElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const { toggleMenu } = useMobileMenu();
 
   useEffect(() => {
@@ -19,6 +23,39 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Cerrar menú al hacer click fuera
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMobileMenuOpen &&
+        menuRef.current &&
+        overlayRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        !(event.target as HTMLElement).closest('.nav-toggle')
+      ) {
+        setIsMobileMenuOpen(false);
+        toggleMenu();
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen, toggleMenu]);
+
+  // Cerrar menú al cambiar de ruta
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
 
   const navLinks = [
     { href: '/', label: 'Inicio' },
@@ -31,6 +68,13 @@ export default function Header() {
   const handleMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     toggleMenu();
+  };
+
+  const isActiveLink = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(href);
   };
 
   return (
@@ -54,23 +98,38 @@ export default function Header() {
             </Link>
           </div>
 
+          {/* Overlay para menú móvil */}
+          {isMobileMenuOpen && (
+            <div
+              ref={overlayRef}
+              className="nav-overlay"
+              onClick={handleMenuToggle}
+              aria-hidden="true"
+            />
+          )}
+
           <ul
             id="navMenu"
+            ref={menuRef}
             className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}
             role="menubar"
           >
-            {navLinks.map((link) => (
-              <li key={link.href} role="none">
-                <Link
-                  href={link.href}
-                  className="nav-link"
-                  role="menuitem"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = isActiveLink(link.href);
+              return (
+                <li key={link.href} role="none">
+                  <Link
+                    href={link.href}
+                    className={`nav-link ${isActive ? 'active' : ''}`}
+                    role="menuitem"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                    {isActive && <span className="nav-link-indicator" aria-hidden="true" />}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="nav-actions">

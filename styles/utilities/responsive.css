@@ -188,58 +188,13 @@
    MOBILE OPTIMIZATIONS (max-width: 767px)
    ============================================ */
 @media (max-width: 767px) {
-    /* Navigation Mobile */
+    /* Navigation Mobile - Mejorado en header.css */
     .nav {
         padding: 0.75rem 0;
     }
     
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 60px;
-        flex-direction: column;
-        background: rgba(3, 10, 36, 0.98);
-        backdrop-filter: blur(20px);
-        width: 100%;
-        text-align: center;
-        transition: left 0.3s ease;
-        padding: var(--spacing-lg) 0;
-        border-top: 1px solid var(--card-border);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        max-height: calc(100vh - 60px);
-        overflow-y: auto;
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
-    
-    .nav-menu li {
-        width: 100%;
-        padding: var(--spacing-sm) 0;
-    }
-    
-    .nav-link {
-        display: block;
-        padding: var(--spacing-sm);
-        font-size: 1.125rem;
-    }
-
-    .nav-toggle {
-        display: flex !important;
-        min-width: var(--touch-target-min);
-        min-height: var(--touch-target-min);
-        align-items: center;
-        justify-content: center;
-    }
-    
     .nav-actions {
         display: none;
-    }
-    
-    .nav-actions .btn {
-        width: 100%;
-        margin-top: var(--spacing-sm);
     }
 
     /* Hero Mobile */

@@ -117,19 +117,8 @@ Hacer la navegación más intuitiva y accesible.
   - Indicador de sección activa
   - Cierre automático al hacer click fuera
 
-- [ ] **Scroll to top button**
-  - Botón flotante con animación
-  - Aparece después de scroll down
-  - Smooth scroll con easing
-
-- [ ] **Indicador de progreso de lectura**
-  - Progress bar en la parte superior
-  - Muestra progreso de scroll en la página
-  - Color dinámico según sección
 
 #### Archivos a crear/modificar:
-- `components/ui/ScrollToTop.tsx` (nuevo)
-- `components/ui/ReadingProgress.tsx` (nuevo)
 - `styles/components/navigation-enhancements.css` (nuevo)
 - `components/layout/Header.tsx` (mejorar)
 
