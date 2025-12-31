@@ -35,7 +35,7 @@
 .logo {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
+    color: #0369A1; /* Azul oscuro para mejor contraste en fondo claro */
     text-decoration: none;
     transition: var(--transition-base);
     display: flex;
@@ -44,8 +44,8 @@
 }
 
 .logo:hover {
-    color: var(--color-text-primary);
-    opacity: 0.8;
+    color: var(--color-primary);
+    opacity: 1;
 }
 
 .logo-icon {
@@ -164,35 +164,37 @@
     left: 50%;
     width: 0;
     height: 2px;
-    background: var(--primary-color);
+    background: #0369A1; /* Azul oscuro para mejor contraste */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(-50%);
     border-radius: 2px 2px 0 0;
 }
 
 .nav-link:hover {
-    color: var(--color-text-primary);
-    background: var(--color-surface-hover);
+    color: #0369A1; /* Azul oscuro en hover para mejor legibilidad */
+    background: rgba(26, 221, 219, 0.08);
 }
 
 .nav-link:hover::after {
     width: 80%;
+    background: var(--color-primary); /* Cyan en hover para el underline */
 }
 
 .nav-link.active {
-    color: var(--color-primary);
-    background: var(--color-primary-light);
+    color: #0369A1; /* Azul oscuro para mejor contraste */
+    background: rgba(26, 221, 219, 0.1); /* Fondo cyan muy sutil */
     font-weight: var(--font-weight-semibold);
 }
 
 .nav-link.active::after {
     width: 80%;
+    background: #0369A1; /* Azul oscuro para el underline */
 }
 
 .nav-link-indicator {
     width: 6px;
     height: 6px;
-    background: var(--color-primary);
+    background: #0369A1; /* Azul oscuro para mejor contraste */
     border-radius: var(--radius-full);
     display: inline-block;
     animation: navIndicatorPulse 2s ease-in-out infinite;
@@ -233,7 +235,7 @@
 .nav-toggle span {
     width: 22px;
     height: 2px;
-    background: var(--color-primary);
+    background: #1D1D1F; /* Negro oscuro para mejor contraste en fondo claro */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: var(--radius-sm);
     transform-origin: center;
