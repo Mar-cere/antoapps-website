@@ -3,32 +3,28 @@
    ============================================ */
 
 .research-hero {
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
-    padding: calc(var(--spacing-xl) + 80px) 0 var(--spacing-xl);
+    background: var(--color-bg-secondary);
+    padding: calc(var(--section-padding-lg) + 80px) 0 var(--section-padding-lg);
     text-align: center;
 }
 
 .research-title {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: var(--spacing-md);
-    background: linear-gradient(135deg, var(--white) 0%, var(--primary-color) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: clamp(var(--font-size-4xl), 6vw, var(--font-size-6xl));
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-4);
 }
 
 .research-subtitle {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
+    font-size: var(--font-size-xl);
+    color: var(--color-text-secondary);
     max-width: 800px;
     margin: 0 auto;
 }
 
 .research-overview {
-    padding: var(--spacing-xl) 0;
-    background: var(--bg-dark);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-primary);
 }
 
 .research-intro {
@@ -38,9 +34,9 @@
 }
 
 .research-intro p {
-    color: var(--secondary-color);
-    line-height: 1.8;
-    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-lg);
 }
 
 .findings-section {
@@ -48,10 +44,10 @@
 }
 
 .findings-section h3 {
-    color: var(--white);
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-8);
     text-align: center;
 }
 
@@ -62,27 +58,27 @@
 }
 
 .finding-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--spacing-lg);
-    backdrop-filter: blur(10px);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-6);
     text-align: center;
-    transition: var(--transition);
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-xs);
 }
 
 .finding-card:hover {
-    border-color: var(--primary-color);
-    transform: translateY(-5px);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
 
 .finding-number {
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-sm);
-    line-height: 1;
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-3);
+    line-height: var(--line-height-tight);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,22 +86,22 @@
 }
 
 .finding-card h4 {
-    color: var(--white);
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-2);
 }
 
 .finding-card p {
-    color: var(--secondary-color);
-    font-size: 0.9375rem;
-    line-height: 1.6;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
     margin: 0;
 }
 
 .research-studies {
-    padding: var(--spacing-xl) 0;
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.05) 0%, rgba(163, 184, 232, 0.05) 100%);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-secondary);
 }
 
 .studies-grid {
@@ -127,79 +123,80 @@
 }
 
 .study-card:hover {
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-5px);
-}
-
-.study-badge {
-    position: absolute;
-    top: var(--spacing-md);
-    right: var(--spacing-md);
-    background: rgba(26, 221, 219, 0.2);
-    color: var(--primary-color);
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    border: 1px solid var(--primary-color);
-}
-
-.study-card h3 {
-    color: var(--white);
-    font-size: 1.375rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-xs);
-    padding-right: 100px;
-}
-
-.study-item {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-    transition: var(--transition);
-}
-
-.study-item:hover {
-    border-color: var(--primary-color);
+    border-color: var(--color-primary);
     box-shadow: var(--shadow-md);
     transform: translateY(-2px);
 }
 
+.study-badge {
+    position: absolute;
+    top: var(--spacing-4);
+    right: var(--spacing-4);
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    border: var(--border-width-1) solid var(--color-primary);
+}
+
+.study-card h3 {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-2);
+    padding-right: 100px;
+}
+
+.study-item {
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-xs);
+}
+
+.study-item:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
 .study-item h4 {
-    color: var(--white);
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-sm);
-    line-height: 1.4;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
+    line-height: var(--line-height-tight);
 }
 
 .study-item p {
-    color: var(--secondary-color);
-    line-height: 1.7;
-    margin-bottom: var(--spacing-sm);
-    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-3);
+    font-size: var(--font-size-base);
 }
 
 .study-journal {
     display: inline-block;
-    background: var(--card-bg);
-    color: var(--primary-color);
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-sm);
-    border: 1px solid var(--card-border);
+    background: var(--color-surface);
+    color: var(--color-primary);
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
+    border: var(--border-width-1) solid var(--color-border);
 }
 
 .study-authors {
-    color: var(--secondary-color);
-    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
     font-style: italic;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-3);
 }
 
 .study-meta {
@@ -212,13 +209,13 @@
 
 .study-type,
 .study-impact {
-    background: var(--card-bg);
-    color: var(--primary-color);
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    border: 1px solid var(--card-border);
+    background: var(--color-surface);
+    color: var(--color-primary);
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    border: var(--border-width-1) solid var(--color-border);
 }
 
 .studies-list {
@@ -227,10 +224,10 @@
 }
 
 .study-abstract {
-    color: var(--secondary-color);
-    line-height: 1.7;
-    margin-bottom: var(--spacing-md);
-    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-base);
 }
 
 .study-metrics {
@@ -241,23 +238,23 @@
 }
 
 .metric-tag {
-    background: rgba(26, 221, 219, 0.1);
-    color: var(--primary-color);
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    border: 1px solid var(--primary-color);
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    border: var(--border-width-1) solid var(--color-primary);
 }
 
 .study-link {
-    color: var(--primary-color);
+    color: var(--color-primary);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     display: inline-flex;
     align-items: center;
-    gap: var(--spacing-xs);
-    transition: var(--transition);
+    gap: var(--spacing-2);
+    transition: var(--transition-base);
 }
 
 .study-link:hover {
@@ -266,22 +263,22 @@
 }
 
 .study-citation {
-    margin-top: var(--spacing-md);
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--card-border);
+    margin-top: var(--spacing-4);
+    padding-top: var(--spacing-4);
+    border-top: var(--border-width-1) solid var(--color-border);
 }
 
 .study-citation small {
-    color: var(--secondary-color);
-    font-size: 0.8125rem;
-    line-height: 1.6;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-base);
     font-style: italic;
     display: block;
 }
 
 .research-collaborations {
-    padding: var(--spacing-xl) 0;
-    background: var(--bg-dark);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-primary);
 }
 
 .collaborations-grid {
@@ -292,18 +289,18 @@
 }
 
 .collab-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--spacing-lg);
-    backdrop-filter: blur(10px);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-6);
     text-align: center;
-    transition: var(--transition);
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-xs);
 }
 
 .collab-card:hover {
-    border-color: var(--primary-color);
-    transform: translateY(-5px);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
 
@@ -313,22 +310,22 @@
 }
 
 .collab-card h3 {
-    color: var(--white);
-    font-size: 1.375rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
 }
 
 .collab-card p {
-    color: var(--secondary-color);
-    line-height: 1.6;
-    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-base);
+    font-size: var(--font-size-base);
     margin: 0;
 }
 
 .research-methodology {
-    padding: var(--spacing-xl) 0;
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.05) 0%, rgba(163, 184, 232, 0.05) 100%);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-secondary);
 }
 
 .methodology-steps {
@@ -339,45 +336,46 @@
 }
 
 .method-step {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--spacing-lg);
-    backdrop-filter: blur(10px);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-6);
     text-align: center;
+    box-shadow: var(--shadow-xs);
 }
 
 .method-number {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--white);
-    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-text-on-primary);
+    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0 auto var(--spacing-md);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin: 0 auto var(--spacing-4);
+    box-shadow: var(--shadow-sm);
 }
 
 .method-step h3 {
-    color: var(--white);
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
 }
 
 .method-step p {
-    color: var(--secondary-color);
-    line-height: 1.6;
-    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-base);
+    font-size: var(--font-size-base);
     margin: 0;
 }
 
 .research-references {
-    padding: var(--spacing-xl) 0;
-    background: var(--bg-dark);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-primary);
 }
 
 .references-list {
@@ -387,32 +385,36 @@
 
 .reference-item {
     display: flex;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
-    padding: var(--spacing-md);
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    transition: var(--transition);
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-6);
+    padding: var(--spacing-4);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-xs);
 }
 
 .reference-item:hover {
-    border-color: var(--primary-color);
-    background: rgba(26, 221, 219, 0.05);
+    border-color: var(--color-primary);
+    background: var(--color-primary-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
 }
 
 .reference-number {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--white);
-    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-text-on-primary);
+    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     flex-shrink: 0;
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
+    box-shadow: var(--shadow-sm);
 }
 
 .reference-content {
@@ -420,40 +422,40 @@
 }
 
 .reference-content p {
-    color: var(--white);
-    line-height: 1.8;
-    margin-bottom: var(--spacing-xs);
-    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-2);
+    font-size: var(--font-size-base);
 }
 
 .reference-content strong {
-    color: var(--primary-color);
-    font-weight: 600;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
 }
 
 .reference-content em {
-    color: var(--secondary-color);
+    color: var(--color-text-secondary);
     font-style: italic;
 }
 
 .reference-link {
-    color: var(--primary-color);
-    font-size: 0.875rem;
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
     text-decoration: none;
     word-break: break-all;
     display: inline-block;
-    margin-top: var(--spacing-xs);
-    transition: var(--transition);
+    margin-top: var(--spacing-2);
+    transition: var(--transition-base);
 }
 
 .reference-link:hover {
     text-decoration: underline;
-    color: var(--secondary-color);
+    color: var(--color-primary-dark);
 }
 
 .research-cta {
-    padding: var(--spacing-xl) 0;
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.05) 0%, rgba(163, 184, 232, 0.05) 100%);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-secondary);
     text-align: center;
 }
 

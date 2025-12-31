@@ -3,8 +3,8 @@
    ============================================ */
 
 .case-studies-section {
-    padding: var(--spacing-xl) 0;
-    background: var(--bg-dark);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-primary);
 }
 
 .case-studies-grid {
@@ -15,14 +15,14 @@
 }
 
 .case-study-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: var(--spacing-lg);
-    backdrop-filter: blur(10px);
-    transition: var(--transition);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-6);
+    transition: var(--transition-base);
     position: relative;
     overflow: hidden;
+    box-shadow: var(--shadow-xs);
 }
 
 .case-study-card::before {
@@ -32,15 +32,15 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
     transform: scaleX(0);
-    transition: transform 0.3s ease;
+    transition: transform var(--duration-base) var(--ease-out);
 }
 
 .case-study-card:hover {
-    border-color: var(--primary-color);
+    border-color: var(--color-primary);
     box-shadow: var(--shadow-md);
-    transform: translateY(-5px);
+    transform: translateY(-2px);
 }
 
 .case-study-card:hover::before {
@@ -50,36 +50,37 @@
 .case-study-header {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-    padding-bottom: var(--spacing-md);
-    border-bottom: 1px solid var(--card-border);
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+    padding-bottom: var(--spacing-4);
+    border-bottom: var(--border-width-1) solid var(--color-border);
 }
 
 .case-study-avatar {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-on-primary);
     flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
 }
 
 .case-study-info h3 {
-    color: var(--white);
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-2);
 }
 
 .case-study-info p {
-    color: var(--secondary-color);
-    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
     margin: 0;
 }
 
@@ -88,10 +89,10 @@
 }
 
 .case-study-content p {
-    color: var(--secondary-color);
-    line-height: 1.7;
-    margin-bottom: var(--spacing-sm);
-    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-3);
+    font-size: var(--font-size-base);
 }
 
 .case-study-metrics {
@@ -112,20 +113,20 @@
 }
 
 .case-study-metric-value {
-    font-size: 1.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     display: block;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-2);
 }
 
 .case-study-metric-label {
-    color: var(--secondary-color);
-    font-size: 0.8125rem;
-    font-weight: 500;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
 }
 
 .case-study-tags {
@@ -136,32 +137,32 @@
 }
 
 .case-study-tag {
-    background: rgba(26, 221, 219, 0.1);
-    color: var(--primary-color);
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    border: 1px solid rgba(26, 221, 219, 0.2);
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    border: var(--border-width-1) solid var(--color-primary);
 }
 
 .case-study-quote {
-    margin-top: var(--spacing-md);
-    padding: var(--spacing-md);
-    background: rgba(163, 184, 232, 0.05);
-    border-left: 3px solid var(--primary-color);
-    border-radius: 8px;
+    margin-top: var(--spacing-4);
+    padding: var(--spacing-4);
+    background: var(--color-secondary-light);
+    border-left: 3px solid var(--color-primary);
+    border-radius: var(--radius-md);
     font-style: italic;
-    color: var(--secondary-color);
-    line-height: 1.7;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
 }
 
 .case-study-quote::before {
     content: '"';
-    font-size: 2rem;
-    color: var(--primary-color);
-    line-height: 1;
-    margin-right: var(--spacing-xs);
+    font-size: var(--font-size-3xl);
+    color: var(--color-primary);
+    line-height: var(--line-height-tight);
+    margin-right: var(--spacing-2);
 }
 
 /* Responsive */

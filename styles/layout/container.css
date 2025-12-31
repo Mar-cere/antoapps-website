@@ -5,7 +5,12 @@
 .container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-4);
+}
+
+/* Container específico para Hero - menos padding */
+.hero .container {
+    padding: 0 var(--spacing-4);
 }
 
 section {
