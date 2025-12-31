@@ -3,8 +3,9 @@
    ============================================ */
 
 .pricing-calculator {
-    background: var(--card-bg);
-    border: 2px solid var(--card-border);
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
     border-radius: 24px;
     padding: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);

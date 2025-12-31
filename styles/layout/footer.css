@@ -3,8 +3,8 @@
    ============================================ */
 
 .footer {
-    background: rgba(3, 10, 36, 0.8);
-    border-top: 1px solid var(--card-border);
+    background: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
     padding: var(--spacing-xl) 0 var(--spacing-md);
 }
 
@@ -23,16 +23,17 @@
 }
 
 .footer-section h4 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--white);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
     margin-bottom: var(--spacing-sm);
 }
 
 .footer-section p {
-    color: var(--secondary-color);
-    line-height: 1.6;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
     margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-base);
 }
 
 .footer-section ul {
@@ -44,9 +45,10 @@
 }
 
 .footer-section ul li a {
-    color: var(--secondary-color);
+    color: var(--color-text-secondary);
     text-decoration: none;
-    transition: var(--transition);
+    transition: var(--transition-base);
+    font-size: var(--font-size-base);
 }
 
 .footer-section ul li a:hover {
@@ -60,9 +62,10 @@
 }
 
 .social-links a {
-    color: var(--secondary-color);
+    color: var(--color-text-secondary);
     text-decoration: none;
-    transition: var(--transition);
+    transition: var(--transition-base);
+    font-size: var(--font-size-base);
 }
 
 .social-links a:hover {
@@ -72,7 +75,8 @@
 .footer-bottom {
     text-align: center;
     padding-top: var(--spacing-md);
-    border-top: 1px solid var(--card-border);
-    color: var(--secondary-color);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
 }
 

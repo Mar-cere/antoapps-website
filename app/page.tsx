@@ -17,7 +17,6 @@ const Pricing = lazy(() => import('@/components/sections/Pricing'));
 const ScienceBacked = lazy(() => import('@/components/sections/ScienceBacked'));
 const Security = lazy(() => import('@/components/sections/Security'));
 const AIExplained = lazy(() => import('@/components/sections/AIExplained'));
-const Resources = lazy(() => import('@/components/sections/Resources'));
 const ComingSoon = lazy(() => import('@/components/sections/ComingSoon'));
 const FAQ = lazy(() => import('@/components/sections/FAQ'));
 const CTA = lazy(() => import('@/components/sections/CTA'));
@@ -73,9 +72,6 @@ export default function Home() {
         </Suspense>
         <Suspense fallback={<SectionSkeleton />}>
           <AIExplained />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <Resources />
         </Suspense>
         <Suspense fallback={<SectionSkeleton />}>
           <ComingSoon />

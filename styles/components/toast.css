@@ -15,8 +15,9 @@
 }
 
 .toast {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
     border-radius: 12px;
     padding: var(--spacing-sm);
     box-shadow: var(--shadow-lg);

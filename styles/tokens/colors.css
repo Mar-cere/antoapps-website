@@ -1,9 +1,9 @@
 /* ============================================
-   DESIGN TOKENS - COLORS
+   DESIGN TOKENS - COLORS (Estilo Apple/Tesla)
    ============================================ */
 
 :root {
-    /* Colores Principales */
+    /* Colores Principales (Mantener) */
     --color-primary: #1ADDDB;
     --color-primary-hover: #1BE8E6;
     --color-primary-light: rgba(26, 221, 219, 0.1);
@@ -13,15 +13,20 @@
     --color-secondary-hover: #B8C9F0;
     --color-secondary-light: rgba(163, 184, 232, 0.1);
     
-    --color-bg-dark: #030A24;
+    /* Fondos (Estilo Apple - Claros) */
+    --color-bg-primary: #FFFFFF;
+    --color-bg-secondary: #F5F5F7;
+    --color-bg-tertiary: #E5E5EA;
+    --color-bg-dark: #030A24; /* Mantener para modo oscuro opcional */
     --color-bg-darker: #010512;
-    --color-bg-light: rgba(3, 10, 36, 0.8);
+    --color-bg-light: rgba(245, 245, 247, 0.8);
     
-    /* Colores de Texto */
-    --color-text-primary: #FFFFFF;
-    --color-text-secondary: #A3B8E8;
-    --color-text-tertiary: rgba(163, 184, 232, 0.6);
-    --color-text-disabled: rgba(163, 184, 232, 0.4);
+    /* Colores de Texto (Estilo Apple) */
+    --color-text-primary: #1D1D1F;
+    --color-text-secondary: #86868B;
+    --color-text-tertiary: #C7C7CC;
+    --color-text-disabled: rgba(199, 199, 204, 0.5);
+    --color-text-on-primary: #FFFFFF; /* Texto sobre fondo cyan */
     
     /* Colores de Estado */
     --color-success: #4CAF50;
@@ -40,20 +45,21 @@
     --color-info-light: rgba(107, 203, 119, 0.1);
     --color-info-dark: #5BB567;
     
-    /* Colores de Superficie */
-    --color-surface: rgba(15, 23, 42, 0.8);
-    --color-surface-hover: rgba(15, 23, 42, 0.95);
-    --color-surface-elevated: rgba(15, 23, 42, 0.95);
+    /* Colores de Superficie (Estilo Apple) */
+    --color-surface: #FFFFFF;
+    --color-surface-hover: #F5F5F7;
+    --color-surface-elevated: #FFFFFF;
+    --color-surface-card: #F5F5F7;
     
-    /* Colores de Borde */
-    --color-border: rgba(26, 221, 219, 0.2);
-    --color-border-hover: rgba(26, 221, 219, 0.4);
-    --color-border-focus: rgba(26, 221, 219, 0.6);
-    --color-border-error: rgba(255, 107, 107, 0.4);
-    --color-border-success: rgba(76, 175, 80, 0.4);
+    /* Colores de Borde (Estilo Apple - Sutiles) */
+    --color-border: rgba(0, 0, 0, 0.1);
+    --color-border-hover: rgba(0, 0, 0, 0.15);
+    --color-border-focus: rgba(26, 221, 219, 0.5);
+    --color-border-error: rgba(255, 107, 107, 0.3);
+    --color-border-success: rgba(76, 175, 80, 0.3);
     
-    /* Colores de Overlay */
-    --color-overlay: rgba(3, 10, 36, 0.7);
-    --color-overlay-dark: rgba(3, 10, 36, 0.9);
+    /* Colores de Overlay (Estilo Apple) */
+    --color-overlay: rgba(0, 0, 0, 0.4);
+    --color-overlay-dark: rgba(0, 0, 0, 0.6);
 }
 

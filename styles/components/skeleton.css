@@ -5,9 +5,9 @@
 .skeleton {
     background: linear-gradient(
         90deg,
-        var(--card-bg) 0%,
-        rgba(26, 221, 219, 0.1) 50%,
-        var(--card-bg) 100%
+        var(--color-bg-primary) 0%,
+        rgba(26, 221, 219, 0.05) 50%,
+        var(--color-bg-primary) 100%
     );
     background-size: 200% 100%;
     animation: skeletonLoading 1.5s ease-in-out infinite;

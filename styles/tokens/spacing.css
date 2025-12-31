@@ -18,12 +18,13 @@
     --spacing-20: 5rem;    /* 80px */
     --spacing-24: 6rem;    /* 96px */
     
-    /* Espaciado Semántico (usando variables existentes) */
-    --spacing-xs: var(--spacing-2);   /* 8px */
-    --spacing-sm: var(--spacing-4);   /* 16px */
-    --spacing-md: var(--spacing-8);   /* 32px */
-    --spacing-lg: var(--spacing-12);  /* 48px */
-    --spacing-xl: var(--spacing-20);  /* 80px */
+    /* Espaciado Semántico (Estilo Apple - Generoso) */
+    --spacing-xs: var(--spacing-4);   /* 16px (aumentado) */
+    --spacing-sm: var(--spacing-6);   /* 24px (aumentado) */
+    --spacing-md: var(--spacing-12);  /* 48px (aumentado) */
+    --spacing-lg: var(--spacing-20);  /* 80px (aumentado) */
+    --spacing-xl: var(--spacing-30);  /* 120px (aumentado) */
+    --spacing-2xl: var(--spacing-40); /* 160px (nuevo) */
     
     /* Espaciado de Componentes */
     --spacing-component-xs: var(--spacing-2);
@@ -32,11 +33,18 @@
     --spacing-component-lg: var(--spacing-6);
     --spacing-component-xl: var(--spacing-8);
     
-    /* Espaciado de Layout */
-    --spacing-section-xs: var(--spacing-8);
-    --spacing-section-sm: var(--spacing-12);
-    --spacing-section-md: var(--spacing-16);
-    --spacing-section-lg: var(--spacing-20);
-    --spacing-section-xl: var(--spacing-24);
+    /* Espaciado de Layout (Estilo Apple - Generoso) */
+    --spacing-section-xs: var(--spacing-30);  /* 120px */
+    --spacing-section-sm: var(--spacing-40); /* 160px */
+    --spacing-section-md: var(--spacing-50); /* 200px */
+    --spacing-section-lg: var(--spacing-60); /* 240px */
+    --spacing-section-xl: var(--spacing-80); /* 320px */
+    
+    /* Espaciado adicional */
+    --spacing-30: 7.5rem;  /* 120px */
+    --spacing-40: 10rem;   /* 160px */
+    --spacing-50: 12.5rem; /* 200px */
+    --spacing-60: 15rem;   /* 240px */
+    --spacing-80: 20rem;   /* 320px */
 }
 

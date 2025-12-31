@@ -7,18 +7,18 @@
     --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-family-mono: 'Fira Code', 'Courier New', monospace;
     
-    /* Font Sizes */
-    --font-size-xs: 0.75rem;    /* 12px */
-    --font-size-sm: 0.875rem;   /* 14px */
-    --font-size-base: 1rem;     /* 16px */
-    --font-size-md: 1rem;       /* 16px */
-    --font-size-lg: 1.125rem;   /* 18px */
-    --font-size-xl: 1.25rem;    /* 20px */
-    --font-size-2xl: 1.5rem;    /* 24px */
-    --font-size-3xl: 1.875rem;  /* 30px */
-    --font-size-4xl: 2.25rem;   /* 36px */
-    --font-size-5xl: 3rem;      /* 48px */
-    --font-size-6xl: 3.75rem;   /* 60px */
+    /* Font Sizes (Estilo Apple - Grande y Clara) */
+    --font-size-xs: 0.8125rem;   /* 13px */
+    --font-size-sm: 1.0625rem;   /* 17px (aumentado) */
+    --font-size-base: 1.3125rem;  /* 21px (aumentado) */
+    --font-size-md: 1.3125rem;    /* 21px */
+    --font-size-lg: 1.5rem;      /* 24px (aumentado) */
+    --font-size-xl: 1.875rem;    /* 30px (aumentado) */
+    --font-size-2xl: 2.375rem;   /* 38px (aumentado) */
+    --font-size-3xl: 3rem;       /* 48px (aumentado) */
+    --font-size-4xl: 4rem;       /* 64px (aumentado) */
+    --font-size-5xl: 5rem;       /* 80px (aumentado) */
+    --font-size-6xl: 6.25rem;    /* 100px (nuevo) */
     
     /* Font Weights */
     --font-weight-light: 300;
@@ -28,20 +28,20 @@
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
     
-    /* Line Heights */
+    /* Line Heights (Estilo Apple) */
     --line-height-none: 1;
-    --line-height-tight: 1.2;
-    --line-height-snug: 1.375;
-    --line-height-normal: 1.5;
-    --line-height-relaxed: 1.6;
-    --line-height-loose: 2;
+    --line-height-tight: 1.1;      /* Títulos grandes */
+    --line-height-snug: 1.2;       /* Títulos */
+    --line-height-normal: 1.5;     /* Cuerpo */
+    --line-height-relaxed: 1.6;     /* Texto largo */
+    --line-height-loose: 1.8;
     
-    /* Letter Spacing */
-    --letter-spacing-tighter: -0.05em;
-    --letter-spacing-tight: -0.025em;
-    --letter-spacing-normal: 0;
-    --letter-spacing-wide: 0.025em;
-    --letter-spacing-wider: 0.05em;
+    /* Letter Spacing (Estilo Apple) */
+    --letter-spacing-tighter: -0.03em; /* Títulos muy grandes */
+    --letter-spacing-tight: -0.02em;   /* Títulos grandes */
+    --letter-spacing-normal: 0;        /* Texto normal */
+    --letter-spacing-wide: 0.01em;
+    --letter-spacing-wider: 0.05em;    /* Mayúsculas */
     --letter-spacing-widest: 0.1em;
 }
 

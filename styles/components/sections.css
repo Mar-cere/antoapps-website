@@ -2,7 +2,7 @@
    SECTIONS
    ============================================ */
 
-/* Hero Section */
+/* Hero Section (Estilo Apple) */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -10,6 +10,7 @@
     position: relative;
     padding-top: 80px;
     overflow: hidden;
+    background: var(--color-bg-primary);
 }
 
 .particles {
@@ -19,7 +20,7 @@
     width: 100%;
     height: 100%;
     z-index: var(--z-base);
-    opacity: 0.3;
+    opacity: 0.1; /* Más sutil, estilo Apple */
 }
 
 .hero .container {
@@ -36,20 +37,20 @@
 }
 
 .hero-title {
-    font-size: clamp(2rem, 5.5vw, 3.75rem);
+    font-size: clamp(3rem, 8vw, 5rem); /* Grande, estilo Apple */
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-tight);
-    margin-bottom: var(--spacing-sm);
-    color: var(--white);
-    letter-spacing: -0.03em;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+    letter-spacing: var(--letter-spacing-tighter);
 }
 
 .hero-subtitle {
-    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    font-size: clamp(1.3125rem, 2.5vw, 1.875rem); /* Grande y clara */
     font-weight: var(--font-weight-normal);
-    color: var(--secondary-color);
-    margin-bottom: var(--spacing-md);
-    line-height: var(--line-height-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+    line-height: var(--line-height-relaxed);
 }
 
 .hero-cta {
@@ -73,26 +74,26 @@
     align-items: center;
     gap: var(--spacing-xs);
     padding: var(--spacing-sm) var(--spacing-md);
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 8px;
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
 }
 
 .hero-stat-icon {
     color: var(--primary-color);
-    font-size: 1.5rem;
+    font-size: var(--font-size-2xl);
     line-height: 1;
 }
 
 .hero-stat-value {
-    color: var(--white);
-    font-weight: 700;
-    font-size: 1.125rem;
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
 }
 
 .hero-stat-label {
-    color: var(--secondary-color);
-    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
 }
 
 .hero-badges {
@@ -109,8 +110,8 @@
 }
 
 .badge:hover {
-    transform: translateY(-2px);
-    opacity: 0.8;
+    transform: translateY(-1px); /* Más sutil */
+    opacity: 0.9;
 }
 
 .hero-image {
@@ -123,12 +124,11 @@
 .phone-mockup {
     width: 300px;
     height: 600px;
-    background: var(--card-bg);
-    border: 2px solid var(--card-border);
-    border-radius: 30px;
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: 40px; /* Más redondeado, estilo Apple */
     padding: 20px;
     box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(10px);
     position: relative;
     animation: float 6s ease-in-out infinite;
 }
@@ -155,8 +155,8 @@
 .phone-screen {
     width: 100%;
     height: 100%;
-    background: var(--bg-dark);
-    border-radius: 16px;
+    background: var(--color-bg-primary);
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -166,9 +166,9 @@
 .app-preview {
     width: 80%;
     height: 80%;
-    background: var(--card-bg);
-    border-radius: 16px;
-    border: 1px solid var(--card-border);
+    background: var(--color-bg-secondary);
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -212,20 +212,21 @@
 }
 
 .feature-card h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
     margin-bottom: var(--spacing-sm);
-    color: var(--white);
+    color: var(--color-text-primary);
 }
 
 .feature-card p {
-    color: var(--secondary-color);
-    line-height: 1.6;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-base);
 }
 
-/* How It Works */
+/* How It Works (Estilo Apple) */
 .how-it-works {
-    background: var(--bg-dark);
+    background: var(--color-bg-secondary);
 }
 
 .steps {
@@ -248,32 +249,33 @@
     width: 60px;
     height: 60px;
     background: var(--primary-color);
-    color: var(--bg-dark);
+    color: var(--color-text-on-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
     margin-bottom: var(--spacing-md);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
 }
 
 .step-content h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
     margin-bottom: var(--spacing-sm);
-    color: var(--white);
+    color: var(--color-text-primary);
 }
 
 .step-content p {
-    color: var(--secondary-color);
-    line-height: 1.6;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-base);
 }
 
-/* Benefits */
+/* Benefits (Estilo Apple) */
 .benefits {
-    background: var(--bg-dark);
+    background: var(--color-bg-primary);
 }
 
 .benefits-tabs {
@@ -286,25 +288,26 @@
 
 .tab-btn {
     padding: 12px 24px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    color: var(--secondary-color);
-    font-weight: 500;
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
     cursor: pointer;
-    transition: var(--transition);
+    transition: var(--transition-base);
     font-family: var(--font-family);
-    font-size: 1rem;
+    font-size: var(--font-size-base);
 }
 
 .tab-btn:hover {
-    border-color: var(--primary-color);
-    color: var(--white);
+    border-color: var(--color-border-hover);
+    color: var(--color-text-primary);
+    background: var(--color-surface-hover);
 }
 
 .tab-btn.active {
     background: var(--primary-color);
-    color: var(--bg-dark);
+    color: var(--color-text-on-primary);
     border-color: var(--primary-color);
 }
 
@@ -332,30 +335,31 @@
     width: 32px;
     height: 32px;
     background: var(--primary-color);
-    color: var(--bg-dark);
+    color: var(--color-text-on-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     flex-shrink: 0;
 }
 
 .benefit-item h4 {
-    font-size: 1.125rem;
-    font-weight: 600;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
     margin-bottom: var(--spacing-xs);
-    color: var(--white);
+    color: var(--color-text-primary);
 }
 
 .benefit-item p {
-    color: var(--secondary-color);
-    line-height: 1.6;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-base);
 }
 
-/* Values */
+/* Values (Estilo Apple) */
 .values {
-    background: var(--bg-dark);
+    background: var(--color-bg-secondary);
 }
 
 .values-grid {
@@ -372,20 +376,21 @@
 }
 
 .value-card h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
     margin-bottom: var(--spacing-sm);
-    color: var(--white);
+    color: var(--color-text-primary);
 }
 
 .value-card p {
-    color: var(--secondary-color);
-    line-height: 1.6;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-base);
 }
 
-/* Pricing */
+/* Pricing (Estilo Apple) */
 .pricing {
-    background: var(--bg-dark);
+    background: var(--color-bg-secondary);
 }
 
 .pricing-grid {
@@ -401,10 +406,10 @@
 }
 
 .pricing-header h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
     margin-bottom: var(--spacing-md);
-    color: var(--white);
+    color: var(--color-text-primary);
 }
 
 .pricing-price {
@@ -422,14 +427,14 @@
 }
 
 .period {
-    font-size: 1rem;
-    color: var(--secondary-color);
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
 }
 
 .currency {
-    font-size: 1rem;
-    color: var(--secondary-color);
-    font-weight: 500;
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
 }
 
 .pricing-period {
@@ -452,17 +457,19 @@
 
 .pricing-features li {
     padding: var(--spacing-xs) 0;
-    color: var(--secondary-color);
-    border-bottom: 1px solid var(--card-border);
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
 }
 
 .pricing-features li:last-child {
     border-bottom: none;
 }
 
-/* FAQ */
+/* FAQ (Estilo Apple) */
 .faq {
-    background: var(--bg-dark);
+    background: var(--color-bg-primary);
     padding: var(--spacing-xl) 0;
 }
 
@@ -543,20 +550,20 @@
     padding: var(--spacing-md);
     background: none;
     border: none;
-    color: var(--white);
-    font-size: 1.125rem;
-    font-weight: 600;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
     text-align: left;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: var(--transition);
+    transition: var(--transition-base);
     font-family: var(--font-family);
 }
 
 .faq-question:hover {
-    background: rgba(26, 221, 219, 0.15);
+    background: var(--color-surface-hover);
 }
 
 .faq-icon {
@@ -582,30 +589,30 @@
 
 .faq-answer p {
     padding: 0 var(--spacing-md) var(--spacing-md);
-    color: var(--secondary-color);
-    line-height: 1.6;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-base);
 }
 
-/* CTA Section */
+/* CTA Section (Estilo Apple) */
 .cta {
-    background: var(--card-bg);
-    border-top: 1px solid var(--card-border);
-    border-bottom: 1px solid var(--card-border);
+    background: var(--color-bg-secondary);
     text-align: center;
     padding: var(--spacing-xl) 0;
 }
 
 .cta-content h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: clamp(2.375rem, 6vw, 3.75rem);
+    font-weight: var(--font-weight-bold);
     margin-bottom: var(--spacing-md);
-    color: var(--white);
+    color: var(--color-text-primary);
 }
 
 .cta-content p {
-    font-size: 1.25rem;
-    color: var(--secondary-color);
-    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-xl);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+    line-height: var(--line-height-relaxed);
 }
 
 .cta-buttons {

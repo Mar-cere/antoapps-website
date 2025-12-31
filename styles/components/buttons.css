@@ -25,25 +25,27 @@
 
 .btn-primary {
     background: var(--primary-color);
-    color: var(--bg-dark);
-    box-shadow: var(--shadow-sm);
+    color: var(--color-text-on-primary);
+    box-shadow: none;
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-glow);
-    background: #1BE8E6;
+    background: var(--color-primary-hover);
+    transform: translateY(-1px); /* Sutil, estilo Apple */
+    box-shadow: none; /* Sin sombra en hover */
 }
 
 .btn-secondary {
     background: transparent;
     color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
 }
 
 .btn-secondary:hover {
-    background: rgba(26, 221, 219, 0.1);
-    transform: translateY(-2px);
+    background: var(--color-surface-hover);
+    border-color: var(--color-border-hover);
+    transform: none; /* Sin transformación, solo cambio de color */
 }
 
 .btn-large {

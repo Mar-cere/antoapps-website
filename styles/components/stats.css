@@ -29,8 +29,9 @@
 }
 
 .stat-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
     border-radius: 16px;
     padding: var(--spacing-lg);
     text-align: center;

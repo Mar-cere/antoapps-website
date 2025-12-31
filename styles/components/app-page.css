@@ -2,10 +2,10 @@
    APP PAGE STYLES
    ============================================ */
 
-/* Hero Section */
+/* Hero Section (Estilo Apple) */
 .app-hero {
     padding: calc(var(--spacing-xl) + 80px) 0 var(--spacing-xl);
-    background: var(--bg-dark);
+    background: var(--color-bg-primary);
     text-align: center;
     position: relative;
 }
@@ -16,20 +16,20 @@
 }
 
 .app-hero-title {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(2.375rem, 6vw, 3.75rem);
     font-weight: var(--font-weight-bold);
-    color: var(--white);
-    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
     line-height: var(--line-height-tight);
-    letter-spacing: -0.02em;
+    letter-spacing: var(--letter-spacing-tight);
 }
 
 .app-hero-subtitle {
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(1.3125rem, 2.5vw, 1.875rem);
     font-weight: var(--font-weight-normal);
-    color: var(--secondary-color);
-    margin-bottom: var(--spacing-md);
-    line-height: var(--line-height-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+    line-height: var(--line-height-relaxed);
 }
 
 .app-hero-badges {
@@ -49,10 +49,10 @@
     font-weight: 600;
 }
 
-/* Insights Section */
+/* Insights Section (Estilo Apple) */
 .app-insights {
     padding: var(--spacing-xl) 0;
-    background: var(--bg-dark);
+    background: var(--color-bg-secondary);
 }
 
 .insights-grid {
@@ -63,18 +63,18 @@
 }
 
 .insight-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
     padding: var(--spacing-md);
     text-align: center;
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .insight-card:hover {
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-4px);
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
 }
 
 .insight-icon {
@@ -103,12 +103,10 @@
     margin: 0;
 }
 
-/* Screenshots Section */
+/* Screenshots Section (Estilo Apple) */
 .app-screenshots {
     padding: var(--spacing-xl) 0;
-    background: var(--card-bg);
-    border-top: 1px solid var(--card-border);
-    border-bottom: 1px solid var(--card-border);
+    background: var(--color-bg-primary);
 }
 
 .screenshots-grid {
@@ -119,22 +117,22 @@
 }
 
 .screenshot-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
     overflow: hidden;
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .screenshot-card:hover {
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-4px);
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
 }
 
 .screenshot-placeholder {
     aspect-ratio: 9 / 16;
-    background: var(--bg-dark);
+    background: var(--color-bg-secondary);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -208,10 +206,10 @@
     color: var(--white);
 }
 
-/* Advanced Features Section */
+/* Advanced Features Section (Estilo Apple) */
 .app-features-advanced {
     padding: var(--spacing-xl) 0;
-    background: var(--bg-dark);
+    background: var(--color-bg-secondary);
 }
 
 .advanced-features-grid {
@@ -222,17 +220,17 @@
 }
 
 .advanced-feature {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
     padding: var(--spacing-md);
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .advanced-feature:hover {
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-4px);
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
 }
 
 .feature-header {
@@ -285,12 +283,10 @@
     font-weight: 700;
 }
 
-/* Technical Specifications */
+/* Technical Specifications (Estilo Apple) */
 .app-tech-specs {
     padding: var(--spacing-xl) 0;
-    background: var(--card-bg);
-    border-top: 1px solid var(--card-border);
-    border-bottom: 1px solid var(--card-border);
+    background: var(--color-bg-primary);
 }
 
 .tech-specs-grid {
@@ -301,17 +297,17 @@
 }
 
 .tech-spec-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
     padding: var(--spacing-md);
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .tech-spec-card:hover {
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-4px);
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
 }
 
 .tech-spec-card h3 {
@@ -344,10 +340,10 @@
     font-weight: 700;
 }
 
-/* CTA Section */
+/* CTA Section (Estilo Apple) */
 .app-cta {
     padding: var(--spacing-xl) 0;
-    background: var(--bg-dark);
+    background: var(--color-bg-secondary);
     text-align: center;
 }
 

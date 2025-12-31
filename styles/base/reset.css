@@ -72,12 +72,13 @@ h6, .h6 {
     margin-bottom: var(--spacing-xs);
 }
 
-p {
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-base);
-    margin-bottom: var(--spacing-sm);
-    font-weight: var(--font-weight-normal);
-}
+  p {
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--spacing-md);
+      font-weight: var(--font-weight-normal);
+      color: var(--color-text-primary);
+  }
 
 a {
     font-weight: var(--font-weight-medium);
