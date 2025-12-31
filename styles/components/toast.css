@@ -50,7 +50,7 @@
 }
 
 .toast-icon {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
     flex-shrink: 0;
     width: 24px;

@@ -189,8 +189,8 @@
 }
 
 .contact-icon {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-3);
 }
 
 .contact-method h3 {
@@ -239,8 +239,8 @@
 /* Quick Contact CTA */
 .quick-contact-cta {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: var(--spacing-5);
+    right: var(--spacing-5);
     z-index: 1000;
     animation: pulse 2s infinite;
 }
@@ -248,14 +248,14 @@
 .quick-contact-btn {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #1ADDDB 0%, #A3B8E8 100%);
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     border: none;
-    color: white;
-    font-size: 1.5rem;
+    color: var(--color-text-on-primary);
+    font-size: var(--font-size-2xl);
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(26, 221, 219, 0.4);
-    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-base);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -370,11 +370,11 @@
     }
     
     .contact-title {
-        font-size: 1.75rem;
+        font-size: var(--font-size-2xl);
     }
     
     .contact-subtitle {
-        font-size: 1.0625rem;
+        font-size: var(--font-size-base);
     }
 }
 

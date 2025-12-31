@@ -358,7 +358,7 @@
 /* Responsive */
 @media (max-width: 968px) {
     .comparison-table {
-        font-size: 0.9375rem;
+        font-size: var(--font-size-base);
     }
     
     .comparison-table th,
@@ -374,11 +374,11 @@
 
 @media (max-width: 768px) {
     .comparison-title {
-        font-size: 2rem;
+        font-size: var(--font-size-3xl);
     }
     
     .comparison-subtitle {
-        font-size: 1.25rem;
+        font-size: var(--font-size-xl);
     }
     
     .comparison-table-wrapper {

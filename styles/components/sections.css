@@ -198,7 +198,7 @@
     background: var(--color-bg-primary);
     border: 1px solid var(--color-border);
     border-radius: 40px;
-    padding: 20px;
+    padding: var(--spacing-5);
     box-shadow: var(--shadow-lg);
     position: relative;
     animation: float 6s ease-in-out infinite;
@@ -258,8 +258,8 @@
 }
 
 .feature-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-4);
     display: block;
 }
 
@@ -339,7 +339,7 @@
 }
 
 .tab-btn {
-    padding: 12px 24px;
+    padding: var(--spacing-3) var(--spacing-6);
     background: var(--color-bg-primary);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
@@ -422,8 +422,8 @@
 }
 
 .value-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-4);
     display: block;
 }
 
@@ -473,8 +473,8 @@
 }
 
 .price {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
     color: var(--color-primary);
 }
 
@@ -491,15 +491,15 @@
 
 .pricing-period {
     color: var(--color-primary);
-    font-weight: 500;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-1);
 }
 
 .pricing-trial {
-    color: var(--info);
-    font-weight: 500;
-    font-size: 0.875rem;
+    color: var(--color-info);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
 }
 
 .pricing-features {
@@ -619,9 +619,9 @@
 }
 
 .faq-icon {
-    font-size: 1.5rem;
+    font-size: var(--font-size-2xl);
     color: var(--color-primary);
-    transition: var(--transition);
+    transition: var(--transition-base);
     font-weight: 300;
 }
 
@@ -654,9 +654,9 @@
 }
 
 .cta-content h2 {
-    font-size: clamp(2.375rem, 6vw, 3.75rem);
+    font-size: clamp(var(--font-size-3xl), 6vw, var(--font-size-4xl));
     font-weight: var(--font-weight-bold);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-4);
     color: var(--color-text-primary);
 }
 

@@ -17,7 +17,7 @@
 }
 
 .empty-state-icon {
-    font-size: 4rem;
+    font-size: var(--font-size-5xl);
     margin-bottom: var(--spacing-md);
     opacity: 0.6;
     display: inline-block;
@@ -47,7 +47,7 @@
 }
 
 .empty-state-title {
-    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-size: clamp(var(--font-size-xl), 2.5vw, var(--font-size-2xl));
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
     margin-bottom: var(--spacing-3);

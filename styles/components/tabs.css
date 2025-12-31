@@ -123,8 +123,8 @@
     }
 
     .tab-btn {
-        padding: 10px 16px;
-        font-size: 0.9375rem;
+        padding: var(--spacing-3) var(--spacing-4);
+        font-size: var(--font-size-base);
         white-space: nowrap;
         flex-shrink: 0;
     }

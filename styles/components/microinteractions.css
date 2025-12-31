@@ -312,7 +312,7 @@ button,
     transform: translate(-50%, -50%);
     color: var(--color-text-on-primary);
     font-weight: var(--font-weight-bold);
-    font-size: 14px;
+    font-size: var(--font-size-sm);
 }
 
 @keyframes scale-in {

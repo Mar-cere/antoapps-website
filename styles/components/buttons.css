@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--spacing-xs);
-    padding: 12px 24px;
+    padding: var(--spacing-3) var(--spacing-6);
     border-radius: 12px;
     text-decoration: none;
     font-weight: var(--font-weight-semibold);
@@ -48,7 +48,7 @@
 }
 
 .btn-large {
-    padding: 16px 32px;
+    padding: var(--spacing-4) var(--spacing-8);
     font-size: clamp(1rem, 2vw, 1.125rem);
 }
 
