@@ -86,8 +86,8 @@ export default function Header() {
               <Image
                 src="/assets/images/antoIcon.png"
                 alt="Anto Logo"
-                width={40}
-                height={40}
+                width={32}
+                height={32}
                 className="logo-icon"
                 priority
                 quality={90}
@@ -133,10 +133,7 @@ export default function Header() {
           </ul>
 
           <div className="nav-actions">
-            <Link href="/contacto" className="btn btn-primary" aria-label="Contactar">
-              Contactar
-            </Link>
-            <Link href="#descargar" className="btn btn-secondary" aria-label="Descargar la aplicación Anto">
+            <Link href="#descargar" className="btn btn-primary" aria-label="Descargar la aplicación Anto">
               Descargar App
             </Link>
             <button
