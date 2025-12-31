@@ -93,34 +93,91 @@ export default function DesarrolloPage() {
             </div>
 
             <div className="tech-stack">
-              <h2>Stack Tecnológico</h2>
+              <h2>Stack Tecnológico Completo</h2>
+              <p style={{ color: 'var(--secondary-color)', marginBottom: 'var(--spacing-lg)', textAlign: 'center' }}>
+                Tecnologías reales utilizadas en el desarrollo de Anto según el{' '}
+                <a
+                  href="https://github.com/Mar-cere/Anto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'var(--primary-color)' }}
+                >
+                  repositorio oficial
+                </a>
+              </p>
               <div className="tech-grid">
                 <div className="tech-category">
-                  <h3>Frontend</h3>
+                  <h3>📱 Frontend Móvil</h3>
                   <ul>
-                    <li>React Native</li>
-                    <li>Next.js</li>
-                    <li>TypeScript</li>
-                    <li>CSS Modules</li>
+                    <li>React Native (multiplataforma)</li>
+                    <li>Expo SDK</li>
+                    <li>React Navigation</li>
+                    <li>AsyncStorage</li>
+                    <li>Socket.IO Client</li>
+                    <li>Notificaciones Push</li>
                   </ul>
                 </div>
                 <div className="tech-category">
-                  <h3>Backend</h3>
+                  <h3>⚡ Backend</h3>
                   <ul>
                     <li>Node.js</li>
                     <li>Express.js</li>
-                    <li>MongoDB</li>
-                    <li>WebSockets</li>
+                    <li>MongoDB + Mongoose</li>
+                    <li>Socket.IO (WebSockets)</li>
+                    <li>Winston (Logging)</li>
+                    <li>Sentry (Error Tracking)</li>
                   </ul>
                 </div>
                 <div className="tech-category">
-                  <h3>IA</h3>
+                  <h3>🤖 Inteligencia Artificial</h3>
                   <ul>
-                    <li>GPT-5 Mini</li>
-                    <li>OpenAI API</li>
-                    <li>NLP</li>
+                    <li>OpenAI GPT-5 Mini API</li>
+                    <li>Procesamiento de lenguaje natural</li>
+                    <li>Análisis emocional</li>
+                    <li>Detección de patrones</li>
                   </ul>
                 </div>
+                <div className="tech-category">
+                  <h3>🔒 Seguridad</h3>
+                  <ul>
+                    <li>JWT (Autenticación)</li>
+                    <li>bcrypt (Hasheo)</li>
+                    <li>Helmet (Headers)</li>
+                    <li>Joi (Validación)</li>
+                    <li>DOMPurify (Sanitización)</li>
+                    <li>Rate Limiting</li>
+                  </ul>
+                </div>
+                <div className="tech-category">
+                  <h3>💳 Integraciones</h3>
+                  <ul>
+                    <li>Mercado Pago</li>
+                    <li>SendGrid (Emails)</li>
+                    <li>Twilio (WhatsApp/SMS)</li>
+                    <li>OpenAI API</li>
+                    <li>Sentry</li>
+                  </ul>
+                </div>
+                <div className="tech-category">
+                  <h3>✅ Calidad</h3>
+                  <ul>
+                    <li>97%+ tests pasando</li>
+                    <li>Validación robusta</li>
+                    <li>Backups automáticos</li>
+                    <li>SSL/HTTPS</li>
+                    <li>Estado: Producción</li>
+                  </ul>
+                </div>
+              </div>
+              <div style={{ marginTop: 'var(--spacing-xl)', textAlign: 'center' }}>
+                <a
+                  href="https://github.com/Mar-cere/Anto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary btn-large"
+                >
+                  Ver Repositorio en GitHub →
+                </a>
               </div>
             </div>
           </div>

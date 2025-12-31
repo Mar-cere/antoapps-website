@@ -14,14 +14,16 @@ export default function AIExplained() {
           <div className="ai-step reveal-on-scroll" data-stagger-item>
             <div className="ai-step-number">1</div>
             <div className="ai-step-content">
-              <h3>Análisis de Lenguaje Natural</h3>
+              <h3>Integración con OpenAI API</h3>
               <p>
-                Procesamiento de lenguaje natural (NLP) avanzado que entiende el contexto emocional, el tono
-                y la intención de tus mensajes.
+                Conexión directa con GPT-5 Mini mediante API REST. Procesamiento de lenguaje natural
+                que entiende contexto emocional, tono e intención. Las conversaciones se almacenan en
+                MongoDB para mantener memoria contextual.
               </p>
               <div className="ai-tech">
-                <span className="tech-badge">GPT-5 Mini</span>
-                <span className="tech-badge">NLP Avanzado</span>
+                <span className="tech-badge">OpenAI GPT-5 Mini</span>
+                <span className="tech-badge">MongoDB</span>
+                <span className="tech-badge">NLP</span>
               </div>
             </div>
           </div>
@@ -29,14 +31,16 @@ export default function AIExplained() {
           <div className="ai-step reveal-on-scroll" data-stagger-item>
             <div className="ai-step-number">2</div>
             <div className="ai-step-content">
-              <h3>Detección de Patrones</h3>
+              <h3>Detección Automática de Crisis</h3>
               <p>
-                Identifica patrones en tus conversaciones, reconociendo cambios emocionales y tendencias a lo
-                largo del tiempo.
+                Algoritmos que analizan patrones de lenguaje en tiempo real. Cuando se detectan señales
+                de riesgo, se activan protocolos automáticos: notificaciones a contactos de confianza
+                vía Twilio (WhatsApp/SMS) y SendGrid (emails), además de recursos de emergencia.
               </p>
               <div className="ai-tech">
-                <span className="tech-badge">Machine Learning</span>
-                <span className="tech-badge">Análisis Predictivo</span>
+                <span className="tech-badge">Análisis de Patrones</span>
+                <span className="tech-badge">Twilio</span>
+                <span className="tech-badge">SendGrid</span>
               </div>
             </div>
           </div>
@@ -44,14 +48,16 @@ export default function AIExplained() {
           <div className="ai-step reveal-on-scroll" data-stagger-item>
             <div className="ai-step-number">3</div>
             <div className="ai-step-content">
-              <h3>Respuestas Empáticas</h3>
+              <h3>Comunicación en Tiempo Real</h3>
               <p>
-                Genera respuestas personalizadas, empáticas y contextualmente relevantes adaptadas a tu
-                situación específica.
+                WebSockets con Socket.IO para respuestas instantáneas. El backend Node.js procesa
+                mensajes, consulta la base de datos MongoDB para contexto histórico, y genera respuestas
+                empáticas y personalizadas en menos de 2.5 segundos.
               </p>
               <div className="ai-tech">
-                <span className="tech-badge">Personalización</span>
-                <span className="tech-badge">Validación Emocional</span>
+                <span className="tech-badge">Socket.IO</span>
+                <span className="tech-badge">WebSockets</span>
+                <span className="tech-badge">Tiempo Real</span>
               </div>
             </div>
           </div>
@@ -60,15 +66,17 @@ export default function AIExplained() {
         <div className="ai-features-box reveal-on-scroll" style={{ marginTop: 'var(--spacing-xl)' }}>
           <div className="ai-features-grid">
             <div className="ai-feature-item">
-              <strong>Modelo:</strong> GPT-5 Mini optimizado
+              <strong>API:</strong> OpenAI GPT-5 Mini
             </div>
             <div className="ai-feature-item">
-              <strong>Velocidad:</strong> &lt;2 segundos promedio
+              <strong>Velocidad:</strong> &lt;2.5s promedio
             </div>
             <div className="ai-feature-item">
-              <strong>Precisión:</strong> 94%+ detección emocional
+              <strong>Comunicación:</strong> Socket.IO WebSockets
             </div>
-            <div className="ai-feature-item"></div>
+            <div className="ai-feature-item">
+              <strong>Base de Datos:</strong> MongoDB
+            </div>
           </div>
         </div>
       </div>

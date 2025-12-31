@@ -62,56 +62,64 @@ export default function Features() {
           <div className="feature-detail-grid" data-stagger id="featureDetailsGrid">
             <div className="feature-detail-card reveal-on-scroll" data-stagger-item data-magnetic="0.1">
               <div className="feature-detail-icon">💬</div>
-              <h3>Chat Inteligente con IA</h3>
+              <h3>Chat con GPT-5 Mini (OpenAI)</h3>
               <p>
-                Asistente AI con procesamiento de lenguaje natural avanzado que entiende el contexto
-                emocional y se adapta a tu estilo de comunicación.
+                Integración directa con OpenAI API para conversaciones naturales. WebSockets con Socket.IO
+                para tiempo real. Memoria de conversaciones almacenada en MongoDB para contexto
+                persistente.
               </p>
               <ul className="feature-list">
-                <li>Respuestas contextuales y empáticas</li>
-                <li>Memoria de conversaciones</li>
+                <li>OpenAI GPT-5 Mini API integrada</li>
+                <li>Socket.IO para comunicación en tiempo real</li>
+                <li>Memoria contextual en MongoDB</li>
+                <li>Respuestas en &lt;2.5 segundos</li>
               </ul>
             </div>
 
             <div className="feature-detail-card reveal-on-scroll" data-stagger-item data-magnetic="0.1">
-              <div className="feature-detail-icon">📈</div>
-              <h3>Análisis Emocional Avanzado</h3>
+              <div className="feature-detail-icon">🚨</div>
+              <h3>Detección Automática de Crisis</h3>
               <p>
-                Monitorea tu bienestar con análisis detallados, identificación de patrones y reportes
-                personalizados de tu progreso.
+                Sistema proactivo que analiza patrones de lenguaje y activa protocolos de emergencia
+                automáticamente. Notificaciones a contactos de confianza vía Twilio (WhatsApp/SMS) y
+                SendGrid (emails).
               </p>
               <ul className="feature-list">
-                <li>Gráficos de estado emocional</li>
-                <li>Identificación de patrones</li>
-                <li>Reportes semanales y mensuales</li>
+                <li>Detección automática de patrones de riesgo</li>
+                <li>Alertas vía Twilio (WhatsApp/SMS)</li>
+                <li>Notificaciones por email (SendGrid)</li>
+                <li>Seguimiento post-crisis automatizado</li>
               </ul>
             </div>
 
             <div className="feature-detail-card reveal-on-scroll" data-stagger-item data-magnetic="0.1">
-              <div className="feature-detail-icon">🛡️</div>
-              <h3>Seguridad y Privacidad</h3>
+              <div className="feature-detail-icon">📋</div>
+              <h3>Sistema de Tareas y Hábitos</h3>
               <p>
-                Encriptación de extremo a extremo con estándares de grado militar. Cumplimiento GDPR,
-                HIPAA y todas las regulaciones internacionales.
+                Gestión completa de tareas terapéuticas y seguimiento de hábitos saludables. Análisis de
+                correlaciones entre hábitos y bienestar emocional. Recordatorios inteligentes con
+                notificaciones push.
               </p>
               <ul className="feature-list">
-                <li>Encriptación E2E (AES-256)</li>
-                <li>Autenticación de dos factores</li>
-                <li>Certificaciones de seguridad</li>
+                <li>Gestión de tareas y hábitos</li>
+                <li>Recordatorios personalizados</li>
+                <li>Análisis de cumplimiento</li>
+                <li>Correlación con bienestar emocional</li>
               </ul>
             </div>
 
             <div className="feature-detail-card reveal-on-scroll" data-stagger-item data-magnetic="0.1">
-              <div className="feature-detail-icon">🧘</div>
-              <h3>Biblioteca de Bienestar</h3>
+              <div className="feature-detail-icon">💳</div>
+              <h3>Integración con Mercado Pago</h3>
               <p>
-                100+ ejercicios de mindfulness, meditaciones guiadas y técnicas de relajación diseñadas
-                por profesionales de salud mental.
+                Sistema de suscripciones completo con procesamiento de pagos seguro. Gestión automática de
+                planes, renovaciones y cancelaciones. Backend Node.js con Express.js.
               </p>
               <ul className="feature-list">
-                <li>Ejercicios de mindfulness</li>
-                <li>Meditaciones guiadas</li>
-                <li>Recursos educativos</li>
+                <li>Procesamiento seguro de pagos</li>
+                <li>Gestión automática de suscripciones</li>
+                <li>Múltiples planes flexibles</li>
+                <li>Renovaciones y cancelaciones</li>
               </ul>
             </div>
           </div>

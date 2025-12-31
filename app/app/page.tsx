@@ -34,8 +34,16 @@ export default function AppPage() {
             <div className="app-hero-content">
               <h1 className="app-hero-title reveal-on-scroll">Conoce la Aplicación Anto</h1>
               <p className="app-hero-subtitle reveal-on-scroll">
-                Una experiencia diseñada para tu bienestar mental, con tecnología de vanguardia y
-                un enfoque centrado en ti
+                Aplicación React Native con backend Node.js/Express. Integración con OpenAI GPT-5 Mini,
+                detección automática de crisis, sistema de tareas y hábitos, y mucho más.{' '}
+                <a
+                  href="https://github.com/Mar-cere/Anto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'var(--primary-color)', textDecoration: 'underline' }}
+                >
+                  Ver código en GitHub
+                </a>
               </p>
               <div className="app-hero-badges reveal-on-scroll">
                 <span className="app-badge">📱 iOS & Android</span>
@@ -56,54 +64,56 @@ export default function AppPage() {
             <div className="insights-grid" data-stagger>
               <div className="insight-card reveal-on-scroll" data-stagger-item>
                 <div className="insight-icon">💬</div>
-                <div className="insight-value">2.5s</div>
-                <div className="insight-label">Tiempo promedio de respuesta</div>
+                <div className="insight-value">&lt;2.5s</div>
+                <div className="insight-label">Respuesta del AI</div>
                 <p className="insight-description">
-                  Nuestro asistente AI responde en menos de 2.5 segundos, garantizando una
-                  experiencia fluida y natural
+                  Integración con GPT-5 Mini optimizada para respuestas rápidas y contextuales en
+                  tiempo real mediante Socket.IO
                 </p>
               </div>
               <div className="insight-card reveal-on-scroll" data-stagger-item>
                 <div className="insight-icon">📊</div>
-                <div className="insight-value">94%</div>
-                <div className="insight-label">Precisión en detección emocional</div>
+                <div className="insight-value">97%+</div>
+                <div className="insight-label">Tests pasando</div>
                 <p className="insight-description">
-                  Algoritmos avanzados de NLP que identifican con precisión tu estado emocional y
-                  contexto
+                  Cobertura de tests automatizados que garantizan estabilidad y confiabilidad en
+                  cada actualización
                 </p>
               </div>
               <div className="insight-card reveal-on-scroll" data-stagger-item>
                 <div className="insight-icon">🛡️</div>
-                <div className="insight-value">AES-256</div>
-                <div className="insight-label">Encriptación de grado militar</div>
+                <div className="insight-value">E2E</div>
+                <div className="insight-label">Encriptación completa</div>
                 <p className="insight-description">
-                  Todas tus conversaciones están protegidas con el mismo nivel de seguridad que
-                  instituciones financieras
+                  Todas las comunicaciones protegidas con JWT, bcrypt y validación robusta con Joi
+                  y DOMPurify
                 </p>
               </div>
               <div className="insight-card reveal-on-scroll" data-stagger-item>
                 <div className="insight-icon">⚡</div>
-                <div className="insight-value">24/7</div>
-                <div className="insight-label">Disponibilidad constante</div>
+                <div className="insight-value">Real-time</div>
+                <div className="insight-label">Comunicación instantánea</div>
                 <p className="insight-description">
-                  Acceso inmediato cuando lo necesites, sin esperas ni horarios limitados
+                  WebSockets con Socket.IO para chat en tiempo real, notificaciones push y
+                  sincronización multi-dispositivo
                 </p>
               </div>
               <div className="insight-card reveal-on-scroll" data-stagger-item>
-                <div className="insight-icon">🧠</div>
-                <div className="insight-value">100+</div>
-                <div className="insight-label">Ejercicios de bienestar</div>
+                <div className="insight-icon">🚨</div>
+                <div className="insight-value">Auto</div>
+                <div className="insight-label">Detección de crisis</div>
                 <p className="insight-description">
-                  Biblioteca completa de herramientas de mindfulness, meditación y relajación
+                  Sistema proactivo que detecta patrones de riesgo y activa protocolos de emergencia
+                  con Twilio y SendGrid
                 </p>
               </div>
               <div className="insight-card reveal-on-scroll" data-stagger-item>
                 <div className="insight-icon">📈</div>
                 <div className="insight-value">35%</div>
-                <div className="insight-label">Reducción promedio de síntomas</div>
+                <div className="insight-label">Reducción de síntomas</div>
                 <p className="insight-description">
-                  Estudios demuestran reducción significativa en síntomas de depresión y ansiedad
-                  tras 8 semanas de uso
+                  Estudios científicos demuestran reducción significativa en síntomas de depresión y
+                  ansiedad tras 8 semanas de uso consistente
                 </p>
               </div>
             </div>
@@ -180,6 +190,17 @@ export default function AppPage() {
                 💡 <strong>Nota:</strong> Los screenshots reales de la aplicación se agregarán aquí
                 próximamente. Estos placeholders muestran las principales funcionalidades de Anto.
               </p>
+              <p style={{ marginTop: 'var(--spacing-sm)', fontSize: '0.9375rem' }}>
+                📱 <strong>Repositorio:</strong>{' '}
+                <a
+                  href="https://github.com/Mar-cere/Anto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'var(--primary-color)' }}
+                >
+                  Ver código fuente en GitHub
+                </a>
+              </p>
             </div>
           </div>
         </section>
@@ -195,97 +216,107 @@ export default function AppPage() {
               <div className="advanced-feature reveal-on-scroll" data-stagger-item>
                 <div className="feature-header">
                   <div className="feature-icon">🤖</div>
-                  <h3>Asistente AI con Memoria Contextual</h3>
+                  <h3>Chat Conversacional con GPT-5 Mini</h3>
                 </div>
                 <p>
-                  El asistente recuerda conversaciones anteriores y se adapta a tu estilo de
-                  comunicación, creando una experiencia verdaderamente personalizada.
+                  Integración directa con OpenAI API para conversaciones naturales y empáticas.
+                  Procesamiento de lenguaje natural avanzado que entiende contexto emocional y
+                  mantiene memoria de conversaciones.
                 </p>
                 <ul className="feature-list">
-                  <li>Memoria de conversaciones a largo plazo</li>
-                  <li>Adaptación a tu estilo de comunicación</li>
-                  <li>Reconocimiento de patrones emocionales</li>
+                  <li>Integración con OpenAI GPT-5 Mini</li>
+                  <li>Memoria de conversaciones en MongoDB</li>
+                  <li>Procesamiento de lenguaje natural (NLP)</li>
                   <li>Respuestas contextualmente relevantes</li>
+                  <li>WebSockets para tiempo real</li>
                 </ul>
               </div>
               <div className="advanced-feature reveal-on-scroll" data-stagger-item>
                 <div className="feature-header">
-                  <div className="feature-icon">📈</div>
-                  <h3>Análisis Predictivo de Bienestar</h3>
+                  <div className="feature-icon">🚨</div>
+                  <h3>Sistema Automático de Detección de Crisis</h3>
                 </div>
                 <p>
-                  Machine Learning avanzado que identifica tendencias y patrones en tu bienestar,
-                  permitiendo intervenciones proactivas.
+                  Algoritmos que analizan patrones de lenguaje y comportamiento para detectar
+                  señales de crisis. Activa protocolos de emergencia automáticamente con notificaciones
+                  a contactos de confianza vía Twilio y SendGrid.
                 </p>
                 <ul className="feature-list">
-                  <li>Detección temprana de cambios emocionales</li>
-                  <li>Alertas proactivas de bienestar</li>
-                  <li>Recomendaciones personalizadas</li>
+                  <li>Detección automática de patrones de riesgo</li>
+                  <li>Alertas inmediatas a contactos designados</li>
+                  <li>Notificaciones vía WhatsApp/SMS (Twilio)</li>
+                  <li>Emails de emergencia (SendGrid)</li>
+                  <li>Seguimiento post-crisis automatizado</li>
+                </ul>
+              </div>
+              <div className="advanced-feature reveal-on-scroll" data-stagger-item>
+                <div className="feature-header">
+                  <div className="feature-icon">📋</div>
+                  <h3>Sistema de Tareas y Hábitos</h3>
+                </div>
+                <p>
+                  Gestión completa de tareas terapéuticas y seguimiento de hábitos saludables.
+                  Recordatorios inteligentes y análisis de correlaciones entre hábitos y bienestar
+                  emocional.
+                </p>
+                <ul className="feature-list">
+                  <li>Creación y seguimiento de tareas</li>
+                  <li>Establecimiento de hábitos saludables</li>
+                  <li>Recordatorios personalizados</li>
+                  <li>Análisis de cumplimiento y progreso</li>
+                  <li>Correlación con bienestar emocional</li>
+                </ul>
+              </div>
+              <div className="advanced-feature reveal-on-scroll" data-stagger-item>
+                <div className="feature-header">
+                  <div className="feature-icon">💳</div>
+                  <h3>Integración con Mercado Pago</h3>
+                </div>
+                <p>
+                  Sistema de suscripciones completo con procesamiento de pagos seguro. Gestión
+                  automática de planes, renovaciones y cancelaciones.
+                </p>
+                <ul className="feature-list">
+                  <li>Procesamiento seguro de pagos</li>
+                  <li>Gestión automática de suscripciones</li>
+                  <li>Múltiples planes flexibles</li>
+                  <li>Renovaciones automáticas</li>
+                  <li>Cancelación en cualquier momento</li>
+                </ul>
+              </div>
+              <div className="advanced-feature reveal-on-scroll" data-stagger-item>
+                <div className="feature-header">
+                  <div className="feature-icon">📊</div>
+                  <h3>Dashboard de Métricas y Progreso</h3>
+                </div>
+                <p>
+                  Visualización completa de tu bienestar emocional con gráficos, tendencias y
+                  reportes detallados. Análisis de patrones a lo largo del tiempo.
+                </p>
+                <ul className="feature-list">
+                  <li>Gráficos de estado emocional</li>
+                  <li>Identificación de patrones temporales</li>
                   <li>Reportes semanales y mensuales</li>
+                  <li>Métricas de progreso personalizadas</li>
+                  <li>Exportación de datos</li>
                 </ul>
               </div>
               <div className="advanced-feature reveal-on-scroll" data-stagger-item>
                 <div className="feature-header">
                   <div className="feature-icon">🔔</div>
-                  <h3>Sistema de Notificaciones Inteligentes</h3>
+                  <h3>Notificaciones Push Nativas</h3>
                 </div>
                 <p>
-                  Notificaciones que respetan tu espacio personal mientras te mantienen conectado
-                  con tu bienestar.
+                  Sistema de notificaciones push configurado para recordatorios de bienestar,
+                  alertas de crisis y actualizaciones importantes. Respeto por preferencias y
+                  horarios del usuario.
                 </p>
                 <ul className="feature-list">
-                  <li>Recordatorios personalizados de bienestar</li>
-                  <li>Notificaciones de seguimiento emocional</li>
-                  <li>Alertas de crisis (configurables)</li>
-                  <li>Respeto por horarios y preferencias</li>
-                </ul>
-              </div>
-              <div className="advanced-feature reveal-on-scroll" data-stagger-item>
-                <div className="feature-header">
-                  <div className="feature-icon">🌐</div>
-                  <h3>Sincronización Multi-Dispositivo</h3>
-                </div>
-                <p>
-                  Accede a Anto desde cualquier dispositivo. Tus conversaciones y datos se
-                  sincronizan de forma segura y encriptada.
-                </p>
-                <ul className="feature-list">
-                  <li>Sincronización en tiempo real</li>
-                  <li>Encriptación end-to-end</li>
-                  <li>Historial completo disponible</li>
-                  <li>Continuidad entre dispositivos</li>
-                </ul>
-              </div>
-              <div className="advanced-feature reveal-on-scroll" data-stagger-item>
-                <div className="feature-header">
-                  <div className="feature-icon">🎯</div>
-                  <h3>Objetivos y Seguimiento Personalizado</h3>
-                </div>
-                <p>
-                  Establece objetivos de bienestar y recibe seguimiento personalizado para alcanzar
-                  tus metas.
-                </p>
-                <ul className="feature-list">
-                  <li>Objetivos personalizables</li>
-                  <li>Tracking de progreso visual</li>
-                  <li>Celebración de logros</li>
-                  <li>Ajuste automático de metas</li>
-                </ul>
-              </div>
-              <div className="advanced-feature reveal-on-scroll" data-stagger-item>
-                <div className="feature-header">
-                  <div className="feature-icon">🔐</div>
-                  <h3>Privacidad Granular</h3>
-                </div>
-                <p>
-                  Control total sobre qué datos compartes y cómo se utilizan, con opciones de
-                  privacidad detalladas.
-                </p>
-                <ul className="feature-list">
-                  <li>Control de datos compartidos</li>
-                  <li>Exportación de datos en cualquier momento</li>
-                  <li>Eliminación completa de cuenta</li>
-                  <li>Transparencia total en uso de datos</li>
+                  <li>Notificaciones push nativas (iOS/Android)</li>
+                  <li>Recordatorios de tareas y hábitos</li>
+                  <li>Alertas de seguimiento emocional</li>
+                  <li>Notificaciones de crisis (configurables)</li>
+                  <li>Control granular de notificaciones</li>
                 </ul>
               </div>
             </div>
@@ -301,39 +332,47 @@ export default function AppPage() {
             </p>
             <div className="tech-specs-grid" data-stagger>
               <div className="tech-spec-card reveal-on-scroll" data-stagger-item>
-                <h3>📱 Plataformas</h3>
+                <h3>📱 Frontend (React Native)</h3>
                 <ul>
-                  <li>iOS 13.0 o superior</li>
-                  <li>Android 8.0 (API 26) o superior</li>
-                  <li>Optimizado para tablets</li>
-                  <li>Compatibilidad con wearables (próximamente)</li>
+                  <li>React Native multiplataforma</li>
+                  <li>Expo para desarrollo rápido</li>
+                  <li>React Navigation</li>
+                  <li>AsyncStorage para datos locales</li>
+                  <li>Socket.IO Client para tiempo real</li>
+                  <li>Notificaciones push nativas</li>
                 </ul>
               </div>
               <div className="tech-spec-card reveal-on-scroll" data-stagger-item>
-                <h3>⚡ Rendimiento</h3>
+                <h3>⚙️ Backend (Node.js)</h3>
                 <ul>
-                  <li>Tiempo de inicio: &lt;2 segundos</li>
-                  <li>Respuesta del AI: &lt;2.5 segundos promedio</li>
-                  <li>Tamaño de la app: &lt;50MB</li>
-                  <li>Uso de batería optimizado</li>
+                  <li>Node.js y Express.js</li>
+                  <li>MongoDB con Mongoose</li>
+                  <li>Socket.IO para WebSockets</li>
+                  <li>OpenAI API (GPT-5 Mini)</li>
+                  <li>Winston para logging</li>
+                  <li>Sentry para error tracking</li>
                 </ul>
               </div>
               <div className="tech-spec-card reveal-on-scroll" data-stagger-item>
-                <h3>🔒 Seguridad</h3>
+                <h3>🔒 Seguridad y Privacidad</h3>
                 <ul>
-                  <li>Encriptación AES-256</li>
-                  <li>Autenticación biométrica</li>
-                  <li>Certificación SSL/TLS</li>
-                  <li>Cumplimiento GDPR y HIPAA</li>
+                  <li>JWT para autenticación</li>
+                  <li>bcrypt para hasheo de contraseñas</li>
+                  <li>Helmet con headers de seguridad</li>
+                  <li>Joi para validación robusta</li>
+                  <li>DOMPurify para sanitización</li>
+                  <li>Rate limiting y protección DDoS</li>
                 </ul>
               </div>
               <div className="tech-spec-card reveal-on-scroll" data-stagger-item>
-                <h3>🌍 Idiomas</h3>
+                <h3>🔗 Integraciones</h3>
                 <ul>
-                  <li>Español (completo)</li>
-                  <li>Inglés (próximamente)</li>
-                  <li>Portugués (próximamente)</li>
-                  <li>Más idiomas en desarrollo</li>
+                  <li>Mercado Pago para pagos</li>
+                  <li>SendGrid para emails</li>
+                  <li>Twilio para WhatsApp/SMS</li>
+                  <li>OpenAI para IA conversacional</li>
+                  <li>Sentry para monitoreo</li>
+                  <li>SSL/HTTPS en todas las conexiones</li>
                 </ul>
               </div>
             </div>

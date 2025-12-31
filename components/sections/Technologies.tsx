@@ -13,32 +13,70 @@ export default function Technologies() {
           <div className="tech-category reveal-on-scroll" data-stagger-item>
             <h3>🤖 Inteligencia Artificial</h3>
             <ul className="tech-list">
-              <li>GPT-5 Mini para conversaciones naturales</li>
-              <li>Procesamiento de lenguaje natural avanzado</li>
-              <li>Machine Learning para análisis emocional</li>
-              <li>Detección de patrones en tiempo real</li>
+              <li>OpenAI GPT-5 Mini API integrada</li>
+              <li>Procesamiento de lenguaje natural (NLP)</li>
+              <li>Análisis emocional en tiempo real</li>
+              <li>Detección automática de patrones de crisis</li>
+              <li>Memoria contextual de conversaciones</li>
+            </ul>
+          </div>
+
+          <div className="tech-category reveal-on-scroll" data-stagger-item>
+            <h3>📱 Frontend (React Native)</h3>
+            <ul className="tech-list">
+              <li>React Native multiplataforma (iOS/Android)</li>
+              <li>Expo SDK para desarrollo rápido</li>
+              <li>React Navigation para navegación</li>
+              <li>AsyncStorage para persistencia local</li>
+              <li>Socket.IO Client para tiempo real</li>
+              <li>Notificaciones push nativas</li>
+            </ul>
+          </div>
+
+          <div className="tech-category reveal-on-scroll" data-stagger-item>
+            <h3>⚡ Backend (Node.js/Express)</h3>
+            <ul className="tech-list">
+              <li>Node.js runtime con Express.js</li>
+              <li>MongoDB con Mongoose ODM</li>
+              <li>Socket.IO para WebSockets</li>
+              <li>Winston para logging estructurado</li>
+              <li>Sentry para error tracking</li>
+              <li>APIs RESTful bien documentadas</li>
             </ul>
           </div>
 
           <div className="tech-category reveal-on-scroll" data-stagger-item>
             <h3>🔒 Seguridad y Privacidad</h3>
             <ul className="tech-list">
-              <li>Encriptación End-to-End (AES-256)</li>
-              <li>Autenticación JWT segura</li>
+              <li>JWT para autenticación segura</li>
+              <li>bcrypt para hasheo de contraseñas</li>
               <li>Helmet con headers de seguridad</li>
-              <li>Cumplimiento GDPR y HIPAA</li>
+              <li>Joi para validación robusta</li>
+              <li>DOMPurify para sanitización</li>
               <li>Rate limiting y protección DDoS</li>
             </ul>
           </div>
 
           <div className="tech-category reveal-on-scroll" data-stagger-item>
-            <h3>📱 Plataforma Móvil</h3>
+            <h3>💳 Integraciones y Servicios</h3>
             <ul className="tech-list">
-              <li>React Native multiplataforma</li>
-              <li>Expo para desarrollo rápido</li>
-              <li>Socket.IO para tiempo real</li>
-              <li>AsyncStorage para datos locales</li>
-              <li>Notificaciones push nativas</li>
+              <li>Mercado Pago para procesamiento de pagos</li>
+              <li>SendGrid para emails transaccionales</li>
+              <li>Twilio para WhatsApp y SMS</li>
+              <li>OpenAI API para IA conversacional</li>
+              <li>Sentry para monitoreo de errores</li>
+            </ul>
+          </div>
+
+          <div className="tech-category reveal-on-scroll" data-stagger-item>
+            <h3>✅ Calidad y Confiabilidad</h3>
+            <ul className="tech-list">
+              <li>97%+ de tests automatizados pasando</li>
+              <li>Validación exhaustiva con Joi</li>
+              <li>Sanitización de todos los inputs</li>
+              <li>Backups automáticos de MongoDB</li>
+              <li>SSL/HTTPS en todas las conexiones</li>
+              <li>Estado: Listo para producción</li>
             </ul>
           </div>
         </div>
