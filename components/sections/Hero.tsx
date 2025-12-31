@@ -59,22 +59,22 @@ export default function Hero() {
           </div>
         </div>
         <div className="hero-image reveal-on-scroll">
-          <div className="phone-mockup" data-parallax="0.2" data-magnetic="0.2">
-            <div className="phone-screen">
-              <div className="app-preview">
-                <Image
-                  src="/assets/images/antoIcon.png"
-                  alt="Anto App"
-                  className="app-icon-large"
-                  width={120}
-                  height={120}
-                  priority
-                  quality={90}
-                  placeholder="blur"
-                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
-                />
-              </div>
-            </div>
+          <div className="phone-mockup-container">
+            <Image
+              src="/assets/images/hero/phone-mockup.png"
+              alt="Anto App - Mockup de la aplicación mostrando la interfaz principal"
+              className="phone-mockup-image"
+              width={856}
+              height={1346}
+              priority
+              quality={95}
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+              style={{
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1))'
+              }}
+            />
           </div>
         </div>
       </div>

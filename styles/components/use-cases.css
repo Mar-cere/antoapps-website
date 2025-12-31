@@ -15,20 +15,18 @@
 }
 
 .use-case-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: var(--spacing-lg);
-    backdrop-filter: blur(10px);
-    transition: var(--transition);
-    opacity: 1;
-    transform: translateY(0);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-6);
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-xs);
 }
 
 .use-case-card:hover {
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-5px);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
 }
 
 .use-case-icon {
@@ -38,22 +36,22 @@
 }
 
 .use-case-card h3 {
-    color: var(--white);
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-4);
 }
 
 .use-case-situation,
 .use-case-solution {
-    color: var(--secondary-color);
-    margin-bottom: var(--spacing-sm);
-    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-3);
+    line-height: var(--line-height-base);
 }
 
 .use-case-situation strong,
 .use-case-solution strong {
-    color: var(--primary-color);
+    color: var(--color-primary);
 }
 
 .use-case-list {
@@ -63,31 +61,31 @@
 }
 
 .use-case-list li {
-    color: var(--secondary-color);
-    padding: var(--spacing-xs) 0;
-    padding-left: var(--spacing-md);
+    color: var(--color-text-secondary);
+    padding: var(--spacing-2) 0;
+    padding-left: var(--spacing-6);
     position: relative;
-    line-height: 1.6;
+    line-height: var(--line-height-base);
 }
 
 .use-case-list li::before {
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--primary-color);
-    font-weight: bold;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
 }
 
 .use-case-result {
-    margin-top: var(--spacing-md);
-    padding: var(--spacing-md);
-    background: rgba(26, 221, 219, 0.1);
-    border-left: 3px solid var(--primary-color);
-    border-radius: 8px;
+    margin-top: var(--spacing-4);
+    padding: var(--spacing-4);
+    background: var(--color-primary-light);
+    border-left: var(--border-width-4) solid var(--color-primary);
+    border-radius: var(--radius-md);
 }
 
 .use-case-result strong {
-    color: var(--primary-color);
+    color: var(--color-primary);
 }
 
 /* Responsive */

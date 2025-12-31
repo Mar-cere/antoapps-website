@@ -80,7 +80,7 @@
 }
 
 .hero-stat-icon {
-    color: var(--primary-color);
+    color: var(--color-primary);
     font-size: var(--font-size-2xl);
     line-height: 1;
 }
@@ -121,35 +121,50 @@
     animation: fadeInRight 0.8s ease;
 }
 
+.phone-mockup-container {
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+    animation: float 6s ease-in-out infinite;
+    transition: transform var(--duration-base) var(--ease-out);
+}
+
+.phone-mockup-container:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.phone-mockup-image {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    border-radius: var(--radius-3xl);
+    box-shadow: var(--shadow-2xl);
+    transition: transform var(--duration-base) var(--ease-out);
+    background: transparent;
+}
+
+/* Responsive adjustments para el mockup */
+@media (max-width: 768px) {
+    .phone-mockup-container {
+        max-width: 280px;
+    }
+    
+    .phone-mockup-image {
+        max-width: 280px;
+    }
+}
+
+/* Mantener estilos legacy para compatibilidad */
 .phone-mockup {
     width: 300px;
     height: 600px;
     background: var(--color-bg-primary);
     border: 1px solid var(--color-border);
-    border-radius: 40px; /* Más redondeado, estilo Apple */
+    border-radius: 40px;
     padding: 20px;
     box-shadow: var(--shadow-lg);
     position: relative;
     animation: float 6s ease-in-out infinite;
-}
-
-.phone-mockup::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 30px;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.phone-mockup:hover::before {
-    opacity: 0.5;
-    animation: glow 2s ease-in-out infinite;
 }
 
 .phone-screen {
@@ -195,7 +210,7 @@
 
 /* Features Section */
 .features {
-    background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(3, 10, 36, 0.7) 100%);
+    background: var(--color-bg-primary);
 }
 
 .features-grid {
