@@ -6,13 +6,14 @@ interface UseCounterOptions {
   duration?: number;
   startValue?: number;
   suffix?: string;
+  decimals?: number;
 }
 
 export function useCounter(
   target: number,
   options: UseCounterOptions = {}
 ): [number, RefCallback<HTMLDivElement>] {
-  const { duration = 2000, startValue = 0 } = options;
+  const { duration = 2000, startValue = 0, decimals = 0 } = options;
   const [count, setCount] = useState(startValue);
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLDivElement | null>(null);
@@ -60,8 +61,11 @@ export function useCounter(
       // Easing function (ease-out)
       const easeOut = 1 - Math.pow(1 - progress, 3);
 
-      const current = Math.floor(start + (end - start) * easeOut);
-      setCount(current);
+      const current = start + (end - start) * easeOut;
+      const rounded = decimals > 0 
+        ? Math.round(current * Math.pow(10, decimals)) / Math.pow(10, decimals)
+        : Math.floor(current);
+      setCount(rounded);
 
       if (progress < 1) {
         animationRef.current = requestAnimationFrame(animate);

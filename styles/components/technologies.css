@@ -1,79 +1,17 @@
 /* ============================================
-   TECHNOLOGIES SECTION - MEJORADA
+   TECHNOLOGIES SECTION - SIMPLIFICADA
    ============================================ */
 
 .technologies {
     background: var(--color-bg-secondary);
     position: relative;
-}
-
-/* Certificaciones */
-.certifications-section {
-    margin-bottom: var(--spacing-8);
-    padding: var(--spacing-6);
-    background: var(--color-surface);
-    border-radius: var(--radius-xl);
-    border: var(--border-width-1) solid var(--color-border);
-}
-
-.certifications-title {
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-primary);
-    margin-bottom: var(--spacing-4);
-    text-align: center;
-}
-
-.certifications-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-4);
-}
-
-.certification-badge {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-3);
-    padding: var(--spacing-4);
-    background: var(--color-bg-primary);
-    border-radius: var(--radius-lg);
-    border: var(--border-width-1) solid var(--color-border);
-    transition: var(--transition-base);
-}
-
-.certification-badge:hover {
-    border-color: var(--color-primary);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
-}
-
-.certification-icon {
-    font-size: var(--font-size-3xl);
-    flex-shrink: 0;
-}
-
-.certification-content {
-    flex: 1;
-}
-
-.certification-name {
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-primary);
-    margin: 0 0 var(--spacing-1) 0;
-}
-
-.certification-description {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    margin: 0;
-    line-height: var(--line-height-relaxed);
+    padding: var(--spacing-12) 0;
 }
 
 /* Tech Grid */
 .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--spacing-6);
     margin-top: var(--spacing-6);
 }
@@ -82,7 +20,7 @@
     background: var(--color-surface);
     border: var(--border-width-1) solid var(--color-border);
     border-radius: var(--radius-xl);
-    padding: var(--spacing-6);
+    padding: var(--spacing-5);
     transition: var(--transition-base);
     box-shadow: var(--shadow-xs);
     position: relative;
@@ -117,27 +55,26 @@
     align-items: center;
     gap: var(--spacing-3);
     margin-bottom: var(--spacing-4);
-    padding-bottom: var(--spacing-4);
+    padding-bottom: var(--spacing-3);
     border-bottom: var(--border-width-1) solid var(--color-border);
 }
 
 .tech-category-icon {
-    font-size: var(--font-size-4xl);
+    font-size: var(--font-size-3xl);
     flex-shrink: 0;
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--category-color, var(--color-primary));
     background: linear-gradient(135deg, var(--category-color, var(--color-primary)) 0%, rgba(26, 221, 219, 0.3) 100%);
     border-radius: var(--radius-lg);
-    filter: drop-shadow(0 4px 8px rgba(26, 221, 219, 0.2));
+    filter: drop-shadow(0 2px 4px rgba(26, 221, 219, 0.2));
 }
 
 .tech-category h3 {
     color: var(--color-text-primary);
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     margin: 0;
     line-height: var(--line-height-tight);
@@ -146,11 +83,11 @@
 .tech-items {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-3);
+    gap: var(--spacing-2);
 }
 
 .tech-item {
-    padding: var(--spacing-3);
+    padding: var(--spacing-2) var(--spacing-3);
     background: var(--color-bg-primary);
     border-radius: var(--radius-md);
     transition: var(--transition-base);
@@ -164,15 +101,14 @@
 .tech-item-header {
     display: flex;
     align-items: center;
-    gap: var(--spacing-3);
-    margin-bottom: var(--spacing-2);
+    gap: var(--spacing-2);
 }
 
 .tech-item-icon {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
     flex-shrink: 0;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -184,75 +120,20 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-1);
+    gap: 2px;
 }
 
 .tech-item-name {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
     line-height: var(--line-height-tight);
 }
 
 .tech-item-description {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
     line-height: var(--line-height-relaxed);
-}
-
-.tech-item-usage {
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    line-height: var(--line-height-tight);
-    min-width: 50px;
-    text-align: right;
-}
-
-/* Tech Usage Bar */
-.tech-usage-bar {
-    height: 6px;
-    background: var(--color-border);
-    border-radius: var(--radius-full);
-    overflow: hidden;
-    position: relative;
-}
-
-.tech-usage-fill {
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        var(--category-color, var(--color-primary)),
-        rgba(26, 221, 219, 0.6)
-    );
-    border-radius: var(--radius-full);
-    transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-}
-
-.tech-usage-fill::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-    );
-    animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
 }
 
 /* Comparativa Visual */
@@ -274,7 +155,7 @@
 
 .comparison-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--spacing-4);
 }
 
@@ -300,21 +181,21 @@
 }
 
 .comparison-category {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
     margin: 0;
 }
 
 .comparison-score {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
     line-height: var(--line-height-tight);
 }
 
 .comparison-bar {
-    height: 8px;
+    height: 6px;
     background: var(--color-border);
     border-radius: var(--radius-full);
     overflow: hidden;
@@ -340,7 +221,7 @@
 }
 
 .comparison-description {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
     margin: 0;
     line-height: var(--line-height-relaxed);
@@ -363,21 +244,7 @@
         padding: var(--spacing-4);
     }
     
-    .certifications-grid {
-        grid-template-columns: 1fr;
-    }
-    
     .comparison-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .tech-item-header {
-        flex-wrap: wrap;
-    }
-    
-    .tech-item-usage {
-        width: 100%;
-        text-align: left;
-        margin-top: var(--spacing-1);
     }
 }

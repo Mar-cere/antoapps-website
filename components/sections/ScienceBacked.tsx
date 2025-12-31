@@ -18,7 +18,7 @@ export default function ScienceBacked() {
         </div>
 
         <div className="studies-preview-grid" data-stagger>
-          <div className="study-preview-card reveal-on-scroll" data-stagger-item>
+          <div className="study-preview-card reveal-on-scroll stagger-item" data-stagger-item>
             <div className="study-preview-badge">📄 JMIR Mental Health</div>
             <h3>Efectividad de Chatbots Terapéuticos</h3>
             <p className="study-preview-authors">Fitzpatrick et al. (2017)</p>
@@ -40,7 +40,7 @@ export default function ScienceBacked() {
             </a>
           </div>
 
-          <div className="study-preview-card reveal-on-scroll" data-stagger-item>
+          <div className="study-preview-card reveal-on-scroll stagger-item" data-stagger-item>
             <div className="study-preview-badge">📊 World Psychiatry</div>
             <h3>Meta-Análisis de Apps Móviles</h3>
             <p className="study-preview-authors">Firth et al. (2019)</p>
@@ -62,7 +62,7 @@ export default function ScienceBacked() {
             </a>
           </div>
 
-          <div className="study-preview-card reveal-on-scroll" data-stagger-item>
+          <div className="study-preview-card reveal-on-scroll stagger-item" data-stagger-item>
             <div className="study-preview-badge">🔬 npj Digital Medicine</div>
             <h3>Chatbots de IA en Salud Mental</h3>
             <p className="study-preview-authors">Vaidyam et al. (2022)</p>
@@ -76,72 +76,6 @@ export default function ScienceBacked() {
             </div>
             <a
               href="https://www.nature.com/articles/s41746-022-00642-8"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="study-link"
-            >
-              Ver Estudio Completo →
-            </a>
-          </div>
-
-          <div className="study-preview-card reveal-on-scroll" data-stagger-item>
-            <div className="study-preview-badge">📊 JAMA Network Open</div>
-            <h3>Prevención de Suicidio Digital</h3>
-            <p className="study-preview-authors">Torok et al. (2023)</p>
-            <p className="study-preview-abstract">
-              Meta-análisis que demuestra que las intervenciones digitales pueden reducir
-              significativamente los pensamientos suicidas.
-            </p>
-            <div className="study-preview-metrics">
-              <span className="metric-badge">Meta-análisis</span>
-              <span className="metric-badge">28 estudios</span>
-            </div>
-            <a
-              href="https://jamanetwork.com/journals/jamanetworkopen/article-abstract/2809992"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="study-link"
-            >
-              Ver Estudio Completo →
-            </a>
-          </div>
-
-          <div className="study-preview-card reveal-on-scroll" data-stagger-item>
-            <div className="study-preview-badge">🏥 JAMA Psychiatry</div>
-            <h3>Terapia Cognitivo-Conductual Digital</h3>
-            <p className="study-preview-authors">Mohr et al. (2021)</p>
-            <p className="study-preview-abstract">
-              Estudio que demuestra reducción del 35% en síntomas depresivos tras 8 semanas de uso de
-              aplicaciones basadas en TCC con IA.
-            </p>
-            <div className="study-preview-metrics">
-              <span className="metric-badge">RCT</span>
-              <span className="metric-badge">TCC Digital</span>
-            </div>
-            <a
-              href="https://jamanetwork.com/journals/jamapsychiatry"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="study-link"
-            >
-              Ver Estudio Completo →
-            </a>
-          </div>
-
-          <div className="study-preview-card reveal-on-scroll" data-stagger-item>
-            <div className="study-preview-badge">📱 JMIR mHealth</div>
-            <h3>Apps Móviles para Depresión</h3>
-            <p className="study-preview-authors">Firth et al. (2020)</p>
-            <p className="study-preview-abstract">
-              Revisión sistemática que confirma la efectividad de aplicaciones móviles para reducir
-              síntomas depresivos, especialmente con apoyo profesional.
-            </p>
-            <div className="study-preview-metrics">
-              <span className="metric-badge">Revisión</span>
-              <span className="metric-badge">Móvil</span>
-            </div>
-            <a
-              href="https://mhealth.jmir.org/"
               target="_blank"
               rel="noopener noreferrer"
               className="study-link"
