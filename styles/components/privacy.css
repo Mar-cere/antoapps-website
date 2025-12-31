@@ -5,7 +5,7 @@
 .privacy-page {
     padding-top: 120px;
     min-height: 100vh;
-    background: var(--bg-dark);
+    background: var(--color-bg-primary);
     position: relative;
 }
 
@@ -19,22 +19,19 @@
 }
 
 .privacy-hero h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: var(--spacing-sm);
-    background: linear-gradient(135deg, var(--white) 0%, var(--primary-color) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: clamp(var(--font-size-4xl), 6vw, var(--font-size-6xl));
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-3);
+    color: var(--color-text-primary);
 }
 
 .privacy-hero .last-updated {
-    color: var(--secondary-color);
-    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lg);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-2);
 }
 
 .privacy-hero .last-updated::before {
@@ -48,19 +45,19 @@
 }
 
 .privacy-intro {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--spacing-md);
-    margin-bottom: var(--spacing-xl);
-    backdrop-filter: blur(10px);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-6);
+    margin-bottom: var(--spacing-12);
+    box-shadow: var(--shadow-xs);
 }
 
 .privacy-intro p {
-    color: var(--secondary-color);
-    line-height: 1.8;
-    font-size: 1.125rem;
-    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-3);
 }
 
 .privacy-intro p:last-child {
@@ -73,15 +70,15 @@
 }
 
 .privacy-section h2 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: var(--spacing-md);
-    color: var(--white);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-4);
+    color: var(--color-text-primary);
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
-    padding-bottom: var(--spacing-sm);
-    border-bottom: 2px solid var(--card-border);
+    gap: var(--spacing-3);
+    padding-bottom: var(--spacing-3);
+    border-bottom: var(--border-width-2) solid var(--color-border-light);
 }
 
 .privacy-section h2::before {
@@ -90,41 +87,41 @@
 }
 
 .privacy-section h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-top: var(--spacing-md);
-    margin-bottom: var(--spacing-sm);
-    color: var(--primary-color);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    margin-top: var(--spacing-4);
+    margin-bottom: var(--spacing-3);
+    color: var(--color-primary);
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-2);
 }
 
 .privacy-section h3::before {
     content: "→";
-    color: var(--primary-color);
-    font-weight: 700;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
 }
 
 .privacy-section p {
-    color: var(--secondary-color);
-    line-height: 1.8;
-    margin-bottom: var(--spacing-sm);
-    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-3);
+    font-size: var(--font-size-base);
 }
 
 .privacy-section p strong {
-    color: var(--white);
-    font-weight: 600;
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
 }
 
 .privacy-section ul,
 .privacy-section ol {
-    color: var(--secondary-color);
-    line-height: 1.8;
-    margin-left: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-left: var(--spacing-6);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-base);
 }
 
 .privacy-section li {
@@ -133,28 +130,28 @@
 }
 
 .privacy-section li::marker {
-    color: var(--primary-color);
+    color: var(--color-primary);
 }
 
 .privacy-highlight {
-    background: var(--card-bg);
-    border-left: 4px solid var(--primary-color);
-    border-radius: 8px;
-    padding: var(--spacing-md);
-    margin: var(--spacing-md) 0;
-    backdrop-filter: blur(10px);
+    background: var(--color-surface);
+    border-left: var(--border-width-4) solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-4);
+    margin: var(--spacing-4) 0;
+    box-shadow: var(--shadow-xs);
 }
 
 .privacy-highlight p {
     margin-bottom: 0;
-    color: var(--white);
-    font-weight: 500;
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
 }
 
 .privacy-highlight p:first-child {
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-bottom: var(--spacing-xs);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-2);
 }
 
 .privacy-grid {
@@ -165,49 +162,50 @@
 }
 
 .privacy-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: var(--spacing-md);
-    backdrop-filter: blur(10px);
-    transition: var(--transition);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-4);
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-xs);
 }
 
 .privacy-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
     box-shadow: var(--shadow-md);
 }
 
 .privacy-card h4 {
-    color: var(--primary-color);
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-xs);
+    color: var(--color-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-2);
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-2);
 }
 
 .privacy-card p {
-    color: var(--secondary-color);
-    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
     margin-bottom: 0;
 }
 
 .privacy-table {
     width: 100%;
     border-collapse: collapse;
-    margin: var(--spacing-md) 0;
-    background: var(--card-bg);
-    border-radius: 12px;
+    margin: var(--spacing-4) 0;
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    border: 1px solid var(--card-border);
+    border: var(--border-width-1) solid var(--color-border);
     display: table;
+    box-shadow: var(--shadow-xs);
 }
 
 .privacy-table thead {
-    background: rgba(26, 221, 219, 0.1);
+    background: var(--color-primary-light);
     display: table-header-group;
 }
 
@@ -220,18 +218,18 @@
 }
 
 .privacy-table th {
-    padding: var(--spacing-sm);
+    padding: var(--spacing-3);
     text-align: left;
-    color: var(--white);
-    font-weight: 600;
-    border-bottom: 2px solid var(--card-border);
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+    border-bottom: var(--border-width-2) solid var(--color-border-light);
     display: table-cell;
 }
 
 .privacy-table td {
-    padding: var(--spacing-sm);
-    color: var(--secondary-color);
-    border-bottom: 1px solid var(--card-border);
+    padding: var(--spacing-3);
+    color: var(--color-text-secondary);
+    border-bottom: var(--border-width-1) solid var(--color-border-light);
     display: table-cell;
 }
 
@@ -240,7 +238,7 @@
 }
 
 .privacy-table tr:hover {
-    background: rgba(26, 221, 219, 0.05);
+    background: var(--color-primary-light);
 }
 
 .privacy-table td[data-label]::before {
@@ -248,12 +246,13 @@
 }
 
 .privacy-contact {
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--spacing-lg);
-    margin-top: var(--spacing-xl);
+    background: var(--color-bg-secondary);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-8);
+    margin-top: var(--spacing-12);
     text-align: center;
+    box-shadow: var(--shadow-xs);
 }
 
 .privacy-contact h2 {
@@ -277,61 +276,62 @@
 }
 
 .privacy-contact-item strong {
-    color: var(--primary-color);
-    font-size: 1.125rem;
+    color: var(--color-primary);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
 }
 
 .privacy-contact-item a {
-    color: var(--secondary-color);
+    color: var(--color-text-secondary);
     text-decoration: none;
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .privacy-contact-item a:hover {
-    color: var(--primary-color);
+    color: var(--color-primary);
 }
 
 .privacy-cta {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--spacing-lg);
-    margin-top: var(--spacing-xl);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-8);
+    margin-top: var(--spacing-12);
     text-align: center;
-    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-xs);
 }
 
 .privacy-cta p {
-    color: var(--secondary-color);
-    margin-bottom: var(--spacing-md);
-    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-lg);
 }
 
 .privacy-badge {
     display: inline-block;
-    background: rgba(26, 221, 219, 0.1);
-    border: 1px solid var(--primary-color);
-    border-radius: 20px;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    color: var(--primary-color);
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin: var(--spacing-xs);
+    background: var(--color-primary-light);
+    border: var(--border-width-1) solid var(--color-primary);
+    border-radius: var(--radius-full);
+    padding: var(--spacing-2) var(--spacing-3);
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    margin: var(--spacing-2);
 }
 
 .privacy-toc {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--spacing-md);
-    margin-bottom: var(--spacing-xl);
-    backdrop-filter: blur(10px);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-6);
+    margin-bottom: var(--spacing-12);
+    box-shadow: var(--shadow-xs);
 }
 
 .privacy-toc h3 {
-    color: var(--white);
+    color: var(--color-text-primary);
     margin-top: 0;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-3);
 }
 
 .privacy-toc h3::before {
@@ -349,24 +349,24 @@
 }
 
 .privacy-toc a {
-    color: var(--secondary-color);
+    color: var(--color-text-secondary);
     text-decoration: none;
-    transition: var(--transition);
+    transition: var(--transition-base);
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-2);
 }
 
 .privacy-toc a:hover {
-    color: var(--primary-color);
-    transform: translateX(4px);
+    color: var(--color-primary);
+    transform: translateX(2px);
 }
 
 .privacy-toc a::before {
     content: "→";
-    color: var(--primary-color);
+    color: var(--color-primary);
     opacity: 0;
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .privacy-toc a:hover::before {

@@ -3,8 +3,10 @@
    ============================================ */
 
 .testimonials {
-    background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(29, 43, 95, 0.3) 100%);
-    padding: var(--spacing-xl) 0;
+    background: var(--color-bg-primary);
+    padding: var(--section-padding-lg) 0;
+    border-top: var(--border-width-1) solid var(--color-border-light);
+    border-bottom: var(--border-width-1) solid var(--color-border-light);
 }
 
 .testimonials-grid {
@@ -15,20 +17,20 @@
 }
 
 .testimonial-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--spacing-md);
-    backdrop-filter: blur(10px);
-    transition: var(--transition);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-6);
+    transition: var(--transition-base);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-4);
+    box-shadow: var(--shadow-xs);
 }
 
 .testimonial-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
     box-shadow: var(--shadow-md);
 }
 
@@ -43,13 +45,13 @@
 }
 
 .testimonial-text {
-    color: var(--secondary-color);
-    line-height: 1.7;
-    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-base);
     flex-grow: 1;
     font-style: italic;
     position: relative;
-    padding-left: var(--spacing-sm);
+    padding-left: var(--spacing-4);
 }
 
 .testimonial-text::before {
@@ -57,9 +59,9 @@
     position: absolute;
     left: 0;
     top: -8px;
-    font-size: 3rem;
-    color: var(--primary-color);
-    opacity: 0.3;
+    font-size: var(--font-size-5xl);
+    color: var(--color-primary);
+    opacity: 0.2;
     font-family: Georgia, serif;
     line-height: 1;
 }
@@ -67,36 +69,36 @@
 .testimonial-author {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
-    margin-top: var(--spacing-sm);
-    padding-top: var(--spacing-sm);
-    border-top: 1px solid var(--card-border);
+    gap: var(--spacing-3);
+    margin-top: var(--spacing-4);
+    padding-top: var(--spacing-4);
+    border-top: var(--border-width-1) solid var(--color-border-light);
 }
 
 .testimonial-avatar {
     width: 48px;
     height: 48px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--bg-dark);
-    font-weight: 700;
-    font-size: 1.25rem;
+    color: var(--color-text-on-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
     flex-shrink: 0;
 }
 
 .testimonial-author h4 {
-    color: var(--white);
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-1);
 }
 
 .testimonial-author p {
-    color: var(--secondary-color);
-    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
     margin: 0;
 }
 

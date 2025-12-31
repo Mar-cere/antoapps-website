@@ -21,45 +21,70 @@
     --color-bg-darker: #010512;
     --color-bg-light: rgba(245, 245, 247, 0.8);
     
-    /* Colores de Texto (Estilo Apple) */
-    --color-text-primary: #1D1D1F;
-    --color-text-secondary: #86868B;
-    --color-text-tertiary: #C7C7CC;
-    --color-text-disabled: rgba(199, 199, 204, 0.5);
-    --color-text-on-primary: #FFFFFF; /* Texto sobre fondo cyan */
+        /* Colores de Texto (Estilo Apple) */
+        --color-text-primary: #1D1D1F;
+        --color-text-secondary: #6E6E73; /* Ajustado para mejor contraste */
+        --color-text-tertiary: #86868B;
+        --color-text-disabled: rgba(29, 29, 31, 0.4);
+        --color-text-on-primary: #000000; /* Texto oscuro sobre fondo cyan claro */
+        
+        /* Alias para compatibilidad */
+        --white: var(--color-bg-primary);
+        --text-primary: var(--color-text-primary);
+        --text-secondary: var(--color-text-secondary);
     
-    /* Colores de Estado */
-    --color-success: #4CAF50;
-    --color-success-light: rgba(76, 175, 80, 0.1);
-    --color-success-dark: #45A049;
+        /* Colores de Estado */
+        --color-success: #4CAF50;
+        --color-success-light: rgba(76, 175, 80, 0.1);
+        --color-success-dark: #45A049;
+        --success: var(--color-success);
+
+        --color-error: #FF6B6B;
+        --color-error-light: rgba(255, 107, 107, 0.1);
+        --color-error-dark: #E55A5A;
+        --error: var(--color-error);
+
+        --color-warning: #FFD93D;
+        --color-warning-light: rgba(255, 217, 61, 0.1);
+        --color-warning-dark: #E6C435;
+        --warning: var(--color-warning);
+
+        --color-info: #6BCB77;
+        --color-info-light: rgba(107, 203, 119, 0.1);
+        --color-info-dark: #5BB567;
+        --info: var(--color-info);
     
-    --color-error: #FF6B6B;
-    --color-error-light: rgba(255, 107, 107, 0.1);
-    --color-error-dark: #E55A5A;
+        /* Colores de Superficie (Estilo Apple) */
+        --color-surface: #FFFFFF;
+        --color-surface-hover: #F0F0F5;
+        --color-surface-elevated: #FFFFFF;
+        --color-surface-card: #F5F5F7;
+        
+        /* Alias para compatibilidad */
+        --card-bg: var(--color-surface);
+        --card-border: var(--color-border);
     
-    --color-warning: #FFD93D;
-    --color-warning-light: rgba(255, 217, 61, 0.1);
-    --color-warning-dark: #E6C435;
+        /* Colores de Borde (Estilo Apple - Sutiles) */
+        --color-border: rgba(0, 0, 0, 0.08);
+        --color-border-light: rgba(0, 0, 0, 0.04);
+        --color-border-hover: rgba(0, 0, 0, 0.12);
+        --color-border-focus: var(--color-primary);
+        --color-border-error: rgba(255, 107, 107, 0.4);
+        --color-border-success: rgba(76, 175, 80, 0.4);
     
-    --color-info: #6BCB77;
-    --color-info-light: rgba(107, 203, 119, 0.1);
-    --color-info-dark: #5BB567;
-    
-    /* Colores de Superficie (Estilo Apple) */
-    --color-surface: #FFFFFF;
-    --color-surface-hover: #F5F5F7;
-    --color-surface-elevated: #FFFFFF;
-    --color-surface-card: #F5F5F7;
-    
-    /* Colores de Borde (Estilo Apple - Sutiles) */
-    --color-border: rgba(0, 0, 0, 0.1);
-    --color-border-hover: rgba(0, 0, 0, 0.15);
-    --color-border-focus: rgba(26, 221, 219, 0.5);
-    --color-border-error: rgba(255, 107, 107, 0.3);
-    --color-border-success: rgba(76, 175, 80, 0.3);
-    
-    /* Colores de Overlay (Estilo Apple) */
-    --color-overlay: rgba(0, 0, 0, 0.4);
-    --color-overlay-dark: rgba(0, 0, 0, 0.6);
+        /* Colores de Overlay (Estilo Apple) */
+        --color-overlay: rgba(0, 0, 0, 0.4);
+        --color-overlay-light: rgba(255, 255, 255, 0.7);
+        --color-overlay-dark: rgba(0, 0, 0, 0.6);
+        
+        /* Z-index (Elevaciones) */
+        --z-base: 1;
+        --z-sticky: 100;
+        --z-fixed: 200;
+        --z-dropdown: 300;
+        --z-modal-overlay: 400;
+        --z-modal: 500;
+        --z-tooltip: 600;
+        --z-toast: 700;
 }
 

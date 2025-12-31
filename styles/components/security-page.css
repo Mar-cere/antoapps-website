@@ -3,27 +3,23 @@
    ============================================ */
 
 .security-hero {
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
-    padding: calc(var(--spacing-xl) + 80px) 0 var(--spacing-xl);
+    background: var(--color-bg-secondary);
+    padding: calc(var(--section-padding-lg) + 80px) 0 var(--section-padding-lg);
     text-align: center;
 }
 
 .security-title {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: var(--spacing-md);
-    background: linear-gradient(135deg, var(--white) 0%, var(--primary-color) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: clamp(var(--font-size-4xl), 6vw, var(--font-size-6xl));
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-4);
 }
 
 .security-subtitle {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
+    font-size: var(--font-size-xl);
+    color: var(--color-text-secondary);
     max-width: 800px;
-    margin: 0 auto var(--spacing-lg);
+    margin: 0 auto var(--spacing-8);
 }
 
 .security-badges {
@@ -34,19 +30,19 @@
 }
 
 .badge-cert {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: var(--spacing-xs) var(--spacing-md);
-    color: var(--white);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    backdrop-filter: blur(10px);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-full);
+    padding: var(--spacing-2) var(--spacing-4);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    box-shadow: var(--shadow-xs);
 }
 
 .security-overview {
-    padding: var(--spacing-xl) 0;
-    background: var(--bg-dark);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-primary);
 }
 
 .security-intro {
@@ -56,9 +52,9 @@
 }
 
 .security-intro p {
-    color: var(--secondary-color);
-    line-height: 1.8;
-    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-lg);
 }
 
 .certifications-section {
@@ -66,10 +62,10 @@
 }
 
 .certifications-section h3 {
-    color: var(--white);
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-8);
     text-align: center;
 }
 
@@ -80,18 +76,18 @@
 }
 
 .cert-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--spacing-lg);
-    backdrop-filter: blur(10px);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-6);
     text-align: center;
-    transition: var(--transition);
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-xs);
 }
 
 .cert-card:hover {
-    border-color: var(--primary-color);
-    transform: translateY(-5px);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
 
@@ -101,25 +97,25 @@
 }
 
 .cert-card h4 {
-    color: var(--white);
-    font-size: 1.375rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
 }
 
 .cert-card p {
-    color: var(--secondary-color);
-    line-height: 1.6;
-    margin-bottom: var(--spacing-md);
-    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-base);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-base);
 }
 
 .cert-link {
-    color: var(--primary-color);
+    color: var(--color-primary);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9375rem;
-    transition: var(--transition);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-base);
+    transition: var(--transition-base);
 }
 
 .cert-link:hover {
@@ -128,18 +124,18 @@
 
 .cert-status {
     display: inline-block;
-    background: rgba(26, 221, 219, 0.1);
-    color: var(--primary-color);
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    margin-top: var(--spacing-sm);
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    margin-top: var(--spacing-3);
 }
 
 .security-measures {
-    padding: var(--spacing-xl) 0;
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.05) 0%, rgba(163, 184, 232, 0.05) 100%);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-secondary);
 }
 
 .measures-grid {
@@ -150,18 +146,18 @@
 }
 
 .measure-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: var(--spacing-lg);
-    backdrop-filter: blur(10px);
-    transition: var(--transition);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-6);
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-xs);
 }
 
 .measure-card:hover {
-    border-color: var(--primary-color);
+    border-color: var(--color-primary);
     box-shadow: var(--shadow-md);
-    transform: translateY(-5px);
+    transform: translateY(-2px);
 }
 
 .measure-icon {
@@ -170,16 +166,16 @@
 }
 
 .measure-card h3 {
-    color: var(--white);
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
 }
 
 .measure-card > p {
-    color: var(--secondary-color);
-    line-height: 1.7;
-    margin-bottom: var(--spacing-md);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-4);
 }
 
 .measure-details {
@@ -189,24 +185,24 @@
 }
 
 .measure-details li {
-    color: var(--secondary-color);
-    padding: var(--spacing-xs) 0;
-    padding-left: var(--spacing-md);
+    color: var(--color-text-secondary);
+    padding: var(--spacing-2) 0;
+    padding-left: var(--spacing-6);
     position: relative;
-    font-size: 0.9375rem;
-    line-height: 1.6;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
 }
 
 .measure-details li::before {
     content: '▸';
     position: absolute;
     left: 0;
-    color: var(--primary-color);
+    color: var(--color-primary);
 }
 
 .security-reports {
-    padding: var(--spacing-xl) 0;
-    background: var(--bg-dark);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-primary);
 }
 
 .reports-grid {
@@ -217,39 +213,39 @@
 }
 
 .report-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--spacing-lg);
-    backdrop-filter: blur(10px);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-6);
     text-align: center;
+    box-shadow: var(--shadow-xs);
 }
 
 .report-card h3 {
-    color: var(--white);
-    font-size: 1.375rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
 }
 
 .report-card p {
-    color: var(--secondary-color);
-    line-height: 1.6;
-    margin-bottom: var(--spacing-md);
-    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-base);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-base);
 }
 
 .report-status {
     display: inline-block;
-    color: var(--primary-color);
-    font-size: 0.875rem;
-    font-weight: 500;
-    margin-top: var(--spacing-sm);
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    margin-top: var(--spacing-3);
 }
 
 .security-faq {
-    padding: var(--spacing-xl) 0;
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.05) 0%, rgba(163, 184, 232, 0.05) 100%);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-secondary);
 }
 
 /* Responsive */

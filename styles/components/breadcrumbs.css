@@ -3,9 +3,9 @@
    ============================================ */
 
 .breadcrumbs {
-    padding: var(--spacing-md) 0;
-    background: var(--bg-dark);
-    border-bottom: 1px solid var(--card-border);
+    padding: var(--spacing-4) 0;
+    background: var(--color-bg-primary);
+    border-bottom: var(--border-width-1) solid var(--color-border-light);
 }
 
 .breadcrumbs-list {
@@ -25,13 +25,13 @@
 }
 
 .breadcrumb-link {
-    color: var(--secondary-color);
+    color: var(--color-text-secondary);
     text-decoration: none;
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
-    padding: 4px 8px;
-    border-radius: 6px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-md);
+    transition: var(--transition-base);
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -44,14 +44,14 @@
     left: 50%;
     width: 0;
     height: 2px;
-    background: var(--primary-color);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--color-primary);
+    transition: var(--transition-base);
     transform: translateX(-50%);
 }
 
 .breadcrumb-link:hover {
-    color: var(--primary-color);
-    background: rgba(26, 221, 219, 0.1);
+    color: var(--color-primary);
+    background: var(--color-primary-light);
     transform: translateY(-1px);
 }
 
@@ -60,19 +60,19 @@
 }
 
 .breadcrumb-link:focus {
-    outline: 2px solid var(--primary-color);
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
 }
 
 .breadcrumb-current {
-    color: var(--white);
+    color: var(--color-text-primary);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
-    padding: 4px 12px;
-    background: rgba(26, 221, 219, 0.15);
-    border: 1px solid rgba(26, 221, 219, 0.3);
-    border-radius: 6px;
+    padding: var(--spacing-1) var(--spacing-3);
+    background: var(--color-primary-light);
+    border: var(--border-width-1) solid var(--color-primary);
+    border-radius: var(--radius-md);
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -85,14 +85,14 @@
     top: 0;
     bottom: 0;
     width: 3px;
-    background: var(--primary-color);
-    border-radius: 6px 0 0 6px;
+    background: var(--color-primary);
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
 }
 
 .breadcrumb-separator {
-    color: var(--secondary-color);
+    color: var(--color-text-tertiary);
     font-size: var(--font-size-sm);
-    margin: 0 var(--spacing-xs);
+    margin: 0 var(--spacing-2);
     opacity: 0.5;
     user-select: none;
 }

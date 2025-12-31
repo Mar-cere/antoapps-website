@@ -3,8 +3,8 @@
    ============================================ */
 
 .ai-explained {
-    padding: var(--spacing-xl) 0;
-    background: var(--bg-dark);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-primary);
 }
 
 .ai-process {
@@ -22,8 +22,8 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
-    opacity: 0.3;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+    opacity: 0.2;
 }
 
 .ai-step {
@@ -40,18 +40,18 @@
     left: 0;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--white);
-    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-text-on-primary);
+    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.75rem;
-    font-weight: 700;
-    box-shadow: 0 4px 20px rgba(26, 221, 219, 0.4);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    box-shadow: var(--shadow-md);
     flex-shrink: 0;
     z-index: 2;
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .ai-step:hover .ai-step-number {
@@ -60,33 +60,33 @@
 }
 
 .ai-step-content {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--spacing-lg);
-    backdrop-filter: blur(10px);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-6);
     flex: 1;
-    transition: var(--transition);
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-xs);
 }
 
 .ai-step:hover .ai-step-content {
-    border-color: var(--primary-color);
+    border-color: var(--color-primary);
     box-shadow: var(--shadow-md);
-    transform: translateX(10px);
+    transform: translateX(4px);
 }
 
 .ai-step-content h3 {
-    color: var(--white);
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
 }
 
 .ai-step-content p {
-    color: var(--secondary-color);
-    line-height: 1.7;
-    margin-bottom: var(--spacing-md);
-    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-base);
 }
 
 .ai-tech {
@@ -97,14 +97,14 @@
 }
 
 .tech-badge {
-    background: rgba(26, 221, 219, 0.15);
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    transition: var(--transition);
+    background: var(--color-primary-light);
+    border: var(--border-width-1) solid var(--color-primary);
+    color: var(--color-primary);
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    transition: var(--transition-base);
 }
 
 .ai-step:hover .tech-badge {
@@ -113,19 +113,19 @@
 }
 
 .ai-features-box {
-    margin-top: var(--spacing-xl);
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: var(--spacing-xl);
-    backdrop-filter: blur(10px);
+    margin-top: var(--spacing-12);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-8);
+    box-shadow: var(--shadow-xs);
 }
 
 .ai-features-box h3 {
-    color: var(--white);
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-8);
     text-align: center;
 }
 
@@ -136,26 +136,28 @@
 }
 
 .ai-feature-item {
-    padding: var(--spacing-md);
-    background: rgba(26, 221, 219, 0.12);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    color: var(--secondary-color);
-    line-height: 1.6;
-    transition: var(--transition);
+    padding: var(--spacing-4);
+    background: var(--color-primary-light);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-base);
+    transition: var(--transition-base);
 }
 
 .ai-feature-item:hover {
-    background: rgba(26, 221, 219, 0.18);
-    border-color: var(--primary-color);
-    transform: translateY(-3px);
+    background: var(--color-primary-light);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
 }
 
 .ai-feature-item strong {
-    color: var(--primary-color);
+    color: var(--color-primary);
     display: block;
-    margin-bottom: var(--spacing-xs);
-    font-size: 0.9375rem;
+    margin-bottom: var(--spacing-2);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
 }
 
 /* Responsive */

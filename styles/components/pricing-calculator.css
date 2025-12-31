@@ -24,27 +24,28 @@
 }
 
 .toggle-btn {
-    padding: 12px 24px;
+    padding: var(--spacing-3) var(--spacing-6);
     background: transparent;
-    border: 2px solid var(--card-border);
-    border-radius: 12px;
-    color: var(--secondary-color);
-    font-weight: 500;
+    border: var(--border-width-2) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
     cursor: pointer;
-    transition: var(--transition);
+    transition: var(--transition-base);
     font-family: var(--font-family);
-    font-size: 1rem;
+    font-size: var(--font-size-base);
 }
 
 .toggle-btn:hover {
-    border-color: var(--primary-color);
-    color: var(--white);
+    border-color: var(--color-primary);
+    color: var(--color-text-primary);
+    background: var(--color-primary-light);
 }
 
 .toggle-btn.active {
-    background: var(--primary-color);
-    color: var(--bg-dark);
-    border-color: var(--primary-color);
+    background: var(--color-primary);
+    color: var(--color-text-on-primary);
+    border-color: var(--color-primary);
 }
 
 .plan-selector {
@@ -55,29 +56,31 @@
 }
 
 .plan-option {
-    background: var(--card-bg);
-    border: 2px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--spacing-md);
+    background: var(--color-surface);
+    border: var(--border-width-2) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-4);
     text-align: center;
     cursor: pointer;
-    transition: var(--transition);
+    transition: var(--transition-base);
     position: relative;
+    box-shadow: var(--shadow-xs);
 }
 
 .plan-option:hover {
-    border-color: var(--primary-color);
-    transform: translateY(-4px);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .plan-option.active {
-    border-color: var(--primary-color);
-    background: rgba(26, 221, 219, 0.1);
-    box-shadow: 0 4px 12px rgba(26, 221, 219, 0.2);
+    border-color: var(--color-primary);
+    background: var(--color-primary-light);
+    box-shadow: var(--shadow-md);
 }
 
 .plan-option.popular {
-    border-color: var(--primary-color);
+    border-color: var(--color-primary);
 }
 
 .plan-option-header {
@@ -88,16 +91,16 @@
 }
 
 .plan-name {
-    font-weight: 600;
-    color: var(--white);
-    font-size: 0.9375rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-base);
 }
 
 .popular-badge {
-    background: var(--primary-color);
-    color: var(--bg-dark);
-    padding: 2px 8px;
-    border-radius: 8px;
+    background: var(--color-primary);
+    color: var(--color-text-on-primary);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-md);
     font-size: 0.75rem;
     font-weight: 600;
 }

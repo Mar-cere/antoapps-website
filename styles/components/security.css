@@ -3,8 +3,8 @@
    ============================================ */
 
 .security-detailed {
-    padding: var(--spacing-xl) 0;
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.12) 0%, rgba(163, 184, 232, 0.12) 100%);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-secondary);
 }
 
 .security-grid {
@@ -35,10 +35,10 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.5s ease;
+    transition: transform var(--duration-base) var(--ease-out);
 }
 
 .security-card:hover::before {
@@ -46,9 +46,9 @@
 }
 
 .security-card:hover {
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-8px);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
 }
 
 .security-icon {
@@ -59,17 +59,17 @@
 }
 
 .security-card h3 {
-    color: var(--white);
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
 }
 
 .security-card > p {
-    color: var(--secondary-color);
-    line-height: 1.7;
-    margin-bottom: var(--spacing-md);
-    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-base);
 }
 
 .security-features {
@@ -79,13 +79,13 @@
 }
 
 .security-features li {
-    color: var(--secondary-color);
-    padding: var(--spacing-xs) 0;
-    padding-left: var(--spacing-md);
+    color: var(--color-text-secondary);
+    padding: var(--spacing-2) 0;
+    padding-left: var(--spacing-6);
     position: relative;
-    line-height: 1.6;
-    font-size: 0.9375rem;
-    transition: var(--transition);
+    line-height: var(--line-height-base);
+    font-size: var(--font-size-base);
+    transition: var(--transition-base);
 }
 
 .security-features li::before {
@@ -96,8 +96,8 @@
     transform: translateY(-50%);
     width: 6px;
     height: 6px;
-    background: var(--primary-color);
-    border-radius: 50%;
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
     transition: var(--transition);
 }
 

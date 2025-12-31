@@ -3,8 +3,8 @@
    ============================================ */
 
 .technologies {
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.12) 0%, rgba(163, 184, 232, 0.12) 100%);
-    padding: var(--spacing-xl) 0;
+    background: var(--color-bg-secondary);
+    padding: var(--section-padding-lg) 0;
 }
 
 .tech-grid {
@@ -15,30 +15,28 @@
 }
 
 .tech-category {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--spacing-lg);
-    backdrop-filter: blur(10px);
-    transition: var(--transition);
-    opacity: 1;
-    transform: translateY(0);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-6);
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-xs);
 }
 
 .tech-category:hover {
-    border-color: var(--primary-color);
+    border-color: var(--color-primary);
     box-shadow: var(--shadow-md);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 .tech-category h3 {
-    color: var(--white);
-    font-size: 1.375rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-4);
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-2);
 }
 
 .tech-list {
@@ -48,20 +46,20 @@
 }
 
 .tech-list li {
-    color: var(--secondary-color);
-    padding: var(--spacing-xs) 0;
-    padding-left: var(--spacing-md);
+    color: var(--color-text-secondary);
+    padding: var(--spacing-2) 0;
+    padding-left: var(--spacing-6);
     position: relative;
-    line-height: 1.6;
-    font-size: 0.9375rem;
+    line-height: var(--line-height-base);
+    font-size: var(--font-size-base);
 }
 
 .tech-list li::before {
     content: '▸';
     position: absolute;
     left: 0;
-    color: var(--primary-color);
-    font-weight: bold;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
 }
 
 /* Responsive */
