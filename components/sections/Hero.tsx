@@ -3,10 +3,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParticles } from '@/lib/hooks/useParticles';
+import { useParallax } from '@/lib/hooks/useParallax';
 import '@/styles/components/sections.css';
 
 export default function Hero() {
   const particlesRef = useParticles();
+  const heroImageRef = useParallax<HTMLDivElement>({ speed: 0.3, direction: 'up' });
 
   return (
     <section id="inicio" className="hero" data-fade-section aria-labelledby="hero-title">
@@ -58,8 +60,8 @@ export default function Hero() {
             </Link>
           </div>
         </div>
-        <div className="hero-image reveal-on-scroll">
-          <div className="phone-mockup-container">
+        <div className="hero-image reveal-on-scroll-enhanced" ref={heroImageRef}>
+          <div className="phone-mockup-container float-enhanced">
             <Image
               src="/assets/images/hero/phone-mockup.png"
               alt="Anto App - Mockup de la aplicación mostrando la interfaz principal"

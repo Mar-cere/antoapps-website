@@ -11,6 +11,9 @@ import Benefits from '@/components/sections/Benefits';
 import Technologies from '@/components/sections/Technologies';
 import TechMetrics from '@/components/sections/TechMetrics';
 import TechChallenges from '@/components/sections/TechChallenges';
+import ThinkingProcess from '@/components/sections/ThinkingProcess';
+import CodeQuality from '@/components/sections/CodeQuality';
+import RealImpact from '@/components/sections/RealImpact';
 import Skeleton from '@/components/ui/Skeleton';
 
 // Lazy load secciones no críticas para mejorar FCP
@@ -65,7 +68,16 @@ export default function Home() {
         <Technologies />
         <TechMetrics />
         <Suspense fallback={<SectionSkeleton />}>
+          <ThinkingProcess />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
           <TechChallenges />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <CodeQuality />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <RealImpact />
         </Suspense>
         <Suspense fallback={<SectionSkeleton />}>
           <Values />

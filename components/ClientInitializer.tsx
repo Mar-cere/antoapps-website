@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useNavigation } from '@/lib/hooks/useNavigation';
 import { useDeviceDetection } from '@/lib/hooks/useDeviceDetection';
 import { useScrollAnimations, useStaggerAnimation } from '@/lib/hooks/useScrollAnimations';
+import { useEnhancedScrollAnimations, useEnhancedHover } from '@/lib/hooks/useEnhancedAnimations';
 import { useFAQ } from '@/lib/hooks/useFAQ';
 import { useTooltips } from '@/lib/hooks/useTooltips';
 import { useLazyLoading } from '@/lib/hooks/useLazyLoading';
@@ -15,6 +16,8 @@ export default function ClientInitializer() {
   useDeviceDetection();
   useScrollAnimations();
   useStaggerAnimation();
+  useEnhancedScrollAnimations();
+  useEnhancedHover();
   useFAQ();
   useTooltips();
   useLazyLoading();

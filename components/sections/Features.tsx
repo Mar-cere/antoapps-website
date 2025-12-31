@@ -14,33 +14,33 @@ export default function Features() {
             Todo lo que necesitas para tu bienestar mental en un solo lugar
           </p>
           <div className="features-grid" data-stagger>
-            <div className="feature-card" data-stagger-item data-magnetic="0.15">
-              <div className="feature-icon">🤖</div>
+            <div className="feature-card stagger-item" data-stagger-item>
+              <div className="feature-icon icon-hover-enhanced">🤖</div>
               <h3>Asistente AI Terapéutico</h3>
               <p>Conversaciones inteligentes y empáticas adaptadas a tu situación emocional</p>
             </div>
-            <div className="feature-card" data-stagger-item data-magnetic="0.15">
-              <div className="feature-icon">🚨</div>
+            <div className="feature-card stagger-item" data-stagger-item>
+              <div className="feature-icon icon-hover-enhanced">🚨</div>
               <h3>Detección de Crisis</h3>
               <p>Identificación temprana de señales de crisis con apoyo inmediato</p>
             </div>
-            <div className="feature-card" data-stagger-item data-magnetic="0.15">
-              <div className="feature-icon">📊</div>
+            <div className="feature-card stagger-item" data-stagger-item>
+              <div className="feature-icon icon-hover-enhanced">📊</div>
               <h3>Análisis Emocional</h3>
               <p>Seguimiento detallado de tu estado emocional y progreso</p>
             </div>
-            <div className="feature-card" data-stagger-item data-magnetic="0.15">
-              <div className="feature-icon">🧘</div>
+            <div className="feature-card stagger-item" data-stagger-item>
+              <div className="feature-icon icon-hover-enhanced">🧘</div>
               <h3>Herramientas de Bienestar</h3>
               <p>Ejercicios de mindfulness, meditación y técnicas de relajación</p>
             </div>
-            <div className="feature-card" data-stagger-item data-magnetic="0.15">
-              <div className="feature-icon">🔒</div>
+            <div className="feature-card stagger-item" data-stagger-item>
+              <div className="feature-icon icon-hover-enhanced">🔒</div>
               <h3>Privacidad Total</h3>
               <p>Conversaciones completamente confidenciales y seguras</p>
             </div>
-            <div className="feature-card" data-stagger-item data-magnetic="0.15">
-              <div className="feature-icon">⏰</div>
+            <div className="feature-card stagger-item" data-stagger-item>
+              <div className="feature-icon icon-hover-enhanced">⏰</div>
               <h3>Disponible 24/7</h3>
               <p>Acceso inmediato cuando lo necesites, sin esperas ni citas</p>
             </div>

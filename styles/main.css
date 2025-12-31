@@ -62,10 +62,14 @@
 @import url('./components/tooltip-improved.css');
 @import url('./components/tech-metrics.css');
 @import url('./components/tech-challenges.css');
+@import url('./components/thinking-process.css');
+@import url('./components/code-quality.css');
+@import url('./components/real-impact.css');
 
 /* Utilities */
 @import url('./utilities/animations.css');
 @import url('./utilities/advanced-animations.css');
+@import url('./utilities/enhanced-microinteractions.css');
 @import url('./utilities/responsive.css');
 @import url('./utilities/mobile-tablet-optimizations.css');
 @import url('./utilities/device-optimizations.css');

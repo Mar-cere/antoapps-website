@@ -1,0 +1,500 @@
+/* ============================================
+   ENHANCED MICROINTERACTIONS & ANIMATIONS
+   Animaciones más dinámicas, efectos parallax sutiles, hover effects elaborados
+   ============================================ */
+
+/* ============================================
+   PARALLAX EFFECTS (Sutiles)
+   ============================================ */
+
+[data-parallax] {
+    will-change: transform;
+    transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.parallax-slow {
+    transform: translateZ(0);
+    transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.parallax-medium {
+    transform: translateZ(0);
+    transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.parallax-fast {
+    transform: translateZ(0);
+    transition: transform 0.05s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Parallax para imágenes de fondo */
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    will-change: transform;
+    transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================
+   ENHANCED HOVER EFFECTS
+   ============================================ */
+
+/* Card Hover con Elevación y Sombra Dinámica */
+.card-hover-enhanced {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-hover-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(26, 221, 219, 0.08),
+        transparent
+    );
+    transition: left 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1;
+}
+
+.card-hover-enhanced:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(26, 221, 219, 0.15),
+                0 0 0 1px rgba(26, 221, 219, 0.1);
+}
+
+.card-hover-enhanced:hover::before {
+    left: 100%;
+}
+
+/* Button Hover con Ripple Mejorado */
+.btn-enhanced {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-enhanced::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                height 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 0;
+}
+
+.btn-enhanced:hover::after {
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+}
+
+.btn-enhanced:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(26, 221, 219, 0.25);
+}
+
+.btn-enhanced > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Link Hover con Underline Animado */
+.link-hover-enhanced {
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.link-hover-enhanced::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.link-hover-enhanced:hover {
+    color: var(--color-primary);
+}
+
+.link-hover-enhanced:hover::after {
+    width: 100%;
+}
+
+/* Icon Hover con Rotación y Escala */
+.icon-hover-enhanced {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    display: inline-block;
+}
+
+.icon-hover-enhanced:hover {
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 4px 12px rgba(26, 221, 219, 0.4));
+}
+
+/* ============================================
+   SMOOTH TRANSITIONS
+   ============================================ */
+
+/* Transición Suave para Todos los Elementos Interactivos */
+.interactive-element {
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Transición de Color Mejorada */
+.color-transition {
+    transition: color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                background-color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                border-color 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Transición de Transform Mejorada */
+.transform-transition {
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+}
+
+/* Transición de Opacity Mejorada */
+.opacity-transition {
+    transition: opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ============================================
+   DYNAMIC ANIMATIONS
+   ============================================ */
+
+/* Fade In con Movimiento Dinámico */
+@keyframes fadeInDynamic {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.fade-in-dynamic {
+    animation: fadeInDynamic 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Scale In con Bounce Sutil */
+@keyframes scaleInBounce {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    60% {
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.scale-in-bounce {
+    animation: scaleInBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Slide In con Elasticidad */
+@keyframes slideInElastic {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    60% {
+        transform: translateX(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-elastic {
+    animation: slideInElastic 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Rotate In */
+@keyframes rotateIn {
+    0% {
+        opacity: 0;
+        transform: rotate(-10deg) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+.rotate-in {
+    animation: rotateIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Float Animation Mejorada */
+@keyframes floatEnhanced {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-15px) rotate(1deg);
+    }
+    66% {
+        transform: translateY(-8px) rotate(-1deg);
+    }
+}
+
+.float-enhanced {
+    animation: floatEnhanced 6s ease-in-out infinite;
+}
+
+/* Glow Pulse Mejorado */
+@keyframes glowPulseEnhanced {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(26, 221, 219, 0.3),
+                    0 0 20px rgba(26, 221, 219, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(26, 221, 219, 0.6),
+                    0 0 40px rgba(26, 221, 219, 0.4),
+                    0 0 60px rgba(26, 221, 219, 0.2);
+    }
+}
+
+.glow-pulse-enhanced {
+    animation: glowPulseEnhanced 3s ease-in-out infinite;
+}
+
+/* ============================================
+   ELEGANT LOADING STATES
+   ============================================ */
+
+/* Skeleton Loader Mejorado */
+.skeleton-loader {
+    background: linear-gradient(
+        90deg,
+        var(--color-surface) 0%,
+        var(--color-bg-secondary) 50%,
+        var(--color-surface) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+    border-radius: var(--radius-md);
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Spinner Elegante */
+.spinner-elegant {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-border);
+    border-top-color: var(--color-primary);
+    border-radius: var(--radius-full);
+    animation: spin-elegant 0.8s linear infinite;
+}
+
+@keyframes spin-elegant {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Dots Loader Elegante */
+.dots-loader {
+    display: inline-flex;
+    gap: var(--spacing-2);
+    align-items: center;
+}
+
+.dots-loader span {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    animation: dots-bounce 1.4s ease-in-out infinite;
+}
+
+.dots-loader span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dots-loader span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dots-loader span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dots-bounce {
+    0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Progress Bar Elegante */
+.progress-bar-elegant {
+    height: 4px;
+    background: var(--color-border);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar-elegant .progress-fill {
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        var(--color-primary),
+        var(--color-secondary)
+    );
+    border-radius: var(--radius-full);
+    transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Loading Overlay Elegante */
+.loading-overlay-elegant {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+}
+
+/* ============================================
+   SCROLL ANIMATIONS MEJORADAS
+   ============================================ */
+
+/* Reveal on Scroll Mejorado */
+.reveal-on-scroll-enhanced {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reveal-on-scroll-enhanced.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Stagger Animation Mejorada */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.stagger-item.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-item:nth-child(1) { transition-delay: 0.1s; }
+.stagger-item:nth-child(2) { transition-delay: 0.2s; }
+.stagger-item:nth-child(3) { transition-delay: 0.3s; }
+.stagger-item:nth-child(4) { transition-delay: 0.4s; }
+.stagger-item:nth-child(5) { transition-delay: 0.5s; }
+.stagger-item:nth-child(6) { transition-delay: 0.6s; }
+
+/* ============================================
+   MAGNETIC EFFECT
+   ============================================ */
+
+.magnetic {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+}
+
+.magnetic:hover {
+    transform: translateY(-4px) scale(1.05);
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* GPU Acceleration */
+.gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Reduce Motion para Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in-dynamic,
+    .scale-in-bounce,
+    .slide-in-elastic,
+    .rotate-in,
+    .float-enhanced,
+    .glow-pulse-enhanced,
+    .skeleton-loader,
+    .spinner-elegant,
+    .dots-loader span,
+    .reveal-on-scroll-enhanced,
+    .stagger-item {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    [data-parallax],
+    .parallax-bg {
+        transform: none !important;
+    }
+    
+    .card-hover-enhanced:hover,
+    .btn-enhanced:hover,
+    .icon-hover-enhanced:hover,
+    .magnetic:hover {
+        transform: none !important;
+    }
+}
+
