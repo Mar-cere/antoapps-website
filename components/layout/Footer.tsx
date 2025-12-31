@@ -38,6 +38,9 @@ export default function Footer() {
             <h4>Producto</h4>
             <ul>
               <li>
+                <Link href="/app">La Aplicación</Link>
+              </li>
+              <li>
                 <Link href="/#caracteristicas">Características</Link>
               </li>
               <li>

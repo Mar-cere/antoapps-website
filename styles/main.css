@@ -49,6 +49,7 @@
 @import url('./components/pricing-calculator.css');
 @import url('./components/faq-search.css');
 @import url('./components/form-validation.css');
+@import url('./components/app-page.css');
 
 /* Utilities */
 @import url('./utilities/animations.css');

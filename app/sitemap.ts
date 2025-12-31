@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/seguridad',
     '/investigacion',
     '/recursos',
+    '/app',
   ];
 
   return routes.map((route) => ({

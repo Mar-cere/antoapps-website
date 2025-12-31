@@ -22,6 +22,7 @@ export default function Header() {
 
   const navLinks = [
     { href: '/', label: 'Inicio' },
+    { href: '/app', label: 'La App' },
     { href: '/#caracteristicas', label: 'Características' },
     { href: '/desarrollo', label: 'Desarrollo' },
     { href: '/contacto', label: 'Contacto' },
