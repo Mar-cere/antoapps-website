@@ -102,14 +102,14 @@
 }
 
 .security-card:hover .security-features li {
-    color: var(--white);
-    padding-left: var(--spacing-lg);
+    color: var(--color-text-primary);
+    padding-left: var(--spacing-6);
 }
 
 .security-card:hover .security-features li::before {
     width: 8px;
     height: 8px;
-    box-shadow: 0 0 10px var(--primary-color);
+    box-shadow: 0 0 10px var(--color-primary);
 }
 
 /* Responsive */

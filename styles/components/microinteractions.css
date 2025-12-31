@@ -22,9 +22,9 @@
 .screenshot-card:hover,
 .advanced-feature:hover,
 .tech-spec-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 8px 24px rgba(26, 221, 219, 0.15);
-    border-color: var(--primary-color);
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
 }
 
 .feature-card::before,
@@ -116,10 +116,10 @@ input:focus,
 textarea:focus,
 select:focus {
     outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(26, 221, 219, 0.1);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
     transform: scale(1.01);
-    transition: all 0.2s ease;
+    transition: all var(--duration-fast) var(--ease-out);
 }
 
 input:valid:not(:placeholder-shown),
@@ -160,14 +160,14 @@ button,
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(3, 10, 36, 0.8);
+    background: var(--color-overlay);
     backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 10;
     border-radius: inherit;
-    animation: fadeIn 0.2s ease;
+    animation: fadeIn var(--duration-fast) var(--ease-out);
 }
 
 @keyframes fadeIn {
@@ -298,10 +298,10 @@ button,
     display: inline-block;
     width: 24px;
     height: 24px;
-    border-radius: 50%;
-    background: var(--primary-color);
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
     position: relative;
-    animation: scale-in 0.3s ease;
+    animation: scale-in var(--duration-base) var(--ease-out);
 }
 
 .success-check::after {
@@ -310,8 +310,8 @@ button,
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: var(--bg-dark);
-    font-weight: 700;
+    color: var(--color-text-on-primary);
+    font-weight: var(--font-weight-bold);
     font-size: 14px;
 }
 
@@ -466,9 +466,9 @@ button,
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--bg-dark);
+    background: var(--color-bg-primary);
     transform: translateX(-100%);
-    animation: text-reveal 0.8s ease forwards;
+    animation: text-reveal var(--duration-slower) var(--ease-out) forwards;
 }
 
 @keyframes text-reveal {
@@ -486,8 +486,8 @@ button,
 .loading-dots span {
     width: 8px;
     height: 8px;
-    border-radius: 50%;
-    background: var(--primary-color);
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
     animation: loading-dots 1.4s ease-in-out infinite;
 }
 
@@ -514,17 +514,17 @@ button,
 /* Notification Toast */
 .toast {
     position: fixed;
-    bottom: var(--spacing-lg);
-    right: var(--spacing-lg);
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: var(--spacing-md) var(--spacing-lg);
+    bottom: var(--spacing-6);
+    right: var(--spacing-6);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-4) var(--spacing-6);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow-lg);
     z-index: 10000;
     transform: translateX(400px);
-    transition: transform 0.3s ease;
+    transition: transform var(--duration-base) var(--ease-out);
     max-width: 400px;
 }
 
@@ -545,7 +545,7 @@ button,
 }
 
 .toast.info {
-    border-left: 4px solid var(--primary-color);
+    border-left: var(--border-width-4) solid var(--color-primary);
 }
 
 /* Responsive */

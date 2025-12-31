@@ -18,14 +18,14 @@
 
 [data-tooltip]::before {
     content: attr(data-tooltip);
-    background: rgba(3, 10, 36, 0.95);
-    color: var(--white);
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: 8px;
-    font-size: 0.875rem;
+    background: var(--color-overlay-dark);
+    color: var(--color-text-primary);
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
     white-space: nowrap;
     backdrop-filter: blur(10px);
-    border: 1px solid var(--card-border);
+    border: var(--border-width-1) solid var(--color-border);
     box-shadow: var(--shadow-lg);
 }
 
@@ -47,7 +47,7 @@
     bottom: calc(100% + 4px);
     left: 50%;
     transform: translateX(-50%);
-    border-top-color: rgba(3, 10, 36, 0.95);
+    border-top-color: var(--color-overlay-dark);
 }
 
 /* Tooltip Bottom */
@@ -63,7 +63,7 @@
     top: calc(100% + 4px);
     left: 50%;
     transform: translateX(-50%);
-    border-bottom-color: rgba(3, 10, 36, 0.95);
+    border-bottom-color: var(--color-overlay-dark);
 }
 
 /* Tooltip Left */
@@ -77,7 +77,7 @@
     right: calc(100% + 4px);
     top: 50%;
     transform: translateY(-50%);
-    border-left-color: rgba(3, 10, 36, 0.95);
+    border-left-color: var(--color-overlay-dark);
 }
 
 /* Tooltip Right */
@@ -91,7 +91,7 @@
     left: calc(100% + 4px);
     top: 50%;
     transform: translateY(-50%);
-    border-right-color: rgba(3, 10, 36, 0.95);
+    border-right-color: var(--color-overlay-dark);
 }
 
 /* Show Tooltip on Hover */
@@ -124,20 +124,20 @@
 
 .tooltip-content {
     position: absolute;
-    background: rgba(3, 10, 36, 0.95);
-    color: var(--white);
-    padding: var(--spacing-sm);
-    border-radius: 8px;
-    font-size: 0.875rem;
+    background: var(--color-overlay-dark);
+    color: var(--color-text-primary);
+    padding: var(--spacing-3);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
     white-space: normal;
     max-width: 250px;
     backdrop-filter: blur(10px);
-    border: 1px solid var(--card-border);
+    border: var(--border-width-1) solid var(--color-border);
     box-shadow: var(--shadow-lg);
     opacity: 0;
     pointer-events: none;
     transform: translateY(5px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
     z-index: 1000;
     bottom: calc(100% + 10px);
     left: 50%;
@@ -160,7 +160,7 @@
     width: 0;
     height: 0;
     border: 6px solid transparent;
-    border-top-color: rgba(3, 10, 36, 0.95);
+    border-top-color: var(--color-overlay-dark);
 }
 
 /* Info Icon Tooltip */
@@ -170,20 +170,20 @@
     justify-content: center;
     width: 18px;
     height: 18px;
-    border-radius: 50%;
-    background: rgba(26, 221, 219, 0.2);
-    color: var(--primary-color);
-    font-size: 0.75rem;
-    font-weight: 600;
+    border-radius: var(--radius-full);
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
     cursor: help;
-    margin-left: var(--spacing-xs);
+    margin-left: var(--spacing-2);
     vertical-align: middle;
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .info-tooltip:hover {
-    background: var(--primary-color);
-    color: var(--bg-dark);
+    background: var(--color-primary);
+    color: var(--color-text-on-primary);
 }
 
 /* Responsive */

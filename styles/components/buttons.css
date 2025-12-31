@@ -24,7 +24,7 @@
 }
 
 .btn-primary {
-    background: var(--primary-color);
+    background: var(--color-primary);
     color: var(--color-text-on-primary);
     box-shadow: none;
 }
@@ -37,9 +37,8 @@
 
 .btn-secondary {
     background: transparent;
-    color: var(--primary-color);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-primary);
+    color: var(--color-primary);
+    border: var(--border-width-1) solid var(--color-border);
 }
 
 .btn-secondary:hover {

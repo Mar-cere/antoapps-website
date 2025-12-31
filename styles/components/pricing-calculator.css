@@ -1,5 +1,5 @@
 /* ============================================
-   PRICING CALCULATOR
+   PRICING CALCULATOR (Estilo Apple/Tesla)
    ============================================ */
 
 .pricing-calculator {
@@ -106,15 +106,15 @@
 }
 
 .plan-price {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-2);
 }
 
 .plan-period {
-    font-size: 0.875rem;
-    color: var(--secondary-color);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
 }
 
 .calculator-results {
@@ -122,17 +122,17 @@
 }
 
 .result-card {
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
-    border: 2px solid var(--primary-color);
-    border-radius: 20px;
-    padding: var(--spacing-lg);
+    background: var(--color-primary-light);
+    border: var(--border-width-2) solid var(--color-primary);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-6);
 }
 
 .result-card h3 {
-    color: var(--white);
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-4);
     text-align: center;
 }
 
@@ -149,19 +149,19 @@
 }
 
 .result-label {
-    color: var(--secondary-color);
-    font-size: 1rem;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
 }
 
 .result-value {
-    color: var(--white);
-    font-weight: 600;
-    font-size: 1.125rem;
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-lg);
 }
 
 .result-value.highlight {
-    color: var(--primary-color);
-    font-size: 1.5rem;
+    color: var(--color-primary);
+    font-size: var(--font-size-2xl);
 }
 
 .result-value.success {
@@ -184,48 +184,48 @@
 }
 
 .comparison-header {
-    background: rgba(26, 221, 219, 0.1);
-    border-radius: 12px;
-    font-weight: 600;
-    color: var(--primary-color);
-    border: 1px solid var(--card-border);
+    background: var(--color-primary-light);
+    border-radius: var(--radius-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    border: var(--border-width-1) solid var(--color-border);
 }
 
 .comparison-row {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    transition: var(--transition);
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: var(--transition-base);
 }
 
 .comparison-row:hover {
-    border-color: var(--primary-color);
-    transform: translateX(4px);
+    border-color: var(--color-primary);
+    transform: translateX(2px);
 }
 
 .comparison-row.highlighted {
-    border-color: var(--primary-color);
-    background: rgba(26, 221, 219, 0.05);
+    border-color: var(--color-primary);
+    background: var(--color-primary-light);
 }
 
 .comparison-cell {
-    color: var(--white);
-    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-base);
 }
 
 .comparison-cell strong {
-    color: var(--white);
+    color: var(--color-text-primary);
 }
 
 .popular-badge-small {
     display: inline-block;
-    background: var(--primary-color);
-    color: var(--bg-dark);
-    padding: 2px 6px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    margin-left: var(--spacing-xs);
+    background: var(--color-primary);
+    color: var(--color-text-on-primary);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    margin-left: var(--spacing-2);
 }
 
 .savings-amount {
@@ -234,16 +234,16 @@
 }
 
 .no-savings {
-    color: var(--secondary-color);
+    color: var(--color-text-secondary);
 }
 
 .discount-badge {
-    background: rgba(26, 221, 219, 0.2);
-    color: var(--primary-color);
-    padding: 4px 8px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.875rem;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
 }
 
 /* Responsive */
@@ -266,7 +266,7 @@
     .comparison-header .comparison-cell::before {
         content: attr(data-label) ': ';
         font-weight: 600;
-        color: var(--primary-color);
+        color: var(--color-primary);
     }
 }
 

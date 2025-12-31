@@ -116,22 +116,22 @@
 }
 
 .skeleton-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
+    background: var(--color-surface);
+    border: var(--border-width-1) solid var(--color-border);
+    border-radius: var(--radius-xl);
     overflow: hidden;
-    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-xs);
 }
 
 .skeleton-study-card {
-    background: var(--card-bg);
-    border: 2px solid var(--card-border);
-    border-radius: 24px;
-    padding: var(--spacing-xl);
-    backdrop-filter: blur(20px);
+    background: var(--color-surface);
+    border: var(--border-width-2) solid var(--color-border);
+    border-radius: var(--radius-3xl);
+    padding: var(--spacing-8);
+    box-shadow: var(--shadow-xs);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-4);
 }
 
 .skeleton-study-card .skeleton:first-child {

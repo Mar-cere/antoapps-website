@@ -3,8 +3,8 @@
    ============================================ */
 
 .resources {
-    padding: var(--spacing-xl) 0;
-    background: var(--bg-dark);
+    padding: var(--section-padding-lg) 0;
+    background: var(--color-bg-primary);
 }
 
 .resources-grid {

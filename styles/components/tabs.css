@@ -9,44 +9,44 @@
 .tabs-list {
     display: flex;
     justify-content: center;
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-lg);
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-6);
     flex-wrap: wrap;
-    border-bottom: 2px solid var(--card-border);
-    padding-bottom: var(--spacing-sm);
+    border-bottom: var(--border-width-2) solid var(--color-border);
+    padding-bottom: var(--spacing-3);
 }
 
 .tab-btn {
-    padding: 12px 24px;
+    padding: var(--spacing-3) var(--spacing-6);
     background: transparent;
     border: none;
     border-bottom: 3px solid transparent;
-    border-radius: 12px 12px 0 0;
-    color: var(--secondary-color);
-    font-weight: 500;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
     cursor: pointer;
-    transition: var(--transition);
+    transition: var(--transition-base);
     font-family: var(--font-family);
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     position: relative;
     outline: none;
 }
 
 .tab-btn:hover {
-    color: var(--white);
-    background: rgba(26, 221, 219, 0.1);
+    color: var(--color-text-primary);
+    background: var(--color-primary-light);
 }
 
 .tab-btn:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-    border-radius: 12px;
+    outline: var(--border-width-2) solid var(--color-primary);
+    outline-offset: var(--spacing-1);
+    border-radius: var(--radius-lg);
 }
 
 .tab-btn.active {
-    color: var(--primary-color);
-    border-bottom-color: var(--primary-color);
-    background: rgba(26, 221, 219, 0.1);
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    background: var(--color-primary-light);
 }
 
 .tab-btn.active::before {
@@ -56,9 +56,9 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
     border-radius: 3px 3px 0 0;
-    animation: slideIn 0.3s ease;
+    animation: slideIn var(--duration-base) var(--ease-out);
 }
 
 @keyframes slideIn {
