@@ -29,7 +29,7 @@
 
 .research-intro {
     max-width: 900px;
-    margin: 0 auto var(--spacing-xl);
+    margin: 0 auto var(--spacing-8);
     text-align: center;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .findings-section {
-    margin-top: var(--spacing-xl);
+    margin-top: var(--spacing-8);
 }
 
 .findings-section h3 {
@@ -89,7 +89,7 @@
     color: var(--color-text-primary);
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--spacing-2);
+    margin-bottom: var(--spacing-4);
 }
 
 .finding-card p {
@@ -145,7 +145,7 @@
     color: var(--color-text-primary);
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--spacing-2);
+    margin-bottom: var(--spacing-4);
     padding-right: 100px;
 }
 
@@ -380,7 +380,7 @@
 
 .references-list {
     max-width: 900px;
-    margin: var(--spacing-xl) auto 0;
+    margin: var(--spacing-8) auto 0;
 }
 
 .reference-item {
@@ -424,7 +424,7 @@
 .reference-content p {
     color: var(--color-text-primary);
     line-height: var(--line-height-relaxed);
-    margin-bottom: var(--spacing-2);
+    margin-bottom: var(--spacing-4);
     font-size: var(--font-size-base);
 }
 

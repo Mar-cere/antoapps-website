@@ -47,7 +47,7 @@
 
 .security-intro {
     max-width: 900px;
-    margin: 0 auto var(--spacing-xl);
+    margin: 0 auto var(--spacing-8);
     text-align: center;
 }
 
@@ -58,7 +58,7 @@
 }
 
 .certifications-section {
-    margin-top: var(--spacing-xl);
+    margin-top: var(--spacing-8);
 }
 
 .certifications-section h3 {

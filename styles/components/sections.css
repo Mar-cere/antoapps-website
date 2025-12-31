@@ -266,7 +266,7 @@
 .feature-card h3 {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-4);
     color: var(--color-text-primary);
 }
 
@@ -399,7 +399,7 @@
 .benefit-item h4 {
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-3);
     color: var(--color-text-primary);
 }
 
@@ -430,7 +430,7 @@
 .value-card h3 {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-4);
     color: var(--color-text-primary);
 }
 
