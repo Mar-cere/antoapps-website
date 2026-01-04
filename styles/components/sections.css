@@ -149,7 +149,7 @@
 .phone-in-hand-image {
     width: 100%;
     height: auto;
-    max-width: 450px;
+    max-width: 500px;
     border-radius: var(--radius-2xl);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
     transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
@@ -162,7 +162,7 @@
     filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.08));
 }
 
-/* Mockup en Hero (segunda imagen) */
+/* Mockup para otras secciones */
 .phone-mockup-container {
     position: relative;
     max-width: 400px;
@@ -170,7 +170,6 @@
     animation: float 6s ease-in-out infinite;
     transition: transform var(--duration-base) var(--ease-out);
     padding: var(--spacing-4);
-    flex: 0 1 auto;
 }
 
 .phone-mockup-container:hover {
@@ -239,11 +238,6 @@
     
     .phone-in-hand-image {
         max-width: 320px;
-    }
-    
-    .hero-images-container {
-        flex-direction: column;
-        gap: var(--spacing-4);
     }
     
     .phone-in-hand-container {
@@ -318,6 +312,52 @@
     50% {
         transform: scale(1.05);
         opacity: 0.9;
+    }
+}
+
+/* App Showcase Section */
+.app-showcase {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-12) 0;
+}
+
+.showcase-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-12);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.showcase-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.showcase-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+
+.showcase-description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+}
+
+@media (max-width: 968px) {
+    .showcase-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-8);
+        text-align: center;
+    }
+    
+    .showcase-image-wrapper {
+        order: -1;
     }
 }
 
