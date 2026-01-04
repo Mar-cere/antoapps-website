@@ -61,21 +61,38 @@ export default function Hero() {
           </div>
         </div>
         <div className="hero-image reveal-on-scroll-enhanced" ref={heroImageRef}>
-          <div className="phone-in-hand-container float-enhanced">
-            <Image
-              src="/assets/images/hero/phone-in-hand.png"
-              alt="Anto App - Persona usando la aplicación mostrando la interfaz de chat en tiempo real"
-              className="phone-in-hand-image"
-              width={800}
-              height={1200}
-              priority
-              quality={95}
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
-              style={{
-                objectFit: 'contain',
-              }}
-            />
+          <div className="hero-images-container">
+            <div className="phone-in-hand-container float-enhanced">
+              <Image
+                src="/assets/images/hero/phone-in-hand.png"
+                alt="Anto App - Persona usando la aplicación mostrando la interfaz de chat en tiempo real"
+                className="phone-in-hand-image"
+                width={800}
+                height={1200}
+                priority
+                quality={95}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
+            </div>
+            <div className="phone-mockup-container float-enhanced" style={{ animationDelay: '0.5s' }}>
+              <Image
+                src="/assets/images/hero/phone-mockup.png"
+                alt="Anto App - Mockup de la aplicación mostrando la interfaz principal"
+                className="phone-mockup-image"
+                width={856}
+                height={1346}
+                quality={95}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>

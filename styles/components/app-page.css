@@ -121,12 +121,31 @@
     border-radius: var(--radius-xl);
     overflow: hidden;
     transition: var(--transition-base);
+    display: flex;
+    flex-direction: column;
 }
 
 .screenshot-card:hover {
     border-color: var(--color-border-hover);
-    box-shadow: var(--shadow-sm);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+.screenshot-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    transition: transform var(--duration-base) var(--ease-out);
+}
+
+.screenshot-card:hover .screenshot-image {
+    transform: scale(1.02);
+}
+
+.screenshot-info {
+    padding: var(--spacing-4);
+    text-align: center;
 }
 
 .screenshot-placeholder {

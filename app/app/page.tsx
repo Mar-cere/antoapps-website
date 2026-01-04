@@ -140,9 +140,16 @@ export default function AppPage() {
                 </div>
               </div>
               <div className="screenshot-card reveal-on-scroll" data-stagger-item>
-                <div className="screenshot-placeholder">
+                <Image
+                  src="/assets/images/hero/phone-mockup.png"
+                  alt="Anto App - Interfaz de chat con IA mostrando conversación terapéutica"
+                  width={375}
+                  height={812}
+                  className="screenshot-image"
+                  quality={95}
+                />
+                <div className="screenshot-info">
                   <div className="screenshot-label">Chat con IA</div>
-                  <div className="screenshot-icon">💬</div>
                   <p className="screenshot-description">
                     Conversaciones naturales y empáticas con el asistente AI terapéutico
                   </p>
