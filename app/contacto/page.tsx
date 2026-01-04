@@ -5,7 +5,6 @@ import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import AccessibilityPanel from '@/components/AccessibilityPanel';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import ContactForm from '@/components/forms/ContactForm';
 import '@/styles/components/contact.css';
 
 export const metadata: Metadata = {
@@ -39,36 +38,23 @@ export default function ContactoPage() {
 
         <section className="contact-section" data-fade-section>
           <div className="container">
-            <div className="contact-grid">
-              <div className="contact-form-container">
-                <h2 className="section-title reveal-on-scroll">Envíanos un mensaje</h2>
-                <ContactForm />
-              </div>
-
+            <div className="contact-info-container">
               <div className="contact-info">
                 <h2 className="section-title reveal-on-scroll">Información de contacto</h2>
                 <div className="contact-details">
-                  <div className="contact-detail-item">
-                    <div className="contact-icon">📧</div>
-                    <div>
-                      <h3>Email Corporativo</h3>
-                      <a href="mailto:marcelo.ull@antoapps.com">marcelo.ull@antoapps.com</a>
-                    </div>
-                  </div>
-
-                  <div className="contact-detail-item">
-                    <div className="contact-icon">📧</div>
-                    <div>
-                      <h3>Email Personal</h3>
-                      <a href="mailto:marcelo0.nicolas@gmail.com">marcelo0.nicolas@gmail.com</a>
-                    </div>
-                  </div>
-
                   <div className="contact-detail-item">
                     <div className="contact-icon">💼</div>
                     <div>
                       <h3>Desarrollador Principal</h3>
                       <p>Marcelo Ull Marambio</p>
+                    </div>
+                  </div>
+
+                  <div className="contact-detail-item">
+                    <div className="contact-icon">📧</div>
+                    <div>
+                      <h3>Email</h3>
+                      <a href="mailto:marcelo.ull@antoapps.com">marcelo.ull@antoapps.com</a>
                     </div>
                   </div>
 
@@ -81,6 +67,7 @@ export default function ContactoPage() {
                           href="https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/"
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="social-link"
                         >
                           LinkedIn
                         </a>
@@ -88,6 +75,7 @@ export default function ContactoPage() {
                           href="https://t.me/marcere23"
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="social-link"
                         >
                           Telegram
                         </a>
@@ -95,6 +83,7 @@ export default function ContactoPage() {
                           href="https://github.com/Mar-cere"
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="social-link"
                         >
                           GitHub
                         </a>

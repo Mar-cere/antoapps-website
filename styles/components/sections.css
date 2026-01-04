@@ -119,8 +119,39 @@
     justify-content: center;
     align-items: center;
     animation: fadeInRight 0.8s ease;
+    padding: var(--spacing-4) 0;
 }
 
+.phone-in-hand-container {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    animation: float 6s ease-in-out infinite;
+    transition: transform var(--duration-base) var(--ease-out);
+    padding: var(--spacing-4);
+}
+
+.phone-in-hand-container:hover {
+    transform: translateY(-8px) scale(1.01);
+}
+
+.phone-in-hand-image {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    border-radius: var(--radius-2xl);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
+    transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+    background: transparent;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.05));
+}
+
+.phone-in-hand-container:hover .phone-in-hand-image {
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.03);
+    filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.08));
+}
+
+/* Mantener compatibilidad con mockup anterior */
 .phone-mockup-container {
     position: relative;
     max-width: 400px;
@@ -179,6 +210,26 @@
     
     .hero-cta .btn {
         width: 100%;
+    }
+    
+    .phone-in-hand-container {
+        max-width: 320px;
+        margin: 0 auto;
+        padding: var(--spacing-2);
+    }
+    
+    .phone-in-hand-image {
+        max-width: 320px;
+    }
+    
+    .phone-in-hand-container {
+        max-width: 320px;
+        margin: 0 auto;
+        padding: var(--spacing-2);
+    }
+    
+    .phone-in-hand-image {
+        max-width: 320px;
     }
     
     .phone-mockup-container {

@@ -125,7 +125,7 @@ const faqMoreData = [
     id: 17,
     question: '¿Qué hago si tengo problemas técnicos?',
         answer:
-          'Ofrecemos soporte técnico 24/7 a través de múltiples canales: email corporativo (marcelo.ull@antoapps.com), email personal (marcelo0.nicolas@gmail.com), Telegram (t.me/marcere23), y LinkedIn. Nuestro equipo de soporte responde típicamente en menos de 2 horas. También tenemos una sección de ayuda dentro de la aplicación con guías paso a paso y solución de problemas comunes. Si encuentras un bug o problema, puedes reportarlo directamente desde la app y lo solucionaremos lo antes posible.',
+          'Ofrecemos soporte técnico 24/7 a través de múltiples canales: email (marcelo.ull@antoapps.com), Telegram (t.me/marcere23), y LinkedIn. Nuestro equipo de soporte responde típicamente en menos de 2 horas. También tenemos una sección de ayuda dentro de la aplicación con guías paso a paso y solución de problemas comunes. Si encuentras un bug o problema, puedes reportarlo directamente desde la app y lo solucionaremos lo antes posible.',
     category: 'tecnica',
   },
 ];

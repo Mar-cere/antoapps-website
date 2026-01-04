@@ -77,16 +77,10 @@ export default function DesarrolloPage() {
                 </a>
               </div>
               <div style={{ marginTop: 'var(--spacing-md)' }}>
-                <p style={{ color: 'var(--secondary-color)', marginBottom: 'var(--spacing-xs)' }}>
-                  <strong style={{ color: 'var(--white)' }}>Email Corporativo:</strong>{' '}
+                <p style={{ color: 'var(--secondary-color)' }}>
+                  <strong style={{ color: 'var(--white)' }}>Email:</strong>{' '}
                   <a href="mailto:marcelo.ull@antoapps.com" style={{ color: 'var(--primary-color)' }}>
                     marcelo.ull@antoapps.com
-                  </a>
-                </p>
-                <p style={{ color: 'var(--secondary-color)' }}>
-                  <strong style={{ color: 'var(--white)' }}>Email Personal:</strong>{' '}
-                  <a href="mailto:marcelo0.nicolas@gmail.com" style={{ color: 'var(--primary-color)' }}>
-                    marcelo0.nicolas@gmail.com
                   </a>
                 </p>
               </div>

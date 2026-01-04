@@ -184,8 +184,7 @@ Desarrollador Principal
 
 ### 📧 Contacto
 
-- 📧 **Email Corporativo**: [marcelo.ull@antoapps.com](mailto:marcelo.ull@antoapps.com)
-- 📧 **Email Personal**: [marcelo0.nicolas@gmail.com](mailto:marcelo0.nicolas@gmail.com)
+- 📧 **Email**: [marcelo.ull@antoapps.com](mailto:marcelo.ull@antoapps.com)
 - 💼 **LinkedIn**: [linkedin.com/in/marcelo-ull-marambio-7314a6177](https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/)
 - 💬 **Telegram**: [t.me/marcere23](https://t.me/marcere23)
 - 💻 **GitHub**: [@Mar-cere](https://github.com/Mar-cere)
@@ -230,7 +229,7 @@ Anto ofrece planes flexibles basados en duración:
 
 Este es un proyecto privado, pero si tienes sugerencias o encuentras problemas, puedes contactar al desarrollador principal a través de:
 
-- 📧 Email: [marcelo.ull@antoapps.com](mailto:marcelo.ull@antoapps.com) o [marcelo0.nicolas@gmail.com](mailto:marcelo0.nicolas@gmail.com)
+- 📧 Email: [marcelo.ull@antoapps.com](mailto:marcelo.ull@antoapps.com)
 - 💼 LinkedIn: [linkedin.com/in/marcelo-ull-marambio-7314a6177](https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/)
 - 💬 Telegram: [t.me/marcere23](https://t.me/marcere23)
 
@@ -251,8 +250,7 @@ Este proyecto es privado y propiedad de AntoApps.
 
 ### 📞 ¿Necesitas contactarme?
 
-- 📧 **Email Corporativo**: [marcelo.ull@antoapps.com](mailto:marcelo.ull@antoapps.com)
-- 📧 **Email Personal**: [marcelo0.nicolas@gmail.com](mailto:marcelo0.nicolas@gmail.com)
+- 📧 **Email**: [marcelo.ull@antoapps.com](mailto:marcelo.ull@antoapps.com)
 - 💼 **LinkedIn**: [linkedin.com/in/marcelo-ull-marambio-7314a6177](https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/)
 - 💬 **Telegram**: [t.me/marcere23](https://t.me/marcere23)
 - 💻 **GitHub**: [@Mar-cere](https://github.com/Mar-cere)
