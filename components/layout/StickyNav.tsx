@@ -25,12 +25,47 @@ export default function StickyNav() {
 
   useEffect(() => {
     // Calcular altura real del header
-    const header = document.querySelector('.header, .sticky-header');
-    if (header) {
-      const height = header.getBoundingClientRect().height;
-      setHeaderHeight(height);
-    }
-  }, []);
+    const calculateHeaderHeight = () => {
+      const header = document.querySelector('.header, .sticky-header') as HTMLElement;
+      if (header) {
+        // Usar offsetHeight que es más preciso que getBoundingClientRect para elementos fixed
+        const height = header.offsetHeight || header.getBoundingClientRect().height;
+        if (height > 0) {
+          const roundedHeight = Math.ceil(height);
+          setHeaderHeight(roundedHeight);
+          
+          // Actualizar el sticky nav inmediatamente si está visible
+          if (isVisible) {
+            const stickyNav = document.querySelector('.sticky-nav') as HTMLElement;
+            if (stickyNav) {
+              stickyNav.style.top = `${roundedHeight}px`;
+            }
+          }
+        }
+      }
+    };
+
+    // Calcular inmediatamente y después de delays para asegurar que el header esté renderizado
+    calculateHeaderHeight();
+    const timeoutId1 = setTimeout(calculateHeaderHeight, 50);
+    const timeoutId2 = setTimeout(calculateHeaderHeight, 200);
+
+    // Recalcular en resize
+    window.addEventListener('resize', calculateHeaderHeight);
+    
+    // Recalcular cuando cambie el scroll (el header puede cambiar de tamaño al hacer scroll)
+    const handleScroll = () => {
+      requestAnimationFrame(calculateHeaderHeight);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      clearTimeout(timeoutId1);
+      clearTimeout(timeoutId2);
+      window.removeEventListener('resize', calculateHeaderHeight);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isVisible]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,17 +121,30 @@ export default function StickyNav() {
   };
 
   useEffect(() => {
-    // Actualizar posición top del sticky nav cuando cambia la altura del header
-    const stickyNav = document.querySelector('.sticky-nav') as HTMLElement;
-    if (stickyNav) {
-      stickyNav.style.top = `${headerHeight}px`;
+    // Actualizar posición top del sticky nav cuando cambia la altura del header o visibilidad
+    if (isVisible) {
+      // Recalcular altura del header cada vez que se hace visible
+      const header = document.querySelector('.header, .sticky-header') as HTMLElement;
+      if (header) {
+        const height = header.offsetHeight || header.getBoundingClientRect().height;
+        const finalHeight = Math.ceil(height);
+        
+        const stickyNav = document.querySelector('.sticky-nav') as HTMLElement;
+        if (stickyNav && finalHeight > 0) {
+          stickyNav.style.top = `${finalHeight}px`;
+          setHeaderHeight(finalHeight);
+        }
+      }
     }
-  }, [headerHeight]);
+  }, [isVisible]);
 
   if (!isVisible) return null;
 
+  // Asegurar que headerHeight sea válido
+  const topPosition = headerHeight > 0 ? headerHeight : 40;
+
   return (
-    <nav className="sticky-nav" aria-label="Navegación rápida" style={{ top: `${headerHeight}px` }}>
+    <nav className="sticky-nav" aria-label="Navegación rápida" style={{ top: `${topPosition}px` }}>
       <div className="sticky-nav-container">
         <ul className="sticky-nav-list">
           {navItems.map((item) => (
