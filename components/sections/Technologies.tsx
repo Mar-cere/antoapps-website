@@ -118,7 +118,7 @@ export default function Technologies() {
           <h3 className="comparison-title">Métricas de Calidad del Stack</h3>
           <div className="comparison-grid">
             {techComparison.map((metric, index) => (
-              <div key={index} className="comparison-card">
+              <div key={index} className="comparison-card" data-stagger-item style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="comparison-header">
                   <h4 className="comparison-category">{metric.category}</h4>
                   <span className="comparison-score">{metric.score}%</span>
