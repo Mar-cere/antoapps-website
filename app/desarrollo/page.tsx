@@ -3,7 +3,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
-import AccessibilityPanel from '@/components/AccessibilityPanel';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import '@/styles/components/development.css';
 
@@ -179,7 +178,6 @@ export default function DesarrolloPage() {
       </main>
       <Footer />
       <CookieConsent />
-      <AccessibilityPanel />
     </>
   );
 }

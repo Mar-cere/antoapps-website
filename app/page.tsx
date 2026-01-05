@@ -1,29 +1,22 @@
 import { Suspense, lazy } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import StickyNav from '@/components/layout/StickyNav';
 import ClientScripts from '@/components/ClientScripts';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
-import AccessibilityPanel from '@/components/AccessibilityPanel';
 import Hero from '@/components/sections/Hero';
 import Features from '@/components/sections/Features';
 import AppShowcase from '@/components/sections/AppShowcase';
 import Benefits from '@/components/sections/Benefits';
 import Technologies from '@/components/sections/Technologies';
-import TechMetrics from '@/components/sections/TechMetrics';
-import TechChallenges from '@/components/sections/TechChallenges';
-import ThinkingProcess from '@/components/sections/ThinkingProcess';
-import CodeQuality from '@/components/sections/CodeQuality';
-import RealImpact from '@/components/sections/RealImpact';
 import Skeleton from '@/components/ui/Skeleton';
 
 // Lazy load secciones no críticas para mejorar FCP
-const Values = lazy(() => import('@/components/sections/Values'));
-const Pricing = lazy(() => import('@/components/sections/Pricing'));
 const ScienceBacked = lazy(() => import('@/components/sections/ScienceBacked'));
+const Pricing = lazy(() => import('@/components/sections/Pricing'));
 const Security = lazy(() => import('@/components/sections/Security'));
 const AIExplained = lazy(() => import('@/components/sections/AIExplained'));
-const ComingSoon = lazy(() => import('@/components/sections/ComingSoon'));
 const FAQ = lazy(() => import('@/components/sections/FAQ'));
 const CTA = lazy(() => import('@/components/sections/CTA'));
 
@@ -59,6 +52,7 @@ export default function Home() {
     <>
       <ClientInitializer />
       <Header />
+      <StickyNav />
       <main id="main-content" role="main">
         <Hero />
         <Features />
@@ -68,22 +62,6 @@ export default function Home() {
           <ScienceBacked />
         </Suspense>
         <Technologies />
-        <TechMetrics />
-        <Suspense fallback={<SectionSkeleton />}>
-          <ThinkingProcess />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <TechChallenges />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <CodeQuality />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <RealImpact />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <Values />
-        </Suspense>
         <Suspense fallback={<SectionSkeleton />}>
           <Pricing />
         </Suspense>
@@ -103,7 +81,6 @@ export default function Home() {
       <Footer />
       <ClientScripts />
       <CookieConsent />
-      <AccessibilityPanel />
     </>
   );
 }

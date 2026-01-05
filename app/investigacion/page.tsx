@@ -3,7 +3,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
-import AccessibilityPanel from '@/components/AccessibilityPanel';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import '@/styles/components/research.css';
 
@@ -320,7 +319,6 @@ export default function InvestigacionPage() {
       </main>
       <Footer />
       <CookieConsent />
-      <AccessibilityPanel />
     </>
   );
 }

@@ -44,7 +44,6 @@
 @import url('./components/faq-categories.css');
 @import url('./components/mobile-table-fixes.css');
 @import url('./components/resources-library.css');
-@import url('./components/accessibility.css');
 @import url('./components/development.css');
 @import url('./components/developer.css');
 @import url('./components/tabs.css');
@@ -65,6 +64,7 @@
 @import url('./components/thinking-process.css');
 @import url('./components/code-quality.css');
 @import url('./components/real-impact.css');
+@import url('./components/sticky-nav.css');
 
 /* Utilities */
 @import url('./utilities/animations.css');

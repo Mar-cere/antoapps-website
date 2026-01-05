@@ -5,7 +5,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ClientScripts from '@/components/ClientScripts';
 import CookieConsent from '@/components/CookieConsent';
-import AccessibilityPanel from '@/components/AccessibilityPanel';
 import Skeleton from '@/components/ui/Skeleton';
 import '@/styles/components/changelog.css';
 
@@ -181,7 +180,6 @@ export default function ChangelogPage() {
       <Footer />
       <ClientScripts />
       <CookieConsent />
-      <AccessibilityPanel />
     </>
   );
 }

@@ -3,7 +3,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
-import AccessibilityPanel from '@/components/AccessibilityPanel';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ResourcesLibrary from '@/components/resources/ResourcesLibrary';
 import '@/styles/components/resources-library.css';
@@ -40,7 +39,6 @@ export default function RecursosPage() {
       </main>
       <Footer />
       <CookieConsent />
-      <AccessibilityPanel />
     </>
   );
 }
