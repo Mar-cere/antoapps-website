@@ -69,6 +69,9 @@ export default function Footer() {
               <li>
                 <Link href="/desarrollo">Desarrollo</Link>
               </li>
+              <li>
+                <Link href="/changelog">Control de Versiones</Link>
+              </li>
             </ul>
           </div>
           <div className="footer-section">
