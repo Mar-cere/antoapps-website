@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useMobileMenu } from '@/lib/hooks/useNavigation';
+import { useSwipeGestures } from '@/lib/hooks/useSwipeGestures';
 import '@/styles/layout/header.css';
 
 export default function Header() {
@@ -14,6 +15,20 @@ export default function Header() {
   const menuRef = useRef<HTMLUListElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const { toggleMenu } = useMobileMenu();
+
+  // Gestos swipe para cerrar menú móvil (solo en móvil)
+  useSwipeGestures({
+    elementRef: menuRef as React.RefObject<HTMLElement>,
+    onSwipeLeft: () => {
+      if (isMobileMenuOpen && typeof window !== 'undefined' && window.innerWidth <= 768) {
+        setIsMobileMenuOpen(false);
+        toggleMenu();
+      }
+    },
+    threshold: 50,
+    velocity: 0.3,
+    disabled: typeof window !== 'undefined' && window.innerWidth > 768,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -111,7 +126,7 @@ export default function Header() {
           <ul
             id="navMenu"
             ref={menuRef}
-            className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}
+            className={`nav-menu ${isMobileMenuOpen ? 'active swipeable' : ''}`}
             role="menubar"
           >
             {navLinks.map((link) => {

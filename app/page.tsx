@@ -1,3 +1,5 @@
+'use client';
+
 import { Suspense, lazy } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -5,6 +7,7 @@ import StickyNav from '@/components/layout/StickyNav';
 import ClientScripts from '@/components/ClientScripts';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
+import PullToRefresh from '@/components/ui/PullToRefresh';
 import Hero from '@/components/sections/Hero';
 import Features from '@/components/sections/Features';
 import AppShowcase from '@/components/sections/AppShowcase';
@@ -53,7 +56,15 @@ export default function Home() {
       <ClientInitializer />
       <Header />
       <StickyNav />
-      <main id="main-content" role="main">
+      <PullToRefresh
+        onRefresh={async () => {
+          if (typeof window !== 'undefined') {
+            window.location.reload();
+          }
+        }}
+        threshold={80}
+      >
+        <main id="main-content" role="main">
         <Hero />
         <Features />
         <AppShowcase />
@@ -77,7 +88,8 @@ export default function Home() {
         <Suspense fallback={<SectionSkeleton />}>
           <CTA />
         </Suspense>
-      </main>
+        </main>
+      </PullToRefresh>
       <Footer />
       <ClientScripts />
       <CookieConsent />

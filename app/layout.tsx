@@ -65,6 +65,7 @@ export const viewport = {
   maximumScale: 5,
   userScalable: true,
   themeColor: '#030A24',
+  viewportFit: 'cover', // Para dispositivos con notch
 };
 
 export default function RootLayout({

@@ -1,0 +1,422 @@
+/* ============================================
+   MOBILE OPTIMIZATIONS - Optimizaciones Móviles Avanzadas
+   ============================================ */
+
+/* Viewport Optimizations */
+@supports (height: 100dvh) {
+    :root {
+        --viewport-height: 100dvh;
+    }
+}
+
+@supports not (height: 100dvh) {
+    :root {
+        --viewport-height: 100vh;
+    }
+}
+
+/* Touch Target Sizes - Mínimo 44x44px (Apple/Google Guidelines) */
+button,
+a,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+[role="button"],
+[tabindex="0"] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation; /* Elimina delay de 300ms en iOS */
+}
+
+/* Áreas táctiles más grandes en móvil */
+@media (max-width: 768px) {
+    button,
+    a,
+    .btn,
+    .nav-link,
+    .nav-toggle {
+        min-height: 48px;
+        min-width: 48px;
+        padding: var(--spacing-2) var(--spacing-4);
+    }
+
+    /* Botones pequeños también deben ser táctiles */
+    .btn-small {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Inputs y selects más grandes */
+    input,
+    select,
+    textarea {
+        min-height: 48px;
+        font-size: 16px; /* Previene zoom en iOS */
+    }
+}
+
+/* Pull to Refresh */
+.pull-to-refresh-indicator {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    z-index: var(--z-tooltip);
+    background: var(--color-bg-primary);
+    padding: var(--spacing-3) var(--spacing-6);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.pull-to-refresh-indicator.active {
+    transform: translateX(-50%) translateY(0);
+}
+
+.pull-to-refresh-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-border);
+    border-top-color: var(--color-primary);
+    border-radius: var(--radius-full);
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+body.pull-to-refresh-active {
+    overflow: hidden;
+    position: relative;
+}
+
+body.pull-to-refresh-active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+    z-index: var(--z-tooltip);
+    transform-origin: left;
+    animation: pullProgress 0.3s ease-out;
+}
+
+@keyframes pullProgress {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* Swipe Gestures - Feedback Visual */
+.swipeable {
+    position: relative;
+    overflow: hidden;
+}
+
+.swipeable::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(26, 221, 219, 0.1) 50%,
+        transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.swipeable.swiping-left::after {
+    opacity: 1;
+    transform: translateX(-100%);
+    animation: swipeLeft 0.3s ease-out;
+}
+
+.swipeable.swiping-right::after {
+    opacity: 1;
+    transform: translateX(100%);
+    animation: swipeRight 0.3s ease-out;
+}
+
+@keyframes swipeLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes swipeRight {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+/* Mobile Menu - Swipe to Close */
+.nav-menu {
+    position: relative;
+}
+
+.nav-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--color-primary);
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.nav-menu.swiping-left::before {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+/* Optimizaciones de Scroll Táctil */
+@media (max-width: 768px) {
+    /* Smooth scrolling en iOS */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Prevenir scroll accidental en elementos pequeños */
+    .scrollable {
+        touch-action: pan-y;
+        overscroll-behavior: contain;
+    }
+
+    /* Scroll snap para secciones */
+    main {
+        scroll-snap-type: y proximity;
+    }
+
+    section {
+        scroll-snap-align: start;
+        scroll-margin-top: calc(var(--header-height) + 60px);
+    }
+}
+
+/* Gestos Táctiles Mejorados */
+.touch-feedback {
+    position: relative;
+    overflow: hidden;
+}
+
+.touch-feedback::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: var(--radius-full);
+    background: rgba(26, 221, 219, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+    pointer-events: none;
+}
+
+.touch-feedback:active::before {
+    width: 200px;
+    height: 200px;
+    transition: width 0.1s ease, height 0.1s ease;
+}
+
+/* Prevenir selección de texto accidental en móvil */
+@media (max-width: 768px) {
+    button,
+    .btn,
+    .nav-link,
+    .nav-toggle {
+        -webkit-tap-highlight-color: rgba(26, 221, 219, 0.2);
+        -webkit-touch-callout: none;
+        user-select: none;
+    }
+
+    /* Permitir selección en inputs y textos */
+    input,
+    textarea,
+    p,
+    span,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        -webkit-tap-highlight-color: transparent;
+        user-select: text;
+    }
+}
+
+/* Optimizaciones de Viewport */
+@supports (padding: max(0px)) {
+    .safe-area-inset-top {
+        padding-top: max(var(--spacing-4), env(safe-area-inset-top));
+    }
+
+    .safe-area-inset-bottom {
+        padding-bottom: max(var(--spacing-4), env(safe-area-inset-bottom));
+    }
+
+    .safe-area-inset-left {
+        padding-left: max(var(--spacing-4), env(safe-area-inset-left));
+    }
+
+    .safe-area-inset-right {
+        padding-right: max(var(--spacing-4), env(safe-area-inset-right));
+    }
+}
+
+/* Prevenir zoom en inputs en iOS */
+@media (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="search"],
+    input[type="url"],
+    textarea,
+    select {
+        font-size: 16px; /* Previene zoom automático en iOS */
+    }
+}
+
+/* Optimizaciones de Performance para Touch */
+@media (max-width: 768px) {
+    /* Aceleración de hardware para animaciones */
+    .nav-menu,
+    .nav-overlay,
+    .sticky-nav {
+        will-change: transform, opacity;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    /* Reducir repaints en scroll */
+    * {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+}
+
+/* Feedback Háptico Visual (cuando no hay soporte nativo) */
+.haptic-feedback {
+    position: relative;
+}
+
+.haptic-feedback:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+}
+
+/* Mejoras en el Mobile Menu */
+@media (max-width: 768px) {
+    .nav-menu {
+        /* Mejorar la animación de entrada */
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .nav-menu.active {
+        /* Asegurar que el menú esté completamente visible */
+        max-height: calc(100vh - var(--header-height));
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Indicador visual de swipe para cerrar */
+    .nav-menu::after {
+        content: '← Desliza para cerrar';
+        position: absolute;
+        top: var(--spacing-2);
+        right: var(--spacing-4);
+        font-size: var(--font-size-xs);
+        color: var(--color-text-tertiary);
+        opacity: 0.6;
+        pointer-events: none;
+        animation: fadeInOut 3s ease-in-out infinite;
+    }
+
+    .nav-menu.active::after {
+        display: block;
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.2;
+    }
+}
+
+/* Mejoras en botones táctiles */
+@media (max-width: 768px) {
+    .btn {
+        /* Aumentar área táctil sin cambiar el tamaño visual */
+        position: relative;
+    }
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+        /* Área táctil extendida invisible */
+    }
+
+    /* Feedback visual mejorado */
+    .btn:active {
+        transform: scale(0.96);
+        transition: transform 0.1s ease;
+    }
+}
+
+/* Optimizaciones de Scroll en Móvil */
+@media (max-width: 768px) {
+    html {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body {
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Prevenir scroll horizontal accidental */
+    * {
+        max-width: 100%;
+    }
+}
+
