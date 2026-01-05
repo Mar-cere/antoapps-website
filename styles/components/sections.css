@@ -317,47 +317,101 @@
 
 /* App Showcase Section */
 .app-showcase {
-    background: var(--color-bg-secondary);
-    padding: var(--spacing-12) 0;
+    background: var(--color-bg-primary);
+    padding: var(--spacing-16) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.app-showcase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(26, 221, 219, 0.02) 0%, rgba(3, 105, 161, 0.02) 100%);
+    pointer-events: none;
 }
 
 .showcase-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-12);
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--spacing-16);
     align-items: center;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.showcase-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+    padding-right: var(--spacing-8);
+}
+
+.showcase-text .section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: var(--spacing-2);
+}
+
+.showcase-text .section-subtitle {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-4);
+}
+
+.showcase-description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-tertiary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
 }
 
 .showcase-image-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
-.showcase-text {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-4);
-}
-
-.showcase-description {
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
-    margin: 0;
+.showcase-image-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(26, 221, 219, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 4s ease-in-out infinite;
 }
 
 @media (max-width: 968px) {
+    .app-showcase {
+        padding: var(--spacing-12) 0;
+    }
+    
     .showcase-content {
         grid-template-columns: 1fr;
-        gap: var(--spacing-8);
+        gap: var(--spacing-10);
         text-align: center;
     }
     
+    .showcase-text {
+        padding-right: 0;
+        order: 2;
+    }
+    
     .showcase-image-wrapper {
-        order: -1;
+        order: 1;
+    }
+    
+    .showcase-image-wrapper::before {
+        width: 100%;
+        height: 100%;
     }
 }
 

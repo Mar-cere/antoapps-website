@@ -7,6 +7,7 @@ import CookieConsent from '@/components/CookieConsent';
 import AccessibilityPanel from '@/components/AccessibilityPanel';
 import Hero from '@/components/sections/Hero';
 import Features from '@/components/sections/Features';
+import AppShowcase from '@/components/sections/AppShowcase';
 import Benefits from '@/components/sections/Benefits';
 import Technologies from '@/components/sections/Technologies';
 import TechMetrics from '@/components/sections/TechMetrics';
@@ -61,6 +62,7 @@ export default function Home() {
       <main id="main-content" role="main">
         <Hero />
         <Features />
+        <AppShowcase />
         <Benefits />
         <Suspense fallback={<SectionSkeleton />}>
           <ScienceBacked />
