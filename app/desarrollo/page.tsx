@@ -25,10 +25,10 @@ export default function DesarrolloPage() {
       <main>
         <Breadcrumbs items={[{ label: 'Inicio', href: '/' }, { label: 'Desarrollo' }]} />
 
-        <section className="development-hero">
+        <section className="development-hero" data-fade-section>
           <div className="container">
-            <h1 className="section-title reveal-on-scroll">Proceso de Desarrollo</h1>
-            <p className="section-subtitle reveal-on-scroll">
+            <h1 className="development-title reveal-on-scroll">Proceso de Desarrollo</h1>
+            <p className="development-subtitle reveal-on-scroll">
               Conoce cómo se construyó Anto desde cero, las tecnologías utilizadas y los desafíos
               técnicos superados.
             </p>
@@ -75,25 +75,17 @@ export default function DesarrolloPage() {
                   Email
                 </a>
               </div>
-              <div style={{ marginTop: 'var(--spacing-md)' }}>
-                <p style={{ color: 'var(--secondary-color)' }}>
-                  <strong style={{ color: 'var(--white)' }}>Email:</strong>{' '}
-                  <a href="mailto:marcelo.ull@antoapps.com" style={{ color: 'var(--primary-color)' }}>
-                    marcelo.ull@antoapps.com
-                  </a>
-                </p>
-              </div>
             </div>
 
             <div className="tech-stack">
               <h2>Stack Tecnológico Completo</h2>
-              <p style={{ color: 'var(--secondary-color)', marginBottom: 'var(--spacing-lg)', textAlign: 'center' }}>
+              <p className="tech-stack-intro">
                 Tecnologías reales utilizadas en el desarrollo de Anto según el{' '}
                 <a
                   href="https://github.com/Mar-cere/Anto"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: 'var(--primary-color)' }}
+                  className="tech-stack-link"
                 >
                   repositorio oficial
                 </a>

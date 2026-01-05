@@ -21,6 +21,16 @@ const navItems: NavItem[] = [
 export default function StickyNav() {
   const [activeSection, setActiveSection] = useState<string>('inicio');
   const [isVisible, setIsVisible] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(48);
+
+  useEffect(() => {
+    // Calcular altura real del header
+    const header = document.querySelector('.header, .sticky-header');
+    if (header) {
+      const height = header.getBoundingClientRect().height;
+      setHeaderHeight(height);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,9 +70,13 @@ export default function StickyNav() {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      const headerOffset = 80;
+      // Calcular altura total: header + sticky nav
+      const stickyNav = document.querySelector('.sticky-nav');
+      const stickyNavHeight = stickyNav ? stickyNav.getBoundingClientRect().height : 40;
+      const totalOffset = headerHeight + stickyNavHeight;
+      
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
 
       window.scrollTo({
         top: offsetPosition,
@@ -71,10 +85,18 @@ export default function StickyNav() {
     }
   };
 
+  useEffect(() => {
+    // Actualizar posición top del sticky nav cuando cambia la altura del header
+    const stickyNav = document.querySelector('.sticky-nav') as HTMLElement;
+    if (stickyNav) {
+      stickyNav.style.top = `${headerHeight}px`;
+    }
+  }, [headerHeight]);
+
   if (!isVisible) return null;
 
   return (
-    <nav className="sticky-nav" aria-label="Navegación rápida">
+    <nav className="sticky-nav" aria-label="Navegación rápida" style={{ top: `${headerHeight}px` }}>
       <div className="sticky-nav-container">
         <ul className="sticky-nav-list">
           {navItems.map((item) => (

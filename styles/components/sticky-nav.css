@@ -4,7 +4,7 @@
 
 .sticky-nav {
     position: fixed;
-    top: 56px;
+    /* top se calculará dinámicamente en JS, pero usamos 48px como fallback */
     left: 0;
     right: 0;
     z-index: calc(var(--z-fixed) - 1);
