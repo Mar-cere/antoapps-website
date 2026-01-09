@@ -216,18 +216,22 @@ export default function AppPage() {
           <div className="container">
             <h2 className="section-title reveal-on-scroll">Características Avanzadas</h2>
             <p className="section-subtitle reveal-on-scroll">
-              Funcionalidades que hacen de Anto una herramienta única para tu bienestar mental
+              Funcionalidades que hacen de Anto una herramienta única para tu bienestar mental.
+              <strong style={{ display: 'block', marginTop: 'var(--spacing-sm)', color: 'var(--primary-color)' }}>
+                ✨ Nuevo: Sistema de chat mejorado con escalas clínicas, detección de distorsiones cognitivas y protocolos terapéuticos estructurados
+              </strong>
             </p>
             <div className="advanced-features-grid" data-stagger>
               <div className="advanced-feature reveal-on-scroll" data-stagger-item>
                 <div className="feature-header">
                   <div className="feature-icon">🤖</div>
-                  <h3>Chat Conversacional con GPT-5 Mini</h3>
+                  <h3>Chat Conversacional Avanzado con GPT-5 Mini</h3>
                 </div>
                 <p>
                   Integración directa con OpenAI API para conversaciones naturales y empáticas.
                   Procesamiento de lenguaje natural avanzado que entiende contexto emocional y
-                  mantiene memoria de conversaciones.
+                  mantiene memoria de conversaciones. Ahora con evaluación clínica automática y
+                  protocolos terapéuticos estructurados.
                 </p>
                 <ul className="feature-list">
                   <li>Integración con OpenAI GPT-5 Mini</li>
@@ -235,6 +239,10 @@ export default function AppPage() {
                   <li>Procesamiento de lenguaje natural (NLP)</li>
                   <li>Respuestas contextualmente relevantes</li>
                   <li>WebSockets para tiempo real</li>
+                  <li>✅ Escalas clínicas validadas (PHQ-9, GAD-7)</li>
+                  <li>✅ Detección de 15 tipos de distorsiones cognitivas</li>
+                  <li>✅ 8 protocolos terapéuticos estructurados</li>
+                  <li>✅ Reportes profesionales con estadísticas</li>
                 </ul>
               </div>
               <div className="advanced-feature reveal-on-scroll" data-stagger-item>
@@ -297,7 +305,8 @@ export default function AppPage() {
                 </div>
                 <p>
                   Visualización completa de tu bienestar emocional con gráficos, tendencias y
-                  reportes detallados. Análisis de patrones a lo largo del tiempo.
+                  reportes detallados. Análisis de patrones a lo largo del tiempo. Ahora con escalas
+                  clínicas automáticas y estadísticas de distorsiones cognitivas.
                 </p>
                 <ul className="feature-list">
                   <li>Gráficos de estado emocional</li>
@@ -305,6 +314,9 @@ export default function AppPage() {
                   <li>Reportes semanales y mensuales</li>
                   <li>Métricas de progreso personalizadas</li>
                   <li>Exportación de datos</li>
+                  <li>✅ Escalas clínicas validadas (PHQ-9, GAD-7)</li>
+                  <li>✅ Estadísticas de distorsiones cognitivas</li>
+                  <li>✅ Reportes profesionales con análisis detallado</li>
                 </ul>
               </div>
               <div className="advanced-feature reveal-on-scroll" data-stagger-item>

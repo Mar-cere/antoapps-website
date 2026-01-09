@@ -8,11 +8,12 @@ Sitio web moderno y profesional para **Anto**, una aplicación móvil de salud m
 
 **Anto** es una aplicación móvil de salud mental que utiliza inteligencia artificial para proporcionar apoyo emocional 24/7. La aplicación ofrece:
 
-- 🤖 **Asistente AI Terapéutico**: Conversaciones inteligentes basadas en terapia cognitivo-conductual
-- 📊 **Análisis Emocional Avanzado**: Detección de patrones emocionales y estados de ánimo
+- 🤖 **Asistente AI Terapéutico**: Conversaciones inteligentes con escalas clínicas validadas (PHQ-9, GAD-7), detección de 15 tipos de distorsiones cognitivas y 8 protocolos terapéuticos estructurados basados en evidencia científica
+- 📊 **Análisis Emocional Avanzado**: Detección de patrones emocionales, evaluación clínica automática y reportes profesionales con estadísticas detalladas
 - 🚨 **Detección de Crisis**: Sistema de alertas tempranas para situaciones de riesgo
 - 🛠️ **Herramientas de Bienestar**: Ejercicios, meditaciones y recursos de salud mental
 - 🔒 **Privacidad y Seguridad**: Encriptación de extremo a extremo y cumplimiento de normativas
+- 📈 **Reportes Profesionales**: Análisis detallado de progreso con escalas clínicas y estadísticas de distorsiones cognitivas
 
 ### 🎯 Respaldado por Ciencia
 

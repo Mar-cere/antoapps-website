@@ -17,7 +17,11 @@ export default function Features() {
             <div className="feature-card stagger-item" data-stagger-item>
               <div className="feature-icon icon-hover-enhanced">🤖</div>
               <h3>Asistente AI Terapéutico</h3>
-              <p>Conversaciones inteligentes y empáticas adaptadas a tu situación emocional</p>
+              <p>
+                Conversaciones inteligentes con escalas clínicas validadas (PHQ-9, GAD-7), detección de
+                15 tipos de distorsiones cognitivas y 8 protocolos terapéuticos estructurados basados en
+                evidencia científica
+              </p>
             </div>
             <div className="feature-card stagger-item" data-stagger-item>
               <div className="feature-icon icon-hover-enhanced">🚨</div>
@@ -26,8 +30,11 @@ export default function Features() {
             </div>
             <div className="feature-card stagger-item" data-stagger-item>
               <div className="feature-icon icon-hover-enhanced">📊</div>
-              <h3>Análisis Emocional</h3>
-              <p>Seguimiento detallado de tu estado emocional y progreso</p>
+              <h3>Análisis Emocional Avanzado</h3>
+              <p>
+                Seguimiento con escalas clínicas automáticas, detección de distorsiones cognitivas,
+                reportes profesionales y estadísticas detalladas de tu progreso
+              </p>
             </div>
             <div className="feature-card stagger-item" data-stagger-item>
               <div className="feature-icon icon-hover-enhanced">🧘</div>

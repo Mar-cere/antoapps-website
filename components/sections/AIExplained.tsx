@@ -18,12 +18,15 @@ export default function AIExplained() {
               <p>
                 Conexión directa con GPT-5 Mini mediante API REST. Procesamiento de lenguaje natural
                 que entiende contexto emocional, tono e intención. Las conversaciones se almacenan en
-                MongoDB para mantener memoria contextual.
+                MongoDB para mantener memoria contextual. Ahora con evaluación clínica automática mediante
+                escalas validadas (PHQ-9, GAD-7) y detección de 15 tipos de distorsiones cognitivas.
               </p>
               <div className="ai-tech">
                 <span className="tech-badge">OpenAI GPT-5 Mini</span>
                 <span className="tech-badge">MongoDB</span>
                 <span className="tech-badge">NLP</span>
+                <span className="tech-badge">Escalas Clínicas</span>
+                <span className="tech-badge">Detección Cognitiva</span>
               </div>
             </div>
           </div>
@@ -48,16 +51,36 @@ export default function AIExplained() {
           <div className="ai-step reveal-on-scroll" data-stagger-item>
             <div className="ai-step-number">3</div>
             <div className="ai-step-content">
+              <h3>Protocolos Terapéuticos Estructurados</h3>
+              <p>
+                Sistema de 8 protocolos basados en evidencia científica para depresión, ansiedad, trauma,
+                TOC, TEPT y más. Cada protocolo se adapta automáticamente según las escalas clínicas y
+                distorsiones cognitivas detectadas, proporcionando intervenciones estructuradas y
+                personalizadas.
+              </p>
+              <div className="ai-tech">
+                <span className="tech-badge">8 Protocolos</span>
+                <span className="tech-badge">Basado en Evidencia</span>
+                <span className="tech-badge">Personalizado</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="ai-step reveal-on-scroll" data-stagger-item>
+            <div className="ai-step-number">4</div>
+            <div className="ai-step-content">
               <h3>Comunicación en Tiempo Real</h3>
               <p>
                 WebSockets con Socket.IO para respuestas instantáneas. El backend Node.js procesa
                 mensajes, consulta la base de datos MongoDB para contexto histórico, y genera respuestas
-                empáticas y personalizadas en menos de 2.5 segundos.
+                empáticas y personalizadas en menos de 2.5 segundos. Incluye reportes profesionales con
+                estadísticas detalladas de progreso.
               </p>
               <div className="ai-tech">
                 <span className="tech-badge">Socket.IO</span>
                 <span className="tech-badge">WebSockets</span>
                 <span className="tech-badge">Tiempo Real</span>
+                <span className="tech-badge">Reportes Profesionales</span>
               </div>
             </div>
           </div>

@@ -17,7 +17,7 @@ const faqData = [
     id: 2,
     question: '¿Cómo funciona el asistente AI?',
     answer:
-      'Nuestro asistente AI utiliza tecnología de procesamiento de lenguaje natural (NLP) de última generación, entrenada específicamente con principios terapéuticos y técnicas de psicología cognitivo-conductual. El sistema aprende de cada conversación para ofrecerte respuestas cada vez más personalizadas y empáticas. No es un chatbot simple: entiende el contexto emocional, recuerda conversaciones anteriores, y se adapta a tu estilo de comunicación único. La IA está supervisada por profesionales de salud mental y se actualiza constantemente con las mejores prácticas terapéuticas.',
+      'Nuestro asistente AI utiliza tecnología de procesamiento de lenguaje natural (NLP) de última generación, entrenada específicamente con principios terapéuticos y técnicas de psicología cognitivo-conductual. El sistema ahora incluye evaluación clínica automática mediante escalas validadas (PHQ-9 para depresión, GAD-7 para ansiedad), detección de 15 tipos de distorsiones cognitivas, y 8 protocolos terapéuticos estructurados basados en evidencia científica. El sistema aprende de cada conversación para ofrecerte respuestas cada vez más personalizadas y empáticas. No es un chatbot simple: entiende el contexto emocional, recuerda conversaciones anteriores, y se adapta a tu estilo de comunicación único. La IA está supervisada por profesionales de salud mental y se actualiza constantemente con las mejores prácticas terapéuticas.',
     category: 'funcionalidad',
   },
   {
