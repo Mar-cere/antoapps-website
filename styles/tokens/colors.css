@@ -23,8 +23,8 @@
     
         /* Colores de Texto (Estilo Apple - Mejorado para legibilidad) */
         --color-text-primary: #1D1D1F;
-        --color-text-secondary: #424245; /* Oscurecido para mejor legibilidad (antes #6E6E73) */
-        --color-text-tertiary: #515154; /* Oscurecido para mejor legibilidad (antes #86868B) */
+        --color-text-secondary: #2C2C2E; /* Oscurecido significativamente para mejor legibilidad (antes #6E6E73) */
+        --color-text-tertiary: #3A3A3C; /* Oscurecido significativamente para mejor legibilidad (antes #86868B) */
         --color-text-disabled: rgba(29, 29, 31, 0.4);
         --color-text-on-primary: #000000; /* Texto oscuro sobre fondo cyan claro */
         

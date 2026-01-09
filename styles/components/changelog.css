@@ -180,7 +180,7 @@
 
 .version-date {
     font-size: var(--font-size-sm);
-    color: var(--color-text-tertiary);
+    color: var(--color-text-secondary);
     font-weight: var(--font-weight-medium);
 }
 
@@ -364,7 +364,7 @@
 
 .changelog-note {
     font-size: var(--font-size-sm);
-    color: var(--color-text-tertiary);
+    color: var(--color-text-secondary);
     line-height: var(--line-height-relaxed);
 }
 
