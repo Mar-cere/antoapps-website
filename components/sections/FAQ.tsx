@@ -131,7 +131,7 @@ const faqMoreData = [
 ];
 
 export default function FAQ() {
-  useFAQ();
+  // Removido useFAQ() porque causa conflicto con el estado de React
   useScrollAnimations();
   const [showMore, setShowMore] = useState(false);
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
