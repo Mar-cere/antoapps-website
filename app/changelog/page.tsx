@@ -16,16 +16,44 @@ interface ChangeItem {
 interface Version {
   version: string;
   date: string;
-  status: 'current' | 'stable' | 'beta' | 'deprecated';
+  status?: 'current' | 'stable' | 'beta' | 'deprecated';
   changes: ChangeItem[];
   highlights?: string[];
 }
 
 const changelog: Version[] = [
   {
+    version: '1.1.0',
+    date: '2026-01-08',
+    status: 'current',
+    highlights: [
+      'Sistema de chat mejorado con escalas clínicas validadas',
+      'Detección avanzada de distorsiones cognitivas (15 tipos)',
+      '8 protocolos terapéuticos estructurados basados en evidencia',
+      'Reportes profesionales con estadísticas detalladas',
+      'Optimizaciones móviles avanzadas',
+    ],
+    changes: [
+      { type: 'feature', description: 'Escalas clínicas validadas: PHQ-9 para depresión y GAD-7 para ansiedad con evaluación automática' },
+      { type: 'feature', description: 'Detección automática de 15 tipos de distorsiones cognitivas durante las conversaciones' },
+      { type: 'feature', description: '8 protocolos terapéuticos estructurados basados en evidencia científica (Depresión, Ansiedad, Trauma, TOC, TEPT, etc.)' },
+      { type: 'feature', description: 'Reportes profesionales con análisis detallado de progreso, escalas clínicas y estadísticas de distorsiones cognitivas' },
+      { type: 'improvement', description: 'Sistema de chat mejorado con evaluación clínica automática y protocolos personalizados según detecciones' },
+      { type: 'improvement', description: 'Análisis emocional avanzado ahora incluye evaluación clínica objetiva mediante escalas validadas' },
+      { type: 'improvement', description: 'Dashboard de métricas actualizado con visualización de escalas clínicas y distorsiones cognitivas' },
+      { type: 'feature', description: 'Pull-to-refresh en dispositivos móviles para actualizar contenido fácilmente' },
+      { type: 'feature', description: 'Gestos swipe mejorados para navegación móvil y cierre de menús' },
+      { type: 'improvement', description: 'Optimizaciones táctiles: áreas táctiles aumentadas (48px mínimo), feedback visual mejorado' },
+      { type: 'improvement', description: 'Viewport optimizado para dispositivos con notch (iPhone X y superiores)' },
+      { type: 'improvement', description: 'Menú móvil mejorado con gestos swipe para cerrar y animaciones más fluidas' },
+      { type: 'improvement', description: 'Prevención de zoom accidental en inputs móviles (font-size: 16px)' },
+      { type: 'improvement', description: 'Scroll táctil optimizado con -webkit-overflow-scrolling: touch y scroll snap' },
+      { type: 'fix', description: 'Corregido problema de expansión en preguntas frecuentes (FAQ)' },
+    ],
+  },
+  {
     version: '1.0.0',
     date: '2025-01-15',
-    status: 'current',
     highlights: [
       'Lanzamiento inicial de Anto',
       'Asistente AI terapéutico',
@@ -59,8 +87,8 @@ function ChangelogContent() {
         <div className="changelog-status-note">
           <span className="status-badge status-badge-review">📱 En Revisión</span>
           <p className="status-text">
-            La versión 1.0.0 está actualmente en proceso de revisión en las tiendas de aplicaciones.
-            Próximamente disponible en App Store y Google Play.
+            La versión 1.1.0 está actualmente en proceso de revisión en las tiendas de aplicaciones.
+            Incluye mejoras significativas en el sistema de chat con escalas clínicas, detección de distorsiones cognitivas y protocolos terapéuticos estructurados.
           </p>
         </div>
       </div>
