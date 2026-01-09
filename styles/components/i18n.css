@@ -77,7 +77,7 @@
     cursor: pointer;
     transition: background 0.2s ease;
     font-size: var(--font-size-sm);
-    color: #333;
+    color: var(--color-text-primary);
 }
 
 .language-option:hover {

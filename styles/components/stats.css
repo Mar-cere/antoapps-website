@@ -106,7 +106,7 @@
 }
 
 .stat-label {
-    color: #4A5568;
+    color: var(--color-text-secondary);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-relaxed);

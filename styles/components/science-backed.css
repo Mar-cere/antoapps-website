@@ -33,7 +33,7 @@
 
 .science-header .section-subtitle {
     font-size: var(--font-size-xl);
-    color: #4A5568; /* Gris más oscuro para mejor legibilidad */
+    color: var(--color-text-secondary); /* Usar variable para mejor legibilidad */
     max-width: 800px;
     margin: 0 auto;
     line-height: var(--line-height-relaxed);

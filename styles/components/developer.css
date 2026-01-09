@@ -47,7 +47,7 @@
 .developer-details h2 {
     font-size: var(--font-size-xl);
     font-weight: 600;
-    color: #666;
+    color: var(--color-text-secondary);
     margin-bottom: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -65,7 +65,7 @@
 }
 
 .developer-details p {
-    color: #666;
+    color: var(--color-text-secondary);
     line-height: 1.7;
     font-size: var(--font-size-base);
 }
