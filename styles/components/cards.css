@@ -180,6 +180,14 @@
     box-shadow: var(--shadow-xs);
 }
 
+.benefit-item h4 {
+    color: var(--color-text-primary) !important;
+}
+
+.benefit-item p {
+    color: var(--color-text-secondary) !important;
+}
+
 .faq-item {
     background: var(--color-surface);
     border: var(--border-width-1) solid var(--color-border);

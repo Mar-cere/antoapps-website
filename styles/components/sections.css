@@ -584,13 +584,24 @@
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     margin-bottom: var(--spacing-3);
-    color: var(--color-text-primary);
+    color: var(--color-text-primary) !important; /* Asegurar color oscuro */
 }
 
 .benefit-item p {
-    color: var(--color-text-secondary);
+    color: var(--color-text-secondary) !important; /* Asegurar color oscuro */
     line-height: var(--line-height-relaxed);
     font-size: var(--font-size-base);
+}
+
+/* Asegurar que el contenido dentro de tabs también use colores oscuros */
+.tab-content-inner .benefit-item h4,
+.benefits-list .benefit-item h4 {
+    color: var(--color-text-primary) !important;
+}
+
+.tab-content-inner .benefit-item p,
+.benefits-list .benefit-item p {
+    color: var(--color-text-secondary) !important;
 }
 
 /* Values (Estilo Apple) */
