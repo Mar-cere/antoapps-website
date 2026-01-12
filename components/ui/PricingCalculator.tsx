@@ -138,6 +138,17 @@ export default function PricingCalculator() {
                   <Link href="#descargar" className="btn btn-primary btn-large">
                     Comenzar con {selectedPlanData.name}
                   </Link>
+                  <p style={{ marginTop: 'var(--spacing-md)', fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)' }}>
+                    Al suscribirte, aceptas nuestros{' '}
+                    <Link href="/terminos" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
+                      Términos de Uso
+                    </Link>{' '}
+                    y{' '}
+                    <Link href="/privacidad" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
+                      Política de Privacidad
+                    </Link>
+                    . Las suscripciones se renuevan automáticamente.
+                  </p>
                 </div>
               </div>
             </div>
@@ -182,6 +193,19 @@ export default function PricingCalculator() {
               </div>
             );
           })}
+          <div style={{ marginTop: 'var(--spacing-lg)', textAlign: 'center', padding: 'var(--spacing-md)', fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)' }}>
+            <p>
+              Al suscribirte, aceptas nuestros{' '}
+              <Link href="/terminos" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
+                Términos de Uso
+              </Link>{' '}
+              y{' '}
+              <Link href="/privacidad" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
+                Política de Privacidad
+              </Link>
+              . Las suscripciones se renuevan automáticamente.
+            </p>
+          </div>
         </div>
       )}
     </div>
