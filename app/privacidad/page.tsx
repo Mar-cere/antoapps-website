@@ -37,7 +37,7 @@ export default function PrivacidadPage() {
 
         <section className="privacy-content" data-fade-section>
           <div className="container">
-            <div className="privacy-wrapper">
+            <div className="privacy-wrapper reveal-on-scroll">
               <div className="privacy-section">
                 <h2>1. Información que Recopilamos</h2>
                 <h3>1.1. Información que Proporcionas</h3>

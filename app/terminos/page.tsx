@@ -35,7 +35,7 @@ export default function TerminosPage() {
 
         <section className="privacy-content" data-fade-section>
           <div className="container">
-            <div className="privacy-wrapper">
+            <div className="privacy-wrapper reveal-on-scroll">
               <div className="privacy-section">
                 <h2>1. Aceptación de los Términos</h2>
                 <p>
