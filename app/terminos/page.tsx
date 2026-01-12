@@ -26,19 +26,14 @@ export default function TerminosPage() {
       <main>
         <Breadcrumbs items={[{ label: 'Inicio', href: '/' }, { label: 'Términos de Servicio' }]} />
 
-        <section className="privacy-hero">
+        <section className="privacy-hero" data-fade-section>
           <div className="container">
-            <h1 className="privacy-title reveal-on-scroll">Términos de Servicio</h1>
-            <p className="privacy-subtitle reveal-on-scroll">Última actualización: Enero 2025</p>
-            <div className="privacy-badges reveal-on-scroll">
-              <span className="badge-info">📋 Condiciones Legales</span>
-              <span className="badge-info">⚖️ Términos de Uso</span>
-              <span className="badge-info">🔐 Derechos y Obligaciones</span>
-            </div>
+            <h1 className="section-title reveal-on-scroll">Términos de Servicio</h1>
+            <p className="section-subtitle reveal-on-scroll">Última actualización: Enero 2025</p>
           </div>
         </section>
 
-        <section className="privacy-content">
+        <section className="privacy-content" data-fade-section>
           <div className="container">
             <div className="privacy-wrapper">
               <div className="privacy-section">
@@ -210,7 +205,7 @@ export default function TerminosPage() {
                 <h2>9. Contacto</h2>
                 <p>
                   Para preguntas sobre estos términos, contáctanos en:{' '}
-                  <a href="mailto:marcelo.ull@antoapps.com">marcelo.ull@antoapps.com</a>
+                  <a href="mailto:soporte@antoapps.com">soporte@antoapps.com</a>
                 </p>
                 <p>
                   Para más información sobre cómo manejamos tus datos, consulta nuestra{' '}

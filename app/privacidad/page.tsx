@@ -26,7 +26,7 @@ export default function PrivacidadPage() {
       <main>
         <Breadcrumbs items={[{ label: 'Inicio', href: '/' }, { label: 'Privacidad' }]} />
 
-        <section className="privacy-hero">
+        <section className="privacy-hero" data-fade-section>
           <div className="container">
             <h1 className="section-title reveal-on-scroll">Política de Privacidad</h1>
             <p className="section-subtitle reveal-on-scroll">
@@ -167,7 +167,7 @@ export default function PrivacidadPage() {
                 </p>
                 <p>
                   Puedes solicitar la eliminación de tu cuenta y datos en cualquier momento contactándonos
-                  en marcelo.ull@antoapps.com. Eliminaremos tu información de acuerdo con nuestras
+                  en soporte@antoapps.com. Eliminaremos tu información de acuerdo con nuestras
                   políticas de retención y requisitos legales.
                 </p>
               </div>
@@ -201,7 +201,7 @@ export default function PrivacidadPage() {
                   </li>
                 </ul>
                 <p>
-                  Para ejercer estos derechos, contáctanos en marcelo.ull@antoapps.com. Responderemos a
+                  Para ejercer estos derechos, contáctanos en soporte@antoapps.com. Responderemos a
                   tu solicitud dentro de un plazo razonable.
                 </p>
               </div>
@@ -256,7 +256,7 @@ export default function PrivacidadPage() {
                 </p>
                 <p>
                   <strong>Email:</strong>{' '}
-                  <a href="mailto:marcelo.ull@antoapps.com">marcelo.ull@antoapps.com</a>
+                  <a href="mailto:soporte@antoapps.com">soporte@antoapps.com</a>
                 </p>
                 <p>
                   Para más información sobre los términos de uso de la aplicación, consulta nuestros{' '}
