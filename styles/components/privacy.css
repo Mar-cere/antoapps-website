@@ -10,16 +10,35 @@
 }
 
 .privacy-hero {
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
+    background: var(--color-bg-primary);
+    background-image: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
     padding: calc(56px + var(--spacing-8)) 0 var(--spacing-12);
     text-align: center;
 }
 
-.privacy-hero h1 {
+.privacy-hero h1,
+.privacy-hero .section-title {
     font-size: clamp(var(--font-size-4xl), 6vw, var(--font-size-6xl));
     font-weight: var(--font-weight-bold);
     margin-bottom: var(--spacing-4);
-    color: var(--color-text-primary);
+    color: var(--color-text-primary) !important;
+    text-shadow: none;
+    opacity: 1 !important;
+}
+
+.privacy-hero p,
+.privacy-hero .section-subtitle {
+    color: var(--color-text-secondary) !important;
+    text-shadow: none;
+    opacity: 1 !important;
+    font-weight: var(--font-weight-normal);
+}
+
+/* Asegurar que los elementos reveal-on-scroll en el hero sean visibles */
+.privacy-hero .reveal-on-scroll {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
 }
 
 .privacy-hero .last-updated {
