@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -93,14 +94,14 @@ export default function LoginPage() {
             <div className="login-footer">
               <p>
                 ¿No tienes cuenta?{' '}
-                <a href="/app#descargar" className="link-primary">
-                  Descarga la aplicación
-                </a>
+                <Link href="/signup" className="link-primary">
+                  Crear cuenta
+                </Link>
               </p>
               <p>
-                <a href="/contacto" className="link-secondary">
+                <Link href="/contacto" className="link-secondary">
                   ¿Olvidaste tu contraseña?
-                </a>
+                </Link>
               </p>
             </div>
           </div>

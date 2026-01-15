@@ -34,8 +34,11 @@ export default function Hero() {
             </div>
           </div>
           <div className="hero-cta">
-            <Link href="#descargar" className="btn btn-primary btn-large">
-              Comenzar Prueba Gratis
+            <Link href="/login" className="btn btn-primary btn-large">
+              Probar Sistema
+            </Link>
+            <Link href="/signup" className="btn btn-secondary btn-large">
+              Crear Cuenta
             </Link>
             <Link href="https://github.com/Mar-cere/Anto" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-large">
               Ver Código en GitHub
