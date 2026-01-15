@@ -40,10 +40,7 @@ export default function StatsSection() {
       <div className="container">
         <div className="stats-grid" data-stagger>
           <StatCard target={24} suffix="/7" label="Horas Disponibles" />
-          <StatCard target={100} suffix="%" label="Privacidad Garantizada" />
           <StatCard target={2.5} suffix="s" label="Tiempo de Respuesta" decimals={1} />
-          <StatCard target={99.9} suffix="%" label="Uptime" decimals={1} />
-          <StatCard target={15000} suffix="+" label="Líneas de Código" />
           <StatCard target={95} suffix="%" label="Cobertura de Tests" />
         </div>
       </div>

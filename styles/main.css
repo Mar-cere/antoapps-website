@@ -48,6 +48,7 @@
 @import url('./components/developer.css');
 @import url('./components/tabs.css');
 @import url('./components/skeleton.css');
+@import url('./components/chat-widget.css');
 @import url('./components/pricing-calculator.css');
 @import url('./components/faq-search.css');
 @import url('./components/form-validation.css');

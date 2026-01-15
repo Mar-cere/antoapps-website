@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ToastProvider } from '@/components/ui/ToastContainer';
+import ChatWidget from '@/components/ui/ChatWidget';
 import '../styles/main.css';
 
 const inter = Inter({ 
@@ -121,7 +122,7 @@ export default function RootLayout({
               ],
               contactPoint: {
                 '@type': 'ContactPoint',
-                email: 'marcelo.ull@antoapps.com',
+                email: 'soporte@antoapps.com',
                 contactType: 'customer service',
               },
             }),
@@ -129,7 +130,10 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        {children}
+        <ToastProvider>
+          {children}
+          <ChatWidget />
+        </ToastProvider>
       </body>
     </html>
   );

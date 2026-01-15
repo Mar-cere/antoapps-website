@@ -69,12 +69,6 @@ const techCategories: TechCategory[] = [
   },
 ];
 
-const techComparison = [
-  { category: 'Performance', score: 95, description: 'Tiempo de respuesta <2.5s' },
-  { category: 'Escalabilidad', score: 90, description: '1000+ conexiones simultáneas' },
-  { category: 'Seguridad', score: 98, description: 'A+ Security Score' },
-  { category: 'Mantenibilidad', score: 92, description: 'Código limpio y documentado' },
-];
 
 export default function Technologies() {
   return (
@@ -113,34 +107,6 @@ export default function Technologies() {
           ))}
         </div>
 
-        {/* Comparativa Visual de Métricas */}
-        <div className="tech-comparison-section reveal-on-scroll">
-          <h3 className="comparison-title">Métricas de Calidad del Stack</h3>
-          <div className="comparison-grid">
-            {techComparison.map((metric, index) => (
-              <div key={index} className="comparison-card" data-stagger-item style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="comparison-header">
-                  <h4 className="comparison-category">{metric.category}</h4>
-                  <span className="comparison-score">{metric.score}%</span>
-                </div>
-                <div className="comparison-bar">
-                  <div 
-                    className="comparison-fill" 
-                    style={{ width: `${metric.score}%` }}
-                  />
-                </div>
-                <p className="comparison-description">{metric.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="tech-cta reveal-on-scroll">
-          <a href="/desarrollo" className="btn btn-primary btn-large">
-            Ver detalles técnicos completos →
-          </a>
-        </div>
       </div>
     </section>
   );
