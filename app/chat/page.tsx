@@ -51,8 +51,11 @@ export default function ChatPage() {
     setIsConnecting(true);
 
     console.log('Conectando al backend con autenticación...');
+    console.log('Token:', token ? `${token.substring(0, 20)}...` : 'No hay token');
+    console.log('Usuario:', user);
 
     // Conectar Socket.IO con token de autenticación
+    // El backend puede esperar el token en auth.token o en un header Authorization
     const socket = io(backendUrl, {
       transports: ['websocket', 'polling'],
       reconnection: true,
@@ -64,14 +67,24 @@ export default function ChatPage() {
         token: token,
         userId: user.id,
       },
+      // También intentar enviar el token como header si el backend lo requiere
+      extraHeaders: token ? {
+        'Authorization': `Bearer ${token}`
+      } : {},
     });
 
     socketRef.current = socket;
 
     socket.on('connect', () => {
-      console.log('Conectado al servidor');
+      console.log('Conectado al servidor, autenticando socket...');
+      
+      // Después de conectar, autenticar el socket con el userId
+      // El backend requiere este paso adicional después de la conexión
+      socket.emit('authenticate', { userId: user.id });
+      
       setIsConnected(true);
       setIsConnecting(false);
+      
       // Mensaje de bienvenida
       setMessages([{
         id: 'welcome',
@@ -97,19 +110,77 @@ export default function ChatPage() {
       setIsConnected(false);
       setIsConnecting(false);
       
-      if (error.message.includes('Autenticación requerida') || error.message.includes('Authentication required')) {
-        logout();
-        router.push('/login');
+      let errorMessage = 'Error de conexión';
+      if (error.message.includes('Token inválido') || error.message.includes('Invalid token')) {
+        errorMessage = 'Token inválido. Por favor, inicia sesión nuevamente.';
+        setMessages(prev => [...prev, {
+          id: 'token-error',
+          text: errorMessage,
+          sender: 'assistant',
+          timestamp: new Date(),
+        }]);
+        // Limpiar token inválido y redirigir
+        setTimeout(() => {
+          logout();
+          router.push('/login');
+        }, 2000);
+      } else if (error.message.includes('Autenticación requerida') || error.message.includes('Authentication required')) {
+        errorMessage = 'Autenticación requerida. Por favor, inicia sesión.';
+        setMessages(prev => [...prev, {
+          id: 'auth-required-error',
+          text: errorMessage,
+          sender: 'assistant',
+          timestamp: new Date(),
+        }]);
+        setTimeout(() => {
+          logout();
+          router.push('/login');
+        }, 2000);
+      } else {
+        errorMessage = `Error de conexión: ${error.message}`;
+        setMessages(prev => [...prev, {
+          id: `connection-error-${Date.now()}`,
+          text: errorMessage,
+          sender: 'assistant',
+          timestamp: new Date(),
+        }]);
       }
     });
 
-    socket.on('unauthorized', () => {
-      console.error('No autorizado');
-      logout();
-      router.push('/login');
+    socket.on('unauthorized', (data: any) => {
+      console.error('No autorizado:', data);
+      setIsConnected(false);
+      setIsConnecting(false);
+      setMessages(prev => [...prev, {
+        id: 'unauthorized-error',
+        text: 'No autorizado. Por favor, inicia sesión nuevamente.',
+        sender: 'assistant',
+        timestamp: new Date(),
+      }]);
+      setTimeout(() => {
+        logout();
+        router.push('/login');
+      }, 2000);
+    });
+
+    // Escuchar eventos de autenticación exitosa
+    socket.on('authenticated', () => {
+      console.log('Socket autenticado correctamente');
     });
 
     // Escuchar mensajes del asistente
+    // El backend emite 'message:received' no 'message'
+    socket.on('message:received', (data: { text: string; id?: string; userId?: string }) => {
+      setIsLoading(false);
+      setMessages(prev => [...prev, {
+        id: data.id || `msg-${Date.now()}`,
+        text: data.text,
+        sender: 'assistant',
+        timestamp: new Date(),
+      }]);
+    });
+
+    // También escuchar 'message' por compatibilidad
     socket.on('message', (data: { text: string; id?: string }) => {
       setIsLoading(false);
       setMessages(prev => [...prev, {
@@ -118,6 +189,15 @@ export default function ChatPage() {
         sender: 'assistant',
         timestamp: new Date(),
       }]);
+    });
+
+    // Escuchar estado de escritura de la IA
+    socket.on('ai:typing', (isTyping: boolean) => {
+      // El backend emite este evento cuando la IA está escribiendo
+      // Podemos usar esto para mostrar un indicador de escritura
+      if (!isTyping) {
+        setIsLoading(false);
+      }
     });
 
     // Escuchar errores
@@ -171,10 +251,14 @@ export default function ChatPage() {
     setIsLoading(true);
 
     // Enviar mensaje al backend
+    // El backend espera el evento 'message' con el texto
     socketRef.current.emit('message', {
       text: inputMessage,
       userId: user?.id,
     });
+    
+    // El backend emitirá 'message:sent' como confirmación
+    // y luego 'message:received' con la respuesta
   };
 
   const handleLogout = () => {

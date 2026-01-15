@@ -62,11 +62,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       const data = await response.json();
       
+      // El backend devuelve accessToken, no token
+      const token = data.accessToken || data.token;
+      
+      // Verificar que el token existe
+      if (!token) {
+        throw new Error('El servidor no devolvió un token válido');
+      }
+      
+      // Extraer información del usuario
+      const userData = data.user || {};
+      const userId = userData._id || userData.id || data.userId;
+      
+      if (!userId) {
+        throw new Error('El servidor no devolvió información del usuario');
+      }
+      
       // Guardar token y usuario
-      setToken(data.token);
-      setUser(data.user);
-      localStorage.setItem('anto_token', data.token);
-      localStorage.setItem('anto_user', JSON.stringify(data.user));
+      setToken(token);
+      setUser({
+        id: userId.toString(),
+        email: userData.email || email,
+        name: userData.name || userData.username,
+      });
+      localStorage.setItem('anto_token', token);
+      localStorage.setItem('anto_user', JSON.stringify({
+        id: userId.toString(),
+        email: userData.email || email,
+        name: userData.name || userData.username,
+      }));
+      
+      console.log('Login exitoso, token guardado');
     } catch (error) {
       console.error('Error en login:', error);
       throw error;
