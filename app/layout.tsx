@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ToastProvider } from '@/components/ui/ToastContainer';
-import ChatWidget from '@/components/ui/ChatWidget';
+import { AuthProvider } from '@/contexts/AuthContext';
 import '../styles/main.css';
 
 const inter = Inter({ 
@@ -130,10 +130,11 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <ToastProvider>
-          {children}
-          <ChatWidget />
-        </ToastProvider>
+        <AuthProvider>
+          <ToastProvider>
+            {children}
+          </ToastProvider>
+        </AuthProvider>
       </body>
     </html>
   );

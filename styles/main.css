@@ -48,7 +48,6 @@
 @import url('./components/developer.css');
 @import url('./components/tabs.css');
 @import url('./components/skeleton.css');
-@import url('./components/chat-widget.css');
 @import url('./components/pricing-calculator.css');
 @import url('./components/faq-search.css');
 @import url('./components/form-validation.css');
@@ -66,6 +65,10 @@
 @import url('./components/code-quality.css');
 @import url('./components/real-impact.css');
 @import url('./components/sticky-nav.css');
+
+/* Pages */
+@import url('./pages/login.css');
+@import url('./pages/chat.css');
 
 /* Utilities */
 @import url('./utilities/animations.css');
