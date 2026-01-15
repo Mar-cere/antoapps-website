@@ -85,13 +85,18 @@ export default function ChatPage() {
       setIsConnected(true);
       setIsConnecting(false);
       
-      // Mensaje de bienvenida
-      setMessages([{
-        id: 'welcome',
-        text: `¡Hola ${user.name || user.email}! Soy Anto, tu asistente de salud mental. ¿En qué puedo ayudarte hoy?`,
-        sender: 'assistant',
-        timestamp: new Date(),
-      }]);
+      // Mensaje de bienvenida inicial (solo si no hay mensajes)
+      setMessages(prev => {
+        if (prev.length === 0) {
+          return [{
+            id: 'welcome',
+            text: `¡Hola ${user.name || user.email}! Soy Anto, tu asistente de salud mental. ¿En qué puedo ayudarte hoy?`,
+            sender: 'assistant',
+            timestamp: new Date(),
+          }];
+        }
+        return prev;
+      });
     });
 
     socket.on('disconnect', (reason) => {
@@ -168,47 +173,110 @@ export default function ChatPage() {
       console.log('Socket autenticado correctamente');
     });
 
-    // Escuchar mensajes del asistente
-    // El backend emite 'message:received' no 'message'
-    socket.on('message:received', (data: { text: string; id?: string; userId?: string }) => {
-      setIsLoading(false);
-      setMessages(prev => [...prev, {
-        id: data.id || `msg-${Date.now()}`,
-        text: data.text,
-        sender: 'assistant',
-        timestamp: new Date(),
-      }]);
+    // Escuchar confirmación de mensaje enviado (del backend)
+    // Esto confirma que el mensaje del usuario se guardó correctamente
+    socket.on('message:sent', (data: { id?: string; text: string; userId?: string; timestamp?: Date }) => {
+      console.log('Mensaje confirmado por el servidor:', data);
+      // Actualizar el ID del último mensaje del usuario con el ID real del backend
+      if (data.id) {
+        setMessages(prev => {
+          // Buscar el último mensaje del usuario que coincida con el texto
+          const lastUserMessageIndex = prev.length - 1;
+          if (lastUserMessageIndex >= 0) {
+            const lastMessage = prev[lastUserMessageIndex];
+            // Si el último mensaje es del usuario y tiene un ID temporal, actualizarlo
+            if (lastMessage.sender === 'user' && lastMessage.text === data.text) {
+              return prev.map((msg, idx): Message => 
+                idx === lastUserMessageIndex 
+                  ? { ...msg, id: data.id || msg.id }
+                  : msg
+              );
+            }
+          }
+          return prev;
+        });
+      }
     });
 
-    // También escuchar 'message' por compatibilidad
+    // Escuchar mensajes del asistente
+    // El backend emite 'message:received' con la respuesta de OpenAI
+    socket.on('message:received', (data: { text: string; id?: string; userId?: string; timestamp?: Date }) => {
+      console.log('Mensaje recibido del asistente:', data);
+      setIsLoading(false);
+      
+      // Agregar mensaje del asistente
+      setMessages(prev => {
+        // Evitar duplicados verificando si ya existe un mensaje con este ID o texto similar
+        if (data.id) {
+          const existingMessage = prev.find(msg => msg.id === data.id);
+          if (existingMessage) {
+            console.log('Mensaje duplicado detectado, ignorando');
+            return prev;
+          }
+        }
+        
+        // También verificar si el último mensaje del asistente tiene el mismo texto (evitar duplicados por reconexión)
+        const lastAssistantMessage = prev.filter(msg => msg.sender === 'assistant').pop();
+        if (lastAssistantMessage && lastAssistantMessage.text === data.text) {
+          console.log('Mensaje duplicado por texto, ignorando');
+          return prev;
+        }
+        
+        return [...prev, {
+          id: data.id || `msg-${Date.now()}`,
+          text: data.text,
+          sender: 'assistant',
+          timestamp: data.timestamp ? new Date(data.timestamp) : new Date(),
+        }];
+      });
+    });
+
+    // También escuchar 'message' por compatibilidad (si el backend lo emite)
     socket.on('message', (data: { text: string; id?: string }) => {
       setIsLoading(false);
-      setMessages(prev => [...prev, {
-        id: data.id || `msg-${Date.now()}`,
-        text: data.text,
-        sender: 'assistant',
-        timestamp: new Date(),
-      }]);
+      setMessages(prev => {
+        const existingMessage = data.id && prev.find(msg => msg.id === data.id);
+        if (existingMessage) {
+          return prev;
+        }
+        
+        return [...prev, {
+          id: data.id || `msg-${Date.now()}`,
+          text: data.text,
+          sender: 'assistant',
+          timestamp: new Date(),
+        }];
+      });
     });
 
     // Escuchar estado de escritura de la IA
     socket.on('ai:typing', (isTyping: boolean) => {
       // El backend emite este evento cuando la IA está escribiendo
-      // Podemos usar esto para mostrar un indicador de escritura
-      if (!isTyping) {
-        setIsLoading(false);
-      }
+      setIsLoading(isTyping);
     });
 
     // Escuchar errores
     socket.on('error', (error: { message: string }) => {
+      console.error('Error del servidor:', error);
       setIsLoading(false);
-      setMessages(prev => [...prev, {
-        id: `error-${Date.now()}`,
-        text: `Error: ${error.message}`,
-        sender: 'assistant',
-        timestamp: new Date(),
-      }]);
+      
+      // Solo agregar mensaje de error si no hay uno reciente con el mismo mensaje
+      setMessages(prev => {
+        const recentError = prev
+          .filter(msg => msg.sender === 'assistant' && msg.text.includes('Error:'))
+          .pop();
+        
+        if (recentError && recentError.text.includes(error.message)) {
+          return prev; // Ya hay un error similar, no duplicar
+        }
+        
+        return [...prev, {
+          id: `error-${Date.now()}`,
+          text: `Lo siento, ha ocurrido un error: ${error.message}. Por favor, intenta nuevamente.`,
+          sender: 'assistant',
+          timestamp: new Date(),
+        }];
+      });
     });
 
     return () => {
@@ -232,33 +300,51 @@ export default function ChatPage() {
 
   // Scroll automático al último mensaje
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
+    // Usar setTimeout para asegurar que el DOM se haya actualizado
+    const timer = setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [messages, isLoading]);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputMessage.trim() || !socketRef.current || !isConnected) return;
+    if (!inputMessage.trim() || !socketRef.current || !isConnected || isLoading) return;
 
+    const messageText = inputMessage.trim();
+    const tempId = `user-${Date.now()}`;
+    
+    // Agregar mensaje del usuario inmediatamente (optimistic update)
     const userMessage: Message = {
-      id: `user-${Date.now()}`,
-      text: inputMessage,
+      id: tempId,
+      text: messageText,
       sender: 'user',
       timestamp: new Date(),
     };
 
     setMessages(prev => [...prev, userMessage]);
     setInputMessage('');
-    setIsLoading(true);
+    setIsLoading(true); // Activar indicador de carga
 
-    // Enviar mensaje al backend
-    // El backend espera el evento 'message' con el texto
-    socketRef.current.emit('message', {
-      text: inputMessage,
-      userId: user?.id,
-    });
-    
-    // El backend emitirá 'message:sent' como confirmación
-    // y luego 'message:received' con la respuesta
+    try {
+      // Enviar mensaje al backend
+      // El backend espera el evento 'message' con el texto
+      socketRef.current.emit('message', {
+        text: messageText,
+        userId: user?.id,
+      });
+      
+      // El backend emitirá:
+      // 1. 'message:sent' - confirmación de que el mensaje se guardó
+      // 2. 'ai:typing' (true) - cuando empieza a generar la respuesta
+      // 3. 'message:received' - con la respuesta de OpenAI
+      // 4. 'ai:typing' (false) - cuando termina de generar
+    } catch (error) {
+      console.error('Error enviando mensaje:', error);
+      setIsLoading(false);
+      // Remover el mensaje si falla el envío
+      setMessages(prev => prev.filter(msg => msg.id !== tempId));
+    }
   };
 
   const handleLogout = () => {
