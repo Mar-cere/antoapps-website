@@ -79,7 +79,7 @@ export default function CompararPage() {
                 </div>
                 <div className="advantage-card reveal-on-scroll">
                   <h3>Precios Accesibles</h3>
-                  <p>Planes desde $990 CLP para hacer la salud mental accesible</p>
+                  <p>Planes desde $3.990 CLP para hacer la salud mental accesible</p>
                 </div>
               </div>
             </div>

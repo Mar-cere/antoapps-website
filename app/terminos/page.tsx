@@ -79,7 +79,7 @@ export default function TerminosPage() {
                 <h3>3.2. Renovación Automática</h3>
                 <p>
                   Las suscripciones se renuevan automáticamente al final de cada período de facturación
-                  (semanal, mensual, trimestral, semestral o anual, según el plan seleccionado) a menos
+                  (mensual, trimestral, semestral o anual, según el plan seleccionado) a menos
                   que se cancele antes del final del período actual.
                 </p>
                 <p>
@@ -93,7 +93,6 @@ export default function TerminosPage() {
                   variar según el plan seleccionado:
                 </p>
                 <ul>
-                  <li>Plan de 1 Semana: $990 CLP</li>
                   <li>Plan Mensual: $3.990 CLP</li>
                   <li>Plan de 3 Meses: $11.990 CLP (Ahorra 10%)</li>
                   <li>Plan de 6 Meses: $20.990 CLP (Ahorra 12%)</li>

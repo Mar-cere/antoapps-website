@@ -218,7 +218,6 @@ Desarrollador Principal
 
 Anto ofrece planes flexibles basados en duración:
 
-- **1 Semana**: $990 CLP
 - **1 Mes**: $3.990 CLP
 - **3 Meses**: $11.990 CLP
 - **6 Meses**: $20.990 CLP

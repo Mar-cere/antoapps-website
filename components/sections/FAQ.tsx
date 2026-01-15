@@ -52,7 +52,7 @@ const faqData = [
     id: 7,
     question: '¿Cuánto cuesta usar Anto?',
     answer:
-      'Ofrecemos planes flexibles basados en duración: 1 Semana ($990 CLP), 1 Mes ($3.990 CLP), 3 Meses ($11.990 CLP), 6 Meses ($20.990 CLP), y 1 Año ($39.990 CLP). Todos los planes incluyen las mismas funcionalidades premium: acceso completo al asistente AI, análisis emocional avanzado, detección de crisis proactiva, herramientas de bienestar, y soporte 24/7. Los planes de mayor duración ofrecen ahorros significativos (hasta 17% de descuento).',
+      'Ofrecemos planes flexibles basados en duración: 1 Mes ($3.990 CLP), 3 Meses ($11.990 CLP), 6 Meses ($20.990 CLP), y 1 Año ($39.990 CLP). Todos los planes incluyen las mismas funcionalidades premium: acceso completo al asistente AI, análisis emocional avanzado, detección de crisis proactiva, herramientas de bienestar, y soporte 24/7. Los planes de mayor duración ofrecen ahorros significativos (hasta 17% de descuento).',
     category: 'precios',
   },
 ];

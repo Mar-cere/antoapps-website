@@ -14,7 +14,6 @@ interface Plan {
 }
 
 const plans: Plan[] = [
-  { id: '1-week', name: '1 Semana', duration: '1 semana', price: 990, period: 'Plan de prueba' },
   { id: '1-month', name: '1 Mes', duration: '1 mes', price: 3990, period: 'Plan mensual' },
   { id: '3-months', name: '3 Meses', duration: '3 meses', price: 11990, period: 'Ahorra 10%', discount: 10, popular: true },
   { id: '6-months', name: '6 Meses', duration: '6 meses', price: 20990, period: 'Ahorra 12%', discount: 12 },
@@ -29,7 +28,7 @@ export default function PricingCalculator() {
 
   const calculateSavings = (plan: Plan) => {
     if (!plan.discount) return null;
-    const monthlyPrice = plan.price / (plan.id === '1-week' ? 0.25 : plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12);
+    const monthlyPrice = plan.price / (plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12);
     const baseMonthlyPrice = plans.find((p) => p.id === '1-month')?.price || 3990;
     const savings = baseMonthlyPrice - monthlyPrice;
     return savings > 0 ? Math.round(savings) : 0;
@@ -38,7 +37,7 @@ export default function PricingCalculator() {
   const calculateTotalSavings = (plan: Plan) => {
     if (!plan.discount) return null;
     const monthlyPrice = plans.find((p) => p.id === '1-month')?.price || 3990;
-    const months = plan.id === '1-week' ? 0.25 : plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12;
+    const months = plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12;
     const totalWithoutDiscount = monthlyPrice * months;
     return Math.round(totalWithoutDiscount - plan.price);
   };
@@ -122,15 +121,13 @@ export default function PricingCalculator() {
                   <span className="result-value">
                     {formatPrice(
                       selectedPlanData.price /
-                        (selectedPlanData.id === '1-week'
-                          ? 0.25
-                          : selectedPlanData.id === '1-month'
-                            ? 1
-                            : selectedPlanData.id === '3-months'
-                              ? 3
-                              : selectedPlanData.id === '6-months'
-                                ? 6
-                                : 12)
+                        (selectedPlanData.id === '1-month'
+                          ? 1
+                          : selectedPlanData.id === '3-months'
+                            ? 3
+                            : selectedPlanData.id === '6-months'
+                              ? 6
+                              : 12)
                     )}
                   </span>
                 </div>
@@ -165,7 +162,7 @@ export default function PricingCalculator() {
             <div className="comparison-cell">Descuento</div>
           </div>
           {plans.map((plan) => {
-            const monthlyPrice = plan.price / (plan.id === '1-week' ? 0.25 : plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12);
+            const monthlyPrice = plan.price / (plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12);
             const savings = calculateSavings(plan);
             return (
               <div key={plan.id} className={`comparison-row ${plan.popular ? 'highlighted' : ''}`}>
