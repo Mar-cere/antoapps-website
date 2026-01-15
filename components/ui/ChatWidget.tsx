@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { io, Socket } from 'socket.io-client';
 import '@/styles/components/chat-widget.css';
 
@@ -27,8 +27,11 @@ export default function ChatWidget({
   const [inputMessage, setInputMessage] = useState('');
   const [isConnected, setIsConnected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [connectionError, setConnectionError] = useState<string | null>(null);
+  const [isConnecting, setIsConnecting] = useState(false);
   const socketRef = useRef<Socket | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Controlar apertura/cierre
   const handleToggle = () => {
@@ -41,22 +44,60 @@ export default function ChatWidget({
 
   const actualIsOpen = controlledIsOpen !== undefined ? controlledIsOpen : isOpen;
 
-  // Conectar al backend cuando el widget se abre
-  useEffect(() => {
-    if (!actualIsOpen || !backendUrl) return;
+  // Función para conectar al backend
+  const connectToBackend = useCallback(() => {
+    if (!backendUrl) {
+      console.warn('NEXT_PUBLIC_BACKEND_URL no está configurada');
+      setConnectionError('URL del backend no configurada');
+      return;
+    }
+
+    // Limpiar conexión anterior si existe
+    if (socketRef.current) {
+      socketRef.current.disconnect();
+      socketRef.current = null;
+    }
+
+    // Limpiar timeout anterior
+    if (reconnectTimeoutRef.current) {
+      clearTimeout(reconnectTimeoutRef.current);
+      reconnectTimeoutRef.current = null;
+    }
+
+    setIsConnecting(true);
+    setConnectionError(null);
+
+    console.log('Intentando conectar a:', backendUrl);
 
     // Conectar Socket.IO
     const socket = io(backendUrl, {
       transports: ['websocket', 'polling'],
       reconnection: true,
       reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000,
       reconnectionAttempts: 5,
+      timeout: 10000,
     });
 
     socketRef.current = socket;
 
+    // Timeout para la conexión inicial
+    const connectionTimeout = setTimeout(() => {
+      if (!socket.connected) {
+        console.error('Timeout de conexión');
+        setIsConnecting(false);
+        setIsConnected(false);
+        setConnectionError('Tiempo de espera agotado. Verifica tu conexión a internet.');
+        socket.disconnect();
+      }
+    }, 10000);
+
     socket.on('connect', () => {
+      console.log('Conectado al servidor');
+      clearTimeout(connectionTimeout);
       setIsConnected(true);
+      setIsConnecting(false);
+      setConnectionError(null);
       // Mensaje de bienvenida
       setMessages([{
         id: 'welcome',
@@ -66,19 +107,45 @@ export default function ChatWidget({
       }]);
     });
 
-    socket.on('disconnect', () => {
+    socket.on('disconnect', (reason) => {
+      console.log('Desconectado del servidor:', reason);
       setIsConnected(false);
+      setIsConnecting(false);
+      if (reason === 'io server disconnect') {
+        // El servidor desconectó, no intentar reconectar automáticamente
+        setConnectionError('Desconectado por el servidor. Por favor, intenta reconectar.');
+      }
     });
 
     socket.on('connect_error', (error) => {
       console.error('Error de conexión:', error);
+      clearTimeout(connectionTimeout);
       setIsConnected(false);
-      setMessages(prev => [...prev, {
-        id: 'error',
-        text: 'No se pudo conectar al servidor. Por favor, intenta nuevamente.',
-        sender: 'assistant',
-        timestamp: new Date(),
-      }]);
+      setIsConnecting(false);
+      
+      let errorMessage = 'No se pudo conectar al servidor.';
+      if (error.message.includes('timeout')) {
+        errorMessage = 'Tiempo de espera agotado. Verifica tu conexión a internet.';
+      } else if (error.message.includes('CORS')) {
+        errorMessage = 'Error de CORS. El servidor no permite conexiones desde este origen.';
+      } else if (error.message.includes('ENOTFOUND') || error.message.includes('ECONNREFUSED')) {
+        errorMessage = 'No se pudo alcanzar el servidor. Verifica que el backend esté en ejecución.';
+      }
+      
+      setConnectionError(errorMessage);
+      
+      // Solo agregar mensaje de error si no hay mensajes aún
+      setMessages(prev => {
+        if (prev.length === 0 || prev[prev.length - 1].id !== 'connection-error') {
+          return [...prev, {
+            id: 'connection-error',
+            text: errorMessage + ' Por favor, intenta reconectar.',
+            sender: 'assistant',
+            timestamp: new Date(),
+          }];
+        }
+        return prev;
+      });
     });
 
     // Escuchar mensajes del asistente
@@ -104,10 +171,39 @@ export default function ChatWidget({
     });
 
     return () => {
+      clearTimeout(connectionTimeout);
       socket.disconnect();
       socketRef.current = null;
     };
-  }, [actualIsOpen, backendUrl]);
+  }, [backendUrl]);
+
+  // Conectar al backend cuando el widget se abre
+  useEffect(() => {
+    if (!actualIsOpen) {
+      // Limpiar conexión cuando se cierra
+      if (socketRef.current) {
+        socketRef.current.disconnect();
+        socketRef.current = null;
+      }
+      setIsConnected(false);
+      setIsConnecting(false);
+      setConnectionError(null);
+      return;
+    }
+
+    connectToBackend();
+
+    return () => {
+      if (socketRef.current) {
+        socketRef.current.disconnect();
+        socketRef.current = null;
+      }
+      if (reconnectTimeoutRef.current) {
+        clearTimeout(reconnectTimeoutRef.current);
+        reconnectTimeoutRef.current = null;
+      }
+    };
+  }, [actualIsOpen, connectToBackend]);
 
   // Scroll automático al último mensaje
   useEffect(() => {
@@ -167,16 +263,28 @@ export default function ChatWidget({
             <div className="chat-widget-header-info">
               <h3>Anto</h3>
               <span className="chat-widget-status-text">
-                {isConnected ? 'En línea' : 'Conectando...'}
+                {isConnected ? 'En línea' : isConnecting ? 'Conectando...' : 'Desconectado'}
               </span>
             </div>
-            <button
-              className="chat-widget-close"
-              onClick={handleToggle}
-              aria-label="Cerrar chat"
-            >
-              ✕
-            </button>
+            <div className="chat-widget-header-actions">
+              {!isConnected && !isConnecting && (
+                <button
+                  className="chat-widget-reconnect"
+                  onClick={connectToBackend}
+                  aria-label="Reconectar"
+                  title="Reconectar"
+                >
+                  🔄
+                </button>
+              )}
+              <button
+                className="chat-widget-close"
+                onClick={handleToggle}
+                aria-label="Cerrar chat"
+              >
+                ✕
+              </button>
+            </div>
           </div>
 
           <div className="chat-widget-messages">
