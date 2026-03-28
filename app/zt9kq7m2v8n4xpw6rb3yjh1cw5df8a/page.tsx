@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, FormEvent } from 'react';
+import { useState, useRef, FormEvent } from 'react';
 import type { ClipboardEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -55,21 +55,12 @@ export default function ValidacionAcademicaPage() {
   const [auditParts, setAuditParts] = useState(['', '', '', '']);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ResultState>({ kind: 'idle' });
-  const [pageUrl, setPageUrl] = useState<string | null>(null);
   const auditRefs = [
     useRef<HTMLInputElement>(null),
     useRef<HTMLInputElement>(null),
     useRef<HTMLInputElement>(null),
     useRef<HTMLInputElement>(null),
   ];
-
-  useEffect(() => {
-    setPageUrl(
-      typeof window !== 'undefined'
-        ? `${window.location.origin}${window.location.pathname}`
-        : null
-    );
-  }, []);
 
   function setAuditSegment(index: number, value: string) {
     const v = value.replace(/[^a-z0-9]/gi, '').slice(0, 4).toUpperCase();
@@ -154,9 +145,6 @@ export default function ValidacionAcademicaPage() {
             />
           </Link>
           <h1 className={styles.title}>VALIDAR CERTIFICADO</h1>
-          <p className={styles.subtitle}>
-            Entorno de demostración · no sustituye la validación oficial de la institución
-          </p>
         </header>
 
         <form className={styles.formWrap} onSubmit={onSubmit} noValidate>
@@ -172,7 +160,6 @@ export default function ValidacionAcademicaPage() {
                     className={styles.docInput}
                     type="text"
                     autoComplete="off"
-                    placeholder="Ej. C0BWE5G2T59C6TSOHZ"
                     value={numeroDocumento}
                     onChange={(e) =>
                       setNumeroDocumento(e.target.value.replace(/\s/g, '').toUpperCase())
@@ -261,65 +248,8 @@ export default function ValidacionAcademicaPage() {
                 <strong>Auditoría Autentia</strong> en la franja inferior (formato con guiones).
               </figcaption>
             </figure>
-
-            <div className={styles.guideSpacer}>
-              <p className={styles.guideSpacerTitle}>Datos para esta demostración</p>
-            </div>
-            <div className={styles.guideBlue}>
-              <p>Verificado y Firmado por</p>
-              <div className={styles.guideSeal} aria-hidden />
-              <div className={styles.arrowBlock}>
-                <span className={styles.arrow} aria-hidden>
-                  ↘
-                </span>
-                <p className={styles.arrowNote}>
-                  <strong>Nº Docto:</strong> aparece junto al bloque de firma (ejemplo:{' '}
-                  <span style={{ fontFamily: 'ui-monospace, monospace' }}>C0BWE5G2T59C6TSOHZ</span>).
-                </p>
-              </div>
-              <div className={styles.arrowBlock}>
-                <span className={styles.arrow} aria-hidden>
-                  ↘
-                </span>
-                <p className={styles.arrowNote}>
-                  <strong>Auditoría Autentia:</strong> cuatro grupos de cuatro caracteres (ejemplo:{' '}
-                  <span style={{ fontFamily: 'ui-monospace, monospace' }}>6FFK-PB90-Z3JP-HI3N</span>).
-                </p>
-              </div>
-              <p className={styles.guideLine}>
-                - Nº Docto: C0BWE5G2T59C6TSOHZ
-                <br />
-                Auditoría Autentia: 6FFK-PB90-Z3JP-HI3N
-              </p>
-            </div>
           </div>
         </section>
-
-        <div className={styles.samples}>
-          <strong style={{ color: '#475569' }}>Casos de prueba (demostración):</strong>
-          <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.1rem' }}>
-            <li>
-              <code>C0BWE5G2T59C6TSOHZ</code> + <code>6FFK-PB90-Z3JP-HI3N</code> → <strong>vigente</strong>
-            </li>
-            <li>
-              <code>DEMO1800001F09BD50CE2</code> + <code>DEMO-T1FL-8USS-A1B2</code> → vigente
-            </li>
-            <li>
-              <code>CERT2019008821ABCDEF</code> + <code>PUCC-X2YK-9MZN-C3D4</code> → vigente
-            </li>
-            <li>
-              <code>CERT2018550012FEDCBA</code> + <code>USAC-W3ZL-0NAO-D5E6</code> → anulado
-            </li>
-          </ul>
-          <p style={{ margin: '0.75rem 0 0' }}>
-            Ruta relativa: <code>/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a</code>
-          </p>
-          {pageUrl ? (
-            <p style={{ margin: '0.5rem 0 0', wordBreak: 'break-all' }}>
-              URL completa: <code>{pageUrl}</code>
-            </p>
-          ) : null}
-        </div>
       </div>
     </div>
   );
