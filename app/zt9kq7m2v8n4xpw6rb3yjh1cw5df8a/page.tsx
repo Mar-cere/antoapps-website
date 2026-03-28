@@ -4,24 +4,14 @@ import { useState, useEffect, useRef, FormEvent } from 'react';
 import type { ClipboardEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter, usePathname } from 'next/navigation';
+import { CERT_VALIDACION_STORAGE_KEY, type ValidacionExitoPayload } from '@/lib/validacion-certificado';
 import styles from './validacion.module.css';
 
 const UDP_FIC_URL =
   'https://www.udp.cl/pregrado-y-formacion-general/facultades/facultad-de-ingenieria-y-ciencias/';
 
-type ApiRecord = {
-  numeroDocumento: string;
-  auditoria: string;
-  degree: string;
-  program: string;
-  graduateMasked: string;
-  year: number;
-};
-
-type ApiOk =
-  | { ok: true; status: 'VERIFICADO'; record: ApiRecord }
-  | { ok: true; status: 'NO_ENCONTRADO'; message: string }
-  | { ok: true; status: 'ANULADO'; message: string; record: ApiRecord };
+type ApiOk = ValidacionExitoPayload | { ok: true; status: 'NO_ENCONTRADO'; message: string };
 
 type ApiErr = {
   ok: false;
@@ -59,6 +49,8 @@ function parseAuditoriaPaste(text: string): string[] | null {
 }
 
 export default function ValidacionAcademicaPage() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [numeroDocumento, setNumeroDocumento] = useState('');
   const [auditParts, setAuditParts] = useState(['', '', '', '']);
   const [loading, setLoading] = useState(false);
@@ -121,6 +113,12 @@ export default function ValidacionAcademicaPage() {
           message: data.error,
           fields: data.fields,
         });
+        setLoading(false);
+        return;
+      }
+      if (data.status === 'VERIFICADO' || data.status === 'ANULADO') {
+        sessionStorage.setItem(CERT_VALIDACION_STORAGE_KEY, JSON.stringify(data));
+        router.push(`${pathname}/resultado`);
         setLoading(false);
         return;
       }
@@ -234,9 +232,12 @@ export default function ValidacionAcademicaPage() {
             </button>
           </div>
 
-          {result.kind === 'success' ? (
+          {result.kind === 'success' && result.data.status === 'NO_ENCONTRADO' ? (
             <div style={{ padding: '0 1rem 1rem' }}>
-              <ResultPanel data={result.data} />
+              <div className={`${styles.result} ${styles.resultNeutral}`} role="status">
+                <div className={styles.resultTitle}>Sin coincidencia</div>
+                <p style={{ margin: 0, color: '#475569' }}>{result.data.message}</p>
+              </div>
             </div>
           ) : null}
         </form>
@@ -321,53 +322,5 @@ export default function ValidacionAcademicaPage() {
         </div>
       </div>
     </div>
-  );
-}
-
-function ResultPanel({ data }: { data: ApiOk }) {
-  if (data.status === 'VERIFICADO') {
-    return (
-      <div className={`${styles.result} ${styles.resultOk}`} role="status">
-        <div className={styles.resultTitle}>Certificado verificado</div>
-        <p style={{ margin: 0, color: '#166534' }}>
-          Coincidencia en la base de demostración. Datos parciales por privacidad.
-        </p>
-        <RecordList record={data.record} />
-      </div>
-    );
-  }
-  if (data.status === 'ANULADO') {
-    return (
-      <div className={`${styles.result} ${styles.resultBad}`} role="status">
-        <div className={styles.resultTitle}>Certificado anulado</div>
-        <p style={{ margin: 0, color: '#991b1b' }}>{data.message}</p>
-        <RecordList record={data.record} />
-      </div>
-    );
-  }
-  return (
-    <div className={`${styles.result} ${styles.resultNeutral}`} role="status">
-      <div className={styles.resultTitle}>Sin coincidencia</div>
-      <p style={{ margin: 0, color: '#475569' }}>{data.message}</p>
-    </div>
-  );
-}
-
-function RecordList({ record }: { record: ApiRecord }) {
-  return (
-    <dl className={styles.dl}>
-      <dt>Nº documento</dt>
-      <dd>{record.numeroDocumento}</dd>
-      <dt>Auditoría</dt>
-      <dd>{record.auditoria}</dd>
-      <dt>Grado / título</dt>
-      <dd>{record.degree}</dd>
-      <dt>Programa</dt>
-      <dd>{record.program}</dd>
-      <dt>Titular</dt>
-      <dd>{record.graduateMasked}</dd>
-      <dt>Año registro</dt>
-      <dd>{record.year}</dd>
-    </dl>
   );
 }

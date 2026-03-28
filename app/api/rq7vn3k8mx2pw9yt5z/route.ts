@@ -7,51 +7,112 @@ const DOCTO_RE = /^[A-Z0-9]{10,36}$/;
 type RegistryEntry = {
   numeroDocumento: string;
   auditoria: string;
-  year: number;
-  degree: string;
-  program: string;
-  graduateMasked: string;
   status: 'VIGENTE' | 'ANULADO';
+  nombreCompleto: string;
+  rutEnmascarado: string;
+  tipoCertificado: string;
+  carrera: string;
+  grado: string;
+  tituloProfesional: string;
+  estadoAcademico: string;
+  fechaSolicitudEmision?: string;
+  fechaEmision: string;
+  mensajeFirmaElectronicaVigente: string;
+  mensajeFirmaElectronicaAnulado: string;
 };
 
 const MOCK_REGISTRY: RegistryEntry[] = [
   {
     numeroDocumento: 'C0BWE5G2T59C6TSOHZ',
     auditoria: '6FFK-PB90-Z3JP-HI3N',
-    year: 2026,
-    degree: 'Título (demostración)',
-    program: 'Registro verificado',
-    graduateMasked: '••••',
     status: 'VIGENTE',
+    nombreCompleto: 'Marcel Nicolás Ull Marambio',
+    rutEnmascarado: '20.***.***-1',
+    tipoCertificado: 'Certificado de título',
+    carrera: 'Ingeniería Civil en Informática y Telecomunicaciones',
+    grado: 'Pregrado',
+    tituloProfesional: 'Ingeniero Civil en Informática y Telecomunicaciones',
+    estadoAcademico: 'Titulado',
+    fechaSolicitudEmision: '2025-12-11',
+    fechaEmision: '2025-12-19',
+    mensajeFirmaElectronicaVigente:
+      'Documento válido. Firma electrónica avanzada verificada; integridad y vigencia confirmadas en esta consulta.',
+    mensajeFirmaElectronicaAnulado: '',
   },
   {
     numeroDocumento: 'DEMO1800001F09BD50CE2',
     auditoria: 'DEMO-T1FL-8USS-A1B2',
-    year: 2021,
-    degree: 'Licenciatura',
-    program: 'Ciencias Físicas',
-    graduateMasked: '•••42',
     status: 'VIGENTE',
+    nombreCompleto: 'Pedro Antonio Morales Ríos',
+    rutEnmascarado: '15.***.***-4',
+    tipoCertificado: 'Certificado de egreso',
+    carrera: 'Ingeniería Civil Industrial',
+    grado: '—',
+    tituloProfesional: '—',
+    estadoAcademico: 'Egresado',
+    fechaEmision: '2021-11-05',
+    mensajeFirmaElectronicaVigente:
+      'Firma electrónica avanzada verificada. Documento emitido por registro académico.',
+    mensajeFirmaElectronicaAnulado: '',
   },
   {
     numeroDocumento: 'CERT2019008821ABCDEF',
     auditoria: 'PUCC-X2YK-9MZN-C3D4',
-    year: 2019,
-    degree: 'Ingeniero Civil',
-    program: 'Industrial',
-    graduateMasked: '•••91',
     status: 'VIGENTE',
+    nombreCompleto: 'Camila Ignacia Herrera Fuentes',
+    rutEnmascarado: '21.***.***-0',
+    tipoCertificado: 'Certificado de alumno regular',
+    carrera: 'Ingeniería Civil en Obras Civiles',
+    grado: '—',
+    tituloProfesional: '—',
+    estadoAcademico: 'Alumno regular',
+    fechaEmision: '2019-08-22',
+    mensajeFirmaElectronicaVigente:
+      'Firma electrónica avanzada verificada. Estado académico al corte de la fecha de emisión.',
+    mensajeFirmaElectronicaAnulado: '',
   },
   {
     numeroDocumento: 'CERT2018550012FEDCBA',
     auditoria: 'USAC-W3ZL-0NAO-D5E6',
-    year: 2018,
-    degree: 'Título profesional',
-    program: 'Ingeniería en Informática',
-    graduateMasked: '•••07',
     status: 'ANULADO',
+    nombreCompleto: 'Diego Esteban Pinto Lara',
+    rutEnmascarado: '17.***.***-7',
+    tipoCertificado: 'Certificado de título',
+    carrera: 'Ingeniería Civil en Informática y Telecomunicaciones',
+    grado: 'Licenciado en Ciencias de la Ingeniería',
+    tituloProfesional: 'Ingeniero Civil en Informática y Telecomunicaciones',
+    estadoAcademico: 'Titulado',
+    fechaEmision: '2018-06-14',
+    mensajeFirmaElectronicaVigente: '',
+    mensajeFirmaElectronicaAnulado:
+      'El documento figura revocado en el registro de certificados de demostración. La firma no puede validarse como vigente.',
   },
 ];
+
+function buildRecord(m: RegistryEntry) {
+  const vigente = m.status === 'VIGENTE';
+  return {
+    numeroDocumento: m.numeroDocumento,
+    auditoria: m.auditoria,
+    nombreCompleto: m.nombreCompleto,
+    rutEnmascarado: m.rutEnmascarado,
+    tipoCertificado: m.tipoCertificado,
+    carrera: m.carrera,
+    grado: m.grado,
+    tituloProfesional: m.tituloProfesional,
+    estadoAcademico: m.estadoAcademico,
+    ...(m.fechaSolicitudEmision
+      ? { fechaSolicitudEmision: m.fechaSolicitudEmision }
+      : {}),
+    fechaEmision: m.fechaEmision,
+    estadoValidez: vigente ? ('VÁLIDO' as const) : ('NO_VIGENTE' as const),
+    etiquetaValidez: vigente ? 'Documento auténtico' : 'Certificado no vigente',
+    firmaElectronicaVerificada: vigente,
+    mensajeFirmaElectronica: vigente
+      ? m.mensajeFirmaElectronicaVigente
+      : m.mensajeFirmaElectronicaAnulado,
+  };
+}
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -122,32 +183,20 @@ export async function POST(request: Request) {
     });
   }
 
+  const record = buildRecord(match);
+
   if (match.status === 'ANULADO') {
     return NextResponse.json({
       ok: true,
       status: 'ANULADO',
       message: 'El registro existe pero el certificado figura como anulado en la base de demostración.',
-      record: {
-        numeroDocumento: match.numeroDocumento,
-        auditoria: match.auditoria,
-        degree: match.degree,
-        program: match.program,
-        graduateMasked: match.graduateMasked,
-        year: match.year,
-      },
+      record,
     });
   }
 
   return NextResponse.json({
     ok: true,
     status: 'VERIFICADO',
-    record: {
-      numeroDocumento: match.numeroDocumento,
-      auditoria: match.auditoria,
-      degree: match.degree,
-      program: match.program,
-      graduateMasked: match.graduateMasked,
-      year: match.year,
-    },
+    record,
   });
 }

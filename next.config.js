@@ -110,6 +110,10 @@ const nextConfig = {
         headers: noReferrer,
       },
       {
+        source: '/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a/resultado',
+        headers: noReferrer,
+      },
+      {
         source: '/api/rq7vn3k8mx2pw9yt5z',
         headers: noReferrer,
       },
