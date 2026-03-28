@@ -1,28 +1,28 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Consulta de registro de título',
+  title: 'Validar certificado',
   description:
-    'Formulario de verificación de folio y año de emisión. Los resultados mostrados son generados en entorno de demostración.',
+    'Verificación de número de documento y código de auditoría. Resultados de demostración.',
   robots: { index: false, follow: false },
   icons: {
     icon: [{ url: '/assets/neutral-doc-icon.svg', type: 'image/svg+xml' }],
     apple: [{ url: '/assets/neutral-doc-icon.svg', type: 'image/svg+xml' }],
   },
   openGraph: {
-    title: 'Consulta de registro de título',
-    description: 'Verificación de datos de folio. Entorno de demostración.',
+    title: 'Validar certificado',
+    description: 'Verificación de documento y auditoría. Demostración.',
     type: 'website',
   },
   twitter: {
     card: 'summary',
-    title: 'Consulta de registro de título',
-    description: 'Verificación de datos de folio.',
+    title: 'Validar certificado',
+    description: 'Verificación de documento y auditoría.',
   },
 };
 
 export const viewport = {
-  themeColor: '#0f1419',
+  themeColor: '#f0f2f5',
 };
 
 export default function ConsultaRegistroLayout({

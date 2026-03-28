@@ -1,10 +1,12 @@
 import { NextResponse } from 'next/server';
 
-const FOLIO_RE = /^TIT-\d{4}-\d{4,8}$/i;
+/** Código tipo XXXX-XXXX-XXXX-XXXX (alfanumérico por segmento) */
+const AUDIT_RE = /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/;
+const DOCTO_RE = /^[A-Z0-9]{10,36}$/;
 
 type RegistryEntry = {
-  inst: string;
-  folio: string;
+  numeroDocumento: string;
+  auditoria: string;
   year: number;
   degree: string;
   program: string;
@@ -14,8 +16,17 @@ type RegistryEntry = {
 
 const MOCK_REGISTRY: RegistryEntry[] = [
   {
-    inst: 'UCH',
-    folio: 'TIT-2021-100234',
+    numeroDocumento: 'C0BWE5G2T59C6TSOHZ',
+    auditoria: '6FFK-PB90-Z3JP-HI3N',
+    year: 2026,
+    degree: 'Título (demostración)',
+    program: 'Registro verificado',
+    graduateMasked: '••••',
+    status: 'VIGENTE',
+  },
+  {
+    numeroDocumento: 'DEMO1800001F09BD50CE2',
+    auditoria: 'DEMO-T1FL-8USS-A1B2',
     year: 2021,
     degree: 'Licenciatura',
     program: 'Ciencias Físicas',
@@ -23,8 +34,8 @@ const MOCK_REGISTRY: RegistryEntry[] = [
     status: 'VIGENTE',
   },
   {
-    inst: 'PUC',
-    folio: 'TIT-2019-008821',
+    numeroDocumento: 'CERT2019008821ABCDEF',
+    auditoria: 'PUCC-X2YK-9MZN-C3D4',
     year: 2019,
     degree: 'Ingeniero Civil',
     program: 'Industrial',
@@ -32,8 +43,8 @@ const MOCK_REGISTRY: RegistryEntry[] = [
     status: 'VIGENTE',
   },
   {
-    inst: 'USACH',
-    folio: 'TIT-2018-550012',
+    numeroDocumento: 'CERT2018550012FEDCBA',
+    auditoria: 'USAC-W3ZL-0NAO-D5E6',
     year: 2018,
     degree: 'Título profesional',
     program: 'Ingeniería en Informática',
@@ -48,26 +59,24 @@ export async function POST(request: Request) {
     body = await request.json();
   } catch {
     return NextResponse.json(
-      { ok: false, error: 'Solicitud inválida. Envía JSON con inst, folio y año.' },
+      { ok: false, error: 'Solicitud inválida. Envía JSON con numeroDocumento y auditoria.' },
       { status: 400 }
     );
   }
 
-  const inst =
-    typeof (body as { inst?: unknown }).inst === 'string'
-      ? (body as { inst: string }).inst.trim().toUpperCase()
-      : '';
-  const folioRaw =
-    typeof (body as { folio?: unknown }).folio === 'string'
-      ? (body as { folio: string }).folio.trim().toUpperCase()
-      : '';
-  const yearNum = Number((body as { year?: unknown }).year);
+  const b = body as {
+    numeroDocumento?: unknown;
+    auditoria?: unknown;
+  };
+
+  const numeroDocumento =
+    typeof b.numeroDocumento === 'string' ? b.numeroDocumento.replace(/\s/g, '').toUpperCase() : '';
+  const auditoriaRaw =
+    typeof b.auditoria === 'string' ? b.auditoria.trim().toUpperCase() : '';
 
   const fieldErrors: Record<string, string> = {};
-  if (!inst) fieldErrors.inst = 'Selecciona o indica la institución.';
-  if (!folioRaw) fieldErrors.folio = 'Ingresa el número de folio del título.';
-  if (!Number.isInteger(yearNum))
-    fieldErrors.year = 'El año de emisión debe ser un número entero.';
+  if (!numeroDocumento) fieldErrors.numeroDocumento = 'Ingresa el número de documento.';
+  if (!auditoriaRaw) fieldErrors.auditoria = 'Completa el código de auditoría (4 bloques).';
 
   if (Object.keys(fieldErrors).length) {
     return NextResponse.json(
@@ -76,33 +85,32 @@ export async function POST(request: Request) {
     );
   }
 
-  const y = yearNum as number;
-  const current = new Date().getFullYear();
-  if (y < 1990 || y > current + 1) {
+  if (!DOCTO_RE.test(numeroDocumento)) {
     return NextResponse.json(
       {
         ok: false,
-        error: `El año debe estar entre 1990 y ${current + 1}.`,
-        fields: { year: 'Rango de año no permitido.' },
+        error:
+          'El número de documento solo puede incluir letras y números (10 a 36 caracteres), sin espacios.',
+        fields: { numeroDocumento: 'Formato no válido.' },
       },
       { status: 422 }
     );
   }
 
-  if (!FOLIO_RE.test(folioRaw)) {
+  if (!AUDIT_RE.test(auditoriaRaw)) {
     return NextResponse.json(
       {
         ok: false,
         error:
-          'Formato de folio no reconocido. Use el patrón TIT-AAAA-NÚMERO (ej. TIT-2021-100234).',
-        fields: { folio: 'Formato inválido.' },
+          'El código de auditoría debe tener el formato XXXX-XXXX-XXXX-XXXX (letras y números).',
+        fields: { auditoria: 'Formato no válido.' },
       },
       { status: 422 }
     );
   }
 
   const match = MOCK_REGISTRY.find(
-    (r) => r.inst === inst && r.folio === folioRaw && r.year === y
+    (r) => r.numeroDocumento === numeroDocumento && r.auditoria === auditoriaRaw
   );
 
   if (!match) {
@@ -110,7 +118,7 @@ export async function POST(request: Request) {
       ok: true,
       status: 'NO_ENCONTRADO',
       message:
-        'No hay un registro coincidente en la base simulada. Comprueba institución, folio y año, o usa los datos de ejemplo de abajo.',
+        'No hay un registro coincidente en la base de demostración. Revisa número de documento y código de auditoría, o usa los datos de ejemplo al pie.',
     });
   }
 
@@ -118,9 +126,10 @@ export async function POST(request: Request) {
     return NextResponse.json({
       ok: true,
       status: 'ANULADO',
-      message: 'El registro existe pero el título figura como anulado en la base simulada.',
+      message: 'El registro existe pero el certificado figura como anulado en la base de demostración.',
       record: {
-        folio: match.folio,
+        numeroDocumento: match.numeroDocumento,
+        auditoria: match.auditoria,
         degree: match.degree,
         program: match.program,
         graduateMasked: match.graduateMasked,
@@ -133,7 +142,8 @@ export async function POST(request: Request) {
     ok: true,
     status: 'VERIFICADO',
     record: {
-      folio: match.folio,
+      numeroDocumento: match.numeroDocumento,
+      auditoria: match.auditoria,
       degree: match.degree,
       program: match.program,
       graduateMasked: match.graduateMasked,
