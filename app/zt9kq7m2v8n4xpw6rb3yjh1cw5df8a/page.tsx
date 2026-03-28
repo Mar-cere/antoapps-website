@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import styles from './validacion.module.css';
 
 type ApiRecord = {
@@ -41,9 +41,9 @@ type ResultState =
   | { kind: 'error'; message: string; fields?: Record<string, string> };
 
 const INSTITUTIONS = [
-  { value: 'UCH', label: 'Universidad de Chile (simulado)' },
-  { value: 'PUC', label: 'Pontificia Universidad Católica (simulado)' },
-  { value: 'USACH', label: 'Universidad de Santiago (simulado)' },
+  { value: 'UCH', label: 'Universidad de Chile (ejemplo)' },
+  { value: 'PUC', label: 'Pontificia Universidad Católica (ejemplo)' },
+  { value: 'USACH', label: 'Universidad de Santiago (ejemplo)' },
 ];
 
 export default function ValidacionAcademicaPage() {
@@ -52,13 +52,22 @@ export default function ValidacionAcademicaPage() {
   const [year, setYear] = useState('');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ResultState>({ kind: 'idle' });
+  const [pageUrl, setPageUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    setPageUrl(
+      typeof window !== 'undefined'
+        ? `${window.location.origin}${window.location.pathname}`
+        : null
+    );
+  }, []);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     setLoading(true);
     setResult({ kind: 'idle' });
     try {
-      const res = await fetch('/api/validar-titulo', {
+      const res = await fetch('/api/rq7vn3k8mx2pw9yt5z', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -81,7 +90,7 @@ export default function ValidacionAcademicaPage() {
     } catch {
       setResult({
         kind: 'error',
-        message: 'No se pudo contactar al servidor. ¿Está corriendo `next dev` o `next start`?',
+        message: 'No se pudo completar la solicitud. Revisa la conexión o intenta más tarde.',
       });
     }
     setLoading(false);
@@ -90,12 +99,12 @@ export default function ValidacionAcademicaPage() {
   return (
     <div className={styles.page}>
       <div className={styles.shell}>
-        <span className={styles.badge}>Demo técnico · sin vínculo al sitio principal</span>
-        <h1 className={styles.title}>Validador de títulos universitarios</h1>
+        <span className={styles.badge}>Consulta de registro · datos simulados</span>
+        <h1 className={styles.title}>Verificación de folio de titulación</h1>
         <p className={styles.lead}>
-          Envío de datos simulado: la API usa un registro ficticio para demostrar estados{' '}
-          <strong>verificado</strong>, <strong>no encontrado</strong> y <strong>anulado</strong>. No
-          sustituye una consulta oficial ante la institución o el Ministerio de Educación.
+          Esta herramienta usa una <strong>base de datos de demostración</strong> para mostrar estados{' '}
+          <strong>verificado</strong>, <strong>sin coincidencia</strong> y <strong>anulado</strong>. No
+          reemplaza una certificación oficial de la institución ni de la autoridad competente.
         </p>
 
         <form className={styles.card} onSubmit={onSubmit} noValidate>
@@ -179,7 +188,7 @@ export default function ValidacionAcademicaPage() {
         </form>
 
         <div className={styles.samples}>
-          <strong style={{ color: 'rgba(232,238,244,0.82)' }}>Datos de prueba en el simulador:</strong>
+          <strong style={{ color: 'rgba(232,238,244,0.82)' }}>Casos de prueba (base de demostración):</strong>
           <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.1rem' }}>
             <li>
               <code>UCH</code> · <code>TIT-2021-100234</code> · año <code>2021</code> → vigente
@@ -192,9 +201,19 @@ export default function ValidacionAcademicaPage() {
             </li>
           </ul>
           <p style={{ margin: '0.75rem 0 0' }}>
-            URL directa (no está en el menú del sitio):{' '}
-            <code>/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a</code>
+            Ruta relativa: <code>/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a</code>
           </p>
+          {pageUrl ? (
+            <p
+              style={{
+                margin: '0.5rem 0 0',
+                wordBreak: 'break-all',
+              }}
+            >
+              URL completa en este despliegue (puede ser <code>*.vercel.app</code> sin costo extra):{' '}
+              <code>{pageUrl}</code>
+            </p>
+          ) : null}
         </div>
       </div>
     </div>
@@ -205,9 +224,9 @@ function ResultPanel({ data }: { data: ApiOk }) {
   if (data.status === 'VERIFICADO') {
     return (
       <div className={`${styles.result} ${styles.resultOk}`} role="status">
-        <div className={styles.resultTitle}>Título verificado (simulación)</div>
+        <div className={styles.resultTitle}>Título verificado</div>
         <p style={{ margin: 0, opacity: 0.92 }}>
-          El registro coincide con el simulador. Datos parciales mostrados por privacidad.
+          Coincidencia en la base de demostración. Se muestran solo datos parciales.
         </p>
         <RecordList record={data.record} />
       </div>
@@ -216,7 +235,7 @@ function ResultPanel({ data }: { data: ApiOk }) {
   if (data.status === 'ANULADO') {
     return (
       <div className={`${styles.result} ${styles.resultBad}`} role="status">
-        <div className={styles.resultTitle}>Título anulado (simulación)</div>
+        <div className={styles.resultTitle}>Título anulado</div>
         <p style={{ margin: 0, opacity: 0.92 }}>{data.message}</p>
         <RecordList record={data.record} />
       </div>
@@ -224,7 +243,7 @@ function ResultPanel({ data }: { data: ApiOk }) {
   }
   return (
     <div className={`${styles.result} ${styles.resultNeutral}`} role="status">
-      <div className={styles.resultTitle}>Sin coincidencia en el simulador</div>
+      <div className={styles.resultTitle}>Sin coincidencia</div>
       <p style={{ margin: 0, opacity: 0.92 }}>{data.message}</p>
     </div>
   );

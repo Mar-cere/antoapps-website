@@ -12,7 +12,6 @@ type RegistryEntry = {
   status: 'VIGENTE' | 'ANULADO';
 };
 
-/** Registro ficticio solo para la demo técnica */
 const MOCK_REGISTRY: RegistryEntry[] = [
   {
     inst: 'UCH',
@@ -111,7 +110,7 @@ export async function POST(request: Request) {
       ok: true,
       status: 'NO_ENCONTRADO',
       message:
-        'No hay un registro coincidente en este simulador. Comprueba institución, folio y año, o prueba los datos de ejemplo de la página.',
+        'No hay un registro coincidente en la base simulada. Comprueba institución, folio y año, o usa los datos de ejemplo de abajo.',
     });
   }
 
@@ -119,7 +118,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       ok: true,
       status: 'ANULADO',
-      message: 'El registro existe pero el título figura como anulado en este simulador.',
+      message: 'El registro existe pero el título figura como anulado en la base simulada.',
       record: {
         folio: match.folio,
         degree: match.degree,

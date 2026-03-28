@@ -69,31 +69,49 @@ const nextConfig = {
   },
   // Headers de seguridad
   async headers() {
+    const globalHeaders = [
+      {
+        key: 'X-Content-Type-Options',
+        value: 'nosniff',
+      },
+      {
+        key: 'X-Frame-Options',
+        value: 'DENY',
+      },
+      {
+        key: 'X-XSS-Protection',
+        value: '1; mode=block',
+      },
+      {
+        key: 'Referrer-Policy',
+        value: 'strict-origin-when-cross-origin',
+      },
+      {
+        key: 'Permissions-Policy',
+        value: 'geolocation=(), microphone=(), camera=()',
+      },
+    ];
+
+    const noReferrer = [
+      {
+        key: 'Referrer-Policy',
+        value: 'no-referrer',
+      },
+    ];
+
     return [
       {
         source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'geolocation=(), microphone=(), camera=()',
-          },
-        ],
+        headers: globalHeaders,
+      },
+      // Ruta opaca: menos filtración del host al enlazar o pedir recursos externos
+      {
+        source: '/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a',
+        headers: noReferrer,
+      },
+      {
+        source: '/api/rq7vn3k8mx2pw9yt5z',
+        headers: noReferrer,
       },
     ];
   },
