@@ -4,7 +4,7 @@ import '../../styles/main.css';
 export const metadata: Metadata = {
   title: 'Anto - Tu apoyo emocional 24/7 | Salud Mental con IA',
   description:
-    'Anto - Tu apoyo emocional 24/7. Aplicación móvil de salud mental con asistente AI terapéutico, análisis emocional avanzado, detección de crisis y herramientas de bienestar mental.',
+    'Anto - Tu apoyo emocional 24/7. App de bienestar emocional con IA (GPT-5 Mini), tono profesional y práctico, escalas PHQ-9/GAD-7, protocolos basados en evidencia y detección de crisis. No sustituye atención clínica.',
   keywords:
     'salud mental, terapia, AI, asistente virtual, bienestar emocional, apoyo emocional, terapia online, salud mental app, inteligencia artificial, bienestar mental',
   authors: [{ name: 'Marcelo Ull Marambio', url: 'https://github.com/Mar-cere' }],
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     url: 'https://antoapps.com',
     title: 'Anto - Tu apoyo emocional 24/7',
     description:
-      'Aplicación móvil de salud mental con asistente AI terapéutico, análisis emocional y herramientas de bienestar. Disponible 24/7.',
+      'App de bienestar emocional con IA, análisis emocional y herramientas de bienestar. Disponible 24/7. Versión publicada 1.2.2.',
     images: [
       {
         url: 'https://antoapps.com/assets/images/antoIcon.png',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Anto - Tu apoyo emocional 24/7',
     description:
-      'Aplicación móvil de salud mental con asistente AI terapéutico, análisis emocional y herramientas de bienestar.',
+      'App de bienestar emocional con IA, análisis emocional y herramientas de bienestar. Versión 1.2.2.',
     images: ['https://antoapps.com/assets/images/antoIcon.png'],
   },
   icons: {
@@ -74,10 +74,10 @@ const softwareJsonLd = {
     priceCurrency: 'CLP',
   },
   description:
-    'Aplicación móvil de salud mental con asistente AI terapéutico, análisis emocional avanzado, detección de crisis y herramientas de bienestar mental 24/7.',
+    'Aplicación móvil de bienestar emocional con IA (GPT-5 Mini), análisis emocional, detección de crisis y herramientas de bienestar 24/7. No sustituye atención clínica.',
   screenshot: 'https://antoapps.com/assets/images/antoIcon.png',
   featureList: [
-    'Asistente AI Terapéutico',
+    'Asistente de IA (bienestar emocional)',
     'Detección de Crisis',
     'Análisis Emocional',
     'Herramientas de Bienestar',

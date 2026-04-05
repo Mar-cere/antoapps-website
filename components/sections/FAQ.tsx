@@ -17,7 +17,7 @@ const faqData = [
     id: 2,
     question: '¿Cómo funciona el asistente AI?',
     answer:
-      'Nuestro asistente AI utiliza tecnología de procesamiento de lenguaje natural (NLP) de última generación, entrenada específicamente con principios terapéuticos y técnicas de psicología cognitivo-conductual. El sistema ahora incluye evaluación clínica automática mediante escalas validadas (PHQ-9 para depresión, GAD-7 para ansiedad), detección de 15 tipos de distorsiones cognitivas, y 8 protocolos terapéuticos estructurados basados en evidencia científica. El sistema aprende de cada conversación para ofrecerte respuestas cada vez más personalizadas y empáticas. No es un chatbot simple: entiende el contexto emocional, recuerda conversaciones anteriores, y se adapta a tu estilo de comunicación único. La IA está supervisada por profesionales de salud mental y se actualiza constantemente con las mejores prácticas terapéuticas.',
+      'El asistente usa NLP de última generación (OpenAI GPT-5 Mini) con enfoque de bienestar emocional y técnicas alineadas con evidencia (p. ej. enfoques tipo CBT cuando encajan). Por defecto el tono es profesional y práctico; no sustituye terapia presencial ni diagnóstico clínico. Incluye escalas validadas (PHQ-9, GAD-7), detección de distorsiones cognitivas y protocolos estructurados. Puedes ajustar preferencias de estilo de respuesta cuando la app lo ofrece (v1.2+). El sistema contextualiza tus mensajes y mejora la personalización con el uso; la app y el backend se actualizan según el diseño del producto y buenas prácticas de seguridad.',
     category: 'funcionalidad',
   },
   {
@@ -111,7 +111,7 @@ const faqMoreData = [
     id: 15,
     question: '¿Cómo se compara Anto con otras apps de salud mental?',
     answer:
-      'Anto se diferencia por su enfoque en privacidad total (encriptación E2E), su asistente AI terapéutico avanzado que aprende y se adapta, su sistema de detección de crisis proactivo, y su análisis emocional detallado. A diferencia de muchas apps, no vendemos datos de usuarios, ofrecemos transparencia total sobre cómo funcionamos, y priorizamos la seguridad y privacidad. Además, nuestro modelo de precios es más accesible y ofrecemos un período de prueba generoso sin requerir tarjeta de crédito.',
+      'Anto se diferencia por su enfoque en privacidad (encriptación E2E), un asistente de bienestar emocional con IA que se adapta al contexto, detección de crisis proactiva y análisis emocional detallado. No vendemos datos de usuarios y priorizamos seguridad y transparencia. El modelo de precios es accesible y hay período de prueba de 3 días para explorar las funciones (según el flujo en la app).',
     category: 'funcionalidad',
   },
   {

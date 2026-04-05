@@ -16,11 +16,11 @@ export default function Features() {
           <div className="features-grid" data-stagger>
             <div className="feature-card stagger-item" data-stagger-item>
               <div className="feature-icon icon-hover-enhanced">🤖</div>
-              <h3>Asistente AI Terapéutico</h3>
+              <h3>Asistente de IA (bienestar emocional)</h3>
               <p>
-                Conversaciones inteligentes con escalas clínicas validadas (PHQ-9, GAD-7), detección de
-                15 tipos de distorsiones cognitivas y 8 protocolos terapéuticos estructurados basados en
-                evidencia científica
+                Chat con GPT-5 Mini, tono profesional y práctico por defecto. Escalas validadas (PHQ-9,
+                GAD-7), detección de distorsiones cognitivas y protocolos estructurados basados en
+                evidencia; preferencias de estilo de respuesta cuando la app lo ofrece (v1.2+)
               </p>
             </div>
             <div className="feature-card stagger-item" data-stagger-item>

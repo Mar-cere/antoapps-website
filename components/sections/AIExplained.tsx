@@ -16,10 +16,11 @@ export default function AIExplained() {
             <div className="ai-step-content">
               <h3>Integración con OpenAI API</h3>
               <p>
-                Conexión directa con GPT-5 Mini mediante API REST. Procesamiento de lenguaje natural
-                que entiende contexto emocional, tono e intención. Las conversaciones se almacenan en
-                MongoDB para mantener memoria contextual. Ahora con evaluación clínica automática mediante
-                escalas validadas (PHQ-9, GAD-7) y detección de 15 tipos de distorsiones cognitivas.
+                Conexión directa con GPT-5 Mini mediante API REST. El asistente prioriza un tono
+                profesional y práctico (orientación y micro-pasos; no rol de terapeuta clínico en el
+                texto). Las conversaciones se almacenan en MongoDB para memoria contextual. Evaluación
+                con escalas validadas (PHQ-9, GAD-7) y detección de 15 tipos de distorsiones cognitivas;
+                puedes ajustar preferencias de respuesta cuando la app lo ofrece.
               </p>
               <div className="ai-tech">
                 <span className="tech-badge">OpenAI GPT-5 Mini</span>

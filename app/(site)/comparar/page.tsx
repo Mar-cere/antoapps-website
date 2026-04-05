@@ -43,7 +43,7 @@ export default function CompararPage() {
                 </div>
                 <div className="app-features">
                   <div className="feature-row">
-                    <span className="feature-label">Asistente AI Terapéutico</span>
+                    <span className="feature-label">Asistente de IA (bienestar)</span>
                     <span className="feature-value">✅ Avanzado</span>
                   </div>
                   <div className="feature-row">
@@ -67,7 +67,7 @@ export default function CompararPage() {
               <div className="advantages-grid">
                 <div className="advantage-card reveal-on-scroll">
                   <h3>IA Avanzada</h3>
-                  <p>Asistente terapéutico con GPT-5 Mini para conversaciones más naturales</p>
+                  <p>Asistente con GPT-5 Mini, tono profesional y práctico y preferencias de respuesta (v1.2+)</p>
                 </div>
                 <div className="advantage-card reveal-on-scroll">
                   <h3>Disponibilidad 24/7</h3>

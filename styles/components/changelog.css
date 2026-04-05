@@ -61,6 +61,13 @@
     margin-bottom: var(--spacing-3);
 }
 
+/* Banner superior: versión en producción (antes usaba review = naranja) */
+.status-badge-current-banner {
+    background: linear-gradient(135deg, var(--color-primary) 0%, rgba(26, 221, 219, 0.85) 100%);
+    color: var(--color-bg-primary);
+    box-shadow: 0 2px 8px rgba(26, 221, 219, 0.35);
+}
+
 .status-badge-review {
     background: linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
     color: #FFFFFF;

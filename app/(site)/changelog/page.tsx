@@ -23,9 +23,26 @@ interface Version {
 
 const changelog: Version[] = [
   {
+    version: '1.2.2',
+    date: '2026-03-27',
+    status: 'current',
+    highlights: [
+      'Versión 1.2.2 (Expo) — línea actual en tiendas',
+      'Mejor experiencia de chat (v1.2.x)',
+      'Preferencias de tono y estilo de respuesta del asistente (cuando la app lo ofrece)',
+      'Transparencia: privacidad integrada en la conversación',
+    ],
+    changes: [
+      { type: 'improvement', description: 'Chat: refinamiento de UX y coherencia con perfil de usuario y API' },
+      { type: 'improvement', description: 'Preferencias de conversación: ajustes de estilo de respuesta cuando aplica' },
+      { type: 'improvement', description: 'Transparencia: información de privacidad integrada en la experiencia de chat' },
+      { type: 'feature', description: 'Mantiene escalas PHQ-9/GAD-7, distorsiones cognitivas y protocolos estructurados de versiones anteriores' },
+    ],
+  },
+  {
     version: '1.1.0',
     date: '2026-01-08',
-    status: 'current',
+    status: 'stable',
     highlights: [
       'Sistema de chat mejorado con escalas clínicas validadas',
       'Detección avanzada de distorsiones cognitivas (15 tipos)',
@@ -56,11 +73,11 @@ const changelog: Version[] = [
     date: '2025-01-15',
     highlights: [
       'Lanzamiento inicial de Anto',
-      'Asistente AI terapéutico',
+      'Asistente de IA para bienestar emocional',
       'Detección de crisis en tiempo real',
     ],
     changes: [
-      { type: 'feature', description: 'Asistente AI terapéutico con conversaciones empáticas basadas en terapia cognitivo-conductual' },
+      { type: 'feature', description: 'Asistente de IA con conversaciones orientadas al bienestar y técnicas basadas en evidencia' },
       { type: 'feature', description: 'Sistema de detección de crisis en tiempo real con alertas tempranas' },
       { type: 'feature', description: 'Análisis emocional avanzado con seguimiento de patrones y estados de ánimo' },
       { type: 'feature', description: 'Herramientas de bienestar: ejercicios de mindfulness, meditación y técnicas de relajación' },
@@ -85,10 +102,15 @@ function ChangelogContent() {
           Historial de versiones y actualizaciones de la aplicación Anto
         </p>
         <div className="changelog-status-note">
-          <span className="status-badge status-badge-review">📱 En Revisión</span>
+          <span className="status-badge status-badge-current-banner">Versión en tiendas: 1.2.2</span>
           <p className="status-text">
-            La versión 1.1.0 está actualmente en proceso de revisión en las tiendas de aplicaciones.
-            Incluye mejoras significativas en el sistema de chat con escalas clínicas, detección de distorsiones cognitivas y protocolos terapéuticos estructurados.
+            Publicada según la app (Expo) y el{' '}
+            <a href="https://github.com/Mar-cere/Anto" target="_blank" rel="noopener noreferrer">
+              README del repositorio Anto
+            </a>
+            . Incluye mejoras de chat (v1.2.x), preferencias de tono y respuesta cuando la app lo ofrece,
+            e información de privacidad en el flujo de conversación, además de escalas PHQ-9/GAD-7,
+            distorsiones cognitivas y protocolos estructurados ya presentes en 1.1.0.
           </p>
         </div>
       </div>

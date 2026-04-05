@@ -11,7 +11,7 @@ import '@/styles/components/app-page.css';
 export const metadata: Metadata = {
   title: 'La Aplicación - Anto | Características e Insights',
   description:
-    'Descubre todas las características de la aplicación Anto, insights sobre su funcionamiento, pantallazos y cómo puede ayudarte en tu bienestar mental.',
+    'Anto v1.2.2 (Expo): asistente de bienestar emocional con GPT-5 Mini, escalas PHQ-9/GAD-7, protocolos estructurados y detección de crisis. Características e insights.',
   openGraph: {
     title: 'La Aplicación - Anto',
     description: 'Características, insights y pantallazos de la aplicación Anto.',
@@ -33,8 +33,8 @@ export default function AppPage() {
             <div className="app-hero-content">
               <h1 className="app-hero-title reveal-on-scroll">Conoce la Aplicación Anto</h1>
               <p className="app-hero-subtitle reveal-on-scroll">
-                Aplicación React Native con backend Node.js/Express. Integración con OpenAI GPT-5 Mini,
-                detección automática de crisis, sistema de tareas y hábitos, y mucho más.{' '}
+                Versión publicada <strong>1.2.2</strong> (Expo). React Native y backend Node.js/Express.
+                Integración con OpenAI GPT-5 Mini, detección de crisis, tareas y hábitos, y más.{' '}
                 <a
                   href="https://github.com/Mar-cere/Anto"
                   target="_blank"
@@ -45,6 +45,7 @@ export default function AppPage() {
                 </a>
               </p>
               <div className="app-hero-badges reveal-on-scroll">
+                <span className="app-badge">📌 v1.2.2</span>
                 <span className="app-badge">📱 iOS & Android</span>
                 <span className="app-badge">🔒 100% Privado</span>
                 <span className="app-badge">⚡ Tiempo Real</span>
@@ -141,7 +142,7 @@ export default function AppPage() {
               <div className="screenshot-card reveal-on-scroll" data-stagger-item>
                 <Image
                   src="/assets/images/hero/phone-mockup.png"
-                  alt="Anto App - Interfaz de chat con IA mostrando conversación terapéutica"
+                  alt="Anto App - Interfaz de chat con IA (bienestar emocional)"
                   width={375}
                   height={812}
                   className="screenshot-image"
@@ -150,7 +151,7 @@ export default function AppPage() {
                 <div className="screenshot-info">
                   <div className="screenshot-label">Chat con IA</div>
                   <p className="screenshot-description">
-                    Conversaciones naturales y empáticas con el asistente AI terapéutico
+                    Conversaciones con tono profesional y práctico; preferencias de respuesta cuando la app lo ofrece
                   </p>
                 </div>
               </div>
@@ -218,7 +219,7 @@ export default function AppPage() {
             <p className="section-subtitle reveal-on-scroll">
               Funcionalidades que hacen de Anto una herramienta única para tu bienestar mental.
               <strong style={{ display: 'block', marginTop: 'var(--spacing-sm)', color: 'var(--primary-color)' }}>
-                ✨ Nuevo: Sistema de chat mejorado con escalas clínicas, detección de distorsiones cognitivas y protocolos terapéuticos estructurados
+                ✨ v1.2.x: mejor experiencia en chat, preferencias de tono/respuesta y documentación de privacidad en conversación; escalas clínicas, distorsiones cognitivas y protocolos estructurados
               </strong>
             </p>
             <div className="advanced-features-grid" data-stagger>
@@ -228,10 +229,10 @@ export default function AppPage() {
                   <h3>Chat Conversacional Avanzado con GPT-5 Mini</h3>
                 </div>
                 <p>
-                  Integración directa con OpenAI API para conversaciones naturales y empáticas.
-                  Procesamiento de lenguaje natural avanzado que entiende contexto emocional y
-                  mantiene memoria de conversaciones. Ahora con evaluación clínica automática y
-                  protocolos terapéuticos estructurados.
+                  Integración directa con OpenAI API (GPT-5 Mini): tono profesional y práctico por
+                  defecto, contexto emocional y memoria de conversación. Evaluación con escalas,
+                  distorsiones cognitivas y protocolos estructurados; ajustes de estilo cuando la app
+                  lo permite.
                 </p>
                 <ul className="feature-list">
                   <li>Integración con OpenAI GPT-5 Mini</li>

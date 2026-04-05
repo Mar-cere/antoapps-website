@@ -1,14 +1,14 @@
 # 🧠 Anto - Sitio Web Oficial
 
-Sitio web moderno y profesional para **Anto**, una aplicación móvil de salud mental con asistente AI terapéutico. Desarrollado con **Next.js 14**, TypeScript, y optimizado para rendimiento, accesibilidad y SEO.
+Sitio web moderno y profesional para **Anto**, aplicación móvil de bienestar emocional con IA (**versión app Expo: 1.2.2**). Desarrollado con **Next.js 14**, TypeScript, y optimizado para rendimiento, accesibilidad y SEO.
 
 ![Anto Logo](public/assets/images/antoIcon.png)
 
 ## 📋 Sobre Anto
 
-**Anto** es una aplicación móvil de salud mental que utiliza inteligencia artificial para proporcionar apoyo emocional 24/7. La aplicación ofrece:
+**Anto** es una aplicación móvil de salud mental que utiliza inteligencia artificial para ofrecer **apoyo emocional personalizado**. **No sustituye** la atención de un profesional de la salud mental ni proporciona diagnóstico clínico. La aplicación ofrece:
 
-- 🤖 **Asistente AI Terapéutico**: Conversaciones inteligentes con escalas clínicas validadas (PHQ-9, GAD-7), detección de 15 tipos de distorsiones cognitivas y 8 protocolos terapéuticos estructurados basados en evidencia científica
+- 🤖 **Asistente de IA (bienestar emocional)**: Chat con OpenAI **GPT-5 Mini**, con tono **profesional y práctico** por defecto (orientación, micro-pasos y preguntas concretas). Incluye escalas validadas (PHQ-9, GAD-7), detección de distorsiones cognitivas y protocolos estructurados basados en evidencia. En **v1.2.x**: mejoras de experiencia en chat, **preferencias de tono/respuesta** cuando la app lo ofrece, y documentación de privacidad en la conversación
 - 📊 **Análisis Emocional Avanzado**: Detección de patrones emocionales, evaluación clínica automática y reportes profesionales con estadísticas detalladas
 - 🚨 **Detección de Crisis**: Sistema de alertas tempranas para situaciones de riesgo
 - 🛠️ **Herramientas de Bienestar**: Ejercicios, meditaciones y recursos de salud mental
@@ -214,9 +214,9 @@ Desarrollador Principal
 - No se comparten datos con terceros sin consentimiento
 - Política de privacidad completa: [/privacidad](/privacidad)
 
-## 📊 Precios
+## 📊 Precios y prueba
 
-Anto ofrece planes flexibles basados en duración:
+Anto ofrece **3 días de prueba** para explorar las funcionalidades (según el flujo de suscripción en la app) y planes flexibles basados en duración:
 
 - **1 Mes**: $3.990 CLP
 - **3 Meses**: $11.990 CLP

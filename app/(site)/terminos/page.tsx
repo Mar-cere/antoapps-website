@@ -68,7 +68,7 @@ export default function TerminosPage() {
                   completo a todas las funcionalidades de la aplicación, incluyendo:
                 </p>
                 <ul>
-                  <li>Asistente AI terapéutico 24/7</li>
+                  <li>Asistente de IA para bienestar emocional 24/7 (no sustituye atención clínica)</li>
                   <li>Análisis emocional avanzado con escalas clínicas (PHQ-9, GAD-7)</li>
                   <li>Detección de distorsiones cognitivas</li>
                   <li>Protocolos terapéuticos estructurados</li>
@@ -141,8 +141,10 @@ export default function TerminosPage() {
 
                 <h3>3.7. Período de Prueba Gratuita</h3>
                 <p>
-                  Actualmente, Anto no ofrece períodos de prueba gratuita. Todos los planes requieren
-                  pago inmediato al momento de la suscripción.
+                  Anto puede ofrecer un período de prueba de <strong>3 días</strong> para explorar las
+                  funcionalidades, según el plan y la tienda de aplicaciones. Las condiciones exactas
+                  (inicio, alcance y facturación tras la prueba) se muestran en el momento de la compra
+                  o suscripción en la app y en Apple App Store.
                 </p>
               </div>
 
