@@ -4,7 +4,7 @@
 
 /* Hero Section (Estilo Apple) */
 .app-hero {
-    padding: calc(56px + var(--spacing-8) + env(safe-area-inset-top, 0px)) 0 var(--spacing-12);
+    padding: var(--page-hero-padding-top) 0 var(--page-hero-padding-bottom);
     background: var(--color-bg-primary);
     text-align: center;
     position: relative;

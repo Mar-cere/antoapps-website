@@ -72,7 +72,7 @@
 .tech-metric-value {
     font-size: var(--font-size-5xl);
     font-weight: var(--font-weight-bold);
-    color: #0369A1; /* Azul oscuro para mejor contraste */
+    color: var(--color-link); /* Azul oscuro para mejor contraste */
     line-height: var(--line-height-tight);
     margin-bottom: var(--spacing-2);
     letter-spacing: var(--letter-spacing-tight);

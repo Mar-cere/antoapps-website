@@ -73,7 +73,7 @@
     align-items: center;
     gap: var(--spacing-2);
     background: #F0F9FF;
-    color: #0369A1; /* Azul más oscuro para mejor contraste */
+    color: var(--color-link); /* Azul más oscuro para mejor contraste */
     padding: var(--spacing-2) var(--spacing-4);
     border-radius: var(--radius-md);
     font-size: var(--font-size-sm);
@@ -96,7 +96,7 @@
 }
 
 .study-preview-authors {
-    color: #0369A1; /* Azul más oscuro y visible */
+    color: var(--color-link); /* Azul más oscuro y visible */
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
     margin-bottom: var(--spacing-4);
@@ -147,7 +147,7 @@
 .metric-badge:hover {
     border-color: #1ADDDB;
     background: #F0F9FF;
-    color: #0369A1;
+    color: var(--color-link);
     transform: translateY(-1px);
 }
 
@@ -155,7 +155,7 @@
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-2);
-    color: #0369A1; /* Azul más oscuro y visible */
+    color: var(--color-link); /* Azul más oscuro y visible */
     font-weight: var(--font-weight-semibold);
     text-decoration: none;
     margin-top: auto;

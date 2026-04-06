@@ -89,7 +89,7 @@
 .quality-metric-value {
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
-    color: #0369A1; /* Azul oscuro para mejor contraste */
+    color: var(--color-link); /* Azul oscuro para mejor contraste */
     line-height: var(--line-height-tight);
 }
 

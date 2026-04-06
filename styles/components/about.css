@@ -4,7 +4,7 @@
 
 .about-hero {
     background: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
-    padding: calc(56px + var(--spacing-8) + env(safe-area-inset-top, 0px)) 0 var(--spacing-12);
+    padding: var(--page-hero-padding-top) 0 var(--page-hero-padding-bottom);
     text-align: center;
 }
 
@@ -231,7 +231,7 @@
 
 @media (max-width: 768px) {
     .about-hero {
-        padding: calc(56px + var(--spacing-4) + env(safe-area-inset-top, 0px)) 0 var(--spacing-8);
+        padding: var(--page-hero-padding-top-tight) 0 var(--page-hero-padding-bottom-tight);
     }
 
     .about-title {

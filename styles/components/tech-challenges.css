@@ -92,7 +92,7 @@
 .challenge-section-title {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
-    color: #0369A1; /* Azul oscuro para mejor contraste */
+    color: var(--color-link); /* Azul oscuro para mejor contraste */
     margin: 0;
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-wide);
@@ -124,7 +124,7 @@
     display: inline-block;
     padding: var(--spacing-1) var(--spacing-3);
     background: #F0F9FF;
-    color: #0369A1; /* Azul oscuro para mejor contraste */
+    color: var(--color-link); /* Azul oscuro para mejor contraste */
     border-radius: var(--radius-full);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-medium);
@@ -142,7 +142,7 @@
     margin-top: var(--spacing-3);
     padding: var(--spacing-3);
     background: #F0F9FF;
-    border-left: var(--border-width-4) solid #0369A1; /* Azul oscuro */
+    border-left: var(--border-width-4) solid var(--color-link); /* Azul oscuro */
     border-radius: var(--radius-md);
     font-size: var(--font-size-sm);
     color: #1D1D1F; /* Texto oscuro para mejor legibilidad */
@@ -150,7 +150,7 @@
 }
 
 .challenge-impact strong {
-    color: #0369A1; /* Azul oscuro para mejor contraste */
+    color: var(--color-link); /* Azul oscuro para mejor contraste */
     font-weight: var(--font-weight-semibold);
 }
 

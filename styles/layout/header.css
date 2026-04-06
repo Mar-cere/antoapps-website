@@ -46,17 +46,12 @@
 .logo {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-bold);
-    color: #0369A1; /* Azul oscuro para mejor contraste en fondo claro */
+    color: var(--color-link); /* Azul oscuro para mejor contraste en fondo claro */
     text-decoration: none;
     transition: var(--transition-base);
     display: flex;
     align-items: center;
     gap: var(--spacing-2);
-}
-
-.logo:hover {
-    color: var(--color-primary);
-    opacity: 1;
 }
 
 .logo-icon {
@@ -67,9 +62,16 @@
     transition: var(--transition-base);
 }
 
-.logo:hover .logo-icon {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 8px var(--color-primary));
+@media (hover: hover) {
+    .logo:hover {
+        color: var(--color-primary);
+        opacity: 1;
+    }
+
+    .logo:hover .logo-icon {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 8px var(--color-primary));
+    }
 }
 
 /* Menú móvil mejorado */
@@ -203,14 +205,14 @@
     left: 50%;
     width: 0;
     height: 2px;
-    background: #0369A1; /* Azul oscuro para mejor contraste */
+    background: var(--color-link); /* Azul oscuro para mejor contraste */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(-50%);
     border-radius: 2px 2px 0 0;
 }
 
 .nav-link:hover {
-    color: #0369A1; /* Azul oscuro en hover para mejor legibilidad */
+    color: var(--color-link); /* Azul oscuro en hover para mejor legibilidad */
     background: rgba(26, 221, 219, 0.08);
 }
 
@@ -220,20 +222,20 @@
 }
 
 .nav-link.active {
-    color: #0369A1; /* Azul oscuro para mejor contraste */
+    color: var(--color-link); /* Azul oscuro para mejor contraste */
     background: rgba(26, 221, 219, 0.1); /* Fondo cyan muy sutil */
     font-weight: var(--font-weight-semibold);
 }
 
 .nav-link.active::after {
     width: 80%;
-    background: #0369A1; /* Azul oscuro para el underline */
+    background: var(--color-link); /* Azul oscuro para el underline */
 }
 
 .nav-link-indicator {
     width: 6px;
     height: 6px;
-    background: #0369A1; /* Azul oscuro para mejor contraste */
+    background: var(--color-link); /* Azul oscuro para mejor contraste */
     border-radius: var(--radius-full);
     display: inline-block;
     animation: navIndicatorPulse 2s ease-in-out infinite;

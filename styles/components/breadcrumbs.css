@@ -49,14 +49,16 @@
     transform: translateX(-50%);
 }
 
-.breadcrumb-link:hover {
-    color: var(--color-primary);
-    background: var(--color-primary-light);
-    transform: translateY(-1px);
-}
+@media (hover: hover) {
+    .breadcrumb-link:hover {
+        color: var(--color-primary);
+        background: var(--color-primary-light);
+        transform: translateY(-1px);
+    }
 
-.breadcrumb-link:hover::before {
-    width: 80%;
+    .breadcrumb-link:hover::before {
+        width: 80%;
+    }
 }
 
 .breadcrumb-link:focus {

@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: calc(56px + env(safe-area-inset-top, 0px)) max(var(--spacing-4), env(safe-area-inset-right, 0px)) max(var(--spacing-6), env(safe-area-inset-bottom, 0px)) max(var(--spacing-4), env(safe-area-inset-left, 0px));
+    padding: calc(var(--layout-site-header-height) + env(safe-area-inset-top, 0px)) max(var(--spacing-4), env(safe-area-inset-right, 0px)) max(var(--spacing-6), env(safe-area-inset-bottom, 0px)) max(var(--spacing-4), env(safe-area-inset-left, 0px));
     background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
     box-sizing: border-box;
 }
@@ -150,7 +150,7 @@
 @media (max-width: 768px) {
     .login-page {
         align-items: flex-start;
-        padding-top: calc(56px + env(safe-area-inset-top, 0px));
+        padding-top: calc(var(--layout-site-header-height) + env(safe-area-inset-top, 0px));
         padding-left: max(var(--spacing-4), env(safe-area-inset-left, 0px));
         padding-right: max(var(--spacing-4), env(safe-area-inset-right, 0px));
         padding-bottom: max(var(--spacing-6), env(safe-area-inset-bottom, 0px));

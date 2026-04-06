@@ -4,7 +4,7 @@
 
 .contact-hero {
     background: var(--color-bg-secondary);
-    padding: calc(56px + var(--spacing-8) + env(safe-area-inset-top, 0px)) 0 var(--spacing-12);
+    padding: var(--page-hero-padding-top) 0 var(--page-hero-padding-bottom);
     text-align: center;
 }
 
@@ -75,7 +75,7 @@
 }
 
 .contact-detail-item a {
-    color: #0369A1; /* Azul oscuro para mejor contraste */
+    color: var(--color-link);
     text-decoration: none;
     font-weight: var(--font-weight-medium);
     transition: var(--transition-base);

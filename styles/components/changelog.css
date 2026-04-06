@@ -4,14 +4,15 @@
 
 .changelog-page {
     min-height: 100vh;
+    min-height: 100dvh;
     background: var(--color-bg-primary);
-    padding: calc(56px + var(--spacing-8)) 0 var(--spacing-12);
+    padding: var(--page-hero-padding-top) 0 var(--page-hero-padding-bottom);
 }
 
 .changelog-container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 0 var(--spacing-4);
+    padding: 0 max(var(--spacing-4), env(safe-area-inset-right, 0px)) 0 max(var(--spacing-4), env(safe-area-inset-left, 0px));
 }
 
 /* Header */
@@ -383,19 +384,21 @@
     border-bottom: 1px solid transparent;
 }
 
-.changelog-link:hover {
-    color: var(--color-primary);
-    border-bottom-color: var(--color-primary);
+@media (hover: hover) {
+    .changelog-link:hover {
+        color: var(--color-primary);
+        border-bottom-color: var(--color-primary);
+    }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
     .changelog-page {
-        padding: calc(56px + var(--spacing-4)) 0 var(--spacing-8);
+        padding: var(--page-hero-padding-top-tight) 0 var(--page-hero-padding-bottom-tight);
     }
     
     .changelog-container {
-        padding: 0 var(--spacing-3);
+        padding: 0 max(var(--spacing-3), env(safe-area-inset-right, 0px)) 0 max(var(--spacing-3), env(safe-area-inset-left, 0px));
     }
     
     .changelog-header {

@@ -3,6 +3,30 @@
    ============================================ */
 
 :root {
+    /* Altura del header fijo del sitio (coherencia entre páginas) */
+    --layout-site-header-height: 56px;
+
+    /*
+      Bloque vertical típico bajo el header: barra + título + safe area (notch).
+      Usar en héroes de páginas internas; el horizontal lo resuelve .container.
+    */
+    --page-hero-padding-top: calc(
+        var(--layout-site-header-height) + var(--spacing-8) + env(safe-area-inset-top, 0px)
+    );
+    --page-hero-padding-bottom: var(--spacing-12);
+    --page-hero-padding-top-tight: calc(
+        var(--layout-site-header-height) + var(--spacing-4) + env(safe-area-inset-top, 0px)
+    );
+    --page-hero-padding-bottom-tight: var(--spacing-8);
+
+    /* Home: hero algo más compacto que páginas legales */
+    --home-hero-padding-top: calc(
+        var(--layout-site-header-height) + var(--spacing-6) + env(safe-area-inset-top, 0px)
+    );
+
+    /* Pie de página: respeta barra de inicio / gestos en iPhone */
+    --footer-padding-bottom: max(var(--spacing-4), env(safe-area-inset-bottom, 0px));
+
     /* Espaciado Base (4px grid system) */
     --spacing-0: 0;
     --spacing-1: 0.25rem;  /* 4px */

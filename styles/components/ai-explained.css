@@ -39,7 +39,7 @@
     left: 0;
     width: 60px;
     height: 60px;
-    background: #0369A1; /* Azul oscuro para mejor contraste */
+    background: var(--color-link); /* Azul oscuro para mejor contraste */
     color: #FFFFFF; /* Blanco para mejor contraste */
     border-radius: var(--radius-full);
     display: flex;
@@ -98,7 +98,7 @@
 .tech-badge {
     background: #F0F9FF;
     border: 1px solid #BAE6FD;
-    color: #0369A1; /* Azul oscuro para mejor contraste */
+    color: var(--color-link); /* Azul oscuro para mejor contraste */
     color: var(--color-primary);
     padding: var(--spacing-1) var(--spacing-3);
     border-radius: var(--radius-full);

@@ -102,7 +102,7 @@
     transform: translateY(-50%);
     width: 6px;
     height: 6px;
-    background: #0369A1; /* Azul oscuro para mejor contraste */
+    background: var(--color-link); /* Azul oscuro para mejor contraste */
     border-radius: var(--radius-full);
     transition: var(--transition);
 }

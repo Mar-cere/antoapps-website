@@ -92,7 +92,7 @@
 .decision-section-title {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
-    color: #0369A1; /* Azul oscuro para mejor contraste */
+    color: var(--color-link); /* Azul oscuro para mejor contraste */
     margin: 0;
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-wide);
@@ -124,7 +124,7 @@
 }
 
 .alternative-bullet {
-    color: #0369A1; /* Azul oscuro para mejor contraste */
+    color: var(--color-link); /* Azul oscuro para mejor contraste */
     font-weight: var(--font-weight-bold);
     flex-shrink: 0;
 }
@@ -133,13 +133,13 @@
     background: #F0F9FF;
     padding: var(--spacing-4);
     border-radius: var(--radius-md);
-    border-left: var(--border-width-4) solid #0369A1; /* Azul oscuro */
+    border-left: var(--border-width-4) solid var(--color-link); /* Azul oscuro */
 }
 
 .decision-final {
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
-    color: #0369A1; /* Azul oscuro para mejor contraste */
+    color: var(--color-link); /* Azul oscuro para mejor contraste */
     margin: 0;
     line-height: var(--line-height-tight);
 }
@@ -155,7 +155,7 @@
 }
 
 .decision-outcome strong {
-    color: #0369A1; /* Azul oscuro para mejor contraste */
+    color: var(--color-link); /* Azul oscuro para mejor contraste */
     font-weight: var(--font-weight-semibold);
 }
 

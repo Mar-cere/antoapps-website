@@ -4,8 +4,8 @@
  */
 
 .resources-hero {
-    background: linear-gradient(135deg, #030A24 0%, #1a1a3e 100%);
-    padding: calc(56px + 2.5rem + env(safe-area-inset-top, 0px)) 0 2.5rem;
+    background: linear-gradient(135deg, var(--color-bg-dark) 0%, #1a1a3e 100%);
+    padding: var(--page-hero-padding-top) 0 var(--page-hero-padding-bottom);
     padding-left: max(0px, env(safe-area-inset-left, 0px));
     padding-right: max(0px, env(safe-area-inset-right, 0px));
     text-align: center;
@@ -33,8 +33,8 @@
 /* Filters */
 .resources-filters {
     padding: 2rem 0;
-    background: #f8f9fa;
-    border-bottom: 1px solid #e0e0e0;
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .filter-tabs {
@@ -214,7 +214,7 @@
 /* Responsive */
 @media (max-width: 768px) {
     .resources-hero {
-        padding: calc(56px + 1.5rem + env(safe-area-inset-top, 0px)) 0 2rem;
+        padding: var(--page-hero-padding-top-tight) 0 var(--page-hero-padding-bottom-tight);
         padding-left: max(var(--spacing-2), env(safe-area-inset-left, 0px));
         padding-right: max(var(--spacing-2), env(safe-area-inset-right, 0px));
     }

@@ -431,14 +431,15 @@
         font-size: 1rem;
     }
 
-    /* Privacy Page Mobile */
+    /* Privacy Page Mobile — no pisar el padding vertical del hero (privacy.css + tokens --page-hero-*) */
     .privacy-page {
-        padding-top: 80px;
+        padding-top: 0;
     }
     
     .privacy-hero {
-        padding: var(--spacing-md) var(--spacing-sm);
-        margin-bottom: var(--spacing-md);
+        padding-left: max(var(--spacing-2), env(safe-area-inset-left, 0px));
+        padding-right: max(var(--spacing-2), env(safe-area-inset-right, 0px));
+        margin-bottom: 0;
     }
     
     .privacy-hero h1 {
@@ -568,6 +569,12 @@
     }
 }
 
+@media (max-width: 480px) {
+    .footer-content {
+        gap: var(--spacing-5);
+    }
+}
+
 /* ============================================
    EXTRA SMALL MOBILE: max-width 374px
    ============================================ */
@@ -605,7 +612,7 @@
 @media (max-width: 767px) and (orientation: landscape) {
     .hero {
         min-height: auto;
-        padding-top: 80px;
+        padding-top: var(--home-hero-padding-top);
         padding-bottom: var(--spacing-md);
     }
     

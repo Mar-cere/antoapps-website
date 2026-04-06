@@ -2,9 +2,11 @@
    PRIVACY PAGE STYLES
    ============================================ */
 
+/* Legacy: en el sitio actual el <main> usa .legal-page; el espacio bajo el header lo da .privacy-hero */
 .privacy-page {
-    padding-top: 120px;
+    padding-top: 0;
     min-height: 100vh;
+    min-height: 100dvh;
     background: var(--color-bg-primary);
     position: relative;
 }
@@ -12,7 +14,7 @@
 .privacy-hero {
     background: var(--color-bg-primary);
     background-image: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
-    padding: calc(56px + var(--spacing-8)) 0 var(--spacing-12);
+    padding: var(--page-hero-padding-top) 0 var(--page-hero-padding-bottom);
     text-align: center;
 }
 
@@ -441,7 +443,7 @@
 
 @media (max-width: 768px) {
     .privacy-hero {
-        padding: calc(var(--spacing-lg) + 80px) 0 var(--spacing-lg);
+        padding: var(--page-hero-padding-top-tight) 0 var(--page-hero-padding-bottom-tight);
         padding-left: max(var(--spacing-4), env(safe-area-inset-left, 0px));
         padding-right: max(var(--spacing-4), env(safe-area-inset-right, 0px));
     }
@@ -508,8 +510,9 @@ main.legal-page {
 
 @media (max-width: 480px) {
     .privacy-hero {
-        padding-top: calc(4.5rem + env(safe-area-inset-top, 0px));
-        padding-bottom: var(--spacing-6);
+        padding: var(--page-hero-padding-top-tight) 0 var(--spacing-6);
+        padding-left: max(var(--spacing-3), env(safe-area-inset-left, 0px));
+        padding-right: max(var(--spacing-3), env(safe-area-inset-right, 0px));
     }
 
     .privacy-hero h1,

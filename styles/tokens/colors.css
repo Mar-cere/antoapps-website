@@ -53,6 +53,10 @@
         --color-info-light: rgba(107, 203, 119, 0.1);
         --color-info-dark: #5BB567;
         --info: var(--color-info);
+
+        /* Enlaces en texto (WCAG sobre fondos claros) */
+        --color-link: #0369a1;
+        --color-link-hover: #0c4a6e;
     
         /* Colores de Superficie (Estilo Apple) */
         --color-surface: #FFFFFF;

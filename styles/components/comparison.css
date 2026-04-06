@@ -4,7 +4,7 @@
 
 .comparison-hero {
     background: var(--color-bg-secondary);
-    padding: calc(56px + env(safe-area-inset-top, 0px) + var(--spacing-8)) max(var(--spacing-4), env(safe-area-inset-right, 0px)) var(--spacing-12) max(var(--spacing-4), env(safe-area-inset-left, 0px));
+    padding: var(--page-hero-padding-top) 0 var(--page-hero-padding-bottom);
     text-align: center;
 }
 
