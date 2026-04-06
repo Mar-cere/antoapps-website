@@ -31,7 +31,8 @@
 .sticky-nav-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 var(--spacing-4);
+    padding: 0 max(var(--spacing-4), env(safe-area-inset-right, 0px)) 0 max(var(--spacing-4), env(safe-area-inset-left, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .sticky-nav-list {
@@ -88,17 +89,28 @@
 
 @media (max-width: 768px) {
     .sticky-nav {
-        top: 40px; /* Fallback para mobile */
+        top: 40px; /* Fallback para mobile; JS sobrescribe con altura real del header */
     }
-    
+
     .sticky-nav-list {
         gap: var(--spacing-1);
-        padding: var(--spacing-1) 0;
+        padding: var(--spacing-2) 0;
+        scroll-padding-inline: var(--spacing-2);
+        -webkit-overflow-scrolling: touch;
     }
-    
+
     .sticky-nav-link {
-        padding: var(--spacing-1) var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
         font-size: var(--font-size-xs);
+        min-height: 44px;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 380px) {
+    .sticky-nav-link {
+        padding: var(--spacing-2);
+        font-size: 0.7rem;
     }
 }
 

@@ -13,6 +13,10 @@
     backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid var(--color-border);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* iPhone notch / Dynamic Island */
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
 }
 
 .header.scrolled,
@@ -30,6 +34,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--spacing-2);
+    min-width: 0;
+}
+
+.nav-brand {
+    flex-shrink: 0;
+    min-width: 0;
 }
 
 .logo {
@@ -67,14 +78,15 @@
         width: 24px;
         height: 24px;
     }
-    
+
     .logo span {
         font-size: var(--font-size-sm);
     }
 
+    /* Altura aproximada de la fila del nav + safe area (el menú desplegable queda debajo del header) */
     .nav-menu {
         position: fixed;
-        top: 48px;
+        top: calc(3.75rem + env(safe-area-inset-top, 0px));
         left: 0;
         right: 0;
         background: rgba(255, 255, 255, 0.98); /* Estilo Apple */
@@ -83,6 +95,9 @@
         flex-direction: column;
         align-items: stretch;
         padding: var(--spacing-md);
+        padding-left: max(var(--spacing-md), env(safe-area-inset-left, 0px));
+        padding-right: max(var(--spacing-md), env(safe-area-inset-right, 0px));
+        padding-bottom: max(var(--spacing-md), env(safe-area-inset-bottom, 0px));
         gap: var(--spacing-xs);
         max-height: 0;
         overflow: hidden;
@@ -133,6 +148,30 @@
     .nav-toggle {
         display: flex;
         z-index: calc(var(--z-fixed) + 1);
+        min-width: 44px;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-1);
+    }
+
+    .nav-actions .btn-primary {
+        padding: var(--spacing-2) var(--spacing-3);
+        font-size: var(--font-size-xs);
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 380px) {
+    .nav-actions .btn-primary {
+        padding: var(--spacing-2);
+        font-size: 0.7rem;
+        letter-spacing: -0.02em;
     }
 }
 
@@ -220,6 +259,8 @@
     display: flex;
     gap: var(--spacing-2);
     align-items: center;
+    flex-shrink: 0;
+    min-width: 0;
 }
 
 .nav-toggle {
