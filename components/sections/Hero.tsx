@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import DownloadLink from '@/components/DownloadLink';
+import { appStoreHref, googlePlayHref } from '@/lib/download-links';
 import { useParticles } from '@/lib/hooks/useParticles';
 import { useParallax } from '@/lib/hooks/useParallax';
 import '@/styles/components/sections.css';
@@ -34,32 +36,22 @@ export default function Hero() {
             </div>
           </div>
           <div className="hero-cta">
-            <Link href="/login" className="btn btn-primary btn-large">
-              Probar Sistema
-            </Link>
-            <Link href="/signup" className="btn btn-secondary btn-large">
-              Crear Cuenta
-            </Link>
-            <Link href="https://github.com/Mar-cere/Anto" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-large">
-              Ver Código en GitHub
-            </Link>
-          </div>
-          <div className="hero-badges">
-            <Link href="#" className="badge" aria-label="Descargar en App Store" rel="noopener noreferrer">
-              <svg width="120" height="40" viewBox="0 0 120 40" fill="none" aria-hidden="true">
-                <rect width="120" height="40" rx="8" fill="#000" />
-                <text x="60" y="25" fill="#fff" textAnchor="middle" fontSize="12" fontWeight="600">
-                  App Store
-                </text>
-              </svg>
-            </Link>
-            <Link href="#" className="badge" aria-label="Descargar en Google Play" rel="noopener noreferrer">
-              <svg width="120" height="40" viewBox="0 0 120 40" fill="none" aria-hidden="true">
-                <rect width="120" height="40" rx="8" fill="#000" />
-                <text x="60" y="25" fill="#fff" textAnchor="middle" fontSize="12" fontWeight="600">
-                  Google Play
-                </text>
-              </svg>
+            <DownloadLink
+              href={appStoreHref()}
+              className="btn btn-primary btn-large"
+              aria-label="Descargar Anto en App Store"
+            >
+              App Store
+            </DownloadLink>
+            <DownloadLink
+              href={googlePlayHref()}
+              className="btn btn-secondary btn-large"
+              aria-label="Descargar Anto en Google Play"
+            >
+              Google Play
+            </DownloadLink>
+            <Link href="/app" className="btn btn-secondary btn-large">
+              Conocer la app
             </Link>
           </div>
         </div>

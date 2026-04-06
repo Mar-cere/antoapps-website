@@ -66,10 +66,6 @@
 @import url('./components/real-impact.css');
 @import url('./components/sticky-nav.css');
 
-/* Pages */
-@import url('./pages/login.css');
-@import url('./pages/chat.css');
-
 /* Utilities */
 @import url('./utilities/animations.css');
 @import url('./utilities/advanced-animations.css');

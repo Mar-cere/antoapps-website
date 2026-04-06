@@ -26,6 +26,13 @@ const nextConfig = {
   // Production optimizations
   productionBrowserSourceMaps: false,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      { source: '/login', destination: '/#descargar', permanent: false },
+      { source: '/signup', destination: '/#descargar', permanent: false },
+      { source: '/chat', destination: '/#descargar', permanent: false },
+    ];
+  },
   // Preservar archivos estáticos existentes
   async rewrites() {
     return [
