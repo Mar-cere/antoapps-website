@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import DownloadLink from '@/components/DownloadLink';
-import { appStoreHref, googlePlayHref } from '@/lib/download-links';
+import { APP_STORE_BADGE_SVG_PATH, appStoreHref } from '@/lib/download-links';
 import { useParticles } from '@/lib/hooks/useParticles';
 import { useParallax } from '@/lib/hooks/useParallax';
 import '@/styles/components/sections.css';
@@ -38,18 +38,25 @@ export default function Hero() {
           <div className="hero-cta">
             <DownloadLink
               href={appStoreHref()}
-              className="btn btn-primary btn-large"
+              className="store-badge-link"
               aria-label="Descargar Anto en App Store"
             >
-              App Store
+              <Image
+                src={APP_STORE_BADGE_SVG_PATH}
+                alt=""
+                width={120}
+                height={40}
+                className="store-badge-img"
+                priority
+              />
             </DownloadLink>
-            <DownloadLink
-              href={googlePlayHref()}
-              className="btn btn-secondary btn-large"
-              aria-label="Descargar Anto en Google Play"
+            <span
+              className="btn btn-secondary btn-large is-disabled"
+              aria-disabled="true"
+              aria-label="Google Play (próximamente)"
             >
-              Google Play
-            </DownloadLink>
+              Google Play <span className="btn-soon-pill">Próximamente</span>
+            </span>
             <Link href="/app" className="btn btn-secondary btn-large">
               Conocer la app
             </Link>

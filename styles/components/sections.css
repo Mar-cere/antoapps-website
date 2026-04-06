@@ -58,6 +58,26 @@
     gap: var(--spacing-3);
     margin-bottom: var(--spacing-4);
     flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Enlace con badge oficial App Store (no modificar el arte del SVG) */
+.store-badge-link {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+}
+
+.store-badge-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+.store-badge-img {
+    width: auto;
+    height: 40px;
+    max-width: min(100%, 200px);
 }
 
 .hero-stats {
@@ -871,6 +891,7 @@
     display: flex;
     gap: var(--spacing-3);
     justify-content: center;
+    align-items: center;
     margin-bottom: var(--spacing-6);
     flex-wrap: wrap;
 }
@@ -923,6 +944,10 @@
 
     .cta-buttons .btn {
         width: 100%;
+        justify-content: center;
+    }
+
+    .cta-buttons .store-badge-link {
         justify-content: center;
     }
 }
