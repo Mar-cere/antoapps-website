@@ -1,10 +1,15 @@
 /* Estilo tipo formulario institucional (referencia: validador de certificado) */
 .page {
   min-height: 100vh;
+  min-height: 100dvh;
   background: #f0f2f5;
   color: #1a1a1a;
-  padding: clamp(1rem, 3vw, 2rem);
+  padding: max(clamp(1rem, 3vw, 2rem), env(safe-area-inset-top, 0px))
+    max(clamp(1rem, 3vw, 2rem), env(safe-area-inset-right, 0px))
+    max(clamp(1rem, 3vw, 2rem), env(safe-area-inset-bottom, 0px))
+    max(clamp(1rem, 3vw, 2rem), env(safe-area-inset-left, 0px));
   font-family: var(--font-inter, system-ui, -apple-system, sans-serif);
+  box-sizing: border-box;
 }
 
 .shell {
@@ -25,8 +30,10 @@
   transition: opacity 0.15s ease;
 }
 
-.logoLink:hover {
-  opacity: 0.88;
+@media (hover: hover) {
+  .logoLink:hover {
+    opacity: 0.88;
+  }
 }
 
 .logoLink:focus-visible {
@@ -159,8 +166,10 @@
   cursor: pointer;
 }
 
-.submit:hover:not(:disabled) {
-  background: #252e5c;
+@media (hover: hover) {
+  .submit:hover:not(:disabled) {
+    background: #252e5c;
+  }
 }
 
 .submit:disabled {
@@ -264,4 +273,44 @@
   font-size: 0.75rem;
   color: #64748b;
   line-height: 1.45;
+}
+
+/* Móvil: sin zoom iOS en foco, tabla apilada */
+@media (max-width: 520px) {
+  .docInput,
+  .auditBox,
+  .submit {
+    font-size: 16px;
+  }
+
+  .formTable,
+  .formTable tbody,
+  .formTable tr,
+  .formTable .row {
+    display: block;
+    width: 100%;
+  }
+
+  .row {
+    border-bottom: 1px solid #d8dde6;
+  }
+
+  .labelCell {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 0.65rem 1rem;
+  }
+
+  .inputCell {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.65rem 1rem 0.85rem;
+  }
+
+  .auditGroup {
+    justify-content: center;
+  }
 }

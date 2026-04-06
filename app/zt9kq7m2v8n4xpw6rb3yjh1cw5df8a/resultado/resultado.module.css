@@ -1,9 +1,14 @@
 .page {
   min-height: 100vh;
+  min-height: 100dvh;
   background: #f0f2f5;
   color: #1a1a1a;
-  padding: clamp(1rem, 3vw, 2rem);
+  padding: max(clamp(1rem, 3vw, 2rem), env(safe-area-inset-top, 0px))
+    max(clamp(1rem, 3vw, 2rem), env(safe-area-inset-right, 0px))
+    max(clamp(1rem, 3vw, 2rem), env(safe-area-inset-bottom, 0px))
+    max(clamp(1rem, 3vw, 2rem), env(safe-area-inset-left, 0px));
   font-family: var(--font-inter, system-ui, -apple-system, sans-serif);
+  box-sizing: border-box;
 }
 
 .shell {
@@ -27,8 +32,10 @@
   text-decoration: none;
 }
 
-.backLink:hover {
-  text-decoration: underline;
+@media (hover: hover) {
+  .backLink:hover {
+    text-decoration: underline;
+  }
 }
 
 .badgeOk {
@@ -163,4 +170,16 @@
   padding: 3rem 1rem;
   color: #64748b;
   font-size: 0.95rem;
+}
+
+@media (max-width: 480px) {
+  .topBar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
 }

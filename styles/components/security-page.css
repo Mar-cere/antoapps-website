@@ -4,7 +4,7 @@
 
 .security-hero {
     background: var(--color-bg-secondary);
-    padding: calc(56px + var(--spacing-8)) 0 var(--spacing-12);
+    padding: calc(56px + var(--spacing-8) + env(safe-area-inset-top, 0px)) 0 var(--spacing-12);
     text-align: center;
 }
 
@@ -20,6 +20,7 @@
     color: var(--color-text-secondary);
     max-width: 800px;
     margin: 0 auto var(--spacing-8);
+    padding: 0 var(--spacing-2);
 }
 
 .security-badges {
@@ -70,7 +71,7 @@
 
 .certifications-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: var(--spacing-6);
 }
 
@@ -84,10 +85,12 @@
     box-shadow: var(--shadow-xs);
 }
 
-.cert-card:hover {
-    border-color: var(--color-primary);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+@media (hover: hover) {
+    .cert-card:hover {
+        border-color: var(--color-primary);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
 }
 
 .cert-icon {
@@ -138,7 +141,7 @@
 
 .measures-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: var(--spacing-lg);
     margin-top: var(--spacing-lg);
 }
@@ -152,10 +155,12 @@
     box-shadow: var(--shadow-xs);
 }
 
-.measure-card:hover {
-    border-color: var(--color-primary);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+@media (hover: hover) {
+    .measure-card:hover {
+        border-color: var(--color-primary);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+    }
 }
 
 .measure-icon {
@@ -204,7 +209,7 @@
 
 .reports-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: var(--spacing-lg);
     margin-top: var(--spacing-lg);
 }
@@ -246,21 +251,46 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .security-hero {
+        padding: calc(56px + var(--spacing-4) + env(safe-area-inset-top, 0px)) 0 var(--spacing-8);
+    }
+
     .security-title {
         font-size: var(--font-size-3xl);
     }
-    
+
     .security-subtitle {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-lg);
     }
-    
+
     .measures-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .certifications-grid,
     .reports-grid {
         grid-template-columns: 1fr;
+    }
+
+    .security-badges {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .badge-cert {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .security-title {
+        font-size: clamp(1.5rem, 7vw, 2rem);
+    }
+
+    .cert-card,
+    .measure-card,
+    .report-card {
+        padding: var(--spacing-4);
     }
 }
 
