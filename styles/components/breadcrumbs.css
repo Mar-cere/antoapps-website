@@ -117,16 +117,30 @@
 @media (max-width: 768px) {
     .breadcrumbs {
         padding: var(--spacing-sm) 0;
+        padding-left: env(safe-area-inset-left, 0px);
+        padding-right: env(safe-area-inset-right, 0px);
     }
 
     .breadcrumb-link,
     .breadcrumb-current {
         font-size: var(--font-size-xs);
         padding: 3px 6px;
+        max-width: 100%;
     }
 
     .breadcrumb-separator {
         margin: 0 4px;
+    }
+}
+
+@media (max-width: 380px) {
+    .breadcrumbs-list {
+        row-gap: var(--spacing-2);
+    }
+
+    .breadcrumb-current {
+        word-break: break-word;
+        line-height: 1.3;
     }
 }
 

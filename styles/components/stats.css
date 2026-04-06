@@ -132,11 +132,14 @@
 /* Responsive */
 @media (max-width: 968px) {
     .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: var(--spacing-5);
     }
-    
+
     .stat-card {
+        min-width: 0;
+        max-width: none;
         min-height: 160px;
         padding: var(--spacing-6) var(--spacing-4);
     }
@@ -146,14 +149,17 @@
     .stats {
         padding: var(--spacing-8) 0;
     }
-    
+
     .stats-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
         gap: var(--spacing-4);
-        max-width: 400px;
+        max-width: 100%;
     }
-    
+
     .stat-card {
+        min-width: 0;
+        max-width: 100%;
         min-height: 140px;
         padding: var(--spacing-5) var(--spacing-4);
     }

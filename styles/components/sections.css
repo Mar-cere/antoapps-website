@@ -209,6 +209,8 @@
 @media (max-width: 768px) {
     .hero {
         padding: calc(80px + var(--spacing-4)) 0 var(--spacing-8);
+        padding-left: max(0px, env(safe-area-inset-left, 0px));
+        padding-right: max(0px, env(safe-area-inset-right, 0px));
     }
     
     .hero-title {
@@ -877,5 +879,115 @@
     gap: var(--spacing-3);
     justify-content: center;
     flex-wrap: wrap;
+}
+
+/* Home: tarjetas y grillas que no deben forzar scroll horizontal en móvil */
+@media (max-width: 968px) {
+    .features-grid {
+        gap: var(--spacing-4);
+    }
+
+    .feature-card {
+        flex: 1 1 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .steps {
+        gap: var(--spacing-5);
+    }
+
+    .step {
+        flex: 1 1 100%;
+        min-width: 0;
+        max-width: 420px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 22rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-stats {
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch;
+        gap: var(--spacing-3);
+    }
+
+    .hero-stat-item {
+        justify-content: center;
+    }
+
+    .benefits-tabs {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tab-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .faq-question {
+        font-size: var(--font-size-base);
+        padding: var(--spacing-3);
+        gap: var(--spacing-2);
+    }
+
+    .faq-icon {
+        font-size: var(--font-size-xl);
+    }
+
+    .faq-answer p {
+        font-size: var(--font-size-sm);
+    }
+
+    .cta-content p {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+        margin-bottom: var(--spacing-6);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding-top: calc(72px + env(safe-area-inset-top, 0px));
+        padding-bottom: var(--spacing-6);
+    }
+
+    .app-showcase {
+        padding: var(--spacing-8) 0;
+    }
+
+    .showcase-text .section-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .price {
+        font-size: clamp(2rem, 10vw, 2.75rem);
+    }
+
+    section {
+        scroll-margin-top: 72px;
+    }
 }
 

@@ -23,7 +23,7 @@ export default function PrivacidadPage() {
     <>
       <ClientInitializer />
       <Header />
-      <main>
+      <main className="legal-page">
         <Breadcrumbs items={[{ label: 'Inicio', href: '/' }, { label: 'Privacidad' }]} />
 
         <section className="privacy-hero" data-fade-section>

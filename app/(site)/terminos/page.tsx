@@ -23,7 +23,7 @@ export default function TerminosPage() {
     <>
       <ClientInitializer />
       <Header />
-      <main>
+      <main className="legal-page">
         <Breadcrumbs items={[{ label: 'Inicio', href: '/' }, { label: 'Términos de Servicio' }]} />
 
         <section className="privacy-hero" data-fade-section>

@@ -6,6 +6,37 @@
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 var(--spacing-4);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-left: max(var(--spacing-4), env(safe-area-inset-left, 0px));
+        padding-right: max(var(--spacing-4), env(safe-area-inset-right, 0px));
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+        padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+    }
+
+    section {
+        padding: var(--spacing-8) 0;
+    }
+
+    .section-title {
+        font-size: clamp(1.625rem, 6vw, 2.5rem);
+    }
+
+    .section-subtitle {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+        margin-bottom: var(--spacing-6);
+        padding-left: var(--spacing-1);
+        padding-right: var(--spacing-1);
+    }
 }
 
 /* Container específico para Hero - menos padding */
