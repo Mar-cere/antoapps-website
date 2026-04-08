@@ -49,8 +49,26 @@
     font-size: clamp(1.125rem, 2.5vw, 1.5rem); /* Ajustado */
     font-weight: var(--font-weight-normal);
     color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-6);
+    margin-bottom: var(--spacing-4);
     line-height: var(--line-height-base);
+}
+
+.hero-download-pitch {
+    font-size: clamp(0.9375rem, 2.2vw, 1.0625rem);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-relaxed);
+    margin: 0 0 var(--spacing-5);
+    max-width: 36rem;
+}
+
+.hero .hero-download-pitch strong {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.hero-download-pitch-soon {
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
 }
 
 .hero-cta {

@@ -201,18 +201,24 @@
     .hero {
         min-height: auto;
         padding-top: var(--home-hero-padding-top);
-        padding-bottom: var(--spacing-xl);
+        padding-bottom: var(--spacing-8);
     }
     
     .hero .container {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: var(--spacing-md);
+        gap: var(--spacing-5);
     }
-    
+
+    /* Orden DOM: primero copy + CTAs (landing), luego mockup (no order:-1) */
+    .hero-content {
+        order: 0;
+    }
+
     .hero-image {
-        order: -1;
-        margin-bottom: var(--spacing-md);
+        order: 1;
+        margin-top: var(--spacing-4);
+        margin-bottom: 0;
     }
     
     .hero-title {
@@ -223,7 +229,13 @@
     
     .hero-subtitle {
         font-size: 1rem;
-        margin-bottom: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
+        padding: 0 var(--spacing-sm);
+    }
+
+    .hero-download-pitch {
+        font-size: 0.9375rem;
+        margin-bottom: var(--spacing-4);
         padding: 0 var(--spacing-sm);
     }
     

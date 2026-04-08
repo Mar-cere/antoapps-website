@@ -23,6 +23,10 @@ export default function Hero() {
           <p className="hero-subtitle reveal-on-scroll">
             Salud mental accesible para todos. IA que entiende, escucha y apoya. Tu bienestar mental es nuestra prioridad.
           </p>
+          <p className="hero-download-pitch reveal-on-scroll">
+            Descarga <strong>Anto</strong> en el App Store y lleva el apoyo contigo. En Google Play,{' '}
+            <span className="hero-download-pitch-soon">próximamente</span>.
+          </p>
           <div className="hero-stats">
             <div className="hero-stat-item">
               <span className="hero-stat-icon">🔒</span>
