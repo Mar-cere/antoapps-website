@@ -188,9 +188,9 @@
    MOBILE OPTIMIZATIONS (max-width: 767px)
    ============================================ */
 @media (max-width: 767px) {
-    /* Navigation Mobile - Mejorado en header.css */
+    /* Barra compacta: 0.75rem vertical dejaba la cabecera muy alta junto al botón 44px */
     .nav {
-        padding: 0.75rem 0;
+        padding: 0.25rem 0;
     }
     
     .nav-actions {

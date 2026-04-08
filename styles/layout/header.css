@@ -85,10 +85,10 @@
         font-size: var(--font-size-sm);
     }
 
-    /* Altura aproximada de la fila del nav + safe area (el menú desplegable queda debajo del header) */
+    /* Bajo el notch: misma referencia que --layout-site-header-height en móvil (spacing.css) */
     .nav-menu {
         position: fixed;
-        top: calc(3.75rem + env(safe-area-inset-top, 0px));
+        top: calc(var(--layout-site-header-height) + env(safe-area-inset-top, 0px));
         left: 0;
         right: 0;
         background: rgba(255, 255, 255, 0.98); /* Estilo Apple */

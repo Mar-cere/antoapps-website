@@ -72,3 +72,14 @@
     --spacing-80: 20rem;   /* 320px */
 }
 
+/* Móvil: barra más baja (.nav padding reducido en responsive.css) + héroe con menos aire */
+@media (max-width: 767px) {
+    :root {
+        /* 0.25rem×2 (.nav) + 44px (.nav-toggle) ≈ 52px; coherente con menú fijo y héroe */
+        --layout-site-header-height: 52px;
+        --home-hero-padding-top: calc(
+            var(--layout-site-header-height) + var(--spacing-4) + env(safe-area-inset-top, 0px)
+        );
+    }
+}
+
