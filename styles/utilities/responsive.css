@@ -197,10 +197,10 @@
         display: none;
     }
 
-    /* Hero Mobile */
+    /* Hero Mobile — mismo offset de header que sections.css (tokens) */
     .hero {
         min-height: auto;
-        padding-top: 100px;
+        padding-top: var(--home-hero-padding-top);
         padding-bottom: var(--spacing-xl);
     }
     
@@ -236,13 +236,13 @@
     
     .hero-stat-item {
         width: 100%;
-        max-width: 280px;
-        justify-content: center;
+        max-width: min(280px, 100%);
         margin: 0 auto;
     }
     
     .hero-cta {
         flex-direction: column;
+        align-items: stretch;
         gap: var(--spacing-sm);
         width: 100%;
         padding: 0 var(--spacing-sm);
@@ -252,6 +252,17 @@
         width: 100%;
         min-height: var(--touch-target-min);
         padding: 14px 24px;
+    }
+
+    .hero-cta .store-badge-link {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-cta .store-badge-img {
+        height: 44px;
+        width: auto;
+        max-width: min(220px, 88vw);
     }
     
     .hero-badges {

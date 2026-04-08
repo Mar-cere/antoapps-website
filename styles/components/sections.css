@@ -90,30 +90,44 @@
 }
 
 .hero-stat-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: var(--spacing-sm);
+    row-gap: 0.15rem;
     align-items: center;
-    gap: var(--spacing-xs);
     padding: var(--spacing-sm) var(--spacing-md);
     background: var(--color-surface-card);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
+    min-width: min(100%, 280px);
 }
 
 .hero-stat-icon {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: center;
     color: var(--color-link);
     font-size: var(--font-size-2xl);
     line-height: 1;
 }
 
 .hero-stat-value {
+    grid-column: 2;
+    grid-row: 1;
     color: var(--color-text-primary);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-lg);
+    line-height: 1.2;
 }
 
 .hero-stat-label {
+    grid-column: 2;
+    grid-row: 2;
     color: var(--color-text-secondary);
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-base);
+    text-wrap: balance;
 }
 
 .hero-badges {
@@ -228,7 +242,7 @@
 
 @media (max-width: 768px) {
     .hero {
-        padding: calc(80px + var(--spacing-4)) 0 var(--spacing-8);
+        padding: var(--home-hero-padding-top) 0 var(--spacing-8);
         padding-left: max(0px, env(safe-area-inset-left, 0px));
         padding-right: max(0px, env(safe-area-inset-right, 0px));
     }
@@ -246,20 +260,22 @@
     .hero-cta {
         flex-direction: column;
         width: 100%;
+        align-items: stretch;
     }
     
     .hero-cta .btn {
         width: 100%;
     }
-    
-    .phone-in-hand-container {
-        max-width: 320px;
-        margin: 0 auto;
-        padding: var(--spacing-2);
+
+    .hero-cta .store-badge-link {
+        width: 100%;
+        justify-content: center;
     }
-    
-    .phone-in-hand-image {
-        max-width: 320px;
+
+    .hero-cta .store-badge-img {
+        height: 44px;
+        width: auto;
+        max-width: min(220px, 88vw);
     }
     
     .phone-in-hand-container {
@@ -961,7 +977,31 @@
     }
 
     .hero-stat-item {
-        justify-content: center;
+        min-width: 0;
+        width: 100%;
+        justify-items: center;
+        text-align: center;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        padding: var(--spacing-4) var(--spacing-3);
+    }
+
+    .hero-stat-icon {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .hero-stat-value {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .hero-stat-label {
+        grid-column: 1;
+        grid-row: 3;
+        max-width: 18rem;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .benefits-tabs {

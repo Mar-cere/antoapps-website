@@ -51,7 +51,7 @@ export default function Hero() {
               />
             </DownloadLink>
             <span
-              className="btn btn-secondary btn-large is-disabled"
+              className="btn btn-secondary btn-large is-disabled btn-soon-store"
               aria-disabled="true"
               aria-label="Google Play (próximamente)"
             >

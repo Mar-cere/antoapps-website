@@ -21,7 +21,11 @@ export default function CTA() {
               className="store-badge-img"
             />
           </DownloadLink>
-          <span className="btn btn-secondary btn-large is-disabled" aria-disabled="true" aria-label="Google Play (próximamente)">
+          <span
+            className="btn btn-secondary btn-large is-disabled btn-soon-store"
+            aria-disabled="true"
+            aria-label="Google Play (próximamente)"
+          >
             Google Play <span className="btn-soon-pill">Próximamente</span>
           </span>
           <Link href="/privacidad" className="btn btn-secondary btn-large">
