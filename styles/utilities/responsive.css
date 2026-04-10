@@ -192,8 +192,15 @@
     .nav {
         padding: 0;
     }
-    
+
+    /* Solo ocultar CTA “Descargar” en barra; el menú hamburguesa debe seguir visible */
     .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-1);
+    }
+
+    .nav-actions .btn-primary {
         display: none;
     }
 

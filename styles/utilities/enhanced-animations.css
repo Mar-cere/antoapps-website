@@ -58,15 +58,19 @@
     transition-delay: 0.6s;
 }
 
-/* Sticky Elements con Transiciones */
-.sticky-header {
+/*
+ * Sticky secundario: la barra principal usa .header + .sticky-header y debe seguir
+ * position: fixed en header.css. Si aquí forzamos sticky, el header vuelve al flujo
+ * y el padding del hero suma la altura real → doble espacio bajo el notch.
+ */
+.sticky-header:not(.header) {
     position: sticky;
     top: 0;
     z-index: var(--z-sticky);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.sticky-header.scrolled {
+.sticky-header.scrolled:not(.header) {
     background: rgba(3, 10, 36, 0.98);
     backdrop-filter: blur(20px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
