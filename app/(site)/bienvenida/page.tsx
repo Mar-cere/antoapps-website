@@ -147,7 +147,10 @@ export default function BienvenidaLandingPage() {
           />
 
           <Link href="#por-que-anto" className="lad-cta-skip">
-            Ver qué incluye antes de descargar
+            <span>Ver qué incluye antes de descargar</span>
+            <span className="lad-cta-skip-chevron" aria-hidden="true">
+              ↓
+            </span>
           </Link>
 
           <p className="lad-microcopy">
@@ -155,11 +158,12 @@ export default function BienvenidaLandingPage() {
             o de emergencia en tu país.
           </p>
 
-          <div className="lad-pills" aria-hidden="true">
-            <span className="lad-pill">24/7 en la app</span>
-            <span className="lad-pill">Datos protegidos</span>
-            <span className="lad-pill">Herramientas de bienestar</span>
-          </div>
+          <ul className="lad-pills" aria-label="Beneficios destacados">
+            <li className="lad-pill lad-pill--accent">3 días gratis</li>
+            <li className="lad-pill">24/7 en la app</li>
+            <li className="lad-pill">Datos protegidos</li>
+            <li className="lad-pill">Herramientas de bienestar</li>
+          </ul>
         </section>
 
         <section className="lad-section lad-section--anchor" id="por-que-anto" aria-labelledby="lad-features-title">
@@ -181,6 +185,12 @@ export default function BienvenidaLandingPage() {
             ))}
           </div>
         </section>
+
+        <p className="lad-trust-line">
+          <Link href="/contacto" className="lad-trust-link">
+            ¿Dudas antes de instalar? Escríbenos
+          </Link>
+        </p>
 
         <section className="lad-final" aria-labelledby="lad-final-title">
           <h2 id="lad-final-title">¿Lista o listo para empezar?</h2>
