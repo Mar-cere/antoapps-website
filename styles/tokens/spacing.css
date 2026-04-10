@@ -72,10 +72,10 @@
     --spacing-80: 20rem;   /* 320px */
 }
 
-/* Móvil: barra baja (.nav sin padding vertical, toggle 44×44 con padding 8px) + borde 1px */
+/* Móvil: fila ~40px + borde 1px; alineado con .nav-toggle y menú desplegable */
 @media (max-width: 767px) {
     :root {
-        --layout-site-header-height: 45px;
+        --layout-site-header-height: 41px;
         /* Mínimo aire bajo la barra fija (4px) */
         --home-hero-padding-top: calc(
             var(--layout-site-header-height) + var(--spacing-1) + env(safe-area-inset-top, 0px)
