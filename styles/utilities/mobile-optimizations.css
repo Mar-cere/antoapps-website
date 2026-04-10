@@ -426,9 +426,11 @@ body.pull-to-refresh-active::before {
     }
 }
 
-/* Cabecera fija: por debajo del bloque táctil global (48px) para no inflar la barra */
+/*
+ * Cabecera: el logo no debe heredar altura mínima táctil (40px+) o la barra se infla en blanco.
+ * El menú hamburguesa sí mantiene área cómoda.
+ */
 @media (max-width: 768px) {
-    .header .nav-brand a.logo,
     .header button.nav-toggle {
         min-height: 40px;
         min-width: 40px;
@@ -436,7 +438,10 @@ body.pull-to-refresh-active::before {
     }
 
     .header .nav-brand a.logo {
+        min-height: unset;
         min-width: 0;
+        padding: 0 var(--spacing-2);
+        align-items: center;
     }
 }
 

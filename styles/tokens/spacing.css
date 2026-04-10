@@ -72,13 +72,12 @@
     --spacing-80: 20rem;   /* 320px */
 }
 
-/* Móvil: fila ~40px + borde 1px; alineado con .nav-toggle y menú desplegable */
+/* Móvil: altura real de la barra (borde incl.) para menú/hero; sin hueco extra bajo el header */
 @media (max-width: 767px) {
     :root {
-        --layout-site-header-height: 41px;
-        /* Mínimo aire bajo la barra fija (4px) */
+        --layout-site-header-height: 40px;
         --home-hero-padding-top: calc(
-            var(--layout-site-header-height) + var(--spacing-1) + env(safe-area-inset-top, 0px)
+            var(--layout-site-header-height) + env(safe-area-inset-top, 0px)
         );
     }
 }
