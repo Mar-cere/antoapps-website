@@ -18,7 +18,7 @@
     z-index: var(--z-fixed);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: var(--spacing-3);
     padding: max(var(--spacing-2), env(safe-area-inset-top, 0px)) max(var(--spacing-4), env(safe-area-inset-right, 0px))
         var(--spacing-2) max(var(--spacing-4), env(safe-area-inset-left, 0px));
@@ -40,24 +40,6 @@
 
 .lad-brand img {
     border-radius: var(--radius-md);
-}
-
-.lad-topbar-link {
-    font-size: var(--font-size-xs);
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    font-weight: var(--font-weight-medium);
-    padding: var(--spacing-2) var(--spacing-3);
-    border-radius: var(--radius-full);
-    border: 1px solid var(--color-border);
-    background: rgba(255, 255, 255, 0.6);
-    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-}
-
-.lad-topbar-link:hover {
-    color: var(--color-text-primary);
-    border-color: var(--color-primary);
-    background: var(--color-primary-light);
 }
 
 .lad-main {
@@ -108,13 +90,93 @@
     animation: lad-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
 }
 
-.lad-cta-block {
+/* Bloque de conversión: jerarquía clara (App Store = acción principal) */
+.lad-cta-wrap {
+    margin-bottom: var(--spacing-5);
+    animation: lad-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+.lad-cta-intro {
+    margin: 0 0 var(--spacing-1);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+}
+
+.lad-cta-title {
+    margin: 0 0 var(--spacing-4);
+    font-size: clamp(1.0625rem, 3.5vw, 1.25rem);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+}
+
+.lad-cta-card {
+    padding: var(--spacing-5) var(--spacing-4);
+    border-radius: var(--radius-xl);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(26, 221, 219, 0.28);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.9) inset,
+        0 12px 40px rgba(3, 10, 36, 0.08);
+}
+
+.lad-cta-label {
+    margin: 0 0 var(--spacing-3);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+}
+
+.lad-cta-foot {
+    margin: var(--spacing-4) 0 0;
+    font-size: var(--font-size-xs);
+    line-height: 1.45;
+    color: var(--color-text-tertiary);
+}
+
+.lad-cta-foot strong {
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.lad-cta-secondary {
+    margin-top: var(--spacing-4);
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: var(--spacing-3);
-    margin-bottom: var(--spacing-5);
-    animation: lad-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+    gap: var(--spacing-2);
+}
+
+.lad-cta-secondary-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-tertiary);
+    text-align: center;
+}
+
+.lad-cta-skip {
+    display: inline-block;
+    margin: 0 auto var(--spacing-5);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-link);
+    text-decoration: none;
+    text-align: center;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.lad-cta-skip:hover {
+    border-bottom-color: var(--color-link);
+}
+
+.lad-cta-skip:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
 }
 
 .lad-store-badge-link {
@@ -123,6 +185,11 @@
     line-height: 0;
     border-radius: var(--radius-md);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lad-store-badge-link--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(3, 10, 36, 0.12);
 }
 
 .lad-store-badge-link:focus-visible {
@@ -135,9 +202,9 @@
 }
 
 .lad-store-badge-img {
-    height: 44px;
+    height: 48px;
     width: auto;
-    max-width: min(220px, 88vw);
+    max-width: min(240px, 90vw);
 }
 
 .lad-btn-soon {
@@ -150,11 +217,12 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-secondary);
-    background: var(--color-surface-card);
-    border: 1px solid var(--color-border);
+    background: rgba(245, 245, 247, 0.85);
+    border: 1px dashed var(--color-border);
     border-radius: var(--radius-lg);
     cursor: default;
     user-select: none;
+    opacity: 0.92;
 }
 
 .lad-btn-soon-pill {
@@ -171,6 +239,10 @@
     color: var(--color-text-tertiary);
     margin: 0;
     animation: lad-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+}
+
+.lad-section--anchor {
+    scroll-margin-top: calc(3.5rem + env(safe-area-inset-top, 0px));
 }
 
 .lad-pills {
@@ -278,8 +350,39 @@
 .lad-final h2 {
     font-size: clamp(1.125rem, 4vw, 1.375rem);
     font-weight: var(--font-weight-bold);
-    margin: 0 0 var(--spacing-5);
+    margin: 0 0 var(--spacing-3);
     letter-spacing: -0.02em;
+}
+
+.lad-final-lead {
+    margin: 0 0 var(--spacing-6);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+}
+
+.lad-final .lad-cta-wrap {
+    margin-bottom: var(--spacing-6);
+}
+
+.lad-cta-back-top {
+    display: inline-block;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-link);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.lad-cta-back-top:hover {
+    border-bottom-color: var(--color-link);
+}
+
+.lad-cta-back-top:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
 }
 
 .lad-footer {
@@ -323,7 +426,7 @@
     .lad-hero-badge,
     .lad-hero h1,
     .lad-hero-lead,
-    .lad-cta-block,
+    .lad-cta-wrap,
     .lad-microcopy,
     .lad-pills {
         animation: none;

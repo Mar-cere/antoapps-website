@@ -67,6 +67,49 @@ const features = [
   },
 ] as const;
 
+type StoreCtaProps = {
+  storeHref: string;
+  blockId?: string;
+  title: string;
+  intro: string;
+  priority?: boolean;
+};
+
+function StoreCtaBlock({ storeHref, blockId, title, intro, priority }: StoreCtaProps) {
+  return (
+    <div className="lad-cta-wrap" id={blockId}>
+      <p className="lad-cta-intro">{intro}</p>
+      <p className="lad-cta-title">{title}</p>
+      <div className="lad-cta-card">
+        <p className="lad-cta-label">iPhone e iPad</p>
+        <DownloadLink
+          href={storeHref}
+          className="lad-store-badge-link lad-store-badge-link--primary"
+          aria-label="Descargar Anto en App Store. Se abre en una pestaña nueva."
+        >
+          <Image
+            src={APP_STORE_BADGE_SVG_PATH}
+            alt=""
+            width={120}
+            height={40}
+            className="lad-store-badge-img"
+            priority={priority}
+          />
+        </DownloadLink>
+        <p className="lad-cta-foot">
+          Se abre en la App Store · <strong>Sin costo para descargar</strong>
+        </p>
+      </div>
+      <div className="lad-cta-secondary" aria-label="Google Play próximamente">
+        <span className="lad-cta-secondary-label">Android</span>
+        <span className="lad-btn-soon">
+          Google Play <span className="lad-btn-soon-pill">Próximamente</span>
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export default function BienvenidaLandingPage() {
   const storeHref = appStoreHref();
 
@@ -84,9 +127,6 @@ export default function BienvenidaLandingPage() {
           />
           <span>Anto</span>
         </Link>
-        <Link href="/" className="lad-topbar-link">
-          Sitio completo
-        </Link>
       </header>
 
       <main className="lad-main" id="contenido-principal">
@@ -98,25 +138,17 @@ export default function BienvenidaLandingPage() {
             la app y empieza en segundos.
           </p>
 
-          <div className="lad-cta-block" id="descargar">
-            <DownloadLink
-              href={storeHref}
-              className="lad-store-badge-link"
-              aria-label="Descargar Anto en App Store"
-            >
-              <Image
-                src={APP_STORE_BADGE_SVG_PATH}
-                alt=""
-                width={120}
-                height={40}
-                className="lad-store-badge-img"
-                priority
-              />
-            </DownloadLink>
-            <span className="lad-btn-soon" aria-disabled="true" aria-label="Google Play (próximamente)">
-              Google Play <span className="lad-btn-soon-pill">Próximamente</span>
-            </span>
-          </div>
+          <StoreCtaBlock
+            storeHref={storeHref}
+            blockId="descargar"
+            intro="Paso siguiente"
+            title="Consíguela en el App Store"
+            priority
+          />
+
+          <Link href="#por-que-anto" className="lad-cta-skip">
+            Ver qué incluye antes de descargar
+          </Link>
 
           <p className="lad-microcopy">
             Anto no sustituye terapia ni atención clínica. Si estás en crisis, busca ayuda profesional
@@ -130,7 +162,7 @@ export default function BienvenidaLandingPage() {
           </div>
         </section>
 
-        <section className="lad-section" aria-labelledby="lad-features-title">
+        <section className="lad-section lad-section--anchor" id="por-que-anto" aria-labelledby="lad-features-title">
           <div className="lad-section-head">
             <h2 id="lad-features-title">Por qué Anto</h2>
             <p>Lo esencial, sin ruido: lo que verás al abrir la app.</p>
@@ -151,25 +183,16 @@ export default function BienvenidaLandingPage() {
         </section>
 
         <section className="lad-final" aria-labelledby="lad-final-title">
-          <h2 id="lad-final-title">¿Listo para probarla?</h2>
-          <div className="lad-cta-block">
-            <DownloadLink
-              href={storeHref}
-              className="lad-store-badge-link"
-              aria-label="Descargar Anto en App Store"
-            >
-              <Image
-                src={APP_STORE_BADGE_SVG_PATH}
-                alt=""
-                width={120}
-                height={40}
-                className="lad-store-badge-img"
-              />
-            </DownloadLink>
-            <span className="lad-btn-soon" aria-disabled="true" aria-label="Google Play (próximamente)">
-              Google Play <span className="lad-btn-soon-pill">Próximamente</span>
-            </span>
-          </div>
+          <h2 id="lad-final-title">¿Lista o listo para empezar?</h2>
+          <p className="lad-final-lead">Un toque y abres Anto en tu iPhone o iPad.</p>
+          <StoreCtaBlock
+            storeHref={storeHref}
+            intro="Descarga"
+            title="App Store"
+          />
+          <Link href="#descargar" className="lad-cta-back-top">
+            Volver arriba al botón de descarga
+          </Link>
         </section>
       </main>
 
