@@ -76,9 +76,9 @@
 @media (max-width: 767px) {
     :root {
         --layout-site-header-height: 45px;
-        /* Un solo bloque de aire bajo la barra fija (antes se duplicaba si el header era sticky) */
+        /* Mínimo aire bajo la barra fija (4px) */
         --home-hero-padding-top: calc(
-            var(--layout-site-header-height) + var(--spacing-2) + env(safe-area-inset-top, 0px)
+            var(--layout-site-header-height) + var(--spacing-1) + env(safe-area-inset-top, 0px)
         );
     }
 }
