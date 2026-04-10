@@ -11,7 +11,7 @@ const baseUrl = 'https://antoapps.com';
 export const metadata: Metadata = {
   title: 'Anto — Descarga la app | Apoyo emocional con IA',
   description:
-    'Descarga Anto: conversación con IA para tu bienestar, privacidad, disponible 24/7. Escalas clínicas y herramientas de apoyo. No sustituye atención clínica.',
+    'Descarga Anto: prueba gratis 3 días, conversación con IA para tu bienestar, privacidad y disponible 24/7. No sustituye atención clínica.',
   alternates: {
     canonical: `${baseUrl}/bienvenida`,
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: `${baseUrl}/bienvenida`,
     title: 'Anto — Tu apoyo emocional, en el bolsillo',
     description:
-      'IA pensada para bienestar emocional, privada y disponible cuando la necesites. Descarga en App Store.',
+      'Prueba gratis 3 días. IA para bienestar emocional, privada y disponible cuando la necesites. Descarga en App Store.',
     siteName: 'Anto',
     locale: 'es_CL',
     images: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Anto — Descarga la app',
-    description: 'Apoyo emocional con IA. Descarga en App Store.',
+    description: 'Prueba gratis 3 días. Apoyo emocional con IA. Descarga en App Store.',
     images: [`${baseUrl}/assets/images/antoIcon.png`],
   },
   robots: {
@@ -71,21 +71,22 @@ type StoreCtaProps = {
   storeHref: string;
   blockId?: string;
   title: string;
-  intro: string;
   priority?: boolean;
 };
 
-function StoreCtaBlock({ storeHref, blockId, title, intro, priority }: StoreCtaProps) {
+function StoreCtaBlock({ storeHref, blockId, title, priority }: StoreCtaProps) {
   return (
     <div className="lad-cta-wrap" id={blockId}>
-      <p className="lad-cta-intro">{intro}</p>
       <p className="lad-cta-title">{title}</p>
       <div className="lad-cta-card">
         <p className="lad-cta-label">iPhone e iPad</p>
+        <p className="lad-cta-trial">
+          <strong>3 días gratis</strong> para probar la app. Sin compromiso: tú decides después.
+        </p>
         <DownloadLink
           href={storeHref}
           className="lad-store-badge-link lad-store-badge-link--primary"
-          aria-label="Descargar Anto en App Store. Se abre en una pestaña nueva."
+          aria-label="Descargar Anto en App Store. Incluye prueba gratis de 3 días. Se abre en una pestaña nueva."
         >
           <Image
             src={APP_STORE_BADGE_SVG_PATH}
@@ -97,7 +98,7 @@ function StoreCtaBlock({ storeHref, blockId, title, intro, priority }: StoreCtaP
           />
         </DownloadLink>
         <p className="lad-cta-foot">
-          Se abre en la App Store · <strong>Sin costo para descargar</strong>
+          Se abre en la App Store · <strong>Descarga sin costo</strong> · Condiciones del plan en la tienda
         </p>
       </div>
       <div className="lad-cta-secondary" aria-label="Google Play próximamente">
@@ -141,7 +142,6 @@ export default function BienvenidaLandingPage() {
           <StoreCtaBlock
             storeHref={storeHref}
             blockId="descargar"
-            intro="Paso siguiente"
             title="Consíguela en el App Store"
             priority
           />
@@ -185,11 +185,7 @@ export default function BienvenidaLandingPage() {
         <section className="lad-final" aria-labelledby="lad-final-title">
           <h2 id="lad-final-title">¿Lista o listo para empezar?</h2>
           <p className="lad-final-lead">Un toque y abres Anto en tu iPhone o iPad.</p>
-          <StoreCtaBlock
-            storeHref={storeHref}
-            intro="Descarga"
-            title="App Store"
-          />
+          <StoreCtaBlock storeHref={storeHref} title="Consíguela en el App Store" />
           <Link href="#descargar" className="lad-cta-back-top">
             Volver arriba al botón de descarga
           </Link>

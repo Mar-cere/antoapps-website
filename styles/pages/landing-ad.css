@@ -96,15 +96,6 @@
     animation: lad-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
 }
 
-.lad-cta-intro {
-    margin: 0 0 var(--spacing-1);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-text-tertiary);
-}
-
 .lad-cta-title {
     margin: 0 0 var(--spacing-4);
     font-size: clamp(1.0625rem, 3.5vw, 1.25rem);
@@ -124,10 +115,27 @@
 }
 
 .lad-cta-label {
-    margin: 0 0 var(--spacing-3);
+    margin: 0 0 var(--spacing-2);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-secondary);
+}
+
+.lad-cta-trial {
+    margin: 0 0 var(--spacing-4);
+    padding: var(--spacing-3) var(--spacing-3);
+    font-size: var(--font-size-sm);
+    line-height: 1.45;
+    text-align: center;
+    color: var(--color-text-secondary);
+    background: linear-gradient(135deg, rgba(26, 221, 219, 0.12), rgba(3, 105, 161, 0.06));
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(26, 221, 219, 0.22);
+}
+
+.lad-cta-trial strong {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-bold);
 }
 
 .lad-cta-foot {
