@@ -28,6 +28,7 @@ const nextConfig = {
   poweredByHeader: false,
   async redirects() {
     return [
+      { source: '/l', destination: '/bienvenida', permanent: false },
       { source: '/login', destination: '/#descargar', permanent: false },
       { source: '/signup', destination: '/#descargar', permanent: false },
       { source: '/chat', destination: '/#descargar', permanent: false },
