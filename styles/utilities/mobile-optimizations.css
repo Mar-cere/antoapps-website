@@ -420,3 +420,17 @@ body.pull-to-refresh-active::before {
     }
 }
 
+/* Cabecera fija: el bloque táctil global (48px + padding en todos los a/button) encarecía la barra */
+@media (max-width: 768px) {
+    .header .nav-brand a.logo,
+    .header button.nav-toggle {
+        min-height: 44px;
+        min-width: 44px;
+        padding: var(--spacing-2);
+    }
+
+    .header .nav-brand a.logo {
+        min-width: 0;
+    }
+}
+

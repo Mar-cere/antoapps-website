@@ -188,9 +188,9 @@
    MOBILE OPTIMIZATIONS (max-width: 767px)
    ============================================ */
 @media (max-width: 767px) {
-    /* Barra compacta: 0.75rem vertical dejaba la cabecera muy alta junto al botón 44px */
+    /* Sin padding vertical extra: la fila la marca el toggle (44px) y el logo */
     .nav {
-        padding: 0.25rem 0;
+        padding: 0;
     }
     
     .nav-actions {

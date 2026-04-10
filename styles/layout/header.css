@@ -147,11 +147,13 @@
         margin-left: auto;
     }
 
+    /* Padding base del toggle usa --spacing-xs (16px) y encarece mucho la barra; 8px mantiene ≥44px útiles */
     .nav-toggle {
         display: flex;
         z-index: calc(var(--z-fixed) + 1);
         min-width: 44px;
         min-height: 44px;
+        padding: var(--spacing-2);
         align-items: center;
         justify-content: center;
     }
