@@ -73,13 +73,22 @@
 }
 
 .lad-hero h1 {
-    font-size: clamp(1.875rem, 6.5vw, 2.375rem);
+    font-size: clamp(1.75rem, 6.2vw, 2.25rem);
     font-weight: var(--font-weight-bold);
-    line-height: 1.12;
+    line-height: 1.18;
     letter-spacing: -0.03em;
     margin: 0 0 var(--spacing-4);
     color: var(--color-text-primary);
     animation: lad-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
+}
+
+.lad-hero-title-line {
+    display: block;
+}
+
+.lad-hero-title-line:last-child {
+    margin-top: 0.2em;
+    color: var(--color-text-primary);
 }
 
 .lad-hero-lead {
@@ -88,6 +97,56 @@
     color: var(--color-text-secondary);
     margin: 0 0 var(--spacing-6);
     animation: lad-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+/* Above the fold: acción verbal + confianza tienda */
+.lad-hero-fold-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-bottom: var(--spacing-5);
+    animation: lad-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both;
+}
+
+.lad-hero-cta-btn {
+    width: 100%;
+    max-width: 20rem;
+    min-height: 3.25rem;
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 20px rgba(26, 221, 219, 0.35);
+}
+
+.lad-hero-cta-btn:hover {
+    box-shadow: 0 8px 28px rgba(26, 221, 219, 0.4);
+}
+
+.lad-hero-cta-micro {
+    margin: var(--spacing-3) 0 0;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+}
+
+.lad-hero-store-trust {
+    width: 100%;
+    max-width: 20rem;
+    margin-top: var(--spacing-5);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-3);
+}
+
+.lad-store-badge-img--hero {
+    height: 44px;
+}
+
+.lad-cta-secondary--hero {
+    margin-top: 0;
 }
 
 /* Bloque de conversión: jerarquía clara (App Store = acción principal) */
@@ -277,6 +336,126 @@
     scroll-margin-top: calc(3.5rem + env(safe-area-inset-top, 0px));
 }
 
+/* Narrativa: cómo funciona */
+.lad-how {
+    max-width: 32rem;
+    margin: 0 auto;
+    padding: var(--spacing-6) var(--spacing-4) var(--spacing-4);
+    text-align: center;
+}
+
+.lad-how-inner {
+    padding: var(--spacing-8) var(--spacing-5);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(26, 221, 219, 0.22);
+    border-radius: var(--radius-xl);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.85) inset,
+        0 12px 40px rgba(3, 10, 36, 0.06);
+}
+
+.lad-how-section-title {
+    font-size: clamp(0.8125rem, 2.8vw, 0.875rem);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--spacing-6);
+}
+
+.lad-how-open {
+    font-size: clamp(1.2rem, 4.2vw, 1.45rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--spacing-4);
+    color: var(--color-text-primary);
+}
+
+.lad-how-body {
+    margin: 0 0 var(--spacing-6);
+    font-size: clamp(1rem, 3.6vw, 1.0625rem);
+    line-height: 1.62;
+    color: var(--color-text-secondary);
+}
+
+.lad-how-prefix {
+    margin: 0 0 var(--spacing-3);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.lad-how-list {
+    margin: 0 auto var(--spacing-6);
+    padding: 0;
+    list-style: none;
+    text-align: left;
+    max-width: 19rem;
+}
+
+.lad-how-list li {
+    position: relative;
+    padding-left: var(--spacing-5);
+    margin-bottom: var(--spacing-3);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+}
+
+.lad-how-list li:last-child {
+    margin-bottom: 0;
+}
+
+.lad-how-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    opacity: 0.85;
+}
+
+.lad-how-next {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-link);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.lad-how-next:hover {
+    border-bottom-color: var(--color-link);
+}
+
+.lad-how-next:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+/* Refuerzo emocional */
+.lad-reinforce {
+    max-width: 30rem;
+    margin: 0 auto;
+    padding: var(--spacing-8) var(--spacing-4) var(--spacing-4);
+    text-align: center;
+}
+
+.lad-reinforce-text {
+    margin: 0;
+    font-size: clamp(1.0625rem, 3.8vw, 1.25rem);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+}
+
 .lad-pills {
     display: flex;
     flex-wrap: wrap;
@@ -418,6 +597,49 @@
     letter-spacing: -0.02em;
 }
 
+.lad-final--push .lad-final-cta-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--spacing-6);
+}
+
+.lad-final--push .lad-final-cta-stack .lad-hero-cta-btn {
+    width: 100%;
+    max-width: 20rem;
+}
+
+.lad-final-sub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-1);
+    margin: 0 0 var(--spacing-5);
+    font-size: var(--font-size-sm);
+    line-height: 1.45;
+    color: var(--color-text-secondary);
+}
+
+.lad-final-sub-line {
+    display: block;
+}
+
+@media (min-width: 420px) {
+    .lad-final-sub {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-2);
+    }
+
+    .lad-final-sub-line:not(:last-child)::after {
+        content: '·';
+        margin-left: var(--spacing-2);
+        color: var(--color-text-tertiary);
+        font-weight: var(--font-weight-normal);
+    }
+}
+
 .lad-final-lead {
     margin: 0 0 var(--spacing-6);
     font-size: var(--font-size-sm);
@@ -490,6 +712,7 @@
     .lad-hero-badge,
     .lad-hero h1,
     .lad-hero-lead,
+    .lad-hero-fold-cta,
     .lad-cta-wrap,
     .lad-microcopy,
     .lad-pills {
