@@ -151,6 +151,11 @@ export default function BienvenidaLandingPage() {
               Empieza ahora
             </DownloadLink>
             <p className="lad-hero-cta-micro">Empieza gratis. Sin compromiso.</p>
+            <p className="lad-cta-privacy">
+              <Link href="/privacidad" className="lad-cta-privacy-link">
+                Cómo tratamos tus datos
+              </Link>
+            </p>
             <div className="lad-hero-store-trust">
               <DownloadLink
                 href={storeHref}
@@ -264,8 +269,8 @@ export default function BienvenidaLandingPage() {
         <section className="lad-final lad-final--push" aria-labelledby="lad-final-title">
           <h2 id="lad-final-title">Empieza en segundos.</h2>
           <p className="lad-final-sub">
-            <span className="lad-final-sub-line">Sin registro complejo.</span>
-            <span className="lad-final-sub-line">Sin presión.</span>
+            <span className="lad-final-sub-line">Empieza en pocos pasos.</span>
+            <span className="lad-final-sub-line">Sin tarjeta para la prueba.</span>
           </p>
           <div className="lad-final-cta-stack">
             <DownloadLink
@@ -276,6 +281,11 @@ export default function BienvenidaLandingPage() {
               Empieza ahora
             </DownloadLink>
             <p className="lad-hero-cta-micro">Empieza gratis. Sin compromiso.</p>
+            <p className="lad-cta-privacy">
+              <Link href="/privacidad" className="lad-cta-privacy-link">
+                Cómo tratamos tus datos
+              </Link>
+            </p>
           </div>
           <StoreCtaBlock storeHref={storeHref} title="También puedes usar el badge oficial" />
           <Link href="#descargar" className="lad-cta-back-top">

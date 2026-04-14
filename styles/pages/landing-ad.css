@@ -131,6 +131,32 @@
     line-height: 1.4;
 }
 
+.lad-cta-privacy {
+    margin: var(--spacing-2) 0 0;
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
+    text-align: center;
+    color: var(--color-text-tertiary);
+}
+
+.lad-cta-privacy-link {
+    color: var(--color-link);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.lad-cta-privacy-link:hover {
+    border-bottom-color: var(--color-link);
+}
+
+.lad-cta-privacy-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
 .lad-hero-store-trust {
     width: 100%;
     max-width: 20rem;
