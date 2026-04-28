@@ -11,7 +11,7 @@ import '@/styles/components/app-page.css';
 export const metadata: Metadata = {
   title: 'La Aplicación - Anto | Características e Insights',
   description:
-    'Anto v1.2.2 (Expo): asistente de bienestar emocional con GPT-5 Mini, escalas PHQ-9/GAD-7, protocolos estructurados y detección de crisis. Características e insights.',
+    'Anto v1.2.2 (Expo): asistente de bienestar emocional con GPT-5 Mini, escalas PHQ-9/GAD-7, protocolos estructurados y detección de crisis. Incluye novedades recientes y accesos rápidos.',
   openGraph: {
     title: 'La Aplicación - Anto',
     description: 'Características, insights y pantallazos de la aplicación Anto.',
@@ -50,6 +50,63 @@ export default function AppPage() {
                 <span className="app-badge">🔒 100% Privado</span>
                 <span className="app-badge">⚡ Tiempo Real</span>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Latest Updates */}
+        <section className="app-insights" data-fade-section>
+          <div className="container">
+            <h2 className="section-title reveal-on-scroll">Novedades Recientes de Anto</h2>
+            <p className="section-subtitle reveal-on-scroll">
+              Lo m&aacute;s reciente publicado en el ecosistema Anto y reflejado en esta web.
+            </p>
+            <div className="insights-grid" data-stagger>
+              <div className="insight-card reveal-on-scroll" data-stagger-item>
+                <div className="insight-icon">🆕</div>
+                <div className="insight-label">Flujo de Bienvenida actualizado</div>
+                <p className="insight-description">
+                  Nueva narrativa de onboarding con mejor claridad de propuesta de valor y CTA de descarga m&aacute;s visible.
+                </p>
+              </div>
+              <div className="insight-card reveal-on-scroll" data-stagger-item>
+                <div className="insight-icon">🎁</div>
+                <div className="insight-label">Prueba gratuita de 3 d&iacute;as</div>
+                <p className="insight-description">
+                  Se reforz&oacute; el mensaje de prueba inicial para facilitar la exploraci&oacute;n de la app antes de suscribirte.
+                </p>
+              </div>
+              <div className="insight-card reveal-on-scroll" data-stagger-item>
+                <div className="insight-icon">🔒</div>
+                <div className="insight-label">M&aacute;s transparencia de privacidad</div>
+                <p className="insight-description">
+                  Se incorporaron accesos directos y texto contextual a la pol&iacute;tica de privacidad dentro del flujo.
+                </p>
+              </div>
+              <div className="insight-card reveal-on-scroll" data-stagger-item>
+                <div className="insight-icon">📌</div>
+                <div className="insight-label">Seguimiento de versiones</div>
+                <p className="insight-description">
+                  El historial de cambios se mantiene alineado con la versi&oacute;n publicada para facilitar trazabilidad.
+                </p>
+              </div>
+            </div>
+            <div className="screenshots-note reveal-on-scroll">
+              <p>
+                Revisa el detalle completo en{' '}
+                <Link href="/changelog" style={{ color: 'var(--primary-color)' }}>
+                  Control de Versiones
+                </Link>
+                , conoce el flujo de{' '}
+                <Link href="/bienvenida" style={{ color: 'var(--primary-color)' }}>
+                  Bienvenida
+                </Link>
+                {' '}y consulta{' '}
+                <Link href="/privacidad" style={{ color: 'var(--primary-color)' }}>
+                  Privacidad
+                </Link>
+                .
+              </p>
             </div>
           </div>
         </section>

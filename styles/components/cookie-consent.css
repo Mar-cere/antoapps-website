@@ -14,7 +14,7 @@
     padding-left: max(var(--spacing-4), env(safe-area-inset-left, 0px));
     padding-right: max(var(--spacing-4), env(safe-area-inset-right, 0px));
     z-index: var(--z-modal);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(12px);
     box-shadow: var(--shadow-xl);
     transform: translateY(100%);
     transition: transform var(--duration-base) var(--ease-out);
@@ -84,6 +84,9 @@
         padding-bottom: max(var(--spacing-sm), env(safe-area-inset-bottom, 0px));
         padding-left: max(var(--spacing-sm), env(safe-area-inset-left, 0px));
         padding-right: max(var(--spacing-sm), env(safe-area-inset-right, 0px));
+        max-height: min(50vh, 360px);
+        overflow: auto;
+        overscroll-behavior: contain;
     }
 
     .cookie-consent-text h4 {
@@ -112,7 +115,7 @@
 
     .cookie-consent-actions .btn {
         width: 100%;
-        min-height: 48px;
+        min-height: 44px;
     }
 }
 

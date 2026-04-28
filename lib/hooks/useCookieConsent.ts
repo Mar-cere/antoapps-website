@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { trackCustomEvent } from '@/lib/analytics/events';
 
 export function useCookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
@@ -37,6 +38,7 @@ export function useCookieConsent() {
     if (typeof window !== 'undefined') {
       import('@/lib/hooks/useAnalytics').then((module) => {
         module.initAnalytics();
+        trackCustomEvent('cookie_consent', { status: 'accepted' });
       });
     }
   };
@@ -45,6 +47,7 @@ export function useCookieConsent() {
     localStorage.setItem('cookieConsent', 'rejected');
     setConsent('rejected');
     setShowBanner(false);
+    trackCustomEvent('cookie_consent', { status: 'rejected' });
   };
 
   return {

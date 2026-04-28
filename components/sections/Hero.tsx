@@ -43,6 +43,9 @@ export default function Hero() {
             <DownloadLink
               href={appStoreHref()}
               className="store-badge-link"
+              trackingPlacement="home_hero_store_badge"
+              trackingPage="/"
+              trackingLabel="home_hero_badge"
               aria-label="Descargar Anto en App Store"
             >
               <Image

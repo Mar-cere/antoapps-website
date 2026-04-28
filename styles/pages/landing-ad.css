@@ -99,6 +99,13 @@
     animation: lad-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
 }
 
+.lad-proof-line {
+    margin: 0 0 var(--spacing-5);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+}
+
 /* Above the fold: acción verbal + confianza tienda */
 .lad-hero-fold-cta {
     display: flex;
@@ -514,6 +521,19 @@
     margin: 0;
     padding: var(--spacing-4) var(--spacing-4) var(--spacing-2);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    align-items: center;
+}
+
+.lad-trust-platform {
+    display: inline-flex;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    padding: var(--spacing-1) var(--spacing-2);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-full);
 }
 
 .lad-trust-link {
@@ -757,5 +777,26 @@
 @media (min-width: 480px) {
     .lad-features {
         grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .lad-topbar {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(8px) saturate(140%);
+    }
+
+    .lad-hero-cta-btn {
+        box-shadow: 0 2px 12px rgba(26, 221, 219, 0.22);
+    }
+
+    .lad-hero-cta-btn:hover {
+        box-shadow: 0 3px 14px rgba(26, 221, 219, 0.28);
+    }
+
+    .lad-cta-card,
+    .lad-how-inner,
+    .lad-feature {
+        box-shadow: 0 2px 14px rgba(3, 10, 36, 0.05);
     }
 }

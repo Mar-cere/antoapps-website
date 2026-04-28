@@ -1,14 +1,49 @@
+'use client';
+
 import Link from 'next/link';
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
 import { isExternalStoreUrl } from '@/lib/download-links';
+import { getAttributionContext } from '@/lib/analytics/attribution';
+import { trackCustomEvent, withAttribution } from '@/lib/analytics/events';
 
 type Props = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
   href: string;
   children: ReactNode;
   className?: string;
+  trackingPlacement?: string;
+  trackingPage?: string;
+  trackingLabel?: string;
 };
 
-export default function DownloadLink({ href, children, className, ...rest }: Props) {
+export default function DownloadLink({
+  href,
+  children,
+  className,
+  trackingPlacement,
+  trackingPage,
+  trackingLabel,
+  onClick,
+  ...rest
+}: Props) {
+  const handleStoreClick: AnchorHTMLAttributes<HTMLAnchorElement>['onClick'] = (event) => {
+    onClick?.(event);
+    if (event.defaultPrevented) return;
+
+    const attribution = getAttributionContext();
+    trackCustomEvent(
+      'store_click',
+      withAttribution(
+        {
+          destination: 'app_store',
+          placement: trackingPlacement || 'unknown',
+          page: trackingPage || (typeof window !== 'undefined' ? window.location.pathname : ''),
+          label: trackingLabel,
+        },
+        attribution
+      )
+    );
+  };
+
   if (isExternalStoreUrl(href)) {
     return (
       <a
@@ -16,6 +51,7 @@ export default function DownloadLink({ href, children, className, ...rest }: Pro
         className={className}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={handleStoreClick}
         {...rest}
       >
         {children}

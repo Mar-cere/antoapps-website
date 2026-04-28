@@ -12,7 +12,14 @@ export default function CTA() {
           Descarga Anto en tu dispositivo: la cuenta y el uso completo son en la aplicación móvil.
         </p>
         <div className="cta-buttons">
-          <DownloadLink href={appStoreHref()} className="store-badge-link" aria-label="Descargar Anto en App Store">
+          <DownloadLink
+            href={appStoreHref()}
+            className="store-badge-link"
+            trackingPlacement="home_cta_store_badge"
+            trackingPage="/"
+            trackingLabel="home_cta_badge"
+            aria-label="Descargar Anto en App Store"
+          >
             <Image
               src={APP_STORE_BADGE_SVG_PATH}
               alt=""

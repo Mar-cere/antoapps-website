@@ -8,9 +8,11 @@ declare global {
 }
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-XXXXXXXXXX';
+let analyticsInitialized = false;
 
 export function initAnalytics() {
   if (typeof window === 'undefined') return;
+  if (analyticsInitialized || window.gtag) return;
 
   // Solo cargar en producción
   if (
@@ -38,6 +40,11 @@ export function initAnalytics() {
   });
 
   window.gtag = gtag;
+  analyticsInitialized = true;
+
+  if (GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
+    console.warn('Google Analytics está usando el ID de ejemplo G-XXXXXXXXXX.');
+  }
 }
 
 export function trackEvent(
