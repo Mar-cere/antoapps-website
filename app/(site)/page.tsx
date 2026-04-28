@@ -21,7 +21,6 @@ const Pricing = lazy(() => import('@/components/sections/Pricing'));
 const Security = lazy(() => import('@/components/sections/Security'));
 const AIExplained = lazy(() => import('@/components/sections/AIExplained'));
 const FAQ = lazy(() => import('@/components/sections/FAQ'));
-const CTA = lazy(() => import('@/components/sections/CTA'));
 
 // Componente de fallback para secciones lazy
 function SectionSkeleton() {
@@ -84,9 +83,6 @@ export default function Home() {
         </Suspense>
         <Suspense fallback={<SectionSkeleton />}>
           <FAQ />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <CTA />
         </Suspense>
         </main>
       </PullToRefresh>

@@ -69,10 +69,10 @@ export default function HeroDualCta({ storeHref, landingVariant }: HeroDualCtaPr
           className="android-early-access android-early-access--landing"
           compact
           autoFocus={autoFocusAndroidInput}
-          buttonLabel="Recibir acceso Android"
+          buttonLabel="Quiero acceso Android"
         />
       </div>
-      <p className="lad-hero-cta-micro">Apple descarga directa · Android acceso anticipado por correo.</p>
+      <p className="lad-hero-cta-micro">iPhone descarga inmediata · Android acceso anticipado por correo.</p>
     </div>
   );
 }

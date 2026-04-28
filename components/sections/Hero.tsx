@@ -19,14 +19,14 @@ export default function Hero() {
       <div className="container">
         <div className="hero-content reveal-on-scroll">
           <h1 className="hero-title" id="hero-title">
-            Tu apoyo emocional 24/7, siempre disponible
+            Cuando te sientes sobrepasado, Anto te ayuda a aterrizar
           </h1>
           <p className="hero-subtitle reveal-on-scroll">
-            Salud mental accesible para todos. IA que entiende, escucha y apoya. Tu bienestar mental es nuestra prioridad.
+            Escribe lo que te pasa y recibe guía clara, práctica y humana en segundos.
           </p>
           <p className="hero-download-pitch reveal-on-scroll">
-            Descarga <strong>Anto</strong> en el App Store y lleva el apoyo contigo. En Google Play,{' '}
-            <span className="hero-download-pitch-soon">próximamente</span>.
+            Descarga <strong>Anto</strong> en App Store y empieza hoy. En Android, solicita acceso
+            anticipado con el correo de tu cuenta de Google Play.
           </p>
           <div className="hero-stats">
             <div className="hero-stat-item">
@@ -59,7 +59,7 @@ export default function Hero() {
               />
             </DownloadLink>
             <Link href="/app" className="btn btn-secondary btn-large">
-              Conocer la app
+              Ver cómo funciona
             </Link>
           </div>
           <AndroidEarlyAccessForm
@@ -67,7 +67,7 @@ export default function Hero() {
             placement="home_hero_android_early_access"
             page="/"
             compact
-            buttonLabel="Acceso anticipado Android"
+            buttonLabel="Quiero acceso Android"
           />
         </div>
         <div className="hero-image reveal-on-scroll-enhanced" ref={heroImageRef}>

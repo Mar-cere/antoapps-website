@@ -2,7 +2,7 @@
  * Enlaces a tiendas. Google Play puede seguir en “próximamente” en UI;
  * App Store usa la ficha pública por defecto si no defines env.
  */
-export const FALLBACK_DOWNLOAD_HREF = '/#descargar';
+export const FALLBACK_DOWNLOAD_HREF = '/bienvenida';
 
 /** Ficha oficial en App Store (Chile). Sobreescribible con NEXT_PUBLIC_APP_STORE_URL. */
 export const DEFAULT_APP_STORE_URL = 'https://apps.apple.com/cl/app/anto/id6756631911';

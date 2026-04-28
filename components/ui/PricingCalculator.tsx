@@ -132,7 +132,7 @@ export default function PricingCalculator() {
                   </span>
                 </div>
                 <div style={{ marginTop: 'var(--spacing-lg)', textAlign: 'center' }}>
-                  <Link href="#descargar" className="btn btn-primary btn-large">
+                  <Link href="/bienvenida" className="btn btn-primary btn-large">
                     Comenzar con {selectedPlanData.name}
                   </Link>
                   <p style={{ marginTop: 'var(--spacing-md)', fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)' }}>

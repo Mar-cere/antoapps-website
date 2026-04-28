@@ -148,8 +148,8 @@ export default function Header() {
           </ul>
 
           <div className="nav-actions">
-            <Link href="#descargar" className="btn btn-primary" aria-label="Descargar la aplicación Anto">
-              Descargar App
+            <Link href="/bienvenida" className="btn btn-primary" aria-label="Ir a descarga de la aplicación Anto">
+              Descargar en App Store
             </Link>
             <button
               id="navToggle"

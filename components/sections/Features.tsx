@@ -72,8 +72,9 @@ export default function Features() {
               <div className="step-content">
                 <h3>Descarga la App</h3>
                 <p>
-                  Disponible gratis en App Store y Google Play. La descarga es rápida (menos de 40MB) y
-                  la instalación toma menos de un minuto. Compatible con iOS 13+ y Android 8.0+.
+                  Disponible gratis en App Store. En Android puedes solicitar acceso anticipado con tu
+                  correo de Google Play. La descarga es rápida (menos de 40MB) y la instalación toma
+                  menos de un minuto.
                 </p>
               </div>
             </div>
@@ -138,8 +139,8 @@ export default function Features() {
             >
               Para obtener los mejores resultados, usa Anto regularmente. El asistente AI aprende más
               sobre ti con cada conversación, permitiéndole ofrecerte insights y recomendaciones cada vez
-              más precisas. Muchos usuarios reportan mejoras significativas después de usar la app
-              durante 2-3 semanas de forma consistente.
+              más precisas. Muchos usuarios reportan mejoras significativas después de usar la app de
+              forma consistente por 2-3 semanas.
             </p>
           </div>
         </div>

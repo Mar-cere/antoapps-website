@@ -67,7 +67,7 @@ const softwareJsonLd = {
   '@type': 'SoftwareApplication',
   name: 'Anto',
   applicationCategory: 'HealthApplication',
-  operatingSystem: 'iOS, Android',
+  operatingSystem: 'iOS (descarga directa), Android (acceso anticipado)',
   offers: {
     '@type': 'Offer',
     price: '3990',

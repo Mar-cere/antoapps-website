@@ -45,7 +45,7 @@ const faqData = [
     id: 6,
     question: '¿En qué dispositivos está disponible?',
     answer:
-      'Anto está disponible actualmente para iOS (iPhone y iPad con iOS 13 o superior) y Android (versión 8.0 o superior). Estamos trabajando activamente en una versión web que estará disponible en los próximos meses. La aplicación está optimizada para funcionar en todos los tamaños de pantalla, desde teléfonos pequeños hasta tablets grandes. Todos tus datos se sincronizan automáticamente entre dispositivos de forma segura.',
+      'Anto está disponible con descarga directa en App Store para iOS (iPhone y iPad con iOS 13 o superior). En Android, actualmente operamos con acceso anticipado por invitación enviada por correo. Estamos trabajando activamente en una versión web que estará disponible en los próximos meses.',
     category: 'tecnica',
   },
   {
@@ -118,7 +118,7 @@ const faqMoreData = [
     id: 16,
     question: '¿Puedo usar Anto en múltiples dispositivos?',
     answer:
-      'Sí, puedes usar Anto en tantos dispositivos como quieras con una sola cuenta. Todos tus datos, conversaciones, y análisis se sincronizan automáticamente entre dispositivos de forma segura y encriptada. Puedes comenzar una conversación en tu iPhone y continuarla en tu iPad o Android sin problemas. La sincronización es instantánea y segura, utilizando encriptación de extremo a extremo para proteger tus datos durante la transferencia.',
+      'Sí, puedes usar Anto en múltiples dispositivos con una sola cuenta. En iOS, tus datos, conversaciones y análisis se sincronizan automáticamente de forma segura. En Android, esta continuidad aplica para cuentas que ya tengan acceso anticipado habilitado.',
     category: 'funcionalidad',
   },
   {

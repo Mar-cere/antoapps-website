@@ -70,8 +70,8 @@ const impacts: Impact[] = [
       },
       {
         title: 'Multiplataforma',
-        metric: 'iOS + Android',
-        description: 'Una sola codebase para ambas plataformas con 92% de código compartido',
+        metric: 'iOS + Android EA',
+        description: 'Codebase unificada para iOS y Android (acceso anticipado), con 92% de código compartido',
         icon: '📱'
       },
       {

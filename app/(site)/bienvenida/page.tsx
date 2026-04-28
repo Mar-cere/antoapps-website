@@ -11,18 +11,18 @@ import '@/styles/pages/landing-ad.css';
 const baseUrl = 'https://antoapps.com';
 
 export const metadata: Metadata = {
-  title: 'Anto — Escribe lo que no sabes cómo decir | App de bienestar',
+  title: 'Anto — Calma mental en minutos | Descarga en App Store',
   description:
-    'Desahógate sin filtro y recibe guía práctica con tono cercano y profesional. Empieza gratis, sin compromiso. Prueba 3 días. No sustituye terapia ni atención clínica.',
+    'Cuando tu mente va a mil, escribe como te salga y recibe guía clara en segundos. Descarga en App Store o pide acceso anticipado Android por correo. Prueba 3 días.',
   alternates: {
     canonical: `${baseUrl}/bienvenida`,
   },
   openGraph: {
     type: 'website',
     url: `${baseUrl}/bienvenida`,
-    title: 'Anto — Escribe lo que no sabes cómo decir',
+    title: 'Anto — Calma mental en minutos',
     description:
-      'Empieza gratis, sin compromiso. Guía práctica con tono cercano y profesional. Disponible en App Store.',
+      'Descarga en App Store y empieza hoy. Android con acceso anticipado por correo.',
     siteName: 'Anto',
     locale: 'es_CL',
     images: [
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Anto — Empieza ahora',
-    description: 'Empieza gratis, sin compromiso. App de bienestar emocional en App Store.',
+    title: 'Anto — Empieza hoy',
+    description: 'Descarga en App Store. Android con acceso anticipado por correo.',
     images: [`${baseUrl}/assets/images/antoIcon.png`],
   },
   robots: {
@@ -78,13 +78,13 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
 
       <main className="lad-main" id="contenido-principal">
         <section className="lad-hero" aria-labelledby="lad-hero-title">
-          <p className="lad-hero-badge">App de bienestar emocional</p>
+          <p className="lad-hero-badge">Bienestar emocional en tu bolsillo</p>
           <h1 id="lad-hero-title">
             <span className="lad-hero-title-line">Cuando tu mente va a mil,</span>
-            <span className="lad-hero-title-line">Anto te ayuda a ordenar lo que sientes</span>
+            <span className="lad-hero-title-line">ordena lo que sientes con Anto</span>
           </h1>
           <p className="lad-hero-lead">
-            Escribes como te salga y recibes guía clara, práctica y humana en segundos.
+            Escribe como te salga y recibe claridad práctica en segundos, estés donde estés.
           </p>
           <HeroDualCta
             storeHref={storeHref}
@@ -105,9 +105,9 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
             </div>
           </div>
           <ul className="lad-hero-quick-points" aria-label="Beneficios rápidos">
-            <li>Guía práctica al instante</li>
-            <li>Privado y personal</li>
-            <li>Herramientas para avanzar hoy</li>
+            <li>Claridad emocional en minutos</li>
+            <li>Privado, personal y sin juicios</li>
+            <li>Acciones concretas para hoy</li>
           </ul>
           <div className="lad-social-proof" aria-label="Señales de confianza">
             <span className="lad-social-proof-item">Acceso inmediato en iPhone</span>

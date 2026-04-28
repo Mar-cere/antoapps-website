@@ -46,7 +46,7 @@ export default function AppPage() {
               </p>
               <div className="app-hero-badges reveal-on-scroll">
                 <span className="app-badge">📌 v1.2.7</span>
-                <span className="app-badge">📱 iOS & Android</span>
+                <span className="app-badge">📱 iOS + Android acceso anticipado</span>
                 <span className="app-badge">🔒 100% Privado</span>
                 <span className="app-badge">⚡ Tiempo Real</span>
               </div>
@@ -463,7 +463,7 @@ export default function AppPage() {
               Descarga Anto ahora y comienza tu viaje hacia un mejor bienestar mental
             </p>
             <div className="app-cta-buttons reveal-on-scroll">
-              <Link href="#descargar" className="btn btn-primary btn-large">
+              <Link href="/bienvenida" className="btn btn-primary btn-large">
                 Descargar Ahora
               </Link>
               <Link href="/contacto" className="btn btn-secondary btn-large">
