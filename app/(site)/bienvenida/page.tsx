@@ -284,26 +284,6 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
           </div>
         </section>
 
-        <section className="lad-section lad-section--anchor" id="por-que-anto" aria-labelledby="lad-features-title">
-          <div className="lad-section-head">
-            <h2 id="lad-features-title">Por qué Anto</h2>
-            <p>Funciones y herramientas que verás dentro de la app.</p>
-          </div>
-          <div className="lad-features">
-            {features.map((f) => (
-              <article key={f.title} className="lad-feature">
-                <div className="lad-feature-icon" aria-hidden="true">
-                  {f.icon}
-                </div>
-                <div>
-                  <h3>{f.title}</h3>
-                  <p>{f.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section
           className="lad-reinforce"
           aria-label="Tu espacio privado en Anto"

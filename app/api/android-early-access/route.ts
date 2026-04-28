@@ -3,6 +3,23 @@ import { getMongoDb } from '@/lib/server/mongodb';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+type AndroidEarlyAccessSubmission = {
+  submittedAt: string;
+  page: string;
+  placement: string;
+  source: string;
+};
+
+type AndroidEarlyAccessLead = {
+  email: string;
+  firstSeenAt: string;
+  lastSeenAt: string;
+  source: string;
+  campaign: string;
+  submissionCount: number;
+  submissions: AndroidEarlyAccessSubmission[];
+};
+
 type EarlyAccessPayload = {
   email?: string;
   source?: string;
@@ -42,7 +59,7 @@ export async function POST(request: Request) {
 
   try {
     const db = await getMongoDb();
-    const collection = db.collection('android_early_access_leads');
+    const collection = db.collection<AndroidEarlyAccessLead>('android_early_access_leads');
 
     await collection.createIndex({ email: 1 }, { unique: true });
 
