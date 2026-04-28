@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import DownloadLink from '@/components/DownloadLink';
 import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
@@ -13,6 +13,13 @@ type HeroDualCtaProps = {
 
 export default function HeroDualCta({ storeHref, landingVariant }: HeroDualCtaProps) {
   const [showAndroidInput, setShowAndroidInput] = useState(false);
+  const [autoFocusAndroidInput, setAutoFocusAndroidInput] = useState(false);
+
+  useEffect(() => {
+    if (showAndroidInput) {
+      setAutoFocusAndroidInput(true);
+    }
+  }, [showAndroidInput]);
 
   return (
     <div className="lad-hero-fold-cta" id="descargar">
@@ -61,6 +68,7 @@ export default function HeroDualCta({ storeHref, landingVariant }: HeroDualCtaPr
           page="/bienvenida"
           className="android-early-access android-early-access--landing"
           compact
+          autoFocus={autoFocusAndroidInput}
           buttonLabel="Recibir acceso Android"
         />
       </div>

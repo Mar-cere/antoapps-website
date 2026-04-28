@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useMemo, useState } from 'react';
+import { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { getAttributionContext } from '@/lib/analytics/attribution';
 import { trackCustomEvent, withAttribution } from '@/lib/analytics/events';
 import '@/styles/components/android-early-access.css';
@@ -14,6 +14,7 @@ type AndroidEarlyAccessFormProps = {
   subtitle?: string;
   buttonLabel?: string;
   compact?: boolean;
+  autoFocus?: boolean;
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,13 +28,21 @@ export default function AndroidEarlyAccessForm({
   subtitle = 'Únete a la lista prioritaria y recibe invitación antes del lanzamiento público.',
   buttonLabel = 'Quiero acceso anticipado',
   compact = false,
+  autoFocus = false,
 }: AndroidEarlyAccessFormProps) {
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
 
   const isValidEmail = useMemo(() => EMAIL_RE.test(email), [email]);
+
+  useEffect(() => {
+    if (autoFocus && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [autoFocus]);
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -95,6 +104,7 @@ export default function AndroidEarlyAccessForm({
         noValidate
       >
         <input
+          ref={inputRef}
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value.trim())}
@@ -130,6 +140,11 @@ export default function AndroidEarlyAccessForm({
       {message && (
         <p className={`android-early-access-feedback android-early-access-feedback--${status}`}>
           {message}
+        </p>
+      )}
+      {status === 'success' && compact && (
+        <p className="android-early-access-feedback android-early-access-feedback--hint">
+          Revisa tu bandeja y spam en 5 minutos.
         </p>
       )}
     </div>

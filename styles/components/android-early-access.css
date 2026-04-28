@@ -81,6 +81,11 @@
     color: var(--color-error);
 }
 
+.android-early-access-feedback--hint {
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+}
+
 @media (max-width: 640px) {
     .android-early-access-form {
         flex-direction: column;

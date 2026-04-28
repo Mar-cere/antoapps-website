@@ -2,11 +2,9 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import CookieConsent from '@/components/CookieConsent';
-import DownloadLink from '@/components/DownloadLink';
-import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
 import HeroDualCta from '@/components/bienvenida/HeroDualCta';
 import LandingViewTracker from '@/components/analytics/LandingViewTracker';
-import { APP_STORE_BADGE_SVG_PATH, appStoreHref } from '@/lib/download-links';
+import { appStoreHref } from '@/lib/download-links';
 import '@/styles/components/buttons.css';
 import '@/styles/pages/landing-ad.css';
 
@@ -48,81 +46,6 @@ export const metadata: Metadata = {
   },
 };
 
-const features = [
-  {
-    icon: '🤖',
-    title: 'Conversación con IA',
-    text: 'Tono profesional y práctico, con protocolos basados en evidencia cuando aplica.',
-  },
-  {
-    icon: '🛡️',
-    title: 'Privacidad',
-    text: 'Tus conversaciones van contigo; diseñamos la app pensando en confidencialidad.',
-  },
-  {
-    icon: '📊',
-    title: 'Seguimiento claro',
-    text: 'Escalas validadas (PHQ-9, GAD-7) y herramientas para ver tu progreso.',
-  },
-  {
-    icon: '⏰',
-    title: 'Siempre disponible',
-    text: 'Apoyo cuando lo necesites, sin agendas ni esperas.',
-  },
-] as const;
-
-type StoreCtaProps = {
-  storeHref: string;
-  blockId?: string;
-  title: string;
-  priority?: boolean;
-  landingVariant: 'A' | 'B';
-};
-
-function StoreCtaBlock({ storeHref, blockId, title, priority, landingVariant }: StoreCtaProps) {
-  return (
-    <div className="lad-cta-wrap" id={blockId}>
-      <p className="lad-cta-title">{title}</p>
-      <div className="lad-cta-card">
-        <p className="lad-cta-label">iPhone e iPad</p>
-        <p className="lad-cta-trial">
-          <strong>3 días gratis</strong> para probar la app. Sin compromiso: tú decides después.
-        </p>
-        <DownloadLink
-          href={storeHref}
-          className="lad-store-badge-link lad-store-badge-link--primary"
-          trackingPlacement="bienvenida_store_badge_block"
-          trackingPage="/bienvenida"
-          trackingLabel={`store_badge_block_variant_${landingVariant}`}
-          aria-label="Descargar Anto en App Store. Incluye prueba gratis de 3 días. Se abre en una pestaña nueva."
-        >
-          <Image
-            src={APP_STORE_BADGE_SVG_PATH}
-            alt=""
-            width={120}
-            height={40}
-            className="lad-store-badge-img"
-            priority={priority}
-          />
-        </DownloadLink>
-        <p className="lad-cta-foot">
-          Se abre en la App Store · <strong>Descarga sin costo</strong> · Condiciones del plan en la tienda
-        </p>
-      </div>
-      <div className="lad-cta-secondary" aria-label="Android acceso anticipado">
-        <AndroidEarlyAccessForm
-          placement="bienvenida_store_block_android_early_access"
-          page="/bienvenida"
-          className="android-early-access android-early-access--landing"
-          title="Acceso anticipado Android"
-          subtitle="Únete a la lista prioritaria para recibir invitación antes del lanzamiento público."
-          buttonLabel="Quiero acceso anticipado"
-        />
-      </div>
-    </div>
-  );
-}
-
 type BienvenidaLandingPageProps = {
   searchParams?: Record<string, string | string[] | undefined>;
 };
@@ -135,8 +58,6 @@ function parseVariant(value: string | string[] | undefined): 'A' | 'B' {
 export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandingPageProps) {
   const storeHref = appStoreHref();
   const landingVariant = parseVariant(searchParams?.ab);
-  const primaryCtaText =
-    landingVariant === 'B' ? 'Descargar en iPhone (3 días gratis)' : 'Empieza en iPhone (3 días gratis)';
 
   return (
     <div className="lad-page">
@@ -207,46 +128,6 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
           </ul>
         </section>
 
-        <p className="lad-trust-line">
-          <span className="lad-trust-platform">Acceso anticipado Android disponible</span>
-          <Link href="/contacto" className="lad-trust-link">
-            ¿Dudas antes de instalar? Escríbenos
-          </Link>
-        </p>
-
-        <section className="lad-final lad-final--push" aria-labelledby="lad-final-title">
-          <h2 id="lad-final-title">Empieza hoy. Si te sirve, te quedas.</h2>
-          <p className="lad-final-sub">
-            <span className="lad-final-sub-line">Empieza en pocos pasos.</span>
-            <span className="lad-final-sub-line">Cancelación simple desde App Store.</span>
-          </p>
-          <div className="lad-final-cta-stack">
-            <DownloadLink
-              href={storeHref}
-              className="btn btn-primary btn-large lad-hero-cta-btn"
-              trackingPlacement="bienvenida_final_primary_cta"
-              trackingPage="/bienvenida"
-              trackingLabel={`final_primary_variant_${landingVariant}`}
-              aria-label="Empieza ahora: descargar Anto en App Store. Incluye prueba gratis."
-            >
-              {primaryCtaText}
-            </DownloadLink>
-            <p className="lad-hero-cta-micro">Prueba de 3 días y control total desde tu App Store.</p>
-            <p className="lad-cta-privacy">
-              <Link href="/privacidad" className="lad-cta-privacy-link">
-                Cómo tratamos tus datos
-              </Link>
-            </p>
-          </div>
-          <StoreCtaBlock
-            storeHref={storeHref}
-            title="También puedes usar el badge oficial"
-            landingVariant={landingVariant}
-          />
-          <Link href="#descargar" className="lad-cta-back-top">
-            Volver arriba al inicio
-          </Link>
-        </section>
       </main>
 
       <footer className="lad-footer">
