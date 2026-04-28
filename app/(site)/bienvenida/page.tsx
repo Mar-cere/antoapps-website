@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import CookieConsent from '@/components/CookieConsent';
 import DownloadLink from '@/components/DownloadLink';
+import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
 import LandingViewTracker from '@/components/analytics/LandingViewTracker';
 import { APP_STORE_BADGE_SVG_PATH, appStoreHref } from '@/lib/download-links';
 import '@/styles/components/buttons.css';
@@ -107,11 +108,15 @@ function StoreCtaBlock({ storeHref, blockId, title, priority, landingVariant }: 
           Se abre en la App Store · <strong>Descarga sin costo</strong> · Condiciones del plan en la tienda
         </p>
       </div>
-      <div className="lad-cta-secondary" aria-label="Android próximamente">
-        <span className="lad-cta-secondary-label">Android</span>
-        <span className="lad-btn-soon">
-          Google Play <span className="lad-btn-soon-pill">Próximamente</span>
-        </span>
+      <div className="lad-cta-secondary" aria-label="Android acceso anticipado">
+        <AndroidEarlyAccessForm
+          placement="bienvenida_store_block_android_early_access"
+          page="/bienvenida"
+          className="android-early-access android-early-access--landing"
+          title="Acceso anticipado Android"
+          subtitle="Únete a la lista prioritaria para recibir invitación antes del lanzamiento público."
+          buttonLabel="Quiero acceso anticipado"
+        />
       </div>
     </div>
   );
@@ -301,7 +306,7 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
         </section>
 
         <p className="lad-trust-line">
-          <span className="lad-trust-platform">Android en preparación</span>
+          <span className="lad-trust-platform">Acceso anticipado Android disponible</span>
           <Link href="/contacto" className="lad-trust-link">
             ¿Dudas antes de instalar? Escríbenos
           </Link>

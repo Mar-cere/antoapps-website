@@ -1,0 +1,80 @@
+.android-early-access {
+    width: min(100%, 28rem);
+    margin-top: var(--spacing-3);
+    padding: var(--spacing-4);
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-align: left;
+}
+
+.android-early-access-title {
+    margin: 0 0 var(--spacing-1);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.android-early-access-subtitle {
+    margin: 0 0 var(--spacing-3);
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
+    color: var(--color-text-secondary);
+}
+
+.android-early-access-form {
+    display: flex;
+    gap: var(--spacing-2);
+}
+
+.android-early-access-input {
+    flex: 1;
+    min-height: 42px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 0 var(--spacing-3);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    background: var(--color-bg-primary);
+}
+
+.android-early-access-button {
+    min-height: 42px;
+    padding: 0 var(--spacing-3);
+    white-space: nowrap;
+}
+
+.android-early-access-footnote {
+    margin: var(--spacing-2) 0 0;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}
+
+.android-early-access-footnote a {
+    color: var(--color-link);
+}
+
+.android-early-access-feedback {
+    margin: var(--spacing-2) 0 0;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+}
+
+.android-early-access-feedback--success {
+    color: var(--color-success);
+}
+
+.android-early-access-feedback--error {
+    color: var(--color-error);
+}
+
+@media (max-width: 640px) {
+    .android-early-access-form {
+        flex-direction: column;
+    }
+
+    .android-early-access-button {
+        width: 100%;
+    }
+}
+

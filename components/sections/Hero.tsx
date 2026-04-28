@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import DownloadLink from '@/components/DownloadLink';
+import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
 import { APP_STORE_BADGE_SVG_PATH, appStoreHref } from '@/lib/download-links';
 import { useParticles } from '@/lib/hooks/useParticles';
 import { useParallax } from '@/lib/hooks/useParallax';
@@ -62,12 +63,18 @@ export default function Hero() {
               aria-disabled="true"
               aria-label="Google Play (próximamente)"
             >
-              Google Play <span className="btn-soon-pill">Próximamente</span>
+              Android <span className="btn-soon-pill">Acceso anticipado</span>
             </span>
             <Link href="/app" className="btn btn-secondary btn-large">
               Conocer la app
             </Link>
           </div>
+          <AndroidEarlyAccessForm
+            placement="home_hero_android_early_access"
+            page="/"
+            title="Acceso anticipado Android"
+            subtitle="Únete a la lista prioritaria y recibe invitación antes del lanzamiento público."
+          />
         </div>
         <div className="hero-image reveal-on-scroll-enhanced" ref={heroImageRef}>
           <div className="phone-in-hand-container float-enhanced">
