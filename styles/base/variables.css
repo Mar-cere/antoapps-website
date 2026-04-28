@@ -3,21 +3,21 @@
    ============================================ */
 
 :root {
-    /* Colores Principales (Mantener) */
-    --primary-color: #1ADDDB;
-    --bg-dark: #030A24; /* Mantener para modo oscuro opcional */
-    --white: #FFFFFF;
-    --secondary-color: #A3B8E8;
+    /* Alias legacy conectados a tokens actuales */
+    --primary-color: var(--color-primary);
+    --bg-dark: var(--color-bg-dark);
+    --white: var(--color-bg-primary);
+    --secondary-color: var(--color-secondary);
     
     /* Colores de Tarjetas (Estilo Apple - Fondos Claros) */
-    --card-bg: #F5F5F7;
-    --card-border: rgba(0, 0, 0, 0.1);
+    --card-bg: var(--color-surface-card);
+    --card-border: var(--color-border);
     
     /* Colores de Estado */
-    --success: #4CAF50;
-    --error: #FF6B6B;
-    --warning: #FFD93D;
-    --info: #6BCB77;
+    --success: var(--color-success);
+    --error: var(--color-error);
+    --warning: var(--color-warning);
+    --info: var(--color-info);
     
     /* Tipografía (Estilo Apple - Grande y Clara) */
     --font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', 'Segoe UI', Roboto, sans-serif;
