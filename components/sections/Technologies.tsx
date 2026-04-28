@@ -21,7 +21,7 @@ const techCategories: TechCategory[] = [
     icon: '🤖',
     color: '#1ADDDB',
     items: [
-      { name: 'OpenAI GPT-5 Mini', icon: '🧠', description: 'API principal para conversaciones inteligentes' },
+      { name: 'OpenAI GPT-5.4 Mini', icon: '🧠', description: 'API principal para conversaciones inteligentes' },
       { name: 'NLP Processing', icon: '💬', description: 'Procesamiento de lenguaje natural' },
       { name: 'Sentiment Analysis', icon: '📊', description: 'Análisis emocional en tiempo real' },
     ],

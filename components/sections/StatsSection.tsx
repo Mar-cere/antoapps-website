@@ -41,7 +41,7 @@ export default function StatsSection() {
         <div className="stats-grid" data-stagger>
           <StatCard target={24} suffix="/7" label="Horas Disponibles" />
           <StatCard target={2.5} suffix="s" label="Tiempo de Respuesta" decimals={1} />
-          <StatCard target={95} suffix="%" label="Cobertura de Tests" />
+          <StatCard target={97} suffix="%" label="Cobertura de Tests" />
         </div>
       </div>
     </section>

@@ -17,7 +17,7 @@ const faqData = [
     id: 2,
     question: '¿Cómo funciona el asistente AI?',
     answer:
-      'El asistente usa NLP de última generación (OpenAI GPT-5 Mini) con enfoque de bienestar emocional y técnicas alineadas con evidencia (p. ej. enfoques tipo CBT cuando encajan). Por defecto el tono es profesional y práctico; no sustituye terapia presencial ni diagnóstico clínico. Incluye escalas validadas (PHQ-9, GAD-7), detección de distorsiones cognitivas y protocolos estructurados. Puedes ajustar preferencias de estilo de respuesta cuando la app lo ofrece (v1.2+). El sistema contextualiza tus mensajes y mejora la personalización con el uso; la app y el backend se actualizan según el diseño del producto y buenas prácticas de seguridad.',
+      'El asistente usa NLP de última generación (OpenAI GPT-5.4 Mini) con enfoque de bienestar emocional y técnicas alineadas con evidencia (p. ej. enfoques tipo CBT cuando encajan). Por defecto el tono es profesional y práctico; no sustituye terapia presencial ni diagnóstico clínico. Incluye escalas validadas (PHQ-9, GAD-7), detección de distorsiones cognitivas y protocolos estructurados. Puedes ajustar preferencias de estilo de respuesta cuando la app lo ofrece (v1.2+). El sistema contextualiza tus mensajes y mejora la personalización con el uso; la app y el backend se actualizan según el diseño del producto y buenas prácticas de seguridad.',
     category: 'funcionalidad',
   },
   {

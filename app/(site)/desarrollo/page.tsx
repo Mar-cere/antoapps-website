@@ -116,7 +116,7 @@ export default function DesarrolloPage() {
                 <div className="tech-category">
                   <h3>🤖 Inteligencia Artificial</h3>
                   <ul>
-                    <li>OpenAI GPT-5 Mini API</li>
+                    <li>OpenAI GPT-5.4 Mini API</li>
                     <li>Procesamiento de lenguaje natural</li>
                     <li>Análisis emocional</li>
                     <li>Detección de patrones</li>

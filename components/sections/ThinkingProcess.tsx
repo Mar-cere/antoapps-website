@@ -44,8 +44,8 @@ const decisions: Decision[] = [
     title: 'OpenAI API vs Modelo propio',
     context: 'Necesitaba procesamiento de lenguaje natural de alta calidad para conversaciones terapéuticas.',
     alternatives: ['Entrenar modelo propio', 'Hugging Face models', 'Otras APIs (Anthropic, Cohere)'],
-    decision: 'OpenAI GPT-5 Mini API',
-    reasoning: 'OpenAI ofrece el mejor balance calidad/precio, GPT-5 Mini es optimizado para eficiencia, API robusta con rate limiting, y actualizaciones automáticas del modelo. Un modelo propio requeriría infraestructura costosa y mantenimiento constante.',
+    decision: 'OpenAI GPT-5.4 Mini API',
+    reasoning: 'OpenAI ofrece el mejor balance calidad/precio, GPT-5.4 Mini es optimizado para eficiencia, API robusta con rate limiting, y actualizaciones automáticas del modelo. Un modelo propio requeriría infraestructura costosa y mantenimiento constante.',
     outcome: 'Respuestas de alta calidad con <2.5s de latencia, costo por conversación <$0.01, escalabilidad sin infraestructura propia.',
     icon: '🤖'
   }

@@ -16,14 +16,14 @@ export default function AIExplained() {
             <div className="ai-step-content">
               <h3>Integración con OpenAI API</h3>
               <p>
-                Conexión directa con GPT-5 Mini mediante API REST. El asistente prioriza un tono
+                Conexión directa con GPT-5.4 Mini mediante API REST. El asistente prioriza un tono
                 profesional y práctico (orientación y micro-pasos; no rol de terapeuta clínico en el
                 texto). Las conversaciones se almacenan en MongoDB para memoria contextual. Evaluación
                 con escalas validadas (PHQ-9, GAD-7) y detección de 15 tipos de distorsiones cognitivas;
                 puedes ajustar preferencias de respuesta cuando la app lo ofrece.
               </p>
               <div className="ai-tech">
-                <span className="tech-badge">OpenAI GPT-5 Mini</span>
+                <span className="tech-badge">OpenAI GPT-5.4 Mini</span>
                 <span className="tech-badge">MongoDB</span>
                 <span className="tech-badge">NLP</span>
                 <span className="tech-badge">Escalas Clínicas</span>

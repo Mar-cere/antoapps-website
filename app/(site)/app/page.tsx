@@ -11,7 +11,7 @@ import '@/styles/components/app-page.css';
 export const metadata: Metadata = {
   title: 'La Aplicación - Anto | Características e Insights',
   description:
-    'Anto v1.2.7 (Expo): asistente de bienestar emocional con GPT-5 Mini, escalas PHQ-9/GAD-7, protocolos estructurados y detección de crisis. Incluye novedades recientes y accesos rápidos.',
+    'Anto v1.2.7 (Expo): asistente de bienestar emocional con GPT-5.4 Mini, escalas PHQ-9/GAD-7, protocolos estructurados y detección de crisis. Incluye novedades recientes y accesos rápidos.',
   openGraph: {
     title: 'La Aplicación - Anto',
     description: 'Características, insights y pantallazos de la aplicación Anto.',
@@ -34,7 +34,7 @@ export default function AppPage() {
               <h1 className="app-hero-title reveal-on-scroll">Conoce la Aplicación Anto</h1>
               <p className="app-hero-subtitle reveal-on-scroll">
                 Versión publicada <strong>1.2.7</strong> (Expo). React Native y backend Node.js/Express.
-                Integración con OpenAI GPT-5 Mini, detección de crisis, tareas y hábitos, y más.{' '}
+                Integración con OpenAI GPT-5.4 Mini, detección de crisis, tareas y hábitos, y más.{' '}
                 <a
                   href="https://github.com/Mar-cere/Anto"
                   target="_blank"
@@ -124,7 +124,7 @@ export default function AppPage() {
                 <div className="insight-value">&lt;2.5s</div>
                 <div className="insight-label">Respuesta del AI</div>
                 <p className="insight-description">
-                  Integración con GPT-5 Mini optimizada para respuestas rápidas y contextuales en
+                  Integración con GPT-5.4 Mini optimizada para respuestas rápidas y contextuales en
                   tiempo real mediante Socket.IO
                 </p>
               </div>
@@ -283,16 +283,16 @@ export default function AppPage() {
               <div className="advanced-feature reveal-on-scroll" data-stagger-item>
                 <div className="feature-header">
                   <div className="feature-icon">🤖</div>
-                  <h3>Chat Conversacional Avanzado con GPT-5 Mini</h3>
+                  <h3>Chat Conversacional Avanzado con GPT-5.4 Mini</h3>
                 </div>
                 <p>
-                  Integración directa con OpenAI API (GPT-5 Mini): tono profesional y práctico por
+                  Integración directa con OpenAI API (GPT-5.4 Mini): tono profesional y práctico por
                   defecto, contexto emocional y memoria de conversación. Evaluación con escalas,
                   distorsiones cognitivas y protocolos estructurados; ajustes de estilo cuando la app
                   lo permite.
                 </p>
                 <ul className="feature-list">
-                  <li>Integración con OpenAI GPT-5 Mini</li>
+                  <li>Integración con OpenAI GPT-5.4 Mini</li>
                   <li>Memoria de conversaciones en MongoDB</li>
                   <li>Procesamiento de lenguaje natural (NLP)</li>
                   <li>Respuestas contextualmente relevantes</li>
@@ -424,7 +424,7 @@ export default function AppPage() {
                   <li>Node.js y Express.js</li>
                   <li>MongoDB con Mongoose</li>
                   <li>Socket.IO para WebSockets</li>
-                  <li>OpenAI API (GPT-5 Mini)</li>
+                  <li>OpenAI API (GPT-5.4 Mini)</li>
                   <li>Winston para logging</li>
                   <li>Sentry para error tracking</li>
                 </ul>

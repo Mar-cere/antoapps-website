@@ -18,7 +18,7 @@ export default function Features() {
               <div className="feature-icon icon-hover-enhanced">🤖</div>
               <h3>Asistente de IA (bienestar emocional)</h3>
               <p>
-                Chat con GPT-5 Mini, tono profesional y práctico por defecto. Escalas validadas (PHQ-9,
+                Chat con GPT-5.4 Mini, tono profesional y práctico por defecto. Escalas validadas (PHQ-9,
                 GAD-7), detección de distorsiones cognitivas y protocolos estructurados basados en
                 evidencia; preferencias de estilo de respuesta cuando la app lo ofrece (v1.2+)
               </p>
@@ -72,7 +72,7 @@ export default function Features() {
               <div className="step-content">
                 <h3>Descarga la App</h3>
                 <p>
-                  Disponible gratis en App Store y Google Play. La descarga es rápida (menos de 50MB) y
+                  Disponible gratis en App Store y Google Play. La descarga es rápida (menos de 40MB) y
                   la instalación toma menos de un minuto. Compatible con iOS 13+ y Android 8.0+.
                 </p>
               </div>

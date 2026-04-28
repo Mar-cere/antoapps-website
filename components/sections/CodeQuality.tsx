@@ -18,7 +18,7 @@ const qualityMetrics: QualityMetric[] = [
     metrics: [
       {
         label: 'Cobertura de Tests',
-        value: '95%+',
+        value: '97%+',
         description: 'Tests unitarios, de integración y E2E cubriendo funcionalidades críticas',
         icon: '✅'
       },

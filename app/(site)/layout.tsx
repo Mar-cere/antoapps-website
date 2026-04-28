@@ -4,7 +4,7 @@ import '../../styles/main.css';
 export const metadata: Metadata = {
   title: 'Anto - Tu apoyo emocional 24/7 | Salud Mental con IA',
   description:
-    'Anto - Tu apoyo emocional 24/7. App de bienestar emocional con IA (GPT-5 Mini), tono profesional y práctico, escalas PHQ-9/GAD-7, protocolos basados en evidencia y detección de crisis. No sustituye atención clínica.',
+    'Anto - Tu apoyo emocional 24/7. App de bienestar emocional con IA (GPT-5.4 Mini), tono profesional y práctico, escalas PHQ-9/GAD-7, protocolos basados en evidencia y detección de crisis. No sustituye atención clínica.',
   keywords:
     'salud mental, terapia, AI, asistente virtual, bienestar emocional, apoyo emocional, terapia online, salud mental app, inteligencia artificial, bienestar mental',
   authors: [{ name: 'Marcelo Ull Marambio', url: 'https://github.com/Mar-cere' }],
@@ -74,7 +74,7 @@ const softwareJsonLd = {
     priceCurrency: 'CLP',
   },
   description:
-    'Aplicación móvil de bienestar emocional con IA (GPT-5 Mini), análisis emocional, detección de crisis y herramientas de bienestar 24/7. No sustituye atención clínica.',
+    'Aplicación móvil de bienestar emocional con IA (GPT-5.4 Mini), análisis emocional, detección de crisis y herramientas de bienestar 24/7. No sustituye atención clínica.',
   screenshot: 'https://antoapps.com/assets/images/antoIcon.png',
   featureList: [
     'Asistente de IA (bienestar emocional)',

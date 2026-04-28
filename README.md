@@ -8,7 +8,7 @@ Sitio web moderno y profesional para **Anto**, aplicación móvil de bienestar e
 
 **Anto** es una aplicación móvil de salud mental que utiliza inteligencia artificial para ofrecer **apoyo emocional personalizado**. **No sustituye** la atención de un profesional de la salud mental ni proporciona diagnóstico clínico. La aplicación ofrece:
 
-- 🤖 **Asistente de IA (bienestar emocional)**: Chat con OpenAI **GPT-5 Mini**, con tono **profesional y práctico** por defecto (orientación, micro-pasos y preguntas concretas). Incluye escalas validadas (PHQ-9, GAD-7), detección de distorsiones cognitivas y protocolos estructurados basados en evidencia. En **v1.2.x**: mejoras de experiencia en chat, **preferencias de tono/respuesta** cuando la app lo ofrece, y documentación de privacidad en la conversación
+- 🤖 **Asistente de IA (bienestar emocional)**: Chat con OpenAI **GPT-5.4 Mini**, con tono **profesional y práctico** por defecto (orientación, micro-pasos y preguntas concretas). Incluye escalas validadas (PHQ-9, GAD-7), detección de distorsiones cognitivas y protocolos estructurados basados en evidencia. En **v1.2.x**: mejoras de experiencia en chat, **preferencias de tono/respuesta** cuando la app lo ofrece, y documentación de privacidad en la conversación
 - 📊 **Análisis Emocional Avanzado**: Detección de patrones emocionales, evaluación clínica automática y reportes profesionales con estadísticas detalladas
 - 🚨 **Detección de Crisis**: Sistema de alertas tempranas para situaciones de riesgo
 - 🛠️ **Herramientas de Bienestar**: Ejercicios, meditaciones y recursos de salud mental

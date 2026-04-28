@@ -57,7 +57,7 @@ export default function TechMetrics() {
             icon="🧩"
           />
           <TechMetricCard 
-            target={95} 
+            target={97} 
             suffix="%" 
             label="Cobertura de Tests"
             description="Calidad garantizada con testing exhaustivo"

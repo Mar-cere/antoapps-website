@@ -47,7 +47,7 @@ const impacts: Impact[] = [
       },
       {
         title: 'Tests Exhaustivos',
-        metric: '95%+ Cobertura',
+        metric: '97%+ Cobertura',
         description: 'Suite completa de tests asegurando calidad y confiabilidad',
         icon: '✅'
       },
