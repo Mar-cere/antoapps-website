@@ -202,6 +202,16 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
                 Cómo tratamos tus datos
               </Link>
             </p>
+            <div style={{ width: '100%', maxWidth: '20rem', marginTop: 'var(--spacing-3)' }}>
+              <AndroidEarlyAccessForm
+                id="android-early-access-bienvenida"
+                placement="bienvenida_hero_android_early_access"
+                page="/bienvenida"
+                className="android-early-access android-early-access--landing"
+                compact
+                buttonLabel="Acceso anticipado Android"
+              />
+            </div>
             {landingVariant === 'B' && (
               <div className="lad-hero-store-trust">
                 <DownloadLink

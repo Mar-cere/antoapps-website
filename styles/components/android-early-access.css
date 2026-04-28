@@ -27,6 +27,10 @@
     gap: var(--spacing-2);
 }
 
+.android-early-access-form--compact {
+    align-items: center;
+}
+
 .android-early-access-input {
     flex: 1;
     min-height: 42px;
@@ -42,6 +46,10 @@
     min-height: 42px;
     padding: 0 var(--spacing-3);
     white-space: nowrap;
+}
+
+.android-early-access-button--compact {
+    min-width: 150px;
 }
 
 .android-early-access-footnote {

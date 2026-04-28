@@ -6,23 +6,27 @@ import { trackCustomEvent, withAttribution } from '@/lib/analytics/events';
 import '@/styles/components/android-early-access.css';
 
 type AndroidEarlyAccessFormProps = {
+  id?: string;
   placement: string;
   page: string;
   className?: string;
   title?: string;
   subtitle?: string;
   buttonLabel?: string;
+  compact?: boolean;
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function AndroidEarlyAccessForm({
+  id,
   placement,
   page,
   className,
   title = 'Acceso anticipado Android',
   subtitle = 'Únete a la lista prioritaria y recibe invitación antes del lanzamiento público.',
   buttonLabel = 'Quiero acceso anticipado',
+  compact = false,
 }: AndroidEarlyAccessFormProps) {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -82,31 +86,41 @@ export default function AndroidEarlyAccessForm({
   };
 
   return (
-    <div className={className || 'android-early-access'}>
-      <p className="android-early-access-title">{title}</p>
-      <p className="android-early-access-subtitle">{subtitle}</p>
-      <form className="android-early-access-form" onSubmit={onSubmit} noValidate>
+    <div id={id} className={className || 'android-early-access'}>
+      {!compact && <p className="android-early-access-title">{title}</p>}
+      {!compact && <p className="android-early-access-subtitle">{subtitle}</p>}
+      <form
+        className={`android-early-access-form ${compact ? 'android-early-access-form--compact' : ''}`}
+        onSubmit={onSubmit}
+        noValidate
+      >
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value.trim())}
           className="android-early-access-input"
-          placeholder="tuemail@ejemplo.com"
+          placeholder={
+            compact ? 'Tu email para acceso anticipado Android' : 'tuemail@ejemplo.com'
+          }
           aria-label="Correo para acceso anticipado Android"
           required
         />
         <button
           type="submit"
-          className="btn btn-primary android-early-access-button"
+          className={`btn btn-primary android-early-access-button ${
+            compact ? 'android-early-access-button--compact' : ''
+          }`}
           disabled={!isValidEmail || isSubmitting}
         >
           {isSubmitting ? 'Enviando...' : buttonLabel}
         </button>
       </form>
-      <p className="android-early-access-footnote">
-        Cupos limitados. Te contactaremos por correo. Al enviar aceptas nuestra{' '}
-        <a href="/privacidad">Política de Privacidad</a>.
-      </p>
+      {!compact && (
+        <p className="android-early-access-footnote">
+          Cupos limitados. Te contactaremos por correo. Al enviar aceptas nuestra{' '}
+          <a href="/privacidad">Política de Privacidad</a>.
+        </p>
+      )}
       {message && (
         <p className={`android-early-access-feedback android-early-access-feedback--${status}`}>
           {message}

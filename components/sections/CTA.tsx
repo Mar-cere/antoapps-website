@@ -29,23 +29,17 @@ export default function CTA() {
               className="store-badge-img"
             />
           </DownloadLink>
-          <span
-            className="btn btn-secondary btn-large is-disabled btn-soon-store"
-            aria-disabled="true"
-            aria-label="Google Play (próximamente)"
-          >
-            Android <span className="btn-soon-pill">Acceso anticipado</span>
-          </span>
           <Link href="/privacidad" className="btn btn-secondary btn-large">
             Ver Política de Privacidad
           </Link>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <AndroidEarlyAccessForm
+            id="android-early-access-cta"
             placement="home_cta_android_early_access"
             page="/"
-            title="Acceso anticipado Android"
-            subtitle="Recibe tu invitación por correo antes del lanzamiento público."
+            compact
+            buttonLabel="Acceso anticipado Android"
           />
         </div>
       </div>

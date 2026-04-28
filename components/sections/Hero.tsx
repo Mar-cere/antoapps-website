@@ -58,22 +58,16 @@ export default function Hero() {
                 priority
               />
             </DownloadLink>
-            <span
-              className="btn btn-secondary btn-large is-disabled btn-soon-store"
-              aria-disabled="true"
-              aria-label="Google Play (próximamente)"
-            >
-              Android <span className="btn-soon-pill">Acceso anticipado</span>
-            </span>
             <Link href="/app" className="btn btn-secondary btn-large">
               Conocer la app
             </Link>
           </div>
           <AndroidEarlyAccessForm
+            id="android-early-access-home"
             placement="home_hero_android_early_access"
             page="/"
-            title="Acceso anticipado Android"
-            subtitle="Únete a la lista prioritaria y recibe invitación antes del lanzamiento público."
+            compact
+            buttonLabel="Acceso anticipado Android"
           />
         </div>
         <div className="hero-image reveal-on-scroll-enhanced" ref={heroImageRef}>
