@@ -11,7 +11,7 @@ import '@/styles/components/app-page.css';
 export const metadata: Metadata = {
   title: 'La Aplicación - Anto | Características e Insights',
   description:
-    'Anto v1.2.2 (Expo): asistente de bienestar emocional con GPT-5 Mini, escalas PHQ-9/GAD-7, protocolos estructurados y detección de crisis. Incluye novedades recientes y accesos rápidos.',
+    'Anto v1.2.7 (Expo): asistente de bienestar emocional con GPT-5 Mini, escalas PHQ-9/GAD-7, protocolos estructurados y detección de crisis. Incluye novedades recientes y accesos rápidos.',
   openGraph: {
     title: 'La Aplicación - Anto',
     description: 'Características, insights y pantallazos de la aplicación Anto.',
@@ -33,7 +33,7 @@ export default function AppPage() {
             <div className="app-hero-content">
               <h1 className="app-hero-title reveal-on-scroll">Conoce la Aplicación Anto</h1>
               <p className="app-hero-subtitle reveal-on-scroll">
-                Versión publicada <strong>1.2.2</strong> (Expo). React Native y backend Node.js/Express.
+                Versión publicada <strong>1.2.7</strong> (Expo). React Native y backend Node.js/Express.
                 Integración con OpenAI GPT-5 Mini, detección de crisis, tareas y hábitos, y más.{' '}
                 <a
                   href="https://github.com/Mar-cere/Anto"
@@ -45,7 +45,7 @@ export default function AppPage() {
                 </a>
               </p>
               <div className="app-hero-badges reveal-on-scroll">
-                <span className="app-badge">📌 v1.2.2</span>
+                <span className="app-badge">📌 v1.2.7</span>
                 <span className="app-badge">📱 iOS & Android</span>
                 <span className="app-badge">🔒 100% Privado</span>
                 <span className="app-badge">⚡ Tiempo Real</span>

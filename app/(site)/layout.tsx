@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     url: 'https://antoapps.com',
     title: 'Anto - Tu apoyo emocional 24/7',
     description:
-      'App de bienestar emocional con IA, análisis emocional y herramientas de bienestar. Disponible 24/7. Versión publicada 1.2.2.',
+      'App de bienestar emocional con IA, análisis emocional y herramientas de bienestar. Disponible 24/7. Versión publicada 1.2.7.',
     images: [
       {
         url: 'https://antoapps.com/assets/images/antoIcon.png',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Anto - Tu apoyo emocional 24/7',
     description:
-      'App de bienestar emocional con IA, análisis emocional y herramientas de bienestar. Versión 1.2.2.',
+      'App de bienestar emocional con IA, análisis emocional y herramientas de bienestar. Versión 1.2.7.',
     images: ['https://antoapps.com/assets/images/antoIcon.png'],
   },
   icons: {

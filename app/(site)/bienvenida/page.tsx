@@ -159,7 +159,7 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
           <p className="lad-hero-lead">
             Escribes como te salga y recibes guía clara, práctica y humana en segundos.
           </p>
-          <p className="lad-proof-line">Versión 1.2.2 publicada en tiendas · App Store disponible hoy</p>
+          <p className="lad-proof-line">Versión 1.2.7 publicada en tiendas · App Store disponible hoy</p>
           <div className="lad-hero-visual" aria-hidden="true">
             <div className="lad-hero-visual-orbit lad-hero-visual-orbit--one"></div>
             <div className="lad-hero-visual-orbit lad-hero-visual-orbit--two"></div>

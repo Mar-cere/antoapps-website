@@ -23,11 +23,11 @@ interface Version {
 
 const changelog: Version[] = [
   {
-    version: '1.2.2',
+    version: '1.2.7',
     date: '2026-03-27',
     status: 'current',
     highlights: [
-      'Versión 1.2.2 (Expo) — línea actual en tiendas',
+      'Versión 1.2.7 (Expo) — línea actual en tiendas',
       'Mejor experiencia de chat (v1.2.x)',
       'Preferencias de tono y estilo de respuesta del asistente (cuando la app lo ofrece)',
       'Transparencia: privacidad integrada en la conversación',
@@ -102,7 +102,7 @@ function ChangelogContent() {
           Historial de versiones y actualizaciones de la aplicación Anto
         </p>
         <div className="changelog-status-note">
-          <span className="status-badge status-badge-current-banner">Versión en tiendas: 1.2.2</span>
+          <span className="status-badge status-badge-current-banner">Versión en tiendas: 1.2.7</span>
           <p className="status-text">
             Publicada según la app (Expo) y el{' '}
             <a href="https://github.com/Mar-cere/Anto" target="_blank" rel="noopener noreferrer">

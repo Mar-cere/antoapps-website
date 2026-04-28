@@ -1,6 +1,6 @@
 # 🧠 Anto - Sitio Web Oficial
 
-Sitio web moderno y profesional para **Anto**, aplicación móvil de bienestar emocional con IA (**versión app Expo: 1.2.2**). Desarrollado con **Next.js 14**, TypeScript, y optimizado para rendimiento, accesibilidad y SEO.
+Sitio web moderno y profesional para **Anto**, aplicación móvil de bienestar emocional con IA (**versión app Expo: 1.2.7**). Desarrollado con **Next.js 14**, TypeScript, y optimizado para rendimiento, accesibilidad y SEO.
 
 ![Anto Logo](public/assets/images/antoIcon.png)
 
