@@ -25,10 +25,10 @@
 }
 
 .app-hero-subtitle {
-    font-size: clamp(1.3125rem, 2.5vw, 1.875rem);
+    font-size: clamp(1.125rem, 2.2vw, 1.5rem);
     font-weight: var(--font-weight-normal);
     color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-8);
+    margin-bottom: var(--spacing-6);
     line-height: var(--line-height-relaxed);
 }
 
@@ -45,7 +45,7 @@
     color: var(--color-primary);
     padding: var(--spacing-2) var(--spacing-4);
     border-radius: var(--radius-md);
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
 }
 
@@ -246,7 +246,7 @@
     background: var(--color-bg-primary);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
-    padding: var(--spacing-md);
+    padding: var(--spacing-6);
     transition: var(--transition-base);
 }
 
@@ -262,7 +262,7 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-4);
 }
 
 .feature-icon {
@@ -325,7 +325,7 @@
     background: var(--color-bg-primary);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
-    padding: var(--spacing-md);
+    padding: var(--spacing-6);
     transition: var(--transition-base);
 }
 
