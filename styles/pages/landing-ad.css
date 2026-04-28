@@ -8,6 +8,8 @@
         radial-gradient(90% 60% at 0% 100%, rgba(3, 105, 161, 0.08) 0%, transparent 50%),
         var(--color-bg-primary);
     color: var(--color-text-primary);
+    background-size: 140% 140%;
+    animation: lad-bg-shift 18s ease-in-out infinite;
 }
 
 .lad-topbar {
@@ -52,6 +54,7 @@
     margin: 0 auto;
     padding: var(--spacing-6) var(--spacing-4) var(--spacing-8);
     text-align: center;
+    position: relative;
 }
 
 .lad-hero-badge {
@@ -65,7 +68,7 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--color-text-secondary);
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.92);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-full);
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
@@ -78,7 +81,7 @@
     line-height: 1.18;
     letter-spacing: -0.03em;
     margin: 0 0 var(--spacing-4);
-    color: var(--color-text-primary);
+    color: #07112f;
     animation: lad-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
 }
 
@@ -88,7 +91,7 @@
 
 .lad-hero-title-line:last-child {
     margin-top: 0.2em;
-    color: var(--color-text-primary);
+    color: #0c2868;
 }
 
 .lad-hero-lead {
@@ -159,10 +162,30 @@
     font-size: var(--font-size-sm);
     line-height: 1.45;
     color: var(--color-text-secondary);
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.84);
     border: 1px solid var(--color-border-light);
     border-radius: var(--radius-full);
     padding: var(--spacing-2) var(--spacing-4);
+}
+
+.lad-social-proof {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+    justify-content: center;
+    margin: 0 auto var(--spacing-5);
+    max-width: 28rem;
+}
+
+.lad-social-proof-item {
+    font-size: 0.72rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.01em;
+    color: #13407e;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(19, 64, 126, 0.14);
+    border-radius: var(--radius-full);
+    padding: 0.35rem 0.65rem;
 }
 
 /* Above the fold: acción verbal + confianza tienda */
@@ -175,6 +198,51 @@
     animation: lad-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both;
 }
 
+.lad-dual-badges {
+    margin-top: var(--spacing-3);
+    display: flex;
+    gap: var(--spacing-2);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.lad-play-badge-trigger {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    line-height: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lad-play-badge-trigger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(3, 10, 36, 0.12);
+}
+
+.lad-play-badge-trigger:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+.lad-android-reveal {
+    width: 100%;
+    max-width: 24rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-8px);
+    transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+.lad-android-reveal.is-open {
+    max-height: 220px;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: var(--spacing-3);
+}
+
 .lad-hero-cta-btn {
     width: 100%;
     max-width: 20rem;
@@ -182,11 +250,13 @@
     border-radius: var(--radius-full);
     font-weight: var(--font-weight-semibold);
     letter-spacing: 0.02em;
-    box-shadow: 0 4px 20px rgba(26, 221, 219, 0.35);
+    box-shadow: 0 6px 24px rgba(26, 221, 219, 0.4);
+    animation: lad-cta-glow 2.2s ease-in-out infinite;
 }
 
 .lad-hero-cta-btn:hover {
-    box-shadow: 0 8px 28px rgba(26, 221, 219, 0.4);
+    box-shadow: 0 12px 32px rgba(26, 221, 219, 0.5);
+    transform: translateY(-1px);
 }
 
 .lad-hero-cta-micro {
@@ -691,8 +761,12 @@
 .lad-final {
     text-align: center;
     padding: var(--spacing-12) var(--spacing-4) var(--spacing-8);
-    max-width: 28rem;
+    max-width: 30rem;
     margin: 0 auto;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(240, 250, 255, 0.84));
+    border: 1px solid rgba(26, 221, 219, 0.24);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 16px 45px rgba(3, 10, 36, 0.08);
 }
 
 .lad-final h2 {
@@ -841,6 +915,28 @@
     }
 }
 
+@keyframes lad-bg-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes lad-cta-glow {
+    0%,
+    100% {
+        box-shadow: 0 6px 24px rgba(26, 221, 219, 0.4);
+    }
+    50% {
+        box-shadow: 0 10px 30px rgba(26, 221, 219, 0.55);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .lad-hero-badge,
     .lad-hero h1,
@@ -862,7 +958,9 @@
 
     .lad-hero-visual-orbit--one,
     .lad-hero-visual-orbit--two,
-    .lad-hero-visual-core {
+    .lad-hero-visual-core,
+    .lad-page,
+    .lad-hero-cta-btn {
         animation: none;
     }
 }
@@ -901,5 +999,10 @@
 
     .lad-hero-visual-core {
         inset: 30px;
+    }
+
+    .lad-dual-badges {
+        flex-direction: column;
+        align-items: center;
     }
 }

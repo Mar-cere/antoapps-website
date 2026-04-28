@@ -9,6 +9,7 @@ export const DEFAULT_APP_STORE_URL = 'https://apps.apple.com/cl/app/anto/id67566
 
 /** Badge oficial Apple (ES, negro) — Marketing / App Store Connect. */
 export const APP_STORE_BADGE_SVG_PATH = '/assets/badges/download-on-the-app-store-es.svg';
+export const GOOGLE_PLAY_BADGE_SVG_PATH = '/assets/badges/get-it-on-google-play-es.svg';
 
 export function appStoreHref(): string {
   const u = process.env.NEXT_PUBLIC_APP_STORE_URL?.trim();

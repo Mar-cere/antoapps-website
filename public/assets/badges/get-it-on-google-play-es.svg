@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="54" viewBox="0 0 180 54" role="img" aria-label="Disponible en Google Play">
+  <rect width="180" height="54" rx="8" fill="#111111"/>
+  <rect x="1" y="1" width="178" height="52" rx="7" fill="none" stroke="#3a3a3a"/>
+  <polygon points="18,15 31,27 18,39" fill="#34A853"/>
+  <polygon points="18,15 28,21 31,27 18,15" fill="#4285F4"/>
+  <polygon points="18,39 28,33 31,27 18,39" fill="#FBBC05"/>
+  <polygon points="28,21 38,27 28,33 31,27" fill="#EA4335"/>
+  <text x="48" y="21" font-family="Arial, sans-serif" font-size="8" fill="#dcdcdc">DISPONIBLE EN</text>
+  <text x="48" y="38" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Google Play</text>
+</svg>

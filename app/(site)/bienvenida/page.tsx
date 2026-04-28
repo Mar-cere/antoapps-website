@@ -4,6 +4,7 @@ import Link from 'next/link';
 import CookieConsent from '@/components/CookieConsent';
 import DownloadLink from '@/components/DownloadLink';
 import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
+import HeroDualCta from '@/components/bienvenida/HeroDualCta';
 import LandingViewTracker from '@/components/analytics/LandingViewTracker';
 import { APP_STORE_BADGE_SVG_PATH, appStoreHref } from '@/lib/download-links';
 import '@/styles/components/buttons.css';
@@ -184,59 +185,20 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
             <li>Privado y personal</li>
             <li>Herramientas para avanzar hoy</li>
           </ul>
-
-          <div className="lad-hero-fold-cta" id="descargar">
-            <DownloadLink
-              href={storeHref}
-              className="btn btn-primary btn-large lad-hero-cta-btn"
-              trackingPlacement="bienvenida_hero_primary_cta"
-              trackingPage="/bienvenida"
-              trackingLabel={`hero_primary_variant_${landingVariant}`}
-              aria-label="Descargar en iPhone: prueba de 3 días gratis. Se abre App Store."
-            >
-              {primaryCtaText}
-            </DownloadLink>
-            <p className="lad-hero-cta-micro">Prueba de 3 días y cancelación simple desde App Store.</p>
-            <p className="lad-cta-privacy">
-              <Link href="/privacidad" className="lad-cta-privacy-link">
-                Cómo tratamos tus datos
-              </Link>
-            </p>
-            <div style={{ width: '100%', maxWidth: '20rem', marginTop: 'var(--spacing-3)' }}>
-              <AndroidEarlyAccessForm
-                id="android-early-access-bienvenida"
-                placement="bienvenida_hero_android_early_access"
-                page="/bienvenida"
-                className="android-early-access android-early-access--landing"
-                compact
-                buttonLabel="Acceso anticipado Android"
-              />
-            </div>
-            {landingVariant === 'B' && (
-              <div className="lad-hero-store-trust">
-                <DownloadLink
-                  href={storeHref}
-                  className="lad-store-badge-link lad-store-badge-link--primary"
-                  trackingPlacement="bienvenida_hero_store_badge"
-                  trackingPage="/bienvenida"
-                  trackingLabel="hero_store_badge_variant_B"
-                  aria-label="Descargar en App Store (mismo destino que el botón principal)"
-                >
-                  <Image
-                    src={APP_STORE_BADGE_SVG_PATH}
-                    alt=""
-                    width={120}
-                    height={40}
-                    className="lad-store-badge-img lad-store-badge-img--hero"
-                    priority
-                  />
-                </DownloadLink>
-              </div>
-            )}
+          <div className="lad-social-proof" aria-label="Señales de confianza">
+            <span className="lad-social-proof-item">Acceso inmediato en iPhone</span>
+            <span className="lad-social-proof-item">Versión 1.2.7 en tiendas</span>
+            <span className="lad-social-proof-item">Privacidad clara y transparente</span>
           </div>
 
-          <Link href="#como-funciona" className="lad-cta-skip">
-            <span>¿Cómo funciona? te toma 30 segundos</span>
+          <HeroDualCta
+            storeHref={storeHref}
+            landingVariant={landingVariant}
+            primaryCtaText={primaryCtaText}
+          />
+
+          <Link href="#lad-final-title" className="lad-cta-skip">
+            <span>Ver más detalles rápidos</span>
             <span className="lad-cta-skip-chevron" aria-hidden="true">
               ↓
             </span>
@@ -255,46 +217,6 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
           </ul>
         </section>
 
-        <section
-          className="lad-how lad-section--anchor"
-          id="como-funciona"
-          aria-labelledby="lad-how-section-title"
-        >
-          <div className="lad-how-inner">
-            <h2 id="lad-how-section-title" className="lad-how-section-title">
-              Cómo funciona
-            </h2>
-            <p className="lad-how-open">No necesitas explicarlo bien.</p>
-            <p className="lad-how-body">
-              Solo escribe lo que salga:
-              <br />
-              aunque esté desordenado,
-              <br />
-              aunque no tenga sentido.
-            </p>
-            <p className="lad-how-prefix">Anto te ayuda a:</p>
-            <ul className="lad-how-list">
-              <li>ordenar lo que sientes</li>
-              <li>entender qué te pasa</li>
-              <li>avanzar con pequeñas acciones</li>
-            </ul>
-            <Link href="#por-que-anto" className="lad-how-next">
-              Ver qué más incluye la app
-            </Link>
-          </div>
-        </section>
-
-        <section
-          className="lad-reinforce"
-          aria-label="Tu espacio privado en Anto"
-        >
-          <p className="lad-reinforce-text">
-            Un espacio privado para soltar lo que tienes
-            <br />
-            y no quedarte ahí.
-          </p>
-        </section>
-
         <p className="lad-trust-line">
           <span className="lad-trust-platform">Acceso anticipado Android disponible</span>
           <Link href="/contacto" className="lad-trust-link">
@@ -303,7 +225,7 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
         </p>
 
         <section className="lad-final lad-final--push" aria-labelledby="lad-final-title">
-          <h2 id="lad-final-title">Empieza en segundos.</h2>
+          <h2 id="lad-final-title">Empieza hoy. Si te sirve, te quedas.</h2>
           <p className="lad-final-sub">
             <span className="lad-final-sub-line">Empieza en pocos pasos.</span>
             <span className="lad-final-sub-line">Cancelación simple desde App Store.</span>
