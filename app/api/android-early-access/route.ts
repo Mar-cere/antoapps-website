@@ -89,7 +89,22 @@ export async function POST(request: Request) {
       },
       { upsert: true }
     );
-  } catch {
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'unknown_error';
+    console.error('[android-early-access][mongo_error]', {
+      message,
+      placement,
+      page,
+      source,
+    });
+
+    if (message.includes('MONGODB_URI')) {
+      return NextResponse.json(
+        { ok: false, error: 'Configuración de base de datos incompleta en el servidor.' },
+        { status: 503 }
+      );
+    }
+
     return NextResponse.json(
       { ok: false, error: 'No se pudo guardar el correo en la base de datos.' },
       { status: 500 }
