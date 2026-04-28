@@ -169,7 +169,6 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
             storeHref={storeHref}
             landingVariant={landingVariant}
           />
-          <p className="lad-proof-line">Versión 1.2.7 publicada en tiendas · App Store disponible hoy</p>
           <div className="lad-hero-visual" aria-hidden="true">
             <div className="lad-hero-visual-orbit lad-hero-visual-orbit--one"></div>
             <div className="lad-hero-visual-orbit lad-hero-visual-orbit--two"></div>
