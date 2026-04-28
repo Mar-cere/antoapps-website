@@ -35,6 +35,7 @@ export default function AndroidEarlyAccessForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
+  const [showEmailError, setShowEmailError] = useState(false);
 
   const isValidEmail = useMemo(() => EMAIL_RE.test(email), [email]);
 
@@ -46,7 +47,13 @@ export default function AndroidEarlyAccessForm({
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!isValidEmail || isSubmitting) return;
+    if (!isValidEmail) {
+      setShowEmailError(true);
+      setStatus('error');
+      setMessage('Ingresa un correo valido con formato nombre@dominio.com.');
+      return;
+    }
+    if (isSubmitting) return;
 
     const attribution = getAttributionContext();
     setIsSubmitting(true);
@@ -77,6 +84,7 @@ export default function AndroidEarlyAccessForm({
       setStatus('success');
       setMessage('Listo. Te avisaremos por correo cuando se abra tu acceso anticipado.');
       setEmail('');
+      setShowEmailError(false);
 
       trackCustomEvent(
         'android_early_access_submit_success',
@@ -107,12 +115,31 @@ export default function AndroidEarlyAccessForm({
           ref={inputRef}
           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value.trim())}
+          onChange={(e) => {
+            const nextEmail = e.target.value.trim();
+            setEmail(nextEmail);
+            if (showEmailError && EMAIL_RE.test(nextEmail)) {
+              setShowEmailError(false);
+              if (status === 'error') {
+                setStatus('idle');
+                setMessage('');
+              }
+            }
+          }}
+          onBlur={() => {
+            if (email.length > 0 && !isValidEmail) {
+              setShowEmailError(true);
+            }
+          }}
           className="android-early-access-input"
           placeholder={
             compact ? 'Tu email para acceso anticipado Android' : 'tuemail@ejemplo.com'
           }
           aria-label="Correo para acceso anticipado Android"
+          inputMode="email"
+          autoComplete="email"
+          pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+          aria-invalid={showEmailError}
           required
         />
         <button
