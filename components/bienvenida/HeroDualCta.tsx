@@ -65,11 +65,6 @@ export default function HeroDualCta({ storeHref, landingVariant }: HeroDualCtaPr
         />
       </div>
       <p className="lad-hero-cta-micro">Apple descarga directa · Android acceso anticipado por correo.</p>
-      <p className="lad-cta-privacy">
-        <a href="/privacidad" className="lad-cta-privacy-link">
-          Cómo tratamos tus datos
-        </a>
-      </p>
     </div>
   );
 }

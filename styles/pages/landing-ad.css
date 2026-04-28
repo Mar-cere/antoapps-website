@@ -972,6 +972,37 @@
 }
 
 @media (max-width: 768px) {
+    .lad-hero {
+        padding-top: var(--spacing-4);
+        padding-bottom: var(--spacing-5);
+    }
+
+    .lad-hero h1 {
+        font-size: clamp(1.5rem, 5.6vw, 1.95rem);
+        margin-bottom: var(--spacing-3);
+    }
+
+    .lad-hero-lead {
+        margin-bottom: var(--spacing-4);
+    }
+
+    .lad-hero-quick-points {
+        margin-bottom: var(--spacing-4);
+        gap: var(--spacing-1);
+    }
+
+    .lad-social-proof {
+        margin-bottom: var(--spacing-3);
+    }
+
+    .lad-hero-fold-cta {
+        margin-bottom: var(--spacing-3);
+    }
+
+    .lad-dual-badges {
+        margin-top: var(--spacing-2);
+    }
+
     .lad-topbar {
         background: rgba(255, 255, 255, 0.88);
         backdrop-filter: blur(8px) saturate(140%);
@@ -1004,5 +1035,39 @@
     .lad-dual-badges {
         flex-direction: column;
         align-items: center;
+    }
+}
+
+@media (max-width: 390px) {
+    .lad-main {
+        padding-top: calc(3rem + env(safe-area-inset-top, 0px));
+    }
+
+    .lad-hero {
+        padding-top: var(--spacing-3);
+        padding-bottom: var(--spacing-4);
+    }
+
+    .lad-hero-badge {
+        margin-bottom: var(--spacing-3);
+    }
+
+    .lad-hero h1 {
+        font-size: clamp(1.35rem, 5.2vw, 1.7rem);
+        line-height: 1.14;
+    }
+
+    .lad-hero-visual {
+        width: 104px;
+        height: 104px;
+        margin-bottom: var(--spacing-3);
+    }
+
+    .lad-hero-visual-core {
+        inset: 26px;
+    }
+
+    .lad-store-badge-img {
+        height: 44px;
     }
 }

@@ -194,13 +194,6 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
             <span className="lad-social-proof-item">Privacidad clara y transparente</span>
           </div>
 
-          <Link href="#lad-final-title" className="lad-cta-skip">
-            <span>Ver más detalles rápidos</span>
-            <span className="lad-cta-skip-chevron" aria-hidden="true">
-              ↓
-            </span>
-          </Link>
-
           <p className="lad-microcopy">
             Anto no sustituye terapia ni atención clínica. Si estás en crisis, busca ayuda profesional
             o de emergencia en tu país.
