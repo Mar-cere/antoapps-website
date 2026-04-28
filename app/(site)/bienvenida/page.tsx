@@ -165,6 +165,11 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
           <p className="lad-hero-lead">
             Escribes como te salga y recibes guía clara, práctica y humana en segundos.
           </p>
+          <HeroDualCta
+            storeHref={storeHref}
+            landingVariant={landingVariant}
+            primaryCtaText={primaryCtaText}
+          />
           <p className="lad-proof-line">Versión 1.2.7 publicada en tiendas · App Store disponible hoy</p>
           <div className="lad-hero-visual" aria-hidden="true">
             <div className="lad-hero-visual-orbit lad-hero-visual-orbit--one"></div>
@@ -190,12 +195,6 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
             <span className="lad-social-proof-item">Versión 1.2.7 en tiendas</span>
             <span className="lad-social-proof-item">Privacidad clara y transparente</span>
           </div>
-
-          <HeroDualCta
-            storeHref={storeHref}
-            landingVariant={landingVariant}
-            primaryCtaText={primaryCtaText}
-          />
 
           <Link href="#lad-final-title" className="lad-cta-skip">
             <span>Ver más detalles rápidos</span>
