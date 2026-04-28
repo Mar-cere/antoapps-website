@@ -154,8 +154,7 @@ export default function AndroidEarlyAccessForm({
       </form>
       {compact && (
         <p className="android-early-access-footnote android-early-access-footnote--compact">
-          Usa el mismo correo de tu cuenta de Google Play para recibir el acceso. El correo puede
-          tardar algunos minutos en llegar.
+          Usa el mismo correo de tu cuenta de Google Play para recibir el acceso.
         </p>
       )}
       {!compact && (
@@ -171,7 +170,7 @@ export default function AndroidEarlyAccessForm({
       )}
       {status === 'success' && compact && (
         <p className="android-early-access-feedback android-early-access-feedback--hint">
-          Revisa tu bandeja y spam en 5 minutos.
+          Revisa tu bandeja y carpeta de spam para encontrar la invitacion.
         </p>
       )}
     </div>
