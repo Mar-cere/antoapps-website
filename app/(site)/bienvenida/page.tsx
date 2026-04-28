@@ -168,7 +168,6 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
           <HeroDualCta
             storeHref={storeHref}
             landingVariant={landingVariant}
-            primaryCtaText={primaryCtaText}
           />
           <p className="lad-proof-line">Versión 1.2.7 publicada en tiendas · App Store disponible hoy</p>
           <div className="lad-hero-visual" aria-hidden="true">

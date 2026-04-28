@@ -58,6 +58,11 @@
     color: var(--color-text-tertiary);
 }
 
+.android-early-access-footnote--compact {
+    margin-top: var(--spacing-1);
+    font-size: 0.7rem;
+}
+
 .android-early-access-footnote a {
     color: var(--color-link);
 }

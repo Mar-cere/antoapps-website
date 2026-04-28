@@ -9,24 +9,13 @@ import { APP_STORE_BADGE_SVG_PATH, GOOGLE_PLAY_BADGE_SVG_PATH } from '@/lib/down
 type HeroDualCtaProps = {
   storeHref: string;
   landingVariant: 'A' | 'B';
-  primaryCtaText: string;
 };
 
-export default function HeroDualCta({ storeHref, landingVariant, primaryCtaText }: HeroDualCtaProps) {
+export default function HeroDualCta({ storeHref, landingVariant }: HeroDualCtaProps) {
   const [showAndroidInput, setShowAndroidInput] = useState(false);
 
   return (
     <div className="lad-hero-fold-cta" id="descargar">
-      <DownloadLink
-        href={storeHref}
-        className="btn btn-primary btn-large lad-hero-cta-btn"
-        trackingPlacement="bienvenida_hero_primary_cta"
-        trackingPage="/bienvenida"
-        trackingLabel={`hero_primary_variant_${landingVariant}`}
-        aria-label="Descargar en iPhone: prueba de 3 días gratis. Se abre App Store."
-      >
-        {primaryCtaText}
-      </DownloadLink>
       <div className="lad-dual-badges">
         <DownloadLink
           href={storeHref}

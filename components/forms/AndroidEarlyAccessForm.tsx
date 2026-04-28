@@ -115,6 +115,12 @@ export default function AndroidEarlyAccessForm({
           {isSubmitting ? 'Enviando...' : buttonLabel}
         </button>
       </form>
+      {compact && (
+        <p className="android-early-access-footnote android-early-access-footnote--compact">
+          Usa el mismo correo de tu cuenta de Google Play para recibir el acceso. El correo puede
+          tardar algunos minutos en llegar.
+        </p>
+      )}
       {!compact && (
         <p className="android-early-access-footnote">
           Cupos limitados. Te contactaremos por correo. Al enviar aceptas nuestra{' '}
