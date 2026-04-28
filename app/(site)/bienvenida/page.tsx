@@ -153,13 +153,32 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
         <section className="lad-hero" aria-labelledby="lad-hero-title">
           <p className="lad-hero-badge">App de bienestar emocional</p>
           <h1 id="lad-hero-title">
-            <span className="lad-hero-title-line">Escribe lo que no sabes cómo decir</span>
-            <span className="lad-hero-title-line">y empieza a entenderlo</span>
+            <span className="lad-hero-title-line">Cuando tu mente va a mil,</span>
+            <span className="lad-hero-title-line">Anto te ayuda a ordenar lo que sientes</span>
           </h1>
           <p className="lad-hero-lead">
-            Desahógate sin filtro y recibe guía práctica con tono cercano y profesional.
+            Escribes como te salga y recibes guía clara, práctica y humana en segundos.
           </p>
           <p className="lad-proof-line">Versión 1.2.2 publicada en tiendas · App Store disponible hoy</p>
+          <div className="lad-hero-visual" aria-hidden="true">
+            <div className="lad-hero-visual-orbit lad-hero-visual-orbit--one"></div>
+            <div className="lad-hero-visual-orbit lad-hero-visual-orbit--two"></div>
+            <div className="lad-hero-visual-core">
+              <Image
+                src="/assets/images/antoIcon.png"
+                alt=""
+                width={52}
+                height={52}
+                className="lad-hero-visual-logo"
+                priority
+              />
+            </div>
+          </div>
+          <ul className="lad-hero-quick-points" aria-label="Beneficios rápidos">
+            <li>Guía práctica al instante</li>
+            <li>Privado y personal</li>
+            <li>Herramientas para avanzar hoy</li>
+          </ul>
 
           <div className="lad-hero-fold-cta" id="descargar">
             <DownloadLink
@@ -172,7 +191,7 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
             >
               {primaryCtaText}
             </DownloadLink>
-            <p className="lad-hero-cta-micro">Sin tarjeta para iniciar la prueba. Puedes cancelar desde la tienda.</p>
+            <p className="lad-hero-cta-micro">Prueba de 3 días y cancelación simple desde App Store.</p>
             <p className="lad-cta-privacy">
               <Link href="/privacidad" className="lad-cta-privacy-link">
                 Cómo tratamos tus datos
@@ -292,7 +311,7 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
           <h2 id="lad-final-title">Empieza en segundos.</h2>
           <p className="lad-final-sub">
             <span className="lad-final-sub-line">Empieza en pocos pasos.</span>
-            <span className="lad-final-sub-line">Sin tarjeta para la prueba.</span>
+            <span className="lad-final-sub-line">Cancelación simple desde App Store.</span>
           </p>
           <div className="lad-final-cta-stack">
             <DownloadLink
@@ -305,7 +324,7 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
             >
               {primaryCtaText}
             </DownloadLink>
-            <p className="lad-hero-cta-micro">Sin tarjeta para iniciar la prueba. Tú decides después.</p>
+            <p className="lad-hero-cta-micro">Prueba de 3 días y control total desde tu App Store.</p>
             <p className="lad-cta-privacy">
               <Link href="/privacidad" className="lad-cta-privacy-link">
                 Cómo tratamos tus datos
