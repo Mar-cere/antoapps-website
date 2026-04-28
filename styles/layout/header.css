@@ -196,9 +196,9 @@
 
 @media (max-width: 380px) {
     .nav-actions .btn-primary {
-        padding: var(--spacing-2);
-        font-size: 0.7rem;
-        letter-spacing: -0.02em;
+        padding: var(--spacing-2) var(--spacing-3);
+        font-size: var(--font-size-xs);
+        letter-spacing: 0;
     }
 }
 

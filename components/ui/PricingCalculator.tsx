@@ -19,6 +19,7 @@ const plans: Plan[] = [
   { id: '6-months', name: '6 Meses', duration: '6 meses', price: 20990, period: 'Ahorra 12%', discount: 12 },
   { id: '1-year', name: '1 Año', duration: '1 año', price: 39990, period: 'Ahorra 17%', discount: 17 },
 ];
+const CLP_TO_USD = 950;
 
 export default function PricingCalculator() {
   const [selectedPlan, setSelectedPlan] = useState<string>('3-months');
@@ -48,6 +49,15 @@ export default function PricingCalculator() {
       currency: 'CLP',
       minimumFractionDigits: 0,
     }).format(price);
+  };
+
+  const formatUsd = (priceClp: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(priceClp / CLP_TO_USD);
   };
 
   return (
@@ -83,6 +93,7 @@ export default function PricingCalculator() {
                   {plan.popular && <span className="popular-badge">Popular</span>}
                 </div>
                 <div className="plan-price">{formatPrice(plan.price)}</div>
+                <div className="plan-period">({formatUsd(plan.price)} aprox.)</div>
                 <div className="plan-period">{plan.period}</div>
               </button>
             ))}
@@ -99,6 +110,10 @@ export default function PricingCalculator() {
                 <div className="result-item">
                   <span className="result-label">Precio Total:</span>
                   <span className="result-value highlight">{formatPrice(selectedPlanData.price)}</span>
+                </div>
+                <div className="result-item">
+                  <span className="result-label">Precio Total (USD):</span>
+                  <span className="result-value">{formatUsd(selectedPlanData.price)} aprox.</span>
                 </div>
                 {selectedPlanData.discount && (
                   <>
@@ -191,6 +206,9 @@ export default function PricingCalculator() {
             );
           })}
           <div style={{ marginTop: 'var(--spacing-lg)', textAlign: 'center', padding: 'var(--spacing-md)', fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)' }}>
+            <p>
+              Precios mostrados en CLP y su referencia en USD aproximada (1 USD = 950 CLP).{' '}
+            </p>
             <p>
               Al suscribirte, aceptas nuestros{' '}
               <Link href="/terminos" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>

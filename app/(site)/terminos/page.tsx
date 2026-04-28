@@ -93,10 +93,10 @@ export default function TerminosPage() {
                   variar según el plan seleccionado:
                 </p>
                 <ul>
-                  <li>Plan Mensual: $3.990 CLP</li>
-                  <li>Plan de 3 Meses: $11.990 CLP (Ahorra 10%)</li>
-                  <li>Plan de 6 Meses: $20.990 CLP (Ahorra 12%)</li>
-                  <li>Plan Anual: $39.990 CLP (Ahorra 17%)</li>
+                  <li>Plan Mensual: $3.990 CLP / US$4.20 aprox.</li>
+                  <li>Plan de 3 Meses: $11.990 CLP / US$12.62 aprox. (Ahorra 10%)</li>
+                  <li>Plan de 6 Meses: $20.990 CLP / US$22.09 aprox. (Ahorra 12%)</li>
+                  <li>Plan Anual: $39.990 CLP / US$42.09 aprox. (Ahorra 17%)</li>
                 </ul>
                 <p>
                   Todos los precios incluyen impuestos aplicables. Los pagos se procesan a través de
