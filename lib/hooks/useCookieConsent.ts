@@ -19,6 +19,9 @@ export function useCookieConsent() {
           import('@/lib/hooks/useAnalytics').then((module) => {
             module.initAnalytics();
           });
+          import('@/lib/analytics/meta-pixel').then((module) => {
+            module.initMetaPixel();
+          });
         }
       }
     } else {
@@ -39,6 +42,9 @@ export function useCookieConsent() {
       import('@/lib/hooks/useAnalytics').then((module) => {
         module.initAnalytics();
         trackCustomEvent('cookie_consent', { status: 'accepted' });
+      });
+      import('@/lib/analytics/meta-pixel').then((module) => {
+        module.initMetaPixel();
       });
     }
   };

@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
 import { isExternalStoreUrl } from '@/lib/download-links';
-import { getAttributionContext } from '@/lib/analytics/attribution';
-import { trackCustomEvent, withAttribution } from '@/lib/analytics/events';
+import { trackStoreClick } from '@/lib/analytics/store-click';
 
 type Props = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
   href: string;
@@ -29,19 +28,11 @@ export default function DownloadLink({
     onClick?.(event);
     if (event.defaultPrevented) return;
 
-    const attribution = getAttributionContext();
-    trackCustomEvent(
-      'store_click',
-      withAttribution(
-        {
-          destination: 'app_store',
-          placement: trackingPlacement || 'unknown',
-          page: trackingPage || (typeof window !== 'undefined' ? window.location.pathname : ''),
-          label: trackingLabel,
-        },
-        attribution
-      )
-    );
+    trackStoreClick({
+      placement: trackingPlacement || 'unknown',
+      page: trackingPage || (typeof window !== 'undefined' ? window.location.pathname : ''),
+      label: trackingLabel,
+    });
   };
 
   if (isExternalStoreUrl(href)) {
