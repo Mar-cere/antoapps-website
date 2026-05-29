@@ -224,17 +224,23 @@
 .lad-app-msg--user {
     align-self: flex-end;
     background: linear-gradient(135deg, #1adddb, #12b8b6);
-    color: #030a24;
     font-weight: var(--font-weight-medium);
     border-bottom-right-radius: 0.25rem;
 }
 
+.lad-app-msg--user p {
+    color: #030a24;
+}
+
 .lad-app-msg--anto {
     align-self: flex-start;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.92);
+    background: #1a2847;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-bottom-left-radius: 0.25rem;
+}
+
+.lad-app-msg--anto p {
+    color: #f4f7fb;
 }
 
 .lad-app-action {
