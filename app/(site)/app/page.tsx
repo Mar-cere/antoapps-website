@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { APP_VERSION, APP_VERSION_LABEL } from '@/lib/app-version';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ClientInitializer from '@/components/ClientInitializer';
@@ -10,8 +11,7 @@ import '@/styles/components/app-page.css';
 
 export const metadata: Metadata = {
   title: 'La Aplicación - Anto | Características e Insights',
-  description:
-    'Anto v1.2.7 (Expo): asistente de bienestar emocional con GPT-5.4 Mini, escalas PHQ-9/GAD-7, protocolos estructurados y detección de crisis. Incluye novedades recientes y accesos rápidos.',
+  description: `Anto ${APP_VERSION_LABEL} (Expo): asistente de bienestar emocional con GPT-5.4 Mini, escalas PHQ-9/GAD-7, protocolos estructurados y detección de crisis. Incluye novedades recientes y accesos rápidos.`,
   openGraph: {
     title: 'La Aplicación - Anto',
     description: 'Características, insights y pantallazos de la aplicación Anto.',
@@ -33,7 +33,7 @@ export default function AppPage() {
             <div className="app-hero-content">
               <h1 className="app-hero-title reveal-on-scroll">Conoce la Aplicación Anto</h1>
               <p className="app-hero-subtitle reveal-on-scroll">
-                Versión publicada <strong>1.2.7</strong> (Expo). React Native y backend Node.js/Express.
+                Versión publicada <strong>{APP_VERSION}</strong> (Expo). React Native y backend Node.js/Express.
                 Integración con OpenAI GPT-5.4 Mini, detección de crisis, tareas y hábitos, y más.{' '}
                 <a
                   href="https://github.com/Mar-cere/Anto"
@@ -45,7 +45,7 @@ export default function AppPage() {
                 </a>
               </p>
               <div className="app-hero-badges reveal-on-scroll">
-                <span className="app-badge">📌 v1.2.7</span>
+                <span className="app-badge">📌 {APP_VERSION_LABEL}</span>
                 <span className="app-badge">📱 iOS + Android acceso anticipado</span>
                 <span className="app-badge">🔒 100% Privado</span>
                 <span className="app-badge">⚡ Tiempo Real</span>
@@ -276,7 +276,7 @@ export default function AppPage() {
             <p className="section-subtitle reveal-on-scroll">
               Funcionalidades que hacen de Anto una herramienta única para tu bienestar mental.
               <strong style={{ display: 'block', marginTop: 'var(--spacing-sm)', color: 'var(--primary-color)' }}>
-                ✨ v1.2.x: mejor experiencia en chat, preferencias de tono/respuesta y documentación de privacidad en conversación; escalas clínicas, distorsiones cognitivas y protocolos estructurados
+                ✨ {APP_VERSION_LABEL}: línea actual en tiendas; chat, preferencias de tono/respuesta, privacidad en conversación, escalas clínicas, distorsiones cognitivas y protocolos estructurados
               </strong>
             </p>
             <div className="advanced-features-grid" data-stagger>

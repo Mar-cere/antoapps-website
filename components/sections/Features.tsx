@@ -20,7 +20,7 @@ export default function Features() {
               <p>
                 Chat con GPT-5.4 Mini, tono profesional y práctico por defecto. Escalas validadas (PHQ-9,
                 GAD-7), detección de distorsiones cognitivas y protocolos estructurados basados en
-                evidencia; preferencias de estilo de respuesta cuando la app lo ofrece (v1.2+)
+                evidencia; preferencias de estilo de respuesta cuando la app lo ofrece (v1.4+)
               </p>
             </div>
             <div className="feature-card stagger-item" data-stagger-item>

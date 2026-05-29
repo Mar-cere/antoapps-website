@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import CookieConsent from '@/components/CookieConsent';
-import BienvenidaChatPreview from '@/components/bienvenida/BienvenidaChatPreview';
+import BienvenidaAppPreview from '@/components/bienvenida/BienvenidaAppPreview';
 import BienvenidaFaq from '@/components/bienvenida/BienvenidaFaq';
-import BienvenidaPhoneMockup from '@/components/bienvenida/BienvenidaPhoneMockup';
 import HeroDualCta from '@/components/bienvenida/HeroDualCta';
 import InstagramBrowserHint from '@/components/bienvenida/InstagramBrowserHint';
 import LandingViewTracker from '@/components/analytics/LandingViewTracker';
@@ -111,15 +110,13 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
 
           <HeroDualCta storeHref={storeHref} landingVariant={landingVariant} />
 
+          <BienvenidaAppPreview />
+
           <ul className="lad-hero-quick-points" aria-label="Beneficios rápidos">
             <li>Claridad emocional en minutos</li>
             <li>Privado, personal y sin juicios</li>
             <li>Acciones concretas para hoy</li>
           </ul>
-
-          <BienvenidaChatPreview />
-
-          <BienvenidaPhoneMockup />
 
           <div className="lad-social-proof" aria-label="Señales de confianza">
             <span className="lad-social-proof-item">Disponible en App Store</span>

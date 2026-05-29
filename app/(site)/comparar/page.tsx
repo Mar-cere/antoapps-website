@@ -67,7 +67,7 @@ export default function CompararPage() {
               <div className="advantages-grid">
                 <div className="advantage-card reveal-on-scroll">
                   <h3>IA Avanzada</h3>
-                  <p>Asistente con GPT-5.4 Mini, tono profesional y práctico y preferencias de respuesta (v1.2+)</p>
+                  <p>Asistente con GPT-5.4 Mini, tono profesional y práctico y preferencias de respuesta (v1.4+)</p>
                 </div>
                 <div className="advantage-card reveal-on-scroll">
                   <h3>Disponibilidad 24/7</h3>

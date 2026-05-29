@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import ClientScripts from '@/components/ClientScripts';
 import CookieConsent from '@/components/CookieConsent';
 import Skeleton from '@/components/ui/Skeleton';
+import { APP_VERSION } from '@/lib/app-version';
 import '@/styles/components/changelog.css';
 
 interface ChangeItem {
@@ -23,11 +24,28 @@ interface Version {
 
 const changelog: Version[] = [
   {
-    version: '1.2.7',
-    date: '2026-03-27',
+    version: APP_VERSION,
+    date: '2026-05-29',
     status: 'current',
     highlights: [
-      'Versión 1.2.7 (Expo) — línea actual en tiendas',
+      `Versión ${APP_VERSION} (Expo) — línea actual en tiendas`,
+      'Mejoras continuas de experiencia en chat y bienestar emocional',
+      'Preferencias de tono y estilo de respuesta del asistente',
+      'Transparencia de privacidad integrada en la conversación',
+    ],
+    changes: [
+      { type: 'improvement', description: 'Refinamiento general de UX y estabilidad en la línea 1.4.x' },
+      { type: 'improvement', description: 'Chat: coherencia de tono, contexto y flujo conversacional' },
+      { type: 'improvement', description: 'Preferencias de conversación y ajustes de estilo de respuesta' },
+      { type: 'feature', description: 'Mantiene escalas PHQ-9/GAD-7, distorsiones cognitivas y protocolos estructurados' },
+    ],
+  },
+  {
+    version: '1.2.7',
+    date: '2026-03-27',
+    status: 'stable',
+    highlights: [
+      'Versión 1.2.7 (Expo)',
       'Mejor experiencia de chat (v1.2.x)',
       'Preferencias de tono y estilo de respuesta del asistente (cuando la app lo ofrece)',
       'Transparencia: privacidad integrada en la conversación',
@@ -102,15 +120,15 @@ function ChangelogContent() {
           Historial de versiones y actualizaciones de la aplicación Anto
         </p>
         <div className="changelog-status-note">
-          <span className="status-badge status-badge-current-banner">Versión en tiendas: 1.2.7</span>
+          <span className="status-badge status-badge-current-banner">Versión en tiendas: {APP_VERSION}</span>
           <p className="status-text">
             Publicada según la app (Expo) y el{' '}
             <a href="https://github.com/Mar-cere/Anto" target="_blank" rel="noopener noreferrer">
               README del repositorio Anto
             </a>
-            . Incluye mejoras de chat (v1.2.x), preferencias de tono y respuesta cuando la app lo ofrece,
-            e información de privacidad en el flujo de conversación, además de escalas PHQ-9/GAD-7,
-            distorsiones cognitivas y protocolos estructurados ya presentes en 1.1.0.
+            . La línea {APP_VERSION} continúa con mejoras de chat, preferencias de tono y respuesta,
+            información de privacidad en el flujo de conversación, además de escalas PHQ-9/GAD-7,
+            distorsiones cognitivas y protocolos estructurados.
           </p>
         </div>
       </div>

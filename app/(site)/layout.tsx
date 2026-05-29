@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import '../../styles/main.css';
+import { APP_VERSION } from '@/lib/app-version';
 
 export const metadata: Metadata = {
   title: 'Anto - Tu apoyo emocional 24/7 | Salud Mental con IA',
@@ -18,8 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://antoapps.com',
     title: 'Anto - Tu apoyo emocional 24/7',
-    description:
-      'App de bienestar emocional con IA, análisis emocional y herramientas de bienestar. Disponible 24/7. Versión publicada 1.2.7.',
+    description: `App de bienestar emocional con IA, análisis emocional y herramientas de bienestar. Disponible 24/7. Versión publicada ${APP_VERSION}.`,
     images: [
       {
         url: 'https://antoapps.com/assets/images/antoIcon.png',
@@ -34,8 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Anto - Tu apoyo emocional 24/7',
-    description:
-      'App de bienestar emocional con IA, análisis emocional y herramientas de bienestar. Versión 1.2.7.',
+    description: `App de bienestar emocional con IA, análisis emocional y herramientas de bienestar. Versión ${APP_VERSION}.`,
     images: ['https://antoapps.com/assets/images/antoIcon.png'],
   },
   icons: {
@@ -66,6 +65,7 @@ const softwareJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'Anto',
+  softwareVersion: APP_VERSION,
   applicationCategory: 'HealthApplication',
   operatingSystem: 'iOS (descarga directa), Android (acceso anticipado)',
   offers: {
