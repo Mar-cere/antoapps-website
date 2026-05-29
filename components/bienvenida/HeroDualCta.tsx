@@ -1,11 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import DownloadLink from '@/components/DownloadLink';
 import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
-import { APP_STORE_BADGE_SVG_PATH } from '@/lib/download-links';
 
 type HeroDualCtaProps = {
   storeHref: string;
@@ -13,7 +10,10 @@ type HeroDualCtaProps = {
   placement?: 'hero' | 'final';
 };
 
-function primaryCtaLabel(variant: 'A' | 'B'): string {
+function primaryCtaLabel(variant: 'A' | 'B', isFinal: boolean): string {
+  if (isFinal) {
+    return 'Descargar en App Store';
+  }
   return variant === 'B'
     ? 'Descargar en iPhone — 3 días gratis'
     : 'Empieza en iPhone — 3 días gratis';
@@ -27,7 +27,7 @@ export default function HeroDualCta({
   const [showAndroidInput, setShowAndroidInput] = useState(false);
   const [autoFocusAndroidInput, setAutoFocusAndroidInput] = useState(false);
   const isFinal = placement === 'final';
-  const primaryCtaText = primaryCtaLabel(landingVariant);
+  const primaryCtaText = primaryCtaLabel(landingVariant, isFinal);
 
   useEffect(() => {
     if (showAndroidInput) {
@@ -52,43 +52,17 @@ export default function HeroDualCta({
             ? `final_primary_variant_${landingVariant}`
             : `hero_primary_variant_${landingVariant}`
         }
-        aria-label="Descargar Anto en App Store. Incluye prueba gratis de 3 días."
+        aria-label="Descargar Anto en App Store. Incluye 3 días de prueba gratis."
       >
         {primaryCtaText}
       </DownloadLink>
 
-      <p className="lad-hero-trial-line">
-        <strong>3 días gratis</strong> · cancela cuando quieras desde App Store
-      </p>
-
-      <div className="lad-dual-badges">
-        <DownloadLink
-          href={storeHref}
-          className="lad-store-badge-link lad-store-badge-link--primary"
-          trackingPlacement={
-            isFinal ? 'bienvenida_final_store_badge' : 'bienvenida_hero_store_badge'
-          }
-          trackingPage="/bienvenida"
-          trackingLabel={
-            isFinal
-              ? `final_store_badge_variant_${landingVariant}`
-              : `hero_store_badge_variant_${landingVariant}`
-          }
-          aria-label="Descargar Anto en App Store"
-        >
-          <Image
-            src={APP_STORE_BADGE_SVG_PATH}
-            alt=""
-            width={150}
-            height={50}
-            className="lad-store-badge-img lad-store-badge-img--hero"
-            priority={!isFinal}
-          />
-        </DownloadLink>
-      </div>
-
       {!isFinal && (
         <>
+          <p className="lad-hero-trial-line">
+            <strong>3 días gratis</strong> · cancelas cuando quieras en App Store
+          </p>
+
           <button
             type="button"
             className="lad-android-waitlist-trigger"
@@ -96,7 +70,7 @@ export default function HeroDualCta({
             aria-expanded={showAndroidInput}
             aria-controls="android-early-access-bienvenida"
           >
-            Android — lista de espera
+            ¿Usas Android? Únete a la lista de espera
           </button>
 
           <div className={`lad-android-reveal ${showAndroidInput ? 'is-open' : ''}`}>
@@ -111,20 +85,6 @@ export default function HeroDualCta({
             />
           </div>
         </>
-      )}
-
-      <p className="lad-hero-cta-micro">
-        {isFinal
-          ? 'Tu primera conversación toma menos de 2 minutos.'
-          : 'iPhone: descarga inmediata · Android: acceso anticipado por correo.'}
-      </p>
-
-      {!isFinal && (
-        <p className="lad-cta-privacy">
-          <Link href="/privacidad" className="lad-cta-privacy-link">
-            Cómo tratamos tus datos
-          </Link>
-        </p>
       )}
     </div>
   );

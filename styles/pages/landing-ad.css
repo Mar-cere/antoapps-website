@@ -1,16 +1,33 @@
-/* Landing Instagram / ads — una sola columna, conversión a descarga */
+/* Landing Instagram — mobile-first, tema oscuro alineado con la app */
 
 .lad-page {
+    --lad-bg: #030a24;
+    --lad-bg-soft: #0a1529;
+    --lad-surface: rgba(255, 255, 255, 0.06);
+    --lad-surface-strong: rgba(255, 255, 255, 0.09);
+    --lad-border: rgba(255, 255, 255, 0.1);
+    --lad-border-accent: rgba(26, 221, 219, 0.28);
+    --lad-text: #f4f7fb;
+    --lad-text-muted: rgba(244, 247, 251, 0.68);
+    --lad-accent: #1adddb;
+    --lad-accent-soft: rgba(26, 221, 219, 0.12);
+
     min-height: 100dvh;
     min-height: 100vh;
     padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
     background:
-        radial-gradient(120% 80% at 100% 0%, rgba(26, 221, 219, 0.12) 0%, transparent 55%),
-        radial-gradient(90% 60% at 0% 100%, rgba(3, 105, 161, 0.08) 0%, transparent 50%),
-        var(--color-bg-primary);
-    color: var(--color-text-primary);
-    background-size: 140% 140%;
-    animation: lad-bg-shift 18s ease-in-out infinite;
+        radial-gradient(90% 70% at 50% -10%, rgba(26, 221, 219, 0.14) 0%, transparent 55%),
+        var(--lad-bg);
+    color: var(--lad-text);
+}
+
+.lad-page p {
+    color: var(--lad-text-muted);
+}
+
+.lad-page h1,
+.lad-page h2 {
+    color: var(--lad-text);
 }
 
 .lad-topbar {
@@ -25,9 +42,9 @@
     gap: var(--spacing-3);
     padding: max(var(--spacing-2), env(safe-area-inset-top, 0px)) max(var(--spacing-4), env(safe-area-inset-right, 0px))
         var(--spacing-2) max(var(--spacing-4), env(safe-area-inset-left, 0px));
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(16px) saturate(180%);
-    border-bottom: 1px solid var(--color-border);
+    background: rgba(3, 10, 36, 0.82);
+    backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid var(--lad-border);
 }
 
 .lad-brand {
@@ -36,7 +53,7 @@
     gap: var(--spacing-2);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-sm);
-    color: var(--color-link);
+    color: var(--lad-text);
     letter-spacing: -0.02em;
     user-select: none;
 }
@@ -54,9 +71,9 @@
     font-size: var(--font-size-sm);
     line-height: 1.45;
     text-align: center;
-    color: var(--color-text-primary);
-    background: rgba(255, 243, 205, 0.95);
-    border: 1px solid rgba(180, 130, 0, 0.35);
+    color: var(--lad-text);
+    background: var(--lad-accent-soft);
+    border: 1px solid var(--lad-border-accent);
     border-radius: var(--radius-lg);
 }
 
@@ -117,7 +134,6 @@
     line-height: 1.18;
     letter-spacing: -0.03em;
     margin: 0 0 var(--spacing-4);
-    color: var(--color-text-primary);
     animation: lad-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
 }
 
@@ -127,14 +143,13 @@
 
 .lad-hero-title-line:last-child {
     margin-top: 0.2em;
-    color: var(--color-link);
+    color: var(--lad-accent);
 }
 
 .lad-hero-lead {
     font-size: clamp(1rem, 3.8vw, 1.125rem);
     line-height: 1.55;
-    color: var(--color-text-secondary);
-    margin: 0 0 var(--spacing-6);
+    margin: 0 0 var(--spacing-5);
     animation: lad-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
 }
 
@@ -147,17 +162,8 @@
 
 .lad-app-preview {
     width: 100%;
-    margin: 0 0 var(--spacing-5);
+    margin: 0 0 var(--spacing-4);
     text-align: center;
-}
-
-.lad-app-preview-kicker {
-    margin: 0 0 var(--spacing-3);
-    font-size: 0.6875rem;
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-secondary);
 }
 
 .lad-app-screen {
@@ -295,24 +301,30 @@
     flex-shrink: 0;
 }
 
-.lad-store-rating {
-    margin: 0 auto var(--spacing-4);
-    text-align: center;
-}
-
-.lad-store-rating-stars {
-    margin: 0 0 0.25rem;
-    font-size: 1rem;
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: 0.04em;
-    color: #b8860b;
-}
-
-.lad-store-rating-line {
+.lad-trust-strip {
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem 0.5rem;
     font-size: 0.8125rem;
     line-height: 1.4;
-    color: var(--color-text-secondary);
+    color: var(--lad-text-muted);
+}
+
+.lad-trust-strip-sep {
+    opacity: 0.45;
+}
+
+.lad-disclaimer {
+    max-width: 32rem;
+    margin: 0 auto;
+    padding: var(--spacing-4) var(--spacing-4) var(--spacing-6);
+    font-size: var(--font-size-xs);
+    line-height: 1.45;
+    text-align: center;
+    color: rgba(244, 247, 251, 0.45);
 }
 
 .lad-sticky-cta {
@@ -327,10 +339,10 @@
     padding-bottom: max(0.625rem, env(safe-area-inset-bottom, 0px));
     padding-left: max(1rem, env(safe-area-inset-left, 0px));
     padding-right: max(1rem, env(safe-area-inset-right, 0px));
-    background: rgba(255, 255, 255, 0.94);
+    background: rgba(3, 10, 36, 0.92);
     backdrop-filter: blur(14px) saturate(160%);
-    border-top: 1px solid rgba(26, 221, 219, 0.28);
-    box-shadow: 0 -8px 28px rgba(3, 10, 36, 0.08);
+    border-top: 1px solid var(--lad-border-accent);
+    box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.35);
     transform: translateY(110%);
     opacity: 0;
     pointer-events: none;
@@ -360,24 +372,23 @@
     padding: var(--spacing-6) var(--spacing-4) var(--spacing-4);
 }
 
+.lad-faq-list {
+    display: grid;
+    gap: var(--spacing-2);
+}
+
 .lad-faq-title {
     margin: 0 0 var(--spacing-4);
     font-size: clamp(1.0625rem, 3.5vw, 1.25rem);
     font-weight: var(--font-weight-bold);
     letter-spacing: -0.02em;
     text-align: center;
-    color: var(--color-text-primary);
-}
-
-.lad-faq-list {
-    display: grid;
-    gap: var(--spacing-2);
 }
 
 .lad-faq-item {
-    border: 1px solid var(--color-border-light);
+    border: 1px solid var(--lad-border);
     border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--lad-surface);
     overflow: hidden;
 }
 
@@ -386,7 +397,7 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
     line-height: 1.4;
-    color: var(--color-text-primary);
+    color: var(--lad-text);
     cursor: pointer;
     list-style: none;
 }
@@ -399,7 +410,7 @@
     content: '+';
     float: right;
     font-weight: var(--font-weight-bold);
-    color: var(--color-link);
+    color: var(--lad-accent);
 }
 
 .lad-faq-item[open] .lad-faq-question::after {
@@ -410,11 +421,10 @@
     padding: 0 var(--spacing-4) var(--spacing-4);
     font-size: var(--font-size-sm);
     line-height: 1.55;
-    color: var(--color-text-secondary);
 }
 
 .lad-faq-answer a {
-    color: var(--color-link);
+    color: var(--lad-accent);
     font-weight: var(--font-weight-medium);
     text-decoration: none;
     border-bottom: 1px solid transparent;
@@ -422,7 +432,7 @@
 }
 
 .lad-faq-answer a:hover {
-    border-bottom-color: var(--color-link);
+    border-bottom-color: var(--lad-accent);
 }
 
 .lad-hero-visual {
@@ -520,12 +530,11 @@
     margin: var(--spacing-3) 0 0;
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
-    color: var(--color-text-secondary);
     line-height: 1.4;
 }
 
 .lad-hero-trial-line strong {
-    color: var(--color-text-primary);
+    color: var(--lad-text);
     font-weight: var(--font-weight-bold);
 }
 
@@ -542,23 +551,56 @@
     padding: var(--spacing-2) var(--spacing-4);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
-    color: var(--color-text-secondary);
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px dashed var(--color-border);
+    color: var(--lad-text-muted);
+    background: transparent;
+    border: 1px dashed var(--lad-border);
     border-radius: var(--radius-full);
     cursor: pointer;
-    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .lad-android-waitlist-trigger:hover {
-    color: var(--color-link);
-    border-color: rgba(19, 64, 126, 0.35);
-    background: rgba(255, 255, 255, 0.98);
+    color: var(--lad-accent);
+    border-color: var(--lad-border-accent);
 }
 
 .lad-android-waitlist-trigger:focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid var(--lad-accent);
     outline-offset: 3px;
+}
+
+.lad-page .android-early-access--landing {
+    margin-top: 0;
+    padding: var(--spacing-3);
+    background: var(--lad-surface);
+    border: 1px solid var(--lad-border);
+    border-radius: var(--radius-lg);
+}
+
+.lad-page .android-early-access--landing .android-early-access-title {
+    color: var(--lad-text);
+}
+
+.lad-page .android-early-access--landing .android-early-access-subtitle {
+    color: var(--lad-text-muted);
+}
+
+.lad-page .android-early-access--landing .android-early-access-input {
+    color: var(--lad-text);
+    background: var(--lad-surface-strong);
+    border-color: var(--lad-border);
+}
+
+.lad-page .android-early-access--landing .android-early-access-input::placeholder {
+    color: rgba(244, 247, 251, 0.4);
+}
+
+.lad-page .android-early-access--landing .android-early-access-footnote {
+    color: rgba(244, 247, 251, 0.45);
+}
+
+.lad-page .android-early-access--landing .android-early-access-footnote a {
+    color: var(--lad-accent);
 }
 
 .lad-hero-fold-cta--final .lad-dual-badges {
@@ -606,7 +648,6 @@
     margin: var(--spacing-3) 0 0;
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
-    color: var(--color-text-secondary);
     line-height: 1.4;
 }
 
@@ -615,11 +656,10 @@
     font-size: var(--font-size-xs);
     line-height: 1.4;
     text-align: center;
-    color: var(--color-text-tertiary);
 }
 
 .lad-cta-privacy-link {
-    color: var(--color-link);
+    color: var(--lad-accent);
     font-weight: var(--font-weight-medium);
     text-decoration: none;
     border-bottom: 1px solid transparent;
@@ -627,11 +667,11 @@
 }
 
 .lad-cta-privacy-link:hover {
-    border-bottom-color: var(--color-link);
+    border-bottom-color: var(--lad-accent);
 }
 
 .lad-cta-privacy-link:focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid var(--lad-accent);
     outline-offset: 3px;
     border-radius: var(--radius-sm);
 }
@@ -850,22 +890,17 @@
 }
 
 .lad-how-inner {
-    padding: var(--spacing-8) var(--spacing-5);
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(26, 221, 219, 0.22);
+    padding: var(--spacing-6) var(--spacing-5);
+    background: var(--lad-surface);
+    border: 1px solid var(--lad-border);
     border-radius: var(--radius-xl);
-    box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.85) inset,
-        0 12px 40px rgba(3, 10, 36, 0.06);
 }
 
 .lad-how-section-title {
-    font-size: clamp(0.8125rem, 2.8vw, 0.875rem);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-secondary);
-    margin: 0 0 var(--spacing-6);
+    font-size: clamp(1rem, 3.5vw, 1.125rem);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--spacing-5);
 }
 
 .lad-how-open {
@@ -925,7 +960,7 @@
 }
 
 .lad-how-steps {
-    margin: 0 auto var(--spacing-6);
+    margin: 0 auto;
     padding: 0;
     list-style: none;
     text-align: left;
@@ -941,7 +976,6 @@
     align-items: start;
     font-size: var(--font-size-sm);
     line-height: 1.5;
-    color: var(--color-text-secondary);
 }
 
 .lad-how-step-num {
@@ -952,9 +986,9 @@
     height: 1.5rem;
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-bold);
-    color: var(--color-link);
-    background: rgba(26, 221, 219, 0.14);
-    border: 1px solid rgba(26, 221, 219, 0.35);
+    color: var(--lad-accent);
+    background: var(--lad-accent-soft);
+    border: 1px solid var(--lad-border-accent);
     border-radius: 50%;
     flex-shrink: 0;
 }
@@ -1138,20 +1172,20 @@
 
 .lad-final {
     text-align: center;
-    padding: var(--spacing-12) var(--spacing-4) var(--spacing-8);
+    padding: var(--spacing-8) var(--spacing-4) var(--spacing-6);
     max-width: 30rem;
     margin: 0 auto;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(240, 250, 255, 0.84));
-    border: 1px solid rgba(26, 221, 219, 0.24);
-    border-radius: var(--radius-xl);
-    box-shadow: 0 16px 45px rgba(3, 10, 36, 0.08);
 }
 
 .lad-final h2 {
     font-size: clamp(1.125rem, 4vw, 1.375rem);
     font-weight: var(--font-weight-bold);
-    margin: 0 0 var(--spacing-3);
+    margin: 0 0 var(--spacing-4);
     letter-spacing: -0.02em;
+}
+
+.lad-final--push .lad-hero-fold-cta {
+    margin-bottom: 0;
 }
 
 .lad-final--push .lad-final-cta-stack {
@@ -1231,9 +1265,9 @@
 .lad-footer {
     text-align: center;
     padding: var(--spacing-6) var(--spacing-4);
-    border-top: 1px solid var(--color-border-light);
+    border-top: 1px solid var(--lad-border);
     font-size: var(--font-size-xs);
-    color: var(--color-text-tertiary);
+    color: rgba(244, 247, 251, 0.45);
 }
 
 .lad-footer-links {
@@ -1245,7 +1279,7 @@
 }
 
 .lad-footer-links a {
-    color: var(--color-link);
+    color: var(--lad-accent);
     text-decoration: none;
     font-weight: var(--font-weight-medium);
 }
@@ -1382,8 +1416,8 @@
     }
 
     .lad-topbar {
-        background: rgba(255, 255, 255, 0.88);
-        backdrop-filter: blur(8px) saturate(140%);
+        background: rgba(3, 10, 36, 0.92);
+        backdrop-filter: blur(14px) saturate(160%);
     }
 
     .lad-hero-cta-btn {

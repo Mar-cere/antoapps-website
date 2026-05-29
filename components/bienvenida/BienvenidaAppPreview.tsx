@@ -3,13 +3,7 @@ import Image from 'next/image';
 export default function BienvenidaAppPreview() {
   return (
     <div className="lad-app-preview" aria-label="Vista previa de la app Anto">
-      <p className="lad-app-preview-kicker">Así se ve por dentro</p>
-
       <div className="lad-app-screen">
-        <div className="lad-app-screen-status" aria-hidden="true">
-          <span>Anto</span>
-        </div>
-
         <header className="lad-app-screen-header">
           <Image
             src="/assets/images/antoIcon.png"
@@ -29,10 +23,6 @@ export default function BienvenidaAppPreview() {
             <p>
               Suena agotador. ¿Qué pesa más ahora: el miedo, la culpa o la incertidumbre?
             </p>
-          </div>
-          <div className="lad-app-action" aria-hidden="true">
-            <span className="lad-app-action-icon">✦</span>
-            <span>Un micro-paso concreto para hoy</span>
           </div>
         </div>
 

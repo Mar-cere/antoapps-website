@@ -2,14 +2,21 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import CookieConsent from '@/components/CookieConsent';
-import BienvenidaAppPreview from '@/components/bienvenida/BienvenidaAppPreview';
-import BienvenidaFaq from '@/components/bienvenida/BienvenidaFaq';
 import BienvenidaLandingTracker from '@/components/analytics/BienvenidaLandingTracker';
 import MetaPixelNoscript from '@/components/analytics/MetaPixelNoscript';
+import BienvenidaAppPreview from '@/components/bienvenida/BienvenidaAppPreview';
+import BienvenidaFaq from '@/components/bienvenida/BienvenidaFaq';
 import BienvenidaStickyCta from '@/components/bienvenida/BienvenidaStickyCta';
-import BienvenidaStoreRating from '@/components/bienvenida/BienvenidaStoreRating';
+import BienvenidaTrustStrip from '@/components/bienvenida/BienvenidaTrustStrip';
 import HeroDualCta from '@/components/bienvenida/HeroDualCta';
 import InstagramBrowserHint from '@/components/bienvenida/InstagramBrowserHint';
+import {
+  BIENVENIDA_DISCLAIMER,
+  BIENVENIDA_FINAL_HEADLINE,
+  BIENVENIDA_HOW_STEPS,
+  bienvenidaHeroLead,
+  bienvenidaHeroTitleLine2,
+} from '@/lib/bienvenida-copy';
 import { appStoreHref } from '@/lib/download-links';
 import '@/styles/components/buttons.css';
 import '@/styles/pages/landing-ad.css';
@@ -20,7 +27,7 @@ const APP_STORE_ID = '6756631911';
 export const metadata: Metadata = {
   title: 'Anto — Calma mental en minutos | Descarga en App Store',
   description:
-    'Cuando tu mente va a mil, escribe como te salga y recibe guía clara en segundos. Descarga en App Store o pide acceso anticipado Android por correo. Prueba 3 días.',
+    'Cuando tu mente va a mil, escribe lo que sientes y recibe guía clara en segundos. Prueba 3 días gratis en iPhone.',
   alternates: {
     canonical: `${baseUrl}/bienvenida`,
   },
@@ -31,8 +38,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: `${baseUrl}/bienvenida`,
     title: 'Anto — Calma mental en minutos',
-    description:
-      'Descarga en App Store y empieza hoy. Valorada 5.0 en App Store. Prueba 3 días gratis.',
+    description: 'Descarga en App Store. ★ 5.0 · Prueba 3 días gratis.',
     siteName: 'Anto',
     locale: 'es_CL',
   },
@@ -56,23 +62,9 @@ function parseVariant(value: string | string[] | undefined): 'A' | 'B' {
   return raw?.toLowerCase() === 'b' ? 'B' : 'A';
 }
 
-const howSteps = [
-  'Abre la app y escribe lo que sientes, sin filtro.',
-  'Recibe claridad y un micro-paso concreto para hoy.',
-  'Vuelve cuando lo necesites — Anto está disponible 24/7.',
-] as const;
-
 export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandingPageProps) {
   const storeHref = appStoreHref();
   const landingVariant = parseVariant(searchParams?.ab);
-  const heroTitleLine2 =
-    landingVariant === 'B'
-      ? 'Anto te ayuda a ordenar lo que sientes'
-      : 'ordena lo que sientes con Anto';
-  const heroLead =
-    landingVariant === 'B'
-      ? 'Escribes como te salga y recibes guía clara, práctica y humana en segundos.'
-      : 'Escribe como te salga y recibe claridad práctica en segundos, estés donde estés.';
 
   return (
     <div className="lad-page">
@@ -96,34 +88,17 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
 
       <main className="lad-main" id="contenido-principal">
         <section className="lad-hero" aria-labelledby="lad-hero-title">
-          <p className="lad-hero-badge">Bienestar emocional en tu bolsillo</p>
           <h1 id="lad-hero-title">
             <span className="lad-hero-title-line">Cuando tu mente va a mil,</span>
-            <span className="lad-hero-title-line">{heroTitleLine2}</span>
+            <span className="lad-hero-title-line">{bienvenidaHeroTitleLine2(landingVariant)}</span>
           </h1>
-          <p className="lad-hero-lead">{heroLead}</p>
+          <p className="lad-hero-lead">{bienvenidaHeroLead(landingVariant)}</p>
 
           <HeroDualCta storeHref={storeHref} landingVariant={landingVariant} />
 
           <BienvenidaAppPreview />
 
-          <ul className="lad-hero-quick-points" aria-label="Beneficios rápidos">
-            <li>Claridad emocional en minutos</li>
-            <li>Privado, personal y sin juicios</li>
-            <li>Acciones concretas para hoy</li>
-          </ul>
-
-          <BienvenidaStoreRating />
-
-          <div className="lad-social-proof" aria-label="Señales de confianza">
-            <span className="lad-social-proof-item">Disponible en iPhone</span>
-            <span className="lad-social-proof-item">Hecho en Chile</span>
-          </div>
-
-          <p className="lad-microcopy">
-            Anto no sustituye terapia ni atención clínica. Si estás en crisis, busca ayuda profesional
-            o de emergencia en tu país.
-          </p>
+          <BienvenidaTrustStrip />
         </section>
 
         <section
@@ -133,11 +108,10 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
         >
           <div className="lad-how-inner">
             <h2 id="lad-how-section-title" className="lad-how-section-title">
-              Cómo funciona
+              Así funciona
             </h2>
-            <p className="lad-how-open">Tu primera conversación toma menos de 2 minutos.</p>
             <ol className="lad-how-steps">
-              {howSteps.map((step, index) => (
+              {BIENVENIDA_HOW_STEPS.map((step, index) => (
                 <li key={step}>
                   <span className="lad-how-step-num" aria-hidden="true">
                     {index + 1}
@@ -146,29 +120,21 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
                 </li>
               ))}
             </ol>
-            <Link href="#descargar" className="lad-how-next">
-              Descargar y probar gratis
-            </Link>
           </div>
         </section>
 
         <BienvenidaFaq />
 
         <section className="lad-final lad-final--push" aria-labelledby="lad-final-title">
-          <h2 id="lad-final-title">Empieza en segundos.</h2>
-          <p className="lad-final-sub">
-            <span className="lad-final-sub-line">Prueba 3 días gratis.</span>
-            <span className="lad-final-sub-line">Cancelación simple desde App Store.</span>
-          </p>
+          <h2 id="lad-final-title">{BIENVENIDA_FINAL_HEADLINE}</h2>
           <HeroDualCta
             storeHref={storeHref}
             landingVariant={landingVariant}
             placement="final"
           />
-          <Link href="#descargar" className="lad-cta-back-top">
-            Volver arriba
-          </Link>
         </section>
+
+        <p className="lad-disclaimer">{BIENVENIDA_DISCLAIMER}</p>
       </main>
 
       <footer className="lad-footer">

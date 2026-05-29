@@ -10,20 +10,19 @@ const faqItems: FaqItem[] = [
   {
     question: '¿Es lo mismo que terapia?',
     answer:
-      'No. Anto es apoyo emocional con IA para ordenar lo que sientes y avanzar con micro-pasos. No diagnostica ni sustituye atención clínica. Si necesitas tratamiento, un profesional es la vía indicada.',
+      'No. Anto es apoyo emocional con IA: te ayuda a ordenar lo que sientes y avanzar con pasos concretos. No diagnostica ni sustituye atención clínica.',
   },
   {
-    question: '¿Cuánto cuesta después del trial?',
+    question: '¿Cuánto cuesta después de la prueba?',
     answer:
-      'Descargas gratis y pruebas 3 días sin costo. Después, el plan mensual parte desde $3.990 CLP. Puedes cancelar cuando quieras desde tu App Store, sin trámites extra.',
+      'La descarga es gratis y tienes 3 días de prueba sin costo. Después, el plan mensual parte desde $3.990 CLP. Puedes cancelar cuando quieras desde App Store.',
   },
   {
     question: '¿Quién ve lo que escribo?',
     answer: (
       <>
-        Tus conversaciones son privadas. No vendemos tus datos ni los usamos para publicidad.
-        Revisa el detalle en nuestra{' '}
-        <Link href="/privacidad">Política de Privacidad</Link>.
+        Tus conversaciones son privadas. No vendemos tus datos ni los usamos para publicidad. Más
+        detalle en nuestra <Link href="/privacidad">Política de Privacidad</Link>.
       </>
     ),
   },
@@ -33,7 +32,7 @@ export default function BienvenidaFaq() {
   return (
     <section className="lad-faq lad-section--anchor" id="preguntas" aria-labelledby="lad-faq-title">
       <h2 id="lad-faq-title" className="lad-faq-title">
-        Preguntas frecuentes
+        Dudas frecuentes
       </h2>
       <div className="lad-faq-list">
         {faqItems.map((item) => (
