@@ -88,4 +88,26 @@ export function trackMetaStoreClick(params: MetaEventParams & AttributionContext
       ...normalized,
     })
   );
+  window.fbq(
+    'track',
+    'InitiateCheckout',
+    normalizeMetaParams({
+      content_name: 'app_store_download',
+      content_category: 'app_download_intent',
+      ...normalized,
+    })
+  );
+}
+
+export function trackMetaViewContent(params: MetaEventParams = {}): void {
+  if (typeof window === 'undefined' || !window.fbq) return;
+  window.fbq('track', 'ViewContent', normalizeMetaParams(params));
+}
+
+export function getMetaPixelId(): string {
+  return META_PIXEL_ID;
+}
+
+export function isMetaPixelConfigured(): boolean {
+  return META_PIXEL_ID.length > 0;
 }

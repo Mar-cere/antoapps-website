@@ -6,10 +6,21 @@ import '@/styles/components/cookie-consent.css';
 
 type CookieConsentProps = {
   compact?: boolean;
+  /** Retraso antes de mostrar (ms). Por defecto 500. */
+  bannerDelayMs?: number;
+  /** Mostrar también tras scroll (px). */
+  showAfterScrollPx?: number;
 };
 
-export default function CookieConsent({ compact = false }: CookieConsentProps) {
-  const { showBanner, acceptCookies, rejectCookies } = useCookieConsent();
+export default function CookieConsent({
+  compact = false,
+  bannerDelayMs,
+  showAfterScrollPx,
+}: CookieConsentProps) {
+  const { showBanner, acceptCookies, rejectCookies } = useCookieConsent({
+    bannerDelayMs,
+    showAfterScrollPx,
+  });
 
   if (!showBanner) return null;
 
@@ -55,4 +66,3 @@ export default function CookieConsent({ compact = false }: CookieConsentProps) {
     </div>
   );
 }
-

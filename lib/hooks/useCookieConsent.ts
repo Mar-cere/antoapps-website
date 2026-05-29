@@ -3,18 +3,24 @@
 import { useEffect, useState } from 'react';
 import { trackCustomEvent } from '@/lib/analytics/events';
 
-export function useCookieConsent() {
+type UseCookieConsentOptions = {
+  /** Retraso mínimo antes de mostrar el banner (ms). */
+  bannerDelayMs?: number;
+  /** Mostrar también tras desplazarse esta cantidad de px. */
+  showAfterScrollPx?: number;
+};
+
+export function useCookieConsent(options: UseCookieConsentOptions = {}) {
+  const { bannerDelayMs = 500, showAfterScrollPx } = options;
   const [showBanner, setShowBanner] = useState(false);
   const [consent, setConsent] = useState<string | null>(null);
 
   useEffect(() => {
-    // Verificar si ya hay consentimiento
     const savedConsent = localStorage.getItem('cookieConsent');
-    
+
     if (savedConsent) {
       setConsent(savedConsent);
       if (savedConsent === 'accepted') {
-        // Cargar analytics si está disponible
         if (typeof window !== 'undefined') {
           import('@/lib/hooks/useAnalytics').then((module) => {
             module.initAnalytics();
@@ -24,20 +30,42 @@ export function useCookieConsent() {
           });
         }
       }
-    } else {
-      // Mostrar banner después de un delay
-      setTimeout(() => {
-        setShowBanner(true);
-      }, 500);
+      return;
     }
-  }, []);
+
+    let shown = false;
+    const revealBanner = () => {
+      if (shown) return;
+      shown = true;
+      setShowBanner(true);
+    };
+
+    const delayTimer = window.setTimeout(revealBanner, bannerDelayMs);
+
+    const onScroll = () => {
+      if (showAfterScrollPx != null && window.scrollY >= showAfterScrollPx) {
+        revealBanner();
+      }
+    };
+
+    if (showAfterScrollPx != null) {
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    return () => {
+      window.clearTimeout(delayTimer);
+      if (showAfterScrollPx != null) {
+        window.removeEventListener('scroll', onScroll);
+      }
+    };
+  }, [bannerDelayMs, showAfterScrollPx]);
 
   const acceptCookies = () => {
     localStorage.setItem('cookieConsent', 'accepted');
     setConsent('accepted');
     setShowBanner(false);
-    
-    // Cargar analytics
+
     if (typeof window !== 'undefined') {
       import('@/lib/hooks/useAnalytics').then((module) => {
         module.initAnalytics();
@@ -46,6 +74,7 @@ export function useCookieConsent() {
       import('@/lib/analytics/meta-pixel').then((module) => {
         module.initMetaPixel();
       });
+      window.dispatchEvent(new Event('cookie-consent-accepted'));
     }
   };
 
@@ -63,4 +92,3 @@ export function useCookieConsent() {
     rejectCookies,
   };
 }
-

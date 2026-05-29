@@ -4,9 +4,12 @@ import Link from 'next/link';
 import CookieConsent from '@/components/CookieConsent';
 import BienvenidaAppPreview from '@/components/bienvenida/BienvenidaAppPreview';
 import BienvenidaFaq from '@/components/bienvenida/BienvenidaFaq';
+import BienvenidaLandingTracker from '@/components/analytics/BienvenidaLandingTracker';
+import MetaPixelNoscript from '@/components/analytics/MetaPixelNoscript';
+import BienvenidaStickyCta from '@/components/bienvenida/BienvenidaStickyCta';
+import BienvenidaStoreRating from '@/components/bienvenida/BienvenidaStoreRating';
 import HeroDualCta from '@/components/bienvenida/HeroDualCta';
 import InstagramBrowserHint from '@/components/bienvenida/InstagramBrowserHint';
-import LandingViewTracker from '@/components/analytics/LandingViewTracker';
 import { appStoreHref } from '@/lib/download-links';
 import '@/styles/components/buttons.css';
 import '@/styles/pages/landing-ad.css';
@@ -29,23 +32,14 @@ export const metadata: Metadata = {
     url: `${baseUrl}/bienvenida`,
     title: 'Anto — Calma mental en minutos',
     description:
-      'Descarga en App Store y empieza hoy. Android con acceso anticipado por correo.',
+      'Descarga en App Store y empieza hoy. Valorada 5.0 en App Store. Prueba 3 días gratis.',
     siteName: 'Anto',
     locale: 'es_CL',
-    images: [
-      {
-        url: `${baseUrl}/assets/images/antoIcon.png`,
-        width: 512,
-        height: 512,
-        alt: 'Anto',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Anto — Empieza hoy',
-    description: 'Descarga en App Store. Android con acceso anticipado por correo.',
-    images: [`${baseUrl}/assets/images/antoIcon.png`],
+    description: 'Descarga en App Store. ★ 5.0 · Prueba 3 días gratis.',
   },
   robots: {
     index: true,
@@ -82,7 +76,8 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
 
   return (
     <div className="lad-page">
-      <LandingViewTracker page="/bienvenida" landingVariant={landingVariant} />
+      <MetaPixelNoscript />
+      <BienvenidaLandingTracker landingVariant={landingVariant} />
       <header className="lad-topbar" role="banner">
         <div className="lad-brand" aria-label="Anto">
           <Image
@@ -118,10 +113,11 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
             <li>Acciones concretas para hoy</li>
           </ul>
 
+          <BienvenidaStoreRating />
+
           <div className="lad-social-proof" aria-label="Señales de confianza">
-            <span className="lad-social-proof-item">Disponible en App Store</span>
-            <span className="lad-social-proof-item">Descarga gratuita en iPhone</span>
-            <span className="lad-social-proof-item">Privado y sin juicios</span>
+            <span className="lad-social-proof-item">Disponible en iPhone</span>
+            <span className="lad-social-proof-item">Hecho en Chile</span>
           </div>
 
           <p className="lad-microcopy">
@@ -184,7 +180,9 @@ export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandin
         <p>© {new Date().getFullYear()} Anto · Hecho con cuidado en Chile</p>
       </footer>
 
-      <CookieConsent compact />
+      <BienvenidaStickyCta storeHref={storeHref} landingVariant={landingVariant} />
+
+      <CookieConsent compact bannerDelayMs={3000} showAfterScrollPx={120} />
     </div>
   );
 }
