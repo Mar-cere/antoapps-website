@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import { BIENVENIDA_TRIAL_FAQ_ANSWER } from '@/lib/bienvenida-copy';
 
 type FaqItem = {
   question: string;
@@ -14,8 +15,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: '¿Cuánto cuesta después de la prueba?',
-    answer:
-      'La descarga es gratis y tienes 3 días de prueba sin costo. Después, el plan mensual parte desde $3.990 CLP. Puedes cancelar cuando quieras desde App Store.',
+    answer: BIENVENIDA_TRIAL_FAQ_ANSWER,
   },
   {
     question: '¿Quién ve lo que escribo?',

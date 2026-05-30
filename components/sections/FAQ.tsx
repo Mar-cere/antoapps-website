@@ -38,7 +38,7 @@ const faqData = [
     id: 5,
     question: '¿Hay un período de prueba gratis?',
     answer:
-      'Sí, ofrecemos 3 días completos de prueba gratis en el plan Premium. No se requiere tarjeta de crédito para comenzar, y puedes cancelar en cualquier momento sin compromiso. Durante la prueba tendrás acceso completo a todas las funciones Premium, incluyendo análisis emocional avanzado, detección de crisis proactiva, y todas las herramientas de bienestar. Si decides continuar después de la prueba, tu suscripción comenzará automáticamente.',
+      'Sí, ofrecemos 1 día completo de prueba gratis en el plan Premium. No se requiere tarjeta de crédito para comenzar, y puedes cancelar en cualquier momento sin compromiso. Durante la prueba tendrás acceso completo a todas las funciones Premium, incluyendo análisis emocional avanzado, detección de crisis proactiva, y todas las herramientas de bienestar. Si decides continuar después de la prueba, tu suscripción comenzará automáticamente.',
     category: 'precios',
   },
   {
@@ -111,7 +111,7 @@ const faqMoreData = [
     id: 15,
     question: '¿Cómo se compara Anto con otras apps de salud mental?',
     answer:
-      'Anto se diferencia por su enfoque en privacidad (encriptación E2E), un asistente de bienestar emocional con IA que se adapta al contexto, detección de crisis proactiva y análisis emocional detallado. No vendemos datos de usuarios y priorizamos seguridad y transparencia. El modelo de precios es accesible y hay período de prueba de 3 días para explorar las funciones (según el flujo en la app).',
+      'Anto se diferencia por su enfoque en privacidad (encriptación E2E), un asistente de bienestar emocional con IA que se adapta al contexto, detección de crisis proactiva y análisis emocional detallado. No vendemos datos de usuarios y priorizamos seguridad y transparencia. El modelo de precios es accesible y hay período de prueba de 1 día para explorar las funciones (según el flujo en la app).',
     category: 'funcionalidad',
   },
   {

@@ -141,7 +141,7 @@ export default function TerminosPage() {
 
                 <h3>3.7. Período de Prueba Gratuita</h3>
                 <p>
-                  Anto puede ofrecer un período de prueba de <strong>3 días</strong> para explorar las
+                  Anto puede ofrecer un período de prueba de <strong>1 día</strong> para explorar las
                   funcionalidades, según el plan y la tienda de aplicaciones. Las condiciones exactas
                   (inicio, alcance y facturación tras la prueba) se muestran en el momento de la compra
                   o suscripción en la app y en Apple App Store.

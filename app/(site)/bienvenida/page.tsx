@@ -14,6 +14,8 @@ import {
   BIENVENIDA_DISCLAIMER,
   BIENVENIDA_FINAL_HEADLINE,
   BIENVENIDA_HOW_STEPS,
+  BIENVENIDA_META_DESCRIPTION,
+  BIENVENIDA_SOCIAL_DESCRIPTION,
   bienvenidaHeroLead,
   bienvenidaHeroTitleLine2,
 } from '@/lib/bienvenida-copy';
@@ -26,8 +28,7 @@ const APP_STORE_ID = '6756631911';
 
 export const metadata: Metadata = {
   title: 'Anto — Calma mental en minutos | Descarga en App Store',
-  description:
-    'Cuando tu mente va a mil, escribe lo que sientes y recibe guía clara en segundos. Prueba 3 días gratis en iPhone.',
+  description: BIENVENIDA_META_DESCRIPTION,
   alternates: {
     canonical: `${baseUrl}/bienvenida`,
   },
@@ -38,14 +39,14 @@ export const metadata: Metadata = {
     type: 'website',
     url: `${baseUrl}/bienvenida`,
     title: 'Anto — Calma mental en minutos',
-    description: 'Descarga en App Store. ★ 5.0 · Prueba 3 días gratis.',
+    description: BIENVENIDA_SOCIAL_DESCRIPTION,
     siteName: 'Anto',
     locale: 'es_CL',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Anto — Empieza hoy',
-    description: 'Descarga en App Store. ★ 5.0 · Prueba 3 días gratis.',
+    description: BIENVENIDA_SOCIAL_DESCRIPTION,
   },
   robots: {
     index: true,

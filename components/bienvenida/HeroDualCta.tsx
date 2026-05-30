@@ -3,6 +3,12 @@
 import { useEffect, useState } from 'react';
 import DownloadLink from '@/components/DownloadLink';
 import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
+import {
+  BIENVENIDA_TRIAL_ARIA,
+  BIENVENIDA_TRIAL_FINAL_CTA,
+  BIENVENIDA_TRIAL_HERO_CTA,
+  BIENVENIDA_TRIAL_SHORT,
+} from '@/lib/bienvenida-copy';
 
 type HeroDualCtaProps = {
   storeHref: string;
@@ -12,11 +18,9 @@ type HeroDualCtaProps = {
 
 function primaryCtaLabel(variant: 'A' | 'B', isFinal: boolean): string {
   if (isFinal) {
-    return 'Descargar en App Store';
+    return BIENVENIDA_TRIAL_FINAL_CTA;
   }
-  return variant === 'B'
-    ? 'Descargar en iPhone — 3 días gratis'
-    : 'Empieza en iPhone — 3 días gratis';
+  return BIENVENIDA_TRIAL_HERO_CTA[variant];
 }
 
 export default function HeroDualCta({
@@ -52,17 +56,17 @@ export default function HeroDualCta({
             ? `final_primary_variant_${landingVariant}`
             : `hero_primary_variant_${landingVariant}`
         }
-        aria-label="Descargar Anto en App Store. Incluye 3 días de prueba gratis."
+        aria-label={BIENVENIDA_TRIAL_ARIA}
       >
         {primaryCtaText}
       </DownloadLink>
 
+      <p className="lad-hero-trial-line">
+        <strong>{BIENVENIDA_TRIAL_SHORT}</strong> · cancelas cuando quieras en App Store
+      </p>
+
       {!isFinal && (
         <>
-          <p className="lad-hero-trial-line">
-            <strong>3 días gratis</strong> · cancelas cuando quieras en App Store
-          </p>
-
           <button
             type="button"
             className="lad-android-waitlist-trigger"

@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import DownloadLink from '@/components/DownloadLink';
+import {
+  BIENVENIDA_TRIAL_STICKY_ARIA,
+  BIENVENIDA_TRIAL_STICKY_CTA,
+} from '@/lib/bienvenida-copy';
 
 type BienvenidaStickyCtaProps = {
   storeHref: string;
   landingVariant: 'A' | 'B';
 };
-
-function stickyLabel(variant: 'A' | 'B'): string {
-  return variant === 'B' ? 'Descargar — 3 días gratis' : 'Empieza — 3 días gratis';
-}
 
 export default function BienvenidaStickyCta({ storeHref, landingVariant }: BienvenidaStickyCtaProps) {
   const [visible, setVisible] = useState(false);
@@ -41,9 +41,9 @@ export default function BienvenidaStickyCta({ storeHref, landingVariant }: Bienv
         trackingPlacement="bienvenida_sticky_cta"
         trackingPage="/bienvenida"
         trackingLabel={`sticky_variant_${landingVariant}`}
-        aria-label="Descargar Anto en App Store. Prueba gratis de 3 días."
+        aria-label={BIENVENIDA_TRIAL_STICKY_ARIA}
       >
-        {stickyLabel(landingVariant)}
+        {BIENVENIDA_TRIAL_STICKY_CTA[landingVariant]}
       </DownloadLink>
     </div>
   );

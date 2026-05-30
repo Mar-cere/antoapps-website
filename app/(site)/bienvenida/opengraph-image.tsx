@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { BIENVENIDA_OG_SUBLINE, BIENVENIDA_TRIAL_SHORT } from '@/lib/bienvenida-copy';
 
 export const runtime = 'edge';
 export const alt = 'Anto — Calma mental en minutos';
@@ -58,7 +59,7 @@ export default function BienvenidaOpenGraphImage() {
           Cuando tu mente va a mil, ordena lo que sientes
         </div>
         <div style={{ fontSize: 30, lineHeight: 1.4, color: 'rgba(255,255,255,0.82)', maxWidth: 860 }}>
-          Escribe como te salga y recibe claridad práctica en segundos. Prueba 3 días gratis en iPhone.
+          {BIENVENIDA_OG_SUBLINE}
         </div>
         <div
           style={{
@@ -72,7 +73,7 @@ export default function BienvenidaOpenGraphImage() {
         >
           <span>★ 5.0 en App Store</span>
           <span>·</span>
-          <span>Descarga gratuita</span>
+          <span>{BIENVENIDA_TRIAL_SHORT}</span>
         </div>
       </div>
     ),

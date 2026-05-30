@@ -216,7 +216,7 @@ Desarrollador Principal
 
 ## 📊 Precios y prueba
 
-Anto ofrece **3 días de prueba** para explorar las funcionalidades (según el flujo de suscripción en la app) y planes flexibles basados en duración:
+Anto ofrece **1 día de prueba** para explorar las funcionalidades (según el flujo de suscripción en la app) y planes flexibles basados en duración:
 
 - **1 Mes**: $3.990 CLP
 - **3 Meses**: $11.990 CLP
