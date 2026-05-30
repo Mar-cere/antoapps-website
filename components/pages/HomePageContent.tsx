@@ -6,7 +6,6 @@ import { LocaleProvider } from '@/lib/i18n/context';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import StickyNav from '@/components/layout/StickyNav';
-import ClientScripts from '@/components/ClientScripts';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import PullToRefresh from '@/components/ui/PullToRefresh';
@@ -91,7 +90,6 @@ export default function HomePageContent({ locale }: HomePageContentProps) {
         </main>
       </PullToRefresh>
       <Footer />
-      <ClientScripts />
       <CookieConsent />
     </LocaleProvider>
   );

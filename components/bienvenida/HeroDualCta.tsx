@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import DownloadLink from '@/components/DownloadLink';
 import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
+import type { Locale } from '@/lib/i18n/config';
 import type { BienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 
 type HeroDualCtaProps = {
@@ -10,6 +11,7 @@ type HeroDualCtaProps = {
   landingVariant: 'A' | 'B';
   pagePath: string;
   copy: BienvenidaCopy;
+  locale?: Locale;
   placement?: 'hero' | 'final';
 };
 
@@ -29,6 +31,7 @@ export default function HeroDualCta({
   landingVariant,
   pagePath,
   copy,
+  locale = 'es',
   placement = 'hero',
 }: HeroDualCtaProps) {
   const [showAndroidInput, setShowAndroidInput] = useState(false);
@@ -80,6 +83,7 @@ export default function HeroDualCta({
 
           <div className={`lad-android-reveal ${showAndroidInput ? 'is-open' : ''}`}>
             <AndroidEarlyAccessForm
+              locale={locale}
               id="android-early-access-bienvenida"
               placement="bienvenida_hero_android_early_access"
               page={pagePath}

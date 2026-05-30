@@ -1,4 +1,6 @@
+import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
+import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 
 export type ContactPageMetadata = {
   title: string;
@@ -278,8 +280,9 @@ function buildContactPageCopy(locale: Locale): ContactPageCopy {
   };
 }
 
-export function contactPageMetadata(locale: Locale): ContactPageMetadata {
-  return metadataByLocale[locale];
+export function contactPageMetadata(locale: Locale): Metadata {
+  const meta = metadataByLocale[locale];
+  return buildLocalizedPageMetadata(locale, '/contacto', meta);
 }
 
 export function getContactPageCopy(locale: Locale): ContactPageCopy {

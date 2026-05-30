@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '../../styles/main.css';
 import { APP_VERSION } from '@/lib/app-version';
+import ClientScripts from '@/components/ClientScripts';
 
 export const metadata: Metadata = {
   title: 'Anto - Tu apoyo emocional 24/7 | Salud Mental con IA',
@@ -121,6 +122,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
       />
       {children}
+      <ClientScripts />
     </>
   );
 }

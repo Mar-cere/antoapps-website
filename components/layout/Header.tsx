@@ -7,15 +7,13 @@ import { usePathname } from 'next/navigation';
 import { useMobileMenu } from '@/lib/hooks/useNavigation';
 import { useSwipeGestures } from '@/lib/hooks/useSwipeGestures';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
-import { DEFAULT_LOCALE, type Locale } from '@/lib/i18n/config';
+import { type Locale } from '@/lib/i18n/config';
+import { localeFromPathname, pathWithoutLocale } from '@/lib/i18n/path-from-pathname';
 import { getSiteLayoutCopy } from '@/lib/i18n/copy/home';
 import '@/styles/layout/header.css';
 
 function resolveLocale(pathname: string): Locale {
-  if (pathname === '/en' || pathname.startsWith('/en/')) {
-    return 'en';
-  }
-  return DEFAULT_LOCALE;
+  return localeFromPathname(pathname);
 }
 
 export default function Header() {
@@ -24,7 +22,7 @@ export default function Header() {
   const copy = getSiteLayoutCopy(locale);
   const homeHref = locale === 'en' ? '/en' : '/';
   const downloadHref = locale === 'en' ? '/en/bienvenida' : '/bienvenida';
-  const isHome = pathname === '/' || pathname === '/en';
+  const langSwitchPath = pathWithoutLocale(pathname ?? '/');
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -152,9 +150,7 @@ export default function Header() {
           </ul>
 
           <div className="nav-actions">
-            {isHome && (
-              <LanguageSwitcher locale={locale} path="/" className="nav-lang-switch" />
-            )}
+            <LanguageSwitcher locale={locale} path={langSwitchPath} className="nav-lang-switch" />
             <Link
               href={downloadHref}
               className="btn btn-primary"

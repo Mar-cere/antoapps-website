@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import { getPricingCalculatorCopy } from '@/lib/i18n/copy/home';
 
 const CLP_TO_USD = 950;
@@ -58,6 +59,8 @@ export default function PricingCalculator({ locale = 'es' }: PricingCalculatorPr
   };
 
   const downloadHref = locale === 'en' ? '/en/bienvenida' : '/bienvenida';
+  const termsHref = localePath(locale, '/terminos');
+  const privacyHref = localePath(locale, '/privacidad');
 
   return (
     <div className="pricing-calculator">
@@ -155,9 +158,9 @@ export default function PricingCalculator({ locale = 'es' }: PricingCalculatorPr
                   </Link>
                   <p className="calculator-legal">
                     {copy.legal.subscribePrefix}{' '}
-                    <Link href="/terminos">{copy.legal.termsOfUse}</Link>{' '}
+                    <Link href={termsHref}>{copy.legal.termsOfUse}</Link>{' '}
                     {copy.legal.and}{' '}
-                    <Link href="/privacidad">{copy.legal.privacyPolicy}</Link>
+                    <Link href={privacyHref}>{copy.legal.privacyPolicy}</Link>
                     . {copy.legal.autoRenewal}
                   </p>
                 </div>
@@ -213,9 +216,9 @@ export default function PricingCalculator({ locale = 'es' }: PricingCalculatorPr
             <p>{copy.comparison.priceNote}</p>
             <p className="calculator-legal">
               {copy.legal.subscribePrefix}{' '}
-              <Link href="/terminos">{copy.legal.termsOfUse}</Link>{' '}
+              <Link href={termsHref}>{copy.legal.termsOfUse}</Link>{' '}
               {copy.legal.and}{' '}
-              <Link href="/privacidad">{copy.legal.privacyPolicy}</Link>
+              <Link href={privacyHref}>{copy.legal.privacyPolicy}</Link>
               . {copy.legal.autoRenewal}
             </p>
           </div>

@@ -107,6 +107,7 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
             landingVariant={landingVariant}
             pagePath={pagePath}
             copy={copy}
+            locale={locale}
           />
 
           <BienvenidaAppPreview copy={copy.appPreview} />
@@ -146,6 +147,7 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
             placement="final"
             pagePath={pagePath}
             copy={copy}
+            locale={locale}
           />
         </section>
 

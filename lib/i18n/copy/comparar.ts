@@ -1,4 +1,6 @@
+import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
+import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
 export type CompararPageMetadata = {
@@ -253,8 +255,9 @@ function buildCompararPageCopy(locale: Locale): CompararPageCopy {
 
 const compararPageCopyCache: Partial<Record<Locale, CompararPageCopy>> = {};
 
-export function compararPageMetadata(locale: Locale): CompararPageMetadata {
-  return metadataByLocale[locale];
+export function compararPageMetadata(locale: Locale): Metadata {
+  const meta = metadataByLocale[locale];
+  return buildLocalizedPageMetadata(locale, '/comparar', meta);
 }
 
 export function getCompararPageCopy(locale: Locale): CompararPageCopy {

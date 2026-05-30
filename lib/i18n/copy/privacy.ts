@@ -1,4 +1,6 @@
+import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
+import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 import type { LegalPageCopy } from '@/lib/i18n/copy/legal-shared';
 
 export type PrivacyPageMetadata = {
@@ -454,8 +456,9 @@ function buildPrivacyPageCopy(locale: Locale): LegalPageCopy {
   };
 }
 
-export function privacyPageMetadata(locale: Locale): PrivacyPageMetadata {
-  return metadataByLocale[locale];
+export function privacyPageMetadata(locale: Locale): Metadata {
+  const meta = metadataByLocale[locale];
+  return buildLocalizedPageMetadata(locale, '/privacidad', meta);
 }
 
 export function getPrivacyPageCopy(locale: Locale): LegalPageCopy {

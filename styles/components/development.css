@@ -43,6 +43,29 @@
     z-index: 1;
 }
 
+/* Development Overview */
+.development-overview {
+    padding: 4rem 0;
+    background: var(--color-bg-primary);
+}
+
+.development-intro {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.development-intro p {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-lg);
+}
+
+.tech-stack-section {
+    padding: 4rem 0;
+    background: var(--color-bg-secondary);
+}
+
 /* Development Content */
 .development-content {
     background: var(--color-bg-primary);
@@ -137,7 +160,7 @@
 .tech-tag {
     padding: 0.5rem 1rem;
     background: linear-gradient(135deg, #1ADDDB 0%, #A3B8E8 100%);
-    color: white;
+    color: var(--color-text-on-primary);
     border-radius: 20px;
     font-size: var(--font-size-sm);
     font-weight: 500;
@@ -177,7 +200,7 @@
     height: 60px;
     border-radius: 50%;
     background: linear-gradient(135deg, #1ADDDB 0%, #A3B8E8 100%);
-    color: white;
+    color: var(--color-text-on-primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -221,7 +244,7 @@
     padding: 0.5rem 0;
     padding-left: 1.5rem;
     position: relative;
-    color: #555;
+    color: var(--color-text-secondary);
 }
 
 .timeline-details li::before {
@@ -373,11 +396,10 @@
 .metrics-section {
     padding: 4rem 0;
     background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-tertiary) 100%);
-    color: white;
 }
 
 .metrics-section .section-title {
-    color: white;
+    color: var(--color-text-primary);
 }
 
 .metrics-grid {
@@ -416,7 +438,7 @@
 
 .metric-label {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-text-secondary);
 }
 
 /* CTA */

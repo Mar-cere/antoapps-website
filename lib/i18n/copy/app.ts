@@ -1,4 +1,6 @@
+import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
+import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
 export type AppPageMetadata = {
@@ -759,8 +761,17 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
 
 const appPageCopyCache: Partial<Record<Locale, AppPageCopy>> = {};
 
-export function appPageMetadata(locale: Locale): AppPageMetadata {
-  return metadataByLocale[locale];
+export function appPageMetadata(locale: Locale, versionLabel?: string): Metadata {
+  const meta = metadataByLocale[locale];
+  const description = versionLabel
+    ? meta.description.replace('{versionLabel}', versionLabel)
+    : meta.description;
+
+  return buildLocalizedPageMetadata(locale, '/app', {
+    title: meta.title,
+    description,
+    openGraph: meta.openGraph,
+  });
 }
 
 export function getAppPageCopy(locale: Locale): AppPageCopy {

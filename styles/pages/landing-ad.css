@@ -1,6 +1,8 @@
 /* Landing Instagram — mobile-first, tema oscuro alineado con la app */
 
 .lad-page {
+    --lad-topbar-height: 2.75rem;
+
     --lad-bg: var(--color-bg-primary);
     --lad-bg-soft: var(--color-bg-secondary);
     --lad-surface: var(--color-surface-card);
@@ -34,20 +36,19 @@
 }
 
 .lad-topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: var(--z-fixed);
+    position: relative;
+    z-index: var(--z-sticky);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--spacing-3);
-    padding: max(var(--spacing-2), env(safe-area-inset-top, 0px)) max(var(--spacing-4), env(safe-area-inset-right, 0px))
-        var(--spacing-2) max(var(--spacing-4), env(safe-area-inset-left, 0px));
-    background: rgba(3, 10, 36, 0.82);
-    backdrop-filter: blur(16px) saturate(160%);
-    border-bottom: 1px solid var(--lad-border);
+    min-height: var(--lad-topbar-height);
+    padding: 0.5rem max(var(--spacing-4), env(safe-area-inset-right, 0px))
+        0.5rem max(var(--spacing-4), env(safe-area-inset-left, 0px));
+    padding-top: calc(0.5rem + env(safe-area-inset-top, 0px));
+    background: transparent;
+    border-bottom: none;
+    backdrop-filter: none;
 }
 
 .lad-brand {
@@ -64,7 +65,7 @@
 .lad-inapp-hint {
     max-width: 32rem;
     margin: 0 auto;
-    padding: var(--spacing-2) var(--spacing-4) 0;
+    padding: 0 var(--spacing-4) var(--spacing-2);
     animation: lad-fade-up 0.5s ease both;
 }
 
@@ -105,7 +106,7 @@
 .lad-lang-switch a.is-active,
 .lad-lang-switch a[aria-current='page'] {
     color: var(--lad-accent);
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .lad-lang-switch a:hover {
@@ -123,14 +124,14 @@
 }
 
 .lad-main {
-    padding-top: calc(3.25rem + env(safe-area-inset-top, 0px));
+    padding-top: 0;
     padding-bottom: max(var(--spacing-10), env(safe-area-inset-bottom, 0px));
 }
 
 .lad-hero {
     max-width: 32rem;
     margin: 0 auto;
-    padding: var(--spacing-6) var(--spacing-4) var(--spacing-8);
+    padding: var(--spacing-3) var(--spacing-4) var(--spacing-8);
     text-align: center;
     position: relative;
 }
@@ -594,7 +595,7 @@
 }
 
 .lad-section--anchor {
-    scroll-margin-top: calc(3.5rem + env(safe-area-inset-top, 0px));
+    scroll-margin-top: calc(var(--lad-topbar-height) + env(safe-area-inset-top, 0px) + 0.5rem);
 }
 
 .lad-how-section-title,
@@ -737,7 +738,7 @@
 
 @media (max-width: 768px) {
     .lad-hero {
-        padding-top: var(--spacing-4);
+        padding-top: var(--spacing-2);
         padding-bottom: var(--spacing-5);
     }
 
@@ -750,23 +751,14 @@
         margin-bottom: var(--spacing-4);
     }
 
-    .lad-topbar {
-        background: rgba(3, 10, 36, 0.92);
-        backdrop-filter: blur(14px) saturate(160%);
-    }
-
     .lad-how-inner {
         box-shadow: 0 2px 14px rgba(0, 0, 0, 0.2);
     }
 }
 
 @media (max-width: 390px) {
-    .lad-main {
-        padding-top: calc(3rem + env(safe-area-inset-top, 0px));
-    }
-
     .lad-hero {
-        padding-top: var(--spacing-3);
+        padding-top: var(--spacing-2);
         padding-bottom: var(--spacing-4);
     }
 

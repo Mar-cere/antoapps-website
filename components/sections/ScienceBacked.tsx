@@ -49,7 +49,7 @@ export default function ScienceBacked({ locale = 'es' }: ScienceBackedProps) {
         </div>
 
         <div className="science-cta reveal-on-scroll">
-          <Link href="/investigacion" className="btn btn-primary btn-large">
+          <Link href={copy.ctaHref} className="btn btn-primary btn-large">
             {copy.cta}
           </Link>
         </div>

@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocale } from '@/lib/i18n/context';
-import { DEFAULT_LOCALE, type Locale } from '@/lib/i18n/config';
+import type { Locale } from '@/lib/i18n/config';
+import { localeFromPathname } from '@/lib/i18n/path-from-pathname';
 import { getSiteLayoutCopy } from '@/lib/i18n/copy/home';
 import '@/styles/components/sticky-nav.css';
 
@@ -12,10 +13,10 @@ function resolveLocale(pathname: string, contextLocale: Locale): Locale {
   if (pathname === '/en' || pathname.startsWith('/en/')) {
     return 'en';
   }
-  if (pathname === '/' || pathname.startsWith('/en')) {
+  if (pathname === '/') {
     return contextLocale;
   }
-  return DEFAULT_LOCALE;
+  return localeFromPathname(pathname);
 }
 
 export default function StickyNav() {

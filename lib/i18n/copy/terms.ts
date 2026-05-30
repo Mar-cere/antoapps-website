@@ -1,4 +1,6 @@
+import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
+import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 import type { LegalPageCopy } from '@/lib/i18n/copy/legal-shared';
 
 export type TermsPageMetadata = {
@@ -418,8 +420,9 @@ function buildTermsPageCopy(locale: Locale): LegalPageCopy {
   };
 }
 
-export function termsPageMetadata(locale: Locale): TermsPageMetadata {
-  return metadataByLocale[locale];
+export function termsPageMetadata(locale: Locale): Metadata {
+  const meta = metadataByLocale[locale];
+  return buildLocalizedPageMetadata(locale, '/terminos', meta);
 }
 
 export function getTermsPageCopy(locale: Locale): LegalPageCopy {

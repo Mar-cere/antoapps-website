@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import HtmlLang from '@/components/i18n/HtmlLang';
 import { ToastProvider } from '@/components/ui/ToastContainer';
 
 const inter = Inter({
@@ -33,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={inter.variable}>
       <body className={inter.className}>
+        <HtmlLang />
         <ToastProvider>{children}</ToastProvider>
       </body>
     </html>

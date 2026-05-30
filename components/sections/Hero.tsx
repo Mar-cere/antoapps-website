@@ -3,8 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import DownloadLink from '@/components/DownloadLink';
+import AppStoreBadge from '@/components/AppStoreBadge';
 import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
-import { APP_STORE_BADGE_SVG_PATH, appStoreHref } from '@/lib/download-links';
+import { appStoreHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeHeroCopy } from '@/lib/i18n/copy/home-hero';
 import { useParticles } from '@/lib/hooks/useParticles';
@@ -55,20 +56,14 @@ export default function Hero({ locale = 'es' }: HeroProps) {
               trackingLabel="home_hero_badge"
               aria-label={copy.storeAria}
             >
-              <Image
-                src={APP_STORE_BADGE_SVG_PATH}
-                alt=""
-                width={120}
-                height={40}
-                className="store-badge-img"
-                priority
-              />
+              <AppStoreBadge locale={locale} priority />
             </DownloadLink>
-            <Link href="/app" className="btn btn-secondary btn-large">
+            <Link href={copy.appHref} className="btn btn-secondary btn-large">
               {copy.ctaSecondary}
             </Link>
           </div>
           <AndroidEarlyAccessForm
+            locale={locale}
             id="android-early-access-home"
             placement="home_hero_android_early_access"
             page={locale === 'en' ? '/en' : '/'}
@@ -80,7 +75,7 @@ export default function Hero({ locale = 'es' }: HeroProps) {
           <div className="phone-in-hand-container float-enhanced">
             <Image
               src="/assets/images/hero/phone-in-hand.png"
-              alt="Anto App - Persona usando la aplicación mostrando la interfaz de chat en tiempo real"
+              alt={copy.heroImageAlt}
               className="phone-in-hand-image"
               width={800}
               height={1200}

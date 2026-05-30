@@ -19,10 +19,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/terminos',
     '/en/terminos',
     '/desarrollo',
+    '/en/desarrollo',
     '/sobre-nosotros',
+    '/en/sobre-nosotros',
     '/seguridad',
+    '/en/seguridad',
     '/investigacion',
+    '/en/investigacion',
     '/recursos',
+    '/en/recursos',
+    '/changelog',
+    '/en/changelog',
   ];
 
   return routes.map((route) => ({

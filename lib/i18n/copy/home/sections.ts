@@ -1,4 +1,5 @@
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
 export type FeatureCard = {
@@ -74,6 +75,7 @@ export type HomeSectionsCopy = {
     subtitle: string;
     studies: StudyCard[];
     cta: string;
+    ctaHref: string;
   };
   technologies: {
     title: string;
@@ -85,12 +87,14 @@ export type HomeSectionsCopy = {
     subtitle: string;
     cards: SecurityCard[];
     cta: string;
+    ctaHref: string;
   };
   aiExplained: {
     title: string;
     subtitle: string;
     steps: AIExplainedStep[];
     cta: string;
+    ctaHref: string;
   };
   pricing: {
     title: string;
@@ -218,6 +222,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
       ],
       cta: 'Ver todos los estudios científicos →',
+      ctaHref: localePath('es', '/investigacion'),
     },
     technologies: {
       title: 'Stack Tecnológico Moderno',
@@ -302,6 +307,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
       ],
       cta: 'Ver información completa de seguridad →',
+      ctaHref: localePath('es', '/seguridad'),
     },
     aiExplained: {
       title: 'Cómo Funciona Nuestra Inteligencia Artificial',
@@ -340,6 +346,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
       ],
       cta: 'Ver detalles técnicos completos →',
+      ctaHref: localePath('es', '/desarrollo'),
     },
     pricing: {
       title: 'Planes y Precios',
@@ -466,6 +473,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
       ],
       cta: 'View all scientific studies →',
+      ctaHref: localePath('en', '/investigacion'),
     },
     technologies: {
       title: 'Modern Technology Stack',
@@ -550,6 +558,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
       ],
       cta: 'View full security information →',
+      ctaHref: localePath('en', '/seguridad'),
     },
     aiExplained: {
       title: 'How Our Artificial Intelligence Works',
@@ -588,6 +597,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
       ],
       cta: 'View full technical details →',
+      ctaHref: localePath('en', '/desarrollo'),
     },
     pricing: {
       title: 'Plans and Pricing',

@@ -34,7 +34,7 @@ export default function Security({ locale = 'es' }: SecurityProps) {
           ))}
         </div>
         <div className="section-cta-row">
-          <Link href="/seguridad" className="btn btn-secondary">
+          <Link href={copy.ctaHref} className="btn btn-secondary">
             {copy.cta}
           </Link>
         </div>

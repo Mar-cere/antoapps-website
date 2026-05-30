@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeSectionsCopy } from '@/lib/i18n/copy/home';
 
@@ -36,9 +37,9 @@ export default function AIExplained({ locale = 'es' }: AIExplainedProps) {
         </div>
 
         <div className="section-cta-row section-cta-row--spaced">
-          <a href="/desarrollo" className="btn btn-secondary">
+          <Link href={copy.ctaHref} className="btn btn-secondary">
             {copy.cta}
-          </a>
+          </Link>
         </div>
       </div>
     </section>

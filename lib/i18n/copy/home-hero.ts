@@ -1,4 +1,5 @@
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
 export type HomeHeroCopy = {
@@ -11,6 +12,8 @@ export type HomeHeroCopy = {
   ctaSecondary: string;
   storeAria: string;
   androidCta: string;
+  heroImageAlt: string;
+  appHref: string;
 };
 
 const homeHeroCopy: Record<Locale, (trialHeroNote: string) => HomeHeroCopy> = {
@@ -25,6 +28,9 @@ const homeHeroCopy: Record<Locale, (trialHeroNote: string) => HomeHeroCopy> = {
     ctaSecondary: 'Ver cómo funciona',
     storeAria: 'Descargar Anto en App Store',
     androidCta: 'Quiero acceso Android',
+    heroImageAlt:
+      'Anto App — Persona usando la aplicación mostrando la interfaz de chat en tiempo real',
+    appHref: localePath('es', '/app'),
   }),
   en: (trialHeroNote) => ({
     title: 'When you feel overwhelmed, Anto helps you land',
@@ -36,6 +42,8 @@ const homeHeroCopy: Record<Locale, (trialHeroNote: string) => HomeHeroCopy> = {
     ctaSecondary: 'See how it works',
     storeAria: 'Download Anto on the App Store',
     androidCta: 'I want Android access',
+    heroImageAlt: 'Anto App — Person using the app showing the real-time chat interface',
+    appHref: localePath('en', '/app'),
   }),
 };
 

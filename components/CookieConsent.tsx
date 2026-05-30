@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCookieConsent } from '@/lib/hooks/useCookieConsent';
-import { DEFAULT_LOCALE, type Locale } from '@/lib/i18n/config';
+import { localePath, type Locale } from '@/lib/i18n/config';
+import { localeFromPathname } from '@/lib/i18n/path-from-pathname';
 import { getSiteLayoutCopy } from '@/lib/i18n/copy/home';
 import '@/styles/components/cookie-consent.css';
 
@@ -14,10 +15,7 @@ type CookieConsentProps = {
 };
 
 function resolveLocale(pathname: string): Locale {
-  if (pathname === '/en' || pathname.startsWith('/en/')) {
-    return 'en';
-  }
-  return DEFAULT_LOCALE;
+  return localeFromPathname(pathname);
 }
 
 export default function CookieConsent({
@@ -28,6 +26,7 @@ export default function CookieConsent({
   const pathname = usePathname();
   const locale = resolveLocale(pathname ?? '');
   const copy = getSiteLayoutCopy(locale).cookies;
+  const privacyHref = localePath(locale, '/privacidad');
 
   const { showBanner, acceptCookies, rejectCookies } = useCookieConsent({
     bannerDelayMs,
@@ -48,7 +47,7 @@ export default function CookieConsent({
             {compact ? (
               <>
                 {copy.compact}{' '}
-                <Link href="/privacidad" target="_blank">
+                <Link href={privacyHref} target="_blank">
                   {copy.privacy}
                 </Link>
                 .
@@ -56,7 +55,7 @@ export default function CookieConsent({
             ) : (
               <>
                 {copy.full}{' '}
-                <Link href="/privacidad" target="_blank">
+                <Link href={privacyHref} target="_blank">
                   {copy.privacy}
                 </Link>
                 .
