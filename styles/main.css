@@ -66,6 +66,10 @@
 @import url('./components/real-impact.css');
 @import url('./components/sticky-nav.css');
 
+/* Tema oscuro — overrides de coherencia */
+@import url('./theme/site-coherence.css');
+@import url('./theme/static-blocks.css');
+
 /* Utilities */
 @import url('./utilities/animations.css');
 @import url('./utilities/advanced-animations.css');

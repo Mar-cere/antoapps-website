@@ -3,10 +3,9 @@
    ============================================ */
 
 .pricing-calculator {
-    background: var(--color-bg-primary);
+    background: var(--color-surface-card);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
-    border-radius: 24px;
+    border-radius: var(--radius-2xl);
     padding: var(--spacing-8);
     margin-bottom: var(--spacing-8);
     backdrop-filter: blur(20px);
@@ -244,6 +243,36 @@
     border-radius: var(--radius-md);
     font-weight: var(--font-weight-semibold);
     font-size: var(--font-size-sm);
+}
+
+.calculator-cta {
+    margin-top: var(--spacing-lg);
+    text-align: center;
+}
+
+.calculator-legal,
+.comparison-footnote {
+    margin-top: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+}
+
+.comparison-footnote {
+    margin-top: var(--spacing-lg);
+    text-align: center;
+    padding: var(--spacing-md);
+}
+
+.calculator-legal a,
+.comparison-footnote a {
+    color: var(--color-link);
+    text-decoration: underline;
+}
+
+.calculator-legal a:hover,
+.comparison-footnote a:hover {
+    color: var(--color-link-hover);
 }
 
 /* Responsive */

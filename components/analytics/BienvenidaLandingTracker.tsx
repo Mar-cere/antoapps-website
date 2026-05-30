@@ -10,6 +10,7 @@ import { initMetaPixel } from '@/lib/analytics/meta-pixel';
 
 type BienvenidaLandingTrackerProps = {
   landingVariant: 'A' | 'B';
+  pagePath: string;
 };
 
 function hasMarketingConsent(): boolean {
@@ -17,24 +18,27 @@ function hasMarketingConsent(): boolean {
   return localStorage.getItem('cookieConsent') === 'accepted';
 }
 
-export default function BienvenidaLandingTracker({ landingVariant }: BienvenidaLandingTrackerProps) {
+export default function BienvenidaLandingTracker({
+  landingVariant,
+  pagePath,
+}: BienvenidaLandingTrackerProps) {
   useEffect(() => {
     persistAttributionFromLocation();
-    trackBienvenidaLandingViewGa({ page: '/bienvenida', landingVariant });
+    trackBienvenidaLandingViewGa({ page: pagePath, landingVariant });
 
     if (hasMarketingConsent()) {
       initMetaPixel();
-      trackBienvenidaLandingViewMeta({ page: '/bienvenida', landingVariant });
+      trackBienvenidaLandingViewMeta({ page: pagePath, landingVariant });
     }
 
     const onConsentGranted = () => {
       initMetaPixel();
-      trackBienvenidaLandingViewMeta({ page: '/bienvenida', landingVariant });
+      trackBienvenidaLandingViewMeta({ page: pagePath, landingVariant });
     };
 
     window.addEventListener('cookie-consent-accepted', onConsentGranted);
     return () => window.removeEventListener('cookie-consent-accepted', onConsentGranted);
-  }, [landingVariant]);
+  }, [landingVariant, pagePath]);
 
   return null;
 }

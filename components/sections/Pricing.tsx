@@ -2,20 +2,31 @@
 
 import { useScrollAnimations } from '@/lib/hooks/useScrollAnimations';
 import PricingCalculator from '@/components/ui/PricingCalculator';
+import type { Locale } from '@/lib/i18n/config';
+import { getHomeSectionsCopy } from '@/lib/i18n/copy/home';
 
-export default function Pricing() {
+type PricingProps = {
+  locale?: Locale;
+};
+
+export default function Pricing({ locale = 'es' }: PricingProps) {
   useScrollAnimations();
+  const copy = getHomeSectionsCopy(locale).pricing;
+
   return (
     <section id="precios" className="pricing" data-fade-section>
       <div className="container">
-        <h2 className="section-title reveal-on-scroll">Planes y Precios</h2>
-        <p className="section-subtitle reveal-on-scroll">
-          Elige la duración que mejor se adapte a tus necesidades. Todos los planes incluyen todas las
-          funcionalidades: asistente AI, análisis emocional, detección de crisis, herramientas de bienestar
-          y soporte 24/7.
-        </p>
+        <h2 className="section-title reveal-on-scroll">{copy.title}</h2>
+        <p className="section-subtitle reveal-on-scroll">{copy.subtitle}</p>
 
-        <PricingCalculator />
+        <div className="home-callout home-callout--compact reveal-on-scroll">
+          <p className="home-callout__label">
+            <strong>{copy.valueBanner.label}</strong>
+          </p>
+          <p className="home-callout__highlight">{copy.valueBanner.highlight}</p>
+        </div>
+
+        <PricingCalculator locale={locale} />
       </div>
     </section>
   );

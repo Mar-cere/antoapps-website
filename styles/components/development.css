@@ -93,7 +93,8 @@
 }
 
 .arch-layer {
-    background: white;
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-border);
     border-radius: 16px;
     padding: 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -117,7 +118,7 @@
     font-size: var(--font-size-2xl);
     font-weight: 600;
     margin-bottom: 0.75rem;
-    color: #030A24;
+    color: var(--color-text-primary);
 }
 
 .arch-layer p {
@@ -145,7 +146,7 @@
 /* Development Process */
 .development-process {
     padding: 4rem 0;
-    background: white;
+    background: var(--color-bg-secondary);
 }
 
 .process-timeline {
@@ -190,7 +191,8 @@
 
 .timeline-content {
     flex: 1;
-    background: #f8f9fa;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: 2rem;
     margin-top: 0.5rem;
@@ -200,7 +202,7 @@
     font-size: var(--font-size-2xl);
     font-weight: 600;
     margin-bottom: 0.75rem;
-    color: #030A24;
+    color: var(--color-text-primary);
 }
 
 .timeline-content p {
@@ -318,7 +320,7 @@
 /* Challenges */
 .challenges-section {
     padding: 4rem 0;
-    background: white;
+    background: var(--color-bg-primary);
 }
 
 .challenges-grid {
@@ -329,10 +331,10 @@
 }
 
 .challenge-card {
-    background: linear-gradient(135deg, #f8f9fa 0%, white 100%);
+    background: var(--color-surface-card);
     border-radius: 16px;
     padding: 2rem;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--color-border);
     transition: all 0.3s ease;
 }
 
@@ -353,7 +355,7 @@
     font-size: var(--font-size-2xl);
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #030A24;
+    color: var(--color-text-primary);
 }
 
 .challenge-card p {
@@ -363,14 +365,14 @@
 }
 
 .challenge-card p strong {
-    color: #030A24;
+    color: var(--color-text-primary);
     font-weight: 600;
 }
 
 /* Metrics */
 .metrics-section {
     padding: 4rem 0;
-    background: linear-gradient(135deg, #030A24 0%, #1a1a3e 100%);
+    background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-tertiary) 100%);
     color: white;
 }
 
@@ -420,7 +422,7 @@
 /* CTA */
 .development-cta {
     padding: 4rem 0;
-    background: #f8f9fa;
+    background: var(--color-bg-secondary);
     text-align: center;
 }
 
@@ -428,7 +430,7 @@
     font-size: var(--font-size-4xl);
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #030A24;
+    color: var(--color-text-primary);
 }
 
 .cta-content p {

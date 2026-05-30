@@ -2,17 +2,21 @@
 
 import { useEffect, useState } from 'react';
 import DownloadLink from '@/components/DownloadLink';
-import {
-  BIENVENIDA_TRIAL_STICKY_ARIA,
-  BIENVENIDA_TRIAL_STICKY_CTA,
-} from '@/lib/bienvenida-copy';
+import type { BienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 
 type BienvenidaStickyCtaProps = {
   storeHref: string;
   landingVariant: 'A' | 'B';
+  pagePath: string;
+  copy: BienvenidaCopy;
 };
 
-export default function BienvenidaStickyCta({ storeHref, landingVariant }: BienvenidaStickyCtaProps) {
+export default function BienvenidaStickyCta({
+  storeHref,
+  landingVariant,
+  pagePath,
+  copy,
+}: BienvenidaStickyCtaProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -39,11 +43,11 @@ export default function BienvenidaStickyCta({ storeHref, landingVariant }: Bienv
         href={storeHref}
         className="btn btn-primary lad-sticky-cta-btn"
         trackingPlacement="bienvenida_sticky_cta"
-        trackingPage="/bienvenida"
+        trackingPage={pagePath}
         trackingLabel={`sticky_variant_${landingVariant}`}
-        aria-label={BIENVENIDA_TRIAL_STICKY_ARIA}
+        aria-label={copy.trial.stickyAria}
       >
-        {BIENVENIDA_TRIAL_STICKY_CTA[landingVariant]}
+        {copy.trial.stickyCta[landingVariant]}
       </DownloadLink>
     </div>
   );

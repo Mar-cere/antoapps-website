@@ -1,13 +1,17 @@
-import { APP_STORE_RATING_SHORT } from '@/lib/app-store-social-proof';
+import type { BienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 
-export default function BienvenidaTrustStrip() {
+type BienvenidaTrustStripProps = {
+  copy: BienvenidaCopy['trustStrip'];
+};
+
+export default function BienvenidaTrustStrip({ copy }: BienvenidaTrustStripProps) {
   return (
-    <p className="lad-trust-strip" aria-label="Señales de confianza">
-      <span>{APP_STORE_RATING_SHORT}</span>
+    <p className="lad-trust-strip" aria-label="Trust signals">
+      <span>{copy.ratingOnAppStore}</span>
       <span className="lad-trust-strip-sep" aria-hidden="true">
         ·
       </span>
-      <span>Disponible en iPhone</span>
+      <span>{copy.availableOn}</span>
     </p>
   );
 }

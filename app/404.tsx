@@ -12,16 +12,21 @@ export default function NotFound() {
       <ClientInitializer />
       <Header />
       <main>
-        <section className="error-page" style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div className="container" style={{ textAlign: 'center' }}>
-            <h1 style={{ fontSize: '6rem', fontWeight: 700, marginBottom: '1rem' }}>404</h1>
-            <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Página no encontrada</h2>
-            <p style={{ marginBottom: '2rem', color: 'var(--secondary-color)' }}>
-              Lo sentimos, la página que buscas no existe.
-            </p>
-            <Link href="/" className="btn btn-primary btn-large">
-              Volver al Inicio
-            </Link>
+        <section className="error-page">
+          <div className="container">
+            <div className="error-404-inner">
+              <div className="error-404-code">404</div>
+              <h1 className="error-404-title">Página no encontrada</h1>
+              <p className="error-404-lead">Lo sentimos, la página que buscas no existe.</p>
+              <div className="error-404-actions">
+                <Link href="/" className="btn btn-primary btn-large">
+                  Volver al Inicio
+                </Link>
+                <Link href="/bienvenida" className="btn btn-secondary btn-large">
+                  Descargar
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
       </main>
@@ -30,4 +35,3 @@ export default function NotFound() {
     </>
   );
 }
-

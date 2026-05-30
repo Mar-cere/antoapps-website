@@ -54,11 +54,11 @@ export function initResources() {
         // Show/hide empty state
         if (resourcesEmpty) {
             if (visibleCount === 0) {
-                resourcesEmpty.style.display = 'block';
-                if (resourcesGrid) resourcesGrid.style.display = 'none';
+                resourcesEmpty.classList.remove('is-hidden');
+                if (resourcesGrid) resourcesGrid.classList.add('is-hidden');
             } else {
-                resourcesEmpty.style.display = 'none';
-                if (resourcesGrid) resourcesGrid.style.display = 'grid';
+                resourcesEmpty.classList.add('is-hidden');
+                if (resourcesGrid) resourcesGrid.classList.remove('is-hidden');
             }
         }
     }

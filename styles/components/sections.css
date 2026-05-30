@@ -10,7 +10,7 @@
     position: relative;
     padding: var(--home-hero-padding-top) 0 var(--spacing-8);
     overflow: hidden;
-    background: var(--color-bg-primary);
+    background: var(--color-bg-glow), var(--color-bg-primary);
 }
 
 .particles {
@@ -202,6 +202,7 @@
     width: 100%;
     height: auto;
     max-width: 500px;
+    object-fit: contain;
     border-radius: var(--radius-2xl);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
     transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
@@ -232,6 +233,7 @@
     width: 100%;
     height: auto;
     max-width: 400px;
+    object-fit: contain;
     border-radius: var(--radius-2xl);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
     transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
@@ -540,8 +542,8 @@
 .step-number {
     width: 60px;
     height: 60px;
-    background: var(--color-link);
-    color: #FFFFFF; /* Blanco para mejor contraste */
+    background: var(--color-primary);
+    color: var(--color-text-on-primary);
     border-radius: var(--radius-full);
     display: flex;
     align-items: center;
@@ -598,9 +600,9 @@
 }
 
 .tab-btn.active {
-    background: var(--color-link);
-    color: #FFFFFF; /* Blanco para mejor contraste */
-    border-color: var(--color-link);
+    background: var(--color-primary);
+    color: var(--color-text-on-primary);
+    border-color: var(--color-primary);
 }
 
 .benefits-content {

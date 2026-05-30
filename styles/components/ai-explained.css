@@ -39,8 +39,8 @@
     left: 0;
     width: 60px;
     height: 60px;
-    background: var(--color-link); /* Azul oscuro para mejor contraste */
-    color: #FFFFFF; /* Blanco para mejor contraste */
+    background: var(--color-primary);
+    color: var(--color-text-on-primary);
     border-radius: var(--radius-full);
     display: flex;
     align-items: center;
@@ -96,9 +96,8 @@
 }
 
 .tech-badge {
-    background: #F0F9FF;
-    border: 1px solid #BAE6FD;
-    color: var(--color-link); /* Azul oscuro para mejor contraste */
+    background: var(--color-primary-light);
+    border: 1px solid rgba(26, 221, 219, 0.35);
     color: var(--color-primary);
     padding: var(--spacing-1) var(--spacing-3);
     border-radius: var(--radius-full);

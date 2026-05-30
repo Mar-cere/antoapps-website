@@ -238,17 +238,17 @@
 @media (prefers-contrast: high) {
     .study-preview-card {
         border-width: 2px;
-        border-color: #1D1D1F;
+        border-color: var(--color-border-hover);
     }
-    
+
     .study-preview-badge {
-        background: #1D1D1F;
-        color: #FFFFFF;
-        border-color: #1D1D1F;
+        background: var(--color-primary);
+        color: var(--color-text-on-primary);
+        border-color: var(--color-primary);
     }
-    
+
     .study-link {
-        color: #1D1D1F;
+        color: var(--color-link);
         font-weight: var(--font-weight-bold);
     }
 }

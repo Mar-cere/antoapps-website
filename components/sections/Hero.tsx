@@ -5,11 +5,18 @@ import Link from 'next/link';
 import DownloadLink from '@/components/DownloadLink';
 import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
 import { APP_STORE_BADGE_SVG_PATH, appStoreHref } from '@/lib/download-links';
+import type { Locale } from '@/lib/i18n/config';
+import { getHomeHeroCopy } from '@/lib/i18n/copy/home-hero';
 import { useParticles } from '@/lib/hooks/useParticles';
 import { useParallax } from '@/lib/hooks/useParallax';
 import '@/styles/components/sections.css';
 
-export default function Hero() {
+type HeroProps = {
+  locale?: Locale;
+};
+
+export default function Hero({ locale = 'es' }: HeroProps) {
+  const copy = getHomeHeroCopy(locale);
   const particlesRef = useParticles();
   const heroImageRef = useParallax<HTMLDivElement>({ speed: 0.3, direction: 'up' });
 
@@ -19,25 +26,24 @@ export default function Hero() {
       <div className="container">
         <div className="hero-content reveal-on-scroll">
           <h1 className="hero-title" id="hero-title">
-            Cuando te sientes sobrepasado, Anto te ayuda a aterrizar
+            {copy.title}
           </h1>
           <p className="hero-subtitle reveal-on-scroll">
-            Escribe lo que te pasa y recibe guía clara, práctica y humana en segundos.
+            {copy.subtitle}
           </p>
           <p className="hero-download-pitch reveal-on-scroll">
-            Descarga <strong>Anto</strong> en App Store y empieza hoy. En Android, solicita acceso
-            anticipado con el correo de tu cuenta de Google Play.
+            {copy.downloadLead} {copy.downloadAndroid}
           </p>
           <div className="hero-stats">
             <div className="hero-stat-item">
               <span className="hero-stat-icon">🔒</span>
               <span className="hero-stat-value">100%</span>
-              <span className="hero-stat-label">privado y seguro</span>
+              <span className="hero-stat-label">{copy.statPrivate}</span>
             </div>
             <div className="hero-stat-item">
               <span className="hero-stat-icon">⏰</span>
               <span className="hero-stat-value">24/7</span>
-              <span className="hero-stat-label">disponible</span>
+              <span className="hero-stat-label">{copy.statAvailable}</span>
             </div>
           </div>
           <div className="hero-cta">
@@ -45,9 +51,9 @@ export default function Hero() {
               href={appStoreHref()}
               className="store-badge-link"
               trackingPlacement="home_hero_store_badge"
-              trackingPage="/"
+              trackingPage={locale === 'en' ? '/en' : '/'}
               trackingLabel="home_hero_badge"
-              aria-label="Descargar Anto en App Store"
+              aria-label={copy.storeAria}
             >
               <Image
                 src={APP_STORE_BADGE_SVG_PATH}
@@ -59,15 +65,15 @@ export default function Hero() {
               />
             </DownloadLink>
             <Link href="/app" className="btn btn-secondary btn-large">
-              Ver cómo funciona
+              {copy.ctaSecondary}
             </Link>
           </div>
           <AndroidEarlyAccessForm
             id="android-early-access-home"
             placement="home_hero_android_early_access"
-            page="/"
+            page={locale === 'en' ? '/en' : '/'}
             compact
-            buttonLabel="Quiero acceso Android"
+            buttonLabel={copy.androidCta}
           />
         </div>
         <div className="hero-image reveal-on-scroll-enhanced" ref={heroImageRef}>
@@ -82,9 +88,6 @@ export default function Hero() {
               quality={95}
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
-              style={{
-                objectFit: 'contain',
-              }}
             />
           </div>
         </div>

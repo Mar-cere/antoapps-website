@@ -2,49 +2,46 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import type { Locale } from '@/lib/i18n/config';
+import { getPricingCalculatorCopy } from '@/lib/i18n/copy/home';
 
-interface Plan {
-  id: string;
-  name: string;
-  duration: string;
-  price: number;
-  period: string;
-  discount?: number;
-  popular?: boolean;
-}
-
-const plans: Plan[] = [
-  { id: '1-month', name: '1 Mes', duration: '1 mes', price: 3990, period: 'Plan mensual' },
-  { id: '3-months', name: '3 Meses', duration: '3 meses', price: 11990, period: 'Ahorra 10%', discount: 10, popular: true },
-  { id: '6-months', name: '6 Meses', duration: '6 meses', price: 20990, period: 'Ahorra 12%', discount: 12 },
-  { id: '1-year', name: '1 Año', duration: '1 año', price: 39990, period: 'Ahorra 17%', discount: 17 },
-];
 const CLP_TO_USD = 950;
 
-export default function PricingCalculator() {
+type PricingCalculatorProps = {
+  locale?: Locale;
+};
+
+export default function PricingCalculator({ locale = 'es' }: PricingCalculatorProps) {
+  const copy = getPricingCalculatorCopy(locale);
   const [selectedPlan, setSelectedPlan] = useState<string>('3-months');
   const [comparisonMode, setComparisonMode] = useState(false);
 
-  const selectedPlanData = useMemo(() => plans.find((p) => p.id === selectedPlan), [selectedPlan]);
+  const selectedPlanData = useMemo(
+    () => copy.plans.find((p) => p.id === selectedPlan),
+    [copy.plans, selectedPlan]
+  );
 
-  const calculateSavings = (plan: Plan) => {
+  const calculateSavings = (plan: (typeof copy.plans)[number]) => {
     if (!plan.discount) return null;
-    const monthlyPrice = plan.price / (plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12);
-    const baseMonthlyPrice = plans.find((p) => p.id === '1-month')?.price || 3990;
+    const monthlyPrice =
+      plan.price /
+      (plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12);
+    const baseMonthlyPrice = copy.plans.find((p) => p.id === '1-month')?.price || 3990;
     const savings = baseMonthlyPrice - monthlyPrice;
     return savings > 0 ? Math.round(savings) : 0;
   };
 
-  const calculateTotalSavings = (plan: Plan) => {
+  const calculateTotalSavings = (plan: (typeof copy.plans)[number]) => {
     if (!plan.discount) return null;
-    const monthlyPrice = plans.find((p) => p.id === '1-month')?.price || 3990;
-    const months = plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12;
+    const monthlyPrice = copy.plans.find((p) => p.id === '1-month')?.price || 3990;
+    const months =
+      plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12;
     const totalWithoutDiscount = monthlyPrice * months;
     return Math.round(totalWithoutDiscount - plan.price);
   };
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('es-CL', {
+    return new Intl.NumberFormat(locale === 'en' ? 'en-CL' : 'es-CL', {
       style: 'currency',
       currency: 'CLP',
       minimumFractionDigits: 0,
@@ -60,6 +57,8 @@ export default function PricingCalculator() {
     }).format(priceClp / CLP_TO_USD);
   };
 
+  const downloadHref = locale === 'en' ? '/en/bienvenida' : '/bienvenida';
+
   return (
     <div className="pricing-calculator">
       <div className="calculator-controls">
@@ -68,13 +67,13 @@ export default function PricingCalculator() {
             className={`toggle-btn ${!comparisonMode ? 'active' : ''}`}
             onClick={() => setComparisonMode(false)}
           >
-            Seleccionar Plan
+            {copy.toggle.selectPlan}
           </button>
           <button
             className={`toggle-btn ${comparisonMode ? 'active' : ''}`}
             onClick={() => setComparisonMode(true)}
           >
-            Comparar Planes
+            {copy.toggle.comparePlans}
           </button>
         </div>
       </div>
@@ -82,7 +81,7 @@ export default function PricingCalculator() {
       {!comparisonMode ? (
         <div className="calculator-selection">
           <div className="plan-selector">
-            {plans.map((plan) => (
+            {copy.plans.map((plan) => (
               <button
                 key={plan.id}
                 className={`plan-option ${selectedPlan === plan.id ? 'active' : ''} ${plan.popular ? 'popular' : ''}`}
@@ -90,10 +89,12 @@ export default function PricingCalculator() {
               >
                 <div className="plan-option-header">
                   <span className="plan-name">{plan.name}</span>
-                  {plan.popular && <span className="popular-badge">Popular</span>}
+                  {plan.popular && <span className="popular-badge">{copy.popularBadge}</span>}
                 </div>
                 <div className="plan-price">{formatPrice(plan.price)}</div>
-                <div className="plan-period">({formatUsd(plan.price)} aprox.)</div>
+                <div className="plan-period">
+                  ({formatUsd(plan.price)} {copy.approxUsd})
+                </div>
                 <div className="plan-period">{plan.period}</div>
               </button>
             ))}
@@ -102,28 +103,30 @@ export default function PricingCalculator() {
           {selectedPlanData && (
             <div className="calculator-results">
               <div className="result-card">
-                <h3>Resumen del Plan Seleccionado</h3>
+                <h3>{copy.summary.title}</h3>
                 <div className="result-item">
-                  <span className="result-label">Plan:</span>
+                  <span className="result-label">{copy.summary.planLabel}</span>
                   <span className="result-value">{selectedPlanData.name}</span>
                 </div>
                 <div className="result-item">
-                  <span className="result-label">Precio Total:</span>
+                  <span className="result-label">{copy.summary.totalPriceLabel}</span>
                   <span className="result-value highlight">{formatPrice(selectedPlanData.price)}</span>
                 </div>
                 <div className="result-item">
-                  <span className="result-label">Precio Total (USD):</span>
-                  <span className="result-value">{formatUsd(selectedPlanData.price)} aprox.</span>
+                  <span className="result-label">{copy.summary.totalPriceUsdLabel}</span>
+                  <span className="result-value">
+                    {formatUsd(selectedPlanData.price)} {copy.approxUsd}
+                  </span>
                 </div>
                 {selectedPlanData.discount && (
                   <>
                     <div className="result-item">
-                      <span className="result-label">Descuento:</span>
+                      <span className="result-label">{copy.summary.discountLabel}</span>
                       <span className="result-value success">{selectedPlanData.discount}%</span>
                     </div>
                     {calculateTotalSavings(selectedPlanData) && (
                       <div className="result-item">
-                        <span className="result-label">Ahorro Total:</span>
+                        <span className="result-label">{copy.summary.totalSavingsLabel}</span>
                         <span className="result-value success">
                           {formatPrice(calculateTotalSavings(selectedPlanData)!)}
                         </span>
@@ -132,7 +135,7 @@ export default function PricingCalculator() {
                   </>
                 )}
                 <div className="result-item">
-                  <span className="result-label">Precio Mensual Promedio:</span>
+                  <span className="result-label">{copy.summary.averageMonthlyLabel}</span>
                   <span className="result-value">
                     {formatPrice(
                       selectedPlanData.price /
@@ -146,20 +149,16 @@ export default function PricingCalculator() {
                     )}
                   </span>
                 </div>
-                <div style={{ marginTop: 'var(--spacing-lg)', textAlign: 'center' }}>
-                  <Link href="/bienvenida" className="btn btn-primary btn-large">
-                    Comenzar con {selectedPlanData.name}
+                <div className="calculator-cta">
+                  <Link href={downloadHref} className="btn btn-primary btn-large">
+                    {copy.summary.startWith(selectedPlanData.name)}
                   </Link>
-                  <p style={{ marginTop: 'var(--spacing-md)', fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)' }}>
-                    Al suscribirte, aceptas nuestros{' '}
-                    <Link href="/terminos" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
-                      Términos de Uso
-                    </Link>{' '}
-                    y{' '}
-                    <Link href="/privacidad" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
-                      Política de Privacidad
-                    </Link>
-                    . Las suscripciones se renuevan automáticamente.
+                  <p className="calculator-legal">
+                    {copy.legal.subscribePrefix}{' '}
+                    <Link href="/terminos">{copy.legal.termsOfUse}</Link>{' '}
+                    {copy.legal.and}{' '}
+                    <Link href="/privacidad">{copy.legal.privacyPolicy}</Link>
+                    . {copy.legal.autoRenewal}
                   </p>
                 </div>
               </div>
@@ -169,56 +168,55 @@ export default function PricingCalculator() {
       ) : (
         <div className="comparison-table">
           <div className="comparison-header">
-            <div className="comparison-cell">Plan</div>
-            <div className="comparison-cell">Duración</div>
-            <div className="comparison-cell">Precio Total</div>
-            <div className="comparison-cell">Precio/Mes</div>
-            <div className="comparison-cell">Ahorro</div>
-            <div className="comparison-cell">Descuento</div>
+            <div className="comparison-cell">{copy.comparison.headers.plan}</div>
+            <div className="comparison-cell">{copy.comparison.headers.duration}</div>
+            <div className="comparison-cell">{copy.comparison.headers.totalPrice}</div>
+            <div className="comparison-cell">{copy.comparison.headers.pricePerMonth}</div>
+            <div className="comparison-cell">{copy.comparison.headers.savings}</div>
+            <div className="comparison-cell">{copy.comparison.headers.discount}</div>
           </div>
-          {plans.map((plan) => {
-            const monthlyPrice = plan.price / (plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12);
+          {copy.plans.map((plan) => {
+            const monthlyPrice =
+              plan.price /
+              (plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12);
             const savings = calculateSavings(plan);
             return (
               <div key={plan.id} className={`comparison-row ${plan.popular ? 'highlighted' : ''}`}>
                 <div className="comparison-cell">
                   <strong>{plan.name}</strong>
-                  {plan.popular && <span className="popular-badge-small">Popular</span>}
+                  {plan.popular && <span className="popular-badge-small">{copy.popularBadge}</span>}
                 </div>
                 <div className="comparison-cell">{plan.duration}</div>
                 <div className="comparison-cell">{formatPrice(plan.price)}</div>
                 <div className="comparison-cell">{formatPrice(Math.round(monthlyPrice))}</div>
                 <div className="comparison-cell">
                   {savings !== null && savings > 0 ? (
-                    <span className="savings-amount">{formatPrice(savings)}/mes</span>
+                    <span className="savings-amount">
+                      {formatPrice(savings)}
+                      {copy.comparison.savingsPerMonth}
+                    </span>
                   ) : (
-                    <span className="no-savings">-</span>
+                    <span className="no-savings">{copy.comparison.noSavings}</span>
                   )}
                 </div>
                 <div className="comparison-cell">
                   {plan.discount ? (
                     <span className="discount-badge">{plan.discount}%</span>
                   ) : (
-                    <span>-</span>
+                    <span>{copy.comparison.noSavings}</span>
                   )}
                 </div>
               </div>
             );
           })}
-          <div style={{ marginTop: 'var(--spacing-lg)', textAlign: 'center', padding: 'var(--spacing-md)', fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)' }}>
-            <p>
-              Precios mostrados en CLP y su referencia en USD aproximada (1 USD = 950 CLP).{' '}
-            </p>
-            <p>
-              Al suscribirte, aceptas nuestros{' '}
-              <Link href="/terminos" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
-                Términos de Uso
-              </Link>{' '}
-              y{' '}
-              <Link href="/privacidad" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
-                Política de Privacidad
-              </Link>
-              . Las suscripciones se renuevan automáticamente.
+          <div className="comparison-footnote">
+            <p>{copy.comparison.priceNote}</p>
+            <p className="calculator-legal">
+              {copy.legal.subscribePrefix}{' '}
+              <Link href="/terminos">{copy.legal.termsOfUse}</Link>{' '}
+              {copy.legal.and}{' '}
+              <Link href="/privacidad">{copy.legal.privacyPolicy}</Link>
+              . {copy.legal.autoRenewal}
             </p>
           </div>
         </div>
@@ -226,4 +224,3 @@ export default function PricingCalculator() {
     </div>
   );
 }
-

@@ -154,7 +154,7 @@ export default function DesarrolloPage() {
                   </ul>
                 </div>
               </div>
-              <div style={{ marginTop: 'var(--spacing-xl)', textAlign: 'center' }}>
+              <div className="section-cta-row">
                 <a
                   href="https://github.com/Mar-cere/Anto"
                   target="_blank"

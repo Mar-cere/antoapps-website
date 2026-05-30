@@ -17,17 +17,27 @@ body {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-normal);
     line-height: var(--line-height-base);
-    color: var(--white);
-    background-color: var(--bg-dark);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+    background-image: var(--color-bg-glow);
+    background-attachment: fixed;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    /* Prevenir zoom en iOS al hacer doble tap */
     touch-action: manipulation;
 }
 
 /* Jerarquía tipográfica mejorada */
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    color: var(--color-text-primary);
+}
+
 h1, .h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: var(--font-weight-bold);
@@ -77,7 +87,7 @@ h6, .h6 {
       line-height: var(--line-height-relaxed);
       margin-bottom: var(--spacing-md);
       font-weight: var(--font-weight-normal);
-      color: var(--color-text-primary);
+      color: var(--color-text-secondary);
   }
 
 a {

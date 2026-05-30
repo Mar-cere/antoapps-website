@@ -29,6 +29,8 @@ const nextConfig = {
   async redirects() {
     return [
       { source: '/l', destination: '/bienvenida', permanent: false },
+      { source: '/en/l', destination: '/en/bienvenida', permanent: false },
+      { source: '/welcome', destination: '/en/bienvenida', permanent: false },
       { source: '/login', destination: '/#descargar', permanent: false },
       { source: '/signup', destination: '/#descargar', permanent: false },
       { source: '/chat', destination: '/#descargar', permanent: false },

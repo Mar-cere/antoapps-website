@@ -1,14 +1,22 @@
+'use client';
+
 import Link from 'next/link';
+import { useLocale } from '@/lib/i18n/context';
+import { getSiteLayoutCopy } from '@/lib/i18n/copy/home';
 import '@/styles/layout/footer.css';
 
 export default function Footer() {
+  const locale = useLocale();
+  const copy = getSiteLayoutCopy(locale);
+  const year = new Date().getFullYear();
+
   return (
     <footer className="footer" role="contentinfo">
       <div className="container">
         <div className="footer-content">
           <div className="footer-section">
             <h3>Anto</h3>
-            <p>Mejorando la salud mental, una conversación a la vez.</p>
+            <p>{copy.footer.tagline}</p>
             <div className="social-links">
               <a
                 href="https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/"
@@ -26,74 +34,48 @@ export default function Footer() {
               >
                 Telegram
               </a>
-              <a
-                href="mailto:marcelo.ull@antoapps.com"
-                aria-label="Email Corporativo"
-              >
+              <a href="mailto:marcelo.ull@antoapps.com" aria-label="Email Corporativo">
                 Email
               </a>
             </div>
           </div>
           <div className="footer-section">
-            <h4>Producto</h4>
+            <h4>{copy.footer.product}</h4>
             <ul>
-              <li>
-                <Link href="/app">La Aplicación</Link>
-              </li>
-              <li>
-                <Link href="/#caracteristicas">Características</Link>
-              </li>
-              <li>
-                <Link href="/#precios">Precios</Link>
-              </li>
-              <li>
-                <Link href="/#faq">FAQ</Link>
-              </li>
-              <li>
-                <Link href="/privacidad">Privacidad</Link>
-              </li>
+              {copy.footer.productLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="footer-section">
-            <h4>Empresa</h4>
+            <h4>{copy.footer.company}</h4>
             <ul>
-              <li>
-                <Link href="/sobre-nosotros">Sobre Nosotros</Link>
-              </li>
-              <li>
-                <Link href="/contacto">Contacto</Link>
-              </li>
-              <li>
-                <Link href="/recursos">Recursos</Link>
-              </li>
-              <li>
-                <Link href="/desarrollo">Desarrollo</Link>
-              </li>
-              <li>
-                <Link href="/changelog">Control de Versiones</Link>
-              </li>
+              {copy.footer.companyLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="footer-section">
-            <h4>Legal</h4>
+            <h4>{copy.footer.legal}</h4>
             <ul>
-              <li>
-                <Link href="/privacidad">Política de Privacidad</Link>
-              </li>
-              <li>
-                <Link href="/terminos">Términos de Servicio</Link>
-              </li>
-              <li>
-                <Link href="/seguridad">Seguridad</Link>
-              </li>
+              {copy.footer.legalLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2026 Anto. Todos los derechos reservados.</p>
+          <p>
+            &copy; {year} Anto. {copy.footer.rights}
+          </p>
         </div>
       </div>
     </footer>
   );
 }
-

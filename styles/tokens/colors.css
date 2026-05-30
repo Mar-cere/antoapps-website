@@ -1,94 +1,102 @@
 /* ============================================
-   DESIGN TOKENS - COLORS (Estilo Apple/Tesla)
+   DESIGN TOKENS - COLORS (Tema oscuro alineado con app / landing)
    ============================================ */
 
 :root {
-    /* Colores Principales (Mantener) */
-    --color-primary: #1ADDDB;
-    --color-primary-hover: #1BE8E6;
-    --color-primary-light: rgba(26, 221, 219, 0.1);
-    --color-primary-dark: #15B8B6;
-    
-    --color-secondary: #A3B8E8;
-    --color-secondary-hover: #B8C9F0;
-    --color-secondary-light: rgba(163, 184, 232, 0.1);
-    
-    /* Fondos (Estilo Apple - Claros) */
-    --color-bg-primary: #FFFFFF;
-    --color-bg-secondary: #F5F5F7;
-    --color-bg-tertiary: #E5E5EA;
-    --color-bg-dark: #030A24; /* Mantener para modo oscuro opcional */
+    /* Colores principales */
+    --color-primary: #1adddb;
+    --color-primary-hover: #1be8e6;
+    --color-primary-light: rgba(26, 221, 219, 0.12);
+    --color-primary-lightest: rgba(26, 221, 219, 0.18);
+    --color-primary-dark: #12c9c7;
+
+    --color-secondary: #a3b8e8;
+    --color-secondary-hover: #b8c9f0;
+    --color-secondary-light: rgba(163, 184, 232, 0.12);
+
+    /* Fondos */
+    --color-bg-primary: #030a24;
+    --color-bg-secondary: #0a1529;
+    --color-bg-tertiary: #112040;
+    --color-bg-dark: #030a24;
     --color-bg-darker: #010512;
-    --color-bg-light: rgba(245, 245, 247, 0.8);
-    
-        /* Colores de Texto (Estilo Apple - Mejorado para legibilidad) */
-        --color-text-primary: #1D1D1F;
-        --color-text-secondary: #2C2C2E; /* Oscurecido significativamente para mejor legibilidad (antes #6E6E73) */
-        --color-text-tertiary: #3A3A3C; /* Oscurecido significativamente para mejor legibilidad (antes #86868B) */
-        --color-text-disabled: rgba(29, 29, 31, 0.4);
-        --color-text-on-primary: #000000; /* Texto oscuro sobre fondo cyan claro */
-        
-        /* Alias para compatibilidad */
-        --white: var(--color-bg-primary);
-        --text-primary: var(--color-text-primary);
-        --text-secondary: var(--color-text-secondary);
-    
-        /* Colores de Estado */
-        --color-success: #4CAF50;
-        --color-success-light: rgba(76, 175, 80, 0.1);
-        --color-success-dark: #45A049;
-        --success: var(--color-success);
+    --color-bg-light: rgba(255, 255, 255, 0.06);
 
-        --color-error: #FF6B6B;
-        --color-error-light: rgba(255, 107, 107, 0.1);
-        --color-error-dark: #E55A5A;
-        --error: var(--color-error);
+    /* Texto */
+    --color-text-primary: #f4f7fb;
+    --color-text-secondary: rgba(244, 247, 251, 0.68);
+    --color-text-tertiary: rgba(244, 247, 251, 0.45);
+    --color-text-disabled: rgba(244, 247, 251, 0.35);
+    --color-text-muted: rgba(244, 247, 251, 0.68);
+    --color-text-on-primary: #030a24;
 
-        --color-warning: #FFD93D;
-        --color-warning-light: rgba(255, 217, 61, 0.1);
-        --color-warning-dark: #E6C435;
-        --warning: var(--color-warning);
+    /* Alias legacy */
+    --white: var(--color-text-primary);
+    --text-primary: var(--color-text-primary);
+    --text-secondary: var(--color-text-secondary);
 
-        --color-info: #6BCB77;
-        --color-info-light: rgba(107, 203, 119, 0.1);
-        --color-info-dark: #5BB567;
-        --info: var(--color-info);
+    /* Estado */
+    --color-success: #4caf50;
+    --color-success-light: rgba(76, 175, 80, 0.15);
+    --color-success-dark: #45a049;
+    --success: var(--color-success);
 
-        /* Enlaces en texto (WCAG sobre fondos claros) */
-        --color-link: #0369a1;
-        --color-link-hover: #0c4a6e;
-    
-        /* Colores de Superficie (Estilo Apple) */
-        --color-surface: #FFFFFF;
-        --color-surface-hover: #F0F0F5;
-        --color-surface-elevated: #FFFFFF;
-        --color-surface-card: #F5F5F7;
-        
-        /* Alias para compatibilidad */
-        --card-bg: var(--color-surface);
-        --card-border: var(--color-border);
-    
-        /* Colores de Borde (Estilo Apple - Sutiles) */
-        --color-border: rgba(0, 0, 0, 0.08);
-        --color-border-light: rgba(0, 0, 0, 0.04);
-        --color-border-hover: rgba(0, 0, 0, 0.12);
-        --color-border-focus: var(--color-primary);
-        --color-border-error: rgba(255, 107, 107, 0.4);
-        --color-border-success: rgba(76, 175, 80, 0.4);
-    
-        /* Colores de Overlay (Estilo Apple) */
-        --color-overlay: rgba(0, 0, 0, 0.4);
-        --color-overlay-light: rgba(255, 255, 255, 0.7);
-        --color-overlay-dark: rgba(0, 0, 0, 0.6);
-        
-        /* Z-index (Elevaciones) */
-        --z-base: 1;
-        --z-sticky: 100;
-        --z-fixed: 200;
-        --z-dropdown: 300;
-        --z-modal-overlay: 400;
-        --z-modal: 500;
-        --z-tooltip: 600;
-        --z-toast: 700;
+    --color-error: #ff6b6b;
+    --color-error-light: rgba(255, 107, 107, 0.15);
+    --color-error-dark: #e55a5a;
+    --error: var(--color-error);
+
+    --color-warning: #ffd93d;
+    --color-warning-light: rgba(255, 217, 61, 0.15);
+    --color-warning-dark: #e6c435;
+    --warning: var(--color-warning);
+
+    --color-info: #6bcb77;
+    --color-info-light: rgba(107, 203, 119, 0.15);
+    --color-info-dark: #5bb567;
+    --info: var(--color-info);
+
+    /* Enlaces */
+    --color-link: #1adddb;
+    --color-link-hover: #1be8e6;
+
+    /* Superficies */
+    --color-surface: rgba(255, 255, 255, 0.06);
+    --color-surface-hover: rgba(255, 255, 255, 0.09);
+    --color-surface-strong: rgba(255, 255, 255, 0.09);
+    --color-surface-elevated: rgba(255, 255, 255, 0.08);
+    --color-surface-card: rgba(255, 255, 255, 0.06);
+
+    --card-bg: var(--color-surface-card);
+    --card-border: var(--color-border);
+
+    /* Bordes */
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-border-light: rgba(255, 255, 255, 0.06);
+    --color-border-hover: rgba(26, 221, 219, 0.28);
+    --color-border-focus: var(--color-primary);
+    --color-border-error: rgba(255, 107, 107, 0.45);
+    --color-border-success: rgba(76, 175, 80, 0.45);
+
+    /* Overlays */
+    --color-overlay: rgba(0, 0, 0, 0.55);
+    --color-overlay-light: rgba(3, 10, 36, 0.88);
+    --color-overlay-dark: rgba(0, 0, 0, 0.72);
+
+    /* Gradiente ambiental (hero / páginas) */
+    --color-bg-glow: radial-gradient(
+        90% 70% at 50% -10%,
+        rgba(26, 221, 219, 0.14) 0%,
+        transparent 55%
+    );
+
+    /* Z-index */
+    --z-base: 1;
+    --z-sticky: 100;
+    --z-fixed: 200;
+    --z-dropdown: 300;
+    --z-modal-overlay: 400;
+    --z-modal: 500;
+    --z-tooltip: 600;
+    --z-toast: 700;
 }
-

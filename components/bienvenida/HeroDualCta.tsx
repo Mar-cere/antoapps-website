@@ -3,35 +3,38 @@
 import { useEffect, useState } from 'react';
 import DownloadLink from '@/components/DownloadLink';
 import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
-import {
-  BIENVENIDA_TRIAL_ARIA,
-  BIENVENIDA_TRIAL_FINAL_CTA,
-  BIENVENIDA_TRIAL_HERO_CTA,
-  BIENVENIDA_TRIAL_SHORT,
-} from '@/lib/bienvenida-copy';
+import type { BienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 
 type HeroDualCtaProps = {
   storeHref: string;
   landingVariant: 'A' | 'B';
+  pagePath: string;
+  copy: BienvenidaCopy;
   placement?: 'hero' | 'final';
 };
 
-function primaryCtaLabel(variant: 'A' | 'B', isFinal: boolean): string {
+function primaryCtaLabel(
+  copy: BienvenidaCopy,
+  variant: 'A' | 'B',
+  isFinal: boolean
+): string {
   if (isFinal) {
-    return BIENVENIDA_TRIAL_FINAL_CTA;
+    return copy.trial.finalCta;
   }
-  return BIENVENIDA_TRIAL_HERO_CTA[variant];
+  return copy.trial.heroCta[variant];
 }
 
 export default function HeroDualCta({
   storeHref,
   landingVariant,
+  pagePath,
+  copy,
   placement = 'hero',
 }: HeroDualCtaProps) {
   const [showAndroidInput, setShowAndroidInput] = useState(false);
   const [autoFocusAndroidInput, setAutoFocusAndroidInput] = useState(false);
   const isFinal = placement === 'final';
-  const primaryCtaText = primaryCtaLabel(landingVariant, isFinal);
+  const primaryCtaText = primaryCtaLabel(copy, landingVariant, isFinal);
 
   useEffect(() => {
     if (showAndroidInput) {
@@ -50,20 +53,18 @@ export default function HeroDualCta({
         trackingPlacement={
           isFinal ? 'bienvenida_final_primary_cta' : 'bienvenida_hero_primary_cta'
         }
-        trackingPage="/bienvenida"
+        trackingPage={pagePath}
         trackingLabel={
           isFinal
             ? `final_primary_variant_${landingVariant}`
             : `hero_primary_variant_${landingVariant}`
         }
-        aria-label={BIENVENIDA_TRIAL_ARIA}
+        aria-label={copy.trial.aria}
       >
         {primaryCtaText}
       </DownloadLink>
 
-      <p className="lad-hero-trial-line">
-        <strong>{BIENVENIDA_TRIAL_SHORT}</strong> · cancelas cuando quieras en App Store
-      </p>
+      <p className="lad-hero-trial-line">{copy.trial.line}</p>
 
       {!isFinal && (
         <>
@@ -74,18 +75,18 @@ export default function HeroDualCta({
             aria-expanded={showAndroidInput}
             aria-controls="android-early-access-bienvenida"
           >
-            ¿Usas Android? Únete a la lista de espera
+            {copy.androidWaitlist}
           </button>
 
           <div className={`lad-android-reveal ${showAndroidInput ? 'is-open' : ''}`}>
             <AndroidEarlyAccessForm
               id="android-early-access-bienvenida"
               placement="bienvenida_hero_android_early_access"
-              page="/bienvenida"
+              page={pagePath}
               className="android-early-access android-early-access--landing"
               compact
               autoFocus={autoFocusAndroidInput}
-              buttonLabel="Quiero acceso Android"
+              buttonLabel={copy.androidCta}
             />
           </div>
         </>

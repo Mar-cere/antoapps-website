@@ -43,36 +43,9 @@ export default function Values() {
             </p>
           </div>
         </div>
-        <div
-          style={{
-            marginTop: 'var(--spacing-xl)',
-            padding: 'var(--spacing-lg)',
-            background:
-              'linear-gradient(135deg, rgba(26, 221, 219, 0.18) 0%, rgba(163, 184, 232, 0.18) 100%)',
-            border: '1px solid var(--card-border)',
-            borderRadius: '20px',
-            textAlign: 'center',
-            backdropFilter: 'blur(10px)',
-          }}
-        >
-          <h3
-            style={{
-              color: 'var(--white)',
-              marginBottom: 'var(--spacing-sm)',
-              fontSize: '1.5rem',
-            }}
-          >
-            Nuestra Misión
-          </h3>
-          <p
-            style={{
-              color: 'var(--secondary-color)',
-              lineHeight: 1.7,
-              fontSize: '1rem',
-              maxWidth: '700px',
-              margin: '0 auto',
-            }}
-          >
+        <div className="home-callout home-callout--accent">
+          <h3 className="home-callout__title">Nuestra Misión</h3>
+          <p className="home-callout__text home-callout__text--narrow">
             Democratizar el acceso a la salud mental de calidad. Utilizamos la tecnología para amplificar
             nuestra capacidad de ayudar a más personas, más rápido, y de manera más accesible. Cada
             conversación nos acerca más a un mundo donde la salud mental es una prioridad, no un lujo.

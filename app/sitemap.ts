@@ -5,17 +5,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     '',
-    '/bienvenida',
-    '/contacto',
-    '/desarrollo',
-    '/privacidad',
-    '/terminos',
-    '/sobre-nosotros',
+    '/en',
+    '/app',
+    '/en/app',
     '/comparar',
+    '/en/comparar',
+    '/bienvenida',
+    '/en/bienvenida',
+    '/contacto',
+    '/en/contacto',
+    '/privacidad',
+    '/en/privacidad',
+    '/terminos',
+    '/en/terminos',
+    '/desarrollo',
+    '/sobre-nosotros',
     '/seguridad',
     '/investigacion',
     '/recursos',
-    '/app',
   ];
 
   return routes.map((route) => ({
@@ -25,4 +32,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1 : 0.8,
   }));
 }
-

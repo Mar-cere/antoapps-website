@@ -1,44 +1,35 @@
 import Link from 'next/link';
-import type { ReactNode } from 'react';
-import { BIENVENIDA_TRIAL_FAQ_ANSWER } from '@/lib/bienvenida-copy';
+import type { BienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
+import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 
-type FaqItem = {
-  question: string;
-  answer: ReactNode;
+type BienvenidaFaqProps = {
+  copy: BienvenidaCopy['faq'];
+  locale: Locale;
 };
 
-const faqItems: FaqItem[] = [
-  {
-    question: '¿Es lo mismo que terapia?',
-    answer:
-      'No. Anto es apoyo emocional con IA: te ayuda a ordenar lo que sientes y avanzar con pasos concretos. No diagnostica ni sustituye atención clínica.',
-  },
-  {
-    question: '¿Cuánto cuesta después de la prueba?',
-    answer: BIENVENIDA_TRIAL_FAQ_ANSWER,
-  },
-  {
-    question: '¿Quién ve lo que escribo?',
-    answer: (
-      <>
-        Tus conversaciones son privadas. No vendemos tus datos ni los usamos para publicidad. Más
-        detalle en nuestra <Link href="/privacidad">Política de Privacidad</Link>.
-      </>
-    ),
-  },
-];
+export default function BienvenidaFaq({ copy, locale }: BienvenidaFaqProps) {
+  const privacyHref = localePath(locale, '/privacidad');
 
-export default function BienvenidaFaq() {
   return (
     <section className="lad-faq lad-section--anchor" id="preguntas" aria-labelledby="lad-faq-title">
       <h2 id="lad-faq-title" className="lad-faq-title">
-        Dudas frecuentes
+        {copy.sectionTitle}
       </h2>
       <div className="lad-faq-list">
-        {faqItems.map((item) => (
+        {copy.items.map((item, index) => (
           <details key={item.question} className="lad-faq-item">
             <summary className="lad-faq-question">{item.question}</summary>
-            <div className="lad-faq-answer">{item.answer}</div>
+            <div className="lad-faq-answer">
+              {index === 2 ? (
+                <>
+                  {item.answer}{' '}
+                  <Link href={privacyHref}>{item.privacyLinkLabel}</Link>.
+                </>
+              ) : (
+                item.answer
+              )}
+            </div>
           </details>
         ))}
       </div>

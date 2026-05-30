@@ -6,17 +6,32 @@ import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useMobileMenu } from '@/lib/hooks/useNavigation';
 import { useSwipeGestures } from '@/lib/hooks/useSwipeGestures';
+import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
+import { DEFAULT_LOCALE, type Locale } from '@/lib/i18n/config';
+import { getSiteLayoutCopy } from '@/lib/i18n/copy/home';
 import '@/styles/layout/header.css';
+
+function resolveLocale(pathname: string): Locale {
+  if (pathname === '/en' || pathname.startsWith('/en/')) {
+    return 'en';
+  }
+  return DEFAULT_LOCALE;
+}
 
 export default function Header() {
   const pathname = usePathname();
+  const locale = resolveLocale(pathname ?? '');
+  const copy = getSiteLayoutCopy(locale);
+  const homeHref = locale === 'en' ? '/en' : '/';
+  const downloadHref = locale === 'en' ? '/en/bienvenida' : '/bienvenida';
+  const isHome = pathname === '/' || pathname === '/en';
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const { toggleMenu } = useMobileMenu();
 
-  // Gestos swipe para cerrar menú móvil (solo en móvil)
   useSwipeGestures({
     elementRef: menuRef as React.RefObject<HTMLElement>,
     onSwipeLeft: () => {
@@ -39,7 +54,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Cerrar menú al hacer click fuera
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -67,18 +81,9 @@ export default function Header() {
     };
   }, [isMobileMenuOpen, toggleMenu]);
 
-  // Cerrar menú al cambiar de ruta
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
-
-  const navLinks = [
-    { href: '/', label: 'Inicio' },
-    { href: '/app', label: 'La App' },
-    { href: '/#caracteristicas', label: 'Características' },
-    { href: '/desarrollo', label: 'Desarrollo' },
-    { href: '/contacto', label: 'Contacto' },
-  ];
 
   const handleMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -86,18 +91,18 @@ export default function Header() {
   };
 
   const isActiveLink = (href: string) => {
-    if (href === '/') {
-      return pathname === '/';
+    if (href === '/' || href === '/en') {
+      return pathname === href;
     }
     return pathname.startsWith(href);
   };
 
   return (
     <header className={`header sticky-header ${isScrolled ? 'scrolled' : ''}`}>
-      <nav className="nav" role="navigation" aria-label="Navegación principal">
+      <nav className="nav" role="navigation" aria-label={copy.header.navAria}>
         <div className="container">
           <div className="nav-brand">
-            <Link href="/" className="logo" aria-label="Anto - Ir a inicio">
+            <Link href={homeHref} className="logo" aria-label={copy.header.logoAria}>
               <Image
                 src="/assets/images/antoIcon.png"
                 alt="Anto Logo"
@@ -113,7 +118,6 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Overlay para menú móvil */}
           {isMobileMenuOpen && (
             <div
               ref={overlayRef}
@@ -129,7 +133,7 @@ export default function Header() {
             className={`nav-menu ${isMobileMenuOpen ? 'active swipeable' : ''}`}
             role="menubar"
           >
-            {navLinks.map((link) => {
+            {copy.header.links.map((link) => {
               const isActive = isActiveLink(link.href);
               return (
                 <li key={link.href} role="none">
@@ -148,14 +152,21 @@ export default function Header() {
           </ul>
 
           <div className="nav-actions">
-            <Link href="/bienvenida" className="btn btn-primary" aria-label="Ir a opciones de descarga de Anto">
-              Descargar
+            {isHome && (
+              <LanguageSwitcher locale={locale} path="/" className="nav-lang-switch" />
+            )}
+            <Link
+              href={downloadHref}
+              className="btn btn-primary"
+              aria-label={copy.header.downloadAria}
+            >
+              {copy.header.download}
             </Link>
             <button
               id="navToggle"
               className={`nav-toggle ${isMobileMenuOpen ? 'active' : ''}`}
               onClick={handleMenuToggle}
-              aria-label="Abrir o cerrar menú de navegación"
+              aria-label={copy.header.menuToggleAria}
               aria-expanded={isMobileMenuOpen}
               aria-controls="navMenu"
             >
@@ -169,4 +180,3 @@ export default function Header() {
     </header>
   );
 }
-

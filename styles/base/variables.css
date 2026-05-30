@@ -3,13 +3,14 @@
    ============================================ */
 
 :root {
-    /* Alias legacy conectados a tokens actuales */
+    /* Alias legacy — HTML estático y componentes antiguos */
     --primary-color: var(--color-primary);
+    --accent-color: var(--color-secondary);
     --bg-dark: var(--color-bg-dark);
-    --white: var(--color-bg-primary);
-    --secondary-color: var(--color-secondary);
-    
-    /* Colores de Tarjetas (Estilo Apple - Fondos Claros) */
+    --white: var(--color-text-primary);
+    --secondary-color: var(--color-text-secondary);
+
+    /* Tarjetas */
     --card-bg: var(--color-surface-card);
     --card-border: var(--color-border);
     

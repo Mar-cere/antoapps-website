@@ -79,7 +79,7 @@ export default function InvestigacionPage() {
 
             <div className="studies-section">
               <h2 className="section-title reveal-on-scroll">Estudios y Publicaciones Científicas</h2>
-              <p className="section-subtitle reveal-on-scroll" style={{ marginBottom: 'var(--spacing-lg)' }}>
+              <p className="section-subtitle reveal-on-scroll section-subtitle--spaced">
                 Investigación científica rigurosa que respalda la efectividad de las intervenciones digitales
                 en salud mental
               </p>

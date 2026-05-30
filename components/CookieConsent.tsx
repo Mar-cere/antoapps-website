@@ -1,22 +1,34 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useCookieConsent } from '@/lib/hooks/useCookieConsent';
+import { DEFAULT_LOCALE, type Locale } from '@/lib/i18n/config';
+import { getSiteLayoutCopy } from '@/lib/i18n/copy/home';
 import '@/styles/components/cookie-consent.css';
 
 type CookieConsentProps = {
   compact?: boolean;
-  /** Retraso antes de mostrar (ms). Por defecto 500. */
   bannerDelayMs?: number;
-  /** Mostrar también tras scroll (px). */
   showAfterScrollPx?: number;
 };
+
+function resolveLocale(pathname: string): Locale {
+  if (pathname === '/en' || pathname.startsWith('/en/')) {
+    return 'en';
+  }
+  return DEFAULT_LOCALE;
+}
 
 export default function CookieConsent({
   compact = false,
   bannerDelayMs,
   showAfterScrollPx,
 }: CookieConsentProps) {
+  const pathname = usePathname();
+  const locale = resolveLocale(pathname ?? '');
+  const copy = getSiteLayoutCopy(locale).cookies;
+
   const { showBanner, acceptCookies, rejectCookies } = useCookieConsent({
     bannerDelayMs,
     showAfterScrollPx,
@@ -31,23 +43,21 @@ export default function CookieConsent({
     >
       <div className="cookie-consent-content">
         <div className="cookie-consent-text">
-          {!compact && <h4>🍪 Uso de Cookies</h4>}
+          {!compact && <h4>{copy.title}</h4>}
           <p>
             {compact ? (
               <>
-                Usamos cookies para analítica.{' '}
+                {copy.compact}{' '}
                 <Link href="/privacidad" target="_blank">
-                  Privacidad
+                  {copy.privacy}
                 </Link>
                 .
               </>
             ) : (
               <>
-                Utilizamos cookies para mejorar tu experiencia, analizar el tráfico del sitio y
-                personalizar el contenido. Al hacer clic en &quot;Aceptar&quot;, consientes el uso de
-                cookies según nuestra{' '}
+                {copy.full}{' '}
                 <Link href="/privacidad" target="_blank">
-                  Política de Privacidad
+                  {copy.privacy}
                 </Link>
                 .
               </>
@@ -56,10 +66,10 @@ export default function CookieConsent({
         </div>
         <div className="cookie-consent-actions">
           <button className="btn btn-secondary" onClick={rejectCookies}>
-            Rechazar
+            {copy.reject}
           </button>
           <button className="btn btn-primary" onClick={acceptCookies}>
-            Aceptar
+            {copy.accept}
           </button>
         </div>
       </div>

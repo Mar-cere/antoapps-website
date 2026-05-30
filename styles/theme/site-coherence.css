@@ -1,0 +1,177 @@
+/* ============================================
+   COHERENCIA VISUAL — tema oscuro global
+   Complementa tokens; corrige hardcodes legacy
+   ============================================ */
+
+/* Botones secundarios en fondo oscuro */
+.btn-secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: var(--color-surface-hover);
+    border-color: var(--color-border-hover);
+    color: var(--color-text-primary);
+}
+
+.btn-soon-store.is-disabled,
+.btn-soon-store[aria-disabled='true'] {
+    background: var(--color-surface);
+    color: var(--color-text-muted);
+    border-color: var(--color-border);
+}
+
+.btn-soon-pill {
+    background: var(--color-surface);
+    color: var(--color-text-muted);
+    border-color: var(--color-border);
+}
+
+/* Formularios */
+input:not([type='checkbox']):not([type='radio']),
+textarea,
+select {
+    background: var(--color-surface-strong, var(--color-surface-hover));
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--color-text-tertiary);
+}
+
+/* Android early access (home y otras páginas) */
+.android-early-access {
+    background: var(--color-surface-card);
+    border-color: var(--color-border);
+}
+
+.android-early-access-title {
+    color: var(--color-text-primary);
+}
+
+.android-early-access-subtitle,
+.android-early-access-footnote {
+    color: var(--color-text-muted);
+}
+
+.android-early-access-input {
+    background: var(--color-surface-hover);
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+}
+
+.android-early-access-footnote a {
+    color: var(--color-link);
+}
+
+/* Cookie consent */
+.cookie-consent {
+    background: var(--color-overlay-light);
+    border-top-color: var(--color-border-accent, var(--color-border-hover));
+}
+
+/* FAQ acordeón home */
+.faq-item,
+.faq-question {
+    background: var(--color-surface-card);
+    border-color: var(--color-border);
+    color: var(--color-text-primary);
+}
+
+.faq-answer {
+    color: var(--color-text-secondary);
+}
+
+/* Tarjetas de features (home) */
+.feature-card,
+.value-card,
+.pricing-card,
+.insight-card,
+.advantage-card,
+.tech-spec-card {
+    background: var(--color-surface-card);
+    border-color: var(--color-border);
+}
+
+.feature-card:hover,
+.value-card:hover,
+.pricing-card:hover {
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Calculadora de precios */
+.pricing-calculator {
+    background: var(--color-surface-card);
+}
+
+.result-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.comparison-row.highlighted {
+    background: var(--color-primary-light);
+}
+
+/* Breadcrumbs */
+.breadcrumb-current {
+    background: var(--color-primary-light);
+    border-color: var(--color-border-hover);
+    color: var(--color-text-primary);
+}
+
+/* Footer coherente con landing */
+.footer-bottom {
+    color: var(--color-text-tertiary);
+}
+
+.footer-bottom a {
+    color: var(--color-link);
+}
+
+/* CTAs primarios — gradiente como landing */
+.btn-primary {
+    background: linear-gradient(135deg, #1adddb 0%, #12c9c7 52%, #0fb8b6 100%);
+    color: var(--color-text-on-primary);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1be8e6 0%, #14d4d2 52%, #12c9c7 100%);
+    filter: brightness(1.05);
+}
+
+/* Heroes internos — mismo glow que landing */
+.about-hero,
+.contact-hero,
+.security-hero,
+.comparison-hero,
+.app-hero,
+.development-hero,
+.privacy-hero,
+.research-hero {
+    background: var(--color-bg-glow), var(--color-bg-primary);
+}
+
+main.legal-page {
+    background: var(--color-bg-primary);
+}
+
+/* Badges técnicos en fondo oscuro */
+.tech-badge {
+    background: var(--color-primary-light);
+    border-color: rgba(26, 221, 219, 0.35);
+    color: var(--color-primary);
+}
+
+.decision-highlight,
+.challenge-impact {
+    background: var(--color-primary-light);
+    color: var(--color-text-secondary);
+}

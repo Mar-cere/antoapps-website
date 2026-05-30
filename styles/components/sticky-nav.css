@@ -4,14 +4,14 @@
 
 .sticky-nav {
     position: fixed;
-    top: 40px; /* Fallback - se actualizará dinámicamente en JS */
+    top: 40px;
     left: 0;
     right: 0;
-    z-index: 199; /* Justo debajo del header (z-fixed = 200) */
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid var(--color-border-light);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    z-index: 199;
+    background: rgba(3, 10, 36, 0.92);
+    backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
     animation: slideDown 0.3s ease-out;
     will-change: top;
     transition: top 0.2s ease-out;
@@ -70,8 +70,8 @@
 }
 
 .sticky-nav-link.active {
-    color: var(--color-primary-dark);
-    background: var(--color-primary-lightest);
+    color: var(--color-primary);
+    background: var(--color-primary-light);
     font-weight: var(--font-weight-semibold);
 }
 

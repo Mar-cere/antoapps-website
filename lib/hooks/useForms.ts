@@ -19,7 +19,25 @@ interface FormValidations {
   [key: string]: FieldValidation;
 }
 
-export function useFormValidation(validations?: FormValidations) {
+export type FormMessages = {
+  required: string;
+  emailInvalid: string;
+  minLength: (min: number) => string;
+  maxLength: (max: number) => string;
+  invalidFormat: string;
+  submitError: string;
+};
+
+const defaultFormMessages: FormMessages = {
+  required: 'Este campo es obligatorio',
+  emailInvalid: 'Por favor ingresa un email válido',
+  minLength: (min) => `Este campo debe tener al menos ${min} caracteres`,
+  maxLength: (max) => `Este campo no puede tener más de ${max} caracteres`,
+  invalidFormat: 'El formato ingresado no es válido',
+  submitError: 'Hubo un error al enviar el formulario. Por favor intenta nuevamente.',
+};
+
+export function useFormValidation(validations?: FormValidations, messages: FormMessages = defaultFormMessages) {
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,33 +53,33 @@ export function useFormValidation(validations?: FormValidations) {
       if (!fieldValidation) {
         // Validación por defecto basada en el nombre del campo
         if (name.includes('email')) {
-          if (!value.trim()) return 'Este campo es obligatorio';
-          if (!validateEmail(value)) return 'Por favor ingresa un email válido';
+          if (!value.trim()) return messages.required;
+          if (!validateEmail(value)) return messages.emailInvalid;
         } else if (name === 'name' || name === 'message') {
-          if (!value.trim()) return 'Este campo es obligatorio';
+          if (!value.trim()) return messages.required;
         }
         return null;
       }
 
       // Validación personalizada
       if (fieldValidation.required && !value.trim()) {
-        return 'Este campo es obligatorio';
+        return messages.required;
       }
 
       if (fieldValidation.email && !validateEmail(value)) {
-        return 'Por favor ingresa un email válido';
+        return messages.emailInvalid;
       }
 
       if (fieldValidation.minLength && value.length < fieldValidation.minLength) {
-        return `Este campo debe tener al menos ${fieldValidation.minLength} caracteres`;
+        return messages.minLength(fieldValidation.minLength);
       }
 
       if (fieldValidation.maxLength && value.length > fieldValidation.maxLength) {
-        return `Este campo no puede tener más de ${fieldValidation.maxLength} caracteres`;
+        return messages.maxLength(fieldValidation.maxLength);
       }
 
       if (fieldValidation.pattern && !fieldValidation.pattern.test(value)) {
-        return 'El formato ingresado no es válido';
+        return messages.invalidFormat;
       }
 
       if (fieldValidation.custom) {
@@ -70,7 +88,7 @@ export function useFormValidation(validations?: FormValidations) {
 
       return null;
     },
-    [validations]
+    [validations, messages]
   );
 
   const validateForm = useCallback(
@@ -152,7 +170,7 @@ export function useFormValidation(validations?: FormValidations) {
       setTouched({});
     } catch (error) {
       console.error('Error al enviar formulario:', error);
-      setErrors({ submit: 'Hubo un error al enviar el formulario. Por favor intenta nuevamente.' });
+      setErrors({ submit: messages.submitError });
     } finally {
       setIsSubmitting(false);
     }

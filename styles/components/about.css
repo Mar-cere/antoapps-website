@@ -3,7 +3,7 @@
    ============================================ */
 
 .about-hero {
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
+    background: var(--color-bg-glow), var(--color-bg-primary);
     padding: var(--page-hero-padding-top) 0 var(--page-hero-padding-bottom);
     text-align: center;
 }

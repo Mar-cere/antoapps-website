@@ -1,147 +1,57 @@
 'use client';
 
 import Link from 'next/link';
+import type { Locale } from '@/lib/i18n/config';
+import { getHomeSectionsCopy } from '@/lib/i18n/copy/home';
 import StatsSection from './StatsSection';
 
-export default function Features() {
+type FeaturesProps = {
+  locale?: Locale;
+};
+
+const FEATURE_ICONS = ['🤖', '🚨', '📊', '🧘', '🔒', '⏰'];
+
+export default function Features({ locale = 'es' }: FeaturesProps) {
+  const copy = getHomeSectionsCopy(locale);
+
   return (
     <>
-      {/* Características Principales */}
       <section id="caracteristicas" className="features" data-fade-section>
         <div className="container">
-          <h2 className="section-title reveal-on-scroll">Características Principales</h2>
-          <p className="section-subtitle reveal-on-scroll">
-            Todo lo que necesitas para tu bienestar mental en un solo lugar
-          </p>
+          <h2 className="section-title reveal-on-scroll">{copy.features.title}</h2>
+          <p className="section-subtitle reveal-on-scroll">{copy.features.subtitle}</p>
           <div className="features-grid" data-stagger>
-            <div className="feature-card stagger-item" data-stagger-item>
-              <div className="feature-icon icon-hover-enhanced">🤖</div>
-              <h3>Asistente de IA (bienestar emocional)</h3>
-              <p>
-                Chat con GPT-5.4 Mini, tono profesional y práctico por defecto. Escalas validadas (PHQ-9,
-                GAD-7), detección de distorsiones cognitivas y protocolos estructurados basados en
-                evidencia; preferencias de estilo de respuesta cuando la app lo ofrece (v1.4+)
-              </p>
-            </div>
-            <div className="feature-card stagger-item" data-stagger-item>
-              <div className="feature-icon icon-hover-enhanced">🚨</div>
-              <h3>Detección de Crisis</h3>
-              <p>Identificación temprana de señales de crisis con apoyo inmediato</p>
-            </div>
-            <div className="feature-card stagger-item" data-stagger-item>
-              <div className="feature-icon icon-hover-enhanced">📊</div>
-              <h3>Análisis Emocional Avanzado</h3>
-              <p>
-                Seguimiento con escalas clínicas automáticas, detección de distorsiones cognitivas,
-                reportes profesionales y estadísticas detalladas de tu progreso
-              </p>
-            </div>
-            <div className="feature-card stagger-item" data-stagger-item>
-              <div className="feature-icon icon-hover-enhanced">🧘</div>
-              <h3>Herramientas de Bienestar</h3>
-              <p>Ejercicios de mindfulness, meditación y técnicas de relajación</p>
-            </div>
-            <div className="feature-card stagger-item" data-stagger-item>
-              <div className="feature-icon icon-hover-enhanced">🔒</div>
-              <h3>Privacidad Total</h3>
-              <p>Conversaciones completamente confidenciales y seguras</p>
-            </div>
-            <div className="feature-card stagger-item" data-stagger-item>
-              <div className="feature-icon icon-hover-enhanced">⏰</div>
-              <h3>Disponible 24/7</h3>
-              <p>Acceso inmediato cuando lo necesites, sin esperas ni citas</p>
-            </div>
+            {copy.features.cards.map((card, index) => (
+              <div key={card.title} className="feature-card stagger-item" data-stagger-item>
+                <div className="feature-icon icon-hover-enhanced">{FEATURE_ICONS[index]}</div>
+                <h3>{card.title}</h3>
+                <p>{card.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Estadísticas */}
-      <StatsSection />
+      <StatsSection locale={locale} />
 
-      {/* Cómo Funciona */}
       <section id="como-funciona" className="how-it-works" data-fade-section>
         <div className="container">
-          <h2 className="section-title reveal-on-scroll">Cómo Funciona</h2>
-          <p className="section-subtitle reveal-on-scroll">
-            En solo 4 pasos simples, comienza tu camino al bienestar. Anto está diseñado para ser
-            intuitivo y accesible, sin importar tu nivel de experiencia con tecnología.
-          </p>
+          <h2 className="section-title reveal-on-scroll">{copy.howItWorks.title}</h2>
+          <p className="section-subtitle reveal-on-scroll">{copy.howItWorks.subtitle}</p>
           <div className="steps" data-stagger>
-            <div className="step" data-stagger-item>
-              <div className="step-number">1</div>
-              <div className="step-content">
-                <h3>Descarga la App</h3>
-                <p>
-                  Disponible gratis en App Store. En Android puedes solicitar acceso anticipado con tu
-                  correo de Google Play. La descarga es rápida (menos de 40MB) y la instalación toma
-                  menos de un minuto.
-                </p>
+            {copy.howItWorks.steps.map((step, index) => (
+              <div key={step.title} className="step" data-stagger-item>
+                <div className="step-number">{index + 1}</div>
+                <div className="step-content">
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
               </div>
-            </div>
-            <div className="step" data-stagger-item>
-              <div className="step-number">2</div>
-              <div className="step-content">
-                <h3>Crea tu Perfil</h3>
-                <p>
-                  Configura tu perfil de forma privada y segura en menos de 2 minutos. Solo necesitas un
-                  email y puedes empezar. Toda tu información está encriptada desde el primer momento.
-                </p>
-              </div>
-            </div>
-            <div className="step" data-stagger-item>
-              <div className="step-number">3</div>
-              <div className="step-content">
-                <h3>Comienza a Chatear</h3>
-                <p>
-                  Inicia una conversación con nuestro asistente AI que entiende tus emociones. Puedes
-                  escribir libremente, hacer preguntas, o usar nuestras guías de conversación sugeridas.
-                </p>
-              </div>
-            </div>
-            <div className="step" data-stagger-item>
-              <div className="step-number">4</div>
-              <div className="step-content">
-                <h3>Recibe Apoyo Personalizado</h3>
-                <p>
-                  Obtén respuestas adaptadas, herramientas de bienestar y seguimiento continuo. El sistema
-                  aprende de cada interacción para ofrecerte un apoyo cada vez más personalizado.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
-          <div
-            style={{
-              marginTop: 'var(--spacing-xl)',
-              padding: 'var(--spacing-lg)',
-              background: 'var(--card-bg)',
-              border: '1px solid var(--card-border)',
-              borderRadius: '16px',
-              textAlign: 'center',
-              backdropFilter: 'blur(10px)',
-              opacity: 1,
-            }}
-          >
-            <h3
-              style={{
-                color: 'var(--white)',
-                marginBottom: 'var(--spacing-sm)',
-                fontSize: '1.5rem',
-              }}
-            >
-              💡 Consejo Pro
-            </h3>
-            <p
-              style={{
-                color: 'var(--secondary-color)',
-                lineHeight: 1.7,
-                fontSize: '1.0625rem',
-              }}
-            >
-              Para obtener los mejores resultados, usa Anto regularmente. El asistente AI aprende más
-              sobre ti con cada conversación, permitiéndole ofrecerte insights y recomendaciones cada vez
-              más precisas. Muchos usuarios reportan mejoras significativas después de usar la app de
-              forma consistente por 2-3 semanas.
-            </p>
+          <div className="home-callout">
+            <h3 className="home-callout__title">{copy.howItWorks.proTip.title}</h3>
+            <p className="home-callout__text">{copy.howItWorks.proTip.description}</p>
           </div>
         </div>
       </section>

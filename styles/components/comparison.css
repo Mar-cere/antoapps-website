@@ -356,8 +356,33 @@
 
 .comparison-cta {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
+    background: var(--color-primary-light);
+    border-top: 1px solid var(--color-border);
     text-align: center;
+}
+
+.comparison-cta .cta-content h2 {
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-4);
+}
+
+.comparison-cta .cta-content p {
+    color: var(--color-text-secondary);
+    max-width: 640px;
+    margin: 0 auto var(--spacing-6);
+    line-height: 1.6;
+}
+
+.comparison-cta .cta-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.app-comparison-card .btn-block {
+    width: 100%;
+    margin-top: var(--spacing-4);
 }
 
 /* Responsive */

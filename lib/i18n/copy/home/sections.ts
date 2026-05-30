@@ -1,0 +1,607 @@
+import type { Locale } from '@/lib/i18n/config';
+import { getTrialCopy } from '@/lib/i18n/copy/trial';
+
+export type FeatureCard = {
+  title: string;
+  description: string;
+};
+
+export type HowItWorksStep = {
+  title: string;
+  description: string;
+};
+
+export type StudyCard = {
+  badge: string;
+  title: string;
+  authors: string;
+  abstract: string;
+  metrics: string[];
+  linkText: string;
+  href: string;
+};
+
+export type TechItem = {
+  name: string;
+  description: string;
+};
+
+export type TechCategory = {
+  title: string;
+  items: TechItem[];
+};
+
+export type SecurityCard = {
+  title: string;
+  description: string;
+  features: string[];
+};
+
+export type AIExplainedStep = {
+  title: string;
+  description: string;
+  techBadges: string[];
+};
+
+export type HomeSectionsCopy = {
+  features: {
+    title: string;
+    subtitle: string;
+    cards: FeatureCard[];
+  };
+  howItWorks: {
+    title: string;
+    subtitle: string;
+    steps: HowItWorksStep[];
+    proTip: {
+      title: string;
+      description: string;
+    };
+  };
+  stats: {
+    hoursAvailable: string;
+    responseTime: string;
+    testCoverage: string;
+  };
+  appShowcase: {
+    title: string;
+    subtitle: string;
+    description: string;
+    imageAlt: string;
+  };
+  scienceBacked: {
+    title: string;
+    subtitle: string;
+    studies: StudyCard[];
+    cta: string;
+  };
+  technologies: {
+    title: string;
+    subtitle: string;
+    categories: TechCategory[];
+  };
+  security: {
+    title: string;
+    subtitle: string;
+    cards: SecurityCard[];
+    cta: string;
+  };
+  aiExplained: {
+    title: string;
+    subtitle: string;
+    steps: AIExplainedStep[];
+    cta: string;
+  };
+  pricing: {
+    title: string;
+    subtitle: string;
+    valueBanner: {
+      label: string;
+      highlight: string;
+    };
+  };
+};
+
+const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
+  es: (trialNote) => ({
+    features: {
+      title: 'Características Principales',
+      subtitle: 'Todo lo que necesitas para tu bienestar mental en un solo lugar',
+      cards: [
+        {
+          title: 'Asistente de IA (bienestar emocional)',
+          description:
+            'Chat con GPT-5.4 Mini, tono profesional y práctico por defecto. Escalas validadas (PHQ-9, GAD-7), detección de distorsiones cognitivas y protocolos estructurados basados en evidencia; preferencias de estilo de respuesta cuando la app lo ofrece (v1.4+)',
+        },
+        {
+          title: 'Detección de Crisis',
+          description: 'Identificación temprana de señales de crisis con apoyo inmediato',
+        },
+        {
+          title: 'Análisis Emocional Avanzado',
+          description:
+            'Seguimiento con escalas clínicas automáticas, detección de distorsiones cognitivas, reportes profesionales y estadísticas detalladas de tu progreso',
+        },
+        {
+          title: 'Herramientas de Bienestar',
+          description: 'Ejercicios de mindfulness, meditación y técnicas de relajación',
+        },
+        {
+          title: 'Privacidad Total',
+          description: 'Conversaciones completamente confidenciales y seguras',
+        },
+        {
+          title: 'Disponible 24/7',
+          description: 'Acceso inmediato cuando lo necesites, sin esperas ni citas',
+        },
+      ],
+    },
+    howItWorks: {
+      title: 'Cómo Funciona',
+      subtitle:
+        'En solo 4 pasos simples, comienza tu camino al bienestar. Anto está diseñado para ser intuitivo y accesible, sin importar tu nivel de experiencia con tecnología.',
+      steps: [
+        {
+          title: 'Descarga la App',
+          description:
+            'Disponible gratis en App Store. En Android puedes solicitar acceso anticipado con tu correo de Google Play. La descarga es rápida (menos de 40MB) y la instalación toma menos de un minuto.',
+        },
+        {
+          title: 'Crea tu Perfil',
+          description:
+            'Configura tu perfil de forma privada y segura en menos de 2 minutos. Solo necesitas un email y puedes empezar. Toda tu información está encriptada desde el primer momento.',
+        },
+        {
+          title: 'Comienza a Chatear',
+          description:
+            'Inicia una conversación con nuestro asistente AI que entiende tus emociones. Puedes escribir libremente, hacer preguntas, o usar nuestras guías de conversación sugeridas.',
+        },
+        {
+          title: 'Recibe Apoyo Personalizado',
+          description:
+            'Obtén respuestas adaptadas, herramientas de bienestar y seguimiento continuo. El sistema aprende de cada interacción para ofrecerte un apoyo cada vez más personalizado.',
+        },
+      ],
+      proTip: {
+        title: '💡 Consejo Pro',
+        description:
+          'Para obtener los mejores resultados, usa Anto regularmente. El asistente AI aprende más sobre ti con cada conversación, permitiéndole ofrecerte insights y recomendaciones cada vez más precisas. Muchos usuarios reportan mejoras significativas después de usar la app de forma consistente por 2-3 semanas.',
+      },
+    },
+    stats: {
+      hoursAvailable: 'Horas Disponibles',
+      responseTime: 'Tiempo de Respuesta',
+      testCoverage: 'Cobertura de Tests',
+    },
+    appShowcase: {
+      title: 'Diseñado para Ti',
+      subtitle:
+        'Una interfaz intuitiva y elegante que te permite enfocarte en lo que realmente importa: tu bienestar mental.',
+      description:
+        'Anto combina diseño minimalista con funcionalidad poderosa. Cada elemento está pensado para brindarte una experiencia fluida y accesible, sin importar tu nivel de experiencia con tecnología.',
+      imageAlt: 'Anto App - Interfaz principal de la aplicación',
+    },
+    scienceBacked: {
+      title: 'Respaldado por Ciencia',
+      subtitle:
+        'Anto está respaldado por estudios científicos publicados en revistas reconocidas internacionalmente',
+      studies: [
+        {
+          badge: '📄 JMIR Mental Health',
+          title: 'Efectividad de Chatbots Terapéuticos',
+          authors: 'Fitzpatrick et al. (2017)',
+          abstract:
+            'Estudio controlado aleatorizado que demostró reducciones significativas en síntomas de depresión y ansiedad con chatbots basados en terapia cognitivo-conductual.',
+          metrics: ['RCT', '70 participantes'],
+          linkText: 'Ver Estudio Completo →',
+          href: 'https://www.jmir.org/2017/6/e19/',
+        },
+        {
+          badge: '📊 World Psychiatry',
+          title: 'Meta-Análisis de Apps Móviles',
+          authors: 'Firth et al. (2019)',
+          abstract:
+            'Meta-análisis de 83 estudios confirma que las intervenciones digitales son efectivas para reducir síntomas de depresión y ansiedad.',
+          metrics: ['Meta-análisis', '83 estudios'],
+          linkText: 'Ver Estudio Completo →',
+          href: 'https://onlinelibrary.wiley.com/doi/10.1002/wps.20673',
+        },
+        {
+          badge: '🔬 npj Digital Medicine',
+          title: 'Chatbots de IA en Salud Mental',
+          authors: 'Vaidyam et al. (2022)',
+          abstract:
+            'Revisión que analiza la efectividad de chatbots de IA, concluyendo que son herramientas valiosas para apoyo emocional y detección temprana.',
+          metrics: ['Nature', 'Revisión'],
+          linkText: 'Ver Estudio Completo →',
+          href: 'https://www.nature.com/articles/s41746-022-00642-8',
+        },
+      ],
+      cta: 'Ver todos los estudios científicos →',
+    },
+    technologies: {
+      title: 'Stack Tecnológico Moderno',
+      subtitle:
+        'Tecnologías de vanguardia (2025) seleccionadas por su rendimiento, escalabilidad y ecosistema activo',
+      categories: [
+        {
+          title: 'Inteligencia Artificial',
+          items: [
+            { name: 'OpenAI GPT-5.4 Mini', description: 'API principal para conversaciones inteligentes' },
+            { name: 'NLP Processing', description: 'Procesamiento de lenguaje natural' },
+            { name: 'Sentiment Analysis', description: 'Análisis emocional en tiempo real' },
+          ],
+        },
+        {
+          title: 'Frontend',
+          items: [
+            { name: 'React Native', description: 'Framework multiplataforma iOS/Android' },
+            { name: 'Expo SDK', description: 'Desarrollo y deployment rápido' },
+            { name: 'React Navigation', description: 'Navegación fluida' },
+          ],
+        },
+        {
+          title: 'Backend',
+          items: [
+            { name: 'Node.js', description: 'Runtime JavaScript' },
+            { name: 'Express.js', description: 'Framework web' },
+            { name: 'MongoDB', description: 'Base de datos NoSQL' },
+            { name: 'Socket.IO', description: 'WebSockets en tiempo real' },
+          ],
+        },
+        {
+          title: 'Seguridad',
+          items: [
+            { name: 'JWT', description: 'Autenticación segura' },
+            { name: 'bcrypt', description: 'Hashing de contraseñas' },
+            { name: 'Helmet.js', description: 'Headers de seguridad' },
+          ],
+        },
+        {
+          title: 'Integraciones',
+          items: [
+            { name: 'Mercado Pago', description: 'Procesamiento de pagos' },
+            { name: 'SendGrid', description: 'Emails transaccionales' },
+            { name: 'OpenAI API', description: 'IA conversacional' },
+          ],
+        },
+      ],
+    },
+    security: {
+      title: 'Seguridad y Privacidad de Grado Militar',
+      subtitle:
+        'Tu privacidad es nuestra máxima prioridad. Implementamos las mejores prácticas de seguridad para proteger tus datos.',
+      cards: [
+        {
+          title: 'Encriptación End-to-End',
+          description:
+            'Todas tus conversaciones están encriptadas con AES-256, el mismo estándar usado por bancos y gobiernos. Ni siquiera nosotros podemos leer tus mensajes.',
+          features: [
+            '✓ Encriptación AES-256',
+            '✓ Claves de encriptación únicas por usuario',
+            '✓ Sin acceso de terceros',
+            '✓ Verificación de integridad de datos',
+          ],
+        },
+        {
+          title: 'Cumplimiento Regulatorio',
+          description:
+            'Cumplimos con todas las regulaciones internacionales de protección de datos para garantizar tu privacidad y seguridad.',
+          features: ['✓ GDPR (Europa)', '✓ HIPAA (Estados Unidos)', '✓ LGPD (Brasil)', '✓ PIPEDA (Canadá)'],
+        },
+        {
+          title: 'Autenticación Segura',
+          description:
+            'Sistema de autenticación robusto con múltiples capas de seguridad para proteger tu cuenta.',
+          features: [
+            '✓ Autenticación de dos factores (2FA)',
+            '✓ Tokens JWT seguros',
+            '✓ Detección de accesos sospechosos',
+            '✓ Sesiones con expiración automática',
+          ],
+        },
+      ],
+      cta: 'Ver información completa de seguridad →',
+    },
+    aiExplained: {
+      title: 'Cómo Funciona Nuestra Inteligencia Artificial',
+      subtitle:
+        'Tecnología de vanguardia diseñada específicamente para entender y responder a las emociones humanas',
+      steps: [
+        {
+          title: 'Integración con OpenAI API',
+          description:
+            'Conexión directa con GPT-5.4 Mini mediante API REST. El asistente prioriza un tono profesional y práctico (orientación y micro-pasos; no rol de terapeuta clínico en el texto). Las conversaciones se almacenan en MongoDB para memoria contextual. Evaluación con escalas validadas (PHQ-9, GAD-7) y detección de 15 tipos de distorsiones cognitivas; puedes ajustar preferencias de respuesta cuando la app lo ofrece.',
+          techBadges: [
+            'OpenAI GPT-5.4 Mini',
+            'MongoDB',
+            'NLP',
+            'Escalas Clínicas',
+            'Detección Cognitiva',
+          ],
+        },
+        {
+          title: 'Detección Automática de Crisis',
+          description:
+            'Algoritmos que analizan patrones de lenguaje en tiempo real. Cuando se detectan señales de riesgo, se activan protocolos automáticos: notificaciones a contactos de confianza vía Twilio (WhatsApp/SMS) y SendGrid (emails), además de recursos de emergencia.',
+          techBadges: ['Análisis de Patrones', 'Twilio', 'SendGrid'],
+        },
+        {
+          title: 'Protocolos Terapéuticos Estructurados',
+          description:
+            'Sistema de 8 protocolos basados en evidencia científica para depresión, ansiedad, trauma, TOC, TEPT y más. Cada protocolo se adapta automáticamente según las escalas clínicas y distorsiones cognitivas detectadas, proporcionando intervenciones estructuradas y personalizadas.',
+          techBadges: ['8 Protocolos', 'Basado en Evidencia', 'Personalizado'],
+        },
+        {
+          title: 'Comunicación en Tiempo Real',
+          description:
+            'WebSockets con Socket.IO para respuestas instantáneas. El backend Node.js procesa mensajes, consulta la base de datos MongoDB para contexto histórico, y genera respuestas empáticas y personalizadas en menos de 2.5 segundos. Incluye reportes profesionales con estadísticas detalladas de progreso.',
+          techBadges: ['Socket.IO', 'WebSockets', 'Tiempo Real', 'Reportes Profesionales'],
+        },
+      ],
+      cta: 'Ver detalles técnicos completos →',
+    },
+    pricing: {
+      title: 'Planes y Precios',
+      subtitle: `Elige la duración que mejor se adapte a tus necesidades. Todos los planes incluyen todas las funcionalidades: asistente AI, análisis emocional, detección de crisis, herramientas de bienestar y soporte 24/7. ${trialNote}`,
+      valueBanner: {
+        label: '💰 Mejor Valor',
+        highlight:
+          'Ahorra hasta un 17% con planes de mayor duración. Todos los planes incluyen las mismas funcionalidades premium.',
+      },
+    },
+  }),
+  en: (trialNote) => ({
+    features: {
+      title: 'Key Features',
+      subtitle: 'Everything you need for your mental wellbeing in one place',
+      cards: [
+        {
+          title: 'AI assistant (emotional wellbeing)',
+          description:
+            'Chat with GPT-5.4 Mini, with a professional and practical tone by default. Validated scales (PHQ-9, GAD-7), cognitive distortion detection, and evidence-based structured protocols; response style preferences when the app offers them (v1.4+)',
+        },
+        {
+          title: 'Crisis Detection',
+          description: 'Early identification of crisis signals with immediate support',
+        },
+        {
+          title: 'Advanced Emotional Analysis',
+          description:
+            'Tracking with automatic clinical scales, cognitive distortion detection, professional reports, and detailed progress statistics',
+        },
+        {
+          title: 'Wellbeing Tools',
+          description: 'Mindfulness exercises, meditation, and relaxation techniques',
+        },
+        {
+          title: 'Total Privacy',
+          description: 'Fully confidential and secure conversations',
+        },
+        {
+          title: 'Available 24/7',
+          description: 'Immediate access when you need it, with no waiting or appointments',
+        },
+      ],
+    },
+    howItWorks: {
+      title: 'How It Works',
+      subtitle:
+        'In just 4 simple steps, begin your path to wellbeing. Anto is designed to be intuitive and accessible, regardless of your experience with technology.',
+      steps: [
+        {
+          title: 'Download the App',
+          description:
+            'Available free on the App Store. On Android you can request early access with your Google Play email. The download is quick (under 40MB) and installation takes less than a minute.',
+        },
+        {
+          title: 'Create Your Profile',
+          description:
+            'Set up your profile privately and securely in under 2 minutes. You only need an email to get started. All your information is encrypted from the first moment.',
+        },
+        {
+          title: 'Start Chatting',
+          description:
+            'Start a conversation with our AI assistant that understands your emotions. You can write freely, ask questions, or use our suggested conversation guides.',
+        },
+        {
+          title: 'Receive Personalised Support',
+          description:
+            'Get tailored responses, wellbeing tools, and ongoing tracking. The system learns from each interaction to offer increasingly personalised support.',
+        },
+      ],
+      proTip: {
+        title: '💡 Pro Tip',
+        description:
+          'For the best results, use Anto regularly. The AI assistant learns more about you with each conversation, allowing it to offer increasingly accurate insights and recommendations. Many users report significant improvements after using the app consistently for 2–3 weeks.',
+      },
+    },
+    stats: {
+      hoursAvailable: 'Hours Available',
+      responseTime: 'Response Time',
+      testCoverage: 'Test Coverage',
+    },
+    appShowcase: {
+      title: 'Designed for You',
+      subtitle:
+        'An intuitive, elegant interface that lets you focus on what really matters: your mental wellbeing.',
+      description:
+        'Anto combines minimalist design with powerful functionality. Every element is designed to give you a smooth, accessible experience, regardless of your experience with technology.',
+      imageAlt: 'Anto App — Main application interface',
+    },
+    scienceBacked: {
+      title: 'Backed by Science',
+      subtitle:
+        'Anto is supported by scientific studies published in internationally recognised journals',
+      studies: [
+        {
+          badge: '📄 JMIR Mental Health',
+          title: 'Effectiveness of Therapeutic Chatbots',
+          authors: 'Fitzpatrick et al. (2017)',
+          abstract:
+            'Randomised controlled trial demonstrating significant reductions in depression and anxiety symptoms with cognitive behavioural therapy-based chatbots.',
+          metrics: ['RCT', '70 participants'],
+          linkText: 'View Full Study →',
+          href: 'https://www.jmir.org/2017/6/e19/',
+        },
+        {
+          badge: '📊 World Psychiatry',
+          title: 'Meta-Analysis of Mobile Apps',
+          authors: 'Firth et al. (2019)',
+          abstract:
+            'Meta-analysis of 83 studies confirms that digital interventions are effective for reducing depression and anxiety symptoms.',
+          metrics: ['Meta-analysis', '83 studies'],
+          linkText: 'View Full Study →',
+          href: 'https://onlinelibrary.wiley.com/doi/10.1002/wps.20673',
+        },
+        {
+          badge: '🔬 npj Digital Medicine',
+          title: 'AI Chatbots in Mental Health',
+          authors: 'Vaidyam et al. (2022)',
+          abstract:
+            'Review analysing the effectiveness of AI chatbots, concluding they are valuable tools for emotional support and early detection.',
+          metrics: ['Nature', 'Review'],
+          linkText: 'View Full Study →',
+          href: 'https://www.nature.com/articles/s41746-022-00642-8',
+        },
+      ],
+      cta: 'View all scientific studies →',
+    },
+    technologies: {
+      title: 'Modern Technology Stack',
+      subtitle:
+        'Cutting-edge technologies (2025) selected for performance, scalability, and an active ecosystem',
+      categories: [
+        {
+          title: 'Artificial Intelligence',
+          items: [
+            { name: 'OpenAI GPT-5.4 Mini', description: 'Primary API for intelligent conversations' },
+            { name: 'NLP Processing', description: 'Natural language processing' },
+            { name: 'Sentiment Analysis', description: 'Real-time emotional analysis' },
+          ],
+        },
+        {
+          title: 'Frontend',
+          items: [
+            { name: 'React Native', description: 'Cross-platform iOS/Android framework' },
+            { name: 'Expo SDK', description: 'Rapid development and deployment' },
+            { name: 'React Navigation', description: 'Smooth navigation' },
+          ],
+        },
+        {
+          title: 'Backend',
+          items: [
+            { name: 'Node.js', description: 'JavaScript runtime' },
+            { name: 'Express.js', description: 'Web framework' },
+            { name: 'MongoDB', description: 'NoSQL database' },
+            { name: 'Socket.IO', description: 'Real-time WebSockets' },
+          ],
+        },
+        {
+          title: 'Security',
+          items: [
+            { name: 'JWT', description: 'Secure authentication' },
+            { name: 'bcrypt', description: 'Password hashing' },
+            { name: 'Helmet.js', description: 'Security headers' },
+          ],
+        },
+        {
+          title: 'Integrations',
+          items: [
+            { name: 'Mercado Pago', description: 'Payment processing' },
+            { name: 'SendGrid', description: 'Transactional emails' },
+            { name: 'OpenAI API', description: 'Conversational AI' },
+          ],
+        },
+      ],
+    },
+    security: {
+      title: 'Military-Grade Security and Privacy',
+      subtitle:
+        'Your privacy is our top priority. We implement best-in-class security practices to protect your data.',
+      cards: [
+        {
+          title: 'End-to-End Encryption',
+          description:
+            'All your conversations are encrypted with AES-256, the same standard used by banks and governments. Not even we can read your messages.',
+          features: [
+            '✓ AES-256 encryption',
+            '✓ Unique encryption keys per user',
+            '✓ No third-party access',
+            '✓ Data integrity verification',
+          ],
+        },
+        {
+          title: 'Regulatory Compliance',
+          description:
+            'We comply with all international data protection regulations to guarantee your privacy and security.',
+          features: ['✓ GDPR (Europe)', '✓ HIPAA (United States)', '✓ LGPD (Brazil)', '✓ PIPEDA (Canada)'],
+        },
+        {
+          title: 'Secure Authentication',
+          description:
+            'Robust authentication system with multiple security layers to protect your account.',
+          features: [
+            '✓ Two-factor authentication (2FA)',
+            '✓ Secure JWT tokens',
+            '✓ Suspicious access detection',
+            '✓ Automatic session expiry',
+          ],
+        },
+      ],
+      cta: 'View full security information →',
+    },
+    aiExplained: {
+      title: 'How Our Artificial Intelligence Works',
+      subtitle:
+        'Cutting-edge technology designed specifically to understand and respond to human emotions',
+      steps: [
+        {
+          title: 'OpenAI API Integration',
+          description:
+            'Direct connection to GPT-5.4 Mini via REST API. The assistant prioritises a professional, practical tone (guidance and micro-steps; not a clinical therapist role in the text). Conversations are stored in MongoDB for contextual memory. Assessment with validated scales (PHQ-9, GAD-7) and detection of 15 types of cognitive distortions; you can adjust response preferences when the app offers them.',
+          techBadges: [
+            'OpenAI GPT-5.4 Mini',
+            'MongoDB',
+            'NLP',
+            'Clinical Scales',
+            'Cognitive Detection',
+          ],
+        },
+        {
+          title: 'Automatic Crisis Detection',
+          description:
+            'Algorithms that analyse language patterns in real time. When risk signals are detected, automatic protocols are activated: notifications to trusted contacts via Twilio (WhatsApp/SMS) and SendGrid (emails), plus emergency resources.',
+          techBadges: ['Pattern Analysis', 'Twilio', 'SendGrid'],
+        },
+        {
+          title: 'Structured Therapeutic Protocols',
+          description:
+            'System of 8 evidence-based protocols for depression, anxiety, trauma, OCD, PTSD, and more. Each protocol adapts automatically based on clinical scales and detected cognitive distortions, providing structured, personalised interventions.',
+          techBadges: ['8 Protocols', 'Evidence-Based', 'Personalised'],
+        },
+        {
+          title: 'Real-Time Communication',
+          description:
+            'WebSockets with Socket.IO for instant responses. The Node.js backend processes messages, queries the MongoDB database for historical context, and generates empathetic, personalised responses in under 2.5 seconds. Includes professional reports with detailed progress statistics.',
+          techBadges: ['Socket.IO', 'WebSockets', 'Real-Time', 'Professional Reports'],
+        },
+      ],
+      cta: 'View full technical details →',
+    },
+    pricing: {
+      title: 'Plans and Pricing',
+      subtitle: `Choose the duration that best fits your needs. All plans include every feature: AI assistant, emotional analysis, crisis detection, wellbeing tools, and 24/7 support. ${trialNote}`,
+      valueBanner: {
+        label: '💰 Best Value',
+        highlight:
+          'Save up to 17% with longer plans. All plans include the same premium features.',
+      },
+    },
+  }),
+};
+
+export function getHomeSectionsCopy(locale: Locale): HomeSectionsCopy {
+  const trial = getTrialCopy(locale);
+  return sectionsCopy[locale](trial.pricingNote);
+}

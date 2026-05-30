@@ -130,10 +130,10 @@
 }
 
 .decision-highlight {
-    background: #F0F9FF;
+    background: var(--color-primary-light);
     padding: var(--spacing-4);
     border-radius: var(--radius-md);
-    border-left: var(--border-width-4) solid var(--color-link); /* Azul oscuro */
+    border-left: var(--border-width-4) solid var(--color-primary);
 }
 
 .decision-final {

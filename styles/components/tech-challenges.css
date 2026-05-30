@@ -123,12 +123,12 @@
 .tech-badge {
     display: inline-block;
     padding: var(--spacing-1) var(--spacing-3);
-    background: #F0F9FF;
-    color: var(--color-link); /* Azul oscuro para mejor contraste */
+    background: var(--color-primary-light);
+    color: var(--color-primary);
     border-radius: var(--radius-full);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-medium);
-    border: 1px solid #BAE6FD;
+    border: 1px solid rgba(26, 221, 219, 0.35);
     transition: var(--transition-base);
 }
 
@@ -141,11 +141,11 @@
 .challenge-impact {
     margin-top: var(--spacing-3);
     padding: var(--spacing-3);
-    background: #F0F9FF;
-    border-left: var(--border-width-4) solid var(--color-link); /* Azul oscuro */
+    background: var(--color-primary-light);
+    border-left: var(--border-width-4) solid var(--color-primary);
     border-radius: var(--radius-md);
     font-size: var(--font-size-sm);
-    color: #1D1D1F; /* Texto oscuro para mejor legibilidad */
+    color: var(--color-text-secondary);
     line-height: var(--line-height-relaxed);
 }
 

@@ -1,99 +1,46 @@
 'use client';
 
-export default function AIExplained() {
+import type { Locale } from '@/lib/i18n/config';
+import { getHomeSectionsCopy } from '@/lib/i18n/copy/home';
+
+type AIExplainedProps = {
+  locale?: Locale;
+};
+
+export default function AIExplained({ locale = 'es' }: AIExplainedProps) {
+  const copy = getHomeSectionsCopy(locale).aiExplained;
+
   return (
     <section id="como-funciona-ia" className="ai-explained" data-fade-section>
       <div className="container">
-        <h2 className="section-title reveal-on-scroll">Cómo Funciona Nuestra Inteligencia Artificial</h2>
-        <p className="section-subtitle reveal-on-scroll">
-          Tecnología de vanguardia diseñada específicamente para entender y responder a las emociones
-          humanas
-        </p>
+        <h2 className="section-title reveal-on-scroll">{copy.title}</h2>
+        <p className="section-subtitle reveal-on-scroll">{copy.subtitle}</p>
 
         <div className="ai-process" data-stagger>
-          <div className="ai-step reveal-on-scroll" data-stagger-item>
-            <div className="ai-step-number">1</div>
-            <div className="ai-step-content">
-              <h3>Integración con OpenAI API</h3>
-              <p>
-                Conexión directa con GPT-5.4 Mini mediante API REST. El asistente prioriza un tono
-                profesional y práctico (orientación y micro-pasos; no rol de terapeuta clínico en el
-                texto). Las conversaciones se almacenan en MongoDB para memoria contextual. Evaluación
-                con escalas validadas (PHQ-9, GAD-7) y detección de 15 tipos de distorsiones cognitivas;
-                puedes ajustar preferencias de respuesta cuando la app lo ofrece.
-              </p>
-              <div className="ai-tech">
-                <span className="tech-badge">OpenAI GPT-5.4 Mini</span>
-                <span className="tech-badge">MongoDB</span>
-                <span className="tech-badge">NLP</span>
-                <span className="tech-badge">Escalas Clínicas</span>
-                <span className="tech-badge">Detección Cognitiva</span>
+          {copy.steps.map((step, index) => (
+            <div key={step.title} className="ai-step reveal-on-scroll" data-stagger-item>
+              <div className="ai-step-number">{index + 1}</div>
+              <div className="ai-step-content">
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+                <div className="ai-tech">
+                  {step.techBadges.map((badge) => (
+                    <span key={badge} className="tech-badge">
+                      {badge}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="ai-step reveal-on-scroll" data-stagger-item>
-            <div className="ai-step-number">2</div>
-            <div className="ai-step-content">
-              <h3>Detección Automática de Crisis</h3>
-              <p>
-                Algoritmos que analizan patrones de lenguaje en tiempo real. Cuando se detectan señales
-                de riesgo, se activan protocolos automáticos: notificaciones a contactos de confianza
-                vía Twilio (WhatsApp/SMS) y SendGrid (emails), además de recursos de emergencia.
-              </p>
-              <div className="ai-tech">
-                <span className="tech-badge">Análisis de Patrones</span>
-                <span className="tech-badge">Twilio</span>
-                <span className="tech-badge">SendGrid</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="ai-step reveal-on-scroll" data-stagger-item>
-            <div className="ai-step-number">3</div>
-            <div className="ai-step-content">
-              <h3>Protocolos Terapéuticos Estructurados</h3>
-              <p>
-                Sistema de 8 protocolos basados en evidencia científica para depresión, ansiedad, trauma,
-                TOC, TEPT y más. Cada protocolo se adapta automáticamente según las escalas clínicas y
-                distorsiones cognitivas detectadas, proporcionando intervenciones estructuradas y
-                personalizadas.
-              </p>
-              <div className="ai-tech">
-                <span className="tech-badge">8 Protocolos</span>
-                <span className="tech-badge">Basado en Evidencia</span>
-                <span className="tech-badge">Personalizado</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="ai-step reveal-on-scroll" data-stagger-item>
-            <div className="ai-step-number">4</div>
-            <div className="ai-step-content">
-              <h3>Comunicación en Tiempo Real</h3>
-              <p>
-                WebSockets con Socket.IO para respuestas instantáneas. El backend Node.js procesa
-                mensajes, consulta la base de datos MongoDB para contexto histórico, y genera respuestas
-                empáticas y personalizadas en menos de 2.5 segundos. Incluye reportes profesionales con
-                estadísticas detalladas de progreso.
-              </p>
-              <div className="ai-tech">
-                <span className="tech-badge">Socket.IO</span>
-                <span className="tech-badge">WebSockets</span>
-                <span className="tech-badge">Tiempo Real</span>
-                <span className="tech-badge">Reportes Profesionales</span>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: 'var(--spacing-8)' }}>
+        <div className="section-cta-row section-cta-row--spaced">
           <a href="/desarrollo" className="btn btn-secondary">
-            Ver detalles técnicos completos →
+            {copy.cta}
           </a>
         </div>
       </div>
     </section>
   );
 }
-

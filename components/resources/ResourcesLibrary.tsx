@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import '@/styles/components/resources-library.css';
 
 interface Resource {
@@ -101,16 +101,22 @@ export default function ResourcesLibrary() {
         </div>
 
         <div className="resources-grid">
-          {filteredResources.map((resource) => (
-            <div key={resource.id} className="resource-card reveal-on-scroll">
-              <div className="resource-icon">{getResourceIcon(resource.type)}</div>
-              <h3>{resource.title}</h3>
-              <p>{resource.description}</p>
-              <a href={resource.link} className="btn btn-secondary">
-                Ver Recurso
-              </a>
+          {filteredResources.length === 0 ? (
+            <div className="resources-empty" id="resources-empty">
+              <p>No se encontraron recursos con los filtros actuales.</p>
             </div>
-          ))}
+          ) : (
+            filteredResources.map((resource) => (
+              <div key={resource.id} className="resource-card reveal-on-scroll">
+                <div className="resource-icon">{getResourceIcon(resource.type)}</div>
+                <h3>{resource.title}</h3>
+                <p>{resource.description}</p>
+                <a href={resource.link} className="btn btn-secondary">
+                  Ver Recurso
+                </a>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </section>

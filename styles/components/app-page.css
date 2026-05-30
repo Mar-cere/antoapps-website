@@ -229,6 +229,27 @@
     color: var(--color-text-primary);
 }
 
+.app-inline-link {
+    color: var(--color-link);
+    text-decoration: underline;
+}
+
+.app-inline-link:hover {
+    color: var(--color-link-hover);
+}
+
+.screenshots-note__repo {
+    margin-top: var(--spacing-sm);
+    font-size: 0.9375rem;
+}
+
+.app-version-highlight {
+    display: block;
+    margin-top: var(--spacing-sm);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
 /* Advanced Features Section (Estilo Apple) */
 .app-features-advanced {
     padding: var(--spacing-xl) 0;

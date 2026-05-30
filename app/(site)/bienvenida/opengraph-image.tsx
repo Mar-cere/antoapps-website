@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
-import { BIENVENIDA_OG_SUBLINE, BIENVENIDA_TRIAL_SHORT } from '@/lib/bienvenida-copy';
+import { getBienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
+import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
 export const runtime = 'edge';
 export const alt = 'Anto — Calma mental en minutos';
@@ -7,6 +8,9 @@ export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default function BienvenidaOpenGraphImage() {
+  const copy = getBienvenidaCopy('es');
+  const trial = getTrialCopy('es');
+
   return new ImageResponse(
     (
       <div
@@ -59,7 +63,7 @@ export default function BienvenidaOpenGraphImage() {
           Cuando tu mente va a mil, ordena lo que sientes
         </div>
         <div style={{ fontSize: 30, lineHeight: 1.4, color: 'rgba(255,255,255,0.82)', maxWidth: 860 }}>
-          {BIENVENIDA_OG_SUBLINE}
+          {copy.meta.ogSubline}
         </div>
         <div
           style={{
@@ -73,7 +77,7 @@ export default function BienvenidaOpenGraphImage() {
         >
           <span>★ 5.0 en App Store</span>
           <span>·</span>
-          <span>{BIENVENIDA_TRIAL_SHORT}</span>
+          <span>{trial.short}</span>
         </div>
       </div>
     ),

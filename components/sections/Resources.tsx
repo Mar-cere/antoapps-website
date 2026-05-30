@@ -40,7 +40,7 @@ export default function Resources() {
           </div>
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: 'var(--spacing-xl)' }}>
+        <div className="section-cta-row">
           <Link href="/recursos" className="btn btn-primary">
             Ver biblioteca completa de recursos →
           </Link>

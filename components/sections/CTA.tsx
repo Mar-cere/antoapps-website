@@ -3,6 +3,7 @@ import Link from 'next/link';
 import DownloadLink from '@/components/DownloadLink';
 import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
 import { APP_STORE_BADGE_SVG_PATH, appStoreHref } from '@/lib/download-links';
+import { APP_TRIAL_HERO_NOTE } from '@/lib/trial-copy';
 
 export default function CTA() {
   return (
@@ -10,7 +11,8 @@ export default function CTA() {
       <div className="container">
         <h2 className="section-title reveal-on-scroll">¿Listo para comenzar?</h2>
         <p className="section-subtitle reveal-on-scroll">
-          Descarga Anto en tu dispositivo: la cuenta y el uso completo son en la aplicación móvil.
+          Descarga Anto en tu dispositivo: la cuenta y el uso completo son en la aplicación móvil.{' '}
+          {APP_TRIAL_HERO_NOTE}
         </p>
         <div className="cta-buttons">
           <DownloadLink
@@ -33,7 +35,7 @@ export default function CTA() {
             Ver Política de Privacidad
           </Link>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div className="section-cta-row section-cta-row--flex">
           <AndroidEarlyAccessForm
             id="android-early-access-cta"
             placement="home_cta_android_early_access"

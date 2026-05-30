@@ -49,6 +49,11 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://antoapps.com'),
   alternates: {
     canonical: 'https://antoapps.com',
+    languages: {
+      es: 'https://antoapps.com',
+      en: 'https://antoapps.com/en',
+      'x-default': 'https://antoapps.com',
+    },
   },
 };
 

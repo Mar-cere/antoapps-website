@@ -65,7 +65,7 @@
 /* Banner superior: versión en producción (antes usaba review = naranja) */
 .status-badge-current-banner {
     background: linear-gradient(135deg, var(--color-primary) 0%, rgba(26, 221, 219, 0.85) 100%);
-    color: var(--color-bg-primary);
+    color: var(--color-text-on-primary);
     box-shadow: 0 2px 8px rgba(26, 221, 219, 0.35);
 }
 

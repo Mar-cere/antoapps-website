@@ -12,8 +12,7 @@
 }
 
 .privacy-hero {
-    background: var(--color-bg-primary);
-    background-image: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
+    background: var(--color-bg-glow), var(--color-bg-primary);
     padding: var(--page-hero-padding-top) 0 var(--page-hero-padding-bottom);
     text-align: center;
 }
@@ -99,6 +98,11 @@
     transition: var(--transition-base);
 }
 
+.privacy-section:hover {
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-glow);
+}
+
 .privacy-section h2 {
     font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-3xl));
     font-weight: var(--font-weight-bold);
@@ -182,11 +186,11 @@
 
 .privacy-section a:hover {
     border-bottom-color: var(--color-primary);
-    color: var(--color-secondary);
+    color: var(--color-link-hover);
 }
 
 .privacy-highlight {
-    background: var(--color-surface);
+    background: var(--color-primary-light);
     border-left: var(--border-width-4) solid var(--color-primary);
     border-radius: var(--radius-lg);
     padding: var(--spacing-4);
@@ -357,6 +361,34 @@
     color: var(--color-text-secondary);
     margin-bottom: var(--spacing-4);
     font-size: var(--font-size-lg);
+}
+
+.privacy-hero-badges {
+    margin-top: var(--spacing-md);
+}
+
+.privacy-highlight-list {
+    margin-top: var(--spacing-xs);
+    padding-left: var(--spacing-lg);
+}
+
+.privacy-highlight-emphasis {
+    margin-top: var(--spacing-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.privacy-contact-note {
+    margin-top: var(--spacing-md);
+    color: var(--color-text-secondary);
+}
+
+.privacy-cta-actions {
+    margin-top: var(--spacing-md);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    justify-content: center;
 }
 
 .privacy-badge {

@@ -130,17 +130,17 @@
                             
                             <button type="submit" class="btn btn-primary btn-block">
                                 <span class="btn-text">Enviar Mensaje</span>
-                                <span class="btn-loader" style="display: none;">
+                                <span class="btn-loader is-hidden">
                                     <span class="spinner"></span> Enviando...
                                 </span>
                             </button>
                             
-                            <div class="form-success" id="formSuccess" style="display: none;">
+                            <div class="form-success is-hidden" id="formSuccess">
                                 <div class="success-icon">✓</div>
                                 <p>¡Mensaje enviado con éxito! Te responderemos pronto.</p>
                             </div>
                             
-                            <div class="form-error" id="formError" style="display: none;">
+                            <div class="form-error is-hidden" id="formError">
                                 <div class="error-icon">✕</div>
                                 <p>Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.</p>
                             </div>
@@ -164,10 +164,10 @@
                                 <h3>Desarrollador Principal</h3>
                                 <p>Marcelo Ull Marambio</p>
                                 <a href="mailto:marcelo.ull@antoapps.com">marcelo.ull@antoapps.com</a>
-                                <div class="developer-github-links" style="margin-top: 1rem;">
-                                    <a href="https://github.com/Mar-cere" target="_blank" rel="noopener noreferrer" style="display: block; margin-bottom: 0.5rem; color: var(--primary-color);">💻 GitHub: @Mar-cere</a>
-                                    <a href="https://github.com/Mar-cere/Anto" target="_blank" rel="noopener noreferrer" style="display: block; margin-bottom: 0.5rem; color: var(--primary-color); font-size: 0.875rem;">📱 Repositorio: Aplicación Anto</a>
-                                    <a href="https://github.com/Mar-cere/antoapps-website" target="_blank" rel="noopener noreferrer" style="display: block; color: var(--primary-color); font-size: 0.875rem;">🌐 Repositorio: Sitio Web</a>
+                                <div class="developer-github-links">
+                                    <a href="https://github.com/Mar-cere" target="_blank" rel="noopener noreferrer">💻 GitHub: @Mar-cere</a>
+                                    <a href="https://github.com/Mar-cere/Anto" target="_blank" rel="noopener noreferrer">📱 Repositorio: Aplicación Anto</a>
+                                    <a href="https://github.com/Mar-cere/antoapps-website" target="_blank" rel="noopener noreferrer">🌐 Repositorio: Sitio Web</a>
                                 </div>
                             </div>
                             
@@ -265,20 +265,20 @@
                     const errorMsg = document.getElementById('formError');
                     
                     // Reset messages
-                    successMsg.style.display = 'none';
-                    errorMsg.style.display = 'none';
+                    successMsg.classList.add('is-hidden');
+                    errorMsg.classList.add('is-hidden');
                     
                     // Show loading
-                    btnText.style.display = 'none';
-                    btnLoader.style.display = 'inline-flex';
+                    btnText.classList.add('is-hidden');
+                    btnLoader.classList.remove('is-hidden');
                     submitBtn.disabled = true;
                     
                     // Simulate form submission (replace with actual API call)
                     setTimeout(() => {
-                        btnText.style.display = 'inline';
-                        btnLoader.style.display = 'none';
+                        btnText.classList.remove('is-hidden');
+                        btnLoader.classList.add('is-hidden');
                         submitBtn.disabled = false;
-                        successMsg.style.display = 'block';
+                        successMsg.classList.remove('is-hidden');
                         form.reset();
                         
                         // Scroll to success message
