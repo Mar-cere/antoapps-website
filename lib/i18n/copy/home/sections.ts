@@ -3,6 +3,7 @@ import { localePath } from '@/lib/i18n/config';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
 export type FeatureCard = {
+  icon: string;
   title: string;
   description: string;
 };
@@ -113,30 +114,52 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       subtitle: 'Todo lo que necesitas para tu bienestar mental en un solo lugar',
       cards: [
         {
-          title: 'Asistente de IA (bienestar emocional)',
+          icon: '🤖',
+          title: 'Asistente de IA',
           description:
-            'Chat con GPT-5.4 Mini, tono profesional y práctico por defecto. Escalas validadas (PHQ-9, GAD-7), detección de distorsiones cognitivas y protocolos estructurados basados en evidencia; preferencias de estilo de respuesta cuando la app lo ofrece (v1.4+)',
+            'Chat con GPT-5.4 Mini, tono profesional y práctico. Modos de conversación, memoria contextual y preferencias de estilo cuando la app lo ofrece.',
         },
         {
-          title: 'Detección de Crisis',
-          description: 'Identificación temprana de señales de crisis con apoyo inmediato',
-        },
-        {
-          title: 'Análisis Emocional Avanzado',
+          icon: '🏥',
+          title: 'Escalas PHQ-9 y GAD-7',
           description:
-            'Seguimiento con escalas clínicas automáticas, detección de distorsiones cognitivas, reportes profesionales y estadísticas detalladas de tu progreso',
+            'Evaluación automática con escalas clínicas validadas para depresión y ansiedad, con historial, tendencias y reportes.',
         },
         {
-          title: 'Herramientas de Bienestar',
-          description: 'Ejercicios de mindfulness, meditación y técnicas de relajación',
+          icon: '📋',
+          title: 'Protocolos estructurados',
+          description:
+            '8 rutas basadas en evidencia: depresión, ansiedad, trauma, TOC, TEPT, ira, autocompasión e higiene del sueño.',
         },
         {
-          title: 'Privacidad Total',
-          description: 'Conversaciones completamente confidenciales y seguras',
+          icon: '🧠',
+          title: 'Distorsiones cognitivas',
+          description:
+            'Detección de 15 tipos de patrones de pensamiento durante el chat, con intervenciones sugeridas para cada uno.',
         },
         {
+          icon: '🚨',
+          title: 'Detección de crisis',
+          description:
+            'Identificación temprana de señales de riesgo con recursos de apoyo inmediato y protocolos de emergencia.',
+        },
+        {
+          icon: '✅',
+          title: 'Tareas y hábitos',
+          description:
+            'Organiza actividades terapéuticas, recordatorios y rutinas saludables vinculadas a tu bienestar emocional.',
+        },
+        {
+          icon: '🌍',
+          title: 'App bilingüe (ES/EN)',
+          description:
+            'Interfaz, chat, correos y notificaciones en español e inglés, con backend adaptado al idioma de tu perfil.',
+        },
+        {
+          icon: '⏰',
           title: 'Disponible 24/7',
-          description: 'Acceso inmediato cuando lo necesites, sin esperas ni citas',
+          description:
+            'Acceso inmediato cuando lo necesites: diario de gratitud, resúmenes de sesión, ejercicios y apoyo sin esperas.',
         },
       ],
     },
@@ -364,30 +387,52 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       subtitle: 'Everything you need for your mental wellbeing in one place',
       cards: [
         {
-          title: 'AI assistant (emotional wellbeing)',
+          icon: '🤖',
+          title: 'AI assistant',
           description:
-            'Chat with GPT-5.4 Mini, with a professional and practical tone by default. Validated scales (PHQ-9, GAD-7), cognitive distortion detection, and evidence-based structured protocols; response style preferences when the app offers them (v1.4+)',
+            'Chat with GPT-5.4 Mini, professional and practical tone. Conversation modes, contextual memory, and style preferences when the app offers them.',
         },
         {
-          title: 'Crisis Detection',
-          description: 'Early identification of crisis signals with immediate support',
-        },
-        {
-          title: 'Advanced Emotional Analysis',
+          icon: '🏥',
+          title: 'PHQ-9 and GAD-7 scales',
           description:
-            'Tracking with automatic clinical scales, cognitive distortion detection, professional reports, and detailed progress statistics',
+            'Automatic assessment with validated clinical scales for depression and anxiety, with history, trends, and reports.',
         },
         {
-          title: 'Wellbeing Tools',
-          description: 'Mindfulness exercises, meditation, and relaxation techniques',
+          icon: '📋',
+          title: 'Structured protocols',
+          description:
+            '8 evidence-based paths: depression, anxiety, trauma, OCD, PTSD, anger, self-compassion, and sleep hygiene.',
         },
         {
-          title: 'Total Privacy',
-          description: 'Fully confidential and secure conversations',
+          icon: '🧠',
+          title: 'Cognitive distortions',
+          description:
+            'Detection of 15 thinking pattern types during chat, with suggested interventions for each.',
         },
         {
+          icon: '🚨',
+          title: 'Crisis detection',
+          description:
+            'Early identification of risk signals with immediate support resources and emergency protocols.',
+        },
+        {
+          icon: '✅',
+          title: 'Tasks and habits',
+          description:
+            'Organise therapeutic activities, reminders, and healthy routines linked to your emotional wellbeing.',
+        },
+        {
+          icon: '🌍',
+          title: 'Bilingual app (ES/EN)',
+          description:
+            'Interface, chat, emails, and notifications in Spanish and English, with a backend adapted to your profile language.',
+        },
+        {
+          icon: '⏰',
           title: 'Available 24/7',
-          description: 'Immediate access when you need it, with no waiting or appointments',
+          description:
+            'Immediate access when you need it: gratitude journal, session summaries, exercises, and support with no waiting.',
         },
       ],
     },

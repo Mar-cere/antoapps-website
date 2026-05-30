@@ -427,19 +427,16 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
       },
       meta: {
         title: 'Version History | Anto',
-        description: `Anto app version history (Expo). Current version ${APP_VERSION}: chat improvements, response preferences, and conversation privacy.`,
+        description: `Anto app version history (Expo). Current version ${APP_VERSION}: 1-day trial, i18n ES/EN, chat UX, and clinical scales.`,
         openGraphTitle: 'Version History | Anto',
-        openGraphDescription: `Anto app changelog: ${APP_VERSION} released, clinical scales, protocols, and more.`,
+        openGraphDescription: `Anto app changelog: ${APP_VERSION} published with i18n, chat improvements, clinical scales, and protocols.`,
         canonicalPath: CANONICAL_PATH,
       },
       header: {
         title: 'Version History',
         subtitle: 'Version history and updates for the Anto application',
         storeVersionBadge: `Store version: ${APP_VERSION}`,
-        statusNoteBefore: 'Published according to the app (Expo) and the',
-        repoLinkLabel: 'Anto repository README',
-        repoLinkHref: GITHUB_REPO,
-        statusNoteAfter: `. The ${APP_VERSION} line continues with chat improvements, tone and response preferences, privacy information in the conversation flow, plus PHQ-9/GAD-7 scales, cognitive distortions, and structured protocols.`,
+        statusText: `Published according to the App Store release (iOS build 31, Android 17). This site is the public reference for Anto version history and product updates.`,
       },
       versionLabels: {
         highlightsTitle: 'Highlights',
@@ -455,10 +452,7 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
         textBeforeContact: 'Have suggestions or found a bug? Contact us through',
         contactLinkLabel: 'our contact form',
         contactHref: localePath(locale, '/contacto'),
-        textBetweenLinks: 'or visit our',
-        githubLinkLabel: 'GitHub repository',
-        githubLinkHref: GITHUB_REPO,
-        textAfterGithub: 'to report issues.',
+        textAfterContact: ' to report issues or request support.',
       },
     };
   }
@@ -471,19 +465,16 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
     },
     meta: {
       title: 'Control de versiones | Anto',
-      description: `Historial de versiones de la app Anto (Expo). Versión actual ${APP_VERSION}: mejoras de chat, preferencias de respuesta y privacidad en conversación.`,
+      description: `Historial de versiones de la app Anto (Expo). Versión actual ${APP_VERSION}: prueba 1 día, i18n ES/EN, UX de chat y escalas clínicas.`,
       openGraphTitle: 'Control de versiones | Anto',
-      openGraphDescription: `Changelog de la aplicación Anto: ${APP_VERSION} publicada, escalas clínicas, protocolos y más.`,
+      openGraphDescription: `Changelog de la aplicación Anto: ${APP_VERSION} publicada con i18n, mejoras de chat, escalas clínicas y protocolos.`,
       canonicalPath: CANONICAL_PATH,
     },
     header: {
       title: 'Control de Versiones',
       subtitle: 'Historial de versiones y actualizaciones de la aplicación Anto',
       storeVersionBadge: `Versión en tiendas: ${APP_VERSION}`,
-      statusNoteBefore: 'Publicada según la app (Expo) y el',
-      repoLinkLabel: 'README del repositorio Anto',
-      repoLinkHref: GITHUB_REPO,
-      statusNoteAfter: `. La línea ${APP_VERSION} continúa con mejoras de chat, preferencias de tono y respuesta, información de privacidad en el flujo de conversación, además de escalas PHQ-9/GAD-7, distorsiones cognitivas y protocolos estructurados.`,
+      statusText: `Publicada según la versión en App Store (iOS build 31, Android 17). Este sitio es la referencia pública del historial de versiones y novedades de Anto.`,
     },
     versionLabels: {
       highlightsTitle: 'Destacados',
@@ -499,10 +490,7 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
       textBeforeContact: '¿Tienes sugerencias o encontraste un error? Contáctanos a través de',
       contactLinkLabel: 'nuestro formulario de contacto',
       contactHref: localePath(locale, '/contacto'),
-      textBetweenLinks: 'o visita nuestro',
-      githubLinkLabel: 'repositorio en GitHub',
-      githubLinkHref: GITHUB_REPO,
-      textAfterGithub: 'para reportar issues.',
+      textAfterContact: ' para reportar incidencias o solicitar soporte.',
     },
   };
 }

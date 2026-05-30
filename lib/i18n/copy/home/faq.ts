@@ -106,74 +106,102 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
             'Ofrecemos planes flexibles basados en duración: 1 Mes ($3.990 CLP / US$4.20 aprox.), 3 Meses ($11.990 CLP / US$12.62 aprox.), 6 Meses ($20.990 CLP / US$22.09 aprox.) y 1 Año ($39.990 CLP / US$42.09 aprox.). Todos los planes incluyen las mismas funcionalidades premium: acceso completo al asistente AI, análisis emocional avanzado, detección de crisis proactiva, herramientas de bienestar y soporte 24/7.',
           category: 'precios',
         },
+        {
+          id: 8,
+          question: '¿Anto está disponible en inglés?',
+          answer:
+            'Sí. Desde la versión 1.4, Anto es bilingüe: puedes usar la app, el chat, los correos y las notificaciones push en español o inglés. El backend adapta las respuestas y los resúmenes de sesión al idioma configurado en tu perfil.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 9,
+          question: '¿Qué son los modos de conversación?',
+          answer:
+            'Son distintos enfoques del asistente según lo que necesites en cada momento: orientación práctica con micro-pasos, exploración emocional más conversada o acompañamiento estructurado con protocolos basados en evidencia. Puedes elegir el modo que mejor encaje con tu situación.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 10,
+          question: '¿Qué escalas clínicas usa Anto?',
+          answer:
+            'Anto integra las escalas validadas PHQ-9 (depresión) y GAD-7 (ansiedad). Se completan de forma automática a partir del análisis de tus conversaciones y se reflejan en tu historial con tendencias y reportes. No sustituyen una evaluación clínica presencial.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 11,
+          question: '¿Qué protocolos terapéuticos incluye Anto?',
+          answer:
+            'Anto incluye 8 protocolos estructurados basados en evidencia: depresión (CBT), ansiedad generalizada (CBT), manejo de ira, autocompasión, higiene del sueño, trauma, TOC (ERP) y TEPT. Se activan cuando el sistema detecta síntomas relevantes y guían el apoyo paso a paso.',
+          category: 'funcionalidad',
+        },
       ],
       faqMoreData: [
         {
-          id: 8,
+          id: 12,
           question: '¿Necesito conexión a internet para usar Anto?',
           answer:
             'Sí, Anto requiere conexión a internet para la mayoría de las funciones, ya que el procesamiento del asistente AI y el análisis emocional se realizan en servidores seguros. Sin embargo, algunas funciones básicas como ejercicios de mindfulness y técnicas de relajación están disponibles offline. Estamos trabajando en una versión offline más completa que permitirá guardar conversaciones localmente y sincronizarlas cuando tengas conexión.',
           category: 'tecnica',
         },
         {
-          id: 9,
+          id: 13,
           question: '¿Cómo funciona el análisis emocional?',
           answer:
             'El análisis emocional de Anto utiliza procesamiento de lenguaje natural y machine learning para analizar tus conversaciones, patrones de uso, y respuestas a cuestionarios. El sistema identifica emociones, detecta patrones a lo largo del tiempo, y te proporciona insights personalizados sobre tu bienestar mental. Recibirás gráficos visuales de tu estado emocional, alertas proactivas cuando detectemos cambios significativos, y reportes semanales y mensuales con recomendaciones personalizadas.',
           category: 'funcionalidad',
         },
         {
-          id: 10,
+          id: 14,
           question: '¿Puedo exportar mis datos?',
           answer:
             'Sí, tienes control total sobre tus datos. Puedes exportar toda tu información en cualquier momento en formatos estándar (JSON, CSV, PDF). Esto incluye tus conversaciones, análisis emocionales, y reportes. También puedes solicitar la eliminación completa de tus datos en cualquier momento desde la configuración de la aplicación. Cumplimos con el derecho al olvido (GDPR) y eliminaremos permanentemente tu información dentro de 30 días tras tu solicitud.',
           category: 'privacidad',
         },
         {
-          id: 11,
+          id: 15,
           question: '¿Anto puede diagnosticar condiciones de salud mental?',
           answer:
             'No, Anto no puede y no debe usarse para diagnosticar condiciones de salud mental. Anto es una herramienta de apoyo y bienestar, no un reemplazo para el diagnóstico profesional. Si tienes preocupaciones sobre tu salud mental, te recomendamos consultar con un profesional de salud mental licenciado. Anto puede ayudarte a identificar patrones y proporcionar apoyo, pero el diagnóstico debe ser realizado por un profesional cualificado.',
           category: 'funcionalidad',
         },
         {
-          id: 12,
+          id: 16,
           question: '¿Cómo puedo cancelar mi suscripción?',
           answer:
             'Puedes cancelar tu suscripción en cualquier momento desde la configuración de la aplicación o contactándonos directamente. Si cancelas, seguirás teniendo acceso hasta el final del período de facturación actual. No hay penalizaciones ni cargos por cancelación. Si cancelas durante el período de prueba, no se te cobrará nada. Tu cuenta se convertirá automáticamente en una cuenta gratuita limitada, y podrás reactivar tu suscripción en cualquier momento.',
           category: 'precios',
         },
         {
-          id: 13,
+          id: 17,
           question: '¿Anto es adecuado para adolescentes?',
           answer:
             'Anto está diseñado para usuarios de 18 años o más. Para menores de 18 años, recomendamos que usen la aplicación bajo la supervisión de un padre o tutor legal. Estamos desarrollando una versión específica para adolescentes (13-17 años) con contenido adaptado y controles parentales, que estará disponible próximamente. Si eres padre o tutor y tienes preguntas sobre el uso de Anto por parte de un menor, contáctanos en marcelo.ull@antoapps.com o a través de nuestro Telegram: t.me/marcere23.',
           category: 'funcionalidad',
         },
         {
-          id: 14,
+          id: 18,
           question: '¿Qué tipo de ejercicios de bienestar incluye Anto?',
           answer:
             'Anto incluye una biblioteca completa de más de 100 ejercicios de bienestar, incluyendo meditaciones guiadas personalizadas, técnicas de respiración (4-7-8, respiración diafragmática), ejercicios de mindfulness, técnicas de relajación muscular progresiva, visualizaciones guiadas, ejercicios de gratitud, y técnicas de grounding. Todos los ejercicios están diseñados por profesionales de salud mental y se adaptan a tu estado emocional actual. Puedes acceder a ellos en cualquier momento, incluso offline.',
           category: 'funcionalidad',
         },
         {
-          id: 15,
-          question: '¿Cómo se compara Anto con otras apps de salud mental?',
+          id: 19,
+          question: '¿Qué hace único a Anto como herramienta de bienestar?',
           answer:
-            'Anto se diferencia por su enfoque en privacidad (encriptación E2E), un asistente de bienestar emocional con IA que se adapta al contexto, detección de crisis proactiva y análisis emocional detallado. No vendemos datos de usuarios y priorizamos seguridad y transparencia. ' +
+            'Anto combina un asistente de IA contextual con escalas clínicas validadas (PHQ-9, GAD-7), detección de 15 distorsiones cognitivas, 8 protocolos estructurados, detección proactiva de crisis, tareas y hábitos, y soporte bilingüe ES/EN. Priorizamos privacidad, transparencia y utilidad práctica — sin vender datos de usuarios. ' +
             trial.differentiatorSuffix,
           category: 'funcionalidad',
         },
         {
-          id: 16,
+          id: 20,
           question: '¿Puedo usar Anto en múltiples dispositivos?',
           answer:
             'Sí, puedes usar Anto en múltiples dispositivos con una sola cuenta. En iOS, tus datos, conversaciones y análisis se sincronizan automáticamente de forma segura. En Android, esta continuidad aplica para cuentas que ya tengan acceso anticipado habilitado.',
           category: 'funcionalidad',
         },
         {
-          id: 17,
+          id: 21,
           question: '¿Qué hago si tengo problemas técnicos?',
           answer:
             'Ofrecemos soporte técnico 24/7 a través de múltiples canales: email (marcelo.ull@antoapps.com), Telegram (t.me/marcere23), y LinkedIn. Nuestro equipo de soporte responde típicamente en menos de 2 horas. También tenemos una sección de ayuda dentro de la aplicación con guías paso a paso y solución de problemas comunes. Si encuentras un bug o problema, puedes reportarlo directamente desde la app y lo solucionaremos lo antes posible.',
@@ -255,74 +283,102 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           'We offer flexible duration-based plans: 1 Month ($3,990 CLP / approx. US$4.20), 3 Months ($11,990 CLP / approx. US$12.62), 6 Months ($20,990 CLP / approx. US$22.09), and 1 Year ($39,990 CLP / approx. US$42.09). All plans include the same premium features: full access to the AI assistant, advanced emotional analysis, proactive crisis detection, wellbeing tools, and 24/7 support.',
         category: 'precios',
       },
+      {
+        id: 8,
+        question: 'Is Anto available in English?',
+        answer:
+          'Yes. Since version 1.4, Anto is bilingual: you can use the app, chat, emails, and push notifications in Spanish or English. The backend adapts responses and session summaries to the language set in your profile.',
+        category: 'funcionalidad',
+      },
+      {
+        id: 9,
+        question: 'What are conversation modes?',
+        answer:
+          'They are different assistant approaches depending on what you need: practical guidance with micro-steps, more conversational emotional exploration, or structured support with evidence-based protocols. You can choose the mode that best fits your situation.',
+        category: 'funcionalidad',
+      },
+      {
+        id: 10,
+        question: 'Which clinical scales does Anto use?',
+        answer:
+          'Anto integrates the validated PHQ-9 (depression) and GAD-7 (anxiety) scales. They are completed automatically from the analysis of your conversations and reflected in your history with trends and reports. They do not replace an in-person clinical assessment.',
+        category: 'funcionalidad',
+      },
+      {
+        id: 11,
+        question: 'Which therapeutic protocols does Anto include?',
+        answer:
+          'Anto includes 8 evidence-based structured protocols: depression (CBT), generalised anxiety (CBT), anger management, self-compassion, sleep hygiene, trauma, OCD (ERP), and PTSD. They activate when relevant symptoms are detected and guide support step by step.',
+        category: 'funcionalidad',
+      },
     ],
     faqMoreData: [
       {
-        id: 8,
+        id: 12,
         question: 'Do I need an internet connection to use Anto?',
         answer:
           'Yes, Anto requires an internet connection for most features, as AI assistant processing and emotional analysis are performed on secure servers. However, some basic features such as mindfulness exercises and relaxation techniques are available offline. We are working on a more complete offline version that will allow you to save conversations locally and sync them when you have a connection.',
         category: 'tecnica',
       },
       {
-        id: 9,
+        id: 13,
         question: 'How does emotional analysis work?',
         answer:
           'Anto\'s emotional analysis uses natural language processing and machine learning to analyse your conversations, usage patterns, and questionnaire responses. The system identifies emotions, detects patterns over time, and provides personalised insights about your mental wellbeing. You will receive visual charts of your emotional state, proactive alerts when we detect significant changes, and weekly and monthly reports with personalised recommendations.',
         category: 'funcionalidad',
       },
       {
-        id: 10,
+        id: 14,
         question: 'Can I export my data?',
         answer:
           'Yes, you have full control over your data. You can export all your information at any time in standard formats (JSON, CSV, PDF). This includes your conversations, emotional analyses, and reports. You can also request complete deletion of your data at any time from the app settings. We comply with the right to erasure (GDPR) and will permanently delete your information within 30 days of your request.',
         category: 'privacidad',
       },
       {
-        id: 11,
+        id: 15,
         question: 'Can Anto diagnose mental health conditions?',
         answer:
           'No, Anto cannot and should not be used to diagnose mental health conditions. Anto is a support and wellbeing tool, not a replacement for professional diagnosis. If you have concerns about your mental health, we recommend consulting a licensed mental health professional. Anto can help you identify patterns and provide support, but diagnosis must be performed by a qualified professional.',
         category: 'funcionalidad',
       },
       {
-        id: 12,
+        id: 16,
         question: 'How can I cancel my subscription?',
         answer:
           'You can cancel your subscription at any time from the app settings or by contacting us directly. If you cancel, you will retain access until the end of the current billing period. There are no penalties or cancellation fees. If you cancel during the trial period, you will not be charged. Your account will automatically convert to a limited free account, and you can reactivate your subscription at any time.',
         category: 'precios',
       },
       {
-        id: 13,
+        id: 17,
         question: 'Is Anto suitable for teenagers?',
         answer:
           'Anto is designed for users aged 18 and over. For users under 18, we recommend using the app under the supervision of a parent or legal guardian. We are developing a specific version for teenagers (13–17) with adapted content and parental controls, which will be available soon. If you are a parent or guardian and have questions about a minor using Anto, contact us at marcelo.ull@antoapps.com or via Telegram: t.me/marcere23.',
         category: 'funcionalidad',
       },
       {
-        id: 14,
+        id: 18,
         question: 'What kind of wellbeing exercises does Anto include?',
         answer:
           'Anto includes a complete library of over 100 wellbeing exercises, including personalised guided meditations, breathing techniques (4-7-8, diaphragmatic breathing), mindfulness exercises, progressive muscle relaxation, guided visualisations, gratitude exercises, and grounding techniques. All exercises are designed by mental health professionals and adapt to your current emotional state. You can access them at any time, even offline.',
         category: 'funcionalidad',
       },
       {
-        id: 15,
-        question: 'How does Anto compare to other mental health apps?',
+        id: 19,
+        question: 'What makes Anto unique as a wellness tool?',
         answer:
-          'Anto stands out for its focus on privacy (E2E encryption), a context-aware AI emotional wellbeing assistant, proactive crisis detection, and detailed emotional analysis. We do not sell user data and prioritise security and transparency. ' +
+          'Anto combines a contextual AI assistant with validated clinical scales (PHQ-9, GAD-7), detection of 15 cognitive distortions, 8 structured protocols, proactive crisis detection, tasks and habits, and bilingual ES/EN support. We prioritise privacy, transparency, and practical utility — without selling user data. ' +
           trial.differentiatorSuffix,
         category: 'funcionalidad',
       },
       {
-        id: 16,
+        id: 20,
         question: 'Can I use Anto on multiple devices?',
         answer:
           'Yes, you can use Anto on multiple devices with a single account. On iOS, your data, conversations, and analyses sync automatically and securely. On Android, this continuity applies to accounts that already have early access enabled.',
         category: 'funcionalidad',
       },
       {
-        id: 17,
+        id: 21,
         question: 'What should I do if I have technical problems?',
         answer:
           'We offer 24/7 technical support through multiple channels: email (marcelo.ull@antoapps.com), Telegram (t.me/marcere23), and LinkedIn. Our support team typically responds in under 2 hours. We also have a help section within the app with step-by-step guides and common troubleshooting. If you find a bug or issue, you can report it directly from the app and we will fix it as soon as possible.',

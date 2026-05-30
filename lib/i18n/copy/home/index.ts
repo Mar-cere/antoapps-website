@@ -24,6 +24,8 @@ export {
   type FaqCategoryId,
 } from './faq';
 
+export { getWhatsNewCopy, type WhatsNewCopy, type WhatsNewItem } from './whats-new';
+
 export {
   getPricingCalculatorCopy,
   type PricingCalculatorCopy,

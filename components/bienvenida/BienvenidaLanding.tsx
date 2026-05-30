@@ -112,7 +112,7 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
 
           <BienvenidaAppPreview copy={copy.appPreview} />
 
-          <BienvenidaTrustStrip copy={copy.trustStrip} />
+          <BienvenidaTrustStrip copy={copy.trustStrip} highlights={copy.highlights} />
         </section>
 
         <section

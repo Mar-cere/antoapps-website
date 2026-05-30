@@ -939,6 +939,81 @@
     flex-wrap: wrap;
 }
 
+/* What's New (home) */
+.whats-new {
+    padding: var(--spacing-16) 0;
+    background: linear-gradient(
+        180deg,
+        rgba(15, 23, 42, 0.35) 0%,
+        rgba(15, 23, 42, 0) 100%
+    );
+}
+
+.whats-new__header {
+    text-align: center;
+    margin-bottom: var(--spacing-10);
+}
+
+.whats-new__badge {
+    display: inline-block;
+    margin-bottom: var(--spacing-4);
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-light, #93c5fd);
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.whats-new__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--spacing-5);
+    margin-bottom: var(--spacing-10);
+}
+
+.whats-new__card {
+    padding: var(--spacing-5);
+    border-radius: var(--radius-lg, 12px);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.whats-new__card:hover {
+    border-color: rgba(59, 130, 246, 0.35);
+    transform: translateY(-2px);
+}
+
+.whats-new__icon {
+    display: block;
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-3);
+}
+
+.whats-new__card-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-2);
+    color: var(--color-text-primary, #f8fafc);
+}
+
+.whats-new__card-text {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-text-secondary, #94a3b8);
+    margin: 0;
+}
+
+.whats-new__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-4);
+    justify-content: center;
+}
+
 /* Home: tarjetas y grillas que no deben forzar scroll horizontal en móvil */
 @media (max-width: 968px) {
     .features-grid {

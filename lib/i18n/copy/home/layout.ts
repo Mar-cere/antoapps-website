@@ -57,6 +57,7 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       aria: 'Navegación rápida',
       items: [
         { id: 'inicio', label: 'Inicio', href: '#inicio' },
+        { id: 'novedades', label: 'Novedades', href: '#novedades' },
         { id: 'caracteristicas', label: 'Características', href: '#caracteristicas' },
         { id: 'beneficios', label: 'Beneficios', href: '#beneficios' },
         { id: 'precios', label: 'Precios', href: '#precios' },
@@ -122,6 +123,7 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       aria: 'Quick navigation',
       items: [
         { id: 'inicio', label: 'Home', href: '#inicio' },
+        { id: 'novedades', label: 'What\'s New', href: '#novedades' },
         { id: 'caracteristicas', label: 'Features', href: '#caracteristicas' },
         { id: 'beneficios', label: 'Benefits', href: '#beneficios' },
         { id: 'precios', label: 'Pricing', href: '#precios' },

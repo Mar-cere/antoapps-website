@@ -30,13 +30,13 @@ export function homePageMetadata(locale: Locale): Metadata {
     return {
       title: 'Anto — Your 24/7 emotional support | Mental wellness with AI',
       description:
-        'When you feel overwhelmed, write what you are going through and get clear, practical guidance in seconds. Try free for 1 day on iPhone.',
+        'Emotional wellness app with AI (GPT-5.4 Mini), PHQ-9/GAD-7 clinical scales, 8 structured protocols, crisis detection, and bilingual ES/EN support. 1-day free trial on iPhone. Not a substitute for clinical care.',
       alternates,
       openGraph: {
         type: 'website',
         url: canonical,
         title: 'Anto — Your 24/7 emotional support',
-        description: `Mental wellness app with AI. Available 24/7. ${trial.short} on iPhone.`,
+        description: `Mental wellness app with AI, PHQ-9/GAD-7 scales, structured protocols, and crisis detection. ${trial.short} on iPhone.`,
         siteName: 'Anto',
         locale: 'en_US',
         images: [ogImage],

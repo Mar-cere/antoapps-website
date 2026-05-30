@@ -8,8 +8,10 @@ import Footer from '@/components/layout/Footer';
 import StickyNav from '@/components/layout/StickyNav';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
+import FaqJsonLd from '@/components/seo/FaqJsonLd';
 import PullToRefresh from '@/components/ui/PullToRefresh';
 import Hero from '@/components/sections/Hero';
+import WhatsNew from '@/components/sections/WhatsNew';
 import Features from '@/components/sections/Features';
 import AppShowcase from '@/components/sections/AppShowcase';
 import Benefits from '@/components/sections/Benefits';
@@ -56,6 +58,7 @@ export default function HomePageContent({ locale }: HomePageContentProps) {
   return (
     <LocaleProvider locale={locale}>
       <ClientInitializer />
+      <FaqJsonLd />
       <Header />
       <StickyNav />
       <PullToRefresh
@@ -68,6 +71,7 @@ export default function HomePageContent({ locale }: HomePageContentProps) {
       >
         <main id="main-content" role="main" lang={locale}>
           <Hero locale={locale} />
+          <WhatsNew locale={locale} />
           <Features locale={locale} />
           <AppShowcase locale={locale} />
           <Benefits locale={locale} />

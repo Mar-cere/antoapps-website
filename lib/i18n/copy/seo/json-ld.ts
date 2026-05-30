@@ -1,5 +1,6 @@
 import { APP_VERSION } from '@/lib/app-version';
 import type { Locale } from '@/lib/i18n/config';
+import { getHomeFaqCopy } from '@/lib/i18n/copy/home/faq';
 
 const SITE_ORIGIN = 'https://antoapps.com';
 
@@ -18,12 +19,16 @@ const softwareCopy: Record<
     description:
       'Aplicación móvil de bienestar emocional con IA (GPT-5.4 Mini), análisis emocional, detección de crisis y herramientas de bienestar 24/7. No sustituye atención clínica.',
     featureList: [
-      'Asistente de IA (bienestar emocional)',
-      'Detección de Crisis',
-      'Análisis Emocional',
-      'Herramientas de Bienestar',
-      'Privacidad Total',
-      'Disponible 24/7',
+      'Asistente de IA con GPT-5.4 Mini',
+      'Escalas clínicas PHQ-9 y GAD-7',
+      '8 protocolos terapéuticos estructurados',
+      'Detección de 15 distorsiones cognitivas',
+      'Detección de crisis 24/7',
+      'Modos de conversación',
+      'App bilingüe español e inglés',
+      'Tareas, hábitos y diario de gratitud',
+      'Resúmenes de sesión localizados',
+      'Prueba gratuita de 1 día',
     ],
   },
   en: {
@@ -31,12 +36,16 @@ const softwareCopy: Record<
     description:
       'Mobile emotional wellness app with AI (GPT-5.4 Mini), emotional analysis, crisis detection, and wellness tools available 24/7. Not a substitute for clinical care.',
     featureList: [
-      'AI assistant (emotional wellness)',
-      'Crisis detection',
-      'Emotional analysis',
-      'Wellness tools',
-      'Full privacy',
-      'Available 24/7',
+      'AI assistant with GPT-5.4 Mini',
+      'PHQ-9 and GAD-7 clinical scales',
+      '8 structured therapeutic protocols',
+      'Detection of 15 cognitive distortions',
+      '24/7 crisis detection',
+      'Conversation modes',
+      'Bilingual Spanish and English app',
+      'Tasks, habits, and gratitude journal',
+      'Localised session summaries',
+      '1-day free trial',
     ],
   },
 };
@@ -93,6 +102,23 @@ export function getOrganizationJsonLd(locale: Locale): JsonLd {
       contactType: 'customer service',
       availableLanguage: ['Spanish', 'English'],
     },
+  };
+}
+
+export function getFaqPageJsonLd(locale: Locale): JsonLd {
+  const { faqData } = getHomeFaqCopy(locale);
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqData.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
   };
 }
 

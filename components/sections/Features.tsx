@@ -9,7 +9,7 @@ type FeaturesProps = {
   locale?: Locale;
 };
 
-const FEATURE_ICONS = ['🤖', '🚨', '📊', '🧘', '🔒', '⏰'];
+const FEATURE_ICONS_FALLBACK = ['🤖', '🏥', '📋', '🧠', '🚨', '✅', '🌍', '⏰'];
 
 export default function Features({ locale = 'es' }: FeaturesProps) {
   const copy = getHomeSectionsCopy(locale);
@@ -23,7 +23,9 @@ export default function Features({ locale = 'es' }: FeaturesProps) {
           <div className="features-grid" data-stagger>
             {copy.features.cards.map((card, index) => (
               <div key={card.title} className="feature-card stagger-item" data-stagger-item>
-                <div className="feature-icon icon-hover-enhanced">{FEATURE_ICONS[index]}</div>
+                <div className="feature-icon icon-hover-enhanced">
+                  {card.icon ?? FEATURE_ICONS_FALLBACK[index]}
+                </div>
                 <h3>{card.title}</h3>
                 <p>{card.description}</p>
               </div>

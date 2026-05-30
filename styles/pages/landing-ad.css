@@ -323,6 +323,20 @@
     opacity: 0.45;
 }
 
+.lad-trust-strip-wrap {
+    margin-top: var(--spacing-2);
+    animation: lad-fade-up 0.7s var(--lad-ease-out) 0.32s both;
+}
+
+.lad-trust-highlights {
+    margin: 0.35rem 0 0;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: var(--lad-text-muted);
+    letter-spacing: 0.01em;
+}
+
 .lad-disclaimer {
     max-width: 32rem;
     margin: var(--spacing-2) auto 0;

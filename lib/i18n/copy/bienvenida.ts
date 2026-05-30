@@ -25,6 +25,7 @@ export type BienvenidaCopy = {
     stickyAria: string;
     faqAnswer: string;
   };
+  highlights: string;
   how: {
     sectionTitle: string;
     steps: readonly string[];
@@ -142,6 +143,8 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ratingOnAppStore: '★★★★★ 5.0 on the App Store',
         availableOn: 'Available on iPhone',
       },
+      highlights:
+        'PHQ-9/GAD-7 scales · 8 evidence-based protocols · 24/7 crisis detection · ES/EN',
       androidWaitlist: 'On Android? Join the waitlist',
       androidCta: 'I want Android access',
       appPreview: {
@@ -235,6 +238,8 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       ratingOnAppStore: '★★★★★ 5.0 en App Store',
       availableOn: 'Disponible en iPhone',
     },
+    highlights:
+      'Escalas PHQ-9/GAD-7 · 8 protocolos basados en evidencia · Detección de crisis 24/7 · ES/EN',
     androidWaitlist: '¿Usas Android? Únete a la lista de espera',
     androidCta: 'Quiero acceso Android',
     appPreview: {
