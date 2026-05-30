@@ -49,6 +49,12 @@ export type BienvenidaCopy = {
   };
   androidWaitlist: string;
   androidCta: string;
+  appPreview: {
+    ariaLabel: string;
+    userMessage: string;
+    antoMessage: string;
+    inputPlaceholder: string;
+  };
 };
 
 function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
@@ -138,6 +144,13 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       },
       androidWaitlist: 'On Android? Join the waitlist',
       androidCta: 'I want Android access',
+      appPreview: {
+        ariaLabel: 'Anto app preview',
+        userMessage: "I can't stop thinking about everything going wrong",
+        antoMessage:
+          "That sounds exhausting. What's weighing on you most right now: fear, guilt, or uncertainty?",
+        inputPlaceholder: 'Write a message…',
+      },
     };
   }
 
@@ -224,6 +237,13 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
     },
     androidWaitlist: '¿Usas Android? Únete a la lista de espera',
     androidCta: 'Quiero acceso Android',
+    appPreview: {
+      ariaLabel: 'Vista previa de la app Anto',
+      userMessage: 'no puedo parar de pensar en todo malo',
+      antoMessage:
+        'Suena agotador. ¿Qué pesa más ahora: el miedo, la culpa o la incertidumbre?',
+      inputPlaceholder: 'Escribe un mensaje…',
+    },
   };
 }
 

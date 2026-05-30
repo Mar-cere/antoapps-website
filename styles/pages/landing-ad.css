@@ -365,10 +365,14 @@
 
 .lad-sticky-cta-btn {
     width: 100%;
-    max-width: 24rem;
+    max-width: min(100%, 26rem);
     min-height: 3rem;
     font-size: 0.9375rem;
     font-weight: var(--font-weight-semibold);
+    white-space: normal;
+    overflow: visible;
+    line-height: 1.35;
+    padding-inline: var(--spacing-4);
 }
 
 .lad-page .lad-hero-cta-btn,
@@ -572,11 +576,16 @@
 
 .lad-hero-cta-btn {
     width: 100%;
-    max-width: 20rem;
+    max-width: 100%;
     min-height: 3.25rem;
     border-radius: var(--radius-full);
     font-weight: var(--font-weight-semibold);
     letter-spacing: 0.015em;
+    white-space: normal;
+    overflow: visible;
+    line-height: 1.35;
+    padding-inline: var(--spacing-5);
+    hyphens: none;
 }
 
 .lad-page .lad-sticky-cta-btn {
