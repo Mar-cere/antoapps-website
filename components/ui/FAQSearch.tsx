@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { useUiCopy } from '@/lib/i18n/hooks/use-ui-copy';
 
 interface FAQItem {
   id: number;
@@ -15,6 +16,7 @@ interface FAQSearchProps {
 }
 
 export default function FAQSearch({ faqItems, onItemClick }: FAQSearchProps) {
+  const ui = useUiCopy();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
@@ -56,17 +58,17 @@ export default function FAQSearch({ faqItems, onItemClick }: FAQSearchProps) {
           <span className="search-icon">🔍</span>
           <input
             type="text"
-            placeholder="Buscar en preguntas frecuentes..."
+            placeholder={ui.faqSearchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="faq-search-input"
-            aria-label="Buscar preguntas frecuentes"
+            aria-label={ui.faqSearchAria}
           />
           {searchQuery && (
             <button
               className="clear-search"
               onClick={() => setSearchQuery('')}
-              aria-label="Limpiar búsqueda"
+              aria-label={ui.clearSearch}
             >
               ✕
             </button>
@@ -74,8 +76,8 @@ export default function FAQSearch({ faqItems, onItemClick }: FAQSearchProps) {
         </div>
         {searchQuery && (
           <div className="search-results-count">
-            {filteredItems.length} {filteredItems.length === 1 ? 'resultado' : 'resultados'} encontrado
-            {filteredItems.length === 1 ? '' : 's'}
+            {filteredItems.length}{' '}
+            {filteredItems.length === 1 ? ui.faqResultSingular : ui.faqResultPlural}
           </div>
         )}
       </div>
@@ -86,7 +88,7 @@ export default function FAQSearch({ faqItems, onItemClick }: FAQSearchProps) {
           onClick={() => setSelectedCategory('all')}
           data-category="all"
         >
-          Todas
+          {ui.faqAllCategories}
         </button>
         {categories.map((category) => (
           <button
@@ -102,9 +104,9 @@ export default function FAQSearch({ faqItems, onItemClick }: FAQSearchProps) {
 
       {filteredItems.length === 0 && searchQuery && (
         <div className="no-results">
-          <p>No se encontraron resultados para &quot;{searchQuery}&quot;</p>
+          <p>{ui.faqNoResults(searchQuery)}</p>
           <button onClick={() => setSearchQuery('')} className="btn btn-secondary">
-            Limpiar búsqueda
+            {ui.clearSearchButton}
           </button>
         </div>
       )}

@@ -13,7 +13,8 @@ const CRITICAL_ASSETS = [
     '/styles/main.css',
     '/scripts/main.js',
     '/assets/images/antoIcon.png',
-    '/manifest.json'
+    '/manifest.json',
+    '/manifest.en.json'
 ];
 
 // Recursos para cachear bajo demanda

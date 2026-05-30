@@ -65,17 +65,7 @@ export default function ChangelogPageContent({ locale }: ChangelogPageContentPro
                 <span className="status-badge status-badge-current-banner">
                   {copy.header.storeVersionBadge}
                 </span>
-                <p className="status-text">
-                  {copy.header.statusNoteBefore}{' '}
-                  <a
-                    href={copy.header.repoLinkHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {copy.header.repoLinkLabel}
-                  </a>
-                  {copy.header.statusNoteAfter}
-                </p>
+                <p className="status-text">{copy.header.statusText}</p>
               </div>
             </div>
 
@@ -147,17 +137,8 @@ export default function ChangelogPageContent({ locale }: ChangelogPageContentPro
                 {copy.footer.textBeforeContact}{' '}
                 <Link href={copy.footer.contactHref} className="changelog-link">
                   {copy.footer.contactLinkLabel}
-                </Link>{' '}
-                {copy.footer.textBetweenLinks}{' '}
-                <a
-                  href={copy.footer.githubLinkHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="changelog-link"
-                >
-                  {copy.footer.githubLinkLabel}
-                </a>{' '}
-                {copy.footer.textAfterGithub}
+                </Link>
+                {copy.footer.textAfterContact}
               </p>
             </div>
           </div>

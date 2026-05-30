@@ -38,7 +38,9 @@ export function buildLocalizedPageMetadata(
       title: meta.openGraph.title,
       description: meta.openGraph.description,
       url: canonical,
-      ...(locale === 'en' ? { locale: 'en_US' as const } : {}),
+      type: 'website',
+      siteName: 'Anto',
+      ...(locale === 'en' ? { locale: 'en_US' as const } : { locale: 'es_CL' as const }),
     },
   };
 }

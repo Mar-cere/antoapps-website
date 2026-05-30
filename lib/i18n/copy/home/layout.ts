@@ -31,6 +31,10 @@ export type SiteLayoutCopy = {
     reject: string;
     accept: string;
   };
+  ui: {
+    scrollToTop: string;
+    emailAria: string;
+  };
 };
 
 const layoutCopy: Record<Locale, SiteLayoutCopy> = {
@@ -94,6 +98,10 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       reject: 'Rechazar',
       accept: 'Aceptar',
     },
+    ui: {
+      scrollToTop: 'Volver arriba',
+      emailAria: 'Email corporativo',
+    },
   },
   en: {
     header: {
@@ -154,6 +162,10 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       privacy: 'Privacy Policy',
       reject: 'Decline',
       accept: 'Accept',
+    },
+    ui: {
+      scrollToTop: 'Back to top',
+      emailAria: 'Corporate email',
     },
   },
 };

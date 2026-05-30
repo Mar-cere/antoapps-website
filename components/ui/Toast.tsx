@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useUiCopy } from '@/lib/i18n/hooks/use-ui-copy';
 import '@/styles/components/toast.css';
 
 export type ToastType = 'success' | 'error' | 'warning' | 'info';
@@ -18,6 +19,8 @@ interface ToastProps {
 }
 
 export default function Toast({ toast, onClose }: ToastProps) {
+  const ui = useUiCopy();
+
   useEffect(() => {
     const duration = toast.duration || 5000;
     const timer = setTimeout(() => {
@@ -49,7 +52,7 @@ export default function Toast({ toast, onClose }: ToastProps) {
         <button
           className="toast-close"
           onClick={() => onClose(toast.id)}
-          aria-label="Cerrar notificación"
+          aria-label={ui.closeNotification}
         >
           ×
         </button>

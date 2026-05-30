@@ -2,6 +2,7 @@
 
 import { ReactNode, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { useUiCopy } from '@/lib/i18n/hooks/use-ui-copy';
 import '@/styles/components/modal.css';
 
 interface ModalProps {
@@ -27,6 +28,7 @@ export default function Modal({
   showCloseButton = true,
   className = '',
 }: ModalProps) {
+  const ui = useUiCopy();
   const modalRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
@@ -116,7 +118,7 @@ export default function Modal({
               <button
                 className="modal-close"
                 onClick={onClose}
-                aria-label="Cerrar modal"
+                aria-label={ui.closeModal}
                 type="button"
               >
                 ×

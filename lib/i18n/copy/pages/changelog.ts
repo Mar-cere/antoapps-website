@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { APP_VERSION } from '@/lib/app-version';
+import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 
-const SITE_ORIGIN = 'https://antoapps.com';
 const CANONICAL_PATH = '/changelog';
-const GITHUB_REPO = 'https://github.com/Mar-cere/Anto';
 
 export type ChangelogChangeType = 'feature' | 'improvement' | 'fix' | 'security' | 'breaking';
 
@@ -36,10 +35,7 @@ export type ChangelogPageCopy = {
     title: string;
     subtitle: string;
     storeVersionBadge: string;
-    statusNoteBefore: string;
-    repoLinkLabel: string;
-    repoLinkHref: string;
-    statusNoteAfter: string;
+    statusText: string;
   };
   versionLabels: {
     highlightsTitle: string;
@@ -55,35 +51,91 @@ export type ChangelogPageCopy = {
     textBeforeContact: string;
     contactLinkLabel: string;
     contactHref: string;
-    textBetweenLinks: string;
-    githubLinkLabel: string;
-    githubLinkHref: string;
-    textAfterGithub: string;
+    textAfterContact: string;
   };
 };
-
-function siteUrl(locale: Locale, path: string): string {
-  return `${SITE_ORIGIN}${localePath(locale, path)}`;
-}
 
 const versionsEs: ChangelogVersion[] = [
   {
     version: APP_VERSION,
-    date: '2026-05-29',
+    date: '2026-05-30',
     status: 'current',
     highlights: [
-      `Versión ${APP_VERSION} (Expo) — línea actual en tiendas`,
-      'Mejoras continuas de experiencia en chat y bienestar emocional',
-      'Preferencias de tono y estilo de respuesta del asistente',
-      'Transparencia de privacidad integrada en la conversación',
+      `Versión ${APP_VERSION} (Expo) — línea actual en tiendas (iOS build 31, Android 17)`,
+      'Prueba gratuita estandarizada a 1 día en toda la app y backend',
+      'Barra de navegación con soporte dark mode e iconos dinámicos',
+      'Mejoras de UX en chat, resúmenes de sesión y diario de gratitud',
     ],
     changes: [
-      { type: 'improvement', description: 'Refinamiento general de UX y estabilidad en la línea 1.4.x' },
-      { type: 'improvement', description: 'Chat: coherencia de tono, contexto y flujo conversacional' },
-      { type: 'improvement', description: 'Preferencias de conversación y ajustes de estilo de respuesta' },
+      {
+        type: 'improvement',
+        description:
+          'Período de prueba unificado a 1 día (APP_TRIAL_DAYS) en registro, suscripción y comunicaciones',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Health routes del backend exponen configuración de app (días de prueba, regalo de resumen semanal)',
+      },
+      { type: 'improvement', description: 'Rate limiter: rutas de health check adicionales excluidas del límite' },
+      {
+        type: 'improvement',
+        description:
+          'FloatingNavBar con dark mode, iconos dinámicos y mejor visibilidad en distintos temas',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Chat: cabecera e indicador de escritura simplificados; resúmenes de sesión con fechas localizadas (ES/EN)',
+      },
+      {
+        type: 'improvement',
+        description: 'Diario de gratitud: layout del footer refinado y mejor interacción con teclado',
+      },
       {
         type: 'feature',
-        description: 'Mantiene escalas PHQ-9/GAD-7, distorsiones cognitivas y protocolos estructurados',
+        description: 'Mantiene i18n app-wide, escalas PHQ-9/GAD-7, distorsiones cognitivas y protocolos estructurados',
+      },
+    ],
+  },
+  {
+    version: '1.4.0',
+    date: '2026-05-26',
+    status: 'stable',
+    highlights: [
+      'Internacionalización app-wide (español e inglés)',
+      'Backend de chat consciente del idioma del usuario',
+      'Modos de conversación y flujo de chat ampliado',
+      'Recuperación de contraseña y estado de suscripción mejorados',
+    ],
+    changes: [
+      {
+        type: 'feature',
+        description: 'i18n completo en app, correos, push y checkout: soporte ES/EN en frontend y backend',
+      },
+      {
+        type: 'feature',
+        description: 'Chat backend con respuestas y resúmenes adaptados al idioma del perfil',
+      },
+      {
+        type: 'feature',
+        description: 'Nuevos modos de conversación integrados en la experiencia de chat',
+      },
+      {
+        type: 'improvement',
+        description: 'Resúmenes de sesión y dashboard con localización y cierre de sesión emocional mejorado',
+      },
+      {
+        type: 'improvement',
+        description: 'Flujo de recuperación de contraseña con validación reforzada',
+      },
+      {
+        type: 'improvement',
+        description: 'Visualización del estado de suscripción y período de prueba más clara en la app',
+      },
+      {
+        type: 'improvement',
+        description: 'Emails de retención y resumen semanal con lógica de regalo de prueba mejorada',
       },
     ],
   },
@@ -461,26 +513,16 @@ export function getChangelogPageCopy(locale: Locale): ChangelogPageCopy {
 
 export function changelogPageMetadata(locale: Locale): Metadata {
   const { meta } = buildChangelogPageCopy(locale);
-  const canonical = siteUrl(locale, meta.canonicalPath);
 
   return {
-    title: meta.title,
-    description: meta.description,
-    alternates: {
-      canonical,
-      languages: {
-        es: siteUrl('es', meta.canonicalPath),
-        en: siteUrl('en', meta.canonicalPath),
-        'x-default': siteUrl('es', meta.canonicalPath),
+    ...buildLocalizedPageMetadata(locale, meta.canonicalPath, {
+      title: meta.title,
+      description: meta.description,
+      openGraph: {
+        title: meta.openGraphTitle,
+        description: meta.openGraphDescription,
       },
-    },
-    openGraph: {
-      title: meta.openGraphTitle,
-      description: meta.openGraphDescription,
-      url: canonical,
-      type: 'website',
-      siteName: 'Anto',
-    },
+    }),
     twitter: {
       card: 'summary',
       title: meta.openGraphTitle,

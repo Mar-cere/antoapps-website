@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+import { useUiCopy } from '@/lib/i18n/hooks/use-ui-copy';
 import Toast, { Toast as ToastType, ToastType as ToastTypeEnum } from './Toast';
 import '@/styles/components/toast.css';
 
@@ -34,6 +35,7 @@ interface ToastProviderProps {
 }
 
 export function ToastProvider({ children }: ToastProviderProps) {
+  const ui = useUiCopy();
   const [toasts, setToasts] = useState<ToastType[]>([]);
 
   const removeToast = useCallback((id: string) => {
@@ -72,7 +74,7 @@ export function ToastProvider({ children }: ToastProviderProps) {
   return (
     <ToastContext.Provider value={{ showToast, success, error, warning, info }}>
       {children}
-      <div className="toast-container" aria-live="polite" aria-label="Notificaciones">
+      <div className="toast-container" aria-live="polite" aria-label={ui.notifications}>
         {toasts.map((toast) => (
           <Toast key={toast.id} toast={toast} onClose={removeToast} />
         ))}

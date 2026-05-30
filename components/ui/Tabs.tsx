@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, KeyboardEvent, ReactNode } from 'react';
+import { useUiCopy } from '@/lib/i18n/hooks/use-ui-copy';
 
 interface Tab {
   id: string;
@@ -25,6 +26,7 @@ export default function Tabs({
   contentClassName = '',
   onTabChange,
 }: TabsProps) {
+  const ui = useUiCopy();
   const [activeTab, setActiveTab] = useState(defaultTab || tabs[0]?.id || '');
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -77,7 +79,7 @@ export default function Tabs({
       <div
         className="tabs-list"
         role="tablist"
-        aria-label="Navegación por pestañas"
+        aria-label={ui.tabsNav}
         aria-orientation="horizontal"
       >
         {tabs.map((tab, index) => (

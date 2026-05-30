@@ -1,12 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { useLocale } from '@/lib/i18n/context';
+import { usePathname } from 'next/navigation';
+import { localeFromPathname } from '@/lib/i18n/path-from-pathname';
 import { getSiteLayoutCopy } from '@/lib/i18n/copy/home';
 import '@/styles/layout/footer.css';
 
 export default function Footer() {
-  const locale = useLocale();
+  const pathname = usePathname();
+  const locale = localeFromPathname(pathname ?? '/');
   const copy = getSiteLayoutCopy(locale);
   const year = new Date().getFullYear();
 
@@ -34,7 +36,7 @@ export default function Footer() {
               >
                 Telegram
               </a>
-              <a href="mailto:marcelo.ull@antoapps.com" aria-label="Email Corporativo">
+              <a href="mailto:marcelo.ull@antoapps.com" aria-label={copy.ui.emailAria}>
                 Email
               </a>
             </div>

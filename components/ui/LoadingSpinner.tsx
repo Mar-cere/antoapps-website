@@ -1,5 +1,6 @@
 'use client';
 
+import { useUiCopy } from '@/lib/i18n/hooks/use-ui-copy';
 import '@/styles/components/loading-spinner.css';
 
 interface LoadingSpinnerProps {
@@ -9,9 +10,11 @@ interface LoadingSpinnerProps {
 }
 
 export default function LoadingSpinner({ size = 'md', className = '', text }: LoadingSpinnerProps) {
+  const ui = useUiCopy();
+
   return (
     <div className={`loading-spinner-wrapper ${className}`}>
-      <div className={`loading-spinner loading-spinner-${size}`} aria-label="Cargando">
+      <div className={`loading-spinner loading-spinner-${size}`} aria-label={ui.loading}>
         <div className="spinner-ring"></div>
         <div className="spinner-ring"></div>
         <div className="spinner-ring"></div>

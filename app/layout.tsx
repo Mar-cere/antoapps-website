@@ -9,10 +9,10 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-/** Metadatos mínimos: la marca Anto vive solo en `app/(site)/layout.tsx`. */
+/** Metadatos mínimos: la marca Anto vive en `app/(site)/layout.tsx` y en cada página. */
 export const metadata: Metadata = {
   title: {
-    default: 'Aplicación web',
+    default: 'Anto',
     template: '%s',
   },
 };

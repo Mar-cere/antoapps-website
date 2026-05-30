@@ -1,5 +1,6 @@
 'use client';
 
+import { useUiCopy } from '@/lib/i18n/hooks/use-ui-copy';
 import '@/styles/utilities/enhanced-microinteractions.css';
 
 interface LoadingSpinnerProps {
@@ -8,6 +9,7 @@ interface LoadingSpinnerProps {
 }
 
 export function LoadingSpinner({ size = 'md', className = '' }: LoadingSpinnerProps) {
+  const ui = useUiCopy();
   const sizeClasses = {
     sm: 'w-6 h-6 border-2',
     md: 'w-10 h-10 border-3',
@@ -15,8 +17,8 @@ export function LoadingSpinner({ size = 'md', className = '' }: LoadingSpinnerPr
   };
 
   return (
-    <div className={`spinner-elegant ${sizeClasses[size]} ${className}`} aria-label="Cargando">
-      <span className="sr-only">Cargando...</span>
+    <div className={`spinner-elegant ${sizeClasses[size]} ${className}`} aria-label={ui.loading}>
+      <span className="sr-only">{ui.loadingSrOnly}</span>
     </div>
   );
 }
@@ -26,8 +28,10 @@ interface DotsLoaderProps {
 }
 
 export function DotsLoader({ className = '' }: DotsLoaderProps) {
+  const ui = useUiCopy();
+
   return (
-    <div className={`dots-loader ${className}`} aria-label="Cargando">
+    <div className={`dots-loader ${className}`} aria-label={ui.loading}>
       <span></span>
       <span></span>
       <span></span>

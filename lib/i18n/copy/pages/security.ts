@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
-
-const SITE_ORIGIN = 'https://antoapps.com';
+import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 const CANONICAL_PATH = '/seguridad';
 const DEVELOPER_EMAIL = 'marcelo.ull@antoapps.com';
 
@@ -68,10 +67,6 @@ export type SecurityPageCopy = {
     items: SecurityFaqItem[];
   };
 };
-
-function siteUrl(locale: Locale, path: string): string {
-  return `${SITE_ORIGIN}${localePath(locale, path)}`;
-}
 
 export const SECURITY_FAQ_ES: SecurityFaqItem[] = [
   {
@@ -462,23 +457,12 @@ export function getSecurityPageCopy(locale: Locale): SecurityPageCopy {
 
 export function securityPageMetadata(locale: Locale): Metadata {
   const { meta } = buildSecurityPageCopy(locale);
-  const canonical = siteUrl(locale, meta.canonicalPath);
-
-  return {
+  return buildLocalizedPageMetadata(locale, meta.canonicalPath, {
     title: meta.title,
     description: meta.description,
-    alternates: {
-      canonical,
-      languages: {
-        es: siteUrl('es', meta.canonicalPath),
-        en: siteUrl('en', meta.canonicalPath),
-        'x-default': siteUrl('es', meta.canonicalPath),
-      },
-    },
     openGraph: {
       title: meta.openGraphTitle,
       description: meta.openGraphDescription,
-      url: canonical,
     },
-  };
+  });
 }

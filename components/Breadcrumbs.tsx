@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useUiCopy } from '@/lib/i18n/hooks/use-ui-copy';
 import '@/styles/components/breadcrumbs.css';
 
 interface BreadcrumbItem {
@@ -16,6 +17,7 @@ interface BreadcrumbsProps {
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   const pathname = usePathname();
+  const ui = useUiCopy();
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   }, [pathname]);
 
   return (
-    <nav className="breadcrumbs" aria-label="Breadcrumb">
+    <nav className="breadcrumbs" aria-label={ui.breadcrumb}>
       <div className="container">
         <ol className={`breadcrumbs-list ${isAnimating ? 'animating' : ''}`}>
           {items.map((item, index) => {

@@ -4,9 +4,7 @@ import { APP_VERSION } from '@/lib/app-version';
 import ClientScripts from '@/components/ClientScripts';
 
 export const metadata: Metadata = {
-  title: 'Anto - Tu apoyo emocional 24/7 | Salud Mental con IA',
-  description:
-    'Anto - Tu apoyo emocional 24/7. App de bienestar emocional con IA (GPT-5.4 Mini), tono profesional y práctico, escalas PHQ-9/GAD-7, protocolos basados en evidencia y detección de crisis. No sustituye atención clínica.',
+  metadataBase: new URL('https://antoapps.com'),
   keywords:
     'salud mental, terapia, AI, asistente virtual, bienestar emocional, apoyo emocional, terapia online, salud mental app, inteligencia artificial, bienestar mental',
   authors: [{ name: 'Marcelo Ull Marambio', url: 'https://github.com/Mar-cere' }],
@@ -15,28 +13,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  },
-  openGraph: {
-    type: 'website',
-    url: 'https://antoapps.com',
-    title: 'Anto - Tu apoyo emocional 24/7',
-    description: `App de bienestar emocional con IA, análisis emocional y herramientas de bienestar. Disponible 24/7. Versión publicada ${APP_VERSION}.`,
-    images: [
-      {
-        url: 'https://antoapps.com/assets/images/antoIcon.png',
-        width: 1200,
-        height: 630,
-        alt: 'Anto - Salud Mental con IA',
-      },
-    ],
-    siteName: 'Anto',
-    locale: 'es_ES',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Anto - Tu apoyo emocional 24/7',
-    description: `App de bienestar emocional con IA, análisis emocional y herramientas de bienestar. Versión ${APP_VERSION}.`,
-    images: ['https://antoapps.com/assets/images/antoIcon.png'],
   },
   icons: {
     icon: [
@@ -47,15 +23,6 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   manifest: '/manifest.json',
-  metadataBase: new URL('https://antoapps.com'),
-  alternates: {
-    canonical: 'https://antoapps.com',
-    languages: {
-      es: 'https://antoapps.com',
-      en: 'https://antoapps.com/en',
-      'x-default': 'https://antoapps.com',
-    },
-  },
 };
 
 export const viewport = {
