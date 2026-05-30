@@ -22,11 +22,11 @@ export const BIENVENIDA_SOCIAL_DESCRIPTION = copy.meta.socialDescription;
 export const BIENVENIDA_OG_SUBLINE = copy.meta.ogSubline;
 
 export function bienvenidaHeroTitleLine2(variant: 'A' | 'B'): string {
-  return copy.hero.titleLine2(variant);
+  return copy.hero.titleLine2[variant];
 }
 
 export function bienvenidaHeroLead(variant: 'A' | 'B'): string {
-  return copy.hero.lead(variant);
+  return copy.hero.lead[variant];
 }
 
 export const BIENVENIDA_HOW_STEPS = copy.how.steps;

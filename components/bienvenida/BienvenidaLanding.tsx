@@ -98,9 +98,9 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
         <section className="lad-hero" aria-labelledby="lad-hero-title">
           <h1 id="lad-hero-title">
             <span className="lad-hero-title-line">{copy.hero.titleLine1}</span>
-            <span className="lad-hero-title-line">{copy.hero.titleLine2(landingVariant)}</span>
+            <span className="lad-hero-title-line">{copy.hero.titleLine2[landingVariant]}</span>
           </h1>
-          <p className="lad-hero-lead">{copy.hero.lead(landingVariant)}</p>
+          <p className="lad-hero-lead">{copy.hero.lead[landingVariant]}</p>
 
           <HeroDualCta
             storeHref={storeHref}

@@ -13,8 +13,8 @@ export type BienvenidaCopy = {
   };
   hero: {
     titleLine1: string;
-    titleLine2: (variant: BienvenidaVariant) => string;
-    lead: (variant: BienvenidaVariant) => string;
+    titleLine2: Record<BienvenidaVariant, string>;
+    lead: Record<BienvenidaVariant, string>;
   };
   trial: {
     heroCta: Record<BienvenidaVariant, string>;
@@ -67,12 +67,14 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       },
       hero: {
         titleLine1: 'When your mind won\'t slow down,',
-        titleLine2: (variant) =>
-          variant === 'B' ? 'Anto helps you make sense of it' : 'Sort through what you feel with Anto',
-        lead: (variant) =>
-          variant === 'B'
-            ? 'Write what you feel and get clear guidance in seconds.'
-            : 'Write what you feel and get clear guidance in seconds.',
+        titleLine2: {
+          A: 'Sort through what you feel with Anto',
+          B: 'Anto helps you make sense of it',
+        },
+        lead: {
+          A: 'Write what you feel and get clear guidance in seconds.',
+          B: 'Write what you feel and get clear guidance in seconds.',
+        },
       },
       trial: {
         heroCta: {
@@ -151,12 +153,14 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
     },
     hero: {
       titleLine1: 'Cuando tu mente va a mil,',
-      titleLine2: (variant) =>
-        variant === 'B' ? 'Anto te ayuda a ordenarlo' : 'Ordena lo que sientes con Anto',
-      lead: (variant) =>
-        variant === 'B'
-          ? 'Escribes lo que sientes y recibes guía clara en segundos.'
-          : 'Escribe lo que sientes y recibe guía clara en segundos.',
+      titleLine2: {
+        A: 'Ordena lo que sientes con Anto',
+        B: 'Anto te ayuda a ordenarlo',
+      },
+      lead: {
+        A: 'Escribe lo que sientes y recibe guía clara en segundos.',
+        B: 'Escribes lo que sientes y recibes guía clara en segundos.',
+      },
     },
     trial: {
       heroCta: {
