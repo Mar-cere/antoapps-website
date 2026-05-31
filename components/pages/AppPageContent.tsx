@@ -121,7 +121,7 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
                   {item.hasImage ? (
                     <>
                       <Image
-                        src="/assets/images/hero/phone-mockup.png"
+                        src="/assets/images/hero/phone-mockup-landing.webp"
                         alt={item.imageAlt ?? item.label}
                         width={375}
                         height={812}

@@ -23,7 +23,7 @@ export default function AppShowcase({ locale = 'es' }: AppShowcaseProps) {
           <div className="showcase-image-wrapper">
             <div className="phone-mockup-container float-enhanced">
               <Image
-                src="/assets/images/hero/phone-mockup.png"
+                src="/assets/images/hero/phone-mockup-landing.webp"
                 alt={copy.imageAlt}
                 className="phone-mockup-image"
                 width={856}

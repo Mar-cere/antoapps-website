@@ -71,6 +71,18 @@
     font-weight: var(--font-weight-medium);
 }
 
+.hero-content .android-early-access {
+    width: 100%;
+    max-width: 28rem;
+}
+
+@media (max-width: 968px) {
+    .hero-content .android-early-access {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 .hero-cta {
     display: flex;
     gap: var(--spacing-3);

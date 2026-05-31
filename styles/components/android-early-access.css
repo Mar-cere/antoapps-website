@@ -28,7 +28,20 @@
 }
 
 .android-early-access-form--compact {
-    align-items: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.android-early-access-form--compact .android-early-access-input {
+    flex: 1 1 11rem;
+    min-width: 0;
+}
+
+.android-early-access-form--compact .android-early-access-button {
+    flex: 1 1 auto;
+    min-width: 9rem;
+    white-space: normal;
+    text-align: center;
 }
 
 .android-early-access-input {

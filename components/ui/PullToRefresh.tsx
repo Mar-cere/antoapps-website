@@ -1,6 +1,7 @@
 'use client';
 
 import { usePullToRefresh } from '@/lib/hooks/usePullToRefresh';
+import { useUiCopy } from '@/lib/i18n/hooks/use-ui-copy';
 import '@/styles/components/pull-to-refresh.css';
 
 interface PullToRefreshProps {
@@ -16,6 +17,7 @@ export default function PullToRefresh({
   threshold = 80,
   children,
 }: PullToRefreshProps) {
+  const ui = useUiCopy();
   const { elementRef, isPulling, pullDistance, isRefreshing } = usePullToRefresh({
     onRefresh,
     threshold,
@@ -35,12 +37,12 @@ export default function PullToRefresh({
           {isRefreshing ? (
             <>
               <div className="pull-to-refresh-spinner" />
-              <span>Actualizando...</span>
+              <span>{ui.pullToRefreshRefreshing}</span>
             </>
           ) : (
             <>
               <span>↓</span>
-              <span>Desliza para actualizar</span>
+              <span>{ui.pullToRefreshHint}</span>
             </>
           )}
         </div>

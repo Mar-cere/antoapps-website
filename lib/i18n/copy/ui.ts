@@ -16,6 +16,8 @@ export type SharedUiCopy = {
   faqNoResults: (query: string) => string;
   faqResultSingular: string;
   faqResultPlural: string;
+  pullToRefreshHint: string;
+  pullToRefreshRefreshing: string;
 };
 
 const uiCopy: Record<Locale, SharedUiCopy> = {
@@ -35,6 +37,8 @@ const uiCopy: Record<Locale, SharedUiCopy> = {
     faqNoResults: (query) => `No se encontraron resultados para "${query}"`,
     faqResultSingular: 'resultado encontrado',
     faqResultPlural: 'resultados encontrados',
+    pullToRefreshHint: 'Desliza para actualizar',
+    pullToRefreshRefreshing: 'Actualizando...',
   },
   en: {
     loading: 'Loading',
@@ -52,6 +56,8 @@ const uiCopy: Record<Locale, SharedUiCopy> = {
     faqNoResults: (query) => `No results found for "${query}"`,
     faqResultSingular: 'result found',
     faqResultPlural: 'results found',
+    pullToRefreshHint: 'Pull to refresh',
+    pullToRefreshRefreshing: 'Refreshing...',
   },
 };
 

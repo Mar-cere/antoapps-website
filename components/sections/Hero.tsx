@@ -74,7 +74,7 @@ export default function Hero({ locale = 'es' }: HeroProps) {
         <div className="hero-image reveal-on-scroll-enhanced" ref={heroImageRef}>
           <div className="phone-in-hand-container float-enhanced">
             <Image
-              src="/assets/images/hero/phone-in-hand.png"
+              src="/assets/images/hero/phone-in-hand-landing.webp"
               alt={copy.heroImageAlt}
               className="phone-in-hand-image"
               width={800}
