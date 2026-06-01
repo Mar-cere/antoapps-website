@@ -8,10 +8,7 @@
    ============================================ */
 @media (max-width: 767px) {
     
-    /* Breadcrumbs Mobile */
-    .breadcrumbs {
-        padding: var(--spacing-sm) 0;
-    }
+    /* Breadcrumbs Mobile — el offset del header fijo está en breadcrumbs.css */
     
     .breadcrumb-list {
         font-size: 0.8125rem;

@@ -147,13 +147,6 @@ export default function Header() {
                 </li>
               );
             })}
-            <li className="nav-lang-menu-item" role="none">
-              <LanguageSwitcher
-                locale={locale}
-                path={langSwitchPath}
-                className="nav-lang-switch nav-lang-switch--menu"
-              />
-            </li>
           </ul>
 
           <div className="nav-actions">

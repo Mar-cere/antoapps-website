@@ -692,10 +692,6 @@
 }
 
 @media (max-width: 768px) {
-    .contact-hero {
-        padding: calc(var(--spacing-lg) + 80px + env(safe-area-inset-top, 0px)) 0 var(--spacing-lg);
-    }
-
     .contact-title {
         font-size: var(--font-size-2xl);
     }
