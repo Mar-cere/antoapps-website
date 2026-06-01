@@ -40,8 +40,12 @@ export type ContactFormCopy = {
   };
   submit: string;
   sending: string;
+  success: {
+    title: string;
+    message: string;
+    dismiss: string;
+  };
   toast: {
-    success: string;
     error: string;
   };
   validation: {
@@ -128,8 +132,13 @@ function buildContactPageCopy(locale: Locale): ContactPageCopy {
           },
           submit: 'Send Message',
           sending: 'Sending...',
+          success: {
+            title: 'Message sent',
+            message:
+              'We received your message and will reply within 24 hours. Check your inbox in case we need more details.',
+            dismiss: 'Send another message',
+          },
           toast: {
-            success: 'Message sent successfully! We will get back to you soon.',
             error: 'Error sending the message. Please try again.',
           },
           validation: {
@@ -215,8 +224,13 @@ function buildContactPageCopy(locale: Locale): ContactPageCopy {
         },
         submit: 'Enviar Mensaje',
         sending: 'Enviando...',
+        success: {
+          title: 'Mensaje enviado',
+          message:
+            'Recibimos tu mensaje y te responderemos en un plazo de 24 horas. Revisa tu bandeja por si necesitamos más datos.',
+          dismiss: 'Enviar otro mensaje',
+        },
         toast: {
-          success: '¡Mensaje enviado exitosamente! Te responderemos pronto.',
           error: 'Error al enviar el mensaje. Por favor, intenta nuevamente.',
         },
         validation: {

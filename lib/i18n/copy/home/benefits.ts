@@ -20,7 +20,7 @@ export type HomeBenefitsCopy = {
 const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
   es: {
     title: 'Beneficios para Todos',
-    subtitle: 'Anto ofrece beneficios únicos según tus necesidades. Descubre cómo podemos ayudarte.',
+    subtitle: 'Elige tu perfil y revisa en qué te ayuda Anto.',
     tabs: [
       { id: 'usuarios', label: 'Para Usuarios' },
       { id: 'profesionales', label: 'Para Profesionales' },
@@ -51,68 +51,53 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
       ],
       profesionales: [
         {
-          title: 'Complemento Terapéutico',
+          title: 'Apoyo entre sesiones',
           description:
-            'Herramienta de apoyo entre sesiones para tus pacientes. Permite que tus pacientes tengan acceso a apoyo continuo y herramientas de bienestar cuando no están en sesión contigo.',
+            'Tus pacientes tienen continuidad con herramientas de bienestar cuando no están en consulta contigo.',
         },
         {
-          title: 'Seguimiento Continuo',
+          title: 'Seguimiento anonimizado',
           description:
-            'Monitoreo del progreso emocional de tus pacientes con reportes agregados y anonimizados. Visualiza tendencias y patrones que pueden enriquecer tus sesiones.',
+            'Tendencias agregadas del progreso emocional para orientar el trabajo en sesión.',
         },
         {
-          title: 'Alertas de Crisis',
+          title: 'Alertas de crisis',
           description:
-            'Notificaciones tempranas para intervención oportuna. Recibe alertas cuando el sistema detecta señales de riesgo en tus pacientes, permitiéndote intervenir proactivamente.',
+            'Avisos tempranos cuando el sistema detecta señales de riesgo en un paciente.',
         },
         {
-          title: 'Dashboard Profesional',
+          title: 'Datos para la consulta',
           description:
-            'Accede a un panel de control completo con analytics, reportes detallados, y herramientas de gestión para múltiples pacientes de forma segura y privada.',
-        },
-        {
-          title: 'Integración con Práctica',
-          description:
-            'Los pacientes pueden compartir sus reportes y análisis contigo de forma segura, enriqueciendo vuestras sesiones con datos objetivos sobre su bienestar.',
+            'Los pacientes pueden compartir reportes contigo de forma segura, si ellos lo eligen.',
         },
       ],
       organizaciones: [
         {
-          title: 'Bienestar Corporativo Integral',
+          title: 'Bienestar accesible 24/7',
           description:
-            'Mejora el bienestar mental de tu equipo con acceso 24/7 a apoyo emocional. Ofrece a tus empleados una herramienta discreta y accesible para gestionar su salud mental.',
+            'Apoyo emocional discreto para todo el equipo, cualquier día y a cualquier hora.',
         },
         {
-          title: 'Reducción de Ausentismo',
+          title: 'Privacidad por diseño',
           description:
-            'Estudios muestran que el acceso a herramientas de salud mental reduce significativamente los días de baja. Organizaciones que usan Anto reportan hasta un 30% de reducción en ausentismo relacionado con salud mental.',
+            'Solo métricas agregadas: nunca accedes a conversaciones individuales de empleados.',
         },
         {
-          title: 'Dashboard de Analytics',
+          title: 'Panel para RRHH',
           description:
-            'Insights agregados y anonimizados sobre el bienestar de tu organización. Identifica tendencias, áreas de mejora, y el impacto de tus programas de bienestar sin comprometer la privacidad individual.',
+            'Usuarios, políticas de uso y suscripciones desde un único lugar de gestión.',
         },
         {
-          title: 'Gestión Centralizada',
+          title: 'Impacto en el equipo',
           description:
-            'Administra usuarios, configura políticas de uso, y gestiona suscripciones desde un panel centralizado. Ideal para departamentos de RRHH y programas de bienestar corporativo.',
-        },
-        {
-          title: 'ROI Medible',
-          description:
-            'Mide el retorno de inversión de tus programas de bienestar con métricas claras: reducción de ausentismo, mejora de productividad, y satisfacción de empleados.',
-        },
-        {
-          title: 'Privacidad Garantizada',
-          description:
-            'Los datos individuales nunca son accesibles. Solo recibes reportes agregados y anonimizados que respetan completamente la privacidad de tus empleados.',
+            'Visibilidad del bienestar organizacional para ajustar programas sin comprometer datos personales.',
         },
       ],
     },
   },
   en: {
     title: 'Benefits for Everyone',
-    subtitle: 'Anto offers unique benefits tailored to your needs. Discover how we can help you.',
+    subtitle: 'Pick your profile and see how Anto can help.',
     tabs: [
       { id: 'usuarios', label: 'For Users' },
       { id: 'profesionales', label: 'For Professionals' },
@@ -143,61 +128,46 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
       ],
       profesionales: [
         {
-          title: 'Therapeutic Complement',
+          title: 'Support between sessions',
           description:
-            'A support tool between sessions for your patients. Allows your patients to access ongoing support and wellbeing tools when they are not in session with you.',
+            'Your patients get continuity with wellbeing tools when they are not in session with you.',
         },
         {
-          title: 'Continuous Monitoring',
+          title: 'Anonymised monitoring',
           description:
-            'Monitoring of your patients\' emotional progress with aggregated, anonymised reports. Visualise trends and patterns that can enrich your sessions.',
+            'Aggregated emotional progress trends to guide your work in session.',
         },
         {
-          title: 'Crisis Alerts',
+          title: 'Crisis alerts',
           description:
-            'Early notifications for timely intervention. Receive alerts when the system detects risk signals in your patients, allowing you to intervene proactively.',
+            'Early warnings when the system detects risk signals in a patient.',
         },
         {
-          title: 'Professional Dashboard',
+          title: 'Data for sessions',
           description:
-            'Access a complete control panel with analytics, detailed reports, and management tools for multiple patients securely and privately.',
-        },
-        {
-          title: 'Practice Integration',
-          description:
-            'Patients can share their reports and analyses with you securely, enriching your sessions with objective data about their wellbeing.',
+            'Patients can share reports with you securely, if they choose to.',
         },
       ],
       organizaciones: [
         {
-          title: 'Comprehensive Corporate Wellbeing',
+          title: '24/7 accessible wellbeing',
           description:
-            'Improve your team\'s mental wellbeing with 24/7 access to emotional support. Offer your employees a discreet, accessible tool to manage their mental health.',
+            'Discreet emotional support for the whole team, any day and any time.',
         },
         {
-          title: 'Reduced Absenteeism',
+          title: 'Privacy by design',
           description:
-            'Studies show that access to mental health tools significantly reduces sick days. Organisations using Anto report up to a 30% reduction in mental health-related absenteeism.',
+            'Aggregated metrics only — you never access employees\' individual conversations.',
         },
         {
-          title: 'Analytics Dashboard',
+          title: 'HR dashboard',
           description:
-            'Aggregated, anonymised insights about your organisation\'s wellbeing. Identify trends, areas for improvement, and the impact of your wellbeing programmes without compromising individual privacy.',
+            'Users, usage policies, and subscriptions from one management hub.',
         },
         {
-          title: 'Centralised Management',
+          title: 'Team-wide impact',
           description:
-            'Manage users, configure usage policies, and handle subscriptions from a central panel. Ideal for HR departments and corporate wellbeing programmes.',
-        },
-        {
-          title: 'Measurable ROI',
-          description:
-            'Measure the return on investment of your wellbeing programmes with clear metrics: reduced absenteeism, improved productivity, and employee satisfaction.',
-        },
-        {
-          title: 'Privacy Guaranteed',
-          description:
-            'Individual data is never accessible. You only receive aggregated, anonymised reports that fully respect your employees\' privacy.',
+            'Organisational wellbeing visibility to tune programmes without exposing personal data.',
         },
       ],
     },
