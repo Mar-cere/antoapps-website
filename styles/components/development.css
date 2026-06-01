@@ -3,8 +3,13 @@
    ============================================ */
 
 .development-hero {
-    background: var(--color-bg-primary);
-    padding: var(--page-hero-padding-top) 0 var(--page-hero-padding-bottom);
+    background: linear-gradient(
+        180deg,
+        var(--color-bg-primary) 0%,
+        rgba(26, 221, 219, 0.06) 50%,
+        var(--color-bg-primary) 100%
+    );
+    padding: var(--page-hero-padding-top) 0 0;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -17,8 +22,88 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.02) 0%, rgba(3, 105, 161, 0.02) 100%);
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(26, 221, 219, 0.12) 0%, transparent 70%),
+        linear-gradient(135deg, rgba(26, 221, 219, 0.03) 0%, rgba(3, 105, 161, 0.04) 100%);
     pointer-events: none;
+}
+
+.development-badge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-primary-dark);
+    background: rgba(26, 221, 219, 0.12);
+    border: 1px solid rgba(26, 221, 219, 0.35);
+    border-radius: 999px;
+    position: relative;
+    z-index: 1;
+}
+
+.development-stack-line {
+    max-width: 920px;
+    margin: var(--spacing-6) auto 0;
+    padding: var(--spacing-4) var(--spacing-5);
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(26, 221, 219, 0.25);
+    border-radius: var(--radius-lg);
+    text-align: left;
+    overflow-x: auto;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.development-stack-line code {
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+    font-size: clamp(0.75rem, 2.5vw, var(--font-size-base));
+    color: #7ee8e6;
+    line-height: 1.6;
+    white-space: nowrap;
+}
+
+.development-tech-marquee {
+    margin-top: var(--spacing-8);
+    padding: var(--spacing-4) 0;
+    border-top: 1px solid rgba(26, 221, 219, 0.15);
+    border-bottom: 1px solid rgba(26, 221, 219, 0.15);
+    background: rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.development-tech-marquee__track {
+    display: flex;
+    gap: var(--spacing-3);
+    width: max-content;
+    animation: development-marquee 45s linear infinite;
+}
+
+.development-tech-pill {
+    flex-shrink: 0;
+    padding: 0.5rem 1.1rem;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+@keyframes development-marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .development-title {
@@ -64,6 +149,60 @@
 .tech-stack-section {
     padding: 4rem 0;
     background: var(--color-bg-secondary);
+}
+
+.tech-stack-section--featured {
+    padding: var(--spacing-12) 0;
+    background: linear-gradient(
+        180deg,
+        var(--color-bg-secondary) 0%,
+        rgba(26, 221, 219, 0.04) 50%,
+        var(--color-bg-secondary) 100%
+    );
+}
+
+.tech-stack-section--featured .section-title {
+    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+}
+
+.tech-grid--detailed {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: var(--spacing-5);
+}
+
+.tech-category-icon {
+    margin-right: 0.35rem;
+}
+
+.tech-item-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tech-item-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: var(--spacing-3) 0;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.tech-item-row:last-child {
+    border-bottom: none;
+}
+
+.tech-item-name {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.tech-item-spec {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
 }
 
 /* Development Content */
@@ -158,12 +297,14 @@
 }
 
 .tech-tag {
-    padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, #1ADDDB 0%, #A3B8E8 100%);
-    color: var(--color-text-on-primary);
-    border-radius: 20px;
-    font-size: var(--font-size-sm);
-    font-weight: 500;
+    padding: 0.4rem 0.85rem;
+    background: rgba(26, 221, 219, 0.12);
+    color: var(--color-primary-dark);
+    border: 1px solid rgba(26, 221, 219, 0.35);
+    border-radius: 6px;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
 }
 
 /* Development Process */
@@ -486,9 +627,27 @@
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .development-tech-marquee__track {
+        animation: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-4);
+    }
+}
+
 @media (max-width: 768px) {
     .development-hero {
-        padding: var(--page-hero-padding-top-tight) 0 var(--page-hero-padding-bottom-tight);
+        padding: var(--page-hero-padding-top-tight) 0 0;
+    }
+
+    .development-stack-line {
+        margin-left: var(--spacing-3);
+        margin-right: var(--spacing-3);
+        padding: var(--spacing-3);
     }
 
     .development-content {

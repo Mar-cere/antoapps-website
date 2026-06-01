@@ -32,6 +32,8 @@ export default function WhatsNew({ locale = 'es' }: WhatsNewProps) {
           ))}
         </div>
 
+        <p className="whats-new__footnote reveal-on-scroll">{copy.footnote}</p>
+
         <div className="whats-new__cta reveal-on-scroll">
           <Link href={copy.cta.changelogHref} className="btn btn-secondary">
             {copy.cta.changelogLabel}

@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { APP_VERSION, APP_VERSION_LABEL } from '@/lib/app-version';
 import type { Locale } from '@/lib/i18n/config';
@@ -107,57 +106,6 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
                   <p className="insight-description">{card.description}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="app-screenshots" data-fade-section>
-          <div className="container">
-            <h2 className="section-title reveal-on-scroll">{copy.screenshots.title}</h2>
-            <p className="section-subtitle reveal-on-scroll">{copy.screenshots.subtitle}</p>
-            <div className="screenshots-grid" data-stagger>
-              {copy.screenshots.items.map((item) => (
-                <div key={item.label} className="screenshot-card reveal-on-scroll" data-stagger-item>
-                  {item.hasImage ? (
-                    <>
-                      <Image
-                        src="/assets/images/hero/phone-mockup-landing.webp"
-                        alt={item.imageAlt ?? item.label}
-                        width={375}
-                        height={812}
-                        className="screenshot-image"
-                        quality={95}
-                      />
-                      <div className="screenshot-info">
-                        <div className="screenshot-label">{item.label}</div>
-                        <p className="screenshot-description">{item.description}</p>
-                      </div>
-                    </>
-                  ) : (
-                    <div className="screenshot-placeholder">
-                      <div className="screenshot-label">{item.label}</div>
-                      <div className="screenshot-icon">{item.icon}</div>
-                      <p className="screenshot-description">{item.description}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-            <div className="screenshots-note reveal-on-scroll">
-              <p>
-                {copy.screenshots.note.noteLabel} <strong>{copy.screenshots.note.noteBody}</strong>
-              </p>
-              <p className="screenshots-note__repo">
-                {copy.screenshots.note.repoLabel}{' '}
-                <a
-                  href="https://github.com/Mar-cere/Anto"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="app-inline-link"
-                >
-                  {copy.screenshots.note.repoLinkText}
-                </a>
-              </p>
             </div>
           </div>
         </section>

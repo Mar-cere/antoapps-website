@@ -12,6 +12,7 @@ export type WhatsNewCopy = {
   title: string;
   subtitle: string;
   versionBadge: string;
+  footnote: string;
   items: WhatsNewItem[];
   cta: {
     changelogLabel: string;
@@ -24,56 +25,34 @@ export type WhatsNewCopy = {
 const whatsNewCopy: Record<Locale, WhatsNewCopy> = {
   es: {
     title: 'Novedades en Anto',
-    subtitle: `Lo más reciente en la versión ${APP_VERSION} y la línea 1.4.x — más allá del chat básico.`,
+    subtitle: `Cambios recientes en la versión ${APP_VERSION}. El catálogo completo de funciones está en la sección siguiente.`,
     versionBadge: APP_VERSION_LABEL,
+    footnote:
+      'Escalas clínicas, protocolos, detección de crisis y más se describen en Características Principales — aquí solo destacamos lo nuevo en esta versión.',
     items: [
       {
         icon: '🌍',
         title: 'App bilingüe (ES/EN)',
         description:
-          'Interfaz, chat, correos, notificaciones push y checkout en español e inglés, con backend consciente del idioma.',
+          'Interfaz, chat, correos, notificaciones y checkout en tu idioma, con backend que responde en español o inglés.',
       },
       {
         icon: '💬',
-        title: 'Modos de conversación',
+        title: 'Modos y preferencias de respuesta',
         description:
-          'Distintos enfoques según lo que necesites: orientación práctica, exploración emocional o acompañamiento estructurado.',
-      },
-      {
-        icon: '🏥',
-        title: 'Escalas PHQ-9 y GAD-7',
-        description:
-          'Evaluación automática con escalas clínicas validadas para depresión y ansiedad, con historial y tendencias.',
-      },
-      {
-        icon: '🧠',
-        title: '15 distorsiones cognitivas',
-        description:
-          'Detección durante el chat con intervenciones sugeridas para patrones como catastrofismo o pensamiento todo-o-nada.',
-      },
-      {
-        icon: '📋',
-        title: '8 protocolos estructurados',
-        description:
-          'Rutas basadas en evidencia para depresión, ansiedad, trauma, TOC, TEPT, ira, autocompasión e higiene del sueño.',
-      },
-      {
-        icon: '✅',
-        title: 'Tareas y hábitos',
-        description:
-          'Organiza actividades terapéuticas, establece recordatorios y sigue rutinas saludables vinculadas a tu bienestar.',
-      },
-      {
-        icon: '📝',
-        title: 'Diario de gratitud y resúmenes',
-        description:
-          'Herramientas diarias de reflexión y continuidad entre sesiones con resúmenes localizados en tu idioma.',
+          'Elige el enfoque del chat (práctico, exploratorio o estructurado) y ajusta el estilo cuando la app lo permita.',
       },
       {
         icon: '🎁',
-        title: 'Prueba de 1 día',
+        title: 'Prueba de 1 día unificada',
         description:
-          'Explora todas las funciones premium antes de suscribirte. Cancela cuando quieras desde App Store.',
+          'Un solo período de prueba en app, web y backend. Explora premium antes de suscribirte; cancelas en App Store.',
+      },
+      {
+        icon: '✨',
+        title: 'Experiencia de uso refinada',
+        description:
+          'Chat más claro, resúmenes de sesión con fechas localizadas, diario de gratitud mejorado y navegación con soporte dark mode.',
       },
     ],
     cta: {
@@ -85,56 +64,34 @@ const whatsNewCopy: Record<Locale, WhatsNewCopy> = {
   },
   en: {
     title: 'What\'s New in Anto',
-    subtitle: `The latest in version ${APP_VERSION} and the 1.4.x line — beyond basic chat.`,
+    subtitle: `Recent changes in version ${APP_VERSION}. The full feature set is in the next section.`,
     versionBadge: APP_VERSION_LABEL,
+    footnote:
+      'Clinical scales, protocols, crisis detection, and more are covered under Key Features — this block highlights what shipped in this version only.',
     items: [
       {
         icon: '🌍',
         title: 'Bilingual app (ES/EN)',
         description:
-          'Interface, chat, emails, push notifications, and checkout in Spanish and English, with a language-aware backend.',
+          'Interface, chat, emails, notifications, and checkout in your language, with a backend that replies in Spanish or English.',
       },
       {
         icon: '💬',
-        title: 'Conversation modes',
+        title: 'Modes and response preferences',
         description:
-          'Different approaches depending on what you need: practical guidance, emotional exploration, or structured support.',
-      },
-      {
-        icon: '🏥',
-        title: 'PHQ-9 and GAD-7 scales',
-        description:
-          'Automatic assessment with validated clinical scales for depression and anxiety, with history and trends.',
-      },
-      {
-        icon: '🧠',
-        title: '15 cognitive distortions',
-        description:
-          'Detection during chat with suggested interventions for patterns like catastrophising or all-or-nothing thinking.',
-      },
-      {
-        icon: '📋',
-        title: '8 structured protocols',
-        description:
-          'Evidence-based paths for depression, anxiety, trauma, OCD, PTSD, anger, self-compassion, and sleep hygiene.',
-      },
-      {
-        icon: '✅',
-        title: 'Tasks and habits',
-        description:
-          'Organise therapeutic activities, set reminders, and track healthy routines linked to your wellbeing.',
-      },
-      {
-        icon: '📝',
-        title: 'Gratitude journal and summaries',
-        description:
-          'Daily reflection tools and continuity between sessions with summaries localised in your language.',
+          'Pick how the chat supports you (practical, exploratory, or structured) and tune the style when the app allows it.',
       },
       {
         icon: '🎁',
-        title: '1-day trial',
+        title: 'Unified 1-day trial',
         description:
-          'Explore all premium features before subscribing. Cancel anytime from the App Store.',
+          'One trial period across app, web, and backend. Explore premium before subscribing; cancel in the App Store.',
+      },
+      {
+        icon: '✨',
+        title: 'Refined day-to-day experience',
+        description:
+          'Clearer chat UI, session summaries with localised dates, an improved gratitude journal, and navigation with dark mode support.',
       },
     ],
     cta: {

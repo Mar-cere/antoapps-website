@@ -159,7 +159,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
           icon: '⏰',
           title: 'Disponible 24/7',
           description:
-            'Acceso inmediato cuando lo necesites: diario de gratitud, resúmenes de sesión, ejercicios y apoyo sin esperas.',
+            'Acceso inmediato cuando lo necesites, sin esperas, citas ni horarios de consulta.',
         },
       ],
     },
@@ -340,32 +340,26 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         {
           title: 'Integración con OpenAI API',
           description:
-            'Conexión directa con GPT-5.4 Mini mediante API REST. El asistente prioriza un tono profesional y práctico (orientación y micro-pasos; no rol de terapeuta clínico en el texto). Las conversaciones se almacenan en MongoDB para memoria contextual. Evaluación con escalas validadas (PHQ-9, GAD-7) y detección de 15 tipos de distorsiones cognitivas; puedes ajustar preferencias de respuesta cuando la app lo ofrece.',
-          techBadges: [
-            'OpenAI GPT-5.4 Mini',
-            'MongoDB',
-            'NLP',
-            'Escalas Clínicas',
-            'Detección Cognitiva',
-          ],
+            'Conexión directa con GPT-5.4 Mini mediante API REST. Prioriza un tono profesional y práctico (orientación y micro-pasos; no sustituye terapia clínica). Las conversaciones se guardan para dar continuidad entre sesiones.',
+          techBadges: ['OpenAI GPT-5.4 Mini', 'MongoDB', 'NLP'],
         },
         {
           title: 'Detección Automática de Crisis',
           description:
-            'Algoritmos que analizan patrones de lenguaje en tiempo real. Cuando se detectan señales de riesgo, se activan protocolos automáticos: notificaciones a contactos de confianza vía Twilio (WhatsApp/SMS) y SendGrid (emails), además de recursos de emergencia.',
+            'Analiza patrones de lenguaje en tiempo real. Ante señales de riesgo, activa recursos de apoyo y puede notificar contactos de confianza vía Twilio (WhatsApp/SMS) y SendGrid.',
           techBadges: ['Análisis de Patrones', 'Twilio', 'SendGrid'],
         },
         {
-          title: 'Protocolos Terapéuticos Estructurados',
+          title: 'Motor de apoyo estructurado',
           description:
-            'Sistema de 8 protocolos basados en evidencia científica para depresión, ansiedad, trauma, TOC, TEPT y más. Cada protocolo se adapta automáticamente según las escalas clínicas y distorsiones cognitivas detectadas, proporcionando intervenciones estructuradas y personalizadas.',
-          techBadges: ['8 Protocolos', 'Basado en Evidencia', 'Personalizado'],
+            'Según el contexto de cada conversación, el sistema sugiere rutas y herramientas clínicas sin que tengas que configurar protocolos a mano.',
+          techBadges: ['Automatizado', 'Basado en Evidencia', 'Contextual'],
         },
         {
           title: 'Comunicación en Tiempo Real',
           description:
-            'WebSockets con Socket.IO para respuestas instantáneas. El backend Node.js procesa mensajes, consulta la base de datos MongoDB para contexto histórico, y genera respuestas empáticas y personalizadas en menos de 2.5 segundos. Incluye reportes profesionales con estadísticas detalladas de progreso.',
-          techBadges: ['Socket.IO', 'WebSockets', 'Tiempo Real', 'Reportes Profesionales'],
+            'WebSockets con Socket.IO para respuestas en menos de 2,5 segundos. El backend Node.js consulta el historial en MongoDB antes de generar cada respuesta.',
+          techBadges: ['Socket.IO', 'WebSockets', 'Tiempo Real'],
         },
       ],
       cta: 'Ver detalles técnicos completos →',
@@ -373,7 +367,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
     },
     pricing: {
       title: 'Planes y Precios',
-      subtitle: `Elige la duración que mejor se adapte a tus necesidades. Todos los planes incluyen todas las funcionalidades: asistente AI, análisis emocional, detección de crisis, herramientas de bienestar y soporte 24/7. ${trialNote}`,
+      subtitle: `Elige la duración que mejor se adapte a tus necesidades. Todos los planes incluyen acceso completo a la app. ${trialNote}`,
       valueBanner: {
         label: '💰 Mejor Valor',
         highlight:
@@ -432,7 +426,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
           icon: '⏰',
           title: 'Available 24/7',
           description:
-            'Immediate access when you need it: gratitude journal, session summaries, exercises, and support with no waiting.',
+            'Immediate access when you need it — no waiting, appointments, or office hours.',
         },
       ],
     },
@@ -613,32 +607,26 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         {
           title: 'OpenAI API Integration',
           description:
-            'Direct connection to GPT-5.4 Mini via REST API. The assistant prioritises a professional, practical tone (guidance and micro-steps; not a clinical therapist role in the text). Conversations are stored in MongoDB for contextual memory. Assessment with validated scales (PHQ-9, GAD-7) and detection of 15 types of cognitive distortions; you can adjust response preferences when the app offers them.',
-          techBadges: [
-            'OpenAI GPT-5.4 Mini',
-            'MongoDB',
-            'NLP',
-            'Clinical Scales',
-            'Cognitive Detection',
-          ],
+            'Direct connection to GPT-5.4 Mini via REST API. Prioritises a professional, practical tone (guidance and micro-steps; not a substitute for clinical therapy). Conversations are stored to maintain continuity between sessions.',
+          techBadges: ['OpenAI GPT-5.4 Mini', 'MongoDB', 'NLP'],
         },
         {
           title: 'Automatic Crisis Detection',
           description:
-            'Algorithms that analyse language patterns in real time. When risk signals are detected, automatic protocols are activated: notifications to trusted contacts via Twilio (WhatsApp/SMS) and SendGrid (emails), plus emergency resources.',
+            'Analyses language patterns in real time. When risk signals appear, it surfaces support resources and can notify trusted contacts via Twilio (WhatsApp/SMS) and SendGrid.',
           techBadges: ['Pattern Analysis', 'Twilio', 'SendGrid'],
         },
         {
-          title: 'Structured Therapeutic Protocols',
+          title: 'Structured support engine',
           description:
-            'System of 8 evidence-based protocols for depression, anxiety, trauma, OCD, PTSD, and more. Each protocol adapts automatically based on clinical scales and detected cognitive distortions, providing structured, personalised interventions.',
-          techBadges: ['8 Protocols', 'Evidence-Based', 'Personalised'],
+            'Based on each conversation, the system suggests clinical routes and tools without you having to configure protocols manually.',
+          techBadges: ['Automated', 'Evidence-Based', 'Contextual'],
         },
         {
           title: 'Real-Time Communication',
           description:
-            'WebSockets with Socket.IO for instant responses. The Node.js backend processes messages, queries the MongoDB database for historical context, and generates empathetic, personalised responses in under 2.5 seconds. Includes professional reports with detailed progress statistics.',
-          techBadges: ['Socket.IO', 'WebSockets', 'Real-Time', 'Professional Reports'],
+            'WebSockets with Socket.IO for responses in under 2.5 seconds. The Node.js backend reads history from MongoDB before generating each reply.',
+          techBadges: ['Socket.IO', 'WebSockets', 'Real-Time'],
         },
       ],
       cta: 'View full technical details →',
@@ -646,7 +634,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
     },
     pricing: {
       title: 'Plans and Pricing',
-      subtitle: `Choose the duration that best fits your needs. All plans include every feature: AI assistant, emotional analysis, crisis detection, wellbeing tools, and 24/7 support. ${trialNote}`,
+      subtitle: `Choose the duration that best fits your needs. All plans include full access to the app. ${trialNote}`,
       valueBanner: {
         label: '💰 Best Value',
         highlight:

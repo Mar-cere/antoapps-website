@@ -17,6 +17,7 @@ type DesarrolloPageContentProps = {
 
 export default function DesarrolloPageContent({ locale }: DesarrolloPageContentProps) {
   const copy = getDesarrolloPageCopy(locale);
+  const marqueeTechs = [...copy.hero.highlightTechs, ...copy.hero.highlightTechs];
 
   return (
     <LocaleProvider locale={locale}>
@@ -32,8 +33,70 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
 
         <section className="development-hero" data-fade-section>
           <div className="container">
+            <span className="development-badge reveal-on-scroll">{copy.hero.badge}</span>
             <h1 className="development-title reveal-on-scroll">{copy.hero.title}</h1>
             <p className="development-subtitle reveal-on-scroll">{copy.hero.subtitle}</p>
+            <pre className="development-stack-line reveal-on-scroll" aria-label={copy.hero.stackLine}>
+              <code>{copy.hero.stackLine}</code>
+            </pre>
+          </div>
+          <div className="development-tech-marquee" aria-hidden="true">
+            <div className="development-tech-marquee__track">
+              {marqueeTechs.map((tech, index) => (
+                <span key={`${tech}-${index}`} className="development-tech-pill">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="tech-stack-section tech-stack-section--featured" data-fade-section>
+          <div className="container">
+            <div className="tech-stack">
+              <h2 className="section-title reveal-on-scroll">{copy.techStack.title}</h2>
+              <p className="tech-stack-intro reveal-on-scroll">
+                {copy.techStack.introBefore}{' '}
+                <a
+                  href={copy.techStack.repoLinkHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="tech-stack-link"
+                >
+                  {copy.techStack.repoLinkLabel}
+                </a>
+              </p>
+              <div className="tech-grid tech-grid--detailed" data-stagger>
+                {copy.techStack.categories.map((category) => (
+                  <div key={category.title} className="tech-category reveal-on-scroll" data-stagger-item>
+                    <h3>
+                      <span className="tech-category-icon" aria-hidden="true">
+                        {category.icon}
+                      </span>
+                      {category.title}
+                    </h3>
+                    <ul className="tech-item-list">
+                      {category.items.map((item) => (
+                        <li key={item.name} className="tech-item-row">
+                          <span className="tech-item-name">{item.name}</span>
+                          <span className="tech-item-spec">{item.spec}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              <div className="section-cta-row">
+                <a
+                  href={copy.techStack.githubCtaHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary btn-large"
+                >
+                  {copy.techStack.githubCtaLabel}
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -59,73 +122,6 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="development-process" data-fade-section>
-          <div className="container">
-            <h2 className="section-title reveal-on-scroll">{copy.process.sectionTitle}</h2>
-            <p className="section-subtitle reveal-on-scroll">{copy.process.sectionSubtitle}</p>
-
-            <div className="process-timeline" data-stagger>
-              {copy.process.steps.map((step, index) => (
-                <div key={step.title} className="timeline-item reveal-on-scroll" data-stagger-item>
-                  <div className="timeline-number">{index + 1}</div>
-                  <div className="timeline-content">
-                    <h3>{step.title}</h3>
-                    <p>{step.description}</p>
-                    <ul className="timeline-details">
-                      {step.details.map((detail) => (
-                        <li key={detail}>{detail}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="tech-stack-section" data-fade-section>
-          <div className="container">
-            <div className="tech-stack">
-              <h2 className="reveal-on-scroll">{copy.techStack.title}</h2>
-              <p className="tech-stack-intro reveal-on-scroll">
-                {copy.techStack.introBefore}{' '}
-                <a
-                  href={copy.techStack.repoLinkHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="tech-stack-link"
-                >
-                  {copy.techStack.repoLinkLabel}
-                </a>
-              </p>
-              <div className="tech-grid" data-stagger>
-                {copy.techStack.categories.map((category) => (
-                  <div key={category.title} className="tech-category reveal-on-scroll" data-stagger-item>
-                    <h3>
-                      {category.icon} {category.title}
-                    </h3>
-                    <ul>
-                      {category.items.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-              <div className="section-cta-row">
-                <a
-                  href={copy.techStack.githubCtaHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary btn-large"
-                >
-                  {copy.techStack.githubCtaLabel}
-                </a>
-              </div>
             </div>
           </div>
         </section>
@@ -160,6 +156,30 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
                 <div key={metric.label} className="metric-card reveal-on-scroll" data-stagger-item>
                   <div className="metric-value">{metric.value}</div>
                   <div className="metric-label">{metric.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="development-process" data-fade-section>
+          <div className="container">
+            <h2 className="section-title reveal-on-scroll">{copy.process.sectionTitle}</h2>
+            <p className="section-subtitle reveal-on-scroll">{copy.process.sectionSubtitle}</p>
+
+            <div className="process-timeline" data-stagger>
+              {copy.process.steps.map((step, index) => (
+                <div key={step.title} className="timeline-item reveal-on-scroll" data-stagger-item>
+                  <div className="timeline-number">{index + 1}</div>
+                  <div className="timeline-content">
+                    <h3>{step.title}</h3>
+                    <p>{step.description}</p>
+                    <ul className="timeline-details">
+                      {step.details.map((detail) => (
+                        <li key={detail}>{detail}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               ))}
             </div>

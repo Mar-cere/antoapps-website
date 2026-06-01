@@ -20,14 +20,6 @@ export type AppInsightCard = {
   description: string;
 };
 
-export type AppScreenshotItem = {
-  label: string;
-  description: string;
-  icon?: string;
-  imageAlt?: string;
-  hasImage?: boolean;
-};
-
 export type AppAdvancedFeature = {
   icon: string;
   title: string;
@@ -75,17 +67,6 @@ export type AppPageCopy = {
     subtitle: string;
     cards: AppInsightCard[];
   };
-  screenshots: {
-    title: string;
-    subtitle: string;
-    items: AppScreenshotItem[];
-    note: {
-      noteLabel: string;
-      noteBody: string;
-      repoLabel: string;
-      repoLinkText: string;
-    };
-  };
   advancedFeatures: {
     title: string;
     subtitle: string;
@@ -114,7 +95,7 @@ const metadataByLocale: Record<Locale, AppPageMetadata> = {
       'Anto {versionLabel} (Expo): asistente de bienestar emocional con GPT-5.4 Mini, escalas PHQ-9/GAD-7, protocolos estructurados y detección de crisis. Incluye novedades recientes y accesos rápidos.',
     openGraph: {
       title: 'La Aplicación - Anto',
-      description: 'Características, insights y pantallazos de la aplicación Anto.',
+      description: 'Características, insights y novedades de la aplicación Anto.',
       url: 'https://antoapps.com/app',
     },
   },
@@ -124,7 +105,7 @@ const metadataByLocale: Record<Locale, AppPageMetadata> = {
       'Anto {versionLabel} (Expo): emotional wellness assistant with GPT-5.4 Mini, PHQ-9/GAD-7 scales, structured protocols, and crisis detection. Includes recent updates and quick links.',
     openGraph: {
       title: 'The App - Anto',
-      description: 'Features, insights, and screenshots of the Anto app.',
+      description: 'Features, insights, and recent updates of the Anto app.',
       url: 'https://antoapps.com/en/app',
     },
   },
@@ -324,7 +305,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       hero: {
         title: 'Meet the Anto App',
         subtitle:
-          'Published version {version} (Expo). React Native and Node.js/Express backend. Integration with OpenAI GPT-5.4 Mini, crisis detection, tasks and habits, and more.',
+          'Published version {version} (Expo). See what the app includes, how it works under the hood, and links to the open-source code.',
         githubLinkText: 'View code on GitHub',
         badges: {
           versionLabel: '{versionLabel}',
@@ -342,12 +323,6 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
             label: 'Updated Welcome flow',
             description:
               'New onboarding narrative with clearer value proposition and a more visible download CTA.',
-          },
-          {
-            icon: '🎁',
-            label: trial.label,
-            description:
-              'The initial trial message was strengthened to make it easier to explore the app before subscribing.',
           },
           {
             icon: '🔒',
@@ -423,57 +398,11 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
           },
         ],
       },
-      screenshots: {
-        title: 'App Screenshots',
-        subtitle:
-          'See how Anto looks and works. Space reserved for real application screenshots',
-        items: [
-          {
-            label: 'Home Screen',
-            description: 'Main interface with quick access to all features',
-            icon: '📱',
-          },
-          {
-            label: 'AI Chat',
-            description:
-              'Conversations with a professional, practical tone; response preferences when the app offers them',
-            imageAlt: 'Anto App - AI chat interface (emotional wellness)',
-            hasImage: true,
-          },
-          {
-            label: 'Emotional Analysis',
-            description: 'Detailed charts and reports of your emotional wellness',
-            icon: '📊',
-          },
-          {
-            label: 'Wellness Tools',
-            description: 'Mindfulness exercises, meditation, and relaxation techniques',
-            icon: '🧘',
-          },
-          {
-            label: 'Crisis Detection',
-            description: 'Proactive alert system and immediate support resources',
-            icon: '🚨',
-          },
-          {
-            label: 'Settings and Privacy',
-            description: 'Full control over your privacy and app preferences',
-            icon: '🔒',
-          },
-        ],
-        note: {
-          noteLabel: 'Note:',
-          noteBody:
-            'Real app screenshots will be added here soon. These placeholders show Anto’s main features.',
-          repoLabel: 'Repository:',
-          repoLinkText: 'View source code on GitHub',
-        },
-      },
       advancedFeatures: {
         title: 'Advanced Features',
         subtitle: 'Features that make Anto a unique tool for your mental wellness.',
         versionHighlight:
-          '{versionLabel}: current store release; chat, tone/response preferences, conversation privacy, clinical scales, cognitive distortions, and structured protocols',
+          '{versionLabel}: current store release with recent language, chat, and free-trial improvements',
         features: buildAdvancedFeaturesEn(),
       },
       techSpecs: {
@@ -546,7 +475,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
     hero: {
       title: 'Conoce la Aplicación Anto',
       subtitle:
-        'Versión publicada {version} (Expo). React Native y backend Node.js/Express. Integración con OpenAI GPT-5.4 Mini, detección de crisis, tareas y hábitos, y más.',
+        'Versión publicada {version} (Expo). Descubre qué incluye la app, cómo funciona por dentro y enlaces al código abierto.',
       githubLinkText: 'Ver código en GitHub',
       badges: {
         versionLabel: '{versionLabel}',
@@ -564,12 +493,6 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
           label: 'Flujo de Bienvenida actualizado',
           description:
             'Nueva narrativa de onboarding con mejor claridad de propuesta de valor y CTA de descarga más visible.',
-        },
-        {
-          icon: '🎁',
-          label: trial.label,
-          description:
-            'Se reforzó el mensaje de prueba inicial para facilitar la exploración de la app antes de suscribirte.',
         },
         {
           icon: '🔒',
@@ -645,57 +568,11 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
         },
       ],
     },
-    screenshots: {
-      title: 'Pantallazos de la Aplicación',
-      subtitle:
-        'Descubre cómo se ve y funciona Anto. Espacio reservado para screenshots reales de la aplicación',
-      items: [
-        {
-          label: 'Pantalla de Inicio',
-          description: 'Interfaz principal con acceso rápido a todas las funcionalidades',
-          icon: '📱',
-        },
-        {
-          label: 'Chat con IA',
-          description:
-            'Conversaciones con tono profesional y práctico; preferencias de respuesta cuando la app lo ofrece',
-          imageAlt: 'Anto App - Interfaz de chat con IA (bienestar emocional)',
-          hasImage: true,
-        },
-        {
-          label: 'Análisis Emocional',
-          description: 'Gráficos y reportes detallados de tu bienestar emocional',
-          icon: '📊',
-        },
-        {
-          label: 'Herramientas de Bienestar',
-          description: 'Ejercicios de mindfulness, meditación y técnicas de relajación',
-          icon: '🧘',
-        },
-        {
-          label: 'Detección de Crisis',
-          description: 'Sistema proactivo de alertas y recursos de apoyo inmediato',
-          icon: '🚨',
-        },
-        {
-          label: 'Configuración y Privacidad',
-          description: 'Control total sobre tu privacidad y preferencias de la aplicación',
-          icon: '🔒',
-        },
-      ],
-      note: {
-        noteLabel: 'Nota:',
-        noteBody:
-          'Los screenshots reales de la aplicación se agregarán aquí próximamente. Estos placeholders muestran las principales funcionalidades de Anto.',
-        repoLabel: 'Repositorio:',
-        repoLinkText: 'Ver código fuente en GitHub',
-      },
-    },
     advancedFeatures: {
       title: 'Características Avanzadas',
       subtitle: 'Funcionalidades que hacen de Anto una herramienta única para tu bienestar mental.',
       versionHighlight:
-        '{versionLabel}: línea actual en tiendas; chat, preferencias de tono/respuesta, privacidad en conversación, escalas clínicas, distorsiones cognitivas y protocolos estructurados',
+        '{versionLabel}: línea actual en tiendas, con mejoras recientes de idioma, chat y prueba gratuita.',
       features: buildAdvancedFeaturesEs(),
     },
     techSpecs: {

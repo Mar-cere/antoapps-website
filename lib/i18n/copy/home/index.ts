@@ -41,7 +41,6 @@ export {
   type AppPageCopy,
   type AppPageMetadata,
   type AppInsightCard,
-  type AppScreenshotItem,
   type AppAdvancedFeature,
   type AppTechSpecCard,
 } from '../app';
