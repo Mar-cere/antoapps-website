@@ -561,7 +561,7 @@ const challengesEn: DesarrolloChallenge[] = [
 
 const metricsEs: DesarrolloMetric[] = [
   { value: '15K+', label: 'LOC TypeScript/JS' },
-  { value: '3', label: 'Clientes (iOS · Android · Web)' },
+  { value: 'PWA', label: 'Web responsive + apps iOS y Android' },
   { value: '97%+', label: 'Tests en CI' },
   { value: '<2.5s', label: 'Latencia chat (p95)' },
   { value: 'REST+WS', label: 'API dual (HTTP + Socket.IO)' },
@@ -570,7 +570,7 @@ const metricsEs: DesarrolloMetric[] = [
 
 const metricsEn: DesarrolloMetric[] = [
   { value: '15K+', label: 'LOC TypeScript/JS' },
-  { value: '3', label: 'Clients (iOS · Android · Web)' },
+  { value: 'PWA', label: 'Responsive web + iOS/Android apps' },
   { value: '97%+', label: 'CI test pass rate' },
   { value: '<2.5s', label: 'Chat latency (p95)' },
   { value: 'REST+WS', label: 'Dual API (HTTP + Socket.IO)' },

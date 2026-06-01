@@ -981,8 +981,10 @@
 
 .whats-new__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--spacing-5);
+    max-width: 1080px;
+    margin-inline: auto;
     margin-bottom: var(--spacing-10);
 }
 
@@ -1081,6 +1083,11 @@
 
     .cta-buttons .store-badge-link {
         justify-content: center;
+    }
+
+    .whats-new__grid {
+        grid-template-columns: 1fr;
+        max-width: 28rem;
     }
 }
 

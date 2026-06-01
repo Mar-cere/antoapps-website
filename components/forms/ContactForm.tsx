@@ -48,7 +48,21 @@ export default function ContactForm({ copy, locale = 'es' }: ContactFormProps) {
     );
 
   const onSubmit = async (data: Record<string, string>) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        message: data.message,
+        locale,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('contact_submit_failed');
+    }
+
     trackFormSubmit('contact');
     toast.success(copy.toast.success);
     setFormData({ name: '', email: '', message: '' });

@@ -31,32 +31,22 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
         {
           title: 'Acceso Inmediato 24/7',
           description:
-            'Sin esperas, sin citas, disponible cuando lo necesites. El asistente AI está siempre disponible, incluso en horarios nocturnos o fines de semana cuando otros servicios no están disponibles.',
+            'Sin esperas ni citas: apoyo cuando lo necesites, también de noche o en fin de semana.',
         },
         {
           title: 'Privacidad Garantizada',
           description:
-            'Tus conversaciones son completamente confidenciales con encriptación de extremo a extremo. Nunca compartimos tu información y cumplimos con todas las regulaciones de protección de datos.',
+            'Conversaciones confidenciales con encriptación de extremo a extremo. No vendemos tus datos.',
         },
         {
-          title: 'Personalización Total',
+          title: 'Apoyo que se adapta a ti',
           description:
-            'Respuestas adaptadas a tu situación y necesidades específicas. El sistema aprende de ti y se adapta a tu estilo de comunicación, historial emocional y preferencias personales.',
-        },
-        {
-          title: 'Herramientas Prácticas',
-          description:
-            'Más de 100 ejercicios y técnicas que puedes aplicar en tu día a día, incluyendo mindfulness, meditación, técnicas de respiración y ejercicios de relajación diseñados por profesionales.',
-        },
-        {
-          title: 'Seguimiento de Progreso',
-          description:
-            'Visualiza tu bienestar emocional a lo largo del tiempo con gráficos detallados, reportes semanales y mensuales, e insights personalizados sobre tu progreso.',
+            'Respuestas según tu situación, con modos de conversación y preferencias de estilo cuando la app lo permite.',
         },
         {
           title: 'Detección Proactiva de Crisis',
           description:
-            'El sistema identifica señales de riesgo y te ofrece recursos inmediatos, líneas de ayuda, y apoyo de emergencia cuando lo necesites.',
+            'Si detectamos señales de riesgo, te orientamos hacia recursos y líneas de ayuda de inmediato.',
         },
       ],
       profesionales: [
@@ -133,32 +123,22 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
         {
           title: 'Immediate 24/7 Access',
           description:
-            'No waiting, no appointments — available when you need it. The AI assistant is always available, including at night and on weekends when other services may not be.',
+            'No waiting or appointments — support when you need it, including nights and weekends.',
         },
         {
           title: 'Privacy Guaranteed',
           description:
-            'Your conversations are fully confidential with end-to-end encryption. We never share your information and comply with all data protection regulations.',
+            'Confidential conversations with end-to-end encryption. We do not sell your data.',
         },
         {
-          title: 'Full Personalisation',
+          title: 'Support that adapts to you',
           description:
-            'Responses tailored to your situation and specific needs. The system learns from you and adapts to your communication style, emotional history, and personal preferences.',
-        },
-        {
-          title: 'Practical Tools',
-          description:
-            'Over 100 exercises and techniques you can use in daily life, including mindfulness, meditation, breathing techniques, and relaxation exercises designed by professionals.',
-        },
-        {
-          title: 'Progress Tracking',
-          description:
-            'Visualise your emotional wellbeing over time with detailed charts, weekly and monthly reports, and personalised insights about your progress.',
+            'Responses tailored to your situation, with conversation modes and style preferences when the app allows.',
         },
         {
           title: 'Proactive Crisis Detection',
           description:
-            'The system identifies risk signals and offers immediate resources, helplines, and emergency support when you need it.',
+            'If we detect risk signals, we guide you toward resources and helplines right away.',
         },
       ],
       profesionales: [
