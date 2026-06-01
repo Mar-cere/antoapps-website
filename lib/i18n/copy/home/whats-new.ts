@@ -25,10 +25,10 @@ export type WhatsNewCopy = {
 const whatsNewCopy: Record<Locale, WhatsNewCopy> = {
   es: {
     title: 'Novedades en Anto',
-    subtitle: `Cambios recientes en la versión ${APP_VERSION}. El catálogo completo de funciones está en la sección siguiente.`,
+    subtitle: `Cambios recientes en la versión ${APP_VERSION}.`,
     versionBadge: APP_VERSION_LABEL,
     footnote:
-      'Escalas clínicas, protocolos, detección de crisis y más se describen en Características Principales — aquí solo destacamos lo nuevo en esta versión.',
+      'Escalas clínicas, protocolos y detección de crisis están en Características, más arriba en esta página.',
     items: [
       {
         icon: '🌍',
@@ -58,10 +58,10 @@ const whatsNewCopy: Record<Locale, WhatsNewCopy> = {
   },
   en: {
     title: 'What\'s New in Anto',
-    subtitle: `Recent changes in version ${APP_VERSION}. The full feature set is in the next section.`,
+    subtitle: `Recent changes in version ${APP_VERSION}.`,
     versionBadge: APP_VERSION_LABEL,
     footnote:
-      'Clinical scales, protocols, crisis detection, and more are covered under Key Features — this block highlights what shipped in this version only.',
+      'Clinical scales, protocols, and crisis detection are in Features, earlier on this page.',
     items: [
       {
         icon: '🌍',

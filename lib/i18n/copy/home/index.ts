@@ -27,6 +27,13 @@ export {
 export { getWhatsNewCopy, type WhatsNewCopy, type WhatsNewItem } from './whats-new';
 
 export {
+  getHomeChaptersCopy,
+  type HomeChaptersCopy,
+  type HomeChapterCopy,
+  type HomeChapterId,
+} from './chapters';
+
+export {
   getPricingCalculatorCopy,
   type PricingCalculatorCopy,
   type PricingPlan,

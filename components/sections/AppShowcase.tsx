@@ -12,11 +12,13 @@ export default function AppShowcase({ locale = 'es' }: AppShowcaseProps) {
   const copy = getHomeSectionsCopy(locale).appShowcase;
 
   return (
-    <section className="app-showcase" data-fade-section>
+    <section id="la-app" className="app-showcase" data-fade-section aria-labelledby="la-app-title">
       <div className="container">
         <div className="showcase-content">
           <div className="showcase-text">
-            <h2 className="section-title reveal-on-scroll">{copy.title}</h2>
+            <h2 className="section-title reveal-on-scroll" id="la-app-title">
+              {copy.title}
+            </h2>
             <p className="section-subtitle reveal-on-scroll">{copy.subtitle}</p>
             <p className="showcase-description reveal-on-scroll">{copy.description}</p>
           </div>
