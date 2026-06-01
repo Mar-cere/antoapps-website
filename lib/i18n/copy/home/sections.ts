@@ -187,7 +187,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       proTip: {
         title: '💡 Consejo Pro',
         description:
-          'Para obtener los mejores resultados, usa Anto regularmente. El asistente AI aprende más sobre ti con cada conversación, permitiéndole ofrecerte insights y recomendaciones cada vez más precisas. Muchos usuarios reportan mejoras significativas después de usar la app de forma consistente por 2-3 semanas.',
+          'Para obtener los mejores resultados, usa Anto regularmente. El asistente AI aprende más sobre ti con cada conversación, permitiéndole ofrecerte insights y recomendaciones cada vez más precisas. Muchos usuarios reportan mejoras significativas después de usar la app de forma consistente por 1-2 semanas.',
       },
     },
     appShowcase: {
@@ -449,7 +449,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       proTip: {
         title: '💡 Pro Tip',
         description:
-          'For the best results, use Anto regularly. The AI assistant learns more about you with each conversation, allowing it to offer increasingly accurate insights and recommendations. Many users report significant improvements after using the app consistently for 2–3 weeks.',
+          'For the best results, use Anto regularly. The AI assistant learns more about you with each conversation, allowing it to offer increasingly accurate insights and recommendations. Many users report significant improvements after using the app consistently for 1–2 weeks.',
       },
     },
     appShowcase: {

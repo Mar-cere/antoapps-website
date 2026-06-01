@@ -204,7 +204,7 @@
         display: none;
     }
 
-    /* Hero Mobile — mismo offset de header que sections.css (tokens) */
+    /* Hero Mobile — orden y tipografía en theme/mobile-modern.css */
     .hero {
         min-height: auto;
         align-items: flex-start;
@@ -219,113 +219,10 @@
         align-content: start;
     }
 
-    /* Orden DOM: primero copy + CTAs (landing), luego mockup (no order:-1) */
-    .hero-content {
-        order: 0;
-        /* Solo móvil: flex para reordenar — en ≥768 el hero sigue en flujo de bloque (sections.css) */
-        display: flex;
-        flex-direction: column;
-    }
-
     .hero-image {
         order: 1;
         margin-top: var(--spacing-4);
         margin-bottom: 0;
-    }
-    
-    .hero-title {
-        order: 1;
-        font-size: 2rem;
-        line-height: 1.2;
-        margin-top: 0;
-        margin-bottom: var(--spacing-3);
-    }
-    
-    .hero-subtitle {
-        order: 2;
-        font-size: 1rem;
-        margin-bottom: var(--spacing-3);
-        padding: 0 var(--spacing-sm);
-    }
-
-    .hero-download-pitch {
-        order: 3;
-        font-size: 0.9375rem;
-        /* Menos aire antes del bloque de descarga (sigue sin tapar el título) */
-        margin-bottom: var(--spacing-3);
-        padding: 0 var(--spacing-sm);
-    }
-    
-    .hero-stats {
-        order: 5;
-        flex-direction: column;
-        gap: var(--spacing-sm);
-        margin-top: var(--spacing-4);
-        margin-bottom: var(--spacing-md);
-        padding: 0 var(--spacing-sm);
-    }
-    
-    .hero-stat-item {
-        width: 100%;
-        max-width: min(280px, 100%);
-        margin: 0 auto;
-    }
-    
-    .hero-cta {
-        order: 4;
-        flex-direction: column;
-        align-items: stretch;
-        gap: var(--spacing-sm);
-        width: 100%;
-        padding: 0 var(--spacing-sm);
-        margin-top: 0;
-    }
-    
-    .hero-cta .btn {
-        width: 100%;
-        min-height: var(--touch-target-min);
-        padding: 14px 24px;
-    }
-
-    .hero-cta .store-badge-link {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .hero-cta .store-badge-img {
-        height: 44px;
-        width: auto;
-        max-width: min(220px, 88vw);
-    }
-    
-    .hero-badges {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: var(--spacing-xs);
-        padding: 0 var(--spacing-sm);
-    }
-    
-    .phone-mockup {
-        width: 200px;
-        height: 400px;
-        margin: 0 auto;
-    }
-
-    /* Sections Mobile */
-    section {
-        padding: var(--spacing-lg) 0;
-    }
-    
-    .section-title {
-        font-size: 1.75rem;
-        margin-bottom: var(--spacing-sm);
-        padding: 0 var(--spacing-sm);
-    }
-    
-    .section-subtitle {
-        font-size: 1rem;
-        padding: 0 var(--spacing-sm);
-        margin-bottom: var(--spacing-md);
     }
 
     /* Features Mobile */
@@ -333,8 +230,8 @@
     .values-grid,
     .pricing-grid {
         grid-template-columns: 1fr;
-        gap: var(--spacing-md);
-        padding: 0 var(--spacing-sm);
+        gap: var(--spacing-4);
+        padding: 0;
     }
     
     .feature-card,

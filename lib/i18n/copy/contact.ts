@@ -102,7 +102,6 @@ const metadataByLocale: Record<Locale, ContactPageMetadata> = {
 const sharedContactMethods = {
   primaryEmail: 'marcelo.ull@antoapps.com',
   githubProfile: 'https://github.com/Mar-cere',
-  githubApp: 'https://github.com/Mar-cere/Anto',
   githubWebsite: 'https://github.com/Mar-cere/antoapps-website',
   linkedin: 'https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/',
   telegram: 'https://t.me/marcere23',
@@ -166,10 +165,6 @@ function buildContactPageCopy(locale: Locale): ContactPageCopy {
               {
                 href: sharedContactMethods.githubProfile,
                 label: '💻 GitHub: @Mar-cere',
-              },
-              {
-                href: sharedContactMethods.githubApp,
-                label: '📱 Repository: Anto App',
               },
               {
                 href: sharedContactMethods.githubWebsite,
@@ -258,10 +253,6 @@ function buildContactPageCopy(locale: Locale): ContactPageCopy {
             {
               href: sharedContactMethods.githubProfile,
               label: '💻 GitHub: @Mar-cere',
-            },
-            {
-              href: sharedContactMethods.githubApp,
-              label: '📱 Repositorio: Aplicación Anto',
             },
             {
               href: sharedContactMethods.githubWebsite,

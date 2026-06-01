@@ -46,16 +46,6 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
                 <span className="app-badge">{copy.hero.badges.privacy}</span>
                 <span className="app-badge">{copy.hero.badges.languages}</span>
               </div>
-              <p className="app-hero-meta reveal-on-scroll">
-                <a
-                  href="https://github.com/Mar-cere/Anto"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="app-inline-link"
-                >
-                  {copy.hero.githubLinkText}
-                </a>
-              </p>
             </div>
           </div>
         </section>

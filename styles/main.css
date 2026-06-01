@@ -75,3 +75,6 @@
 @import url('./utilities/accessibility.css');
 @import url('./utilities/enhanced-animations.css');
 @import url('./utilities/mobile-optimizations.css');
+
+/* Mobile modern + refinamiento visual (debe ir al final) */
+@import url('./theme/mobile-modern.css');

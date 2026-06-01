@@ -4,7 +4,7 @@
 
 .sticky-nav {
     position: fixed;
-    top: 40px;
+    top: calc(var(--layout-site-header-height) + env(safe-area-inset-top, 0px));
     left: 0;
     right: 0;
     z-index: 199;
@@ -89,7 +89,7 @@
 
 @media (max-width: 768px) {
     .sticky-nav {
-        top: 40px; /* Fallback para mobile; JS sobrescribe con altura real del header */
+        top: calc(var(--layout-site-header-height) + env(safe-area-inset-top, 0px));
     }
 
     .sticky-nav-list {

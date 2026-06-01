@@ -75,9 +75,12 @@
 /* Móvil: altura real de la barra (borde incl.) para menú/hero; sin hueco extra bajo el header */
 @media (max-width: 767px) {
     :root {
-        --layout-site-header-height: 40px;
+        --layout-site-header-height: 48px;
         --home-hero-padding-top: calc(
-            var(--layout-site-header-height) + env(safe-area-inset-top, 0px)
+            var(--layout-site-header-height) + var(--spacing-4) + env(safe-area-inset-top, 0px)
+        );
+        --page-hero-padding-top: calc(
+            var(--layout-site-header-height) + var(--spacing-5) + env(safe-area-inset-top, 0px)
         );
     }
 }

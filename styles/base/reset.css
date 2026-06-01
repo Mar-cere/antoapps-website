@@ -112,7 +112,11 @@ select {
 
 @media (max-width: 767px) {
     body {
-        font-size: 17px; /* Tamaño base ligeramente mayor para mejor legibilidad */
+        font-size: 16px;
+    }
+
+    p {
+        margin-bottom: var(--spacing-4);
     }
     
     /* Mejorar legibilidad en móviles */

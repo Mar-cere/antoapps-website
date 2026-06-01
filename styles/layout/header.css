@@ -75,18 +75,27 @@
 
 /* Menú móvil mejorado */
 @media (max-width: 767px) {
+    .nav {
+        padding: var(--spacing-1) 0;
+    }
+
+    .nav .container {
+        padding-left: max(var(--spacing-3), env(safe-area-inset-left, 0px));
+        padding-right: max(var(--spacing-3), env(safe-area-inset-right, 0px));
+    }
+
     .logo {
-        gap: var(--spacing-1);
+        gap: var(--spacing-2);
     }
 
     .logo-icon {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
     }
 
     .logo span {
-        font-size: var(--font-size-xs);
-        line-height: 1.15;
+        font-size: var(--font-size-sm);
+        line-height: 1.2;
     }
 
     /* Bajo el notch: misma referencia que --layout-site-header-height en móvil (spacing.css) */
@@ -108,16 +117,22 @@
         max-height: 0;
         overflow: hidden;
         opacity: 0;
-        transform: translateY(-20px);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-12px);
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: var(--z-fixed);
         box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
     }
 
     .nav-menu.active {
-        max-height: 500px;
+        max-height: min(80vh, 520px);
         opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
         transform: translateY(0);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .nav-menu li {
@@ -151,20 +166,20 @@
         margin-left: auto;
     }
 
-    /* Barra delgada: 40×40 + padding mínimo (sigue siendo táctil razonable en móvil) */
+    /* Barra delgada: toggle táctil sin inflar la barra */
     .nav-toggle {
         display: flex;
         z-index: calc(var(--z-fixed) + 1);
-        min-width: 40px;
-        min-height: 40px;
-        padding: var(--spacing-1);
-        gap: 3px;
+        min-width: 44px;
+        min-height: 44px;
+        padding: var(--spacing-2);
+        gap: 4px;
         align-items: center;
         justify-content: center;
     }
 
     .nav-toggle span {
-        width: 20px;
+        width: 22px;
     }
 
     .nav-toggle.active span:nth-child(1) {

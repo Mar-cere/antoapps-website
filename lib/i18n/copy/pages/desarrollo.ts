@@ -3,8 +3,6 @@ import { localePath, type Locale } from '@/lib/i18n/config';
 import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 const CANONICAL_PATH = '/desarrollo';
 
-const GITHUB_REPO = 'https://github.com/Mar-cere/Anto';
-const GITHUB_WEBSITE = 'https://github.com/Mar-cere/antoapps-website';
 const GITHUB_PROFILE = 'https://github.com/Mar-cere';
 const LINKEDIN_PROFILE = 'https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/';
 const DEVELOPER_EMAIL = 'marcelo.ull@antoapps.com';
@@ -73,12 +71,8 @@ export type DesarrolloPageCopy = {
   };
   techStack: {
     title: string;
-    introBefore: string;
-    repoLinkLabel: string;
-    repoLinkHref: string;
+    intro: string;
     categories: DesarrolloTechCategory[];
-    githubCtaLabel: string;
-    githubCtaHref: string;
   };
   challenges: {
     sectionTitle: string;
@@ -101,11 +95,6 @@ export type DesarrolloPageCopy = {
     linkedinAriaLabel: string;
     linkedinLabel: string;
     linkedinHref: string;
-    reposTitle: string;
-    appRepoLabel: string;
-    appRepoHref: string;
-    websiteRepoLabel: string;
-    websiteRepoHref: string;
   };
   cta: {
     title: string;
@@ -608,7 +597,7 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
         currentLabel: 'Development',
       },
       meta: {
-        title: 'Development - Anto | Stack, Architecture and Open Source',
+        title: 'Development - Anto | Stack and Architecture',
         description:
           'Full-stack technical documentation: React Native, Next.js 14, Node.js, MongoDB, Socket.IO, OpenAI GPT-5.4 Mini, and production security.',
         openGraphTitle: 'Development - Anto | Technology Stack',
@@ -617,10 +606,10 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
         canonicalPath: CANONICAL_PATH,
       },
       hero: {
-        badge: 'Production stack · Open source',
+        badge: 'Production stack',
         title: 'The engineering behind Anto',
         subtitle:
-          'Full-stack architecture, conversational AI, and real-time messaging — documented from the official repository.',
+          'Full-stack architecture, conversational AI, and real-time messaging built for reliable everyday use.',
         stackLine:
           'React Native (Expo) → Express.js / Socket.IO → MongoDB → OpenAI GPT-5.4 Mini',
         highlightTechs: heroHighlightTechs,
@@ -638,12 +627,8 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
       },
       techStack: {
         title: 'Production technology stack',
-        introBefore: 'Libraries and services in the',
-        repoLinkLabel: 'Anto monorepo',
-        repoLinkHref: GITHUB_REPO,
+        intro: 'Libraries and services that power the Anto mobile app, API, and this website.',
         categories: techStackEn,
-        githubCtaLabel: 'Browse source on GitHub →',
-        githubCtaHref: GITHUB_REPO,
       },
       challenges: {
         sectionTitle: 'Technical Challenges and Solutions',
@@ -666,16 +651,11 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
         linkedinAriaLabel: 'Marcelo Ull Marambio on LinkedIn',
         linkedinLabel: 'LinkedIn',
         linkedinHref: LINKEDIN_PROFILE,
-        reposTitle: 'Repositories',
-        appRepoLabel: '📱 Anto App',
-        appRepoHref: GITHUB_REPO,
-        websiteRepoLabel: '🌐 Website',
-        websiteRepoHref: GITHUB_WEBSITE,
       },
       cta: {
-        title: 'Want to dive into the code?',
+        title: 'Questions about the stack?',
         description:
-          'Open-source repositories with TypeScript, automated CI, and documented architecture. For audits, integrations, or collaboration on the stack, get in touch.',
+          'For technical inquiries, integrations, or collaboration on infrastructure, get in touch.',
         contactLabel: 'Contact',
         contactHref: localePath(locale, '/contacto'),
         emailLabel: 'Direct Email',
@@ -691,7 +671,7 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
       currentLabel: 'Desarrollo',
     },
     meta: {
-      title: 'Desarrollo - Anto | Stack, arquitectura y código abierto',
+      title: 'Desarrollo - Anto | Stack y arquitectura',
       description:
         'Documentación técnica full-stack: React Native, Next.js 14, Node.js, MongoDB, Socket.IO, OpenAI GPT-5.4 Mini y seguridad en producción.',
       openGraphTitle: 'Desarrollo - Anto | Stack tecnológico',
@@ -700,10 +680,10 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
       canonicalPath: CANONICAL_PATH,
     },
     hero: {
-      badge: 'Stack en producción · Código abierto',
+      badge: 'Stack en producción',
       title: 'La ingeniería detrás de Anto',
       subtitle:
-        'Arquitectura full-stack, IA conversacional y mensajería en tiempo real — documentado desde el repositorio oficial.',
+        'Arquitectura full-stack, IA conversacional y mensajería en tiempo real pensadas para un uso fiable en el día a día.',
       stackLine:
         'React Native (Expo) → Express.js / Socket.IO → MongoDB → OpenAI GPT-5.4 Mini',
       highlightTechs: heroHighlightTechs,
@@ -721,12 +701,8 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
     },
     techStack: {
       title: 'Stack tecnológico en producción',
-      introBefore: 'Librerías y servicios del',
-      repoLinkLabel: 'monorepo Anto',
-      repoLinkHref: GITHUB_REPO,
+      intro: 'Librerías y servicios que impulsan la app móvil Anto, la API y este sitio web.',
       categories: techStackEs,
-      githubCtaLabel: 'Explorar código en GitHub →',
-      githubCtaHref: GITHUB_REPO,
     },
     challenges: {
       sectionTitle: 'Desafíos Técnicos y Soluciones',
@@ -749,16 +725,11 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
       linkedinAriaLabel: 'LinkedIn de Marcelo Ull Marambio',
       linkedinLabel: 'LinkedIn',
       linkedinHref: LINKEDIN_PROFILE,
-      reposTitle: 'Repositorios',
-      appRepoLabel: '📱 Aplicación Anto',
-      appRepoHref: GITHUB_REPO,
-      websiteRepoLabel: '🌐 Sitio Web',
-      websiteRepoHref: GITHUB_WEBSITE,
     },
     cta: {
-      title: '¿Quieres revisar el código?',
+      title: '¿Preguntas sobre el stack?',
       description:
-        'Repositorios open source con TypeScript, CI automatizado y arquitectura documentada. Para auditorías, integraciones o colaboración en el stack, escríbeme.',
+        'Para consultas técnicas, integraciones o colaboración en infraestructura, escríbeme.',
       contactLabel: 'Contactar',
       contactHref: localePath(locale, '/contacto'),
       emailLabel: 'Email Directo',

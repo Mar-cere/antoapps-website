@@ -15,35 +15,35 @@
     }
 }
 
-/* Touch Target Sizes - Mínimo 44x44px (Apple/Google Guidelines) */
+/* Touch targets — solo controles interactivos, no todos los enlaces */
 button,
-a,
 input[type="button"],
 input[type="submit"],
 input[type="reset"],
-[role="button"],
-[tabindex="0"] {
-    min-height: 44px;
-    min-width: 44px;
-    touch-action: manipulation; /* Elimina delay de 300ms en iOS */
+[role="button"]:not([role="link"]),
+.nav-link,
+.nav-toggle,
+.btn,
+.tab-btn,
+.faq-question,
+.faq-category-btn {
+    touch-action: manipulation;
 }
 
 /* Áreas táctiles más grandes en móvil */
 @media (max-width: 768px) {
     button,
-    a,
     .btn,
     .nav-link,
-    .nav-toggle {
-        min-height: 48px;
-        min-width: 48px;
-        padding: var(--spacing-2) var(--spacing-4);
+    .nav-toggle,
+    .tab-btn,
+    .faq-question,
+    .faq-category-btn {
+        min-height: 44px;
     }
 
-    /* Botones pequeños también deben ser táctiles */
     .btn-small {
-        min-height: 44px;
-        min-width: 44px;
+        min-height: 40px;
     }
 
     /* Inputs y selects más grandes */
@@ -217,14 +217,8 @@ body.pull-to-refresh-active::before {
         overscroll-behavior: contain;
     }
 
-    /* Scroll snap para secciones */
-    main {
-        scroll-snap-type: y proximity;
-    }
-
     section {
-        scroll-snap-align: start;
-        scroll-margin-top: calc(var(--header-height) + 60px);
+        scroll-margin-top: calc(var(--layout-site-header-height) + var(--spacing-4));
     }
 }
 
@@ -314,22 +308,14 @@ body.pull-to-refresh-active::before {
     }
 }
 
-/* Optimizaciones de Performance para Touch */
+/* Aceleración de hardware solo en capas animadas */
 @media (max-width: 768px) {
-    /* Aceleración de hardware para animaciones */
     .nav-menu,
     .nav-overlay,
     .sticky-nav {
         will-change: transform, opacity;
-        transform: translateZ(0);
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
-    }
-
-    /* Reducir repaints en scroll */
-    * {
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
     }
 }
 
@@ -357,22 +343,6 @@ body.pull-to-refresh-active::before {
         -webkit-overflow-scrolling: touch;
     }
 
-    /* Indicador visual de swipe para cerrar */
-    .nav-menu::after {
-        content: '← Desliza para cerrar';
-        position: absolute;
-        top: var(--spacing-2);
-        right: var(--spacing-4);
-        font-size: var(--font-size-xs);
-        color: var(--color-text-tertiary);
-        opacity: 0.6;
-        pointer-events: none;
-        animation: fadeInOut 3s ease-in-out infinite;
-    }
-
-    .nav-menu.active::after {
-        display: block;
-    }
 }
 
 @keyframes fadeInOut {
@@ -420,8 +390,18 @@ body.pull-to-refresh-active::before {
         position: relative;
     }
 
-    /* Prevenir scroll horizontal accidental */
-    * {
+    /* Prevenir overflow horizontal sin romper flex/grid */
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    img,
+    video,
+    svg,
+    iframe,
+    table,
+    pre {
         max-width: 100%;
     }
 }

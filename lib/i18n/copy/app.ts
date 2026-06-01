@@ -24,7 +24,6 @@ export type AppPageCopy = {
   hero: {
     title: string;
     subtitle: string;
-    githubLinkText: string;
     badges: {
       versionLabel: string;
       availability: string;
@@ -113,7 +112,6 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
         title: 'Your emotional wellness, in your pocket',
         subtitle:
           'Anto is a mobile app that accompanies you with guided conversation, self-care tools, and support when you need it most. Current version {version}.',
-        githubLinkText: 'Open-source code on GitHub',
         badges: {
           versionLabel: '{versionLabel}',
           availability: '⏰ Available 24/7',
@@ -228,7 +226,6 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       title: 'Tu bienestar emocional, en el bolsillo',
       subtitle:
         'Anto es una aplicación móvil que te acompaña con conversación guiada, herramientas de autocuidado y apoyo cuando más lo necesitas. Versión actual {version}.',
-      githubLinkText: 'Código abierto en GitHub',
       badges: {
         versionLabel: '{versionLabel}',
         availability: '⏰ Disponible 24/7',

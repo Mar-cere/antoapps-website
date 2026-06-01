@@ -100,12 +100,30 @@
 }
 
 @media (max-width: 640px) {
-    .android-early-access-form {
-        flex-direction: column;
+    .android-early-access {
+        padding: var(--spacing-3);
     }
 
-    .android-early-access-button {
+    .android-early-access-form,
+    .android-early-access-form--compact {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .android-early-access-form--compact .android-early-access-input {
+        flex: 1 1 auto;
         width: 100%;
+        min-width: 0;
+        font-size: 16px;
+    }
+
+    .android-early-access-button,
+    .android-early-access-button--compact {
+        width: 100%;
+        min-width: 0;
+        white-space: normal;
+        line-height: 1.3;
+        padding: var(--spacing-3);
     }
 }
 

@@ -55,17 +55,7 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
           <div className="container">
             <div className="tech-stack">
               <h2 className="section-title reveal-on-scroll">{copy.techStack.title}</h2>
-              <p className="tech-stack-intro reveal-on-scroll">
-                {copy.techStack.introBefore}{' '}
-                <a
-                  href={copy.techStack.repoLinkHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="tech-stack-link"
-                >
-                  {copy.techStack.repoLinkLabel}
-                </a>
-              </p>
+              <p className="tech-stack-intro reveal-on-scroll">{copy.techStack.intro}</p>
               <div className="tech-grid tech-grid--detailed" data-stagger>
                 {copy.techStack.categories.map((category) => (
                   <div key={category.title} className="tech-category reveal-on-scroll" data-stagger-item>
@@ -85,16 +75,6 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
                     </ul>
                   </div>
                 ))}
-              </div>
-              <div className="section-cta-row">
-                <a
-                  href={copy.techStack.githubCtaHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary btn-large"
-                >
-                  {copy.techStack.githubCtaLabel}
-                </a>
               </div>
             </div>
           </div>
@@ -222,25 +202,6 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
                   >
                     <span>🔗</span>
                     <span>{copy.developer.linkedinLabel}</span>
-                  </a>
-                </div>
-                <div className="developer-repos">
-                  <h4>{copy.developer.reposTitle}</h4>
-                  <a
-                    href={copy.developer.appRepoHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="repo-link"
-                  >
-                    {copy.developer.appRepoLabel}
-                  </a>
-                  <a
-                    href={copy.developer.websiteRepoHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="repo-link"
-                  >
-                    {copy.developer.websiteRepoLabel}
                   </a>
                 </div>
               </div>
