@@ -244,30 +244,31 @@
 }
 
 .app-version-highlight {
-    display: block;
-    margin-top: var(--spacing-sm);
+    display: inline;
+    margin-left: 0.25em;
     color: var(--color-primary);
     font-weight: var(--font-weight-semibold);
+    font-size: 0.95em;
 }
 
 /* Advanced Features Section (Estilo Apple) */
 .app-features-advanced {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
     background: var(--color-bg-secondary);
 }
 
 .advanced-features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-6);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-4);
 }
 
 .advanced-feature {
     background: var(--color-bg-primary);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
-    padding: var(--spacing-6);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-4);
     transition: var(--transition-base);
 }
 
@@ -283,16 +284,16 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-4);
+    margin-bottom: var(--spacing-2);
 }
 
 .feature-icon {
-    font-size: var(--font-size-4xl);
+    font-size: var(--font-size-3xl);
     flex-shrink: 0;
 }
 
 .advanced-feature h3 {
-    font-size: clamp(var(--font-size-xl), 2.5vw, var(--font-size-2xl));
+    font-size: clamp(var(--font-size-lg), 2vw, var(--font-size-xl));
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
     margin: 0;
@@ -301,9 +302,9 @@
 
 .advanced-feature p {
     color: var(--color-text-secondary);
-    font-size: clamp(var(--font-size-base), 1.5vw, var(--font-size-lg));
-    line-height: var(--line-height-base);
-    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-snug);
+    margin-bottom: var(--spacing-2);
     font-weight: var(--font-weight-normal);
 }
 
@@ -315,10 +316,11 @@
 
 .feature-list li {
     color: var(--color-text-primary);
-    padding: var(--spacing-2) 0;
-    padding-left: var(--spacing-6);
+    padding: var(--spacing-1) 0;
+    padding-left: var(--spacing-5);
     position: relative;
-    line-height: var(--line-height-base);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-snug);
 }
 
 .feature-list li::before {

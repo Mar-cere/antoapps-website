@@ -115,88 +115,30 @@ function buildAdvancedFeaturesEs(): AppAdvancedFeature[] {
   return [
     {
       icon: '🤖',
-      title: 'Chat Conversacional Avanzado con GPT-5.4 Mini',
+      title: 'Chat con IA',
       description:
-        'Integración directa con OpenAI API (GPT-5.4 Mini): tono profesional y práctico por defecto, contexto emocional y memoria de conversación. Evaluación con escalas, distorsiones cognitivas y protocolos estructurados; ajustes de estilo cuando la app lo permite.',
-      listItems: [
-        'Integración con OpenAI GPT-5.4 Mini',
-        'Memoria de conversaciones en MongoDB',
-        'Procesamiento de lenguaje natural (NLP)',
-        'Respuestas contextualmente relevantes',
-        'WebSockets para tiempo real',
-        '✅ Escalas clínicas validadas (PHQ-9, GAD-7)',
-        '✅ Detección de 15 tipos de distorsiones cognitivas',
-        '✅ 8 protocolos terapéuticos estructurados',
-        '✅ Reportes profesionales con estadísticas',
-      ],
+        'GPT-5.4 Mini en tiempo real: contexto emocional, memoria de sesión y herramientas clínicas integradas.',
+      listItems: ['Escalas PHQ-9 y GAD-7', '15 distorsiones cognitivas', '8 protocolos estructurados'],
     },
     {
       icon: '🚨',
-      title: 'Sistema Automático de Detección de Crisis',
+      title: 'Detección de crisis',
       description:
-        'Algoritmos que analizan patrones de lenguaje y comportamiento para detectar señales de crisis. Activa protocolos de emergencia automáticamente con notificaciones a contactos de confianza vía Twilio y SendGrid.',
-      listItems: [
-        'Detección automática de patrones de riesgo',
-        'Alertas inmediatas a contactos designados',
-        'Notificaciones vía WhatsApp/SMS (Twilio)',
-        'Emails de emergencia (SendGrid)',
-        'Seguimiento post-crisis automatizado',
-      ],
+        'Analiza señales de riesgo y activa protocolos con alertas a tus contactos de confianza.',
+      listItems: ['SMS/WhatsApp y email de emergencia', 'Seguimiento post-crisis'],
     },
     {
       icon: '📋',
-      title: 'Sistema de Tareas y Hábitos',
+      title: 'Tareas y hábitos',
       description:
-        'Gestión completa de tareas terapéuticas y seguimiento de hábitos saludables. Recordatorios inteligentes y análisis de correlaciones entre hábitos y bienestar emocional.',
-      listItems: [
-        'Creación y seguimiento de tareas',
-        'Establecimiento de hábitos saludables',
-        'Recordatorios personalizados',
-        'Análisis de cumplimiento y progreso',
-        'Correlación con bienestar emocional',
-      ],
-    },
-    {
-      icon: '💳',
-      title: 'Integración con Mercado Pago',
-      description:
-        'Sistema de suscripciones completo con procesamiento de pagos seguro. Gestión automática de planes, renovaciones y cancelaciones.',
-      listItems: [
-        'Procesamiento seguro de pagos',
-        'Gestión automática de suscripciones',
-        'Múltiples planes flexibles',
-        'Renovaciones automáticas',
-        'Cancelación en cualquier momento',
-      ],
+        'Actividades terapéuticas con recordatorios push y seguimiento ligado a tu bienestar.',
+      listItems: ['Recordatorios configurables', 'Progreso y tendencias'],
     },
     {
       icon: '📊',
-      title: 'Dashboard de Métricas y Progreso',
-      description:
-        'Visualización completa de tu bienestar emocional con gráficos, tendencias y reportes detallados. Análisis de patrones a lo largo del tiempo. Ahora con escalas clínicas automáticas y estadísticas de distorsiones cognitivas.',
-      listItems: [
-        'Gráficos de estado emocional',
-        'Identificación de patrones temporales',
-        'Reportes semanales y mensuales',
-        'Métricas de progreso personalizadas',
-        'Exportación de datos',
-        '✅ Escalas clínicas validadas (PHQ-9, GAD-7)',
-        '✅ Estadísticas de distorsiones cognitivas',
-        '✅ Reportes profesionales con análisis detallado',
-      ],
-    },
-    {
-      icon: '🔔',
-      title: 'Notificaciones Push Nativas',
-      description:
-        'Sistema de notificaciones push configurado para recordatorios de bienestar, alertas de crisis y actualizaciones importantes. Respeto por preferencias y horarios del usuario.',
-      listItems: [
-        'Notificaciones push nativas (iOS/Android)',
-        'Recordatorios de tareas y hábitos',
-        'Alertas de seguimiento emocional',
-        'Notificaciones de crisis (configurables)',
-        'Control granular de notificaciones',
-      ],
+      title: 'Métricas y progreso',
+      description: 'Gráficos y reportes para ver tu evolución emocional en el tiempo.',
+      listItems: ['Patrones y estado emocional', 'Exportación de datos'],
     },
   ];
 }
@@ -205,88 +147,30 @@ function buildAdvancedFeaturesEn(): AppAdvancedFeature[] {
   return [
     {
       icon: '🤖',
-      title: 'Advanced Conversational Chat with GPT-5.4 Mini',
+      title: 'AI chat',
       description:
-        'Direct integration with the OpenAI API (GPT-5.4 Mini): professional, practical tone by default, emotional context, and conversation memory. Assessment with scales, cognitive distortions, and structured protocols; style adjustments when the app allows.',
-      listItems: [
-        'OpenAI GPT-5.4 Mini integration',
-        'Conversation memory in MongoDB',
-        'Natural language processing (NLP)',
-        'Contextually relevant responses',
-        'WebSockets for real-time use',
-        '✅ Validated clinical scales (PHQ-9, GAD-7)',
-        '✅ Detection of 15 types of cognitive distortions',
-        '✅ 8 structured therapeutic protocols',
-        '✅ Professional reports with statistics',
-      ],
+        'GPT-5.4 Mini in real time: emotional context, session memory, and built-in clinical tools.',
+      listItems: ['PHQ-9 and GAD-7 scales', '15 cognitive distortions', '8 structured protocols'],
     },
     {
       icon: '🚨',
-      title: 'Automatic Crisis Detection System',
+      title: 'Crisis detection',
       description:
-        'Algorithms analyze language and behavior patterns to detect crisis signals. Automatically triggers emergency protocols with notifications to trusted contacts via Twilio and SendGrid.',
-      listItems: [
-        'Automatic detection of risk patterns',
-        'Immediate alerts to designated contacts',
-        'WhatsApp/SMS notifications (Twilio)',
-        'Emergency emails (SendGrid)',
-        'Automated post-crisis follow-up',
-      ],
+        'Detects risk signals and triggers protocols with alerts to your trusted contacts.',
+      listItems: ['Emergency SMS/WhatsApp and email', 'Post-crisis follow-up'],
     },
     {
       icon: '📋',
-      title: 'Tasks and Habits System',
+      title: 'Tasks and habits',
       description:
-        'Full management of therapeutic tasks and healthy habit tracking. Smart reminders and analysis of correlations between habits and emotional wellness.',
-      listItems: [
-        'Task creation and tracking',
-        'Healthy habit building',
-        'Personalized reminders',
-        'Compliance and progress analysis',
-        'Correlation with emotional wellness',
-      ],
-    },
-    {
-      icon: '💳',
-      title: 'Mercado Pago Integration',
-      description:
-        'Complete subscription system with secure payment processing. Automatic plan, renewal, and cancellation management.',
-      listItems: [
-        'Secure payment processing',
-        'Automatic subscription management',
-        'Multiple flexible plans',
-        'Automatic renewals',
-        'Cancel anytime',
-      ],
+        'Therapeutic activities with push reminders and tracking tied to your wellness.',
+      listItems: ['Configurable reminders', 'Progress and trends'],
     },
     {
       icon: '📊',
-      title: 'Metrics and Progress Dashboard',
-      description:
-        'Full view of your emotional wellness with charts, trends, and detailed reports. Pattern analysis over time. Now with automatic clinical scales and cognitive distortion statistics.',
-      listItems: [
-        'Emotional state charts',
-        'Temporal pattern identification',
-        'Weekly and monthly reports',
-        'Personalized progress metrics',
-        'Data export',
-        '✅ Validated clinical scales (PHQ-9, GAD-7)',
-        '✅ Cognitive distortion statistics',
-        '✅ Professional reports with detailed analysis',
-      ],
-    },
-    {
-      icon: '🔔',
-      title: 'Native Push Notifications',
-      description:
-        'Push notification system for wellness reminders, crisis alerts, and important updates. Respects user preferences and schedules.',
-      listItems: [
-        'Native push notifications (iOS/Android)',
-        'Task and habit reminders',
-        'Emotional check-in alerts',
-        'Crisis notifications (configurable)',
-        'Granular notification controls',
-      ],
+      title: 'Metrics and progress',
+      description: 'Charts and reports to see your emotional progress over time.',
+      listItems: ['Patterns and emotional state', 'Data export'],
     },
   ];
 }
@@ -400,9 +284,8 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       },
       advancedFeatures: {
         title: 'Advanced Features',
-        subtitle: 'Features that make Anto a unique tool for your mental wellness.',
-        versionHighlight:
-          '{versionLabel}: current store release with recent language, chat, and free-trial improvements',
+        subtitle: 'The essentials of the Anto experience.',
+        versionHighlight: 'Current release: {versionLabel}',
         features: buildAdvancedFeaturesEn(),
       },
       techSpecs: {
@@ -570,9 +453,8 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
     },
     advancedFeatures: {
       title: 'Características Avanzadas',
-      subtitle: 'Funcionalidades que hacen de Anto una herramienta única para tu bienestar mental.',
-      versionHighlight:
-        '{versionLabel}: línea actual en tiendas, con mejoras recientes de idioma, chat y prueba gratuita.',
+      subtitle: 'Lo esencial de la experiencia Anto.',
+      versionHighlight: 'Versión actual: {versionLabel}',
       features: buildAdvancedFeaturesEs(),
     },
     techSpecs: {

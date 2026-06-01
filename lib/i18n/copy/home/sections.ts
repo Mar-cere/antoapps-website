@@ -117,7 +117,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
           icon: '🤖',
           title: 'Asistente de IA',
           description:
-            'Chat con GPT-5.4 Mini, tono profesional y práctico. Modos de conversación, memoria contextual y preferencias de estilo cuando la app lo ofrece.',
+            'Acompañamiento emocional con IA, tono profesional y práctico. Modos de conversación, memoria de contexto y preferencias de estilo según lo que necesites en cada momento.',
         },
         {
           icon: '🏥',
@@ -384,7 +384,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
           icon: '🤖',
           title: 'AI assistant',
           description:
-            'Chat with GPT-5.4 Mini, professional and practical tone. Conversation modes, contextual memory, and style preferences when the app offers them.',
+            'AI emotional support with a professional, practical tone. Conversation modes, contextual memory, and style preferences for what you need in each moment.',
         },
         {
           icon: '🏥',
