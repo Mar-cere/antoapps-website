@@ -43,12 +43,6 @@ const whatsNewCopy: Record<Locale, WhatsNewCopy> = {
           'Elige el enfoque del chat (práctico, exploratorio o estructurado) y ajusta el estilo cuando la app lo permita.',
       },
       {
-        icon: '🎁',
-        title: 'Prueba de 1 día unificada',
-        description:
-          'Un solo período de prueba en app, web y backend. Explora premium antes de suscribirte; cancelas en App Store.',
-      },
-      {
         icon: '✨',
         title: 'Experiencia de uso refinada',
         description:
@@ -80,12 +74,6 @@ const whatsNewCopy: Record<Locale, WhatsNewCopy> = {
         title: 'Modes and response preferences',
         description:
           'Pick how the chat supports you (practical, exploratory, or structured) and tune the style when the app allows it.',
-      },
-      {
-        icon: '🎁',
-        title: 'Unified 1-day trial',
-        description:
-          'One trial period across app, web, and backend. Explore premium before subscribing; cancel in the App Store.',
       },
       {
         icon: '✨',

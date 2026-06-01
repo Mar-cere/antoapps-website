@@ -40,9 +40,7 @@ export {
   appPageMetadata,
   type AppPageCopy,
   type AppPageMetadata,
-  type AppInsightCard,
-  type AppAdvancedFeature,
-  type AppTechSpecCard,
+  type AppBenefitCard,
 } from '../app';
 
 export {

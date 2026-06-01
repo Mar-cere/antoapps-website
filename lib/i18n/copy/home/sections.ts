@@ -60,11 +60,6 @@ export type HomeSectionsCopy = {
       description: string;
     };
   };
-  stats: {
-    hoursAvailable: string;
-    responseTime: string;
-    testCoverage: string;
-  };
   appShowcase: {
     title: string;
     subtitle: string;
@@ -194,11 +189,6 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         description:
           'Para obtener los mejores resultados, usa Anto regularmente. El asistente AI aprende más sobre ti con cada conversación, permitiéndole ofrecerte insights y recomendaciones cada vez más precisas. Muchos usuarios reportan mejoras significativas después de usar la app de forma consistente por 2-3 semanas.',
       },
-    },
-    stats: {
-      hoursAvailable: 'Horas Disponibles',
-      responseTime: 'Tiempo de Respuesta',
-      testCoverage: 'Cobertura de Tests',
     },
     appShowcase: {
       title: 'Diseñado para Ti',
@@ -461,11 +451,6 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         description:
           'For the best results, use Anto regularly. The AI assistant learns more about you with each conversation, allowing it to offer increasingly accurate insights and recommendations. Many users report significant improvements after using the app consistently for 2–3 weeks.',
       },
-    },
-    stats: {
-      hoursAvailable: 'Hours Available',
-      responseTime: 'Response Time',
-      testCoverage: 'Test Coverage',
     },
     appShowcase: {
       title: 'Designed for You',

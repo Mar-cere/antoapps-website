@@ -49,9 +49,47 @@
     font-weight: var(--font-weight-semibold);
 }
 
-/* Insights Section (Estilo Apple) */
-.app-insights {
+.app-hero-meta {
+    margin-top: var(--spacing-4);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.container--narrow {
+    max-width: 42rem;
+}
+
+.app-what-is {
     background: var(--color-bg-secondary);
+}
+
+.app-what-is__body {
+    font-size: clamp(1.0625rem, 2vw, 1.25rem);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin: 0 auto;
+}
+
+.app-benefits {
+    background: var(--color-bg-primary);
+}
+
+.app-updates {
+    background: var(--color-bg-secondary);
+}
+
+.app-features-link {
+    background: var(--color-bg-primary);
+    text-align: center;
+}
+
+.app-features-link__action {
+    margin-top: var(--spacing-4);
+}
+
+.insights-grid--compact {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
 }
 
 .insights-grid {

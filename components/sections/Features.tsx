@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeSectionsCopy } from '@/lib/i18n/copy/home';
-import StatsSection from './StatsSection';
 
 type FeaturesProps = {
   locale?: Locale;
@@ -33,8 +32,6 @@ export default function Features({ locale = 'es' }: FeaturesProps) {
           </div>
         </div>
       </section>
-
-      <StatsSection locale={locale} />
 
       <section id="como-funciona" className="how-it-works" data-fade-section>
         <div className="container">

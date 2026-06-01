@@ -246,7 +246,8 @@ const processStepsEs: DesarrolloProcessStep[] = [
     description:
       'Despliegue en producción, configuración de CI/CD, monitoreo de errores y rendimiento, y actualizaciones continuas.',
     details: [
-      'Despliegue en Vercel/Netlify',
+      'Sitio web en Vercel (Next.js)',
+      'API en Render (Node.js)',
       'CI/CD con GitHub Actions',
       'Monitoreo con Sentry',
       'Analytics y métricas',
@@ -308,7 +309,8 @@ const processStepsEn: DesarrolloProcessStep[] = [
     description:
       'Production deployment, CI/CD configuration, error and performance monitoring, and continuous updates.',
     details: [
-      'Deployment on Vercel/Netlify',
+      'Website on Vercel (Next.js)',
+      'API on Render (Node.js)',
       'CI/CD with GitHub Actions',
       'Monitoring with Sentry',
       'Analytics and metrics',
@@ -383,7 +385,8 @@ const techStackEs: DesarrolloTechCategory[] = [
     title: 'DevOps e integraciones',
     items: [
       { name: 'GitHub Actions', spec: 'CI: lint · type-check · build' },
-      { name: 'Vercel', spec: 'Deploy web · preview branches' },
+      { name: 'Vercel', spec: 'Sitio web Next.js · preview branches' },
+      { name: 'Render', spec: 'API Node.js · auto-deploy desde Git' },
       { name: 'Mercado Pago', spec: 'Suscripciones in-app' },
       { name: 'SendGrid', spec: 'Emails transaccionales' },
       { name: 'Twilio', spec: 'WhatsApp/SMS en crisis' },
@@ -458,7 +461,8 @@ const techStackEn: DesarrolloTechCategory[] = [
     title: 'DevOps and integrations',
     items: [
       { name: 'GitHub Actions', spec: 'CI: lint · type-check · build' },
-      { name: 'Vercel', spec: 'Web deploy · preview branches' },
+      { name: 'Vercel', spec: 'Next.js website · preview branches' },
+      { name: 'Render', spec: 'Node.js API · auto-deploy from Git' },
       { name: 'Mercado Pago', spec: 'In-app subscriptions' },
       { name: 'SendGrid', spec: 'Transactional email' },
       { name: 'Twilio', spec: 'WhatsApp/SMS on crisis' },
@@ -588,6 +592,7 @@ const heroHighlightTechs = [
   'JWT',
   'GitHub Actions',
   'Vercel',
+  'Render',
   'Sentry',
   'Twilio',
   'SendGrid',
@@ -628,7 +633,7 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
       },
       process: {
         sectionTitle: 'Build pipeline',
-        sectionSubtitle: 'From monorepo to production deploy (Vercel + EAS + GitHub Actions)',
+        sectionSubtitle: 'From monorepo to production (Vercel web · Render API · EAS · GitHub Actions)',
         steps: processStepsEn,
       },
       techStack: {
@@ -711,7 +716,7 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
     },
     process: {
       sectionTitle: 'Pipeline de construcción',
-      sectionSubtitle: 'Del monorepo al deploy en producción (Vercel + EAS + GitHub Actions)',
+      sectionSubtitle: 'Del monorepo a producción (Vercel web · Render API · EAS · GitHub Actions)',
       steps: processStepsEs,
     },
     techStack: {

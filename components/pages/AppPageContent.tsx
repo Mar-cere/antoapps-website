@@ -39,8 +39,14 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
           <div className="container">
             <div className="app-hero-content">
               <h1 className="app-hero-title reveal-on-scroll">{copy.hero.title}</h1>
-              <p className="app-hero-subtitle reveal-on-scroll">
-                {fillVars(copy.hero.subtitle)}{' '}
+              <p className="app-hero-subtitle reveal-on-scroll">{fillVars(copy.hero.subtitle)}</p>
+              <div className="app-hero-badges reveal-on-scroll">
+                <span className="app-badge">📌 {fillVars(copy.hero.badges.versionLabel)}</span>
+                <span className="app-badge">{copy.hero.badges.availability}</span>
+                <span className="app-badge">{copy.hero.badges.privacy}</span>
+                <span className="app-badge">{copy.hero.badges.languages}</span>
+              </div>
+              <p className="app-hero-meta reveal-on-scroll">
                 <a
                   href="https://github.com/Mar-cere/Anto"
                   target="_blank"
@@ -50,21 +56,38 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
                   {copy.hero.githubLinkText}
                 </a>
               </p>
-              <div className="app-hero-badges reveal-on-scroll">
-                <span className="app-badge">📌 {fillVars(copy.hero.badges.versionLabel)}</span>
-                <span className="app-badge">{copy.hero.badges.earlyAccess}</span>
-                <span className="app-badge">{copy.hero.badges.privacy}</span>
-                <span className="app-badge">{copy.hero.badges.realtime}</span>
-              </div>
             </div>
           </div>
         </section>
 
-        <section className="app-insights" data-fade-section>
+        <section className="app-what-is" data-fade-section>
+          <div className="container container--narrow">
+            <h2 className="section-title reveal-on-scroll">{copy.whatIs.title}</h2>
+            <p className="app-what-is__body reveal-on-scroll">{copy.whatIs.body}</p>
+          </div>
+        </section>
+
+        <section className="app-benefits" data-fade-section>
+          <div className="container">
+            <h2 className="section-title reveal-on-scroll">{copy.benefits.title}</h2>
+            <p className="section-subtitle reveal-on-scroll">{copy.benefits.subtitle}</p>
+            <div className="insights-grid" data-stagger>
+              {copy.benefits.cards.map((card) => (
+                <div key={card.label} className="insight-card reveal-on-scroll" data-stagger-item>
+                  <div className="insight-icon">{card.icon}</div>
+                  <div className="insight-label">{card.label}</div>
+                  <p className="insight-description">{card.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="app-updates" data-fade-section>
           <div className="container">
             <h2 className="section-title reveal-on-scroll">{copy.latestUpdates.title}</h2>
             <p className="section-subtitle reveal-on-scroll">{copy.latestUpdates.subtitle}</p>
-            <div className="insights-grid" data-stagger>
+            <div className="insights-grid insights-grid--compact" data-stagger>
               {copy.latestUpdates.cards.map((card) => (
                 <div key={card.label} className="insight-card reveal-on-scroll" data-stagger-item>
                   <div className="insight-icon">{card.icon}</div>
@@ -93,66 +116,14 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
           </div>
         </section>
 
-        <section className="app-insights" data-fade-section>
-          <div className="container">
-            <h2 className="section-title reveal-on-scroll">{copy.insights.title}</h2>
-            <p className="section-subtitle reveal-on-scroll">{copy.insights.subtitle}</p>
-            <div className="insights-grid" data-stagger>
-              {copy.insights.cards.map((card) => (
-                <div key={card.label} className="insight-card reveal-on-scroll" data-stagger-item>
-                  <div className="insight-icon">{card.icon}</div>
-                  {card.value && <div className="insight-value">{card.value}</div>}
-                  <div className="insight-label">{card.label}</div>
-                  <p className="insight-description">{card.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="app-features-advanced" data-fade-section>
-          <div className="container">
-            <h2 className="section-title reveal-on-scroll">{copy.advancedFeatures.title}</h2>
-            <p className="section-subtitle reveal-on-scroll">
-              {copy.advancedFeatures.subtitle}
-              <strong className="app-version-highlight">
-                ✨ {fillVars(copy.advancedFeatures.versionHighlight)}
-              </strong>
-            </p>
-            <div className="advanced-features-grid" data-stagger>
-              {copy.advancedFeatures.features.map((feature) => (
-                <div key={feature.title} className="advanced-feature reveal-on-scroll" data-stagger-item>
-                  <div className="feature-header">
-                    <div className="feature-icon">{feature.icon}</div>
-                    <h3>{feature.title}</h3>
-                  </div>
-                  <p>{feature.description}</p>
-                  <ul className="feature-list">
-                    {feature.listItems.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="app-tech-specs" data-fade-section>
-          <div className="container">
-            <h2 className="section-title reveal-on-scroll">{copy.techSpecs.title}</h2>
-            <p className="section-subtitle reveal-on-scroll">{copy.techSpecs.subtitle}</p>
-            <div className="tech-specs-grid" data-stagger>
-              {copy.techSpecs.cards.map((card) => (
-                <div key={card.title} className="tech-spec-card reveal-on-scroll" data-stagger-item>
-                  <h3>{card.title}</h3>
-                  <ul>
-                    {card.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+        <section className="app-features-link" data-fade-section>
+          <div className="container container--narrow">
+            <h2 className="section-title reveal-on-scroll">{copy.featuresLink.title}</h2>
+            <p className="section-subtitle reveal-on-scroll">{copy.featuresLink.subtitle}</p>
+            <div className="app-features-link__action reveal-on-scroll">
+              <Link href={copy.featuresLink.href} className="btn btn-secondary btn-large">
+                {copy.featuresLink.label}
+              </Link>
             </div>
           </div>
         </section>
