@@ -1,27 +1,25 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-
-function isInstagramInAppBrowser(): boolean {
-  if (typeof navigator === 'undefined') return false;
-  const ua = navigator.userAgent;
-  const isIOS = /iPhone|iPad|iPod/i.test(ua);
-  const isInApp = /Instagram|FBAN|FBAV|FBIOS|Line\//i.test(ua);
-  return isIOS && isInApp;
-}
+import { detectInAppBrowser } from '@/lib/device/in-app-browser';
+import type { BienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 
 type InstagramBrowserHintProps = {
+  copy: BienvenidaCopy['inAppHint'];
   locale: 'es' | 'en';
 };
 
-export default function InstagramBrowserHint({ locale }: InstagramBrowserHintProps) {
-  const [visible, setVisible] = useState(false);
+export default function InstagramBrowserHint({ copy, locale }: InstagramBrowserHintProps) {
+  const [platform, setPlatform] = useState<'ios' | 'android' | null>(null);
 
   useEffect(() => {
-    setVisible(isInstagramInAppBrowser());
+    setPlatform(detectInAppBrowser());
   }, []);
 
-  if (!visible) return null;
+  if (!platform) return null;
+
+  const browserAction =
+    platform === 'ios' ? copy.iosBrowser : copy.androidBrowser;
 
   return (
     <div className="lad-inapp-hint" role="status">
@@ -29,12 +27,12 @@ export default function InstagramBrowserHint({ locale }: InstagramBrowserHintPro
         {locale === 'en' ? (
           <>
             If download does not open, tap <strong>⋯</strong> at the top right and choose{' '}
-            <strong>Open in Safari</strong>.
+            <strong>{browserAction}</strong>.
           </>
         ) : (
           <>
             Si la descarga no abre, toca <strong>⋯</strong> arriba a la derecha y elige{' '}
-            <strong>Abrir en Safari</strong>.
+            <strong>{browserAction}</strong>.
           </>
         )}
       </p>

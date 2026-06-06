@@ -6,6 +6,7 @@ import BienvenidaLandingTracker from '@/components/analytics/BienvenidaLandingTr
 import MetaPixelNoscript from '@/components/analytics/MetaPixelNoscript';
 import BienvenidaAppPreview from '@/components/bienvenida/BienvenidaAppPreview';
 import BienvenidaAppScreenshots from '@/components/bienvenida/BienvenidaAppScreenshots';
+import BienvenidaTestimonial from '@/components/bienvenida/BienvenidaTestimonial';
 import BienvenidaFaq from '@/components/bienvenida/BienvenidaFaq';
 import BienvenidaStickyCta from '@/components/bienvenida/BienvenidaStickyCta';
 import BienvenidaTrustStrip from '@/components/bienvenida/BienvenidaTrustStrip';
@@ -93,7 +94,7 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
         <LanguageSwitcher locale={locale} path="/bienvenida" />
       </header>
 
-      <InstagramBrowserHint locale={locale} />
+      <InstagramBrowserHint copy={copy.inAppHint} locale={locale} />
 
       <main className="lad-main" id="contenido-principal">
         <section className="lad-hero" aria-labelledby="lad-hero-title">
@@ -113,6 +114,8 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
           />
 
           <BienvenidaTrustStrip copy={copy.trustStrip} highlights={copy.highlights} />
+
+          <BienvenidaTestimonial copy={copy.testimonial} />
 
           <BienvenidaAppPreview copy={copy.appPreview} />
         </section>

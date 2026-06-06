@@ -21,15 +21,33 @@ export type BienvenidaCopy = {
   trial: {
     heroCta: Record<BienvenidaVariant, string>;
     stickyCta: Record<BienvenidaVariant, string>;
+    stickyAndroidCta: string;
+    stickyDesktopCta: string;
+    stickyAndroidAria: string;
+    stickyDesktopAria: string;
     finalCta: string;
     line: string;
     pricingLine: string;
+    noCreditCard: string;
     aria: string;
     stickyAria: string;
     faqAnswer: string;
   };
   privacyBadge: string;
   androidHeroCta: string;
+  desktopQr: {
+    label: string;
+    hint: string;
+    fallbackLink: string;
+  };
+  testimonial: {
+    quote: string;
+    attribution: string;
+  };
+  inAppHint: {
+    iosBrowser: string;
+    androidBrowser: string;
+  };
   highlights: string;
   how: {
     sectionTitle: string;
@@ -102,15 +120,33 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           A: `Start — ${trial.short}`,
           B: `Download — ${trial.short}`,
         },
+        stickyAndroidCta: 'Join Android waitlist',
+        stickyDesktopCta: 'Scan QR with iPhone',
+        stickyAndroidAria: 'Go to Android waitlist form',
+        stickyDesktopAria: 'Go to App Store QR code',
         finalCta: `Download on the App Store — ${trial.short}`,
         line: `${trial.short} · cancel anytime in the App Store`,
         pricingLine: 'Then $3.990/mo · cancel anytime',
+        noCreditCard: 'No credit card required to start',
         aria: 'Download Anto on the App Store. Includes a 1-day free trial.',
         stickyAria: 'Download Anto on the App Store. 1-day free trial.',
         faqAnswer: trial.faqPricingAnswer,
       },
       privacyBadge: 'Your conversations are private',
       androidHeroCta: 'Android waitlist',
+      desktopQr: {
+        label: 'QR code to download Anto on the App Store',
+        hint: 'Scan with your iPhone camera',
+        fallbackLink: 'Or open the App Store link',
+      },
+      testimonial: {
+        quote: 'It helped me put words to what I was feeling when I had no one to talk to.',
+        attribution: '— App Store user',
+      },
+      inAppHint: {
+        iosBrowser: 'Open in Safari',
+        androidBrowser: 'Open in Chrome',
+      },
       how: {
         sectionTitle: 'How it works',
         steps: [
@@ -214,15 +250,33 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         A: `Empieza — ${trial.short}`,
         B: `Descargar — ${trial.short}`,
       },
+      stickyAndroidCta: 'Lista de espera Android',
+      stickyDesktopCta: 'Escanea QR con iPhone',
+      stickyAndroidAria: 'Ir al formulario de lista de espera Android',
+      stickyDesktopAria: 'Ir al código QR de App Store',
       finalCta: `Descargar en App Store — ${trial.short}`,
       line: `${trial.short} · cancelas cuando quieras en App Store`,
       pricingLine: 'Luego $3.990/mes · cancela cuando quieras',
+      noCreditCard: 'Sin tarjeta de crédito para empezar',
       aria: 'Descargar Anto en App Store. Incluye 1 día de prueba gratis.',
       stickyAria: 'Descargar Anto en App Store. Prueba gratis de 1 día.',
       faqAnswer: trial.faqPricingAnswer,
     },
     privacyBadge: 'Tus conversaciones son privadas',
     androidHeroCta: 'Lista de espera Android',
+    desktopQr: {
+      label: 'Código QR para descargar Anto en App Store',
+      hint: 'Escanéalo con la cámara de tu iPhone',
+      fallbackLink: 'O abre el enlace de App Store',
+    },
+    testimonial: {
+      quote: 'Me ayudó a poner palabras a lo que sentía cuando no tenía con quién hablar.',
+      attribution: '— Usuario de App Store',
+    },
+    inAppHint: {
+      iosBrowser: 'Abrir en Safari',
+      androidBrowser: 'Abrir en Chrome',
+    },
     how: {
       sectionTitle: 'Así funciona',
       steps: [

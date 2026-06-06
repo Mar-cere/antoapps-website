@@ -535,8 +535,16 @@
     font-weight: var(--font-weight-bold);
 }
 
-.lad-hero-pricing-line {
+.lad-hero-no-cc-line {
     margin: var(--spacing-2) 0 0;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.4;
+    color: var(--lad-accent);
+}
+
+.lad-hero-pricing-line {
+    margin: var(--spacing-1) 0 0;
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     line-height: 1.4;
@@ -605,7 +613,7 @@
 }
 
 .lad-android-reveal.is-open {
-    max-height: 220px;
+    max-height: 320px;
     opacity: 1;
     transform: translateY(0);
     margin-top: var(--spacing-3);
@@ -653,6 +661,150 @@
 .lad-page .lad-hero-cta-btn--android:focus-visible {
     outline: 2px solid var(--lad-accent);
     outline-offset: 3px;
+}
+
+/* CTAs adaptados por dispositivo */
+.lad-hero-fold-cta--ios .lad-hero-cta-btn--ios,
+.lad-hero-fold-cta--ios .lad-hero-cta-badge-wrap {
+    box-shadow:
+        0 10px 28px rgba(26, 221, 219, 0.42),
+        0 0 0 2px rgba(26, 221, 219, 0.12);
+}
+
+.lad-hero-fold-cta--ios .lad-hero-cta-btn--android {
+    opacity: 0.72;
+}
+
+.lad-hero-fold-cta--android .lad-hero-cta-btn--android {
+    border-color: var(--lad-accent);
+    background: var(--lad-accent-soft);
+    color: var(--lad-accent);
+    box-shadow: 0 8px 24px rgba(26, 221, 219, 0.2);
+}
+
+.lad-hero-fold-cta--android .lad-hero-cta-btn--ios,
+.lad-hero-fold-cta--android .lad-hero-cta-badge-wrap {
+    opacity: 0.72;
+}
+
+.lad-hero-cta-badge-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.25rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-full);
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    text-decoration: none;
+    transition:
+        transform 0.2s var(--lad-ease-out),
+        box-shadow 0.25s ease;
+}
+
+.lad-hero-cta-badge-wrap:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.lad-hero-store-badge {
+    display: block;
+    width: auto;
+    height: 2.5rem;
+}
+
+.lad-desktop-qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-4);
+    padding: var(--spacing-4);
+    background: var(--lad-surface);
+    border: 1px solid var(--lad-border-accent);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+}
+
+.lad-desktop-qr-image {
+    display: block;
+    border-radius: var(--radius-md);
+    background: #fff;
+    padding: 0.35rem;
+}
+
+.lad-desktop-qr-placeholder {
+    width: 160px;
+    height: 160px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.06);
+    animation: lad-qr-pulse 1.4s ease-in-out infinite;
+}
+
+.lad-desktop-qr-hint {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--lad-text);
+    text-align: center;
+}
+
+.lad-desktop-qr-fallback {
+    margin: 0;
+    font-size: var(--font-size-xs);
+    text-align: center;
+}
+
+.lad-desktop-qr-fallback-link {
+    color: var(--lad-accent);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.lad-desktop-qr-fallback-link:hover {
+    border-bottom-color: var(--lad-accent);
+}
+
+.lad-desktop-qr-placeholder--failed {
+    animation: none;
+    opacity: 0.25;
+}
+
+.lad-testimonial {
+    margin: var(--spacing-4) 0 var(--spacing-2);
+    padding: var(--spacing-4);
+    text-align: left;
+    background: var(--lad-surface);
+    border: 1px solid var(--lad-border);
+    border-radius: var(--radius-lg);
+    animation: lad-fade-up 0.7s var(--lad-ease-out) 0.3s both;
+}
+
+.lad-testimonial-quote {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--lad-text);
+}
+
+.lad-testimonial-author {
+    margin: var(--spacing-2) 0 0;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--lad-accent);
+}
+
+@keyframes lad-qr-pulse {
+    0%,
+    100% {
+        opacity: 0.45;
+    }
+    50% {
+        opacity: 0.85;
+    }
 }
 
 .lad-page .lad-sticky-cta-btn {
@@ -833,9 +985,11 @@
     .lad-app-preview,
     .lad-trust-strip,
     .lad-trust-strip-wrap,
+    .lad-testimonial,
     .lad-inapp-hint,
     .lad-page,
-    .lad-hero-cta-btn {
+    .lad-hero-cta-btn,
+    .lad-desktop-qr-placeholder {
         animation: none;
     }
 }

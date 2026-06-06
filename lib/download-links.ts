@@ -30,6 +30,16 @@ export function isExternalStoreUrl(href: string): boolean {
   return href.startsWith('http://') || href.startsWith('https://');
 }
 
+export function isAppStoreUrl(href: string): boolean {
+  if (!isExternalStoreUrl(href)) return false;
+  try {
+    const host = new URL(href).hostname.toLowerCase();
+    return host === 'apps.apple.com' || host === 'itunes.apple.com';
+  } catch {
+    return false;
+  }
+}
+
 /** Badge App Store según idioma (ES: SVG, EN: PNG oficial Apple). */
 export function appStoreBadgePath(locale: Locale = 'es'): string {
   return locale === 'en' ? APP_STORE_BADGE_EN_PATH : APP_STORE_BADGE_ES_PATH;
