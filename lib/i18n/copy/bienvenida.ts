@@ -1,4 +1,5 @@
 import type { Locale } from '@/lib/i18n/config';
+import { appStoreRatingWithReviews } from '@/lib/app-store-social-proof';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
 export type BienvenidaVariant = 'A' | 'B';
@@ -14,6 +15,7 @@ export type BienvenidaCopy = {
   hero: {
     titleLine1: string;
     titleLine2: Record<BienvenidaVariant, string>;
+    tagline: string;
     lead: Record<BienvenidaVariant, string>;
   };
   trial: {
@@ -21,10 +23,13 @@ export type BienvenidaCopy = {
     stickyCta: Record<BienvenidaVariant, string>;
     finalCta: string;
     line: string;
+    pricingLine: string;
     aria: string;
     stickyAria: string;
     faqAnswer: string;
   };
+  privacyBadge: string;
+  androidHeroCta: string;
   highlights: string;
   how: {
     sectionTitle: string;
@@ -56,6 +61,10 @@ export type BienvenidaCopy = {
     antoMessage: string;
     inputPlaceholder: string;
   };
+  screenshots: {
+    sectionTitle: string;
+    images: readonly { src: string; alt: string }[];
+  };
 };
 
 function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
@@ -78,6 +87,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           A: 'Sort through what you feel with Anto',
           B: 'Anto helps you make sense of it',
         },
+        tagline: 'AI emotional support app for iPhone',
         lead: {
           A: 'Write what you feel and get clear guidance in seconds.',
           B: 'Write what you feel and get clear guidance in seconds.',
@@ -85,8 +95,8 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       },
       trial: {
         heroCta: {
-          A: `Start on iPhone — ${trial.short}`,
-          B: `Download on iPhone — ${trial.short}`,
+          A: 'Download on iPhone',
+          B: 'Start on iPhone',
         },
         stickyCta: {
           A: `Start — ${trial.short}`,
@@ -94,10 +104,13 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         },
         finalCta: `Download on the App Store — ${trial.short}`,
         line: `${trial.short} · cancel anytime in the App Store`,
+        pricingLine: 'Then $3.990/mo · cancel anytime',
         aria: 'Download Anto on the App Store. Includes a 1-day free trial.',
         stickyAria: 'Download Anto on the App Store. 1-day free trial.',
         faqAnswer: trial.faqPricingAnswer,
       },
+      privacyBadge: 'Your conversations are private',
+      androidHeroCta: 'Android waitlist',
       how: {
         sectionTitle: 'How it works',
         steps: [
@@ -140,7 +153,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         tagline: '© {year} Anto · Made with care in Chile',
       },
       trustStrip: {
-        ratingOnAppStore: '★★★★★ 5.0 on the App Store',
+        ratingOnAppStore: appStoreRatingWithReviews('en'),
         availableOn: 'Available on iPhone',
       },
       highlights:
@@ -153,6 +166,19 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         antoMessage:
           "That sounds exhausting. What's weighing on you most right now: fear, guilt, or uncertainty?",
         inputPlaceholder: 'Write a message…',
+      },
+      screenshots: {
+        sectionTitle: 'Inside the app',
+        images: [
+          {
+            src: '/assets/images/hero/phone-mockup-landing.webp',
+            alt: 'Anto chat screen on iPhone showing an emotional support conversation',
+          },
+          {
+            src: '/assets/images/hero/phone-in-hand-landing.webp',
+            alt: 'Person holding an iPhone with the Anto app open',
+          },
+        ],
       },
     };
   }
@@ -173,6 +199,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         A: 'Ordena lo que sientes con Anto',
         B: 'Anto te ayuda a ordenarlo',
       },
+      tagline: 'La app de apoyo emocional con IA para iPhone',
       lead: {
         A: 'Escribe lo que sientes y recibe guía clara en segundos.',
         B: 'Escribes lo que sientes y recibes guía clara en segundos.',
@@ -180,8 +207,8 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
     },
     trial: {
       heroCta: {
-        A: `Empieza en iPhone — ${trial.short}`,
-        B: `Descargar en iPhone — ${trial.short}`,
+        A: 'Descargar en iPhone',
+        B: 'Empezar en iPhone',
       },
       stickyCta: {
         A: `Empieza — ${trial.short}`,
@@ -189,10 +216,13 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       },
       finalCta: `Descargar en App Store — ${trial.short}`,
       line: `${trial.short} · cancelas cuando quieras en App Store`,
+      pricingLine: 'Luego $3.990/mes · cancela cuando quieras',
       aria: 'Descargar Anto en App Store. Incluye 1 día de prueba gratis.',
       stickyAria: 'Descargar Anto en App Store. Prueba gratis de 1 día.',
       faqAnswer: trial.faqPricingAnswer,
     },
+    privacyBadge: 'Tus conversaciones son privadas',
+    androidHeroCta: 'Lista de espera Android',
     how: {
       sectionTitle: 'Así funciona',
       steps: [
@@ -235,7 +265,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       tagline: '© {year} Anto · Hecho con cuidado en Chile',
     },
     trustStrip: {
-      ratingOnAppStore: '★★★★★ 5.0 en App Store',
+      ratingOnAppStore: appStoreRatingWithReviews('es'),
       availableOn: 'Disponible en iPhone',
     },
     highlights:
@@ -248,6 +278,19 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       antoMessage:
         'Suena agotador. ¿Qué pesa más ahora: el miedo, la culpa o la incertidumbre?',
       inputPlaceholder: 'Escribe un mensaje…',
+    },
+    screenshots: {
+      sectionTitle: 'Así se ve la app',
+      images: [
+        {
+          src: '/assets/images/hero/phone-mockup-landing.webp',
+          alt: 'Pantalla de chat de Anto en iPhone con una conversación de apoyo emocional',
+        },
+        {
+          src: '/assets/images/hero/phone-in-hand-landing.webp',
+          alt: 'Persona sosteniendo un iPhone con la app Anto abierta',
+        },
+      ],
     },
   };
 }

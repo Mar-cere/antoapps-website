@@ -5,6 +5,7 @@ import CookieConsent from '@/components/CookieConsent';
 import BienvenidaLandingTracker from '@/components/analytics/BienvenidaLandingTracker';
 import MetaPixelNoscript from '@/components/analytics/MetaPixelNoscript';
 import BienvenidaAppPreview from '@/components/bienvenida/BienvenidaAppPreview';
+import BienvenidaAppScreenshots from '@/components/bienvenida/BienvenidaAppScreenshots';
 import BienvenidaFaq from '@/components/bienvenida/BienvenidaFaq';
 import BienvenidaStickyCta from '@/components/bienvenida/BienvenidaStickyCta';
 import BienvenidaTrustStrip from '@/components/bienvenida/BienvenidaTrustStrip';
@@ -100,6 +101,7 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
             <span className="lad-hero-title-line">{copy.hero.titleLine1}</span>
             <span className="lad-hero-title-line">{copy.hero.titleLine2[landingVariant]}</span>
           </h1>
+          <p className="lad-hero-tagline">{copy.hero.tagline}</p>
           <p className="lad-hero-lead">{copy.hero.lead[landingVariant]}</p>
 
           <HeroDualCta
@@ -110,9 +112,9 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
             locale={locale}
           />
 
-          <BienvenidaAppPreview copy={copy.appPreview} />
-
           <BienvenidaTrustStrip copy={copy.trustStrip} highlights={copy.highlights} />
+
+          <BienvenidaAppPreview copy={copy.appPreview} />
         </section>
 
         <section
@@ -134,6 +136,7 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
                 </li>
               ))}
             </ol>
+            <BienvenidaAppScreenshots copy={copy.screenshots} />
           </div>
         </section>
 
