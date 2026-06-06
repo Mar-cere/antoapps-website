@@ -6,8 +6,11 @@ import BienvenidaLandingTracker from '@/components/analytics/BienvenidaLandingTr
 import MetaPixelNoscript from '@/components/analytics/MetaPixelNoscript';
 import BienvenidaAppPreview from '@/components/bienvenida/BienvenidaAppPreview';
 import BienvenidaAppScreenshots from '@/components/bienvenida/BienvenidaAppScreenshots';
-import BienvenidaTestimonial from '@/components/bienvenida/BienvenidaTestimonial';
+import BienvenidaAudience from '@/components/bienvenida/BienvenidaAudience';
+import BienvenidaClinicalPillars from '@/components/bienvenida/BienvenidaClinicalPillars';
+import BienvenidaConversationDemo from '@/components/bienvenida/BienvenidaConversationDemo';
 import BienvenidaFaq from '@/components/bienvenida/BienvenidaFaq';
+import BienvenidaReviews from '@/components/bienvenida/BienvenidaReviews';
 import BienvenidaStickyCta from '@/components/bienvenida/BienvenidaStickyCta';
 import BienvenidaTrustStrip from '@/components/bienvenida/BienvenidaTrustStrip';
 import HeroDualCta from '@/components/bienvenida/HeroDualCta';
@@ -102,8 +105,7 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
             <span className="lad-hero-title-line">{copy.hero.titleLine1}</span>
             <span className="lad-hero-title-line">{copy.hero.titleLine2[landingVariant]}</span>
           </h1>
-          <p className="lad-hero-tagline">{copy.hero.tagline}</p>
-          <p className="lad-hero-lead">{copy.hero.lead[landingVariant]}</p>
+          <p className="lad-hero-subheadline">{copy.hero.subheadline[landingVariant]}</p>
 
           <HeroDualCta
             storeHref={storeHref}
@@ -113,12 +115,15 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
             locale={locale}
           />
 
-          <BienvenidaTrustStrip copy={copy.trustStrip} highlights={copy.highlights} />
-
-          <BienvenidaTestimonial copy={copy.testimonial} />
-
-          <BienvenidaAppPreview copy={copy.appPreview} />
+          <BienvenidaTrustStrip copy={copy.trustStrip} />
         </section>
+
+        <div className="lad-hero-social">
+          <BienvenidaReviews copy={copy.reviews} />
+          <BienvenidaAppPreview copy={copy.appPreview} />
+        </div>
+
+        <BienvenidaClinicalPillars copy={copy.clinicalPillars} />
 
         <section
           className="lad-how lad-section--anchor"
@@ -129,6 +134,7 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
             <h2 id="lad-how-section-title" className="lad-how-section-title">
               {copy.how.sectionTitle}
             </h2>
+            <BienvenidaConversationDemo copy={copy.conversationDemo} />
             <ol className="lad-how-steps">
               {copy.how.steps.map((step, index) => (
                 <li key={step}>
@@ -142,6 +148,8 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
             <BienvenidaAppScreenshots copy={copy.screenshots} />
           </div>
         </section>
+
+        <BienvenidaAudience copy={copy.audience} />
 
         <BienvenidaFaq copy={copy.faq} locale={locale} />
 

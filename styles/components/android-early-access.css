@@ -8,6 +8,15 @@
     text-align: left;
 }
 
+.android-early-access-incentive {
+    margin: 0 0 var(--spacing-2);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.45;
+    color: var(--color-primary);
+    text-align: center;
+}
+
 .android-early-access-title {
     margin: 0 0 var(--spacing-1);
     font-size: var(--font-size-sm);

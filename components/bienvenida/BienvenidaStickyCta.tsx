@@ -61,7 +61,7 @@ export default function BienvenidaStickyCta({
   };
 
   const handleDesktopSticky = () => {
-    trackStickyAction('desktop_qr_scroll', pagePath, landingVariant);
+    trackStickyAction('desktop_options_scroll', pagePath, landingVariant);
     scrollToHeroCta();
   };
 

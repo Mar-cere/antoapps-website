@@ -1,4 +1,5 @@
 import type { Locale } from '@/lib/i18n/config';
+import { getAppStoreReviewSnippets } from '@/lib/app-store-reviews';
 import { appStoreRatingWithReviews } from '@/lib/app-store-social-proof';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
@@ -15,8 +16,7 @@ export type BienvenidaCopy = {
   hero: {
     titleLine1: string;
     titleLine2: Record<BienvenidaVariant, string>;
-    tagline: string;
-    lead: Record<BienvenidaVariant, string>;
+    subheadline: Record<BienvenidaVariant, string>;
   };
   trial: {
     heroCta: Record<BienvenidaVariant, string>;
@@ -35,20 +35,48 @@ export type BienvenidaCopy = {
   };
   privacyBadge: string;
   androidHeroCta: string;
-  desktopQr: {
-    label: string;
-    hint: string;
-    fallbackLink: string;
+  desktopPicker: {
+    prompt: string;
+    iphone: string;
+    android: string;
+    changeDevice: string;
+    iphoneHint: string;
   };
-  testimonial: {
-    quote: string;
-    attribution: string;
+  androidDevice: {
+    waitlistLine: string;
+    iosFallback: string;
+  };
+  androidWaitlist: {
+    incentive: string;
+    counterTemplate: string;
+  };
+  reviews: {
+    sectionTitle: string;
+    sourceLabel: string;
+    starsAria: string;
+    items: readonly { quote: string; author: string }[];
+  };
+  clinicalPillars: {
+    sectionTitle: string;
+    items: readonly {
+      icon: 'evidence' | 'crisis' | 'privacy';
+      title: string;
+      description: string;
+    }[];
+  };
+  conversationDemo: {
+    ariaLabel: string;
+    label: string;
+    messages: readonly { role: 'user' | 'anto'; text: string }[];
+  };
+  audience: {
+    sectionTitle: string;
+    items: readonly { title: string; description: string }[];
   };
   inAppHint: {
     iosBrowser: string;
     androidBrowser: string;
   };
-  highlights: string;
   how: {
     sectionTitle: string;
     steps: readonly string[];
@@ -71,7 +99,6 @@ export type BienvenidaCopy = {
     availableOn: string;
     ratingOnAppStore: string;
   };
-  androidWaitlist: string;
   androidCta: string;
   appPreview: {
     ariaLabel: string;
@@ -94,9 +121,10 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         title: 'Anto — Mental calm in minutes | Download on the App Store',
         description:
           'When your mind won\'t slow down, write what you feel and get clear guidance in seconds. 1-day free trial on iPhone.',
-        socialDescription: 'Download on the App Store. ★ 5.0 · 1-day free trial.',
+        socialDescription:
+          'AI emotional support when your mind won\'t slow down. Clarity in minutes — 1-day free trial on iPhone.',
         ogSubline:
-          'Write freely and get practical clarity in seconds. 1-day free trial on iPhone.',
+          'Write what you feel. Get clarity and one concrete step — not just a chatbot reply.',
         ogAlt: 'Anto — Mental calm in minutes',
       },
       hero: {
@@ -105,10 +133,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           A: 'Sort through what you feel with Anto',
           B: 'Anto helps you make sense of it',
         },
-        tagline: 'AI emotional support app for iPhone',
-        lead: {
-          A: 'Write what you feel and get clear guidance in seconds.',
-          B: 'Write what you feel and get clear guidance in seconds.',
+        subheadline: {
+          A: 'Write what you feel — AI gives you clarity and one concrete step in seconds.',
+          B: 'Write what you feel — AI gives you clarity and one concrete step in seconds.',
         },
       },
       trial: {
@@ -121,9 +148,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           B: `Download — ${trial.short}`,
         },
         stickyAndroidCta: 'Join Android waitlist',
-        stickyDesktopCta: 'Scan QR with iPhone',
+        stickyDesktopCta: 'See download options',
         stickyAndroidAria: 'Go to Android waitlist form',
-        stickyDesktopAria: 'Go to App Store QR code',
+        stickyDesktopAria: 'Go to download options',
         finalCta: `Download on the App Store — ${trial.short}`,
         line: `${trial.short} · cancel anytime in the App Store`,
         pricingLine: 'Then $3.990/mo · cancel anytime',
@@ -134,14 +161,79 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       },
       privacyBadge: 'Your conversations are private',
       androidHeroCta: 'Android waitlist',
-      desktopQr: {
-        label: 'QR code to download Anto on the App Store',
-        hint: 'Scan with your iPhone camera',
-        fallbackLink: 'Or open the App Store link',
+      desktopPicker: {
+        prompt: 'Which device do you use?',
+        iphone: 'I have an iPhone',
+        android: 'I have Android',
+        changeDevice: 'Change device',
+        iphoneHint: 'Opens the App Store — install on your iPhone',
       },
-      testimonial: {
-        quote: 'It helped me put words to what I was feeling when I had no one to talk to.',
-        attribution: '— App Store user',
+      androidDevice: {
+        waitlistLine: 'Be among the first — early access + 7 free days when we launch on Google Play.',
+        iosFallback: 'On iPhone? Download on the App Store',
+      },
+      androidWaitlist: {
+        incentive: 'Be among the first — early access + 7 free days at launch',
+        counterTemplate: '{count} people on the waitlist',
+      },
+      reviews: {
+        sectionTitle: 'What users say on the App Store',
+        sourceLabel: 'Public App Store reviews',
+        starsAria: '5 out of 5 stars',
+        items: getAppStoreReviewSnippets('en'),
+      },
+      clinicalPillars: {
+        sectionTitle: 'Why Anto is different',
+        items: [
+          {
+            icon: 'evidence',
+            title: 'Clinically grounded',
+            description: 'PHQ-9/GAD-7 scales and 8 evidence-based protocols — not generic chat.',
+          },
+          {
+            icon: 'crisis',
+            title: '24/7 crisis detection',
+            description: 'Proactive alerts and resources if you need urgent support.',
+          },
+          {
+            icon: 'privacy',
+            title: 'Total privacy',
+            description: 'Your conversations stay yours. No ads, no data sold.',
+          },
+        ],
+      },
+      conversationDemo: {
+        ariaLabel: 'Animated Anto conversation demo',
+        label: 'A real conversation, start to finish',
+        messages: [
+          { role: 'user', text: "I can't sleep — my mind won't stop replaying everything" },
+          {
+            role: 'anto',
+            text: 'That sounds exhausting. What weighs most right now: fear, guilt, or uncertainty?',
+          },
+          { role: 'user', text: 'Mostly fear about work tomorrow' },
+          {
+            role: 'anto',
+            text: "Let's narrow it down. One step for tonight: write the 3 things you can control tomorrow. Want to try?",
+          },
+        ],
+      },
+      audience: {
+        sectionTitle: 'Anto is for you if…',
+        items: [
+          {
+            title: 'Anxiety keeps you up at night',
+            description: 'You need to land your thoughts at 2 a.m., not wait until therapy on Tuesday.',
+          },
+          {
+            title: 'Work stress is overflowing',
+            description: 'You want one concrete step today — not another productivity lecture.',
+          },
+          {
+            title: 'You are processing a breakup or loss',
+            description: 'You need a safe space to untangle what you feel, at your own pace.',
+          },
+        ],
       },
       inAppHint: {
         iosBrowser: 'Open in Safari',
@@ -192,10 +284,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ratingOnAppStore: appStoreRatingWithReviews('en'),
         availableOn: 'Available on iPhone',
       },
-      highlights:
-        'PHQ-9/GAD-7 scales · 8 evidence-based protocols · 24/7 crisis detection · ES/EN',
-      androidWaitlist: 'On Android? Join the waitlist',
-      androidCta: 'I want Android access',
+      androidCta: 'Join the waitlist',
       appPreview: {
         ariaLabel: 'Anto app preview',
         userMessage: "I can't stop thinking about everything going wrong",
@@ -224,9 +313,10 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       title: 'Anto — Calma mental en minutos | Descarga en App Store',
       description:
         'Cuando tu mente va a mil, escribe lo que sientes y recibe guía clara en segundos. Prueba 1 día gratis en iPhone.',
-      socialDescription: 'Descarga en App Store. ★ 5.0 · Prueba 1 día gratis.',
+      socialDescription:
+        'Apoyo emocional con IA cuando tu mente no para. Claridad en minutos — prueba 1 día gratis en iPhone.',
       ogSubline:
-        'Escribe como te salga y recibe claridad práctica en segundos. Prueba 1 día gratis en iPhone.',
+        'Escribe lo que sientes. Recibe claridad y un paso concreto — no solo una respuesta genérica.',
       ogAlt: 'Anto — Calma mental en minutos',
     },
     hero: {
@@ -235,10 +325,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         A: 'Ordena lo que sientes con Anto',
         B: 'Anto te ayuda a ordenarlo',
       },
-      tagline: 'La app de apoyo emocional con IA para iPhone',
-      lead: {
-        A: 'Escribe lo que sientes y recibe guía clara en segundos.',
-        B: 'Escribes lo que sientes y recibes guía clara en segundos.',
+      subheadline: {
+        A: 'Escribe lo que sientes — la IA te da claridad y un paso concreto en segundos.',
+        B: 'Escribe lo que sientes — la IA te da claridad y un paso concreto en segundos.',
       },
     },
     trial: {
@@ -251,9 +340,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         B: `Descargar — ${trial.short}`,
       },
       stickyAndroidCta: 'Lista de espera Android',
-      stickyDesktopCta: 'Escanea QR con iPhone',
+      stickyDesktopCta: 'Ver opciones de descarga',
       stickyAndroidAria: 'Ir al formulario de lista de espera Android',
-      stickyDesktopAria: 'Ir al código QR de App Store',
+      stickyDesktopAria: 'Ir a las opciones de descarga',
       finalCta: `Descargar en App Store — ${trial.short}`,
       line: `${trial.short} · cancelas cuando quieras en App Store`,
       pricingLine: 'Luego $3.990/mes · cancela cuando quieras',
@@ -264,14 +353,79 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
     },
     privacyBadge: 'Tus conversaciones son privadas',
     androidHeroCta: 'Lista de espera Android',
-    desktopQr: {
-      label: 'Código QR para descargar Anto en App Store',
-      hint: 'Escanéalo con la cámara de tu iPhone',
-      fallbackLink: 'O abre el enlace de App Store',
+    desktopPicker: {
+      prompt: '¿Desde qué dispositivo nos visitas?',
+      iphone: 'Tengo iPhone',
+      android: 'Tengo Android',
+      changeDevice: 'Cambiar dispositivo',
+      iphoneHint: 'Abre App Store — instálala en tu iPhone',
     },
-    testimonial: {
-      quote: 'Me ayudó a poner palabras a lo que sentía cuando no tenía con quién hablar.',
-      attribution: '— Usuario de App Store',
+    androidDevice: {
+      waitlistLine: 'Sé de los primeros — acceso anticipado + 7 días gratis al lanzar en Google Play.',
+      iosFallback: '¿Tienes iPhone? Descarga en App Store',
+    },
+    androidWaitlist: {
+      incentive: 'Sé de los primeros — acceso anticipado + 7 días gratis al lanzar',
+      counterTemplate: '{count} personas en la lista de espera',
+    },
+    reviews: {
+      sectionTitle: 'Lo que dicen en App Store',
+      sourceLabel: 'Reseñas públicas en App Store',
+      starsAria: '5 de 5 estrellas',
+      items: getAppStoreReviewSnippets('es'),
+    },
+    clinicalPillars: {
+      sectionTitle: 'Por qué Anto es distinto',
+      items: [
+        {
+          icon: 'evidence',
+          title: 'Basado en evidencia clínica',
+          description: 'Escalas PHQ-9/GAD-7 y 8 protocolos con respaldo — no es un chat genérico.',
+        },
+        {
+          icon: 'crisis',
+          title: 'Detecta crisis 24/7',
+          description: 'Alertas proactivas y recursos si necesitas apoyo urgente.',
+        },
+        {
+          icon: 'privacy',
+          title: 'Privacidad total',
+          description: 'Tus conversaciones son tuyas. Sin publicidad ni venta de datos.',
+        },
+      ],
+    },
+    conversationDemo: {
+      ariaLabel: 'Demo animada de conversación con Anto',
+      label: 'Una conversación real, de principio a fin',
+      messages: [
+        { role: 'user', text: 'no puedo dormir, sigo pensando en todo malo del trabajo' },
+        {
+          role: 'anto',
+          text: 'Suena agotador. ¿Qué pesa más ahora: el miedo, la culpa o la incertidumbre?',
+        },
+        { role: 'user', text: 'más el miedo por mañana en la pega' },
+        {
+          role: 'anto',
+          text: 'Aterricemos. Un paso para hoy: escribe 3 cosas que sí controlas mañana. ¿Lo probamos?',
+        },
+      ],
+    },
+    audience: {
+      sectionTitle: 'Anto es para ti si…',
+      items: [
+        {
+          title: 'La ansiedad no te deja dormir',
+          description: 'Necesitas aterrizar a las 2 a.m., no esperar hasta el martes en terapia.',
+        },
+        {
+          title: 'El estrés laboral te desborda',
+          description: 'Quieres un paso concreto hoy — no otra charla de productividad.',
+        },
+        {
+          title: 'Estás procesando una ruptura o pérdida',
+          description: 'Necesitas un espacio seguro para desenredar lo que sientes, a tu ritmo.',
+        },
+      ],
     },
     inAppHint: {
       iosBrowser: 'Abrir en Safari',
@@ -322,10 +476,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       ratingOnAppStore: appStoreRatingWithReviews('es'),
       availableOn: 'Disponible en iPhone',
     },
-    highlights:
-      'Escalas PHQ-9/GAD-7 · 8 protocolos basados en evidencia · Detección de crisis 24/7 · ES/EN',
-    androidWaitlist: '¿Usas Android? Únete a la lista de espera',
-    androidCta: 'Quiero acceso Android',
+    androidCta: 'Unirme a la lista',
     appPreview: {
       ariaLabel: 'Vista previa de la app Anto',
       userMessage: 'no puedo parar de pensar en todo malo',

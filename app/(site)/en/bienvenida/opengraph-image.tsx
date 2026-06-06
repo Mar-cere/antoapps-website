@@ -60,7 +60,7 @@ export default function BienvenidaOpenGraphImageEn() {
             marginBottom: 28,
           }}
         >
-          When your mind won&apos;t slow down, sort through what you feel
+          AI emotional support when your mind won&apos;t slow down
         </div>
         <div style={{ fontSize: 30, lineHeight: 1.4, color: 'rgba(255,255,255,0.82)', maxWidth: 860 }}>
           {copy.meta.ogSubline}
@@ -69,13 +69,14 @@ export default function BienvenidaOpenGraphImageEn() {
           style={{
             marginTop: 40,
             display: 'flex',
+            flexWrap: 'wrap',
             gap: 16,
-            fontSize: 22,
+            fontSize: 20,
             color: '#1adddb',
             fontWeight: 600,
           }}
         >
-          <span>★ 5.0 on the App Store</span>
+          <span>Clinically grounded</span>
           <span>·</span>
           <span>{trial.short}</span>
         </div>

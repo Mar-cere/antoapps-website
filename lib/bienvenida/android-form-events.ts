@@ -1,6 +1,7 @@
 import { prefersReducedMotion } from '@/lib/device/motion';
 
 export const LAD_OPEN_ANDROID_FORM_EVENT = 'lad-open-android-form';
+export const LAD_DESKTOP_CHOOSE_ANDROID_EVENT = 'lad-desktop-choose-android';
 
 const SCROLL_SETTLE_MS = 350;
 
@@ -17,6 +18,22 @@ export function dispatchOpenAndroidForm(): void {
   }
 
   window.setTimeout(open, SCROLL_SETTLE_MS);
+}
+
+export function dispatchDesktopChooseAndroid(): void {
+  if (typeof window === 'undefined') return;
+
+  const choose = () => {
+    window.dispatchEvent(new CustomEvent(LAD_DESKTOP_CHOOSE_ANDROID_EVENT));
+    window.dispatchEvent(new CustomEvent(LAD_OPEN_ANDROID_FORM_EVENT));
+  };
+
+  if (prefersReducedMotion()) {
+    choose();
+    return;
+  }
+
+  window.setTimeout(choose, SCROLL_SETTLE_MS);
 }
 
 export function scrollToHeroCta(): void {

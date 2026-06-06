@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-    "validate:landing": "node scripts/validate-landing-logic.mjs",
+    "validate:landing": "node scripts/validate-landing-logic.mjs && tsx scripts/validate-bienvenida-copy.ts",
     "deploy": "vercel --prod",
     "deploy:preview": "vercel"
   },
@@ -17,18 +17,17 @@
     "googleapis": "^173.0.0",
     "mongodb": "^7.2.0",
     "next": "^14.2.0",
-    "qrcode": "^1.5.4",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "socket.io-client": "^4.8.3"
   },
   "devDependencies": {
     "@types/node": "^20.14.0",
-    "@types/qrcode": "^1.5.6",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.1.2",
+    "tsx": "^4.22.4",
     "typescript": "^5.4.0"
   },
   "keywords": [

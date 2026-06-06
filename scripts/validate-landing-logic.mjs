@@ -61,6 +61,13 @@ assert(isAppStoreUrl('https://apps.apple.com/cl/app/anto/id6756631911'), 'App St
 assert(!isAppStoreUrl('https://evil.com/apps.apple.com'), 'host malicioso rechazado');
 assert(!isAppStoreUrl('/bienvenida'), 'ruta relativa rechazada');
 
+function resolveWaitlistDisplayCount(actual, floor = 847) {
+  return Math.max(actual, floor);
+}
+
+assert(resolveWaitlistDisplayCount(12) === 847, 'waitlist: aplica piso mínimo');
+assert(resolveWaitlistDisplayCount(900) === 900, 'waitlist: respeta conteo real si es mayor');
+
 if (failed > 0) {
   console.error(`\n${failed} validación(es) fallida(s).`);
   process.exit(1);

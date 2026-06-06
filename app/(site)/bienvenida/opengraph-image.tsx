@@ -60,7 +60,7 @@ export default function BienvenidaOpenGraphImage() {
             marginBottom: 28,
           }}
         >
-          Cuando tu mente va a mil, ordena lo que sientes
+          Apoyo emocional con IA cuando tu mente no para
         </div>
         <div style={{ fontSize: 30, lineHeight: 1.4, color: 'rgba(255,255,255,0.82)', maxWidth: 860 }}>
           {copy.meta.ogSubline}
@@ -69,13 +69,14 @@ export default function BienvenidaOpenGraphImage() {
           style={{
             marginTop: 40,
             display: 'flex',
+            flexWrap: 'wrap',
             gap: 16,
-            fontSize: 22,
+            fontSize: 20,
             color: '#1adddb',
             fontWeight: 600,
           }}
         >
-          <span>★ 5.0 en App Store</span>
+          <span>Basado en evidencia clínica</span>
           <span>·</span>
           <span>{trial.short}</span>
         </div>

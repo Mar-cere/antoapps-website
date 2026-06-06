@@ -17,6 +17,7 @@ type AndroidEarlyAccessFormProps = {
   title?: string;
   subtitle?: string;
   buttonLabel?: string;
+  incentiveLine?: string;
   compact?: boolean;
   autoFocus?: boolean;
 };
@@ -32,6 +33,7 @@ export default function AndroidEarlyAccessForm({
   title,
   subtitle,
   buttonLabel,
+  incentiveLine,
   compact = false,
   autoFocus = false,
 }: AndroidEarlyAccessFormProps) {
@@ -114,6 +116,7 @@ export default function AndroidEarlyAccessForm({
 
   return (
     <div id={id} className={className || 'android-early-access'}>
+      {incentiveLine && <p className="android-early-access-incentive">{incentiveLine}</p>}
       {!compact && <p className="android-early-access-title">{resolvedTitle}</p>}
       {!compact && <p className="android-early-access-subtitle">{resolvedSubtitle}</p>}
       <form

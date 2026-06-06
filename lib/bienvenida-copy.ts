@@ -25,8 +25,13 @@ export function bienvenidaHeroTitleLine2(variant: 'A' | 'B'): string {
   return copy.hero.titleLine2[variant];
 }
 
+export function bienvenidaHeroSubheadline(variant: 'A' | 'B'): string {
+  return copy.hero.subheadline[variant];
+}
+
+/** @deprecated Use bienvenidaHeroSubheadline */
 export function bienvenidaHeroLead(variant: 'A' | 'B'): string {
-  return copy.hero.lead[variant];
+  return bienvenidaHeroSubheadline(variant);
 }
 
 export const BIENVENIDA_HOW_STEPS = copy.how.steps;
