@@ -169,11 +169,11 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         iphoneHint: 'Opens the App Store — install on your iPhone',
       },
       androidDevice: {
-        waitlistLine: 'Be among the first — early access + 7 free days when we launch on Google Play.',
+        waitlistLine: 'Join the waitlist and we will notify you when Anto is on Google Play.',
         iosFallback: 'On iPhone? Download on the App Store',
       },
       androidWaitlist: {
-        incentive: 'Be among the first — early access + 7 free days at launch',
+        incentive: 'Early access — be among the first on the waitlist',
         counterTemplate: '{count} people on the waitlist',
       },
       reviews: {
@@ -361,11 +361,11 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       iphoneHint: 'Abre App Store — instálala en tu iPhone',
     },
     androidDevice: {
-      waitlistLine: 'Sé de los primeros — acceso anticipado + 7 días gratis al lanzar en Google Play.',
+      waitlistLine: 'Únete a la lista y te avisamos cuando Anto esté en Google Play.',
       iosFallback: '¿Tienes iPhone? Descarga en App Store',
     },
     androidWaitlist: {
-      incentive: 'Sé de los primeros — acceso anticipado + 7 días gratis al lanzar',
+      incentive: 'Acceso anticipado — sé de los primeros en la lista',
       counterTemplate: '{count} personas en la lista de espera',
     },
     reviews: {
