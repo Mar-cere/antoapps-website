@@ -5,8 +5,7 @@ import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
 import { getPricingCalculatorCopy } from '@/lib/i18n/copy/home';
-
-const CLP_TO_USD = 950;
+import { formatUsdPrice, PRICING_USD } from '@/lib/pricing/plans';
 
 type PricingCalculatorProps = {
   locale?: Locale;
@@ -27,36 +26,22 @@ export default function PricingCalculator({ locale = 'es' }: PricingCalculatorPr
     const monthlyPrice =
       plan.price /
       (plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12);
-    const baseMonthlyPrice = copy.plans.find((p) => p.id === '1-month')?.price || 3990;
+    const baseMonthlyPrice = copy.plans.find((p) => p.id === '1-month')?.price || PRICING_USD.month;
     const savings = baseMonthlyPrice - monthlyPrice;
-    return savings > 0 ? Math.round(savings) : 0;
+    return savings > 0 ? Math.round(savings * 100) / 100 : 0;
   };
 
   const calculateTotalSavings = (plan: (typeof copy.plans)[number]) => {
     if (!plan.discount) return null;
-    const monthlyPrice = copy.plans.find((p) => p.id === '1-month')?.price || 3990;
+    const monthlyPrice = copy.plans.find((p) => p.id === '1-month')?.price || PRICING_USD.month;
     const months =
       plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12;
     const totalWithoutDiscount = monthlyPrice * months;
-    return Math.round(totalWithoutDiscount - plan.price);
+    const savings = Math.round((totalWithoutDiscount - plan.price) * 100) / 100;
+    return savings > 0 ? savings : null;
   };
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat(locale === 'en' ? 'en-CL' : 'es-CL', {
-      style: 'currency',
-      currency: 'CLP',
-      minimumFractionDigits: 0,
-    }).format(price);
-  };
-
-  const formatUsd = (priceClp: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(priceClp / CLP_TO_USD);
-  };
+  const formatPrice = (price: number) => formatUsdPrice(price, locale);
 
   const downloadHref = locale === 'en' ? '/en/bienvenida' : '/bienvenida';
   const termsHref = localePath(locale, '/terminos');
@@ -95,9 +80,6 @@ export default function PricingCalculator({ locale = 'es' }: PricingCalculatorPr
                   {plan.popular && <span className="popular-badge">{copy.popularBadge}</span>}
                 </div>
                 <div className="plan-price">{formatPrice(plan.price)}</div>
-                <div className="plan-period">
-                  ({formatUsd(plan.price)} {copy.approxUsd})
-                </div>
                 <div className="plan-period">{plan.period}</div>
               </button>
             ))}
@@ -115,19 +97,13 @@ export default function PricingCalculator({ locale = 'es' }: PricingCalculatorPr
                   <span className="result-label">{copy.summary.totalPriceLabel}</span>
                   <span className="result-value highlight">{formatPrice(selectedPlanData.price)}</span>
                 </div>
-                <div className="result-item">
-                  <span className="result-label">{copy.summary.totalPriceUsdLabel}</span>
-                  <span className="result-value">
-                    {formatUsd(selectedPlanData.price)} {copy.approxUsd}
-                  </span>
-                </div>
                 {selectedPlanData.discount && (
                   <>
                     <div className="result-item">
                       <span className="result-label">{copy.summary.discountLabel}</span>
                       <span className="result-value success">{selectedPlanData.discount}%</span>
                     </div>
-                    {calculateTotalSavings(selectedPlanData) && (
+                    {calculateTotalSavings(selectedPlanData) !== null && (
                       <div className="result-item">
                         <span className="result-label">{copy.summary.totalSavingsLabel}</span>
                         <span className="result-value success">
@@ -191,7 +167,7 @@ export default function PricingCalculator({ locale = 'es' }: PricingCalculatorPr
                 </div>
                 <div className="comparison-cell">{plan.duration}</div>
                 <div className="comparison-cell">{formatPrice(plan.price)}</div>
-                <div className="comparison-cell">{formatPrice(Math.round(monthlyPrice))}</div>
+                <div className="comparison-cell">{formatPrice(Math.round(monthlyPrice * 100) / 100)}</div>
                 <div className="comparison-cell">
                   {savings !== null && savings > 0 ? (
                     <span className="savings-amount">

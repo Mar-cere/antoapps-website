@@ -1,14 +1,12 @@
 'use client';
 
-import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
+import { FeatureIcon } from '@/components/icons/FeatureIcons';
 import { getHomeSectionsCopy } from '@/lib/i18n/copy/home';
 
 type FeaturesProps = {
   locale?: Locale;
 };
-
-const FEATURE_ICONS_FALLBACK = ['🤖', '🏥', '📋', '🧠', '🚨', '✅', '🌍', '⏰'];
 
 export default function Features({ locale = 'es' }: FeaturesProps) {
   const copy = getHomeSectionsCopy(locale);
@@ -20,10 +18,10 @@ export default function Features({ locale = 'es' }: FeaturesProps) {
           <h2 className="section-title reveal-on-scroll">{copy.features.title}</h2>
           <p className="section-subtitle reveal-on-scroll">{copy.features.subtitle}</p>
           <div className="features-grid" data-stagger>
-            {copy.features.cards.map((card, index) => (
+            {copy.features.cards.map((card) => (
               <div key={card.title} className="feature-card stagger-item" data-stagger-item>
-                <div className="feature-icon icon-hover-enhanced">
-                  {card.icon ?? FEATURE_ICONS_FALLBACK[index]}
+                <div className="feature-icon icon-hover-enhanced" aria-hidden="true">
+                  <FeatureIcon id={card.icon} />
                 </div>
                 <h3>{card.title}</h3>
                 <p>{card.description}</p>

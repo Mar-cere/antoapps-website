@@ -97,10 +97,10 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
           {
             kind: 'ul',
             items: [
-              'Monthly Plan: $3,990 CLP / approx. US$4.20',
-              '3-Month Plan: $11,990 CLP / approx. US$12.62 (Save 10%)',
-              '6-Month Plan: $20,990 CLP / approx. US$22.09 (Save 12%)',
-              'Annual Plan: $39,990 CLP / approx. US$42.09 (Save 17%)',
+              'Monthly Plan: US$4.20',
+              '3-Month Plan: US$12.62',
+              '6-Month Plan: US$22.09 (Save 12%)',
+              'Annual Plan: US$42.09 (Save 17%)',
             ],
           },
           {
@@ -275,10 +275,10 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
         {
           kind: 'ul',
           items: [
-            'Plan Mensual: $3.990 CLP / US$4.20 aprox.',
-            'Plan de 3 Meses: $11.990 CLP / US$12.62 aprox. (Ahorra 10%)',
-            'Plan de 6 Meses: $20.990 CLP / US$22.09 aprox. (Ahorra 12%)',
-            'Plan Anual: $39.990 CLP / US$42.09 aprox. (Ahorra 17%)',
+            'Plan Mensual: US$4.20',
+            'Plan de 3 Meses: US$12.62',
+            'Plan de 6 Meses: US$22.09 (Ahorra 12%)',
+            'Plan Anual: US$42.09 (Ahorra 17%)',
           ],
         },
         {

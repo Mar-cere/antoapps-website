@@ -11,17 +11,12 @@ import CookieConsent from '@/components/CookieConsent';
 import FaqJsonLd from '@/components/seo/FaqJsonLd';
 import PullToRefresh from '@/components/ui/PullToRefresh';
 import Hero from '@/components/sections/Hero';
-import WhatsNew from '@/components/sections/WhatsNew';
 import Features from '@/components/sections/Features';
 import AppShowcase from '@/components/sections/AppShowcase';
-import Benefits from '@/components/sections/Benefits';
-import Technologies from '@/components/sections/Technologies';
+import HomeExploreLinks from '@/components/sections/HomeExploreLinks';
 import Skeleton from '@/components/ui/Skeleton';
 
-const ScienceBacked = lazy(() => import('@/components/sections/ScienceBacked'));
 const Pricing = lazy(() => import('@/components/sections/Pricing'));
-const Security = lazy(() => import('@/components/sections/Security'));
-const AIExplained = lazy(() => import('@/components/sections/AIExplained'));
 const FAQ = lazy(() => import('@/components/sections/FAQ'));
 
 function SectionSkeleton() {
@@ -73,21 +68,10 @@ export default function HomePageContent({ locale }: HomePageContentProps) {
           <Hero locale={locale} />
           <AppShowcase locale={locale} />
           <Features locale={locale} />
-          <Benefits locale={locale} />
-          <Suspense fallback={<SectionSkeleton />}>
-            <ScienceBacked locale={locale} />
-          </Suspense>
           <Suspense fallback={<SectionSkeleton />}>
             <Pricing locale={locale} />
           </Suspense>
-          <Suspense fallback={<SectionSkeleton />}>
-            <Security locale={locale} />
-          </Suspense>
-          <WhatsNew locale={locale} />
-          <Technologies locale={locale} />
-          <Suspense fallback={<SectionSkeleton />}>
-            <AIExplained locale={locale} />
-          </Suspense>
+          <HomeExploreLinks locale={locale} />
           <Suspense fallback={<SectionSkeleton />}>
             <FAQ locale={locale} />
           </Suspense>

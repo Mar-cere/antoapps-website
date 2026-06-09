@@ -1,9 +1,10 @@
+import type { FeatureIconId, SecurityIconId } from '@/lib/types/feature-icons';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
 export type FeatureCard = {
-  icon: string;
+  icon: FeatureIconId;
   title: string;
   description: string;
 };
@@ -34,6 +35,7 @@ export type TechCategory = {
 };
 
 export type SecurityCard = {
+  icon: SecurityIconId;
   title: string;
   description: string;
   features: string[];
@@ -106,52 +108,52 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
   es: (trialNote) => ({
     features: {
       title: 'Características Principales',
-      subtitle: 'Todo lo que necesitas para tu bienestar mental en un solo lugar',
+      subtitle: 'Lo esencial para tu bienestar mental, en un solo lugar',
       cards: [
         {
-          icon: '🤖',
+          icon: 'ai',
           title: 'Asistente de IA',
           description:
             'Acompañamiento emocional con IA, tono profesional y práctico. Modos de conversación, memoria de contexto y preferencias de estilo según lo que necesites en cada momento.',
         },
         {
-          icon: '🏥',
+          icon: 'scales',
           title: 'Escalas PHQ-9 y GAD-7',
           description:
             'Evaluación automática con escalas clínicas validadas para depresión y ansiedad, con historial, tendencias y reportes.',
         },
         {
-          icon: '📋',
+          icon: 'protocols',
           title: 'Protocolos estructurados',
           description:
             '8 rutas basadas en evidencia: depresión, ansiedad, trauma, TOC, TEPT, ira, autocompasión e higiene del sueño.',
         },
         {
-          icon: '🧠',
+          icon: 'brain',
           title: 'Distorsiones cognitivas',
           description:
             'Detección de 15 tipos de patrones de pensamiento durante el chat, con intervenciones sugeridas para cada uno.',
         },
         {
-          icon: '🚨',
+          icon: 'crisis',
           title: 'Detección de crisis',
           description:
             'Identificación temprana de señales de riesgo con recursos de apoyo inmediato y protocolos de emergencia.',
         },
         {
-          icon: '✅',
+          icon: 'tasks',
           title: 'Tareas y hábitos',
           description:
             'Organiza actividades terapéuticas, recordatorios y rutinas saludables vinculadas a tu bienestar emocional.',
         },
         {
-          icon: '🌍',
+          icon: 'language',
           title: 'App bilingüe (ES/EN)',
           description:
             'Interfaz, chat, correos y notificaciones en español e inglés, con backend adaptado al idioma de tu perfil.',
         },
         {
-          icon: '⏰',
+          icon: 'clock',
           title: 'Disponible 24/7',
           description:
             'Acceso inmediato cuando lo necesites, sin esperas, citas ni horarios de consulta.',
@@ -185,9 +187,9 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
       ],
       proTip: {
-        title: '💡 Consejo Pro',
+        title: 'Consejo',
         description:
-          'Para obtener los mejores resultados, usa Anto regularmente. El asistente AI aprende más sobre ti con cada conversación, permitiéndole ofrecerte insights y recomendaciones cada vez más precisas. Muchos usuarios reportan mejoras significativas después de usar la app de forma consistente por 1-2 semanas.',
+          'Para obtener los mejores resultados, usa Anto con regularidad. El asistente aprende más sobre ti con cada conversación y puede ofrecerte orientación cada vez más precisa.',
       },
     },
     appShowcase: {
@@ -286,14 +288,15 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       ],
     },
     security: {
-      title: 'Seguridad y Privacidad de Grado Militar',
+      title: 'Tus datos, protegidos',
       subtitle:
-        'Tu privacidad es nuestra máxima prioridad. Implementamos las mejores prácticas de seguridad para proteger tus datos.',
+        'Cifrado AES-256, autenticación segura y cumplimiento con estándares internacionales de privacidad.',
       cards: [
         {
-          title: 'Encriptación End-to-End',
+          icon: 'encryption',
+          title: 'Cifrado de extremo a extremo',
           description:
-            'Todas tus conversaciones están encriptadas con AES-256, el mismo estándar usado por bancos y gobiernos. Ni siquiera nosotros podemos leer tus mensajes.',
+            'Tus conversaciones se cifran con AES-256. Solo tú tienes acceso a tu contenido.',
           features: [
             '✓ Encriptación AES-256',
             '✓ Claves de encriptación únicas por usuario',
@@ -302,15 +305,17 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
           ],
         },
         {
-          title: 'Cumplimiento Regulatorio',
+          icon: 'compliance',
+          title: 'Cumplimiento regulatorio',
           description:
-            'Cumplimos con todas las regulaciones internacionales de protección de datos para garantizar tu privacidad y seguridad.',
+            'Diseñado para alinearse con GDPR, HIPAA, LGPD y PIPEDA.',
           features: ['✓ GDPR (Europa)', '✓ HIPAA (Estados Unidos)', '✓ LGPD (Brasil)', '✓ PIPEDA (Canadá)'],
         },
         {
-          title: 'Autenticación Segura',
+          icon: 'auth',
+          title: 'Autenticación segura',
           description:
-            'Sistema de autenticación robusto con múltiples capas de seguridad para proteger tu cuenta.',
+            'Verificación en dos pasos, tokens seguros y detección de accesos inusuales.',
           features: [
             '✓ Autenticación de dos factores (2FA)',
             '✓ Tokens JWT seguros',
@@ -359,61 +364,61 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       title: 'Planes y Precios',
       subtitle: `Elige la duración que mejor se adapte a tus necesidades. Todos los planes incluyen acceso completo a la app. ${trialNote}`,
       valueBanner: {
-        label: '💰 Mejor Valor',
+        label: 'Mejor valor',
         highlight:
-          'Ahorra hasta un 17% con planes de mayor duración. Todos los planes incluyen las mismas funcionalidades premium.',
+          'Los planes de mayor duración ofrecen hasta un 17% de ahorro. Todas las funcionalidades están incluidas.',
       },
     },
   }),
   en: (trialNote) => ({
     features: {
       title: 'Key Features',
-      subtitle: 'Everything you need for your mental wellbeing in one place',
+      subtitle: 'The essentials for your mental wellbeing, in one place',
       cards: [
         {
-          icon: '🤖',
+          icon: 'ai',
           title: 'AI assistant',
           description:
             'AI emotional support with a professional, practical tone. Conversation modes, contextual memory, and style preferences for what you need in each moment.',
         },
         {
-          icon: '🏥',
+          icon: 'scales',
           title: 'PHQ-9 and GAD-7 scales',
           description:
             'Automatic assessment with validated clinical scales for depression and anxiety, with history, trends, and reports.',
         },
         {
-          icon: '📋',
+          icon: 'protocols',
           title: 'Structured protocols',
           description:
             '8 evidence-based paths: depression, anxiety, trauma, OCD, PTSD, anger, self-compassion, and sleep hygiene.',
         },
         {
-          icon: '🧠',
+          icon: 'brain',
           title: 'Cognitive distortions',
           description:
             'Detection of 15 thinking pattern types during chat, with suggested interventions for each.',
         },
         {
-          icon: '🚨',
+          icon: 'crisis',
           title: 'Crisis detection',
           description:
             'Early identification of risk signals with immediate support resources and emergency protocols.',
         },
         {
-          icon: '✅',
+          icon: 'tasks',
           title: 'Tasks and habits',
           description:
             'Organise therapeutic activities, reminders, and healthy routines linked to your emotional wellbeing.',
         },
         {
-          icon: '🌍',
+          icon: 'language',
           title: 'Bilingual app (ES/EN)',
           description:
             'Interface, chat, emails, and notifications in Spanish and English, with a backend adapted to your profile language.',
         },
         {
-          icon: '⏰',
+          icon: 'clock',
           title: 'Available 24/7',
           description:
             'Immediate access when you need it — no waiting, appointments, or office hours.',
@@ -447,9 +452,9 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
       ],
       proTip: {
-        title: '💡 Pro Tip',
+        title: 'Tip',
         description:
-          'For the best results, use Anto regularly. The AI assistant learns more about you with each conversation, allowing it to offer increasingly accurate insights and recommendations. Many users report significant improvements after using the app consistently for 1–2 weeks.',
+          'For the best results, use Anto regularly. The assistant learns more about you with each conversation and can offer increasingly precise guidance.',
       },
     },
     appShowcase: {
@@ -548,14 +553,15 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       ],
     },
     security: {
-      title: 'Military-Grade Security and Privacy',
+      title: 'Your data, protected',
       subtitle:
-        'Your privacy is our top priority. We implement best-in-class security practices to protect your data.',
+        'AES-256 encryption, secure authentication, and compliance with international privacy standards.',
       cards: [
         {
-          title: 'End-to-End Encryption',
+          icon: 'encryption',
+          title: 'End-to-end encryption',
           description:
-            'All your conversations are encrypted with AES-256, the same standard used by banks and governments. Not even we can read your messages.',
+            'Your conversations are encrypted with AES-256. Only you have access to your content.',
           features: [
             '✓ AES-256 encryption',
             '✓ Unique encryption keys per user',
@@ -564,15 +570,17 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
           ],
         },
         {
-          title: 'Regulatory Compliance',
+          icon: 'compliance',
+          title: 'Regulatory compliance',
           description:
-            'We comply with all international data protection regulations to guarantee your privacy and security.',
+            'Designed to align with GDPR, HIPAA, LGPD, and PIPEDA.',
           features: ['✓ GDPR (Europe)', '✓ HIPAA (United States)', '✓ LGPD (Brazil)', '✓ PIPEDA (Canada)'],
         },
         {
-          title: 'Secure Authentication',
+          icon: 'auth',
+          title: 'Secure authentication',
           description:
-            'Robust authentication system with multiple security layers to protect your account.',
+            'Two-step verification, secure tokens, and unusual access detection.',
           features: [
             '✓ Two-factor authentication (2FA)',
             '✓ Secure JWT tokens',
@@ -621,9 +629,9 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       title: 'Plans and Pricing',
       subtitle: `Choose the duration that best fits your needs. All plans include full access to the app. ${trialNote}`,
       valueBanner: {
-        label: '💰 Best Value',
+        label: 'Best value',
         highlight:
-          'Save up to 17% with longer plans. All plans include the same premium features.',
+          'Longer plans offer up to 17% savings. All features are included.',
       },
     },
   }),

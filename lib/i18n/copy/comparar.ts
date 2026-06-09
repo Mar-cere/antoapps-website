@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
+import { formatUsdPrice, PRICING_USD } from '@/lib/pricing/plans';
 
 export type CompararPageMetadata = {
   title: string;
@@ -165,7 +166,7 @@ function buildCompararPageCopy(locale: Locale): CompararPageCopy {
             { label: 'Initial trial', value: `✅ ${trial.short}` },
             {
               label: 'Price',
-              value: '✅ From $990 CLP/week (approx. US$1.04)',
+              value: `✅ From ${formatUsdPrice(PRICING_USD.month, 'en')}/month`,
             },
           ],
           ctaLabel: 'Download on the App Store',
@@ -220,7 +221,7 @@ function buildCompararPageCopy(locale: Locale): CompararPageCopy {
           { label: 'Prueba inicial', value: `✅ ${trial.short}` },
           {
             label: 'Precio',
-            value: '✅ Desde $990 CLP/semana (US$1.04 aprox.)',
+            value: `✅ Desde ${formatUsdPrice(PRICING_USD.month, 'es')}/mes`,
           },
         ],
         ctaLabel: 'Descargar en App Store',

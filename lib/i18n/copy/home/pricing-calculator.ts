@@ -1,4 +1,5 @@
 import type { Locale } from '@/lib/i18n/config';
+import { PRICING_USD } from '@/lib/pricing/plans';
 
 export type PricingPlanId = '1-month' | '3-months' | '6-months' | '1-year';
 
@@ -18,12 +19,10 @@ export type PricingCalculatorCopy = {
     comparePlans: string;
   };
   popularBadge: string;
-  approxUsd: string;
   summary: {
     title: string;
     planLabel: string;
     totalPriceLabel: string;
-    totalPriceUsdLabel: string;
     discountLabel: string;
     totalSavingsLabel: string;
     averageMonthlyLabel: string;
@@ -59,12 +58,10 @@ const pricingCalculatorCopy: Record<Locale, PricingCalculatorCopy> = {
       comparePlans: 'Comparar Planes',
     },
     popularBadge: 'Popular',
-    approxUsd: 'aprox.',
     summary: {
       title: 'Resumen del Plan Seleccionado',
       planLabel: 'Plan:',
       totalPriceLabel: 'Precio Total:',
-      totalPriceUsdLabel: 'Precio Total (USD):',
       discountLabel: 'Descuento:',
       totalSavingsLabel: 'Ahorro Total:',
       averageMonthlyLabel: 'Precio Mensual Promedio:',
@@ -81,7 +78,7 @@ const pricingCalculatorCopy: Record<Locale, PricingCalculatorCopy> = {
       },
       savingsPerMonth: '/mes',
       noSavings: '-',
-      priceNote: 'Precios mostrados en CLP y su referencia en USD aproximada (1 USD = 950 CLP).',
+      priceNote: 'Precios en dólares estadounidenses (USD). La suscripción se gestiona desde la App Store.',
     },
     legal: {
       subscribePrefix: 'Al suscribirte, aceptas nuestros',
@@ -91,18 +88,24 @@ const pricingCalculatorCopy: Record<Locale, PricingCalculatorCopy> = {
       autoRenewal: 'Las suscripciones se renuevan automáticamente.',
     },
     plans: [
-      { id: '1-month', name: '1 Mes', duration: '1 mes', price: 3990, period: 'Plan mensual' },
+      { id: '1-month', name: '1 Mes', duration: '1 mes', price: PRICING_USD.month, period: 'Plan mensual' },
       {
         id: '3-months',
         name: '3 Meses',
         duration: '3 meses',
-        price: 11990,
-        period: 'Ahorra 10%',
-        discount: 10,
+        price: PRICING_USD.threeMonths,
+        period: 'Plan trimestral',
         popular: true,
       },
-      { id: '6-months', name: '6 Meses', duration: '6 meses', price: 20990, period: 'Ahorra 12%', discount: 12 },
-      { id: '1-year', name: '1 Año', duration: '1 año', price: 39990, period: 'Ahorra 17%', discount: 17 },
+      {
+        id: '6-months',
+        name: '6 Meses',
+        duration: '6 meses',
+        price: PRICING_USD.sixMonths,
+        period: 'Ahorra 12%',
+        discount: 12,
+      },
+      { id: '1-year', name: '1 Año', duration: '1 año', price: PRICING_USD.year, period: 'Ahorra 17%', discount: 17 },
     ],
   },
   en: {
@@ -111,12 +114,10 @@ const pricingCalculatorCopy: Record<Locale, PricingCalculatorCopy> = {
       comparePlans: 'Compare Plans',
     },
     popularBadge: 'Popular',
-    approxUsd: 'approx.',
     summary: {
       title: 'Selected Plan Summary',
       planLabel: 'Plan:',
       totalPriceLabel: 'Total Price:',
-      totalPriceUsdLabel: 'Total Price (USD):',
       discountLabel: 'Discount:',
       totalSavingsLabel: 'Total Savings:',
       averageMonthlyLabel: 'Average Monthly Price:',
@@ -133,7 +134,7 @@ const pricingCalculatorCopy: Record<Locale, PricingCalculatorCopy> = {
       },
       savingsPerMonth: '/month',
       noSavings: '-',
-      priceNote: 'Prices shown in CLP with approximate USD reference (1 USD = 950 CLP).',
+      priceNote: 'Prices in US dollars (USD). Subscriptions are managed through the App Store.',
     },
     legal: {
       subscribePrefix: 'By subscribing, you agree to our',
@@ -143,18 +144,24 @@ const pricingCalculatorCopy: Record<Locale, PricingCalculatorCopy> = {
       autoRenewal: 'Subscriptions renew automatically.',
     },
     plans: [
-      { id: '1-month', name: '1 Month', duration: '1 month', price: 3990, period: 'Monthly plan' },
+      { id: '1-month', name: '1 Month', duration: '1 month', price: PRICING_USD.month, period: 'Monthly plan' },
       {
         id: '3-months',
         name: '3 Months',
         duration: '3 months',
-        price: 11990,
-        period: 'Save 10%',
-        discount: 10,
+        price: PRICING_USD.threeMonths,
+        period: 'Quarterly plan',
         popular: true,
       },
-      { id: '6-months', name: '6 Months', duration: '6 months', price: 20990, period: 'Save 12%', discount: 12 },
-      { id: '1-year', name: '1 Year', duration: '1 year', price: 39990, period: 'Save 17%', discount: 17 },
+      {
+        id: '6-months',
+        name: '6 Months',
+        duration: '6 months',
+        price: PRICING_USD.sixMonths,
+        period: 'Save 12%',
+        discount: 12,
+      },
+      { id: '1-year', name: '1 Year', duration: '1 year', price: PRICING_USD.year, period: 'Save 17%', discount: 17 },
     ],
   },
 };

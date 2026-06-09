@@ -502,8 +502,8 @@
 .features-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-6);
-    margin-top: var(--spacing-6);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    margin-top: clamp(2rem, 4vw, 3rem);
     justify-content: center;
 }
 
@@ -511,12 +511,19 @@
     flex: 0 1 calc(33.333% - var(--spacing-6));
     min-width: min(100%, 280px);
     max-width: 350px;
+    padding: var(--spacing-5);
 }
 
 .feature-icon {
-    font-size: var(--font-size-3xl);
-    margin-bottom: var(--spacing-4);
-    display: block;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: var(--spacing-5);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-link);
+    background: rgba(99, 140, 255, 0.08);
+    border-radius: var(--radius-lg);
 }
 
 .feature-card h3 {
@@ -1190,6 +1197,69 @@
 
     .cta {
         padding-bottom: max(var(--spacing-8), env(safe-area-inset-bottom, 0px));
+    }
+}
+
+/* Home explore links — secondary depth without full sections */
+.home-explore {
+    padding: clamp(2.5rem, 6vw, 4rem) 0;
+    background: transparent;
+}
+
+.home-explore__title {
+    text-align: center;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary, var(--color-text-secondary));
+    margin-bottom: var(--spacing-5);
+}
+
+.home-explore__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-4);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 48rem;
+    margin-inline: auto;
+}
+
+.home-explore__card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: var(--spacing-4) var(--spacing-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-card);
+    text-decoration: none;
+    transition: border-color var(--duration-base) var(--ease-out),
+        background var(--duration-base) var(--ease-out);
+}
+
+.home-explore__card:hover {
+    border-color: rgba(99, 140, 255, 0.35);
+    background: rgba(99, 140, 255, 0.04);
+}
+
+.home-explore__label {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.home-explore__desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+}
+
+@media (max-width: 640px) {
+    .home-explore__grid {
+        grid-template-columns: 1fr;
     }
 }
 

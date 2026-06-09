@@ -2,9 +2,8 @@
 
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
+import { SecurityIcon } from '@/components/icons/FeatureIcons';
 import { getHomeSectionsCopy } from '@/lib/i18n/copy/home';
-
-const SECURITY_ICONS = ['🔐', '🛡️', '🔒'];
 
 type SecurityProps = {
   locale?: Locale;
@@ -22,7 +21,9 @@ export default function Security({ locale = 'es' }: SecurityProps) {
         <div className="security-grid" data-stagger>
           {copy.cards.map((card, index) => (
             <div key={card.title} className="security-card reveal-on-scroll" data-stagger-item data-magnetic="0.1">
-              <div className="security-icon">{SECURITY_ICONS[index]}</div>
+              <div className="security-icon" aria-hidden="true">
+                <SecurityIcon id={card.icon} />
+              </div>
               <h3>{card.title}</h3>
               <p>{card.description}</p>
               <ul className="security-features">

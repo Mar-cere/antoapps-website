@@ -330,18 +330,18 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
         currentLabel: 'Security',
       },
       meta: {
-        title: 'Security - Anto | Military-Grade Data Protection',
+        title: 'Security - Anto | Encryption, privacy, and compliance',
         description:
-          'Learn about all the security measures we implement in Anto. E2E encryption, certifications, audits, and compliance with GDPR, HIPAA, and more.',
+          'Learn about Anto security measures: AES-256 encryption, secure authentication, audits, and compliance with GDPR, HIPAA, and more.',
         openGraphTitle: 'Security - Anto',
-        openGraphDescription: 'Military-grade data protection in Anto.',
+        openGraphDescription: 'How Anto protects your data and privacy.',
         canonicalPath: CANONICAL_PATH,
       },
       hero: {
-        title: 'Military-Grade Security',
+        title: 'Your data, protected',
         subtitle:
-          'Your privacy and security are our top priority. We implement industry best practices to protect your data.',
-        badges: ['🔒 AES-256', '🛡️ GDPR', '⚖️ HIPAA', '✅ SOC 2', '🔐 ISO 27001'],
+          'AES-256 encryption, secure authentication, and compliance with international privacy standards.',
+        badges: ['AES-256', 'GDPR', 'HIPAA', 'SOC 2', 'ISO 27001'],
       },
       overview: {
         sectionTitle: 'Our Commitment to Security',
@@ -394,18 +394,18 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
       currentLabel: 'Seguridad',
     },
     meta: {
-      title: 'Seguridad - Anto | Protección de Datos de Grado Militar',
+      title: 'Seguridad - Anto | Cifrado, privacidad y cumplimiento',
       description:
-        'Conoce todas las medidas de seguridad que implementamos en Anto. Encriptación E2E, certificaciones, auditorías y compliance con GDPR, HIPAA y más.',
+        'Conoce las medidas de seguridad de Anto: cifrado AES-256, autenticación segura, auditorías y cumplimiento con GDPR, HIPAA y más.',
       openGraphTitle: 'Seguridad - Anto',
-      openGraphDescription: 'Protección de datos de grado militar en Anto.',
+      openGraphDescription: 'Cómo Anto protege tus datos y tu privacidad.',
       canonicalPath: CANONICAL_PATH,
     },
     hero: {
-      title: 'Seguridad de Grado Militar',
+      title: 'Tus datos, protegidos',
       subtitle:
-        'Tu privacidad y seguridad son nuestra máxima prioridad. Implementamos las mejores prácticas de la industria para proteger tus datos.',
-      badges: ['🔒 AES-256', '🛡️ GDPR', '⚖️ HIPAA', '✅ SOC 2', '🔐 ISO 27001'],
+        'Cifrado AES-256, autenticación segura y cumplimiento con estándares internacionales de privacidad.',
+      badges: ['AES-256', 'GDPR', 'HIPAA', 'SOC 2', 'ISO 27001'],
     },
     overview: {
       sectionTitle: 'Nuestro Compromiso con la Seguridad',

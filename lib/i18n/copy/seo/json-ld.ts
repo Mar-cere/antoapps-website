@@ -72,8 +72,8 @@ export function getSoftwareApplicationJsonLd(locale: Locale): JsonLd {
     operatingSystem: copy.operatingSystem,
     offers: {
       '@type': 'Offer',
-      price: '3990',
-      priceCurrency: 'CLP',
+      price: '4.20',
+      priceCurrency: 'USD',
     },
     description: copy.description,
     screenshot: `${SITE_ORIGIN}/assets/images/antoIcon.png`,

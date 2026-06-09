@@ -43,8 +43,8 @@ const softwareJsonLd = {
   operatingSystem: 'iOS (descarga directa), Android (acceso anticipado)',
   offers: {
     '@type': 'Offer',
-    price: '3990',
-    priceCurrency: 'CLP',
+    price: '4.20',
+    priceCurrency: 'USD',
   },
   description:
     'Aplicación móvil de bienestar emocional con IA (GPT-5.4 Mini), análisis emocional, detección de crisis y herramientas de bienestar 24/7. No sustituye atención clínica.',

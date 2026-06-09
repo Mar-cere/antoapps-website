@@ -103,7 +103,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 7,
           question: '¿Cuánto cuesta usar Anto?',
           answer:
-            'Ofrecemos planes flexibles basados en duración: 1 Mes ($3.990 CLP / US$4.20 aprox.), 3 Meses ($11.990 CLP / US$12.62 aprox.), 6 Meses ($20.990 CLP / US$22.09 aprox.) y 1 Año ($39.990 CLP / US$42.09 aprox.). Todos los planes incluyen las mismas funcionalidades premium: acceso completo al asistente AI, análisis emocional avanzado, detección de crisis proactiva, herramientas de bienestar y soporte 24/7.',
+            'Ofrecemos planes flexibles basados en duración: 1 Mes (US$4.20), 3 Meses (US$12.62), 6 Meses (US$22.09) y 1 Año (US$42.09). Todos los planes incluyen las mismas funcionalidades premium: acceso completo al asistente AI, análisis emocional avanzado, detección de crisis proactiva, herramientas de bienestar y soporte 24/7.',
           category: 'precios',
         },
         {
@@ -280,7 +280,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 7,
         question: 'How much does Anto cost?',
         answer:
-          'We offer flexible duration-based plans: 1 Month ($3,990 CLP / approx. US$4.20), 3 Months ($11,990 CLP / approx. US$12.62), 6 Months ($20,990 CLP / approx. US$22.09), and 1 Year ($39,990 CLP / approx. US$42.09). All plans include the same premium features: full access to the AI assistant, advanced emotional analysis, proactive crisis detection, wellbeing tools, and 24/7 support.',
+          'We offer flexible duration-based plans: 1 Month (US$4.20), 3 Months (US$12.62), 6 Months (US$22.09), and 1 Year (US$42.09). All plans include the same premium features: full access to the AI assistant, advanced emotional analysis, proactive crisis detection, wellbeing tools, and 24/7 support.',
         category: 'precios',
       },
       {
