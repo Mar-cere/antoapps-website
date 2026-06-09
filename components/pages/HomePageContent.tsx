@@ -11,6 +11,7 @@ import CookieConsent from '@/components/CookieConsent';
 import FaqJsonLd from '@/components/seo/FaqJsonLd';
 import PullToRefresh from '@/components/ui/PullToRefresh';
 import Hero from '@/components/sections/Hero';
+import HomeTrustStrip from '@/components/sections/HomeTrustStrip';
 import Features from '@/components/sections/Features';
 import AppShowcase from '@/components/sections/AppShowcase';
 import HomeExploreLinks from '@/components/sections/HomeExploreLinks';
@@ -66,6 +67,7 @@ export default function HomePageContent({ locale }: HomePageContentProps) {
       >
         <main id="main-content" role="main" lang={locale}>
           <Hero locale={locale} />
+          <HomeTrustStrip locale={locale} />
           <AppShowcase locale={locale} />
           <Features locale={locale} />
           <Suspense fallback={<SectionSkeleton />}>

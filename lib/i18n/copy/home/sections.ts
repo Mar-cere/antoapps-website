@@ -63,10 +63,10 @@ export type HomeSectionsCopy = {
     };
   };
   appShowcase: {
+    label: string;
     title: string;
     subtitle: string;
     description: string;
-    imageAlt: string;
   };
   scienceBacked: {
     title: string;
@@ -193,12 +193,11 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       },
     },
     appShowcase: {
-      title: 'Diseñado para Ti',
-      subtitle:
-        'Una interfaz intuitiva y elegante que te permite enfocarte en lo que realmente importa: tu bienestar mental.',
+      label: 'Más que un chat',
+      title: 'Tu bienestar,\norganizado.',
+      subtitle: 'Hábitos, pendientes y seguimiento emocional en un solo lugar.',
       description:
-        'Anto combina diseño minimalista con funcionalidad poderosa. Cada elemento está pensado para brindarte una experiencia fluida y accesible, sin importar tu nivel de experiencia con tecnología.',
-      imageAlt: 'Anto App - Interfaz principal de la aplicación',
+        'El panel de inicio te muestra tu progreso, tareas y estado emocional sin perder el foco en lo que importa.',
     },
     scienceBacked: {
       title: 'Respaldado por Ciencia',
@@ -458,12 +457,11 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       },
     },
     appShowcase: {
-      title: 'Designed for You',
-      subtitle:
-        'An intuitive, elegant interface that lets you focus on what really matters: your mental wellbeing.',
+      label: 'More than a chat',
+      title: 'Your wellbeing,\norganized.',
+      subtitle: 'Habits, tasks, and emotional tracking in one place.',
       description:
-        'Anto combines minimalist design with powerful functionality. Every element is designed to give you a smooth, accessible experience, regardless of your experience with technology.',
-      imageAlt: 'Anto App — Main application interface',
+        'The home dashboard shows your progress, tasks, and emotional state without losing focus on what matters.',
     },
     scienceBacked: {
       title: 'Backed by Science',

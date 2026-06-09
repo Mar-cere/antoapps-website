@@ -1,9 +1,9 @@
 'use client';
 
 import DownloadLink from '@/components/DownloadLink';
+import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
 import type { BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 import type { BienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
-import { AppleIcon } from '@/components/bienvenida/v2/BienvenidaV2Icons';
 
 type BienvenidaV2StoreCtaProps = {
   storeHref: string;
@@ -32,24 +32,16 @@ export default function BienvenidaV2StoreCta({
   const trackingLabel = `${placement}_variant_${landingVariant}`;
 
   return (
-    <DownloadLink
-      href={storeHref}
-      className={`lad-v2-store-cta ${className}`.trim()}
+    <PremiumStoreCta
+      storeHref={storeHref}
+      storeLabel={v2.ctaStoreLabel}
+      storeName={v2.ctaStoreText}
+      badge={v2.ctaBadge}
+      ariaLabel={copy.trial.aria}
       trackingPlacement={trackingPlacement}
       trackingPage={pagePath}
       trackingLabel={trackingLabel}
-      aria-label={copy.trial.aria}
-    >
-      <span className="lad-v2-store-cta__left">
-        <span className="lad-v2-store-cta__icon" aria-hidden="true">
-          <AppleIcon />
-        </span>
-        <span className="lad-v2-store-cta__text">
-          <span className="lad-v2-store-cta__label">{v2.ctaStoreLabel}</span>
-          <span className="lad-v2-store-cta__name">{v2.ctaStoreText}</span>
-        </span>
-      </span>
-      <span className="lad-v2-store-cta__badge">{v2.ctaBadge}</span>
-    </DownloadLink>
+      className={className}
+    />
   );
 }

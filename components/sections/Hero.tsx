@@ -1,9 +1,11 @@
 'use client';
 
+import { useId, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import DownloadLink from '@/components/DownloadLink';
-import AppStoreBadge from '@/components/AppStoreBadge';
+import AppReviewCard from '@/components/ui/AppReviewCard';
+import MultilineText from '@/components/ui/MultilineText';
+import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
 import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
 import {
   APP_SCREENSHOT_HEIGHT,
@@ -14,9 +16,7 @@ import {
 import { appStoreHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeHeroCopy } from '@/lib/i18n/copy/home-hero';
-import { useParticles } from '@/lib/hooks/useParticles';
-import { useParallax } from '@/lib/hooks/useParallax';
-import '@/styles/components/sections.css';
+import '@/styles/pages/home-premium.css';
 
 type HeroProps = {
   locale?: Locale;
@@ -24,65 +24,77 @@ type HeroProps = {
 
 export default function Hero({ locale = 'es' }: HeroProps) {
   const copy = getHomeHeroCopy(locale);
-  const particlesRef = useParticles();
-  const heroImageRef = useParallax<HTMLDivElement>({ speed: 0.3, direction: 'up' });
+  const pagePath = locale === 'en' ? '/en' : '/';
+  const androidFormId = useId().replace(/:/g, '');
+  const [androidFormOpen, setAndroidFormOpen] = useState(false);
 
   return (
-    <section id="inicio" className="hero" data-fade-section aria-labelledby="hero-title">
-      <div ref={particlesRef} className="particles" id="particles"></div>
+    <section id="inicio" className="hero hero--premium" data-fade-section aria-labelledby="hero-title">
       <div className="container">
         <div className="hero-content reveal-on-scroll">
+          <p className="hero-eyebrow">{copy.eyebrow}</p>
           <h1 className="hero-title" id="hero-title">
-            {copy.title}
+            <MultilineText text={copy.titlePrefix} />
+            <span className="hero-title-accent">
+              <MultilineText text={copy.titleHighlight} />
+            </span>
           </h1>
-          <p className="hero-subtitle reveal-on-scroll">
-            {copy.subtitle}
-          </p>
-          <p className="hero-download-pitch reveal-on-scroll">
-            {copy.downloadLead} {copy.downloadAndroid}
-          </p>
-          <div className="hero-stats">
-            <div className="hero-stat-item">
-              <span className="hero-stat-icon">🔒</span>
-              <span className="hero-stat-value">100%</span>
-              <span className="hero-stat-label">{copy.statPrivate}</span>
-            </div>
-            <div className="hero-stat-item">
-              <span className="hero-stat-icon">⏰</span>
-              <span className="hero-stat-value">24/7</span>
-              <span className="hero-stat-label">{copy.statAvailable}</span>
-            </div>
-          </div>
-          <div className="hero-cta">
-            <DownloadLink
-              href={appStoreHref()}
-              className="store-badge-link"
-              trackingPlacement="home_hero_store_badge"
-              trackingPage={locale === 'en' ? '/en' : '/'}
-              trackingLabel="home_hero_badge"
-              aria-label={copy.storeAria}
-            >
-              <AppStoreBadge locale={locale} priority />
-            </DownloadLink>
-            <Link href={copy.appHref} className="btn btn-secondary btn-large">
+          <p className="hero-subtitle reveal-on-scroll">{copy.subtitle}</p>
+
+          <AppReviewCard
+            quote={copy.heroReview.quote}
+            author={copy.heroReview.author}
+            source={copy.heroReview.source}
+            starsAria={copy.starsAria}
+            className="reveal-on-scroll"
+          />
+
+          <div className="hero-cta reveal-on-scroll">
+            <PremiumStoreCta
+              storeHref={appStoreHref()}
+              storeLabel={copy.ctaStoreLabel}
+              storeName={copy.ctaStoreText}
+              badge={copy.ctaBadge}
+              ariaLabel={copy.storeAria}
+              trackingPlacement="home_hero_store_cta"
+              trackingPage={pagePath}
+              trackingLabel="home_hero_premium"
+            />
+            <p className="hero-cta-micro">{copy.ctaMicro}</p>
+            <Link href={copy.appHref} className="btn btn-secondary btn-large hero-secondary-link">
               {copy.ctaSecondary}
             </Link>
+            <button
+              type="button"
+              className="hero-android-link"
+              onClick={() => {
+                setAndroidFormOpen(true);
+                document.getElementById(androidFormId)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              }}
+            >
+              {copy.androidLink}
+            </button>
           </div>
-          <AndroidEarlyAccessForm
-            locale={locale}
-            id="android-early-access-home"
-            placement="home_hero_android_early_access"
-            page={locale === 'en' ? '/en' : '/'}
-            compact
-            buttonLabel={copy.androidCta}
-          />
+
+          <div className={`hero-android-form ${androidFormOpen ? 'is-open' : ''}`}>
+            <AndroidEarlyAccessForm
+              locale={locale}
+              id={androidFormId}
+              placement="home_hero_android_early_access"
+              page={pagePath}
+              compact
+              autoFocus={androidFormOpen}
+              buttonLabel={copy.androidCta}
+            />
+          </div>
         </div>
-        <div className="hero-image reveal-on-scroll-enhanced" ref={heroImageRef}>
-          <div className="phone-in-hand-container float-enhanced phone-screenshot-container">
+
+        <div className="hero-visual reveal-on-scroll">
+          <div className="hero-screenshot-crop">
             <Image
               src={getAppScreenshotPath('chat')}
               alt={getAppScreenshotAlt('chat', locale)}
-              className="phone-in-hand-image phone-screenshot-image"
+              className="hero-screenshot hero-screenshot--chat"
               width={APP_SCREENSHOT_WIDTH}
               height={APP_SCREENSHOT_HEIGHT}
               priority
@@ -96,4 +108,3 @@ export default function Hero({ locale = 'es' }: HeroProps) {
     </section>
   );
 }
-
