@@ -1,9 +1,17 @@
 import type { Locale } from '@/lib/i18n/config';
 import { getAppStoreReviewSnippets } from '@/lib/app-store-reviews';
 import { appStoreRatingWithReviews } from '@/lib/app-store-social-proof';
+import {
+  APP_SCREENSHOT_PATHS,
+  getAppScreenshotAlt,
+} from '@/lib/assets/app-screenshots';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
-export type BienvenidaVariant = 'A' | 'B';
+export type BienvenidaVariant = 'A' | 'B' | 'C';
+
+export type BienvenidaV2FeatureIcon = 'privacy' | 'clock' | 'evidence' | 'crisis';
+
+export type BienvenidaV2TrustIcon = 'lock' | 'no-card' | 'chile';
 
 export type BienvenidaCopy = {
   meta: {
@@ -110,6 +118,28 @@ export type BienvenidaCopy = {
     sectionTitle: string;
     images: readonly { src: string; alt: string }[];
   };
+  v2: {
+    eyebrow: string;
+    heroTitlePrefix: string;
+    heroTitleHighlight: string;
+    heroSub: string;
+    heroReview: { quote: string; author: string; source: string };
+    ctaStoreLabel: string;
+    ctaStoreText: string;
+    ctaBadge: string;
+    ctaMicro: string;
+    androidLink: string;
+    chatSectionLabel: string;
+    chatScreenshot: { src: string; alt: string };
+    features: readonly { icon: BienvenidaV2FeatureIcon; title: string; subtitle: string }[];
+    dashboard: {
+      label: string;
+      headline: string;
+      subtitle: string;
+      image: { src: string; alt: string };
+    };
+    trustItems: readonly { icon: BienvenidaV2TrustIcon; label: string }[];
+  };
 };
 
 function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
@@ -132,20 +162,24 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         titleLine2: {
           A: 'Sort through what you feel with Anto',
           B: 'Anto helps you make sense of it',
+          C: 'Anto helps you land',
         },
         subheadline: {
           A: 'Write what you feel — AI gives you clarity and one concrete step in seconds.',
           B: 'Write what you feel — AI gives you clarity and one concrete step in seconds.',
+          C: 'Write what you feel. Get clarity and one concrete step in seconds.',
         },
       },
       trial: {
         heroCta: {
           A: 'Download on iPhone',
           B: 'Start on iPhone',
+          C: 'App Store',
         },
         stickyCta: {
           A: `Start — ${trial.short}`,
           B: `Download — ${trial.short}`,
+          C: `Download — ${trial.short}`,
         },
         stickyAndroidCta: 'Join Android waitlist',
         stickyDesktopCta: 'See download options',
@@ -296,13 +330,55 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         sectionTitle: 'Inside the app',
         images: [
           {
-            src: '/assets/images/hero/phone-mockup-landing.webp',
-            alt: 'Anto chat screen on iPhone showing an emotional support conversation',
+            src: APP_SCREENSHOT_PATHS.chat,
+            alt: getAppScreenshotAlt('chat', 'en'),
           },
           {
-            src: '/assets/images/hero/phone-in-hand-landing.webp',
-            alt: 'Person holding an iPhone with the Anto app open',
+            src: APP_SCREENSHOT_PATHS.home,
+            alt: getAppScreenshotAlt('home', 'en'),
           },
+        ],
+      },
+      v2: {
+        eyebrow: 'AI emotional support',
+        heroTitlePrefix: 'When your mind\nwon\'t slow down,',
+        heroTitleHighlight: 'Anto helps you\nland.',
+        heroSub: 'Write what you feel. Get clarity and one concrete step in seconds.',
+        heroReview: {
+          quote:
+            'I use it when anxiety wakes me up. Within minutes the intensity eases a bit.',
+          author: 'Camila S.',
+          source: 'App Store',
+        },
+        ctaStoreLabel: 'Download on',
+        ctaStoreText: 'App Store',
+        ctaBadge: trial.short,
+        ctaMicro: `${trial.short} · No card required · Cancel anytime`,
+        androidLink: 'Request early access for Android',
+        chatSectionLabel: 'On your iPhone',
+        chatScreenshot: {
+          src: APP_SCREENSHOT_PATHS.chat,
+          alt: getAppScreenshotAlt('chat', 'en'),
+        },
+        features: [
+          { icon: 'privacy', title: 'Private', subtitle: 'Only you read your conversations' },
+          { icon: 'clock', title: '24/7', subtitle: 'Available at 2 a.m. if you need it' },
+          { icon: 'evidence', title: 'Evidence-based', subtitle: 'PHQ-9 and GAD-7 clinical scales' },
+          { icon: 'crisis', title: 'Crisis detection', subtitle: 'Support resources when you need them' },
+        ],
+        dashboard: {
+          label: 'More than a chat',
+          headline: 'Your wellbeing,\norganized.',
+          subtitle: 'Habits, tasks, and emotional tracking in one place.',
+          image: {
+            src: APP_SCREENSHOT_PATHS.home,
+            alt: getAppScreenshotAlt('home', 'en'),
+          },
+        },
+        trustItems: [
+          { icon: 'lock', label: 'Private' },
+          { icon: 'no-card', label: 'No card' },
+          { icon: 'chile', label: 'Made in Chile' },
         ],
       },
     };
@@ -324,20 +400,24 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       titleLine2: {
         A: 'Ordena lo que sientes con Anto',
         B: 'Anto te ayuda a ordenarlo',
+        C: 'Anto te ayuda a aterrizar.',
       },
       subheadline: {
         A: 'Escribe lo que sientes — la IA te da claridad y un paso concreto en segundos.',
         B: 'Escribe lo que sientes — la IA te da claridad y un paso concreto en segundos.',
+        C: 'Escribe lo que sientes. Recibe claridad y un paso concreto en segundos.',
       },
     },
     trial: {
       heroCta: {
         A: 'Descargar en iPhone',
         B: 'Empezar en iPhone',
+        C: 'App Store',
       },
       stickyCta: {
         A: `Empieza — ${trial.short}`,
         B: `Descargar — ${trial.short}`,
+        C: `Descargar — ${trial.short}`,
       },
       stickyAndroidCta: 'Lista de espera Android',
       stickyDesktopCta: 'Ver opciones de descarga',
@@ -488,13 +568,55 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       sectionTitle: 'Así se ve la app',
       images: [
         {
-          src: '/assets/images/hero/phone-mockup-landing.webp',
-          alt: 'Pantalla de chat de Anto en iPhone con una conversación de apoyo emocional',
+          src: APP_SCREENSHOT_PATHS.chat,
+          alt: getAppScreenshotAlt('chat', 'es'),
         },
         {
-          src: '/assets/images/hero/phone-in-hand-landing.webp',
-          alt: 'Persona sosteniendo un iPhone con la app Anto abierta',
+          src: APP_SCREENSHOT_PATHS.home,
+          alt: getAppScreenshotAlt('home', 'es'),
         },
+      ],
+    },
+    v2: {
+      eyebrow: 'Apoyo emocional con IA',
+      heroTitlePrefix: 'Cuando tu mente\nno para,',
+      heroTitleHighlight: 'Anto te ayuda\na aterrizar.',
+      heroSub: 'Escribe lo que sientes. Recibe claridad y un paso concreto en segundos.',
+      heroReview: {
+        quote:
+          'La uso cuando la ansiedad me despierta. En minutos bajo un poco la intensidad.',
+        author: 'Camila S.',
+        source: 'App Store',
+      },
+      ctaStoreLabel: 'Descargar en',
+      ctaStoreText: 'App Store',
+      ctaBadge: trial.short,
+      ctaMicro: `${trial.short} · Sin tarjeta · Cancela cuando quieras`,
+      androidLink: 'Solicitar acceso anticipado para Android',
+      chatSectionLabel: 'Así se ve en tu iPhone',
+      chatScreenshot: {
+        src: APP_SCREENSHOT_PATHS.chat,
+        alt: getAppScreenshotAlt('chat', 'es'),
+      },
+      features: [
+        { icon: 'privacy', title: 'Privado', subtitle: 'Solo tú lees tus conversaciones' },
+        { icon: 'clock', title: '24/7', subtitle: 'Disponible a las 2am si lo necesitas' },
+        { icon: 'evidence', title: 'Basado en evidencia', subtitle: 'Escalas PHQ-9 y GAD-7 clínicas' },
+        { icon: 'crisis', title: 'Detecta crisis', subtitle: 'Recursos de apoyo si los necesitas' },
+      ],
+      dashboard: {
+        label: 'Más que un chat',
+        headline: 'Tu bienestar,\norganizado.',
+        subtitle: 'Hábitos, pendientes y seguimiento emocional en un solo lugar.',
+        image: {
+          src: APP_SCREENSHOT_PATHS.home,
+          alt: getAppScreenshotAlt('home', 'es'),
+        },
+      },
+      trustItems: [
+        { icon: 'lock', label: 'Privado' },
+        { icon: 'no-card', label: 'Sin tarjeta' },
+        { icon: 'chile', label: 'Hecho en Chile' },
       ],
     },
   };

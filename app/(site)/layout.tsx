@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '../../styles/main.css';
 import { APP_VERSION } from '@/lib/app-version';
+import { getAppScreenshotUrl } from '@/lib/assets/app-screenshots';
 import ClientScripts from '@/components/ClientScripts';
 
 export const metadata: Metadata = {
@@ -48,7 +49,7 @@ const softwareJsonLd = {
   },
   description:
     'Aplicación móvil de bienestar emocional con IA (GPT-5.4 Mini), análisis emocional, detección de crisis y herramientas de bienestar 24/7. No sustituye atención clínica.',
-  screenshot: 'https://antoapps.com/assets/images/antoIcon.png',
+  screenshot: getAppScreenshotUrl('chat'),
   featureList: [
     'Asistente de IA (bienestar emocional)',
     'Detección de Crisis',

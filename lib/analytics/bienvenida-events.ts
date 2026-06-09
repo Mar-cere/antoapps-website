@@ -3,10 +3,11 @@
 import { getAttributionContext } from '@/lib/analytics/attribution';
 import { trackCustomEvent, withAttribution } from '@/lib/analytics/events';
 import { trackMetaViewContent } from '@/lib/analytics/meta-pixel';
+import type { BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 
 type BienvenidaLandingParams = {
   page: string;
-  landingVariant: 'A' | 'B';
+  landingVariant: BienvenidaVariant;
 };
 
 export function trackBienvenidaLandingViewGa({ page, landingVariant }: BienvenidaLandingParams): void {

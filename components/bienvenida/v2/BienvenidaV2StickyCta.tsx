@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import DownloadLink from '@/components/DownloadLink';
+import BienvenidaV2StoreCta from '@/components/bienvenida/v2/BienvenidaV2StoreCta';
 import {
   dispatchOpenAndroidForm,
   scrollToHeroCta,
@@ -11,7 +11,7 @@ import { trackCustomEvent, withAttribution } from '@/lib/analytics/events';
 import { useLandingDevice } from '@/lib/hooks/useLandingDevice';
 import type { BienvenidaCopy, BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 
-type BienvenidaStickyCtaProps = {
+type BienvenidaV2StickyCtaProps = {
   storeHref: string;
   landingVariant: BienvenidaVariant;
   pagePath: string;
@@ -21,20 +21,24 @@ type BienvenidaStickyCtaProps = {
 function trackStickyAction(action: string, pagePath: string, landingVariant: BienvenidaVariant) {
   trackCustomEvent(
     'bienvenida_sticky_action',
-    withAttribution({
-      action,
-      page: pagePath,
-      landing_variant: landingVariant,
-    }, getAttributionContext())
+    withAttribution(
+      {
+        action,
+        page: pagePath,
+        landing_variant: landingVariant,
+        layout: 'v2',
+      },
+      getAttributionContext()
+    )
   );
 }
 
-export default function BienvenidaStickyCta({
+export default function BienvenidaV2StickyCta({
   storeHref,
   landingVariant,
   pagePath,
   copy,
-}: BienvenidaStickyCtaProps) {
+}: BienvenidaV2StickyCtaProps) {
   const device = useLandingDevice();
   const [visible, setVisible] = useState(false);
   const deviceReady = device !== 'unknown';
@@ -44,9 +48,7 @@ export default function BienvenidaStickyCta({
     if (!heroCta) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setVisible(!entry.isIntersecting);
-      },
+      ([entry]) => setVisible(!entry.isIntersecting),
       { threshold: 0, rootMargin: '-72px 0px 0px 0px' }
     );
 
@@ -65,53 +67,30 @@ export default function BienvenidaStickyCta({
     scrollToHeroCta();
   };
 
-  const renderCta = () => {
-    if (device === 'android') {
-      return (
-        <button
-          type="button"
-          className="btn btn-primary lad-sticky-cta-btn"
-          onClick={handleAndroidSticky}
-          aria-label={copy.trial.stickyAndroidAria}
-        >
-          {copy.trial.stickyAndroidCta}
-        </button>
-      );
-    }
-
-    if (device === 'desktop') {
-      return (
-        <button
-          type="button"
-          className="btn btn-primary lad-sticky-cta-btn"
-          onClick={handleDesktopSticky}
-          aria-label={copy.trial.stickyDesktopAria}
-        >
-          {copy.trial.stickyDesktopCta}
-        </button>
-      );
-    }
-
-    return (
-      <DownloadLink
-        href={storeHref}
-        className="btn btn-primary lad-sticky-cta-btn"
-        trackingPlacement="bienvenida_sticky_cta"
-        trackingPage={pagePath}
-        trackingLabel={`sticky_variant_${landingVariant}`}
-        aria-label={copy.trial.stickyAria}
-      >
-        {copy.trial.stickyCta[landingVariant]}
-      </DownloadLink>
-    );
-  };
-
   return (
     <div
-      className={`lad-sticky-cta ${visible && deviceReady ? 'is-visible' : ''}`}
+      className={`lad-v2-sticky ${visible && deviceReady ? 'is-visible' : ''}`}
       aria-hidden={!visible || !deviceReady}
     >
-      {deviceReady ? renderCta() : null}
+      {deviceReady && device === 'ios' && (
+        <BienvenidaV2StoreCta
+          storeHref={storeHref}
+          pagePath={pagePath}
+          landingVariant={landingVariant}
+          copy={copy}
+          placement="sticky"
+        />
+      )}
+      {deviceReady && device === 'android' && (
+        <button type="button" className="lad-v2-sticky__alt" onClick={handleAndroidSticky}>
+          {copy.trial.stickyAndroidCta}
+        </button>
+      )}
+      {deviceReady && device === 'desktop' && (
+        <button type="button" className="lad-v2-sticky__alt" onClick={handleDesktopSticky}>
+          {copy.trial.stickyDesktopCta}
+        </button>
+      )}
     </div>
   );
 }

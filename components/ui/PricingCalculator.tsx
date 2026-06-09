@@ -5,7 +5,12 @@ import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
 import { getPricingCalculatorCopy } from '@/lib/i18n/copy/home';
-import { formatUsdPrice, PRICING_USD } from '@/lib/pricing/plans';
+import {
+  calculateMonthlySavings,
+  calculateTotalSavings,
+  planMonths,
+} from '@/lib/pricing/savings';
+import { formatUsdPrice } from '@/lib/pricing/plans';
 
 type PricingCalculatorProps = {
   locale?: Locale;
@@ -22,24 +27,10 @@ export default function PricingCalculator({ locale = 'es' }: PricingCalculatorPr
   );
 
   const calculateSavings = (plan: (typeof copy.plans)[number]) => {
-    if (!plan.discount) return null;
-    const monthlyPrice =
-      plan.price /
-      (plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12);
-    const baseMonthlyPrice = copy.plans.find((p) => p.id === '1-month')?.price || PRICING_USD.month;
-    const savings = baseMonthlyPrice - monthlyPrice;
-    return savings > 0 ? Math.round(savings * 100) / 100 : 0;
+    return calculateMonthlySavings(plan) ?? 0;
   };
 
-  const calculateTotalSavings = (plan: (typeof copy.plans)[number]) => {
-    if (!plan.discount) return null;
-    const monthlyPrice = copy.plans.find((p) => p.id === '1-month')?.price || PRICING_USD.month;
-    const months =
-      plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12;
-    const totalWithoutDiscount = monthlyPrice * months;
-    const savings = Math.round((totalWithoutDiscount - plan.price) * 100) / 100;
-    return savings > 0 ? savings : null;
-  };
+  const getTotalSavings = (plan: (typeof copy.plans)[number]) => calculateTotalSavings(plan);
 
   const formatPrice = (price: number) => formatUsdPrice(price, locale);
 
@@ -103,11 +94,11 @@ export default function PricingCalculator({ locale = 'es' }: PricingCalculatorPr
                       <span className="result-label">{copy.summary.discountLabel}</span>
                       <span className="result-value success">{selectedPlanData.discount}%</span>
                     </div>
-                    {calculateTotalSavings(selectedPlanData) !== null && (
+                    {getTotalSavings(selectedPlanData) !== null && (
                       <div className="result-item">
                         <span className="result-label">{copy.summary.totalSavingsLabel}</span>
                         <span className="result-value success">
-                          {formatPrice(calculateTotalSavings(selectedPlanData)!)}
+                          {formatPrice(getTotalSavings(selectedPlanData)!)}
                         </span>
                       </div>
                     )}
@@ -117,14 +108,7 @@ export default function PricingCalculator({ locale = 'es' }: PricingCalculatorPr
                   <span className="result-label">{copy.summary.averageMonthlyLabel}</span>
                   <span className="result-value">
                     {formatPrice(
-                      selectedPlanData.price /
-                        (selectedPlanData.id === '1-month'
-                          ? 1
-                          : selectedPlanData.id === '3-months'
-                            ? 3
-                            : selectedPlanData.id === '6-months'
-                              ? 6
-                              : 12)
+                      selectedPlanData.price / planMonths(selectedPlanData.id)
                     )}
                   </span>
                 </div>
@@ -155,9 +139,7 @@ export default function PricingCalculator({ locale = 'es' }: PricingCalculatorPr
             <div className="comparison-cell">{copy.comparison.headers.discount}</div>
           </div>
           {copy.plans.map((plan) => {
-            const monthlyPrice =
-              plan.price /
-              (plan.id === '1-month' ? 1 : plan.id === '3-months' ? 3 : plan.id === '6-months' ? 6 : 12);
+            const monthlyPrice = plan.price / planMonths(plan.id);
             const savings = calculateSavings(plan);
             return (
               <div key={plan.id} className={`comparison-row ${plan.popular ? 'highlighted' : ''}`}>

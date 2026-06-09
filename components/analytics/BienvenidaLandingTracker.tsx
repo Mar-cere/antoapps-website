@@ -7,9 +7,10 @@ import {
   trackBienvenidaLandingViewMeta,
 } from '@/lib/analytics/bienvenida-events';
 import { initMetaPixel } from '@/lib/analytics/meta-pixel';
+import type { BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 
 type BienvenidaLandingTrackerProps = {
-  landingVariant: 'A' | 'B';
+  landingVariant: BienvenidaVariant;
   pagePath: string;
 };
 

@@ -35,6 +35,10 @@ export type AppPageCopy = {
     title: string;
     body: string;
   };
+  screenshots: {
+    title: string;
+    subtitle: string;
+  };
   benefits: {
     title: string;
     subtitle: string;
@@ -122,6 +126,10 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       whatIs: {
         title: 'What is Anto?',
         body: 'It is not a replacement for therapy or clinical care. It is a daily companion: you write how you feel, receive clear guidance, and build habits that support your wellbeing—with respect for your privacy and your pace.',
+      },
+      screenshots: {
+        title: 'Inside the app',
+        subtitle: 'Real screens from Anto — chat support and your daily hub.',
       },
       benefits: {
         title: 'Why use Anto',
@@ -236,6 +244,10 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
     whatIs: {
       title: '¿Qué es Anto?',
       body: 'No sustituye terapia ni atención clínica. Es un acompañante para el día a día: escribes cómo te sientes, recibes orientación clara y construyes hábitos que cuidan tu bienestar, con respeto por tu privacidad y tu ritmo.',
+    },
+    screenshots: {
+      title: 'Así se ve por dentro',
+      subtitle: 'Capturas reales de Anto — chat de apoyo y tu hub diario.',
     },
     benefits: {
       title: 'Por qué usar Anto',

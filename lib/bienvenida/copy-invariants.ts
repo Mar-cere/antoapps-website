@@ -1,7 +1,10 @@
 import type { Locale } from '@/lib/i18n/config';
+import { APP_SCREENSHOT_PATHS } from '@/lib/assets/app-screenshots';
 import { getBienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
+import { BIENVENIDA_VARIANTS } from '@/lib/bienvenida/parse-variant';
 
 const LOCALES: readonly Locale[] = ['es', 'en'];
+const VARIANTS = BIENVENIDA_VARIANTS;
 
 const PLACEHOLDER_AUTHORS = /usuario de app store|app store user/i;
 
@@ -12,8 +15,19 @@ export function assertBienvenidaCopyInvariants(): string[] {
     const copy = getBienvenidaCopy(locale);
     const tag = `[${locale}]`;
 
-    if (!copy.hero.subheadline.A.trim() || !copy.hero.subheadline.B.trim()) {
-      errors.push(`${tag} hero.subheadline vacío`);
+    for (const variant of VARIANTS) {
+      if (!copy.hero.subheadline[variant]?.trim()) {
+        errors.push(`${tag} hero.subheadline.${variant} vacío`);
+      }
+      if (!copy.hero.titleLine2[variant]?.trim()) {
+        errors.push(`${tag} hero.titleLine2.${variant} vacío`);
+      }
+      if (!copy.trial.heroCta[variant]?.trim()) {
+        errors.push(`${tag} trial.heroCta.${variant} vacío`);
+      }
+      if (!copy.trial.stickyCta[variant]?.trim()) {
+        errors.push(`${tag} trial.stickyCta.${variant} vacío`);
+      }
     }
 
     if (copy.reviews.items.length < 2) {
@@ -61,6 +75,34 @@ export function assertBienvenidaCopyInvariants(): string[] {
       !/AI|emotional/i.test(copy.meta.socialDescription)
     ) {
       errors.push(`${tag} meta.socialDescription should mention AI/emotional support`);
+    }
+
+    const v2 = copy.v2;
+    if (!v2.eyebrow.trim() || !v2.heroTitlePrefix.trim() || !v2.heroTitleHighlight.trim()) {
+      errors.push(`${tag} v2 hero copy incompleto`);
+    }
+    if (!v2.heroSub.trim() || !v2.ctaMicro.trim() || !v2.androidLink.trim()) {
+      errors.push(`${tag} v2 CTA copy incompleto`);
+    }
+    if (!v2.heroReview.quote.trim() || !v2.heroReview.author.trim()) {
+      errors.push(`${tag} v2.heroReview incompleta`);
+    }
+    if (v2.features.length !== 4) {
+      errors.push(`${tag} v2.features debe tener 4 ítems`);
+    }
+    if (v2.trustItems.length !== 3) {
+      errors.push(`${tag} v2.trustItems debe tener 3 ítems`);
+    }
+    if (v2.chatScreenshot.src !== APP_SCREENSHOT_PATHS.chat) {
+      errors.push(`${tag} v2.chatScreenshot.src debe usar APP_SCREENSHOT_PATHS.chat`);
+    }
+    if (v2.dashboard.image.src !== APP_SCREENSHOT_PATHS.home) {
+      errors.push(`${tag} v2.dashboard.image.src debe usar APP_SCREENSHOT_PATHS.home`);
+    }
+    for (const image of copy.screenshots.images) {
+      if (!image.src.trim() || !image.alt.trim()) {
+        errors.push(`${tag} screenshots.images incompleto`);
+      }
     }
   }
 

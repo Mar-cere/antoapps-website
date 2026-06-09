@@ -1,6 +1,12 @@
 'use client';
 
 import Image from 'next/image';
+import {
+  APP_SCREENSHOT_HEIGHT,
+  APP_SCREENSHOT_WIDTH,
+  getAppScreenshotAlt,
+  getAppScreenshotPath,
+} from '@/lib/assets/app-screenshots';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeSectionsCopy } from '@/lib/i18n/copy/home';
 
@@ -25,12 +31,12 @@ export default function AppShowcase({ locale = 'es' }: AppShowcaseProps) {
           <div className="showcase-image-wrapper">
             <div className="phone-mockup-container float-enhanced">
               <Image
-                src="/assets/images/hero/phone-mockup-landing.webp"
-                alt={copy.imageAlt}
+                src={getAppScreenshotPath('chat')}
+                alt={getAppScreenshotAlt('chat', locale)}
                 className="phone-mockup-image"
-                width={856}
-                height={1346}
-                quality={95}
+                width={APP_SCREENSHOT_WIDTH}
+                height={APP_SCREENSHOT_HEIGHT}
+                quality={90}
                 placeholder="blur"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
               />

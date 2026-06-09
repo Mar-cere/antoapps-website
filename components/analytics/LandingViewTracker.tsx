@@ -4,9 +4,11 @@ import { useEffect } from 'react';
 import { persistAttributionFromLocation } from '@/lib/analytics/attribution';
 import { trackCustomEvent, withAttribution } from '@/lib/analytics/events';
 
+import type { BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
+
 type LandingViewTrackerProps = {
   page: string;
-  landingVariant: 'A' | 'B';
+  landingVariant: BienvenidaVariant;
 };
 
 export default function LandingViewTracker({ page, landingVariant }: LandingViewTrackerProps) {

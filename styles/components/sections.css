@@ -259,6 +259,14 @@
     filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.08));
 }
 
+.phone-screenshot-container {
+    max-width: min(100%, 320px);
+}
+
+.phone-screenshot-image {
+    max-width: 320px;
+}
+
 /* Desktop: dos columnas */
 @media (min-width: 968px) {
     .hero .container {

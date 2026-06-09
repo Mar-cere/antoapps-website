@@ -68,6 +68,21 @@ function resolveWaitlistDisplayCount(actual, floor = 847) {
 assert(resolveWaitlistDisplayCount(12) === 847, 'waitlist: aplica piso mínimo');
 assert(resolveWaitlistDisplayCount(900) === 900, 'waitlist: respeta conteo real si es mayor');
 
+function parseBienvenidaVariant(value) {
+  const raw = Array.isArray(value) ? value[0] : value;
+  const normalized = raw?.trim().toLowerCase();
+  if (normalized === 'b') return 'B';
+  if (normalized === 'c') return 'C';
+  return 'A';
+}
+
+assert(parseBienvenidaVariant('a') === 'A', 'variant a → A');
+assert(parseBienvenidaVariant('B') === 'B', 'variant B → B');
+assert(parseBienvenidaVariant('c') === 'C', 'variant c → C');
+assert(parseBienvenidaVariant(undefined) === 'A', 'variant undefined → A');
+assert(parseBienvenidaVariant(['C']) === 'C', 'variant array → C');
+assert(parseBienvenidaVariant('invalid') === 'A', 'variant invalid → A');
+
 if (failed > 0) {
   console.error(`\n${failed} validación(es) fallida(s).`);
   process.exit(1);

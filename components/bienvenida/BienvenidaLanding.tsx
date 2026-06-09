@@ -16,9 +16,10 @@ import BienvenidaTrustStrip from '@/components/bienvenida/BienvenidaTrustStrip';
 import HeroDualCta from '@/components/bienvenida/HeroDualCta';
 import InstagramBrowserHint from '@/components/bienvenida/InstagramBrowserHint';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
+import BienvenidaLandingV2 from '@/components/bienvenida/BienvenidaLandingV2';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
-import { getBienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
+import { getBienvenidaCopy, type BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 import { appStoreHref } from '@/lib/download-links';
 import '@/styles/components/buttons.css';
 import '@/styles/pages/landing-ad.css';
@@ -28,7 +29,7 @@ const APP_STORE_ID = '6756631911';
 
 type BienvenidaLandingProps = {
   locale: Locale;
-  landingVariant: 'A' | 'B';
+  landingVariant: BienvenidaVariant;
 };
 
 export function bienvenidaMetadata(locale: Locale): Metadata {
@@ -73,6 +74,10 @@ export function bienvenidaMetadata(locale: Locale): Metadata {
 }
 
 export default function BienvenidaLanding({ locale, landingVariant }: BienvenidaLandingProps) {
+  if (landingVariant === 'C') {
+    return <BienvenidaLandingV2 locale={locale} landingVariant={landingVariant} />;
+  }
+
   const copy = getBienvenidaCopy(locale);
   const storeHref = appStoreHref();
   const pagePath = localePath(locale, '/bienvenida');

@@ -10,6 +10,7 @@ import Footer from '@/components/layout/Footer';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import AppScreenshots from '@/components/sections/AppScreenshots';
 import '@/styles/components/app-page.css';
 
 function fillVars(text: string): string {
@@ -56,6 +57,12 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
             <p className="app-what-is__body reveal-on-scroll">{copy.whatIs.body}</p>
           </div>
         </section>
+
+        <AppScreenshots
+          locale={locale}
+          title={copy.screenshots.title}
+          subtitle={copy.screenshots.subtitle}
+        />
 
         <section className="app-benefits" data-fade-section>
           <div className="container">

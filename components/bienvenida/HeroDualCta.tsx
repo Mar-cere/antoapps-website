@@ -12,11 +12,11 @@ import {
 import { prefersReducedMotion } from '@/lib/device/motion';
 import { useLandingDevice } from '@/lib/hooks/useLandingDevice';
 import type { Locale } from '@/lib/i18n/config';
-import type { BienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
+import type { BienvenidaCopy, BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 
 type HeroDualCtaProps = {
   storeHref: string;
-  landingVariant: 'A' | 'B';
+  landingVariant: BienvenidaVariant;
   pagePath: string;
   copy: BienvenidaCopy;
   locale?: Locale;
@@ -27,7 +27,7 @@ type DesktopChoice = 'iphone' | 'android' | null;
 
 function primaryCtaLabel(
   copy: BienvenidaCopy,
-  variant: 'A' | 'B',
+  variant: BienvenidaVariant,
   isFinal: boolean
 ): string {
   if (isFinal) {

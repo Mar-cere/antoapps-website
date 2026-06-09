@@ -1,5 +1,5 @@
 /** Copy de bienvenida en español — compatibilidad con imports existentes */
-import { getBienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
+import { getBienvenidaCopy, type BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
 export type { BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
@@ -21,16 +21,16 @@ export const BIENVENIDA_META_DESCRIPTION = copy.meta.description;
 export const BIENVENIDA_SOCIAL_DESCRIPTION = copy.meta.socialDescription;
 export const BIENVENIDA_OG_SUBLINE = copy.meta.ogSubline;
 
-export function bienvenidaHeroTitleLine2(variant: 'A' | 'B'): string {
+export function bienvenidaHeroTitleLine2(variant: BienvenidaVariant): string {
   return copy.hero.titleLine2[variant];
 }
 
-export function bienvenidaHeroSubheadline(variant: 'A' | 'B'): string {
+export function bienvenidaHeroSubheadline(variant: BienvenidaVariant): string {
   return copy.hero.subheadline[variant];
 }
 
 /** @deprecated Use bienvenidaHeroSubheadline */
-export function bienvenidaHeroLead(variant: 'A' | 'B'): string {
+export function bienvenidaHeroLead(variant: BienvenidaVariant): string {
   return bienvenidaHeroSubheadline(variant);
 }
 

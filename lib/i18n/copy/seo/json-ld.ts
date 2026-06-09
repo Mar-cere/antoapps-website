@@ -2,9 +2,11 @@ import { APP_VERSION } from '@/lib/app-version';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeFaqCopy } from '@/lib/i18n/copy/home/faq';
 
-const SITE_ORIGIN = 'https://antoapps.com';
+import { getAppScreenshotUrl } from '@/lib/assets/app-screenshots';
 
 type JsonLd = Record<string, unknown>;
+
+const SITE_ORIGIN = 'https://antoapps.com';
 
 const softwareCopy: Record<
   Locale,
@@ -76,7 +78,7 @@ export function getSoftwareApplicationJsonLd(locale: Locale): JsonLd {
       priceCurrency: 'USD',
     },
     description: copy.description,
-    screenshot: `${SITE_ORIGIN}/assets/images/antoIcon.png`,
+    screenshot: getAppScreenshotUrl('chat', SITE_ORIGIN),
     featureList: copy.featureList,
     url: locale === 'en' ? `${SITE_ORIGIN}/en` : SITE_ORIGIN,
   };
