@@ -103,7 +103,7 @@ const metadataByLocale: Record<Locale, AppPageMetadata> = {
 function buildAppPageCopy(locale: Locale): AppPageCopy {
   const trial = getTrialCopy(locale);
   const isEn = locale === 'en';
-  const featuresHref = localePath(locale, '/#caracteristicas');
+  const featuresHref = localePath(locale, '/#home-feat-product');
 
   if (isEn) {
     return {

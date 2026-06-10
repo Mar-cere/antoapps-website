@@ -10,7 +10,7 @@ type HomeExploreLinksProps = {
 
 const copy: Record<Locale, { title: string; links: { href: string; label: string; description: string }[] }> = {
   es: {
-    title: 'Profundiza cuando quieras',
+    title: 'Para los curiosos',
     links: [
       {
         href: '/investigacion',
@@ -20,7 +20,7 @@ const copy: Record<Locale, { title: string; links: { href: string; label: string
       {
         href: '/seguridad',
         label: 'Seguridad',
-        description: 'Cómo protegemos tus datos',
+        description: 'AES-256 · E2E · GDPR',
       },
       {
         href: '/desarrollo',
@@ -30,7 +30,7 @@ const copy: Record<Locale, { title: string; links: { href: string; label: string
     ],
   },
   en: {
-    title: 'Go deeper when you are ready',
+    title: 'For the curious',
     links: [
       {
         href: '/investigacion',
@@ -40,7 +40,7 @@ const copy: Record<Locale, { title: string; links: { href: string; label: string
       {
         href: '/seguridad',
         label: 'Security',
-        description: 'How we protect your data',
+        description: 'AES-256 · E2E · GDPR',
       },
       {
         href: '/desarrollo',
@@ -56,19 +56,22 @@ export default function HomeExploreLinks({ locale = 'es' }: HomeExploreLinksProp
 
   return (
     <section className="home-explore" aria-label={t.title}>
-      <div className="container">
-        <p className="home-explore__title">{t.title}</p>
-        <ul className="home-explore__grid">
-          {t.links.map((link) => (
-            <li key={link.href}>
-              <Link href={localePath(locale, link.href)} className="home-explore__card">
+      <p className="home-explore__title">{t.title}</p>
+      <ul className="home-explore__grid">
+        {t.links.map((link) => (
+          <li key={link.href}>
+            <Link href={localePath(locale, link.href)} className="home-explore__card">
+              <span className="home-explore__body">
                 <span className="home-explore__label">{link.label}</span>
                 <span className="home-explore__desc">{link.description}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+              </span>
+              <span className="home-explore__arrow" aria-hidden="true">
+                →
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

@@ -48,7 +48,7 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       links: [
         { href: '/', label: 'Inicio' },
         { href: '/app', label: 'La App' },
-        { href: '/#caracteristicas', label: 'Características' },
+        { href: '/#home-feat-product', label: 'La app' },
         { href: '/desarrollo', label: 'Desarrollo' },
         { href: '/contacto', label: 'Contacto' },
       ],
@@ -57,10 +57,8 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       aria: 'Navegación rápida',
       items: [
         { id: 'inicio', label: 'Inicio', href: '#inicio' },
-        { id: 'la-app', label: 'La app', href: '#la-app' },
-        { id: 'caracteristicas', label: 'Características', href: '#caracteristicas' },
+        { id: 'home-feat-product', label: 'La app', href: '#home-feat-product' },
         { id: 'precios', label: 'Precios', href: '#precios' },
-        { id: 'faq', label: 'FAQ', href: '#faq' },
       ],
     },
     footer: {
@@ -71,9 +69,8 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       rights: 'Todos los derechos reservados.',
       productLinks: [
         { href: '/app', label: 'La Aplicación' },
-        { href: '/#caracteristicas', label: 'Características' },
+        { href: '/#home-feat-product', label: 'La app' },
         { href: '/#precios', label: 'Precios' },
-        { href: '/#faq', label: 'FAQ' },
         { href: '/privacidad', label: 'Privacidad' },
       ],
       companyLinks: [
@@ -113,7 +110,7 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       links: [
         { href: '/en', label: 'Home' },
         { href: '/en/app', label: 'The App' },
-        { href: '/en#caracteristicas', label: 'Features' },
+        { href: '/en#home-feat-product', label: 'The app' },
         { href: '/en/desarrollo', label: 'Development' },
         { href: '/en/contacto', label: 'Contact' },
       ],
@@ -122,10 +119,8 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       aria: 'Quick navigation',
       items: [
         { id: 'inicio', label: 'Home', href: '#inicio' },
-        { id: 'la-app', label: 'The app', href: '#la-app' },
-        { id: 'caracteristicas', label: 'Features', href: '#caracteristicas' },
+        { id: 'home-feat-product', label: 'The app', href: '#home-feat-product' },
         { id: 'precios', label: 'Pricing', href: '#precios' },
-        { id: 'faq', label: 'FAQ', href: '#faq' },
       ],
     },
     footer: {
@@ -136,9 +131,8 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       rights: 'All rights reserved.',
       productLinks: [
         { href: '/en/app', label: 'The App' },
-        { href: '/en#caracteristicas', label: 'Features' },
+        { href: '/en#home-feat-product', label: 'The app' },
         { href: '/en#precios', label: 'Pricing' },
-        { href: '/en#faq', label: 'FAQ' },
         { href: '/en/privacidad', label: 'Privacy' },
       ],
       companyLinks: [

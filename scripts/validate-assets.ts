@@ -3,7 +3,9 @@ import { join } from 'node:path';
 import {
   APP_SCREENSHOT_KEYS,
   APP_SCREENSHOT_PATHS,
+  HOME_LANDING_SCREENSHOT_PATHS,
   getAppScreenshotAlt,
+  getHomeLandingScreenshotAlt,
 } from '../lib/assets/app-screenshots';
 import type { Locale } from '../lib/i18n/config';
 import { getBienvenidaCopy } from '../lib/i18n/copy/bienvenida';
@@ -31,6 +33,22 @@ function assertAssetInvariants(): string[] {
       const alt = getAppScreenshotAlt(key, locale);
       if (!alt.trim()) {
         errors.push(`[${locale}] empty alt for screenshot "${key}"`);
+      }
+    }
+  }
+
+  for (const [key, urlPath] of Object.entries(HOME_LANDING_SCREENSHOT_PATHS)) {
+    const filePath = publicPath(urlPath);
+    if (!existsSync(filePath)) {
+      errors.push(`missing home landing screenshot: ${urlPath}`);
+    }
+    for (const locale of LOCALES) {
+      const alt = getHomeLandingScreenshotAlt(
+        key as keyof typeof HOME_LANDING_SCREENSHOT_PATHS,
+        locale
+      );
+      if (!alt.trim()) {
+        errors.push(`[${locale}] empty alt for home landing screenshot "${key}"`);
       }
     }
   }

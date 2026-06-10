@@ -2,54 +2,47 @@
 
 import { useId, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import AppReviewCard from '@/components/ui/AppReviewCard';
-import MultilineText from '@/components/ui/MultilineText';
 import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
 import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
 import {
   APP_SCREENSHOT_HEIGHT,
   APP_SCREENSHOT_WIDTH,
-  getAppScreenshotAlt,
-  getAppScreenshotPath,
+  getHomeLandingScreenshotAlt,
+  getHomeLandingScreenshotPath,
 } from '@/lib/assets/app-screenshots';
 import { appStoreHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
-import { getHomeHeroCopy } from '@/lib/i18n/copy/home-hero';
-import '@/styles/pages/home-premium.css';
+import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
+import '@/styles/pages/home-landing-final.css';
 
 type HeroProps = {
   locale?: Locale;
 };
 
 export default function Hero({ locale = 'es' }: HeroProps) {
-  const copy = getHomeHeroCopy(locale);
+  const copy = getHomeLandingFinalCopy(locale).hero;
   const pagePath = locale === 'en' ? '/en' : '/';
   const androidFormId = useId().replace(/:/g, '');
   const [androidFormOpen, setAndroidFormOpen] = useState(false);
 
   return (
-    <section id="inicio" className="hero hero--premium" data-fade-section aria-labelledby="hero-title">
-      <div className="container">
-        <div className="hero-content reveal-on-scroll">
-          <p className="hero-eyebrow">{copy.eyebrow}</p>
-          <h1 className="hero-title" id="hero-title">
-            <MultilineText text={copy.titlePrefix} />
-            <span className="hero-title-accent">
-              <MultilineText text={copy.titleHighlight} />
+    <section id="inicio" className="home-landing-hero" data-fade-section aria-labelledby="hero-title">
+      <div className="home-landing-container home-landing-hero__grid">
+        <div className="home-landing-hero__left reveal-on-scroll">
+          <div className="home-landing-kicker">
+            <span className="home-landing-kicker__icon" aria-hidden="true">
+              ✦
             </span>
+            <span>{copy.kicker}</span>
+          </div>
+          <h1 className="home-landing-hero__title" id="hero-title">
+            {copy.titleLine1}
+            <br />
+            {copy.titleLine2} <em>{copy.titleAccent}</em>
           </h1>
-          <p className="hero-subtitle reveal-on-scroll">{copy.subtitle}</p>
-
-          <AppReviewCard
-            quote={copy.heroReview.quote}
-            author={copy.heroReview.author}
-            source={copy.heroReview.source}
-            starsAria={copy.starsAria}
-            className="reveal-on-scroll"
-          />
-
-          <div className="hero-cta reveal-on-scroll">
+          <p className="home-landing-hero__sub">{copy.subtitle}</p>
+          <div className="home-landing-cta-wrap">
             <PremiumStoreCta
               storeHref={appStoreHref()}
               storeLabel={copy.ctaStoreLabel}
@@ -58,15 +51,12 @@ export default function Hero({ locale = 'es' }: HeroProps) {
               ariaLabel={copy.storeAria}
               trackingPlacement="home_hero_store_cta"
               trackingPage={pagePath}
-              trackingLabel="home_hero_premium"
+              trackingLabel="home_hero_final"
             />
-            <p className="hero-cta-micro">{copy.ctaMicro}</p>
-            <Link href={copy.appHref} className="btn btn-secondary btn-large hero-secondary-link">
-              {copy.ctaSecondary}
-            </Link>
+            <p className="home-landing-cta-micro">{copy.ctaMicro}</p>
             <button
               type="button"
-              className="hero-android-link"
+              className="home-landing-android-link"
               onClick={() => {
                 setAndroidFormOpen(true);
                 document.getElementById(androidFormId)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -75,8 +65,7 @@ export default function Hero({ locale = 'es' }: HeroProps) {
               {copy.androidLink}
             </button>
           </div>
-
-          <div className={`hero-android-form ${androidFormOpen ? 'is-open' : ''}`}>
+          <div className={`home-landing-android-form ${androidFormOpen ? 'is-open' : ''}`}>
             <AndroidEarlyAccessForm
               locale={locale}
               id={androidFormId}
@@ -89,20 +78,25 @@ export default function Hero({ locale = 'es' }: HeroProps) {
           </div>
         </div>
 
-        <div className="hero-visual reveal-on-scroll">
-          <div className="hero-screenshot-crop">
+        <div className="home-landing-hero__right reveal-on-scroll">
+          <div className="home-landing-screen home-landing-screen--hero">
             <Image
-              src={getAppScreenshotPath('chat')}
-              alt={getAppScreenshotAlt('chat', locale)}
-              className="hero-screenshot hero-screenshot--chat"
+              src={getHomeLandingScreenshotPath(copy.heroScreenshot)}
+              alt={getHomeLandingScreenshotAlt(copy.heroScreenshot, locale)}
               width={APP_SCREENSHOT_WIDTH}
               height={APP_SCREENSHOT_HEIGHT}
+              className="home-landing-screen__img"
               priority
               quality={90}
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
             />
           </div>
+          <AppReviewCard
+            quote={copy.heroReview.quote}
+            author={copy.heroReview.author}
+            source={copy.heroReview.source}
+            starsAria={copy.starsAria}
+            className="home-landing-review-pill"
+          />
         </div>
       </div>
     </section>
