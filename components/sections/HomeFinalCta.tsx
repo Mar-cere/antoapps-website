@@ -15,9 +15,13 @@ export default function HomeFinalCta({ locale = 'es' }: HomeFinalCtaProps) {
   const pagePath = locale === 'en' ? '/en' : '/';
 
   return (
-    <section className="home-landing-final-cta" aria-labelledby="home-final-cta-title">
+    <section
+      className="home-landing-final-cta"
+      aria-labelledby="home-final-cta-title"
+      data-fade-section
+    >
       <div className="home-landing-final-cta__glow" aria-hidden="true" />
-      <div className="home-landing-final-cta__inner">
+      <div className="home-landing-final-cta__inner reveal-on-scroll">
         <h2 id="home-final-cta-title" className="home-landing-final-cta__title">
           {finalCta.title}
         </h2>

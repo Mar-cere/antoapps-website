@@ -14,7 +14,7 @@ export default function HomeFooterTrust({ locale = 'es' }: HomeFooterTrustProps)
   const copy = getHomeLandingFinalCopy(locale).footerTrust;
 
   return (
-    <section className="home-landing-footer-trust" aria-label={copy.disclaimer}>
+    <section className="home-landing-footer-trust reveal-on-scroll" aria-label={copy.disclaimer}>
       <ul className="home-landing-footer-trust__list">
         {copy.items.map((item, index) => (
           <li key={item.label} className="home-landing-footer-trust__item">

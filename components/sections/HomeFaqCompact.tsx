@@ -14,8 +14,8 @@ export default function HomeFaqCompact({ locale = 'es' }: HomeFaqCompactProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="home-landing-faq" aria-labelledby="home-faq-title">
-      <div className="home-landing-faq__head">
+    <section id="faq" className="home-landing-faq" aria-labelledby="home-faq-title" data-fade-section>
+      <div className="home-landing-faq__head reveal-on-scroll">
         <p className="home-landing-eyebrow">{faq.eyebrow}</p>
         <h2 id="home-faq-title" className="home-landing-cred__title">
           {faq.title}
@@ -28,7 +28,11 @@ export default function HomeFaqCompact({ locale = 'es' }: HomeFaqCompactProps) {
           const buttonId = `home-faq-button-${index}`;
 
           return (
-            <div key={item.question} className={`home-landing-faq__item ${isOpen ? 'is-open' : ''}`}>
+            <div
+              key={item.question}
+              className={`home-landing-faq__item reveal-on-scroll ${isOpen ? 'is-open' : ''}`}
+              data-stagger-item
+            >
               <button
                 type="button"
                 id={buttonId}
@@ -55,7 +59,7 @@ export default function HomeFaqCompact({ locale = 'es' }: HomeFaqCompactProps) {
           );
         })}
       </div>
-      <Link href={faq.moreHref} className="home-landing-faq__more">
+      <Link href={faq.moreHref} className="home-landing-faq__more reveal-on-scroll">
         {faq.moreLabel}
       </Link>
     </section>

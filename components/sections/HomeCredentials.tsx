@@ -12,8 +12,8 @@ export default function HomeCredentials({ locale = 'es' }: HomeCredentialsProps)
   const copy = getHomeLandingFinalCopy(locale).credentials;
 
   return (
-    <section className="home-landing-cred" aria-labelledby="home-cred-title">
-      <div className="home-landing-cred__head">
+    <section className="home-landing-cred" aria-labelledby="home-cred-title" data-fade-section>
+      <div className="home-landing-cred__head reveal-on-scroll">
         <p className="home-landing-eyebrow">{copy.eyebrow}</p>
         <h2 id="home-cred-title" className="home-landing-cred__title">
           <MultilineText text={copy.title} />
@@ -22,7 +22,7 @@ export default function HomeCredentials({ locale = 'es' }: HomeCredentialsProps)
       </div>
       <div className="home-landing-cred__stats">
         {copy.stats.map((stat) => (
-          <div key={stat.label} className="home-landing-cred__card">
+          <div key={stat.label} className="home-landing-cred__card reveal-on-scroll" data-stagger-item>
             <p className="home-landing-cred__num">{stat.value}</p>
             <p className="home-landing-cred__desc">{stat.label}</p>
             <p className="home-landing-cred__detail">{stat.detail}</p>
@@ -31,7 +31,7 @@ export default function HomeCredentials({ locale = 'es' }: HomeCredentialsProps)
       </div>
       <div className="home-landing-cred__proto-grid">
         {copy.protocols.map((proto) => (
-          <div key={proto.title} className="home-landing-cred__proto">
+          <div key={proto.title} className="home-landing-cred__proto reveal-on-scroll" data-stagger-item>
             <div className="home-landing-cred__proto-icon" aria-hidden="true">
               <span className="home-landing-cred__proto-dot" />
             </div>

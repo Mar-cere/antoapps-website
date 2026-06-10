@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import type { Locale } from '@/lib/i18n/config';
+import { homeOgImageAlt, homeOgImageSize } from '@/lib/home/opengraph-image';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 import { siteUrl } from '@/lib/i18n/metadata';
-
-const OG_IMAGE = 'https://antoapps.com/assets/images/antoIcon.png';
 
 export function homePageMetadata(locale: Locale): Metadata {
   const trial = getTrialCopy(locale);
   const canonical = siteUrl(locale, '/');
+  const ogImageUrl = siteUrl(locale, '/opengraph-image');
 
   const alternates = {
     canonical,
@@ -19,13 +19,10 @@ export function homePageMetadata(locale: Locale): Metadata {
   };
 
   const ogImage = {
-    url: OG_IMAGE,
-    width: 1200,
-    height: 630,
-    alt:
-      locale === 'en'
-        ? 'Anto — A place for your mind to land'
-        : 'Anto — Tu mente tiene un lugar donde aterrizar',
+    url: ogImageUrl,
+    width: homeOgImageSize.width,
+    height: homeOgImageSize.height,
+    alt: homeOgImageAlt(locale),
   };
 
   if (locale === 'en') {
@@ -47,7 +44,7 @@ export function homePageMetadata(locale: Locale): Metadata {
         card: 'summary_large_image',
         title: 'Anto — A place for your mind to land',
         description: `AI emotional support with clinical protocols. ${trial.short} on iPhone.`,
-        images: [OG_IMAGE],
+        images: [ogImageUrl],
       },
     };
   }
@@ -70,7 +67,7 @@ export function homePageMetadata(locale: Locale): Metadata {
       card: 'summary_large_image',
       title: 'Anto — Tu mente tiene un lugar donde aterrizar',
       description: `Apoyo emocional con IA y protocolos clínicos validados. ${trial.short} en iPhone.`,
-      images: [OG_IMAGE],
+      images: [ogImageUrl],
     },
   };
 }

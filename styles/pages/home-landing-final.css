@@ -105,9 +105,9 @@
 }
 
 .home-landing-eyebrow {
-    font-size: 0.625rem;
-    color: rgba(255, 255, 255, 0.25);
-    letter-spacing: 0.1em;
+    font-size: 0.6875rem;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     margin: 0 0 0.75rem;
 }
@@ -341,7 +341,7 @@
 
 .home-landing-feat-accent {
     font-style: normal;
-    color: var(--hl-accent-soft);
+    color: var(--hl-accent);
 }
 
 .home-landing-feat-sub {
@@ -358,12 +358,12 @@
 }
 
 .home-landing-tag {
-    background: rgba(255, 255, 255, 0.05);
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    background: rgba(91, 143, 255, 0.06);
+    border: 0.5px solid rgba(91, 143, 255, 0.18);
     border-radius: 1.25rem;
     padding: 0.3125rem 0.75rem;
     font-size: 0.6875rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.55);
 }
 
 /* Credentials */
@@ -955,15 +955,89 @@
     max-width: 21.25rem;
 }
 
+/* Scroll reveal — alineado con bienvenida v2 */
+.home-landing-page .reveal-on-scroll {
+    transform: translateY(18px);
+    transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-landing-page .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
 /* Responsive */
 @media (max-width: 680px) {
     .home-landing-nav,
     .home-landing-page {
-        --hl-pad-x: 1.5rem;
+        --hl-pad-x: 1.25rem;
+    }
+
+    .home-landing-nav {
+        padding-top: env(safe-area-inset-top, 0);
+    }
+
+    .home-landing-nav__inner {
+        padding-top: 0.875rem;
+        padding-bottom: 0.875rem;
+    }
+
+    .home-landing-nav__cta {
+        padding: 0.5625rem 1.125rem;
+        font-size: 0.8125rem;
+        font-weight: 600;
     }
 
     .home-landing-hero {
-        padding: 3rem var(--hl-pad-x) 2.5rem;
+        padding: 2.25rem var(--hl-pad-x) 2rem;
+    }
+
+    .home-landing-hero__title {
+        font-size: clamp(1.875rem, 8.2vw, 2.375rem);
+        margin-bottom: 1rem;
+    }
+
+    .home-landing-hero__sub {
+        font-size: 0.9375rem;
+        line-height: 1.65;
+        margin-bottom: 1.5rem;
+        max-width: none;
+    }
+
+    .home-landing-cta-wrap {
+        gap: 0.5rem;
+    }
+
+    .home-landing-cta-micro {
+        text-align: center;
+    }
+
+    .home-landing-hero-trust {
+        justify-content: center;
+    }
+
+    .home-landing-screen,
+    .home-landing-screen--hero,
+    .home-landing-review-pill {
+        max-width: min(100%, 17.5rem);
+        margin-inline: auto;
+    }
+
+    .home-landing-reviews {
+        padding: 2.5rem var(--hl-pad-x) 3rem;
+    }
+
+    .home-landing-faq {
+        padding: 3rem var(--hl-pad-x);
+    }
+
+    .home-landing-final-cta {
+        padding: 3rem var(--hl-pad-x) 3.5rem;
     }
 
     .home-landing-hero__grid,

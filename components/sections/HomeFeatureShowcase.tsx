@@ -27,8 +27,9 @@ export default function HomeFeatureShowcase({ locale = 'es' }: HomeFeatureShowca
             className={`home-landing-feature-row ${row.reverse ? 'home-landing-feature-row--reverse' : ''}`}
             id={row.id === 'product' ? 'home-feat-product' : undefined}
             aria-labelledby={`home-feat-${row.id}-title`}
+            data-fade-section
           >
-            <div className="home-landing-feature-row__text">
+            <div className="home-landing-feature-row__text reveal-on-scroll">
               <p className="home-landing-eyebrow">{row.eyebrow}</p>
               <h2 id={`home-feat-${row.id}-title`} className="home-landing-feat-title">
                 <MultilineText text={row.titlePrefix} />{' '}
@@ -46,11 +47,12 @@ export default function HomeFeatureShowcase({ locale = 'es' }: HomeFeatureShowca
               </div>
             </div>
             <div
-              className={
+              className={`reveal-on-scroll ${
                 row.screenshotCrop
                   ? 'home-landing-screen home-landing-screen--crop'
                   : 'home-landing-screen'
-              }
+              }`}
+              data-stagger-item
             >
               <Image
                 src={getHomeLandingScreenshotPath(row.screenshot)}

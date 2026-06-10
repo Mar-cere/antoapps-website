@@ -17,8 +17,8 @@ export default function HomeReviewsSection({ locale = 'es' }: HomeReviewsSection
   const { reviews: section } = copy;
 
   return (
-    <section className="home-landing-reviews" aria-labelledby="home-reviews-title">
-      <div className="home-landing-reviews__head">
+    <section className="home-landing-reviews" aria-labelledby="home-reviews-title" data-fade-section>
+      <div className="home-landing-reviews__head reveal-on-scroll">
         <p className="home-landing-eyebrow">{section.eyebrow}</p>
         <h2 id="home-reviews-title" className="home-landing-reviews__title">
           {section.title}
@@ -27,7 +27,7 @@ export default function HomeReviewsSection({ locale = 'es' }: HomeReviewsSection
       </div>
       <ul className="home-landing-reviews__grid">
         {reviews.map((review) => (
-          <li key={review.author}>
+          <li key={review.author} className="reveal-on-scroll" data-stagger-item>
             <AppReviewCard
               quote={review.quote}
               author={review.author}

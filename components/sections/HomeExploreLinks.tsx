@@ -55,11 +55,11 @@ export default function HomeExploreLinks({ locale = 'es' }: HomeExploreLinksProp
   const t = copy[locale];
 
   return (
-    <section className="home-explore" aria-label={t.title}>
-      <p className="home-explore__title">{t.title}</p>
+    <section className="home-explore" aria-label={t.title} data-fade-section>
+      <p className="home-explore__title reveal-on-scroll">{t.title}</p>
       <ul className="home-explore__grid">
         {t.links.map((link) => (
-          <li key={link.href}>
+          <li key={link.href} className="reveal-on-scroll" data-stagger-item>
             <Link href={localePath(locale, link.href)} className="home-explore__card">
               <span className="home-explore__body">
                 <span className="home-explore__label">{link.label}</span>

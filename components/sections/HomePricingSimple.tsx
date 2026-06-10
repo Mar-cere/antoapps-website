@@ -16,8 +16,13 @@ export default function HomePricingSimple({ locale = 'es' }: HomePricingSimplePr
   const pagePath = locale === 'en' ? '/en' : '/';
 
   return (
-    <section id="precios" className="home-landing-pricing" aria-labelledby="home-pricing-title">
-      <div className="home-landing-pricing__head">
+    <section
+      id="precios"
+      className="home-landing-pricing"
+      aria-labelledby="home-pricing-title"
+      data-fade-section
+    >
+      <div className="home-landing-pricing__head reveal-on-scroll">
         <p className="home-landing-eyebrow">{pricing.eyebrow}</p>
         <h2 id="home-pricing-title" className="home-landing-cred__title">
           {pricing.title}
@@ -28,7 +33,8 @@ export default function HomePricingSimple({ locale = 'es' }: HomePricingSimplePr
         {pricing.cards.map((card) => (
           <div
             key={card.period}
-            className={`home-landing-price-card ${card.popular ? 'home-landing-price-card--featured' : ''}`}
+            className={`home-landing-price-card reveal-on-scroll ${card.popular ? 'home-landing-price-card--featured' : ''}`}
+            data-stagger-item
           >
             {card.popular && (
               <div className="home-landing-price-pop">

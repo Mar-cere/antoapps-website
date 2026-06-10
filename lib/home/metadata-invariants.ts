@@ -71,6 +71,15 @@ export function assertHomeMetadataInvariants(): string[] {
       ogImage && typeof ogImage === 'object' && 'alt' in ogImage && typeof ogImage.alt === 'string'
         ? ogImage.alt
         : '';
+    const imageUrl =
+      ogImage && typeof ogImage === 'object' && 'url' in ogImage
+        ? metaText(ogImage.url)
+        : typeof ogImage === 'string'
+          ? ogImage
+          : '';
+    if (!imageUrl.includes('/opengraph-image')) {
+      errors.push(`${tag} openGraph image debe usar /opengraph-image generado`);
+    }
     if (!altText.toLowerCase().includes(accent.toLowerCase())) {
       errors.push(`${tag} openGraph image alt debe incluir hero.titleAccent`);
     }
