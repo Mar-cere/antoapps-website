@@ -55,6 +55,21 @@ export function assertHomeLandingCopyInvariants(): string[] {
     if (!copy.minimalNav.cta.trim()) {
       errors.push(`${tag} minimalNav.cta vacío`);
     }
+    if (copy.minimalNav.links.length !== 3) {
+      errors.push(`${tag} minimalNav debe tener 3 enlaces`);
+    }
+    if (copy.stickyNav.items.length !== 3) {
+      errors.push(`${tag} stickyNav debe tener 3 ítems`);
+    }
+    if (copy.faqLite.items.length !== 4) {
+      errors.push(`${tag} faqLite debe tener 4 ítems`);
+    }
+    if (!copy.finalCta.title.trim() || !copy.finalCta.subtitle.trim()) {
+      errors.push(`${tag} finalCta incompleto`);
+    }
+    if (!copy.reviews.title.trim()) {
+      errors.push(`${tag} reviews.title vacío`);
+    }
     if (copy.minimalFooter.links.length !== 4) {
       errors.push(`${tag} minimalFooter debe tener 4 enlaces`);
     }

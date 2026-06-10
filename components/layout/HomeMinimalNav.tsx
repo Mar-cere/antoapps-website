@@ -33,6 +33,13 @@ export default function HomeMinimalNav({ locale }: HomeMinimalNavProps) {
           </span>
           <span className="home-landing-nav__name">Anto</span>
         </Link>
+        <div className="home-landing-nav__links" aria-label={copy.stickyNav.aria}>
+          {copy.minimalNav.links.map((link) => (
+            <Link key={link.href} href={link.href} className="home-landing-nav__link">
+              {link.label}
+            </Link>
+          ))}
+        </div>
         <div className="home-landing-nav__actions">
           <LanguageSwitcher locale={locale} path="/" className="home-landing-nav__lang" />
           <DownloadLink

@@ -1,6 +1,8 @@
 import { localePath, type Locale } from '@/lib/i18n/config';
+import { getAppStoreReviewSnippets } from '@/lib/app-store-reviews';
 import { PRICING_USD } from '@/lib/pricing/plans';
 import type { HomeLandingScreenshotKey } from '@/lib/assets/app-screenshots';
+import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
 export type HomeFeatureRow = {
   id: string;
@@ -77,6 +79,28 @@ export type HomeLandingFinalCopy = {
     cta: string;
     aria: string;
     logoAria: string;
+    links: readonly { href: string; label: string }[];
+  };
+  stickyNav: {
+    aria: string;
+    items: readonly { id: string; label: string; href: string }[];
+  };
+  reviews: {
+    eyebrow: string;
+    title: string;
+    sourceLabel: string;
+    starsAria: string;
+  };
+  faqLite: {
+    eyebrow: string;
+    title: string;
+    items: readonly { question: string; answer: string }[];
+    moreHref: string;
+    moreLabel: string;
+  };
+  finalCta: {
+    title: string;
+    subtitle: string;
   };
   minimalFooter: {
     links: readonly { href: string; label: string }[];
@@ -85,8 +109,11 @@ export type HomeLandingFinalCopy = {
   };
 };
 
-const landingFinalCopy: Record<Locale, HomeLandingFinalCopy> = {
-  es: {
+function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
+  const trial = getTrialCopy(locale);
+
+  if (locale === 'es') {
+    return {
     hero: {
       kicker: 'Apoyo emocional con IA · iOS',
       titleLine1: 'Tu mente tiene',
@@ -214,6 +241,56 @@ const landingFinalCopy: Record<Locale, HomeLandingFinalCopy> = {
       cta: 'Descargar gratis',
       aria: 'Navegación principal',
       logoAria: 'Anto — Ir al inicio',
+      links: [
+        { href: '#home-feat-product', label: 'La app' },
+        { href: '#precios', label: 'Precios' },
+        { href: localePath('es', '/contacto'), label: 'Contacto' },
+      ],
+    },
+    stickyNav: {
+      aria: 'Navegación rápida',
+      items: [
+        { id: 'inicio', label: 'Inicio', href: '#inicio' },
+        { id: 'home-feat-product', label: 'La app', href: '#home-feat-product' },
+        { id: 'precios', label: 'Precios', href: '#precios' },
+      ],
+    },
+    reviews: {
+      eyebrow: 'App Store',
+      title: 'Personas reales, noches difíciles.',
+      sourceLabel: 'Reseñas públicas en App Store',
+      starsAria: '5 estrellas en App Store',
+    },
+    faqLite: {
+      eyebrow: 'Preguntas frecuentes',
+      title: 'Lo esencial, sin rodeos.',
+      items: [
+        {
+          question: '¿Mis conversaciones son privadas?',
+          answer:
+            'Sí. Tus conversaciones están cifradas (AES-256) y no vendemos ni compartimos tu información con terceros.',
+        },
+        {
+          question: '¿Anto reemplaza la terapia?',
+          answer:
+            'No. Anto complementa el apoyo profesional: te acompaña entre sesiones con herramientas basadas en evidencia.',
+        },
+        {
+          question: '¿Hay prueba gratis?',
+          answer: trial.faqPremiumAnswer,
+        },
+        {
+          question: '¿En qué dispositivos funciona?',
+          answer:
+            'Disponible en App Store para iPhone. Android está en acceso anticipado por invitación.',
+        },
+      ],
+      moreHref: localePath('es', '/recursos'),
+      moreLabel: 'Ver todas las preguntas →',
+    },
+    finalCta: {
+      title: 'Tu mente merece un lugar donde aterrizar.',
+      subtitle: 'Empieza hoy. Un día gratis, sin tarjeta.',
     },
     minimalFooter: {
       links: [
@@ -225,8 +302,10 @@ const landingFinalCopy: Record<Locale, HomeLandingFinalCopy> = {
       copyright: '© 2026 Anto · Hecho con cuidado en Chile',
       linksAria: 'Enlaces legales y de contacto',
     },
-  },
-  en: {
+  };
+  }
+
+  return {
     hero: {
       kicker: 'AI emotional support · iOS',
       titleLine1: 'Your mind has',
@@ -354,6 +433,56 @@ const landingFinalCopy: Record<Locale, HomeLandingFinalCopy> = {
       cta: 'Download free',
       aria: 'Main navigation',
       logoAria: 'Anto — Go to home',
+      links: [
+        { href: '#home-feat-product', label: 'The app' },
+        { href: '#precios', label: 'Pricing' },
+        { href: localePath('en', '/contacto'), label: 'Contact' },
+      ],
+    },
+    stickyNav: {
+      aria: 'Quick navigation',
+      items: [
+        { id: 'inicio', label: 'Home', href: '#inicio' },
+        { id: 'home-feat-product', label: 'The app', href: '#home-feat-product' },
+        { id: 'precios', label: 'Pricing', href: '#precios' },
+      ],
+    },
+    reviews: {
+      eyebrow: 'App Store',
+      title: 'Real people, hard nights.',
+      sourceLabel: 'Public App Store reviews',
+      starsAria: '5 stars on the App Store',
+    },
+    faqLite: {
+      eyebrow: 'FAQ',
+      title: 'The essentials, no fluff.',
+      items: [
+        {
+          question: 'Are my conversations private?',
+          answer:
+            'Yes. Your conversations are encrypted (AES-256) and we do not sell or share your information with third parties.',
+        },
+        {
+          question: 'Does Anto replace therapy?',
+          answer:
+            'No. Anto complements professional care — it supports you between sessions with evidence-based tools.',
+        },
+        {
+          question: 'Is there a free trial?',
+          answer: trial.faqPremiumAnswer,
+        },
+        {
+          question: 'Which devices are supported?',
+          answer:
+            'Available on the App Store for iPhone. Android is in early access by invitation.',
+        },
+      ],
+      moreHref: localePath('en', '/recursos'),
+      moreLabel: 'See all questions →',
+    },
+    finalCta: {
+      title: 'Your mind deserves a place to land.',
+      subtitle: 'Start today. One day free, no card required.',
     },
     minimalFooter: {
       links: [
@@ -365,9 +494,14 @@ const landingFinalCopy: Record<Locale, HomeLandingFinalCopy> = {
       copyright: '© 2026 Anto · Made with care in Chile',
       linksAria: 'Legal and contact links',
     },
-  },
-};
+  };
+}
 
 export function getHomeLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
-  return landingFinalCopy[locale];
+  return buildLandingFinalCopy(locale);
+}
+
+/** Reseñas App Store para la sección de prueba social (derivadas del catálogo central). */
+export function getHomeLandingReviews(locale: Locale) {
+  return getAppStoreReviewSnippets(locale);
 }

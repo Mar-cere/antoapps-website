@@ -14,6 +14,7 @@ import {
 import { appStoreHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
+import HomeHeroTrust from '@/components/sections/HomeHeroTrust';
 import '@/styles/pages/home-landing-final.css';
 
 type HeroProps = {
@@ -54,6 +55,7 @@ export default function Hero({ locale = 'es' }: HeroProps) {
               trackingLabel="home_hero_final"
             />
             <p className="home-landing-cta-micro">{copy.ctaMicro}</p>
+            <HomeHeroTrust locale={locale} />
             <button
               type="button"
               className="home-landing-android-link"

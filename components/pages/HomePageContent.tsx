@@ -3,6 +3,7 @@
 import type { Locale } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
+import HomeLandingStickyNav from '@/components/layout/HomeLandingStickyNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
@@ -12,6 +13,9 @@ import HomeFeatureShowcase from '@/components/sections/HomeFeatureShowcase';
 import HomeCredentials from '@/components/sections/HomeCredentials';
 import HomePricingSimple from '@/components/sections/HomePricingSimple';
 import HomeExploreLinks from '@/components/sections/HomeExploreLinks';
+import HomeReviewsSection from '@/components/sections/HomeReviewsSection';
+import HomeFaqCompact from '@/components/sections/HomeFaqCompact';
+import HomeFinalCta from '@/components/sections/HomeFinalCta';
 import HomeFooterTrust from '@/components/sections/HomeFooterTrust';
 import '@/styles/pages/home-landing-final.css';
 
@@ -24,6 +28,7 @@ export default function HomePageContent({ locale }: HomePageContentProps) {
     <LocaleProvider locale={locale}>
       <ClientInitializer />
       <HomeMinimalNav locale={locale} />
+      <HomeLandingStickyNav locale={locale} />
       <PullToRefresh
         onRefresh={async () => {
           if (typeof window !== 'undefined') {
@@ -35,11 +40,16 @@ export default function HomePageContent({ locale }: HomePageContentProps) {
         <main id="main-content" className="home-landing-page" role="main" lang={locale}>
           <Hero locale={locale} />
           <div className="home-landing-sep" aria-hidden="true" />
+          <HomeReviewsSection locale={locale} />
+          <div className="home-landing-sep" aria-hidden="true" />
           <HomeFeatureShowcase locale={locale} />
           <div className="home-landing-sep" aria-hidden="true" />
           <HomeCredentials locale={locale} />
           <div className="home-landing-sep" aria-hidden="true" />
           <HomePricingSimple locale={locale} />
+          <div className="home-landing-sep" aria-hidden="true" />
+          <HomeFaqCompact locale={locale} />
+          <HomeFinalCta locale={locale} />
           <div className="home-landing-sep" aria-hidden="true" />
           <HomeExploreLinks locale={locale} />
           <HomeFooterTrust locale={locale} />
