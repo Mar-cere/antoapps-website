@@ -1108,6 +1108,11 @@
         justify-self: end;
     }
 
+    /* Header ya incluye enlaces de sección; evitar duplicar con sticky pill */
+    .home-landing-sticky {
+        display: none;
+    }
+
     .home-landing-hero__grid {
         gap: 4rem;
     }
