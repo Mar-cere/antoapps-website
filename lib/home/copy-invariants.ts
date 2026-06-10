@@ -1,4 +1,5 @@
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import {
   HOME_LANDING_SCREENSHOT_PATHS,
   getHomeLandingScreenshotPath,
@@ -9,6 +10,21 @@ import { PRICING_USD } from '@/lib/pricing/plans';
 const LOCALES: readonly Locale[] = ['es', 'en'];
 
 const PLACEHOLDER_AUTHORS = /usuario de app store|app store user/i;
+
+const FOOTER_LINK_PATHS: Record<Locale, readonly string[]> = {
+  es: [
+    localePath('es', '/privacidad'),
+    localePath('es', '/terminos'),
+    localePath('es', '/contacto'),
+    localePath('es', '/changelog'),
+  ],
+  en: [
+    localePath('en', '/privacidad'),
+    localePath('en', '/terminos'),
+    localePath('en', '/contacto'),
+    localePath('en', '/changelog'),
+  ],
+};
 
 export function assertHomeLandingCopyInvariants(): string[] {
   const errors: string[] = [];
@@ -39,12 +55,53 @@ export function assertHomeLandingCopyInvariants(): string[] {
     if (!copy.minimalNav.cta.trim()) {
       errors.push(`${tag} minimalNav.cta vacío`);
     }
+    if (copy.minimalFooter.links.length !== 4) {
+      errors.push(`${tag} minimalFooter debe tener 4 enlaces`);
+    }
+    if (!copy.minimalFooter.linksAria.trim()) {
+      errors.push(`${tag} minimalFooter.linksAria vacío`);
+    }
+    const expectedFooterPaths = FOOTER_LINK_PATHS[locale];
+    for (const link of copy.minimalFooter.links) {
+      if (!link.href.trim() || !link.label.trim()) {
+        errors.push(`${tag} minimalFooter link incompleto`);
+      }
+      if (locale === 'es' && link.href.startsWith('/en')) {
+        errors.push(`${tag} minimalFooter link no debe usar prefijo /en: ${link.href}`);
+      }
+      if (locale === 'en' && !link.href.startsWith('/en')) {
+        errors.push(`${tag} minimalFooter link debe usar prefijo /en: ${link.href}`);
+      }
+    }
+    const footerHrefs = copy.minimalFooter.links.map((l) => l.href);
+    for (const expected of expectedFooterPaths) {
+      if (!footerHrefs.includes(expected)) {
+        errors.push(`${tag} minimalFooter falta enlace esperado: ${expected}`);
+      }
+    }
+    if (!copy.minimalFooter.copyright.includes('2026')) {
+      errors.push(`${tag} minimalFooter.copyright debe incluir año 2026`);
+    }
+    if (locale === 'es' && !copy.minimalFooter.copyright.toLowerCase().includes('chile')) {
+      errors.push(`${tag} minimalFooter.copyright debe mencionar Chile`);
+    }
     if (!getHomeLandingScreenshotPath(hero.heroScreenshot)) {
       errors.push(`${tag} heroScreenshot inválido`);
     }
 
     if (copy.featureRows.length !== 4) {
       errors.push(`${tag} featureRows debe tener 4 ítems`);
+    }
+
+    const productRow = copy.featureRows.find((r) => r.id === 'product');
+    if (!productRow) {
+      errors.push(`${tag} featureRows debe incluir fila "product" (ancla #home-feat-product)`);
+    }
+
+    for (const path of Object.values(HOME_LANDING_SCREENSHOT_PATHS)) {
+      if (!path.endsWith('.webp')) {
+        errors.push(`${tag} screenshot home debe ser WebP: ${path}`);
+      }
     }
 
     for (const row of copy.featureRows) {

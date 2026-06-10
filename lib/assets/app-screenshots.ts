@@ -11,11 +11,11 @@ export const APP_SCREENSHOT_PATHS = {
 
 /** Screenshots de la landing principal (mockup final) */
 export const HOME_LANDING_SCREENSHOT_PATHS = {
-  chatAnxiety: '/assets/images/hero/anto-chat-anxiety.png',
-  sessionSummary: '/assets/images/hero/anto-session-summary.png',
-  tccProtocol: '/assets/images/hero/anto-tcc-protocol.png',
-  weeklySummary: '/assets/images/hero/anto-weekly-summary.png',
-  emotionalDashboard: '/assets/images/hero/anto-emotional-dashboard.png',
+  chatAnxiety: '/assets/images/hero/anto-chat-anxiety.webp',
+  sessionSummary: '/assets/images/hero/anto-session-summary.webp',
+  tccProtocol: '/assets/images/hero/anto-tcc-protocol.webp',
+  weeklySummary: '/assets/images/hero/anto-weekly-summary.webp',
+  emotionalDashboard: '/assets/images/hero/anto-emotional-dashboard.webp',
 } as const;
 
 export type AppScreenshotKey = keyof typeof APP_SCREENSHOT_PATHS;

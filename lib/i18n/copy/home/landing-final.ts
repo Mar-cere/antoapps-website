@@ -1,4 +1,4 @@
-import type { Locale } from '@/lib/i18n/config';
+import { localePath, type Locale } from '@/lib/i18n/config';
 import { PRICING_USD } from '@/lib/pricing/plans';
 import type { HomeLandingScreenshotKey } from '@/lib/assets/app-screenshots';
 
@@ -77,6 +77,11 @@ export type HomeLandingFinalCopy = {
     cta: string;
     aria: string;
     logoAria: string;
+  };
+  minimalFooter: {
+    links: readonly { href: string; label: string }[];
+    copyright: string;
+    linksAria: string;
   };
 };
 
@@ -210,6 +215,16 @@ const landingFinalCopy: Record<Locale, HomeLandingFinalCopy> = {
       aria: 'Navegación principal',
       logoAria: 'Anto — Ir al inicio',
     },
+    minimalFooter: {
+      links: [
+        { href: localePath('es', '/privacidad'), label: 'Privacidad' },
+        { href: localePath('es', '/terminos'), label: 'Términos' },
+        { href: localePath('es', '/contacto'), label: 'Contacto' },
+        { href: localePath('es', '/changelog'), label: 'Changelog' },
+      ],
+      copyright: '© 2026 Anto · Hecho con cuidado en Chile',
+      linksAria: 'Enlaces legales y de contacto',
+    },
   },
   en: {
     hero: {
@@ -339,6 +354,16 @@ const landingFinalCopy: Record<Locale, HomeLandingFinalCopy> = {
       cta: 'Download free',
       aria: 'Main navigation',
       logoAria: 'Anto — Go to home',
+    },
+    minimalFooter: {
+      links: [
+        { href: localePath('en', '/privacidad'), label: 'Privacy' },
+        { href: localePath('en', '/terminos'), label: 'Terms' },
+        { href: localePath('en', '/contacto'), label: 'Contact' },
+        { href: localePath('en', '/changelog'), label: 'Changelog' },
+      ],
+      copyright: '© 2026 Anto · Made with care in Chile',
+      linksAria: 'Legal and contact links',
     },
   },
 };

@@ -2,8 +2,8 @@
 
 import type { Locale } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
-import Footer from '@/components/layout/Footer';
 import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
+import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import PullToRefresh from '@/components/ui/PullToRefresh';
@@ -45,7 +45,7 @@ export default function HomePageContent({ locale }: HomePageContentProps) {
           <HomeFooterTrust locale={locale} />
         </main>
       </PullToRefresh>
-      <Footer />
+      <HomeMinimalFooter locale={locale} />
       <CookieConsent />
     </LocaleProvider>
   );

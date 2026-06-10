@@ -38,6 +38,9 @@ function assertAssetInvariants(): string[] {
   }
 
   for (const [key, urlPath] of Object.entries(HOME_LANDING_SCREENSHOT_PATHS)) {
+    if (!urlPath.endsWith('.webp')) {
+      errors.push(`home landing screenshot must be WebP: ${urlPath}`);
+    }
     const filePath = publicPath(urlPath);
     if (!existsSync(filePath)) {
       errors.push(`missing home landing screenshot: ${urlPath}`);
