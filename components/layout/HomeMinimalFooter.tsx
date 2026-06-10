@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 
@@ -36,6 +37,7 @@ export default function HomeMinimalFooter({ locale }: HomeMinimalFooterProps) {
             </Link>
           ))}
         </nav>
+        <LanguageSwitcher locale={locale} path="/" className="home-landing-footer__lang" />
         <p className="home-landing-footer__copy">{minimalFooter.copyright}</p>
       </div>
     </footer>

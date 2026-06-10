@@ -15,6 +15,7 @@ import { appStoreHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 import HomeHeroTrust from '@/components/sections/HomeHeroTrust';
+import HomeKickerSparkle from '@/components/ui/HomeKickerSparkle';
 import '@/styles/pages/home-landing-final.css';
 
 type HeroProps = {
@@ -32,9 +33,7 @@ export default function Hero({ locale = 'es' }: HeroProps) {
       <div className="home-landing-container home-landing-hero__grid">
         <div className="home-landing-hero__left reveal-on-scroll">
           <div className="home-landing-kicker">
-            <span className="home-landing-kicker__icon" aria-hidden="true">
-              ✦
-            </span>
+            <HomeKickerSparkle className="home-landing-kicker__icon" />
             <span>{copy.kicker}</span>
           </div>
           <h1 className="home-landing-hero__title" id="hero-title">

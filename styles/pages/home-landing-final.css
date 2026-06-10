@@ -28,24 +28,6 @@
     gap: 1rem;
 }
 
-.home-landing-nav__links {
-    display: none;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.home-landing-nav__link {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.45);
-    text-decoration: none;
-    transition: color 0.15s ease;
-}
-
-.home-landing-nav__link:hover {
-    color: rgba(255, 255, 255, 0.75);
-}
-
 .home-landing-nav__brand {
     display: inline-flex;
     align-items: center;
@@ -76,12 +58,6 @@
     font-size: 0.875rem;
     font-weight: 500;
     letter-spacing: -0.01em;
-}
-
-.home-landing-nav__actions {
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
 }
 
 .home-landing-nav__cta {
@@ -164,6 +140,11 @@
 .home-landing-kicker span {
     font-size: 0.6875rem;
     color: var(--hl-accent-soft);
+}
+
+.home-landing-kicker__icon {
+    flex-shrink: 0;
+    display: block;
 }
 
 .home-landing-hero__title {
@@ -447,8 +428,15 @@
 
 .home-landing-cred__desc {
     font-size: 0.6875rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.45);
     line-height: 1.4;
+    margin: 0 0 0.375rem;
+}
+
+.home-landing-cred__detail {
+    font-size: 0.625rem;
+    color: rgba(255, 255, 255, 0.28);
+    line-height: 1.5;
     margin: 0;
 }
 
@@ -759,56 +747,19 @@
     margin: 0;
 }
 
-/* Sticky section nav */
-.home-landing-sticky {
-    position: fixed;
-    top: 3.25rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(-0.5rem);
-    z-index: 90;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.home-landing-sticky.is-visible {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
-}
-
-.home-landing-sticky__inner {
-    display: flex;
-    gap: 0.25rem;
-    padding: 0.3125rem;
-    background: rgba(8, 18, 40, 0.92);
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    border-radius: 2rem;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-}
-
-.home-landing-sticky__link {
-    padding: 0.4375rem 0.875rem;
-    border-radius: 1.25rem;
+.home-landing-footer__lang {
     font-size: 0.6875rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.4);
-    text-decoration: none;
-    transition: color 0.15s ease, background 0.15s ease;
 }
 
-.home-landing-sticky__link:hover {
-    color: rgba(255, 255, 255, 0.7);
+.home-landing-footer__lang a {
+    color: rgba(255, 255, 255, 0.35);
 }
 
-.home-landing-sticky__link.is-active {
-    color: #fff;
-    background: rgba(91, 143, 255, 0.2);
+.home-landing-footer__lang a.is-active {
+    color: rgba(255, 255, 255, 0.65);
 }
 
-/* Reviews */
+/* Responsive */
 .home-landing-reviews {
     padding: 3.5rem var(--hl-pad-x) 4rem;
     max-width: var(--hl-max);
@@ -1046,7 +997,12 @@
     }
 
     .home-landing-cred__stats {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+    }
+
+    .home-landing-cred__detail {
+        font-size: 0.6875rem;
+        color: rgba(255, 255, 255, 0.38);
     }
 
     .home-landing-cred__proto-grid {
@@ -1063,10 +1019,6 @@
 
     .home-landing-reviews__grid {
         grid-template-columns: 1fr;
-    }
-
-    .home-landing-sticky {
-        display: none;
     }
 
     .home-landing-footer__inner {
@@ -1087,30 +1039,6 @@
     .home-landing-page {
         --hl-max: 76rem;
         --hl-pad-x: 2.5rem;
-    }
-
-    .home-landing-nav__inner {
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items: center;
-    }
-
-    .home-landing-nav__brand {
-        justify-self: start;
-    }
-
-    .home-landing-nav__links {
-        display: flex;
-        justify-self: center;
-    }
-
-    .home-landing-nav__actions {
-        justify-self: end;
-    }
-
-    /* Header ya incluye enlaces de sección; evitar duplicar con sticky pill */
-    .home-landing-sticky {
-        display: none;
     }
 
     .home-landing-hero__grid {

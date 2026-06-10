@@ -3,7 +3,6 @@
 import type { Locale } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
-import HomeLandingStickyNav from '@/components/layout/HomeLandingStickyNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
@@ -28,7 +27,6 @@ export default function HomePageContent({ locale }: HomePageContentProps) {
     <LocaleProvider locale={locale}>
       <ClientInitializer />
       <HomeMinimalNav locale={locale} />
-      <HomeLandingStickyNav locale={locale} />
       <PullToRefresh
         onRefresh={async () => {
           if (typeof window !== 'undefined') {

@@ -19,6 +19,7 @@ export type HomeFeatureRow = {
 export type HomeCredentialStat = {
   value: string;
   label: string;
+  detail: string;
 };
 
 export type HomeProtocolCard = {
@@ -79,11 +80,6 @@ export type HomeLandingFinalCopy = {
     cta: string;
     aria: string;
     logoAria: string;
-    links: readonly { href: string; label: string }[];
-  };
-  stickyNav: {
-    aria: string;
-    items: readonly { id: string; label: string; href: string }[];
   };
   reviews: {
     eyebrow: string;
@@ -144,7 +140,12 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         titleHighlight: 'Es un sistema.',
         subtitle:
           'Conversación empática, análisis clínico y herramientas de bienestar integradas. Anto entiende el contexto, detecta patrones y sugiere el siguiente paso concreto.',
-        tags: ['Respuesta empática', 'Detección de patrones', 'Paso concreto', 'Disponible 24/7'],
+        tags: [
+          'Responde en menos de 3 s',
+          'Detecta 15 distorsiones',
+          '8 protocolos clínicos',
+          'PHQ-9 · GAD-7',
+        ],
         screenshot: 'chatAnxiety',
       },
       {
@@ -154,7 +155,11 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         titleHighlight: 'tu mente.',
         subtitle:
           'Después de cada conversación, Anto detecta el patrón de pensamiento activo, mide la intensidad emocional y te propone un protocolo concreto. No solo escucha — analiza.',
-        tags: ['15 distorsiones cognitivas', 'Intensidad emocional', 'Siguiente paso sugerido'],
+        tags: [
+          '15 distorsiones en tiempo real',
+          'Intensidad 1–10 por sesión',
+          'Protocolo sugerido al cerrar',
+        ],
         screenshot: 'sessionSummary',
         reverse: true,
       },
@@ -165,7 +170,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         titleHighlight: 'guiadas paso a paso.',
         subtitle:
           '8 protocolos basados en evidencia — TCC, exposición, autocompasión, mindfulness. Anto te guía por cada paso sin reemplazar al terapeuta, complementándolo.',
-        tags: ['TCC · CBT', '8 protocolos validados', 'Paso a paso', 'PHQ-9 · GAD-7'],
+        tags: ['8 protocolos validados', 'TCC paso a paso', '3 pasos por protocolo', 'Basados en evidencia'],
         screenshot: 'tccProtocol',
       },
       {
@@ -175,7 +180,12 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         titleHighlight: 'visible en el tiempo.',
         subtitle:
           'Resúmenes semanales y mensuales, micro-logros, tendencias emocionales y hábitos. Anto recuerda tu historia y la convierte en datos que puedes entender.',
-        tags: ['Resumen semanal', 'Micro-logros', 'Tendencias emocionales', 'Hábitos'],
+        tags: [
+          'Resumen cada 7 días',
+          'Tendencias emocionales',
+          'Micro-logros automáticos',
+          'Historial persistente',
+        ],
         screenshot: 'weeklySummary',
         screenshotCrop: true,
         reverse: true,
@@ -186,10 +196,26 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       title: 'Construido sobre\nevidencia real.',
       subtitle: 'No es intuición — es ciencia clínica integrada en cada conversación.',
       stats: [
-        { value: '8', label: 'Protocolos basados en evidencia clínica' },
-        { value: '15', label: 'Distorsiones cognitivas detectadas automáticamente' },
-        { value: '5.0', label: 'Calificación App Store' },
-        { value: '24/7', label: 'Disponibilidad sin excepciones' },
+        {
+          value: '8',
+          label: 'Protocolos clínicos',
+          detail: 'TCC, exposición, autocompasión y mindfulness — basados en evidencia',
+        },
+        {
+          value: '15',
+          label: 'Distorsiones detectadas',
+          detail: 'Catastrofismo, personalización y más — identificadas en cada sesión',
+        },
+        {
+          value: '5.0',
+          label: 'En App Store',
+          detail: 'Calificación pública de usuarios reales',
+        },
+        {
+          value: '24/7',
+          label: 'Siempre disponible',
+          detail: 'Sin citas, sin horarios, sin lista de espera',
+        },
       ],
       protocols: [
         { title: 'Depresión · Ansiedad', subtitle: 'Protocolos CBT validados clínicamente' },
@@ -241,19 +267,6 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       cta: 'Descargar gratis',
       aria: 'Navegación principal',
       logoAria: 'Anto — Ir al inicio',
-      links: [
-        { href: '#home-feat-product', label: 'La app' },
-        { href: '#precios', label: 'Precios' },
-        { href: localePath('es', '/contacto'), label: 'Contacto' },
-      ],
-    },
-    stickyNav: {
-      aria: 'Navegación rápida',
-      items: [
-        { id: 'inicio', label: 'Inicio', href: '#inicio' },
-        { id: 'home-feat-product', label: 'La app', href: '#home-feat-product' },
-        { id: 'precios', label: 'Precios', href: '#precios' },
-      ],
     },
     reviews: {
       eyebrow: 'App Store',
@@ -336,7 +349,12 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         titleHighlight: 'A system.',
         subtitle:
           'Empathetic conversation, clinical analysis, and integrated wellness tools. Anto understands context, detects patterns, and suggests the next concrete step.',
-        tags: ['Empathetic response', 'Pattern detection', 'Concrete step', 'Available 24/7'],
+        tags: [
+          'Replies in under 3 s',
+          'Detects 15 distortions',
+          '8 clinical protocols',
+          'PHQ-9 · GAD-7',
+        ],
         screenshot: 'chatAnxiety',
       },
       {
@@ -346,7 +364,11 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         titleHighlight: 'your mind.',
         subtitle:
           'After each conversation, Anto detects the active thought pattern, measures emotional intensity, and proposes a concrete protocol. It does not just listen — it analyses.',
-        tags: ['15 cognitive distortions', 'Emotional intensity', 'Suggested next step'],
+        tags: [
+          '15 distortions in real time',
+          'Intensity 1–10 per session',
+          'Suggested protocol after each chat',
+        ],
         screenshot: 'sessionSummary',
         reverse: true,
       },
@@ -357,7 +379,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         titleHighlight: 'guided step by step.',
         subtitle:
           '8 evidence-based protocols — CBT, exposure, self-compassion, mindfulness. Anto guides you through each step without replacing your therapist — complementing them.',
-        tags: ['CBT', '8 validated protocols', 'Step by step', 'PHQ-9 · GAD-7'],
+        tags: ['8 validated protocols', 'Step-by-step CBT', '3 steps per protocol', 'Evidence-based'],
         screenshot: 'tccProtocol',
       },
       {
@@ -367,7 +389,12 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         titleHighlight: 'visible over time.',
         subtitle:
           'Weekly and monthly summaries, micro-achievements, emotional trends, and habits. Anto remembers your story and turns it into data you can understand.',
-        tags: ['Weekly summary', 'Micro-achievements', 'Emotional trends', 'Habits'],
+        tags: [
+          'Summary every 7 days',
+          'Emotional trends',
+          'Automatic micro-wins',
+          'Persistent history',
+        ],
         screenshot: 'weeklySummary',
         screenshotCrop: true,
         reverse: true,
@@ -378,10 +405,26 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       title: 'Built on\nreal evidence.',
       subtitle: 'Not intuition — clinical science integrated into every conversation.',
       stats: [
-        { value: '8', label: 'Evidence-based clinical protocols' },
-        { value: '15', label: 'Cognitive distortions detected automatically' },
-        { value: '5.0', label: 'App Store rating' },
-        { value: '24/7', label: 'Availability without exceptions' },
+        {
+          value: '8',
+          label: 'Clinical protocols',
+          detail: 'CBT, exposure, self-compassion, and mindfulness — evidence-based',
+        },
+        {
+          value: '15',
+          label: 'Distortions detected',
+          detail: 'Catastrophizing, personalization, and more — identified each session',
+        },
+        {
+          value: '5.0',
+          label: 'On the App Store',
+          detail: 'Public rating from real users',
+        },
+        {
+          value: '24/7',
+          label: 'Always available',
+          detail: 'No appointments, no schedules, no waiting list',
+        },
       ],
       protocols: [
         { title: 'Depression · Anxiety', subtitle: 'Clinically validated CBT protocols' },
@@ -433,19 +476,6 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       cta: 'Download free',
       aria: 'Main navigation',
       logoAria: 'Anto — Go to home',
-      links: [
-        { href: '#home-feat-product', label: 'The app' },
-        { href: '#precios', label: 'Pricing' },
-        { href: localePath('en', '/contacto'), label: 'Contact' },
-      ],
-    },
-    stickyNav: {
-      aria: 'Quick navigation',
-      items: [
-        { id: 'inicio', label: 'Home', href: '#inicio' },
-        { id: 'home-feat-product', label: 'The app', href: '#home-feat-product' },
-        { id: 'precios', label: 'Pricing', href: '#precios' },
-      ],
     },
     reviews: {
       eyebrow: 'App Store',

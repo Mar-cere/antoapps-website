@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import DownloadLink from '@/components/DownloadLink';
-import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 import { appStoreHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
@@ -33,26 +32,16 @@ export default function HomeMinimalNav({ locale }: HomeMinimalNavProps) {
           </span>
           <span className="home-landing-nav__name">Anto</span>
         </Link>
-        <div className="home-landing-nav__links" aria-label={copy.stickyNav.aria}>
-          {copy.minimalNav.links.map((link) => (
-            <Link key={link.href} href={link.href} className="home-landing-nav__link">
-              {link.label}
-            </Link>
-          ))}
-        </div>
-        <div className="home-landing-nav__actions">
-          <LanguageSwitcher locale={locale} path="/" className="home-landing-nav__lang" />
-          <DownloadLink
-            href={appStoreHref()}
-            className="home-landing-nav__cta"
-            trackingPlacement="home_minimal_nav_cta"
-            trackingPage={pagePath}
-            trackingLabel="home_minimal_nav"
-            aria-label={copy.hero.storeAria}
-          >
-            {copy.minimalNav.cta}
-          </DownloadLink>
-        </div>
+        <DownloadLink
+          href={appStoreHref()}
+          className="home-landing-nav__cta"
+          trackingPlacement="home_minimal_nav_cta"
+          trackingPage={pagePath}
+          trackingLabel="home_minimal_nav"
+          aria-label={copy.hero.storeAria}
+        >
+          {copy.minimalNav.cta}
+        </DownloadLink>
       </nav>
     </header>
   );

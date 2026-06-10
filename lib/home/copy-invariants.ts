@@ -55,12 +55,6 @@ export function assertHomeLandingCopyInvariants(): string[] {
     if (!copy.minimalNav.cta.trim()) {
       errors.push(`${tag} minimalNav.cta vacío`);
     }
-    if (copy.minimalNav.links.length !== 3) {
-      errors.push(`${tag} minimalNav debe tener 3 enlaces`);
-    }
-    if (copy.stickyNav.items.length !== 3) {
-      errors.push(`${tag} stickyNav debe tener 3 ítems`);
-    }
     if (copy.faqLite.items.length !== 4) {
       errors.push(`${tag} faqLite debe tener 4 ítems`);
     }
@@ -126,6 +120,10 @@ export function assertHomeLandingCopyInvariants(): string[] {
       if (row.tags.length < 3) {
         errors.push(`${tag} feature row "${row.id}" debe tener al menos 3 tags`);
       }
+      const hasConcreteTag = row.tags.some((t) => /\d/.test(t));
+      if (!hasConcreteTag) {
+        errors.push(`${tag} feature row "${row.id}" debe incluir al menos un tag con dato numérico`);
+      }
       if (!(row.screenshot in HOME_LANDING_SCREENSHOT_PATHS)) {
         errors.push(`${tag} feature row "${row.id}" screenshot key inválida`);
       }
@@ -133,6 +131,11 @@ export function assertHomeLandingCopyInvariants(): string[] {
 
     if (copy.credentials.stats.length !== 4) {
       errors.push(`${tag} credentials.stats debe tener 4 ítems`);
+    }
+    for (const stat of copy.credentials.stats) {
+      if (!stat.detail.trim()) {
+        errors.push(`${tag} credentials stat "${stat.label}" sin detail`);
+      }
     }
     if (copy.credentials.protocols.length !== 3) {
       errors.push(`${tag} credentials.protocols debe tener 3 ítems`);

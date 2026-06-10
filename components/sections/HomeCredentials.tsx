@@ -25,6 +25,7 @@ export default function HomeCredentials({ locale = 'es' }: HomeCredentialsProps)
           <div key={stat.label} className="home-landing-cred__card">
             <p className="home-landing-cred__num">{stat.value}</p>
             <p className="home-landing-cred__desc">{stat.label}</p>
+            <p className="home-landing-cred__detail">{stat.detail}</p>
           </div>
         ))}
       </div>
