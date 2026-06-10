@@ -217,6 +217,7 @@ export default function HeroDualCta({
               : 'bienvenida_hero_android_early_access'
           }
           page={pagePath}
+          landingVariant={landingVariant}
           className="android-early-access android-early-access--landing"
           compact
           autoFocus={autoFocusAndroidInput}

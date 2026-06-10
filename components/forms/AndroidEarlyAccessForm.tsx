@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import type { Locale } from '@/lib/i18n/config';
 import { getAndroidFormCopy } from '@/lib/i18n/copy/android-form';
+import type { BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 import { getAttributionContext } from '@/lib/analytics/attribution';
 import { trackCustomEvent, withAttribution } from '@/lib/analytics/events';
 import '@/styles/components/android-early-access.css';
@@ -13,6 +14,7 @@ type AndroidEarlyAccessFormProps = {
   id?: string;
   placement: string;
   page: string;
+  landingVariant?: BienvenidaVariant;
   className?: string;
   title?: string;
   subtitle?: string;
@@ -29,6 +31,7 @@ export default function AndroidEarlyAccessForm({
   id,
   placement,
   page,
+  landingVariant,
   className,
   title,
   subtitle,
@@ -78,6 +81,11 @@ export default function AndroidEarlyAccessForm({
     );
 
     try {
+      const pageUrl =
+        typeof window !== 'undefined'
+          ? `${window.location.pathname}${window.location.search}`
+          : page;
+
       const response = await fetch('/api/android-early-access', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -85,7 +93,13 @@ export default function AndroidEarlyAccessForm({
           email,
           placement,
           page,
+          pageUrl,
+          locale,
+          landingVariant,
           source: 'website',
+          utm_source: attribution.utm_source,
+          utm_medium: attribution.utm_medium,
+          utm_campaign: attribution.utm_campaign,
         }),
       });
 

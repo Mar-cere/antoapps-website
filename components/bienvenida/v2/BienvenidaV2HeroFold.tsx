@@ -110,6 +110,7 @@ export default function BienvenidaV2HeroFold({
                 : 'bienvenida_v2_final_android_early_access'
             }
             page={pagePath}
+            landingVariant={landingVariant}
             className="android-early-access android-early-access--landing"
             compact
             autoFocus={autoFocusAndroid}

@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import { notifyAndroidLead } from '@/lib/android-early-access/notify-lead';
+import { parseEarlyAccessPayload, type EarlyAccessPayload } from '@/lib/android-early-access/parse-payload';
 import { getMongoDb } from '@/lib/server/mongodb';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -6,8 +8,14 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 type AndroidEarlyAccessSubmission = {
   submittedAt: string;
   page: string;
+  pageUrl?: string;
   placement: string;
   source: string;
+  locale: string;
+  landingVariant?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
 };
 
 type AndroidEarlyAccessLead = {
@@ -16,75 +24,10 @@ type AndroidEarlyAccessLead = {
   lastSeenAt: string;
   source: string;
   campaign: string;
+  locale?: string;
   submissionCount: number;
   submissions: AndroidEarlyAccessSubmission[];
 };
-
-type EarlyAccessPayload = {
-  email?: string;
-  source?: string;
-  placement?: string;
-  page?: string;
-};
-
-async function notifyNewLead(input: {
-  email: string;
-  page: string;
-  placement: string;
-  source: string;
-  submittedAt: string;
-}) {
-  const webhookUrl = process.env.ANDROID_EARLY_ACCESS_WEBHOOK_URL;
-  const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
-  const telegramChatId = process.env.TELEGRAM_CHAT_ID;
-
-  const message = [
-    'Nuevo registro Android Early Access',
-    `Email: ${input.email}`,
-    `Page: ${input.page}`,
-    `Placement: ${input.placement}`,
-    `Source: ${input.source}`,
-    `At: ${input.submittedAt}`,
-  ].join('\n');
-
-  if (webhookUrl) {
-    try {
-      await fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          event: 'android_early_access_new_lead',
-          ...input,
-          message,
-        }),
-      });
-    } catch (error) {
-      const err = error instanceof Error ? error.message : 'unknown_webhook_error';
-      console.error('[android-early-access][notify_webhook_error]', { err });
-    }
-  }
-
-  if (telegramBotToken && telegramChatId) {
-    const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
-    try {
-      await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: telegramChatId,
-          text: message,
-        }),
-      });
-    } catch (error) {
-      const err = error instanceof Error ? error.message : 'unknown_telegram_error';
-      console.error('[android-early-access][notify_telegram_error]', { err });
-    }
-  }
-}
-
-function cleanText(value: unknown, fallback = ''): string {
-  return typeof value === 'string' ? value.trim() : fallback;
-}
 
 export async function POST(request: Request) {
   let body: EarlyAccessPayload;
@@ -94,21 +37,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: 'Solicitud inválida.' }, { status: 400 });
   }
 
-  const email = cleanText(body.email).toLowerCase();
-  const source = cleanText(body.source, 'website');
-  const placement = cleanText(body.placement, 'unknown');
-  const page = cleanText(body.page, '/');
+  const submittedAt = new Date().toISOString();
+  const parsed = parseEarlyAccessPayload(body, submittedAt);
 
-  if (!EMAIL_RE.test(email)) {
+  if (!parsed || !EMAIL_RE.test(parsed.email)) {
     return NextResponse.json({ ok: false, error: 'Correo inválido.' }, { status: 422 });
   }
 
   const lead = {
-    email,
-    source,
-    placement,
-    page,
-    submittedAt: new Date().toISOString(),
+    ...parsed,
     campaign: 'android_early_access',
   };
 
@@ -119,16 +56,17 @@ export async function POST(request: Request) {
     await collection.createIndex({ email: 1 }, { unique: true });
 
     await collection.updateOne(
-      { email },
+      { email: lead.email },
       {
         $setOnInsert: {
-          email,
+          email: lead.email,
           firstSeenAt: lead.submittedAt,
         },
         $set: {
           lastSeenAt: lead.submittedAt,
-          source,
+          source: lead.source,
           campaign: lead.campaign,
+          locale: lead.locale,
         },
         $inc: {
           submissionCount: 1,
@@ -136,29 +74,32 @@ export async function POST(request: Request) {
         $push: {
           submissions: {
             submittedAt: lead.submittedAt,
-            page,
-            placement,
-            source,
+            page: lead.page,
+            pageUrl: lead.pageUrl,
+            placement: lead.placement,
+            source: lead.source,
+            locale: lead.locale,
+            landingVariant: lead.landingVariant,
+            utmSource: lead.utmSource,
+            utmMedium: lead.utmMedium,
+            utmCampaign: lead.utmCampaign,
           },
         },
       },
       { upsert: true }
     );
 
-    await notifyNewLead({
-      email,
-      page,
-      placement,
-      source,
-      submittedAt: lead.submittedAt,
-    });
+    await notifyAndroidLead(lead);
   } catch (error) {
     const message = error instanceof Error ? error.message : 'unknown_error';
     console.error('[android-early-access][mongo_error]', {
       message,
-      placement,
-      page,
-      source,
+      placement: lead.placement,
+      page: lead.page,
+      pageUrl: lead.pageUrl,
+      locale: lead.locale,
+      landingVariant: lead.landingVariant,
+      source: lead.source,
     });
 
     if (message.includes('MONGODB_URI')) {
@@ -176,4 +117,3 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ ok: true });
 }
-
