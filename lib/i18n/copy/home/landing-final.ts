@@ -73,6 +73,11 @@ export type HomeLandingFinalCopy = {
     items: readonly { label: string }[];
     disclaimer: string;
   };
+  minimalNav: {
+    cta: string;
+    aria: string;
+    logoAria: string;
+  };
 };
 
 const landingFinalCopy: Record<Locale, HomeLandingFinalCopy> = {
@@ -200,6 +205,11 @@ const landingFinalCopy: Record<Locale, HomeLandingFinalCopy> = {
       disclaimer:
         'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.',
     },
+    minimalNav: {
+      cta: 'Descargar gratis',
+      aria: 'Navegación principal',
+      logoAria: 'Anto — Ir al inicio',
+    },
   },
   en: {
     hero: {
@@ -324,6 +334,11 @@ const landingFinalCopy: Record<Locale, HomeLandingFinalCopy> = {
       ],
       disclaimer:
         'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.',
+    },
+    minimalNav: {
+      cta: 'Download free',
+      aria: 'Main navigation',
+      logoAria: 'Anto — Go to home',
     },
   },
 };

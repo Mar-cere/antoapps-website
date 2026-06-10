@@ -1,6 +1,88 @@
+/* Landing principal — mockup landing_principal_final.html */
+
 @import '../components/premium-store-cta.css';
 
-/* Landing principal — mockup landing_principal_final.html */
+/* Nav minimalista */
+.home-landing-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5, 13, 31, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+}
+
+.home-landing-nav__inner {
+    max-width: 68.75rem;
+    margin: 0 auto;
+    padding: 1.125rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.home-landing-nav__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5625rem;
+    text-decoration: none;
+}
+
+.home-landing-nav__icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    background: rgba(91, 143, 255, 0.12);
+    border: 0.5px solid rgba(91, 143, 255, 0.3);
+    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.home-landing-nav__logo {
+    width: 1.125rem;
+    height: 1.125rem;
+    object-fit: contain;
+}
+
+.home-landing-nav__name {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.home-landing-nav__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.home-landing-nav__cta {
+    background: #fff;
+    border-radius: 1.25rem;
+    padding: 0.5rem 1.125rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #050d1f;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-landing-nav__cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 680px) {
+    .home-landing-nav__inner {
+        padding: 1.125rem 1.5rem;
+    }
+}
 
 .home-landing-page {
     --hl-accent: #5b8fff;

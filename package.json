@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-    "validate:landing": "node scripts/validate-landing-logic.mjs && tsx scripts/validate-bienvenida-copy.ts && tsx scripts/validate-pricing.ts && tsx scripts/validate-assets.ts",
+    "validate:landing": "node scripts/validate-landing-logic.mjs && tsx scripts/validate-bienvenida-copy.ts && tsx scripts/validate-home-copy.ts && tsx scripts/validate-pricing.ts && tsx scripts/validate-assets.ts",
     "validate": "npm run validate:landing && npm run type-check",
     "deploy": "vercel --prod",
     "deploy:preview": "vercel"

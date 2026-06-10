@@ -1,5 +1,6 @@
 import type { Locale } from '../lib/i18n/config';
 import { getPricingCalculatorCopy } from '../lib/i18n/copy/home';
+import { getHomeLandingFinalCopy } from '../lib/i18n/copy/home/landing-final';
 import {
   calculateMonthlySavings,
   calculateTotalSavings,
@@ -68,6 +69,22 @@ function assertPricingInvariants(): string[] {
 
     if (copy.comparison.priceNote.toLowerCase().includes('clp')) {
       errors.push(`${tag} priceNote must not reference CLP (USD-only pricing)`);
+    }
+
+    const home = getHomeLandingFinalCopy(locale);
+    const homePrices = home.pricing.cards.map((c) => c.price);
+    const expected = [
+      `$${PRICING_USD.month.toFixed(2)}`,
+      `$${PRICING_USD.threeMonths.toFixed(2)}`,
+      `$${PRICING_USD.sixMonths.toFixed(2)}`,
+      `$${PRICING_USD.year.toFixed(2)}`,
+    ];
+    for (let i = 0; i < expected.length; i++) {
+      if (!homePrices[i]?.includes(expected[i].replace('$', ''))) {
+        errors.push(
+          `${tag} home pricing card ${i} (${homePrices[i]}) must match ${expected[i]}`
+        );
+      }
     }
   }
 

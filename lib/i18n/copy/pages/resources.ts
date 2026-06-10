@@ -96,7 +96,7 @@ function resourcesForLocale(locale: Locale): ResourceItem[] {
           'Answers about the AI assistant, clinical scales, conversation modes, pricing, and the 1-day trial.',
         type: 'guia',
         category: 'producto',
-        link: `${localePath(locale, '/')}#faq`,
+        link: localePath(locale, '/recursos'),
       },
     ];
   }
@@ -154,7 +154,7 @@ function resourcesForLocale(locale: Locale): ResourceItem[] {
         'Respuestas sobre el asistente IA, escalas clínicas, modos de conversación, precios y la prueba de 1 día.',
       type: 'guia',
       category: 'producto',
-      link: `${localePath(locale, '/')}#faq`,
+      link: localePath(locale, '/recursos'),
     },
   ];
 }
