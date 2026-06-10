@@ -9,6 +9,7 @@ import {
   LAD_DESKTOP_CHOOSE_ANDROID_EVENT,
   LAD_OPEN_ANDROID_FORM_EVENT,
 } from '@/lib/bienvenida/android-form-events';
+import type { LandingDevice } from '@/lib/device/landing-device';
 import { prefersReducedMotion } from '@/lib/device/motion';
 import { useLandingDevice } from '@/lib/hooks/useLandingDevice';
 import type { Locale } from '@/lib/i18n/config';
@@ -20,6 +21,7 @@ type HeroDualCtaProps = {
   pagePath: string;
   copy: BienvenidaCopy;
   locale?: Locale;
+  initialDevice?: LandingDevice;
   placement?: 'hero' | 'final';
 };
 
@@ -84,9 +86,10 @@ export default function HeroDualCta({
   pagePath,
   copy,
   locale = 'es',
+  initialDevice = 'ios',
   placement = 'hero',
 }: HeroDualCtaProps) {
-  const device = useLandingDevice();
+  const device = useLandingDevice(initialDevice);
   const reactId = useId();
   const [showAndroidInput, setShowAndroidInput] = useState(false);
   const [autoFocusAndroidInput, setAutoFocusAndroidInput] = useState(false);
@@ -94,7 +97,7 @@ export default function HeroDualCta({
   const isFinal = placement === 'final';
   const isHero = !isFinal;
   const primaryCtaText = primaryCtaLabel(copy, landingVariant, isFinal);
-  const deviceModifier = device !== 'unknown' ? `lad-hero-fold-cta--${device}` : '';
+  const deviceModifier = `lad-hero-fold-cta--${device}`;
   const androidFormId = isFinal
     ? 'android-early-access-bienvenida-final'
     : 'android-early-access-bienvenida-hero';
@@ -223,20 +226,6 @@ export default function HeroDualCta({
       </div>
     );
   };
-
-  const renderPending = () => (
-    <div
-      className={`lad-hero-fold-cta lad-hero-fold-cta--pending ${isFinal ? 'lad-hero-fold-cta--final' : ''}`}
-      id={isFinal ? 'descargar-final' : 'descargar'}
-      aria-busy="true"
-    >
-      <div className="lad-hero-cta-pending" />
-    </div>
-  );
-
-  if (device === 'unknown') {
-    return renderPending();
-  }
 
   if (device === 'ios') {
     return (

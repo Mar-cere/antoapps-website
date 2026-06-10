@@ -5,11 +5,14 @@ import { detectLandingDevice, type LandingDevice } from '@/lib/device/landing-de
 
 export type { LandingDevice };
 
-export function useLandingDevice(): LandingDevice {
-  const [device, setDevice] = useState<LandingDevice>('unknown');
+export function useLandingDevice(initialDevice: LandingDevice = 'ios'): LandingDevice {
+  const [device, setDevice] = useState<LandingDevice>(initialDevice);
 
   useEffect(() => {
-    setDevice(detectLandingDevice());
+    const detected = detectLandingDevice();
+    if (detected !== 'unknown') {
+      setDevice(detected);
+    }
   }, []);
 
   return device;

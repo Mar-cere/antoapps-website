@@ -9,6 +9,7 @@ import {
 import { getAttributionContext } from '@/lib/analytics/attribution';
 import { trackCustomEvent, withAttribution } from '@/lib/analytics/events';
 import { useLandingDevice } from '@/lib/hooks/useLandingDevice';
+import type { LandingDevice } from '@/lib/device/landing-device';
 import type { BienvenidaCopy, BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 
 type BienvenidaStickyCtaProps = {
@@ -16,6 +17,7 @@ type BienvenidaStickyCtaProps = {
   landingVariant: BienvenidaVariant;
   pagePath: string;
   copy: BienvenidaCopy;
+  initialDevice?: LandingDevice;
 };
 
 function trackStickyAction(action: string, pagePath: string, landingVariant: BienvenidaVariant) {
@@ -34,10 +36,10 @@ export default function BienvenidaStickyCta({
   landingVariant,
   pagePath,
   copy,
+  initialDevice = 'ios',
 }: BienvenidaStickyCtaProps) {
-  const device = useLandingDevice();
+  const device = useLandingDevice(initialDevice);
   const [visible, setVisible] = useState(false);
-  const deviceReady = device !== 'unknown';
 
   useEffect(() => {
     const heroCta = document.getElementById('descargar');
@@ -108,10 +110,10 @@ export default function BienvenidaStickyCta({
 
   return (
     <div
-      className={`lad-sticky-cta ${visible && deviceReady ? 'is-visible' : ''}`}
-      aria-hidden={!visible || !deviceReady}
+      className={`lad-sticky-cta ${visible ? 'is-visible' : ''}`}
+      aria-hidden={!visible}
     >
-      {deviceReady ? renderCta() : null}
+      {renderCta()}
     </div>
   );
 }

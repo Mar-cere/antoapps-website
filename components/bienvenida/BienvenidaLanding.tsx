@@ -17,6 +17,7 @@ import HeroDualCta from '@/components/bienvenida/HeroDualCta';
 import InstagramBrowserHint from '@/components/bienvenida/InstagramBrowserHint';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 import BienvenidaLandingV2 from '@/components/bienvenida/BienvenidaLandingV2';
+import type { LandingDevice } from '@/lib/device/landing-device';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
 import { getBienvenidaCopy, type BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
@@ -30,6 +31,7 @@ const APP_STORE_ID = '6756631911';
 type BienvenidaLandingProps = {
   locale: Locale;
   landingVariant: BienvenidaVariant;
+  initialDevice: LandingDevice;
 };
 
 export function bienvenidaMetadata(locale: Locale): Metadata {
@@ -73,9 +75,19 @@ export function bienvenidaMetadata(locale: Locale): Metadata {
   };
 }
 
-export default function BienvenidaLanding({ locale, landingVariant }: BienvenidaLandingProps) {
+export default function BienvenidaLanding({
+  locale,
+  landingVariant,
+  initialDevice,
+}: BienvenidaLandingProps) {
   if (landingVariant === 'C') {
-    return <BienvenidaLandingV2 locale={locale} landingVariant={landingVariant} />;
+    return (
+      <BienvenidaLandingV2
+        locale={locale}
+        landingVariant={landingVariant}
+        initialDevice={initialDevice}
+      />
+    );
   }
 
   const copy = getBienvenidaCopy(locale);
@@ -118,6 +130,7 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
             pagePath={pagePath}
             copy={copy}
             locale={locale}
+            initialDevice={initialDevice}
           />
 
           <BienvenidaTrustStrip copy={copy.trustStrip} />
@@ -167,6 +180,7 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
             pagePath={pagePath}
             copy={copy}
             locale={locale}
+            initialDevice={initialDevice}
           />
         </section>
 
@@ -187,6 +201,7 @@ export default function BienvenidaLanding({ locale, landingVariant }: Bienvenida
         landingVariant={landingVariant}
         pagePath={pagePath}
         copy={copy}
+        initialDevice={initialDevice}
       />
 
       <CookieConsent compact bannerDelayMs={3000} showAfterScrollPx={120} />

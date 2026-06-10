@@ -4,6 +4,7 @@ import CookieConsent from '@/components/CookieConsent';
 import BienvenidaLandingTracker from '@/components/analytics/BienvenidaLandingTracker';
 import MetaPixelNoscript from '@/components/analytics/MetaPixelNoscript';
 import BienvenidaV2HeroFold from '@/components/bienvenida/v2/BienvenidaV2HeroFold';
+import BienvenidaV2HeroReview from '@/components/bienvenida/v2/BienvenidaV2HeroReview';
 import BienvenidaV2StickyCta from '@/components/bienvenida/v2/BienvenidaV2StickyCta';
 import {
   BienvenidaV2FeatureIcon,
@@ -13,6 +14,7 @@ import InstagramBrowserHint from '@/components/bienvenida/InstagramBrowserHint';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
+import type { LandingDevice } from '@/lib/device/landing-device';
 import { getBienvenidaCopy, type BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 import { appStoreHref } from '@/lib/download-links';
 import '@/styles/components/buttons.css';
@@ -22,6 +24,7 @@ import '@/styles/pages/landing-ad-v2.css';
 type BienvenidaLandingV2Props = {
   locale: Locale;
   landingVariant: BienvenidaVariant;
+  initialDevice: LandingDevice;
 };
 
 function MultilineText({ text }: { text: string }) {
@@ -38,7 +41,11 @@ function MultilineText({ text }: { text: string }) {
   );
 }
 
-export default function BienvenidaLandingV2({ locale, landingVariant }: BienvenidaLandingV2Props) {
+export default function BienvenidaLandingV2({
+  locale,
+  landingVariant,
+  initialDevice,
+}: BienvenidaLandingV2Props) {
   const copy = getBienvenidaCopy(locale);
   const v2 = copy.v2;
   const storeHref = appStoreHref();
@@ -77,12 +84,15 @@ export default function BienvenidaLandingV2({ locale, landingVariant }: Bienveni
           </h1>
           <p className="lad-v2-hero-sub">{v2.heroSub}</p>
 
+          <BienvenidaV2HeroReview copy={copy} />
+
           <BienvenidaV2HeroFold
             storeHref={storeHref}
             pagePath={pagePath}
             landingVariant={landingVariant}
             copy={copy}
             locale={locale}
+            initialDevice={initialDevice}
           />
         </section>
 
@@ -142,6 +152,7 @@ export default function BienvenidaLandingV2({ locale, landingVariant }: Bienveni
             landingVariant={landingVariant}
             copy={copy}
             locale={locale}
+            initialDevice={initialDevice}
             placement="final"
           />
           <ul className="lad-v2-trust-strip">
@@ -170,6 +181,7 @@ export default function BienvenidaLandingV2({ locale, landingVariant }: Bienveni
         landingVariant={landingVariant}
         pagePath={pagePath}
         copy={copy}
+        initialDevice={initialDevice}
       />
 
       <CookieConsent compact bannerDelayMs={3000} showAfterScrollPx={120} />
