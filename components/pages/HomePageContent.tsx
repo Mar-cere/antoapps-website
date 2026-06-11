@@ -16,6 +16,7 @@ import HomeReviewsSection from '@/components/sections/HomeReviewsSection';
 import HomeFaqCompact from '@/components/sections/HomeFaqCompact';
 import HomeFinalCta from '@/components/sections/HomeFinalCta';
 import HomeFooterTrust from '@/components/sections/HomeFooterTrust';
+import HomeLandingAtmosphere from '@/components/home/HomeLandingAtmosphere';
 import '@/styles/pages/home-landing-final.css';
 
 type HomePageContentProps = {
@@ -36,21 +37,24 @@ export default function HomePageContent({ locale }: HomePageContentProps) {
         threshold={80}
       >
         <main id="main-content" className="home-landing-page" role="main" lang={locale}>
-          <Hero locale={locale} />
-          <div className="home-landing-sep" aria-hidden="true" />
-          <HomeReviewsSection locale={locale} />
-          <div className="home-landing-sep" aria-hidden="true" />
-          <HomeFeatureShowcase locale={locale} />
-          <div className="home-landing-sep" aria-hidden="true" />
-          <HomeCredentials locale={locale} />
-          <div className="home-landing-sep" aria-hidden="true" />
-          <HomePricingSimple locale={locale} />
-          <div className="home-landing-sep" aria-hidden="true" />
-          <HomeFaqCompact locale={locale} />
-          <HomeFinalCta locale={locale} />
-          <div className="home-landing-sep" aria-hidden="true" />
-          <HomeExploreLinks locale={locale} />
-          <HomeFooterTrust locale={locale} />
+          <HomeLandingAtmosphere />
+          <div className="home-landing-page__content">
+            <Hero locale={locale} />
+            <div className="home-landing-sep" aria-hidden="true" />
+            <HomeReviewsSection locale={locale} />
+            <div className="home-landing-sep" aria-hidden="true" />
+            <HomeFeatureShowcase locale={locale} />
+            <div className="home-landing-sep" aria-hidden="true" />
+            <HomeCredentials locale={locale} />
+            <div className="home-landing-sep" aria-hidden="true" />
+            <HomePricingSimple locale={locale} />
+            <div className="home-landing-sep" aria-hidden="true" />
+            <HomeFaqCompact locale={locale} />
+            <HomeFinalCta locale={locale} />
+            <div className="home-landing-sep" aria-hidden="true" />
+            <HomeExploreLinks locale={locale} />
+            <HomeFooterTrust locale={locale} />
+          </div>
         </main>
       </PullToRefresh>
       <HomeMinimalFooter locale={locale} />
