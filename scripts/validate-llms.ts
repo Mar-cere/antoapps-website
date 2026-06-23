@@ -20,7 +20,7 @@ if (existsSync(join(ROOT, 'public', 'llms.txt'))) {
 
 const content = buildLlmsTxt();
 
-if (content.length < 2000) {
+if (content.length < 8000) {
   errors.push(`llms.txt demasiado corto (${content.length} chars) — contenido incompleto.`);
 }
 
@@ -44,12 +44,12 @@ const expectedPages = expectedSitemapUrlCount();
 const guideUrlCount = PSYCHOEDUCATION_SLUGS.length * 2;
 const baseUrlCount = expectedPages - guideUrlCount;
 
-if (!content.includes(`Indexed guides count: ${PSYCHOEDUCATION_SLUGS.length}`)) {
-  errors.push('llms.txt: falta conteo de guías indexadas.');
+if (!content.includes('## Indexación / Indexing summary')) {
+  errors.push('llms.txt: falta sección de resumen de indexación.');
 }
 
-if (baseUrlCount + guideUrlCount !== expectedPages) {
-  errors.push('llms.txt: conteo interno inconsistente con sitemap.');
+if (!content.includes(`Total sitemap: ${expectedPages} URLs`)) {
+  errors.push('llms.txt: falta conteo total de URLs del sitemap.');
 }
 
 if (errors.length > 0) {
@@ -61,5 +61,5 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `OK: llms.txt (${content.length} chars, ${PSYCHOEDUCATION_SLUGS.length} guías, alineado con sitemap de ${expectedPages} URLs).`
+  `OK: llms.txt (${content.length} chars, ${PSYCHOEDUCATION_SLUGS.length} guías detalladas, alineado con sitemap de ${expectedPages} URLs).`
 );
