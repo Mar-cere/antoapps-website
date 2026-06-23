@@ -36,6 +36,12 @@ export const PSYCHOEDUCATION_SLUGS = [
   'autocompasion',
   'higiene-sueno-salud-mental',
   'mindfulness-guia-breve',
+  'depresion-guia-breve',
+  'activacion-conductual',
+  'toc-y-erp',
+  'trauma-y-tept',
+  'manejo-ira',
+  'grounding-ansiedad-crisis',
 ] as const;
 
 export type PsychoeducationSlug = (typeof PSYCHOEDUCATION_SLUGS)[number];

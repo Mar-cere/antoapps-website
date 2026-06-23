@@ -1,3 +1,4 @@
+import { PSYCHOEDUCATION_SLUGS } from '../lib/i18n/copy/pages/psychoeducation';
 import { assertPsychoeducationInvariants } from '../lib/psychoeducation/invariants';
 
 const errors = assertPsychoeducationInvariants();
@@ -10,4 +11,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log('OK: invariantes de psicoeducación (es + en, 8 guías).');
+console.log(`OK: invariantes de psicoeducación (es + en, ${PSYCHOEDUCATION_SLUGS.length} guías).`);

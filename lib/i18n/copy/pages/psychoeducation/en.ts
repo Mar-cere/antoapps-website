@@ -9,6 +9,12 @@ const SLUGS = {
   selfCompassion: 'autocompasion' as const,
   sleep: 'higiene-sueno-salud-mental' as const,
   mindfulness: 'mindfulness-guia-breve' as const,
+  depression: 'depresion-guia-breve' as const,
+  behavioralActivation: 'activacion-conductual' as const,
+  ocdErp: 'toc-y-erp' as const,
+  trauma: 'trauma-y-tept' as const,
+  anger: 'manejo-ira' as const,
+  grounding: 'grounding-ansiedad-crisis' as const,
 };
 
 const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
@@ -408,6 +414,302 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     disclaimer:
       'Psychoeducation guide. If mindfulness triggers intense traumatic memories, stop and consult a trauma-informed professional.',
     cta: { label: 'Try Anto free for 1 day →', path: '/bienvenida' },
+  },
+  [SLUGS.depression]: {
+    slug: SLUGS.depression,
+    readingMinutes: 7,
+    meta: {
+      title: 'Depression: signs and what you can do | Anto Guide',
+      description:
+        'What depression is, common signs, how it differs from normal sadness, and evidence-based strategies such as behavioural activation. Psychoeducation, not diagnosis.',
+      openGraphTitle: 'Depression — psychoeducation guide',
+      openGraphDescription:
+        'Understand depressive symptoms and practical tools to start rebuilding routine and connection.',
+    },
+    hero: {
+      title: 'Depression: brief psychoeducation guide',
+      subtitle:
+        'When it may be more than a passing low mood and which small steps usually help, according to the evidence.',
+    },
+    sections: [
+      {
+        heading: 'More than sadness',
+        paragraphs: [
+          'Depression is not just “being sad.” It often includes loss of interest, persistent fatigue, difficulty concentrating, sleep or appetite changes, feelings of guilt, and sometimes thoughts that life is not worth continuing.',
+          'Sadness after a loss is human and usually linked to a specific event. Depression can persist for weeks, affect several areas of life, and does not ease by resting alone.',
+        ],
+      },
+      {
+        heading: 'Common signs',
+        bullets: [
+          'Anhedonia: things you used to enjoy no longer motivate you',
+          'Fatigue or slowness, even without physical effort',
+          'Intense self-criticism or feeling worthless',
+          'Social isolation and abandoning routines',
+          'Recurrent thoughts of death (requires urgent help)',
+        ],
+      },
+      {
+        heading: 'What usually helps',
+        paragraphs: [
+          'Evidence supports therapy (especially CBT and behavioural activation), social support, moderate physical activity, and, when a professional indicates it, medication. The first practical step is often resuming small actions even when you do not feel like it.',
+        ],
+      },
+      {
+        heading: 'In Anto',
+        paragraphs: [
+          'Anto includes a CBT-based depression protocol, PHQ-9 scale for trend tracking, and unified tasks/habits to structure micro-steps. It does not diagnose or prescribe medication.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.behavioralActivation, SLUGS.scales, SLUGS.tcc],
+    disclaimer:
+      'Psychoeducation material. Does not replace professional evaluation or treatment. If you have thoughts of harming yourself, seek emergency help immediately.',
+    cta: { label: 'Support in Anto →', path: '/bienvenida' },
+  },
+  [SLUGS.behavioralActivation]: {
+    slug: SLUGS.behavioralActivation,
+    readingMinutes: 6,
+    meta: {
+      title: 'Behavioural activation: practical guide | Anto',
+      description:
+        'What behavioural activation is, why it works for depression, and how to plan small activities even when motivation is low.',
+      openGraphTitle: 'Behavioural activation — brief guide',
+      openGraphDescription: 'Rebuild routine and mood with small, sustainable behavioural steps.',
+    },
+    hero: {
+      title: 'Behavioural activation',
+      subtitle: 'Act first, feel later: a key CBT component for depression.',
+    },
+    sections: [
+      {
+        heading: 'The idea',
+        paragraphs: [
+          'In depression, the cycle “I feel bad → I isolate → I feel worse” is very common. Behavioural activation proposes planning valued activities (social, pleasure, achievement, health) even when motivation is low.',
+          'It is not about doing everything at once: you start with small steps and track how mood changes before and after.',
+        ],
+      },
+      {
+        heading: 'Types of activity',
+        bullets: [
+          'Pleasure: something you used to enjoy, even for 10 minutes',
+          'Achievement: a minimal task (shower, tidy one corner)',
+          'Social: a brief message or call',
+          'Health: short walk, eat something nutritious',
+        ],
+      },
+      {
+        heading: 'How to start today',
+        paragraphs: [
+          'Choose one activity under 15 minutes. Before, rate your mood from 0 to 10. Do it. Rate again afterwards. If it does not rise, that is not failure: consistency matters more than one day.',
+        ],
+      },
+      {
+        heading: 'In Anto',
+        paragraphs: [
+          'Use unified tasks and habits to schedule micro-steps, reminders, and Pomodoro. The depression protocol and chat can suggest activities aligned with your context.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.depression, SLUGS.tcc, SLUGS.abc],
+    disclaimer:
+      'Evidence-based psychoeducation. Does not replace individual therapy. If you cannot get out of bed for several days, consult a professional.',
+    cta: { label: 'Organise tasks in Anto →', path: '/app' },
+  },
+  [SLUGS.ocdErp]: {
+    slug: SLUGS.ocdErp,
+    readingMinutes: 8,
+    meta: {
+      title: 'OCD and exposure with response prevention (ERP) | Anto',
+      description:
+        'What obsessive-compulsive disorder is, how obsessions and compulsions work, and why ERP is the most evidence-based treatment.',
+      openGraphTitle: 'OCD and ERP — psychoeducation guide',
+      openGraphDescription: 'Understand the obsessive-compulsive cycle and the recommended therapeutic approach.',
+    },
+    hero: {
+      title: 'OCD and exposure with response prevention (ERP)',
+      subtitle: 'Obsessions, compulsions, and the treatment with the strongest support for obsessive-compulsive disorder.',
+    },
+    sections: [
+      {
+        heading: 'What OCD is',
+        paragraphs: [
+          'Obsessive-compulsive disorder (OCD) involves obsessions (intrusive thoughts, images, or impulses that cause anxiety) and compulsions (behaviours or mental rituals to reduce distress). The cycle is reinforced short term but maintains the problem.',
+        ],
+      },
+      {
+        heading: 'Common examples',
+        bullets: [
+          'Fear of contamination and excessive washing',
+          'Doubt (“Did I lock the door?”) and repeated checking',
+          'Intrusive harm thoughts and neutralising rituals',
+          'Need for symmetry or “perfect” order',
+        ],
+      },
+      {
+        heading: 'What is ERP?',
+        paragraphs: [
+          'Exposure with response prevention (ERP) means gradually facing triggers (exposure) without performing the compulsion (response prevention). With repetition, the brain learns anxiety drops without the ritual.',
+          'ERP should be planned with a professional trained in OCD, especially if symptoms are severe.',
+        ],
+      },
+      {
+        heading: 'In Anto',
+        paragraphs: [
+          'Anto includes an OCD (ERP) protocol among its 8 structured paths. Chat can help identify patterns, but moderate or severe OCD treatment requires specialised clinical support.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.anxiety, SLUGS.tcc, SLUGS.abc],
+    disclaimer:
+      'Psychoeducation. Not an OCD diagnosis and not a substitute for professional treatment. Unsupervised ERP can worsen symptoms in severe cases. Consult a specialist.',
+    cta: { label: 'Explore Anto protocols →', path: '/app' },
+  },
+  [SLUGS.trauma]: {
+    slug: SLUGS.trauma,
+    readingMinutes: 8,
+    meta: {
+      title: 'Trauma and PTSD: normal body responses | Anto',
+      description:
+        'What psychological trauma is, common PTSD symptoms, why flashbacks appear, and when to seek specialised help.',
+      openGraphTitle: 'Trauma and PTSD — brief guide',
+      openGraphDescription: 'Psychoeducation on trauma responses and evidence-based recovery paths.',
+    },
+    hero: {
+      title: 'Trauma and PTSD: psychoeducation guide',
+      subtitle:
+        'Your body and mind can react intensely after overwhelming events — that does not mean you are “broken.”',
+    },
+    sections: [
+      {
+        heading: 'What trauma is',
+        paragraphs: [
+          'Psychological trauma occurs when an experience exceeds your coping capacity at that moment. It can be a single event (accident, assault) or prolonged (abuse, neglect). The reaction depends on context, not on personal “strength.”',
+        ],
+      },
+      {
+        heading: 'Common PTSD symptoms',
+        bullets: [
+          'Re-experiencing: intrusive memories, nightmares, flashbacks',
+          'Avoidance of places, people, or sensations that recall the event',
+          'Hypervigilance: startle, tension, difficulty relaxing',
+          'Mood and thought changes (guilt, distrust, numbness)',
+        ],
+      },
+      {
+        heading: 'Evidence-based treatments',
+        paragraphs: [
+          'Therapies such as trauma-focused CBT, EMDR, and prolonged exposure have support for PTSD. Safe social support and stabilisation (sleep, routine, regulation) also matter. Recovery takes time and should not be rushed.',
+        ],
+      },
+      {
+        heading: 'In Anto',
+        paragraphs: [
+          'Anto includes a trauma and PTSD protocol among its structured paths. It can support you between sessions, but complex trauma requires a trauma-trained therapist — it does not replace that work.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.grounding, SLUGS.mindfulness, SLUGS.anxiety],
+    disclaimer:
+      'Educational material. Does not diagnose PTSD. If you have intense flashbacks or risk of harm, seek specialised professional help.',
+    cta: { label: 'Between-session support →', path: '/bienvenida' },
+  },
+  [SLUGS.anger]: {
+    slug: SLUGS.anger,
+    readingMinutes: 6,
+    meta: {
+      title: 'Anger management: practical guide | Anto',
+      description:
+        'What triggers anger, early body signals, and CBT-based regulation techniques to respond with more control.',
+      openGraphTitle: 'Anger management — brief guide',
+      openGraphDescription: 'Identify triggers and learn to lower intensity before reacting.',
+    },
+    hero: {
+      title: 'Anger management',
+      subtitle: 'Anger is not the enemy: the goal is to understand it and choose responses that do not harm you or others.',
+    },
+    sections: [
+      {
+        heading: 'Anger vs. aggression',
+        paragraphs: [
+          'Feeling anger is normal when you perceive injustice, disrespect, or threat. Problems arise when expression is impulsive, disproportionate, or harmful. Anger often follows a curve: it rises quickly and falls if not fed by rumination.',
+        ],
+      },
+      {
+        heading: 'Early signals',
+        bullets: [
+          'Tension in jaw, fists, or chest',
+          '“Always” or “never” thoughts',
+          'Heat in the face, faster breathing',
+          'Urge to interrupt, shout, or hit',
+        ],
+      },
+      {
+        heading: 'Useful strategies',
+        paragraphs: [
+          'For escalation: 90-second pause, slow breathing, physically leave the situation if safe. Long term: identify triggers, question interpretations (Was it on purpose?), practise assertiveness, and solve concrete problems.',
+        ],
+      },
+      {
+        heading: 'In Anto',
+        paragraphs: [
+          'The anger management protocol guides structured steps in chat. You can also use ABC and grounding techniques from the hub when intensity rises.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.abc, SLUGS.distortions, SLUGS.grounding],
+    disclaimer:
+      'Psychoeducation guide. Does not replace therapy or professional evaluation. If anger leads to violence or fear in your environment, seek professional help and, if there is risk, protection services.',
+    cta: { label: 'Practise in Anto →', path: '/bienvenida' },
+  },
+  [SLUGS.grounding]: {
+    slug: SLUGS.grounding,
+    readingMinutes: 5,
+    meta: {
+      title: 'Grounding techniques for anxiety and crisis | Anto',
+      description:
+        'Grounding exercises (5 senses, present-moment contact) to lower emotional intensity and when to activate crisis resources.',
+      openGraphTitle: 'Grounding — practical guide',
+      openGraphDescription: 'Return to the present when anxiety or an overwhelming memory floods you.',
+    },
+    hero: {
+      title: 'Grounding: techniques for anxiety and crisis moments',
+      subtitle: 'Anchor yourself in the here and now when your body reacts as if danger were immediate.',
+    },
+    sections: [
+      {
+        heading: 'What grounding is',
+        paragraphs: [
+          'Grounding techniques direct attention to present sensory experience to reduce intense anxiety, mild dissociation, or thought spirals. They do not remove the underlying problem, but lower activation so you can think more clearly.',
+        ],
+      },
+      {
+        heading: '5-4-3-2-1 exercise',
+        bullets: [
+          '5 things you can see',
+          '4 you can touch (texture, temperature)',
+          '3 you can hear',
+          '2 you can smell',
+          '1 you can taste',
+        ],
+      },
+      {
+        heading: 'Other quick options',
+        paragraphs: [
+          'Hold an ice cube, describe aloud where you are, press feet into the floor, name colours around you. The key is engaging senses, not analysing the problem in that moment.',
+        ],
+      },
+      {
+        heading: 'When it is a crisis',
+        paragraphs: [
+          'If you have thoughts of harming yourself, immediate risk, or cannot care for yourself, contact emergency services or a crisis line in your country. Anto detects risk signals and can offer support resources, but does not replace emergency services.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.anxiety, SLUGS.mindfulness, SLUGS.trauma],
+    disclaimer:
+      'Psychoeducation. In case of suicidal risk or violence, seek local emergency help immediately.',
+    cta: { label: '24/7 support in Anto →', path: '/bienvenida' },
   },
 };
 
