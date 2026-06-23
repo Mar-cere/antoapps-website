@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
+import {
+  PSYCHOEDUCATION_SLUGS,
+  getPsychoeducationGuide,
+  psychoeducationGuidePath,
+} from '@/lib/i18n/copy/pages/psychoeducation';
 
 const CANONICAL_PATH = '/recursos';
 
@@ -41,21 +46,28 @@ export type ResourcesPageCopy = {
   };
 };
 
-function resourcesForLocale(locale: Locale): ResourceItem[] {
+function psychoeducationResources(locale: Locale): ResourceItem[] {
+  return PSYCHOEDUCATION_SLUGS.map((slug, index) => {
+    const guide = getPsychoeducationGuide(locale, slug)!;
+    return {
+      id: `pe-${index + 1}`,
+      title: guide.hero.title,
+      description: guide.meta.description,
+      type: 'psicoeducacion',
+      category: 'psicoeducacion',
+      link: psychoeducationGuidePath(locale, slug),
+    };
+  });
+}
+
+function siteResources(locale: Locale): ResourceItem[] {
+  const homeFaq = `${localePath(locale, '/')}#faq`;
+
   if (locale === 'en') {
     return [
       {
-        id: '1',
-        title: 'What are PHQ-9 and GAD-7 scales?',
-        description:
-          'Guide to the validated clinical scales Anto uses for depression and anxiety tracking, with scientific context.',
-        type: 'guia',
-        category: 'clinical',
-        link: localePath(locale, '/investigacion'),
-      },
-      {
-        id: '2',
-        title: 'Anto app features (v1.4.1)',
+        id: 'site-1',
+        title: 'Anto app features (v1.5.0)',
         description:
           'Overview of conversation modes, bilingual support, structured protocols, tasks, habits, and more.',
         type: 'guia',
@@ -63,16 +75,16 @@ function resourcesForLocale(locale: Locale): ResourceItem[] {
         link: localePath(locale, '/app'),
       },
       {
-        id: '3',
+        id: 'site-2',
         title: 'Version history and updates',
         description:
-          'Full public changelog: i18n, chat UX, 1-day trial, clinical scales, and structured protocols.',
+          'Full public changelog: techniques hub, insights graph, persistent session, clinical scales, and protocols.',
         type: 'guia',
         category: 'producto',
         link: localePath(locale, '/changelog'),
       },
       {
-        id: '4',
+        id: 'site-3',
         title: 'Security and privacy',
         description:
           'How Anto protects your data: encryption, authentication, and privacy practices explained.',
@@ -81,7 +93,7 @@ function resourcesForLocale(locale: Locale): ResourceItem[] {
         link: localePath(locale, '/seguridad'),
       },
       {
-        id: '5',
+        id: 'site-4',
         title: 'Scientific evidence',
         description:
           'Studies on digital mental health, therapeutic chatbots, and mobile interventions that support Anto\'s approach.',
@@ -90,47 +102,38 @@ function resourcesForLocale(locale: Locale): ResourceItem[] {
         link: localePath(locale, '/investigacion'),
       },
       {
-        id: '6',
+        id: 'site-5',
         title: 'Frequently asked questions',
         description:
-          'Answers about the AI assistant, clinical scales, conversation modes, pricing, and the 1-day trial.',
+          'Answers about the AI assistant, techniques hub, clinical scales, conversation modes, pricing, and the 1-day trial.',
         type: 'guia',
         category: 'producto',
-        link: localePath(locale, '/recursos'),
+        link: homeFaq,
       },
     ];
   }
 
   return [
     {
-      id: '1',
-      title: '¿Qué son las escalas PHQ-9 y GAD-7?',
+      id: 'site-1',
+      title: 'Funcionalidades de Anto (v1.5.0)',
       description:
-        'Guía sobre las escalas clínicas validadas que Anto usa para seguimiento de depresión y ansiedad, con contexto científico.',
-      type: 'guia',
-      category: 'clinical',
-      link: localePath(locale, '/investigacion'),
-    },
-    {
-      id: '2',
-      title: 'Funcionalidades de Anto (v1.4.1)',
-      description:
-        'Resumen de modos de conversación, soporte bilingüe, protocolos estructurados, tareas, hábitos y más.',
+        'Resumen de modos de conversación, hub de técnicas, soporte bilingüe, protocolos estructurados, tareas y hábitos.',
       type: 'guia',
       category: 'producto',
       link: localePath(locale, '/app'),
     },
     {
-      id: '3',
+      id: 'site-2',
       title: 'Historial de versiones y novedades',
       description:
-        'Changelog público completo: i18n, UX de chat, prueba 1 día, escalas clínicas y protocolos estructurados.',
+        'Changelog público: hub de técnicas, grafo de insights, sesión persistente, escalas clínicas y protocolos.',
       type: 'guia',
       category: 'producto',
       link: localePath(locale, '/changelog'),
     },
     {
-      id: '4',
+      id: 'site-3',
       title: 'Seguridad y privacidad',
       description:
         'Cómo Anto protege tus datos: cifrado, autenticación y prácticas de privacidad explicadas.',
@@ -139,7 +142,7 @@ function resourcesForLocale(locale: Locale): ResourceItem[] {
       link: localePath(locale, '/seguridad'),
     },
     {
-      id: '5',
+      id: 'site-4',
       title: 'Evidencia científica',
       description:
         'Estudios sobre salud mental digital, chatbots terapéuticos e intervenciones móviles que respaldan el enfoque de Anto.',
@@ -148,15 +151,19 @@ function resourcesForLocale(locale: Locale): ResourceItem[] {
       link: localePath(locale, '/investigacion'),
     },
     {
-      id: '6',
+      id: 'site-5',
       title: 'Preguntas frecuentes',
       description:
-        'Respuestas sobre el asistente IA, escalas clínicas, modos de conversación, precios y la prueba de 1 día.',
+        'Respuestas sobre el asistente IA, hub de técnicas, escalas clínicas, modos de conversación, precios y la prueba de 1 día.',
       type: 'guia',
       category: 'producto',
-      link: localePath(locale, '/recursos'),
+      link: homeFaq,
     },
   ];
+}
+
+function resourcesForLocale(locale: Locale): ResourceItem[] {
+  return [...psychoeducationResources(locale), ...siteResources(locale)];
 }
 
 function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
@@ -171,23 +178,24 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         currentLabel: 'Resources',
       },
       meta: {
-        title: 'Resources - Anto | Mental Health Guides and References',
+        title: 'Resources - Anto | Psychoeducation and Mental Health Guides',
         description:
-          'Guides on PHQ-9/GAD-7 scales, Anto features, scientific evidence, security, and FAQs for emotional wellness with AI.',
+          'Psychoeducation on CBT, cognitive distortions, ABC technique, anxiety, PHQ-9/GAD-7, self-compassion, sleep, and mindfulness — plus Anto product guides.',
         openGraphTitle: 'Resources - Anto',
         openGraphDescription:
-          'Guides and references on clinical scales, Anto features, and mental wellness with AI.',
+          'Psychoeducation guides and references on clinical tools, Anto features, and emotional wellness with AI.',
         canonicalPath: CANONICAL_PATH,
       },
       hero: {
         title: 'Resource Library',
         subtitle:
-          'Guides and references about Anto, clinical scales, scientific evidence, and emotional wellness',
+          'Psychoeducation guides on evidence-based techniques, plus references about Anto and clinical wellbeing',
       },
       library: {
         filters: [
           { id: 'all', label: 'All' },
-          { id: 'guia', label: 'Guides' },
+          { id: 'psicoeducacion', label: 'Psychoeducation' },
+          { id: 'guia', label: 'Site guides' },
           { id: 'clinical', label: 'Clinical' },
           { id: 'producto', label: 'Product' },
           { id: 'privacidad', label: 'Privacy' },
@@ -208,23 +216,24 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
       currentLabel: 'Recursos',
     },
     meta: {
-      title: 'Recursos - Anto | Guías y Referencias de Salud Mental',
+      title: 'Recursos - Anto | Psicoeducación y Guías de Salud Mental',
       description:
-        'Guías sobre escalas PHQ-9/GAD-7, funcionalidades de Anto, evidencia científica, seguridad y preguntas frecuentes sobre bienestar emocional con IA.',
+        'Psicoeducación sobre TCC, distorsiones cognitivas, técnica ABC, ansiedad, PHQ-9/GAD-7, autocompasión, sueño y mindfulness — más guías sobre Anto.',
       openGraphTitle: 'Recursos - Anto',
       openGraphDescription:
-        'Guías y referencias sobre escalas clínicas, funcionalidades de Anto y bienestar emocional con IA.',
+        'Guías de psicoeducación y referencias sobre herramientas clínicas, funcionalidades de Anto y bienestar emocional con IA.',
       canonicalPath: CANONICAL_PATH,
     },
     hero: {
       title: 'Biblioteca de Recursos',
       subtitle:
-        'Guías y referencias sobre Anto, escalas clínicas, evidencia científica y bienestar emocional',
+        'Guías de psicoeducación sobre técnicas basadas en evidencia, más referencias sobre Anto y bienestar clínico',
     },
     library: {
       filters: [
         { id: 'all', label: 'Todos' },
-        { id: 'guia', label: 'Guías' },
+        { id: 'psicoeducacion', label: 'Psicoeducación' },
+        { id: 'guia', label: 'Guías del sitio' },
         { id: 'clinical', label: 'Clínico' },
         { id: 'producto', label: 'Producto' },
         { id: 'privacidad', label: 'Privacidad' },

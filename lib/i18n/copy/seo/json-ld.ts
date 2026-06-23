@@ -24,12 +24,13 @@ const softwareCopy: Record<
       'Asistente de IA con GPT-5.4 Mini',
       'Escalas clínicas PHQ-9 y GAD-7',
       '8 protocolos terapéuticos estructurados',
-      'Detección de 15 distorsiones cognitivas',
       'Detección de crisis 24/7',
-      'Modos de conversación',
+      'Hub de técnicas terapéuticas',
+      'Tareas y hábitos unificados',
+      'Grafo de insights y memoria de temas',
+      'WAI post-sesión (alianza terapéutica)',
       'App bilingüe español e inglés',
-      'Tareas, hábitos y diario de gratitud',
-      'Resúmenes de sesión localizados',
+      'Sesión persistente con refresh de JWT',
       'Prueba gratuita de 1 día',
     ],
   },
@@ -41,12 +42,13 @@ const softwareCopy: Record<
       'AI assistant with GPT-5.4 Mini',
       'PHQ-9 and GAD-7 clinical scales',
       '8 structured therapeutic protocols',
-      'Detection of 15 cognitive distortions',
       '24/7 crisis detection',
-      'Conversation modes',
+      'Therapeutic techniques hub',
+      'Unified tasks and habits',
+      'Insights graph and topic memory',
+      'Post-session WAI (therapeutic alliance)',
       'Bilingual Spanish and English app',
-      'Tasks, habits, and gratitude journal',
-      'Localised session summaries',
+      'Persistent session with JWT refresh',
       '1-day free trial',
     ],
   },
@@ -108,12 +110,13 @@ export function getOrganizationJsonLd(locale: Locale): JsonLd {
 }
 
 export function getFaqPageJsonLd(locale: Locale): JsonLd {
-  const { faqData } = getHomeFaqCopy(locale);
+  const { faqData, faqMoreData } = getHomeFaqCopy(locale);
+  const allFaqs = [...faqData, ...faqMoreData];
 
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((faq) => ({
+    mainEntity: allFaqs.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
       acceptedAnswer: {

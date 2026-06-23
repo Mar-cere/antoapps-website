@@ -1,7 +1,10 @@
 import type { MetadataRoute } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { INDEXABLE_ROUTES } from '@/lib/seo/indexable-routes';
+import { PSYCHOEDUCATION_INDEXABLE_ROUTES } from '@/lib/seo/psychoeducation-routes';
 import { SITE_ORIGIN } from '@/lib/seo/site';
+
+const ALL_INDEXABLE_ROUTES = [...INDEXABLE_ROUTES, ...PSYCHOEDUCATION_INDEXABLE_ROUTES];
 
 function absoluteUrl(locale: Locale, logicalPath: string): string {
   return `${SITE_ORIGIN}${localePath(locale, logicalPath)}`;
@@ -24,7 +27,7 @@ function buildLanguageAlternates(logicalPath: string): Record<string, string> {
 export function buildSitemapEntries(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
 
-  for (const route of INDEXABLE_ROUTES) {
+  for (const route of ALL_INDEXABLE_ROUTES) {
     const languages = buildLanguageAlternates(route.path);
     const lastModified = new Date(route.lastModified);
 
@@ -50,7 +53,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
 
 /** Número esperado de URLs en el sitemap (2 idiomas × rutas indexables). */
 export function expectedSitemapUrlCount(): number {
-  return INDEXABLE_ROUTES.length * 2;
+  return (INDEXABLE_ROUTES.length + PSYCHOEDUCATION_INDEXABLE_ROUTES.length) * 2;
 }
 
 /** Todas las URLs absolutas que debe contener el sitemap. */

@@ -176,23 +176,26 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       latestUpdates: {
         title: 'What we have been improving',
         subtitle: 'A quick look at recent changes in the app and on this site.',
-        cards: [
-          {
-            icon: '🆕',
-            label: 'Clearer welcome experience',
-            description: 'Onboarding that explains the value of Anto before you download.',
-          },
-          {
-            icon: '🔒',
-            label: 'More privacy transparency',
-            description: 'Easier access to the privacy policy from key flows.',
-          },
-          {
-            icon: '📌',
-            label: 'Version history',
-            description: 'Changelog aligned with the version published in the stores.',
-          },
-        ],
+      cards: [
+        {
+          icon: '🏠',
+          label: 'Redesigned home (v1.5)',
+          description:
+            'Personalized daily insight, techniques hub in navigation, and unified tasks and habits screen.',
+        },
+        {
+          icon: '📊',
+          label: 'Actionable summaries',
+          description:
+            'Observational reports, navigable "what helps you", and post-session therapeutic alliance (WAI).',
+        },
+        {
+          icon: '🔐',
+          label: 'Persistent session',
+          description:
+            'Return without re-entering your password; automatic JWT refresh and renewed onboarding.',
+        },
+      ],
         note: {
           beforeChangelog: 'Full detail in the',
           changelogLabel: 'Changelog',
@@ -296,19 +299,22 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       subtitle: 'Un vistazo breve a cambios recientes en la app y en este sitio.',
       cards: [
         {
-          icon: '🆕',
-          label: 'Bienvenida más clara',
-          description: 'Onboarding que explica el valor de Anto antes de descargar.',
+          icon: '🏠',
+          label: 'Home renovado (v1.5)',
+          description:
+            'Insight diario personalizado, hub de técnicas en la navegación y pantalla unificada de tareas y hábitos.',
         },
         {
-          icon: '🔒',
-          label: 'Más transparencia de privacidad',
-          description: 'Acceso más directo a la política de privacidad en flujos clave.',
+          icon: '📊',
+          label: 'Resúmenes accionables',
+          description:
+            'Informes observacionales, «lo que te ayuda» navegable y WAI post-sesión (alianza terapéutica).',
         },
         {
-          icon: '📌',
-          label: 'Historial de versiones',
-          description: 'Changelog alineado con la versión publicada en las tiendas.',
+          icon: '🔐',
+          label: 'Sesión persistente',
+          description:
+            'Vuelve sin reingresar contraseña; refresh automático de JWT y onboarding renovado.',
         },
       ],
       note: {

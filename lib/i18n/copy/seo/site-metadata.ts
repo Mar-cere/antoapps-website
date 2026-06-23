@@ -2,9 +2,9 @@ import type { Locale } from '@/lib/i18n/config';
 
 export const siteKeywords: Record<Locale, string> = {
   es:
-    'salud mental, bienestar emocional, app ansiedad, apoyo emocional 24/7, app depresión chile, PHQ-9 app, GAD-7 app móvil, chatbot salud mental, asistente IA bienestar, app salud mental iPhone, técnicas CBT app, detección crisis emocional, app bilingüe salud mental',
+    'salud mental, bienestar emocional, psicoeducación, terapia cognitivo conductual, distorsiones cognitivas, técnica ABC, app ansiedad, PHQ-9, GAD-7, mindfulness, autocompasión, app depresión chile, chatbot salud mental, asistente IA bienestar, técnicas CBT app',
   en:
-    'mental health app, emotional wellness, anxiety app, AI mental health support, depression support app, PHQ-9 mobile app, GAD-7 app, mental health chatbot, wellbeing assistant, iPhone wellness app, CBT techniques app, crisis detection app, bilingual mental health app',
+    'mental health app, psychoeducation, cognitive behavioural therapy, cognitive distortions, ABC technique, anxiety app, PHQ-9, GAD-7, mindfulness, self-compassion, depression support app, mental health chatbot, wellbeing assistant, CBT techniques app',
 };
 
 export const manifestPath: Record<Locale, string> = {

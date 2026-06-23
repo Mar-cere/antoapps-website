@@ -69,7 +69,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 2,
           question: '¿Cómo funciona el asistente AI?',
           answer:
-            'El asistente usa NLP de última generación (OpenAI GPT-5.4 Mini) con enfoque de bienestar emocional y técnicas alineadas con evidencia (p. ej. enfoques tipo CBT cuando encajan). Por defecto el tono es profesional y práctico; no sustituye terapia presencial ni diagnóstico clínico. Incluye escalas validadas (PHQ-9, GAD-7), detección de distorsiones cognitivas y protocolos estructurados. Puedes ajustar preferencias de estilo de respuesta cuando la app lo ofrece (v1.4+). El sistema contextualiza tus mensajes y mejora la personalización con el uso; la app y el backend se actualizan según el diseño del producto y buenas prácticas de seguridad.',
+            'El asistente usa NLP de última generación (OpenAI GPT-5.4 Mini) con enfoque de bienestar emocional y técnicas alineadas con evidencia (p. ej. enfoques tipo CBT cuando encajan). Por defecto el tono es profesional y práctico; no sustituye terapia presencial ni diagnóstico clínico. Desde la versión 1.5, recuerda temas recurrentes entre conversaciones, mantiene sugerencias al reabrir el chat y conecta patrones con el grafo de insights y las técnicas del hub. Incluye escalas validadas (PHQ-9, GAD-7), detección de distorsiones cognitivas y protocolos estructurados. Puedes ajustar preferencias de estilo de respuesta cuando la app lo ofrece.',
           category: 'funcionalidad',
         },
         {
@@ -189,7 +189,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 19,
           question: '¿Qué hace único a Anto como herramienta de bienestar?',
           answer:
-            'Anto combina un asistente de IA contextual con escalas clínicas validadas (PHQ-9, GAD-7), detección de 15 distorsiones cognitivas, 8 protocolos estructurados, detección proactiva de crisis, tareas y hábitos, y soporte bilingüe ES/EN. Priorizamos privacidad, transparencia y utilidad práctica — sin vender datos de usuarios. ' +
+            'Anto combina un asistente de IA con memoria de temas, hub de técnicas terapéuticas, grafo de insights con «lo que te ayuda», escalas clínicas validadas (PHQ-9, GAD-7), 8 protocolos estructurados, WAI post-sesión, detección proactiva de crisis, tareas y hábitos unificados, home personalizado con insight diario, sesión persistente y soporte bilingüe ES/EN. Priorizamos privacidad, transparencia y utilidad práctica — sin vender datos de usuarios. ' +
             trial.differentiatorSuffix,
           category: 'funcionalidad',
         },
@@ -205,6 +205,27 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           question: '¿Qué hago si tengo problemas técnicos?',
           answer:
             'Ofrecemos soporte técnico 24/7 a través de múltiples canales: email (marcelo.ull@antoapps.com), Telegram (t.me/marcere23), y LinkedIn. Nuestro equipo de soporte responde típicamente en menos de 2 horas. También tenemos una sección de ayuda dentro de la aplicación con guías paso a paso y solución de problemas comunes. Si encuentras un bug o problema, puedes reportarlo directamente desde la app y lo solucionaremos lo antes posible.',
+          category: 'tecnica',
+        },
+        {
+          id: 22,
+          question: '¿Qué es el hub de técnicas?',
+          answer:
+            'Es un catálogo completo de técnicas terapéuticas accesible desde la navegación principal de la app (v1.5). Incluye acceso rápido a ejercicios, un lienzo ABC interactivo y conexión directa con el grafo de insights para ver qué técnicas se relacionan con tus patrones. También puedes lanzar Pomodoro al enfocar una tarea desde la pantalla unificada de tareas y hábitos.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 23,
+          question: '¿Qué es el WAI post-sesión?',
+          answer:
+            'WAI (Working Alliance Inventory) es una breve evaluación post-sesión que mide la alianza terapéutica en 4 ejes: vínculo, objetivos, tareas y feedback. Aparece tras conversaciones relevantes y te ayuda a reflexionar sobre cómo te sientes con el acompañamiento. No sustituye la relación con un profesional presencial, pero aporta señales útiles para tu seguimiento.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 24,
+          question: '¿Tengo que iniciar sesión cada vez que abro la app?',
+          answer:
+            'No. Desde la versión 1.5, Anto mantiene una sesión persistente con refresh automático del token JWT. Puedes cerrar y reabrir la app sin volver a ingresar tu contraseña en cada ocasión. Si cierras sesión manualmente o cambias de dispositivo, deberás autenticarte de nuevo por seguridad.',
           category: 'tecnica',
         },
       ],
@@ -246,7 +267,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 2,
         question: 'How does the AI assistant work?',
         answer:
-          'The assistant uses state-of-the-art NLP (OpenAI GPT-5.4 Mini) with an emotional wellbeing focus and evidence-aligned techniques (e.g. CBT-style approaches when appropriate). By default the tone is professional and practical; it does not replace in-person therapy or clinical diagnosis. It includes validated scales (PHQ-9, GAD-7), cognitive distortion detection, and structured protocols. You can adjust response style preferences when the app offers them (v1.4+). The system contextualises your messages and improves personalisation with use; the app and backend are updated according to product design and security best practices.',
+          'The assistant uses state-of-the-art NLP (OpenAI GPT-5.4 Mini) with an emotional wellbeing focus and evidence-aligned techniques (e.g. CBT-style approaches when appropriate). By default the tone is professional and practical; it does not replace in-person therapy or clinical diagnosis. Since version 1.5, it remembers recurring topics across conversations, keeps suggestions when you reopen chat, and connects patterns to the insights graph and techniques hub. It includes validated scales (PHQ-9, GAD-7), cognitive distortion detection, and structured protocols. You can adjust response style preferences when the app offers them.',
         category: 'funcionalidad',
       },
       {
@@ -366,7 +387,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 19,
         question: 'What makes Anto unique as a wellness tool?',
         answer:
-          'Anto combines a contextual AI assistant with validated clinical scales (PHQ-9, GAD-7), detection of 15 cognitive distortions, 8 structured protocols, proactive crisis detection, tasks and habits, and bilingual ES/EN support. We prioritise privacy, transparency, and practical utility — without selling user data. ' +
+          'Anto combines an AI assistant with topic memory, a therapeutic techniques hub, an insights graph with navigable "what helps you", validated clinical scales (PHQ-9, GAD-7), 8 structured protocols, post-session WAI, proactive crisis detection, unified tasks and habits, a personalised home with daily insight, persistent session, and bilingual ES/EN support. We prioritise privacy, transparency, and practical utility — without selling user data. ' +
           trial.differentiatorSuffix,
         category: 'funcionalidad',
       },
@@ -382,6 +403,27 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         question: 'What should I do if I have technical problems?',
         answer:
           'We offer 24/7 technical support through multiple channels: email (marcelo.ull@antoapps.com), Telegram (t.me/marcere23), and LinkedIn. Our support team typically responds in under 2 hours. We also have a help section within the app with step-by-step guides and common troubleshooting. If you find a bug or issue, you can report it directly from the app and we will fix it as soon as possible.',
+        category: 'tecnica',
+      },
+      {
+        id: 22,
+        question: 'What is the techniques hub?',
+        answer:
+          'It is a full catalog of therapeutic techniques accessible from the app\'s main navigation (v1.5). It includes quick access to exercises, an interactive ABC canvas, and direct connection to the insights graph to see which techniques relate to your patterns. You can also launch Pomodoro when focusing a task from the unified tasks and habits screen.',
+        category: 'funcionalidad',
+      },
+      {
+        id: 23,
+        question: 'What is post-session WAI?',
+        answer:
+          'WAI (Working Alliance Inventory) is a brief post-session assessment measuring therapeutic alliance across 4 axes: bond, goals, tasks, and feedback. It appears after relevant conversations and helps you reflect on how you feel about the support. It does not replace a relationship with an in-person professional, but provides useful signals for your tracking.',
+        category: 'funcionalidad',
+      },
+      {
+        id: 24,
+        question: 'Do I have to log in every time I open the app?',
+        answer:
+          'No. Since version 1.5, Anto keeps a persistent session with automatic JWT token refresh. You can close and reopen the app without re-entering your password each time. If you log out manually or switch devices, you will need to authenticate again for security.',
         category: 'tecnica',
       },
     ],

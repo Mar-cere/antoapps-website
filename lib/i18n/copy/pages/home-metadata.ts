@@ -29,7 +29,7 @@ export function homePageMetadata(locale: Locale): Metadata {
     return {
       title: 'Anto — A place for your mind to land | AI emotional support',
       description:
-        'Anto combines advanced AI with validated clinical protocols to support you when you need it most. PHQ-9/GAD-7 scales, 8 evidence-based protocols, crisis detection, and bilingual ES/EN support. 1-day free trial on iPhone. Not a substitute for clinical care.',
+        'Anto combines advanced AI with validated clinical protocols to support you when you need it most. Techniques hub, insights graph, PHQ-9/GAD-7 scales, 8 evidence-based protocols, crisis detection, and bilingual ES/EN support. 1-day free trial on iPhone. Not a substitute for clinical care.',
       alternates,
       openGraph: {
         type: 'website',
@@ -52,7 +52,7 @@ export function homePageMetadata(locale: Locale): Metadata {
   return {
     title: 'Anto — Tu mente tiene un lugar donde aterrizar | Apoyo emocional con IA',
     description:
-      'Anto combina IA avanzada con protocolos clínicos validados para acompañarte cuando más lo necesitas. Escalas PHQ-9/GAD-7, 8 protocolos basados en evidencia, detección de crisis y soporte bilingüe ES/EN. 1 día de prueba gratis en iPhone. No sustituye atención clínica.',
+      'Anto combina IA avanzada con protocolos clínicos validados para acompañarte cuando más lo necesitas. Hub de técnicas, grafo de insights, escalas PHQ-9/GAD-7, 8 protocolos basados en evidencia, detección de crisis y soporte bilingüe ES/EN. 1 día de prueba gratis en iPhone. No sustituye atención clínica.',
     alternates,
     openGraph: {
       type: 'website',

@@ -12,10 +12,22 @@ import {
   INDEXABLE_ROUTES,
   NON_INDEXABLE_PATH_PREFIXES,
   REDIRECT_ONLY_PATHS,
+  type IndexableRoute,
 } from '@/lib/seo/indexable-routes';
+import {
+  DYNAMIC_ROUTE_EXPANSIONS,
+  PSYCHOEDUCATION_INDEXABLE_ROUTES,
+} from '@/lib/seo/psychoeducation-routes';
 import { METADATA_CANONICAL_PATHS } from '@/lib/seo/metadata-paths';
 import { buildRobotsConfig } from '@/lib/seo/robots-config';
 import { SITE_HOST, SITE_ORIGIN } from '@/lib/seo/site';
+
+const ALL_INDEXABLE_ROUTES: readonly IndexableRoute[] = [
+  ...INDEXABLE_ROUTES,
+  ...PSYCHOEDUCATION_INDEXABLE_ROUTES,
+];
+
+const ALL_INDEXABLE_LOGICAL_PATHS = ALL_INDEXABLE_ROUTES.map((r) => r.path);
 
 const ISO_DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -168,10 +180,25 @@ function assertMetadataPathsSynced(errors: string[]): void {
   }
 }
 
+function expandDynamicFilesystemPaths(paths: readonly string[]): string[] {
+  const expanded: string[] = [];
+  for (const path of paths) {
+    const dynamic = DYNAMIC_ROUTE_EXPANSIONS[path];
+    if (dynamic) {
+      expanded.push(...dynamic);
+    } else {
+      expanded.push(path);
+    }
+  }
+  return expanded;
+}
+
 function assertFilesystemCoverage(root: string, errors: string[]): void {
   const sitePagesDir = join(root, 'app', '(site)');
-  const filesystemPaths = new Set(collectSitePageLogicalPaths(sitePagesDir));
-  const configPaths = new Set(INDEXABLE_LOGICAL_PATHS);
+  const filesystemPaths = new Set(
+    expandDynamicFilesystemPaths(collectSitePageLogicalPaths(sitePagesDir))
+  );
+  const configPaths = new Set(ALL_INDEXABLE_LOGICAL_PATHS);
 
   for (const fsPath of filesystemPaths) {
     if (!configPaths.has(fsPath)) {
@@ -212,7 +239,7 @@ function assertNonSitePagesAreNonIndexable(root: string, errors: string[]): void
 function assertRouteConfig(referenceDate: Date, errors: string[]): void {
   const seenPaths = new Set<string>();
 
-  for (const route of INDEXABLE_ROUTES) {
+  for (const route of ALL_INDEXABLE_ROUTES) {
     if (seenPaths.has(route.path)) {
       errors.push(`INDEXABLE_ROUTES: path duplicado "${route.path || '/'}".`);
     }
@@ -266,7 +293,7 @@ function assertSitemapStructure(errors: string[]): void {
 
   if (entries.length !== expectedCount) {
     errors.push(
-      `Sitemap: se esperaban ${expectedCount} URLs (${INDEXABLE_ROUTES.length} rutas × 2 idiomas), hay ${entries.length}.`
+      `Sitemap: se esperaban ${expectedCount} URLs (${ALL_INDEXABLE_ROUTES.length} rutas × 2 idiomas), hay ${entries.length}.`
     );
   }
 
@@ -274,9 +301,9 @@ function assertSitemapStructure(errors: string[]): void {
   const esUrls = entries.filter((e) => !pathnameFromAbsolute(e.url).startsWith('/en'));
   const enUrls = entries.filter((e) => pathnameFromAbsolute(e.url).startsWith('/en'));
 
-  if (esUrls.length !== INDEXABLE_ROUTES.length || enUrls.length !== INDEXABLE_ROUTES.length) {
+  if (esUrls.length !== ALL_INDEXABLE_ROUTES.length || enUrls.length !== ALL_INDEXABLE_ROUTES.length) {
     errors.push(
-      `Sitemap: se esperaban ${INDEXABLE_ROUTES.length} URLs ES y ${INDEXABLE_ROUTES.length} EN.`
+      `Sitemap: se esperaban ${ALL_INDEXABLE_ROUTES.length} URLs ES y ${ALL_INDEXABLE_ROUTES.length} EN.`
     );
   }
 
@@ -340,7 +367,7 @@ function assertSitemapStructure(errors: string[]): void {
     }
   }
 
-  for (const route of INDEXABLE_ROUTES) {
+  for (const route of ALL_INDEXABLE_ROUTES) {
     const es = siteUrl('es', route.path);
     const en = siteUrl('en', route.path);
     if (!urlSet.has(es)) errors.push(`Sitemap: falta URL ES para "${route.path || '/'}": ${es}`);

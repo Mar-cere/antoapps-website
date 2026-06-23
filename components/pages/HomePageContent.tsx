@@ -17,6 +17,7 @@ import HomeFaqCompact from '@/components/sections/HomeFaqCompact';
 import HomeFinalCta from '@/components/sections/HomeFinalCta';
 import HomeFooterTrust from '@/components/sections/HomeFooterTrust';
 import HomeLandingAtmosphere from '@/components/home/HomeLandingAtmosphere';
+import FaqJsonLd from '@/components/seo/FaqJsonLd';
 import '@/styles/pages/home-landing-final.css';
 
 type HomePageContentProps = {
@@ -58,6 +59,7 @@ export default function HomePageContent({ locale }: HomePageContentProps) {
         </main>
       </PullToRefresh>
       <HomeMinimalFooter locale={locale} />
+      <FaqJsonLd />
       <CookieConsent />
     </LocaleProvider>
   );

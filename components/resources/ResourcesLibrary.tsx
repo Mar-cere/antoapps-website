@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import type { ResourcesPageCopy } from '@/lib/i18n/copy/pages/resources';
 
@@ -9,12 +10,14 @@ type ResourcesLibraryProps = {
 
 function getResourceIcon(type: string): string {
   const icons: Record<string, string> = {
+    psicoeducacion: '🧠',
     ebook: '📚',
     pdf: '📄',
     video: '🎥',
     podcast: '🎙️',
     checklist: '✅',
     template: '📋',
+    guia: '📄',
   };
   return icons[type] || '📄';
 }
@@ -24,7 +27,10 @@ export default function ResourcesLibrary({ library }: ResourcesLibraryProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredResources = library.resources.filter((resource) => {
-    const matchesFilter = filter === 'all' || resource.type === filter;
+    const matchesFilter =
+      filter === 'all' ||
+      resource.type === filter ||
+      resource.category === filter;
     const matchesSearch =
       searchQuery === '' ||
       resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -70,9 +76,9 @@ export default function ResourcesLibrary({ library }: ResourcesLibraryProps) {
                 <div className="resource-icon">{getResourceIcon(resource.type)}</div>
                 <h3>{resource.title}</h3>
                 <p>{resource.description}</p>
-                <a href={resource.link} className="btn btn-secondary">
+                <Link href={resource.link} className="btn btn-secondary">
                   {library.viewResourceLabel}
-                </a>
+                </Link>
               </div>
             ))
           )}

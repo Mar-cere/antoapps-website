@@ -58,13 +58,86 @@ export type ChangelogPageCopy = {
 const versionsEs: ChangelogVersion[] = [
   {
     version: APP_VERSION,
-    date: '2026-05-30',
+    date: '2026-06-23',
     status: 'current',
     highlights: [
-      `Versión ${APP_VERSION} (Expo) — línea actual en tiendas (iOS build 31, Android 17)`,
-      'Prueba gratuita estandarizada a 1 día en toda la app y backend',
-      'Barra de navegación con soporte dark mode e iconos dinámicos',
-      'Mejoras de UX en chat, resúmenes de sesión y diario de gratitud',
+      `Versión ${APP_VERSION} (Expo) — línea actual en tiendas (iOS build 39, Android 25)`,
+      'Home y dashboard rediseñados con insights rotativos y foco unificado',
+      'Hub de técnicas terapéuticas y tareas/hábitos unificados',
+      'Sesión persistente, onboarding renovado y grafo conectado al chat',
+    ],
+    changes: [
+      {
+        type: 'feature',
+        description:
+          'Dashboard consolidado: insight inicial humanizado, racha de ecosistema centrada en chat y home optimizado',
+      },
+      {
+        type: 'feature',
+        description:
+          'Hub de técnicas en la barra de navegación: catálogo completo, acceso rápido y lienzo ABC interactivo',
+      },
+      {
+        type: 'feature',
+        description:
+          'Tareas y hábitos unificados en una pantalla, con tono de bienestar y Pomodoro al enfocar una tarea',
+      },
+      {
+        type: 'feature',
+        description:
+          'Grafo e insights conectados a técnicas concretas; memoria de temas recurrentes integrada al prompt del chat',
+      },
+      {
+        type: 'feature',
+        description:
+          'Resumen e informe observacional rediseñados con «lo que te ayuda» navegable y UX accionable',
+      },
+      {
+        type: 'feature',
+        description: 'WAI post-sesión (alianza terapéutica) con 4 ejes y psicoeducación avanzada en el grafo',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Onboarding y bienvenida rediseñados: beneficios, validación, tema claro/oscuro y carga sin parpadeos',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Sesión persistente: la app restaura tu sesión sin pedir contraseña en cada apertura; refresh automático de JWT',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Chat: sugerencias persistidas al reabrir, mejor manejo de pensamientos intrusivos y continuidad en mensajes breves',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Análisis emocional ampliado: detección de anhedonia adolescente, imagen corporal y bullying',
+      },
+      {
+        type: 'improvement',
+        description: 'Paywall rediseñado con memoria del día y plan anual destacado',
+      },
+      {
+        type: 'improvement',
+        description: 'Android: minSdk 26 para compatibilidad con Health Connect',
+      },
+      {
+        type: 'fix',
+        description: 'Contactos de emergencia, crisis y alertas restaurados; cierre de onboarding y acceso al chat corregidos',
+      },
+    ],
+  },
+  {
+    version: '1.4.1',
+    date: '2026-05-30',
+    status: 'stable',
+    highlights: [
+      'Versión 1.4.1 (Expo) — iOS build 31, Android 17',
+      'Prueba gratuita estandarizada a 1 día',
+      'Dark mode en navegación y mejoras de UX en chat',
     ],
     changes: [
       {
@@ -75,26 +148,16 @@ const versionsEs: ChangelogVersion[] = [
       {
         type: 'improvement',
         description:
-          'Health routes del backend exponen configuración de app (días de prueba, regalo de resumen semanal)',
-      },
-      { type: 'improvement', description: 'Rate limiter: rutas de health check adicionales excluidas del límite' },
-      {
-        type: 'improvement',
-        description:
           'FloatingNavBar con dark mode, iconos dinámicos y mejor visibilidad en distintos temas',
       },
       {
         type: 'improvement',
         description:
-          'Chat: cabecera e indicador de escritura simplificados; resúmenes de sesión con fechas localizadas (ES/EN)',
+          'Chat: cabecera simplificada; resúmenes de sesión con fechas localizadas (ES/EN)',
       },
       {
         type: 'improvement',
-        description: 'Diario de gratitud: layout del footer refinado y mejor interacción con teclado',
-      },
-      {
-        type: 'feature',
-        description: 'Mantiene i18n app-wide, escalas PHQ-9/GAD-7, distorsiones cognitivas y protocolos estructurados',
+        description: 'Diario de gratitud: footer refinado y mejor interacción con teclado',
       },
     ],
   },
@@ -271,21 +334,134 @@ const versionsEs: ChangelogVersion[] = [
 const versionsEn: ChangelogVersion[] = [
   {
     version: APP_VERSION,
-    date: '2026-05-29',
+    date: '2026-06-23',
     status: 'current',
     highlights: [
-      `Version ${APP_VERSION} (Expo) — current store release`,
-      'Continuous improvements to chat experience and emotional wellness',
-      'Assistant tone and response style preferences',
-      'Privacy transparency integrated into conversations',
+      `Version ${APP_VERSION} (Expo) — current store release (iOS build 39, Android 25)`,
+      'Redesigned home and dashboard with rotating insights and unified focus',
+      'Therapeutic techniques hub and unified tasks/habits',
+      'Persistent session, renewed onboarding, and graph connected to chat',
     ],
     changes: [
-      { type: 'improvement', description: 'General UX refinement and stability in the 1.4.x line' },
-      { type: 'improvement', description: 'Chat: tone consistency, context, and conversational flow' },
-      { type: 'improvement', description: 'Conversation preferences and response style settings' },
       {
         type: 'feature',
-        description: 'Retains PHQ-9/GAD-7 scales, cognitive distortions, and structured protocols',
+        description:
+          'Consolidated dashboard: humanized home insight, chat-centered ecosystem streak, and optimized home',
+      },
+      {
+        type: 'feature',
+        description:
+          'Techniques hub in the nav bar: full catalog, quick access, and interactive ABC canvas',
+      },
+      {
+        type: 'feature',
+        description:
+          'Unified tasks and habits screen with wellness tone and Pomodoro when focusing a task',
+      },
+      {
+        type: 'feature',
+        description:
+          'Graph and insights linked to concrete techniques; recurring topic memory in the chat prompt',
+      },
+      {
+        type: 'feature',
+        description:
+          'Redesigned summary and observational report with navigable "what helps you" and actionable UX',
+      },
+      {
+        type: 'feature',
+        description: 'Post-session WAI (therapeutic alliance) with 4 axes and advanced psychoeducation in the graph',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Redesigned onboarding and welcome: benefits, validation, light/dark theme, and flicker-free bootstrap',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Persistent session: restores without asking for password on every open; automatic JWT refresh',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Chat: suggestions persist when reopening, better handling of intrusive thoughts and short-message continuity',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Expanded emotional analysis: adolescent anhedonia, body image, and bullying detection',
+      },
+      {
+        type: 'improvement',
+        description: 'Redesigned paywall with day memory and highlighted annual plan',
+      },
+      {
+        type: 'improvement',
+        description: 'Android: minSdk 26 for Health Connect compatibility',
+      },
+      {
+        type: 'fix',
+        description: 'Emergency contacts, crisis, and alerts restored; onboarding close and chat access fixed',
+      },
+    ],
+  },
+  {
+    version: '1.4.1',
+    date: '2026-05-30',
+    status: 'stable',
+    highlights: [
+      'Version 1.4.1 (Expo) — iOS build 31, Android 17',
+      '1-day free trial standardized',
+      'Dark mode navigation and chat UX improvements',
+    ],
+    changes: [
+      {
+        type: 'improvement',
+        description:
+          'Trial period unified to 1 day (APP_TRIAL_DAYS) in registration, subscription, and communications',
+      },
+      {
+        type: 'improvement',
+        description:
+          'FloatingNavBar with dark mode, dynamic icons, and improved visibility across themes',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Chat: simplified header; session summaries with localized dates (ES/EN)',
+      },
+      {
+        type: 'improvement',
+        description: 'Gratitude journal: refined footer and improved keyboard interaction',
+      },
+    ],
+  },
+  {
+    version: '1.4.0',
+    date: '2026-05-26',
+    status: 'stable',
+    highlights: [
+      'App-wide internationalization (Spanish and English)',
+      'Language-aware chat backend',
+      'Conversation modes and expanded chat flow',
+    ],
+    changes: [
+      {
+        type: 'feature',
+        description: 'Full i18n in app, emails, push, and checkout: ES/EN support in frontend and backend',
+      },
+      {
+        type: 'feature',
+        description: 'Chat backend with responses and summaries adapted to the user profile language',
+      },
+      {
+        type: 'feature',
+        description: 'New conversation modes integrated into the chat experience',
+      },
+      {
+        type: 'improvement',
+        description: 'Password recovery flow with reinforced validation',
       },
     ],
   },
@@ -436,7 +612,7 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
         title: 'Version History',
         subtitle: 'Version history and updates for the Anto application',
         storeVersionBadge: `Store version: ${APP_VERSION}`,
-        statusText: `Published according to the App Store release (iOS build 31, Android 17). This site is the public reference for Anto version history and product updates.`,
+        statusText: `Published according to the App Store release (iOS build 39, Android 25). This site is the public reference for Anto version history and product updates.`,
       },
       versionLabels: {
         highlightsTitle: 'Highlights',
@@ -474,7 +650,7 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
       title: 'Control de Versiones',
       subtitle: 'Historial de versiones y actualizaciones de la aplicación Anto',
       storeVersionBadge: `Versión en tiendas: ${APP_VERSION}`,
-      statusText: `Publicada según la versión en App Store (iOS build 31, Android 17). Este sitio es la referencia pública del historial de versiones y novedades de Anto.`,
+      statusText: `Publicada según la versión en App Store (iOS build 39, Android 25). Este sitio es la referencia pública del historial de versiones y novedades de Anto.`,
     },
     versionLabels: {
       highlightsTitle: 'Destacados',

@@ -85,8 +85,8 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
     changeFrequency: 'weekly',
     priorityEs: 0.8,
     priorityEn: 0.7,
-    lastModified: '2026-04-01',
-    note: 'Biblioteca de recursos — contenido actualizable',
+    lastModified: '2026-06-01',
+    note: 'Biblioteca de recursos — psicoeducación y guías del sitio',
   },
   {
     path: '/changelog',

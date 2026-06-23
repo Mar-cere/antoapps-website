@@ -102,6 +102,41 @@ export function FeatureIcon({ id, size = 24 }: { id: FeatureIconId; size?: numbe
           <path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
         </IconSvg>
       );
+    case 'techniques':
+      return (
+        <IconSvg size={size}>
+          <path
+            d="M4 7h16M4 12h10M4 17h14"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+          />
+          <rect x="16" y="10" width="4" height="4" rx="1" stroke="currentColor" strokeWidth="1.75" />
+        </IconSvg>
+      );
+    case 'insights':
+      return (
+        <IconSvg size={size}>
+          <circle cx="6" cy="18" r="2" stroke="currentColor" strokeWidth="1.75" />
+          <circle cx="12" cy="6" r="2" stroke="currentColor" strokeWidth="1.75" />
+          <circle cx="18" cy="14" r="2" stroke="currentColor" strokeWidth="1.75" />
+          <path
+            d="M7.5 16.5L11 8M13 8l4.5 5.5"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+          />
+        </IconSvg>
+      );
+    case 'dashboard':
+      return (
+        <IconSvg size={size}>
+          <rect x="3" y="3" width="8" height="8" rx="2" stroke="currentColor" strokeWidth="1.75" />
+          <rect x="13" y="3" width="8" height="5" rx="2" stroke="currentColor" strokeWidth="1.75" />
+          <rect x="13" y="10" width="8" height="11" rx="2" stroke="currentColor" strokeWidth="1.75" />
+          <rect x="3" y="13" width="8" height="8" rx="2" stroke="currentColor" strokeWidth="1.75" />
+        </IconSvg>
+      );
   }
 }
 

@@ -1,0 +1,128 @@
+/**
+ * Psychoeducation article pages under /recursos/[slug]
+ */
+
+.psycho-guide__article {
+  padding: 2rem 0 4rem;
+}
+
+.psycho-guide__header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.psycho-guide__eyebrow {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.psycho-guide__title {
+  font-size: clamp(1.75rem, 4vw, var(--font-size-4xl));
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+}
+
+.psycho-guide__subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  max-width: 42rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.psycho-guide__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.psycho-guide__section h2 {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-primary);
+}
+
+.psycho-guide__section p {
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+}
+
+.psycho-guide__section ul {
+  margin: 0.5rem 0 0 1.25rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.psycho-guide__section li + li {
+  margin-top: 0.35rem;
+}
+
+.psycho-guide__disclaimer {
+  margin-top: 2.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+.psycho-guide__cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.psycho-guide__related {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.psycho-guide__related-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.psycho-guide__related ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.psycho-guide__related a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.psycho-guide__related a:hover {
+  text-decoration: underline;
+}
+
+.psycho-guide__back {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.psycho-guide__back a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+}
+
+.psycho-guide__back a:hover {
+  color: var(--color-primary);
+}

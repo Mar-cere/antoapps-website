@@ -108,13 +108,31 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
   es: (trialNote) => ({
     features: {
       title: 'Características Principales',
-      subtitle: 'Lo esencial para tu bienestar mental, en un solo lugar',
+      subtitle: 'Desde el chat hasta el hub de técnicas y el grafo de insights — todo en la versión 1.5',
       cards: [
         {
           icon: 'ai',
           title: 'Asistente de IA',
           description:
-            'Acompañamiento emocional con IA, tono profesional y práctico. Modos de conversación, memoria de contexto y preferencias de estilo según lo que necesites en cada momento.',
+            'Chat con memoria de temas recurrentes, sugerencias que persisten al reabrir y mejor manejo de mensajes breves o pensamientos difíciles. Modos de conversación y tono profesional.',
+        },
+        {
+          icon: 'dashboard',
+          title: 'Home personalizado',
+          description:
+            'Insight diario adaptado a ti, racha de ecosistema centrada en el chat y un panel de foco claro para empezar cada día con dirección.',
+        },
+        {
+          icon: 'techniques',
+          title: 'Hub de técnicas',
+          description:
+            'Catálogo completo de técnicas terapéuticas en la navegación: acceso rápido, lienzo ABC interactivo y conexión directa con el grafo de insights.',
+        },
+        {
+          icon: 'insights',
+          title: 'Grafo e informes',
+          description:
+            'Visualiza patrones, «lo que te ayuda» navegable, informes observacionales accionables y WAI post-sesión (alianza terapéutica en 4 ejes).',
         },
         {
           icon: 'scales',
@@ -129,34 +147,22 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
             '8 rutas basadas en evidencia: depresión, ansiedad, trauma, TOC, TEPT, ira, autocompasión e higiene del sueño.',
         },
         {
-          icon: 'brain',
-          title: 'Distorsiones cognitivas',
+          icon: 'tasks',
+          title: 'Tareas y hábitos unificados',
           description:
-            'Detección de 15 tipos de patrones de pensamiento durante el chat, con intervenciones sugeridas para cada uno.',
+            'Una sola pantalla para tu rutina terapéutica: recordatorios, Pomodoro al enfocar una tarea y copy orientado al bienestar.',
         },
         {
           icon: 'crisis',
           title: 'Detección de crisis',
           description:
-            'Identificación temprana de señales de riesgo con recursos de apoyo inmediato y protocolos de emergencia.',
-        },
-        {
-          icon: 'tasks',
-          title: 'Tareas y hábitos',
-          description:
-            'Organiza actividades terapéuticas, recordatorios y rutinas saludables vinculadas a tu bienestar emocional.',
+            'Identificación temprana de señales de riesgo, contactos de emergencia y recursos de apoyo inmediato cuando más lo necesitas.',
         },
         {
           icon: 'language',
-          title: 'App bilingüe (ES/EN)',
+          title: 'Bilingüe y sesión persistente',
           description:
-            'Interfaz, chat, correos y notificaciones en español e inglés, con backend adaptado al idioma de tu perfil.',
-        },
-        {
-          icon: 'clock',
-          title: 'Disponible 24/7',
-          description:
-            'Acceso inmediato cuando lo necesites, sin esperas, citas ni horarios de consulta.',
+            'App en español e inglés. Vuelve sin reingresar contraseña en cada apertura gracias a sesión persistente y refresh automático de JWT.',
         },
       ],
     },
@@ -319,7 +325,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
             '✓ Autenticación de dos factores (2FA)',
             '✓ Tokens JWT seguros',
             '✓ Detección de accesos sospechosos',
-            '✓ Sesiones con expiración automática',
+            '✓ Sesión persistente con refresh seguro de JWT',
           ],
         },
       ],
@@ -372,13 +378,31 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
   en: (trialNote) => ({
     features: {
       title: 'Key Features',
-      subtitle: 'The essentials for your mental wellbeing, in one place',
+      subtitle: 'From chat to the techniques hub and insights graph — all in version 1.5',
       cards: [
         {
           icon: 'ai',
           title: 'AI assistant',
           description:
-            'AI emotional support with a professional, practical tone. Conversation modes, contextual memory, and style preferences for what you need in each moment.',
+            'Chat with recurring topic memory, suggestions that persist when you reopen, and better handling of short messages or difficult thoughts. Conversation modes and a professional tone.',
+        },
+        {
+          icon: 'dashboard',
+          title: 'Personalised home',
+          description:
+            'Daily insight tailored to you, a chat-centered ecosystem streak, and a clear focus panel to start each day with direction.',
+        },
+        {
+          icon: 'techniques',
+          title: 'Techniques hub',
+          description:
+            'Full catalog of therapeutic techniques in navigation: quick access, interactive ABC canvas, and direct connection to the insights graph.',
+        },
+        {
+          icon: 'insights',
+          title: 'Graph and reports',
+          description:
+            'Visualise patterns, navigable "what helps you", actionable observational reports, and post-session WAI (therapeutic alliance across 4 axes).',
         },
         {
           icon: 'scales',
@@ -393,34 +417,22 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
             '8 evidence-based paths: depression, anxiety, trauma, OCD, PTSD, anger, self-compassion, and sleep hygiene.',
         },
         {
-          icon: 'brain',
-          title: 'Cognitive distortions',
+          icon: 'tasks',
+          title: 'Unified tasks and habits',
           description:
-            'Detection of 15 thinking pattern types during chat, with suggested interventions for each.',
+            'One screen for your therapeutic routine: reminders, Pomodoro when focusing a task, and wellbeing-oriented copy.',
         },
         {
           icon: 'crisis',
           title: 'Crisis detection',
           description:
-            'Early identification of risk signals with immediate support resources and emergency protocols.',
-        },
-        {
-          icon: 'tasks',
-          title: 'Tasks and habits',
-          description:
-            'Organise therapeutic activities, reminders, and healthy routines linked to your emotional wellbeing.',
+            'Early identification of risk signals, emergency contacts, and immediate support resources when you need them most.',
         },
         {
           icon: 'language',
-          title: 'Bilingual app (ES/EN)',
+          title: 'Bilingual and persistent session',
           description:
-            'Interface, chat, emails, and notifications in Spanish and English, with a backend adapted to your profile language.',
-        },
-        {
-          icon: 'clock',
-          title: 'Available 24/7',
-          description:
-            'Immediate access when you need it — no waiting, appointments, or office hours.',
+            'App in Spanish and English. Return without re-entering your password each time thanks to persistent session and automatic JWT refresh.',
         },
       ],
     },
@@ -583,7 +595,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
             '✓ Two-factor authentication (2FA)',
             '✓ Secure JWT tokens',
             '✓ Suspicious access detection',
-            '✓ Automatic session expiry',
+            '✓ Persistent session with secure JWT refresh',
           ],
         },
       ],
