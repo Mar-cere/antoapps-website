@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
-
-const SITE_ORIGIN = 'https://antoapps.com';
+import { SITE_ORIGIN } from '@/lib/seo/site';
 
 export function siteUrl(locale: Locale, path: string): string {
   return `${SITE_ORIGIN}${localePath(locale, path)}`;
