@@ -15,6 +15,10 @@ const SLUGS = {
   trauma: 'trauma-y-tept' as const,
   anger: 'manejo-ira' as const,
   grounding: 'grounding-ansiedad-crisis' as const,
+  stress: 'estres-y-carga' as const,
+  emotionRegulation: 'regulacion-emocional' as const,
+  grief: 'duelo-y-perdida' as const,
+  burnout: 'agotamiento-y-burnout' as const,
 };
 
 const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
@@ -709,6 +713,197 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     disclaimer:
       'Psicoeducación. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
     cta: { label: 'Apoyo 24/7 en Anto →', path: '/bienvenida' },
+  },
+  [SLUGS.stress]: {
+    slug: SLUGS.stress,
+    readingMinutes: 6,
+    meta: {
+      title: 'Estrés: cómo responde el cuerpo y qué hacer | Anto',
+      description:
+        'Qué es el estrés, señales físicas y emocionales, estrés agudo vs. crónico y formas de cuidarte sin esperar al burnout.',
+      openGraphTitle: 'Estrés — guía de psicoeducación',
+      openGraphDescription: 'Entiende la respuesta al estrés y herramientas prácticas para recuperar equilibrio.',
+    },
+    hero: {
+      title: 'Estrés',
+      subtitle: 'Cómo responde tu cuerpo ante la presión y formas de cuidarte antes de llegar al agotamiento.',
+    },
+    sections: [
+      {
+        heading: 'Estrés agudo vs. crónico',
+        paragraphs: [
+          'El estrés agudo es la activación breve ante un desafío (examen, plazo, conflicto). Puede ayudarte a concentrarte. El estrés crónico es la tensión sostenida: trabajo exigente, cuidado de otros, inseguridad económica. Ahí el cuerpo deja de recuperarse.',
+        ],
+      },
+      {
+        heading: 'Señales frecuentes',
+        bullets: [
+          'Tensión muscular, dolor de cabeza o estómago',
+          'Irritabilidad, impaciencia o llanto fácil',
+          'Sueño ligero o mente acelerada',
+          'Más enfermedades menores por sistema inmune bajo presión',
+        ],
+      },
+      {
+        heading: 'Qué puedes hacer',
+        paragraphs: [
+          'Prioriza sueño, pausas reales y límites en tareas. Respiración lenta, movimiento breve y hablar con alguien de confianza reducen la carga. Si el estrés dura meses y afecta tu salud, busca apoyo profesional.',
+        ],
+      },
+      {
+        heading: 'En Anto',
+        paragraphs: [
+          'El chat puede ayudarte a ordenar prioridades, practicar micro-pausas y conectar con técnicas de regulación del hub de técnicas.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.burnout, SLUGS.anxiety, SLUGS.mindfulness],
+    disclaimer:
+      'Material de psicoeducación. No sustituye evaluación médica ni psicológica. Si el estrés incluye síntomas físicos intensos, consulta a un profesional.',
+    cta: { label: 'Apoyo en Anto →', path: '/bienvenida' },
+  },
+  [SLUGS.emotionRegulation]: {
+    slug: SLUGS.emotionRegulation,
+    readingMinutes: 6,
+    meta: {
+      title: 'Regulación emocional: guía práctica | Anto',
+      description:
+        'Habilidades para reconocer, nombrar y modular emociones intensas sin reprimirlas ni reaccionar en automático.',
+      openGraphTitle: 'Regulación emocional — guía breve',
+      openGraphDescription: 'Aprende a reconocer emociones y elegir respuestas más útiles.',
+    },
+    hero: {
+      title: 'Regulación emocional',
+      subtitle: 'Habilidades para reconocer y modular emociones — no eliminarlas, sino relacionarte mejor con ellas.',
+    },
+    sections: [
+      {
+        heading: 'Qué significa regular',
+        paragraphs: [
+          'Regular no es «no sentir». Es notar la emoción, entender qué señal trae y elegir una respuesta que encaje con tus valores. Con práctica, reduces reacciones impulsivas y recuperas claridad más rápido.',
+        ],
+      },
+      {
+        heading: 'Pasos básicos',
+        bullets: [
+          'Nombrar la emoción con precisión (no solo «mal»)',
+          'Puntuar intensidad del 0 al 10',
+          'Pausar antes de actuar si estás por encima de 7',
+          'Elegir una acción pequeña: respirar, escribir, caminar, pedir apoyo',
+        ],
+      },
+      {
+        heading: 'Herramientas útiles',
+        paragraphs: [
+          'Mindfulness breve, grounding 5-4-3-2-1, técnica ABC y autocompasión encajan aquí. La clave es usarlas cuando la ola sube, no solo cuando ya pasó la crisis.',
+        ],
+      },
+      {
+        heading: 'En Anto',
+        paragraphs: [
+          'Encuentra ejercicios de regulación en el hub de técnicas y en el chat, que puede sugerir micro-pasos según lo que expreses.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.mindfulness, SLUGS.grounding, SLUGS.abc],
+    disclaimer:
+      'Psicoeducación general. Si las emociones te desbordan de forma recurrente o hay riesgo de daño, busca ayuda profesional.',
+    cta: { label: 'Practicar técnicas →', path: '/app' },
+  },
+  [SLUGS.grief]: {
+    slug: SLUGS.grief,
+    readingMinutes: 7,
+    meta: {
+      title: 'Duelo y pérdida: guía de psicoeducación | Anto',
+      description:
+        'Cómo suele desarrollarse el duelo, mitos frecuentes y formas de acompañarte sin forzar un «cierre» prematuro.',
+      openGraphTitle: 'Duelo y pérdida — guía breve',
+      openGraphDescription: 'Entiende el duelo como proceso humano y cómo cuidarte con paciencia.',
+    },
+    hero: {
+      title: 'Duelo y pérdida',
+      subtitle: 'Cómo suele desarrollarse el duelo y formas de acompañarte sin apresurar el proceso.',
+    },
+    sections: [
+      {
+        heading: 'El duelo no es lineal',
+        paragraphs: [
+          'Tras una pérdida (muerte, ruptura, salud, proyecto vital) es normal alternar tristeza, rabia, entumecimiento, culpa o incluso alivio. No hay un orden «correcto» ni una fecha de caducidad para sentir.',
+        ],
+      },
+      {
+        heading: 'Mitós frecuentes',
+        bullets: [
+          '«Debería superarlo en X meses» — cada proceso es distinto',
+          '«Si lloro menos, ya sané» — el duelo no se mide solo por lágrimas',
+          '«Tengo que estar fuerte» — pedir ayuda es parte del cuidado',
+        ],
+      },
+      {
+        heading: 'Cómo apoyarte',
+        paragraphs: [
+          'Mantén rutinas mínimas (sueño, comida, una salida breve). Habla con personas seguras. Reduce exigencias mayores si puedes. Si el aislamiento o la desesperanza persisten mucho tiempo, un profesional puede acompañarte.',
+        ],
+      },
+      {
+        heading: 'En Anto',
+        paragraphs: [
+          'Anto puede ofrecer espacio para ordenar lo que sientes entre sesiones con un terapeuta o red de apoyo; no sustituye duelo terapéutico especializado.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.selfCompassion, SLUGS.emotionRegulation, SLUGS.depression],
+    disclaimer:
+      'No sustituye terapia de duelo ni atención en crisis. Si tienes ideas de hacerte daño, busca ayuda de emergencia.',
+    cta: { label: 'Acompañamiento en Anto →', path: '/bienvenida' },
+  },
+  [SLUGS.burnout]: {
+    slug: SLUGS.burnout,
+    readingMinutes: 7,
+    meta: {
+      title: 'Agotamiento y burnout: señales y primeros pasos | Anto',
+      description:
+        'Señales de sobrecarga sostenida, diferencia con cansancio normal y pasos iniciales de recuperación.',
+      openGraphTitle: 'Agotamiento y burnout — guía breve',
+      openGraphDescription: 'Reconoce el burnout y empieza a recuperar energía con cambios realistas.',
+    },
+    hero: {
+      title: 'Agotamiento y burnout',
+      subtitle: 'Señales de sobrecarga sostenida y primeros pasos de recuperación — sin culparte por estar cansado/a.',
+    },
+    sections: [
+      {
+        heading: 'Más que estar cansado',
+        paragraphs: [
+          'El burnout es agotamiento emocional y físico por estrés prolongado, a menudo vinculado a trabajo o cuidado constante. Incluye cinismo, sensación de ineficacia y que descansar un fin de semana ya no alcanza.',
+        ],
+      },
+      {
+        heading: 'Señales frecuentes',
+        bullets: [
+          'Vacío o desconexión de lo que haces',
+          'Irritabilidad y dificultad para concentrarte',
+          'Sueño que no repara, dolores somáticos',
+          'Evitar responsabilidades aunque generen culpa',
+        ],
+      },
+      {
+        heading: 'Primeros pasos de recuperación',
+        paragraphs: [
+          'Identifica fuentes de carga que puedas modular (límites, delegar, pausas reales). Recupera lo básico: sueño, alimentación, movimiento suave. Cambios estructurales (menos horas, apoyo laboral) a veces son necesarios, no solo «más autocuidado».',
+        ],
+      },
+      {
+        heading: 'En Anto',
+        paragraphs: [
+          'Usa tareas/hábitos para micro-descansos, técnicas de regulación y chat para desahogo estructurado. El burnout severo merece evaluación profesional y cambios en la fuente de estrés.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.stress, SLUGS.sleep, SLUGS.selfCompassion],
+    disclaimer:
+      'Psicoeducación. El burnout puede requerir intervención médica o laboral. Consulta a un profesional si los síntomas son intensos.',
+    cta: { label: 'Recuperar rutina con Anto →', path: '/app' },
   },
 };
 

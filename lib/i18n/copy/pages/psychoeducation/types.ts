@@ -42,6 +42,10 @@ export const PSYCHOEDUCATION_SLUGS = [
   'trauma-y-tept',
   'manejo-ira',
   'grounding-ansiedad-crisis',
+  'estres-y-carga',
+  'regulacion-emocional',
+  'duelo-y-perdida',
+  'agotamiento-y-burnout',
 ] as const;
 
 export type PsychoeducationSlug = (typeof PSYCHOEDUCATION_SLUGS)[number];

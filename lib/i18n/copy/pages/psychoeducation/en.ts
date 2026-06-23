@@ -15,6 +15,10 @@ const SLUGS = {
   trauma: 'trauma-y-tept' as const,
   anger: 'manejo-ira' as const,
   grounding: 'grounding-ansiedad-crisis' as const,
+  stress: 'estres-y-carga' as const,
+  emotionRegulation: 'regulacion-emocional' as const,
+  grief: 'duelo-y-perdida' as const,
+  burnout: 'agotamiento-y-burnout' as const,
 };
 
 const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
@@ -710,6 +714,197 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     disclaimer:
       'Psychoeducation. In case of suicidal risk or violence, seek local emergency help immediately.',
     cta: { label: '24/7 support in Anto →', path: '/bienvenida' },
+  },
+  [SLUGS.stress]: {
+    slug: SLUGS.stress,
+    readingMinutes: 6,
+    meta: {
+      title: 'Stress: how your body responds and what to do | Anto',
+      description:
+        'What stress is, physical and emotional signs, acute vs. chronic stress, and ways to care for yourself before burnout.',
+      openGraphTitle: 'Stress — psychoeducation guide',
+      openGraphDescription: 'Understand the stress response and practical tools to regain balance.',
+    },
+    hero: {
+      title: 'Stress',
+      subtitle: 'How your body responds to pressure and ways to care for yourself before reaching exhaustion.',
+    },
+    sections: [
+      {
+        heading: 'Acute vs. chronic stress',
+        paragraphs: [
+          'Acute stress is brief activation facing a challenge (exam, deadline, conflict). It can help you focus. Chronic stress is sustained tension: demanding work, caregiving, financial insecurity. Then the body stops recovering.',
+        ],
+      },
+      {
+        heading: 'Common signs',
+        bullets: [
+          'Muscle tension, headache, or stomach upset',
+          'Irritability, impatience, or easy tears',
+          'Light sleep or racing mind',
+          'More minor illnesses as the immune system runs under pressure',
+        ],
+      },
+      {
+        heading: 'What you can do',
+        paragraphs: [
+          'Prioritise sleep, real breaks, and task boundaries. Slow breathing, brief movement, and talking to someone you trust reduce load. If stress lasts months and affects health, seek professional support.',
+        ],
+      },
+      {
+        heading: 'In Anto',
+        paragraphs: [
+          'Chat can help you sort priorities, practise micro-pauses, and connect with regulation techniques from the techniques hub.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.burnout, SLUGS.anxiety, SLUGS.mindfulness],
+    disclaimer:
+      'Psychoeducation material. Does not replace medical or psychological assessment. If stress includes intense physical symptoms, consult a professional.',
+    cta: { label: 'Support in Anto →', path: '/bienvenida' },
+  },
+  [SLUGS.emotionRegulation]: {
+    slug: SLUGS.emotionRegulation,
+    readingMinutes: 6,
+    meta: {
+      title: 'Emotion regulation: practical guide | Anto',
+      description:
+        'Skills to recognise, name, and modulate intense emotions without suppressing them or reacting on autopilot.',
+      openGraphTitle: 'Emotion regulation — brief guide',
+      openGraphDescription: 'Learn to recognise emotions and choose more helpful responses.',
+    },
+    hero: {
+      title: 'Emotion regulation',
+      subtitle: 'Skills to recognise and modulate emotions — not erase them, but relate to them more wisely.',
+    },
+    sections: [
+      {
+        heading: 'What regulating means',
+        paragraphs: [
+          'Regulating is not “not feeling.” It is noticing the emotion, understanding its signal, and choosing a response aligned with your values. With practice, you reduce impulsive reactions and regain clarity faster.',
+        ],
+      },
+      {
+        heading: 'Basic steps',
+        bullets: [
+          'Name the emotion precisely (not just “bad”)',
+          'Rate intensity from 0 to 10',
+          'Pause before acting if you are above 7',
+          'Choose a small action: breathe, write, walk, ask for support',
+        ],
+      },
+      {
+        heading: 'Useful tools',
+        paragraphs: [
+          'Brief mindfulness, 5-4-3-2-1 grounding, ABC technique, and self-compassion fit here. The key is using them when the wave rises, not only after the crisis passed.',
+        ],
+      },
+      {
+        heading: 'In Anto',
+        paragraphs: [
+          'Find regulation exercises in the techniques hub and in chat, which can suggest micro-steps based on what you express.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.mindfulness, SLUGS.grounding, SLUGS.abc],
+    disclaimer:
+      'General psychoeducation. If emotions overwhelm you recurrently or there is risk of harm, seek professional help.',
+    cta: { label: 'Practice techniques →', path: '/app' },
+  },
+  [SLUGS.grief]: {
+    slug: SLUGS.grief,
+    readingMinutes: 7,
+    meta: {
+      title: 'Grief and loss: psychoeducation guide | Anto',
+      description:
+        'How grief often unfolds, common myths, and ways to support yourself without forcing premature “closure.”',
+      openGraphTitle: 'Grief and loss — brief guide',
+      openGraphDescription: 'Understand grief as a human process and how to care for yourself patiently.',
+    },
+    hero: {
+      title: 'Grief and loss',
+      subtitle: 'How grief often unfolds and ways to support yourself without rushing the process.',
+    },
+    sections: [
+      {
+        heading: 'Grief is not linear',
+        paragraphs: [
+          'After a loss (death, breakup, health, life project) it is normal to alternate sadness, anger, numbness, guilt, or even relief. There is no “correct” order or expiry date for feeling.',
+        ],
+      },
+      {
+        heading: 'Common myths',
+        bullets: [
+          '“I should be over it in X months” — each process is different',
+          '“If I cry less, I am healed” — grief is not measured only by tears',
+          '“I must stay strong” — asking for help is part of care',
+        ],
+      },
+      {
+        heading: 'How to support yourself',
+        paragraphs: [
+          'Keep minimal routines (sleep, food, a brief outing). Talk with safe people. Reduce major demands if you can. If isolation or hopelessness persist a long time, a professional can accompany you.',
+        ],
+      },
+      {
+        heading: 'In Anto',
+        paragraphs: [
+          'Anto can offer space to organise what you feel between sessions with a therapist or support network; it does not replace specialised grief therapy.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.selfCompassion, SLUGS.emotionRegulation, SLUGS.depression],
+    disclaimer:
+      'Does not replace grief therapy or crisis care. If you have thoughts of self-harm, seek emergency help.',
+    cta: { label: 'Support in Anto →', path: '/bienvenida' },
+  },
+  [SLUGS.burnout]: {
+    slug: SLUGS.burnout,
+    readingMinutes: 7,
+    meta: {
+      title: 'Exhaustion and burnout: signs and first steps | Anto',
+      description:
+        'Signs of sustained overload, difference from normal tiredness, and initial recovery steps.',
+      openGraphTitle: 'Exhaustion and burnout — brief guide',
+      openGraphDescription: 'Recognise burnout and start recovering energy with realistic changes.',
+    },
+    hero: {
+      title: 'Exhaustion and burnout',
+      subtitle: 'Signs of sustained overload and first recovery steps — without blaming yourself for being tired.',
+    },
+    sections: [
+      {
+        heading: 'More than tired',
+        paragraphs: [
+          'Burnout is emotional and physical exhaustion from prolonged stress, often linked to work or constant caregiving. It includes cynicism, feeling ineffective, and rest no longer restoring you.',
+        ],
+      },
+      {
+        heading: 'Common signs',
+        bullets: [
+          'Emptiness or disconnection from what you do',
+          'Irritability and difficulty concentrating',
+          'Sleep that does not repair, somatic aches',
+          'Avoiding responsibilities even when it brings guilt',
+        ],
+      },
+      {
+        heading: 'First recovery steps',
+        paragraphs: [
+          'Identify load sources you can adjust (boundaries, delegating, real pauses). Restore basics: sleep, nutrition, gentle movement. Structural changes (fewer hours, workplace support) are sometimes needed, not just “more self-care.”',
+        ],
+      },
+      {
+        heading: 'In Anto',
+        paragraphs: [
+          'Use tasks/habits for micro-breaks, regulation techniques, and chat for structured venting. Severe burnout deserves professional assessment and changes at the stress source.',
+        ],
+      },
+    ],
+    relatedSlugs: [SLUGS.stress, SLUGS.sleep, SLUGS.selfCompassion],
+    disclaimer:
+      'Psychoeducation. Burnout may require medical or workplace intervention. Consult a professional if symptoms are intense.',
+    cta: { label: 'Rebuild routine with Anto →', path: '/app' },
   },
 };
 

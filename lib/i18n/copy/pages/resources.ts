@@ -180,7 +180,7 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
       meta: {
         title: 'Resources - Anto | Psychoeducation and Mental Health Guides',
         description:
-          'Psychoeducation on CBT, cognitive distortions, ABC technique, anxiety, PHQ-9/GAD-7, self-compassion, sleep, and mindfulness — plus Anto product guides.',
+          'Psychoeducation on CBT, depression, anxiety, OCD/ERP, trauma, anger, grounding, PHQ-9/GAD-7, self-compassion, sleep, and mindfulness — plus Anto product guides.',
         openGraphTitle: 'Resources - Anto',
         openGraphDescription:
           'Psychoeducation guides and references on clinical tools, Anto features, and emotional wellness with AI.',
@@ -218,7 +218,7 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
     meta: {
       title: 'Recursos - Anto | Psicoeducación y Guías de Salud Mental',
       description:
-        'Psicoeducación sobre TCC, distorsiones cognitivas, técnica ABC, ansiedad, PHQ-9/GAD-7, autocompasión, sueño y mindfulness — más guías sobre Anto.',
+        'Psicoeducación sobre TCC, depresión, ansiedad, TOC/ERP, trauma, ira, grounding, PHQ-9/GAD-7, autocompasión, sueño y mindfulness — más guías sobre Anto.',
       openGraphTitle: 'Recursos - Anto',
       openGraphDescription:
         'Guías de psicoeducación y referencias sobre herramientas clínicas, funcionalidades de Anto y bienestar emocional con IA.',
