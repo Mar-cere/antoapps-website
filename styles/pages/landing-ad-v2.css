@@ -6,7 +6,21 @@
     --lad-v2-accent: #5b8fff;
     --lad-v2-max: 28rem;
     --lad-v2-pad-x: 1.75rem;
+    --lad-v2-text-secondary: rgba(255, 255, 255, 0.68);
+    --lad-v2-text-tertiary: rgba(255, 255, 255, 0.5);
+    --lad-v2-text-muted: rgba(255, 255, 255, 0.45);
     padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* Topbar y footer alineados con el padding horizontal de las secciones */
+.lad-page--v2 .lad-v2-topbar {
+    padding-left: max(var(--lad-v2-pad-x), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--lad-v2-pad-x), env(safe-area-inset-right, 0px));
+}
+
+.lad-page--v2 .lad-v2-footer {
+    padding-left: max(var(--lad-v2-pad-x), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--lad-v2-pad-x), env(safe-area-inset-right, 0px));
 }
 
 .lad-v2-main {
@@ -28,7 +42,7 @@
 
 .lad-v2-eyebrow {
     font-size: 0.6875rem;
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--lad-v2-text-tertiary);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin: 0 0 0.875rem;
@@ -50,7 +64,7 @@
 
 .lad-v2-hero-sub {
     font-size: 0.9375rem;
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--lad-v2-text-secondary);
     line-height: 1.6;
     margin: 0 0 2rem;
     max-width: 17.5rem;
@@ -84,7 +98,7 @@
 .lad-v2-review__author {
     margin: 0;
     font-size: 0.6875rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--lad-v2-text-muted);
 }
 
 .lad-v2-fold {
@@ -99,7 +113,7 @@
     width: 100%;
     margin: 0 0 0.875rem;
     font-size: 0.6875rem;
-    color: rgba(255, 255, 255, 0.48);
+    color: var(--lad-v2-text-tertiary);
     text-align: center;
     line-height: 1.45;
 }
@@ -110,7 +124,7 @@
     border: none;
     background: none;
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.42);
+    color: var(--lad-v2-text-tertiary);
     text-align: center;
     text-decoration: underline;
     text-underline-offset: 3px;
@@ -124,7 +138,7 @@
 .lad-v2-android-lead {
     margin: 0 0 1rem;
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--lad-v2-text-secondary);
     line-height: 1.5;
 }
 
@@ -167,7 +181,7 @@
 }
 
 .lad-v2-ios-fallback-link {
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--lad-v2-text-tertiary);
     text-decoration: underline;
     text-underline-offset: 3px;
 }
@@ -177,8 +191,9 @@
 }
 
 .lad-v2-divider {
-    width: 100%;
+    width: auto;
     height: 0.5px;
+    margin: 0 var(--lad-v2-pad-x);
     background: rgba(255, 255, 255, 0.07);
 }
 
@@ -189,7 +204,7 @@
 .lad-v2-section-label {
     margin: 0 0 1.25rem;
     font-size: 0.6875rem;
-    color: rgba(255, 255, 255, 0.25);
+    color: var(--lad-v2-text-tertiary);
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
@@ -256,7 +271,7 @@
 .lad-v2-feat__sub {
     margin: 0;
     font-size: 0.6875rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--lad-v2-text-muted);
     line-height: 1.5;
 }
 
@@ -276,7 +291,7 @@
 .lad-v2-dash-sub {
     margin: 0 0 1.25rem;
     font-size: 0.8125rem;
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--lad-v2-text-secondary);
     line-height: 1.6;
 }
 
@@ -298,19 +313,19 @@
     display: inline-flex;
     align-items: center;
     gap: 0.3125rem;
-    color: rgba(255, 255, 255, 0.2);
+    color: var(--lad-v2-text-tertiary);
     font-size: 0.6875rem;
 }
 
 .lad-v2-trust-item svg {
-    color: rgba(255, 255, 255, 0.2);
+    color: var(--lad-v2-text-muted);
 }
 
 .lad-v2-legal {
     margin: 1.5rem 0 0;
     text-align: center;
     font-size: 0.625rem;
-    color: rgba(255, 255, 255, 0.15);
+    color: var(--lad-v2-text-muted);
     line-height: 1.6;
 }
 
@@ -357,6 +372,12 @@
     font-size: 0.9375rem;
     font-weight: 500;
     cursor: pointer;
+}
+
+@media (max-width: 680px) {
+    .lad-page--v2 {
+        --lad-v2-pad-x: 1.25rem;
+    }
 }
 
 @media (min-width: 768px) {
