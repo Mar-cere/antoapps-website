@@ -14,11 +14,6 @@ type BienvenidaLandingTrackerProps = {
   pagePath: string;
 };
 
-function hasMarketingConsent(): boolean {
-  if (typeof window === 'undefined') return false;
-  return localStorage.getItem('cookieConsent') === 'accepted';
-}
-
 export default function BienvenidaLandingTracker({
   landingVariant,
   pagePath,
@@ -27,18 +22,13 @@ export default function BienvenidaLandingTracker({
     persistAttributionFromLocation();
     trackBienvenidaLandingViewGa({ page: pagePath, landingVariant });
 
-    if (hasMarketingConsent()) {
-      initMetaPixel();
-      trackBienvenidaLandingViewMeta({ page: pagePath, landingVariant });
-    }
-
-    const onConsentGranted = () => {
-      initMetaPixel();
-      trackBienvenidaLandingViewMeta({ page: pagePath, landingVariant });
-    };
-
-    window.addEventListener('cookie-consent-accepted', onConsentGranted);
-    return () => window.removeEventListener('cookie-consent-accepted', onConsentGranted);
+    // /bienvenida es la landing de campañas pagadas: el píxel de Meta y el
+    // evento de conversión deben dispararse siempre para que Meta pueda
+    // optimizar la entrega del anuncio. No se bloquea tras el banner de
+    // cookies (interés legítimo en una página de aterrizaje de publicidad);
+    // el resto de analítica sigue gobernada por el consentimiento.
+    initMetaPixel();
+    trackBienvenidaLandingViewMeta({ page: pagePath, landingVariant });
   }, [landingVariant, pagePath]);
 
   return null;

@@ -60,7 +60,7 @@ export default function HomePageContent({ locale }: HomePageContentProps) {
       </PullToRefresh>
       <HomeMinimalFooter locale={locale} />
       <FaqJsonLd />
-      <CookieConsent />
+      <CookieConsent compact bannerDelayMs={3000} showAfterScrollPx={120} />
     </LocaleProvider>
   );
 }

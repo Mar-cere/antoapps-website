@@ -71,17 +71,17 @@ assert(resolveWaitlistDisplayCount(900) === 900, 'waitlist: respeta conteo real 
 function parseBienvenidaVariant(value) {
   const raw = Array.isArray(value) ? value[0] : value;
   const normalized = raw?.trim().toLowerCase();
+  if (normalized === 'a') return 'A';
   if (normalized === 'b') return 'B';
-  if (normalized === 'c') return 'C';
-  return 'A';
+  return 'C';
 }
 
 assert(parseBienvenidaVariant('a') === 'A', 'variant a → A');
 assert(parseBienvenidaVariant('B') === 'B', 'variant B → B');
 assert(parseBienvenidaVariant('c') === 'C', 'variant c → C');
-assert(parseBienvenidaVariant(undefined) === 'A', 'variant undefined → A');
+assert(parseBienvenidaVariant(undefined) === 'C', 'variant undefined → C (default)');
 assert(parseBienvenidaVariant(['C']) === 'C', 'variant array → C');
-assert(parseBienvenidaVariant('invalid') === 'A', 'variant invalid → A');
+assert(parseBienvenidaVariant('invalid') === 'C', 'variant invalid → C (default)');
 
 if (failed > 0) {
   console.error(`\n${failed} validación(es) fallida(s).`);
