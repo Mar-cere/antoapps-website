@@ -1,8 +1,11 @@
-# 🎯 Plan de Acción - Actualización Post-Auditoría v1.5.0
+# 🎯 Plan de Acción - Actualización Post-Auditoría v1.5.x
 
 **Fecha:** Julio 12, 2026  
+**Versión de la app:** 1.5.2 (serie 1.5.x)  
 **Basado en:** [AUDITORIA_PAGINAS_V15.md](./AUDITORIA_PAGINAS_V15.md)  
 **Objetivo:** Plan ejecutable de mejoras priorizadas
+
+> **Nota:** Este plan aplica a toda la serie v1.5.x (v1.5.0, v1.5.1, v1.5.2) ya que las características principales son las mismas.
 
 ---
 
@@ -10,7 +13,7 @@
 
 ### Situación Actual
 ✅ **Buenas Noticias:**
-- Sitio web **ya refleja features principales** de v1.5.0
+- Sitio web **ya refleja features principales** de la serie v1.5.x (v1.5.2)
 - Código base sólido con Next.js 14
 - Internacionalización completa (ES/EN)
 - SEO optimizado y accesible
@@ -30,7 +33,7 @@
 **Esfuerzo:** Medio  
 **Impacto:** Alto  
 
-#### Acción 1.1: Crear Guías de Recursos sobre Features v1.5.0
+#### Acción 1.1: Crear Guías de Recursos sobre Features v1.5.x
 
 ##### Guía 1: "Hub de Técnicas - Tu Catálogo Completo"
 ```markdown
@@ -179,7 +182,7 @@ export default function GuidePageContent({ guideId, locale }: GuidePageContentPr
 #### Acción 2.1: Crear Screenshots Organizados
 
 ```bash
-# Estructura de assets v1.5.0
+# Estructura de assets v1.5.x
 public/assets/images/v15/
 ├── features/
 │   ├── hub-de-tecnicas-overview.webp
@@ -234,14 +237,14 @@ public/assets/videos/v15/
 **Esfuerzo:** Bajo  
 **Impacto:** Alto
 
-#### Acción 3.1: Expandir Entrada v1.5.0
+#### Acción 3.1: Expandir Entrada v1.5.x
 
 ```typescript
 // lib/i18n/copy/pages/changelog.ts
 
 // ANTES (actual):
 {
-  version: '1.5.0',
+  version: '1.5.x',
   date: '2026-XX-XX',
   status: 'current',
   highlights: [
@@ -260,7 +263,7 @@ public/assets/videos/v15/
 
 // DESPUÉS (propuesto):
 {
-  version: '1.5.0',
+  version: '1.5.x',
   date: '2026-06-15',
   status: 'current',
   codename: 'Sistema Completo', // NUEVO
@@ -332,11 +335,11 @@ public/assets/videos/v15/
 ```typescript
 // lib/i18n/copy/pages/comparar.ts
 
-// Agregar features exclusivos de v1.5.0
+// Agregar features exclusivos de v1.5.x
 const comparisonFeatures = [
   // NUEVOS (exclusivos de Anto)
   {
-    category: 'Innovaciones v1.5.0',
+    category: 'Innovaciones v1.5.x',
     features: [
       {
         name: 'Grafo de insights',
@@ -407,14 +410,14 @@ public/assets/images/comparacion/
 **Esfuerzo:** Medio  
 **Impacto:** Medio
 
-#### Acción 5.1: Documentar Arquitectura Técnica v1.5.0
+#### Acción 5.1: Documentar Arquitectura Técnica v1.5.x
 
 ```typescript
 // lib/i18n/copy/pages/desarrollo.ts
 
-// Agregar sección específica de v1.5.0
+// Agregar sección específica de v1.5.x
 {
-  section: 'Arquitectura v1.5.0',
+  section: 'Arquitectura v1.5.x',
   subsections: [
     {
       title: 'Grafo de Insights',
@@ -594,7 +597,7 @@ async function refreshAccessToken(refreshToken: string): Promise<{
 **Esfuerzo:** Bajo  
 **Impacto:** Medio-Alto
 
-#### Acción 6.1: Optimizar Keywords v1.5.0
+#### Acción 6.1: Optimizar Keywords v1.5.x
 
 ```typescript
 // lib/seo/keywords-v15.ts
@@ -633,8 +636,8 @@ export function getV15EnhancedMetadata(locale: Locale) {
           width: 1200,
           height: 630,
           alt: locale === 'es' 
-            ? 'Anto v1.5.0 - Grafo de insights, WAI y hub de técnicas'
-            : 'Anto v1.5.0 - Insights graph, WAI, and techniques hub',
+            ? 'Anto v1.5.x - Grafo de insights, WAI y hub de técnicas'
+            : 'Anto v1.5.x - Insights graph, WAI, and techniques hub',
         },
       ],
     },
@@ -654,7 +657,7 @@ export function getSoftwareApplicationSchemaV15() {
     name: 'Anto - Apoyo Emocional con IA',
     applicationCategory: 'HealthApplication',
     operatingSystem: 'iOS',
-    softwareVersion: '1.5.0',
+    softwareVersion: '1.5.x',
     releaseNotes: 'https://antoapps.com/changelog',
     featureList: [
       'Asistente de IA con GPT-5.4 Mini',
@@ -672,8 +675,8 @@ export function getSoftwareApplicationSchemaV15() {
     },
     video: {
       '@type': 'VideoObject',
-      name: 'Anto v1.5.0 Overview',
-      description: 'Recorrido por las nuevas funcionalidades de Anto v1.5.0',
+      name: 'Anto v1.5.x Overview',
+      description: 'Recorrido por las nuevas funcionalidades de Anto v1.5.x',
       thumbnailUrl: 'https://antoapps.com/assets/videos/v15/overview-thumbnail.jpg',
       uploadDate: '2026-06-15',
       duration: 'PT1M',
@@ -687,7 +690,7 @@ export function getSoftwareApplicationSchemaV15() {
 
 ## 📊 Tracking y Métricas
 
-### Implementar Analytics Específico v1.5.0
+### Implementar Analytics Específico v1.5.x
 
 ```typescript
 // lib/analytics/v15-tracking.ts
@@ -715,8 +718,8 @@ export function trackV15Event(
   // Integración con GA4
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', v15Events[eventName], {
-      event_category: 'v1.5.0',
-      version: '1.5.0',
+      event_category: 'v1.5.x',
+      version: '1.5.x',
       ...properties,
     });
   }
@@ -742,7 +745,7 @@ export function trackV15Event(
 - [ ] Testear responsive en móvil
 
 ### Semana 1-2: Assets Visuales
-- [ ] Capturar screenshots de features v1.5.0
+- [ ] Capturar screenshots de features v1.5.x
 - [ ] Optimizar imágenes (WebP, <200KB)
 - [ ] Grabar videos demostrativos (5-15s)
 - [ ] Optimizar videos (<2MB)
@@ -752,7 +755,7 @@ export function trackV15Event(
 - [ ] Implementar lazy loading de assets
 
 ### Semana 1: Changelog
-- [ ] Expandir entrada v1.5.0 con detalles
+- [ ] Expandir entrada v1.5.x con detalles
 - [ ] Agregar screenshots a changelog
 - [ ] Embeber video overview
 - [ ] Agregar links a guías
@@ -762,7 +765,7 @@ export function trackV15Event(
 
 ### Semana 2: Comparación
 - [ ] Actualizar tabla comparativa
-- [ ] Destacar features exclusivos v1.5.0
+- [ ] Destacar features exclusivos v1.5.x
 - [ ] Crear matriz de decisión
 - [ ] Agregar infografías
 - [ ] Escribir copy de ventajas competitivas
@@ -779,7 +782,7 @@ export function trackV15Event(
 - [ ] Traducir a inglés
 
 ### Semana 3: SEO y Metadata
-- [ ] Actualizar keywords con v1.5.0
+- [ ] Actualizar keywords con v1.5.x
 - [ ] Crear OG images específicas
 - [ ] Actualizar Schema.org
 - [ ] Mejorar meta descriptions
@@ -788,9 +791,9 @@ export function trackV15Event(
 - [ ] Test con herramientas SEO
 
 ### Continuo: Analytics
-- [ ] Implementar eventos de tracking v1.5.0
+- [ ] Implementar eventos de tracking v1.5.x
 - [ ] Configurar funnels en GA4
-- [ ] Crear dashboard de métricas v1.5.0
+- [ ] Crear dashboard de métricas v1.5.x
 - [ ] Configurar alertas
 - [ ] A/B testing de CTAs
 
@@ -800,24 +803,24 @@ export function trackV15Event(
 
 ### Semana 1-2 (Post-Implementación)
 - [ ] 5 guías publicadas y accesibles
-- [ ] Changelog v1.5.0 expandido con assets
+- [ ] Changelog v1.5.x expandido con assets
 - [ ] Comparación actualizada
 - [ ] 0 errores 404 en nuevas páginas
 - [ ] Lighthouse score >90 en nuevas páginas
 
 ### Mes 1
-- [ ] >500 visitas a guías v1.5.0
+- [ ] >500 visitas a guías v1.5.x
 - [ ] >50% scroll depth en guías
 - [ ] >100 visualizaciones de videos
 - [ ] +20% clicks en CTA App Store desde changelog
 - [ ] <5% bounce rate en guías
 
 ### Mes 3
-- [ ] >2000 visitas a guías v1.5.0
-- [ ] Keywords v1.5.0 en top 20 de Google
+- [ ] >2000 visitas a guías v1.5.x
+- [ ] Keywords v1.5.x en top 20 de Google
 - [ ] >80% satisfacción en encuestas de guías
 - [ ] +35% tráfico orgánico desde guías
-- [ ] -30% tickets de soporte sobre features v1.5.0
+- [ ] -30% tickets de soporte sobre features v1.5.x
 
 ---
 

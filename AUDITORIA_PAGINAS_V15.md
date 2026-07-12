@@ -1,21 +1,23 @@
-# 🔍 Auditoría de Páginas - Anto Website v1.5.0
+# 🔍 Auditoría de Páginas - Anto Website v1.5.2
 **Fecha:** Julio 2026  
-**Versión de la app:** 1.5.0  
+**Versión de la app:** 1.5.2 (serie 1.5.x)  
 **Propósito:** Verificar alineación entre sitio web y funcionalidades actuales de la app
+
+> **Nota:** Esta auditoría aplica a toda la serie v1.5.x (v1.5.0, v1.5.1, v1.5.2) ya que las características principales introducidas son las mismas. Las versiones posteriores a v1.5.0 contienen principalmente correcciones de bugs y mejoras menores.
 
 ---
 
 ## 📊 Resumen Ejecutivo
 
 ### ✅ Fortalezas Identificadas
-- Sitio web **actualizado con características de v1.5.0**
+- Sitio web **actualizado con características de la serie v1.5.x** (actualmente v1.5.2)
 - Menciones correctas de GPT-5.4 Mini, hub de técnicas, grafo de insights, WAI post-sesión
 - Arquitectura moderna con Next.js 14 App Router
 - Internacionalización (ES/EN) implementada
 - Sistema de componentes bien estructurado
 
 ### ⚠️ Áreas de Oportunidad
-- Algunas páginas podrían **ampliar** descripción de nuevas funcionalidades v1.5.0
+- Algunas páginas podrían **ampliar** descripción de nuevas funcionalidades v1.5.x
 - Oportunidad de crear contenido educativo sobre features específicos
 - Posible inconsistencia menor en descripciones entre páginas
 - Changelog podría expandirse con más detalle técnico
@@ -27,7 +29,7 @@
 ### 1️⃣ Página Principal (`/`)
 
 #### ✅ Estado Actual
-**Actualizada con v1.5.0** - Incluye:
+**Actualizada con serie v1.5.x (v1.5.2)** - Incluye:
 - ✅ Mención de hub de técnicas
 - ✅ Grafo de insights
 - ✅ WAI post-sesión (4 ejes)
@@ -66,14 +68,14 @@
 
 #### 💡 Recomendaciones
 1. **Agregar ejemplos visuales** de las nuevas funcionalidades en formato GIF o video
-2. **Expandir sección de "Cómo funciona"** con casos de uso específicos de v1.5.0
+2. **Expandir sección de "Cómo funciona"** con casos de uso específicos de v1.5.x
 3. **Destacar el concepto de "sistema"** vs chatbot con más énfasis visual
-4. **Agregar comparación antes/después** mostrando mejoras de v1.5.0
+4. **Agregar comparación antes/después** mostrando mejoras de v1.5.x
 
 #### 📝 Acciones Sugeridas
 - [ ] Crear micro-videos de 5-10 segundos mostrando cada feature key
 - [ ] Agregar tooltip interactivo explicando WAI post-sesión
-- [ ] Expandir sección de credenciales con métricas de v1.5.0
+- [ ] Expandir sección de credenciales con métricas de v1.5.x
 
 ---
 
@@ -94,7 +96,7 @@
 
 #### 💡 Recomendaciones
 1. **Agregar sección** sobre investigación del modelo GPT-5.4 Mini específicamente
-2. **Incluir datos** sobre efectividad de técnicas implementadas en v1.5.0
+2. **Incluir datos** sobre efectividad de técnicas implementadas en v1.5.x
 3. **Crear sección** de "Investigación en Curso" si aplica
 4. **Agregar estadísticas** de uso de protocolos estructurados
 
@@ -109,7 +111,7 @@
 ### 3️⃣ Página de Desarrollo (`/desarrollo`)
 
 #### ✅ Estado Actual
-**Actualizada con stack técnico v1.5.0** - Incluye:
+**Actualizada con stack técnico v1.5.x** - Incluye:
 - ✅ GPT-5.4 Mini mencionado correctamente
 - ✅ Stack tecnológico completo
 - ✅ Arquitectura detallada
@@ -126,17 +128,17 @@ Stack Principal:
 ```
 
 #### 💡 Recomendaciones
-1. **Agregar diagrama de arquitectura** de las nuevas features v1.5.0
+1. **Agregar diagrama de arquitectura** de las nuevas features v1.5.x
 2. **Explicar implementación técnica** de:
    - Grafo de insights (¿Neo4j? ¿MongoDB con referencias?)
    - Sesión persistente (JWT refresh)
    - WAI post-sesión (¿cómo se calcula?)
    - Pomodoro integrado
 3. **Documentar API endpoints** nuevos (si aplica)
-4. **Agregar sección de rendimiento** y optimizaciones de v1.5.0
+4. **Agregar sección de rendimiento** y optimizaciones de v1.5.x
 
 #### 📝 Acciones Sugeridas
-- [ ] Crear diagrama de flujo de datos de v1.5.0
+- [ ] Crear diagrama de flujo de datos de v1.5.x
 - [ ] Documentar estructura del grafo de insights
 - [ ] Explicar algoritmo de detección de patrones
 - [ ] Agregar métricas de rendimiento (response time, uptime)
@@ -163,9 +165,9 @@ Stack Principal:
 4. **Implementar sistema de valoración** de recursos
 
 #### 📝 Acciones Sugeridas
-- [ ] Crear 5 guías sobre features v1.5.0
+- [ ] Crear 5 guías sobre features v1.5.x
 - [ ] Producir videos tutoriales de 2-3 minutos
-- [ ] Agregar sección de "Preguntas Frecuentes sobre v1.5.0"
+- [ ] Agregar sección de "Preguntas Frecuentes sobre v1.5.x"
 - [ ] Implementar buscador de recursos mejorado
 
 ---
@@ -179,7 +181,7 @@ Stack Principal:
 - ✅ Badges de estado
 
 #### 💡 Recomendaciones
-1. **Expandir entrada de v1.5.0** con:
+1. **Expandir entrada de v1.5.x** con:
    - Screenshots de cada feature nueva
    - Videos comparativos antes/después
    - Métricas de mejora (ej: "30% más rápido")
@@ -189,9 +191,9 @@ Stack Principal:
 4. **Agregar enlaces** a guías detalladas de cada feature
 
 #### 📝 Acciones Sugeridas
-- [ ] Expandir descripción de v1.5.0 con más detalle
+- [ ] Expandir descripción de v1.5.x con más detalle
 - [ ] Agregar capturas de pantalla de cada cambio visual
-- [ ] Crear comparación lado a lado v1.4.x vs v1.5.0
+- [ ] Crear comparación lado a lado v1.4.x vs v1.5.x
 - [ ] Documentar migración para usuarios existentes
 
 ---
@@ -199,19 +201,19 @@ Stack Principal:
 ### 6️⃣ Página de App (`/app`)
 
 #### ✅ Estado Actual
-**Actualizada con v1.5.0** según código fuente
+**Actualizada con v1.5.x** según código fuente
 
 #### 💡 Recomendaciones
-1. **Crear tour interactivo** de la app v1.5.0
+1. **Crear tour interactivo** de la app v1.5.x
 2. **Agregar demo en vivo** de funcionalidades (sin descargar app)
 3. **Incluir galería de screenshots** organizadas por feature
-4. **Agregar comparación con competencia** destacando innovaciones de v1.5.0
+4. **Agregar comparación con competencia** destacando innovaciones de v1.5.x
 
 #### 📝 Acciones Sugeridas
 - [ ] Implementar demo interactivo del chat
 - [ ] Crear galería de screenshots categorizada
 - [ ] Agregar video de walkthrough de 60 segundos
-- [ ] Incluir sección de "Lo nuevo en v1.5.0"
+- [ ] Incluir sección de "Lo nuevo en v1.5.x"
 
 ---
 
@@ -230,10 +232,10 @@ Stack Principal:
 3. **Incluir certificaciones** de seguridad si existen
 
 #### 📝 Acciones Sugeridas
-- [ ] Documentar encriptación de nuevos datos de v1.5.0
+- [ ] Documentar encriptación de nuevos datos de v1.5.x
 - [ ] Agregar política de retención de datos del grafo
 - [ ] Explicar permisos de la app actualizados
-- [ ] Crear FAQ de seguridad específica de v1.5.0
+- [ ] Crear FAQ de seguridad específica de v1.5.x
 
 ---
 
@@ -243,17 +245,17 @@ Stack Principal:
 **Tabla comparativa con otras soluciones**
 
 #### 💡 Recomendaciones
-1. **Actualizar tabla** destacando features exclusivos de v1.5.0:
+1. **Actualizar tabla** destacando features exclusivos de v1.5.x:
    - Grafo de insights (único en el mercado)
    - WAI post-sesión (innovación)
    - Hub de técnicas integrado
    - Sesión persistente
 2. **Agregar gráficos visuales** de comparación
 3. **Incluir matriz de decisión** interactiva
-4. **Destacar ventajas competitivas** de v1.5.0
+4. **Destacar ventajas competitivas** de v1.5.x
 
 #### 📝 Acciones Sugeridas
-- [ ] Actualizar comparación con features v1.5.0
+- [ ] Actualizar comparación con features v1.5.x
 - [ ] Crear infografía de ventajas únicas
 - [ ] Agregar calculadora de valor vs competencia
 - [ ] Incluir testimonios comparativos
@@ -267,14 +269,14 @@ Stack Principal:
 
 #### 💡 Recomendaciones
 1. **Agregar opciones de contacto** específicas:
-   - Feedback sobre v1.5.0
+   - Feedback sobre v1.5.x
    - Reportar bugs en nuevas features
    - Sugerencias de mejora
 2. **Implementar chat de soporte** en vivo (opcional)
 3. **Agregar centro de ayuda** integrado
 
 #### 📝 Acciones Sugeridas
-- [ ] Agregar categoría "Feedback v1.5.0" al formulario
+- [ ] Agregar categoría "Feedback v1.5.x" al formulario
 - [ ] Implementar sistema de tickets
 - [ ] Crear base de conocimientos de autoservicio
 - [ ] Agregar tiempo de respuesta esperado
@@ -287,20 +289,20 @@ Stack Principal:
 **Información del equipo y misión**
 
 #### 💡 Recomendaciones
-1. **Agregar timeline de desarrollo** mostrando evolución hasta v1.5.0
+1. **Agregar timeline de desarrollo** mostrando evolución hasta v1.5.x
 2. **Incluir filosofía de diseño** detrás de nuevas features
-3. **Documentar proceso de desarrollo** de v1.5.0
+3. **Documentar proceso de desarrollo** de v1.5.x
 4. **Agregar métricas de impacto** desde el lanzamiento
 
 #### 📝 Acciones Sugeridas
-- [ ] Crear timeline visual hasta v1.5.0
+- [ ] Crear timeline visual hasta v1.5.x
 - [ ] Agregar caso de estudio de diseño de grafo de insights
-- [ ] Incluir testimonios del equipo sobre v1.5.0
+- [ ] Incluir testimonios del equipo sobre v1.5.x
 - [ ] Documentar decisiones de producto clave
 
 ---
 
-## 📈 Análisis de Contenido por Feature v1.5.0
+## 📈 Análisis de Contenido por Feature v1.5.x
 
 ### Feature 1: Hub de Técnicas
 | Página | Menciona | Detalle | Acción Requerida |
@@ -309,7 +311,7 @@ Stack Principal:
 | App | ✅ Sí | En lista de features | Agregar demo visual |
 | Desarrollo | ✅ Sí | En arquitectura | Documentar implementación |
 | Recursos | ⚠️ Parcial | Sin guía dedicada | Crear guía completa |
-| Changelog | ✅ Sí | En v1.5.0 entry | Agregar screenshots |
+| Changelog | ✅ Sí | En v1.5.x entries | Agregar screenshots |
 
 ### Feature 2: Grafo de Insights
 | Página | Menciona | Detalle | Acción Requerida |
@@ -333,7 +335,7 @@ Stack Principal:
 |--------|----------|---------|------------------|
 | Home | ✅ Sí | "Insight diario" | Agregar screenshots |
 | App | ✅ Sí | Mencionado | Demo interactivo |
-| Changelog | ✅ Sí | En v1.5.0 | Expandir con beneficios |
+| Changelog | ✅ Sí | En v1.5.x | Expandir con beneficios |
 
 ### Feature 5: Tareas y Hábitos Unificados
 | Página | Menciona | Detalle | Acción Requerida |
@@ -362,7 +364,7 @@ Stack Principal:
 
 ### 🔴 Prioridad Alta (Semana 1-2)
 
-#### 1. Crear Guías de Recursos sobre v1.5.0
+#### 1. Crear Guías de Recursos sobre v1.5.x
 **Impacto:** Alto | **Esfuerzo:** Medio
 
 Crear 5 guías esenciales:
@@ -379,7 +381,7 @@ Crear 5 guías esenciales:
 - `/app/(site)/recursos/tareas-y-pomodoro/page.tsx`
 - `/app/(site)/recursos/habitos-y-racha/page.tsx`
 
-#### 2. Expandir Changelog v1.5.0
+#### 2. Expandir Changelog v1.5.x
 **Impacto:** Alto | **Esfuerzo:** Bajo
 
 Agregar:
@@ -394,7 +396,7 @@ Agregar:
 #### 3. Actualizar Página de Comparación
 **Impacto:** Alto | **Esfuerzo:** Medio
 
-Destacar features exclusivos v1.5.0 vs competencia:
+Destacar features exclusivos v1.5.x vs competencia:
 - Grafo de insights (único)
 - WAI post-sesión (innovador)
 - Hub de técnicas integrado
@@ -421,7 +423,7 @@ Destacar features exclusivos v1.5.0 vs competencia:
 #### 5. Documentación Técnica Extendida (Desarrollo)
 **Impacto:** Medio | **Esfuerzo:** Medio
 
-- Diagrama de arquitectura v1.5.0
+- Diagrama de arquitectura v1.5.x
 - Explicación de grafo de insights
 - Documentación de JWT refresh
 - Algoritmo de WAI
@@ -430,7 +432,7 @@ Destacar features exclusivos v1.5.0 vs competencia:
 - `/components/pages/DesarrolloPageContent.tsx`
 - `/lib/i18n/copy/pages/desarrollo.ts`
 
-#### 6. Fundamento Científico de v1.5.0 (Investigación)
+#### 6. Fundamento Científico de v1.5.x (Investigación)
 **Impacto:** Medio | **Esfuerzo:** Medio
 
 Agregar:
@@ -451,7 +453,7 @@ Agregar:
 **Impacto:** Medio | **Esfuerzo:** Alto
 
 - Implementar demo en vivo
-- Tour guiado de v1.5.0
+- Tour guiado de v1.5.x
 - Simulador de conversación
 
 **Crear:**
@@ -510,13 +512,13 @@ Agregar:
 ## 📋 Checklist de Actualización
 
 ### Contenido
-- [ ] Todas las features v1.5.0 mencionadas en home
+- [ ] Todas las features v1.5.x mencionadas en home
 - [ ] Guías individuales para cada feature principal
 - [ ] Changelog expandido con screenshots
 - [ ] Comparación actualizada con competencia
 - [ ] Investigación científica de nuevas features
 - [ ] Documentación técnica de implementación
-- [ ] FAQs sobre v1.5.0
+- [ ] FAQs sobre v1.5.x
 
 ### Visual
 - [ ] Screenshots de todas las features nuevas
@@ -526,9 +528,9 @@ Agregar:
 - [ ] GIFs de interacciones clave
 
 ### SEO y Metadata
-- [ ] Meta descriptions actualizadas con keywords v1.5.0
+- [ ] Meta descriptions actualizadas con keywords v1.5.x
 - [ ] Schema.org con features nuevos
-- [ ] Open Graph images con branding v1.5.0
+- [ ] Open Graph images con branding v1.5.x
 - [ ] Sitemap actualizado con nuevas guías
 - [ ] Alt texts descriptivos en screenshots
 
@@ -555,7 +557,7 @@ Agregar:
 // Permite explorar conexiones
 ```
 
-### 2. Calculadora de Bienestar con v1.5.0
+### 2. Calculadora de Bienestar con v1.5.x
 **Descripción:** Quiz interactivo que recomienda features específicas según necesidades del usuario.
 
 **Ejemplo:**
@@ -573,7 +575,7 @@ Chat básico → Protocolos → Sistema completo
 ```
 
 ### 4. Timeline Interactivo de Desarrollo
-**Descripción:** Línea de tiempo visual mostrando evolución de features hasta v1.5.0.
+**Descripción:** Línea de tiempo visual mostrando evolución de features hasta v1.5.x.
 
 **Elementos:**
 - Hitos clave
@@ -600,7 +602,7 @@ Chat básico → Protocolos → Sistema completo
 - **Compartidos sociales:** +50%
 
 #### SEO
-- **Rankings keywords v1.5.0:** Top 10 en 3 meses
+- **Rankings keywords v1.5.x:** Top 10 en 3 meses
 - **Tráfico orgánico:** +35%
 - **Backlinks:** +20 enlaces de calidad
 - **CTR en SERP:** +15%
@@ -609,14 +611,14 @@ Chat básico → Protocolos → Sistema completo
 - **Valoración de guías:** >4.5/5
 - **Feedback positivo:** >80%
 - **Retorno a recurso:** >40%
-- **Tickets de soporte sobre v1.5.0:** -30%
+- **Tickets de soporte sobre v1.5.x:** -30%
 
 ---
 
 ## 🚀 Plan de Implementación
 
 ### Fase 1: Fundamentos (Semana 1-2)
-**Objetivo:** Asegurar que info básica v1.5.0 esté completa
+**Objetivo:** Asegurar que info básica v1.5.x esté completa
 
 1. **Día 1-2:** Crear 5 guías de recursos principales
 2. **Día 3-4:** Expandir changelog con screenshots
@@ -669,7 +671,7 @@ Chat básico → Protocolos → Sistema completo
 Agregar subtítulo debajo del hero actual:
 ```
 "Ahora con grafo de insights, hub de técnicas y WAI post-sesión.
-Descubre la evolución de Anto en v1.5.0 →"
+Descubre la evolución de Anto en v1.5.x →"
 ```
 
 ### 2. Banner Temporal de Novedades
@@ -679,7 +681,7 @@ Descubre la evolución de Anto en v1.5.0 →"
 Agregar banner sticky:
 ```
 🎉 Nuevo: Explora el hub de técnicas, tu grafo de insights 
-y la alianza terapéutica en v1.5.0 [Ver qué hay de nuevo →]
+y la alianza terapéutica en v1.5.x [Ver qué hay de nuevo →]
 ```
 
 ### 3. Tooltips en Features
@@ -709,7 +711,7 @@ Investigación
 
 Agregar prominentemente:
 ```
-✨ Novedades v1.5.0 → /changelog
+✨ Novedades v1.5.x → /changelog
 ```
 
 ---
@@ -826,14 +828,14 @@ Agregar prominentemente:
 ## ✅ Conclusiones
 
 ### Resumen de Hallazgos
-1. **Sitio web actualizado correctamente** con información v1.5.0
+1. **Sitio web actualizado correctamente** con información v1.5.x
 2. **Buena estructura** de componentes y organización
 3. **Oportunidades claras** de expansión en contenido educativo
 4. **Assets visuales** pueden mejorar comprensión de features
 5. **Consistencia terminológica** necesita ajuste menor
 
 ### Recomendación Principal
-**Priorizar creación de guías de recursos** sobre features v1.5.0. Esto:
+**Priorizar creación de guías de recursos** sobre features v1.5.x. Esto:
 - Mejora SEO con contenido long-form
 - Reduce tickets de soporte
 - Aumenta engagement y tiempo en sitio
@@ -843,7 +845,7 @@ Agregar prominentemente:
 ### Próximos Pasos Inmediatos
 1. ✅ Aprobar priorización de tareas
 2. ⏳ Crear 5 guías esenciales (Semana 1)
-3. ⏳ Expandir changelog v1.5.0 (Semana 1)
+3. ⏳ Expandir changelog v1.5.x (Semana 1)
 4. ⏳ Actualizar comparación con competencia (Semana 1)
 5. ⏳ Implementar quick wins (Semana 1)
 
