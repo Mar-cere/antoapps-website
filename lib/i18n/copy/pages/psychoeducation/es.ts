@@ -28,7 +28,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: '¿Qué es la terapia cognitivo-conductual (TCC)? | Guía Anto',
       description:
-        'Qué es la TCC, cómo funciona y por qué es una de las intervenciones con más evidencia para ansiedad y depresión. Psicoeducación basada en ciencia.',
+        'Qué es la TCC, cómo funciona y por qué es una de las intervenciones con más evidencia para ansiedad y depresión. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: '¿Qué es la TCC? Guía de psicoeducación',
       openGraphDescription:
         'Aprende los principios de la terapia cognitivo-conductual y cómo aplicarlos en tu día a día.',
@@ -83,7 +83,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Distorsiones cognitivas: guía con ejemplos | Anto',
       description:
-        'Qué son las distorsiones cognitivas, ejemplos frecuentes (catastrofismo, todo o nada, lectura de mente) y cómo empezar a cuestionarlas.',
+        'Qué son las distorsiones cognitivas, ejemplos frecuentes (catastrofismo, todo o nada, lectura de mente) y cómo empezar a cuestionarlas. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Distorsiones cognitivas — guía breve',
       openGraphDescription: 'Aprende a reconocer patrones de pensamiento poco útiles y qué hacer cuando aparecen.',
     },
@@ -136,7 +136,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Técnica ABC paso a paso | Psicoeducación Anto',
       description:
-        'Aprende la técnica ABC (Activador, Creencia, Consecuencia) para analizar situaciones difíciles y cambiar respuestas emocionales.',
+        'Aprende la técnica ABC (Activador, Creencia, Consecuencia) para analizar situaciones difíciles y cambiar respuestas emocionales. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Técnica ABC — guía paso a paso',
       openGraphDescription: 'Registra situaciones, pensamientos y emociones con el modelo ABC de la TCC.',
     },
@@ -184,7 +184,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Ansiedad y preocupación: ¿cuándo es normal? | Anto',
       description:
-        'Diferencias entre preocupación cotidiana y ansiedad problemática, señales de alerta y estrategias basadas en evidencia para el día a día.',
+        'Diferencias entre preocupación cotidiana y ansiedad problemática, señales de alerta y estrategias basadas en evidencia para el día a día. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Ansiedad y preocupación — guía breve',
       openGraphDescription: 'Entiende la ansiedad y qué herramientas pueden ayudarte entre sesiones con un profesional.',
     },
@@ -233,7 +233,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'PHQ-9 y GAD-7: qué miden y cómo interpretarlas | Anto',
       description:
-        'Guía sobre las escalas clínicas PHQ-9 (depresión) y GAD-7 (ansiedad): para qué sirven, cómo se puntúan y qué no pueden decirte.',
+        'Guía sobre PHQ-9 (depresión) y GAD-7 (ansiedad): qué miden, cómo interpretarlas y por qué no sirven para autodiagnosticarse. Psicoeducación; no sustituye evaluación clínica.',
       openGraphTitle: 'Escalas PHQ-9 y GAD-7 explicadas',
       openGraphDescription: 'Entiende las escalas que Anto usa para seguimiento de síntomas depresivos y de ansiedad.',
     },
@@ -281,7 +281,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Autocompasión: qué es y ejercicios breves | Anto',
       description:
-        'Qué significa la autocompasión en psicología basada en evidencia, por qué no es indulgencia y cómo practicarla en momentos difíciles.',
+        'Qué significa la autocompasión en psicología basada en evidencia, por qué no es indulgencia y cómo practicarla en momentos difíciles. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Guía de autocompasión',
       openGraphDescription: 'Aprende a tratarte con el mismo cuidado que ofrecerías a alguien que quieres.',
     },
@@ -328,7 +328,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Higiene del sueño y salud mental | Guía Anto',
       description:
-        'Cómo el sueño afecta el ánimo y la ansiedad, hábitos de higiene del sueño basados en evidencia y cuándo consultar a un especialista.',
+        'Cómo el sueño afecta el ánimo y la ansiedad, hábitos de higiene del sueño basados en evidencia y cuándo consultar a un especialista. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Higiene del sueño y bienestar emocional',
       openGraphDescription: 'Mejora tu descanso con hábitos concretos y entiende su vínculo con la salud mental.',
     },
@@ -377,7 +377,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Mindfulness: guía breve para empezar | Anto',
       description:
-        'Qué es el mindfulness, mitos frecuentes, ejercicios de 3–5 minutos y cómo combinarlo con terapia o apoyo digital.',
+        'Qué es el mindfulness, mitos frecuentes, ejercicios de 3–5 minutos y cómo combinarlo con terapia o apoyo digital. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Mindfulness — guía para empezar',
       openGraphDescription: 'Atención plena sin misticismo: ejercicios cortos para calmar el sistema nervioso.',
     },
@@ -425,7 +425,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Depresión: señales y qué puedes hacer | Guía Anto',
       description:
-        'Qué es la depresión, señales frecuentes, diferencia con tristeza normal y estrategias basadas en evidencia como activación conductual. Psicoeducación, no diagnóstico.',
+        'Qué es la depresión, señales frecuentes, diferencia con tristeza normal y estrategias como activación conductual. Psicoeducación; no sustituye diagnóstico ni atención clínica.',
       openGraphTitle: 'Depresión — guía de psicoeducación',
       openGraphDescription:
         'Entiende los síntomas depresivos y herramientas prácticas para empezar a recuperar rutina y conexión.',
@@ -477,7 +477,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Activación conductual: guía práctica | Anto',
       description:
-        'Qué es la activación conductual, por qué funciona en depresión y cómo planificar actividades pequeñas aunque no tengas motivación.',
+        'Qué es la activación conductual, por qué ayuda en depresión y cómo planificar actividades pequeñas aunque no tengas motivación. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Activación conductual — guía breve',
       openGraphDescription: 'Recupera rutina y ánimo con pasos conductuales pequeños y sostenibles.',
     },
@@ -526,7 +526,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'TOC y exposición con prevención de respuesta (ERP) | Anto',
       description:
-        'Qué es el trastorno obsesivo-compulsivo, cómo funcionan obsesiones y compulsiones, y por qué la ERP es el tratamiento con más evidencia.',
+        'Qué es el trastorno obsesivo-compulsivo, cómo funcionan obsesiones y compulsiones, y por qué la ERP es el enfoque con más evidencia. Psicoeducación; no sustituye tratamiento con un profesional.',
       openGraphTitle: 'TOC y ERP — guía de psicoeducación',
       openGraphDescription: 'Entiende el ciclo obsesivo-compulsivo y el enfoque terapéutico recomendado.',
     },
@@ -575,7 +575,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Trauma y TEPT: respuestas normales del cuerpo | Anto',
       description:
-        'Qué es el trauma psicológico, síntomas frecuentes del TEPT, por qué aparecen flashbacks y cuándo buscar ayuda especializada.',
+        'Qué es el trauma psicológico, síntomas frecuentes del TEPT, por qué aparecen flashbacks y cuándo buscar ayuda especializada. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Trauma y TEPT — guía breve',
       openGraphDescription: 'Psicoeducación sobre respuestas al trauma y caminos de recuperación basados en evidencia.',
     },
@@ -623,7 +623,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Manejo de la ira: guía práctica | Anto',
       description:
-        'Qué dispara la ira, señales corporales tempranas y técnicas de regulación basadas en TCC para responder con más control.',
+        'Qué dispara la ira, señales corporales tempranas y técnicas de regulación basadas en TCC para responder con más control. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Manejo de la ira — guía breve',
       openGraphDescription: 'Identifica disparadores y aprende a bajar la intensidad antes de reaccionar.',
     },
@@ -671,7 +671,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Técnicas de grounding para ansiedad y crisis | Anto',
       description:
-        'Ejercicios de grounding (5 sentidos, contacto con el presente) para bajar la intensidad emocional y cuándo activar recursos de crisis.',
+        'Ejercicios de grounding (5 sentidos, contacto con el presente) para bajar la intensidad emocional y cuándo activar recursos de crisis. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Grounding — guía práctica',
       openGraphDescription: 'Vuelve al presente cuando la ansiedad o un recuerdo abrumador te desborda.',
     },
@@ -720,7 +720,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Estrés: cómo responde el cuerpo y qué hacer | Anto',
       description:
-        'Qué es el estrés, señales físicas y emocionales, estrés agudo vs. crónico y formas de cuidarte sin esperar al burnout.',
+        'Qué es el estrés, señales físicas y emocionales, estrés agudo vs. crónico y formas de cuidarte sin esperar al burnout. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Estrés — guía de psicoeducación',
       openGraphDescription: 'Entiende la respuesta al estrés y herramientas prácticas para recuperar equilibrio.',
     },
@@ -768,7 +768,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Regulación emocional: guía práctica | Anto',
       description:
-        'Habilidades para reconocer, nombrar y modular emociones intensas sin reprimirlas ni reaccionar en automático.',
+        'Habilidades para reconocer, nombrar y modular emociones intensas sin reprimirlas ni reaccionar en automático. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Regulación emocional — guía breve',
       openGraphDescription: 'Aprende a reconocer emociones y elegir respuestas más útiles.',
     },
@@ -816,7 +816,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Duelo y pérdida: guía de psicoeducación | Anto',
       description:
-        'Cómo suele desarrollarse el duelo, mitos frecuentes y formas de acompañarte sin forzar un «cierre» prematuro.',
+        'Cómo suele desarrollarse el duelo, mitos frecuentes y formas de acompañarte sin forzar un «cierre» prematuro. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Duelo y pérdida — guía breve',
       openGraphDescription: 'Entiende el duelo como proceso humano y cómo cuidarte con paciencia.',
     },
@@ -863,7 +863,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Agotamiento y burnout: señales y primeros pasos | Anto',
       description:
-        'Señales de sobrecarga sostenida, diferencia con cansancio normal y pasos iniciales de recuperación.',
+        'Señales de sobrecarga sostenida, diferencia con cansancio normal y pasos iniciales de recuperación. Psicoeducación; no sustituye atención profesional.',
       openGraphTitle: 'Agotamiento y burnout — guía breve',
       openGraphDescription: 'Reconoce el burnout y empieza a recuperar energía con cambios realistas.',
     },

@@ -27,15 +27,15 @@ export function homePageMetadata(locale: Locale): Metadata {
 
   if (locale === 'en') {
     return {
-      title: 'Anto — A place for your mind to land | AI emotional support',
+      title: 'Anto — A place for your mind to land | Ongoing emotional support',
       description:
-        'Anto combines advanced AI with validated clinical protocols to support you when you need it most. Techniques hub, insights graph, PHQ-9/GAD-7 scales, 8 evidence-based protocols, crisis detection, and bilingual ES/EN support. 1-day free trial on iPhone. Not a substitute for clinical care.',
+        'Ongoing emotional support for when you need a place to land — with thoughtful AI assistance in the background. Anto can walk with you between sessions or day to day; it does not replace clinical care — a human therapist or professional remains the stronger recommendation. Available on iPhone.',
       alternates,
       openGraph: {
         type: 'website',
         url: canonical,
         title: 'Anto — A place for your mind to land',
-        description: `AI emotional support with clinical protocols, PHQ-9/GAD-7 scales, and crisis detection. ${trial.short} on iPhone.`,
+        description: `Ongoing emotional support on iPhone. Complements care — does not replace a human therapist. ${trial.short}.`,
         siteName: 'Anto',
         locale: 'en_US',
         images: [ogImage],
@@ -43,22 +43,22 @@ export function homePageMetadata(locale: Locale): Metadata {
       twitter: {
         card: 'summary_large_image',
         title: 'Anto — A place for your mind to land',
-        description: `AI emotional support with clinical protocols. ${trial.short} on iPhone.`,
+        description: `Ongoing emotional support on iPhone. Complements care — does not replace a human therapist. ${trial.short}.`,
         images: [ogImageUrl],
       },
     };
   }
 
   return {
-    title: 'Anto — Tu mente tiene un lugar donde aterrizar | Apoyo emocional con IA',
+    title: 'Anto — Tu mente tiene un lugar donde aterrizar | Acompañamiento emocional',
     description:
-      'Anto combina IA avanzada con protocolos clínicos validados para acompañarte cuando más lo necesitas. Hub de técnicas, grafo de insights, escalas PHQ-9/GAD-7, 8 protocolos basados en evidencia, detección de crisis y soporte bilingüe ES/EN. 1 día de prueba gratis en iPhone. No sustituye atención clínica.',
+      'Acompañamiento emocional continuo para cuando necesitas un lugar donde aterrizar — con apoyo de IA en segundo plano. Anto te acompaña entre sesiones o en el día a día; no sustituye atención clínica — un terapeuta o profesional humano sigue siendo lo más recomendable. Disponible en iPhone.',
     alternates,
     openGraph: {
       type: 'website',
       url: canonical,
       title: 'Anto — Tu mente tiene un lugar donde aterrizar',
-      description: `Apoyo emocional con IA, protocolos clínicos, escalas PHQ-9/GAD-7 y detección de crisis. ${trial.pricingNote}`,
+      description: `Acompañamiento emocional continuo en iPhone. Complementa — no reemplaza — a un terapeuta humano. ${trial.pricingNote}`,
       images: [ogImage],
       siteName: 'Anto',
       locale: 'es_CL',
@@ -66,7 +66,7 @@ export function homePageMetadata(locale: Locale): Metadata {
     twitter: {
       card: 'summary_large_image',
       title: 'Anto — Tu mente tiene un lugar donde aterrizar',
-      description: `Apoyo emocional con IA y protocolos clínicos validados. ${trial.short} en iPhone.`,
+      description: `Acompañamiento emocional continuo en iPhone. Complementa — no reemplaza — a un terapeuta humano. ${trial.short}.`,
       images: [ogImageUrl],
     },
   };

@@ -28,7 +28,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'What is cognitive behavioural therapy (CBT)? | Anto Guide',
       description:
-        'What CBT is, how it works, and why it is one of the most evidence-based approaches for anxiety and depression. Science-informed psychoeducation.',
+        'What CBT is, how it works, and why it is one of the most evidence-based approaches for anxiety and depression. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'What is CBT? Psychoeducation guide',
       openGraphDescription:
         'Learn the principles of cognitive behavioural therapy and how to apply them in daily life.',
@@ -83,7 +83,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Cognitive distortions: guide with examples | Anto',
       description:
-        'What cognitive distortions are, common examples (catastrophising, all-or-nothing, mind reading), and how to start questioning them.',
+        'What cognitive distortions are, common examples (catastrophising, all-or-nothing, mind reading), and how to start questioning them. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Cognitive distortions — brief guide',
       openGraphDescription: 'Learn to recognise unhelpful thinking patterns and what to do when they appear.',
     },
@@ -136,7 +136,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'ABC technique step by step | Anto psychoeducation',
       description:
-        'Learn the ABC technique (Activating event, Belief, Consequence) to analyse difficult situations and shift emotional responses.',
+        'Learn the ABC technique (Activating event, Belief, Consequence) to analyse difficult situations and shift emotional responses. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'ABC technique — step-by-step guide',
       openGraphDescription: 'Record situations, thoughts, and emotions with the CBT ABC model.',
     },
@@ -184,7 +184,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Anxiety and worry: when is it normal? | Anto',
       description:
-        'Differences between everyday worry and problematic anxiety, warning signs, and evidence-based strategies for daily life.',
+        'Differences between everyday worry and problematic anxiety, warning signs, and evidence-based strategies for daily life. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Anxiety and worry — brief guide',
       openGraphDescription: 'Understand anxiety and tools that can help between sessions with a professional.',
     },
@@ -231,9 +231,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.scales,
     readingMinutes: 6,
     meta: {
-      title: 'PHQ-9 and GAD-7: what they measure | Anto',
+      title: 'PHQ-9 and GAD-7: what they measure and how to interpret them | Anto',
       description:
-        'Guide to PHQ-9 (depression) and GAD-7 (anxiety) clinical scales: what they are for, how they are scored, and what they cannot tell you.',
+        'Guide to PHQ-9 (depression) and GAD-7 (anxiety): what they measure, how to interpret them, and why they are not for self-diagnosis. Psychoeducation; does not replace clinical assessment.',
       openGraphTitle: 'PHQ-9 and GAD-7 explained',
       openGraphDescription: 'Understand the scales Anto uses to track depressive and anxiety symptoms.',
     },
@@ -281,7 +281,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Self-compassion: what it is and brief exercises | Anto',
       description:
-        'What self-compassion means in evidence-based psychology, why it is not indulgence, and how to practice it in hard moments.',
+        'What self-compassion means in evidence-based psychology, why it is not indulgence, and how to practice it in hard moments. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Self-compassion guide',
       openGraphDescription: 'Learn to treat yourself with the same care you would offer someone you love.',
     },
@@ -328,7 +328,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Sleep hygiene and mental health | Anto Guide',
       description:
-        'How sleep affects mood and anxiety, evidence-based sleep hygiene habits, and when to see a specialist.',
+        'How sleep affects mood and anxiety, evidence-based sleep hygiene habits, and when to see a specialist. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Sleep hygiene and emotional wellbeing',
       openGraphDescription: 'Improve rest with concrete habits and understand its link to mental health.',
     },
@@ -377,7 +377,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Mindfulness: brief guide to get started | Anto',
       description:
-        'What mindfulness is, common myths, 3–5 minute exercises, and how to combine it with therapy or digital support.',
+        'What mindfulness is, common myths, 3–5 minute exercises, and how to combine it with therapy or digital support. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Mindfulness — guide to get started',
       openGraphDescription: 'Present-moment attention without mysticism: short exercises to calm the nervous system.',
     },
@@ -425,7 +425,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Depression: signs and what you can do | Anto Guide',
       description:
-        'What depression is, common signs, how it differs from normal sadness, and evidence-based strategies such as behavioural activation. Psychoeducation, not diagnosis.',
+        'What depression is, common signs, how it differs from normal sadness, and strategies such as behavioural activation. Psychoeducation; does not replace diagnosis or clinical care.',
       openGraphTitle: 'Depression — psychoeducation guide',
       openGraphDescription:
         'Understand depressive symptoms and practical tools to start rebuilding routine and connection.',
@@ -477,7 +477,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Behavioural activation: practical guide | Anto',
       description:
-        'What behavioural activation is, why it works for depression, and how to plan small activities even when motivation is low.',
+        'What behavioural activation is, why it helps with depression, and how to plan small activities even when motivation is low. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Behavioural activation — brief guide',
       openGraphDescription: 'Rebuild routine and mood with small, sustainable behavioural steps.',
     },
@@ -526,7 +526,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'OCD and exposure with response prevention (ERP) | Anto',
       description:
-        'What obsessive-compulsive disorder is, how obsessions and compulsions work, and why ERP is the most evidence-based treatment.',
+        'What obsessive-compulsive disorder is, how obsessions and compulsions work, and why ERP is the most evidence-based approach. Psychoeducation; does not replace treatment with a professional.',
       openGraphTitle: 'OCD and ERP — psychoeducation guide',
       openGraphDescription: 'Understand the obsessive-compulsive cycle and the recommended therapeutic approach.',
     },
@@ -575,7 +575,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Trauma and PTSD: normal body responses | Anto',
       description:
-        'What psychological trauma is, common PTSD symptoms, why flashbacks appear, and when to seek specialised help.',
+        'What psychological trauma is, common PTSD symptoms, why flashbacks appear, and when to seek specialised help. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Trauma and PTSD — brief guide',
       openGraphDescription: 'Psychoeducation on trauma responses and evidence-based recovery paths.',
     },
@@ -624,7 +624,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Anger management: practical guide | Anto',
       description:
-        'What triggers anger, early body signals, and CBT-based regulation techniques to respond with more control.',
+        'What triggers anger, early body signals, and CBT-based regulation techniques to respond with more control. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Anger management — brief guide',
       openGraphDescription: 'Identify triggers and learn to lower intensity before reacting.',
     },
@@ -672,7 +672,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Grounding techniques for anxiety and crisis | Anto',
       description:
-        'Grounding exercises (5 senses, present-moment contact) to lower emotional intensity and when to activate crisis resources.',
+        'Grounding exercises (5 senses, present-moment contact) to lower emotional intensity and when to activate crisis resources. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Grounding — practical guide',
       openGraphDescription: 'Return to the present when anxiety or an overwhelming memory floods you.',
     },
@@ -721,7 +721,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Stress: how your body responds and what to do | Anto',
       description:
-        'What stress is, physical and emotional signs, acute vs. chronic stress, and ways to care for yourself before burnout.',
+        'What stress is, physical and emotional signs, acute vs. chronic stress, and ways to care for yourself before burnout. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Stress — psychoeducation guide',
       openGraphDescription: 'Understand the stress response and practical tools to regain balance.',
     },
@@ -769,7 +769,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Emotion regulation: practical guide | Anto',
       description:
-        'Skills to recognise, name, and modulate intense emotions without suppressing them or reacting on autopilot.',
+        'Skills to recognise, name, and modulate intense emotions without suppressing them or reacting on autopilot. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Emotion regulation — brief guide',
       openGraphDescription: 'Learn to recognise emotions and choose more helpful responses.',
     },
@@ -817,7 +817,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Grief and loss: psychoeducation guide | Anto',
       description:
-        'How grief often unfolds, common myths, and ways to support yourself without forcing premature “closure.”',
+        'How grief often unfolds, common myths, and ways to support yourself without forcing premature “closure.” Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Grief and loss — brief guide',
       openGraphDescription: 'Understand grief as a human process and how to care for yourself patiently.',
     },
@@ -864,7 +864,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Exhaustion and burnout: signs and first steps | Anto',
       description:
-        'Signs of sustained overload, difference from normal tiredness, and initial recovery steps.',
+        'Signs of sustained overload, difference from normal tiredness, and initial recovery steps. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Exhaustion and burnout — brief guide',
       openGraphDescription: 'Recognise burnout and start recovering energy with realistic changes.',
     },

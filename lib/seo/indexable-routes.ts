@@ -37,7 +37,7 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
     changeFrequency: 'daily',
     priorityEs: 1,
     priorityEn: 0.9,
-    lastModified: '2026-06-01',
+    lastModified: '2026-07-14',
     note: 'Home — máxima prioridad, contenido principal del producto',
   },
   {
@@ -53,7 +53,7 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
     changeFrequency: 'weekly',
     priorityEs: 0.9,
     priorityEn: 0.8,
-    lastModified: '2026-05-15',
+    lastModified: '2026-07-14',
     note: 'Página de producto / descarga',
   },
   {
@@ -85,7 +85,7 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
     changeFrequency: 'weekly',
     priorityEs: 0.8,
     priorityEn: 0.7,
-    lastModified: '2026-06-01',
+    lastModified: '2026-07-14',
     note: 'Biblioteca de recursos — psicoeducación y guías del sitio',
   },
   {
@@ -150,6 +150,7 @@ export const NON_INDEXABLE_PATH_PREFIXES = [
   '/_next/',
   '/404',
   '/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a',
+  '/home-v2',
 ] as const;
 
 /** Redirects cortos — no indexables, no deben estar en sitemap. */

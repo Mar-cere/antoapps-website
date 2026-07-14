@@ -79,22 +79,24 @@ export type AppPageCopy = {
 
 const metadataByLocale: Record<Locale, AppPageMetadata> = {
   es: {
-    title: 'La Aplicación - Anto | Qué es y qué te aporta',
+    title: 'Anto para iPhone | Acompañamiento emocional en la app',
     description:
-      'Conoce Anto: aplicación de bienestar emocional con acompañamiento por IA, privacidad y herramientas para tu día a día. Versión {versionLabel}.',
+      'Descarga Anto en iOS: acompañamiento emocional continuo, herramientas para el día a día y privacidad — con apoyo de IA cuando aporta. Complementa — no reemplaza — la atención de un terapeuta o profesional humano. Versión {versionLabel}.',
     openGraph: {
-      title: 'La Aplicación - Anto',
-      description: 'Qué es Anto, sus beneficios y cómo puede acompañarte en tu bienestar emocional.',
+      title: 'Anto para iPhone',
+      description:
+        'Acompañamiento emocional continuo en iOS. Complementa — no reemplaza — a un terapeuta humano.',
       url: 'https://antoapps.com/app',
     },
   },
   en: {
-    title: 'The App - Anto | What it is and how it helps',
+    title: 'Anto for iPhone | Emotional support in the app',
     description:
-      'Meet Anto: an emotional wellness app with AI support, privacy, and tools for everyday care. Version {versionLabel}.',
+      'Download Anto on iOS: ongoing emotional support, everyday tools, and privacy — with AI assistance when it helps. It complements — does not replace — care from a human therapist or professional. Version {versionLabel}.',
     openGraph: {
-      title: 'The App - Anto',
-      description: 'What Anto is, its benefits, and how it can support your emotional wellbeing.',
+      title: 'Anto for iPhone',
+      description:
+        'Ongoing emotional support on iOS. Complements — does not replace — a human therapist.',
       url: 'https://antoapps.com/en/app',
     },
   },

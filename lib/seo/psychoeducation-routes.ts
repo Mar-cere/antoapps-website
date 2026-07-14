@@ -8,7 +8,7 @@ export const PSYCHOEDUCATION_INDEXABLE_ROUTES: readonly IndexableRoute[] = PSYCH
     changeFrequency: 'monthly' as const,
     priorityEs: 0.78,
     priorityEn: 0.68,
-    lastModified: '2026-06-01',
+    lastModified: '2026-07-14',
     note: `Psicoeducación — ${slug}`,
   })
 );
