@@ -252,8 +252,10 @@ function assertRouteConfig(referenceDate: Date, errors: string[]): void {
     } else if (Number.isNaN(Date.parse(route.lastModified))) {
       errors.push(`INDEXABLE_ROUTES: lastModified inválido en "${route.path || '/'}".`);
     } else {
-      const modified = new Date(`${route.lastModified}T23:59:59.999Z`);
-      if (modified.getTime() > referenceDate.getTime()) {
+      // Comparar solo YYYY-MM-DD (UTC). Usar fin de día vs Date.now() marca
+      // "hoy" como futuro durante casi todo el día y rompe el build en Vercel.
+      const todayUtc = referenceDate.toISOString().slice(0, 10);
+      if (route.lastModified > todayUtc) {
         errors.push(
           `INDEXABLE_ROUTES: lastModified en el futuro en "${route.path || '/'}": ${route.lastModified}`
         );
