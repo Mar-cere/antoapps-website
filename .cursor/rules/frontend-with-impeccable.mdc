@@ -1,0 +1,49 @@
+---
+description: Aplica por defecto Taste + Impeccable en UI; preserva identidad Anto
+globs: "**/*.{tsx,jsx,css,scss,html}"
+alwaysApply: true
+---
+
+# Frontend stack de skills (Anto) — por defecto
+
+En trabajo de UI/frontend de este repo, **aplica estas skills sin que el usuario las nombre**. Nombrarlas o usar `/impeccable …` solo afina el comando; no es requisito para empezar.
+
+## Auto-carga
+
+| Señal de tarea | Cargar automáticamente |
+|----------------|------------------------|
+| Landing, marketing, rediseño visual, “mejor diseño”, páginas HTML/CSS del sitio | Skill `design-taste-frontend` (Design Read + dials Anto abajo) |
+| Mejorar UI existente, a11y, polish, tipografía, motion, layout, critique | Skill `impeccable` (su flujo `context.mjs` + comando implícito más cercano) |
+| Rediseño visual grande | Taste primero → tokens Anto → Impeccable `polish`/`audit` al cierre |
+| Solo backend / API / infra sin UI | No cargar ninguna |
+
+Si ambas aplican, úsalas; no esperes a que el usuario diga “usa Taste” o “usa Impeccable”.
+
+## Reparto (dueño de la decisión)
+
+| Decisión | Dueño |
+|---------|-------|
+| Estética marketing, dials, Design Read | `design-taste-frontend` |
+| Craft/audit/critique/polish estructurado, PRODUCT.md | `impeccable` |
+| Tokens, Inter/SF, teal `#1adddb`, dark, CSS del repo | Esta rule + `PRODUCT.md` |
+
+Conflicto: **identidad Anto > PRODUCT.md > skill pedida > defaults de skill**.
+
+## Preset Anto (Taste)
+
+Salvo overhaul explícito:
+
+- `DESIGN_VARIANCE: 5`
+- `MOTION_INTENSITY: 3`
+- `VISUAL_DENSITY: 3`
+- Redesign mode: **preserve**
+- Design Read: *landing consumer bienestar emocional, calmado trust-first, dark + teal Anto, CSS tokens del repo (no Tailwind forzado).*
+
+## Overrides no negociables
+
+1. No migrar a Tailwind/shadcn/Material sin petición.
+2. No “arreglar” Inter/system ni el primary teal.
+3. No cream/purple/glass genérico.
+4. Hero: brand + headline + apoyo + CTA + imagen; sin chips flotantes.
+5. Motion contenido + `prefers-reduced-motion`.
+6. React: no `useMemo`/`useCallback` por defecto salvo criterio del repo.

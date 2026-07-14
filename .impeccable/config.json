@@ -1,0 +1,19 @@
+{
+  "hook": {
+    "enabled": false
+  },
+  "detector": {
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "Inter",
+        "reason": "Parte del stack tipográfico intencional de Anto"
+      },
+      {
+        "rule": "overused-font",
+        "value": "Roboto",
+        "reason": "Fallback del stack tipográfico existente"
+      }
+    ]
+  }
+}
