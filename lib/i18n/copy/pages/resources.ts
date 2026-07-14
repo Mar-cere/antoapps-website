@@ -5,9 +5,18 @@ import {
   PSYCHOEDUCATION_SLUGS,
   getPsychoeducationGuide,
   psychoeducationGuidePath,
+  type PsychoeducationSlug,
 } from '@/lib/i18n/copy/pages/psychoeducation';
 
 const CANONICAL_PATH = '/recursos';
+
+/** Guías priorizadas en hub y enlaces destacados (SEO + GSC). */
+const FEATURED_GUIDE_SLUGS = [
+  'escalas-phq9-gad7',
+  'que-es-tcc',
+  'grounding-ansiedad-crisis',
+  'higiene-sueno-salud-mental',
+] as const satisfies readonly PsychoeducationSlug[];
 
 export type ResourceItem = {
   id: string;
@@ -20,6 +29,11 @@ export type ResourceItem = {
 
 export type ResourceFilter = {
   id: string;
+  label: string;
+};
+
+export type ResourceFeaturedLink = {
+  href: string;
   label: string;
 };
 
@@ -36,6 +50,10 @@ export type ResourcesPageCopy = {
     title: string;
     subtitle: string;
   };
+  featured: {
+    ariaLabel: string;
+    links: ResourceFeaturedLink[];
+  };
   library: {
     filters: ResourceFilter[];
     searchPlaceholder: string;
@@ -46,8 +64,14 @@ export type ResourcesPageCopy = {
   };
 };
 
+function orderedPsychoeducationSlugs(): PsychoeducationSlug[] {
+  const featured = new Set<string>(FEATURED_GUIDE_SLUGS);
+  const rest = PSYCHOEDUCATION_SLUGS.filter((slug) => !featured.has(slug));
+  return [...FEATURED_GUIDE_SLUGS, ...rest];
+}
+
 function psychoeducationResources(locale: Locale): ResourceItem[] {
-  return PSYCHOEDUCATION_SLUGS.map((slug, index) => {
+  return orderedPsychoeducationSlugs().map((slug, index) => {
     const guide = getPsychoeducationGuide(locale, slug)!;
     return {
       id: `pe-${index + 1}`,
@@ -58,6 +82,30 @@ function psychoeducationResources(locale: Locale): ResourceItem[] {
       link: psychoeducationGuidePath(locale, slug),
     };
   });
+}
+
+function featuredLinksForLocale(locale: Locale): ResourceFeaturedLink[] {
+  const guideLinks = FEATURED_GUIDE_SLUGS.map((slug) => {
+    const guide = getPsychoeducationGuide(locale, slug)!;
+    return {
+      href: psychoeducationGuidePath(locale, slug),
+      label: guide.hero.title,
+    };
+  });
+
+  if (locale === 'en') {
+    return [
+      ...guideLinks,
+      { href: localePath(locale, '/app'), label: 'Anto for iPhone' },
+      { href: localePath(locale, '/seguridad'), label: 'Security & privacy' },
+    ];
+  }
+
+  return [
+    ...guideLinks,
+    { href: localePath(locale, '/app'), label: 'Anto para iPhone' },
+    { href: localePath(locale, '/seguridad'), label: 'Seguridad y privacidad' },
+  ];
 }
 
 function siteResources(locale: Locale): ResourceItem[] {
@@ -163,7 +211,14 @@ function siteResources(locale: Locale): ResourceItem[] {
 }
 
 function resourcesForLocale(locale: Locale): ResourceItem[] {
-  return [...psychoeducationResources(locale), ...siteResources(locale)];
+  const guides = psychoeducationResources(locale);
+  const site = siteResources(locale);
+  const productFirst = site.filter((item) => item.id === 'site-1' || item.id === 'site-3');
+  const productRest = site.filter((item) => item.id !== 'site-1' && item.id !== 'site-3');
+  // Destacadas → app/seguridad → resto de guías → resto del sitio
+  const featuredGuideItems = guides.slice(0, FEATURED_GUIDE_SLUGS.length);
+  const otherGuides = guides.slice(FEATURED_GUIDE_SLUGS.length);
+  return [...featuredGuideItems, ...productFirst, ...otherGuides, ...productRest];
 }
 
 function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
@@ -190,6 +245,10 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         title: 'Resource Library',
         subtitle:
           'Psychoeducation guides on evidence-based techniques, plus references about Anto and clinical wellbeing',
+      },
+      featured: {
+        ariaLabel: 'Featured guides and pages',
+        links: featuredLinksForLocale(locale),
       },
       library: {
         filters: [
@@ -228,6 +287,10 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
       title: 'Biblioteca de Recursos',
       subtitle:
         'Guías de psicoeducación sobre técnicas basadas en evidencia, más referencias sobre Anto y bienestar clínico',
+    },
+    featured: {
+      ariaLabel: 'Guías y páginas destacadas',
+      links: featuredLinksForLocale(locale),
     },
     library: {
       filters: [

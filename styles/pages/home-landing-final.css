@@ -703,6 +703,12 @@
     gap: 0.625rem;
 }
 
+@media (max-width: 900px) and (min-width: 641px) {
+    .home-landing-page .home-explore__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .home-landing-page .home-explore__card {
     background: rgba(255, 255, 255, 0.03);
     border: 0.5px solid rgba(255, 255, 255, 0.07);

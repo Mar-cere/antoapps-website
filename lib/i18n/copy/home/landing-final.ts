@@ -299,7 +299,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         },
       ],
       moreHref: localePath('es', '/recursos'),
-      moreLabel: 'Ver todas las preguntas →',
+      moreLabel: 'Explorar biblioteca de recursos →',
     },
     finalCta: {
       title: 'Tu mente merece un lugar donde aterrizar.',
@@ -307,13 +307,15 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
     },
     minimalFooter: {
       links: [
+        { href: localePath('es', '/recursos'), label: 'Recursos' },
+        { href: localePath('es', '/app'), label: 'App' },
+        { href: localePath('es', '/seguridad'), label: 'Seguridad' },
         { href: localePath('es', '/privacidad'), label: 'Privacidad' },
         { href: localePath('es', '/terminos'), label: 'Términos' },
         { href: localePath('es', '/contacto'), label: 'Contacto' },
-        { href: localePath('es', '/changelog'), label: 'Changelog' },
       ],
       copyright: '© 2026 Anto · Hecho con cuidado en Chile',
-      linksAria: 'Enlaces legales y de contacto',
+      linksAria: 'Enlaces del sitio',
     },
   };
   }
@@ -508,7 +510,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         },
       ],
       moreHref: localePath('en', '/recursos'),
-      moreLabel: 'See all questions →',
+      moreLabel: 'Explore the resource library →',
     },
     finalCta: {
       title: 'Your mind deserves a place to land.',
@@ -516,13 +518,15 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
     },
     minimalFooter: {
       links: [
+        { href: localePath('en', '/recursos'), label: 'Resources' },
+        { href: localePath('en', '/app'), label: 'App' },
+        { href: localePath('en', '/seguridad'), label: 'Security' },
         { href: localePath('en', '/privacidad'), label: 'Privacy' },
         { href: localePath('en', '/terminos'), label: 'Terms' },
         { href: localePath('en', '/contacto'), label: 'Contact' },
-        { href: localePath('en', '/changelog'), label: 'Changelog' },
       ],
       copyright: '© 2026 Anto · Made with care in Chile',
-      linksAria: 'Legal and contact links',
+      linksAria: 'Site links',
     },
   };
 }

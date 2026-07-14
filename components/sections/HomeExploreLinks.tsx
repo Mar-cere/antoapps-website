@@ -10,42 +10,72 @@ type HomeExploreLinksProps = {
 
 const copy: Record<Locale, { title: string; links: { href: string; label: string; description: string }[] }> = {
   es: {
-    title: 'Para los curiosos',
+    title: 'Explorar Anto',
     links: [
       {
-        href: '/investigacion',
-        label: 'Investigación',
-        description: 'Estudios y evidencia clínica',
+        href: '/recursos',
+        label: 'Recursos',
+        description: 'Biblioteca de psicoeducación',
+      },
+      {
+        href: '/recursos/escalas-phq9-gad7',
+        label: 'PHQ-9 y GAD-7',
+        description: 'Qué miden y cómo interpretarlas',
+      },
+      {
+        href: '/recursos/que-es-tcc',
+        label: 'Qué es la TCC',
+        description: 'Guía breve de terapia cognitivo-conductual',
+      },
+      {
+        href: '/recursos/grounding-ansiedad-crisis',
+        label: 'Grounding',
+        description: 'Técnicas para ansiedad y crisis',
+      },
+      {
+        href: '/app',
+        label: 'La app',
+        description: 'Anto en iPhone — qué incluye',
       },
       {
         href: '/seguridad',
         label: 'Seguridad',
-        description: 'AES-256 · E2E · GDPR',
-      },
-      {
-        href: '/desarrollo',
-        label: 'Tecnología',
-        description: 'Arquitectura y stack técnico',
+        description: 'Cifrado, privacidad y límites clínicos',
       },
     ],
   },
   en: {
-    title: 'For the curious',
+    title: 'Explore Anto',
     links: [
       {
-        href: '/investigacion',
-        label: 'Research',
-        description: 'Studies and clinical evidence',
+        href: '/recursos',
+        label: 'Resources',
+        description: 'Psychoeducation library',
+      },
+      {
+        href: '/recursos/escalas-phq9-gad7',
+        label: 'PHQ-9 & GAD-7',
+        description: 'What they measure and how to read them',
+      },
+      {
+        href: '/recursos/que-es-tcc',
+        label: 'What is CBT',
+        description: 'Brief cognitive behavioural therapy guide',
+      },
+      {
+        href: '/recursos/grounding-ansiedad-crisis',
+        label: 'Grounding',
+        description: 'Techniques for anxiety and crisis',
+      },
+      {
+        href: '/app',
+        label: 'The app',
+        description: 'Anto on iPhone — what is included',
       },
       {
         href: '/seguridad',
         label: 'Security',
-        description: 'AES-256 · E2E · GDPR',
-      },
-      {
-        href: '/desarrollo',
-        label: 'Technology',
-        description: 'Architecture and technical stack',
+        description: 'Encryption, privacy, and clinical limits',
       },
     ],
   },

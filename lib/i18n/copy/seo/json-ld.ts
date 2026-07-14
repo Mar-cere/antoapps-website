@@ -19,36 +19,36 @@ const softwareCopy: Record<
   es: {
     operatingSystem: 'iOS (descarga directa), Android (acceso anticipado)',
     description:
-      'Aplicación móvil de bienestar emocional con IA (GPT-5.4 Mini), análisis emocional, detección de crisis y herramientas de bienestar 24/7. No sustituye atención clínica.',
+      'App de acompañamiento emocional continuo en iPhone. Apoyo entre sesiones o en el día a día, con asistencia de IA en segundo plano, herramientas de bienestar y seguimiento. No sustituye atención clínica: un terapeuta o profesional humano sigue siendo lo más recomendable.',
     featureList: [
-      'Asistente de IA con GPT-5.4 Mini',
+      'Acompañamiento emocional continuo',
       'Escalas clínicas PHQ-9 y GAD-7',
-      '8 protocolos terapéuticos estructurados',
+      '8 protocolos estructurados basados en evidencia',
       'Detección de crisis 24/7',
-      'Hub de técnicas terapéuticas',
+      'Hub de técnicas',
       'Tareas y hábitos unificados',
       'Grafo de insights y memoria de temas',
       'WAI post-sesión (alianza terapéutica)',
       'App bilingüe español e inglés',
-      'Sesión persistente con refresh de JWT',
+      'Disponible en iPhone',
       'Prueba gratuita de 1 día',
     ],
   },
   en: {
     operatingSystem: 'iOS (direct download), Android (early access)',
     description:
-      'Mobile emotional wellness app with AI (GPT-5.4 Mini), emotional analysis, crisis detection, and wellness tools available 24/7. Not a substitute for clinical care.',
+      'Ongoing emotional support app for iPhone. Support between sessions or day to day, with AI assistance in the background, wellbeing tools, and tracking. Does not replace clinical care — a human therapist or professional remains the stronger recommendation.',
     featureList: [
-      'AI assistant with GPT-5.4 Mini',
+      'Ongoing emotional support',
       'PHQ-9 and GAD-7 clinical scales',
-      '8 structured therapeutic protocols',
+      '8 evidence-based structured protocols',
       '24/7 crisis detection',
-      'Therapeutic techniques hub',
+      'Techniques hub',
       'Unified tasks and habits',
       'Insights graph and topic memory',
       'Post-session WAI (therapeutic alliance)',
       'Bilingual Spanish and English app',
-      'Persistent session with JWT refresh',
+      'Available on iPhone',
       '1-day free trial',
     ],
   },
@@ -56,10 +56,12 @@ const softwareCopy: Record<
 
 const orgCopy: Record<Locale, { description: string }> = {
   es: {
-    description: 'Mejorando la salud mental, una conversación a la vez.',
+    description:
+      'Anto ofrece acompañamiento emocional continuo: un lugar donde aterrizar entre sesiones o en el día a día. Complementa — no reemplaza — la atención de un terapeuta o profesional humano.',
   },
   en: {
-    description: 'Improving mental health, one conversation at a time.',
+    description:
+      'Anto provides ongoing emotional support: a place to land between sessions or day to day. It complements — does not replace — care from a human therapist or professional.',
   },
 };
 
@@ -129,12 +131,17 @@ export function getFaqPageJsonLd(locale: Locale): JsonLd {
 
 export function getWebSiteJsonLd(locale: Locale): JsonLd {
   const url = locale === 'en' ? `${SITE_ORIGIN}/en` : SITE_ORIGIN;
+  const description =
+    locale === 'en'
+      ? 'Anto — ongoing emotional support on iPhone. A place for your mind to land. Complements clinical care; does not replace a human therapist.'
+      : 'Anto — acompañamiento emocional continuo en iPhone. Un lugar donde aterrizar. Complementa la atención clínica; no reemplaza a un terapeuta humano.';
 
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Anto',
     url,
+    description,
     inLanguage: locale === 'en' ? 'en' : 'es',
     publisher: {
       '@type': 'Organization',

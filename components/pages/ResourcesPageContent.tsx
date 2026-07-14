@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getResourcesPageCopy } from '@/lib/i18n/copy/pages/resources';
@@ -34,6 +35,17 @@ export default function ResourcesPageContent({ locale }: ResourcesPageContentPro
           <div className="container">
             <h1 className="resources-title reveal-on-scroll">{copy.hero.title}</h1>
             <p className="resources-subtitle reveal-on-scroll">{copy.hero.subtitle}</p>
+            <nav className="resources-featured reveal-on-scroll" aria-label={copy.featured.ariaLabel}>
+              <ul className="resources-featured__list">
+                {copy.featured.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="resources-featured__link">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </section>
 

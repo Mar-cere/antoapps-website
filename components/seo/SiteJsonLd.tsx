@@ -5,6 +5,7 @@ import { localeFromPathname } from '@/lib/i18n/path-from-pathname';
 import {
   getOrganizationJsonLd,
   getSoftwareApplicationJsonLd,
+  getWebSiteJsonLd,
 } from '@/lib/i18n/copy/seo/json-ld';
 
 export default function SiteJsonLd() {
@@ -12,6 +13,7 @@ export default function SiteJsonLd() {
   const locale = localeFromPathname(pathname);
   const software = getSoftwareApplicationJsonLd(locale);
   const organization = getOrganizationJsonLd(locale);
+  const website = getWebSiteJsonLd(locale);
 
   return (
     <>
@@ -22,6 +24,10 @@ export default function SiteJsonLd() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
       />
     </>
   );
