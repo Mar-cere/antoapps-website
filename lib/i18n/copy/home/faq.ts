@@ -59,6 +59,61 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
       ],
       faqData: [
         {
+          id: 101,
+          question: '¿Qué es Anto?',
+          answer:
+            'Anto es una app de acompañamiento emocional continuo: un lugar donde aterrizar cuando necesitas apoyo entre sesiones o en el día a día. Usa asistencia de IA en segundo plano, con herramientas y seguimiento pensados para el bienestar. No sustituye atención clínica: un terapeuta o profesional humano sigue siendo lo más recomendable. Disponible en iPhone.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 102,
+          question: '¿Anto reemplaza a un terapeuta o psicólogo?',
+          answer:
+            'No. Anto es un complemento de acompañamiento emocional, no terapia ni atención clínica. Un terapeuta, psicólogo u otro profesional humano capacitado sigue siendo lo más recomendable cuando necesitas evaluación, diagnóstico o tratamiento. Si ya tienes acompañamiento profesional, Anto puede ayudarte entre sesiones; no lo sustituye.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 103,
+          question: '¿Anto es una app de IA?',
+          answer:
+            'Usa asistencia de IA para conversar y acompañarte, pero el foco no es “otro chatbot genérico”: es acompañamiento emocional continuo, con herramientas, seguimiento y límites claros. La IA está al servicio del cuidado; no reemplaza el criterio de un profesional humano.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 104,
+          question: '¿Anto es gratis?',
+          answer: trial.faqPricingAnswer,
+          category: 'precios',
+        },
+        {
+          id: 105,
+          question: '¿Para quién es Anto?',
+          answer:
+            'Para adultos que buscan acompañamiento emocional continuo en el día a día o entre sesiones con un profesional. No está pensado para diagnosticar, tratar crisis graves por sí solo ni sustituir atención clínica. Si tus síntomas son intensos o te sientes en riesgo, prioriza ayuda humana especializada.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 106,
+          question: '¿En qué se diferencia Anto de ChatGPT u otros chats de IA?',
+          answer:
+            'Anto está orientado al bienestar emocional: memoria de temas de cuidado, técnicas y protocolos, escalas de seguimiento (como PHQ-9 y GAD-7), detección de crisis y un diseño de privacidad pensado para acompañamiento. Un chat generalista puede conversar de todo; Anto está acotado a apoyo emocional continuo y no pretende ser terapia ni diagnóstico.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 107,
+          question: '¿Cuándo debería buscar ayuda humana en lugar de (o además de) Anto?',
+          answer:
+            'Cuando los síntomas son intensos o persistentes, hay riesgo de autolesión o daño a otros, necesitas diagnóstico o tratamiento, o simplemente prefieres la relación con un terapeuta. En esos casos, un profesional humano es prioritario. Anto puede acompañarte en paralelo o entre sesiones, pero no alcanza para cubrir lo que da la atención clínica.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 108,
+          question: '¿Puedo usar Anto solo entre sesiones con mi terapeuta?',
+          answer:
+            'Sí. Ese es uno de los usos más alineados con Anto: acompañamiento emocional continuo entre citas, seguimiento del día a día y un lugar donde aterrizar cuando no tienes sesión. No reemplaza el trabajo con tu terapeuta; lo complementa si tú y tu profesional lo consideran útil.',
+          category: 'funcionalidad',
+        },
+        {
           id: 1,
           question: '¿Mis conversaciones son realmente privadas?',
           answer:
@@ -67,16 +122,16 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         },
         {
           id: 2,
-          question: '¿Cómo funciona el asistente AI?',
+          question: '¿Cómo funciona el asistente de Anto?',
           answer:
-            'El asistente usa NLP de última generación (OpenAI GPT-5.4 Mini) con enfoque de bienestar emocional y técnicas alineadas con evidencia (p. ej. enfoques tipo CBT cuando encajan). Por defecto el tono es profesional y práctico; no sustituye terapia presencial ni diagnóstico clínico. Desde la versión 1.5, recuerda temas recurrentes entre conversaciones, mantiene sugerencias al reabrir el chat y conecta patrones con el grafo de insights y las técnicas del hub. Incluye escalas validadas (PHQ-9, GAD-7), detección de distorsiones cognitivas y protocolos estructurados. Puedes ajustar preferencias de estilo de respuesta cuando la app lo ofrece.',
+            'Conversas en un espacio de acompañamiento emocional. Detrás hay asistencia de IA (OpenAI GPT-5.4 Mini) con técnicas alineadas con evidencia cuando encajan (por ejemplo enfoques tipo CBT), tono profesional y práctico. No sustituye terapia presencial ni diagnóstico clínico. Puede recordar temas recurrentes, conectar patrones con el grafo de insights y el hub de técnicas, e incluir escalas validadas (PHQ-9, GAD-7) y protocolos estructurados. Puedes ajustar preferencias de estilo cuando la app lo ofrece.',
           category: 'funcionalidad',
         },
         {
           id: 3,
           question: '¿Puedo usar Anto si ya tengo un terapeuta?',
           answer:
-            'Por supuesto. Anto está diseñado específicamente para complementar, no reemplazar, la terapia tradicional. Muchos usuarios lo usan como apoyo entre sesiones, para hacer seguimiento diario de su estado emocional, o como herramienta adicional de bienestar. Algunos terapeutas incluso recomiendan Anto a sus pacientes como complemento. Puedes compartir tus reportes y análisis con tu terapeuta si lo deseas, lo que puede enriquecer vuestras sesiones.',
+            'Sí. Anto está pensado para complementar — nunca reemplazar — el trabajo con un terapeuta o profesional humano. Muchas personas lo usan entre sesiones o para el seguimiento diario. Si tu profesional lo ve útil, puedes compartir reportes o insights; la relación terapéutica humana sigue siendo lo más importante.',
           category: 'funcionalidad',
         },
         {
@@ -137,6 +192,27 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
       ],
       faqMoreData: [
         {
+          id: 109,
+          question: '¿Necesito experiencia previa en terapia para usar Anto?',
+          answer:
+            'No. Puedes empezar sin haber ido a terapia: la app acompaña con un lenguaje accesible y herramientas claras. Si ya tienes recorrido terapéutico, también puedes usarla como apoyo entre sesiones. En ambos casos sigue siendo un complemento, no un reemplazo de atención profesional.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 110,
+          question: '¿Anto está disponible en Android?',
+          answer:
+            'Por ahora la descarga directa está en App Store para iPhone (iOS). En Android operamos con acceso anticipado por invitación por correo mientras completamos verificaciones. La experiencia principal hoy es iOS; Android se irá abriendo de forma gradual.',
+          category: 'tecnica',
+        },
+        {
+          id: 111,
+          question: '¿Mis conversaciones se usan para entrenar modelos de IA?',
+          answer:
+            'No vendemos tus conversaciones ni las usamos para publicidad. El procesamiento con proveedores de IA es para prestarte el servicio de acompañamiento, según nuestra Política de Privacidad. No comercializamos tu información con terceros. Para el detalle legal, revisa la política de privacidad del sitio.',
+          category: 'privacidad',
+        },
+        {
           id: 12,
           question: '¿Necesito conexión a internet para usar Anto?',
           answer:
@@ -161,7 +237,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 15,
           question: '¿Anto puede diagnosticar condiciones de salud mental?',
           answer:
-            'No, Anto no puede y no debe usarse para diagnosticar condiciones de salud mental. Anto es una herramienta de apoyo y bienestar, no un reemplazo para el diagnóstico profesional. Si tienes preocupaciones sobre tu salud mental, te recomendamos consultar con un profesional de salud mental licenciado. Anto puede ayudarte a identificar patrones y proporcionar apoyo, pero el diagnóstico debe ser realizado por un profesional cualificado.',
+            'No. Anto no diagnostica ni debe usarse para eso. Es acompañamiento emocional y apoyo al bienestar; el diagnóstico corresponde a un profesional humano cualificado. Si tienes preocupaciones sobre tu salud mental, consulta con un terapeuta o profesional licenciado — eso sigue siendo lo más recomendable.',
           category: 'funcionalidad',
         },
         {
@@ -257,6 +333,61 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
     ],
     faqData: [
       {
+        id: 101,
+        question: 'What is Anto?',
+        answer:
+          'Anto is an app for ongoing emotional support: a place to land when you need support between sessions or day to day. It uses AI assistance in the background, with tools and tracking designed for wellbeing. It does not replace clinical care — a human therapist or professional remains the stronger recommendation. Available on iPhone.',
+        category: 'funcionalidad',
+      },
+      {
+        id: 102,
+        question: 'Does Anto replace a therapist or psychologist?',
+        answer:
+          'No. Anto is a complementary emotional-support companion, not therapy or clinical care. A therapist, psychologist, or other qualified human professional remains the stronger recommendation when you need assessment, diagnosis, or treatment. If you already have professional support, Anto can help between sessions — it does not replace it.',
+        category: 'funcionalidad',
+      },
+      {
+        id: 103,
+        question: 'Is Anto an AI app?',
+        answer:
+          'It uses AI assistance to converse and support you, but the focus is not “another generic chatbot”: it is ongoing emotional support, with tools, tracking, and clear limits. AI serves care; it does not replace the judgment of a human professional.',
+        category: 'funcionalidad',
+      },
+      {
+        id: 104,
+        question: 'Is Anto free?',
+        answer: trial.faqPricingAnswer,
+        category: 'precios',
+      },
+      {
+        id: 105,
+        question: 'Who is Anto for?',
+        answer:
+          'For adults seeking ongoing emotional support day to day or between sessions with a professional. It is not meant to diagnose, treat severe crises on its own, or replace clinical care. If your symptoms are intense or you feel at risk, prioritise specialised human help.',
+        category: 'funcionalidad',
+      },
+      {
+        id: 106,
+        question: 'How is Anto different from ChatGPT or other AI chats?',
+        answer:
+          'Anto is oriented to emotional wellbeing: care-topic memory, techniques and protocols, tracking scales (such as PHQ-9 and GAD-7), crisis detection, and a privacy design built for support. A generalist chat can talk about anything; Anto is scoped to ongoing emotional support and does not claim to be therapy or diagnosis.',
+        category: 'funcionalidad',
+      },
+      {
+        id: 107,
+        question: 'When should I seek human help instead of (or in addition to) Anto?',
+        answer:
+          'When symptoms are intense or persistent, there is risk of self-harm or harm to others, you need diagnosis or treatment, or you simply prefer a relationship with a therapist. In those cases, a human professional comes first. Anto can support you in parallel or between sessions, but it cannot cover what clinical care provides.',
+        category: 'funcionalidad',
+      },
+      {
+        id: 108,
+        question: 'Can I use Anto only between sessions with my therapist?',
+        answer:
+          'Yes. That is one of the uses most aligned with Anto: ongoing emotional support between appointments, day-to-day check-ins, and a place to land when you do not have a session. It does not replace work with your therapist; it complements it if you and your professional find it useful.',
+        category: 'funcionalidad',
+      },
+      {
         id: 1,
         question: 'Are my conversations really private?',
         answer:
@@ -265,16 +396,16 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
       },
       {
         id: 2,
-        question: 'How does the AI assistant work?',
+        question: 'How does Anto’s assistant work?',
         answer:
-          'The assistant uses state-of-the-art NLP (OpenAI GPT-5.4 Mini) with an emotional wellbeing focus and evidence-aligned techniques (e.g. CBT-style approaches when appropriate). By default the tone is professional and practical; it does not replace in-person therapy or clinical diagnosis. Since version 1.5, it remembers recurring topics across conversations, keeps suggestions when you reopen chat, and connects patterns to the insights graph and techniques hub. It includes validated scales (PHQ-9, GAD-7), cognitive distortion detection, and structured protocols. You can adjust response style preferences when the app offers them.',
+          'You converse in a space for emotional support. Behind it is AI assistance (OpenAI GPT-5.4 Mini) with evidence-aligned techniques when they fit (for example CBT-style approaches), in a professional, practical tone. It does not replace in-person therapy or clinical diagnosis. It can remember recurring topics, connect patterns to the insights graph and techniques hub, and include validated scales (PHQ-9, GAD-7) and structured protocols. You can adjust style preferences when the app offers them.',
         category: 'funcionalidad',
       },
       {
         id: 3,
         question: 'Can I use Anto if I already have a therapist?',
         answer:
-          'Of course. Anto is specifically designed to complement, not replace, traditional therapy. Many users rely on it for support between sessions, daily emotional tracking, or as an additional wellbeing tool. Some therapists even recommend Anto to their patients as a complement. You can share your reports and analyses with your therapist if you wish, which can enrich your sessions.',
+          'Yes. Anto is meant to complement — never replace — work with a human therapist or professional. Many people use it between sessions or for daily check-ins. If your professional finds it useful, you can share reports or insights; the human therapeutic relationship remains what matters most.',
         category: 'funcionalidad',
       },
       {
@@ -335,6 +466,27 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
     ],
     faqMoreData: [
       {
+        id: 109,
+        question: 'Do I need prior therapy experience to use Anto?',
+        answer:
+          'No. You can start without having been in therapy: the app supports you with accessible language and clear tools. If you already have a therapeutic journey, you can also use it between sessions. In both cases it remains a complement, not a replacement for professional care.',
+        category: 'funcionalidad',
+      },
+      {
+        id: 110,
+        question: 'Is Anto available on Android?',
+        answer:
+          'For now, direct download is on the App Store for iPhone (iOS). On Android we operate with early access by email invitation while we complete verifications. The main experience today is iOS; Android will open gradually.',
+        category: 'tecnica',
+      },
+      {
+        id: 111,
+        question: 'Are my conversations used to train AI models?',
+        answer:
+          'We do not sell your conversations or use them for advertising. Processing with AI providers is to deliver the support service, according to our Privacy Policy. We do not commercialise your information with third parties. For legal detail, see the site privacy policy.',
+        category: 'privacidad',
+      },
+      {
         id: 12,
         question: 'Do I need an internet connection to use Anto?',
         answer:
@@ -359,7 +511,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 15,
         question: 'Can Anto diagnose mental health conditions?',
         answer:
-          'No, Anto cannot and should not be used to diagnose mental health conditions. Anto is a support and wellbeing tool, not a replacement for professional diagnosis. If you have concerns about your mental health, we recommend consulting a licensed mental health professional. Anto can help you identify patterns and provide support, but diagnosis must be performed by a qualified professional.',
+          'No. Anto does not diagnose and should not be used for that. It is ongoing emotional support and wellbeing accompaniment; diagnosis belongs to a qualified human professional. If you have concerns about your mental health, consult a licensed therapist or clinician — that remains the stronger recommendation.',
         category: 'funcionalidad',
       },
       {
