@@ -7,6 +7,7 @@ import type { MetadataRoute } from 'next';
  * independientes por idioma. Rutas excluidas explícitamente:
  * - /404 (página de error)
  * - /zt9kq7m2v8n4xpw6rb3yjh1cw5df8a (validador opaco, noindex)
+ * - /open (puente HTTPS deep link correos, noindex)
  * - Redirects temporales: /l, /en/l, /welcome, /login, /signup, /chat
  */
 export type SitemapChangeFrequency = NonNullable<
@@ -151,6 +152,7 @@ export const NON_INDEXABLE_PATH_PREFIXES = [
   '/404',
   '/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a',
   '/home-v2',
+  '/open',
 ] as const;
 
 /** Redirects cortos — no indexables, no deben estar en sitemap. */

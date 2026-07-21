@@ -39,6 +39,15 @@ const nextConfig = {
   // Preservar archivos estáticos existentes
   async rewrites() {
     return [
+      // Puente correos «Abrir Anto»: /open y /open/ → HTML estático (query ?to= se conserva)
+      {
+        source: '/open',
+        destination: '/open/index.html',
+      },
+      {
+        source: '/open/',
+        destination: '/open/index.html',
+      },
       {
         source: '/privacidad',
         destination: '/privacidad',
@@ -109,10 +118,33 @@ const nextConfig = {
       },
     ];
 
+    const openAppNoIndex = [
+      {
+        key: 'X-Robots-Tag',
+        value: 'noindex, nofollow',
+      },
+      {
+        key: 'Content-Type',
+        value: 'text/html; charset=utf-8',
+      },
+    ];
+
     return [
       {
         source: '/(.*)',
         headers: globalHeaders,
+      },
+      {
+        source: '/open',
+        headers: openAppNoIndex,
+      },
+      {
+        source: '/open/',
+        headers: openAppNoIndex,
+      },
+      {
+        source: '/open/index.html',
+        headers: openAppNoIndex,
       },
       // Ruta opaca: menos filtración del host al enlazar o pedir recursos externos
       {
