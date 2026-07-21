@@ -53,7 +53,7 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
     changeFrequency: 'weekly',
     priorityEs: 0.9,
     priorityEn: 0.8,
-    lastModified: '2026-07-14',
+    lastModified: '2026-07-21',
     note: 'Página de producto / descarga',
   },
   {

@@ -79,24 +79,24 @@ export type AppPageCopy = {
 
 const metadataByLocale: Record<Locale, AppPageMetadata> = {
   es: {
-    title: 'Anto para iPhone | Acompañamiento emocional en la app',
+    title: 'Anto iOS — App para iPhone | Acompañamiento emocional',
     description:
-      'Descarga Anto en iOS: acompañamiento emocional continuo, herramientas para el día a día y privacidad — con apoyo de IA cuando aporta. Complementa — no reemplaza — la atención de un terapeuta o profesional humano. Versión {versionLabel}.',
+      'Descarga Anto en App Store para iPhone (iOS): acompañamiento emocional continuo, privacidad y herramientas para el día a día. Prueba disponible al instalar. Complementa — no reemplaza — a un terapeuta o profesional humano. Versión {versionLabel}.',
     openGraph: {
-      title: 'Anto para iPhone',
+      title: 'Anto iOS — App para iPhone',
       description:
-        'Acompañamiento emocional continuo en iOS. Complementa — no reemplaza — a un terapeuta humano.',
+        'Descarga en App Store. Acompañamiento emocional continuo en iPhone. Complementa — no reemplaza — a un terapeuta humano.',
       url: 'https://antoapps.com/app',
     },
   },
   en: {
-    title: 'Anto for iPhone | Emotional support in the app',
+    title: 'Anto iOS — iPhone app | Ongoing emotional support',
     description:
-      'Download Anto on iOS: ongoing emotional support, everyday tools, and privacy — with AI assistance when it helps. It complements — does not replace — care from a human therapist or professional. Version {versionLabel}.',
+      'Download Anto on the App Store for iPhone (iOS): ongoing emotional support, privacy, and everyday tools. Trial available when you install. Complements — does not replace — a human therapist or professional. Version {versionLabel}.',
     openGraph: {
-      title: 'Anto for iPhone',
+      title: 'Anto iOS — iPhone app',
       description:
-        'Ongoing emotional support on iOS. Complements — does not replace — a human therapist.',
+        'Download on the App Store. Ongoing emotional support on iPhone. Complements — does not replace — a human therapist.',
       url: 'https://antoapps.com/en/app',
     },
   },
