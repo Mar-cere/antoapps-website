@@ -152,6 +152,7 @@ export const NON_INDEXABLE_PATH_PREFIXES = [
   '/404',
   '/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a',
   '/home-v2',
+  '/en/home-v2',
   '/open',
 ] as const;
 

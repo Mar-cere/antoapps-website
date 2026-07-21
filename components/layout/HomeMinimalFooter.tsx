@@ -8,9 +8,11 @@ import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 
 type HomeMinimalFooterProps = {
   locale: Locale;
+  /** Path lógico sin prefijo /en (p. ej. `/` o `/home-v2`). */
+  switchPath?: string;
 };
 
-export default function HomeMinimalFooter({ locale }: HomeMinimalFooterProps) {
+export default function HomeMinimalFooter({ locale, switchPath = '/' }: HomeMinimalFooterProps) {
   const copy = getHomeLandingFinalCopy(locale);
   const { minimalFooter } = copy;
   const homeHref = localePath(locale, '/');
@@ -37,7 +39,7 @@ export default function HomeMinimalFooter({ locale }: HomeMinimalFooterProps) {
             </Link>
           ))}
         </nav>
-        <LanguageSwitcher locale={locale} path="/" className="home-landing-footer__lang" />
+        <LanguageSwitcher locale={locale} path={switchPath} className="home-landing-footer__lang" />
         <p className="home-landing-footer__copy">{minimalFooter.copyright}</p>
       </div>
     </footer>
