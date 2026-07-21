@@ -44,4 +44,6 @@ next-env.d.ts
 # Old HTML files (mantener por ahora para referencia)
 *.html
 !404.html
+# Puente correos Abrir Anto (también servido via app/open/route.ts)
+!public/open/index.html
 
