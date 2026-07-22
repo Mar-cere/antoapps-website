@@ -24,6 +24,9 @@ export function buildRobotsConfig(): MetadataRoute.Robots {
     'PerplexityBot',
     'Applebot-Extended',
     'cohere-ai',
+    'Meta-ExternalAgent',
+    'Bytespider',
+    'Amazonbot',
   ] as const;
 
   const aiRules = aiUserAgents.map((userAgent) => ({

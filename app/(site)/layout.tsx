@@ -5,8 +5,20 @@ import ClientScripts from '@/components/ClientScripts';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://antoapps.com'),
-  keywords:
-    'salud mental, terapia, AI, asistente virtual, bienestar emocional, apoyo emocional, terapia online, salud mental app, inteligencia artificial, bienestar mental',
+  keywords: [
+    'Anto',
+    'acompañamiento emocional',
+    'bienestar emocional',
+    'ansiedad',
+    'entre sesiones',
+    'salud mental',
+    'app salud mental',
+    'terapia complementaria',
+    'TCC',
+    'emotional support app',
+    'anxiety support',
+    'between therapy sessions',
+  ].join(', '),
   authors: [{ name: 'Marcelo Ull Marambio', url: 'https://github.com/Mar-cere' }],
   creator: 'Marcelo Ull Marambio',
   publisher: 'AntoApps',

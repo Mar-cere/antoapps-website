@@ -9,12 +9,20 @@ import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 
 type HomeMinimalNavProps = {
   locale: Locale;
+  /** Si se define, el CTA navega a este ancla en la misma página (p. ej. `#precios`). */
+  ctaHref?: string;
+  /** Etiqueta del CTA (por defecto copy de landing final). */
+  ctaLabel?: string;
+  /** Aria del CTA. */
+  ctaAria?: string;
 };
 
-export default function HomeMinimalNav({ locale }: HomeMinimalNavProps) {
+export default function HomeMinimalNav({ locale, ctaHref, ctaLabel, ctaAria }: HomeMinimalNavProps) {
   const copy = getHomeLandingFinalCopy(locale);
   const homeHref = locale === 'en' ? '/en' : '/';
   const pagePath = homeHref;
+  const label = ctaLabel ?? copy.minimalNav.cta;
+  const aria = ctaAria ?? copy.hero.storeAria;
 
   return (
     <header className="home-landing-nav" role="banner">
@@ -32,16 +40,22 @@ export default function HomeMinimalNav({ locale }: HomeMinimalNavProps) {
           </span>
           <span className="home-landing-nav__name">Anto</span>
         </Link>
-        <DownloadLink
-          href={appStoreHref()}
-          className="home-landing-nav__cta"
-          trackingPlacement="home_minimal_nav_cta"
-          trackingPage={pagePath}
-          trackingLabel="home_minimal_nav"
-          aria-label={copy.hero.storeAria}
-        >
-          {copy.minimalNav.cta}
-        </DownloadLink>
+        {ctaHref ? (
+          <Link href={ctaHref} className="home-landing-nav__cta" aria-label={aria}>
+            {label}
+          </Link>
+        ) : (
+          <DownloadLink
+            href={appStoreHref()}
+            className="home-landing-nav__cta"
+            trackingPlacement="home_minimal_nav_cta"
+            trackingPage={pagePath}
+            trackingLabel="home_minimal_nav"
+            aria-label={aria}
+          >
+            {label}
+          </DownloadLink>
+        )}
       </nav>
     </header>
   );

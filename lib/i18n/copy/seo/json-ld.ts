@@ -1,6 +1,7 @@
 import { APP_VERSION } from '@/lib/app-version';
 import type { Locale } from '@/lib/i18n/config';
-import { getHomeFaqCopy } from '@/lib/i18n/copy/home/faq';
+import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
+import { DEFAULT_APP_STORE_URL } from '@/lib/download-links';
 
 import { getAppScreenshotUrl } from '@/lib/assets/app-screenshots';
 
@@ -19,16 +20,15 @@ const softwareCopy: Record<
   es: {
     operatingSystem: 'iOS (descarga directa), Android (acceso anticipado)',
     description:
-      'App de acompañamiento emocional continuo en iPhone. Apoyo entre sesiones o en el día a día, con asistencia de IA en segundo plano, herramientas de bienestar y seguimiento. No sustituye atención clínica: un terapeuta o profesional humano sigue siendo lo más recomendable.',
+      'App de acompañamiento emocional continuo en iPhone para ansiedad y horas quietas — entre sesiones de terapia o en el día a día. Escribe lo que sientes, sal con claridad y un paso concreto. Asistencia de IA en segundo plano, memoria de temas, hub de técnicas y chequeos. Complementa — no reemplaza — a un terapeuta humano.',
     featureList: [
       'Acompañamiento emocional continuo',
-      'Escalas clínicas PHQ-9 y GAD-7',
-      '8 protocolos estructurados basados en evidencia',
+      'Memoria de temas y patrones',
+      'Hub de técnicas (TCC, exposición, mindfulness)',
+      'Lienzo ABC interactivo',
+      'Chequeos quietos de bienestar',
       'Detección de crisis 24/7',
-      'Hub de técnicas',
-      'Tareas y hábitos unificados',
-      'Grafo de insights y memoria de temas',
-      'WAI post-sesión (alianza terapéutica)',
+      'Conversaciones cifradas',
       'App bilingüe español e inglés',
       'Disponible en iPhone',
       'Prueba gratuita de 1 día',
@@ -37,16 +37,15 @@ const softwareCopy: Record<
   en: {
     operatingSystem: 'iOS (direct download), Android (early access)',
     description:
-      'Ongoing emotional support app for iPhone. Support between sessions or day to day, with AI assistance in the background, wellbeing tools, and tracking. Does not replace clinical care — a human therapist or professional remains the stronger recommendation.',
+      'Ongoing emotional support app for iPhone for anxiety and quiet hours — between therapy sessions or day to day. Write what you feel, leave with clarity and one concrete step. AI assistance in the background, theme memory, techniques hub, and check-ins. Complements — does not replace — a human therapist.',
     featureList: [
       'Ongoing emotional support',
-      'PHQ-9 and GAD-7 clinical scales',
-      '8 evidence-based structured protocols',
+      'Theme memory and patterns',
+      'Techniques hub (CBT, exposure, mindfulness)',
+      'Interactive ABC canvas',
+      'Quiet wellbeing check-ins',
       '24/7 crisis detection',
-      'Techniques hub',
-      'Unified tasks and habits',
-      'Insights graph and topic memory',
-      'Post-session WAI (therapeutic alliance)',
+      'Encrypted conversations',
       'Bilingual Spanish and English app',
       'Available on iPhone',
       '1-day free trial',
@@ -57,11 +56,11 @@ const softwareCopy: Record<
 const orgCopy: Record<Locale, { description: string }> = {
   es: {
     description:
-      'Anto ofrece acompañamiento emocional continuo: un lugar donde aterrizar entre sesiones o en el día a día. Complementa — no reemplaza — la atención de un terapeuta o profesional humano.',
+      'Anto ofrece acompañamiento emocional continuo para ansiedad y horas quietas: un lugar donde aterrizar entre sesiones de terapia o en el día a día. Complementa — no reemplaza — la atención de un terapeuta o profesional humano.',
   },
   en: {
     description:
-      'Anto provides ongoing emotional support: a place to land between sessions or day to day. It complements — does not replace — care from a human therapist or professional.',
+      'Anto provides ongoing emotional support for anxiety and quiet hours: a place to land between therapy sessions or day to day. It complements — does not replace — care from a human therapist or professional.',
   },
 };
 
@@ -85,6 +84,8 @@ export function getSoftwareApplicationJsonLd(locale: Locale): JsonLd {
     screenshot: getAppScreenshotUrl('chat', SITE_ORIGIN),
     featureList: copy.featureList,
     url: locale === 'en' ? `${SITE_ORIGIN}/en` : SITE_ORIGIN,
+    downloadUrl: DEFAULT_APP_STORE_URL,
+    installUrl: DEFAULT_APP_STORE_URL,
   };
 }
 
@@ -111,14 +112,14 @@ export function getOrganizationJsonLd(locale: Locale): JsonLd {
   };
 }
 
+/** FAQPage alineado al FAQ visible en la home publicada. */
 export function getFaqPageJsonLd(locale: Locale): JsonLd {
-  const { faqData, faqMoreData } = getHomeFaqCopy(locale);
-  const allFaqs = [...faqData, ...faqMoreData];
+  const items = getHomeV2Copy(locale).faq.items;
 
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: allFaqs.map((faq) => ({
+    mainEntity: items.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
       acceptedAnswer: {
@@ -133,8 +134,8 @@ export function getWebSiteJsonLd(locale: Locale): JsonLd {
   const url = locale === 'en' ? `${SITE_ORIGIN}/en` : SITE_ORIGIN;
   const description =
     locale === 'en'
-      ? 'Anto — ongoing emotional support on iPhone. A place for your mind to land. Complements clinical care; does not replace a human therapist.'
-      : 'Anto — acompañamiento emocional continuo en iPhone. Un lugar donde aterrizar. Complementa la atención clínica; no reemplaza a un terapeuta humano.';
+      ? 'Anto — when everything costs a little more. Ongoing emotional support on iPhone for anxiety and quiet hours, between therapy sessions or day to day. Complements clinical care; does not replace a human therapist.'
+      : 'Anto — cuando todo cuesta un poco más. Acompañamiento emocional continuo en iPhone para ansiedad y horas quietas, entre sesiones de terapia o en el día a día. Complementa la atención clínica; no reemplaza a un terapeuta humano.';
 
   return {
     '@context': 'https://schema.org',
@@ -148,5 +149,11 @@ export function getWebSiteJsonLd(locale: Locale): JsonLd {
       name: 'Anto',
       url: SITE_ORIGIN,
     },
+    significantLink: [
+      `${SITE_ORIGIN}/llms.txt`,
+      `${SITE_ORIGIN}/llms-full.txt`,
+      `${SITE_ORIGIN}/recursos`,
+      DEFAULT_APP_STORE_URL,
+    ],
   };
 }

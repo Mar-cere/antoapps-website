@@ -9,7 +9,7 @@ type HomeV2PricingProps = {
   locale?: Locale;
 };
 
-/** Plan destacado + lista tipográfica (menos grid de cards). */
+/** Plan destacado + lista + CTA en una sola composición. */
 export default function HomeV2Pricing({ locale = 'es' }: HomeV2PricingProps) {
   const { pricing, hero } = getHomeV2Copy(locale);
   const pagePath = locale === 'en' ? '/en' : '/';
@@ -36,30 +36,33 @@ export default function HomeV2Pricing({ locale = 'es' }: HomeV2PricingProps) {
 
           <ul className="home-v2-pricing__list">
             {others.map((card) => (
-              <li key={card.period} className="home-v2-pricing__row">
+              <li
+                key={card.period}
+                className={`home-v2-pricing__row${card.save ? ' home-v2-pricing__row--save' : ''}`}
+              >
                 <span className="home-v2-pricing__row-period">{card.period}</span>
                 <span className="home-v2-pricing__row-price">
                   {card.price}
                   <span className="home-v2-pricing__row-unit"> {card.unit}</span>
                 </span>
-                {card.save ? <span className="home-v2-pricing__row-save">{card.save}</span> : <span />}
+                {card.save ? <span className="home-v2-pricing__row-save">{card.save}</span> : null}
               </li>
             ))}
           </ul>
-        </div>
 
-        <div className="home-v2-pricing__cta">
-          <PremiumStoreCta
-            storeHref={appStoreHref()}
-            storeLabel={hero.ctaStoreLabel}
-            storeName={hero.ctaStoreText}
-            badge={hero.ctaBadge}
-            ariaLabel={hero.storeAria}
-            trackingPlacement="home_v2_pricing_store_cta"
-            trackingPage={pagePath}
-            trackingLabel="home_v2_pricing"
-          />
-          <p className="home-v2-pricing__micro">{pricing.ctaMicro}</p>
+          <div className="home-v2-pricing__cta">
+            <PremiumStoreCta
+              storeHref={appStoreHref()}
+              storeLabel={hero.ctaStoreLabel}
+              storeName={hero.ctaStoreText}
+              badge={hero.ctaBadge}
+              ariaLabel={hero.storeAria}
+              trackingPlacement="home_pricing_store_cta"
+              trackingPage={pagePath}
+              trackingLabel="home_pricing"
+            />
+            <p className="home-v2-pricing__micro">{pricing.ctaMicro}</p>
+          </div>
         </div>
       </div>
     </section>

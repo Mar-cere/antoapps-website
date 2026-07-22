@@ -1,4 +1,4 @@
-/** Fotografía editorial generada para home-v2 (sandbox). */
+/** Fotografía editorial para la home publicada. */
 
 export const EDITORIAL_IMAGE_PATHS = {
   evening: '/assets/images/editorial/anto-editorial-hero-evening.webp',

@@ -4,6 +4,10 @@ import { homeOgImageAlt, homeOgImageSize } from '@/lib/home/opengraph-image';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 import { siteUrl } from '@/lib/i18n/metadata';
 
+/**
+ * Metadata de la home publicada (voz editorial home-v2).
+ * Title alineado al H1; description con intenciones naturales (ansiedad, entre sesiones).
+ */
 export function homePageMetadata(locale: Locale): Metadata {
   const trial = getTrialCopy(locale);
   const canonical = siteUrl(locale, '/');
@@ -27,46 +31,46 @@ export function homePageMetadata(locale: Locale): Metadata {
 
   if (locale === 'en') {
     return {
-      title: 'Anto — A place for your mind to land | Ongoing emotional support',
+      title: 'Anto — When everything costs a little more | Ongoing emotional support',
       description:
-        'Ongoing emotional support for when you need a place to land — with thoughtful AI assistance in the background. Anto can walk with you between sessions or day to day; it does not replace clinical care — a human therapist or professional remains the stronger recommendation. Available on iPhone.',
+        'Ongoing emotional support for anxiety and quiet hours — between therapy sessions or day to day. Write what you feel, leave with clarity and one concrete step. AI assistance in the background. Complements care; does not replace a human therapist. Available on iPhone. Free 1-day trial.',
       alternates,
       openGraph: {
         type: 'website',
         url: canonical,
-        title: 'Anto — A place for your mind to land',
-        description: `Ongoing emotional support on iPhone. Complements care — does not replace a human therapist. ${trial.short}.`,
+        title: 'Anto — When everything costs a little more',
+        description: `Emotional support for anxiety and quiet hours on iPhone — between sessions or day to day. Complements care; does not replace a human therapist. ${trial.short}.`,
         siteName: 'Anto',
         locale: 'en_US',
         images: [ogImage],
       },
       twitter: {
         card: 'summary_large_image',
-        title: 'Anto — A place for your mind to land',
-        description: `Ongoing emotional support on iPhone. Complements care — does not replace a human therapist. ${trial.short}.`,
+        title: 'Anto — When everything costs a little more',
+        description: `Emotional support for anxiety and quiet hours on iPhone — between sessions or day to day. Complements care; does not replace a human therapist. ${trial.short}.`,
         images: [ogImageUrl],
       },
     };
   }
 
   return {
-    title: 'Anto — Tu mente tiene un lugar donde aterrizar | Acompañamiento emocional',
+    title: 'Anto — Cuando todo cuesta un poco más | Acompañamiento emocional',
     description:
-      'Acompañamiento emocional continuo para cuando necesitas un lugar donde aterrizar — con apoyo de IA en segundo plano. Anto te acompaña entre sesiones o en el día a día; no sustituye atención clínica — un terapeuta o profesional humano sigue siendo lo más recomendable. Disponible en iPhone.',
+      'Acompañamiento emocional continuo para ansiedad y horas quietas — entre sesiones de terapia o en el día a día. Escribe lo que sientes, sal con claridad y un paso concreto. Apoyo de IA en segundo plano. Complementa — no reemplaza — a un terapeuta humano. Disponible en iPhone. Prueba de 1 día gratis.',
     alternates,
     openGraph: {
       type: 'website',
       url: canonical,
-      title: 'Anto — Tu mente tiene un lugar donde aterrizar',
-      description: `Acompañamiento emocional continuo en iPhone. Complementa — no reemplaza — a un terapeuta humano. ${trial.pricingNote}`,
+      title: 'Anto — Cuando todo cuesta un poco más',
+      description: `Acompañamiento emocional para ansiedad y horas quietas en iPhone — entre sesiones o en el día a día. Complementa — no reemplaza — a un terapeuta humano. ${trial.pricingNote}`,
       images: [ogImage],
       siteName: 'Anto',
       locale: 'es_CL',
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Anto — Tu mente tiene un lugar donde aterrizar',
-      description: `Acompañamiento emocional continuo en iPhone. Complementa — no reemplaza — a un terapeuta humano. ${trial.short}.`,
+      title: 'Anto — Cuando todo cuesta un poco más',
+      description: `Acompañamiento emocional para ansiedad y horas quietas en iPhone — entre sesiones o en el día a día. Complementa — no reemplaza — a un terapeuta humano. ${trial.short}.`,
       images: [ogImageUrl],
     },
   };

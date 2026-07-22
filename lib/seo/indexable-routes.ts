@@ -38,8 +38,8 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
     changeFrequency: 'daily',
     priorityEs: 1,
     priorityEn: 0.9,
-    lastModified: '2026-07-14',
-    note: 'Home — máxima prioridad, contenido principal del producto',
+    lastModified: '2026-07-22',
+    note: 'Home editorial — máxima prioridad, contenido principal del producto',
   },
   {
     path: '/bienvenida',
@@ -164,4 +164,6 @@ export const REDIRECT_ONLY_PATHS = [
   '/login',
   '/signup',
   '/chat',
+  '/home-v2',
+  '/en/home-v2',
 ] as const;

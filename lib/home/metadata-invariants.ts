@@ -1,10 +1,10 @@
 import type { Locale } from '@/lib/i18n/config';
-import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
+import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { homePageMetadata } from '@/lib/i18n/copy/pages/home-metadata';
 
 const LOCALES: readonly Locale[] = ['es', 'en'];
 
-const LEGACY_HEADLINE = /apoyo emocional 24\/7|24\/7 emotional support/i;
+const LEGACY_HEADLINE = /apoyo emocional 24\/7|24\/7 emotional support|home v2|sandbox/i;
 
 function metaText(value: unknown): string {
   if (typeof value === 'string') return value;
@@ -15,15 +15,16 @@ function metaText(value: unknown): string {
   return '';
 }
 
+/** Invariantes SEO de la home publicada (voz editorial). */
 export function assertHomeMetadataInvariants(): string[] {
   const errors: string[] = [];
 
   for (const locale of LOCALES) {
-    const copy = getHomeLandingFinalCopy(locale);
+    const copy = getHomeV2Copy(locale);
     const meta = homePageMetadata(locale);
     const tag = `[${locale}]`;
-
     const accent = copy.hero.titleAccent.replace(/\.$/, '').trim();
+
     const title = metaText(meta.title);
     const ogTitle = metaText(meta.openGraph?.title);
     const twitterTitle = metaText(meta.twitter?.title);
@@ -41,8 +42,8 @@ export function assertHomeMetadataInvariants(): string[] {
       errors.push(`${tag} openGraph.title debe incluir hero.titleAccent ("${accent}")`);
     }
 
-    if (LEGACY_HEADLINE.test(title) || LEGACY_HEADLINE.test(ogTitle)) {
-      errors.push(`${tag} metadata usa headline legacy "24/7"`);
+    if (LEGACY_HEADLINE.test(title) || LEGACY_HEADLINE.test(ogTitle) || LEGACY_HEADLINE.test(description)) {
+      errors.push(`${tag} metadata usa headline legacy o copy de sandbox`);
     }
 
     if (!description.trim() || !ogDescription.trim()) {
@@ -50,18 +51,30 @@ export function assertHomeMetadataInvariants(): string[] {
     }
 
     if (locale === 'es') {
-      if (!/protocolos clínicos|IA avanzada/i.test(description)) {
-        errors.push(`${tag} metadata.description debe reflejar copy landing-final`);
+      if (!/acompaña|horas quietas|paso concreto/i.test(description)) {
+        errors.push(`${tag} metadata.description debe reflejar la voz editorial`);
       }
-      if (!/iPhone|prueba/i.test(description)) {
-        errors.push(`${tag} metadata.description debe mencionar prueba o iPhone`);
+      if (!/ansiedad/i.test(description) || !/entre sesiones/i.test(description)) {
+        errors.push(`${tag} metadata.description debe incluir intenciones (ansiedad, entre sesiones)`);
+      }
+      if (!/iPhone/i.test(description) || !/prueba|gratis/i.test(description)) {
+        errors.push(`${tag} metadata.description debe mencionar iPhone y prueba`);
+      }
+      if (!/no reemplaza|no sustituye/i.test(description)) {
+        errors.push(`${tag} metadata.description debe aclarar que no reemplaza terapia`);
       }
     } else {
-      if (!/clinical protocols|advanced AI/i.test(description)) {
-        errors.push(`${tag} metadata.description must reflect landing-final copy`);
+      if (!/quiet hours|concrete step|ongoing emotional/i.test(description)) {
+        errors.push(`${tag} metadata.description must reflect editorial voice`);
       }
-      if (!/iPhone|trial/i.test(description)) {
-        errors.push(`${tag} metadata.description must mention trial or iPhone`);
+      if (!/anxiety/i.test(description) || !/between (therapy )?sessions/i.test(description)) {
+        errors.push(`${tag} metadata.description must include intents (anxiety, between sessions)`);
+      }
+      if (!/iPhone/i.test(description) || !/trial|free/i.test(description)) {
+        errors.push(`${tag} metadata.description must mention iPhone and trial`);
+      }
+      if (!/does not replace|doesn't replace/i.test(description)) {
+        errors.push(`${tag} metadata.description must clarify it does not replace therapy`);
       }
     }
 
@@ -82,6 +95,14 @@ export function assertHomeMetadataInvariants(): string[] {
     }
     if (!altText.toLowerCase().includes(accent.toLowerCase())) {
       errors.push(`${tag} openGraph image alt debe incluir hero.titleAccent`);
+    }
+
+    const canonical =
+      meta.alternates && typeof meta.alternates === 'object' && 'canonical' in meta.alternates
+        ? metaText(meta.alternates.canonical)
+        : '';
+    if (!canonical || canonical.includes('home-v2')) {
+      errors.push(`${tag} canonical debe apuntar a la home (/), no a /home-v2`);
     }
   }
 

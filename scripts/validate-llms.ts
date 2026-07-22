@@ -1,6 +1,10 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { buildLlmsTxt, llmsTxtRequiredSnippets } from '../lib/seo/build-llms-txt';
+import {
+  buildLlmsFullTxt,
+  buildLlmsTxt,
+  llmsTxtRequiredSnippets,
+} from '../lib/seo/build-llms-txt';
 import { PSYCHOEDUCATION_SLUGS } from '../lib/i18n/copy/pages/psychoeducation';
 import { expectedSitemapUrlCount } from '../lib/seo/build-sitemap';
 
@@ -12,6 +16,14 @@ if (!existsSync(join(ROOT, 'app', 'llms.txt', 'route.ts'))) {
   errors.push('Falta app/llms.txt/route.ts — llms.txt debe servirse dinámicamente.');
 }
 
+if (!existsSync(join(ROOT, 'app', 'llms-full.txt', 'route.ts'))) {
+  errors.push('Falta app/llms-full.txt/route.ts — llms-full.txt para agentes de IA.');
+}
+
+if (!existsSync(join(ROOT, 'app', '.well-known', 'llms.txt', 'route.ts'))) {
+  errors.push('Falta app/.well-known/llms.txt/route.ts — espejo de descubrimiento IA.');
+}
+
 if (existsSync(join(ROOT, 'public', 'llms.txt'))) {
   errors.push(
     'public/llms.txt estático detectado — eliminar; usar app/llms.txt/route.ts para evitar drift.'
@@ -19,15 +31,28 @@ if (existsSync(join(ROOT, 'public', 'llms.txt'))) {
 }
 
 const content = buildLlmsTxt();
+const full = buildLlmsFullTxt();
 
 if (content.length < 8000) {
   errors.push(`llms.txt demasiado corto (${content.length} chars) — contenido incompleto.`);
+}
+
+if (full.length <= content.length) {
+  errors.push('llms-full.txt debe ser más largo que llms.txt (FAQ ampliado).');
 }
 
 for (const snippet of llmsTxtRequiredSnippets()) {
   if (!content.includes(snippet)) {
     errors.push(`llms.txt: falta snippet requerido "${snippet}"`);
   }
+}
+
+if (!content.startsWith('# Anto')) {
+  errors.push('llms.txt debe empezar con H1 "# Anto" (formato llmstxt).');
+}
+
+if (!content.includes('## Optional')) {
+  errors.push('llms.txt: falta sección Optional con enlace a llms-full.txt');
 }
 
 const guideLinks = PSYCHOEDUCATION_SLUGS.filter((slug) =>
@@ -41,8 +66,6 @@ if (guideLinks.length !== PSYCHOEDUCATION_SLUGS.length) {
 }
 
 const expectedPages = expectedSitemapUrlCount();
-const guideUrlCount = PSYCHOEDUCATION_SLUGS.length * 2;
-const baseUrlCount = expectedPages - guideUrlCount;
 
 if (!content.includes('## Indexación / Indexing summary')) {
   errors.push('llms.txt: falta sección de resumen de indexación.');
@@ -61,5 +84,5 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `OK: llms.txt (${content.length} chars, ${PSYCHOEDUCATION_SLUGS.length} guías detalladas, alineado con sitemap de ${expectedPages} URLs).`
+  `OK: llms.txt (${content.length} chars) + llms-full (${full.length} chars), ${PSYCHOEDUCATION_SLUGS.length} guías, sitemap ${expectedPages} URLs.`
 );

@@ -39,9 +39,9 @@ export default function HomeV2FinalCta({ locale = 'es' }: HomeV2FinalCtaProps) {
           storeName={copy.hero.ctaStoreText}
           badge={copy.hero.ctaBadge}
           ariaLabel={copy.hero.storeAria}
-          trackingPlacement="home_v2_final_store_cta"
+          trackingPlacement="home_final_store_cta"
           trackingPage={pagePath}
-          trackingLabel="home_v2_final_cta"
+          trackingLabel="home_final_cta"
         />
         <p className="home-v2-final-cta__micro">{copy.hero.ctaMicro}</p>
       </div>

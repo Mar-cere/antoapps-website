@@ -1,5 +1,6 @@
-import HomeV2PageContent from '@/components/pages/HomeV2PageContent';
+import { permanentRedirect } from 'next/navigation';
 
-export default function HomeV2PageEn() {
-  return <HomeV2PageContent locale="en" />;
+/** Sandbox retirado: consolidar equity SEO en la home EN. */
+export default function HomeV2EnRedirect() {
+  permanentRedirect('/en');
 }

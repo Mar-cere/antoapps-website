@@ -34,6 +34,8 @@ const nextConfig = {
       { source: '/login', destination: '/#descargar', permanent: false },
       { source: '/signup', destination: '/#descargar', permanent: false },
       { source: '/chat', destination: '/#descargar', permanent: false },
+      { source: '/home-v2', destination: '/', permanent: true },
+      { source: '/en/home-v2', destination: '/en', permanent: true },
     ];
   },
   // Preservar archivos estáticos existentes
