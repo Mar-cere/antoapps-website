@@ -1,9 +1,9 @@
-/* /bienvenida variante C — layout mobile-first premium */
+/* /bienvenida variante C — landing paid conversión (mobile-first) */
 
 @import '../components/premium-store-cta.css';
 
 .lad-page--v2 {
-    --lad-v2-accent: #5b8fff;
+    --lad-v2-accent: var(--color-primary, #1adddb);
     --lad-v2-max: 28rem;
     --lad-v2-pad-x: 1.75rem;
     --lad-v2-text-secondary: rgba(255, 255, 255, 0.68);
@@ -33,8 +33,26 @@
     font-size: 0.9375rem;
 }
 
+.lad-page--v2 .lad-v2-lang {
+    opacity: 0.4;
+    font-size: 0.6875rem;
+}
+
+.lad-page--v2 .lad-v2-lang:focus-within {
+    opacity: 1;
+}
+
+.lad-page--v2 .lad-inapp-hint {
+    padding-bottom: 0.25rem;
+}
+
+.lad-page--v2 .lad-inapp-hint p {
+    font-size: 0.75rem;
+    padding: 0.625rem 0.875rem;
+}
+
 .lad-v2-s1 {
-    padding: 3.25rem var(--lad-v2-pad-x) 2.5rem;
+    padding: 1.5rem var(--lad-v2-pad-x) 1.75rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -45,16 +63,16 @@
     color: var(--lad-v2-text-tertiary);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    margin: 0 0 0.875rem;
+    margin: 0 0 0.625rem;
 }
 
 .lad-v2-hero-h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 500;
     color: #fff;
     line-height: 1.2;
     letter-spacing: -0.02em;
-    margin: 0 0 1rem;
+    margin: 0 0 0.625rem;
 }
 
 .lad-v2-hero-h1-accent {
@@ -63,16 +81,52 @@
 }
 
 .lad-v2-hero-sub {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     color: var(--lad-v2-text-secondary);
-    line-height: 1.6;
-    margin: 0 0 2rem;
-    max-width: 17.5rem;
+    line-height: 1.5;
+    margin: 0 0 1rem;
+    max-width: 20rem;
+}
+
+.lad-v2-hero-product {
+    width: 100%;
+    margin: 0 0 1rem;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.lad-v2-screenshot--hero-chat {
+    object-fit: cover;
+    object-position: top center;
+    max-height: min(42vh, 16.5rem);
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.lad-v2-inapp-cta-note {
+    width: 100%;
+    margin: 0 0 0.75rem;
+    font-size: 0.6875rem;
+    color: var(--lad-v2-text-tertiary);
+    text-align: center;
+    line-height: 1.45;
+}
+
+.lad-v2-inapp-cta-note strong {
+    color: rgba(255, 255, 255, 0.78);
+    font-weight: 500;
+}
+
+.lad-v2-s-review {
+    padding: 1.75rem var(--lad-v2-pad-x) 0;
 }
 
 .lad-v2-review {
     width: 100%;
-    margin: 0 0 1.75rem;
+    margin: 0;
     padding: 0.875rem 1rem;
     background: rgba(255, 255, 255, 0.05);
     border: 0.5px solid rgba(255, 255, 255, 0.1);
@@ -197,10 +251,6 @@
     background: rgba(255, 255, 255, 0.07);
 }
 
-.lad-v2-s2 {
-    padding: 3rem var(--lad-v2-pad-x) 0;
-}
-
 .lad-v2-section-label {
     margin: 0 0 1.25rem;
     font-size: 0.6875rem;
@@ -209,7 +259,6 @@
     text-transform: uppercase;
 }
 
-.lad-v2-screenshot-wrap,
 .lad-v2-screenshot-crop {
     border-radius: 1.5rem;
     overflow: hidden;
@@ -221,12 +270,6 @@
     width: 100%;
     height: auto;
     display: block;
-}
-
-.lad-v2-screenshot--chat {
-    object-fit: cover;
-    object-position: top center;
-    max-height: 28rem;
 }
 
 .lad-v2-screenshot--crop {

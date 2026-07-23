@@ -68,7 +68,7 @@ export default function BienvenidaLandingV2({
           />
           <span>Anto</span>
         </div>
-        <LanguageSwitcher locale={locale} path="/bienvenida" />
+        <LanguageSwitcher locale={locale} path="/bienvenida" className="lad-v2-lang" />
       </header>
 
       <InstagramBrowserHint copy={copy.inAppHint} locale={locale} />
@@ -84,7 +84,16 @@ export default function BienvenidaLandingV2({
           </h1>
           <p className="lad-v2-hero-sub">{v2.heroSub}</p>
 
-          <BienvenidaV2HeroReview copy={copy} />
+          <div className="lad-v2-hero-product">
+            <Image
+              src={v2.chatScreenshot.src}
+              alt={v2.chatScreenshot.alt}
+              width={390}
+              height={844}
+              className="lad-v2-screenshot lad-v2-screenshot--hero-chat"
+              priority
+            />
+          </div>
 
           <BienvenidaV2HeroFold
             storeHref={storeHref}
@@ -98,22 +107,6 @@ export default function BienvenidaLandingV2({
 
         <div className="lad-v2-divider" aria-hidden="true" />
 
-        <section className="lad-v2-s2" aria-labelledby="lad-v2-chat-label">
-          <p id="lad-v2-chat-label" className="lad-v2-section-label">
-            {v2.chatSectionLabel}
-          </p>
-          <div className="lad-v2-screenshot-wrap">
-            <Image
-              src={v2.chatScreenshot.src}
-              alt={v2.chatScreenshot.alt}
-              width={390}
-              height={844}
-              className="lad-v2-screenshot lad-v2-screenshot--chat"
-              priority
-            />
-          </div>
-        </section>
-
         <section className="lad-v2-s3" aria-label={v2.chatSectionLabel}>
           <ul className="lad-v2-feature-row">
             {v2.features.map((feat) => (
@@ -126,6 +119,10 @@ export default function BienvenidaLandingV2({
               </li>
             ))}
           </ul>
+        </section>
+
+        <section className="lad-v2-s-review" aria-label={copy.reviews.sectionTitle}>
+          <BienvenidaV2HeroReview copy={copy} />
         </section>
 
         <section className="lad-v2-s4" aria-labelledby="lad-v2-dash-headline">
@@ -184,7 +181,8 @@ export default function BienvenidaLandingV2({
         initialDevice={initialDevice}
       />
 
-      <CookieConsent compact bannerDelayMs={3000} showAfterScrollPx={120} />
+      {/* Retraso alto: no tapar el CTA del fold en los primeros segundos (Meta/IG). */}
+      <CookieConsent compact bannerDelayMs={12000} showAfterScrollPx={560} />
     </div>
   );
 }

@@ -1,8 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import type { AnchorHTMLAttributes, ReactNode } from 'react';
-import { isExternalStoreUrl } from '@/lib/download-links';
+import { useEffect, useState, type AnchorHTMLAttributes, type ReactNode } from 'react';
+import { detectInAppBrowser } from '@/lib/device/in-app-browser';
+import {
+  appStoreNativeHref,
+  isAppStoreUrl,
+  isExternalStoreUrl,
+} from '@/lib/download-links';
 import { trackStoreClick } from '@/lib/analytics/store-click';
 
 type Props = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
@@ -22,8 +27,23 @@ export default function DownloadLink({
   trackingPage,
   trackingLabel,
   onClick,
+  target: targetProp,
+  rel: relProp,
   ...rest
 }: Props) {
+  const external = isExternalStoreUrl(href);
+  const appleStore = isAppStoreUrl(href);
+  const [resolvedHref, setResolvedHref] = useState(href);
+
+  useEffect(() => {
+    // Solo tras mount: evita mismatch SSR/hidratación.
+    if (appleStore && detectInAppBrowser() === 'ios') {
+      setResolvedHref(appStoreNativeHref(href));
+      return;
+    }
+    setResolvedHref(href);
+  }, [href, appleStore]);
+
   const handleStoreClick: AnchorHTMLAttributes<HTMLAnchorElement>['onClick'] = (event) => {
     onClick?.(event);
     if (event.defaultPrevented) return;
@@ -35,13 +55,16 @@ export default function DownloadLink({
     });
   };
 
-  if (isExternalStoreUrl(href)) {
+  if (external || resolvedHref.startsWith('itms-apps://')) {
+    // App Store: misma pestaña (y itms-apps en IG iOS). _blank suele romper WebViews in-app.
+    const openInNewTab = external && !appleStore && targetProp !== '_self';
+
     return (
       <a
-        href={href}
+        href={resolvedHref}
         className={className}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={openInNewTab ? targetProp || '_blank' : undefined}
+        rel={openInNewTab ? relProp || 'noopener noreferrer' : undefined}
         onClick={handleStoreClick}
         {...rest}
       >

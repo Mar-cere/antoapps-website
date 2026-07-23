@@ -40,6 +40,22 @@ export function isAppStoreUrl(href: string): boolean {
   }
 }
 
+/**
+ * Convierte una URL https de App Store a esquema itms-apps://.
+ * En navegadores in-app de iOS (Instagram/Facebook), abre la app App Store
+ * en lugar de quedar atrapado en un WebView con target=_blank.
+ * Si la URL no es App Store, devuelve el href original.
+ */
+export function appStoreNativeHref(href: string): string {
+  if (!isAppStoreUrl(href)) return href;
+  try {
+    const url = new URL(href);
+    return `itms-apps://${url.host}${url.pathname}${url.search}`;
+  } catch {
+    return href;
+  }
+}
+
 /** Badge App Store según idioma (ES: SVG, EN: PNG oficial Apple). */
 export function appStoreBadgePath(locale: Locale = 'es'): string {
   return locale === 'en' ? APP_STORE_BADGE_EN_PATH : APP_STORE_BADGE_ES_PATH;

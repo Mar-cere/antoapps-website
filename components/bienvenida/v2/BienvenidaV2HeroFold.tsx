@@ -1,8 +1,9 @@
 'use client';
 
-import { useCallback, useEffect, useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import DownloadLink from '@/components/DownloadLink';
 import AndroidWaitlistCounter from '@/components/bienvenida/AndroidWaitlistCounter';
+import InstagramBrowserHint from '@/components/bienvenida/InstagramBrowserHint';
 import BienvenidaV2StoreCta from '@/components/bienvenida/v2/BienvenidaV2StoreCta';
 import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
 import { LAD_OPEN_ANDROID_FORM_EVENT } from '@/lib/bienvenida/android-form-events';
@@ -41,35 +42,34 @@ export default function BienvenidaV2HeroFold({
     ? 'android-early-access-bienvenida-v2-hero'
     : 'android-early-access-bienvenida-v2-final';
 
-  const openAndroidForm = useCallback((withFocus = true) => {
-    setAndroidFormOpen(true);
-    if (withFocus && !prefersReducedMotion()) {
-      setAutoFocusAndroid(true);
-    }
-  }, []);
-
   useEffect(() => {
     if (!isHero) return;
-    const handler = () => openAndroidForm(true);
+    const handler = () => {
+      setAndroidFormOpen(true);
+      if (!prefersReducedMotion()) setAutoFocusAndroid(true);
+    };
     window.addEventListener(LAD_OPEN_ANDROID_FORM_EVENT, handler);
     return () => window.removeEventListener(LAD_OPEN_ANDROID_FORM_EVENT, handler);
-  }, [isHero, openAndroidForm]);
+  }, [isHero]);
 
   useEffect(() => {
     if (isHero && device === 'android') {
-      openAndroidForm(!prefersReducedMotion());
+      setAndroidFormOpen(true);
+      if (!prefersReducedMotion()) setAutoFocusAndroid(true);
     }
-  }, [device, isHero, openAndroidForm]);
+  }, [device, isHero]);
 
   const handleAndroidLink = () => {
-    openAndroidForm(true);
+    setAndroidFormOpen(true);
+    if (!prefersReducedMotion()) setAutoFocusAndroid(true);
     document.getElementById(androidFormId)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   };
 
   const showIosStoreCta = device === 'ios' || device === 'desktop';
-  const showAndroidLink = isHero && (device === 'ios' || device === 'desktop');
+  // En iOS el Android waitlist no debe competir en el fold: solo en el CTA final.
+  const showAndroidLink = !isHero && (device === 'ios' || device === 'desktop');
   const showAndroidLead = device === 'android';
-  const showAndroidForm = device === 'android' || (isHero && androidFormOpen);
+  const showAndroidForm = device === 'android' || (!isHero && androidFormOpen);
 
   return (
     <div
@@ -90,7 +90,11 @@ export default function BienvenidaV2HeroFold({
         />
       )}
 
-      {(showIosStoreCta || showAndroidLead) && <p className="lad-v2-cta-micro">{v2.ctaMicro}</p>}
+      {showIosStoreCta && <p className="lad-v2-cta-micro">{v2.ctaMicro}</p>}
+
+      {isHero && showIosStoreCta && (
+        <InstagramBrowserHint copy={copy.inAppHint} locale={locale} variant="cta" />
+      )}
 
       {showAndroidLink && (
         <button type="button" className="lad-v2-android-link" onClick={handleAndroidLink}>

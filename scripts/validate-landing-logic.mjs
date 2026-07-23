@@ -61,6 +61,26 @@ assert(isAppStoreUrl('https://apps.apple.com/cl/app/anto/id6756631911'), 'App St
 assert(!isAppStoreUrl('https://evil.com/apps.apple.com'), 'host malicioso rechazado');
 assert(!isAppStoreUrl('/bienvenida'), 'ruta relativa rechazada');
 
+function appStoreNativeHref(href) {
+  if (!isAppStoreUrl(href)) return href;
+  try {
+    const url = new URL(href);
+    return `itms-apps://${url.host}${url.pathname}${url.search}`;
+  } catch {
+    return href;
+  }
+}
+
+assert(
+  appStoreNativeHref('https://apps.apple.com/cl/app/anto/id6756631911') ===
+    'itms-apps://apps.apple.com/cl/app/anto/id6756631911',
+  'App Store → itms-apps nativo'
+);
+assert(
+  appStoreNativeHref('https://example.com/app') === 'https://example.com/app',
+  'URL no-App-Store intacta'
+);
+
 function resolveWaitlistDisplayCount(actual, floor = 847) {
   return Math.max(actual, floor);
 }

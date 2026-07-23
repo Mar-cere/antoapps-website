@@ -340,7 +340,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ],
       },
       v2: {
-        eyebrow: 'AI emotional support',
+        eyebrow: 'Emotional support on your phone',
         heroTitlePrefix: 'When your mind\nwon\'t slow down,',
         heroTitleHighlight: 'Anto helps you\nland.',
         heroSub: 'Write what you feel. Get clarity and one concrete step in seconds.',
@@ -353,7 +353,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ctaStoreLabel: 'Download on',
         ctaStoreText: 'App Store',
         ctaBadge: trial.short,
-        ctaMicro: `${trial.short} · No card required · Cancel anytime`,
+        ctaMicro: `${trial.short} · No card required · Private`,
         androidLink: 'Request early access for Android',
         chatSectionLabel: 'On your iPhone',
         chatScreenshot: {
@@ -362,14 +362,14 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         },
         features: [
           { icon: 'privacy', title: 'Private', subtitle: 'Only you read your conversations' },
-          { icon: 'clock', title: '24/7', subtitle: 'Available at 2 a.m. if you need it' },
-          { icon: 'evidence', title: 'Evidence-based', subtitle: 'PHQ-9 and GAD-7 clinical scales' },
-          { icon: 'crisis', title: 'Crisis detection', subtitle: 'Support resources when you need them' },
+          { icon: 'clock', title: 'Anytime', subtitle: 'There when your mind won\'t stop' },
+          { icon: 'evidence', title: 'Clear steps', subtitle: 'One concrete next step, not vague advice' },
+          { icon: 'crisis', title: 'No judgment', subtitle: 'A calm space to untangle what you feel' },
         ],
         dashboard: {
           label: 'More than a chat',
-          headline: 'Your wellbeing,\norganized.',
-          subtitle: 'Habits, tasks, and emotional tracking in one place.',
+          headline: 'See your patterns\nover time.',
+          subtitle: 'Emotional tracking that helps you notice what repeats.',
           image: {
             src: APP_SCREENSHOT_PATHS.home,
             alt: getAppScreenshotAlt('home', 'en'),
@@ -578,7 +578,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       ],
     },
     v2: {
-      eyebrow: 'Apoyo emocional con IA',
+      eyebrow: 'Apoyo emocional en tu teléfono',
       heroTitlePrefix: 'Cuando tu mente\nno para,',
       heroTitleHighlight: 'Anto te ayuda\na aterrizar.',
       heroSub: 'Escribe lo que sientes. Recibe claridad y un paso concreto en segundos.',
@@ -591,7 +591,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       ctaStoreLabel: 'Descargar en',
       ctaStoreText: 'App Store',
       ctaBadge: trial.short,
-      ctaMicro: `${trial.short} · Sin tarjeta · Cancela cuando quieras`,
+      ctaMicro: `${trial.short} · Sin tarjeta · Privado`,
       androidLink: 'Solicitar acceso anticipado para Android',
       chatSectionLabel: 'Así se ve en tu iPhone',
       chatScreenshot: {
@@ -600,14 +600,14 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       },
       features: [
         { icon: 'privacy', title: 'Privado', subtitle: 'Solo tú lees tus conversaciones' },
-        { icon: 'clock', title: '24/7', subtitle: 'Disponible a las 2am si lo necesitas' },
-        { icon: 'evidence', title: 'Basado en evidencia', subtitle: 'Escalas PHQ-9 y GAD-7 clínicas' },
-        { icon: 'crisis', title: 'Detecta crisis', subtitle: 'Recursos de apoyo si los necesitas' },
+        { icon: 'clock', title: 'Cuando lo necesitas', subtitle: 'Ahí cuando tu mente no para' },
+        { icon: 'evidence', title: 'Pasos claros', subtitle: 'Un siguiente paso concreto, no consejos vagos' },
+        { icon: 'crisis', title: 'Sin juicio', subtitle: 'Un espacio calmado para ordenar lo que sientes' },
       ],
       dashboard: {
         label: 'Más que un chat',
-        headline: 'Tu bienestar,\norganizado.',
-        subtitle: 'Hábitos, pendientes y seguimiento emocional en un solo lugar.',
+        headline: 'Mira tus patrones\ncon el tiempo.',
+        subtitle: 'Seguimiento emocional para notar lo que se repite.',
         image: {
           src: APP_SCREENSHOT_PATHS.home,
           alt: getAppScreenshotAlt('home', 'es'),
