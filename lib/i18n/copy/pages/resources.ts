@@ -23,14 +23,7 @@ export type ResourceItem = {
   id: string;
   title: string;
   description: string;
-  type: string;
-  category: string;
   link: string;
-};
-
-export type ResourceFilter = {
-  id: string;
-  label: string;
 };
 
 export type ResourceFeaturedLink = {
@@ -56,8 +49,6 @@ export type ResourcesPageCopy = {
     links: ResourceFeaturedLink[];
   };
   library: {
-    filtersAriaLabel: string;
-    filters: ResourceFilter[];
     searchPlaceholder: string;
     searchAriaLabel: string;
     emptyMessage: string;
@@ -72,15 +63,23 @@ function orderedPsychoeducationSlugs(): PsychoeducationSlug[] {
   return [...FEATURED_GUIDE_SLUGS, ...rest];
 }
 
+/** Blurb corto para el hub: subtítulo del hero, sin coletilla clínica. */
+function hubBlurb(text: string): string {
+  return text
+    .replace(/\s*Psicoeducación[^.]*\.?/gi, '')
+    .replace(/\s*Psychoeducation[^.]*\.?/gi, '')
+    .replace(/\s*no sustituye[^.]*\.?/gi, '')
+    .replace(/\s*does not replace[^.]*\.?/gi, '')
+    .trim();
+}
+
 function psychoeducationResources(locale: Locale): ResourceItem[] {
   return orderedPsychoeducationSlugs().map((slug, index) => {
     const guide = getPsychoeducationGuide(locale, slug)!;
     return {
       id: `pe-${index + 1}`,
       title: guide.hero.title,
-      description: guide.meta.description,
-      type: 'psicoeducacion',
-      category: 'psicoeducacion',
+      description: hubBlurb(guide.hero.subtitle),
       link: psychoeducationGuidePath(locale, slug),
     };
   });
@@ -102,24 +101,10 @@ const FEATURED_SHORT_LABELS: Record<Locale, Record<(typeof FEATURED_GUIDE_SLUGS)
 };
 
 function featuredLinksForLocale(locale: Locale): ResourceFeaturedLink[] {
-  const guideLinks = FEATURED_GUIDE_SLUGS.map((slug) => ({
+  return FEATURED_GUIDE_SLUGS.map((slug) => ({
     href: psychoeducationGuidePath(locale, slug),
     label: FEATURED_SHORT_LABELS[locale][slug],
   }));
-
-  if (locale === 'en') {
-    return [
-      ...guideLinks,
-      { href: localePath(locale, '/app'), label: 'Anto for iPhone' },
-      { href: localePath(locale, '/seguridad'), label: 'Security & privacy' },
-    ];
-  }
-
-  return [
-    ...guideLinks,
-    { href: localePath(locale, '/app'), label: 'Anto para iPhone' },
-    { href: localePath(locale, '/seguridad'), label: 'Seguridad y privacidad' },
-  ];
 }
 
 function siteResources(locale: Locale): ResourceItem[] {
@@ -130,46 +115,31 @@ function siteResources(locale: Locale): ResourceItem[] {
       {
         id: 'site-1',
         title: `Anto on iPhone (${APP_VERSION_LABEL})`,
-        description:
-          'Ongoing emotional support: conversation, techniques hub, bilingual use, structured protocols, and daily tools.',
-        type: 'guia',
-        category: 'producto',
+        description: 'Ongoing emotional support on your phone — conversation, techniques, daily tools.',
         link: localePath(locale, '/app'),
-      },
-      {
-        id: 'site-2',
-        title: 'Version history and updates',
-        description:
-          'Public changelog: techniques hub, insights, persistent session, scales, and protocols.',
-        type: 'guia',
-        category: 'producto',
-        link: localePath(locale, '/changelog'),
       },
       {
         id: 'site-3',
         title: 'Security and privacy',
-        description:
-          'How Anto protects conversations: encryption, authentication, and privacy practices.',
-        type: 'guia',
-        category: 'privacidad',
+        description: 'How conversations stay protected.',
         link: localePath(locale, '/seguridad'),
       },
       {
         id: 'site-4',
         title: 'Scientific evidence',
-        description:
-          'References on digital emotional support and mobile interventions that inform Anto\'s approach.',
-        type: 'guia',
-        category: 'clinical',
+        description: 'References that inform Anto\'s approach.',
         link: localePath(locale, '/investigacion'),
       },
       {
+        id: 'site-2',
+        title: 'Version history',
+        description: 'What changed in recent releases.',
+        link: localePath(locale, '/changelog'),
+      },
+      {
         id: 'site-5',
-        title: 'Frequently asked questions',
-        description:
-          'Answers about accompaniment, techniques, scales, pricing, and the 1-day trial.',
-        type: 'guia',
-        category: 'producto',
+        title: 'FAQ',
+        description: 'Accompaniment, privacy, pricing, and the free trial.',
         link: homeFaq,
       },
     ];
@@ -179,46 +149,31 @@ function siteResources(locale: Locale): ResourceItem[] {
     {
       id: 'site-1',
       title: `Anto en iPhone (${APP_VERSION_LABEL})`,
-      description:
-        'Acompañamiento emocional continuo: conversación, hub de técnicas, uso bilingüe, protocolos y herramientas del día a día.',
-      type: 'guia',
-      category: 'producto',
+      description: 'Acompañamiento emocional en el teléfono — conversación, técnicas, día a día.',
       link: localePath(locale, '/app'),
-    },
-    {
-      id: 'site-2',
-      title: 'Historial de versiones y novedades',
-      description:
-        'Changelog público: hub de técnicas, insights, sesión persistente, escalas y protocolos.',
-      type: 'guia',
-      category: 'producto',
-      link: localePath(locale, '/changelog'),
     },
     {
       id: 'site-3',
       title: 'Seguridad y privacidad',
-      description:
-        'Cómo Anto protege las conversaciones: cifrado, autenticación y prácticas de privacidad.',
-      type: 'guia',
-      category: 'privacidad',
+      description: 'Cómo se protegen las conversaciones.',
       link: localePath(locale, '/seguridad'),
     },
     {
       id: 'site-4',
       title: 'Evidencia científica',
-      description:
-        'Referencias sobre apoyo emocional digital e intervenciones móviles que informan el enfoque de Anto.',
-      type: 'guia',
-      category: 'clinical',
+      description: 'Referencias que informan el enfoque de Anto.',
       link: localePath(locale, '/investigacion'),
+    },
+    {
+      id: 'site-2',
+      title: 'Historial de versiones',
+      description: 'Qué cambió en las últimas versiones.',
+      link: localePath(locale, '/changelog'),
     },
     {
       id: 'site-5',
       title: 'Preguntas frecuentes',
-      description:
-        'Respuestas sobre acompañamiento, técnicas, escalas, precios y la prueba de 1 día.',
-      type: 'guia',
-      category: 'producto',
+      description: 'Acompañamiento, privacidad, precios y la prueba gratis.',
       link: homeFaq,
     },
   ];
@@ -229,7 +184,6 @@ function resourcesForLocale(locale: Locale): ResourceItem[] {
   const site = siteResources(locale);
   const productFirst = site.filter((item) => item.id === 'site-1' || item.id === 'site-3');
   const productRest = site.filter((item) => item.id !== 'site-1' && item.id !== 'site-3');
-  // Destacadas → app/seguridad → resto de guías → resto del sitio
   const featuredGuideItems = guides.slice(0, FEATURED_GUIDE_SLUGS.length);
   const otherGuides = guides.slice(FEATURED_GUIDE_SLUGS.length);
   return [...featuredGuideItems, ...productFirst, ...otherGuides, ...productRest];
@@ -237,9 +191,8 @@ function resourcesForLocale(locale: Locale): ResourceItem[] {
 
 function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
   const resources = resourcesForLocale(locale);
-  const isEn = locale === 'en';
 
-  if (isEn) {
+  if (locale === 'en') {
     return {
       breadcrumbs: {
         homeLabel: 'Home',
@@ -261,22 +214,13 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
           'Short psychoeducation on anxiety, techniques, and patterns — plus how Anto works. Not a substitute for professional care.',
       },
       featured: {
-        ariaLabel: 'Featured guides and pages',
+        ariaLabel: 'Start with these guides',
         links: featuredLinksForLocale(locale),
       },
       library: {
-        filtersAriaLabel: 'Filter resources',
-        filters: [
-          { id: 'all', label: 'All' },
-          { id: 'psicoeducacion', label: 'Psychoeducation' },
-          { id: 'guia', label: 'Site guides' },
-          { id: 'clinical', label: 'Evidence' },
-          { id: 'producto', label: 'Product' },
-          { id: 'privacidad', label: 'Privacy' },
-        ],
         searchPlaceholder: 'Search guides…',
         searchAriaLabel: 'Search guides',
-        emptyMessage: 'No guides match these filters.',
+        emptyMessage: 'No guides match that search.',
         viewResourceLabel: 'Read',
         resources,
       },
@@ -304,22 +248,13 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         'Psicoeducación breve sobre ansiedad, técnicas y patrones — y cómo funciona Anto. No sustituye atención profesional.',
     },
     featured: {
-      ariaLabel: 'Guías y páginas destacadas',
+      ariaLabel: 'Empieza por estas guías',
       links: featuredLinksForLocale(locale),
     },
     library: {
-      filtersAriaLabel: 'Filtrar recursos',
-      filters: [
-        { id: 'all', label: 'Todos' },
-        { id: 'psicoeducacion', label: 'Psicoeducación' },
-        { id: 'guia', label: 'Guías del sitio' },
-        { id: 'clinical', label: 'Evidencia' },
-        { id: 'producto', label: 'Producto' },
-        { id: 'privacidad', label: 'Privacidad' },
-      ],
       searchPlaceholder: 'Buscar guías…',
       searchAriaLabel: 'Buscar guías',
-      emptyMessage: 'Ninguna guía coincide con estos filtros.',
+      emptyMessage: 'Ninguna guía coincide con esa búsqueda.',
       viewResourceLabel: 'Leer',
       resources,
     },

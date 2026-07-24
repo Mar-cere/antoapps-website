@@ -1,128 +1,266 @@
 /**
- * Psychoeducation article pages under /recursos/[slug]
+ * Psychoeducation guides — mismo lenguaje visual que home-v2 /recursos
  */
 
+.psycho-guide.home-landing-page--v2 {
+  overflow: visible;
+}
+
 .psycho-guide__article {
-  padding: 2rem 0 4rem;
+  padding: var(--home-v2-section-y) 0 var(--home-v2-section-y);
+}
+
+.psycho-guide__crumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 1.5rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.01em;
+  color: var(--home-v2-soft);
+}
+
+.psycho-guide__crumb-link {
+  color: var(--home-v2-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .psycho-guide__crumb-link:hover {
+    color: var(--color-primary);
+  }
+}
+
+.psycho-guide__crumb-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.psycho-guide__crumb-sep {
+  color: var(--home-v2-soft);
+}
+
+.psycho-guide__crumb-current {
+  color: var(--home-v2-ink);
+  max-width: 36ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .psycho-guide__header {
-  margin-bottom: 2.5rem;
-  text-align: center;
+  margin: 0 0 2.5rem;
+  max-width: 40rem;
+  text-align: left;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--home-v2-hairline);
 }
 
 .psycho-guide__eyebrow {
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  margin-bottom: 0.75rem;
+  margin: 0 0 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--home-v2-soft);
 }
 
 .psycho-guide__title {
-  font-size: clamp(1.75rem, 4vw, var(--font-size-4xl));
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  color: var(--color-text-primary);
+  margin: 0 0 1.1rem;
+  font-size: clamp(1.85rem, 4.2vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: var(--home-v2-ink);
+  text-wrap: balance;
 }
 
 .psycho-guide__subtitle {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
-  max-width: 42rem;
-  margin: 0 auto;
-  line-height: 1.6;
+  margin: 0;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: var(--home-v2-muted);
+  max-width: 38ch;
+  line-height: 1.55;
 }
 
 .psycho-guide__body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  max-width: 40rem;
 }
 
 .psycho-guide__section h2 {
-  font-size: var(--font-size-xl);
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  color: var(--color-text-primary);
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--home-v2-ink);
 }
 
 .psycho-guide__section p {
-  color: var(--color-text-secondary);
-  line-height: 1.75;
-  margin-bottom: 0.75rem;
+  margin: 0 0 0.75rem;
+  color: var(--home-v2-muted);
+  line-height: 1.65;
+  font-size: 1.0125rem;
+}
+
+.psycho-guide__section p:last-child {
+  margin-bottom: 0;
 }
 
 .psycho-guide__section ul {
-  margin: 0.5rem 0 0 1.25rem;
-  color: var(--color-text-secondary);
-  line-height: 1.7;
+  margin: 0.35rem 0 0;
+  padding: 0 0 0 1.15rem;
+  color: var(--home-v2-muted);
+  line-height: 1.65;
 }
 
 .psycho-guide__section li + li {
-  margin-top: 0.35rem;
+  margin-top: 0.4rem;
 }
 
 .psycho-guide__disclaimer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
   margin-top: 2.5rem;
-  padding: 1rem 1.25rem;
-  border-radius: 10px;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
-  line-height: 1.6;
+  max-width: 40rem;
+  padding: 1rem 0 0;
+  border-top: 1px solid var(--home-v2-hairline);
+  background: none;
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  color: var(--home-v2-soft);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.psycho-guide__disclaimer strong {
+  color: var(--home-v2-muted);
+  font-weight: 500;
 }
 
 .psycho-guide__cta {
-  margin-top: 2rem;
-  text-align: center;
+  margin-top: 1.75rem;
+  text-align: left;
+}
+
+.psycho-guide__cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.15rem;
+  border-radius: var(--home-v2-radius);
+  background: var(--color-primary);
+  color: #030a24;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: filter 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) {
+  .psycho-guide__cta-link:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+}
+
+.psycho-guide__cta-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
 
 .psycho-guide__related {
   margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--home-v2-hairline);
+  max-width: 40rem;
 }
 
 .psycho-guide__related-title {
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  margin-bottom: 1rem;
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--home-v2-ink);
 }
 
-.psycho-guide__related ul {
+.psycho-guide__related-list {
   list-style: none;
   margin: 0;
   padding: 0;
+  border-top: 1px solid var(--home-v2-hairline-strong);
+}
+
+.psycho-guide__related-link {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.psycho-guide__related a {
-  color: var(--color-primary);
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--home-v2-hairline-strong);
+  color: var(--home-v2-ink);
   text-decoration: none;
+  font-size: 0.9875rem;
   font-weight: 500;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
 }
 
-.psycho-guide__related a:hover {
-  text-decoration: underline;
+@media (hover: hover) {
+  .psycho-guide__related-link:hover {
+    color: var(--color-primary);
+  }
+}
+
+.psycho-guide__related-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.psycho-guide__related-link span:last-child {
+  color: var(--color-primary);
+  flex-shrink: 0;
 }
 
 .psycho-guide__back {
-  margin-top: 2rem;
-  text-align: center;
+  margin: 1.75rem 0 0;
+  text-align: left;
 }
 
 .psycho-guide__back a {
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  font-size: var(--font-size-sm);
+  color: var(--home-v2-muted);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, var(--color-primary) 35%, transparent);
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
 }
 
-.psycho-guide__back a:hover {
-  color: var(--color-primary);
+@media (hover: hover) {
+  .psycho-guide__back a:hover {
+    color: var(--color-primary);
+  }
+}
+
+@media (max-width: 720px) {
+  .psycho-guide__article {
+    padding: 2.25rem 0 2.75rem;
+  }
+
+  .psycho-guide__crumb-current {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .psycho-guide__subtitle {
+    max-width: none;
+  }
 }

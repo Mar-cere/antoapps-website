@@ -9,39 +9,22 @@ type ResourcesLibraryProps = {
 };
 
 export default function ResourcesLibrary({ library }: ResourcesLibraryProps) {
-  const [filter, setFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const searchId = useId();
 
+  const query = searchQuery.trim().toLowerCase();
   const filteredResources = library.resources.filter((resource) => {
-    const matchesFilter =
-      filter === 'all' || resource.type === filter || resource.category === filter;
-    const query = searchQuery.trim().toLowerCase();
-    const matchesSearch =
-      query === '' ||
+    if (query === '') return true;
+    return (
       resource.title.toLowerCase().includes(query) ||
-      resource.description.toLowerCase().includes(query);
-    return matchesFilter && matchesSearch;
+      resource.description.toLowerCase().includes(query)
+    );
   });
 
   return (
     <section className="resources-library" data-fade-section aria-label={library.searchAriaLabel}>
       <div className="home-landing-container">
         <div className="resources-toolbar">
-          <div className="resources-filters" role="group" aria-label={library.filtersAriaLabel}>
-            {library.filters.map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                className={`resources-filter${filter === tab.id ? ' is-active' : ''}`}
-                aria-pressed={filter === tab.id}
-                onClick={() => setFilter(tab.id)}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
           <div className="resources-search">
             <label className="visually-hidden" htmlFor={searchId}>
               {library.searchAriaLabel}
