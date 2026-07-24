@@ -10,6 +10,7 @@ import {
   BienvenidaV2FeatureIcon,
   BienvenidaV2TrustIcon,
 } from '@/components/bienvenida/v2/BienvenidaV2Icons';
+import HomeV2ChatVignette from '@/components/sections/HomeV2ChatVignette';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
@@ -82,13 +83,11 @@ export default function BienvenidaLandingV2({
           <p className="lad-v2-hero-sub">{v2.heroSub}</p>
 
           <div className="lad-v2-hero-product">
-            <Image
-              src={v2.chatScreenshot.src}
-              alt={v2.chatScreenshot.alt}
-              width={390}
-              height={844}
-              className="lad-v2-screenshot lad-v2-screenshot--hero-chat"
-              priority
+            <HomeV2ChatVignette
+              thread={v2.chat}
+              locale={locale}
+              size="hero"
+              className="lad-v2-chat"
             />
           </div>
 

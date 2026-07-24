@@ -1,8 +1,5 @@
 import type { Locale } from '@/lib/i18n/config';
-import {
-  APP_SCREENSHOT_PATHS,
-  HOME_LANDING_SCREENSHOT_PATHS,
-} from '@/lib/assets/app-screenshots';
+import { APP_SCREENSHOT_PATHS } from '@/lib/assets/app-screenshots';
 import { getBienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 import { BIENVENIDA_VARIANTS } from '@/lib/bienvenida/parse-variant';
 
@@ -96,11 +93,16 @@ export function assertBienvenidaCopyInvariants(): string[] {
     if (v2.trustItems.length !== 3) {
       errors.push(`${tag} v2.trustItems debe tener 3 ítems`);
     }
-    if (v2.chatScreenshot.src !== HOME_LANDING_SCREENSHOT_PATHS.chatAnxiety) {
-      errors.push(`${tag} v2.chatScreenshot.src debe usar HOME_LANDING_SCREENSHOT_PATHS.chatAnxiety`);
+    if (!v2.chat.ariaLabel.trim()) {
+      errors.push(`${tag} v2.chat.ariaLabel vacío`);
     }
-    if (!v2.chatScreenshot.alt.trim()) {
-      errors.push(`${tag} v2.chatScreenshot.alt vacío`);
+    if (v2.chat.messages.length < 3) {
+      errors.push(`${tag} v2.chat.messages: se requieren al menos 3 mensajes`);
+    }
+    for (const message of v2.chat.messages) {
+      if (!message.text.trim() || (message.role !== 'user' && message.role !== 'anto')) {
+        errors.push(`${tag} v2.chat.messages incompleto`);
+      }
     }
     if (v2.dashboard.image.src !== APP_SCREENSHOT_PATHS.home) {
       errors.push(`${tag} v2.dashboard.image.src debe usar APP_SCREENSHOT_PATHS.home`);

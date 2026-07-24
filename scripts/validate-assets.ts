@@ -60,8 +60,8 @@ function assertAssetInvariants(): string[] {
     const copy = getBienvenidaCopy(locale);
     const tag = `[${locale}]`;
 
-    if (copy.v2.chatScreenshot.src !== APP_SCREENSHOT_PATHS.chat) {
-      errors.push(`${tag} v2.chatScreenshot.src must use APP_SCREENSHOT_PATHS.chat`);
+    if (copy.v2.chat.messages.length < 3) {
+      errors.push(`${tag} v2.chat.messages must have at least 3 items`);
     }
 
     if (copy.v2.dashboard.image.src !== APP_SCREENSHOT_PATHS.home) {

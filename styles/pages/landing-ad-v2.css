@@ -10,6 +10,9 @@
     --lad-v2-text-secondary: rgba(255, 255, 255, 0.78);
     --lad-v2-text-tertiary: rgba(255, 255, 255, 0.58);
     --lad-v2-text-muted: rgba(255, 255, 255, 0.5);
+    /* Tokens de la viñeta de chat compartida con home-v2 */
+    --home-v2-hairline: rgba(255, 255, 255, 0.09);
+    --home-v2-radius-media: 0.85rem;
     padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
 }
 
@@ -95,19 +98,121 @@
 .lad-v2-hero-product {
     width: 100%;
     margin: 0 0 0.75rem;
-    border-radius: 1rem;
-    overflow: hidden;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.03);
 }
 
-.lad-v2-screenshot--hero-chat {
-    object-fit: cover;
-    object-position: top center;
-    max-height: min(36vh, 14.5rem);
+/* Viñeta de chat — misma familia visual que home (/), scoped a ads */
+.lad-page--v2 .home-v2-panel {
+    --panel-surface: #07102e;
+    --panel-ink: rgba(255, 255, 255, 0.94);
+    --panel-muted: rgba(255, 255, 255, 0.62);
+    --panel-line: var(--home-v2-hairline);
+    --chat-user: #1a4d8c;
+    --chat-anto: rgba(255, 255, 255, 0.08);
     width: 100%;
-    height: auto;
-    display: block;
+    max-width: none;
+    margin: 0;
+    padding: 0.75rem 0.8rem 0.85rem;
+    border-radius: var(--home-v2-radius-media);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background:
+        linear-gradient(165deg, rgba(26, 221, 219, 0.06) 0%, transparent 42%),
+        var(--panel-surface);
+    box-shadow: none;
+}
+
+.lad-page--v2 .home-v2-panel__chrome {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.65rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--panel-line);
+}
+
+.lad-page--v2 .home-v2-panel__title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--panel-muted);
+}
+
+.lad-page--v2 .home-v2-chat__thread {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.lad-page--v2 .home-v2-chat__row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    max-width: 92%;
+}
+
+.lad-page--v2 .home-v2-chat__row--user {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.lad-page--v2 .home-v2-chat__row--anto {
+    align-self: flex-start;
+    align-items: flex-start;
+}
+
+.lad-page--v2 .home-v2-chat__who {
+    font-size: 0.5625rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--panel-muted);
+    padding: 0 0.3rem;
+}
+
+.lad-page--v2 .home-v2-chat__bubble {
+    margin: 0;
+    padding: 0.55rem 0.7rem;
+    border-radius: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--panel-ink);
+    text-wrap: pretty;
+}
+
+.lad-page--v2 .home-v2-chat__row--user .home-v2-chat__bubble {
+    background: var(--chat-user);
+    border-bottom-right-radius: 0.25rem;
+}
+
+.lad-page--v2 .home-v2-chat__row--anto .home-v2-chat__bubble {
+    background: var(--chat-anto);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom-left-radius: 0.25rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .lad-page--v2 .home-v2-chat--live .home-v2-chat__row {
+        animation: lad-v2-bubble-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation-delay: calc(0.2s + var(--home-v2-i, 0) * 110ms);
+    }
+}
+
+@keyframes lad-v2-bubble-in {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lad-page--v2 .home-v2-chat--live .home-v2-chat__row {
+        animation: none;
+    }
 }
 
 .lad-v2-inapp-cta-note {
@@ -468,8 +573,17 @@
         font-size: 1.5rem;
     }
 
-    .lad-v2-screenshot--hero-chat {
-        max-height: min(32vh, 12.75rem);
+    .lad-page--v2 .home-v2-chat__bubble {
+        font-size: 0.75rem;
+        padding: 0.45rem 0.6rem;
+    }
+
+    .lad-page--v2 .home-v2-chat__thread {
+        gap: 0.45rem;
+    }
+
+    .lad-page--v2 .home-v2-panel {
+        padding: 0.65rem 0.7rem 0.7rem;
     }
 }
 

@@ -3,9 +3,7 @@ import { getAppStoreReviewSnippets } from '@/lib/app-store-reviews';
 import { appStoreRatingWithReviews } from '@/lib/app-store-social-proof';
 import {
   APP_SCREENSHOT_PATHS,
-  HOME_LANDING_SCREENSHOT_PATHS,
   getAppScreenshotAlt,
-  getHomeLandingScreenshotAlt,
 } from '@/lib/assets/app-screenshots';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
@@ -14,6 +12,18 @@ export type BienvenidaVariant = 'A' | 'B' | 'C';
 export type BienvenidaV2FeatureIcon = 'privacy' | 'clock' | 'evidence' | 'crisis';
 
 export type BienvenidaV2TrustIcon = 'lock' | 'no-card' | 'chile';
+
+export type BienvenidaV2ChatRole = 'user' | 'anto';
+
+export type BienvenidaV2ChatBubble = {
+  role: BienvenidaV2ChatRole;
+  text: string;
+};
+
+export type BienvenidaV2ChatThread = {
+  ariaLabel: string;
+  messages: readonly BienvenidaV2ChatBubble[];
+};
 
 export type BienvenidaCopy = {
   meta: {
@@ -132,7 +142,7 @@ export type BienvenidaCopy = {
     ctaMicro: string;
     androidLink: string;
     chatSectionLabel: string;
-    chatScreenshot: { src: string; alt: string };
+    chat: BienvenidaV2ChatThread;
     features: readonly { icon: BienvenidaV2FeatureIcon; title: string; subtitle: string }[];
     dashboard: {
       label: string;
@@ -358,9 +368,26 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ctaMicro: `Start free today · No card · Private`,
         androidLink: 'Request early access for Android',
         chatSectionLabel: 'On your iPhone',
-        chatScreenshot: {
-          src: HOME_LANDING_SCREENSHOT_PATHS.chatAnxiety,
-          alt: getHomeLandingScreenshotAlt('chatAnxiety', 'en'),
+        chat: {
+          ariaLabel: 'Sample Anto conversation about a mind that will not slow down',
+          messages: [
+            {
+              role: 'user',
+              text: "Can't sleep. Presentation Friday and my head won't shut up.",
+            },
+            {
+              role: 'anto',
+              text: "What's the part that keeps looping?",
+            },
+            {
+              role: 'user',
+              text: 'Blanking out. Looking stupid in front of everyone.',
+            },
+            {
+              role: 'anto',
+              text: 'Tonight just open slide one. Two minutes. Then close it.',
+            },
+          ],
         },
         features: [
           { icon: 'privacy', title: 'Private', subtitle: 'Only you read your conversations' },
@@ -596,9 +623,26 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       ctaMicro: `Empieza gratis hoy · Sin tarjeta · Privado`,
       androidLink: 'Solicitar acceso anticipado para Android',
       chatSectionLabel: 'Así se ve en tu iPhone',
-      chatScreenshot: {
-        src: HOME_LANDING_SCREENSHOT_PATHS.chatAnxiety,
-        alt: getHomeLandingScreenshotAlt('chatAnxiety', 'es'),
+      chat: {
+        ariaLabel: 'Conversación de ejemplo en Anto cuando la mente no para',
+        messages: [
+          {
+            role: 'user',
+            text: 'No puedo dormir. Presentación el viernes y la cabeza no para.',
+          },
+          {
+            role: 'anto',
+            text: '¿Qué es lo que más te da vueltas?',
+          },
+          {
+            role: 'user',
+            text: 'Quedarme en blanco. Que se note delante de todos.',
+          },
+          {
+            role: 'anto',
+            text: 'Esta noche solo abre la primera diapositiva. Dos minutos. Después cierras.',
+          },
+        ],
       },
       features: [
         { icon: 'privacy', title: 'Privado', subtitle: 'Solo tú lees tus conversaciones' },
