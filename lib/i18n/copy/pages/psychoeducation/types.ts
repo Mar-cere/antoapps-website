@@ -36,6 +36,20 @@ export type PsychoeducationFurtherReading = {
   links: readonly PsychoeducationFurtherLink[];
 };
 
+/** Referencia bibliográfica (APA 7) con enlace estable (DOI preferido). */
+export type PsychoeducationReference = {
+  apa: string;
+  href: string;
+  /** Qué idea de la guía sustenta esta fuente. */
+  note?: string;
+};
+
+export type PsychoeducationReferences = {
+  title: string;
+  support: string;
+  items: readonly PsychoeducationReference[];
+};
+
 export type PsychoeducationChatBubble = {
   role: 'user' | 'anto';
   text: string;
@@ -79,6 +93,8 @@ export type PsychoeducationGuide = {
   productMoment?: PsychoeducationProductMoment;
   /** Enlaces a material más clínico / completo. */
   furtherReading?: PsychoeducationFurtherReading;
+  /** Bibliografía APA (papers / guías reales) que sustentan la psicoeducación. */
+  references?: PsychoeducationReferences;
   relatedSlugs: readonly PsychoeducationSlug[];
   disclaimer: string;
   /** Puente suave entre aviso clínico y CTA de producto. */

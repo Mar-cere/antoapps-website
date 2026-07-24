@@ -180,52 +180,250 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   },
   [SLUGS.anxiety]: {
     slug: SLUGS.anxiety,
-    readingMinutes: 7,
+    readingMinutes: 12,
     meta: {
-      title: 'Ansiedad y preocupación: ¿cuándo es normal? | Anto',
+      title: 'Ansiedad y preocupación: mapa para entenderla | Anto',
       description:
-        'Diferencias entre preocupación cotidiana y ansiedad problemática, señales de alerta y estrategias basadas en evidencia para el día a día. Psicoeducación; no sustituye atención profesional.',
-      openGraphTitle: 'Ansiedad y preocupación — guía breve',
-      openGraphDescription: 'Entiende la ansiedad y qué herramientas pueden ayudarte entre sesiones con un profesional.',
+        'Psicoeducación sobre ansiedad y preocupación: activación del sistema nervioso, preocupación vs. ansiedad, síntomas, conductas de seguridad, presentaciones frecuentes, intervenciones (regulación, grounding, exposición, posposición de la preocupación), cribado GAD-7 y criterios para buscar ayuda. No diagnostica ni sustituye terapia.',
+      openGraphTitle: 'Ansiedad y preocupación — guía completa',
+      openGraphDescription:
+        'De la activación anticipatoria al mapa: síntomas, evitación, intervenciones con base en TCC y cuándo pedir evaluación.',
+      keywords:
+        'ansiedad, preocupación, TAG, trastorno de ansiedad generalizada, ataque de pánico, conductas de seguridad, evitación, GAD-7, exposición graduada, grounding, psicoeducación, TCC, Anto',
     },
     hero: {
-      title: 'Ansiedad y preocupación: guía breve',
-      subtitle: 'Cuándo es una respuesta adaptativa y cuándo conviene buscar más apoyo.',
+      title: 'Ansiedad y preocupación',
+      subtitle:
+        'Un mapa para leer la activación anticipatoria: síntomas, ciclos de evitación, intervenciones con evidencia y cuándo conviene evaluación clínica.',
+    },
+    pullQuote:
+      'La ansiedad no siempre miente. A veces avisa. El problema es cuando el aviso se queda encendido aunque el peligro ya no esté.',
+    figure: {
+      src: '/assets/images/editorial/anto-editorial-morning-pause.webp',
+      alt: 'Mañana en pausa junto a una ventana con luz suave — espacio quieto cuando la preocupación no suelta',
+      caption:
+        'A veces el día empieza antes de que el cuerpo esté listo. Nombrar la activación ya es un primer dato clínico.',
+      width: 1536,
+      height: 1024,
     },
     sections: [
       {
+        heading: 'Qué es la ansiedad',
+        paragraphs: [
+          'La ansiedad es una respuesta de amenaza del sistema nervioso autónomo — sobre todo la rama simpática — ante un peligro real, anticipado o interpretado. Eleva arousal: taquicardia, tensión muscular, respiración más superficial, atención sesgada hacia lo que podría salir mal. En dosis adaptativa, prepara la acción. Cuando se cronifica, el futuro ocupa el presente.',
+          'Clínicamente se describe como un patrón de tres canales: somático (cuerpo), cognitivo (anticipación, catastrofización) y conductual (evitación y conductas de seguridad). No es lo mismo que “ser nervioso”: implica intensidad, persistencia o deterioro funcional.',
+          'Esta guía es psicoeducación. No diagnostica un trastorno. Sirve para reconocer el patrón, ensayar intervenciones de bajo riesgo y decidir cuándo pedir evaluación profesional.',
+        ],
+      },
+      {
         heading: 'Preocupación vs. ansiedad',
         paragraphs: [
-          'Preocuparse ante un examen o una entrevista es habitual: el cuerpo se activa para afrontar un desafío. La ansiedad se vuelve más problemática cuando es intensa, persistente, aparece sin motivo claro o limita trabajo, sueño o relaciones.',
+          'En la literatura clínica suele distinguirse la preocupación (worry) — proceso cognitivo verbal, ensayar escenarios en lenguaje — de la ansiedad como estado afectivo-somático (Borkovec et al., 1983a). Preocuparse ante un examen o una factura puede ser adaptativo: hay un estímulo concreto y un margen de control.',
+          'La preocupación se vuelve disfuncional cuando es excesiva, difícil de controlar, invade varios dominios y deja de orientarse a solución. La ansiedad clínicamente relevante suele ir acompañada de hiperactivación sostenida, evitación y deterioro en sueño, trabajo o relaciones — a menudo durante semanas.',
         ],
-      },
-      {
-        heading: 'Señales frecuentes',
         bullets: [
-          'Tensión muscular, palpitaciones o respiración acelerada',
-          'Pensamientos repetitivos difíciles de soltar',
-          'Evitación de situaciones (social, laboral, médica)',
-          'Sueño fragmentado o irritabilidad',
+          'Preocupación adaptativa: acotada, ligada a un problema real, facilita decidir o planificar.',
+          'Preocupación patológica: catastrofiza, exige certeza imposible, reaparece tras revisiones (checking).',
+          'Ansiedad con impacto: el arousal no remite aunque la evaluación cognitiva diga “no hay peligro objetivo”.',
         ],
       },
       {
-        heading: 'Estrategias útiles',
+        heading: 'Síntomas somáticos y cognitivos',
         paragraphs: [
-          'Técnicas de respiración lenta, grounding (5 sentidos), exposición gradual a lo que evitas con apoyo, y registro de pensamientos (ABC o diario breve). La actividad física moderada y la higiene del sueño también influyen.',
-          'La escala GAD-7 es una herramienta de cribado que Anto puede integrar en tu seguimiento; no es un diagnóstico, pero ayuda a ver tendencias.',
+          'Antes de intervenir sobre el pensamiento, conviene mapear la señal. En ansiedad, el canal somático suele activarse primero o en paralelo al cognitivo.',
+        ],
+        bullets: [
+          'Somáticos: tensión (mandíbula, cuello, hombros), diaforesis o manos frías, palpitaciones, disnea subjetiva, molestias gastrointestinales.',
+          'Cognitivos: sesgo atencional al peligro, pensamientos intrusivos, dificultad de concentración, irritabilidad.',
+          'Sueño: fragmentación, despertar precoz, fatiga diurna desproporcionada al esfuerzo.',
+          'Urgencia subjetiva (“tengo que resolver esto ya”) sin tarea operativa clara — típica de la hiperactivación.',
         ],
       },
       {
-        heading: 'Cuándo pedir ayuda profesional',
+        heading: 'Evitación y conductas de seguridad',
         paragraphs: [
-          'Si los síntomas duran semanas, empeoran o incluyen ideas de hacerse daño, contacta a un profesional o línea de crisis. Anto puede acompañarte entre sesiones, no sustituir atención clínica.',
+          'Un mecanismo central es el refuerzo negativo: aparece incertidumbre o miedo → realizas una conducta que baja la ansiedad al instante (revisar, preguntar, evitar) → el alivio enseña al sistema que “solo así estás a salvo” → la amenaza percibida se consolida. Las conductas de seguridad (safety-seeking behaviours) pueden impedir la desconfirmación de la amenaza (Salkovskis, 1991).',
+          'La evitación y las conductas de seguridad son comprensibles. También mantienen el problema a medio plazo: impiden habituación y aprendizaje correctivo (“el daño no ocurrió aunque no evitara”). La alternativa clínica no es “valentía total”, sino exposición graduada — dosis tolerables, a menudo con acompañamiento (Craske et al., 2014).',
+        ],
+        bullets: [
+          'Checking: revisar síntomas, mensajes, noticias o el cuerpo de forma repetida.',
+          'Reassurance-seeking: pedir certeza reiterada a otras personas o a búsquedas online.',
+          'Evitación situacional: cancelar, posponer o no decidir “por si acaso”.',
+          'Evitación cognitiva: distracción total que no procesa el estímulo temido y lo deja intacto.',
+        ],
+      },
+      {
+        heading: 'Presentaciones frecuentes (no diagnóstico)',
+        paragraphs: [
+          'Los cuadros de ansiedad se agrupan en categorías clínicas (p. ej. en manuales diagnósticos), pero aquí se listan como presentaciones descriptivas — no como etiqueta que puedas autoasignarte:',
+        ],
+        bullets: [
+          'Tipo TAG / preocupación generalizada: preocupación excesiva y difícil de controlar sobre varios dominios (salud, dinero, trabajo, familia).',
+          'Ansiedad social: miedo intenso a evaluación negativa, inhibición o evitación de situaciones interpersonales.',
+          'Ataques de pánico: oleadas intensas de miedo con síntomas autonómicos marcados; suelen alcanzar pico en minutos (no siempre equivalen a trastorno de pánico).',
+          'Ansiedad por la salud: hipervigilancia interoceptiva y búsqueda de tranquilidad ante sensaciones corporales.',
+          'Ansiedad situacional o reactiva: ligada a un estresor identificable (mudanza, duelo, cambio laboral) que no remite al ceder el pico agudo.',
+        ],
+      },
+      {
+        heading: 'Intervenciones que suelen ayudar',
+        paragraphs: [
+          'Metaanálisis de ensayos controlados con placebo indican que la TCC es eficaz para trastornos de ansiedad en adultos (Hofmann & Smits, 2008). En la práctica se combina: (1) regulación de la arousal, (2) trabajo cognitivo sobre interpretaciones amenazantes, y (3) exposición o reducción de conductas de seguridad. Si la intensidad es alta, prioriza estabilización y apoyo profesional.',
+        ],
+        bullets: [
+          'Regulación autonómica: respiración lenta con exhalación prolongada; grounding sensorial 5-4-3-2-1; contacto con el suelo.',
+          'Etiquetado afectivo: nombrar “esto es ansiedad” puede reducir fusión cognitiva con el pensamiento catastrófico.',
+          'Posposición de la preocupación (stimulus control): ventana horaria para worry; fuera de ella, anotar y diferir.',
+          'Exposición graduada: acercamiento jerárquico a lo evitado, sin exigir certeza absoluta.',
+          'Higiene de arousal basal: sueño, actividad física moderada y cafeína — modulan la línea base simpática.',
+          'Registro ABC o diario de pensamientos: situación → pensamiento → emoción/intensidad → conducta — para detectar sesgos.',
+        ],
+      },
+      {
+        heading: 'Ejercicio: posposición de la preocupación',
+        paragraphs: [
+          'Técnica de control de estímulos descrita para preocupación crónica (Borkovec et al., 1983b): no elimina el worry; lo concentra en un intervalo para recuperar el resto del día y reducir el refuerzo continuo de la rumia.',
+        ],
+        ordered: true,
+        bullets: [
+          'Define 15–20 minutos diarios (horario estable si puedes) y un lugar fijo para la “ventana de preocupación”.',
+          'En esa ventana, escribe preocupaciones con detalle — sin intentar resolverlas todas.',
+          'Fuera de la ventana: si aparece una, regístrala en una lista (“para las 18:00”) y vuelve a la tarea en curso.',
+          'Al abrir la ventana, revisa la lista. Distingue: ¿hay una acción conductual pequeña hoy? Si no, ciérrala hasta mañana.',
+          'Si la intensidad subjetiva es ≥8/10, primero baja la arousal (respiración o grounding) y recién después escribe.',
+        ],
+      },
+      {
+        heading: 'Cribado y seguimiento (GAD-7)',
+        paragraphs: [
+          'El GAD-7 (Generalized Anxiety Disorder-7) es una escala breve de cribado de síntomas de ansiedad en las últimas dos semanas (Spitzer et al., 2006). No diagnostica por sí sola. En el estudio de validación, un punto de corte ≥10 optimizó sensibilidad y especificidad para probable TAG; rangos 5–9 se usan con frecuencia como sintomatología leve a vigilar.',
+          'Anto puede integrar este tipo de seguimiento en el historial. Un día atípico no define la tendencia: importan series temporales y el contexto (duelo, enfermedad física, estimulantes).',
+        ],
+      },
+      {
+        heading: 'Cuándo pedir evaluación',
+        paragraphs: [
+          'Conviene evaluación profesional si los síntomas persisten varias semanas, empeoran, generan deterioro funcional claro, o si hay uso de alcohol u otras sustancias para modular la ansiedad. También si la evitación reduce de forma progresiva el rango de vida.',
+          'Ante ideación suicida, riesgo inmediato o incapacidad de cuidarte: contacta emergencias o una línea de crisis de tu país. Anto puede detectar señales de riesgo y ofrecer recursos; no sustituye servicios de emergencia ni tratamiento clínico.',
         ],
       },
     ],
-    relatedSlugs: [SLUGS.scales, SLUGS.mindfulness, SLUGS.tcc],
+    productMoment: {
+      title: 'Así se ve en Anto',
+      body: 'Cuando la preocupación se vuelve sostenida, puedes describirla y recibir un paso concreto — regulación o posposición — sin pretender resolverlo todo de una vez.',
+      afterHeading: 'Intervenciones que suelen ayudar',
+      chat: {
+        ariaLabel: 'Ejemplo de conversación en Anto sobre preocupación sostenida',
+        messages: [
+          {
+            role: 'user',
+            text: 'Llevo días ensayando lo peor. No es un ataque de pánico, pero el cuerpo no baja.',
+          },
+          {
+            role: 'anto',
+            text: 'Eso agota. ¿Es un pico agudo de ahora, o preocupación difícil de controlar desde hace días?',
+          },
+          {
+            role: 'user',
+            text: 'Difícil de controlar. Trabajo, salud, varias áreas a la vez.',
+          },
+          {
+            role: 'anto',
+            text: 'Primero regulamos un poco la activación. Después podemos probar posponer la preocupación a una ventana, para no reforzar la rumia todo el día.',
+          },
+        ],
+      },
+      suggestionsLabel: 'Sugerencias',
+      suggestions: ['Posposición de la preocupación', 'Regulación de la activación'],
+    },
+    furtherReading: {
+      title: 'Ir más a fondo',
+      support:
+        'Este texto es el mapa amplio. Para una técnica puntual, una escala o el marco TCC, sigue aquí:',
+      links: [
+        {
+          label: 'Cuando la ansiedad sube (grounding)',
+          description:
+            'Anclas sensoriales y 5-4-3-2-1 para picos de activación autonómica.',
+          href: '/recursos/grounding-ansiedad-crisis',
+        },
+        {
+          label: 'PHQ-9 y GAD-7',
+          description:
+            'Escalas de cribado: qué miden, rangos orientativos y límites frente al diagnóstico.',
+          href: '/recursos/escalas-phq9-gad7',
+        },
+        {
+          label: 'Qué es la TCC',
+          description:
+            'Modelo cognitivo-conductual: pensamientos, emociones, conductas y exposición.',
+          href: '/recursos/que-es-tcc',
+        },
+        {
+          label: 'NIMH — Trastornos de ansiedad (español)',
+          description:
+            'Material clínico público del National Institute of Mental Health (EE. UU.).',
+          href: 'https://www.nimh.nih.gov/health/publications/espanol/trastorno-de-ansiedad-generalizada',
+          external: true,
+        },
+      ],
+    },
+    references: {
+      title: 'Referencias (APA)',
+      support:
+        'Fuentes revisadas por pares que sustentan distinciones, mecanismos e intervenciones mencionadas arriba. No sustituyen evaluación clínica individual.',
+      items: [
+        {
+          apa: 'Borkovec, T. D., Robinson, E., Pruzinsky, T., & DePree, J. A. (1983a). Preliminary exploration of worry: Some characteristics and processes. Behaviour Research and Therapy, 21(1), 9–16. https://doi.org/10.1016/0005-7967(83)90121-3',
+          href: 'https://doi.org/10.1016/0005-7967(83)90121-3',
+          note: 'Caracteriza la preocupación como proceso cognitivo y su relación con ansiedad.',
+        },
+        {
+          apa: 'Borkovec, T. D., Wilkinson, L., Folensbee, R., & Lerman, C. (1983b). Stimulus control applications to the treatment of worry. Behaviour Research and Therapy, 21(3), 247–251. https://doi.org/10.1016/0005-7967(83)90206-1',
+          href: 'https://doi.org/10.1016/0005-7967(83)90206-1',
+          note: 'Base experimental de la posposición / ventana de preocupación (control de estímulos).',
+        },
+        {
+          apa: 'Craske, M. G., Treanor, M., Conway, C. C., Zbozinek, T., & Vervliet, B. (2014). Maximizing exposure therapy: An inhibitory learning approach. Behaviour Research and Therapy, 58, 10–23. https://doi.org/10.1016/j.brat.2014.04.006',
+          href: 'https://doi.org/10.1016/j.brat.2014.04.006',
+          note: 'Marco de exposición basado en aprendizaje inhibitorio (vs. solo habituación).',
+        },
+        {
+          apa: 'Hofmann, S. G., & Smits, J. A. J. (2008). Cognitive-behavioral therapy for adult anxiety disorders: A meta-analysis of randomized placebo-controlled trials. The Journal of Clinical Psychiatry, 69(4), 621–632. https://doi.org/10.4088/jcp.v69n0415',
+          href: 'https://doi.org/10.4088/jcp.v69n0415',
+          note: 'Metaanálisis: eficacia de la TCC frente a placebo en trastornos de ansiedad del adulto.',
+        },
+        {
+          apa: 'Salkovskis, P. M. (1991). The importance of behaviour in the maintenance of anxiety and panic: A cognitive account. Behavioural Psychotherapy, 19(1), 6–19. https://doi.org/10.1017/S0141347300011472',
+          href: 'https://doi.org/10.1017/S0141347300011472',
+          note: 'Modelo cognitivo de conductas de seguridad y mantenimiento de la ansiedad.',
+        },
+        {
+          apa: 'Spitzer, R. L., Kroenke, K., Williams, J. B. W., & Löwe, B. (2006). A brief measure for assessing generalized anxiety disorder: The GAD-7. Archives of Internal Medicine, 166(10), 1092–1097. https://doi.org/10.1001/archinte.166.10.1092',
+          href: 'https://doi.org/10.1001/archinte.166.10.1092',
+          note: 'Validación del GAD-7 como escala de cribado y severidad en atención primaria.',
+        },
+      ],
+    },
+    relatedSlugs: [SLUGS.grounding, SLUGS.scales, SLUGS.tcc],
     disclaimer:
-      'No es consejo médico. Ante crisis o riesgo, busca ayuda de emergencia local de inmediato.',
-    cta: { label: 'Acompañamiento con IA en Anto →', path: '/bienvenida' },
+      'Psicoeducación. No diagnostica ni sustituye evaluación o tratamiento clínico. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
+    ctaBridge:
+      'Si quieres compañía entre sesiones — o mientras decides pedir evaluación — puedes seguir en el teléfono, a tu ritmo.',
+    cta: { label: 'Apoyo en Anto →', path: '/bienvenida' },
+    howTo: {
+      name: 'Posposición de la preocupación (ventana de worry)',
+      description:
+        'Técnica de control de estímulos para concentrar la preocupación crónica en un intervalo diario y reducir el refuerzo continuo de la rumia.',
+      totalTime: 'PT20M',
+      steps: [
+        'Define 15–20 minutos fijos y un lugar para la ventana de preocupación.',
+        'En esa ventana, anota preocupaciones con detalle sin resolverlas todas.',
+        'Fuera de la ventana, si aparece una, regístrala para ese horario y vuelve a la actividad.',
+        'Al abrir la ventana, revisa la lista y elige solo una acción conductual pequeña si existe.',
+        'Si la intensidad es muy alta, regula la arousal primero (respiración o grounding) y luego escribe.',
+      ],
+    },
   },
   [SLUGS.scales]: {
     slug: SLUGS.scales,
@@ -774,11 +972,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Ir más a fondo',
       support:
-        'Esta página es práctica y breve. Si quieres el mapa más amplio — síntomas, cuándo pedir ayuda, evidencia — empieza aquí:',
+        'Esta página es práctica y breve. Si quieres el mapa amplio — síntomas, ciclos, estrategias, cuándo pedir ayuda — empieza aquí:',
       links: [
         {
-          label: 'Ansiedad y preocupación (guía más completa)',
-          description: 'Qué es, cuándo preocupa y caminos de apoyo — tono psicoeducativo amplio.',
+          label: 'Ansiedad y preocupación (mapa completo)',
+          description:
+            'Activación autonómica, conductas de seguridad, intervenciones tipo TCC, GAD-7 y cuándo pedir evaluación.',
           href: '/recursos/ansiedad-y-preocupacion',
         },
         {

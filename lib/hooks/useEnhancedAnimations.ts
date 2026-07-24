@@ -109,6 +109,7 @@ export function useEnhancedHover() {
         ':not(.premium-store-cta)',
         ':not(.psycho-guide__further-link)',
         ':not(.psycho-guide__related-link)',
+        ':not(.psycho-guide__refs-link)',
       ].join('')
     );
     links.forEach((link) => {

@@ -180,52 +180,250 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   },
   [SLUGS.anxiety]: {
     slug: SLUGS.anxiety,
-    readingMinutes: 7,
+    readingMinutes: 12,
     meta: {
-      title: 'Anxiety and worry: when is it normal? | Anto',
+      title: 'Anxiety and worry: a map to understand it | Anto',
       description:
-        'Differences between everyday worry and problematic anxiety, warning signs, and evidence-based strategies for daily life. Psychoeducation; does not replace professional care.',
-      openGraphTitle: 'Anxiety and worry — brief guide',
-      openGraphDescription: 'Understand anxiety and tools that can help between sessions with a professional.',
+        'Psychoeducation on anxiety and worry: autonomic activation, worry vs. anxiety, symptoms, safety behaviours, common presentations, interventions (regulation, grounding, exposure, worry postponement), GAD-7 screening, and when to seek assessment. Does not diagnose or replace therapy.',
+      openGraphTitle: 'Anxiety and worry — complete guide',
+      openGraphDescription:
+        'From anticipatory arousal to a map: symptoms, avoidance, CBT-informed interventions, and when to seek evaluation.',
+      keywords:
+        'anxiety, worry, GAD, generalised anxiety disorder, panic attack, safety behaviours, avoidance, GAD-7, graded exposure, grounding, psychoeducation, CBT, Anto',
     },
     hero: {
-      title: 'Anxiety and worry: brief guide',
-      subtitle: 'When it is an adaptive response and when more support may help.',
+      title: 'Anxiety and worry',
+      subtitle:
+        'A map for reading anticipatory activation: symptoms, avoidance cycles, evidence-informed interventions, and when clinical assessment makes sense.',
+    },
+    pullQuote:
+      'Anxiety does not always lie. Sometimes it warns. The problem is when the warning stays on even after the danger is gone.',
+    figure: {
+      src: '/assets/images/editorial/anto-editorial-morning-pause.webp',
+      alt: 'A quiet morning pause by a soft-lit window — space when worry will not let go',
+      caption:
+        'Sometimes the day starts before the body is ready. Naming the activation is already a first clinical cue.',
+      width: 1536,
+      height: 1024,
     },
     sections: [
       {
+        heading: 'What anxiety is',
+        paragraphs: [
+          'Anxiety is a threat response of the autonomic nervous system — chiefly the sympathetic branch — to danger that is real, anticipated, or interpreted. It raises arousal: tachycardia, muscle tension, shallower breathing, attention biased toward what might go wrong. In an adaptive dose, it prepares action. When it becomes chronic, the future occupies the present.',
+          'Clinically it is described across three channels: somatic (body), cognitive (anticipation, catastrophising), and behavioural (avoidance and safety behaviours). It is not the same as “being nervous”: it implies intensity, persistence, or functional impairment.',
+          'This guide is psychoeducation. It does not diagnose a disorder. It helps you recognise the pattern, practise low-risk interventions, and decide when professional assessment is warranted.',
+        ],
+      },
+      {
         heading: 'Worry vs. anxiety',
         paragraphs: [
-          'Worrying before an exam or interview is common: the body activates to face a challenge. Anxiety becomes more problematic when it is intense, persistent, appears without a clear trigger, or limits work, sleep, or relationships.',
+          'Clinical literature often distinguishes worry — a verbal-cognitive process of rehearsing scenarios in language — from anxiety as an affective–somatic state (Borkovec et al., 1983a). Worrying before an exam or a bill can be adaptive: there is a concrete cue and some room for control.',
+          'Worry becomes dysfunctional when it is excessive, hard to control, spans several domains, and no longer orients toward solutions. Clinically relevant anxiety usually includes sustained hyperarousal, avoidance, and impairment in sleep, work, or relationships — often over weeks.',
         ],
-      },
-      {
-        heading: 'Common signs',
         bullets: [
-          'Muscle tension, palpitations, or rapid breathing',
-          'Repetitive thoughts that are hard to let go',
-          'Avoidance of situations (social, work, medical)',
-          'Fragmented sleep or irritability',
+          'Adaptive worry: bounded, tied to a real problem, supports deciding or planning.',
+          'Pathological worry: catastrophises, demands impossible certainty, returns after checking.',
+          'Anxiety with impact: arousal does not settle even when cognitive appraisal says “no objective danger”.',
         ],
       },
       {
-        heading: 'Useful strategies',
+        heading: 'Somatic and cognitive symptoms',
         paragraphs: [
-          'Slow breathing techniques, grounding (five senses), gradual exposure to what you avoid with support, and thought records (ABC or brief journal). Moderate physical activity and sleep hygiene also matter.',
-          'The GAD-7 scale is a screening tool Anto can integrate into your tracking; it is not a diagnosis, but it helps you see trends.',
+          'Before intervening on thought, it helps to map the signal. In anxiety, the somatic channel often activates first or in parallel with the cognitive one.',
+        ],
+        bullets: [
+          'Somatic: tension (jaw, neck, shoulders), sweating or cold hands, palpitations, subjective dyspnea, gastrointestinal discomfort.',
+          'Cognitive: attentional bias to threat, intrusive thoughts, concentration difficulty, irritability.',
+          'Sleep: fragmentation, early waking, daytime fatigue out of proportion to effort.',
+          'Subjective urgency (“I have to solve this now”) without a clear operational task — typical of hyperarousal.',
         ],
       },
       {
-        heading: 'When to seek professional help',
+        heading: 'Avoidance and safety behaviours',
         paragraphs: [
-          'If symptoms last weeks, worsen, or include thoughts of self-harm, contact a professional or crisis line. Anto can support you between sessions; it does not replace clinical care.',
+          'A central mechanism is negative reinforcement: uncertainty or fear appears → you perform a behaviour that lowers anxiety instantly (check, ask, avoid) → relief teaches the system that “this is the only way to feel safe” → the perceived threat consolidates. Safety-seeking behaviours can block disconfirmation of threat (Salkovskis, 1991).',
+          'Avoidance and safety behaviours are understandable. They also maintain the problem over time: they block habituation and corrective learning (“harm did not occur even though I did not avoid”). The clinical alternative is not “total bravery”, but graded exposure — tolerable doses, often with support (Craske et al., 2014).',
+        ],
+        bullets: [
+          'Checking: repeatedly reviewing symptoms, messages, news, or the body.',
+          'Reassurance-seeking: asking others — or the internet — for certainty again and again.',
+          'Situational avoidance: cancelling, postponing, or not deciding “just in case”.',
+          'Cognitive avoidance: total distraction that never processes the feared cue and leaves it intact.',
+        ],
+      },
+      {
+        heading: 'Common presentations (not a diagnosis)',
+        paragraphs: [
+          'Anxiety presentations are grouped into clinical categories (e.g. in diagnostic manuals), but here they are listed as descriptive patterns — not labels you should self-assign:',
+        ],
+        bullets: [
+          'GAD-type / generalised worry: excessive, hard-to-control worry across several domains (health, money, work, family).',
+          'Social anxiety: intense fear of negative evaluation, inhibition, or avoidance of interpersonal situations.',
+          'Panic attacks: intense waves of fear with marked autonomic symptoms; they often peak within minutes (not always equal to panic disorder).',
+          'Health anxiety: interoceptive hypervigilance and reassurance-seeking about bodily sensations.',
+          'Situational or reactive anxiety: tied to an identifiable stressor (a move, grief, a job change) that does not settle after the acute peak.',
+        ],
+      },
+      {
+        heading: 'Interventions that usually help',
+        paragraphs: [
+          'Meta-analyses of placebo-controlled trials indicate that CBT is efficacious for adult anxiety disorders (Hofmann & Smits, 2008). In practice this often combines: (1) arousal regulation, (2) cognitive work on threat appraisals, and (3) exposure or reduction of safety behaviours. If intensity is high, prioritise stabilisation and professional support.',
+        ],
+        bullets: [
+          'Autonomic regulation: slow breathing with longer exhale; 5-4-3-2-1 sensory grounding; contact with the floor.',
+          'Affect labeling: naming “this is anxiety” can reduce cognitive fusion with catastrophic thought.',
+          'Worry postponement (stimulus control): a timed window for worry; outside it, note and defer.',
+          'Graded exposure: hierarchical approach to what you avoid, without demanding absolute certainty.',
+          'Baseline arousal hygiene: sleep, moderate physical activity, and caffeine — they modulate sympathetic baseline.',
+          'ABC or thought records: situation → thought → emotion/intensity → behaviour — to spot biases.',
+        ],
+      },
+      {
+        heading: 'Exercise: worry postponement',
+        paragraphs: [
+          'A stimulus-control technique described for chronic worry (Borkovec et al., 1983b): it does not erase worry; it concentrates it in an interval so the rest of the day is freer and continuous rumination is less reinforced.',
+        ],
+        ordered: true,
+        bullets: [
+          'Set 15–20 minutes daily (a stable time if you can) and a fixed place for the “worry window”.',
+          'In that window, write worries in detail — without trying to solve them all.',
+          'Outside the window: if one appears, log it on a list (“for 6:00 p.m.”) and return to the task at hand.',
+          'When you open the window, review the list. Distinguish: is there one small behavioural action today? If not, close it until tomorrow.',
+          'If subjective intensity is ≥8/10, lower arousal first (breathing or grounding), then write.',
+        ],
+      },
+      {
+        heading: 'Screening and follow-up (GAD-7)',
+        paragraphs: [
+          'The GAD-7 (Generalized Anxiety Disorder-7) is a brief screening scale for anxiety symptoms over the last two weeks (Spitzer et al., 2006). It does not diagnose on its own. In the validation study, a cut point ≥10 optimised sensitivity and specificity for probable GAD; scores of 5–9 are often treated as mild symptoms to monitor.',
+          'Anto can integrate this kind of tracking into your history. One atypical day does not define the trend: time series and context matter (grief, physical illness, stimulants).',
+        ],
+      },
+      {
+        heading: 'When to seek assessment',
+        paragraphs: [
+          'Professional assessment is warranted if symptoms persist for several weeks, worsen, cause clear functional impairment, or if alcohol or other substances are used to modulate anxiety. Also if avoidance progressively shrinks your range of life.',
+          'If there is suicidal ideation, immediate risk, or you cannot care for yourself: contact emergency services or a crisis line in your country. Anto can detect risk signals and offer resources; it does not replace emergency care or clinical treatment.',
         ],
       },
     ],
-    relatedSlugs: [SLUGS.scales, SLUGS.mindfulness, SLUGS.tcc],
+    productMoment: {
+      title: 'How it looks in Anto',
+      body: 'When worry becomes sustained, you can describe it and get one concrete step — regulation or postponement — without trying to “resolve the whole picture” at once.',
+      afterHeading: 'Interventions that usually help',
+      chat: {
+        ariaLabel: 'Example Anto conversation about sustained worry',
+        messages: [
+          {
+            role: 'user',
+            text: 'I have spent days rehearsing the worst. It is not a panic attack, but my body will not settle.',
+          },
+          {
+            role: 'anto',
+            text: 'That is exhausting. Is it an acute spike right now, or hard-to-control worry lasting days?',
+          },
+          {
+            role: 'user',
+            text: 'Hard to control. Work, health, several areas at once.',
+          },
+          {
+            role: 'anto',
+            text: 'First let’s regulate activation a little. Then we can try postponing worry to a window, so rumination is not reinforced all day.',
+          },
+        ],
+      },
+      suggestionsLabel: 'Suggestions',
+      suggestions: ['Worry postponement', 'Arousal regulation'],
+    },
+    furtherReading: {
+      title: 'Go deeper',
+      support:
+        'This text is the broad map. For a specific technique, a scale, or the CBT frame, continue here:',
+      links: [
+        {
+          label: 'When anxiety rises (grounding)',
+          description:
+            'Sensory anchors and 5-4-3-2-1 for peaks of autonomic activation.',
+          href: '/recursos/grounding-ansiedad-crisis',
+        },
+        {
+          label: 'PHQ-9 and GAD-7',
+          description:
+            'Screening scales: what they measure, orienting ranges, and limits versus diagnosis.',
+          href: '/recursos/escalas-phq9-gad7',
+        },
+        {
+          label: 'What is CBT',
+          description:
+            'Cognitive–behavioural model: thoughts, emotions, behaviours, and exposure.',
+          href: '/recursos/que-es-tcc',
+        },
+        {
+          label: 'NIMH — Anxiety disorders (Spanish)',
+          description:
+            'Public clinical material from the National Institute of Mental Health (USA).',
+          href: 'https://www.nimh.nih.gov/health/publications/espanol/trastorno-de-ansiedad-generalizada',
+          external: true,
+        },
+      ],
+    },
+    references: {
+      title: 'References (APA)',
+      support:
+        'Peer-reviewed sources that support distinctions, mechanisms, and interventions above. They do not replace individual clinical assessment.',
+      items: [
+        {
+          apa: 'Borkovec, T. D., Robinson, E., Pruzinsky, T., & DePree, J. A. (1983a). Preliminary exploration of worry: Some characteristics and processes. Behaviour Research and Therapy, 21(1), 9–16. https://doi.org/10.1016/0005-7967(83)90121-3',
+          href: 'https://doi.org/10.1016/0005-7967(83)90121-3',
+          note: 'Characterises worry as a cognitive process and its relation to anxiety.',
+        },
+        {
+          apa: 'Borkovec, T. D., Wilkinson, L., Folensbee, R., & Lerman, C. (1983b). Stimulus control applications to the treatment of worry. Behaviour Research and Therapy, 21(3), 247–251. https://doi.org/10.1016/0005-7967(83)90206-1',
+          href: 'https://doi.org/10.1016/0005-7967(83)90206-1',
+          note: 'Experimental basis for worry postponement / worry window (stimulus control).',
+        },
+        {
+          apa: 'Craske, M. G., Treanor, M., Conway, C. C., Zbozinek, T., & Vervliet, B. (2014). Maximizing exposure therapy: An inhibitory learning approach. Behaviour Research and Therapy, 58, 10–23. https://doi.org/10.1016/j.brat.2014.04.006',
+          href: 'https://doi.org/10.1016/j.brat.2014.04.006',
+          note: 'Exposure framework based on inhibitory learning (vs. habituation alone).',
+        },
+        {
+          apa: 'Hofmann, S. G., & Smits, J. A. J. (2008). Cognitive-behavioral therapy for adult anxiety disorders: A meta-analysis of randomized placebo-controlled trials. The Journal of Clinical Psychiatry, 69(4), 621–632. https://doi.org/10.4088/jcp.v69n0415',
+          href: 'https://doi.org/10.4088/jcp.v69n0415',
+          note: 'Meta-analysis: CBT efficacy versus placebo for adult anxiety disorders.',
+        },
+        {
+          apa: 'Salkovskis, P. M. (1991). The importance of behaviour in the maintenance of anxiety and panic: A cognitive account. Behavioural Psychotherapy, 19(1), 6–19. https://doi.org/10.1017/S0141347300011472',
+          href: 'https://doi.org/10.1017/S0141347300011472',
+          note: 'Cognitive account of safety-seeking behaviours and anxiety maintenance.',
+        },
+        {
+          apa: 'Spitzer, R. L., Kroenke, K., Williams, J. B. W., & Löwe, B. (2006). A brief measure for assessing generalized anxiety disorder: The GAD-7. Archives of Internal Medicine, 166(10), 1092–1097. https://doi.org/10.1001/archinte.166.10.1092',
+          href: 'https://doi.org/10.1001/archinte.166.10.1092',
+          note: 'Validation of the GAD-7 as a primary-care screening and severity scale.',
+        },
+      ],
+    },
+    relatedSlugs: [SLUGS.grounding, SLUGS.scales, SLUGS.tcc],
     disclaimer:
-      'Not medical advice. In crisis or risk, seek local emergency help immediately.',
-    cta: { label: 'AI support with Anto →', path: '/bienvenida' },
+      'Psychoeducation. Does not diagnose or replace clinical assessment or treatment. In suicidal risk or violence, seek local emergency help immediately.',
+    ctaBridge:
+      'If you want company between sessions — or while you decide to seek assessment — you can continue on your phone, at your pace.',
+    cta: { label: 'Support in Anto →', path: '/bienvenida' },
+    howTo: {
+      name: 'Worry postponement (worry window)',
+      description:
+        'A stimulus-control technique to concentrate chronic worry in a daily interval and reduce continuous reinforcement of rumination.',
+      totalTime: 'PT20M',
+      steps: [
+        'Set a fixed 15–20 minutes and a place for the worry window.',
+        'In that window, note worries in detail without solving them all.',
+        'Outside the window, if one appears, log it for that time slot and return to the activity.',
+        'When you open the window, review the list and pick only one small behavioural action if one exists.',
+        'If intensity is very high, regulate arousal first (breathing or grounding), then write.',
+      ],
+    },
   },
   [SLUGS.scales]: {
     slug: SLUGS.scales,
@@ -774,11 +972,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Go deeper',
       support:
-        'This page is practical and short. For a wider map — symptoms, when to seek help, evidence — start here:',
+        'This page is practical and short. For the wider map — symptoms, cycles, strategies, when to seek help — start here:',
       links: [
         {
-          label: 'Anxiety and worry (fuller guide)',
-          description: 'What it is, when it matters, and paths to support — broader psychoeducation.',
+          label: 'Anxiety and worry (complete map)',
+          description:
+            'Autonomic activation, safety behaviours, CBT-style interventions, GAD-7, and when to seek assessment.',
           href: '/recursos/ansiedad-y-preocupacion',
         },
         {

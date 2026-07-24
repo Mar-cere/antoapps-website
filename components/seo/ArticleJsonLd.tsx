@@ -112,6 +112,15 @@ export function getArticleJsonLd(locale: Locale, path: string, guide: Psychoeduc
     };
   }
 
+  if (guide.references?.items.length) {
+    article.citation = guide.references.items.map((ref) => ({
+      '@type': 'ScholarlyArticle',
+      name: ref.apa,
+      url: ref.href,
+      ...(ref.note ? { description: ref.note } : {}),
+    }));
+  }
+
   const graph: Record<string, unknown>[] = [
     article,
     getGuideBreadcrumbJsonLd(locale, path, guide.hero.title),

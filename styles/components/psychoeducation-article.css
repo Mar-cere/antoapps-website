@@ -444,6 +444,86 @@
   line-height: 1;
 }
 
+.psycho-guide__refs {
+  margin-top: 2.75rem;
+  max-width: 42rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--home-v2-hairline);
+}
+
+.psycho-guide__refs-title {
+  margin: 0 0 0.55rem;
+  font-size: clamp(1.25rem, 2.1vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--home-v2-ink);
+}
+
+.psycho-guide__refs-support {
+  margin: 0 0 1.1rem;
+  max-width: 52ch;
+  font-size: 0.9875rem;
+  line-height: 1.55;
+  color: var(--home-v2-muted);
+}
+
+.psycho-guide__refs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: psycho-ref;
+  border-top: 1px solid var(--home-v2-hairline-strong);
+}
+
+.psycho-guide__refs-item {
+  counter-increment: psycho-ref;
+  padding: 1rem 0 1rem 0;
+  border-bottom: 1px solid var(--home-v2-hairline-strong);
+}
+
+.psycho-guide__refs-apa {
+  margin: 0;
+  padding-left: 1.65rem;
+  text-indent: -1.65rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--home-v2-muted);
+  overflow-wrap: break-word;
+}
+
+.psycho-guide__refs-apa::before {
+  content: counter(psycho-ref) '. ';
+  font-weight: 600;
+  color: var(--home-v2-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.psycho-guide__refs-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .psycho-guide__refs-link:hover {
+    color: var(--color-primary);
+  }
+}
+
+.psycho-guide__refs-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.psycho-guide__refs-note {
+  margin: 0.4rem 0 0;
+  padding-left: 1.65rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--home-v2-soft);
+}
+
 .psycho-guide__disclaimer {
   display: flex;
   flex-direction: column;
@@ -699,6 +779,10 @@
   }
 
   .psycho-guide__further-support {
+    max-width: none;
+  }
+
+  .psycho-guide__refs-support {
     max-width: none;
   }
 

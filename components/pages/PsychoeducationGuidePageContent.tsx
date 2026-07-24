@@ -279,6 +279,38 @@ export default function PsychoeducationGuidePageContent({
                   </aside>
                 ) : null}
 
+                {guide.references ? (
+                  <aside
+                    className="psycho-guide__refs reveal-on-scroll"
+                    aria-labelledby="psycho-guide-refs-title"
+                  >
+                    <h2 id="psycho-guide-refs-title" className="psycho-guide__refs-title">
+                      {guide.references.title}
+                    </h2>
+                    <p className="psycho-guide__refs-support">{guide.references.support}</p>
+                    <ol className="psycho-guide__refs-list">
+                      {guide.references.items.map((ref) => (
+                        <li key={ref.href} className="psycho-guide__refs-item">
+                          <p className="psycho-guide__refs-apa">
+                            <a
+                              href={ref.href}
+                              className="psycho-guide__refs-link"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {ref.apa}
+                            </a>
+                            <span className="visually-hidden">{ui.externalLinkHint}</span>
+                          </p>
+                          {ref.note ? (
+                            <p className="psycho-guide__refs-note">{ref.note}</p>
+                          ) : null}
+                        </li>
+                      ))}
+                    </ol>
+                  </aside>
+                ) : null}
+
                 <aside className="psycho-guide__disclaimer reveal-on-scroll" role="note">
                   <strong>{ui.disclaimerLabel}</strong>
                   <span>{guide.disclaimer}</span>
