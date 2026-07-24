@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import HomeV2PanelShell from '@/components/sections/HomeV2PanelShell';
 import type { Locale } from '@/lib/i18n/config';
 import type { HomeV2ChatThread } from '@/lib/i18n/copy/home/home-v2';
@@ -5,7 +6,8 @@ import type { HomeV2ChatThread } from '@/lib/i18n/copy/home/home-v2';
 type HomeV2ChatVignetteProps = {
   thread: HomeV2ChatThread;
   locale?: Locale;
-  size?: 'hero' | 'moment';
+  /** hero/moment = home editorial; ads = fold de conversión (más corto, menos motion) */
+  size?: 'hero' | 'moment' | 'ads';
   className?: string;
 };
 
@@ -18,12 +20,14 @@ export default function HomeV2ChatVignette({
 }: HomeV2ChatVignetteProps) {
   const antoLabel = 'Anto';
   const youLabel = locale === 'en' ? 'You' : 'Tú';
+  const chatClass =
+    size === 'hero' ? 'home-v2-chat--live' : size === 'ads' ? 'home-v2-chat--ads' : '';
 
   return (
     <HomeV2PanelShell
       title="Anto"
       size={size}
-      className={`home-v2-chat ${size === 'hero' ? 'home-v2-chat--live' : ''} ${className}`.trim()}
+      className={`home-v2-chat ${chatClass} ${className}`.trim()}
       ariaLabel={thread.ariaLabel}
     >
       <ul className="home-v2-chat__thread">
@@ -33,7 +37,7 @@ export default function HomeV2ChatVignette({
             <li
               key={`${message.role}-${index}`}
               className={`home-v2-chat__row ${isUser ? 'home-v2-chat__row--user' : 'home-v2-chat__row--anto'}`}
-              style={{ '--home-v2-i': index } as React.CSSProperties}
+              style={{ '--home-v2-i': index } as CSSProperties}
             >
               <span className="home-v2-chat__who" aria-hidden="true">
                 {isUser ? youLabel : antoLabel}

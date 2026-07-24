@@ -100,8 +100,8 @@
     margin: 0 0 0.75rem;
 }
 
-/* Viñeta de chat — misma familia visual que home (/), scoped a ads */
-.lad-page--v2 .home-v2-panel {
+/* Viñeta ads — misma familia que home, guion corto orientado a descarga */
+.lad-page--v2 .home-v2-panel--ads {
     --panel-surface: #07102e;
     --panel-ink: rgba(255, 255, 255, 0.94);
     --panel-muted: rgba(255, 255, 255, 0.62);
@@ -111,97 +111,103 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: 0.75rem 0.8rem 0.85rem;
+    padding: 0.65rem 0.75rem 0.7rem;
     border-radius: var(--home-v2-radius-media);
     border: 1px solid rgba(255, 255, 255, 0.12);
     background:
-        linear-gradient(165deg, rgba(26, 221, 219, 0.06) 0%, transparent 42%),
+        linear-gradient(165deg, rgba(26, 221, 219, 0.07) 0%, transparent 48%),
         var(--panel-surface);
     box-shadow: none;
 }
 
-.lad-page--v2 .home-v2-panel__chrome {
+.lad-page--v2 .home-v2-panel--ads .home-v2-panel__chrome {
     display: flex;
     align-items: center;
-    margin-bottom: 0.65rem;
-    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
     border-bottom: 1px solid var(--panel-line);
 }
 
-.lad-page--v2 .home-v2-panel__title {
-    font-size: 0.6875rem;
+.lad-page--v2 .home-v2-panel--ads .home-v2-panel__title {
+    font-size: 0.625rem;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--panel-muted);
 }
 
-.lad-page--v2 .home-v2-chat__thread {
+.lad-page--v2 .home-v2-chat--ads .home-v2-chat__thread {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
+    gap: 0.45rem;
 }
 
-.lad-page--v2 .home-v2-chat__row {
+.lad-page--v2 .home-v2-chat--ads .home-v2-chat__row {
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
-    max-width: 92%;
+    gap: 0.12rem;
+    max-width: 94%;
 }
 
-.lad-page--v2 .home-v2-chat__row--user {
+.lad-page--v2 .home-v2-chat--ads .home-v2-chat__row--user {
     align-self: flex-end;
     align-items: flex-end;
 }
 
-.lad-page--v2 .home-v2-chat__row--anto {
+.lad-page--v2 .home-v2-chat--ads .home-v2-chat__row--anto {
     align-self: flex-start;
     align-items: flex-start;
 }
 
-.lad-page--v2 .home-v2-chat__who {
+.lad-page--v2 .home-v2-chat--ads .home-v2-chat__who {
     font-size: 0.5625rem;
     letter-spacing: 0.03em;
     text-transform: uppercase;
     color: var(--panel-muted);
-    padding: 0 0.3rem;
+    padding: 0 0.25rem;
 }
 
-.lad-page--v2 .home-v2-chat__bubble {
+.lad-page--v2 .home-v2-chat--ads .home-v2-chat__bubble {
     margin: 0;
-    padding: 0.55rem 0.7rem;
-    border-radius: 0.75rem;
+    padding: 0.5rem 0.65rem;
+    border-radius: 0.7rem;
     font-size: 0.8125rem;
-    line-height: 1.4;
+    line-height: 1.35;
     color: var(--panel-ink);
     text-wrap: pretty;
 }
 
-.lad-page--v2 .home-v2-chat__row--user .home-v2-chat__bubble {
+.lad-page--v2 .home-v2-chat--ads .home-v2-chat__row--user .home-v2-chat__bubble {
     background: var(--chat-user);
-    border-bottom-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.22rem;
 }
 
-.lad-page--v2 .home-v2-chat__row--anto .home-v2-chat__bubble {
+.lad-page--v2 .home-v2-chat--ads .home-v2-chat__row--anto .home-v2-chat__bubble {
     background: var(--chat-anto);
     border: 1px solid rgba(255, 255, 255, 0.06);
-    border-bottom-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.22rem;
+}
+
+/* Última burbuja = payoff (paso concreto) */
+.lad-page--v2 .home-v2-chat--ads .home-v2-chat__row--anto:last-child .home-v2-chat__bubble {
+    border-color: rgba(26, 221, 219, 0.35);
+    background: rgba(26, 221, 219, 0.1);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .lad-page--v2 .home-v2-chat--live .home-v2-chat__row {
-        animation: lad-v2-bubble-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
-        animation-delay: calc(0.2s + var(--home-v2-i, 0) * 110ms);
+    .lad-page--v2 .home-v2-chat--ads .home-v2-chat__row {
+        animation: lad-v2-bubble-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation-delay: calc(0.08s + var(--home-v2-i, 0) * 70ms);
     }
 }
 
 @keyframes lad-v2-bubble-in {
     from {
         opacity: 0;
-        transform: translateY(6px);
+        transform: translateY(4px);
     }
     to {
         opacity: 1;
@@ -210,7 +216,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .lad-page--v2 .home-v2-chat--live .home-v2-chat__row {
+    .lad-page--v2 .home-v2-chat--ads .home-v2-chat__row {
         animation: none;
     }
 }
@@ -573,17 +579,17 @@
         font-size: 1.5rem;
     }
 
-    .lad-page--v2 .home-v2-chat__bubble {
+    .lad-page--v2 .home-v2-chat--ads .home-v2-chat__bubble {
         font-size: 0.75rem;
-        padding: 0.45rem 0.6rem;
+        padding: 0.42rem 0.55rem;
     }
 
-    .lad-page--v2 .home-v2-chat__thread {
-        gap: 0.45rem;
+    .lad-page--v2 .home-v2-chat--ads .home-v2-chat__thread {
+        gap: 0.35rem;
     }
 
-    .lad-page--v2 .home-v2-panel {
-        padding: 0.65rem 0.7rem 0.7rem;
+    .lad-page--v2 .home-v2-panel--ads {
+        padding: 0.55rem 0.65rem 0.6rem;
     }
 }
 

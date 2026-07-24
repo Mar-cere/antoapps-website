@@ -369,23 +369,19 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         androidLink: 'Request early access for Android',
         chatSectionLabel: 'On your iPhone',
         chat: {
-          ariaLabel: 'Sample Anto conversation about a mind that will not slow down',
+          ariaLabel: 'Sample Anto chat: racing mind, then one concrete step',
           messages: [
             {
               role: 'user',
-              text: "Can't sleep. Presentation Friday and my head won't shut up.",
+              text: "My mind won't stop. I can't sleep.",
             },
             {
               role: 'anto',
-              text: "What's the part that keeps looping?",
-            },
-            {
-              role: 'user',
-              text: 'Blanking out. Looking stupid in front of everyone.',
+              text: 'That sounds exhausting. What weighs most right now?',
             },
             {
               role: 'anto',
-              text: 'Tonight just open slide one. Two minutes. Then close it.',
+              text: 'One step for tonight: write 3 things you can control. Want to try?',
             },
           ],
         },
@@ -624,23 +620,19 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       androidLink: 'Solicitar acceso anticipado para Android',
       chatSectionLabel: 'Así se ve en tu iPhone',
       chat: {
-        ariaLabel: 'Conversación de ejemplo en Anto cuando la mente no para',
+        ariaLabel: 'Chat de ejemplo en Anto: mente que no para y un paso concreto',
         messages: [
           {
             role: 'user',
-            text: 'No puedo dormir. Presentación el viernes y la cabeza no para.',
+            text: 'Mi mente no para. No puedo dormir.',
           },
           {
             role: 'anto',
-            text: '¿Qué es lo que más te da vueltas?',
-          },
-          {
-            role: 'user',
-            text: 'Quedarme en blanco. Que se note delante de todos.',
+            text: 'Suena agotador. ¿Qué pesa más ahora?',
           },
           {
             role: 'anto',
-            text: 'Esta noche solo abre la primera diapositiva. Dos minutos. Después cierras.',
+            text: 'Un paso para esta noche: escribe 3 cosas que sí controlas. ¿Lo probamos?',
           },
         ],
       },

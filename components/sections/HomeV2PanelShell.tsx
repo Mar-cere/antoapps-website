@@ -1,12 +1,12 @@
 type HomeV2PanelShellProps = {
   title: string;
-  size?: 'hero' | 'moment';
+  size?: 'hero' | 'moment' | 'ads';
   className?: string;
   ariaLabel: string;
   children: React.ReactNode;
 };
 
-/** Marco compartido para viñetas de producto en home-v2 (sin chrome de escritorio). */
+/** Marco compartido para viñetas de producto (home y landings de ads). */
 export default function HomeV2PanelShell({
   title,
   size = 'moment',

@@ -96,8 +96,11 @@ export function assertBienvenidaCopyInvariants(): string[] {
     if (!v2.chat.ariaLabel.trim()) {
       errors.push(`${tag} v2.chat.ariaLabel vacío`);
     }
-    if (v2.chat.messages.length < 3) {
-      errors.push(`${tag} v2.chat.messages: se requieren al menos 3 mensajes`);
+    if (v2.chat.messages.length !== 3) {
+      errors.push(`${tag} v2.chat.messages: la viñeta ads debe tener exactamente 3 mensajes`);
+    }
+    if (v2.chat.messages[0]?.role !== 'user' || v2.chat.messages[2]?.role !== 'anto') {
+      errors.push(`${tag} v2.chat.messages: debe abrir con usuario y cerrar con paso de Anto`);
     }
     for (const message of v2.chat.messages) {
       if (!message.text.trim() || (message.role !== 'user' && message.role !== 'anto')) {

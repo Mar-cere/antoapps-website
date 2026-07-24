@@ -86,7 +86,7 @@ export default function BienvenidaLandingV2({
             <HomeV2ChatVignette
               thread={v2.chat}
               locale={locale}
-              size="hero"
+              size="ads"
               className="lad-v2-chat"
             />
           </div>
