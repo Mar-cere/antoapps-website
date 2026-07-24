@@ -52,6 +52,7 @@ export type ResearchPageCopy = {
     openGraphTitle: string;
     openGraphDescription: string;
     canonicalPath: string;
+    keywords: string;
   };
   hero: {
     title: string;
@@ -187,6 +188,8 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
         openGraphDescription:
           'An editorial look at the literature behind Anto: what we take, how it shows up in the product, and clear limits.',
         canonicalPath: CANONICAL_PATH,
+        keywords:
+          'Anto research, CBT evidence, GAD-7, digital mental health, conversational agents, APA citations, category evidence, mental health app evidence',
       },
       hero: {
         title: 'We read the evidence. We do not turn it into a promise.',
@@ -372,6 +375,8 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
       openGraphDescription:
         'Una lectura editorial de la literatura detrás de Anto: qué tomamos, cómo se ve en el producto y límites claros.',
       canonicalPath: CANONICAL_PATH,
+      keywords:
+        'Anto investigación, evidencia TCC, GAD-7, salud mental digital, agentes conversacionales, citas APA, evidencia de categoría, base científica Anto',
     },
     hero: {
       title: 'Leemos la evidencia. No la convertimos en promesa.',
@@ -547,13 +552,24 @@ export function getResearchPageCopy(locale: Locale): ResearchPageCopy {
 }
 
 export function researchPageMetadata(locale: Locale): Metadata {
-  const { meta } = buildResearchPageCopy(locale);
+  const copy = buildResearchPageCopy(locale);
+  const { meta, figure } = copy;
   return buildLocalizedPageMetadata(locale, meta.canonicalPath, {
     title: meta.title,
     description: meta.description,
+    keywords: meta.keywords,
     openGraph: {
       title: meta.openGraphTitle,
       description: meta.openGraphDescription,
+      type: 'article',
+      images: [
+        {
+          url: figure.src,
+          width: figure.width,
+          height: figure.height,
+          alt: figure.alt,
+        },
+      ],
     },
   });
 }

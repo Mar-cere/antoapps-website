@@ -14,6 +14,7 @@ import {
   FEATURED_HUMAN_LABELS,
   getResourcesPageCopy,
 } from '@/lib/i18n/copy/pages/resources';
+import { getResearchPageCopy } from '@/lib/i18n/copy/pages/research';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 import { formatUsdPrice, PRICING_USD } from '@/lib/pricing/plans';
 import { expectedSitemapUrlCount } from '@/lib/seo/build-sitemap';
@@ -309,6 +310,38 @@ function formatGuideEntry(
   return lines;
 }
 
+function formatResearchEvidenceBlock(locale: Locale): string[] {
+  const research = getResearchPageCopy(locale);
+  const isEs = locale === 'es';
+  const url = absoluteUrl(locale, '/investigacion');
+
+  return [
+    isEs
+      ? '### Investigación — evidencia que informa Anto'
+      : '### Research — evidence that informs Anto',
+    `- URL: ${url}`,
+    `- ${isEs ? 'Tesis' : 'Thesis'}: ${research.hero.title}`,
+    `- ${isEs ? 'Resumen' : 'Summary'}: ${research.hero.subtitle}`,
+    `- ${isEs ? 'Cita clave' : 'Key line'}: ${research.pullQuote}`,
+    '',
+    isEs ? '**Qué tomamos (no ensayos de Anto):**' : '**What we take (not Anto trials):**',
+    ...research.takes.items.map((take) => `- **${take.title}**: ${take.body}`),
+    '',
+    isEs ? '**Qué no afirmamos:**' : '**What we do not claim:**',
+    ...research.limits.paragraphs.map((paragraph) => `- ${paragraph}`),
+    '',
+    isEs ? '**Ficha rápida:**' : '**Quick trust card:**',
+    ...research.trust.bullets.map((bullet) => `- ${bullet}`),
+    '',
+    isEs
+      ? '**Referencias APA (DOI — evidencia de categoría):**'
+      : '**APA references (DOI — category evidence):**',
+    ...research.references.items.map((ref) => `- [${ref.label}](${ref.href}) — ${ref.apa}`),
+    `- ${isEs ? 'Aviso' : 'Notice'}: ${research.disclaimer}`,
+    '',
+  ];
+}
+
 function localeNarrative(locale: Locale): string[] {
   const copy = getHomeV2Copy(locale);
   const isEs = locale === 'es';
@@ -340,6 +373,7 @@ function localeNarrative(locale: Locale): string[] {
     isEs ? '### Páginas del sitio' : '### Site pages',
     ...formatPageBlock(locale),
     '',
+    ...formatResearchEvidenceBlock(locale),
     ...formatResourcesDiscoveryBlock(locale),
     isEs ? '### Guías de psicoeducación (detalle)' : '### Psychoeducation guides (detail)',
     '',
@@ -617,6 +651,9 @@ export function llmsTxtRequiredSnippets(): string[] {
     'Start here',
     'Índice temático',
     'Topic index',
+    'evidencia de categoría',
+    'category evidence',
+    'doi.org/10.4088/jcp.v69n0415',
     DEFAULT_APP_STORE_URL,
     'apps.apple.com',
   ];
