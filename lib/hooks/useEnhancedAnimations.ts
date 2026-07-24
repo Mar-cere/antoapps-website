@@ -110,6 +110,9 @@ export function useEnhancedHover() {
         ':not(.psycho-guide__further-link)',
         ':not(.psycho-guide__related-link)',
         ':not(.psycho-guide__refs-link)',
+        ':not(.research-page__cta-link)',
+        ':not(.research-page__literature-link)',
+        ':not(.research-page__refs-link)',
       ].join('')
     );
     links.forEach((link) => {

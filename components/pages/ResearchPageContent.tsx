@@ -1,14 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import type { Locale } from '@/lib/i18n/config';
+import { localePath, type Locale } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getResearchPageCopy } from '@/lib/i18n/copy/pages/research';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
+import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
+import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
-import Breadcrumbs from '@/components/Breadcrumbs';
+import '@/styles/pages/home-landing-final.css';
+import '@/styles/pages/home-v2.css';
 import '@/styles/components/research.css';
 
 type ResearchPageContentProps = {
@@ -17,138 +19,175 @@ type ResearchPageContentProps = {
 
 export default function ResearchPageContent({ locale }: ResearchPageContentProps) {
   const copy = getResearchPageCopy(locale);
+  const nav = getHomeV2Copy(locale).nav;
 
   return (
     <LocaleProvider locale={locale}>
-      <ClientInitializer />
-      <Header />
-      <main lang={locale}>
-        <Breadcrumbs
-          items={[
-            { label: copy.breadcrumbs.homeLabel, href: copy.breadcrumbs.homeHref },
-            { label: copy.breadcrumbs.currentLabel },
-          ]}
+      <div className="home-v2-shell research-shell">
+        <ClientInitializer />
+        <HomeMinimalNav
+          locale={locale}
+          ctaHref={localePath(locale, '/bienvenida')}
+          ctaLabel={nav.cta}
         />
+        <main
+          id="main-content"
+          className="home-landing-page home-landing-page--v2 research-page"
+          role="main"
+          lang={locale}
+        >
+          <div className="home-landing-page__content">
+            <article className="research-page__article" data-fade-section>
+              <div className="home-landing-container">
+                <nav className="research-page__crumb" aria-label={copy.crumbAria}>
+                  <Link href={copy.breadcrumbs.homeHref} className="research-page__crumb-link">
+                    {copy.breadcrumbs.homeLabel}
+                  </Link>
+                  <span className="research-page__crumb-sep" aria-hidden="true">
+                    /
+                  </span>
+                  <span className="research-page__crumb-current">
+                    {copy.breadcrumbs.currentLabel}
+                  </span>
+                </nav>
 
-        <section className="research-hero" data-fade-section>
-          <div className="container">
-            <h1 className="research-title reveal-on-scroll">{copy.hero.title}</h1>
-            <p className="research-subtitle reveal-on-scroll">{copy.hero.subtitle}</p>
-          </div>
-        </section>
+                <header className="research-page__header reveal-on-scroll">
+                  <p className="research-page__eyebrow">
+                    {locale === 'en' ? 'Evidence' : 'Evidencia'}
+                  </p>
+                  <h1 className="research-page__title">{copy.hero.title}</h1>
+                  <p className="research-page__subtitle">{copy.hero.subtitle}</p>
+                </header>
 
-        <section className="research-overview" data-fade-section>
-          <div className="container">
-            <div className="research-intro">
-              <h2 className="section-title reveal-on-scroll">{copy.overview.sectionTitle}</h2>
-              <p className="reveal-on-scroll">{copy.overview.intro}</p>
-            </div>
+                <blockquote className="research-page__pullquote reveal-on-scroll">
+                  <p>{copy.pullQuote}</p>
+                </blockquote>
 
-            <div className="findings-section">
-              <h3 className="reveal-on-scroll">{copy.overview.findingsTitle}</h3>
-              <div className="findings-grid" data-stagger>
-                {copy.overview.findings.map((finding) => (
-                  <div key={finding.title} className="finding-card reveal-on-scroll" data-stagger-item>
-                    <div className="finding-number">{finding.icon}</div>
-                    <h4>{finding.title}</h4>
-                    <p>{finding.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+                <section
+                  className="research-page__section reveal-on-scroll"
+                  aria-labelledby="research-approach-title"
+                >
+                  <h2 id="research-approach-title">{copy.approach.title}</h2>
+                  {copy.approach.paragraphs.map((paragraph) => (
+                    <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                  ))}
+                </section>
 
-            <div className="studies-section">
-              <h2 className="section-title reveal-on-scroll">{copy.studies.sectionTitle}</h2>
-              <p className="section-subtitle reveal-on-scroll section-subtitle--spaced">
-                {copy.studies.sectionSubtitle}
-              </p>
-              <div className="studies-list">
-                {copy.studies.items.map((study) => (
-                  <div key={study.link} className="study-item reveal-on-scroll">
-                    <div className="study-journal">{study.journal}</div>
-                    <h4>{study.title}</h4>
-                    <p className="study-authors">{study.authors}</p>
-                    <p>{study.description}</p>
-                    <div className="study-meta">
-                      <span className="study-type">{study.studyType}</span>
-                      <span className="study-impact">{study.impact}</span>
-                    </div>
-                    <a
-                      href={study.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-secondary"
+                <section
+                  className="research-page__pillars reveal-on-scroll"
+                  aria-labelledby="research-pillars-title"
+                >
+                  <h2 id="research-pillars-title" className="research-page__pillars-title">
+                    {copy.approach.pillarsTitle}
+                  </h2>
+                  <ul className="research-page__pillars-list">
+                    {copy.approach.pillars.map((pillar) => (
+                      <li key={pillar.title} className="research-page__pillar">
+                        <h3 className="research-page__pillar-title">{pillar.title}</h3>
+                        <p className="research-page__pillar-body">{pillar.body}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section
+                  className="research-page__literature reveal-on-scroll"
+                  aria-labelledby="research-literature-title"
+                >
+                  <h2 id="research-literature-title">{copy.literature.title}</h2>
+                  <p className="research-page__section-support">{copy.literature.support}</p>
+                  <ul className="research-page__literature-list">
+                    {copy.literature.items.map((item) => (
+                      <li key={item.href} className="research-page__literature-item">
+                        <p className="research-page__literature-kind">{item.kind}</p>
+                        <a
+                          href={item.href}
+                          className="research-page__literature-link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <span className="research-page__literature-apa">{item.apa}</span>
+                          <span className="research-page__literature-meta" aria-hidden="true">
+                            ↗
+                          </span>
+                          <span className="visually-hidden">{copy.externalLinkHint}</span>
+                        </a>
+                        <p className="research-page__literature-note">{item.note}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section
+                  className="research-page__section reveal-on-scroll"
+                  aria-labelledby="research-limits-title"
+                >
+                  <h2 id="research-limits-title">{copy.limits.title}</h2>
+                  {copy.limits.paragraphs.map((paragraph) => (
+                    <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                  ))}
+                </section>
+
+                <aside
+                  className="research-page__refs reveal-on-scroll"
+                  aria-labelledby="research-refs-title"
+                >
+                  <h2 id="research-refs-title" className="research-page__refs-title">
+                    {copy.references.title}
+                  </h2>
+                  <p className="research-page__section-support">{copy.references.support}</p>
+                  <ol className="research-page__refs-list">
+                    {copy.references.items.map((ref) => (
+                      <li key={ref.href} className="research-page__refs-item">
+                        <p className="research-page__refs-apa">
+                          <a
+                            href={ref.href}
+                            className="research-page__refs-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {ref.apa}
+                          </a>
+                          <span className="visually-hidden">{copy.externalLinkHint}</span>
+                        </p>
+                      </li>
+                    ))}
+                  </ol>
+                </aside>
+
+                <aside className="research-page__disclaimer reveal-on-scroll" role="note">
+                  <strong>{locale === 'en' ? 'Note' : 'Aviso'}</strong>
+                  <span>{copy.disclaimer}</span>
+                </aside>
+
+                <div className="research-page__cta reveal-on-scroll">
+                  <p className="research-page__cta-bridge">{copy.cta.bridge}</p>
+                  <div className="research-page__cta-actions">
+                    <Link
+                      href={copy.cta.contactHref}
+                      className="research-page__cta-link research-page__cta-link--primary"
                     >
-                      {study.viewStudyLabel}
+                      {copy.cta.contactLabel}
+                    </Link>
+                    <a
+                      href={copy.cta.emailHref}
+                      className="research-page__cta-link research-page__cta-link--secondary"
+                    >
+                      {copy.cta.emailLabel}
                     </a>
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="research-methodology" data-fade-section>
-          <div className="container">
-            <h2 className="section-title reveal-on-scroll">{copy.methodology.sectionTitle}</h2>
-
-            <div className="methodology-steps" data-stagger>
-              {copy.methodology.steps.map((step, index) => (
-                <div key={step.title} className="method-step reveal-on-scroll" data-stagger-item>
-                  <div className="method-number">{index + 1}</div>
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        <section className="research-references" data-fade-section>
-          <div className="container">
-            <h2 className="section-title reveal-on-scroll">{copy.references.sectionTitle}</h2>
-            <p className="section-subtitle reveal-on-scroll">{copy.references.sectionSubtitle}</p>
-
-            <div className="references-list">
-              {copy.references.items.map((ref, index) => (
-                <div key={ref.href} className="reference-item reveal-on-scroll">
-                  <div className="reference-number">{index + 1}</div>
-                  <div className="reference-content">
-                    <p>{ref.citation}</p>
-                    <a
-                      href={ref.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="reference-link"
-                    >
-                      {ref.href}
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="research-cta" data-fade-section>
-          <div className="container">
-            <div className="cta-content">
-              <h2 className="reveal-on-scroll">{copy.cta.title}</h2>
-              <p className="reveal-on-scroll">{copy.cta.description}</p>
-              <div className="cta-buttons reveal-on-scroll">
-                <Link href={copy.cta.contactHref} className="btn btn-primary btn-large">
-                  {copy.cta.contactLabel}
-                </Link>
-                <a href={copy.cta.emailHref} className="btn btn-secondary btn-large">
-                  {copy.cta.emailLabel}
-                </a>
+                <p className="research-page__back reveal-on-scroll">
+                  <Link href={copy.resourcesLink.href}>{copy.resourcesLink.label}</Link>
+                </p>
               </div>
-            </div>
+            </article>
           </div>
-        </section>
-      </main>
-      <Footer />
-      <CookieConsent />
+        </main>
+        <HomeMinimalFooter locale={locale} switchPath="/investigacion" />
+        <CookieConsent compact bannerDelayMs={6000} showAfterScrollPx={320} />
+      </div>
     </LocaleProvider>
   );
 }
