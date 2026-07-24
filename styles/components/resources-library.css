@@ -12,7 +12,8 @@
 }
 
 .resources-hero {
-  padding: var(--home-v2-section-y) 0 var(--home-v2-section-y-sm);
+  /* Página interna: no heredar el aire de secciones marketing de home */
+  padding: 1.1rem 0 1.25rem;
   border-bottom: 1px solid var(--home-v2-hairline);
   background: var(--color-bg-primary);
 }
@@ -22,7 +23,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem;
-  margin: 0 0 1.5rem;
+  margin: 0 0 0.85rem;
   font-size: 0.8125rem;
   letter-spacing: 0.01em;
   color: var(--home-v2-soft);
@@ -54,7 +55,7 @@
 }
 
 .resources-hero__title {
-  margin: 0 0 1.15rem;
+  margin: 0 0 0.75rem;
   font-size: clamp(2.1rem, 4.8vw, 3.35rem);
   font-weight: 500;
   line-height: 1.02;
@@ -73,8 +74,8 @@
 }
 
 .resources-featured {
-  margin-top: 1.75rem;
-  padding-top: 1.35rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
   border-top: 1px solid var(--home-v2-hairline);
   max-width: var(--resources-measure);
 }
@@ -112,12 +113,12 @@
 }
 
 .resources-library {
-  padding: var(--home-v2-section-y-sm) 0 var(--home-v2-section-y);
+  padding: 1.15rem 0 2.75rem;
   background: var(--color-bg-primary);
 }
 
 .resources-toolbar {
-  margin-bottom: 1.35rem;
+  margin-bottom: 0.85rem;
   max-width: var(--resources-measure);
 }
 
@@ -222,7 +223,7 @@
 
 @media (max-width: 720px) {
   .resources-hero {
-    padding: 2.25rem 0 1.75rem;
+    padding: 1rem 0 1.35rem;
   }
 
   .resources-hero__title {
@@ -232,6 +233,10 @@
 
   .resources-hero__support {
     max-width: none;
+  }
+
+  .resources-library {
+    padding: 1.25rem 0 2.5rem;
   }
 
   .resources-search input {

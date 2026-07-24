@@ -7,7 +7,7 @@
 }
 
 .psycho-guide__article {
-  padding: var(--home-v2-section-y) 0 var(--home-v2-section-y);
+  padding: 1.25rem 0 3rem;
 }
 
 .psycho-guide__crumb {
@@ -15,7 +15,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem;
-  margin: 0 0 1.5rem;
+  margin: 0 0 0.85rem;
   font-size: 0.8125rem;
   letter-spacing: 0.01em;
   color: var(--home-v2-soft);
@@ -252,7 +252,7 @@
 
 @media (max-width: 720px) {
   .psycho-guide__article {
-    padding: 2.25rem 0 2.75rem;
+    padding: 1rem 0 2.5rem;
   }
 
   .psycho-guide__crumb-current {
