@@ -667,26 +667,47 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   },
   [SLUGS.grounding]: {
     slug: SLUGS.grounding,
-    readingMinutes: 5,
+    readingMinutes: 7,
     meta: {
       title: 'Cuando la ansiedad sube: técnicas de grounding | Anto',
       description:
-        'Ejercicio 5-4-3-2-1 y anclas sensoriales para aterrizar cuando la ansiedad o un momento de crisis te desborda. Psicoeducación breve; no sustituye atención profesional ni emergencias.',
+        'Ejercicio 5-4-3-2-1, señales en el cuerpo y anclas sensoriales para aterrizar cuando la ansiedad te desborda. Con lectura más clínica para profundizar. No sustituye atención profesional ni emergencias.',
       openGraphTitle: 'Cuando la ansiedad sube — grounding',
       openGraphDescription:
-        'Aterriza en el presente con el 5-4-3-2-1 y otras anclas rápidas. Complementa; no reemplaza ayuda profesional.',
+        'Aterriza en el presente con el 5-4-3-2-1 y otras anclas. Guía práctica + camino a material más completo.',
     },
     hero: {
       title: 'Cuando la ansiedad sube',
       subtitle:
         'Técnicas de grounding para anclarte al aquí y ahora cuando el cuerpo reacciona como si el peligro fuera inmediato.',
     },
+    pullQuote:
+      'No se trata de “pensar positivo”. Se trata de volver al cuerpo el tiempo suficiente para que la ola no te arrastre entera.',
+    figure: {
+      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
+      alt: 'Luz suave de atardecer en un espacio íntimo — un momento quieto entre el día y la noche',
+      caption: 'A veces la ansiedad no pide una explicación. Pide un lugar donde aterrizar.',
+      width: 1536,
+      height: 1024,
+    },
     sections: [
       {
         heading: 'Qué es el grounding',
         paragraphs: [
           'Grounding — aterrizaje — son gestos sencillos que llevan la atención a lo que puedes ver, tocar, oír, oler o saborear ahora mismo.',
-          'No resuelven lo que duele de fondo. Bajan la activación del cuerpo para que puedas pensar un poco más claro, pedir ayuda o esperar a que pase la ola.',
+          'No resuelven lo que duele de fondo. Bajan la activación del sistema nervioso para que puedas pensar un poco más claro, pedir ayuda o esperar a que pase la ola.',
+          'Se usan en ansiedad intensa, pánico, disociación leve o cuando un recuerdo te arranca del presente. Son herramientas de estabilización — no un tratamiento por sí solas.',
+        ],
+      },
+      {
+        heading: 'Cómo se siente en el cuerpo',
+        paragraphs: [
+          'Antes de “hacer algo”, ayuda reconocer la señal: corazón acelerado, pecho apretado, manos frías, mente que salta, sensación de no estar del todo aquí.',
+        ],
+        bullets: [
+          'El cuerpo interpreta amenaza aunque no haya peligro objetivo.',
+          'El grounding no niega la emoción: le da un marco sensorial más amplio.',
+          'Si la intensidad es 9/10, empieza por un solo ancla (pies en el suelo) antes del 5-4-3-2-1 completo.',
         ],
       },
       {
@@ -706,7 +727,8 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Otras opciones rápidas',
         paragraphs: [
-          'Si el 5-4-3-2-1 se siente largo, prueba un solo ancla: un cubito de hielo en la mano, nombrar en voz alta dónde estás, o empujar suavemente los pies contra el suelo.',
+          'Si el 5-4-3-2-1 se siente largo, prueba un solo ancla: un cubito de hielo en la mano, nombrar en voz alta dónde estás y qué día es, o empujar suavemente los pies contra el suelo.',
+          'También puedes contar hacia atrás de 3 en 3, o describir un objeto como si se lo explicaras a alguien que no puede verlo.',
           'La clave es involucrar sentidos, no analizar el problema en ese momento.',
         ],
       },
@@ -718,6 +740,29 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         ],
       },
     ],
+    furtherReading: {
+      title: 'Ir más a fondo',
+      support:
+        'Esta página es práctica y breve. Si quieres el mapa más amplio — síntomas, cuándo pedir ayuda, evidencia — empieza aquí:',
+      links: [
+        {
+          label: 'Ansiedad y preocupación (guía más completa)',
+          description: 'Qué es, cuándo preocupa y caminos de apoyo — tono psicoeducativo amplio.',
+          href: '/recursos/ansiedad-y-preocupacion',
+        },
+        {
+          label: 'Base científica de Anto',
+          description: 'Referencias y enfoque basado en evidencia detrás de protocolos y escalas.',
+          href: '/investigacion',
+        },
+        {
+          label: 'NIMH — Trastornos de ansiedad (español)',
+          description: 'Material clínico público del National Institute of Mental Health (EE. UU.).',
+          href: 'https://www.nimh.nih.gov/health/publications/espanol/trastorno-de-ansiedad-generalizada',
+          external: true,
+        },
+      ],
+    },
     relatedSlugs: [SLUGS.anxiety, SLUGS.mindfulness, SLUGS.trauma],
     disclaimer:
       'Psicoeducación. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',

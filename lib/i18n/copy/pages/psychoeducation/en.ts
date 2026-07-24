@@ -668,26 +668,47 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   },
   [SLUGS.grounding]: {
     slug: SLUGS.grounding,
-    readingMinutes: 5,
+    readingMinutes: 7,
     meta: {
       title: 'When anxiety rises: grounding techniques | Anto',
       description:
-        '5-4-3-2-1 exercise and sensory anchors to land when anxiety or a crisis moment floods you. Short psychoeducation; does not replace professional care or emergency services.',
+        '5-4-3-2-1 exercise, body signals, and sensory anchors to land when anxiety floods you. Includes a path to more clinical reading. Does not replace professional care or emergency services.',
       openGraphTitle: 'When anxiety rises — grounding',
       openGraphDescription:
-        'Land in the present with 5-4-3-2-1 and other quick anchors. Complements — does not replace — professional help.',
+        'Land in the present with 5-4-3-2-1 and other anchors. A practical guide plus a route to deeper material.',
     },
     hero: {
       title: 'When anxiety rises',
       subtitle:
         'Grounding techniques to anchor yourself in the here and now when your body reacts as if danger were immediate.',
     },
+    pullQuote:
+      'This is not about “thinking positive”. It is about returning to the body long enough that the wave does not carry you away whole.',
+    figure: {
+      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
+      alt: 'Soft evening light in an intimate space — a quiet moment between day and night',
+      caption: 'Sometimes anxiety does not ask for an explanation. It asks for a place to land.',
+      width: 1536,
+      height: 1024,
+    },
     sections: [
       {
         heading: 'What grounding is',
         paragraphs: [
           'Grounding is a set of simple gestures that bring attention to what you can see, touch, hear, smell, or taste right now.',
-          'They do not fix what hurts underneath. They lower the body’s activation so you can think a little more clearly, ask for help, or wait for the wave to pass.',
+          'They do not fix what hurts underneath. They lower nervous-system activation so you can think a little more clearly, ask for help, or wait for the wave to pass.',
+          'They are used in intense anxiety, panic, mild dissociation, or when a memory pulls you out of the present. They are stabilisation tools — not a treatment on their own.',
+        ],
+      },
+      {
+        heading: 'How it feels in the body',
+        paragraphs: [
+          'Before “doing something”, it helps to notice the signal: racing heart, tight chest, cold hands, a jumping mind, the sense of not quite being here.',
+        ],
+        bullets: [
+          'The body can read threat even when there is no objective danger.',
+          'Grounding does not deny the emotion — it widens the sensory frame around it.',
+          'If intensity is 9/10, start with a single anchor (feet on the floor) before the full 5-4-3-2-1.',
         ],
       },
       {
@@ -707,7 +728,8 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Other quick options',
         paragraphs: [
-          'If 5-4-3-2-1 feels long, try a single anchor: an ice cube in your hand, naming aloud where you are, or gently pressing your feet into the floor.',
+          'If 5-4-3-2-1 feels long, try a single anchor: an ice cube in your hand, naming aloud where you are and what day it is, or gently pressing your feet into the floor.',
+          'You can also count backwards by threes, or describe an object as if explaining it to someone who cannot see it.',
           'The point is engaging the senses, not analysing the problem in that moment.',
         ],
       },
@@ -719,6 +741,29 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         ],
       },
     ],
+    furtherReading: {
+      title: 'Go deeper',
+      support:
+        'This page is practical and short. For a wider map — symptoms, when to seek help, evidence — start here:',
+      links: [
+        {
+          label: 'Anxiety and worry (fuller guide)',
+          description: 'What it is, when it matters, and paths to support — broader psychoeducation.',
+          href: '/recursos/ansiedad-y-preocupacion',
+        },
+        {
+          label: 'Anto’s scientific basis',
+          description: 'References and evidence-informed approach behind protocols and scales.',
+          href: '/investigacion',
+        },
+        {
+          label: 'NIMH — Anxiety disorders',
+          description: 'Public clinical material from the U.S. National Institute of Mental Health.',
+          href: 'https://www.nimh.nih.gov/health/topics/anxiety-disorders',
+          external: true,
+        },
+      ],
+    },
     relatedSlugs: [SLUGS.anxiety, SLUGS.mindfulness, SLUGS.trauma],
     disclaimer:
       'Psychoeducation. In case of suicidal risk or violence, seek local emergency help immediately.',

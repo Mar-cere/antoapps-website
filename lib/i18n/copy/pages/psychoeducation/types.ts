@@ -14,6 +14,28 @@ export type PsychoeducationHowTo = {
   steps: readonly string[];
 };
 
+export type PsychoeducationFigure = {
+  src: string;
+  alt: string;
+  caption?: string;
+  width: number;
+  height: number;
+};
+
+export type PsychoeducationFurtherLink = {
+  label: string;
+  description: string;
+  /** Path lógico (p. ej. /recursos/...) o URL absoluta https:// */
+  href: string;
+  external?: boolean;
+};
+
+export type PsychoeducationFurtherReading = {
+  title: string;
+  support: string;
+  links: readonly PsychoeducationFurtherLink[];
+};
+
 export type PsychoeducationGuide = {
   slug: string;
   readingMinutes: number;
@@ -27,7 +49,13 @@ export type PsychoeducationGuide = {
     title: string;
     subtitle: string;
   };
+  /** Cita editorial bajo el hero (ritmo de revista). */
+  pullQuote?: string;
+  /** Foto lifestyle opcional entre hero y cuerpo. */
+  figure?: PsychoeducationFigure;
   sections: readonly PsychoeducationSection[];
+  /** Enlaces a material más clínico / completo. */
+  furtherReading?: PsychoeducationFurtherReading;
   relatedSlugs: readonly PsychoeducationSlug[];
   disclaimer: string;
   /** Puente suave entre aviso clínico y CTA de producto. */
