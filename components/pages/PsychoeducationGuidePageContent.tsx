@@ -154,23 +154,58 @@ export default function PsychoeducationGuidePageContent({
                 <div className="psycho-guide__body">
                   {guide.sections.map((section) => {
                     const ListTag = section.ordered ? 'ol' : 'ul';
+                    const showProduct =
+                      guide.productMoment?.afterHeading === section.heading
+                        ? guide.productMoment
+                        : null;
+
                     return (
-                      <section
-                        key={section.heading}
-                        className={`psycho-guide__section${section.ordered ? ' psycho-guide__section--steps' : ''} reveal-on-scroll`}
-                      >
-                        <h2>{section.heading}</h2>
-                        {section.paragraphs?.map((paragraph) => (
-                          <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-                        ))}
-                        {section.bullets && (
-                          <ListTag>
-                            {section.bullets.map((bullet) => (
-                              <li key={bullet}>{bullet}</li>
-                            ))}
-                          </ListTag>
-                        )}
-                      </section>
+                      <div key={section.heading} className="psycho-guide__section-stack">
+                        <section
+                          className={`psycho-guide__section${section.ordered ? ' psycho-guide__section--steps' : ''} reveal-on-scroll`}
+                        >
+                          <h2>{section.heading}</h2>
+                          {section.paragraphs?.map((paragraph) => (
+                            <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                          ))}
+                          {section.bullets && (
+                            <ListTag>
+                              {section.bullets.map((bullet) => (
+                                <li key={bullet}>{bullet}</li>
+                              ))}
+                            </ListTag>
+                          )}
+                        </section>
+
+                        {showProduct ? (
+                          <aside
+                            className="psycho-guide__product reveal-on-scroll"
+                            aria-labelledby="psycho-guide-product-title"
+                          >
+                            <div className="psycho-guide__product-copy">
+                              <h2
+                                id="psycho-guide-product-title"
+                                className="psycho-guide__product-title"
+                              >
+                                {showProduct.title}
+                              </h2>
+                              <p className="psycho-guide__product-body">{showProduct.body}</p>
+                            </div>
+                            <figure className="psycho-guide__product-figure">
+                              <div className="psycho-guide__product-frame">
+                                <Image
+                                  src={showProduct.figure.src}
+                                  alt={showProduct.figure.alt}
+                                  width={showProduct.figure.width}
+                                  height={showProduct.figure.height}
+                                  className="psycho-guide__product-img"
+                                  sizes="(max-width: 720px) 220px, 260px"
+                                />
+                              </div>
+                            </figure>
+                          </aside>
+                        ) : null}
+                      </div>
                     );
                   })}
                 </div>

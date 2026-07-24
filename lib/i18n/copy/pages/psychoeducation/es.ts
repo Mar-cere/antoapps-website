@@ -1,3 +1,9 @@
+import {
+  APP_SCREENSHOT_HEIGHT,
+  APP_SCREENSHOT_WIDTH,
+  getHomeLandingScreenshotAlt,
+  getHomeLandingScreenshotPath,
+} from '@/lib/assets/app-screenshots';
 import type { PsychoeducationGuide, PsychoeducationSlug } from './types';
 
 const SLUGS = {
@@ -743,6 +749,17 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         ],
       },
     ],
+    productMoment: {
+      title: 'Así se ve en Anto',
+      body: 'Cuando la ansiedad sube, puedes escribirlo y recibir un paso concreto — sin presión de “arreglarlo todo”.',
+      afterHeading: 'Ejercicio 5-4-3-2-1',
+      figure: {
+        src: getHomeLandingScreenshotPath('chatAnxiety'),
+        alt: getHomeLandingScreenshotAlt('chatAnxiety', 'es'),
+        width: APP_SCREENSHOT_WIDTH,
+        height: APP_SCREENSHOT_HEIGHT,
+      },
+    },
     furtherReading: {
       title: 'Ir más a fondo',
       support:

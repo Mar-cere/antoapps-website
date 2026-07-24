@@ -274,6 +274,16 @@ function formatGuideEntry(
     );
   }
 
+  if (guide.productMoment) {
+    const productImg = guide.productMoment.figure.src.startsWith('http')
+      ? guide.productMoment.figure.src
+      : `${SITE_ORIGIN}${guide.productMoment.figure.src}`;
+    lines.push(
+      `- ${isEs ? 'Momento de producto' : 'Product moment'}: ${guide.productMoment.title} — ${guide.productMoment.body}`
+    );
+    lines.push(`  - ${isEs ? 'Captura' : 'Screenshot'}: ${productImg}`);
+  }
+
   if (guide.furtherReading) {
     lines.push(`- ${isEs ? 'Ir más a fondo' : 'Go deeper'}:`);
     for (const link of guide.furtherReading.links) {

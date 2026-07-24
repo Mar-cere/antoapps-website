@@ -1,3 +1,9 @@
+import {
+  APP_SCREENSHOT_HEIGHT,
+  APP_SCREENSHOT_WIDTH,
+  getHomeLandingScreenshotAlt,
+  getHomeLandingScreenshotPath,
+} from '@/lib/assets/app-screenshots';
 import type { PsychoeducationGuide, PsychoeducationSlug } from './types';
 
 const SLUGS = {
@@ -743,6 +749,17 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         ],
       },
     ],
+    productMoment: {
+      title: 'How it looks in Anto',
+      body: 'When anxiety rises, you can write it down and get a concrete next step — without pressure to “fix everything”.',
+      afterHeading: '5-4-3-2-1 exercise',
+      figure: {
+        src: getHomeLandingScreenshotPath('chatAnxiety'),
+        alt: getHomeLandingScreenshotAlt('chatAnxiety', 'en'),
+        width: APP_SCREENSHOT_WIDTH,
+        height: APP_SCREENSHOT_HEIGHT,
+      },
+    },
     furtherReading: {
       title: 'Go deeper',
       support:

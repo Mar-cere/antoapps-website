@@ -182,6 +182,60 @@
   width: 100%;
 }
 
+.psycho-guide__section-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  min-width: 0;
+}
+
+.psycho-guide__product {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.25rem 1.75rem;
+  align-items: center;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--home-v2-hairline-strong);
+  border-radius: calc(var(--home-v2-radius) + 2px);
+  background: color-mix(in srgb, var(--color-bg-secondary) 70%, transparent);
+}
+
+.psycho-guide__product-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--home-v2-ink);
+}
+
+.psycho-guide__product-body {
+  margin: 0;
+  max-width: 34ch;
+  font-size: 0.9875rem;
+  line-height: 1.55;
+  color: var(--home-v2-muted);
+}
+
+.psycho-guide__product-figure {
+  margin: 0;
+}
+
+.psycho-guide__product-frame {
+  width: min(13.5rem, 42vw);
+  border-radius: 1.15rem;
+  border: 1px solid var(--home-v2-hairline-strong);
+  background: #030a24;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.psycho-guide__product-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* Anula el padding global de `section` (layout/container.css) */
 .psycho-guide__section {
   padding: 0;
@@ -583,6 +637,21 @@
   .psycho-guide__pullquote {
     margin-bottom: 2rem;
     padding-left: 0.9rem;
+  }
+
+  .psycho-guide__product {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 1.1rem;
+    padding: 1rem 0.95rem 1.15rem;
+  }
+
+  .psycho-guide__product-body {
+    max-width: none;
+  }
+
+  .psycho-guide__product-frame {
+    width: min(12.5rem, 58vw);
   }
 
   .psycho-guide__further {

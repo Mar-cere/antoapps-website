@@ -36,6 +36,15 @@ export type PsychoeducationFurtherReading = {
   links: readonly PsychoeducationFurtherLink[];
 };
 
+/** Momento de producto (p. ej. captura de chat) insertado tras una sección. */
+export type PsychoeducationProductMoment = {
+  title: string;
+  body: string;
+  /** Heading exacto de la sección tras la cual se inserta. */
+  afterHeading: string;
+  figure: PsychoeducationFigure;
+};
+
 export type PsychoeducationGuide = {
   slug: string;
   readingMinutes: number;
@@ -56,6 +65,8 @@ export type PsychoeducationGuide = {
   /** Foto lifestyle opcional entre hero y cuerpo. */
   figure?: PsychoeducationFigure;
   sections: readonly PsychoeducationSection[];
+  /** Captura de producto contextual (sin sustituir la foto editorial). */
+  productMoment?: PsychoeducationProductMoment;
   /** Enlaces a material más clínico / completo. */
   furtherReading?: PsychoeducationFurtherReading;
   relatedSlugs: readonly PsychoeducationSlug[];
