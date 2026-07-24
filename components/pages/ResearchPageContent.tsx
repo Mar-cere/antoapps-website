@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
@@ -65,54 +66,74 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
 
                 <section
                   className="research-page__section reveal-on-scroll"
-                  aria-labelledby="research-approach-title"
+                  aria-labelledby="research-reading-title"
                 >
-                  <h2 id="research-approach-title">{copy.approach.title}</h2>
-                  {copy.approach.paragraphs.map((paragraph) => (
+                  <h2 id="research-reading-title">{copy.reading.title}</h2>
+                  {copy.reading.paragraphs.map((paragraph) => (
                     <p key={paragraph.slice(0, 48)}>{paragraph}</p>
                   ))}
                 </section>
 
+                <figure className="research-page__figure reveal-on-scroll">
+                  <div className="research-page__figure-frame">
+                    <Image
+                      src={copy.figure.src}
+                      alt={copy.figure.alt}
+                      width={copy.figure.width}
+                      height={copy.figure.height}
+                      className="research-page__figure-img"
+                      sizes="(max-width: 720px) 56vw, 240px"
+                      priority
+                    />
+                  </div>
+                  <figcaption className="research-page__figure-caption">
+                    {copy.figure.caption}
+                  </figcaption>
+                </figure>
+
                 <section
-                  className="research-page__pillars reveal-on-scroll"
-                  aria-labelledby="research-pillars-title"
+                  className="research-page__takes reveal-on-scroll"
+                  aria-labelledby="research-takes-title"
                 >
-                  <h2 id="research-pillars-title" className="research-page__pillars-title">
-                    {copy.approach.pillarsTitle}
+                  <h2 id="research-takes-title" className="research-page__takes-title">
+                    {copy.takes.title}
                   </h2>
-                  <ul className="research-page__pillars-list">
-                    {copy.approach.pillars.map((pillar) => (
-                      <li key={pillar.title} className="research-page__pillar">
-                        <h3 className="research-page__pillar-title">{pillar.title}</h3>
-                        <p className="research-page__pillar-body">{pillar.body}</p>
+                  <p className="research-page__section-support">{copy.takes.support}</p>
+                  <ul className="research-page__takes-list">
+                    {copy.takes.items.map((take) => (
+                      <li key={take.title} className="research-page__take">
+                        <h3 className="research-page__take-title">{take.title}</h3>
+                        <p className="research-page__take-body">{take.body}</p>
                       </li>
                     ))}
                   </ul>
                 </section>
 
                 <section
-                  className="research-page__literature reveal-on-scroll"
-                  aria-labelledby="research-literature-title"
+                  className="research-page__product reveal-on-scroll"
+                  aria-labelledby="research-product-title"
                 >
-                  <h2 id="research-literature-title">{copy.literature.title}</h2>
-                  <p className="research-page__section-support">{copy.literature.support}</p>
-                  <ul className="research-page__literature-list">
-                    {copy.literature.items.map((item) => (
-                      <li key={item.href} className="research-page__literature-item">
-                        <p className="research-page__literature-kind">{item.kind}</p>
-                        <a
-                          href={item.href}
-                          className="research-page__literature-link"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <span className="research-page__literature-label">{item.label}</span>
-                          <span className="research-page__literature-meta" aria-hidden="true">
-                            ↗
-                          </span>
-                          <span className="visually-hidden">{copy.externalLinkHint}</span>
-                        </a>
-                        <p className="research-page__literature-note">{item.note}</p>
+                  <h2 id="research-product-title" className="research-page__product-title">
+                    {copy.product.title}
+                  </h2>
+                  <p className="research-page__section-support">{copy.product.support}</p>
+                  <ul className="research-page__product-list">
+                    {copy.product.items.map((item) => (
+                      <li key={item.title} className="research-page__product-item">
+                        <div className="research-page__product-copy">
+                          <h3 className="research-page__product-item-title">{item.title}</h3>
+                          <p className="research-page__product-item-body">{item.body}</p>
+                        </div>
+                        <div className="research-page__product-media">
+                          <Image
+                            src={item.src}
+                            alt={item.alt}
+                            width={item.width}
+                            height={item.height}
+                            className="research-page__product-img"
+                            sizes="(max-width: 720px) 42vw, 180px"
+                          />
+                        </div>
                       </li>
                     ))}
                   </ul>
@@ -129,6 +150,21 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
                 </section>
 
                 <aside
+                  className="research-page__trust reveal-on-scroll"
+                  aria-labelledby="research-trust-title"
+                >
+                  <h2 id="research-trust-title" className="research-page__trust-title">
+                    {copy.trust.title}
+                  </h2>
+                  <p className="research-page__section-support">{copy.trust.support}</p>
+                  <ul className="research-page__trust-list">
+                    {copy.trust.bullets.map((bullet) => (
+                      <li key={bullet.slice(0, 40)}>{bullet}</li>
+                    ))}
+                  </ul>
+                </aside>
+
+                <aside
                   className="research-page__refs reveal-on-scroll"
                   aria-labelledby="research-refs-title"
                 >
@@ -136,23 +172,29 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
                     {copy.references.title}
                   </h2>
                   <p className="research-page__section-support">{copy.references.support}</p>
-                  <ol className="research-page__refs-list">
-                    {copy.references.items.map((ref) => (
-                      <li key={ref.href} className="research-page__refs-item">
-                        <p className="research-page__refs-apa">
-                          <a
-                            href={ref.href}
-                            className="research-page__refs-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {ref.apa}
-                          </a>
-                          <span className="visually-hidden">{copy.externalLinkHint}</span>
-                        </p>
-                      </li>
-                    ))}
-                  </ol>
+                  <details className="research-page__refs-details">
+                    <summary className="research-page__refs-summary">
+                      {copy.references.summaryLabel}
+                    </summary>
+                    <ol className="research-page__refs-list">
+                      {copy.references.items.map((ref) => (
+                        <li key={ref.href} className="research-page__refs-item">
+                          <p className="research-page__refs-label">{ref.label}</p>
+                          <p className="research-page__refs-apa">
+                            <a
+                              href={ref.href}
+                              className="research-page__refs-link"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {ref.apa}
+                            </a>
+                            <span className="visually-hidden">{copy.externalLinkHint}</span>
+                          </p>
+                        </li>
+                      ))}
+                    </ol>
+                  </details>
                 </aside>
 
                 <aside className="research-page__disclaimer reveal-on-scroll" role="note">

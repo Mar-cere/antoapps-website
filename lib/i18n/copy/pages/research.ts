@@ -1,30 +1,43 @@
 import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
+import {
+  APP_SCREENSHOT_HEIGHT,
+  APP_SCREENSHOT_WIDTH,
+  getHomeLandingScreenshotAlt,
+  getHomeLandingScreenshotPath,
+  type HomeLandingScreenshotKey,
+} from '@/lib/assets/app-screenshots';
 
 const CANONICAL_PATH = '/investigacion';
 const DEVELOPER_EMAIL = 'marcelo.ull@antoapps.com';
 
-export type ResearchPillar = {
+export type ResearchTake = {
   title: string;
   body: string;
 };
 
-export type ResearchLiteratureItem = {
-  /** Título corto para lectura (no la cita APA completa). */
-  label: string;
-  /** Cita APA 7 completa */
-  apa: string;
-  href: string;
-  /** Qué idea informa en Anto (tono honesto, no “prueba que Anto cura”). */
-  note: string;
-  kind: string;
+export type ResearchFigure = {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+};
+
+export type ResearchProductBridge = {
+  title: string;
+  body: string;
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
 };
 
 export type ResearchReference = {
   apa: string;
   href: string;
-  note?: string;
+  label: string;
 };
 
 export type ResearchPageCopy = {
@@ -42,23 +55,34 @@ export type ResearchPageCopy = {
     subtitle: string;
   };
   pullQuote: string;
-  approach: {
+  reading: {
     title: string;
     paragraphs: readonly string[];
-    pillarsTitle: string;
-    pillars: readonly ResearchPillar[];
   };
-  literature: {
+  figure: ResearchFigure;
+  takes: {
     title: string;
     support: string;
-    items: readonly ResearchLiteratureItem[];
+    items: readonly ResearchTake[];
+  };
+  product: {
+    title: string;
+    support: string;
+    items: readonly ResearchProductBridge[];
   };
   limits: {
     title: string;
     paragraphs: readonly string[];
   };
+  /** Ficha corta de confianza (camino 3) — revisable / eliminable. */
+  trust: {
+    title: string;
+    support: string;
+    bullets: readonly string[];
+  };
   references: {
     title: string;
+    summaryLabel: string;
     support: string;
     items: readonly ResearchReference[];
   };
@@ -78,7 +102,7 @@ export type ResearchPageCopy = {
 };
 
 /** Bibliografía curada — solo papers verificables con DOI/URL estable. */
-const LITERATURE: readonly Omit<ResearchLiteratureItem, 'note' | 'kind' | 'label'>[] = [
+const REFERENCES: readonly Omit<ResearchReference, 'label'>[] = [
   {
     apa: 'Fitzpatrick, K. K., Darcy, A., & Vierhile, M. (2017). Delivering cognitive behavior therapy to young adults with symptoms of depression and anxiety using a fully automated conversational agent (Woebot): A randomized controlled trial. JMIR Mental Health, 4(2), e19. https://doi.org/10.2196/mental.7785',
     href: 'https://doi.org/10.2196/mental.7785',
@@ -113,89 +137,52 @@ const LITERATURE: readonly Omit<ResearchLiteratureItem, 'note' | 'kind' | 'label
   },
 ] as const;
 
-function literatureFor(
-  locale: Locale,
-): ResearchLiteratureItem[] {
-  const kindsEs = [
-    'Ensayo controlado aleatorizado',
-    'Metaanálisis',
-    'Metaanálisis',
-    'Metaanálisis',
-    'Validación de escala',
-    'Revisión',
-    'Revisión sistemática y metaanálisis',
-    'Artículo teórico-clínico',
-  ] as const;
-  const kindsEn = [
-    'Randomized controlled trial',
-    'Meta-analysis',
-    'Meta-analysis',
-    'Meta-analysis',
-    'Scale validation',
-    'Review',
-    'Systematic review and meta-analysis',
-    'Theoretical–clinical article',
-  ] as const;
+function referencesFor(locale: Locale): ResearchReference[] {
   const labelsEs = [
-    'Agente conversacional con TCC (Woebot)',
-    'Apps y síntomas depresivos',
-    'Apps y síntomas de ansiedad',
-    'TCC para ansiedad en adultos',
-    'Escala GAD-7',
-    'Chatbots en salud mental',
-    'Intervenciones digitales y prevención del suicidio',
-    'Exposición e aprendizaje inhibitorio',
+    'Woebot — RCT conversacional con TCC',
+    'Firth et al. (2017a) — apps y depresión',
+    'Firth et al. (2017b) — apps y ansiedad',
+    'Hofmann & Smits (2008) — TCC y ansiedad',
+    'Spitzer et al. (2006) — GAD-7',
+    'Vaidyam et al. (2019) — chatbots',
+    'Torok et al. (2020) — prevención digital',
+    'Craske et al. (2014) — exposición inhibitoria',
   ] as const;
   const labelsEn = [
-    'Conversational agent with CBT (Woebot)',
-    'Apps and depressive symptoms',
-    'Apps and anxiety symptoms',
-    'CBT for adult anxiety',
-    'GAD-7 scale',
-    'Chatbots in mental health',
-    'Digital interventions and suicide prevention',
-    'Exposure and inhibitory learning',
+    'Woebot — conversational CBT RCT',
+    'Firth et al. (2017a) — apps and depression',
+    'Firth et al. (2017b) — apps and anxiety',
+    'Hofmann & Smits (2008) — CBT and anxiety',
+    'Spitzer et al. (2006) — GAD-7',
+    'Vaidyam et al. (2019) — chatbots',
+    'Torok et al. (2020) — digital prevention',
+    'Craske et al. (2014) — inhibitory exposure',
   ] as const;
-  const notesEs = [
-    'Muestra que un agente conversacional con componentes de TCC puede reducir síntomas en un RCT — evidencia de categoría, no un ensayo de Anto.',
-    'Síntesis de 18 RCTs (n ≈ 3.414): apps pueden reducir síntomas depresivos vs. control, con efectos mayores frente a controles inactivos.',
-    'Síntesis sobre intervenciones por smartphone para ansiedad: señal favorable con heterogeneidad; no equivale a “cura digital”.',
-    'Base de eficacia de la TCC para trastornos de ansiedad en adultos frente a placebo — marco de los protocolos psicoeducativos de Anto.',
-    'Validación del GAD-7 como cribado breve en atención primaria — escala que Anto puede usar para tendencias, no para diagnóstico.',
-    'Panorama de chatbots en salud mental: potencial, límites éticos y necesidad de evidencia más sólida.',
-    'Intervenciones digitales autoguiadas y prevención del suicidio: señal prometedora con matices; no sustituye crisis ni emergencia.',
-    'Marco de exposición por aprendizaje inhibitorio — informa cómo Anto habla de evitación y acercamiento gradual.',
-  ] as const;
-  const notesEn = [
-    'Shows a conversational agent with CBT components can reduce symptoms in an RCT — category evidence, not an Anto trial.',
-    'Synthesis of 18 RCTs (n ≈ 3,414): apps can reduce depressive symptoms vs. control, with larger effects against inactive controls.',
-    'Synthesis on smartphone interventions for anxiety: a favourable signal with heterogeneity; not the same as a “digital cure”.',
-    'Efficacy base for CBT for adult anxiety disorders versus placebo — the frame behind Anto’s psychoeducation protocols.',
-    'Validation of GAD-7 as a brief primary-care screen — a scale Anto can use for trends, not diagnosis.',
-    'Landscape of mental-health chatbots: potential, ethical limits, and the need for stronger evidence.',
-    'Self-guided digital interventions and suicide prevention: a promising signal with caveats; does not replace crisis or emergency care.',
-    'Inhibitory-learning exposure frame — informs how Anto talks about avoidance and graded approach.',
-  ] as const;
-
-  const kinds = locale === 'en' ? kindsEn : kindsEs;
   const labels = locale === 'en' ? labelsEn : labelsEs;
-  const notes = locale === 'en' ? notesEn : notesEs;
-
-  return LITERATURE.map((item, index) => ({
+  return REFERENCES.map((item, index) => ({
     ...item,
-    kind: kinds[index],
     label: labels[index],
-    note: notes[index],
   }));
 }
 
-function referencesFromLiterature(locale: Locale): ResearchReference[] {
-  return literatureFor(locale).map(({ apa, href, note }) => ({ apa, href, note }));
+function productBridge(
+  locale: Locale,
+  key: HomeLandingScreenshotKey,
+  title: string,
+  body: string,
+): ResearchProductBridge {
+  return {
+    title,
+    body,
+    src: getHomeLandingScreenshotPath(key),
+    alt: getHomeLandingScreenshotAlt(key, locale),
+    width: APP_SCREENSHOT_WIDTH,
+    height: APP_SCREENSHOT_HEIGHT,
+  };
 }
 
 function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
-  const literature = literatureFor(locale);
-  const references = referencesFromLiterature(locale);
+  const references = referencesFor(locale);
 
   if (locale === 'en') {
     return {
@@ -206,64 +193,103 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
       },
       crumbAria: 'Breadcrumb',
       meta: {
-        title: 'Research — scientific basis behind Anto | Anto',
+        title: 'Research — evidence that informs Anto | Anto',
         description:
-          'How Anto is informed by clinical and digital mental-health evidence: CBT, screening scales (GAD-7), conversational agents, and honest limits. Curated APA references with DOIs. Complements — does not replace — professional care.',
-        openGraphTitle: 'Research — scientific basis behind Anto',
+          'How Anto reads clinical and digital mental-health evidence: CBT, GAD-7, conversational agents — and what it does not claim. Category literature with APA DOIs. Complements, does not replace, professional care.',
+        openGraphTitle: 'Research — evidence that informs Anto',
         openGraphDescription:
-          'Literature that informs Anto’s approach: CBT, scales, digital interventions — with real APA citations and clear limits.',
+          'An editorial look at the literature behind Anto: what we take, how it shows up in the product, and clear limits.',
         canonicalPath: CANONICAL_PATH,
       },
       hero: {
-        title: 'Scientific basis',
+        title: 'We read the evidence. We do not turn it into a promise.',
         subtitle:
-          'Anto is informed by clinical and digital mental-health literature — not a substitute for trials of Anto itself, nor for human therapy.',
+          'Anto is shaped by clinical and digital mental-health literature — not by trials of Anto itself, and not as a substitute for human therapy.',
       },
       pullQuote:
         'Evidence guides the design. It does not turn an app into a diagnosis, a cure, or a replacement for a clinician.',
-      approach: {
-        title: 'How we read the evidence',
+      reading: {
+        title: 'How we read',
         paragraphs: [
-          'Anto sits in a growing field: conversational support, CBT-informed techniques, symptom tracking with validated screens, and risk pathways. The literature shows promise and limits. We design toward the former and state the latter clearly.',
-          'We do not claim Anto-specific randomised trials on this page. What you will find is the category evidence that shapes protocols, psychoeducation, and product decisions — with citations you can open.',
+          'The field is expanding: conversational support, CBT-informed techniques, validated screens, risk pathways. The literature shows promise and limits. We design toward the former and name the latter.',
+          'This page does not claim Anto-specific randomised trials. It shows the category evidence that shapes protocols, psychoeducation, and product choices — with sources you can open.',
         ],
-        pillarsTitle: 'What the literature informs',
-        pillars: [
+      },
+      figure: {
+        src: getHomeLandingScreenshotPath('tccProtocol'),
+        alt: getHomeLandingScreenshotAlt('tccProtocol', locale),
+        caption:
+          'A structured CBT path in Anto — informed by the clinical frame, without presenting the chat as therapy.',
+        width: APP_SCREENSHOT_WIDTH,
+        height: APP_SCREENSHOT_HEIGHT,
+      },
+      takes: {
+        title: 'What we take',
+        support: 'Four ideas that actually move the product — not a paper dump.',
+        items: [
           {
             title: 'CBT as a clinical frame',
-            body: 'Meta-analyses support CBT for adult anxiety disorders versus placebo (Hofmann & Smits, 2008). Anto’s structured paths and psychoeducation borrow that model: thoughts, emotions, behaviours — without presenting the chat as therapy.',
+            body: 'Meta-analyses support CBT for adult anxiety versus placebo (Hofmann & Smits, 2008). Anto’s paths borrow that model: thoughts, emotions, behaviours — without calling the chat therapy.',
           },
           {
-            title: 'Digital interventions with modest effects',
-            body: 'Smartphone meta-analyses report reductions in depressive and anxiety symptoms versus controls, often larger against inactive controls (Firth et al., 2017a, 2017b). Effects are real and usually small-to-moderate — not a promise of remission.',
+            title: 'Digital effects are usually modest',
+            body: 'Smartphone meta-analyses report symptom reductions versus controls, often larger against inactive ones (Firth et al., 2017a, 2017b). Real, small-to-moderate — not remission as a promise.',
           },
           {
-            title: 'Conversational agents as a category',
-            body: 'RCTs such as Woebot (Fitzpatrick et al., 2017) and reviews of chatbots (Vaidyam et al., 2019) suggest automated agents can help some people between sessions. They also underline ethics, safety, and evidence gaps.',
+            title: 'Agents as a category, with gaps',
+            body: 'RCTs such as Woebot (Fitzpatrick et al., 2017) and chatbot reviews (Vaidyam et al., 2019) suggest help between sessions for some people — and underline ethics, safety, and evidence gaps.',
           },
           {
             title: 'Screening, not diagnosis',
-            body: 'Scales such as GAD-7 (Spitzer et al., 2006) help track trends in primary care. In Anto they support observation over time — never a clinical label on their own.',
+            body: 'GAD-7 (Spitzer et al., 2006) tracks trends in primary care. In Anto it supports observation over time — never a clinical label on its own.',
           },
         ],
       },
-      literature: {
-        title: 'Selected literature',
-        support:
-          'A short, curated set. Title and note first; full APA citations live in References below. Each note states what the paper informs in Anto — not what it “proves” about the product.',
-        items: literature,
+      product: {
+        title: 'How it shows up in Anto',
+        support: 'A short bridge from literature to product — not proof that Anto “works”.',
+        items: [
+          productBridge(
+            locale,
+            'chatAnxiety',
+            'Conversation with structure',
+            'When someone names anxiety, Anto can stay with the moment and offer a concrete next step — closer to a conversational agent with CBT components than to open-ended chat.',
+          ),
+          productBridge(
+            locale,
+            'emotionalDashboard',
+            'Trends, not labels',
+            'Emotional tracking borrows the idea of brief screens: patterns over time, not a diagnosis stamped on a score.',
+          ),
+          productBridge(
+            locale,
+            'sessionSummary',
+            'A closing that names the pattern',
+            'Session summaries surface thought–emotion–behaviour links — the same triangle the CBT literature uses — without claiming a treatment course.',
+          ),
+        ],
       },
       limits: {
-        title: 'Limits we do not blur',
+        title: 'What we do not claim',
         paragraphs: [
-          'Anto does not diagnose, prescribe, or replace emergency care. Digital signals of risk can surface resources; they do not replace a crisis line or local emergency services.',
-          'Category evidence (other apps, CBT protocols, scales) is not the same as an Anto efficacy trial. When we have Anto-specific research, it will be listed here with the same bibliographic standard.',
-          'Collaboration with clinicians and continuous literature review guide updates; they do not turn every feature into a peer-reviewed claim.',
+          'Anto does not diagnose, prescribe, or replace emergency care. Digital risk signals can surface resources; they do not replace a crisis line or local emergency services.',
+          'Category evidence is not an Anto efficacy trial. When Anto-specific research exists, it will be listed here with the same bibliographic standard.',
+        ],
+      },
+      trust: {
+        title: 'Quick trust card',
+        support: 'If you only have a minute:',
+        bullets: [
+          'Category evidence (CBT, scales, digital MH) — not Anto RCTs.',
+          'Design informed by that literature; chat is not therapy.',
+          'No diagnosis, no prescription, no substitute for emergencies.',
+          'Full APA citations with DOIs below.',
         ],
       },
       references: {
         title: 'References (APA)',
-        support: 'Same sources as above, in bibliographic form, with stable DOI links.',
+        summaryLabel: 'Show full citations',
+        support: 'Stable DOI links for every source named on this page.',
         items: references,
       },
       disclaimer:
@@ -292,64 +318,103 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
     },
     crumbAria: 'Breadcrumb',
     meta: {
-      title: 'Investigación — base científica de Anto | Anto',
+      title: 'Investigación — evidencia que informa Anto | Anto',
       description:
-        'Cómo Anto se informa de evidencia clínica y de salud mental digital: TCC, escalas (GAD-7), agentes conversacionales y límites honestos. Referencias APA con DOI. Complementa; no sustituye atención profesional.',
-      openGraphTitle: 'Investigación — base científica de Anto',
+        'Cómo Anto lee evidencia clínica y de salud mental digital: TCC, GAD-7, agentes conversacionales — y qué no afirma. Literatura de categoría con DOI APA. Complementa; no sustituye atención profesional.',
+      openGraphTitle: 'Investigación — evidencia que informa Anto',
       openGraphDescription:
-        'Literatura que informa el enfoque de Anto: TCC, escalas, intervenciones digitales — con citas APA reales y límites claros.',
+        'Una lectura editorial de la literatura detrás de Anto: qué tomamos, cómo se ve en el producto y límites claros.',
       canonicalPath: CANONICAL_PATH,
     },
     hero: {
-      title: 'Base científica',
+      title: 'Leemos la evidencia. No la convertimos en promesa.',
       subtitle:
-        'Anto se informa de literatura clínica y de salud mental digital — no es un sustituto de ensayos propios de Anto ni de la terapia humana.',
+        'Anto se informa de literatura clínica y de salud mental digital — no de ensayos propios de Anto, ni como sustituto de la terapia humana.',
     },
     pullQuote:
       'La evidencia orienta el diseño. No convierte una app en diagnóstico, cura ni reemplazo de un clínico.',
-    approach: {
-      title: 'Cómo leemos la evidencia',
+    reading: {
+      title: 'Cómo leemos',
       paragraphs: [
-        'Anto está en un campo en expansión: acompañamiento conversacional, técnicas con base en TCC, seguimiento con escalas validadas y rutas de riesgo. La literatura muestra promesa y límites. Diseñamos hacia lo primero y nombramos lo segundo.',
-        'En esta página no afirmamos ensayos aleatorizados propios de Anto. Lo que encontrarás es evidencia de categoría que moldea protocolos, psicoeducación y decisiones de producto — con citas que puedes abrir.',
+        'El campo crece: acompañamiento conversacional, técnicas con base en TCC, escalas validadas, rutas de riesgo. La literatura muestra promesa y límites. Diseñamos hacia lo primero y nombramos lo segundo.',
+        'Esta página no afirma ensayos aleatorizados propios de Anto. Muestra la evidencia de categoría que moldea protocolos, psicoeducación y decisiones de producto — con fuentes que puedes abrir.',
       ],
-      pillarsTitle: 'Qué informa la literatura',
-      pillars: [
+    },
+    figure: {
+      src: getHomeLandingScreenshotPath('tccProtocol'),
+      alt: getHomeLandingScreenshotAlt('tccProtocol', locale),
+      caption:
+        'Una ruta estructurada de TCC en Anto — informada por el marco clínico, sin presentar el chat como terapia.',
+      width: APP_SCREENSHOT_WIDTH,
+      height: APP_SCREENSHOT_HEIGHT,
+    },
+    takes: {
+      title: 'Qué tomamos',
+      support: 'Cuatro ideas que sí mueven el producto — no un volcado de papers.',
+      items: [
         {
           title: 'TCC como marco clínico',
-          body: 'Metaanálisis apoyan la TCC para trastornos de ansiedad en adultos frente a placebo (Hofmann & Smits, 2008). Las rutas estructuradas y la psicoeducación de Anto toman ese modelo: pensamientos, emociones, conductas — sin presentar el chat como terapia.',
+          body: 'Metaanálisis apoyan la TCC para ansiedad en adultos frente a placebo (Hofmann & Smits, 2008). Las rutas de Anto toman ese modelo: pensamientos, emociones, conductas — sin llamar terapia al chat.',
         },
         {
-          title: 'Intervenciones digitales con efectos modestos',
-          body: 'Metaanálisis de apps reportan reducción de síntomas depresivos y de ansiedad frente a control, a menudo mayor frente a controles inactivos (Firth et al., 2017a, 2017b). Los efectos son reales y suelen ser pequeños a moderados — no una promesa de remisión.',
+          title: 'Efectos digitales, por lo general modestos',
+          body: 'Metaanálisis de apps reportan reducción de síntomas frente a control, a menudo mayor frente a controles inactivos (Firth et al., 2017a, 2017b). Reales, pequeños a moderados — no remisión como promesa.',
         },
         {
-          title: 'Agentes conversacionales como categoría',
-          body: 'RCTs como Woebot (Fitzpatrick et al., 2017) y revisiones de chatbots (Vaidyam et al., 2019) sugieren que agentes automatizados pueden ayudar a algunas personas entre sesiones. También subrayan ética, seguridad y vacíos de evidencia.',
+          title: 'Agentes como categoría, con vacíos',
+          body: 'RCTs como Woebot (Fitzpatrick et al., 2017) y revisiones de chatbots (Vaidyam et al., 2019) sugieren ayuda entre sesiones para algunas personas — y subrayan ética, seguridad y vacíos de evidencia.',
         },
         {
           title: 'Cribado, no diagnóstico',
-          body: 'Escalas como el GAD-7 (Spitzer et al., 2006) ayudan a seguir tendencias en atención primaria. En Anto sirven para observar el tiempo — nunca como etiqueta clínica por sí solas.',
+          body: 'El GAD-7 (Spitzer et al., 2006) sigue tendencias en atención primaria. En Anto sirve para observar el tiempo — nunca como etiqueta clínica por sí solo.',
         },
       ],
     },
-    literature: {
-      title: 'Literatura seleccionada',
-      support:
-        'Un conjunto corto y curado. Título y nota primero; la cita APA completa está en Referencias. Cada nota indica qué informa el paper en Anto — no qué “demuestra” sobre el producto.',
-      items: literature,
+    product: {
+      title: 'Cómo se ve en Anto',
+      support: 'Un puente corto de literatura a producto — no una prueba de que Anto “funciona”.',
+      items: [
+        productBridge(
+          locale,
+          'chatAnxiety',
+          'Conversación con estructura',
+          'Cuando alguien nombra la ansiedad, Anto puede quedarse en el momento y ofrecer un siguiente paso concreto — más cerca de un agente con componentes de TCC que de un chat abierto.',
+        ),
+        productBridge(
+          locale,
+          'emotionalDashboard',
+          'Tendencias, no etiquetas',
+          'El seguimiento emocional toma la idea de cribados breves: patrones en el tiempo, no un diagnóstico sellado sobre un puntaje.',
+        ),
+        productBridge(
+          locale,
+          'sessionSummary',
+          'Un cierre que nombra el patrón',
+          'Los resúmenes de sesión destacan vínculos pensamiento–emoción–conducta — el mismo triángulo de la literatura TCC — sin afirmar un curso de tratamiento.',
+        ),
+      ],
     },
     limits: {
-      title: 'Límites que no difuminamos',
+      title: 'Qué no afirmamos',
       paragraphs: [
         'Anto no diagnostica, no prescribe ni sustituye emergencias. Las señales digitales de riesgo pueden mostrar recursos; no reemplazan una línea de crisis ni los servicios de emergencia locales.',
-        'La evidencia de categoría (otras apps, protocolos TCC, escalas) no es lo mismo que un ensayo de eficacia de Anto. Cuando exista investigación propia, figurará aquí con el mismo estándar bibliográfico.',
-        'La colaboración con clínicos y la revisión continua de literatura orientan actualizaciones; no convierten cada función en una afirmación peer-reviewed.',
+        'La evidencia de categoría no es un ensayo de eficacia de Anto. Cuando exista investigación propia, figurará aquí con el mismo estándar bibliográfico.',
+      ],
+    },
+    trust: {
+      title: 'Ficha rápida',
+      support: 'Si solo tienes un minuto:',
+      bullets: [
+        'Evidencia de categoría (TCC, escalas, salud mental digital) — no RCTs de Anto.',
+        'Diseño informado por esa literatura; el chat no es terapia.',
+        'Sin diagnóstico, sin prescripción, sin sustituto de emergencias.',
+        'Citas APA completas con DOI más abajo.',
       ],
     },
     references: {
       title: 'Referencias (APA)',
-      support: 'Las mismas fuentes, en forma bibliográfica, con enlaces DOI estables.',
+      summaryLabel: 'Ver citas completas',
+      support: 'Enlaces DOI estables para cada fuente nombrada en esta página.',
       items: references,
     },
     disclaimer:
