@@ -14,15 +14,15 @@ export type CompararPageMetadata = {
   };
 };
 
-export type CompararAdvantage = {
-  icon: string;
-  title: string;
-  description: string;
+export type CompararTableRow = {
+  dimension: string;
+  anto: string;
+  others: string;
 };
 
-export type CompararFeatureRow = {
-  label: string;
-  value: string;
+export type CompararDifferentiator = {
+  title: string;
+  description: string;
 };
 
 export type CompararPageCopy = {
@@ -31,119 +31,59 @@ export type CompararPageCopy = {
     title: string;
     subtitle: string;
   };
-  comparison: {
-    anto: {
-      name: string;
-      logoAlt: string;
-      features: CompararFeatureRow[];
-      ctaLabel: string;
-      ctaHref: string;
-    };
-    others: {
-      placeholderIcon: string;
-      title: string;
-      features: CompararFeatureRow[];
-      note: string;
-    };
-    advantagesTitle: string;
-    advantages: CompararAdvantage[];
+  intro: string;
+  table: {
+    caption: string;
+    colAnto: string;
+    colOthers: string;
+    colDimension: string;
+    rows: CompararTableRow[];
   };
+  differentiators: {
+    title: string;
+    items: CompararDifferentiator[];
+  };
+  note: string;
   cta: {
     title: string;
     subtitle: string;
     downloadLabel: string;
     downloadHref: string;
-    salesLabel: string;
-    salesHref: string;
+    secondaryLabel: string;
+    secondaryHref: string;
   };
 };
 
 const metadataByLocale: Record<Locale, CompararPageMetadata> = {
   es: {
-    title: 'Comparar - Anto vs Otras Apps | Comparación Completa',
+    title: 'Anto vs chatbots y apps de bienestar | Comparar',
     description:
-      'Compara Anto con otras apps de salud mental. Descubre por qué Anto es la mejor opción para tu bienestar mental.',
+      'Compara Anto con chatbots genéricos y apps de bienestar: acompañamiento emocional continuo para ansiedad, privacidad, un paso concreto y prueba en iPhone. Complementa — no reemplaza — a un terapeuta humano.',
     openGraph: {
-      title: 'Comparar - Anto vs Otras Apps',
-      description: 'Compara Anto con otras opciones de salud mental.',
+      title: 'Anto vs chatbots y apps de bienestar',
+      description:
+        'Acompañamiento emocional continuo frente a chat genérico. Claridad, privacidad y un paso concreto — en iPhone.',
       url: 'https://antoapps.com/comparar',
     },
   },
   en: {
-    title: 'Compare - Anto vs Other Apps | Full Comparison',
+    title: 'Anto vs chatbots and wellness apps | Compare',
     description:
-      'Compare Anto with other mental health apps. See why Anto is the best fit for your mental wellness.',
+      'Compare Anto with generic chatbots and wellness apps: ongoing emotional support for anxiety, privacy, one concrete step, and a trial on iPhone. Complements — does not replace — a human therapist.',
     openGraph: {
-      title: 'Compare - Anto vs Other Apps',
-      description: 'Compare Anto with other mental health options.',
+      title: 'Anto vs chatbots and wellness apps',
+      description:
+        'Ongoing emotional support versus generic chat. Clarity, privacy, and one concrete step — on iPhone.',
       url: 'https://antoapps.com/en/comparar',
     },
   },
 };
 
-const advantagesEs: CompararAdvantage[] = [
-  {
-    icon: '🤖',
-    title: 'IA Más Avanzada',
-    description:
-      'GPT-5.4 Mini optimizado específicamente para salud mental, no un chatbot genérico.',
-  },
-  {
-    icon: '🚨',
-    title: 'Detección Proactiva',
-    description: 'Sistema único de detección automática de crisis que puede salvar vidas.',
-  },
-  {
-    icon: '🔒',
-    title: 'Privacidad Real',
-    description: 'No hacemos tracking, no compartimos datos. Privacidad verdadera, no solo marketing.',
-  },
-  {
-    icon: '💰',
-    title: 'Mejor Precio',
-    description: 'Más funcionalidades a un precio más accesible que la competencia.',
-  },
-  {
-    icon: '📊',
-    title: 'Análisis Avanzado',
-    description: 'Análisis emocional en tiempo real con insights personalizados.',
-  },
-];
-
-const advantagesEn: CompararAdvantage[] = [
-  {
-    icon: '🤖',
-    title: 'More Advanced AI',
-    description:
-      'GPT-5.4 Mini tuned specifically for mental health, not a generic chatbot.',
-  },
-  {
-    icon: '🚨',
-    title: 'Proactive Detection',
-    description: 'A unique automatic crisis detection system that can save lives.',
-  },
-  {
-    icon: '🔒',
-    title: 'Real Privacy',
-    description: 'No tracking, no data sharing. True privacy, not just marketing.',
-  },
-  {
-    icon: '💰',
-    title: 'Better Price',
-    description: 'More features at a more accessible price than competitors.',
-  },
-  {
-    icon: '📊',
-    title: 'Advanced Analysis',
-    description: 'Real-time emotional analysis with personalized insights.',
-  },
-];
-
 function buildCompararPageCopy(locale: Locale): CompararPageCopy {
   const trial = getTrialCopy(locale);
-  const isEn = locale === 'en';
+  const priceMonth = formatUsdPrice(PRICING_USD.month, locale);
 
-  if (isEn) {
+  if (locale === 'en') {
     return {
       breadcrumbs: {
         homeLabel: 'Home',
@@ -151,50 +91,99 @@ function buildCompararPageCopy(locale: Locale): CompararPageCopy {
         currentLabel: 'Compare',
       },
       hero: {
-        title: 'Compare Anto with Other Options',
-        subtitle: 'Find the best solution for your mental health needs',
+        title: 'Anto beside the usual options',
+        subtitle:
+          'Not another generic chatbot. A place to land between sessions — or on the days therapy is not available.',
       },
-      comparison: {
-        anto: {
-          name: 'Anto',
-          logoAlt: 'Anto',
-          features: [
-            { label: 'Therapeutic AI Assistant', value: '✅ Advanced' },
-            { label: 'Crisis Detection', value: '✅ Automatic 24/7' },
-            { label: 'Emotional Analysis', value: '✅ Real-time' },
-            { label: 'Privacy', value: '✅ E2E, no tracking' },
-            { label: 'Initial trial', value: `✅ ${trial.short}` },
-            {
-              label: 'Price',
-              value: `✅ From ${formatUsdPrice(PRICING_USD.month, 'en')}/month`,
-            },
-          ],
-          ctaLabel: 'Download on the App Store',
-          ctaHref: localePath(locale, '/bienvenida'),
-        },
-        others: {
-          placeholderIcon: '📱',
-          title: 'Other Mental Health Apps',
-          features: [
-            { label: 'Therapeutic AI Assistant', value: '⚠️ Basic or limited' },
-            { label: 'Crisis Detection', value: '❌ Manual or limited' },
-            { label: 'Emotional Analysis', value: '⚠️ Basic' },
-            { label: 'Privacy', value: '⚠️ Varies; some use tracking' },
-            { label: 'Price', value: '⚠️ $15–$50/month or more' },
-          ],
-          note:
-            'Features vary by app. Anto stands out for its comprehensive approach and advanced technology.',
-        },
-        advantagesTitle: 'Key Advantages of Anto',
-        advantages: advantagesEn,
+      intro:
+        'People often compare Anto with ChatGPT-style chat, meditation apps, or waiting until the next appointment. The differences below are honest: Anto is ongoing emotional support for anxiety and quiet hours. It uses AI in the background. It complements care; it does not replace a human therapist.',
+      table: {
+        caption: 'How Anto compares with typical chatbots and wellness apps',
+        colDimension: 'What you need',
+        colAnto: 'Anto',
+        colOthers: 'Typical chatbots & wellness apps',
+        rows: [
+          {
+            dimension: 'Role',
+            anto: 'Ongoing emotional support — write, leave with clarity',
+            others: 'Generic chat, meditation tracks, or mood logs',
+          },
+          {
+            dimension: 'Between sessions',
+            anto: 'Built for the hours when your mind will not slow down',
+            others: 'Often a one-off reply or a scheduled exercise',
+          },
+          {
+            dimension: 'What you leave with',
+            anto: 'Clarity and one concrete next step',
+            others: 'Advice that can feel broad or forgettable',
+          },
+          {
+            dimension: 'Memory',
+            anto: 'Themes and patterns over time',
+            others: 'Often resets; little continuity',
+          },
+          {
+            dimension: 'Privacy',
+            anto: 'Conversations stay yours — no ads, no data sold',
+            others: 'Varies; some products track or train on chats',
+          },
+          {
+            dimension: 'Hard moments',
+            anto: 'Crisis-aware alerts and resources when needed',
+            others: 'Often a static help link — or nothing',
+          },
+          {
+            dimension: 'Platform',
+            anto: 'iPhone (App Store); Android early access',
+            others: 'Varies by product',
+          },
+          {
+            dimension: 'Price',
+            anto: `From ${priceMonth}/month · ${trial.short}`,
+            others: 'Often higher, freemium walls, or ad-supported',
+          },
+          {
+            dimension: 'Therapy',
+            anto: 'Complements a human therapist — does not replace one',
+            others: 'Sometimes marketed as a substitute; often is not',
+          },
+        ],
       },
+      differentiators: {
+        title: 'Where Anto is clearer',
+        items: [
+          {
+            title: 'A companion, not a novelty chat',
+            description:
+              'Designed for anxiety and quiet hours — continuity, theme memory, and techniques you can return to.',
+          },
+          {
+            title: 'One concrete step',
+            description:
+              'You leave with something to try, not only a longer conversation.',
+          },
+          {
+            title: 'Privacy without the pitch',
+            description:
+              'No ads in the product loop. Your conversations are not sold.',
+          },
+          {
+            title: 'Honest about limits',
+            description:
+              'AI assists in the background. A human therapist remains the stronger choice for clinical care.',
+          },
+        ],
+      },
+      note:
+        'Features vary by competitor. This page compares categories, not named brands. Always check each product’s own privacy and clinical claims.',
       cta: {
-        title: 'Ready to Try Anto?',
-        subtitle: `Join thousands of users already improving their mental wellness with Anto. ${trial.short}, no credit card required.`,
+        title: 'When your mind will not slow down',
+        subtitle: `Try Anto on iPhone. ${trial.short}. No card required to start.`,
         downloadLabel: 'Download on the App Store',
         downloadHref: localePath(locale, '/bienvenida'),
-        salesLabel: 'Talk to Sales',
-        salesHref: localePath(locale, '/contacto'),
+        secondaryLabel: 'Contact',
+        secondaryHref: localePath(locale, '/contacto'),
       },
     };
   }
@@ -206,50 +195,99 @@ function buildCompararPageCopy(locale: Locale): CompararPageCopy {
       currentLabel: 'Comparar',
     },
     hero: {
-      title: 'Compara Anto con Otras Opciones',
-      subtitle: 'Encuentra la mejor solución para tus necesidades de salud mental',
+      title: 'Anto frente a las opciones habituales',
+      subtitle:
+        'No es otro chatbot genérico. Un lugar donde aterrizar entre sesiones — o en los días en que la terapia no está.',
     },
-    comparison: {
-      anto: {
-        name: 'Anto',
-        logoAlt: 'Anto',
-        features: [
-          { label: 'Asistente AI Terapéutico', value: '✅ Avanzado' },
-          { label: 'Detección de Crisis', value: '✅ Automática 24/7' },
-          { label: 'Análisis Emocional', value: '✅ En tiempo real' },
-          { label: 'Privacidad', value: '✅ E2E, sin tracking' },
-          { label: 'Prueba inicial', value: `✅ ${trial.short}` },
-          {
-            label: 'Precio',
-            value: `✅ Desde ${formatUsdPrice(PRICING_USD.month, 'es')}/mes`,
-          },
-        ],
-        ctaLabel: 'Descargar en App Store',
-        ctaHref: localePath(locale, '/bienvenida'),
-      },
-      others: {
-        placeholderIcon: '📱',
-        title: 'Otras Apps de Salud Mental',
-        features: [
-          { label: 'Asistente AI Terapéutico', value: '⚠️ Básico o limitado' },
-          { label: 'Detección de Crisis', value: '❌ Manual o limitada' },
-          { label: 'Análisis Emocional', value: '⚠️ Básico' },
-          { label: 'Privacidad', value: '⚠️ Variable, algunos hacen tracking' },
-          { label: 'Precio', value: '⚠️ $15-$50/mes o más' },
-        ],
-        note:
-          'Las características varían según la app. Anto se destaca por su enfoque integral y tecnología avanzada.',
-      },
-      advantagesTitle: 'Ventajas Clave de Anto',
-      advantages: advantagesEs,
+    intro:
+      'Quien evalúa Anto suele compararlo con un chat tipo ChatGPT, apps de meditación o esperar a la próxima cita. Las diferencias abajo son honestas: Anto es acompañamiento emocional continuo para ansiedad y horas quietas. Usa asistencia de IA en segundo plano. Complementa la atención; no reemplaza a un terapeuta humano.',
+    table: {
+      caption: 'Cómo se compara Anto con chatbots y apps de bienestar típicas',
+      colDimension: 'Qué necesitas',
+      colAnto: 'Anto',
+      colOthers: 'Chatbots y apps de bienestar típicas',
+      rows: [
+        {
+          dimension: 'Rol',
+          anto: 'Acompañamiento emocional continuo — escribe y sal con claridad',
+          others: 'Chat genérico, pistas de meditación o registros de ánimo',
+        },
+        {
+          dimension: 'Entre sesiones',
+          anto: 'Hecho para las horas en que la mente no para',
+          others: 'Suele ser una respuesta suelta o un ejercicio programado',
+        },
+        {
+          dimension: 'Con qué te quedas',
+          anto: 'Claridad y un siguiente paso concreto',
+          others: 'Consejos amplios que a veces se olvidan',
+        },
+        {
+          dimension: 'Memoria',
+          anto: 'Temas y patrones con el tiempo',
+          others: 'A menudo reinicia; poca continuidad',
+        },
+        {
+          dimension: 'Privacidad',
+          anto: 'Tus conversaciones son tuyas — sin anuncios ni venta de datos',
+          others: 'Variable; algunos rastrean o entrenan con el chat',
+        },
+        {
+          dimension: 'Momentos difíciles',
+          anto: 'Alertas y recursos si hace falta apoyo urgente',
+          others: 'A menudo un enlace estático — o nada',
+        },
+        {
+          dimension: 'Plataforma',
+          anto: 'iPhone (App Store); Android en acceso anticipado',
+          others: 'Varía según el producto',
+        },
+        {
+          dimension: 'Precio',
+          anto: `Desde ${priceMonth}/mes · ${trial.short}`,
+          others: 'A menudo más alto, muros freemium o con publicidad',
+        },
+        {
+          dimension: 'Terapia',
+          anto: 'Complementa a un terapeuta humano — no lo reemplaza',
+          others: 'A veces se vende como sustituto; casi nunca lo es',
+        },
+      ],
     },
+    differentiators: {
+      title: 'Donde Anto se entiende mejor',
+      items: [
+        {
+          title: 'Acompañamiento, no un chat de novedad',
+          description:
+            'Pensado para ansiedad y horas quietas: continuidad, memoria de temas y técnicas a las que volver.',
+        },
+        {
+          title: 'Un paso concreto',
+          description:
+            'Sales con algo que probar, no solo con una conversación más larga.',
+        },
+        {
+          title: 'Privacidad sin discurso',
+          description:
+            'Sin anuncios en el producto. Tus conversaciones no se venden.',
+        },
+        {
+          title: 'Límites claros',
+          description:
+            'La IA asiste en segundo plano. Un terapeuta humano sigue siendo lo más recomendable para cuidado clínico.',
+        },
+      ],
+    },
+    note:
+      'Las funciones varían entre productos. Esta página compara categorías, no marcas concretas. Revisa siempre la privacidad y los límites clínicos de cada app.',
     cta: {
-      title: '¿Listo para Probar Anto?',
-      subtitle: `Únete a miles de usuarios que ya están mejorando su bienestar mental con Anto. ${trial.short}, sin tarjeta de crédito.`,
+      title: 'Cuando tu mente no para',
+      subtitle: `Prueba Anto en iPhone. ${trial.short}. Sin tarjeta para empezar.`,
       downloadLabel: 'Descargar en App Store',
       downloadHref: localePath(locale, '/bienvenida'),
-      salesLabel: 'Hablar con Ventas',
-      salesHref: localePath(locale, '/contacto'),
+      secondaryLabel: 'Contacto',
+      secondaryHref: localePath(locale, '/contacto'),
     },
   };
 }

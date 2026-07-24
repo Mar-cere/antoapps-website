@@ -62,7 +62,7 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
     changeFrequency: 'monthly',
     priorityEs: 0.85,
     priorityEn: 0.75,
-    lastModified: '2026-05-01',
+    lastModified: '2026-07-24',
     note: 'Comparativa vs alternativas — alto valor SEO long-tail',
   },
   {

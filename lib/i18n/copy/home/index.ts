@@ -48,8 +48,8 @@ export {
   compararPageMetadata,
   type CompararPageCopy,
   type CompararPageMetadata,
-  type CompararAdvantage,
-  type CompararFeatureRow,
+  type CompararTableRow,
+  type CompararDifferentiator,
 } from '../comparar';
 
 export {

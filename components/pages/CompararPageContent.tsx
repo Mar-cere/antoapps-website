@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
@@ -32,76 +31,68 @@ export default function CompararPageContent({ locale }: CompararPageContentProps
         />
 
         <section className="comparison-hero" data-fade-section>
-          <div className="container">
+          <div className="container container--narrow">
             <h1 className="comparison-title reveal-on-scroll">{copy.hero.title}</h1>
             <p className="comparison-subtitle reveal-on-scroll">{copy.hero.subtitle}</p>
           </div>
         </section>
 
         <section className="comparison-section" data-fade-section>
+          <div className="container container--narrow">
+            <p className="comparison-intro reveal-on-scroll">{copy.intro}</p>
+          </div>
+        </section>
+
+        <section
+          className="comparison-section comparison-section--table"
+          data-fade-section
+          aria-label={copy.table.caption}
+        >
           <div className="container">
-            <div className="comparison-content active" id="apps">
-              <div className="apps-comparison">
-                <div className="app-comparison-card reveal-on-scroll">
-                  <div className="app-header">
-                    <Image
-                      src="/assets/images/antoIcon.png"
-                      alt={copy.comparison.anto.logoAlt}
-                      width={50}
-                      height={50}
-                      className="app-logo"
-                    />
-                    <h3>{copy.comparison.anto.name}</h3>
-                  </div>
-                  <div className="app-features">
-                    {copy.comparison.anto.features.map((row) => (
-                      <div key={row.label} className="feature-row">
-                        <span className="feature-label">{row.label}</span>
-                        <span className="feature-value">{row.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Link href={copy.comparison.anto.ctaHref} className="btn btn-primary btn-block">
-                    {copy.comparison.anto.ctaLabel}
-                  </Link>
-                </div>
-
-                <div className="app-comparison-card reveal-on-scroll">
-                  <div className="app-header">
-                    <div className="app-placeholder" aria-hidden="true">
-                      {copy.comparison.others.placeholderIcon}
-                    </div>
-                    <h3>{copy.comparison.others.title}</h3>
-                  </div>
-                  <div className="app-features">
-                    {copy.comparison.others.features.map((row) => (
-                      <div key={row.label} className="feature-row">
-                        <span className="feature-label">{row.label}</span>
-                        <span className="feature-value">{row.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="app-note">
-                    <p>{copy.comparison.others.note}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="comparison-advantages">
-                <h3 className="reveal-on-scroll">{copy.comparison.advantagesTitle}</h3>
-                <div className="advantages-grid" data-stagger>
-                  {copy.comparison.advantages.map((item) => (
-                    <div key={item.title} className="advantage-item reveal-on-scroll" data-stagger-item>
-                      <div className="advantage-icon" aria-hidden="true">
-                        {item.icon}
-                      </div>
-                      <h4>{item.title}</h4>
-                      <p>{item.description}</p>
-                    </div>
+            <div className="comparison-table-wrapper reveal-on-scroll">
+              <table className="comparison-table">
+                <caption className="comparison-table-caption">{copy.table.caption}</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">{copy.table.colDimension}</th>
+                    <th scope="col" className="comparison-anto-col">
+                      {copy.table.colAnto}
+                    </th>
+                    <th scope="col">{copy.table.colOthers}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {copy.table.rows.map((row) => (
+                    <tr key={row.dimension}>
+                      <th scope="row">{row.dimension}</th>
+                      <td className="comparison-anto-col">{row.anto}</td>
+                      <td>{row.others}</td>
+                    </tr>
                   ))}
-                </div>
-              </div>
+                </tbody>
+              </table>
             </div>
+          </div>
+        </section>
+
+        <section
+          className="comparison-section comparison-section--diff"
+          data-fade-section
+          aria-labelledby="comparison-diff-title"
+        >
+          <div className="container container--narrow">
+            <h2 id="comparison-diff-title" className="comparison-diff-title reveal-on-scroll">
+              {copy.differentiators.title}
+            </h2>
+            <ul className="comparison-diff-list">
+              {copy.differentiators.items.map((item) => (
+                <li key={item.title} className="comparison-diff-item reveal-on-scroll">
+                  <h3 className="comparison-diff-item-title">{item.title}</h3>
+                  <p className="comparison-diff-item-text">{item.description}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="comparison-note reveal-on-scroll">{copy.note}</p>
           </div>
         </section>
 
@@ -114,8 +105,8 @@ export default function CompararPageContent({ locale }: CompararPageContentProps
                 <Link href={copy.cta.downloadHref} className="btn btn-primary btn-large">
                   {copy.cta.downloadLabel}
                 </Link>
-                <Link href={copy.cta.salesHref} className="btn btn-secondary btn-large">
-                  {copy.cta.salesLabel}
+                <Link href={copy.cta.secondaryHref} className="btn btn-secondary btn-large">
+                  {copy.cta.secondaryLabel}
                 </Link>
               </div>
             </div>
