@@ -26,14 +26,14 @@ export default function ResourcesLibrary({ library }: ResourcesLibraryProps) {
 
   return (
     <section className="resources-library" data-fade-section aria-label={library.searchAriaLabel}>
-      <div className="container container--resources">
+      <div className="home-landing-container">
         <div className="resources-toolbar">
-          <div className="filter-tabs" role="group" aria-label={library.filtersAriaLabel}>
+          <div className="resources-filters" role="group" aria-label={library.filtersAriaLabel}>
             {library.filters.map((tab) => (
               <button
                 key={tab.id}
                 type="button"
-                className={`filter-tab${filter === tab.id ? ' is-active' : ''}`}
+                className={`resources-filter${filter === tab.id ? ' is-active' : ''}`}
                 aria-pressed={filter === tab.id}
                 onClick={() => setFilter(tab.id)}
               >
@@ -42,7 +42,7 @@ export default function ResourcesLibrary({ library }: ResourcesLibraryProps) {
             ))}
           </div>
 
-          <div className="search-box">
+          <div className="resources-search">
             <label className="visually-hidden" htmlFor={searchId}>
               {library.searchAriaLabel}
             </label>
@@ -61,11 +61,14 @@ export default function ResourcesLibrary({ library }: ResourcesLibraryProps) {
         ) : (
           <ul className="resources-list">
             {filteredResources.map((resource) => (
-              <li key={resource.id} className="resources-list__item">
+              <li key={resource.id}>
                 <Link href={resource.link} className="resources-list__link">
                   <span className="resources-list__title">{resource.title}</span>
                   <span className="resources-list__desc">{resource.description}</span>
-                  <span className="resources-list__cta">{library.viewResourceLabel}</span>
+                  <span className="resources-list__arrow" aria-hidden="true">
+                    →
+                  </span>
+                  <span className="visually-hidden">{library.viewResourceLabel}</span>
                 </Link>
               </li>
             ))}

@@ -428,7 +428,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             href: '/recursos',
             label: 'Resources',
-            description: 'Psychoeducation library',
+            description: 'Guides to land with',
           },
           {
             href: '/recursos/que-es-tcc',
@@ -680,7 +680,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           href: '/recursos',
           label: 'Recursos',
-          description: 'Biblioteca de psicoeducación',
+          description: 'Guías para aterrizar',
         },
         {
           href: '/recursos/que-es-tcc',
