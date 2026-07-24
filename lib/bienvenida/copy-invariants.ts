@@ -63,18 +63,28 @@ export function assertBienvenidaCopyInvariants(): string[] {
       errors.push(`${tag} androidWaitlist.counterTemplate sin placeholder {count}`);
     }
 
-    if (
-      locale === 'es' &&
-      !/IA|apoyo emocional/i.test(copy.meta.socialDescription)
-    ) {
-      errors.push(`${tag} meta.socialDescription debería mencionar IA/apoyo emocional`);
+    if (locale === 'es') {
+      if (!/apoyo emocional/i.test(copy.meta.socialDescription)) {
+        errors.push(`${tag} meta.socialDescription debería mencionar apoyo emocional`);
+      }
+      if (!/ansiedad/i.test(copy.meta.title) || !/ansiedad/i.test(copy.meta.description)) {
+        errors.push(`${tag} meta title/description deberían mencionar ansiedad`);
+      }
+      if (!copy.meta.ogHeadline.trim()) {
+        errors.push(`${tag} meta.ogHeadline vacío`);
+      }
     }
 
-    if (
-      locale === 'en' &&
-      !/AI|emotional/i.test(copy.meta.socialDescription)
-    ) {
-      errors.push(`${tag} meta.socialDescription should mention AI/emotional support`);
+    if (locale === 'en') {
+      if (!/emotional/i.test(copy.meta.socialDescription)) {
+        errors.push(`${tag} meta.socialDescription should mention emotional support`);
+      }
+      if (!/anxiety/i.test(copy.meta.title) || !/anxiety/i.test(copy.meta.description)) {
+        errors.push(`${tag} meta title/description should mention anxiety`);
+      }
+      if (!copy.meta.ogHeadline.trim()) {
+        errors.push(`${tag} meta.ogHeadline empty`);
+      }
     }
 
     const v2 = copy.v2;

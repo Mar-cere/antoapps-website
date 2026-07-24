@@ -50,7 +50,7 @@ const PAGE_LABELS: Record<Locale, Record<string, string>> = {
 const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
   es: {
     '': 'Home editorial: acompañamiento para horas quietas, demos de producto, foundation (memoria/técnicas), reviews, precios, FAQ y descarga App Store.',
-    '/bienvenida': 'Landing optimizada para conversión; prueba gratuita de 1 día en iPhone.',
+    '/bienvenida': 'Landing de conversión (Meta Ads): apoyo emocional para ansiedad en iPhone; prueba 1 día gratis.',
     '/app': 'Detalle de funcionalidades, capturas y enlaces de descarga.',
     '/comparar': 'Anto vs. chatbots genéricos y otras apps de bienestar.',
     '/seguridad': 'Cifrado, política de datos, límites clínicos y cumplimiento.',
@@ -65,7 +65,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
   },
   en: {
     '': 'Editorial home: support for quiet hours, product demos, foundation (memory/techniques), reviews, pricing, FAQ, App Store download.',
-    '/bienvenida': 'Conversion-optimised landing; 1-day free trial on iPhone.',
+    '/bienvenida': 'Conversion landing (Meta Ads): emotional support for anxiety on iPhone; 1-day free trial.',
     '/app': 'Feature detail, screenshots, download links.',
     '/comparar': 'Anto vs. generic chatbots and other wellness apps.',
     '/seguridad': 'Encryption, data policy, clinical limits, compliance.',

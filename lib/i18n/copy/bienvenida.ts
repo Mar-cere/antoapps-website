@@ -30,6 +30,8 @@ export type BienvenidaCopy = {
     title: string;
     description: string;
     socialDescription: string;
+    /** Headline grande en opengraph-image (compartir / ads preview). */
+    ogHeadline: string;
     ogSubline: string;
     ogAlt: string;
   };
@@ -160,14 +162,15 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
   if (locale === 'en') {
     return {
       meta: {
-        title: 'Anto — Mental calm in minutes | Download on the App Store',
+        title: 'Anto — Emotional support for anxiety | iPhone app',
         description:
-          'When your mind won\'t slow down, write what you feel and get clear guidance in seconds. 1-day free trial on iPhone.',
+          'Emotional support app for iPhone: when anxiety or a racing mind won\'t stop, write what you feel and get clarity with one concrete step. 1-day free trial on the App Store.',
         socialDescription:
-          'AI emotional support when your mind won\'t slow down. Clarity in minutes — 1-day free trial on iPhone.',
+          'Emotional support when anxiety won\'t let go. Clarity in minutes — 1-day free trial on iPhone.',
+        ogHeadline: 'Emotional support when your mind won\'t slow down',
         ogSubline:
           'Write what you feel. Get clarity and one concrete step — not just a chatbot reply.',
-        ogAlt: 'Anto — Mental calm in minutes',
+        ogAlt: 'Anto — Emotional support for anxiety on iPhone',
       },
       hero: {
         titleLine1: 'When your mind won\'t slow down,',
@@ -352,10 +355,11 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ],
       },
       v2: {
-        eyebrow: 'Emotional support on your phone',
+        eyebrow: 'Emotional support for anxiety',
         heroTitlePrefix: 'When your mind\nwon\'t slow down,',
         heroTitleHighlight: 'Anto helps you\nland.',
-        heroSub: 'Write what you feel. Get clarity and one concrete step in seconds.',
+        heroSub:
+          'Write what you feel. Get clarity and one concrete step when anxiety won\'t let go.',
         heroReview: {
           quote:
             'I use it when anxiety wakes me up. Within minutes the intensity eases a bit.',
@@ -394,7 +398,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         dashboard: {
           label: 'More than a chat',
           headline: 'See your patterns\nover time.',
-          subtitle: 'Emotional tracking that helps you notice what repeats.',
+          subtitle: 'Emotional tracking to notice patterns of anxiety and stress over time.',
           image: {
             src: APP_SCREENSHOT_PATHS.home,
             alt: getAppScreenshotAlt('home', 'en'),
@@ -411,14 +415,15 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
 
   return {
     meta: {
-      title: 'Anto — Calma mental en minutos | Descarga en App Store',
+      title: 'Anto — Apoyo emocional para ansiedad | App iPhone',
       description:
-        'Cuando tu mente va a mil, escribe lo que sientes y recibe guía clara en segundos. Prueba 1 día gratis en iPhone.',
+        'App de apoyo emocional para iPhone: cuando la ansiedad o tu mente no paran, escribe lo que sientes y recibe claridad con un paso concreto. Prueba 1 día gratis en App Store.',
       socialDescription:
-        'Apoyo emocional con IA cuando tu mente no para. Claridad en minutos — prueba 1 día gratis en iPhone.',
+        'Apoyo emocional cuando la ansiedad no te deja. Claridad en minutos — prueba 1 día gratis en iPhone.',
+      ogHeadline: 'Apoyo emocional cuando tu mente no para',
       ogSubline:
         'Escribe lo que sientes. Recibe claridad y un paso concreto — no solo una respuesta genérica.',
-      ogAlt: 'Anto — Calma mental en minutos',
+      ogAlt: 'Anto — Apoyo emocional para ansiedad en iPhone',
     },
     hero: {
       titleLine1: 'Cuando tu mente va a mil,',
@@ -603,10 +608,11 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       ],
     },
     v2: {
-      eyebrow: 'Apoyo emocional en tu teléfono',
+      eyebrow: 'Apoyo emocional para ansiedad',
       heroTitlePrefix: 'Cuando tu mente\nno para,',
       heroTitleHighlight: 'Anto te ayuda\na aterrizar.',
-      heroSub: 'Escribe lo que sientes. Recibe claridad y un paso concreto en segundos.',
+      heroSub:
+        'Escribe lo que sientes. Claridad y un paso concreto cuando la ansiedad no te deja.',
       heroReview: {
         quote:
           'La uso cuando la ansiedad me despierta. En minutos bajo un poco la intensidad.',
@@ -645,7 +651,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       dashboard: {
         label: 'Más que un chat',
         headline: 'Mira tus patrones\ncon el tiempo.',
-        subtitle: 'Seguimiento emocional para notar lo que se repite.',
+        subtitle: 'Seguimiento emocional para notar patrones de ansiedad y estrés con el tiempo.',
         image: {
           src: APP_SCREENSHOT_PATHS.home,
           alt: getAppScreenshotAlt('home', 'es'),

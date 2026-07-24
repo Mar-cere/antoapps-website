@@ -46,7 +46,7 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
     changeFrequency: 'weekly',
     priorityEs: 0.95,
     priorityEn: 0.85,
-    lastModified: '2026-06-01',
+    lastModified: '2026-07-24',
     note: 'Landing de conversión (Meta Ads, /l redirect)',
   },
   {

@@ -3,7 +3,7 @@ import { getBienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
 export const runtime = 'edge';
-export const alt = 'Anto — Mental calm in minutes';
+export const alt = 'Anto — Emotional support for anxiety on iPhone';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -39,20 +39,22 @@ export default function BienvenidaOpenGraphImageEn() {
               width: 72,
               height: 72,
               borderRadius: 18,
-              background: 'rgba(255,255,255,0.12)',
+              background: '#1adddb',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: 36,
+              fontWeight: 700,
+              color: '#030a24',
             }}
           >
-            🧠
+            A
           </div>
           <span style={{ fontSize: 42, fontWeight: 700, letterSpacing: '-0.03em' }}>Anto</span>
         </div>
         <div
           style={{
-            fontSize: 56,
+            fontSize: 52,
             fontWeight: 700,
             lineHeight: 1.12,
             letterSpacing: '-0.03em',
@@ -60,9 +62,9 @@ export default function BienvenidaOpenGraphImageEn() {
             marginBottom: 28,
           }}
         >
-          AI emotional support when your mind won&apos;t slow down
+          {copy.meta.ogHeadline}
         </div>
-        <div style={{ fontSize: 30, lineHeight: 1.4, color: 'rgba(255,255,255,0.82)', maxWidth: 860 }}>
+        <div style={{ fontSize: 28, lineHeight: 1.4, color: 'rgba(255,255,255,0.82)', maxWidth: 860 }}>
           {copy.meta.ogSubline}
         </div>
         <div
@@ -76,7 +78,7 @@ export default function BienvenidaOpenGraphImageEn() {
             fontWeight: 600,
           }}
         >
-          <span>Clinically grounded</span>
+          <span>iPhone app</span>
           <span>·</span>
           <span>{trial.short}</span>
         </div>
