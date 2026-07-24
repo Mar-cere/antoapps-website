@@ -2,6 +2,16 @@ export type PsychoeducationSection = {
   heading: string;
   paragraphs?: readonly string[];
   bullets?: readonly string[];
+  /** Si true, renderiza <ol> en vez de <ul> (p. ej. ejercicios paso a paso). */
+  ordered?: boolean;
+};
+
+export type PsychoeducationHowTo = {
+  name: string;
+  description: string;
+  /** Duración ISO-8601, p. ej. PT5M */
+  totalTime?: string;
+  steps: readonly string[];
 };
 
 export type PsychoeducationGuide = {
@@ -20,11 +30,15 @@ export type PsychoeducationGuide = {
   sections: readonly PsychoeducationSection[];
   relatedSlugs: readonly PsychoeducationSlug[];
   disclaimer: string;
+  /** Puente suave entre aviso clínico y CTA de producto. */
+  ctaBridge?: string;
   cta: {
     label: string;
     /** Path lógico sin prefijo /en (p. ej. /bienvenida). */
     path: string;
   };
+  /** Schema.org HowTo opcional (ejercicios prácticos). */
+  howTo?: PsychoeducationHowTo;
 };
 
 export const PSYCHOEDUCATION_SLUGS = [

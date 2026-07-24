@@ -670,50 +670,74 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.grounding,
     readingMinutes: 5,
     meta: {
-      title: 'Grounding techniques for anxiety and crisis | Anto',
+      title: 'When anxiety rises: grounding techniques | Anto',
       description:
-        'Grounding exercises (5 senses, present-moment contact) to lower emotional intensity and when to activate crisis resources. Psychoeducation; does not replace professional care.',
-      openGraphTitle: 'Grounding — practical guide',
-      openGraphDescription: 'Return to the present when anxiety or an overwhelming memory floods you.',
+        '5-4-3-2-1 exercise and sensory anchors to land when anxiety or a crisis moment floods you. Short psychoeducation; does not replace professional care or emergency services.',
+      openGraphTitle: 'When anxiety rises — grounding',
+      openGraphDescription:
+        'Land in the present with 5-4-3-2-1 and other quick anchors. Complements — does not replace — professional help.',
     },
     hero: {
-      title: 'Grounding: techniques for anxiety and crisis moments',
-      subtitle: 'Anchor yourself in the here and now when your body reacts as if danger were immediate.',
+      title: 'When anxiety rises',
+      subtitle:
+        'Grounding techniques to anchor yourself in the here and now when your body reacts as if danger were immediate.',
     },
     sections: [
       {
         heading: 'What grounding is',
         paragraphs: [
-          'Grounding techniques direct attention to present sensory experience to reduce intense anxiety, mild dissociation, or thought spirals. They do not remove the underlying problem, but lower activation so you can think more clearly.',
+          'Grounding is a set of simple gestures that bring attention to what you can see, touch, hear, smell, or taste right now.',
+          'They do not fix what hurts underneath. They lower the body’s activation so you can think a little more clearly, ask for help, or wait for the wave to pass.',
         ],
       },
       {
         heading: '5-4-3-2-1 exercise',
+        paragraphs: [
+          'Go slowly. If one sense does not answer, skip to the next. There is no perfect score — work with what you find.',
+        ],
+        ordered: true,
         bullets: [
-          '5 things you can see',
-          '4 you can touch (texture, temperature)',
-          '3 you can hear',
-          '2 you can smell',
-          '1 you can taste',
+          '5 things you see — pick concrete details (an edge, a colour, a shadow), not the whole room at once.',
+          '4 things you touch — temperature, texture, weight. Clothes, the seat, your own hands.',
+          '3 things you hear — near or far: an engine, your breath, a clock, voices in another room.',
+          '2 things you smell — or, if nothing is clear, calmly recall a familiar scent without forcing a scene.',
+          '1 thing you taste — a sip of water, the taste in your mouth, or simply noticing your tongue.',
         ],
       },
       {
         heading: 'Other quick options',
         paragraphs: [
-          'Hold an ice cube, describe aloud where you are, press feet into the floor, name colours around you. The key is engaging senses, not analysing the problem in that moment.',
+          'If 5-4-3-2-1 feels long, try a single anchor: an ice cube in your hand, naming aloud where you are, or gently pressing your feet into the floor.',
+          'The point is engaging the senses, not analysing the problem in that moment.',
         ],
       },
       {
         heading: 'When it is a crisis',
         paragraphs: [
-          'If you have thoughts of harming yourself, immediate risk, or cannot care for yourself, contact emergency services or a crisis line in your country. Anto detects risk signals and can offer support resources, but does not replace emergency services.',
+          'If you have thoughts of harming yourself, immediate risk, or cannot care for yourself, contact emergency services or a crisis line in your country.',
+          'Anto can detect risk signals and offer resources, but does not replace emergency services.',
         ],
       },
     ],
     relatedSlugs: [SLUGS.anxiety, SLUGS.mindfulness, SLUGS.trauma],
     disclaimer:
       'Psychoeducation. In case of suicidal risk or violence, seek local emergency help immediately.',
-    cta: { label: '24/7 support in Anto →', path: '/bienvenida' },
+    ctaBridge:
+      'When the wave eases a little, you can keep going with company on your phone — no pressure.',
+    cta: { label: 'Support in Anto →', path: '/bienvenida' },
+    howTo: {
+      name: '5-4-3-2-1 grounding exercise',
+      description:
+        'A sensory technique to lower activation when anxiety rises: five senses, one step at a time.',
+      totalTime: 'PT5M',
+      steps: [
+        'Name 5 things you can see, with concrete detail.',
+        'Notice 4 things you can touch (texture, temperature, or weight).',
+        'Listen for 3 sounds, near or far.',
+        'Identify 2 smells, or calmly recall a familiar one.',
+        'Notice 1 taste or the sensation in your mouth.',
+      ],
+    },
   },
   [SLUGS.stress]: {
     slug: SLUGS.stress,

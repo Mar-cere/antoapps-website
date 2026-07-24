@@ -26,60 +26,79 @@ export function getArticleJsonLd(locale: Locale, path: string, guide: Psychoeduc
 
   const topicNames = guide.sections.map((section) => section.heading);
 
+  const graph: Record<string, unknown>[] = [
+    {
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: guide.hero.title,
+      description: guide.meta.description,
+      inLanguage: isEn ? 'en' : 'es',
+      url,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': url,
+      },
+      datePublished: RESOURCES_COLLECTION_DATE_PUBLISHED,
+      dateModified: RESOURCES_COLLECTION_DATE_MODIFIED,
+      timeRequired: `PT${guide.readingMinutes}M`,
+      isPartOf: {
+        '@type': 'CollectionPage',
+        '@id': `${hubUrl}#collection`,
+        name: isEn ? 'Anto resources' : 'Recursos Anto',
+        url: hubUrl,
+      },
+      author: {
+        '@type': 'Organization',
+        name: 'Anto',
+        url: 'https://antoapps.com',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Anto',
+        url: 'https://antoapps.com',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://antoapps.com/assets/images/antoIcon.png',
+        },
+      },
+      articleBody: bodyText,
+      about: [
+        {
+          '@type': 'Thing',
+          name: isEn
+            ? 'Mental health psychoeducation'
+            : 'Psicoeducación en salud mental',
+        },
+        ...topicNames.slice(0, 6).map((name) => ({
+          '@type': 'Thing',
+          name,
+        })),
+      ],
+      keywords: topicNames.join(', '),
+    },
+    getGuideBreadcrumbJsonLd(locale, path, guide.hero.title),
+  ];
+
+  if (guide.howTo) {
+    graph.push({
+      '@type': 'HowTo',
+      '@id': `${url}#howto`,
+      name: guide.howTo.name,
+      description: guide.howTo.description,
+      inLanguage: isEn ? 'en' : 'es',
+      ...(guide.howTo.totalTime ? { totalTime: guide.howTo.totalTime } : {}),
+      step: guide.howTo.steps.map((text, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        name: text,
+        text,
+      })),
+    });
+  }
+
   return {
     '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'Article',
-        '@id': `${url}#article`,
-        headline: guide.hero.title,
-        description: guide.meta.description,
-        inLanguage: isEn ? 'en' : 'es',
-        url,
-        mainEntityOfPage: {
-          '@type': 'WebPage',
-          '@id': url,
-        },
-        datePublished: RESOURCES_COLLECTION_DATE_PUBLISHED,
-        dateModified: RESOURCES_COLLECTION_DATE_MODIFIED,
-        timeRequired: `PT${guide.readingMinutes}M`,
-        isPartOf: {
-          '@type': 'CollectionPage',
-          '@id': `${hubUrl}#collection`,
-          name: isEn ? 'Anto resources' : 'Recursos Anto',
-          url: hubUrl,
-        },
-        author: {
-          '@type': 'Organization',
-          name: 'Anto',
-          url: 'https://antoapps.com',
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: 'Anto',
-          url: 'https://antoapps.com',
-          logo: {
-            '@type': 'ImageObject',
-            url: 'https://antoapps.com/assets/images/antoIcon.png',
-          },
-        },
-        articleBody: bodyText,
-        about: [
-          {
-            '@type': 'Thing',
-            name: isEn
-              ? 'Mental health psychoeducation'
-              : 'Psicoeducación en salud mental',
-          },
-          ...topicNames.slice(0, 6).map((name) => ({
-            '@type': 'Thing',
-            name,
-          })),
-        ],
-        keywords: topicNames.join(', '),
-      },
-      getGuideBreadcrumbJsonLd(locale, path, guide.hero.title),
-    ],
+    '@graph': graph,
   };
 }
 

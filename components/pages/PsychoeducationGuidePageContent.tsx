@@ -114,21 +114,27 @@ export default function PsychoeducationGuidePageContent({
                 </header>
 
                 <div className="psycho-guide__body">
-                  {guide.sections.map((section) => (
-                    <section key={section.heading} className="psycho-guide__section reveal-on-scroll">
-                      <h2>{section.heading}</h2>
-                      {section.paragraphs?.map((paragraph) => (
-                        <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-                      ))}
-                      {section.bullets && (
-                        <ul>
-                          {section.bullets.map((bullet) => (
-                            <li key={bullet}>{bullet}</li>
-                          ))}
-                        </ul>
-                      )}
-                    </section>
-                  ))}
+                  {guide.sections.map((section) => {
+                    const ListTag = section.ordered ? 'ol' : 'ul';
+                    return (
+                      <section
+                        key={section.heading}
+                        className={`psycho-guide__section${section.ordered ? ' psycho-guide__section--steps' : ''} reveal-on-scroll`}
+                      >
+                        <h2>{section.heading}</h2>
+                        {section.paragraphs?.map((paragraph) => (
+                          <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                        ))}
+                        {section.bullets && (
+                          <ListTag>
+                            {section.bullets.map((bullet) => (
+                              <li key={bullet}>{bullet}</li>
+                            ))}
+                          </ListTag>
+                        )}
+                      </section>
+                    );
+                  })}
                 </div>
 
                 <aside className="psycho-guide__disclaimer reveal-on-scroll" role="note">
@@ -137,6 +143,9 @@ export default function PsychoeducationGuidePageContent({
                 </aside>
 
                 <div className="psycho-guide__cta reveal-on-scroll">
+                  {guide.ctaBridge ? (
+                    <p className="psycho-guide__cta-bridge">{guide.ctaBridge}</p>
+                  ) : null}
                   <Link href={localePath(locale, guide.cta.path)} className="psycho-guide__cta-link">
                     {guide.cta.label}
                   </Link>
