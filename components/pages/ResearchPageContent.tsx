@@ -4,10 +4,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
-import { getResearchPageCopy } from '@/lib/i18n/copy/pages/research';
+import {
+  getResearchPageCopy,
+  type ResearchProductMedia,
+} from '@/lib/i18n/copy/pages/research';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
+import HomeV2ChatVignette from '@/components/sections/HomeV2ChatVignette';
+import HomeV2EvidencePanel from '@/components/sections/HomeV2EvidencePanel';
+import HomeV2SessionSummary from '@/components/sections/HomeV2SessionSummary';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import '@/styles/pages/home-landing-final.css';
@@ -17,6 +23,34 @@ import '@/styles/components/research.css';
 type ResearchPageContentProps = {
   locale: Locale;
 };
+
+function ResearchProductMediaView({
+  media,
+  locale,
+}: {
+  media: ResearchProductMedia;
+  locale: Locale;
+}) {
+  switch (media.kind) {
+    case 'chat':
+      return (
+        <HomeV2ChatVignette
+          thread={media.chat}
+          locale={locale}
+          size="moment"
+          className="research-page__vignette"
+        />
+      );
+    case 'evidence':
+      return (
+        <HomeV2EvidencePanel evidence={media.evidence} className="research-page__vignette" />
+      );
+    case 'summary':
+      return (
+        <HomeV2SessionSummary summary={media.summary} className="research-page__vignette" />
+      );
+  }
+}
 
 export default function ResearchPageContent({ locale }: ResearchPageContentProps) {
   const copy = getResearchPageCopy(locale);
@@ -82,7 +116,7 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
                       width={copy.figure.width}
                       height={copy.figure.height}
                       className="research-page__figure-img"
-                      sizes="(max-width: 720px) 56vw, 240px"
+                      sizes="(max-width: 720px) 100vw, 46rem"
                       priority
                     />
                   </div>
@@ -125,14 +159,7 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
                           <p className="research-page__product-item-body">{item.body}</p>
                         </div>
                         <div className="research-page__product-media">
-                          <Image
-                            src={item.src}
-                            alt={item.alt}
-                            width={item.width}
-                            height={item.height}
-                            className="research-page__product-img"
-                            sizes="(max-width: 720px) 42vw, 180px"
-                          />
+                          <ResearchProductMediaView media={item.media} locale={locale} />
                         </div>
                       </li>
                     ))}

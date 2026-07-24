@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
-import {
-  APP_SCREENSHOT_HEIGHT,
-  APP_SCREENSHOT_WIDTH,
-  getHomeLandingScreenshotAlt,
-  getHomeLandingScreenshotPath,
-  type HomeLandingScreenshotKey,
-} from '@/lib/assets/app-screenshots';
+import { getEditorialImagePath } from '@/lib/assets/editorial-images';
+import type {
+  HomeV2ChatThread,
+  HomeV2EvidencePanel,
+  HomeV2SummaryPanel,
+} from '@/lib/i18n/copy/home/home-v2';
 
 const CANONICAL_PATH = '/investigacion';
 const DEVELOPER_EMAIL = 'marcelo.ull@antoapps.com';
+const EDITORIAL_WIDTH = 1536;
+const EDITORIAL_HEIGHT = 1024;
 
 export type ResearchTake = {
   title: string;
@@ -25,13 +26,15 @@ export type ResearchFigure = {
   height: number;
 };
 
+export type ResearchProductMedia =
+  | { kind: 'chat'; chat: HomeV2ChatThread }
+  | { kind: 'evidence'; evidence: HomeV2EvidencePanel }
+  | { kind: 'summary'; summary: HomeV2SummaryPanel };
+
 export type ResearchProductBridge = {
   title: string;
   body: string;
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
+  media: ResearchProductMedia;
 };
 
 export type ResearchReference = {
@@ -165,22 +168,6 @@ function referencesFor(locale: Locale): ResearchReference[] {
   }));
 }
 
-function productBridge(
-  locale: Locale,
-  key: HomeLandingScreenshotKey,
-  title: string,
-  body: string,
-): ResearchProductBridge {
-  return {
-    title,
-    body,
-    src: getHomeLandingScreenshotPath(key),
-    alt: getHomeLandingScreenshotAlt(key, locale),
-    width: APP_SCREENSHOT_WIDTH,
-    height: APP_SCREENSHOT_HEIGHT,
-  };
-}
-
 function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
   const references = referencesFor(locale);
 
@@ -216,12 +203,12 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
         ],
       },
       figure: {
-        src: getHomeLandingScreenshotPath('tccProtocol'),
-        alt: getHomeLandingScreenshotAlt('tccProtocol', locale),
+        src: getEditorialImagePath('evening'),
+        alt: 'Quiet evening light in a room — a pause before reading what informs the product',
         caption:
-          'A structured CBT path in Anto — informed by the clinical frame, without presenting the chat as therapy.',
-        width: APP_SCREENSHOT_WIDTH,
-        height: APP_SCREENSHOT_HEIGHT,
+          'Evidence is read in ordinary hours — not as a marketing claim, but as a design constraint.',
+        width: EDITORIAL_WIDTH,
+        height: EDITORIAL_HEIGHT,
       },
       takes: {
         title: 'What we take',
@@ -247,26 +234,86 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
       },
       product: {
         title: 'How it shows up in Anto',
-        support: 'A short bridge from literature to product — not proof that Anto “works”.',
+        support:
+          'Editorial vignettes — the tone of the product, not App Store screenshots as proof.',
         items: [
-          productBridge(
-            locale,
-            'chatAnxiety',
-            'Conversation with structure',
-            'When someone names anxiety, Anto can stay with the moment and offer a concrete next step — closer to a conversational agent with CBT components than to open-ended chat.',
-          ),
-          productBridge(
-            locale,
-            'emotionalDashboard',
-            'Trends, not labels',
-            'Emotional tracking borrows the idea of brief screens: patterns over time, not a diagnosis stamped on a score.',
-          ),
-          productBridge(
-            locale,
-            'sessionSummary',
-            'A closing that names the pattern',
-            'Session summaries surface thought–emotion–behaviour links — the same triangle the CBT literature uses — without claiming a treatment course.',
-          ),
+          {
+            title: 'Conversation with structure',
+            body: 'When someone names anxiety, Anto can stay with the moment and offer a concrete next step — closer to a conversational agent with CBT components than to open-ended chat.',
+            media: {
+              kind: 'chat',
+              chat: {
+                ariaLabel: 'Sample Anto chat: anxiety named, then one concrete step',
+                messages: [
+                  {
+                    role: 'user',
+                    text: 'I am at an 8. Chest tight. Mind will not slow down.',
+                  },
+                  {
+                    role: 'anto',
+                    text: 'That intensity is real. Before we analyse it — one small step: name one thing you can feel under your feet.',
+                  },
+                  {
+                    role: 'user',
+                    text: 'The floor. Cold.',
+                  },
+                  {
+                    role: 'anto',
+                    text: 'Stay with that for two breaths. Then we can look at what the mind is spinning — without forcing it to stop.',
+                  },
+                ],
+              },
+            },
+          },
+          {
+            title: 'Trends, not labels',
+            body: 'Brief check-ins borrow the idea of validated screens: patterns over weeks, not a diagnosis stamped on a score.',
+            media: {
+              kind: 'evidence',
+              evidence: {
+                ariaLabel: 'Sample anxiety check-in across four weeks — not a diagnosis',
+                chromeTitle: 'Check-in',
+                eyebrow: 'How anxiety felt · example',
+                scaleName: 'Anxiety',
+                scaleRange: 'brief check-in',
+                currentLabel: 'This week',
+                currentValue: '8',
+                trendLabel: 'Lately',
+                trend: 'A little lighter than a month ago',
+                scaleMax: 21,
+                bars: [
+                  { label: 'W1', value: 14 },
+                  { label: 'W2', value: 12 },
+                  { label: 'W3', value: 10 },
+                  { label: 'W4', value: 8 },
+                ],
+                insightLabel: 'What stood out',
+                insight: 'Quieter nights followed days with one clear next step',
+                disclaimer:
+                  'Example only. Informed by brief screens such as GAD-7 — trends, not a clinical label.',
+              },
+            },
+          },
+          {
+            title: 'A closing that names the pattern',
+            body: 'Session closings surface thought–emotion–behaviour links — the CBT triangle — without claiming a treatment course.',
+            media: {
+              kind: 'summary',
+              summary: {
+                ariaLabel: 'Sample session closing that names a thought–emotion pattern',
+                chromeTitle: 'Closing',
+                eyebrow: 'Tonight',
+                moodFrom: 'Tight',
+                moodTo: 'Steadier',
+                moodLabel: 'mood arc',
+                theme: 'Work anxiety before a presentation — the mind jumped to the worst ending.',
+                patternLabel: 'Pattern',
+                pattern: 'Thought → body alarm → urge to avoid preparing',
+                helpedLabel: 'What helped',
+                helped: 'One concrete step (open the first slide) instead of solving the whole fear',
+              },
+            },
+          },
         ],
       },
       limits: {
@@ -341,12 +388,12 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
       ],
     },
     figure: {
-      src: getHomeLandingScreenshotPath('tccProtocol'),
-      alt: getHomeLandingScreenshotAlt('tccProtocol', locale),
+      src: getEditorialImagePath('evening'),
+      alt: 'Luz de tarde en una habitación quieta — una pausa antes de leer qué informa el producto',
       caption:
-        'Una ruta estructurada de TCC en Anto — informada por el marco clínico, sin presentar el chat como terapia.',
-      width: APP_SCREENSHOT_WIDTH,
-      height: APP_SCREENSHOT_HEIGHT,
+        'La evidencia se lee en horas ordinarias — no como claim de marketing, sino como límite de diseño.',
+      width: EDITORIAL_WIDTH,
+      height: EDITORIAL_HEIGHT,
     },
     takes: {
       title: 'Qué tomamos',
@@ -372,26 +419,86 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
     },
     product: {
       title: 'Cómo se ve en Anto',
-      support: 'Un puente corto de literatura a producto — no una prueba de que Anto “funciona”.',
+      support:
+        'Viñetas editoriales — el tono del producto, no capturas de App Store como prueba.',
       items: [
-        productBridge(
-          locale,
-          'chatAnxiety',
-          'Conversación con estructura',
-          'Cuando alguien nombra la ansiedad, Anto puede quedarse en el momento y ofrecer un siguiente paso concreto — más cerca de un agente con componentes de TCC que de un chat abierto.',
-        ),
-        productBridge(
-          locale,
-          'emotionalDashboard',
-          'Tendencias, no etiquetas',
-          'El seguimiento emocional toma la idea de cribados breves: patrones en el tiempo, no un diagnóstico sellado sobre un puntaje.',
-        ),
-        productBridge(
-          locale,
-          'sessionSummary',
-          'Un cierre que nombra el patrón',
-          'Los resúmenes de sesión destacan vínculos pensamiento–emoción–conducta — el mismo triángulo de la literatura TCC — sin afirmar un curso de tratamiento.',
-        ),
+        {
+          title: 'Conversación con estructura',
+          body: 'Cuando alguien nombra la ansiedad, Anto puede quedarse en el momento y ofrecer un siguiente paso concreto — más cerca de un agente con componentes de TCC que de un chat abierto.',
+          media: {
+            kind: 'chat',
+            chat: {
+              ariaLabel: 'Ejemplo de chat en Anto: ansiedad nombrada y un paso concreto',
+              messages: [
+                {
+                  role: 'user',
+                  text: 'Estoy en 8. Pecho apretado. La mente no baja.',
+                },
+                {
+                  role: 'anto',
+                  text: 'Esa intensidad es real. Antes de analizarla — un paso pequeño: nombra una cosa que sientes bajo los pies.',
+                },
+                {
+                  role: 'user',
+                  text: 'El suelo. Frío.',
+                },
+                {
+                  role: 'anto',
+                  text: 'Quédate ahí dos respiraciones. Después miramos qué gira en la mente — sin forzar que pare.',
+                },
+              ],
+            },
+          },
+        },
+        {
+          title: 'Tendencias, no etiquetas',
+          body: 'Los chequeos breves toman la idea de escalas validadas: patrones en semanas, no un diagnóstico sellado sobre un puntaje.',
+          media: {
+            kind: 'evidence',
+            evidence: {
+              ariaLabel: 'Ejemplo de chequeo de ansiedad en cuatro semanas — no un diagnóstico',
+              chromeTitle: 'Chequeo',
+              eyebrow: 'Cómo se sintió la ansiedad · ejemplo',
+              scaleName: 'Ansiedad',
+              scaleRange: 'chequeo breve',
+              currentLabel: 'Esta semana',
+              currentValue: '8',
+              trendLabel: 'Últimamente',
+              trend: 'Un poco más liviana que hace un mes',
+              scaleMax: 21,
+              bars: [
+                { label: 'S1', value: 14 },
+                { label: 'S2', value: 12 },
+                { label: 'S3', value: 10 },
+                { label: 'S4', value: 8 },
+              ],
+              insightLabel: 'Lo que destacó',
+              insight: 'Las noches más quietas siguieron a días con un siguiente paso claro',
+              disclaimer:
+                'Solo un ejemplo. Informado por cribados breves como el GAD-7 — tendencias, no etiqueta clínica.',
+            },
+          },
+        },
+        {
+          title: 'Un cierre que nombra el patrón',
+          body: 'Los cierres de sesión destacan vínculos pensamiento–emoción–conducta — el triángulo TCC — sin afirmar un curso de tratamiento.',
+          media: {
+            kind: 'summary',
+            summary: {
+              ariaLabel: 'Ejemplo de cierre de sesión que nombra un patrón pensamiento–emoción',
+              chromeTitle: 'Cierre',
+              eyebrow: 'Esta noche',
+              moodFrom: 'Apretado',
+              moodTo: 'más firme',
+              moodLabel: 'arco del ánimo',
+              theme: 'Ansiedad laboral antes de una presentación — la mente saltó al peor final.',
+              patternLabel: 'Patrón',
+              pattern: 'Pensamiento → alarma en el cuerpo → ganas de evitar preparar',
+              helpedLabel: 'Qué ayudó',
+              helped: 'Un paso concreto (abrir la primera diapositiva) en lugar de resolver todo el miedo',
+            },
+          },
+        },
       ],
     },
     limits: {
