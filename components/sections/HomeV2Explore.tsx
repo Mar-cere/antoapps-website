@@ -7,7 +7,7 @@ type HomeV2ExploreProps = {
   locale?: Locale;
 };
 
-/** Enlaces internos curatorados — discovery y trust, sin grid de cards. */
+/** Discovery editorial + coda legal — un solo cierre, sin strip suelto. */
 export default function HomeV2Explore({ locale = 'es' }: HomeV2ExploreProps) {
   const { explore } = getHomeV2Copy(locale);
 
@@ -30,6 +30,17 @@ export default function HomeV2Explore({ locale = 'es' }: HomeV2ExploreProps) {
             </li>
           ))}
         </ul>
+        <div className="home-v2-explore__coda reveal-on-scroll">
+          <p className="home-v2-explore__trust">
+            {explore.coda.trust.map((item, index) => (
+              <span key={item}>
+                {index > 0 ? <span aria-hidden="true"> · </span> : null}
+                {item}
+              </span>
+            ))}
+          </p>
+          <p className="home-v2-explore__legal">{explore.coda.disclaimer}</p>
+        </div>
       </div>
     </section>
   );

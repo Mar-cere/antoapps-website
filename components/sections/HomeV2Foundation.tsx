@@ -7,10 +7,11 @@ type HomeV2FoundationProps = {
 
 /**
  * Puente “no es un chat genérico”: memoria, técnicas, entre sesiones.
- * Credenciales humanas — sin muro de métricas SaaS.
+ * Credenciales humanas — tres señales de prueba, sin muro de métricas SaaS.
  */
 export default function HomeV2Foundation({ locale = 'es' }: HomeV2FoundationProps) {
   const { foundation } = getHomeV2Copy(locale);
+  const proofAria = locale === 'en' ? 'Trust signals' : 'Señales de confianza';
 
   return (
     <section
@@ -33,7 +34,17 @@ export default function HomeV2Foundation({ locale = 'es' }: HomeV2FoundationProp
             </li>
           ))}
         </ul>
-        <p className="home-v2-foundation__proof reveal-on-scroll">{foundation.proof}</p>
+        <ul
+          className="home-v2-foundation__proof reveal-on-scroll"
+          aria-label={proofAria}
+        >
+          {foundation.proofSignals.map((signal) => (
+            <li key={`${signal.value}-${signal.label}`} className="home-v2-foundation__proof-item">
+              <span className="home-v2-foundation__proof-value">{signal.value}</span>
+              <span className="home-v2-foundation__proof-label">{signal.label}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

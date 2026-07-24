@@ -88,7 +88,8 @@ export default function Hero({ locale = 'es' }: HeroProps) {
               height={APP_SCREENSHOT_HEIGHT}
               className="home-landing-screen__img"
               priority
-              quality={90}
+              quality={95}
+              sizes="(max-width: 899px) 70vw, 20rem"
             />
           </div>
           <AppReviewCard

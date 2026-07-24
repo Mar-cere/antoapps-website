@@ -1355,9 +1355,44 @@
 }
 
 .home-v2-foundation__proof {
-  margin: 1.75rem 0 0;
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 1.15rem 0 0;
+  border-top: 1px solid var(--home-v2-hairline-strong);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+
+.home-v2-foundation__proof-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0 1.5rem;
+  border-right: 1px solid var(--home-v2-hairline);
+}
+
+.home-v2-foundation__proof-item:first-child {
+  padding-left: 0;
+}
+
+.home-v2-foundation__proof-item:last-child {
+  padding-right: 0;
+  border-right: none;
+}
+
+.home-v2-foundation__proof-value {
+  font-size: 0.98rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #1adddb;
+}
+
+.home-v2-foundation__proof-label {
   font-size: 0.8125rem;
   letter-spacing: 0.01em;
+  line-height: 1.35;
   color: var(--home-v2-soft);
 }
 
@@ -1367,17 +1402,41 @@
     gap: 0.4rem;
     padding: 1.15rem 0;
   }
+
+  .home-v2-foundation__proof {
+    grid-template-columns: 1fr;
+  }
+
+  .home-v2-foundation__proof-item {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.65rem;
+    padding: 0.85rem 0;
+    border-right: none;
+    border-bottom: 1px solid var(--home-v2-hairline);
+  }
+
+  .home-v2-foundation__proof-item:first-child,
+  .home-v2-foundation__proof-item:last-child {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .home-v2-foundation__proof-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
 }
 
-/* ── Explore: lista editorial de discovery ── */
+/* ── Explore: lista editorial + coda legal (un solo cierre) ── */
 
 .home-v2-explore {
-  padding: var(--home-v2-section-y-sm) 0;
+  padding: var(--home-v2-section-y-sm) 0 1.75rem;
   border-top: 1px solid var(--home-v2-hairline);
 }
 
 .home-v2-explore__title {
-  margin: 0 0 1.25rem;
+  margin: 0 0 1rem;
   font-size: clamp(1.35rem, 2.4vw, 1.75rem);
   font-weight: 500;
   letter-spacing: -0.03em;
@@ -1395,9 +1454,9 @@
 .home-v2-explore__link {
   display: grid;
   grid-template-columns: minmax(7rem, 11rem) minmax(0, 1fr) auto;
-  gap: 0.75rem 1.25rem;
+  gap: 0.35rem 1.25rem;
   align-items: baseline;
-  padding: 1rem 0;
+  padding: 0.85rem 0;
   border-bottom: 1px solid var(--home-v2-hairline-strong);
   color: inherit;
   text-decoration: none;
@@ -1436,10 +1495,36 @@
   color: inherit;
 }
 
+.home-v2-explore__coda {
+  margin-top: 1.35rem;
+  max-width: 38rem;
+}
+
+.home-v2-explore__trust {
+  margin: 0 0 0.65rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  color: var(--home-v2-muted);
+}
+
+.home-v2-explore__legal {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--home-v2-soft);
+}
+
 @media (max-width: 640px) {
+  .home-v2-explore {
+    padding-bottom: 1.35rem;
+  }
+
   .home-v2-explore__link {
     grid-template-columns: 1fr auto;
     grid-template-rows: auto auto;
+    gap: 0.2rem 0.75rem;
+    padding: 0.75rem 0;
   }
 
   .home-v2-explore__label {
@@ -1456,6 +1541,51 @@
   .home-v2-explore__desc {
     grid-column: 1;
     grid-row: 2;
+  }
+
+  .home-v2-explore__coda {
+    margin-top: 1.1rem;
+  }
+}
+
+/* Footer del shell: mismo ritmo que el coda, sin fila apretada */
+.home-v2-shell .home-landing-footer {
+  border-top: 1px solid var(--home-v2-hairline);
+  background: transparent;
+}
+
+.home-v2-shell .home-landing-footer__inner {
+  padding-top: 1.35rem;
+  padding-bottom: 1.75rem;
+  gap: 0.85rem 1.25rem;
+}
+
+.home-v2-shell .home-landing-footer__links {
+  gap: 0.65rem 1rem;
+}
+
+.home-v2-shell .home-landing-footer__link {
+  font-size: 0.8125rem;
+  color: var(--home-v2-muted);
+}
+
+.home-v2-shell .home-landing-footer__copy {
+  width: 100%;
+  margin: 0.15rem 0 0;
+  color: var(--home-v2-soft);
+}
+
+@media (max-width: 640px) {
+  .home-v2-shell .home-landing-footer__inner {
+    padding-top: 1.15rem;
+    padding-bottom: 5.5rem; /* espacio para back-to-top / cookie */
+  }
+
+  .home-v2-shell .home-landing-footer__links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem 1.25rem;
+    width: 100%;
   }
 }
 

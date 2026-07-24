@@ -120,6 +120,11 @@ export type HomeV2FoundationPillar = {
   body: string;
 };
 
+export type HomeV2FoundationProofSignal = {
+  value: string;
+  label: string;
+};
+
 export type HomeV2ExploreLink = {
   href: string;
   label: string;
@@ -155,7 +160,7 @@ export type HomeV2Copy = {
     title: string;
     support: string;
     pillars: readonly HomeV2FoundationPillar[];
-    proof: string;
+    proofSignals: readonly HomeV2FoundationProofSignal[];
   };
   still: {
     line: string;
@@ -187,6 +192,10 @@ export type HomeV2Copy = {
   explore: {
     title: string;
     links: readonly HomeV2ExploreLink[];
+    coda: {
+      trust: readonly string[];
+      disclaimer: string;
+    };
   };
   finalCta: {
     title: string;
@@ -335,7 +344,11 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             body: 'Available any hour. It complements therapy; it does not replace a human clinician.',
           },
         ],
-        proof: '5.0 on the App Store · Encrypted · Evidence-based protocols',
+        proofSignals: [
+          { value: '5.0', label: 'on the App Store' },
+          { value: '8', label: 'clinical protocols' },
+          { value: 'Encrypted', label: 'end to end' },
+        ],
       },
       still: {
         line: 'Some nights just need a place to land.',
@@ -433,6 +446,11 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             description: 'Encryption, privacy, and clinical limits',
           },
         ],
+        coda: {
+          trust: ['Private by design', 'No card required'],
+          disclaimer:
+            'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.',
+        },
       },
       finalCta: {
         title: 'When the intensity needs to ease.',
@@ -578,7 +596,11 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           body: 'Disponible a cualquier hora. Complementa la terapia; no reemplaza a un clínico humano.',
         },
       ],
-      proof: '5.0 en App Store · Cifrado · Protocolos basados en evidencia',
+      proofSignals: [
+        { value: '5.0', label: 'en App Store' },
+        { value: '8', label: 'protocolos clínicos' },
+        { value: 'Cifrado', label: 'de extremo a extremo' },
+      ],
     },
     still: {
       line: 'Hay noches que solo necesitan dónde aterrizar.',
@@ -676,6 +698,11 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           description: 'Cifrado, privacidad y límites clínicos',
         },
       ],
+      coda: {
+        trust: ['Privado por diseño', 'Sin tarjeta'],
+        disclaimer:
+          'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.',
+      },
     },
     finalCta: {
       title: 'Cuando necesites bajar la intensidad.',

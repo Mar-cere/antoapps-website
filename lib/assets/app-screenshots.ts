@@ -1,7 +1,8 @@
 import type { Locale } from '@/lib/i18n/config';
 
-export const APP_SCREENSHOT_WIDTH = 471;
-export const APP_SCREENSHOT_HEIGHT = 1024;
+/** Dimensiones de los assets de landing (sin notch/status bar, ~2.5×). */
+export const APP_SCREENSHOT_WIDTH = 1178;
+export const APP_SCREENSHOT_HEIGHT = 2345;
 
 /** Screenshots usados en bienvenida y home legacy */
 export const APP_SCREENSHOT_PATHS = {

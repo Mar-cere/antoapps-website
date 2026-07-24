@@ -1,5 +1,5 @@
 ---
-description: Aplica por defecto Taste + Impeccable en UI; preserva identidad Anto
+description: Aplica por defecto Editorial Emotional + Taste + Impeccable en UI; preserva identidad Anto
 globs: "**/*.{tsx,jsx,css,scss,html}"
 alwaysApply: true
 ---
@@ -8,28 +8,35 @@ alwaysApply: true
 
 En trabajo de UI/frontend de este repo, **aplica estas skills sin que el usuario las nombre**. Nombrarlas o usar `/impeccable …` solo afina el comando; no es requisito para empezar.
 
+## Principio regidor
+
+**`editorial-emotional-web`** define la dirección de arte del sitio marketing: composición editorial viva, fotografía cotidiana, narrativa emocional, tipografía expresiva (vía escala del sistema), ritmo y prohibiciones anti-clínica / anti-SaaS / anti-wellness-pastel.
+
+Taste e Impeccable **ejecutan** craft, anti-slop y audit bajo esa dirección; no la sustituyen.
+
 ## Auto-carga
 
 | Señal de tarea | Cargar automáticamente |
 |----------------|------------------------|
-| Landing, marketing, rediseño visual, “mejor diseño”, páginas HTML/CSS del sitio | Skill `design-taste-frontend` (Design Read + dials Anto abajo) |
-| Mejorar UI existente, a11y, polish, tipografía, motion, layout, critique | Skill `impeccable` (su flujo `context.mjs` + comando implícito más cercano) |
-| Rediseño visual grande | Taste primero → tokens Anto → Impeccable `polish`/`audit` al cierre |
+| Landing, marketing, rediseño visual, “mejor diseño”, páginas HTML/CSS del sitio, propuesta/evaluación estética | Skill `editorial-emotional-web` (dirección) + `design-taste-frontend` (Design Read + dials Anto + anti-slop) |
+| Mejorar UI existente, a11y, polish, tipografía, motion, layout, critique técnico | Skill `impeccable` (flujo `context.mjs` + comando implícito más cercano); si es marketing, también `editorial-emotional-web` |
+| Rediseño visual grande | Editorial primero → Taste (dials) → tokens Anto → Impeccable `polish`/`audit` al cierre |
 | Solo backend / API / infra sin UI | No cargar ninguna |
 
-Si ambas aplican, úsalas; no esperes a que el usuario diga “usa Taste” o “usa Impeccable”.
+Si varias aplican, úsalas; no esperes a que el usuario diga “usa Editorial”, “usa Taste” o “usa Impeccable”.
 
 ## Reparto (dueño de la decisión)
 
 | Decisión | Dueño |
 |---------|-------|
-| Estética marketing, dials, Design Read | `design-taste-frontend` |
-| Craft/audit/critique/polish estructurado, PRODUCT.md | `impeccable` |
-| Tokens, Inter/SF, teal `#1adddb`, dark, CSS del repo | Esta rule + `PRODUCT.md` |
+| Dirección de arte, narrativa, foto, voz, ritmo editorial, evaluación estética 1–10 | `editorial-emotional-web` |
+| Anti-slop, Design Read, dials, pre-flight de layout | `design-taste-frontend` |
+| Craft/audit/critique/polish estructurado, PRODUCT.md, UI de producto | `impeccable` |
+| Tokens, Inter/SF, teal `#1adddb`, dark azul, CSS del repo | Esta rule + `PRODUCT.md` + puente Anto en la skill editorial |
 
-Conflicto: **identidad Anto > PRODUCT.md > skill pedida > defaults de skill**.
+Conflicto: **editorial-emotional (dirección) > identidad Anto (tokens) > PRODUCT.md > skill pedida > defaults de Taste/Impeccable**.
 
-## Preset Anto (Taste)
+## Preset Anto (Taste, bajo Editorial)
 
 Salvo overhaul explícito:
 
@@ -37,13 +44,25 @@ Salvo overhaul explícito:
 - `MOTION_INTENSITY: 3`
 - `VISUAL_DENSITY: 3`
 - Redesign mode: **preserve**
-- Design Read: *landing consumer bienestar emocional, calmado trust-first, dark + teal Anto, CSS tokens del repo (no Tailwind forzado).*
+- Design Read: *landing consumer editorial-emocional para Anto, trust-first calmado, dark + teal + fotografía cotidiana, CSS tokens del repo (no Tailwind forzado).*
+
+## Paleta editorial → tokens Anto
+
+No abrir paletas morado-neón / pastel / cream. Traducir la dirección editorial así:
+
+| Rol | Token |
+|-----|--------|
+| Fondo profundo | `#030a24` / `--color-bg-*` |
+| Acento luminoso | `#1adddb` / `--color-primary` |
+| Apoyo lavanda-azul | `#a3b8e8` / `--color-secondary` |
+| Acento amarillo raro | `#ffd93d` / `--color-warning` (puntual) |
 
 ## Overrides no negociables
 
 1. No migrar a Tailwind/shadcn/Material sin petición.
 2. No “arreglar” Inter/system ni el primary teal.
-3. No cream/purple/glass genérico.
+3. No cream/purple-neón/glass genérico.
 4. Hero: brand + headline + apoyo + CTA + imagen; sin chips flotantes.
 5. Motion contenido + `prefers-reduced-motion`.
 6. React: no `useMemo`/`useCallback` por defecto salvo criterio del repo.
+7. No estética clínica, meditación genérica ni landing de IA; sí marca cultural-emocional con tecnología.

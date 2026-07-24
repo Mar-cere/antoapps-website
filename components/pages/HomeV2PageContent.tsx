@@ -18,7 +18,6 @@ import HomeV2Android from '@/components/sections/HomeV2Android';
 import HomeV2Faq from '@/components/sections/HomeV2Faq';
 import HomeV2FinalCta from '@/components/sections/HomeV2FinalCta';
 import HomeV2Explore from '@/components/sections/HomeV2Explore';
-import HomeFooterTrust from '@/components/sections/HomeFooterTrust';
 import FaqJsonLd from '@/components/seo/FaqJsonLd';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import '@/styles/pages/home-landing-final.css';
@@ -68,7 +67,6 @@ export default function HomeV2PageContent({ locale }: HomeV2PageContentProps) {
               <HomeV2Faq locale={locale} />
               <HomeV2FinalCta locale={locale} />
               <HomeV2Explore locale={locale} />
-              <HomeFooterTrust locale={locale} />
             </div>
           </main>
         </PullToRefresh>

@@ -183,7 +183,9 @@ function localeNarrative(locale: Locale): string[] {
     isEs ? '### Por qué no es un chat genérico' : '### Why it is not a generic chat',
     ...formatFoundation(locale),
     '',
-    `- ${copy.foundation.proof}`,
+    ...copy.foundation.proofSignals.map(
+      (signal) => `- ${signal.value} ${signal.label}`
+    ),
     '',
     ...formatPricingBlock(locale),
     '',

@@ -16,7 +16,9 @@ export function renderHomeOpenGraphImage(locale: Locale) {
   const { hero, foundation } = getHomeV2Copy(locale);
   const trial = getTrialCopy(locale);
   const headline = `${hero.titleLine1} ${hero.titleAccent}`;
-  const trustLine = foundation.proof;
+  const trustLine = foundation.proofSignals
+    .map((signal) => `${signal.value} ${signal.label}`)
+    .join(' · ');
 
   return new ImageResponse(
     (
