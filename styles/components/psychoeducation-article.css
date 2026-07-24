@@ -497,10 +497,39 @@
   transition: filter 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Texto siempre oscuro sobre teal (ganarle a link-hover-enhanced y a estilos globales de a:hover). */
+.psycho-guide__cta-link,
+.psycho-guide__cta-link:link,
+.psycho-guide__cta-link:visited,
+.psycho-guide__cta-link:hover,
+.psycho-guide__cta-link:active,
+.psycho-guide__cta-link:focus,
+.psycho-guide__cta-link.link-hover-enhanced,
+.psycho-guide__cta-link.link-hover-enhanced:hover {
+  color: #030a24 !important;
+}
+
+.psycho-guide__cta-link.link-hover-enhanced::after,
+.psycho-guide__cta-link.link-hover-enhanced:hover::after {
+  content: none;
+  width: 0;
+}
+
 @media (hover: hover) {
   .psycho-guide__cta-link:hover {
     filter: brightness(1.06);
     transform: translateY(-1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .psycho-guide__cta-link {
+    transition: none;
+  }
+
+  .psycho-guide__cta-link:hover {
+    filter: none;
+    transform: none;
   }
 }
 

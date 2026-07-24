@@ -100,7 +100,17 @@ export function useEnhancedHover() {
       btn.classList.add('btn-enhanced');
     });
 
-    const links = document.querySelectorAll('a:not(.btn)');
+    // Excluir CTAs con fondo sólido y enlaces con hover propio (link-hover-enhanced pinta color: primary).
+    const links = document.querySelectorAll(
+      [
+        'a:not(.btn)',
+        ':not(.psycho-guide__cta-link)',
+        ':not(.home-landing-nav__cta)',
+        ':not(.premium-store-cta)',
+        ':not(.psycho-guide__further-link)',
+        ':not(.psycho-guide__related-link)',
+      ].join('')
+    );
     links.forEach((link) => {
       if (!link.classList.contains('nav-link')) {
         link.classList.add('link-hover-enhanced');
