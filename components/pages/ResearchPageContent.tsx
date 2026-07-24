@@ -106,7 +106,7 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <span className="research-page__literature-apa">{item.apa}</span>
+                          <span className="research-page__literature-label">{item.label}</span>
                           <span className="research-page__literature-meta" aria-hidden="true">
                             ↗
                           </span>

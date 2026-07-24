@@ -11,6 +11,8 @@ export type ResearchPillar = {
 };
 
 export type ResearchLiteratureItem = {
+  /** Título corto para lectura (no la cita APA completa). */
+  label: string;
   /** Cita APA 7 completa */
   apa: string;
   href: string;
@@ -76,7 +78,7 @@ export type ResearchPageCopy = {
 };
 
 /** Bibliografía curada — solo papers verificables con DOI/URL estable. */
-const LITERATURE: readonly Omit<ResearchLiteratureItem, 'note' | 'kind'>[] = [
+const LITERATURE: readonly Omit<ResearchLiteratureItem, 'note' | 'kind' | 'label'>[] = [
   {
     apa: 'Fitzpatrick, K. K., Darcy, A., & Vierhile, M. (2017). Delivering cognitive behavior therapy to young adults with symptoms of depression and anxiety using a fully automated conversational agent (Woebot): A randomized controlled trial. JMIR Mental Health, 4(2), e19. https://doi.org/10.2196/mental.7785',
     href: 'https://doi.org/10.2196/mental.7785',
@@ -134,6 +136,26 @@ function literatureFor(
     'Systematic review and meta-analysis',
     'Theoretical–clinical article',
   ] as const;
+  const labelsEs = [
+    'Agente conversacional con TCC (Woebot)',
+    'Apps y síntomas depresivos',
+    'Apps y síntomas de ansiedad',
+    'TCC para ansiedad en adultos',
+    'Escala GAD-7',
+    'Chatbots en salud mental',
+    'Intervenciones digitales y prevención del suicidio',
+    'Exposición e aprendizaje inhibitorio',
+  ] as const;
+  const labelsEn = [
+    'Conversational agent with CBT (Woebot)',
+    'Apps and depressive symptoms',
+    'Apps and anxiety symptoms',
+    'CBT for adult anxiety',
+    'GAD-7 scale',
+    'Chatbots in mental health',
+    'Digital interventions and suicide prevention',
+    'Exposure and inhibitory learning',
+  ] as const;
   const notesEs = [
     'Muestra que un agente conversacional con componentes de TCC puede reducir síntomas en un RCT — evidencia de categoría, no un ensayo de Anto.',
     'Síntesis de 18 RCTs (n ≈ 3.414): apps pueden reducir síntomas depresivos vs. control, con efectos mayores frente a controles inactivos.',
@@ -156,11 +178,13 @@ function literatureFor(
   ] as const;
 
   const kinds = locale === 'en' ? kindsEn : kindsEs;
+  const labels = locale === 'en' ? labelsEn : labelsEs;
   const notes = locale === 'en' ? notesEn : notesEs;
 
   return LITERATURE.map((item, index) => ({
     ...item,
     kind: kinds[index],
+    label: labels[index],
     note: notes[index],
   }));
 }
@@ -226,7 +250,7 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
       literature: {
         title: 'Selected literature',
         support:
-          'A short, curated set. Each note states what the paper informs in Anto — not what it “proves” about the product.',
+          'A short, curated set. Title and note first; full APA citations live in References below. Each note states what the paper informs in Anto — not what it “proves” about the product.',
         items: literature,
       },
       limits: {
@@ -312,7 +336,7 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
     literature: {
       title: 'Literatura seleccionada',
       support:
-        'Un conjunto corto y curado. Cada nota indica qué informa el paper en Anto — no qué “demuestra” sobre el producto.',
+        'Un conjunto corto y curado. Título y nota primero; la cita APA completa está en Referencias. Cada nota indica qué informa el paper en Anto — no qué “demuestra” sobre el producto.',
       items: literature,
     },
     limits: {
