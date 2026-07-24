@@ -92,6 +92,11 @@
   max-width: 40rem;
 }
 
+/* Anula el padding global de `section` (layout/container.css) */
+.psycho-guide__section {
+  padding: 0;
+}
+
 .psycho-guide__section h2 {
   margin: 0 0 0.75rem;
   font-size: clamp(1.2rem, 2vw, 1.45rem);

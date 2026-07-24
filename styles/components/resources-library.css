@@ -159,6 +159,11 @@
   max-width: 52rem;
 }
 
+/* Anula el padding global de `section` (layout/container.css) */
+.resources-group {
+  padding: 0;
+}
+
 .resources-group__title {
   margin: 0 0 0.65rem;
   font-size: clamp(1.15rem, 2vw, 1.35rem);
