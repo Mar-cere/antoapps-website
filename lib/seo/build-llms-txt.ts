@@ -275,13 +275,18 @@ function formatGuideEntry(
   }
 
   if (guide.productMoment) {
-    const productImg = guide.productMoment.figure.src.startsWith('http')
-      ? guide.productMoment.figure.src
-      : `${SITE_ORIGIN}${guide.productMoment.figure.src}`;
     lines.push(
       `- ${isEs ? 'Momento de producto' : 'Product moment'}: ${guide.productMoment.title} — ${guide.productMoment.body}`
     );
-    lines.push(`  - ${isEs ? 'Captura' : 'Screenshot'}: ${productImg}`);
+    for (const message of guide.productMoment.chat.messages) {
+      const who = message.role === 'user' ? (isEs ? 'Usuario' : 'User') : 'Anto';
+      lines.push(`  - ${who}: ${message.text}`);
+    }
+    if (guide.productMoment.suggestions.length > 0) {
+      lines.push(
+        `  - ${guide.productMoment.suggestionsLabel}: ${guide.productMoment.suggestions.join(' · ')}`
+      );
+    }
   }
 
   if (guide.furtherReading) {

@@ -190,11 +190,10 @@
 }
 
 .psycho-guide__product {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1.25rem 1.75rem;
-  align-items: center;
-  padding: 1.15rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  padding: 1.25rem 1.3rem 1.35rem;
   border: 1px solid var(--home-v2-hairline-strong);
   border-radius: calc(var(--home-v2-radius) + 2px);
   background: color-mix(in srgb, var(--color-bg-secondary) 70%, transparent);
@@ -211,29 +210,48 @@
 
 .psycho-guide__product-body {
   margin: 0;
-  max-width: 34ch;
+  max-width: 40ch;
   font-size: 0.9875rem;
   line-height: 1.55;
   color: var(--home-v2-muted);
 }
 
-.psycho-guide__product-figure {
+.psycho-guide__product-chat.home-v2-panel--moment {
+  max-width: none;
+  width: 100%;
   margin: 0;
 }
 
-.psycho-guide__product-frame {
-  width: min(13.5rem, 42vw);
-  border-radius: 1.15rem;
-  border: 1px solid var(--home-v2-hairline-strong);
-  background: #030a24;
-  overflow: hidden;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+.psycho-guide__product-suggestions-label {
+  margin: 0 0 0.55rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--home-v2-soft);
 }
 
-.psycho-guide__product-img {
-  display: block;
-  width: 100%;
-  height: auto;
+.psycho-guide__product-suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.psycho-guide__product-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--home-v2-hairline-strong);
+  border-radius: var(--home-v2-radius);
+  background: color-mix(in srgb, var(--color-bg-primary) 55%, transparent);
+  color: var(--home-v2-ink);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
 }
 
 /* Anula el padding global de `section` (layout/container.css) */
@@ -640,18 +658,11 @@
   }
 
   .psycho-guide__product {
-    grid-template-columns: 1fr;
-    justify-items: start;
-    gap: 1.1rem;
-    padding: 1rem 0.95rem 1.15rem;
+    padding: 1.05rem 0.95rem 1.15rem;
   }
 
   .psycho-guide__product-body {
     max-width: none;
-  }
-
-  .psycho-guide__product-frame {
-    width: min(12.5rem, 58vw);
   }
 
   .psycho-guide__further {

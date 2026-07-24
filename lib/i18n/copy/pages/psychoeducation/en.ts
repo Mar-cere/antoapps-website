@@ -1,9 +1,3 @@
-import {
-  APP_SCREENSHOT_HEIGHT,
-  APP_SCREENSHOT_WIDTH,
-  getHomeLandingScreenshotAlt,
-  getHomeLandingScreenshotPath,
-} from '@/lib/assets/app-screenshots';
 import type { PsychoeducationGuide, PsychoeducationSlug } from './types';
 
 const SLUGS = {
@@ -753,12 +747,29 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       title: 'How it looks in Anto',
       body: 'When anxiety rises, you can write it down and get a concrete next step — without pressure to “fix everything”.',
       afterHeading: '5-4-3-2-1 exercise',
-      figure: {
-        src: getHomeLandingScreenshotPath('chatAnxiety'),
-        alt: getHomeLandingScreenshotAlt('chatAnxiety', 'en'),
-        width: APP_SCREENSHOT_WIDTH,
-        height: APP_SCREENSHOT_HEIGHT,
+      chat: {
+        ariaLabel: 'Sample Anto conversation when anxiety rises',
+        messages: [
+          {
+            role: 'user',
+            text: "I'm at an 8. Tight chest and my mind won't settle.",
+          },
+          {
+            role: 'anto',
+            text: "That feels intense. Before analysing it, want to try anchoring to what's here for a moment?",
+          },
+          {
+            role: 'user',
+            text: "Yes. I don't want it to spiral further.",
+          },
+          {
+            role: 'anto',
+            text: 'Start simple: name 5 things you can see, with concrete detail. No rush.',
+          },
+        ],
       },
+      suggestionsLabel: 'Suggestions',
+      suggestions: ['5-4-3-2-1 exercise', 'Single anchor'],
     },
     furtherReading: {
       title: 'Go deeper',

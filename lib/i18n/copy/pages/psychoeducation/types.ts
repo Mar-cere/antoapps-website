@@ -36,13 +36,23 @@ export type PsychoeducationFurtherReading = {
   links: readonly PsychoeducationFurtherLink[];
 };
 
-/** Momento de producto (p. ej. captura de chat) insertado tras una sección. */
+export type PsychoeducationChatBubble = {
+  role: 'user' | 'anto';
+  text: string;
+};
+
+/** Momento de producto editorial (viñeta de chat + sugerencias) tras una sección. */
 export type PsychoeducationProductMoment = {
   title: string;
   body: string;
   /** Heading exacto de la sección tras la cual se inserta. */
   afterHeading: string;
-  figure: PsychoeducationFigure;
+  chat: {
+    ariaLabel: string;
+    messages: readonly PsychoeducationChatBubble[];
+  };
+  suggestionsLabel: string;
+  suggestions: readonly string[];
 };
 
 export type PsychoeducationGuide = {

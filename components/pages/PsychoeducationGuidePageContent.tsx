@@ -13,6 +13,7 @@ import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { LocaleProvider } from '@/lib/i18n/context';
 import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
+import HomeV2ChatVignette from '@/components/sections/HomeV2ChatVignette';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import ArticleJsonLd from '@/components/seo/ArticleJsonLd';
@@ -191,18 +192,24 @@ export default function PsychoeducationGuidePageContent({
                               </h2>
                               <p className="psycho-guide__product-body">{showProduct.body}</p>
                             </div>
-                            <figure className="psycho-guide__product-figure">
-                              <div className="psycho-guide__product-frame">
-                                <Image
-                                  src={showProduct.figure.src}
-                                  alt={showProduct.figure.alt}
-                                  width={showProduct.figure.width}
-                                  height={showProduct.figure.height}
-                                  className="psycho-guide__product-img"
-                                  sizes="(max-width: 720px) 220px, 260px"
-                                />
-                              </div>
-                            </figure>
+                            <HomeV2ChatVignette
+                              thread={showProduct.chat}
+                              locale={locale}
+                              size="moment"
+                              className="psycho-guide__product-chat"
+                            />
+                            <div className="psycho-guide__product-suggestions">
+                              <p className="psycho-guide__product-suggestions-label">
+                                {showProduct.suggestionsLabel}
+                              </p>
+                              <ul className="psycho-guide__product-suggestions-list">
+                                {showProduct.suggestions.map((suggestion) => (
+                                  <li key={suggestion}>
+                                    <span className="psycho-guide__product-chip">{suggestion}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
                           </aside>
                         ) : null}
                       </div>

@@ -1,9 +1,3 @@
-import {
-  APP_SCREENSHOT_HEIGHT,
-  APP_SCREENSHOT_WIDTH,
-  getHomeLandingScreenshotAlt,
-  getHomeLandingScreenshotPath,
-} from '@/lib/assets/app-screenshots';
 import type { PsychoeducationGuide, PsychoeducationSlug } from './types';
 
 const SLUGS = {
@@ -753,12 +747,29 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       title: 'Así se ve en Anto',
       body: 'Cuando la ansiedad sube, puedes escribirlo y recibir un paso concreto — sin presión de “arreglarlo todo”.',
       afterHeading: 'Ejercicio 5-4-3-2-1',
-      figure: {
-        src: getHomeLandingScreenshotPath('chatAnxiety'),
-        alt: getHomeLandingScreenshotAlt('chatAnxiety', 'es'),
-        width: APP_SCREENSHOT_WIDTH,
-        height: APP_SCREENSHOT_HEIGHT,
+      chat: {
+        ariaLabel: 'Ejemplo de conversación en Anto cuando la ansiedad sube',
+        messages: [
+          {
+            role: 'user',
+            text: 'Estoy en 8. El pecho apretado y la mente no baja.',
+          },
+          {
+            role: 'anto',
+            text: 'Se siente intensa. Antes de analizarlo, ¿probamos anclarte un momento a lo que hay aquí?',
+          },
+          {
+            role: 'user',
+            text: 'Sí. No quiero que se me vaya más.',
+          },
+          {
+            role: 'anto',
+            text: 'Empecemos simple: nombra 5 cosas que ves, con detalle concreto. Sin prisa.',
+          },
+        ],
       },
+      suggestionsLabel: 'Sugerencias',
+      suggestions: ['Ejercicio 5-4-3-2-1', 'Un solo ancla'],
     },
     furtherReading: {
       title: 'Ir más a fondo',
