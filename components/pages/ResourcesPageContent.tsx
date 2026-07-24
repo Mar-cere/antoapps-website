@@ -32,7 +32,7 @@ export default function ResourcesPageContent({ locale }: ResourcesPageContentPro
         />
 
         <section className="resources-hero" data-fade-section>
-          <div className="container">
+          <div className="container container--resources">
             <h1 className="resources-title reveal-on-scroll">{copy.hero.title}</h1>
             <p className="resources-subtitle reveal-on-scroll">{copy.hero.subtitle}</p>
             <nav className="resources-featured reveal-on-scroll" aria-label={copy.featured.ariaLabel}>

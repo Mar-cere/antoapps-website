@@ -44,15 +44,6 @@ export {
 } from '../app';
 
 export {
-  getCompararPageCopy,
-  compararPageMetadata,
-  type CompararPageCopy,
-  type CompararPageMetadata,
-  type CompararTableRow,
-  type CompararDifferentiator,
-} from '../comparar';
-
-export {
   getContactPageCopy,
   contactPageMetadata,
   type ContactPageCopy,

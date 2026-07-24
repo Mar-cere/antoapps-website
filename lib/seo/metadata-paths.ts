@@ -6,7 +6,6 @@ export const METADATA_CANONICAL_PATHS: readonly string[] = [
   '',
   '/bienvenida',
   '/app',
-  '/comparar',
   '/seguridad',
   '/investigacion',
   '/recursos',

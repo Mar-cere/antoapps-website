@@ -58,14 +58,6 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
     note: 'Página de producto / descarga',
   },
   {
-    path: '/comparar',
-    changeFrequency: 'monthly',
-    priorityEs: 0.85,
-    priorityEn: 0.75,
-    lastModified: '2026-07-24',
-    note: 'Comparativa vs alternativas — alto valor SEO long-tail',
-  },
-  {
     path: '/seguridad',
     changeFrequency: 'monthly',
     priorityEs: 0.85,
@@ -86,7 +78,7 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
     changeFrequency: 'weekly',
     priorityEs: 0.8,
     priorityEn: 0.7,
-    lastModified: '2026-07-14',
+    lastModified: '2026-07-24',
     note: 'Biblioteca de recursos — psicoeducación y guías del sitio',
   },
   {

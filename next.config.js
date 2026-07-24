@@ -36,6 +36,8 @@ const nextConfig = {
       { source: '/chat', destination: '/#descargar', permanent: false },
       { source: '/home-v2', destination: '/', permanent: true },
       { source: '/en/home-v2', destination: '/en', permanent: true },
+      { source: '/comparar', destination: '/recursos', permanent: true },
+      { source: '/en/comparar', destination: '/en/recursos', permanent: true },
     ];
   },
   // Preservar archivos estáticos existentes
@@ -65,10 +67,6 @@ const nextConfig = {
       {
         source: '/sobre-nosotros',
         destination: '/sobre-nosotros',
-      },
-      {
-        source: '/comparar',
-        destination: '/comparar',
       },
       {
         source: '/seguridad',

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { APP_VERSION_LABEL } from '@/lib/app-version';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 import {
@@ -55,6 +56,7 @@ export type ResourcesPageCopy = {
     links: ResourceFeaturedLink[];
   };
   library: {
+    filtersAriaLabel: string;
     filters: ResourceFilter[];
     searchPlaceholder: string;
     searchAriaLabel: string;
@@ -84,14 +86,26 @@ function psychoeducationResources(locale: Locale): ResourceItem[] {
   });
 }
 
+const FEATURED_SHORT_LABELS: Record<Locale, Record<(typeof FEATURED_GUIDE_SLUGS)[number], string>> = {
+  es: {
+    'escalas-phq9-gad7': 'Escalas PHQ-9 y GAD-7',
+    'que-es-tcc': 'Qué es la TCC',
+    'grounding-ansiedad-crisis': 'Grounding para ansiedad',
+    'higiene-sueno-salud-mental': 'Higiene del sueño',
+  },
+  en: {
+    'escalas-phq9-gad7': 'PHQ-9 and GAD-7 scales',
+    'que-es-tcc': 'What is CBT',
+    'grounding-ansiedad-crisis': 'Grounding for anxiety',
+    'higiene-sueno-salud-mental': 'Sleep hygiene',
+  },
+};
+
 function featuredLinksForLocale(locale: Locale): ResourceFeaturedLink[] {
-  const guideLinks = FEATURED_GUIDE_SLUGS.map((slug) => {
-    const guide = getPsychoeducationGuide(locale, slug)!;
-    return {
-      href: psychoeducationGuidePath(locale, slug),
-      label: guide.hero.title,
-    };
-  });
+  const guideLinks = FEATURED_GUIDE_SLUGS.map((slug) => ({
+    href: psychoeducationGuidePath(locale, slug),
+    label: FEATURED_SHORT_LABELS[locale][slug],
+  }));
 
   if (locale === 'en') {
     return [
@@ -115,9 +129,9 @@ function siteResources(locale: Locale): ResourceItem[] {
     return [
       {
         id: 'site-1',
-        title: 'Anto app features (v1.5.0)',
+        title: `Anto on iPhone (${APP_VERSION_LABEL})`,
         description:
-          'Overview of conversation modes, bilingual support, structured protocols, tasks, habits, and more.',
+          'Ongoing emotional support: conversation, techniques hub, bilingual use, structured protocols, and daily tools.',
         type: 'guia',
         category: 'producto',
         link: localePath(locale, '/app'),
@@ -126,7 +140,7 @@ function siteResources(locale: Locale): ResourceItem[] {
         id: 'site-2',
         title: 'Version history and updates',
         description:
-          'Full public changelog: techniques hub, insights graph, persistent session, clinical scales, and protocols.',
+          'Public changelog: techniques hub, insights, persistent session, scales, and protocols.',
         type: 'guia',
         category: 'producto',
         link: localePath(locale, '/changelog'),
@@ -135,7 +149,7 @@ function siteResources(locale: Locale): ResourceItem[] {
         id: 'site-3',
         title: 'Security and privacy',
         description:
-          'How Anto protects your data: encryption, authentication, and privacy practices explained.',
+          'How Anto protects conversations: encryption, authentication, and privacy practices.',
         type: 'guia',
         category: 'privacidad',
         link: localePath(locale, '/seguridad'),
@@ -144,7 +158,7 @@ function siteResources(locale: Locale): ResourceItem[] {
         id: 'site-4',
         title: 'Scientific evidence',
         description:
-          'Studies on digital mental health, therapeutic chatbots, and mobile interventions that support Anto\'s approach.',
+          'References on digital emotional support and mobile interventions that inform Anto\'s approach.',
         type: 'guia',
         category: 'clinical',
         link: localePath(locale, '/investigacion'),
@@ -153,7 +167,7 @@ function siteResources(locale: Locale): ResourceItem[] {
         id: 'site-5',
         title: 'Frequently asked questions',
         description:
-          'Answers about the AI assistant, techniques hub, clinical scales, conversation modes, pricing, and the 1-day trial.',
+          'Answers about accompaniment, techniques, scales, pricing, and the 1-day trial.',
         type: 'guia',
         category: 'producto',
         link: homeFaq,
@@ -164,9 +178,9 @@ function siteResources(locale: Locale): ResourceItem[] {
   return [
     {
       id: 'site-1',
-      title: 'Funcionalidades de Anto (v1.5.0)',
+      title: `Anto en iPhone (${APP_VERSION_LABEL})`,
       description:
-        'Resumen de modos de conversación, hub de técnicas, soporte bilingüe, protocolos estructurados, tareas y hábitos.',
+        'Acompañamiento emocional continuo: conversación, hub de técnicas, uso bilingüe, protocolos y herramientas del día a día.',
       type: 'guia',
       category: 'producto',
       link: localePath(locale, '/app'),
@@ -175,7 +189,7 @@ function siteResources(locale: Locale): ResourceItem[] {
       id: 'site-2',
       title: 'Historial de versiones y novedades',
       description:
-        'Changelog público: hub de técnicas, grafo de insights, sesión persistente, escalas clínicas y protocolos.',
+        'Changelog público: hub de técnicas, insights, sesión persistente, escalas y protocolos.',
       type: 'guia',
       category: 'producto',
       link: localePath(locale, '/changelog'),
@@ -184,7 +198,7 @@ function siteResources(locale: Locale): ResourceItem[] {
       id: 'site-3',
       title: 'Seguridad y privacidad',
       description:
-        'Cómo Anto protege tus datos: cifrado, autenticación y prácticas de privacidad explicadas.',
+        'Cómo Anto protege las conversaciones: cifrado, autenticación y prácticas de privacidad.',
       type: 'guia',
       category: 'privacidad',
       link: localePath(locale, '/seguridad'),
@@ -193,7 +207,7 @@ function siteResources(locale: Locale): ResourceItem[] {
       id: 'site-4',
       title: 'Evidencia científica',
       description:
-        'Estudios sobre salud mental digital, chatbots terapéuticos e intervenciones móviles que respaldan el enfoque de Anto.',
+        'Referencias sobre apoyo emocional digital e intervenciones móviles que informan el enfoque de Anto.',
       type: 'guia',
       category: 'clinical',
       link: localePath(locale, '/investigacion'),
@@ -202,7 +216,7 @@ function siteResources(locale: Locale): ResourceItem[] {
       id: 'site-5',
       title: 'Preguntas frecuentes',
       description:
-        'Respuestas sobre el asistente IA, hub de técnicas, escalas clínicas, modos de conversación, precios y la prueba de 1 día.',
+        'Respuestas sobre acompañamiento, técnicas, escalas, precios y la prueba de 1 día.',
       type: 'guia',
       category: 'producto',
       link: homeFaq,
@@ -233,36 +247,37 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         currentLabel: 'Resources',
       },
       meta: {
-        title: 'Resources - Anto | Psychoeducation and Mental Health Guides',
+        title: 'Resources — Anto | Psychoeducation guides for anxiety and quiet hours',
         description:
-          'Psychoeducation on CBT, depression, anxiety, OCD/ERP, trauma, anger, grounding, PHQ-9/GAD-7, self-compassion, sleep, and mindfulness — plus Anto product guides.',
-        openGraphTitle: 'Resources - Anto',
+          'Psychoeducation on CBT, anxiety, depression, grounding, sleep, PHQ-9/GAD-7, and more — plus Anto on iPhone, privacy, and evidence. Complements care; does not replace a therapist.',
+        openGraphTitle: 'Resources — Anto',
         openGraphDescription:
-          'Psychoeducation guides and references on clinical tools, Anto features, and emotional wellness with AI.',
+          'Clear psychoeducation guides and Anto product references for anxiety and everyday emotional support.',
         canonicalPath: CANONICAL_PATH,
       },
       hero: {
-        title: 'Resource Library',
+        title: 'Guides to land with',
         subtitle:
-          'Psychoeducation guides on evidence-based techniques, plus references about Anto and clinical wellbeing',
+          'Short psychoeducation on anxiety, techniques, and patterns — plus how Anto works. Not a substitute for professional care.',
       },
       featured: {
         ariaLabel: 'Featured guides and pages',
         links: featuredLinksForLocale(locale),
       },
       library: {
+        filtersAriaLabel: 'Filter resources',
         filters: [
           { id: 'all', label: 'All' },
           { id: 'psicoeducacion', label: 'Psychoeducation' },
           { id: 'guia', label: 'Site guides' },
-          { id: 'clinical', label: 'Clinical' },
+          { id: 'clinical', label: 'Evidence' },
           { id: 'producto', label: 'Product' },
           { id: 'privacidad', label: 'Privacy' },
         ],
-        searchPlaceholder: 'Search resources...',
-        searchAriaLabel: 'Search resources',
-        emptyMessage: 'No resources found with the current filters.',
-        viewResourceLabel: 'View guide',
+        searchPlaceholder: 'Search guides…',
+        searchAriaLabel: 'Search guides',
+        emptyMessage: 'No guides match these filters.',
+        viewResourceLabel: 'Read',
         resources,
       },
     };
@@ -275,36 +290,37 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
       currentLabel: 'Recursos',
     },
     meta: {
-      title: 'Recursos - Anto | Psicoeducación y Guías de Salud Mental',
+      title: 'Recursos — Anto | Guías de psicoeducación para ansiedad y horas quietas',
       description:
-        'Psicoeducación sobre TCC, depresión, ansiedad, TOC/ERP, trauma, ira, grounding, PHQ-9/GAD-7, autocompasión, sueño y mindfulness — más guías sobre Anto.',
-      openGraphTitle: 'Recursos - Anto',
+        'Psicoeducación sobre TCC, ansiedad, depresión, grounding, sueño, PHQ-9/GAD-7 y más — más Anto en iPhone, privacidad y evidencia. Complementa; no reemplaza a un terapeuta.',
+      openGraphTitle: 'Recursos — Anto',
       openGraphDescription:
-        'Guías de psicoeducación y referencias sobre herramientas clínicas, funcionalidades de Anto y bienestar emocional con IA.',
+        'Guías claras de psicoeducación y referencias de Anto para ansiedad y acompañamiento emocional cotidiano.',
       canonicalPath: CANONICAL_PATH,
     },
     hero: {
-      title: 'Biblioteca de Recursos',
+      title: 'Guías para aterrizar',
       subtitle:
-        'Guías de psicoeducación sobre técnicas basadas en evidencia, más referencias sobre Anto y bienestar clínico',
+        'Psicoeducación breve sobre ansiedad, técnicas y patrones — y cómo funciona Anto. No sustituye atención profesional.',
     },
     featured: {
       ariaLabel: 'Guías y páginas destacadas',
       links: featuredLinksForLocale(locale),
     },
     library: {
+      filtersAriaLabel: 'Filtrar recursos',
       filters: [
         { id: 'all', label: 'Todos' },
         { id: 'psicoeducacion', label: 'Psicoeducación' },
         { id: 'guia', label: 'Guías del sitio' },
-        { id: 'clinical', label: 'Clínico' },
+        { id: 'clinical', label: 'Evidencia' },
         { id: 'producto', label: 'Producto' },
         { id: 'privacidad', label: 'Privacidad' },
       ],
-      searchPlaceholder: 'Buscar recursos...',
-      searchAriaLabel: 'Buscar recursos',
-      emptyMessage: 'No se encontraron recursos con los filtros actuales.',
-      viewResourceLabel: 'Ver guía',
+      searchPlaceholder: 'Buscar guías…',
+      searchAriaLabel: 'Buscar guías',
+      emptyMessage: 'Ninguna guía coincide con estos filtros.',
+      viewResourceLabel: 'Leer',
       resources,
     },
   };
