@@ -73,6 +73,14 @@
   max-width: 38ch;
 }
 
+.resources-hero__seo-intro {
+  margin: 0.85rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--home-v2-soft);
+  max-width: 52ch;
+}
+
 .resources-featured {
   margin-top: 1rem;
   padding-top: 0.85rem;
@@ -247,6 +255,10 @@
   }
 
   .resources-hero__support {
+    max-width: none;
+  }
+
+  .resources-hero__seo-intro {
     max-width: none;
   }
 

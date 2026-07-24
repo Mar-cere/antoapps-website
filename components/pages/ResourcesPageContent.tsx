@@ -10,6 +10,7 @@ import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import ResourcesLibrary from '@/components/resources/ResourcesLibrary';
+import ResourcesJsonLd from '@/components/seo/ResourcesJsonLd';
 import '@/styles/pages/home-landing-final.css';
 import '@/styles/pages/home-v2.css';
 import '@/styles/components/resources-library.css';
@@ -52,6 +53,7 @@ export default function ResourcesPageContent({ locale }: ResourcesPageContentPro
 
                 <h1 className="resources-hero__title reveal-on-scroll">{copy.hero.title}</h1>
                 <p className="resources-hero__support reveal-on-scroll">{copy.hero.subtitle}</p>
+                <p className="resources-hero__seo-intro reveal-on-scroll">{copy.hero.seoIntro}</p>
 
                 <nav
                   className="resources-featured reveal-on-scroll"
@@ -75,6 +77,7 @@ export default function ResourcesPageContent({ locale }: ResourcesPageContentPro
         </main>
         <HomeMinimalFooter locale={locale} switchPath="/recursos" />
         <CookieConsent compact bannerDelayMs={6000} showAfterScrollPx={320} />
+        <ResourcesJsonLd locale={locale} />
       </div>
     </LocaleProvider>
   );

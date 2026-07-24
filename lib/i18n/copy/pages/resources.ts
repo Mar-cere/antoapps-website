@@ -14,8 +14,9 @@ const CANONICAL_PATH = '/recursos';
 /**
  * Atajos del hero — orden y labels humanos (no índice clínico).
  * Los slugs siguen apuntando a las mismas guías SEO.
+ * Exportado para llms.txt / discovery IA.
  */
-const FEATURED_GUIDE_SLUGS = [
+export const FEATURED_GUIDE_SLUGS = [
   'grounding-ansiedad-crisis',
   'distorsiones-cognitivas',
   'higiene-sueno-salud-mental',
@@ -52,6 +53,8 @@ export type ResourcesPageCopy = {
   hero: {
     title: string;
     subtitle: string;
+    /** Párrafo indexable bajo el subtítulo (keywords naturales, tono calmado). */
+    seoIntro: string;
   };
   featured: {
     ariaLabel: string;
@@ -94,7 +97,7 @@ function psychoeducationResources(locale: Locale): ResourceItem[] {
   });
 }
 
-const FEATURED_HUMAN_LABELS: Record<
+export const FEATURED_HUMAN_LABELS: Record<
   Locale,
   Record<(typeof FEATURED_GUIDE_SLUGS)[number], string>
 > = {
@@ -112,11 +115,16 @@ const FEATURED_HUMAN_LABELS: Record<
   },
 };
 
-function featuredLinksForLocale(locale: Locale): ResourceFeaturedLink[] {
+/** Puntos de entrada humanos → URL canónica (SEO + agentes IA). */
+export function getResourcesFeaturedEntryPoints(locale: Locale): ResourceFeaturedLink[] {
   return FEATURED_GUIDE_SLUGS.map((slug) => ({
     href: psychoeducationGuidePath(locale, slug),
     label: FEATURED_HUMAN_LABELS[locale][slug],
   }));
+}
+
+function featuredLinksForLocale(locale: Locale): ResourceFeaturedLink[] {
+  return getResourcesFeaturedEntryPoints(locale);
 }
 
 function siteResources(locale: Locale): ResourceItem[] {
@@ -220,18 +228,20 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         currentLabel: 'Resources',
       },
       meta: {
-        title: 'Resources — Anto | Psychoeducation guides for anxiety and quiet hours',
+        title: 'Resources — Anto | Psychoeducation for anxiety, CBT, sleep and quiet hours',
         description:
-          'Psychoeducation on CBT, anxiety, depression, grounding, sleep, PHQ-9/GAD-7, and more — plus Anto on iPhone, privacy, and evidence. Complements care; does not replace a therapist.',
-        openGraphTitle: 'Resources — Anto',
+          `${PSYCHOEDUCATION_SLUGS.length} free psychoeducation guides: anxiety, CBT, cognitive distortions, grounding, sleep, depression, PHQ-9/GAD-7, and more — plus Anto on iPhone, privacy, and evidence. Complements care; does not replace a therapist.`,
+        openGraphTitle: 'Anto resources — guides for anxiety and quiet hours',
         openGraphDescription:
-          'Clear psychoeducation guides and Anto product references for anxiety and everyday emotional support.',
+          'Start with anxiety, looping thoughts, sleep, or CBT. Short educational guides — not a diagnosis.',
         canonicalPath: CANONICAL_PATH,
       },
       hero: {
         title: 'Guides to land with',
         subtitle:
           'Short psychoeducation on anxiety, techniques, and patterns — plus how Anto works. Not a substitute for professional care.',
+        seoIntro:
+          'Educational guides on anxiety, cognitive behavioural therapy (CBT), looping thoughts, grounding, sleep, depression, emotional regulation, burnout, and clinical scales such as PHQ-9 and GAD-7. Free to read. Complements — does not replace — human therapy.',
       },
       featured: {
         ariaLabel: 'Start here',
@@ -254,18 +264,20 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
       currentLabel: 'Recursos',
     },
     meta: {
-      title: 'Recursos — Anto | Guías de psicoeducación para ansiedad y horas quietas',
+      title: 'Recursos — Anto | Psicoeducación para ansiedad, TCC, sueño y horas quietas',
       description:
-        'Psicoeducación sobre TCC, ansiedad, depresión, grounding, sueño, PHQ-9/GAD-7 y más — más Anto en iPhone, privacidad y evidencia. Complementa; no reemplaza a un terapeuta.',
-      openGraphTitle: 'Recursos — Anto',
+        `${PSYCHOEDUCATION_SLUGS.length} guías gratuitas de psicoeducación: ansiedad, TCC, distorsiones cognitivas, grounding, sueño, depresión, PHQ-9/GAD-7 y más — más Anto en iPhone, privacidad y evidencia. Complementa; no reemplaza a un terapeuta.`,
+      openGraphTitle: 'Recursos Anto — guías para ansiedad y horas quietas',
       openGraphDescription:
-        'Guías claras de psicoeducación y referencias de Anto para ansiedad y acompañamiento emocional cotidiano.',
+        'Empieza por ansiedad, pensamientos en bucle, sueño o TCC. Guías educativas breves — no son un diagnóstico.',
       canonicalPath: CANONICAL_PATH,
     },
     hero: {
       title: 'Guías para aterrizar',
       subtitle:
         'Psicoeducación breve sobre ansiedad, técnicas y patrones — y cómo funciona Anto. No sustituye atención profesional.',
+      seoIntro:
+        'Guías educativas sobre ansiedad, terapia cognitivo-conductual (TCC), pensamientos en bucle, grounding, sueño, depresión, regulación emocional, burnout y escalas como PHQ-9 y GAD-7. Lectura gratuita. Complementan — no reemplazan — la terapia humana.',
     },
     featured: {
       ariaLabel: 'Empieza por aquí',
