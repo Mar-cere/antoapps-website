@@ -144,12 +144,27 @@
   border-color: var(--color-primary);
 }
 
+.resources-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 52rem;
+}
+
+.resources-group__title {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--home-v2-ink);
+}
+
 .resources-list {
   list-style: none;
   margin: 0;
   padding: 0;
   border-top: 1px solid var(--home-v2-hairline-strong);
-  max-width: 52rem;
 }
 
 .resources-list__link {

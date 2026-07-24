@@ -11,12 +11,15 @@ import {
 
 const CANONICAL_PATH = '/recursos';
 
-/** Guías priorizadas en hub y enlaces destacados (SEO + GSC). */
+/**
+ * Atajos del hero — orden y labels humanos (no índice clínico).
+ * Los slugs siguen apuntando a las mismas guías SEO.
+ */
 const FEATURED_GUIDE_SLUGS = [
-  'escalas-phq9-gad7',
-  'que-es-tcc',
   'grounding-ansiedad-crisis',
+  'distorsiones-cognitivas',
   'higiene-sueno-salud-mental',
+  'que-es-tcc',
 ] as const satisfies readonly PsychoeducationSlug[];
 
 export type ResourceItem = {
@@ -29,6 +32,12 @@ export type ResourceItem = {
 export type ResourceFeaturedLink = {
   href: string;
   label: string;
+};
+
+export type ResourceGroup = {
+  id: string;
+  title: string;
+  items: ResourceItem[];
 };
 
 export type ResourcesPageCopy = {
@@ -53,7 +62,7 @@ export type ResourcesPageCopy = {
     searchAriaLabel: string;
     emptyMessage: string;
     viewResourceLabel: string;
-    resources: ResourceItem[];
+    groups: ResourceGroup[];
   };
 };
 
@@ -85,25 +94,28 @@ function psychoeducationResources(locale: Locale): ResourceItem[] {
   });
 }
 
-const FEATURED_SHORT_LABELS: Record<Locale, Record<(typeof FEATURED_GUIDE_SLUGS)[number], string>> = {
+const FEATURED_HUMAN_LABELS: Record<
+  Locale,
+  Record<(typeof FEATURED_GUIDE_SLUGS)[number], string>
+> = {
   es: {
-    'escalas-phq9-gad7': 'Escalas PHQ-9 y GAD-7',
-    'que-es-tcc': 'Qué es la TCC',
-    'grounding-ansiedad-crisis': 'Grounding para ansiedad',
-    'higiene-sueno-salud-mental': 'Higiene del sueño',
+    'grounding-ansiedad-crisis': 'Cuando la ansiedad sube',
+    'distorsiones-cognitivas': 'Pensamientos en bucle',
+    'higiene-sueno-salud-mental': 'No puedo dormir',
+    'que-es-tcc': 'Entender la TCC',
   },
   en: {
-    'escalas-phq9-gad7': 'PHQ-9 and GAD-7 scales',
-    'que-es-tcc': 'What is CBT',
-    'grounding-ansiedad-crisis': 'Grounding for anxiety',
-    'higiene-sueno-salud-mental': 'Sleep hygiene',
+    'grounding-ansiedad-crisis': 'When anxiety rises',
+    'distorsiones-cognitivas': 'Thoughts in a loop',
+    'higiene-sueno-salud-mental': "I can't sleep",
+    'que-es-tcc': 'Understanding CBT',
   },
 };
 
 function featuredLinksForLocale(locale: Locale): ResourceFeaturedLink[] {
   return FEATURED_GUIDE_SLUGS.map((slug) => ({
     href: psychoeducationGuidePath(locale, slug),
-    label: FEATURED_SHORT_LABELS[locale][slug],
+    label: FEATURED_HUMAN_LABELS[locale][slug],
   }));
 }
 
@@ -179,18 +191,26 @@ function siteResources(locale: Locale): ResourceItem[] {
   ];
 }
 
-function resourcesForLocale(locale: Locale): ResourceItem[] {
-  const guides = psychoeducationResources(locale);
-  const site = siteResources(locale);
-  const productFirst = site.filter((item) => item.id === 'site-1' || item.id === 'site-3');
-  const productRest = site.filter((item) => item.id !== 'site-1' && item.id !== 'site-3');
-  const featuredGuideItems = guides.slice(0, FEATURED_GUIDE_SLUGS.length);
-  const otherGuides = guides.slice(FEATURED_GUIDE_SLUGS.length);
-  return [...featuredGuideItems, ...productFirst, ...otherGuides, ...productRest];
+function groupsForLocale(locale: Locale): ResourceGroup[] {
+  const guidesTitle = locale === 'en' ? 'Guides' : 'Guías';
+  const antoTitle = locale === 'en' ? 'About Anto' : 'Sobre Anto';
+
+  return [
+    {
+      id: 'guides',
+      title: guidesTitle,
+      items: psychoeducationResources(locale),
+    },
+    {
+      id: 'anto',
+      title: antoTitle,
+      items: siteResources(locale),
+    },
+  ];
 }
 
 function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
-  const resources = resourcesForLocale(locale);
+  const groups = groupsForLocale(locale);
 
   if (locale === 'en') {
     return {
@@ -214,15 +234,15 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
           'Short psychoeducation on anxiety, techniques, and patterns — plus how Anto works. Not a substitute for professional care.',
       },
       featured: {
-        ariaLabel: 'Start with these guides',
+        ariaLabel: 'Start here',
         links: featuredLinksForLocale(locale),
       },
       library: {
-        searchPlaceholder: 'Search guides…',
-        searchAriaLabel: 'Search guides',
-        emptyMessage: 'No guides match that search.',
+        searchPlaceholder: 'Search…',
+        searchAriaLabel: 'Search resources',
+        emptyMessage: 'Nothing matches that search.',
         viewResourceLabel: 'Read',
-        resources,
+        groups,
       },
     };
   }
@@ -248,15 +268,15 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         'Psicoeducación breve sobre ansiedad, técnicas y patrones — y cómo funciona Anto. No sustituye atención profesional.',
     },
     featured: {
-      ariaLabel: 'Empieza por estas guías',
+      ariaLabel: 'Empieza por aquí',
       links: featuredLinksForLocale(locale),
     },
     library: {
-      searchPlaceholder: 'Buscar guías…',
-      searchAriaLabel: 'Buscar guías',
-      emptyMessage: 'Ninguna guía coincide con esa búsqueda.',
+      searchPlaceholder: 'Buscar…',
+      searchAriaLabel: 'Buscar recursos',
+      emptyMessage: 'Nada coincide con esa búsqueda.',
       viewResourceLabel: 'Leer',
-      resources,
+      groups,
     },
   };
 }
