@@ -671,10 +671,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Cuando la ansiedad sube: técnicas de grounding | Anto',
       description:
-        'Ejercicio 5-4-3-2-1, señales en el cuerpo y anclas sensoriales para aterrizar cuando la ansiedad te desborda. Con lectura más clínica para profundizar. No sustituye atención profesional ni emergencias.',
-      openGraphTitle: 'Cuando la ansiedad sube — grounding',
+        'Grounding y ejercicio 5-4-3-2-1 para ansiedad o crisis: anclas sensoriales, señales en el cuerpo y cuándo pedir ayuda. Psicoeducación práctica con enlaces a material más clínico. No sustituye terapia ni emergencias.',
+      openGraphTitle: 'Cuando la ansiedad sube — grounding 5-4-3-2-1',
       openGraphDescription:
-        'Aterriza en el presente con el 5-4-3-2-1 y otras anclas. Guía práctica + camino a material más completo.',
+        'Aterriza en el presente con cinco sentidos. Guía breve de grounding + camino a lectura más completa sobre ansiedad.',
+      keywords:
+        'grounding, aterrizaje, ansiedad, crisis, 5-4-3-2-1, cinco sentidos, pánico, psicoeducación, anclas sensoriales, Anto',
     },
     hero: {
       title: 'Cuando la ansiedad sube',
@@ -684,9 +686,10 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     pullQuote:
       'No se trata de “pensar positivo”. Se trata de volver al cuerpo el tiempo suficiente para que la ola no te arrastre entera.',
     figure: {
-      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
-      alt: 'Luz suave de atardecer en un espacio íntimo — un momento quieto entre el día y la noche',
-      caption: 'A veces la ansiedad no pide una explicación. Pide un lugar donde aterrizar.',
+      src: '/assets/images/editorial/anto-editorial-desk-rain.webp',
+      alt: 'Escritorio de noche con lluvia en la ventana, lámpara y cuaderno abierto — momento quieto para aterrizar cuando la ansiedad sube',
+      caption:
+        'Lluvia, luz cercana, algo que tocar. El grounding empieza por lo que ya está aquí.',
       width: 1536,
       height: 1024,
     },

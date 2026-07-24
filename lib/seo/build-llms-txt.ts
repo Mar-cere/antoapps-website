@@ -241,17 +241,57 @@ function formatGuideEntry(
     .map((slug) => `${absoluteUrl(locale, `/recursos/${slug}`)}`)
     .join(', ');
 
-  return [
+  const lines = [
     `### ${title}`,
     `- URL: ${url}`,
     `- ${isEs ? 'Tiempo de lectura' : 'Reading time'}: ~${guide.readingMinutes} min`,
     `- ${isEs ? 'Resumen' : 'Summary'}: ${guide.hero.subtitle}`,
     `- ${isEs ? 'Descripción' : 'Description'}: ${guide.meta.description}`,
     `- ${isEs ? 'Temas cubiertos' : 'Topics covered'}: ${topics}`,
+  ];
+
+  if (guide.meta.keywords) {
+    lines.push(`- Keywords: ${guide.meta.keywords}`);
+  }
+
+  if (guide.pullQuote) {
+    lines.push(`- ${isEs ? 'Cita clave' : 'Key line'}: ${guide.pullQuote}`);
+  }
+
+  if (guide.figure) {
+    const img = guide.figure.src.startsWith('http')
+      ? guide.figure.src
+      : `${SITE_ORIGIN}${guide.figure.src}`;
+    lines.push(`- ${isEs ? 'Imagen' : 'Image'}: ${img}`);
+    if (guide.figure.caption) {
+      lines.push(`- ${isEs ? 'Pie de foto' : 'Caption'}: ${guide.figure.caption}`);
+    }
+  }
+
+  if (guide.howTo) {
+    lines.push(
+      `- HowTo: ${guide.howTo.name} (${guide.howTo.steps.length} ${isEs ? 'pasos' : 'steps'})`
+    );
+  }
+
+  if (guide.furtherReading) {
+    lines.push(`- ${isEs ? 'Ir más a fondo' : 'Go deeper'}:`);
+    for (const link of guide.furtherReading.links) {
+      const href =
+        link.external || link.href.startsWith('http')
+          ? link.href
+          : absoluteUrl(locale, link.href);
+      lines.push(`  - [${link.label}](${href}) — ${link.description}`);
+    }
+  }
+
+  lines.push(
     `- ${isEs ? 'Guías relacionadas' : 'Related guides'}: ${related}`,
     `- ${isEs ? 'Aviso' : 'Notice'}: ${guide.disclaimer}`,
-    '',
-  ];
+    ''
+  );
+
+  return lines;
 }
 
 function localeNarrative(locale: Locale): string[] {

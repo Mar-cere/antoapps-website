@@ -13,13 +13,26 @@ export function psychoeducationGuideMetadata(
   }
 
   const path = `/recursos/${slug}`;
+  const ogImages = guide.figure
+    ? [
+        {
+          url: guide.figure.src,
+          width: guide.figure.width,
+          height: guide.figure.height,
+          alt: guide.figure.alt,
+        },
+      ]
+    : undefined;
 
   return buildLocalizedPageMetadata(locale, path, {
     title: guide.meta.title,
     description: guide.meta.description,
+    ...(guide.meta.keywords ? { keywords: guide.meta.keywords } : {}),
     openGraph: {
       title: guide.meta.openGraphTitle,
       description: guide.meta.openGraphDescription,
+      type: 'article',
+      ...(ogImages ? { images: ogImages } : {}),
     },
   });
 }

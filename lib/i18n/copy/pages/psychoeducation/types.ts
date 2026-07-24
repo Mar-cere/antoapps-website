@@ -44,6 +44,8 @@ export type PsychoeducationGuide = {
     description: string;
     openGraphTitle: string;
     openGraphDescription: string;
+    /** Keywords naturales para meta + schema (coma-separadas). */
+    keywords?: string;
   };
   hero: {
     title: string;

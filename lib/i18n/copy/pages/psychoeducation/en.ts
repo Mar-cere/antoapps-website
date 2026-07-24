@@ -672,10 +672,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'When anxiety rises: grounding techniques | Anto',
       description:
-        '5-4-3-2-1 exercise, body signals, and sensory anchors to land when anxiety floods you. Includes a path to more clinical reading. Does not replace professional care or emergency services.',
-      openGraphTitle: 'When anxiety rises — grounding',
+        'Grounding and the 5-4-3-2-1 exercise for anxiety or crisis: sensory anchors, body signals, and when to seek help. Practical psychoeducation with links to deeper clinical reading. Does not replace therapy or emergency care.',
+      openGraphTitle: 'When anxiety rises — grounding 5-4-3-2-1',
       openGraphDescription:
-        'Land in the present with 5-4-3-2-1 and other anchors. A practical guide plus a route to deeper material.',
+        'Land in the present with five senses. A short grounding guide plus a path to fuller anxiety reading.',
+      keywords:
+        'grounding, anxiety, crisis, 5-4-3-2-1, five senses, panic, psychoeducation, sensory anchors, Anto',
     },
     hero: {
       title: 'When anxiety rises',
@@ -685,9 +687,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     pullQuote:
       'This is not about “thinking positive”. It is about returning to the body long enough that the wave does not carry you away whole.',
     figure: {
-      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
-      alt: 'Soft evening light in an intimate space — a quiet moment between day and night',
-      caption: 'Sometimes anxiety does not ask for an explanation. It asks for a place to land.',
+      src: '/assets/images/editorial/anto-editorial-desk-rain.webp',
+      alt: 'Night desk by a rainy window with a lamp and open notebook — a quiet moment to land when anxiety rises',
+      caption: 'Rain, nearby light, something to touch. Grounding starts with what is already here.',
       width: 1536,
       height: 1024,
     },
