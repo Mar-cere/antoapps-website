@@ -10,7 +10,6 @@ import {
   BienvenidaV2FeatureIcon,
   BienvenidaV2TrustIcon,
 } from '@/components/bienvenida/v2/BienvenidaV2Icons';
-import InstagramBrowserHint from '@/components/bienvenida/InstagramBrowserHint';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
@@ -70,8 +69,6 @@ export default function BienvenidaLandingV2({
         </div>
         <LanguageSwitcher locale={locale} path="/bienvenida" className="lad-v2-lang" />
       </header>
-
-      <InstagramBrowserHint copy={copy.inAppHint} locale={locale} />
 
       <main className="lad-v2-main" id="contenido-principal">
         <section className="lad-v2-s1" aria-labelledby="lad-v2-hero-title">

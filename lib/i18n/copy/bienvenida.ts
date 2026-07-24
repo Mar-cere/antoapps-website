@@ -3,7 +3,9 @@ import { getAppStoreReviewSnippets } from '@/lib/app-store-reviews';
 import { appStoreRatingWithReviews } from '@/lib/app-store-social-proof';
 import {
   APP_SCREENSHOT_PATHS,
+  HOME_LANDING_SCREENSHOT_PATHS,
   getAppScreenshotAlt,
+  getHomeLandingScreenshotAlt,
 } from '@/lib/assets/app-screenshots';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
@@ -353,12 +355,12 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ctaStoreLabel: 'Download on',
         ctaStoreText: 'App Store',
         ctaBadge: trial.short,
-        ctaMicro: `${trial.short} · No card required · Private`,
+        ctaMicro: `Start free today · No card · Private`,
         androidLink: 'Request early access for Android',
         chatSectionLabel: 'On your iPhone',
         chatScreenshot: {
-          src: APP_SCREENSHOT_PATHS.chat,
-          alt: getAppScreenshotAlt('chat', 'en'),
+          src: HOME_LANDING_SCREENSHOT_PATHS.chatAnxiety,
+          alt: getHomeLandingScreenshotAlt('chatAnxiety', 'en'),
         },
         features: [
           { icon: 'privacy', title: 'Private', subtitle: 'Only you read your conversations' },
@@ -591,12 +593,12 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       ctaStoreLabel: 'Descargar en',
       ctaStoreText: 'App Store',
       ctaBadge: trial.short,
-      ctaMicro: `${trial.short} · Sin tarjeta · Privado`,
+      ctaMicro: `Empieza gratis hoy · Sin tarjeta · Privado`,
       androidLink: 'Solicitar acceso anticipado para Android',
       chatSectionLabel: 'Así se ve en tu iPhone',
       chatScreenshot: {
-        src: APP_SCREENSHOT_PATHS.chat,
-        alt: getAppScreenshotAlt('chat', 'es'),
+        src: HOME_LANDING_SCREENSHOT_PATHS.chatAnxiety,
+        alt: getHomeLandingScreenshotAlt('chatAnxiety', 'es'),
       },
       features: [
         { icon: 'privacy', title: 'Privado', subtitle: 'Solo tú lees tus conversaciones' },

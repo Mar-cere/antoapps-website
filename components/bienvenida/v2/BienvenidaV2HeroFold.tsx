@@ -93,6 +93,10 @@ export default function BienvenidaV2HeroFold({
       {showIosStoreCta && <p className="lad-v2-cta-micro">{v2.ctaMicro}</p>}
 
       {isHero && showIosStoreCta && (
+        <p className="lad-v2-cta-rating">{copy.trustStrip.ratingOnAppStore}</p>
+      )}
+
+      {isHero && showIosStoreCta && (
         <InstagramBrowserHint copy={copy.inAppHint} locale={locale} variant="cta" />
       )}
 

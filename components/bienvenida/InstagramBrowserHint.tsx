@@ -26,18 +26,19 @@ export default function InstagramBrowserHint({
 
   const browserAction = platform === 'ios' ? copy.iosBrowser : copy.androidBrowser;
 
+  // En Android la ruta útil es waitlist; el hint Safari/Chrome solo aporta en iOS.
+  if (platform !== 'ios') return null;
+
   if (variant === 'cta') {
-    // En Android la ruta útil es waitlist; el hint de Safari/Chrome solo aporta en iOS.
-    if (platform !== 'ios') return null;
     return (
       <p className="lad-v2-inapp-cta-note" role="note">
         {locale === 'en' ? (
           <>
-            Download blocked? Tap <strong>⋯</strong> → <strong>{browserAction}</strong>
+            If it doesn&apos;t open: <strong>⋯</strong> → <strong>{browserAction}</strong>
           </>
         ) : (
           <>
-            ¿No abre? Toca <strong>⋯</strong> → <strong>{browserAction}</strong>
+            Si no abre: <strong>⋯</strong> → <strong>{browserAction}</strong>
           </>
         )}
       </p>
@@ -45,17 +46,15 @@ export default function InstagramBrowserHint({
   }
 
   return (
-    <div className="lad-inapp-hint" role="status">
+    <div className="lad-inapp-hint lad-inapp-hint--quiet" role="status">
       <p>
         {locale === 'en' ? (
           <>
-            To download reliably, tap <strong>⋯</strong> at the top right and choose{' '}
-            <strong>{browserAction}</strong>.
+            Tap <strong>⋯</strong> → <strong>{browserAction}</strong> to download
           </>
         ) : (
           <>
-            Para descargar sin fricción, toca <strong>⋯</strong> arriba a la derecha y elige{' '}
-            <strong>{browserAction}</strong>.
+            Toca <strong>⋯</strong> → <strong>{browserAction}</strong> para descargar
           </>
         )}
       </p>
