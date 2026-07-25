@@ -1,5 +1,5 @@
 /**
- * /investigacion — ensayo editorial + puente producto + ficha corta
+ * /investigacion — ensayo editorial + puente producto
  */
 
 .research-page.home-landing-page--v2 {
@@ -215,7 +215,6 @@
 
 .research-page__takes-title,
 .research-page__product-title,
-.research-page__trust-title,
 .research-page__refs-title {
   margin: 0 0 0.7rem;
   font-size: clamp(1.25rem, 2.1vw, 1.5rem);
@@ -313,31 +312,6 @@
 .research-page__product-media .home-v2-summary__meta dd,
 .research-page__product-media .home-v2-chat__bubble {
   overflow-wrap: break-word;
-}
-
-/* Ficha rápida (camino 3) */
-.research-page__trust {
-  margin: 0 0 2.5rem;
-  max-width: 42rem;
-  padding: 1.5rem 0 0;
-  border-top: 1px solid var(--home-v2-hairline);
-}
-
-.research-page__trust-list {
-  margin: 0;
-  padding: 0 0 0 1.15rem;
-  max-width: 52ch;
-  color: var(--home-v2-muted);
-  font-size: 0.9875rem;
-  line-height: 1.65;
-}
-
-.research-page__trust-list li {
-  margin: 0 0 0.55rem;
-}
-
-.research-page__trust-list li:last-child {
-  margin-bottom: 0;
 }
 
 .research-page__refs {

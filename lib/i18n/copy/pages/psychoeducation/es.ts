@@ -360,6 +360,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/que-es-tcc',
         },
         {
+          label: 'Evidencia que informa Anto',
+          description:
+            'Cómo leemos TCC, escalas y salud mental digital — y qué no afirmamos. Citas APA con DOI.',
+          href: '/investigacion',
+        },
+        {
           label: 'NIMH — Trastornos de ansiedad (español)',
           description:
             'Material clínico público del National Institute of Mental Health (EE. UU.).',
@@ -981,8 +987,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/ansiedad-y-preocupacion',
         },
         {
-          label: 'Base científica de Anto',
-          description: 'Referencias y enfoque basado en evidencia detrás de protocolos y escalas.',
+          label: 'Evidencia que informa Anto',
+          description:
+            'Cómo leemos TCC, escalas y salud mental digital — y qué no afirmamos. Citas APA con DOI.',
           href: '/investigacion',
         },
         {

@@ -65,7 +65,7 @@ export function getResearchJsonLd(locale: Locale) {
         '.research-page__title',
         '.research-page__subtitle',
         '.research-page__pullquote',
-        '.research-page__trust-list',
+        '.research-page__limits',
       ],
     },
     citation: copy.references.items.map((ref) => ({

@@ -78,12 +78,6 @@ export type ResearchPageCopy = {
     title: string;
     paragraphs: readonly string[];
   };
-  /** Ficha corta de confianza (camino 3) — revisable / eliminable. */
-  trust: {
-    title: string;
-    support: string;
-    bullets: readonly string[];
-  };
   references: {
     title: string;
     summaryLabel: string;
@@ -206,10 +200,10 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
         ],
       },
       figure: {
-        src: getEditorialImagePath('evening'),
-        alt: 'Quiet evening light in a room — a pause before reading what informs the product',
+        src: getEditorialImagePath('deskRain'),
+        alt: 'Night desk by a rainy window — open notebook and warm lamp, a quiet place to read what informs the product',
         caption:
-          'Evidence is read in ordinary hours — not as a marketing claim, but as a design constraint.',
+          'Evidence is read at a desk, not announced as a cure — ordinary hours, real constraints.',
         width: EDITORIAL_WIDTH,
         height: EDITORIAL_HEIGHT,
       },
@@ -326,16 +320,6 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
           'Category evidence is not an Anto efficacy trial. When Anto-specific research exists, it will be listed here with the same bibliographic standard.',
         ],
       },
-      trust: {
-        title: 'Quick trust card',
-        support: 'If you only have a minute:',
-        bullets: [
-          'Category evidence (CBT, scales, digital MH) — not Anto RCTs.',
-          'Design informed by that literature; chat is not therapy.',
-          'No diagnosis, no prescription, no substitute for emergencies.',
-          'Full APA citations with DOIs below.',
-        ],
-      },
       references: {
         title: 'References (APA)',
         summaryLabel: 'Show full citations',
@@ -393,10 +377,10 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
       ],
     },
     figure: {
-      src: getEditorialImagePath('evening'),
-      alt: 'Luz de tarde en una habitación quieta — una pausa antes de leer qué informa el producto',
+      src: getEditorialImagePath('deskRain'),
+      alt: 'Escritorio de noche junto a una ventana con lluvia — cuaderno abierto y lámpara cálida, un lugar quieto para leer lo que informa el producto',
       caption:
-        'La evidencia se lee en horas ordinarias — no como claim de marketing, sino como límite de diseño.',
+        'La evidencia se lee en un escritorio, no se anuncia como cura — horas ordinarias, límites reales.',
       width: EDITORIAL_WIDTH,
       height: EDITORIAL_HEIGHT,
     },
@@ -511,16 +495,6 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
       paragraphs: [
         'Anto no diagnostica, no prescribe ni sustituye emergencias. Las señales digitales de riesgo pueden mostrar recursos; no reemplazan una línea de crisis ni los servicios de emergencia locales.',
         'La evidencia de categoría no es un ensayo de eficacia de Anto. Cuando exista investigación propia, figurará aquí con el mismo estándar bibliográfico.',
-      ],
-    },
-    trust: {
-      title: 'Ficha rápida',
-      support: 'Si solo tienes un minuto:',
-      bullets: [
-        'Evidencia de categoría (TCC, escalas, salud mental digital) — no RCTs de Anto.',
-        'Diseño informado por esa literatura; el chat no es terapia.',
-        'Sin diagnóstico, sin prescripción, sin sustituto de emergencias.',
-        'Citas APA completas con DOI más abajo.',
       ],
     },
     references: {

@@ -360,6 +360,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/que-es-tcc',
         },
         {
+          label: 'Evidence that informs Anto',
+          description:
+            'How we read CBT, scales, and digital mental health — and what we do not claim. APA citations with DOIs.',
+          href: '/investigacion',
+        },
+        {
           label: 'NIMH — Anxiety disorders (Spanish)',
           description:
             'Public clinical material from the National Institute of Mental Health (USA).',
@@ -981,8 +987,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/ansiedad-y-preocupacion',
         },
         {
-          label: 'Anto’s scientific basis',
-          description: 'References and evidence-informed approach behind protocols and scales.',
+          label: 'Evidence that informs Anto',
+          description:
+            'How we read CBT, scales, and digital mental health — and what we do not claim. APA citations with DOIs.',
           href: '/investigacion',
         },
         {

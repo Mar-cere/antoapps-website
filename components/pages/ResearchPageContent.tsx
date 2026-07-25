@@ -167,7 +167,7 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
                 </section>
 
                 <section
-                  className="research-page__section reveal-on-scroll"
+                  className="research-page__section research-page__limits reveal-on-scroll"
                   aria-labelledby="research-limits-title"
                 >
                   <h2 id="research-limits-title">{copy.limits.title}</h2>
@@ -175,21 +175,6 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
                     <p key={paragraph.slice(0, 48)}>{paragraph}</p>
                   ))}
                 </section>
-
-                <aside
-                  className="research-page__trust reveal-on-scroll"
-                  aria-labelledby="research-trust-title"
-                >
-                  <h2 id="research-trust-title" className="research-page__trust-title">
-                    {copy.trust.title}
-                  </h2>
-                  <p className="research-page__section-support">{copy.trust.support}</p>
-                  <ul className="research-page__trust-list">
-                    {copy.trust.bullets.map((bullet) => (
-                      <li key={bullet.slice(0, 40)}>{bullet}</li>
-                    ))}
-                  </ul>
-                </aside>
 
                 <aside
                   className="research-page__refs reveal-on-scroll"

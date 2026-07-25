@@ -146,8 +146,8 @@ function siteResources(locale: Locale): ResourceItem[] {
       },
       {
         id: 'site-4',
-        title: 'Scientific evidence',
-        description: 'References that inform Anto\'s approach.',
+        title: 'Evidence that informs Anto',
+        description: 'Category literature, product bridge, honest limits, and APA citations.',
         link: localePath(locale, '/investigacion'),
       },
       {
@@ -180,8 +180,8 @@ function siteResources(locale: Locale): ResourceItem[] {
     },
     {
       id: 'site-4',
-      title: 'Evidencia científica',
-      description: 'Referencias que informan el enfoque de Anto.',
+      title: 'Evidencia que informa Anto',
+      description: 'Literatura de categoría, puente a producto, límites honestos y citas APA.',
       link: localePath(locale, '/investigacion'),
     },
     {

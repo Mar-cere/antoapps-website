@@ -330,9 +330,6 @@ function formatResearchEvidenceBlock(locale: Locale): string[] {
     isEs ? '**Qué no afirmamos:**' : '**What we do not claim:**',
     ...research.limits.paragraphs.map((paragraph) => `- ${paragraph}`),
     '',
-    isEs ? '**Ficha rápida:**' : '**Quick trust card:**',
-    ...research.trust.bullets.map((bullet) => `- ${bullet}`),
-    '',
     isEs
       ? '**Referencias APA (DOI — evidencia de categoría):**'
       : '**APA references (DOI — category evidence):**',
