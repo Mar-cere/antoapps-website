@@ -118,7 +118,7 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
                       width={copy.figure.width}
                       height={copy.figure.height}
                       className="research-page__figure-img"
-                      sizes="(max-width: 720px) 100vw, (max-width: 1100px) 90vw, 72rem"
+                      sizes="(max-width: 720px) 100vw, (max-width: 1100px) 90vw, 76rem"
                       priority
                     />
                   </div>
@@ -213,26 +213,28 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
                   </aside>
                 </div>
 
-                <aside className="research-page__disclaimer reveal-on-scroll" role="note">
-                  <strong>{locale === 'en' ? 'Note' : 'Aviso'}</strong>
-                  <span>{copy.disclaimer}</span>
-                </aside>
+                <div className="research-page__outro">
+                  <aside className="research-page__disclaimer reveal-on-scroll" role="note">
+                    <strong>{locale === 'en' ? 'Note' : 'Aviso'}</strong>
+                    <span>{copy.disclaimer}</span>
+                  </aside>
 
-                <div className="research-page__cta reveal-on-scroll">
-                  <p className="research-page__cta-bridge">{copy.cta.bridge}</p>
-                  <div className="research-page__cta-actions">
-                    <Link
-                      href={copy.cta.contactHref}
-                      className="research-page__cta-link research-page__cta-link--primary"
-                    >
-                      {copy.cta.contactLabel}
-                    </Link>
-                    <a
-                      href={copy.cta.emailHref}
-                      className="research-page__cta-link research-page__cta-link--secondary"
-                    >
-                      {copy.cta.emailLabel}
-                    </a>
+                  <div className="research-page__cta reveal-on-scroll">
+                    <p className="research-page__cta-bridge">{copy.cta.bridge}</p>
+                    <div className="research-page__cta-actions">
+                      <Link
+                        href={copy.cta.contactHref}
+                        className="research-page__cta-link research-page__cta-link--primary"
+                      >
+                        {copy.cta.contactLabel}
+                      </Link>
+                      <a
+                        href={copy.cta.emailHref}
+                        className="research-page__cta-link research-page__cta-link--secondary"
+                      >
+                        {copy.cta.emailLabel}
+                      </a>
+                    </div>
                   </div>
                 </div>
 

@@ -117,13 +117,21 @@ export default function PsychoeducationGuidePageContent({
                   <span className="psycho-guide__crumb-current">{guide.hero.title}</span>
                 </nav>
 
-                <header className="psycho-guide__header reveal-on-scroll">
-                  <p className="psycho-guide__eyebrow">
-                    {locale === 'en' ? 'Guide' : 'Guía'} · {ui.readingTime(guide.readingMinutes)}
-                  </p>
-                  <h1 className="psycho-guide__title">{guide.hero.title}</h1>
-                  <p className="psycho-guide__subtitle">{guide.hero.subtitle}</p>
-                </header>
+                <div className="psycho-guide__masthead">
+                  <header className="psycho-guide__header reveal-on-scroll">
+                    <p className="psycho-guide__eyebrow">
+                      {locale === 'en' ? 'Guide' : 'Guía'} · {ui.readingTime(guide.readingMinutes)}
+                    </p>
+                    <h1 className="psycho-guide__title">{guide.hero.title}</h1>
+                    <p className="psycho-guide__subtitle">{guide.hero.subtitle}</p>
+                  </header>
+
+                  {guide.pullQuote ? (
+                    <blockquote className="psycho-guide__pullquote reveal-on-scroll">
+                      <p>{guide.pullQuote}</p>
+                    </blockquote>
+                  ) : null}
+                </div>
 
                 {guide.figure ? (
                   <figure className="psycho-guide__figure reveal-on-scroll">
@@ -134,7 +142,7 @@ export default function PsychoeducationGuidePageContent({
                         width={guide.figure.width}
                         height={guide.figure.height}
                         className="psycho-guide__figure-img"
-                        sizes="(max-width: 720px) 100vw, 46rem"
+                        sizes="(max-width: 720px) 100vw, (max-width: 1100px) 90vw, 76rem"
                         priority
                       />
                     </div>
@@ -144,12 +152,6 @@ export default function PsychoeducationGuidePageContent({
                       </figcaption>
                     ) : null}
                   </figure>
-                ) : null}
-
-                {guide.pullQuote ? (
-                  <blockquote className="psycho-guide__pullquote reveal-on-scroll">
-                    <p>{guide.pullQuote}</p>
-                  </blockquote>
                 ) : null}
 
                 <div className="psycho-guide__body">
@@ -217,112 +219,116 @@ export default function PsychoeducationGuidePageContent({
                   })}
                 </div>
 
-                {guide.furtherReading ? (
-                  <aside
-                    className="psycho-guide__further reveal-on-scroll"
-                    aria-labelledby="psycho-guide-further-title"
-                  >
-                    <h2 id="psycho-guide-further-title" className="psycho-guide__further-title">
-                      {guide.furtherReading.title}
-                    </h2>
-                    <p className="psycho-guide__further-support">{guide.furtherReading.support}</p>
-                    <ul className="psycho-guide__further-list">
-                      {guide.furtherReading.links.map((link) => {
-                        const href = resolveGuideHref(locale, link.href, link.external);
-                        const isExternal =
-                          Boolean(link.external) ||
-                          link.href.startsWith('http://') ||
-                          link.href.startsWith('https://');
-                        const className = 'psycho-guide__further-link';
+                <div className="psycho-guide__closing">
+                  {guide.furtherReading ? (
+                    <aside
+                      className="psycho-guide__further reveal-on-scroll"
+                      aria-labelledby="psycho-guide-further-title"
+                    >
+                      <h2 id="psycho-guide-further-title" className="psycho-guide__further-title">
+                        {guide.furtherReading.title}
+                      </h2>
+                      <p className="psycho-guide__further-support">{guide.furtherReading.support}</p>
+                      <ul className="psycho-guide__further-list">
+                        {guide.furtherReading.links.map((link) => {
+                          const href = resolveGuideHref(locale, link.href, link.external);
+                          const isExternal =
+                            Boolean(link.external) ||
+                            link.href.startsWith('http://') ||
+                            link.href.startsWith('https://');
+                          const className = 'psycho-guide__further-link';
 
-                        return (
-                          <li key={link.href}>
-                            {isExternal ? (
+                          return (
+                            <li key={link.href}>
+                              {isExternal ? (
+                                <a
+                                  href={href}
+                                  className={className}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  <span className="psycho-guide__further-link-text">
+                                    <span className="psycho-guide__further-link-label">
+                                      {link.label}
+                                    </span>
+                                    <span className="psycho-guide__further-link-desc">
+                                      {link.description}
+                                    </span>
+                                  </span>
+                                  <span className="psycho-guide__further-link-meta" aria-hidden="true">
+                                    ↗
+                                  </span>
+                                  <span className="visually-hidden">{ui.externalLinkHint}</span>
+                                </a>
+                              ) : (
+                                <Link href={href} className={className}>
+                                  <span className="psycho-guide__further-link-text">
+                                    <span className="psycho-guide__further-link-label">
+                                      {link.label}
+                                    </span>
+                                    <span className="psycho-guide__further-link-desc">
+                                      {link.description}
+                                    </span>
+                                  </span>
+                                  <span className="psycho-guide__further-link-meta" aria-hidden="true">
+                                    →
+                                  </span>
+                                </Link>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </aside>
+                  ) : null}
+
+                  {guide.references ? (
+                    <aside
+                      className="psycho-guide__refs reveal-on-scroll"
+                      aria-labelledby="psycho-guide-refs-title"
+                    >
+                      <h2 id="psycho-guide-refs-title" className="psycho-guide__refs-title">
+                        {guide.references.title}
+                      </h2>
+                      <p className="psycho-guide__refs-support">{guide.references.support}</p>
+                      <ol className="psycho-guide__refs-list">
+                        {guide.references.items.map((ref) => (
+                          <li key={ref.href} className="psycho-guide__refs-item">
+                            <p className="psycho-guide__refs-apa">
                               <a
-                                href={href}
-                                className={className}
+                                href={ref.href}
+                                className="psycho-guide__refs-link"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                <span className="psycho-guide__further-link-text">
-                                  <span className="psycho-guide__further-link-label">
-                                    {link.label}
-                                  </span>
-                                  <span className="psycho-guide__further-link-desc">
-                                    {link.description}
-                                  </span>
-                                </span>
-                                <span className="psycho-guide__further-link-meta" aria-hidden="true">
-                                  ↗
-                                </span>
-                                <span className="visually-hidden">{ui.externalLinkHint}</span>
+                                {ref.apa}
                               </a>
-                            ) : (
-                              <Link href={href} className={className}>
-                                <span className="psycho-guide__further-link-text">
-                                  <span className="psycho-guide__further-link-label">
-                                    {link.label}
-                                  </span>
-                                  <span className="psycho-guide__further-link-desc">
-                                    {link.description}
-                                  </span>
-                                </span>
-                                <span className="psycho-guide__further-link-meta" aria-hidden="true">
-                                  →
-                                </span>
-                              </Link>
-                            )}
+                              <span className="visually-hidden">{ui.externalLinkHint}</span>
+                            </p>
+                            {ref.note ? (
+                              <p className="psycho-guide__refs-note">{ref.note}</p>
+                            ) : null}
                           </li>
-                        );
-                      })}
-                    </ul>
-                  </aside>
-                ) : null}
-
-                {guide.references ? (
-                  <aside
-                    className="psycho-guide__refs reveal-on-scroll"
-                    aria-labelledby="psycho-guide-refs-title"
-                  >
-                    <h2 id="psycho-guide-refs-title" className="psycho-guide__refs-title">
-                      {guide.references.title}
-                    </h2>
-                    <p className="psycho-guide__refs-support">{guide.references.support}</p>
-                    <ol className="psycho-guide__refs-list">
-                      {guide.references.items.map((ref) => (
-                        <li key={ref.href} className="psycho-guide__refs-item">
-                          <p className="psycho-guide__refs-apa">
-                            <a
-                              href={ref.href}
-                              className="psycho-guide__refs-link"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {ref.apa}
-                            </a>
-                            <span className="visually-hidden">{ui.externalLinkHint}</span>
-                          </p>
-                          {ref.note ? (
-                            <p className="psycho-guide__refs-note">{ref.note}</p>
-                          ) : null}
-                        </li>
-                      ))}
-                    </ol>
-                  </aside>
-                ) : null}
-
-                <aside className="psycho-guide__disclaimer reveal-on-scroll" role="note">
-                  <strong>{ui.disclaimerLabel}</strong>
-                  <span>{guide.disclaimer}</span>
-                </aside>
-
-                <div className="psycho-guide__cta reveal-on-scroll">
-                  {guide.ctaBridge ? (
-                    <p className="psycho-guide__cta-bridge">{guide.ctaBridge}</p>
+                        ))}
+                      </ol>
+                    </aside>
                   ) : null}
-                  <Link href={localePath(locale, guide.cta.path)} className="psycho-guide__cta-link">
-                    {guide.cta.label}
-                  </Link>
+                </div>
+
+                <div className="psycho-guide__outro">
+                  <aside className="psycho-guide__disclaimer reveal-on-scroll" role="note">
+                    <strong>{ui.disclaimerLabel}</strong>
+                    <span>{guide.disclaimer}</span>
+                  </aside>
+
+                  <div className="psycho-guide__cta reveal-on-scroll">
+                    {guide.ctaBridge ? (
+                      <p className="psycho-guide__cta-bridge">{guide.ctaBridge}</p>
+                    ) : null}
+                    <Link href={localePath(locale, guide.cta.path)} className="psycho-guide__cta-link">
+                      {guide.cta.label}
+                    </Link>
+                  </div>
                 </div>
 
                 {guide.relatedSlugs.length > 0 && (

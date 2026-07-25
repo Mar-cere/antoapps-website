@@ -43,8 +43,16 @@
 .psycho-guide__article > .home-landing-container {
   position: relative;
   z-index: 1;
-  /* Columna de lectura centrada en desktop (el nav/footer siguen a ancho completo) */
+  /* Mobile: medida. Desktop: shell editorial (ver media queries). */
   max-width: 46rem;
+}
+
+.psycho-guide__masthead {
+  margin: 0 0 2.5rem;
+}
+
+.psycho-guide__closing:empty {
+  display: none;
 }
 
 .psycho-guide__crumb {
@@ -88,7 +96,7 @@
 }
 
 .psycho-guide__header {
-  margin: 0 0 2.75rem;
+  margin: 0 0 2rem;
   max-width: 42rem;
   text-align: left;
   padding-bottom: 1.85rem;
@@ -157,7 +165,7 @@
 }
 
 .psycho-guide__pullquote {
-  margin: 0 0 2.5rem;
+  margin: 0;
   max-width: 34rem;
   padding: 0 0 0 1.1rem;
   border-left: 2px solid color-mix(in srgb, var(--color-primary) 55%, transparent);
@@ -360,6 +368,14 @@
   max-width: 42rem;
   padding-top: 1.75rem;
   border-top: 1px solid var(--home-v2-hairline);
+}
+
+.psycho-guide__closing .psycho-guide__further:first-child {
+  margin-top: 2.75rem;
+}
+
+.psycho-guide__closing .psycho-guide__refs {
+  margin-top: 2.75rem;
 }
 
 .psycho-guide__further-title {
@@ -701,8 +717,12 @@
     padding: 1rem 0 2.5rem;
   }
 
-  .psycho-guide__header {
+  .psycho-guide__masthead {
     margin-bottom: 2rem;
+  }
+
+  .psycho-guide__header {
+    margin-bottom: 1.5rem;
     padding-bottom: 1.35rem;
   }
 
@@ -762,7 +782,7 @@
   }
 
   .psycho-guide__pullquote {
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     padding-left: 0.9rem;
   }
 
@@ -801,5 +821,197 @@
     width: 1.4rem;
     height: 1.4rem;
     font-size: 0.6875rem;
+  }
+}
+
+/* Tablet+: shell crece. */
+@media (min-width: 768px) {
+  .psycho-guide__article > .home-landing-container {
+    max-width: min(56rem, 100%);
+  }
+
+  .psycho-guide__figure {
+    max-width: none;
+  }
+
+  .psycho-guide__related-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.75rem;
+  }
+}
+
+/* Desktop: composición editorial como /investigacion. */
+@media (min-width: 960px) {
+  .psycho-guide__article > .home-landing-container {
+    max-width: min(72rem, 100%);
+  }
+
+  .psycho-guide__article {
+    padding: 1.5rem 0 4.5rem;
+  }
+
+  .psycho-guide__masthead {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.75fr);
+    gap: 2rem 4rem;
+    align-items: start;
+    margin: 0 0 3.25rem;
+    padding-bottom: 2.35rem;
+    border-bottom: 1px solid var(--home-v2-hairline);
+  }
+
+  .psycho-guide__masthead:not(:has(.psycho-guide__pullquote)) {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: none;
+  }
+
+  .psycho-guide__masthead:not(:has(.psycho-guide__pullquote)) .psycho-guide__title {
+    max-width: 18ch;
+  }
+
+  .psycho-guide__masthead:not(:has(.psycho-guide__pullquote)) .psycho-guide__subtitle {
+    max-width: 48ch;
+  }
+
+  .psycho-guide__header {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    max-width: none;
+  }
+
+  .psycho-guide__title {
+    max-width: 14ch;
+    font-size: clamp(2.35rem, 3.8vw, 3.35rem);
+  }
+
+  .psycho-guide__pullquote {
+    max-width: none;
+    margin-top: 2.5rem;
+  }
+
+  .psycho-guide__pullquote p {
+    font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  }
+
+  .psycho-guide__figure {
+    max-width: none;
+    margin: 0 0 3.5rem;
+  }
+
+  .psycho-guide__figure-frame {
+    aspect-ratio: 2.4 / 1;
+  }
+
+  /* Ensayo en dos columnas; la viñeta producto (si hay) ocupa el ancho completo. */
+  .psycho-guide__body {
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 3.25rem;
+    row-gap: 2.5rem;
+  }
+
+  .psycho-guide__section-stack {
+    max-width: none;
+  }
+
+  .psycho-guide__section-stack:has(.psycho-guide__product) {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem);
+    gap: 1.75rem 2.75rem;
+    align-items: start;
+  }
+
+  .psycho-guide__section-stack:has(.psycho-guide__product) .psycho-guide__section {
+    max-width: none;
+  }
+
+  .psycho-guide__product {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    gap: 1rem;
+  }
+
+  .psycho-guide__closing {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem 3.5rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  .psycho-guide__closing:not(:has(.psycho-guide__further)):not(:has(.psycho-guide__refs)) {
+    display: none;
+  }
+
+  .psycho-guide__closing:not(:has(.psycho-guide__further)),
+  .psycho-guide__closing:not(:has(.psycho-guide__refs)) {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 44rem;
+  }
+
+  .psycho-guide__closing .psycho-guide__further,
+  .psycho-guide__closing .psycho-guide__refs {
+    margin-top: 0;
+    max-width: none;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .psycho-guide__closing .psycho-guide__refs {
+    padding-left: 2.5rem;
+    border-left: 1px solid var(--home-v2-hairline);
+  }
+
+  .psycho-guide__closing:not(:has(.psycho-guide__further)) .psycho-guide__refs {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .psycho-guide__outro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem 3.5rem;
+    align-items: end;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--home-v2-hairline);
+  }
+
+  .psycho-guide__disclaimer {
+    margin-top: 0;
+    max-width: none;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .psycho-guide__cta {
+    margin-top: 0;
+    max-width: none;
+  }
+
+  .psycho-guide__related {
+    max-width: none;
+    margin-top: 3.25rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .psycho-guide__article > .home-landing-container {
+    max-width: min(76rem, 100%);
+  }
+
+  .psycho-guide__masthead {
+    gap: 2.5rem 5rem;
+  }
+
+  .psycho-guide__section-stack:has(.psycho-guide__product) {
+    grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 28rem);
+    gap: 2rem 3.5rem;
   }
 }

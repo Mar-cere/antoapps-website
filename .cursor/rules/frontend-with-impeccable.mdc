@@ -20,6 +20,7 @@ Taste e Impeccable **ejecutan** craft, anti-slop y audit bajo esa dirección; no
 |----------------|------------------------|
 | Landing, marketing, rediseño visual, “mejor diseño”, páginas HTML/CSS del sitio, propuesta/evaluación estética | Skill `editorial-emotional-web` (dirección) + `design-taste-frontend` (Design Read + dials Anto + anti-slop) |
 | Mejorar UI existente, a11y, polish, tipografía, motion, layout, critique técnico | Skill `impeccable` (flujo `context.mjs` + comando implícito más cercano); si es marketing, también `editorial-emotional-web` |
+| Layout / adapt responsive de marketing o ensayos (`/investigacion`, guías, home) | Rule `marketing-responsive-editorial` + `editorial-emotional-web/anto-responsive.md`; comando Impeccable `adapt`/`layout` si hace falta |
 | Rediseño visual grande | Editorial primero → Taste (dials) → tokens Anto → Impeccable `polish`/`audit` al cierre |
 | Solo backend / API / infra sin UI | No cargar ninguna |
 
@@ -57,6 +58,10 @@ No abrir paletas morado-neón / pastel / cream. Traducir la dirección editorial
 | Apoyo lavanda-azul | `#a3b8e8` / `--color-secondary` |
 | Acento amarillo raro | `#ffd93d` / `--color-warning` (puntual) |
 
+## Responsive editorial (evitar reiterar)
+
+**Mobile-first ≠ desktop = columna estrecha centrada.** CSS puede nacer en una columna; a partir de ~768/960px **recomponer** (grids, splits, figura ancha). Separar **shell** (ancho de página, p. ej. hasta ~72rem) de **medida de lectura** (~45–65ch solo en prosa). Canon: `styles/components/research.css` + rule `marketing-responsive-editorial`. Detalle en skill editorial → `anto-responsive.md`.
+
 ## Overrides no negociables
 
 1. No migrar a Tailwind/shadcn/Material sin petición.
@@ -66,3 +71,4 @@ No abrir paletas morado-neón / pastel / cream. Traducir la dirección editorial
 5. Motion contenido + `prefers-reduced-motion`.
 6. React: no `useMemo`/`useCallback` por defecto salvo criterio del repo.
 7. No estética clínica, meditación genérica ni landing de IA; sí marca cultural-emocional con tecnología.
+8. No dejar marketing/ensayos en `max-width: ~46rem` en todo el desktop; recomponer layout.

@@ -451,6 +451,8 @@ En desktop puedes utilizar:
 * Elementos desplazados fuera del eje central.
 * Navegación discreta y limpia.
 
+**Anto — contrato responsive:** mobile-first no justifica una columna ~46rem centrada en desktop. Separar shell (hasta ~72rem) de medida de lectura (~45–65ch). Recomponer a ≥768/960px. Detalle y anti-patrón: [anto-responsive.md](anto-responsive.md). Canon CSS: `styles/components/research.css`.
+
 ### Tablet
 
 Conserva la composición editorial sin limitarte a reducir tamaños.

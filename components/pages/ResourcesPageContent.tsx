@@ -52,8 +52,10 @@ export default function ResourcesPageContent({ locale }: ResourcesPageContentPro
                 </nav>
 
                 <h1 className="resources-hero__title reveal-on-scroll">{copy.hero.title}</h1>
-                <p className="resources-hero__support reveal-on-scroll">{copy.hero.subtitle}</p>
-                <p className="resources-hero__seo-intro reveal-on-scroll">{copy.hero.seoIntro}</p>
+                <div className="resources-hero__copy reveal-on-scroll">
+                  <p className="resources-hero__support">{copy.hero.subtitle}</p>
+                  <p className="resources-hero__seo-intro">{copy.hero.seoIntro}</p>
+                </div>
 
                 <nav
                   className="resources-featured reveal-on-scroll"

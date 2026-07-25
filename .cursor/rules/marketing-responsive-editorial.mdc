@@ -1,0 +1,47 @@
+---
+description: Layout responsive editorial Anto — shell ancho en desktop, medida de lectura en prosa; no columna móvil en pantallas grandes
+globs: "**/{components,styles,app}/**/*.{tsx,jsx,css,scss}"
+alwaysApply: false
+---
+
+# Marketing responsive editorial (Anto)
+
+## Tesis
+
+Mobile-first es el **orden CSS**, no el layout final de desktop. Si en ≥960px la página se ve como un tubo centrado (~46rem) con márgenes muertos, el layout está incompleto.
+
+## Separar dos anchos
+
+| Concepto | Uso | Rango típico |
+|----------|-----|----------------|
+| **Shell** | Contenedor de página / composición | hasta ~72rem (`--hl-max`) |
+| **Medida** | Párrafos de ensayo / lectura | ~45–65ch o ~42–44rem |
+
+No aplicar `max-width: 46rem` al contenedor raíz de toda la página en desktop.
+
+## Breakpoints de composición (referencia)
+
+- **<768px:** una columna; ritmo vertical.
+- **≥768px:** empieza a usar ancho (p. ej. takes en 2 cols; shell intermedio ~56rem).
+- **≥960px:** composición editorial (masthead split, figura a shell, producto texto|media, cierre 2 cols).
+
+## Páginas tipo ensayo (`/investigacion`, guías)
+
+Canon vivo: `styles/components/research.css` + `ResearchPageContent.tsx`.
+
+1. **Masthead:** título + pullquote / apoyo en 2 columnas.
+2. **Reading:** medida controlada, anclada (no centrar el vacío).
+3. **Figura:** ancho de shell; caption con medida corta.
+4. **Takes / ideas:** rejilla 2×2 (o 2 cols), sin cards SaaS.
+5. **Puente producto:** texto | viñeta (sin zigzag si la media es alta).
+6. **Cierre:** límites + referencias en paralelo cuando el contenido lo permita.
+
+## Checklist antes de dar por listo un layout marketing
+
+- [ ] Desktop ≥1280px no es “mobile más padding”.
+- [ ] Shell y medida no son el mismo `max-width`.
+- [ ] Al menos 2 familias de layout distintas en la página (no solo stack).
+- [ ] Mobile <720px sigue legible y sin grids rotos.
+- [ ] Sin cards decorativas ni chips en hero.
+
+Detalle: skill `editorial-emotional-web` → `anto-responsive.md`.

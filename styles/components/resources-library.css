@@ -19,6 +19,10 @@
   background: var(--color-bg-primary);
 }
 
+.resources-hero > .home-landing-container {
+  max-width: min(72rem, 100%);
+}
+
 .resources-crumb {
   display: flex;
   flex-wrap: wrap;
@@ -128,7 +132,7 @@
 
 .resources-toolbar {
   margin-bottom: 0.85rem;
-  max-width: var(--resources-measure);
+  max-width: min(72rem, 100%);
 }
 
 .resources-search input {
@@ -157,7 +161,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 52rem;
+  max-width: min(72rem, 100%);
 }
 
 /* Anula el padding global de `section` (layout/container.css) */
@@ -278,6 +282,92 @@
   .resources-list__desc {
     grid-column: 1;
     grid-row: 2;
+  }
+}
+
+/* Desktop: hero editorial + biblioteca a shell completo. */
+@media (min-width: 960px) {
+  .resources-hero {
+    padding: 1.5rem 0 2rem;
+  }
+
+  .resources-hero > .home-landing-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 1.25rem 3.5rem;
+    align-items: end;
+    max-width: min(76rem, 100%);
+  }
+
+  .resources-crumb {
+    grid-column: 1 / -1;
+    margin-bottom: 0.5rem;
+  }
+
+  .resources-hero__title {
+    margin: 0;
+    max-width: 10ch;
+    font-size: clamp(2.6rem, 4.5vw, 3.85rem);
+  }
+
+  .resources-hero__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-bottom: 0.35rem;
+  }
+
+  .resources-hero__support {
+    margin: 0;
+    max-width: none;
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  }
+
+  .resources-hero__seo-intro {
+    margin: 0;
+    max-width: none;
+  }
+
+  .resources-featured {
+    grid-column: 1 / -1;
+    max-width: none;
+    margin-top: 1.35rem;
+    padding-top: 1.15rem;
+  }
+
+  .resources-featured__list {
+    gap: 0.65rem 1.75rem;
+  }
+
+  .resources-library {
+    padding: 1.75rem 0 3.5rem;
+  }
+
+  .resources-library > .home-landing-container {
+    max-width: min(76rem, 100%);
+  }
+
+  .resources-toolbar {
+    max-width: none;
+  }
+
+  .resources-search input {
+    max-width: 28rem;
+  }
+
+  .resources-groups {
+    max-width: none;
+    gap: 2.5rem;
+  }
+
+  .resources-group__title {
+    font-size: clamp(1.25rem, 2.1vw, 1.5rem);
+  }
+
+  .resources-list__link {
+    grid-template-columns: minmax(12rem, 20rem) minmax(0, 1fr) auto;
+    gap: 0.35rem 2rem;
+    padding: 1.1rem 0;
   }
 }
 
