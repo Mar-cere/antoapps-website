@@ -86,20 +86,22 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
                   </span>
                 </nav>
 
-                <header className="research-page__header reveal-on-scroll">
-                  <p className="research-page__eyebrow">
-                    {locale === 'en' ? 'Evidence' : 'Evidencia'}
-                  </p>
-                  <h1 className="research-page__title">{copy.hero.title}</h1>
-                  <p className="research-page__subtitle">{copy.hero.subtitle}</p>
-                </header>
+                <div className="research-page__masthead">
+                  <header className="research-page__header reveal-on-scroll">
+                    <p className="research-page__eyebrow">
+                      {locale === 'en' ? 'Evidence' : 'Evidencia'}
+                    </p>
+                    <h1 className="research-page__title">{copy.hero.title}</h1>
+                    <p className="research-page__subtitle">{copy.hero.subtitle}</p>
+                  </header>
 
-                <blockquote className="research-page__pullquote reveal-on-scroll">
-                  <p>{copy.pullQuote}</p>
-                </blockquote>
+                  <blockquote className="research-page__pullquote reveal-on-scroll">
+                    <p>{copy.pullQuote}</p>
+                  </blockquote>
+                </div>
 
                 <section
-                  className="research-page__section reveal-on-scroll"
+                  className="research-page__section research-page__reading reveal-on-scroll"
                   aria-labelledby="research-reading-title"
                 >
                   <h2 id="research-reading-title">{copy.reading.title}</h2>
@@ -116,7 +118,7 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
                       width={copy.figure.width}
                       height={copy.figure.height}
                       className="research-page__figure-img"
-                      sizes="(max-width: 720px) 100vw, 46rem"
+                      sizes="(max-width: 720px) 100vw, (max-width: 1100px) 90vw, 72rem"
                       priority
                     />
                   </div>
@@ -166,48 +168,50 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
                   </ul>
                 </section>
 
-                <section
-                  className="research-page__section research-page__limits reveal-on-scroll"
-                  aria-labelledby="research-limits-title"
-                >
-                  <h2 id="research-limits-title">{copy.limits.title}</h2>
-                  {copy.limits.paragraphs.map((paragraph) => (
-                    <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-                  ))}
-                </section>
+                <div className="research-page__closing">
+                  <section
+                    className="research-page__section research-page__limits reveal-on-scroll"
+                    aria-labelledby="research-limits-title"
+                  >
+                    <h2 id="research-limits-title">{copy.limits.title}</h2>
+                    {copy.limits.paragraphs.map((paragraph) => (
+                      <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                    ))}
+                  </section>
 
-                <aside
-                  className="research-page__refs reveal-on-scroll"
-                  aria-labelledby="research-refs-title"
-                >
-                  <h2 id="research-refs-title" className="research-page__refs-title">
-                    {copy.references.title}
-                  </h2>
-                  <p className="research-page__section-support">{copy.references.support}</p>
-                  <details className="research-page__refs-details">
-                    <summary className="research-page__refs-summary">
-                      {copy.references.summaryLabel}
-                    </summary>
-                    <ol className="research-page__refs-list">
-                      {copy.references.items.map((ref) => (
-                        <li key={ref.href} className="research-page__refs-item">
-                          <p className="research-page__refs-label">{ref.label}</p>
-                          <p className="research-page__refs-apa">
-                            <a
-                              href={ref.href}
-                              className="research-page__refs-link"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {ref.apa}
-                            </a>
-                            <span className="visually-hidden">{copy.externalLinkHint}</span>
-                          </p>
-                        </li>
-                      ))}
-                    </ol>
-                  </details>
-                </aside>
+                  <aside
+                    className="research-page__refs reveal-on-scroll"
+                    aria-labelledby="research-refs-title"
+                  >
+                    <h2 id="research-refs-title" className="research-page__refs-title">
+                      {copy.references.title}
+                    </h2>
+                    <p className="research-page__section-support">{copy.references.support}</p>
+                    <details className="research-page__refs-details">
+                      <summary className="research-page__refs-summary">
+                        {copy.references.summaryLabel}
+                      </summary>
+                      <ol className="research-page__refs-list">
+                        {copy.references.items.map((ref) => (
+                          <li key={ref.href} className="research-page__refs-item">
+                            <p className="research-page__refs-label">{ref.label}</p>
+                            <p className="research-page__refs-apa">
+                              <a
+                                href={ref.href}
+                                className="research-page__refs-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {ref.apa}
+                              </a>
+                              <span className="visually-hidden">{copy.externalLinkHint}</span>
+                            </p>
+                          </li>
+                        ))}
+                      </ol>
+                    </details>
+                  </aside>
+                </div>
 
                 <aside className="research-page__disclaimer reveal-on-scroll" role="note">
                   <strong>{locale === 'en' ? 'Note' : 'Aviso'}</strong>

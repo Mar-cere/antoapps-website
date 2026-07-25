@@ -42,7 +42,16 @@
 .research-page__article > .home-landing-container {
   position: relative;
   z-index: 1;
+  /* Mobile: medida de lectura. Desktop: shell editorial más ancho (ver media query). */
   max-width: 46rem;
+}
+
+.research-page__masthead {
+  margin: 0 0 2.5rem;
+}
+
+.research-page__closing {
+  margin: 0;
 }
 
 .research-page__crumb {
@@ -82,7 +91,7 @@
 }
 
 .research-page__header {
-  margin: 0 0 2.5rem;
+  margin: 0 0 2rem;
   max-width: 42rem;
   text-align: left;
   padding-bottom: 1.85rem;
@@ -119,7 +128,7 @@
 }
 
 .research-page__pullquote {
-  margin: 0 0 2.5rem;
+  margin: 0;
   max-width: 34rem;
   padding: 0 0 0 1.1rem;
   border-left: 2px solid color-mix(in srgb, var(--color-primary) 55%, transparent);
@@ -542,14 +551,194 @@
   }
 }
 
+/* Tablet+: empieza a usar el ancho (takes en 2 columnas). */
+@media (min-width: 768px) {
+  .research-page__article > .home-landing-container {
+    max-width: min(56rem, 100%);
+  }
+
+  .research-page__figure {
+    max-width: none;
+  }
+
+  .research-page__takes {
+    max-width: none;
+  }
+
+  .research-page__takes-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.25rem;
+  }
+
+  .research-page__take {
+    min-width: 0;
+  }
+}
+
+/* Desktop: composición editorial, no columna móvil centrada. */
+@media (min-width: 960px) {
+  .research-page__article > .home-landing-container {
+    max-width: min(72rem, 100%);
+  }
+
+  .research-page__article {
+    padding: 1.5rem 0 4rem;
+  }
+
+  .research-page__masthead {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 2rem 3.5rem;
+    align-items: end;
+    margin: 0 0 3.25rem;
+    padding-bottom: 2.25rem;
+    border-bottom: 1px solid var(--home-v2-hairline);
+  }
+
+  .research-page__header {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    max-width: none;
+  }
+
+  .research-page__title {
+    max-width: 16ch;
+    font-size: clamp(2.25rem, 3.4vw, 3.15rem);
+  }
+
+  .research-page__subtitle {
+    max-width: 38ch;
+  }
+
+  .research-page__pullquote {
+    max-width: none;
+    margin-bottom: 0.25rem;
+  }
+
+  .research-page__pullquote p {
+    font-size: clamp(1.2rem, 1.7vw, 1.45rem);
+  }
+
+  /* Ensayo: medida cómoda, anclado a la izquierda del shell ancho. */
+  .research-page__reading {
+    max-width: 44rem;
+  }
+
+  .research-page__figure {
+    max-width: none;
+    margin: 0 0 3.75rem;
+  }
+
+  .research-page__figure-frame {
+    border-radius: calc(var(--home-v2-radius) + 6px);
+  }
+
+  .research-page__figure-img {
+    aspect-ratio: 21 / 9;
+  }
+
+  .research-page__figure-caption {
+    max-width: 52ch;
+  }
+
+  .research-page__takes {
+    margin-bottom: 3.75rem;
+  }
+
+  .research-page__takes-list {
+    column-gap: 3rem;
+  }
+
+  .research-page__take {
+    padding: 1.85rem 0;
+  }
+
+  .research-page__product {
+    max-width: none;
+    margin-bottom: 3.75rem;
+  }
+
+  .research-page__product-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+    gap: 1.75rem 2.75rem;
+    align-items: start;
+    padding: 2.35rem 0;
+  }
+
+  .research-page__product-copy {
+    padding-top: 0.35rem;
+  }
+
+  .research-page__product-media {
+    max-width: none;
+    width: 100%;
+  }
+
+  .research-page__product-item-body {
+    max-width: 48ch;
+  }
+
+  .research-page__closing {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem 3.5rem;
+    align-items: start;
+    margin: 0 0 0.5rem;
+  }
+
+  .research-page__closing .research-page__limits {
+    max-width: none;
+    margin: 0;
+  }
+
+  .research-page__closing .research-page__limits p {
+    max-width: 52ch;
+  }
+
+  .research-page__closing .research-page__refs {
+    max-width: none;
+    margin: 0;
+    padding: 0 0 0 2.5rem;
+    border-top: 0;
+    border-left: 1px solid var(--home-v2-hairline);
+  }
+
+  .research-page__disclaimer,
+  .research-page__cta {
+    max-width: 44rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .research-page__masthead {
+    gap: 2.5rem 4.5rem;
+  }
+
+  .research-page__product-item {
+    grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 26rem);
+    gap: 2rem 3.5rem;
+  }
+}
+
 @media (max-width: 720px) {
   .research-page__article {
     padding: 1rem 0 2.5rem;
   }
 
-  .research-page__header {
+  .research-page__masthead {
     margin-bottom: 2rem;
+  }
+
+  .research-page__header {
+    margin-bottom: 1.5rem;
     padding-bottom: 1.35rem;
+  }
+
+  .research-page__pullquote {
+    margin-bottom: 0;
   }
 
   .research-page__title {
