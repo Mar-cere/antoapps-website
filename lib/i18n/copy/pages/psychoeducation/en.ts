@@ -114,25 +114,25 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Cognitive distortions: spot them and question them | Anto',
       description:
-        'What cognitive distortions are, common examples (catastrophising, all-or-nothing, mind reading), and a short exercise to question them. Practical psychoeducation with a link to the fuller CBT frame. Does not replace professional care.',
+        'What cognitive distortions are, everyday examples (catastrophising, all-or-nothing, mind reading), and a short exercise to look at them closely. Practical psychoeducation with a link to the fuller CBT frame. Does not replace professional care.',
       openGraphTitle: 'Cognitive distortions — recognise and question',
       openGraphDescription:
-        'Thinking patterns that amplify distress, everyday examples, and a step-by-step to create distance — plus the path to the fuller CBT frame.',
+        'When the mind jumps to conclusions: everyday examples, a step-by-step to create distance, and the path to the fuller CBT frame.',
       keywords:
         'cognitive distortions, automatic thoughts, catastrophising, all-or-nothing, mind reading, reframing, CBT, ABC technique, psychoeducation, Anto',
     },
     hero: {
       title: 'Cognitive distortions',
       subtitle:
-        'Thinking patterns that amplify distress. Naming them is the first step to questioning them calmly — without forced optimism.',
+        'Those mental shortcuts that turn a silence into a verdict. Naming them helps you not believe them instantly — without forcing yourself to “think positive.”',
     },
     pullQuote:
-      'A thought is not a verdict. Sometimes it is a shortcut under stress — useful for surviving the moment, unreliable as a map of the day.',
+      'Sometimes the mind is not entirely wrong. It just exaggerates. And in that exaggeration, the rest of the day slips away.',
     figure: {
-      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
-      alt: 'Evening light in a quiet room with space to write — a moment to look closely at a thought',
+      src: '/assets/images/editorial/anto-editorial-thought-loop.webp',
+      alt: 'Person at a table by the window, phone open to an unanswered message, coffee and notebook — the moment the mind starts filling the silence',
       caption:
-        'Writing the thought exactly as it appears already creates a little air between what you feel and what you treat as fact.',
+        'An unanswered message. The fact is one thing. The story we invent on top is often another.',
       width: 1536,
       height: 1024,
     },
@@ -140,121 +140,121 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'What they are',
         paragraphs: [
-          'Cognitive distortions are habitual mental shortcuts that skew how we interpret events — often toward the catastrophic, rigid, or personal. They do not mean you “think badly” as a person: they are learned responses under stress, fatigue, or difficult experiences.',
-          'In CBT, naming a distortion creates distance: “this sounds like catastrophising” instead of assuming the thought is a fact. The goal is not to silence the mind; it is to regain room to choose what you do next.',
+          'Cognitive distortions are shortcuts the mind takes under stress, fatigue, or fear. They do not mean you “think badly”: they are habits. Useful for surviving an intense moment; unreliable as a map of the day.',
+          'In practice, naming one already changes something: “this sounds like catastrophising” instead of “that’s just how it is.” The point is not to silence the mind. It is to gain a little air before you decide what to do.',
         ],
       },
       {
         heading: 'How they feel',
         paragraphs: [
-          'Before labelling, it helps to notice the signal: the body tenses, emotion rises fast, and the thought arrives as a closed conclusion — not as a hypothesis.',
+          'Before you put a name on it, there is usually a signal: the body tenses, emotion rises fast, and the thought arrives closed — as if it were already true.',
         ],
         bullets: [
-          'Urgency to believe the thought instantly (“it is already true”).',
-          'Absolute language: always, never, everyone, impossible.',
-          'High emotion (anxiety, shame, anger) before evidence has been checked.',
-          'Impulse to avoid, check, or seek certainty to lower intensity.',
+          'The urge to believe it instantly (“that’s it, it’s true”).',
+          'Absolute words: always, never, everyone, impossible.',
+          'Anxiety, shame, or anger that arrive before you check the facts.',
+          'The impulse to check, avoid, or seek certainty to come down a little.',
         ],
       },
       {
-        heading: 'Common examples',
+        heading: 'Everyday examples',
         paragraphs: [
-          'You do not need a long memorised list. It helps to recognise the ones that show up most in your day:',
+          'You do not need a long list memorised. It helps to recognise the ones that keep showing up for you:',
         ],
         bullets: [
           'All-or-nothing: “if it is not perfect, it is a total failure.”',
-          'Catastrophising: “if I mess up the meeting, I will ruin my career.”',
-          'Mind reading: “they surely think I am boring.”',
-          'Mental filter: only remembering the negative parts of a mixed day.',
-          'Personalisation: blaming yourself for events outside your control.',
-          'Should statements: “I should handle everything without help.”',
+          'Catastrophising: “if I mess up the meeting, my career is over.”',
+          'Mind reading: “they surely think I am a drag.”',
+          'Mental filter: from a whole day, you only keep what went wrong.',
+          'Personalisation: carrying blame for things you do not control.',
+          'Should statements: “I should handle everything without asking for help.”',
           'Overgeneralisation: one stumble becomes “this always happens to me.”',
         ],
       },
       {
-        heading: 'Exercise: question a thought',
+        heading: 'Exercise: look closely at a thought',
         paragraphs: [
-          'Do this when intensity is in a manageable range. If you are at 8–9/10, first lower arousal (breathing or grounding), then write.',
+          'Do this when you are not at the peak. If you are at 8 or 9, first come down a little (breathe, feet on the floor, a bit of grounding) and only then write.',
         ],
         ordered: true,
         bullets: [
-          'Write the automatic thought exactly as it appears — without editing it.',
+          'Write the thought exactly as it appears — without editing or “fixing” it.',
           'Give it a tentative name (catastrophising, all-or-nothing, mind reading…).',
-          'Rate the emotion from 0 to 10.',
-          'List evidence for and against, as if helping a friend.',
-          'Write a more balanced wording and a small action if needed.',
+          'Rate how you feel from 0 to 10.',
+          'Note what evidence there is for and against, as if helping a friend.',
+          'Write a more balanced version and, if it fits, a small action.',
         ],
       },
       {
         heading: 'What this is not',
         paragraphs: [
-          'Questioning a distortion is not “positive thinking” and does not invalidate what you feel. Sometimes the thought points to a real problem; what distorts is the absolutism or impossible certainty.',
-          'It is also not a diagnosis. Seeing a pattern does not define who you are — it names a cognitive habit you can train with practice and, when needed, professional support.',
+          'Looking at a distortion is not “positive thinking” and does not downplay what you feel. Sometimes the thought points to something real; what twists it is the absolute or impossible certainty.',
+          'It is also not a diagnosis. Seeing a pattern does not say who you are: it says which habit kicked in. And habits can be trained — alone or with help.',
         ],
       },
       {
         heading: 'When to seek help',
         paragraphs: [
-          'Professional assessment is advisable if rigid or catastrophic thoughts persist, clearly impair sleep, work, or relationships, or if rumination leaves you with little room to act.',
-          'If there is suicidal ideation, immediate risk, or you cannot care for yourself: contact emergency services or a crisis line in your country. Anto can detect risk signals and offer resources; it does not replace emergency care.',
+          'It is worth talking to a professional if these loops will not loosen, they take sleep, work, or the wish to be with people, or if rumination leaves you with no room to act.',
+          'If there are thoughts of harming yourself, immediate risk, or you cannot care for yourself: seek emergency services or a crisis line in your country. Anto can offer resources; it does not replace those services.',
         ],
       },
     ],
     productMoment: {
       title: 'How it looks in Anto',
-      body: 'When a thought presents itself as fact, you can write it down and get a question that opens evidence — without pressure to “fix everything.”',
-      afterHeading: 'Exercise: question a thought',
+      body: 'When the mind fills a silence with the worst story, you can write it exactly as it is and get a question that opens another reading — without pressure to “fix everything.”',
+      afterHeading: 'Exercise: look closely at a thought',
       chat: {
-        ariaLabel: 'Example Anto conversation when noticing a cognitive distortion',
+        ariaLabel: 'Example Anto conversation when a message goes unanswered',
         messages: [
           {
             role: 'user',
-            text: 'If this goes wrong in the meeting, it is over. They will never take me seriously again.',
+            text: 'I texted three hours ago. No reply. They must already regret making plans.',
           },
           {
             role: 'anto',
-            text: 'That sounds intense — and absolute. Does it feel like a mix of catastrophising and all-or-nothing?',
+            text: 'Waiting like that hurts. Is it that they have not answered, or are you already sure what they think?',
           },
           {
             role: 'user',
-            text: 'Yes. It feels like a fact, not a possibility.',
+            text: 'I don’t know. It sounds over the top when I say it… but I feel it.',
           },
           {
             role: 'anto',
-            text: 'Let’s write the thought exactly as it is. Then we can look at evidence for and against — without forced optimism.',
+            text: 'That alone is useful. Let’s write the thought exactly as it is — then we can see if another reading is possible.',
           },
         ],
       },
       suggestionsLabel: 'Suggestions',
-      suggestions: ['Question the thought', 'ABC technique'],
+      suggestions: ['Look closely at the thought', 'Separate fact from story'],
     },
     furtherReading: {
       title: 'Go deeper',
       support:
-        'This page is practical and brief. If you want the broader frame — how thoughts, emotions, and behaviours connect — start here:',
+        'This page is practical and brief. If you want the broader frame — how thoughts, emotions, and what you do connect — start here:',
       links: [
         {
           label: 'What is CBT (fuller frame)',
           description:
-            'Cognitive-behavioural model: automatic thoughts, emotions, behaviours, and why questioning interpretations helps.',
+            'How thoughts, emotions, and behaviours relate, and why it helps to question what we take as certain.',
           href: '/recursos/que-es-tcc',
         },
         {
           label: 'ABC technique',
           description:
-            'Situational record: Activating event → Belief → Consequence, to separate facts from interpretations.',
+            'A simple record: what happened → what you told yourself → what you felt and did.',
           href: '/recursos/tecnica-abc',
         },
         {
           label: 'Anxiety and worry',
           description:
-            'Map of arousal, avoidance, and interventions when catastrophic thinking comes with high arousal.',
+            'When catastrophic thinking comes with a racing body: map and interventions.',
           href: '/recursos/ansiedad-y-preocupacion',
         },
         {
           label: 'Evidence that informs Anto',
           description:
-            'How we read CBT, scales, and digital mental health — and what we do not claim. APA citations with DOIs.',
+            'How we read CBT, scales, and digital mental health — and what we do not claim.',
           href: '/investigacion',
         },
       ],
@@ -262,7 +262,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     references: {
       title: 'References (APA)',
       support:
-        'Classic CBT sources that support work with automatic thoughts and distortions. They do not replace individual clinical assessment.',
+        'Classic CBT sources on automatic thoughts and distortions. They do not replace a personal assessment.',
       items: [
         {
           apa: 'Beck, A. T. (1976). Cognitive therapy and the emotional disorders. International Universities Press.',
@@ -288,16 +288,16 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       'If you want company looking closely at a thought — without pressure — you can continue on your phone.',
     cta: { label: 'Support in Anto →', path: '/bienvenida' },
     howTo: {
-      name: 'Question an automatic thought',
+      name: 'Look closely at a thought',
       description:
-        'Short exercise to name a cognitive distortion, review evidence, and write a more balanced alternative.',
+        'Short exercise to name an automatic thought, review evidence, and write a more balanced version.',
       totalTime: 'PT10M',
       steps: [
         'Write the automatic thought exactly as it appears.',
         'Give it a tentative name (catastrophising, all-or-nothing, etc.).',
-        'Rate the emotion from 0 to 10.',
+        'Rate how you feel from 0 to 10.',
         'List evidence for and against.',
-        'Write a more balanced wording and a small action if needed.',
+        'Write a more balanced version and a small action if needed.',
       ],
     },
   },

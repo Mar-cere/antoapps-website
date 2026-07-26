@@ -4,6 +4,7 @@ export const EDITORIAL_IMAGE_PATHS = {
   evening: '/assets/images/editorial/anto-editorial-hero-evening.webp',
   deskRain: '/assets/images/editorial/anto-editorial-desk-rain.webp',
   morningPause: '/assets/images/editorial/anto-editorial-morning-pause.webp',
+  thoughtLoop: '/assets/images/editorial/anto-editorial-thought-loop.webp',
 } as const;
 
 export type EditorialImageKey = keyof typeof EDITORIAL_IMAGE_PATHS;

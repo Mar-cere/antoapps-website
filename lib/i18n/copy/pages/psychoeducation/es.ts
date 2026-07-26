@@ -114,25 +114,25 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Distorsiones cognitivas: reconocerlas y cuestionarlas | Anto',
       description:
-        'Qué son las distorsiones cognitivas, ejemplos frecuentes (catastrofismo, todo o nada, lectura de mente) y un ejercicio breve para cuestionarlas. Psicoeducación práctica con enlace al marco TCC. No sustituye atención profesional.',
+        'Qué son las distorsiones cognitivas, ejemplos del día a día (catastrofismo, todo o nada, lectura de mente) y un ejercicio breve para mirarlas de cerca. Psicoeducación práctica con enlace al marco TCC. No sustituye atención profesional.',
       openGraphTitle: 'Distorsiones cognitivas — reconocer y cuestionar',
       openGraphDescription:
-        'Patrones de pensamiento que amplifican el malestar, ejemplos cotidianos y un paso a paso para crear distancia — más el camino al marco TCC completo.',
+        'Cuando la mente salta a conclusiones: ejemplos cotidianos, un paso a paso para crear distancia y el camino al marco TCC.',
       keywords:
         'distorsiones cognitivas, pensamientos automáticos, catastrofismo, todo o nada, lectura de mente, reformulación, TCC, técnica ABC, psicoeducación, Anto',
     },
     hero: {
       title: 'Distorsiones cognitivas',
       subtitle:
-        'Patrones de pensamiento que amplifican el malestar. Nombrarlos es el primer paso para cuestionarlos con calma — sin forzar optimismo.',
+        'Esos atajos mentales que hacen que un silencio se sienta como un veredicto. Nombrarlos ayuda a no creerlos al instante — sin obligarte a “pensar positivo”.',
     },
     pullQuote:
-      'El pensamiento no es un veredicto. A veces es un atajo bajo estrés — útil para sobrevivir el momento, poco fiable como mapa del día.',
+      'A veces la mente no miente del todo. Solo exagera. Y en esa exageración se te va el resto del día.',
     figure: {
-      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
-      alt: 'Atardecer en una habitación con luz cálida y un espacio quieto para escribir — momento para mirar un pensamiento de cerca',
+      src: '/assets/images/editorial/anto-editorial-thought-loop.webp',
+      alt: 'Persona en una mesa junto a la ventana, con el teléfono abierto a un mensaje sin respuesta, café y cuaderno — el momento en que la mente empieza a llenar el silencio',
       caption:
-        'Escribir el pensamiento tal cual aparece ya crea un poco de aire entre lo que sientes y lo que das por cierto.',
+        'Un mensaje sin contestar. El hecho es uno. La historia que inventamos encima suele ser otra.',
       width: 1536,
       height: 1024,
     },
@@ -140,121 +140,121 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Qué son',
         paragraphs: [
-          'Las distorsiones cognitivas son atajos mentales habituales que sesgan la interpretación de los hechos — a menudo hacia lo catastrófico, rígido o personal. No significan que «pienses mal» como persona: son respuestas aprendidas bajo estrés, cansancio o experiencias difíciles.',
-          'En terapia cognitivo-conductual, nombrar una distorsión ayuda a crear distancia: «esto suena a catastrofismo» en lugar de asumir que el pensamiento es un hecho. El objetivo no es silenciar la mente; es recuperar margen para elegir qué haces después.',
+          'Las distorsiones cognitivas son atajos que la mente toma bajo estrés, cansancio o miedo. No significan que “pienses mal”: son hábitos. Útiles para sobrevivir un momento intenso; poco fiables como mapa del día.',
+          'En la práctica, nombrar uno ya cambia algo: “esto suena a catastrofismo” en vez de “así son las cosas”. No se trata de silenciar la mente. Se trata de ganar un poco de aire antes de decidir qué haces.',
         ],
       },
       {
         heading: 'Cómo se sienten',
         paragraphs: [
-          'Antes de etiquetar, ayuda notar la señal: el cuerpo se tensa, la emoción sube rápido y el pensamiento llega como conclusión cerrada — no como hipótesis.',
+          'Antes de ponerle nombre, suele haber una señal: el cuerpo se tensa, la emoción sube rápido y el pensamiento llega cerrado, como si ya fuera verdad.',
         ],
         bullets: [
-          'Urgencia de creer el pensamiento al instante («ya está, es cierto»).',
-          'Lenguaje absoluto: siempre, nunca, todo el mundo, imposible.',
-          'Emoción alta (ansiedad, vergüenza, rabia) que llega antes de haber revisado evidencia.',
-          'Impulso a evitar, revisar o pedir certeza para bajar la intensidad.',
+          'Ganas de creerlo al instante (“ya está, es así”).',
+          'Palabras absolutas: siempre, nunca, todo el mundo, imposible.',
+          'Ansiedad, vergüenza o rabia que llegan antes de mirar los hechos.',
+          'Impulso de revisar, evitar o pedir certeza para bajar un poco.',
         ],
       },
       {
-        heading: 'Ejemplos frecuentes',
+        heading: 'Ejemplos del día a día',
         paragraphs: [
-          'No hace falta memorizar una lista larga. Conviene reconocer las que más se repiten en tu día:',
+          'No hace falta memorizar una lista. Conviene reconocer las que más se te repiten:',
         ],
         bullets: [
           'Todo o nada: «si no sale perfecto, es un fracaso total».',
-          'Catastrofismo: «si me equivoco en la reunión, perderé mi carrera».',
-          'Lectura de mente: «seguro piensan que soy aburrido/a».',
-          'Filtro mental: solo recuerdas lo negativo de un día mixto.',
-          'Personalización: asumir culpa por eventos fuera de tu control.',
-          'Deberías: «debería poder con todo sin ayuda».',
-          'Sobregeneralización: un tropiezo se convierte en «siempre me pasa».',
+          'Catastrofismo: «si me equivoco en la reunión, se acabó mi carrera».',
+          'Lectura de mente: «seguro piensa que soy un pesado».',
+          'Filtro mental: del día entero solo te quedas con lo que salió mal.',
+          'Personalización: cargar con culpa por cosas que no controlas.',
+          'Deberías: «debería poder con todo sin pedir ayuda».',
+          'Sobregeneralización: un tropiezo se vuelve «siempre me pasa».',
         ],
       },
       {
-        heading: 'Ejercicio: cuestionar un pensamiento',
+        heading: 'Ejercicio: mirar un pensamiento de cerca',
         paragraphs: [
-          'Hazlo cuando la intensidad esté en un rango manejable. Si estás en 8–9/10, primero baja la arousal (respiración o grounding) y recién después escribe.',
+          'Hazlo cuando no estés en el pico. Si estás en 8 o 9, primero baja un poco (respirar, pies en el suelo, un poco de grounding) y recién después escribe.',
         ],
         ordered: true,
         bullets: [
-          'Escribe el pensamiento automático tal como aparece — sin editarlo.',
+          'Escribe el pensamiento tal cual aparece — sin editarlo ni “arreglarlo”.',
           'Ponle un nombre tentativo (catastrofismo, todo o nada, lectura de mente…).',
-          'Puntúa la emoción del 0 al 10.',
-          'Lista evidencia a favor y en contra, como si ayudaras a un amigo.',
-          'Escribe una formulación más equilibrada y una acción pequeña si hace falta.',
+          'Puntúa cómo te sientes del 0 al 10.',
+          'Anota qué evidencia hay a favor y en contra, como si ayudaras a un amigo.',
+          'Escribe una versión más equilibrada y, si cabe, una acción pequeña.',
         ],
       },
       {
         heading: 'Qué no es esto',
         paragraphs: [
-          'Cuestionar una distorsión no es «pensar positivo» ni invalidar lo que sientes. A veces el pensamiento apunta a un problema real; lo que distorsiona es el absolutismo o la certeza imposible.',
-          'Tampoco es un diagnóstico. Ver un patrón no define quién eres — define un hábito cognitivo que se puede entrenar con práctica y, si hace falta, con acompañamiento profesional.',
+          'Mirar una distorsión no es “pensar positivo” ni restarle importancia a lo que sientes. A veces el pensamiento apunta a algo real; lo que tuerce es el absoluto o la certeza imposible.',
+          'Tampoco es un diagnóstico. Ver un patrón no dice quién eres: dice qué hábito se te activó. Y los hábitos se pueden entrenar — solo o con ayuda.',
         ],
       },
       {
         heading: 'Cuándo pedir ayuda',
         paragraphs: [
-          'Conviene evaluación profesional si los pensamientos rígidos o catastróficos son persistentes, generan deterioro claro en sueño, trabajo o relaciones, o si la rumia te deja sin margen para actuar.',
-          'Ante ideación suicida, riesgo inmediato o incapacidad de cuidarte: contacta emergencias o una línea de crisis de tu país. Anto puede detectar señales de riesgo y ofrecer recursos; no sustituye servicios de emergencia.',
+          'Vale la pena hablar con un profesional si estos bucles no aflojan, te quitan el sueño, el trabajo o las ganas de estar con gente, o si la rumia te deja sin margen para actuar.',
+          'Si hay ideas de hacerte daño, riesgo inmediato o no puedes cuidarte: busca emergencias o una línea de crisis de tu país. Anto puede ofrecer recursos; no reemplaza esos servicios.',
         ],
       },
     ],
     productMoment: {
       title: 'Así se ve en Anto',
-      body: 'Cuando un pensamiento se impone como hecho, puedes escribirlo y recibir una pregunta que abra evidencia — sin presión de «arreglarlo todo».',
-      afterHeading: 'Ejercicio: cuestionar un pensamiento',
+      body: 'Cuando la mente llena un silencio con la peor historia, puedes escribirlo tal cual y recibir una pregunta que abra otra lectura — sin presión de “arreglarlo todo”.',
+      afterHeading: 'Ejercicio: mirar un pensamiento de cerca',
       chat: {
-        ariaLabel: 'Ejemplo de conversación en Anto al notar una distorsión cognitiva',
+        ariaLabel: 'Ejemplo de conversación en Anto cuando un mensaje no tiene respuesta',
         messages: [
           {
             role: 'user',
-            text: 'Si esto sale mal en la reunión, se acabó. Ya no me van a tomar en serio.',
+            text: 'Le escribí hace tres horas. No contesta. Seguro ya se arrepintió de quedar.',
           },
           {
             role: 'anto',
-            text: 'Suena intenso — y absoluto. ¿Te parece que hay un poco de catastrofismo mezclado con todo o nada?',
+            text: 'Duele esperar así. ¿Es que no ha contestado, o ya estás seguro de lo que piensa?',
           },
           {
             role: 'user',
-            text: 'Sí. Lo siento como un hecho, no como una posibilidad.',
+            text: 'No lo sé. Suena exagerado cuando lo digo… pero lo siento.',
           },
           {
             role: 'anto',
-            text: 'Escribamos el pensamiento tal cual. Después miramos evidencia a favor y en contra — sin forzar optimismo.',
+            text: 'Eso ya es un buen dato. Escribamos el pensamiento tal cual — y después miramos si hay otra lectura posible.',
           },
         ],
       },
       suggestionsLabel: 'Sugerencias',
-      suggestions: ['Cuestionar el pensamiento', 'Técnica ABC'],
+      suggestions: ['Mirar el pensamiento de cerca', 'Separar hecho de historia'],
     },
     furtherReading: {
       title: 'Ir más a fondo',
       support:
-        'Esta página es práctica y breve. Si quieres el marco amplio — cómo pensamientos, emociones y conductas se conectan — empieza aquí:',
+        'Esta página es práctica y breve. Si quieres el marco amplio — cómo se conectan pensamientos, emociones y lo que haces — empieza aquí:',
       links: [
         {
           label: 'Qué es la TCC (marco completo)',
           description:
-            'Modelo cognitivo-conductual: pensamientos automáticos, emociones, conductas y por qué cuestionar interpretaciones ayuda.',
+            'Cómo se relacionan pensamientos, emociones y conductas, y por qué ayuda cuestionar lo que damos por cierto.',
           href: '/recursos/que-es-tcc',
         },
         {
           label: 'Técnica ABC',
           description:
-            'Registro situacional: Activating event → Belief → Consequence, para separar hechos de interpretaciones.',
+            'Un registro simple: qué pasó → qué te dijiste → qué sentiste y hiciste.',
           href: '/recursos/tecnica-abc',
         },
         {
           label: 'Ansiedad y preocupación',
           description:
-            'Mapa de activación, evitación y intervenciones cuando el pensamiento catastrófico viene con arousal alto.',
+            'Cuando el pensamiento catastrófico viene con el cuerpo acelerado: mapa e intervenciones.',
           href: '/recursos/ansiedad-y-preocupacion',
         },
         {
           label: 'Evidencia que informa Anto',
           description:
-            'Cómo leemos TCC, escalas y salud mental digital — y qué no afirmamos. Citas APA con DOI.',
+            'Cómo leemos TCC, escalas y salud mental digital — y qué no afirmamos.',
           href: '/investigacion',
         },
       ],
@@ -262,7 +262,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     references: {
       title: 'Referencias (APA)',
       support:
-        'Fuentes clásicas de TCC que sustentan el trabajo con pensamientos automáticos y distorsiones. No sustituyen evaluación clínica individual.',
+        'Fuentes clásicas de TCC sobre pensamientos automáticos y distorsiones. No sustituyen una evaluación personal.',
       items: [
         {
           apa: 'Beck, A. T. (1976). Cognitive therapy and the emotional disorders. International Universities Press.',
@@ -288,16 +288,16 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       'Si quieres compañía para mirar un pensamiento de cerca — sin presión — puedes seguir en el teléfono.',
     cta: { label: 'Apoyo en Anto →', path: '/bienvenida' },
     howTo: {
-      name: 'Cuestionar un pensamiento automático',
+      name: 'Mirar un pensamiento de cerca',
       description:
-        'Ejercicio breve para nombrar una distorsión cognitiva, revisar evidencia y formular una alternativa más equilibrada.',
+        'Ejercicio breve para nombrar un pensamiento automático, revisar evidencia y escribir una versión más equilibrada.',
       totalTime: 'PT10M',
       steps: [
         'Escribe el pensamiento automático tal como aparece.',
         'Ponle un nombre tentativo (catastrofismo, todo o nada, etc.).',
-        'Puntúa la emoción del 0 al 10.',
+        'Puntúa cómo te sientes del 0 al 10.',
         'Lista evidencia a favor y en contra.',
-        'Escribe una formulación más equilibrada y una acción pequeña si hace falta.',
+        'Escribe una versión más equilibrada y una acción pequeña si hace falta.',
       ],
     },
   },
