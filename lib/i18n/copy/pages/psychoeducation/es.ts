@@ -72,6 +72,37 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         ],
       },
     ],
+    furtherReading: {
+      title: 'Ir más a fondo',
+      support:
+        'Este texto es el marco amplio. Para patrones de pensamiento concretos o un registro situacional, sigue aquí:',
+      links: [
+        {
+          label: 'Distorsiones cognitivas',
+          description:
+            'Ejemplos frecuentes (catastrofismo, todo o nada, lectura de mente) y un ejercicio para cuestionarlas.',
+          href: '/recursos/distorsiones-cognitivas',
+        },
+        {
+          label: 'Técnica ABC',
+          description:
+            'Registro situacional: Activating event → Belief → Consequence.',
+          href: '/recursos/tecnica-abc',
+        },
+        {
+          label: 'Ansiedad y preocupación',
+          description:
+            'Mapa de activación, evitación e intervenciones con base en TCC.',
+          href: '/recursos/ansiedad-y-preocupacion',
+        },
+        {
+          label: 'Evidencia que informa Anto',
+          description:
+            'Cómo leemos TCC, escalas y salud mental digital — y qué no afirmamos.',
+          href: '/investigacion',
+        },
+      ],
+    },
     relatedSlugs: [SLUGS.distortions, SLUGS.abc, SLUGS.anxiety],
     disclaimer:
       'Esta guía es material de psicoeducación y no constituye diagnóstico ni tratamiento. Si tus síntomas son intensos o persistentes, consulta con un profesional de salud mental.',
@@ -79,56 +110,196 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   },
   [SLUGS.distortions]: {
     slug: SLUGS.distortions,
-    readingMinutes: 8,
+    readingMinutes: 9,
     meta: {
-      title: 'Distorsiones cognitivas: guía con ejemplos | Anto',
+      title: 'Distorsiones cognitivas: reconocerlas y cuestionarlas | Anto',
       description:
-        'Qué son las distorsiones cognitivas, ejemplos frecuentes (catastrofismo, todo o nada, lectura de mente) y cómo empezar a cuestionarlas. Psicoeducación; no sustituye atención profesional.',
-      openGraphTitle: 'Distorsiones cognitivas — guía breve',
-      openGraphDescription: 'Aprende a reconocer patrones de pensamiento poco útiles y qué hacer cuando aparecen.',
+        'Qué son las distorsiones cognitivas, ejemplos frecuentes (catastrofismo, todo o nada, lectura de mente) y un ejercicio breve para cuestionarlas. Psicoeducación práctica con enlace al marco TCC. No sustituye atención profesional.',
+      openGraphTitle: 'Distorsiones cognitivas — reconocer y cuestionar',
+      openGraphDescription:
+        'Patrones de pensamiento que amplifican el malestar, ejemplos cotidianos y un paso a paso para crear distancia — más el camino al marco TCC completo.',
+      keywords:
+        'distorsiones cognitivas, pensamientos automáticos, catastrofismo, todo o nada, lectura de mente, reformulación, TCC, técnica ABC, psicoeducación, Anto',
     },
     hero: {
-      title: 'Distorsiones cognitivas: qué son y cómo reconocerlas',
+      title: 'Distorsiones cognitivas',
       subtitle:
-        'Patrones de pensamiento que amplifican el malestar. Identificarlos es el primer paso para cuestionarlos con calma.',
+        'Patrones de pensamiento que amplifican el malestar. Nombrarlos es el primer paso para cuestionarlos con calma — sin forzar optimismo.',
+    },
+    pullQuote:
+      'El pensamiento no es un veredicto. A veces es un atajo bajo estrés — útil para sobrevivir el momento, poco fiable como mapa del día.',
+    figure: {
+      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
+      alt: 'Atardecer en una habitación con luz cálida y un espacio quieto para escribir — momento para mirar un pensamiento de cerca',
+      caption:
+        'Escribir el pensamiento tal cual aparece ya crea un poco de aire entre lo que sientes y lo que das por cierto.',
+      width: 1536,
+      height: 1024,
     },
     sections: [
       {
-        heading: 'Definición',
+        heading: 'Qué son',
         paragraphs: [
-          'Las distorsiones cognitivas son atajos mentales habituales que distorsionan la realidad de forma pessimista o rígida. No significan que «pienses mal» como persona: son respuestas aprendidas bajo estrés, cansancio o experiencias difíciles.',
-          'En terapia cognitivo-conductual, nombrar una distorsión ayuda a crear distancia: «esto suena a catastrofismo» en lugar de asumir que el pensamiento es un hecho.',
+          'Las distorsiones cognitivas son atajos mentales habituales que sesgan la interpretación de los hechos — a menudo hacia lo catastrófico, rígido o personal. No significan que «pienses mal» como persona: son respuestas aprendidas bajo estrés, cansancio o experiencias difíciles.',
+          'En terapia cognitivo-conductual, nombrar una distorsión ayuda a crear distancia: «esto suena a catastrofismo» en lugar de asumir que el pensamiento es un hecho. El objetivo no es silenciar la mente; es recuperar margen para elegir qué haces después.',
+        ],
+      },
+      {
+        heading: 'Cómo se sienten',
+        paragraphs: [
+          'Antes de etiquetar, ayuda notar la señal: el cuerpo se tensa, la emoción sube rápido y el pensamiento llega como conclusión cerrada — no como hipótesis.',
+        ],
+        bullets: [
+          'Urgencia de creer el pensamiento al instante («ya está, es cierto»).',
+          'Lenguaje absoluto: siempre, nunca, todo el mundo, imposible.',
+          'Emoción alta (ansiedad, vergüenza, rabia) que llega antes de haber revisado evidencia.',
+          'Impulso a evitar, revisar o pedir certeza para bajar la intensidad.',
         ],
       },
       {
         heading: 'Ejemplos frecuentes',
+        paragraphs: [
+          'No hace falta memorizar una lista larga. Conviene reconocer las que más se repiten en tu día:',
+        ],
         bullets: [
-          'Todo o nada: «si no sale perfecto, es un fracaso total»',
-          'Catastrofismo: «si me equivoco en la reunión, perderé mi carrera»',
-          'Lectura de mente: «seguro piensan que soy aburrido/a»',
-          'Filtro mental: solo recuerdas lo negativo de un día mixto',
-          'Personalización: asumir culpa por eventos fuera de tu control',
-          'Deberías: «debería poder con todo sin ayuda»',
+          'Todo o nada: «si no sale perfecto, es un fracaso total».',
+          'Catastrofismo: «si me equivoco en la reunión, perderé mi carrera».',
+          'Lectura de mente: «seguro piensan que soy aburrido/a».',
+          'Filtro mental: solo recuerdas lo negativo de un día mixto.',
+          'Personalización: asumir culpa por eventos fuera de tu control.',
+          'Deberías: «debería poder con todo sin ayuda».',
+          'Sobregeneralización: un tropiezo se convierte en «siempre me pasa».',
         ],
       },
       {
-        heading: 'Qué hacer cuando aparecen',
+        heading: 'Ejercicio: cuestionar un pensamiento',
         paragraphs: [
-          'Primero, baja la intensidad: respira, escribe el pensamiento tal como aparece y puntúa la emoción del 0 al 10. Luego pregúntate: ¿qué evidencia tengo a favor y en contra? ¿Qué le diría a un amigo en la misma situación?',
-          'El objetivo no es forzar optimismo, sino encontrar una formulación más equilibrada y una acción pequeña si hace falta.',
+          'Hazlo cuando la intensidad esté en un rango manejable. Si estás en 8–9/10, primero baja la arousal (respiración o grounding) y recién después escribe.',
+        ],
+        ordered: true,
+        bullets: [
+          'Escribe el pensamiento automático tal como aparece — sin editarlo.',
+          'Ponle un nombre tentativo (catastrofismo, todo o nada, lectura de mente…).',
+          'Puntúa la emoción del 0 al 10.',
+          'Lista evidencia a favor y en contra, como si ayudaras a un amigo.',
+          'Escribe una formulación más equilibrada y una acción pequeña si hace falta.',
         ],
       },
       {
-        heading: 'En la app Anto',
+        heading: 'Qué no es esto',
         paragraphs: [
-          'Anto puede detectar distorsiones cognitivas durante el chat y sugerir reformulaciones o técnicas relacionadas. También puedes explorarlas en el hub de técnicas y conectarlas con tu grafo de insights para ver qué patrones se repiten.',
+          'Cuestionar una distorsión no es «pensar positivo» ni invalidar lo que sientes. A veces el pensamiento apunta a un problema real; lo que distorsiona es el absolutismo o la certeza imposible.',
+          'Tampoco es un diagnóstico. Ver un patrón no define quién eres — define un hábito cognitivo que se puede entrenar con práctica y, si hace falta, con acompañamiento profesional.',
+        ],
+      },
+      {
+        heading: 'Cuándo pedir ayuda',
+        paragraphs: [
+          'Conviene evaluación profesional si los pensamientos rígidos o catastróficos son persistentes, generan deterioro claro en sueño, trabajo o relaciones, o si la rumia te deja sin margen para actuar.',
+          'Ante ideación suicida, riesgo inmediato o incapacidad de cuidarte: contacta emergencias o una línea de crisis de tu país. Anto puede detectar señales de riesgo y ofrecer recursos; no sustituye servicios de emergencia.',
         ],
       },
     ],
+    productMoment: {
+      title: 'Así se ve en Anto',
+      body: 'Cuando un pensamiento se impone como hecho, puedes escribirlo y recibir una pregunta que abra evidencia — sin presión de «arreglarlo todo».',
+      afterHeading: 'Ejercicio: cuestionar un pensamiento',
+      chat: {
+        ariaLabel: 'Ejemplo de conversación en Anto al notar una distorsión cognitiva',
+        messages: [
+          {
+            role: 'user',
+            text: 'Si esto sale mal en la reunión, se acabó. Ya no me van a tomar en serio.',
+          },
+          {
+            role: 'anto',
+            text: 'Suena intenso — y absoluto. ¿Te parece que hay un poco de catastrofismo mezclado con todo o nada?',
+          },
+          {
+            role: 'user',
+            text: 'Sí. Lo siento como un hecho, no como una posibilidad.',
+          },
+          {
+            role: 'anto',
+            text: 'Escribamos el pensamiento tal cual. Después miramos evidencia a favor y en contra — sin forzar optimismo.',
+          },
+        ],
+      },
+      suggestionsLabel: 'Sugerencias',
+      suggestions: ['Cuestionar el pensamiento', 'Técnica ABC'],
+    },
+    furtherReading: {
+      title: 'Ir más a fondo',
+      support:
+        'Esta página es práctica y breve. Si quieres el marco amplio — cómo pensamientos, emociones y conductas se conectan — empieza aquí:',
+      links: [
+        {
+          label: 'Qué es la TCC (marco completo)',
+          description:
+            'Modelo cognitivo-conductual: pensamientos automáticos, emociones, conductas y por qué cuestionar interpretaciones ayuda.',
+          href: '/recursos/que-es-tcc',
+        },
+        {
+          label: 'Técnica ABC',
+          description:
+            'Registro situacional: Activating event → Belief → Consequence, para separar hechos de interpretaciones.',
+          href: '/recursos/tecnica-abc',
+        },
+        {
+          label: 'Ansiedad y preocupación',
+          description:
+            'Mapa de activación, evitación y intervenciones cuando el pensamiento catastrófico viene con arousal alto.',
+          href: '/recursos/ansiedad-y-preocupacion',
+        },
+        {
+          label: 'Evidencia que informa Anto',
+          description:
+            'Cómo leemos TCC, escalas y salud mental digital — y qué no afirmamos. Citas APA con DOI.',
+          href: '/investigacion',
+        },
+      ],
+    },
+    references: {
+      title: 'Referencias (APA)',
+      support:
+        'Fuentes clásicas de TCC que sustentan el trabajo con pensamientos automáticos y distorsiones. No sustituyen evaluación clínica individual.',
+      items: [
+        {
+          apa: 'Beck, A. T. (1976). Cognitive therapy and the emotional disorders. International Universities Press.',
+          href: 'https://openlibrary.org/works/OL457087W/Cognitive_Therapy_and_the_Emotional_Disorders',
+          note: 'Marco fundacional de la terapia cognitiva y el papel de las interpretaciones en el malestar emocional.',
+        },
+        {
+          apa: 'Beck, J. S. (2020). Cognitive behavior therapy: Basics and beyond (3rd ed.). Guilford Press.',
+          href: 'https://www.guilford.com/books/Cognitive-Behavior-Therapy/Judith-Beck/9781462544196',
+          note: 'Manual clínico de TCC: identificación de pensamientos automáticos y reestructuración cognitiva.',
+        },
+        {
+          apa: 'Burns, D. D. (1999). The feeling good handbook (Rev. ed.). Plume.',
+          href: 'https://www.penguinrandomhouse.com/books/322160/the-feeling-good-handbook-by-david-d-burns-md/',
+          note: 'Catálogo accesible de distorsiones cognitivas y ejercicios de cuestionamiento para el lector general.',
+        },
+      ],
+    },
     relatedSlugs: [SLUGS.tcc, SLUGS.abc, SLUGS.anxiety],
     disclaimer:
-      'Material educativo. No sustituye evaluación ni tratamiento profesional. Busca ayuda especializada si el malestar interfiere con tu vida diaria.',
-    cta: { label: 'Explorar el hub de técnicas →', path: '/app' },
+      'Psicoeducación. No diagnostica ni sustituye evaluación o tratamiento clínico. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
+    ctaBridge:
+      'Si quieres compañía para mirar un pensamiento de cerca — sin presión — puedes seguir en el teléfono.',
+    cta: { label: 'Apoyo en Anto →', path: '/bienvenida' },
+    howTo: {
+      name: 'Cuestionar un pensamiento automático',
+      description:
+        'Ejercicio breve para nombrar una distorsión cognitiva, revisar evidencia y formular una alternativa más equilibrada.',
+      totalTime: 'PT10M',
+      steps: [
+        'Escribe el pensamiento automático tal como aparece.',
+        'Ponle un nombre tentativo (catastrofismo, todo o nada, etc.).',
+        'Puntúa la emoción del 0 al 10.',
+        'Lista evidencia a favor y en contra.',
+        'Escribe una formulación más equilibrada y una acción pequeña si hace falta.',
+      ],
+    },
   },
   [SLUGS.abc]: {
     slug: SLUGS.abc,
@@ -369,7 +540,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           label: 'NIMH — Trastornos de ansiedad (español)',
           description:
             'Material clínico público del National Institute of Mental Health (EE. UU.).',
-          href: 'https://www.nimh.nih.gov/health/publications/espanol/trastorno-de-ansiedad-generalizada',
+          href: 'https://www.nimh.nih.gov/health/publications/espanol/trastorno-de-ansiedad-generalizada-cuando-no-se-pueden-controlar-las-preocupaciones-new',
           external: true,
         },
       ],
@@ -995,7 +1166,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           label: 'NIMH — Trastornos de ansiedad (español)',
           description: 'Material clínico público del National Institute of Mental Health (EE. UU.).',
-          href: 'https://www.nimh.nih.gov/health/publications/espanol/trastorno-de-ansiedad-generalizada',
+          href: 'https://www.nimh.nih.gov/health/publications/espanol/trastorno-de-ansiedad-generalizada-cuando-no-se-pueden-controlar-las-preocupaciones-new',
           external: true,
         },
       ],

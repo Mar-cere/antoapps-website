@@ -72,6 +72,37 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         ],
       },
     ],
+    furtherReading: {
+      title: 'Go deeper',
+      support:
+        'This text is the broader frame. For concrete thinking patterns or a situational record, continue here:',
+      links: [
+        {
+          label: 'Cognitive distortions',
+          description:
+            'Common examples (catastrophising, all-or-nothing, mind reading) and an exercise to question them.',
+          href: '/recursos/distorsiones-cognitivas',
+        },
+        {
+          label: 'ABC technique',
+          description:
+            'Situational record: Activating event → Belief → Consequence.',
+          href: '/recursos/tecnica-abc',
+        },
+        {
+          label: 'Anxiety and worry',
+          description:
+            'Map of arousal, avoidance, and CBT-informed interventions.',
+          href: '/recursos/ansiedad-y-preocupacion',
+        },
+        {
+          label: 'Evidence that informs Anto',
+          description:
+            'How we read CBT, scales, and digital mental health — and what we do not claim.',
+          href: '/investigacion',
+        },
+      ],
+    },
     relatedSlugs: [SLUGS.distortions, SLUGS.abc, SLUGS.anxiety],
     disclaimer:
       'This guide is psychoeducation material and is not diagnosis or treatment. If your symptoms are intense or persistent, consult a mental health professional.',
@@ -79,56 +110,196 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   },
   [SLUGS.distortions]: {
     slug: SLUGS.distortions,
-    readingMinutes: 8,
+    readingMinutes: 9,
     meta: {
-      title: 'Cognitive distortions: guide with examples | Anto',
+      title: 'Cognitive distortions: spot them and question them | Anto',
       description:
-        'What cognitive distortions are, common examples (catastrophising, all-or-nothing, mind reading), and how to start questioning them. Psychoeducation; does not replace professional care.',
-      openGraphTitle: 'Cognitive distortions — brief guide',
-      openGraphDescription: 'Learn to recognise unhelpful thinking patterns and what to do when they appear.',
+        'What cognitive distortions are, common examples (catastrophising, all-or-nothing, mind reading), and a short exercise to question them. Practical psychoeducation with a link to the fuller CBT frame. Does not replace professional care.',
+      openGraphTitle: 'Cognitive distortions — recognise and question',
+      openGraphDescription:
+        'Thinking patterns that amplify distress, everyday examples, and a step-by-step to create distance — plus the path to the fuller CBT frame.',
+      keywords:
+        'cognitive distortions, automatic thoughts, catastrophising, all-or-nothing, mind reading, reframing, CBT, ABC technique, psychoeducation, Anto',
     },
     hero: {
-      title: 'Cognitive distortions: what they are and how to spot them',
+      title: 'Cognitive distortions',
       subtitle:
-        'Thinking habits that amplify distress. Naming them is the first step to questioning them calmly.',
+        'Thinking patterns that amplify distress. Naming them is the first step to questioning them calmly — without forced optimism.',
+    },
+    pullQuote:
+      'A thought is not a verdict. Sometimes it is a shortcut under stress — useful for surviving the moment, unreliable as a map of the day.',
+    figure: {
+      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
+      alt: 'Evening light in a quiet room with space to write — a moment to look closely at a thought',
+      caption:
+        'Writing the thought exactly as it appears already creates a little air between what you feel and what you treat as fact.',
+      width: 1536,
+      height: 1024,
     },
     sections: [
       {
-        heading: 'Definition',
+        heading: 'What they are',
         paragraphs: [
-          'Cognitive distortions are habitual mental shortcuts that skew reality in pessimistic or rigid ways. They do not mean you “think badly” as a person: they are learned responses under stress, fatigue, or difficult experiences.',
-          'In CBT, naming a distortion creates distance: “this sounds like catastrophising” instead of assuming the thought is a fact.',
+          'Cognitive distortions are habitual mental shortcuts that skew how we interpret events — often toward the catastrophic, rigid, or personal. They do not mean you “think badly” as a person: they are learned responses under stress, fatigue, or difficult experiences.',
+          'In CBT, naming a distortion creates distance: “this sounds like catastrophising” instead of assuming the thought is a fact. The goal is not to silence the mind; it is to regain room to choose what you do next.',
+        ],
+      },
+      {
+        heading: 'How they feel',
+        paragraphs: [
+          'Before labelling, it helps to notice the signal: the body tenses, emotion rises fast, and the thought arrives as a closed conclusion — not as a hypothesis.',
+        ],
+        bullets: [
+          'Urgency to believe the thought instantly (“it is already true”).',
+          'Absolute language: always, never, everyone, impossible.',
+          'High emotion (anxiety, shame, anger) before evidence has been checked.',
+          'Impulse to avoid, check, or seek certainty to lower intensity.',
         ],
       },
       {
         heading: 'Common examples',
+        paragraphs: [
+          'You do not need a long memorised list. It helps to recognise the ones that show up most in your day:',
+        ],
         bullets: [
-          'All-or-nothing: “if it is not perfect, it is a total failure”',
-          'Catastrophising: “if I mess up the meeting, I will ruin my career”',
-          'Mind reading: “they surely think I am boring”',
-          'Mental filter: only remembering the negative parts of a mixed day',
-          'Personalisation: blaming yourself for events outside your control',
-          'Should statements: “I should handle everything without help”',
+          'All-or-nothing: “if it is not perfect, it is a total failure.”',
+          'Catastrophising: “if I mess up the meeting, I will ruin my career.”',
+          'Mind reading: “they surely think I am boring.”',
+          'Mental filter: only remembering the negative parts of a mixed day.',
+          'Personalisation: blaming yourself for events outside your control.',
+          'Should statements: “I should handle everything without help.”',
+          'Overgeneralisation: one stumble becomes “this always happens to me.”',
         ],
       },
       {
-        heading: 'What to do when they show up',
+        heading: 'Exercise: question a thought',
         paragraphs: [
-          'First, lower intensity: breathe, write the thought as it appears, and rate the emotion 0–10. Then ask: what evidence do I have for and against? What would I tell a friend in the same situation?',
-          'The goal is not forced optimism, but a more balanced wording and a small action if needed.',
+          'Do this when intensity is in a manageable range. If you are at 8–9/10, first lower arousal (breathing or grounding), then write.',
+        ],
+        ordered: true,
+        bullets: [
+          'Write the automatic thought exactly as it appears — without editing it.',
+          'Give it a tentative name (catastrophising, all-or-nothing, mind reading…).',
+          'Rate the emotion from 0 to 10.',
+          'List evidence for and against, as if helping a friend.',
+          'Write a more balanced wording and a small action if needed.',
         ],
       },
       {
-        heading: 'In the Anto app',
+        heading: 'What this is not',
         paragraphs: [
-          'Anto can detect cognitive distortions during chat and suggest reframes or related techniques. You can also explore them in the techniques hub and connect them to your insights graph to see recurring patterns.',
+          'Questioning a distortion is not “positive thinking” and does not invalidate what you feel. Sometimes the thought points to a real problem; what distorts is the absolutism or impossible certainty.',
+          'It is also not a diagnosis. Seeing a pattern does not define who you are — it names a cognitive habit you can train with practice and, when needed, professional support.',
+        ],
+      },
+      {
+        heading: 'When to seek help',
+        paragraphs: [
+          'Professional assessment is advisable if rigid or catastrophic thoughts persist, clearly impair sleep, work, or relationships, or if rumination leaves you with little room to act.',
+          'If there is suicidal ideation, immediate risk, or you cannot care for yourself: contact emergency services or a crisis line in your country. Anto can detect risk signals and offer resources; it does not replace emergency care.',
         ],
       },
     ],
+    productMoment: {
+      title: 'How it looks in Anto',
+      body: 'When a thought presents itself as fact, you can write it down and get a question that opens evidence — without pressure to “fix everything.”',
+      afterHeading: 'Exercise: question a thought',
+      chat: {
+        ariaLabel: 'Example Anto conversation when noticing a cognitive distortion',
+        messages: [
+          {
+            role: 'user',
+            text: 'If this goes wrong in the meeting, it is over. They will never take me seriously again.',
+          },
+          {
+            role: 'anto',
+            text: 'That sounds intense — and absolute. Does it feel like a mix of catastrophising and all-or-nothing?',
+          },
+          {
+            role: 'user',
+            text: 'Yes. It feels like a fact, not a possibility.',
+          },
+          {
+            role: 'anto',
+            text: 'Let’s write the thought exactly as it is. Then we can look at evidence for and against — without forced optimism.',
+          },
+        ],
+      },
+      suggestionsLabel: 'Suggestions',
+      suggestions: ['Question the thought', 'ABC technique'],
+    },
+    furtherReading: {
+      title: 'Go deeper',
+      support:
+        'This page is practical and brief. If you want the broader frame — how thoughts, emotions, and behaviours connect — start here:',
+      links: [
+        {
+          label: 'What is CBT (fuller frame)',
+          description:
+            'Cognitive-behavioural model: automatic thoughts, emotions, behaviours, and why questioning interpretations helps.',
+          href: '/recursos/que-es-tcc',
+        },
+        {
+          label: 'ABC technique',
+          description:
+            'Situational record: Activating event → Belief → Consequence, to separate facts from interpretations.',
+          href: '/recursos/tecnica-abc',
+        },
+        {
+          label: 'Anxiety and worry',
+          description:
+            'Map of arousal, avoidance, and interventions when catastrophic thinking comes with high arousal.',
+          href: '/recursos/ansiedad-y-preocupacion',
+        },
+        {
+          label: 'Evidence that informs Anto',
+          description:
+            'How we read CBT, scales, and digital mental health — and what we do not claim. APA citations with DOIs.',
+          href: '/investigacion',
+        },
+      ],
+    },
+    references: {
+      title: 'References (APA)',
+      support:
+        'Classic CBT sources that support work with automatic thoughts and distortions. They do not replace individual clinical assessment.',
+      items: [
+        {
+          apa: 'Beck, A. T. (1976). Cognitive therapy and the emotional disorders. International Universities Press.',
+          href: 'https://openlibrary.org/works/OL457087W/Cognitive_Therapy_and_the_Emotional_Disorders',
+          note: 'Foundational frame for cognitive therapy and the role of interpretations in emotional distress.',
+        },
+        {
+          apa: 'Beck, J. S. (2020). Cognitive behavior therapy: Basics and beyond (3rd ed.). Guilford Press.',
+          href: 'https://www.guilford.com/books/Cognitive-Behavior-Therapy/Judith-Beck/9781462544196',
+          note: 'Clinical CBT manual: identifying automatic thoughts and cognitive restructuring.',
+        },
+        {
+          apa: 'Burns, D. D. (1999). The feeling good handbook (Rev. ed.). Plume.',
+          href: 'https://www.penguinrandomhouse.com/books/322160/the-feeling-good-handbook-by-david-d-burns-md/',
+          note: 'Accessible catalogue of cognitive distortions and questioning exercises for general readers.',
+        },
+      ],
+    },
     relatedSlugs: [SLUGS.tcc, SLUGS.abc, SLUGS.anxiety],
     disclaimer:
-      'Educational material. Does not replace professional assessment or treatment. Seek specialised help if distress interferes with daily life.',
-    cta: { label: 'Explore the techniques hub →', path: '/app' },
+      'Psychoeducation. Does not diagnose or replace clinical assessment or treatment. If there is suicidal risk or violence, seek local emergency help immediately.',
+    ctaBridge:
+      'If you want company looking closely at a thought — without pressure — you can continue on your phone.',
+    cta: { label: 'Support in Anto →', path: '/bienvenida' },
+    howTo: {
+      name: 'Question an automatic thought',
+      description:
+        'Short exercise to name a cognitive distortion, review evidence, and write a more balanced alternative.',
+      totalTime: 'PT10M',
+      steps: [
+        'Write the automatic thought exactly as it appears.',
+        'Give it a tentative name (catastrophising, all-or-nothing, etc.).',
+        'Rate the emotion from 0 to 10.',
+        'List evidence for and against.',
+        'Write a more balanced wording and a small action if needed.',
+      ],
+    },
   },
   [SLUGS.abc]: {
     slug: SLUGS.abc,
@@ -369,7 +540,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           label: 'NIMH — Anxiety disorders (Spanish)',
           description:
             'Public clinical material from the National Institute of Mental Health (USA).',
-          href: 'https://www.nimh.nih.gov/health/publications/espanol/trastorno-de-ansiedad-generalizada',
+          href: 'https://www.nimh.nih.gov/health/publications/espanol/trastorno-de-ansiedad-generalizada-cuando-no-se-pueden-controlar-las-preocupaciones-new',
           external: true,
         },
       ],
