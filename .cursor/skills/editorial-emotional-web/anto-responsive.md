@@ -44,8 +44,9 @@ No repetir la misma familia en 3+ secciones seguidas.
 ## Canon en el repo
 
 - Ensayo evidencia: `styles/components/research.css`, `components/pages/ResearchPageContent.tsx`
-- Home marketing: `styles/pages/home-v2.css` (shell `--hl-max`)
-- Guías: `styles/components/psychoeducation-article.css` — al tocarlas, alinear con el mismo contrato shell/medida
+- Home marketing: `styles/pages/home-v2.css` (shell `--hl-max`; pricing/FAQ/final-cta recomponen a ≥900px)
+- Guías: `styles/components/psychoeducation-article.css` — mismo contrato shell/medida
+- Biblioteca: `styles/components/resources-library.css`
 
 ## Verificación rápida
 
