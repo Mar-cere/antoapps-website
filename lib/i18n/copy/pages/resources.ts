@@ -104,13 +104,13 @@ export const FEATURED_HUMAN_LABELS: Record<
   es: {
     'grounding-ansiedad-crisis': 'Cuando la ansiedad sube',
     'distorsiones-cognitivas': 'Pensamientos en bucle',
-    'higiene-sueno-salud-mental': 'No puedo dormir',
+    'higiene-sueno-salud-mental': 'Cuando no puedes dormir',
     'que-es-tcc': 'Entender la TCC',
   },
   en: {
     'grounding-ansiedad-crisis': 'When anxiety rises',
     'distorsiones-cognitivas': 'Thoughts in a loop',
-    'higiene-sueno-salud-mental': "I can't sleep",
+    'higiene-sueno-salud-mental': 'When you cannot sleep',
     'que-es-tcc': 'Understanding CBT',
   },
 };

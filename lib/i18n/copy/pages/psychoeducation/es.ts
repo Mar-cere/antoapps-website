@@ -990,13 +990,13 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     pullQuote:
       'A las 3am la mente no inventa problemas nuevos. Solo les pone el volumen más alto.',
     figure: {
-      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
-      alt: 'Persona sentada de espaldas en la cama al anochecer, mirando la ciudad por la ventana — la noche en que el sueño no llega',
+      src: '/assets/images/editorial/anto-editorial-sleepless-night.webp',
+      alt: 'Persona sentada de espaldas en la cama de noche, sábanas revueltas, teléfono aparte en la mesita — la hora en que el sueño no llega',
       caption:
-        'La ciudad sigue. Tú también. El descanso empieza por no pelearte con la cama.',
+        'La cama hecha un lío. El teléfono aparte. A veces el primer paso es no pelearte con la noche.',
       width: 1536,
       height: 1024,
-      objectPosition: '48% 42%',
+      objectPosition: '52% 45%',
       desktopAspectRatio: '3 / 2',
     },
     sections: [
@@ -1010,10 +1010,10 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Hábitos que suelen ayudar',
         paragraphs: [
-          'No hace falta cambiarlo todo esta noche. Elige uno o dos y sosténlos unos días. Los hábitos de descanso (a menudo llamados «higiene del sueño») no sustituyen una evaluación si el insomnio ya es persistente, pero sí suelen mejorar la línea base.',
+          'No hace falta cambiarlo todo esta noche. Si solo eliges uno, empieza por el horario de levantarte. Los hábitos de descanso (a menudo llamados «higiene del sueño») no sustituyen una evaluación si el insomnio ya es persistente, pero sí suelen mejorar la línea base.',
         ],
         bullets: [
-          'Horario regular de acostarte y levantarte — también el fin de semana, en la medida de lo posible.',
+          'Horario regular de levantarte (también el fin de semana) — ancla el reloj biológico aunque la noche haya sido irregular.',
           'Rutina de 30–60 minutos sin pantallas antes de dormir: luz tenue, algo quieto, sin scroll.',
           'Cafeína lejos de la tarde; el alcohol puede inducir sueño al inicio y fragmentarlo después.',
           'Cama para dormir y descanso — no trabajo, no reuniones, no «solo un rato» de móvil.',
@@ -1037,7 +1037,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'Qué no es esto',
         paragraphs: [
           'Estos hábitos no son terapia cognitivo-conductual para el insomnio (TCC-I), ni un diagnóstico, ni una promesa de «ocho horas perfectas». Tampoco sustituyen revisar causas médicas (dolor, apnea, medicación, turnos).',
-          'Si llevas semanas sin dormir bien y el día se te viene abajo, esta guía breve no alcanza: conviene evaluación. Aquí solo abrimos el mapa.',
+          'Si llevas semanas sin dormir bien y el día se te viene abajo, esta guía breve no alcanza: conviene evaluación profesional. Aquí solo damos un primer marco práctico.',
         ],
       },
       {
@@ -1104,6 +1104,13 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           description:
             'Cómo leemos TCC, sueño y salud mental digital — y qué no afirmamos.',
           href: '/investigacion',
+        },
+        {
+          label: 'MedlinePlus — Insomnio (español)',
+          description:
+            'Material público de los NIH (EE. UU.) sobre causas, síntomas y cuándo buscar atención.',
+          href: 'https://medlineplus.gov/spanish/insomnia.html',
+          external: true,
         },
       ],
     },

@@ -990,13 +990,13 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     pullQuote:
       'At 3am the mind does not invent new problems. It only turns the volume up.',
     figure: {
-      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
-      alt: 'Person sitting on the bed at dusk, back to the camera, looking at the city through the window — the night sleep will not come',
+      src: '/assets/images/editorial/anto-editorial-sleepless-night.webp',
+      alt: 'Person sitting on the bed at night, back to the camera, rumpled sheets, phone set aside on the nightstand — the hour sleep will not come',
       caption:
-        'The city keeps going. So do you. Rest often starts with not fighting the bed.',
+        'The bed is a mess. The phone is aside. Sometimes the first step is not fighting the night.',
       width: 1536,
       height: 1024,
-      objectPosition: '48% 42%',
+      objectPosition: '52% 45%',
       desktopAspectRatio: '3 / 2',
     },
     sections: [
@@ -1010,10 +1010,10 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Habits that often help',
         paragraphs: [
-          'You do not need to change everything tonight. Pick one or two and hold them for a few days. Rest habits (often called “sleep hygiene”) do not replace evaluation when insomnia is already persistent, but they often improve the baseline.',
+          'You do not need to change everything tonight. If you only choose one, start with your wake time. Rest habits (often called “sleep hygiene”) do not replace evaluation when insomnia is already persistent, but they often improve the baseline.',
         ],
         bullets: [
-          'Regular bedtime and wake time — including weekends, as much as you can.',
+          'A regular wake time (including weekends) — anchors the body clock even after an irregular night.',
           'A 30–60 minute wind-down without screens: dim light, something quiet, no scrolling.',
           'Keep caffeine away from the afternoon; alcohol may induce sleep early and fragment it later.',
           'Bed for sleep and rest — not work, not meetings, not “just a bit” of phone.',
@@ -1037,7 +1037,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'What this is not',
         paragraphs: [
           'These habits are not cognitive behavioural therapy for insomnia (CBT-I), not a diagnosis, and not a promise of “eight perfect hours”. They also do not replace checking medical causes (pain, apnea, medication, shift work).',
-          'If you have spent weeks sleeping poorly and daytime life is collapsing, this brief guide is not enough: evaluation is warranted. Here we only open the map.',
+          'If you have spent weeks sleeping poorly and daytime life is collapsing, this brief guide is not enough: professional evaluation is warranted. Here we only offer a first practical frame.',
         ],
       },
       {
@@ -1104,6 +1104,13 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           description:
             'How we read CBT, sleep, and digital mental health — and what we do not claim.',
           href: '/investigacion',
+        },
+        {
+          label: 'MedlinePlus — Insomnia',
+          description:
+            'Public NIH (U.S.) material on causes, symptoms, and when to seek care.',
+          href: 'https://medlineplus.gov/insomnia.html',
+          external: true,
         },
       ],
     },
