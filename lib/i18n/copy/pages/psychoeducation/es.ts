@@ -81,7 +81,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           label: 'Distorsiones cognitivas (mapa completo)',
           description:
-            'Definición clínica, tipos, mantenimiento, reestructuración y relación con ansiedad o depresión.',
+            'Niveles cognitivos, clusters, mantenimiento, experimentos conductuales y perfiles en ansiedad o depresión.',
           href: '/recursos/mapa-distorsiones-cognitivas',
         },
         {
@@ -121,12 +121,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Distorsiones cognitivas: reconocerlas y cuestionarlas | Anto',
       description:
-        'Qué son las distorsiones cognitivas, ejemplos del día a día (catastrofismo, todo o nada, lectura de mente) y un ejercicio breve para mirarlas de cerca. Psicoeducación práctica con enlace al mapa clínico completo. No sustituye atención profesional.',
+        'Guía breve de distorsiones cognitivas: ejemplos del día a día (catastrofismo, todo o nada, lectura de mente), separar hecho de historia y un ejercicio corto para mirar un pensamiento de cerca. Enlace al mapa clínico (niveles, experimentos). No sustituye atención profesional.',
       openGraphTitle: 'Distorsiones cognitivas — reconocer y cuestionar',
       openGraphDescription:
-        'Cuando la mente salta a conclusiones: ejemplos cotidianos, un paso a paso para crear distancia y el camino al mapa clínico completo.',
+        'Cuando un silencio se vuelve veredicto: ejemplos cotidianos, hecho vs. historia y el camino al mapa clínico.',
       keywords:
-        'distorsiones cognitivas, pensamientos en bucle, pensamientos automáticos, catastrofismo, todo o nada, lectura de mente, filtro mental, sobregeneralización, reformulación, mapa de distorsiones, TCC, técnica ABC, psicoeducación, Anto',
+        'distorsiones cognitivas, pensamientos en bucle, mensaje sin respuesta, lectura de mente, hecho vs historia, pensamientos automáticos, catastrofismo, todo o nada, reformulación, guía breve, TCC, técnica ABC, psicoeducación, Anto',
     },
     hero: {
       title: 'Distorsiones cognitivas',
@@ -142,9 +142,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       'A veces la mente no miente del todo. Solo exagera. Y en esa exageración se te va el resto del día.',
     figure: {
       src: '/assets/images/editorial/anto-editorial-thought-loop.webp',
-      alt: 'Persona en una mesa junto a la ventana, con el teléfono abierto a un mensaje sin respuesta, café y cuaderno — el momento en que la mente empieza a llenar el silencio',
+      alt: 'Manos con el teléfono abierto a un chat sin respuesta y, al lado, un cuaderno con preguntas de lectura de mente escritas a mano',
       caption:
-        'Un mensaje sin contestar. El hecho es uno. La historia que inventamos encima suele ser otra.',
+        'El chat no contesta. El cuaderno ya inventó la historia. Separar esas dos cosas es el primer paso.',
       width: 1536,
       height: 1024,
       /*
@@ -211,26 +211,26 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     ],
     productMoment: {
       title: 'Así se ve en Anto',
-      body: 'Cuando la mente llena un silencio con la peor historia, puedes escribirlo tal cual y recibir una pregunta que abra otra lectura — sin presión de “arreglarlo todo”.',
+      body: 'Cuando el silencio del chat ya tiene una historia en el cuaderno, puedes traer esa frase tal cual y mirarla de cerca — sin presión de “arreglarlo todo”.',
       afterHeading: 'Ejercicio: mirar un pensamiento de cerca',
       chat: {
-        ariaLabel: 'Ejemplo de conversación en Anto cuando un mensaje no tiene respuesta',
+        ariaLabel: 'Ejemplo de conversación en Anto cuando un mensaje no tiene respuesta y el cuaderno ya inventó la historia',
         messages: [
           {
             role: 'user',
-            text: 'Le escribí hace tres horas. No contesta. Seguro ya se arrepintió de quedar.',
+            text: 'Lleva tres horas sin contestar. En el cuaderno me salió: «ya no le importo».',
           },
           {
             role: 'anto',
-            text: 'Duele esperar así. ¿Es que no ha contestado, o ya estás seguro de lo que piensa?',
+            text: 'Duele. ¿Eso es un hecho del mensaje, o la historia que estás escribiendo encima?',
           },
           {
             role: 'user',
-            text: 'No lo sé. Suena exagerado cuando lo digo… pero lo siento.',
+            text: 'La historia. Pero la siento como verdad.',
           },
           {
             role: 'anto',
-            text: 'Eso ya es un buen dato. Escribamos el pensamiento tal cual — y después miramos si hay otra lectura posible.',
+            text: 'Escribamos el pensamiento tal cual — y después evidencia a favor y en contra, como si ayudaras a un amigo.',
           },
         ],
       },
@@ -240,12 +240,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Ir más a fondo',
       support:
-        'Esta página es práctica y breve. Si quieres el mapa clínico amplio — tipos, mantenimiento, reestructuración — empieza aquí:',
+        'Esta página es práctica y breve. Si quieres el mapa clínico — niveles, clusters, mantenimiento, experimentos — empieza aquí:',
       links: [
         {
           label: 'Distorsiones cognitivas (mapa completo)',
           description:
-            'Definición clínica, pensamientos automáticos vs. distorsiones, mantenimiento e intervenciones con evidencia.',
+            'Niveles cognitivos, clusters, mantenimiento, experimentos conductuales y perfiles en ansiedad o depresión.',
           href: '/recursos/mapa-distorsiones-cognitivas',
         },
         {
@@ -316,184 +316,174 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Distorsiones cognitivas: mapa clínico completo | Anto',
       description:
-        'Mapa de psicoeducación sobre distorsiones cognitivas: definición clínica, pensamientos automáticos vs. sesgos, tipos frecuentes, mecanismos de mantenimiento, reestructuración cognitiva, relación con ansiedad y depresión, y criterios para pedir evaluación. Complementa la guía breve de pensamientos en bucle. No diagnostica ni sustituye terapia.',
-      openGraphTitle: 'Distorsiones cognitivas — mapa completo',
+        'Mapa clínico de distorsiones cognitivas: tres niveles del modelo (automáticos, reglas, creencias nucleares), clusters funcionales, ciclos de mantenimiento, técnicas más allá del etiquetado, diseño de experimentos conductuales, flecha descendente y perfiles en ansiedad vs depresión. Complementa la guía breve; no diagnostica ni sustituye terapia.',
+      openGraphTitle: 'Distorsiones cognitivas — mapa clínico',
       openGraphDescription:
-        'De la definición clínica a la reestructuración: tipos, mantenimiento, intervenciones con base en TCC y cuándo pedir evaluación.',
+        'Más allá de etiquetar el sesgo: niveles cognitivos, mantenimiento, experimentos conductuales y perfiles clínicos.',
       keywords:
-        'distorsiones cognitivas, mapa clínico, mapa de distorsiones, pensamientos en bucle, pensamientos automáticos, reestructuración cognitiva, sesgos cognitivos, catastrofismo, dicotomía, lectura de mente, sobregeneralización, personalización, Beck, Burns, TCC, psicoeducación clínica, Anto',
+        'distorsiones cognitivas, mapa clínico, clusters funcionales, creencias nucleares, experimento conductual, flecha descendente, conductas de seguridad, mantenimiento cognitivo, sesgos de amenaza, reestructuración cognitiva, TCC, Beck, psicoeducación clínica, Anto',
     },
     hero: {
       title: 'Distorsiones cognitivas: mapa completo',
       subtitle:
-        'Una lectura más clínica: qué son en el modelo cognitivo, cómo se clasifican, por qué se mantienen y qué intervenciones suelen usarse en TCC.',
+        'Lo que la guía breve no cubre: niveles del modelo cognitivo, por qué el sesgo se sostiene, técnicas más allá de etiquetar y cómo se ve el patrón en ansiedad o depresión.',
       companionLink: {
         href: '/recursos/distorsiones-cognitivas',
-        support: '¿Prefieres empezar breve?',
-        label: 'Ver la guía práctica →',
+        support: '¿Aún no nominaste un pensamiento?',
+        label: 'Empieza por la guía práctica →',
       },
     },
     pullQuote:
-      'El sesgo no es un defecto de carácter. Es un atajo perceptual que, repetido, organiza la emoción y la conducta — a veces a costa de la evidencia.',
+      'Etiquetar el sesgo es el primer paso. El trabajo clínico empieza cuando preguntas qué lo sostiene — y qué evidencia nueva podrías crear.',
     figure: {
-      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
-      alt: 'Atardecer en una habitación quieta con luz cálida — espacio para revisar un pensamiento sin prisa',
+      src: '/assets/images/editorial/anto-editorial-desk-rain.webp',
+      alt: 'Escritorio de noche con lluvia en la ventana, lámpara encendida y cuaderno abierto con bolígrafo — el espacio para registrar una predicción y una prueba',
       caption:
-        'La reestructuración no ocurre en el pico. Suele empezar cuando hay margen para escribir el pensamiento tal cual.',
+        'Lluvia afuera, predicción en el cuaderno. El mapa clínico se escribe: hipótesis, prueba, dato — no solo se discute.',
       width: 1536,
       height: 1024,
-      objectPosition: '50% 45%',
+      objectPosition: '38% 58%',
       desktopAspectRatio: '3 / 2',
     },
     sections: [
       {
-        heading: 'Definición clínica',
+        heading: 'Tres niveles del modelo cognitivo',
         paragraphs: [
-          'En terapia cognitiva, las distorsiones cognitivas designan errores sistemáticos de procesamiento de la información: interpretaciones sesgadas, selectivas o absolutistas que distorsionan la relación entre estímulo y significado (Beck, 1976; Beck, 2020). No equivalen a “pensar mal” ni a falta de inteligencia: son hábitos de inferencia que aparecen con mayor frecuencia bajo carga afectiva, fatiga o amenaza percibida.',
-          'Clínicamente interesan porque median entre el evento activador y la respuesta emocional-conductual. El mismo hecho (un mensaje sin respuesta) puede sostener tristeza leve o ansiedad intensa según la inferencia. Esta guía es psicoeducación: organiza el mapa; no diagnostica un trastorno ni sustituye evaluación profesional.',
-          'El objetivo clínico no es “pensar positivo”. Es recuperar flexibilidad cognitiva: poder sostener hipótesis alternativas, gradientes de probabilidad y acciones proporcionales a la evidencia disponible.',
-        ],
-      },
-      {
-        heading: 'Pensamientos automáticos vs. distorsiones',
-        paragraphs: [
-          'Los pensamientos automáticos (automatic thoughts) son cogniciones rápidas, a menudo telegráficas, que aparecen en situación sin elaboración deliberada. Pueden ser realistas, parcialmente útiles o claramente sesgados. La distorsión nombra el tipo de sesgo cuando el pensamiento automático se aparta de forma predecible de la evidencia o de una evaluación proporcional.',
-          'En el modelo de Beck, por debajo de los automáticos suelen operar creencias intermedias (reglas, “deberías”) y creencias nucleares (esquemas sobre sí, el mundo o el futuro). Nombrar la distorsión en el nivel automático es el acceso más frecuente en psicoeducación y en las primeras fases de TCC; no implica mapear todo el esquema de una vez.',
+          'La guía práctica se centra en el pensamiento situacional. Aquí el foco es la arquitectura: en el modelo de Beck, el malestar no se explica solo por un pensamiento aislado, sino por capas que se activan juntas (Beck, 1976; Beck, 2020).',
+          'En la superficie aparecen los pensamientos automáticos. Debajo, reglas y “deberías” (creencias intermedias). Más abajo, esquemas sobre sí, el mundo o el futuro (creencias nucleares). La distorsión describe la forma del error en la superficie; el esquema explica por qué ese error se repite en muchas situaciones.',
+          'Esta guía es psicoeducación. No diagnostica. Sirve para leer el patrón con más profundidad cuando ya sabes nombrar un pensamiento — no para empezar desde cero.',
         ],
         bullets: [
-          'Pensamiento automático: contenido situacional (“no va a contestar”).',
-          'Distorsión: forma del error (lectura de mente, catastrofismo, etc.).',
-          'Creencia intermedia/nuclear: regla o esquema más estable que predispone al sesgo.',
+          'Automático: telegráfico, situacional (“no va a contestar”).',
+          'Intermedio: regla o estándar (“si alguien duda, es que fallé”).',
+          'Nuclear: esquema estable (“no soy digno de confianza” / “el mundo es peligroso”).',
         ],
       },
       {
-        heading: 'Tipos frecuentes',
+        heading: 'Clusters funcionales (no una lista para memorizar)',
         paragraphs: [
-          'Las taxonomías varían (Burns, 1999; Beck, 2020). Lo útil no es memorizar una lista cerrada, sino reconocer las formas que se repiten en tu registro. A continuación, presentaciones frecuentes en clínica y autoayuda informada por TCC:',
+          'Memorizar diez nombres aporta poco. En clínica suele agruparse por función: qué sesgo protege o qué amenaza percibida sostiene. Así eliges la intervención, no solo la etiqueta.',
         ],
         bullets: [
-          'Pensamiento dicotómico (todo o nada): categorías extremas sin gradiente (“si no es perfecto, es un fracaso”).',
-          'Catastrofismo: sobrestimar la probabilidad o la gravedad de un resultado adverso.',
-          'Lectura de mente: atribuir intenciones o juicios ajenos sin datos suficientes.',
-          'Sobregeneralización: inferir una regla global a partir de un episodio (“siempre me pasa”).',
-          'Filtro mental / abstracción selectiva: atender solo al dato negativo e ignorar el contexto.',
-          'Personalización: atribuirse causalidad excesiva por eventos externos o compartidos.',
-          'Deberías / imperativos: reglas rígidas que generan culpa, rabia o ansiedad al incumplirse.',
-          'Etiquetado: reducir a una etiqueta global (“soy un fracaso”) en lugar de describir una conducta.',
-          'Adivinación del futuro: tratar una predicción como certeza (“va a salir mal”).',
-          'Razonamiento emocional: tomar el sentimiento como prueba del hecho (“lo siento, luego es verdad”).',
+          'Amenaza / anticipación: sobrestimar probabilidad o gravedad, tratar predicciones como hechos, exigir certeza imposible.',
+          'Autoevaluación: dicotomías de valía, etiquetas globales, imperativos rígidos, filtro que borra matices de competencia.',
+          'Interpersonal: atribuir intenciones sin datos, personalizar eventos compartidos, leer silencio como veredicto.',
+          'Un mismo episodio puede mezclar clusters (p. ej. amenaza + interpersonal). Importa el dominante para elegir la prueba.',
         ],
       },
       {
-        heading: 'Cómo se mantienen',
+        heading: 'Ciclos que mantienen el sesgo',
         paragraphs: [
-          'Las distorsiones se consolidan por sesgo de confirmación y por el alivio a corto plazo que produce actuar como si fueran ciertas: evitar, revisar, pedir certeza, postergar. Ese alivio opera como refuerzo negativo y reduce oportunidades de desconfirmación (aprendizaje correctivo).',
-          'También interviene la fusión cognitiva: el pensamiento se experimenta como hecho, no como hipótesis. Bajo hiperactivación (ansiedad alta, irritabilidad, fatiga), baja la capacidad de matizar y sube la probabilidad de absolutos. Por eso, en picos intensos, la intervención prioriza regulación de la arousal antes que debate cognitivo detallado.',
+          'El sesgo no se mantiene solo por “pensar mal”. Se refuerza cuando la conducta baja la ansiedad al instante y bloquea aprendizaje correctivo: evitar, revisar, pedir certeza, rumiar sin actualizar la probabilidad.',
+          'La fusión cognitiva — vivir el pensamiento como hecho — sube con hiperactivación. Por eso, en picos altos, primero se regula el arousal; después se diseña una prueba. Si solo “razonas” en 9/10, sueles reforzar la rumia.',
         ],
         bullets: [
-          'Confirmación selectiva: buscas (o recuerdas) solo lo que encaja con el sesgo.',
-          'Evitación / checking: bajas la ansiedad al instante y bloqueas evidencia contradictoria.',
-          'Rumia: repites el contenido sin actualizar la probabilidad ni la acción.',
-          'Contexto somático: con el cuerpo en 8/10, el absolutismo es más plausible subjetivamente.',
+          'Confirmación selectiva: buscas o recuerdas solo lo que encaja.',
+          'Conductas de seguridad: alivio corto, amenaza intacta a medio plazo.',
+          'Rumia: repetición verbal sin experimento ni decisión.',
+          'Evitar la desconfirmación: no te expones a datos que podrían matizar el esquema.',
         ],
       },
       {
-        heading: 'Intervenciones con evidencia',
+        heading: 'Técnicas más allá del etiquetado',
         paragraphs: [
-          'La reestructuración cognitiva es un componente central de la TCC: identificar el pensamiento automático, examinar la evidencia, generar alternativas equilibradas y, cuando corresponde, diseñar un experimento conductual (Beck, 2020). No es “discutir contigo mismo” hasta rendirte: es un procedimiento estructurado que combina evaluación cognitiva y prueba en la vida real.',
-          'En la práctica clínica y en psicoeducación guiada suelen combinarse:',
+          'Nombrar la distorsión (lo que practicas en la guía breve) abre distancia. El siguiente nivel clínico combina evaluación cognitiva con evidencia nueva en la vida real (Beck, 2020). No es discutir contigo hasta rendirte.',
         ],
         bullets: [
-          'Identificación y etiquetado: capturar el pensamiento literal y nombrar la distorsión probable.',
-          'Examen de evidencia: columnas a favor / en contra; distinguir hecho de inferencia.',
-          'Descatastrofización: ¿qué tan probable? ¿qué tan grave si ocurriera? ¿qué harías entonces?',
-          'Continuum / gradientes: sustituir dicotomías por escalas (0–100) de desempeño o amenaza.',
-          'Experimentos conductuales: probar una predicción en dosis pequeñas (p. ej. no revisar el mensaje 30 minutos).',
-          'Registro ABC: situar Activador → Creencia → Consecuencia emocional/conductual.',
-          'Regulación previa: si la intensidad afectiva es ≥8/10, bajar arousal (respiración, grounding) antes de reestructurar.',
+          'Descatastrofización estructurada: probabilidad × gravedad × afrontamiento (“si ocurriera, ¿qué harías?”).',
+          'Continuum / gradientes: sustituir “perfecto o fracaso” por una escala 0–100 de desempeño o amenaza.',
+          'Tarta de responsabilidad: repartir causalidad entre factores (tú, contexto, azar, otros) cuando hay personalización.',
+          'Explicaciones alternativas: generar ≥3 lecturas del mismo hecho antes de cerrar la hipótesis.',
+          'Experimento conductual: diseñar una prueba pequeña que pueda desconfirmar la predicción.',
+          'Trabajo de reglas: pasar de “debería” absoluto a preferencia o estándar flexible.',
         ],
       },
       {
-        heading: 'Ejercicio: reestructuración paso a paso',
+        heading: 'Ejercicio: diseñar un experimento conductual',
         paragraphs: [
-          'Protocolo breve alineado con el trabajo de pensamientos automáticos en TCC. Hazlo fuera del pico cuando puedas. Si estás muy activado, regula primero y escribe después.',
-          'Ejemplo trabajado: A — Te trabaste dos veces en una presentación. B — «Fue un fracaso total; todos lo notaron». Emoción 8/10. Distorsión probable: dicotomía + lectura de mente. Evidencia a favor: te trabaste. En contra: terminaste, nadie te lo dijo, en el pasado tropiezos similares no definieron tu carrera. Alternativa: «Me trabé y aun así entregué el contenido; no sé qué pensaron los demás». Emoción 5/10. Experimento: pedir un feedback concreto a una persona de confianza esta semana, sin buscar certeza absoluta.',
+          'Distinto del registro de evidencia de la guía breve. Aquí no solo reescribes el pensamiento: creas una situación que pueda aportar datos nuevos. Hazlo fuera del pico (≥8/10 → regula primero).',
+          'Ejemplo: predicción «si no reviso el mensaje en dos horas, no podré aguantar la ansiedad y perderé el plan». Experimento: no revisar 90 minutos; anotar ansiedad al minuto 0, 30 y 90; observar si el plan se pierde. Resultado típico: la ansiedad sube y luego baja; el plan no depende de revisar cada cinco minutos.',
         ],
         ordered: true,
         bullets: [
-          'Situación (hecho observable): qué ocurrió, sin interpretaciones.',
-          'Pensamiento automático: escríbelo tal cual; puntúa creencia 0–100% e intensidad emocional 0–10.',
-          'Nombre tentativo de la distorsión (puede haber más de una).',
-          'Evidencia a favor y en contra — como si evaluaras el caso de un tercero.',
-          'Pensamiento alternativo equilibrado (no necesariamente “positivo”); vuelve a puntuar creencia e intensidad.',
-          'Si aplica: una acción o experimento pequeño para probar la predicción esta semana.',
+          'Escribe la predicción concreta (qué temes que ocurra si no haces la conducta de seguridad).',
+          'Define la conducta de seguridad que vas a suspender o reducir (dosis pequeña).',
+          'Elige ventana temporal y medida (ansiedad 0–10, o un hecho observable).',
+          'Ejecuta la prueba y registra qué ocurrió vs. qué predijiste.',
+          'Extrae una conclusión provisional — no una certeza nueva absoluta.',
+          'Si aplica: un siguiente experimento un poco más amplio la semana siguiente.',
         ],
       },
       {
-        heading: 'Qué no es / límites',
+        heading: 'Flecha descendente hacia creencias',
         paragraphs: [
-          'Nombrar una distorsión no diagnostica un trastorno ni demuestra que “piensas mal”. Tampoco es pensar positivo: a veces el contenido apunta a un problema real; lo que tuerce es el absoluto, la certeza imposible o la generalización.',
-          'Si la intensidad afectiva es ≥8/10, prioriza regulación (respiración, grounding, compañía) antes de un debate cognitivo detallado. Tras trauma reciente, ideación de daño o desesperanza intensa, no uses esta guía como sustituto de evaluación profesional.',
+          'Cuando el mismo sesgo reaparece en varios dominios, conviene bajar un nivel: preguntar “si eso fuera cierto, ¿qué diría de mí / del mundo / del futuro?”. Es la flecha descendente hacia reglas o creencias nucleares (Beck, 2020).',
+          'No es excavación forzada en una sola sesión. Es un mapa: a veces basta notar la regla (“si no controlo, algo malo pasa”) para elegir experimentos que la pongan a prueba, en lugar de pelear solo con el pensamiento automático del día.',
         ],
         bullets: [
-          'No es un test de personalidad ni una etiqueta de identidad.',
-          'No exige “demostrar” que el pensamiento es falso: basta una lectura más proporcional.',
-          'Si reestructurar aumenta la rumia sin alivio, pausa y pide ayuda clínica.',
+          'Útil cuando el etiquetado ya no cambia la intensidad.',
+          'Cuidado: no forzar si hay trauma reciente o desesperanza intensa — prioriza estabilización y evaluación.',
+          'La creencia se trata como hipótesis, no como veredicto de identidad.',
         ],
       },
       {
-        heading: 'Relación con ansiedad y depresión',
+        heading: 'Perfiles en ansiedad y depresión',
         paragraphs: [
-          'En ansiedad, predominan sesgos de amenaza: catastrofismo, adivinación del futuro, sobrestimación de probabilidad/gravedad y, a menudo, lectura de mente en contextos sociales. El mantenimiento se entrelaza con evitación y conductas de seguridad.',
-          'En depresión, son más frecuentes el filtro mental, la sobregeneralización, el etiquetado global y la personalización con sesgo interno estable (“es por cómo soy”). La reestructuración suele combinarse con activación conductual: sin contacto con refuerzos, el material cognitivo se vuelve autorreferencial y pobre en datos nuevos.',
-          'Estos son patrones descriptivos frecuentes en la literatura clínica, no una regla diagnóstica. Una misma persona puede mostrar ambos perfiles según el episodio.',
+          'En ansiedad suelen dominar clusters de amenaza: anticipación, certeza imposible, lectura de mente social, conductas de seguridad. El mantenimiento se entrelaza con evitación.',
+          'En depresión suelen dominar autoevaluación negativa estable: filtro, sobregeneralización, etiquetado, personalización interna (“es por cómo soy”). Sin activación conductual, el material cognitivo se queda sin datos nuevos.',
+          'Son patrones descriptivos frecuentes, no una regla diagnóstica. El mismo episodio puede mezclar ambos. Si el ánimo está muy bajo, a menudo conviene activar conducta antes de intensificar el debate cognitivo.',
         ],
       },
       {
-        heading: 'Cuándo pedir evaluación',
+        heading: 'Criterios clínicos y límites de uso',
         paragraphs: [
-          'Conviene evaluación profesional si los sesgos son persistentes, generan deterioro funcional (sueño, trabajo, vínculos), se acompañan de anhedonia o desesperanza intensas, o si la rumia deja poco margen para actuar. También si hay uso de sustancias para modular el malestar o si intentos reiterados de “razonar” no modifican la intensidad.',
-          'Ante ideación suicida, riesgo inmediato o incapacidad de cuidarte: contacta emergencias o una línea de crisis de tu país. Anto puede detectar señales de riesgo y ofrecer recursos; no sustituye servicios de emergencia ni tratamiento clínico.',
+          'Conviene evaluación profesional si el patrón es persistente, hay deterioro funcional, anhedonia o desesperanza intensas, sustancias para modular el malestar, o si los experimentos y la reestructuración aumentan la rumia sin alivio.',
+          'Ante ideación suicida, riesgo inmediato o incapacidad de cuidarte: emergencias o línea de crisis de tu país. Anto puede detectar señales y ofrecer recursos; no sustituye esos servicios ni el tratamiento clínico.',
+        ],
+        bullets: [
+          'Esta página asume que ya practicaste reconocer un pensamiento (guía breve).',
+          'No sustituye formulación clínica individual ni TCC con terapeuta.',
+          'Si el trabajo cognitivo desestabiliza, pausa y pide evaluación.',
         ],
       },
     ],
     productMoment: {
       title: 'Así se ve en Anto',
-      body: 'Cuando un pensamiento llega cerrado — como veredicto —, puedes escribirlo literal y trabajar evidencia y alternativas sin presión de “arreglarlo todo”.',
-      afterHeading: 'Intervenciones con evidencia',
+      body: 'Cuando ya anotaste la predicción, el siguiente paso no es solo razonar: diseñar una prueba pequeña y registrar qué ocurrió de verdad.',
+      afterHeading: 'Técnicas más allá del etiquetado',
       chat: {
-        ariaLabel: 'Ejemplo de conversación en Anto sobre un pensamiento dicotómico',
+        ariaLabel: 'Ejemplo de conversación en Anto al diseñar un experimento conductual con registro escrito',
         messages: [
           {
             role: 'user',
-            text: 'Si la presentación no sale perfecta, fue un fracaso. No hay punto medio.',
+            text: 'Anoté: «si no reviso el chat en una hora, se me va de las manos y pierdo el plan». Ansiedad 7.',
           },
           {
             role: 'anto',
-            text: 'Suena a todo o nada. ¿Qué parte es el hecho de la presentación, y qué parte es la regla de “perfecto o fracaso”?',
+            text: 'Buena predicción escrita. ¿Qué conducta de seguridad vas a pausar en la prueba?',
           },
           {
             role: 'user',
-            text: 'El hecho es que me trabé dos veces. La regla… la siento como verdad.',
+            text: 'No abrir el chat. Sesenta minutos.',
           },
           {
             role: 'anto',
-            text: 'Escribamos el pensamiento tal cual y puntúalo. Después miramos evidencia y un gradiente — no “pensar positivo”, sino una lectura más proporcional.',
+            text: 'Anota ansiedad al minuto 0 y al 60, y si el plan se perdió. Después comparamos predicción vs. dato — sin buscar certeza total.',
           },
         ],
       },
       suggestionsLabel: 'Sugerencias',
-      suggestions: ['Reestructuración paso a paso', 'Separar hecho de inferencia'],
+      suggestions: ['Diseñar un experimento', 'Registrar predicción vs. dato'],
     },
     furtherReading: {
       title: 'Ir más a fondo',
       support:
-        'Este texto es el mapa amplio. Para la entrada breve, un registro situacional o el marco TCC, sigue aquí:',
+        'Este texto es el mapa clínico. Para reconocer un pensamiento en el día a día, registrar ABC o leer ansiedad/depresión, sigue aquí:',
       links: [
         {
           label: 'Distorsiones cognitivas (guía breve)',
           description:
-            'Versión práctica y corta: ejemplos del día a día y un ejercicio de 10 minutos.',
+            'Entrada práctica: ejemplos cotidianos y ejercicio corto para mirar un pensamiento de cerca.',
           href: '/recursos/distorsiones-cognitivas',
         },
         {
@@ -505,20 +495,20 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           label: 'Ansiedad y preocupación',
           description:
-            'Cuando el sesgo de amenaza viene con hiperactivación: mapa e intervenciones.',
+            'Cuando el cluster de amenaza viene con hiperactivación y evitación.',
           href: '/recursos/ansiedad-y-preocupacion',
         },
         {
           label: 'Depresión: guía breve',
           description:
-            'Señales, filtro mental y el papel de la activación conductual junto al trabajo cognitivo.',
+            'Filtro mental, ánimo bajo y por qué suele hacer falta activación conductual.',
           href: '/recursos/depresion-guia-breve',
         },
         {
-          label: 'Qué es la TCC',
+          label: 'Activación conductual',
           description:
-            'Modelo cognitivo-conductual: pensamientos, emociones, conductas y exposición.',
-          href: '/recursos/que-es-tcc',
+            'Pasos conductuales cuando el debate cognitivo se queda sin datos nuevos.',
+          href: '/recursos/activacion-conductual',
         },
         {
           label: 'Evidencia que informa Anto',
@@ -531,22 +521,22 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     references: {
       title: 'Referencias (APA)',
       support:
-        'Fuentes clínicas y de psicoeducación que sustentan definiciones, taxonomías e intervenciones mencionadas arriba. No sustituyen evaluación clínica individual.',
+        'Fuentes clínicas que sustentan niveles cognitivos, mantenimiento e intervenciones mencionadas arriba. No sustituyen evaluación clínica individual.',
       items: [
         {
           apa: 'Beck, A. T. (1976). Cognitive therapy and the emotional disorders. International Universities Press.',
           href: 'https://openlibrary.org/works/OL457087W/Cognitive_Therapy_and_the_Emotional_Disorders',
-          note: 'Marco fundacional: interpretaciones sesgadas y su papel en el malestar emocional.',
+          note: 'Arquitectura cognitiva: interpretaciones, esquemas y malestar emocional.',
         },
         {
           apa: 'Beck, J. S. (2020). Cognitive behavior therapy: Basics and beyond (3rd ed.). Guilford Press.',
           href: 'https://www.guilford.com/books/Cognitive-Behavior-Therapy/Judith-Beck/9781462544196',
-          note: 'Manual clínico: pensamientos automáticos, creencias y reestructuración cognitiva.',
+          note: 'Automáticos, creencias, flecha descendente, experimentos conductuales y reestructuración.',
         },
         {
           apa: 'Burns, D. D. (1999). The feeling good handbook (Rev. ed.). Plume.',
           href: 'https://www.penguinrandomhouse.com/books/322160/the-feeling-good-handbook-by-david-d-burns-md/',
-          note: 'Catálogo accesible de distorsiones y ejercicios de cuestionamiento.',
+          note: 'Taxonomías accesibles de distorsiones (referencia; aquí se usan como clusters, no como lista a memorizar).',
         },
         {
           apa: 'Hofmann, S. G., Asnaani, A., Vonk, I. J. J., Sawyer, A. T., & Fang, A. (2012). The efficacy of cognitive behavioral therapy: A review of meta-analyses. Cognitive Therapy and Research, 36(5), 427–440. https://doi.org/10.1007/s10608-012-9476-1',
@@ -555,24 +545,24 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.distortions, SLUGS.abc, SLUGS.depression],
+    relatedSlugs: [SLUGS.distortions, SLUGS.abc, SLUGS.behavioralActivation],
     disclaimer:
       'Psicoeducación. No diagnostica ni sustituye evaluación o tratamiento clínico. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
     ctaBridge:
-      'Si quieres compañía para registrar un pensamiento automático — con evidencia y alternativas — puedes seguir en el teléfono.',
+      'Si quieres compañía para diseñar una prueba pequeña sobre una predicción — sin presión — puedes seguir en el teléfono.',
     cta: { label: 'Apoyo en Anto →', path: '/bienvenida' },
     howTo: {
-      name: 'Reestructuración cognitiva paso a paso',
+      name: 'Diseñar un experimento conductual',
       description:
-        'Protocolo breve para identificar un pensamiento automático, examinar evidencia, escribir una alternativa equilibrada y, si cabe, un experimento conductual.',
-      totalTime: 'PT15M',
+        'Protocolo breve para convertir una predicción sesgada en una prueba pequeña, medir el resultado y actualizar la hipótesis.',
+      totalTime: 'PT20M',
       steps: [
-        'Describe la situación como hecho observable.',
-        'Escribe el pensamiento automático y puntúa creencia (0–100%) e intensidad emocional (0–10).',
-        'Nombra la distorsión probable.',
-        'Lista evidencia a favor y en contra.',
-        'Escribe un pensamiento alternativo equilibrado y vuelve a puntuar.',
-        'Define, si aplica, un experimento conductual pequeño.',
+        'Escribe la predicción concreta.',
+        'Define la conducta de seguridad a reducir o suspender.',
+        'Elige ventana temporal y cómo medirás ansiedad o resultado.',
+        'Ejecuta la prueba y registra predicción vs. dato.',
+        'Extrae una conclusión provisional.',
+        'Si aplica, define un siguiente experimento un poco más amplio.',
       ],
     },
   },
@@ -796,7 +786,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           label: 'Distorsiones cognitivas (mapa completo)',
           description:
-            'Definición clínica, tipos, mantenimiento, reestructuración y relación con ansiedad o depresión.',
+            'Niveles cognitivos, clusters, mantenimiento, experimentos conductuales y perfiles en ansiedad o depresión.',
           href: '/recursos/mapa-distorsiones-cognitivas',
         },
         {
@@ -1342,12 +1332,14 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     pullQuote:
       'No se trata de “pensar positivo”. Se trata de volver al cuerpo el tiempo suficiente para que la ola no te arrastre entera.',
     figure: {
-      src: '/assets/images/editorial/anto-editorial-desk-rain.webp',
-      alt: 'Escritorio de noche con lluvia en la ventana, lámpara y cuaderno abierto — momento quieto para aterrizar cuando la ansiedad sube',
+      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
+      alt: 'Persona sentada de espaldas en la cama al anochecer, mirando la ciudad por la ventana — el momento quieto cuando la ansiedad sube',
       caption:
-        'Lluvia, luz cercana, algo que tocar. El grounding empieza por lo que ya está aquí.',
+        'La ola llega de noche. El grounding empieza por lo que ya está aquí: luz, cuerpo, ventana.',
       width: 1536,
       height: 1024,
+      objectPosition: '50% 40%',
+      desktopAspectRatio: '3 / 2',
     },
     sections: [
       {

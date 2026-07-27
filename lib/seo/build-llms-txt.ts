@@ -163,8 +163,8 @@ function formatResourcesDiscoveryBlock(locale: Locale): string[] {
       slugs: ['grounding-ansiedad-crisis', 'ansiedad-y-preocupacion', 'estres-y-carga'],
     },
     {
-      labelEs: 'TCC / distorsiones (breve + mapa clínico) / ABC',
-      labelEn: 'CBT / distortions (brief + clinical map) / ABC',
+      labelEs: 'TCC / distorsiones (breve + mapa: niveles y experimentos) / ABC',
+      labelEn: 'CBT / distortions (brief + map: levels and experiments) / ABC',
       slugs: [
         'que-es-tcc',
         'distorsiones-cognitivas',
@@ -668,6 +668,12 @@ export function llmsTxtRequiredSnippets(): string[] {
     'thoughts in a loop',
     'mapa clínico completo',
     'full clinical map',
+    'experimento conductual',
+    'behavioural experiment',
+    'clusters funcionales',
+    'functional clusters',
+    'flecha descendente',
+    'downward arrow',
     'reestructuración cognitiva',
     'cognitive restructuring',
     DEFAULT_APP_STORE_URL,

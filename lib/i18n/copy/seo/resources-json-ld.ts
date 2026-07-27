@@ -66,6 +66,14 @@ export function getResourcesCollectionJsonLd(locale: Locale) {
           },
           {
             '@type': 'Thing',
+            name: isEn ? 'Behavioural experiments' : 'Experimentos conductuales',
+          },
+          {
+            '@type': 'Thing',
+            name: isEn ? 'Core beliefs' : 'Creencias nucleares',
+          },
+          {
+            '@type': 'Thing',
             name: isEn ? 'Emotional support education' : 'Educación en acompañamiento emocional',
           },
         ],

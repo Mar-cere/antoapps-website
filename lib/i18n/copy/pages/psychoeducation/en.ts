@@ -81,7 +81,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           label: 'Cognitive distortions (full map)',
           description:
-            'Clinical definition, types, maintenance, restructuring, and links to anxiety or depression.',
+            'Cognitive levels, clusters, maintenance, behavioural experiments, and anxiety/depression profiles.',
           href: '/recursos/mapa-distorsiones-cognitivas',
         },
         {
@@ -121,12 +121,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Cognitive distortions: spot them and question them | Anto',
       description:
-        'What cognitive distortions are, everyday examples (catastrophising, all-or-nothing, mind reading), and a short exercise to look at them closely. Practical psychoeducation with a link to the fuller clinical map. Does not replace professional care.',
+        'Brief guide to cognitive distortions: everyday examples (catastrophising, all-or-nothing, mind reading), separating fact from story, and a short exercise to look closely at a thought. Links to the clinical map (levels, experiments). Does not replace professional care.',
       openGraphTitle: 'Cognitive distortions — recognise and question',
       openGraphDescription:
-        'When the mind jumps to conclusions: everyday examples, a step-by-step to create distance, and the path to the fuller clinical map.',
+        'When a silence becomes a verdict: everyday examples, fact vs. story, and the path to the clinical map.',
       keywords:
-        'cognitive distortions, thoughts in a loop, automatic thoughts, catastrophising, all-or-nothing, mind reading, mental filter, overgeneralisation, reframing, cognitive distortions map, CBT, ABC technique, psychoeducation, Anto',
+        'cognitive distortions, thoughts in a loop, unanswered message, mind reading, fact vs story, automatic thoughts, catastrophising, all-or-nothing, reframing, brief guide, CBT, ABC technique, psychoeducation, Anto',
     },
     hero: {
       title: 'Cognitive distortions',
@@ -142,9 +142,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       'Sometimes the mind is not entirely wrong. It just exaggerates. And in that exaggeration, the rest of the day slips away.',
     figure: {
       src: '/assets/images/editorial/anto-editorial-thought-loop.webp',
-      alt: 'Person at a table by the window, phone open to an unanswered message, coffee and notebook — the moment the mind starts filling the silence',
+      alt: 'Hands holding a phone open to an unanswered chat, beside a notebook with handwritten mind-reading questions',
       caption:
-        'An unanswered message. The fact is one thing. The story we invent on top is often another.',
+        'The chat does not reply. The notebook already invented the story. Separating those two is the first step.',
       width: 1536,
       height: 1024,
       /*
@@ -211,26 +211,26 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     ],
     productMoment: {
       title: 'How it looks in Anto',
-      body: 'When the mind fills a silence with the worst story, you can write it exactly as it is and get a question that opens another reading — without pressure to “fix everything.”',
+      body: 'When the chat silence already has a story in the notebook, you can bring that line exactly as it is and look at it closely — without pressure to “fix everything.”',
       afterHeading: 'Exercise: look closely at a thought',
       chat: {
-        ariaLabel: 'Example Anto conversation when a message goes unanswered',
+        ariaLabel: 'Sample Anto conversation when a message goes unanswered and the notebook already invented the story',
         messages: [
           {
             role: 'user',
-            text: 'I texted three hours ago. No reply. They must already regret making plans.',
+            text: 'Three hours with no reply. In the notebook I wrote: “they don’t care anymore.”',
           },
           {
             role: 'anto',
-            text: 'Waiting like that hurts. Is it that they have not answered, or are you already sure what they think?',
+            text: 'That hurts. Is that a fact from the message, or the story you’re writing on top?',
           },
           {
             role: 'user',
-            text: 'I don’t know. It sounds over the top when I say it… but I feel it.',
+            text: 'The story. But it feels like truth.',
           },
           {
             role: 'anto',
-            text: 'That alone is useful. Let’s write the thought exactly as it is — then we can see if another reading is possible.',
+            text: 'Let’s write the thought exactly as it is — then evidence for and against, as if you were helping a friend.',
           },
         ],
       },
@@ -240,12 +240,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Go deeper',
       support:
-        'This page is practical and brief. If you want the fuller clinical map — types, maintenance, restructuring — start here:',
+        'This page is practical and brief. If you want the clinical map — levels, clusters, maintenance, experiments — start here:',
       links: [
         {
           label: 'Cognitive distortions (full map)',
           description:
-            'Clinical definition, automatic thoughts vs. distortions, maintenance, and evidence-informed interventions.',
+            'Cognitive levels, clusters, maintenance, behavioural experiments, and anxiety/depression profiles.',
           href: '/recursos/mapa-distorsiones-cognitivas',
         },
         {
@@ -316,184 +316,174 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Cognitive distortions: full clinical map | Anto',
       description:
-        'Psychoeducation map of cognitive distortions: clinical definition, automatic thoughts vs. biases, common types, maintenance mechanisms, cognitive restructuring, links to anxiety and depression, and when to seek assessment. Complements the brief looping-thoughts guide. Does not diagnose or replace therapy.',
-      openGraphTitle: 'Cognitive distortions — full map',
+        'Clinical map of cognitive distortions: three levels of the model (automatic thoughts, rules, core beliefs), functional clusters, maintenance cycles, techniques beyond labelling, designing behavioural experiments, downward arrow, and anxiety vs. depression profiles. Complements the brief guide; does not diagnose or replace therapy.',
+      openGraphTitle: 'Cognitive distortions — clinical map',
       openGraphDescription:
-        'From clinical definition to restructuring: types, maintenance, CBT-informed interventions, and when to seek assessment.',
+        'Beyond labelling the bias: cognitive levels, maintenance, behavioural experiments, and clinical profiles.',
       keywords:
-        'cognitive distortions, clinical map, cognitive distortions map, thoughts in a loop, automatic thoughts, cognitive restructuring, thinking errors, catastrophising, all-or-nothing, mind reading, overgeneralisation, personalisation, Beck, Burns, CBT, clinical psychoeducation, Anto',
+        'cognitive distortions, clinical map, functional clusters, core beliefs, behavioural experiment, downward arrow, safety behaviours, cognitive maintenance, threat biases, cognitive restructuring, CBT, Beck, clinical psychoeducation, Anto',
     },
     hero: {
       title: 'Cognitive distortions: full map',
       subtitle:
-        'A more clinical reading: what they are in the cognitive model, how they are classified, why they persist, and which interventions CBT usually uses.',
+        'What the brief guide does not cover: levels of the cognitive model, why the bias persists, techniques beyond labelling, and how the pattern shows up in anxiety or depression.',
       companionLink: {
         href: '/recursos/distorsiones-cognitivas',
-        support: 'Prefer a shorter start?',
-        label: 'See the practical guide →',
+        support: 'Haven’t named a thought yet?',
+        label: 'Start with the practical guide →',
       },
     },
     pullQuote:
-      'A bias is not a character flaw. It is a perceptual shortcut that, when repeated, organises emotion and behaviour — sometimes at the expense of evidence.',
+      'Labelling the bias is the first step. Clinical work begins when you ask what sustains it — and what new evidence you could create.',
     figure: {
-      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
-      alt: 'Quiet evening room with warm light — space to review a thought without rush',
+      src: '/assets/images/editorial/anto-editorial-desk-rain.webp',
+      alt: 'Night desk by a rainy window, lamp on, open notebook and pen — space to write a prediction and a test',
       caption:
-        'Restructuring rarely happens at the peak. It usually starts when there is room to write the thought exactly as it is.',
+        'Rain outside, prediction in the notebook. The clinical map is written: hypothesis, test, data — not only argued.',
       width: 1536,
       height: 1024,
-      objectPosition: '50% 45%',
+      objectPosition: '38% 58%',
       desktopAspectRatio: '3 / 2',
     },
     sections: [
       {
-        heading: 'Clinical definition',
+        heading: 'Three levels of the cognitive model',
         paragraphs: [
-          'In cognitive therapy, cognitive distortions name systematic errors in information processing: biased, selective, or absolutist interpretations that distort the link between stimulus and meaning (Beck, 1976; Beck, 2020). They are not “thinking badly” or a lack of intelligence: they are inference habits that appear more often under affective load, fatigue, or perceived threat.',
-          'Clinically they matter because they mediate between the activating event and the emotional–behavioural response. The same fact (an unanswered message) can sustain mild sadness or intense anxiety depending on the inference. This guide is psychoeducation: it organises the map; it does not diagnose a disorder or replace professional assessment.',
-          'The clinical aim is not “positive thinking”. It is cognitive flexibility: holding alternative hypotheses, probability gradients, and actions proportionate to available evidence.',
-        ],
-      },
-      {
-        heading: 'Automatic thoughts vs. distortions',
-        paragraphs: [
-          'Automatic thoughts are fast, often telegraphic cognitions that appear in situation without deliberate elaboration. They can be realistic, partly useful, or clearly biased. Distortion names the type of bias when the automatic thought predictably departs from evidence or from a proportionate appraisal.',
-          'In Beck’s model, beneath automatics there often sit intermediate beliefs (rules, “shoulds”) and core beliefs (schemas about self, world, or future). Naming the distortion at the automatic level is the most common entry in psychoeducation and early CBT; it does not require mapping the whole schema at once.',
+          'The practical guide focuses on the situational thought. Here the focus is architecture: in Beck’s model, distress is not explained by an isolated thought alone, but by layers that activate together (Beck, 1976; Beck, 2020).',
+          'At the surface appear automatic thoughts. Below sit rules and “shoulds” (intermediate beliefs). Deeper still, schemas about self, world, or future (core beliefs). Distortion describes the shape of the error at the surface; schema explains why that error repeats across many situations.',
+          'This guide is psychoeducation. It does not diagnose. It helps you read the pattern with more depth when you already know how to name a thought — not to start from zero.',
         ],
         bullets: [
-          'Automatic thought: situational content (“they won’t reply”).',
-          'Distortion: form of the error (mind reading, catastrophising, etc.).',
-          'Intermediate/core belief: a more stable rule or schema that predisposes to the bias.',
+          'Automatic: telegraphic, situational (“they won’t reply”).',
+          'Intermediate: rule or standard (“if someone hesitates, I failed”).',
+          'Core: stable schema (“I’m not trustworthy” / “the world is dangerous”).',
         ],
       },
       {
-        heading: 'Common types',
+        heading: 'Functional clusters (not a list to memorise)',
         paragraphs: [
-          'Taxonomies vary (Burns, 1999; Beck, 2020). What helps is not memorising a closed list, but recognising the forms that repeat in your record. Below are presentations frequent in clinic and in CBT-informed self-help:',
+          'Memorising ten names adds little. In clinic, grouping by function is more useful: what bias protects, or what perceived threat sustains it. That way you choose the intervention, not just the label.',
         ],
         bullets: [
-          'Dichotomous (all-or-nothing) thinking: extreme categories with no gradient (“if it isn’t perfect, it’s a total failure”).',
-          'Catastrophising: overestimating the probability or severity of an adverse outcome.',
-          'Mind reading: attributing others’ intentions or judgements without enough data.',
-          'Overgeneralisation: inferring a global rule from one episode (“this always happens to me”).',
-          'Mental filter / selective abstraction: attending only to the negative datum and ignoring context.',
-          'Personalisation: taking excessive causal credit for external or shared events.',
-          'Shoulds / imperatives: rigid rules that generate guilt, anger, or anxiety when unmet.',
-          'Labelling: reducing oneself to a global label (“I’m a failure”) instead of describing a behaviour.',
-          'Fortune telling: treating a prediction as certainty (“it will go wrong”).',
-          'Emotional reasoning: taking the feeling as proof of the fact (“I feel it, so it must be true”).',
+          'Threat / anticipation: overestimating probability or severity, treating predictions as facts, demanding impossible certainty.',
+          'Self-evaluation: worth dichotomies, global labels, rigid imperatives, filters that erase competence nuance.',
+          'Interpersonal: attributing intentions without data, personalising shared events, reading silence as verdict.',
+          'One episode can mix clusters (e.g. threat + interpersonal). The dominant one matters for choosing the test.',
         ],
       },
       {
-        heading: 'How they are maintained',
+        heading: 'Cycles that maintain the bias',
         paragraphs: [
-          'Distortions consolidate through confirmation bias and through the short-term relief of acting as if they were true: avoiding, checking, seeking reassurance, postponing. That relief operates as negative reinforcement and reduces chances of disconfirmation (corrective learning).',
-          'Cognitive fusion also plays a role: the thought is experienced as fact, not hypothesis. Under high arousal (intense anxiety, irritability, fatigue), the capacity to nuance drops and absolutes become more likely. That is why, at intense peaks, intervention prioritises arousal regulation before detailed cognitive debate.',
+          'The bias does not persist just from “thinking badly”. It is reinforced when behaviour lowers anxiety instantly and blocks corrective learning: avoiding, checking, seeking certainty, ruminating without updating probability.',
+          'Cognitive fusion — living the thought as fact — rises with hyperarousal. That is why, at high peaks, arousal is regulated first; then you design a test. If you only “reason” at 9/10, you often reinforce rumination.',
         ],
         bullets: [
-          'Selective confirmation: you seek (or remember) only what fits the bias.',
-          'Avoidance / checking: you lower anxiety instantly and block contradictory evidence.',
-          'Rumination: you repeat the content without updating probability or action.',
-          'Somatic context: with the body at 8/10, absolutism feels more subjectively plausible.',
+          'Selective confirmation: you seek or remember only what fits.',
+          'Safety behaviours: short relief, threat intact in the medium term.',
+          'Rumination: verbal repetition without experiment or decision.',
+          'Avoiding disconfirmation: you do not expose yourself to data that could nuance the schema.',
         ],
       },
       {
-        heading: 'Evidence-informed interventions',
+        heading: 'Techniques beyond labelling',
         paragraphs: [
-          'Cognitive restructuring is a central CBT component: identify the automatic thought, examine evidence, generate balanced alternatives, and, when appropriate, design a behavioural experiment (Beck, 2020). It is not “arguing with yourself” until you give in: it is a structured procedure that combines cognitive appraisal and real-life testing.',
-          'In clinical practice and guided psychoeducation, these are often combined:',
+          'Naming the distortion (what you practise in the brief guide) creates distance. The next clinical level combines cognitive appraisal with new evidence in real life (Beck, 2020). It is not arguing with yourself until you give in.',
         ],
         bullets: [
-          'Identification and labelling: capture the thought literally and name the likely distortion.',
-          'Evidence examination: for / against columns; separate fact from inference.',
-          'Decatastrophising: how likely? how severe if it happened? what would you do then?',
-          'Continuum / gradients: replace dichotomies with 0–100 scales of performance or threat.',
-          'Behavioural experiments: test a prediction in small doses (e.g. not checking the message for 30 minutes).',
-          'ABC record: place Activating event → Belief → emotional/behavioural Consequence.',
-          'Prior regulation: if affective intensity is ≥8/10, lower arousal (breathing, grounding) before restructuring.',
+          'Structured decatastrophising: probability × severity × coping (“if it happened, what would you do?”).',
+          'Continuum / gradients: replace “perfect or failure” with a 0–100 scale of performance or threat.',
+          'Pie of responsibility: distribute causality across factors (you, context, chance, others) when there is personalisation.',
+          'Alternative explanations: generate ≥3 readings of the same fact before closing the hypothesis.',
+          'Behavioural experiment: design a small test that could disconfirm the prediction.',
+          'Rules work: move from absolute “should” to preference or flexible standard.',
         ],
       },
       {
-        heading: 'Exercise: step-by-step restructuring',
+        heading: 'Exercise: design a behavioural experiment',
         paragraphs: [
-          'A short protocol aligned with automatic-thought work in CBT. Do it outside the peak when you can. If you are highly activated, regulate first and write after.',
-          'Worked example: A — You stumbled twice in a presentation. B — “It was a total failure; everyone noticed.” Emotion 8/10. Likely distortion: all-or-nothing + mind reading. Evidence for: you stumbled. Against: you finished, no one said so, similar stumbles before did not define your career. Alternative: “I stumbled and still delivered the content; I don’t know what others thought.” Emotion 5/10. Experiment: ask one trusted person for concrete feedback this week, without demanding absolute certainty.',
+          'Different from the evidence record in the brief guide. Here you do not only rewrite the thought: you create a situation that can yield new data. Do it outside the peak (≥8/10 → regulate first).',
+          'Example: prediction “if I don’t check the message within two hours, I won’t be able to stand the anxiety and I’ll lose the plan.” Experiment: do not check for 90 minutes; note anxiety at minute 0, 30, and 90; observe whether the plan is lost. Typical result: anxiety rises then falls; the plan does not depend on checking every five minutes.',
         ],
         ordered: true,
         bullets: [
-          'Situation (observable fact): what happened, without interpretations.',
-          'Automatic thought: write it exactly; rate belief 0–100% and emotional intensity 0–10.',
-          'Tentative name of the distortion (there may be more than one).',
-          'Evidence for and against — as if you were evaluating a third person’s case.',
-          'Balanced alternative thought (not necessarily “positive”); re-rate belief and intensity.',
-          'If relevant: one small action or experiment to test the prediction this week.',
+          'Write the concrete prediction (what you fear will happen if you do not do the safety behaviour).',
+          'Define the safety behaviour you will suspend or reduce (small dose).',
+          'Choose a time window and measure (anxiety 0–10, or an observable fact).',
+          'Run the test and record what happened vs. what you predicted.',
+          'Draw a provisional conclusion — not a new absolute certainty.',
+          'If relevant: a slightly larger next experiment the following week.',
         ],
       },
       {
-        heading: 'What this is not / limits',
+        heading: 'Downward arrow toward beliefs',
         paragraphs: [
-          'Naming a distortion does not diagnose a disorder or prove you “think badly”. It is also not positive thinking: sometimes the content points to a real problem; what twists it is the absolute, the impossible certainty, or the overgeneralisation.',
-          'If affective intensity is ≥8/10, prioritise regulation (breathing, grounding, company) before a detailed cognitive debate. After recent trauma, harm ideation, or intense hopelessness, do not use this guide as a substitute for professional assessment.',
+          'When the same bias reappears across several domains, it helps to go down a level: ask “if that were true, what would it say about me / the world / the future?” That is the downward arrow toward rules or core beliefs (Beck, 2020).',
+          'It is not forced excavation in a single session. It is a map: sometimes noticing the rule (“if I don’t control things, something bad happens”) is enough to choose experiments that test it, instead of fighting only the day’s automatic thought.',
         ],
         bullets: [
-          'It is not a personality test or an identity label.',
-          'It does not require “proving” the thought is false: a more proportionate reading is enough.',
-          'If restructuring increases rumination without relief, pause and seek clinical help.',
+          'Useful when labelling no longer changes intensity.',
+          'Caution: do not force it with recent trauma or intense hopelessness — prioritise stabilisation and assessment.',
+          'The belief is treated as hypothesis, not identity verdict.',
         ],
       },
       {
-        heading: 'Links to anxiety and depression',
+        heading: 'Profiles in anxiety and depression',
         paragraphs: [
-          'In anxiety, threat biases predominate: catastrophising, fortune telling, overestimating probability/severity, and often mind reading in social contexts. Maintenance intertwines with avoidance and safety behaviours.',
-          'In depression, mental filter, overgeneralisation, global labelling, and personalisation with a stable internal bias (“it’s because of how I am”) are more frequent. Restructuring is often combined with behavioural activation: without contact with reinforcers, cognitive material becomes self-referential and poor in new data.',
-          'These are frequent descriptive patterns in the clinical literature, not a diagnostic rule. The same person may show both profiles depending on the episode.',
+          'In anxiety, threat clusters usually dominate: anticipation, impossible certainty, social mind reading, safety behaviours. Maintenance intertwines with avoidance.',
+          'In depression, stable negative self-evaluation usually dominates: filter, overgeneralisation, labelling, internal personalisation (“it’s because of how I am”). Without behavioural activation, cognitive material stays without new data.',
+          'These are frequent descriptive patterns, not a diagnostic rule. The same episode can mix both. If mood is very low, activating behaviour often comes before intensifying cognitive debate.',
         ],
       },
       {
-        heading: 'When to seek assessment',
+        heading: 'Clinical criteria and limits of use',
         paragraphs: [
-          'Professional assessment is warranted if biases are persistent, cause clear functional impairment (sleep, work, relationships), come with intense anhedonia or hopelessness, or if rumination leaves little room to act. Also if substances are used to modulate distress, or if repeated attempts to “reason it out” do not change intensity.',
-          'If there is suicidal ideation, immediate risk, or inability to care for yourself: contact emergency services or a crisis line in your country. Anto can detect risk signals and offer resources; it does not replace emergency services or clinical treatment.',
+          'Professional assessment is warranted if the pattern is persistent, there is functional impairment, intense anhedonia or hopelessness, substances used to modulate distress, or if experiments and restructuring increase rumination without relief.',
+          'If there is suicidal ideation, immediate risk, or inability to care for yourself: emergency services or a crisis line in your country. Anto can detect signals and offer resources; it does not replace those services or clinical treatment.',
+        ],
+        bullets: [
+          'This page assumes you have already practised recognising a thought (brief guide).',
+          'It does not replace individual clinical formulation or CBT with a therapist.',
+          'If cognitive work destabilises you, pause and seek assessment.',
         ],
       },
     ],
     productMoment: {
       title: 'How it looks in Anto',
-      body: 'When a thought arrives closed — like a verdict — you can write it literally and work through evidence and alternatives without pressure to “fix everything”.',
-      afterHeading: 'Evidence-informed interventions',
+      body: 'When you have already written the prediction, the next step is not only to reason: design a small test and record what actually happened.',
+      afterHeading: 'Techniques beyond labelling',
       chat: {
-        ariaLabel: 'Sample Anto conversation about dichotomous thinking',
+        ariaLabel: 'Sample Anto conversation designing a behavioural experiment with a written record',
         messages: [
           {
             role: 'user',
-            text: 'If the presentation isn’t perfect, it was a failure. There’s no middle ground.',
+            text: 'I wrote: “if I don’t check the chat for an hour, it’ll spiral and I’ll lose the plan.” Anxiety 7.',
           },
           {
             role: 'anto',
-            text: 'That sounds like all-or-nothing. Which part is the fact of the presentation, and which part is the “perfect or failure” rule?',
+            text: 'Good written prediction. Which safety behaviour will you pause for the test?',
           },
           {
             role: 'user',
-            text: 'The fact is I stumbled twice. The rule… feels like truth.',
+            text: 'Not opening the chat. Sixty minutes.',
           },
           {
             role: 'anto',
-            text: 'Let’s write the thought exactly as it is and rate it. Then we can look at evidence and a gradient — not “positive thinking”, a more proportionate reading.',
+            text: 'Note anxiety at minute 0 and 60, and whether the plan was lost. Then we compare prediction vs. data — without demanding total certainty.',
           },
         ],
       },
       suggestionsLabel: 'Suggestions',
-      suggestions: ['Step-by-step restructuring', 'Separate fact from inference'],
+      suggestions: ['Design a behavioural experiment', 'Record prediction vs. data'],
     },
     furtherReading: {
       title: 'Go deeper',
       support:
-        'This text is the broader map. For the brief entry, a situational record, or the CBT frame, continue here:',
+        'This text is the clinical map. To recognise a thought in everyday life, keep an ABC record, or read about anxiety/depression, continue here:',
       links: [
         {
           label: 'Cognitive distortions (brief guide)',
           description:
-            'Practical short version: everyday examples and a 10-minute exercise.',
+            'Practical entry: everyday examples and a short exercise to look closely at a thought.',
           href: '/recursos/distorsiones-cognitivas',
         },
         {
@@ -505,20 +495,20 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           label: 'Anxiety and worry',
           description:
-            'When threat bias comes with high arousal: map and interventions.',
+            'When the threat cluster comes with hyperarousal and avoidance.',
           href: '/recursos/ansiedad-y-preocupacion',
         },
         {
           label: 'Depression: brief guide',
           description:
-            'Signs, mental filter, and the role of behavioural activation alongside cognitive work.',
+            'Mental filter, low mood, and why behavioural activation is often needed.',
           href: '/recursos/depresion-guia-breve',
         },
         {
-          label: 'What is CBT',
+          label: 'Behavioural activation',
           description:
-            'Cognitive-behavioural model: thoughts, emotions, behaviours, and exposure.',
-          href: '/recursos/que-es-tcc',
+            'Behavioural steps when cognitive debate runs out of new data.',
+          href: '/recursos/activacion-conductual',
         },
         {
           label: 'Evidence that informs Anto',
@@ -531,22 +521,22 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     references: {
       title: 'References (APA)',
       support:
-        'Clinical and psychoeducation sources that support the definitions, taxonomies, and interventions above. They do not replace individual clinical assessment.',
+        'Clinical sources supporting the cognitive levels, maintenance, and interventions mentioned above. They do not replace individual clinical assessment.',
       items: [
         {
           apa: 'Beck, A. T. (1976). Cognitive therapy and the emotional disorders. International Universities Press.',
           href: 'https://openlibrary.org/works/OL457087W/Cognitive_Therapy_and_the_Emotional_Disorders',
-          note: 'Foundational frame: biased interpretations and their role in emotional distress.',
+          note: 'Cognitive architecture: interpretations, schemas, and emotional distress.',
         },
         {
           apa: 'Beck, J. S. (2020). Cognitive behavior therapy: Basics and beyond (3rd ed.). Guilford Press.',
           href: 'https://www.guilford.com/books/Cognitive-Behavior-Therapy/Judith-Beck/9781462544196',
-          note: 'Clinical manual: automatic thoughts, beliefs, and cognitive restructuring.',
+          note: 'Automatic thoughts, beliefs, downward arrow, behavioural experiments, and restructuring.',
         },
         {
           apa: 'Burns, D. D. (1999). The feeling good handbook (Rev. ed.). Plume.',
           href: 'https://www.penguinrandomhouse.com/books/322160/the-feeling-good-handbook-by-david-d-burns-md/',
-          note: 'Accessible catalogue of distortions and questioning exercises.',
+          note: 'Accessible distortion taxonomies (reference; here used as clusters, not a list to memorise).',
         },
         {
           apa: 'Hofmann, S. G., Asnaani, A., Vonk, I. J. J., Sawyer, A. T., & Fang, A. (2012). The efficacy of cognitive behavioral therapy: A review of meta-analyses. Cognitive Therapy and Research, 36(5), 427–440. https://doi.org/10.1007/s10608-012-9476-1',
@@ -555,24 +545,24 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.distortions, SLUGS.abc, SLUGS.depression],
+    relatedSlugs: [SLUGS.distortions, SLUGS.abc, SLUGS.behavioralActivation],
     disclaimer:
       'Psychoeducation. Does not diagnose or replace clinical assessment or treatment. If there is suicidal risk or violence, seek local emergency help immediately.',
     ctaBridge:
-      'If you want company recording an automatic thought — with evidence and alternatives — you can continue on your phone.',
+      'If you want company designing a small test for a prediction — without pressure — you can continue on your phone.',
     cta: { label: 'Support in Anto →', path: '/bienvenida' },
     howTo: {
-      name: 'Step-by-step cognitive restructuring',
+      name: 'Design a behavioural experiment',
       description:
-        'Short protocol to identify an automatic thought, examine evidence, write a balanced alternative, and, if relevant, a behavioural experiment.',
-      totalTime: 'PT15M',
+        'Short protocol to turn a biased prediction into a small test, measure the outcome, and update the hypothesis.',
+      totalTime: 'PT20M',
       steps: [
-        'Describe the situation as an observable fact.',
-        'Write the automatic thought and rate belief (0–100%) and emotional intensity (0–10).',
-        'Name the likely distortion.',
-        'List evidence for and against.',
-        'Write a balanced alternative thought and re-rate.',
-        'Define, if relevant, a small behavioural experiment.',
+        'Write the concrete prediction.',
+        'Define the safety behaviour to reduce or suspend.',
+        'Choose a time window and how you will measure anxiety or outcome.',
+        'Run the test and record prediction vs. data.',
+        'Draw a provisional conclusion.',
+        'If relevant, define a slightly larger next experiment.',
       ],
     },
   },
@@ -796,7 +786,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           label: 'Cognitive distortions (full map)',
           description:
-            'Clinical definition, types, maintenance, restructuring, and links to anxiety or depression.',
+            'Cognitive levels, clusters, maintenance, behavioural experiments, and anxiety/depression profiles.',
           href: '/recursos/mapa-distorsiones-cognitivas',
         },
         {
@@ -1343,11 +1333,14 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     pullQuote:
       'This is not about “thinking positive”. It is about returning to the body long enough that the wave does not carry you away whole.',
     figure: {
-      src: '/assets/images/editorial/anto-editorial-desk-rain.webp',
-      alt: 'Night desk by a rainy window with a lamp and open notebook — a quiet moment to land when anxiety rises',
-      caption: 'Rain, nearby light, something to touch. Grounding starts with what is already here.',
+      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
+      alt: 'Person sitting on a bed at dusk, back to the camera, looking at the city through the window — the quiet moment when anxiety rises',
+      caption:
+        'The wave arrives at night. Grounding starts with what is already here: light, body, window.',
       width: 1536,
       height: 1024,
+      objectPosition: '50% 40%',
+      desktopAspectRatio: '3 / 2',
     },
     sections: [
       {
