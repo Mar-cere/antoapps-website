@@ -121,6 +121,7 @@ export type PsychoeducationGuide = {
 export const PSYCHOEDUCATION_SLUGS = [
   'que-es-tcc',
   'distorsiones-cognitivas',
+  'mapa-distorsiones-cognitivas',
   'tecnica-abc',
   'ansiedad-y-preocupacion',
   'escalas-phq9-gad7',

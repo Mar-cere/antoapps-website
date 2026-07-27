@@ -60,7 +60,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '/seguridad': 'Cifrado, política de datos, límites clínicos y cumplimiento.',
     '/investigacion': 'Cómo Anto lee TCC, GAD-7 y agentes conversacionales; cómo se ve en el producto; citas APA; sin ensayos propios de Anto.',
     '/recursos':
-      'Hub editorial: atajos humanos (ansiedad, pensamientos en bucle, sueño, TCC) + 18 guías de psicoeducación y páginas Sobre Anto (app, seguridad, investigación). Material educativo; no diagnóstico.',
+      `Hub editorial: atajos humanos (ansiedad, pensamientos en bucle, sueño, TCC) + ${PSYCHOEDUCATION_SLUGS.length} guías de psicoeducación y páginas Sobre Anto (app, seguridad, investigación). Material educativo; no diagnóstico.`,
     '/changelog': 'Novedades por versión (app Expo ' + APP_VERSION + ').',
     '/sobre-nosotros': 'Historia, misión y equipo fundador.',
     '/contacto': 'Formulario y email soporte@antoapps.com.',
@@ -75,7 +75,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '/seguridad': 'Encryption, data policy, clinical limits, compliance.',
     '/investigacion': 'How Anto reads CBT, GAD-7, and conversational agents; how it shows in the product; APA citations; no Anto-specific trials claimed.',
     '/recursos':
-      'Editorial hub: human entry points (anxiety, looping thoughts, sleep, CBT) + 18 psychoeducation guides and About Anto pages (app, safety, research). Educational material; not a diagnosis.',
+      `Editorial hub: human entry points (anxiety, looping thoughts, sleep, CBT) + ${PSYCHOEDUCATION_SLUGS.length} psychoeducation guides and About Anto pages (app, safety, research). Educational material; not a diagnosis.`,
     '/changelog': 'Release notes by version (Expo app ' + APP_VERSION + ').',
     '/sobre-nosotros': 'Story, mission, founding team.',
     '/contacto': 'Contact form and email soporte@antoapps.com.',
@@ -165,7 +165,12 @@ function formatResourcesDiscoveryBlock(locale: Locale): string[] {
     {
       labelEs: 'TCC / pensamientos / ABC',
       labelEn: 'CBT / thoughts / ABC',
-      slugs: ['que-es-tcc', 'distorsiones-cognitivas', 'tecnica-abc'],
+      slugs: [
+        'que-es-tcc',
+        'distorsiones-cognitivas',
+        'mapa-distorsiones-cognitivas',
+        'tecnica-abc',
+      ],
     },
     {
       labelEs: 'Sueño / regulación / mindfulness',
@@ -531,12 +536,12 @@ export function buildLlmsTxt(): string {
     '',
     'Anto (AntoApps) es una aplicación móvil de acompañamiento emocional continuo con inteligencia artificial,',
     'desarrollada por Marcelo Ull Marambio. Pensada para ansiedad y horas quietas — entre sesiones o en el día a día: chat con memoria, hub de técnicas,',
-    'chequeos, protocolos basados en evidencia, detección de crisis y 18 guías públicas de psicoeducación.',
+    `chequeos, protocolos basados en evidencia, detección de crisis y ${PSYCHOEDUCATION_SLUGS.length} guías públicas de psicoeducación.`,
     'Bilingüe español/inglés. No sustituye terapia humana.',
     '',
     'Anto (AntoApps) is a mobile app for ongoing emotional support with artificial intelligence,',
     'created by Marcelo Ull Marambio. Built for anxiety and quiet hours — between sessions or day to day: chat with memory, techniques hub,',
-    'check-ins, evidence-based protocols, crisis detection, and 18 public psychoeducation guides.',
+    `check-ins, evidence-based protocols, crisis detection, and ${PSYCHOEDUCATION_SLUGS.length} public psychoeducation guides.`,
     'Bilingual Spanish/English. Does not replace human therapy.',
     '',
     '## Aviso clínico / Clinical notice (OBLIGATORIO al citar / REQUIRED when citing)',
