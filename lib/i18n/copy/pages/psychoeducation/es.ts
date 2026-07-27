@@ -110,7 +110,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   },
   [SLUGS.distortions]: {
     slug: SLUGS.distortions,
-    readingMinutes: 9,
+    readingMinutes: 8,
     meta: {
       title: 'Distorsiones cognitivas: reconocerlas y cuestionarlas | Anto',
       description:
@@ -148,11 +148,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         paragraphs: [
           'Las distorsiones cognitivas son atajos que la mente toma bajo estrés, cansancio o miedo. No significan que “pienses mal”: son hábitos. Útiles para sobrevivir un momento intenso; poco fiables como mapa del día.',
           'En la práctica, nombrar uno ya cambia algo: “esto suena a catastrofismo” en vez de “así son las cosas”. No se trata de silenciar la mente. Se trata de ganar un poco de aire antes de decidir qué haces.',
-        ],
-      },
-      {
-        heading: 'Cómo se sienten',
-        paragraphs: [
           'Antes de ponerle nombre, suele haber una señal: el cuerpo se tensa, la emoción sube rápido y el pensamiento llega cerrado, como si ya fuera verdad.',
         ],
         bullets: [
@@ -277,7 +272,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.tcc, SLUGS.abc, SLUGS.anxiety],
+    relatedSlugs: [],
     disclaimer:
       'Psicoeducación. No diagnostica ni sustituye evaluación o tratamiento clínico. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
     ctaBridge:

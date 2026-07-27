@@ -110,7 +110,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   },
   [SLUGS.distortions]: {
     slug: SLUGS.distortions,
-    readingMinutes: 9,
+    readingMinutes: 8,
     meta: {
       title: 'Cognitive distortions: spot them and question them | Anto',
       description:
@@ -148,11 +148,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         paragraphs: [
           'Cognitive distortions are shortcuts the mind takes under stress, fatigue, or fear. They do not mean you “think badly”: they are habits. Useful for surviving an intense moment; unreliable as a map of the day.',
           'In practice, naming one already changes something: “this sounds like catastrophising” instead of “that’s just how it is.” The point is not to silence the mind. It is to gain a little air before you decide what to do.',
-        ],
-      },
-      {
-        heading: 'How they feel',
-        paragraphs: [
           'Before you put a name on it, there is usually a signal: the body tenses, emotion rises fast, and the thought arrives closed — as if it were already true.',
         ],
         bullets: [
@@ -277,7 +272,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.tcc, SLUGS.abc, SLUGS.anxiety],
+    relatedSlugs: [],
     disclaimer:
       'Psychoeducation. Does not diagnose or replace clinical assessment or treatment. If there is suicidal risk or violence, seek local emergency help immediately.',
     ctaBridge:
