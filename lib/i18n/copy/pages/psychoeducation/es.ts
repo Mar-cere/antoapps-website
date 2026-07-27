@@ -343,9 +343,8 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         'Lluvia afuera, predicción en el cuaderno. El mapa clínico se escribe: hipótesis, prueba, dato — no solo se discute.',
       width: 1536,
       height: 1024,
-      objectPosition: '38% 52%',
-      /* Cascade: plano cinematográfico a sangre (no tarjeta 3/2). */
-      desktopAspectRatio: '21 / 9',
+      objectPosition: '38% 58%',
+      desktopAspectRatio: '3 / 2',
     },
     sections: [
       {

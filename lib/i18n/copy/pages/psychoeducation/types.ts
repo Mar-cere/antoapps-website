@@ -85,7 +85,7 @@ export type PsychoeducationGuide = {
   /**
    * Variante de composición desktop.
    * - default: ensayo en dos columnas (resto de guías)
-   * - cascade: columna única asimétrica, foto a sangre, capítulos numerados
+   * - cascade: longform centrado (una medida, sin díptico)
    */
   layout?: 'default' | 'cascade';
   meta: {
