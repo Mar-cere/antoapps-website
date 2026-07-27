@@ -1255,13 +1255,15 @@
   .psycho-guide--dossier .psycho-guide__section h2 {
     font-size: clamp(1.35rem, 1.55vw, 1.6rem);
     letter-spacing: -0.025em;
-    max-width: 32ch;
+    max-width: none;
   }
 
-  /* Medida de lectura: amplia pero no pantallazo. */
+  /* El stream llena el shell; sin cap de medida tipo blog. */
   .psycho-guide--dossier .psycho-guide__section p,
+  .psycho-guide--dossier .psycho-guide__section ul,
+  .psycho-guide--dossier .psycho-guide__section ol,
   .psycho-guide--dossier .psycho-guide__section li {
-    max-width: 68ch;
+    max-width: none;
   }
 
   .psycho-guide--dossier .psycho-guide__section-stack:has(.psycho-guide__product) {
@@ -1282,8 +1284,12 @@
   }
 
   .psycho-guide--dossier .psycho-guide__product-copy {
-    max-width: 36ch;
+    max-width: none;
     padding-top: 0.2rem;
+  }
+
+  .psycho-guide--dossier .psycho-guide__product-body {
+    max-width: none;
   }
 
   .psycho-guide--dossier .psycho-guide__product-title {
@@ -1313,7 +1319,14 @@
     margin-top: 0;
     padding-left: 0;
     border-left: 0;
-    max-width: 68ch;
+    max-width: none;
+  }
+
+  .psycho-guide--dossier .psycho-guide__further-support,
+  .psycho-guide--dossier .psycho-guide__refs-support,
+  .psycho-guide--dossier .psycho-guide__cta-bridge,
+  .psycho-guide--dossier .psycho-guide__disclaimer {
+    max-width: none;
   }
 
   .psycho-guide--dossier .psycho-guide__closing .psycho-guide__refs {
@@ -1326,7 +1339,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 1.35rem;
-    max-width: 68ch;
+    max-width: none;
     margin: 2.25rem 0 0;
     padding-top: 1.75rem;
   }
@@ -1338,7 +1351,7 @@
 
   .psycho-guide--dossier .psycho-guide__related-list {
     grid-template-columns: 1fr 1fr;
-    max-width: 48rem;
+    max-width: none;
   }
 
   .psycho-guide--dossier .psycho-guide__back {
