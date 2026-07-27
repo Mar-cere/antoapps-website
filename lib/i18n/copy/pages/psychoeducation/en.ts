@@ -971,52 +971,177 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   },
   [SLUGS.sleep]: {
     slug: SLUGS.sleep,
-    readingMinutes: 7,
+    readingMinutes: 6,
     meta: {
-      title: 'Sleep hygiene and mental health | Anto Guide',
+      title: 'When you cannot sleep | Anto brief guide',
       description:
-        'How sleep affects mood and anxiety, evidence-based sleep hygiene habits, and when to see a specialist. Psychoeducation; does not replace professional care.',
-      openGraphTitle: 'Sleep hygiene and emotional wellbeing',
-      openGraphDescription: 'Improve rest with concrete habits and understand its link to mental health.',
+        'Brief guide on sleep and emotions: why night amplifies rumination, concrete rest habits, a short ritual when the mind will not stop, and when to seek help. Psychoeducation; does not replace professional care or sleep therapy.',
+      openGraphTitle: 'When you cannot sleep — brief guide',
+      openGraphDescription:
+        'The light still on at 3am: sleep–mood link, useful habits, and a short ritual when the mind will not let go.',
+      keywords:
+        'sleep, cannot sleep, night rumination, sleep hygiene, insomnia, night anxiety, rest habits, 3am, psychoeducation, Anto',
     },
     hero: {
-      title: 'Sleep hygiene and mental health',
-      subtitle: 'Better sleep does not fix everything, but poor sleep amplifies anxiety, irritability, and negative thoughts.',
+      title: 'When you cannot sleep',
+      subtitle:
+        'Better sleep does not fix everything. But poor sleep amplifies anxiety, irritability, and the voice that replays the day once the body is already in bed.',
+    },
+    pullQuote:
+      'At 3am the mind does not invent new problems. It only turns the volume up.',
+    figure: {
+      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
+      alt: 'Person sitting on the bed at dusk, back to the camera, looking at the city through the window — the night sleep will not come',
+      caption:
+        'The city keeps going. So do you. Rest often starts with not fighting the bed.',
+      width: 1536,
+      height: 1024,
+      objectPosition: '48% 42%',
+      desktopAspectRatio: '3 / 2',
     },
     sections: [
       {
         heading: 'Sleep and emotions',
         paragraphs: [
-          'Sleep deprivation reduces stress tolerance and makes emotion regulation harder. Many people notice more rumination at night or 3am wake-ups with worry loops.',
+          'When you sleep little, the nervous system lowers stress tolerance: what felt like a bump by day can feel like a threat at night. Many people notice more rumination, irritability, or 3am wake-ups with worry loops.',
+          'This is not a willpower failure. Sleep and mood push each other: poor sleep worsens anxiety; anxiety makes sleep harder. This page is a brief guide — recognition and useful habits — not a full clinical insomnia protocol.',
         ],
       },
       {
-        heading: 'Recommended habits',
+        heading: 'Habits that often help',
+        paragraphs: [
+          'You do not need to change everything tonight. Pick one or two and hold them for a few days. Rest habits (often called “sleep hygiene”) do not replace evaluation when insomnia is already persistent, but they often improve the baseline.',
+        ],
         bullets: [
-          'Regular bedtime and wake time (including weekends)',
-          '30–60 minute wind-down without screens before bed',
-          'Avoid late caffeine and alcohol as a “sleep aid”',
-          'Bed only for sleep and rest (not work or endless scrolling)',
-          'If you cannot sleep in ~20 minutes, get up to another room with dim light',
+          'Regular bedtime and wake time — including weekends, as much as you can.',
+          'A 30–60 minute wind-down without screens: dim light, something quiet, no scrolling.',
+          'Keep caffeine away from the afternoon; alcohol may induce sleep early and fragment it later.',
+          'Bed for sleep and rest — not work, not meetings, not “just a bit” of phone.',
+          'If you cannot sleep in ~20 minutes, get up to another room with dim light and return when activation eases a little.',
         ],
       },
       {
         heading: 'When the mind will not stop',
         paragraphs: [
-          'Write three worries and one minimal action for tomorrow on paper. Try 4-7-8 breathing or a short relaxation audio. Avoid checking your phone “for just a minute.”',
+          'When the body is still and the head is not, fighting the thought often makes it worse. Try a short paper ritual (not on the phone):',
+        ],
+        ordered: true,
+        bullets: [
+          'Write three worries exactly as they appear — without editing them.',
+          'Note one minimal action for tomorrow (even “check email at 10”).',
+          'Close the paper. Try slow breathing (e.g. 4-7-8) or a short relaxation audio.',
+          'If intensity stays high, leave the bed for dim light a while; return without forcing yourself to “already be asleep”.',
         ],
       },
       {
-        heading: 'Protocol in Anto',
+        heading: 'What this is not',
         paragraphs: [
-          'Anto offers a sleep hygiene protocol among its structured paths, plus relaxation techniques in the techniques hub.',
+          'These habits are not cognitive behavioural therapy for insomnia (CBT-I), not a diagnosis, and not a promise of “eight perfect hours”. They also do not replace checking medical causes (pain, apnea, medication, shift work).',
+          'If you have spent weeks sleeping poorly and daytime life is collapsing, this brief guide is not enough: evaluation is warranted. Here we only open the map.',
+        ],
+      },
+      {
+        heading: 'When to seek help',
+        paragraphs: [
+          'Talk to a professional if insomnia persists for several weeks, worsens, or if you use alcohol or other substances to “switch off” the night. Also if fatigue affects work, mood, or safety (driving, caregiving).',
+          'If there are thoughts of harming yourself, immediate risk, or you cannot care for yourself: contact emergency services or a crisis line in your country. Anto can offer resources; it does not replace those services.',
         ],
       },
     ],
-    relatedSlugs: [SLUGS.anxiety, SLUGS.mindfulness, SLUGS.scales],
+    productMoment: {
+      title: 'How it looks in Anto',
+      body: 'When the night will not let go, you can say so plainly and get one concrete step — a short ritual or regulation — without pressure to “fix sleep entirely”.',
+      afterHeading: 'When the mind will not stop',
+      chat: {
+        ariaLabel: 'Example Anto conversation when you cannot sleep and the mind will not stop',
+        messages: [
+          {
+            role: 'user',
+            text: 'It is 3:10. My body is tired and my head is replaying the whole day.',
+          },
+          {
+            role: 'anto',
+            text: 'That is draining. Is this a spike right now, or have several nights been like this?',
+          },
+          {
+            role: 'user',
+            text: 'Several. And checking my phone only makes it worse.',
+          },
+          {
+            role: 'anto',
+            text: 'Put the phone aside. Write three worries on paper and one minimal action for tomorrow — then we breathe a little, without fighting the bed.',
+          },
+        ],
+      },
+      suggestionsLabel: 'Suggestions',
+      suggestions: ['Ritual when the mind will not stop', 'Lower the activation'],
+    },
+    furtherReading: {
+      title: 'Go further',
+      support:
+        'This page is practical and brief. If sleep comes with anxiety, high arousal, or you want the wider frame, continue here:',
+      links: [
+        {
+          label: 'Anxiety and worry',
+          description:
+            'When night will not let go because the threat system stays on: map and interventions.',
+          href: '/recursos/ansiedad-y-preocupacion',
+        },
+        {
+          label: 'When anxiety rises (grounding)',
+          description:
+            'Sensory anchors if the body is at 8/10 and you cannot write or sleep yet.',
+          href: '/recursos/grounding-ansiedad-crisis',
+        },
+        {
+          label: 'Mindfulness: brief guide',
+          description:
+            'Present-moment attention without emptying the mind — useful in the wind-down before sleep.',
+          href: '/recursos/mindfulness-guia-breve',
+        },
+        {
+          label: 'Evidence that informs Anto',
+          description:
+            'How we read CBT, sleep, and digital mental health — and what we do not claim.',
+          href: '/investigacion',
+        },
+      ],
+    },
+    references: {
+      title: 'References (APA)',
+      support:
+        'Reviews that support the sleep–mood link and the role of rest habits. They do not replace individual clinical evaluation.',
+      items: [
+        {
+          apa: 'Irish, L. A., Kline, C. E., Gunn, H. E., Buysse, D. J., & Hall, M. H. (2015). The role of sleep hygiene in promoting public health: A review of empirical evidence. Sleep Medicine Reviews, 22, 23–36. https://doi.org/10.1016/j.smrv.2014.10.001',
+          href: 'https://doi.org/10.1016/j.smrv.2014.10.001',
+          note: 'Reviews evidence for sleep-hygiene components (schedule, caffeine, alcohol, stress) in the general population.',
+        },
+        {
+          apa: 'Baglioni, C., Battagliese, G., Feige, B., Spiegelhalder, K., Nissen, C., Voderholzer, U., Lombardo, C., & Riemann, D. (2011). Insomnia as a predictor of depression: A meta-analytic evaluation of longitudinal epidemiological studies. Journal of Affective Disorders, 135(1–3), 10–19. https://doi.org/10.1016/j.jad.2011.01.011',
+          href: 'https://doi.org/10.1016/j.jad.2011.01.011',
+          note: 'Longitudinal meta-analysis: insomnia predicts higher depression risk — the sleep–mood link is not only subjective.',
+        },
+      ],
+    },
+    relatedSlugs: [SLUGS.anxiety, SLUGS.grounding, SLUGS.mindfulness],
     disclaimer:
-      'Persistent insomnia may require medical evaluation. This guide does not replace consultation with a sleep specialist.',
-    cta: { label: 'Wellbeing tools in Anto →', path: '/app' },
+      'Psychoeducation. Does not diagnose or replace medical evaluation or sleep therapy. Persistent insomnia may require professional care. If there is suicide risk or violence, seek local emergency help immediately.',
+    ctaBridge:
+      'If tonight you only need company to turn the volume down a little — without pressure — you can continue on your phone.',
+    cta: { label: 'Support in Anto →', path: '/bienvenida' },
+    howTo: {
+      name: 'Ritual when the mind will not stop',
+      description:
+        'Short paper exercise to park night worries and reduce fighting the bed.',
+      totalTime: 'PT10M',
+      steps: [
+        'Write three worries exactly as they appear.',
+        'Note one minimal action for tomorrow.',
+        'Close the paper and try slow breathing or a short relaxation audio.',
+        'If activation stays high, move to dim light for a while and return without forcing sleep.',
+      ],
+    },
   },
   [SLUGS.mindfulness]: {
     slug: SLUGS.mindfulness,

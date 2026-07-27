@@ -971,52 +971,177 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   },
   [SLUGS.sleep]: {
     slug: SLUGS.sleep,
-    readingMinutes: 7,
+    readingMinutes: 6,
     meta: {
-      title: 'Higiene del sueño y salud mental | Guía Anto',
+      title: 'Cuando no puedes dormir | Guía breve Anto',
       description:
-        'Cómo el sueño afecta el ánimo y la ansiedad, hábitos de higiene del sueño basados en evidencia y cuándo consultar a un especialista. Psicoeducación; no sustituye atención profesional.',
-      openGraphTitle: 'Higiene del sueño y bienestar emocional',
-      openGraphDescription: 'Mejora tu descanso con hábitos concretos y entiende su vínculo con la salud mental.',
+        'Guía breve sobre sueño y emociones: por qué la noche amplifica la rumia, hábitos concretos de descanso, un ritual si la mente no para y cuándo pedir ayuda. Psicoeducación; no sustituye atención profesional ni terapia del sueño.',
+      openGraphTitle: 'Cuando no puedes dormir — guía breve',
+      openGraphDescription:
+        'La cama encendida a las 3am: vínculo sueño–ánimo, hábitos útiles y un ritual corto cuando la mente no suelta.',
+      keywords:
+        'sueño, no puedo dormir, rumiación nocturna, higiene del sueño, insomnio, ansiedad nocturna, hábitos de descanso, 3am, psicoeducación, Anto',
     },
     hero: {
-      title: 'Higiene del sueño y salud mental',
-      subtitle: 'Dormir mejor no cura todo, pero el sueño pobre amplifica ansiedad, irritabilidad y pensamientos negativos.',
+      title: 'Cuando no puedes dormir',
+      subtitle:
+        'Dormir mejor no cura todo. Pero un sueño pobre amplifica ansiedad, irritabilidad y esa voz que repasa el día cuando el cuerpo ya está en la cama.',
+    },
+    pullQuote:
+      'A las 3am la mente no inventa problemas nuevos. Solo les pone el volumen más alto.',
+    figure: {
+      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
+      alt: 'Persona sentada de espaldas en la cama al anochecer, mirando la ciudad por la ventana — la noche en que el sueño no llega',
+      caption:
+        'La ciudad sigue. Tú también. El descanso empieza por no pelearte con la cama.',
+      width: 1536,
+      height: 1024,
+      objectPosition: '48% 42%',
+      desktopAspectRatio: '3 / 2',
     },
     sections: [
       {
         heading: 'Sueño y emociones',
         paragraphs: [
-          'La privación de sueño reduce la tolerancia al estrés y dificulta regular emociones. Muchas personas notan más rumiación nocturna o despertares a las 3am con preocupaciones en bucle.',
+          'Cuando duermes poco, el sistema nervioso baja la tolerancia al estrés: lo que de día era un roce, de noche se siente como amenaza. Muchas personas notan más rumiación, irritabilidad o despertares a las 3am con preocupaciones en bucle.',
+          'No es falta de voluntad. El sueño y el ánimo se empujan mutuamente: mal dormir agrava la ansiedad; la ansiedad dificulta dormir. Esta página es una guía breve — reconocimiento y hábitos útiles — no un protocolo clínico completo de insomnio.',
         ],
       },
       {
-        heading: 'Hábitos recomendados',
+        heading: 'Hábitos que suelen ayudar',
+        paragraphs: [
+          'No hace falta cambiarlo todo esta noche. Elige uno o dos y sosténlos unos días. Los hábitos de descanso (a menudo llamados «higiene del sueño») no sustituyen una evaluación si el insomnio ya es persistente, pero sí suelen mejorar la línea base.',
+        ],
         bullets: [
-          'Horario regular de acostarte y levantarte (también fines de semana)',
-          'Rutina de 30–60 min sin pantallas antes de dormir',
-          'Evitar cafeína tarde y alcohol como «ayuda» para dormir',
-          'Cama solo para dormir y descanso (no trabajo ni scroll infinito)',
-          'Si no concilias en ~20 min, levántate a otra estancia con luz tenue',
+          'Horario regular de acostarte y levantarte — también el fin de semana, en la medida de lo posible.',
+          'Rutina de 30–60 minutos sin pantallas antes de dormir: luz tenue, algo quieto, sin scroll.',
+          'Cafeína lejos de la tarde; el alcohol puede inducir sueño al inicio y fragmentarlo después.',
+          'Cama para dormir y descanso — no trabajo, no reuniones, no «solo un rato» de móvil.',
+          'Si no concilias en ~20 minutos, levántate a otra estancia con luz tenue y vuelve cuando baje un poco la activación.',
         ],
       },
       {
         heading: 'Si la mente no para',
         paragraphs: [
-          'Escribe en un papel tres preocupaciones y una acción mínima para mañana. Prueba respiración 4-7-8 o un audio breve de relajación. Evita revisar el móvil «solo un minuto».',
+          'Cuando el cuerpo está quieto y la cabeza no, pelearte con el pensamiento suele empeorarlo. Prueba un ritual corto en papel (no en el teléfono):',
+        ],
+        ordered: true,
+        bullets: [
+          'Escribe tres preocupaciones tal cual aparecen — sin editarlas.',
+          'Anota una acción mínima para mañana (aunque sea «revisar el correo a las 10»).',
+          'Cierra el papel. Prueba respiración lenta (p. ej. 4-7-8) o un audio breve de relajación.',
+          'Si la intensidad sigue alta, sal de la cama a luz tenue un rato; vuelve sin forzarte a «ya deberías dormir».',
         ],
       },
       {
-        heading: 'Protocolo en Anto',
+        heading: 'Qué no es esto',
         paragraphs: [
-          'Anto ofrece un protocolo de higiene del sueño entre sus rutas estructuradas, además de técnicas de relajación en el hub de técnicas.',
+          'Estos hábitos no son terapia cognitivo-conductual para el insomnio (TCC-I), ni un diagnóstico, ni una promesa de «ocho horas perfectas». Tampoco sustituyen revisar causas médicas (dolor, apnea, medicación, turnos).',
+          'Si llevas semanas sin dormir bien y el día se te viene abajo, esta guía breve no alcanza: conviene evaluación. Aquí solo abrimos el mapa.',
+        ],
+      },
+      {
+        heading: 'Cuándo pedir ayuda',
+        paragraphs: [
+          'Habla con un profesional si el insomnio persiste varias semanas, empeora, o si usas alcohol u otras sustancias para «apagar» la noche. También si el cansancio afecta el trabajo, el ánimo o la seguridad (conducir, cuidar a alguien).',
+          'Si hay ideas de hacerte daño, riesgo inmediato o no puedes cuidarte: contacta emergencias o una línea de crisis de tu país. Anto puede ofrecer recursos; no sustituye esos servicios.',
         ],
       },
     ],
-    relatedSlugs: [SLUGS.anxiety, SLUGS.mindfulness, SLUGS.scales],
+    productMoment: {
+      title: 'Así se ve en Anto',
+      body: 'Cuando la noche no suelta, puedes decirlo tal cual y recibir un paso concreto — ritual breve o regulación — sin presión de «arreglar el sueño entero».',
+      afterHeading: 'Si la mente no para',
+      chat: {
+        ariaLabel: 'Ejemplo de conversación en Anto cuando no puedes dormir y la mente no para',
+        messages: [
+          {
+            role: 'user',
+            text: 'Son las 3:10. El cuerpo está cansado y la cabeza repasa todo el día.',
+          },
+          {
+            role: 'anto',
+            text: 'Agota. ¿Es un pico de ahora, o llevas varias noches así?',
+          },
+          {
+            role: 'user',
+            text: 'Varias. Y mirar el móvil solo empeora.',
+          },
+          {
+            role: 'anto',
+            text: 'Aparquemos el teléfono. Escribe tres preocupaciones en papel y una acción mínima para mañana — después respiramos un poco, sin pelearte con la cama.',
+          },
+        ],
+      },
+      suggestionsLabel: 'Sugerencias',
+      suggestions: ['Ritual si la mente no para', 'Bajar la activación'],
+    },
+    furtherReading: {
+      title: 'Ir más a fondo',
+      support:
+        'Esta página es práctica y breve. Si el sueño viene con ansiedad, activación o quieres el marco más amplio, sigue aquí:',
+      links: [
+        {
+          label: 'Ansiedad y preocupación',
+          description:
+            'Cuando la noche no suelta porque el sistema de amenaza sigue encendido: mapa e intervenciones.',
+          href: '/recursos/ansiedad-y-preocupacion',
+        },
+        {
+          label: 'Cuando la ansiedad sube (grounding)',
+          description:
+            'Anclas sensoriales si el cuerpo está en 8/10 y aún no puedes escribir ni dormir.',
+          href: '/recursos/grounding-ansiedad-crisis',
+        },
+        {
+          label: 'Mindfulness: guía breve',
+          description:
+            'Atención al presente sin vaciar la mente — útil en la rutina previa al sueño.',
+          href: '/recursos/mindfulness-guia-breve',
+        },
+        {
+          label: 'Evidencia que informa Anto',
+          description:
+            'Cómo leemos TCC, sueño y salud mental digital — y qué no afirmamos.',
+          href: '/investigacion',
+        },
+      ],
+    },
+    references: {
+      title: 'Referencias (APA)',
+      support:
+        'Revisiones que sustentan el vínculo sueño–ánimo y el papel de los hábitos de descanso. No sustituyen evaluación clínica individual.',
+      items: [
+        {
+          apa: 'Irish, L. A., Kline, C. E., Gunn, H. E., Buysse, D. J., & Hall, M. H. (2015). The role of sleep hygiene in promoting public health: A review of empirical evidence. Sleep Medicine Reviews, 22, 23–36. https://doi.org/10.1016/j.smrv.2014.10.001',
+          href: 'https://doi.org/10.1016/j.smrv.2014.10.001',
+          note: 'Revisa la evidencia de componentes de higiene del sueño (horario, cafeína, alcohol, estrés) en población general.',
+        },
+        {
+          apa: 'Baglioni, C., Battagliese, G., Feige, B., Spiegelhalder, K., Nissen, C., Voderholzer, U., Lombardo, C., & Riemann, D. (2011). Insomnia as a predictor of depression: A meta-analytic evaluation of longitudinal epidemiological studies. Journal of Affective Disorders, 135(1–3), 10–19. https://doi.org/10.1016/j.jad.2011.01.011',
+          href: 'https://doi.org/10.1016/j.jad.2011.01.011',
+          note: 'Metaanálisis longitudinal: el insomnio predice mayor riesgo de depresión — el vínculo sueño–ánimo no es solo subjetivo.',
+        },
+      ],
+    },
+    relatedSlugs: [SLUGS.anxiety, SLUGS.grounding, SLUGS.mindfulness],
     disclaimer:
-      'El insomnio persistente puede requerir evaluación médica. Esta guía no sustituye consulta con especialista del sueño.',
-    cta: { label: 'Herramientas de bienestar en Anto →', path: '/app' },
+      'Psicoeducación. No diagnostica ni sustituye evaluación médica o terapia del sueño. El insomnio persistente puede requerir atención profesional. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
+    ctaBridge:
+      'Si esta noche solo necesitas compañía para bajar un poco el volumen — sin presión — puedes seguir en el teléfono.',
+    cta: { label: 'Apoyo en Anto →', path: '/bienvenida' },
+    howTo: {
+      name: 'Ritual si la mente no para',
+      description:
+        'Ejercicio breve en papel para aparcar preocupaciones nocturnas y bajar la pelea con la cama.',
+      totalTime: 'PT10M',
+      steps: [
+        'Escribe tres preocupaciones tal cual aparecen.',
+        'Anota una acción mínima para mañana.',
+        'Cierra el papel y prueba respiración lenta o un audio breve de relajación.',
+        'Si sigue alta la activación, sal a luz tenue un rato y vuelve sin forzarte.',
+      ],
+    },
   },
   [SLUGS.mindfulness]: {
     slug: SLUGS.mindfulness,
