@@ -313,7 +313,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   [SLUGS.distortionsMap]: {
     slug: SLUGS.distortionsMap,
     readingMinutes: 12,
-    layout: 'cascade',
+    layout: 'dossier',
     meta: {
       title: 'Cognitive distortions: full clinical map | Anto',
       description:

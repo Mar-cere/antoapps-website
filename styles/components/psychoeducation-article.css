@@ -1051,112 +1051,178 @@
 }
 
 /* -------------------------------------------------------------------------- */
-/* Cascade → longform centrado (mapa clínico). Sin díptico 2-col.             */
-/* Ritmo de ensayo: una medida, foto en el flujo, capítulos con regla.        */
+/* Dossier — mapa clínico: índice sticky + stream de lectura                  */
+/* Ni díptico de ensayo ni columna blog centrada.                             */
 /* -------------------------------------------------------------------------- */
 
-.psycho-guide--cascade .psycho-guide__article::before {
-  height: min(32rem, 52vh);
-  background:
-    radial-gradient(
-      ellipse 62% 50% at 50% 0%,
-      color-mix(in srgb, var(--color-primary) 11%, transparent),
-      transparent 72%
-    );
+.psycho-guide__dossier--passthrough,
+.psycho-guide__dossier--passthrough > .psycho-guide__stream {
+  display: contents;
 }
 
-.psycho-guide--cascade .psycho-guide__body {
-  counter-reset: psycho-cascade;
+.psycho-guide__index {
+  margin: 0 0 2rem;
+  padding: 1.1rem 0 0;
+  border-top: 1px solid var(--home-v2-hairline);
 }
 
-.psycho-guide--cascade .psycho-guide__section {
-  counter-increment: psycho-cascade;
-}
-
-.psycho-guide--cascade .psycho-guide__section h2::before {
-  content: counter(psycho-cascade, decimal-leading-zero);
-  margin-right: 0.65rem;
+.psycho-guide__index-label {
+  margin: 0 0 0.85rem;
   font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
-  color: color-mix(in srgb, var(--color-primary) 78%, var(--color-text-secondary, #a3b8e8));
-  vertical-align: 0.15em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-primary) 70%, var(--color-text-secondary, #a3b8e8));
 }
 
-.psycho-guide--cascade .psycho-guide__section--steps {
+.psycho-guide__index-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.psycho-guide__index-link {
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: start;
+  padding: 0.4rem 0.35rem 0.4rem 0;
+  text-decoration: none;
+  color: var(--color-text-secondary, #a3b8e8);
+  border-radius: 0.35rem;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.psycho-guide__index-link:hover,
+.psycho-guide__index-link:focus-visible {
+  color: var(--color-text-primary, #f4f7fb);
+  background: color-mix(in srgb, var(--color-bg-tertiary, #112040) 55%, transparent);
+  outline: none;
+}
+
+.psycho-guide__index-num {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  line-height: 1.45;
+  padding-top: 0.1rem;
+}
+
+.psycho-guide__index-text {
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+.psycho-guide--dossier .psycho-guide__section {
+  scroll-margin-top: 5.5rem;
+}
+
+.psycho-guide--dossier .psycho-guide__section--steps {
   border-color: color-mix(in srgb, var(--color-primary) 22%, var(--home-v2-hairline));
   background: color-mix(in srgb, var(--color-bg-tertiary, #112040) 48%, transparent);
 }
 
+@media (max-width: 959px) {
+  .psycho-guide__index-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.15rem 0.75rem;
+  }
+}
+
 @media (min-width: 960px) {
-  /* Shell estrecho y centrado: una columna, no vacío lateral. */
-  .psycho-guide--cascade .psycho-guide__article > .home-landing-container {
-    max-width: min(42rem, 100%);
+  .psycho-guide--dossier .psycho-guide__article > .home-landing-container {
+    max-width: min(64rem, 100%);
   }
 
-  .psycho-guide--cascade .psycho-guide__masthead {
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
+  /* Masthead: título + cita en spread (solo apertura; el cuerpo no es díptico). */
+  .psycho-guide--dossier .psycho-guide__masthead {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(14rem, 0.85fr);
+    gap: 1.75rem 3.25rem;
+    align-items: end;
     max-width: none;
-    margin: 0 0 2.25rem;
-    padding-bottom: 0;
-    border-bottom: 0;
-  }
-
-  .psycho-guide--cascade .psycho-guide__header {
-    margin: 0;
-    padding: 0 0 1.5rem;
+    margin: 0 0 2.5rem;
+    padding-bottom: 2rem;
     border-bottom: 1px solid var(--home-v2-hairline);
+  }
+
+  .psycho-guide--dossier .psycho-guide__header {
+    margin: 0;
+    padding: 0;
+    border: 0;
     max-width: none;
   }
 
-  .psycho-guide--cascade .psycho-guide__title {
-    max-width: 14ch;
-    font-size: clamp(2.45rem, 4.2vw, 3.55rem);
+  .psycho-guide--dossier .psycho-guide__title {
+    max-width: 13ch;
+    font-size: clamp(2.5rem, 4vw, 3.6rem);
     line-height: 1.02;
     letter-spacing: -0.04em;
   }
 
-  .psycho-guide--cascade .psycho-guide__subtitle {
-    max-width: 38ch;
-    font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+  .psycho-guide--dossier .psycho-guide__subtitle {
+    max-width: 42ch;
   }
 
-  .psycho-guide--cascade .psycho-guide__pullquote {
+  .psycho-guide--dossier .psycho-guide__pullquote {
     max-width: none;
     margin: 0;
-    padding: 1.15rem 0 1.15rem 1.1rem;
+    padding: 0 0 0 1.15rem;
     border-left: 2px solid var(--color-primary);
   }
 
-  .psycho-guide--cascade .psycho-guide__pullquote p {
-    max-width: 34ch;
-    font-size: clamp(1.2rem, 1.55vw, 1.4rem);
+  .psycho-guide--dossier .psycho-guide__pullquote p {
+    max-width: 28ch;
+    font-size: clamp(1.15rem, 1.45vw, 1.35rem);
     line-height: 1.38;
   }
 
-  /* Foto en el flujo editorial — misma medida, sin 100vw ni crop 21:9. */
-  .psycho-guide--cascade .psycho-guide__figure {
-    width: 100%;
+  .psycho-guide--dossier .psycho-guide__figure {
     max-width: none;
-    margin: 0 0 3rem;
-    padding: 0;
+    margin: 0 0 2.75rem;
   }
 
-  .psycho-guide--cascade .psycho-guide__figure-frame {
+  .psycho-guide--dossier .psycho-guide__figure-frame {
     aspect-ratio: var(--psycho-figure-desktop-aspect, 3 / 2);
-    border-radius: 0.85rem;
+    border-radius: 0.9rem;
   }
 
-  .psycho-guide--cascade .psycho-guide__figure-caption {
-    max-width: none;
-    margin: 0.75rem 0 0;
-    padding: 0;
-    font-size: 0.875rem;
+  /* Núcleo dossier: rail de índice + stream. */
+  .psycho-guide--dossier .psycho-guide__dossier {
+    display: grid;
+    grid-template-columns: minmax(11rem, 13.5rem) minmax(0, 1fr);
+    gap: 2.25rem 3rem;
+    align-items: start;
   }
 
-  .psycho-guide--cascade .psycho-guide__body {
+  .psycho-guide--dossier .psycho-guide__index {
+    position: sticky;
+    top: 5.25rem;
+    margin: 0;
+    padding: 0.15rem 0 0;
+    border-top: 0;
+    max-height: calc(100vh - 6.5rem);
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+
+  .psycho-guide--dossier .psycho-guide__index-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .psycho-guide--dossier .psycho-guide__stream {
+    min-width: 0;
+    max-width: 40rem;
+  }
+
+  .psycho-guide--dossier .psycho-guide__body {
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -1164,108 +1230,67 @@
     margin: 0;
   }
 
-  .psycho-guide--cascade .psycho-guide__section-stack {
+  .psycho-guide--dossier .psycho-guide__section-stack {
     max-width: none;
-    padding: 2.35rem 0;
+    padding: 2.15rem 0;
     border-top: 1px solid var(--home-v2-hairline);
   }
 
-  .psycho-guide--cascade .psycho-guide__section-stack:first-child {
+  .psycho-guide--dossier .psycho-guide__section-stack:first-child {
     border-top: 0;
-    padding-top: 0.25rem;
+    padding-top: 0.15rem;
   }
 
-  .psycho-guide--cascade .psycho-guide__section h2 {
-    position: static;
-    font-size: clamp(1.35rem, 1.85vw, 1.65rem);
+  .psycho-guide--dossier .psycho-guide__section h2 {
+    font-size: clamp(1.35rem, 1.7vw, 1.6rem);
     letter-spacing: -0.025em;
     max-width: 28ch;
   }
 
-  .psycho-guide--cascade .psycho-guide__section h2::before {
-    position: static;
-    left: auto;
-    top: auto;
-    font-size: 0.6875rem;
-  }
-
-  .psycho-guide--cascade .psycho-guide__section p,
-  .psycho-guide--cascade .psycho-guide__section ul,
-  .psycho-guide--cascade .psycho-guide__section ol {
-    max-width: none;
-  }
-
-  /* Producto: bloque apilado en la misma medida (no banda a sangre). */
-  .psycho-guide--cascade .psycho-guide__section-stack:has(.psycho-guide__product) {
-    grid-column: auto;
+  .psycho-guide--dossier .psycho-guide__section-stack:has(.psycho-guide__product) {
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
-    width: auto;
-    margin-left: 0;
-    padding: 2.35rem 0;
-    background: transparent;
-    border-block: 1px solid var(--home-v2-hairline);
+    gap: 1.6rem;
   }
 
-  .psycho-guide--cascade .psycho-guide__section-stack:has(.psycho-guide__product) .psycho-guide__section {
-    max-width: none;
-    margin-left: 0;
-  }
-
-  .psycho-guide--cascade .psycho-guide__product {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    max-width: none;
-    margin: 0;
-    width: 100%;
-    padding: 1.35rem 1.25rem 1.5rem;
+  .psycho-guide--dossier .psycho-guide__product {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.15rem;
+    padding: 1.25rem 1.2rem 1.4rem;
     border: 1px solid var(--home-v2-hairline);
     border-radius: 1rem;
-    background: color-mix(in srgb, var(--color-bg-tertiary, #112040) 55%, transparent);
+    background: color-mix(in srgb, var(--color-bg-tertiary, #112040) 52%, transparent);
   }
 
-  .psycho-guide--cascade .psycho-guide__product-copy {
-    max-width: none;
-    padding-top: 0;
-  }
-
-  .psycho-guide--cascade .psycho-guide__product-title {
-    font-size: clamp(1.25rem, 1.7vw, 1.5rem);
-    letter-spacing: -0.03em;
-  }
-
-  .psycho-guide--cascade .psycho-guide__product-chat {
+  .psycho-guide--dossier .psycho-guide__product-chat {
     margin: 0;
+    max-width: 26rem;
   }
 
-  .psycho-guide--cascade .psycho-guide__product-suggestions {
-    grid-column: auto;
-  }
-
-  .psycho-guide--cascade .psycho-guide__closing {
+  /* Cierre alineado al stream (no reabre díptico). */
+  .psycho-guide--dossier .psycho-guide__closing {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2.35rem;
     max-width: none;
     margin: 2.75rem 0 0;
   }
 
-  .psycho-guide--cascade .psycho-guide__closing .psycho-guide__further,
-  .psycho-guide--cascade .psycho-guide__closing .psycho-guide__refs {
+  .psycho-guide--dossier .psycho-guide__closing .psycho-guide__further,
+  .psycho-guide--dossier .psycho-guide__closing .psycho-guide__refs {
     margin-top: 0;
     padding-left: 0;
     border-left: 0;
     max-width: none;
   }
 
-  .psycho-guide--cascade .psycho-guide__closing .psycho-guide__refs {
+  .psycho-guide--dossier .psycho-guide__closing .psycho-guide__refs {
     padding-top: 2rem;
     border-top: 1px solid var(--home-v2-hairline);
   }
 
-  .psycho-guide--cascade .psycho-guide__outro {
+  .psycho-guide--dossier .psycho-guide__outro {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1275,22 +1300,37 @@
     padding-top: 2rem;
   }
 
-  .psycho-guide--cascade .psycho-guide__related {
+  .psycho-guide--dossier .psycho-guide__related {
     max-width: none;
     margin-left: 0;
   }
 
-  .psycho-guide--cascade .psycho-guide__related-list {
+  .psycho-guide--dossier .psycho-guide__related-list {
     grid-template-columns: 1fr;
   }
 
-  .psycho-guide--cascade .psycho-guide__back {
+  .psycho-guide--dossier .psycho-guide__back {
     margin-left: 0;
   }
 }
 
 @media (min-width: 1200px) {
-  .psycho-guide--cascade .psycho-guide__article > .home-landing-container {
-    max-width: min(44rem, 100%);
+  .psycho-guide--dossier .psycho-guide__article > .home-landing-container {
+    max-width: min(68rem, 100%);
+  }
+
+  .psycho-guide--dossier .psycho-guide__dossier {
+    grid-template-columns: minmax(12rem, 14.5rem) minmax(0, 1fr);
+    gap: 2.5rem 3.5rem;
+  }
+
+  .psycho-guide--dossier .psycho-guide__stream {
+    max-width: 42rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .psycho-guide__index-link {
+    transition: none;
   }
 }
