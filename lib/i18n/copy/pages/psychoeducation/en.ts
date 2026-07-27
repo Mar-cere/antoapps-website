@@ -159,7 +159,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           'The urge to believe it instantly (“that’s it, it’s true”).',
           'Absolute words: always, never, everyone, impossible.',
           'Anxiety, shame, or anger that arrive before you check the facts.',
-          'The impulse to check, avoid, or seek certainty to come down a little.',
         ],
       },
       {
@@ -171,9 +170,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           'All-or-nothing: “if it is not perfect, it is a total failure.”',
           'Catastrophising: “if I mess up the meeting, my career is over.”',
           'Mind reading: “they surely think I am a drag.”',
-          'Mental filter: from a whole day, you only keep what went wrong.',
-          'Personalisation: carrying blame for things you do not control.',
-          'Should statements: “I should handle everything without asking for help.”',
           'Overgeneralisation: one stumble becomes “this always happens to me.”',
         ],
       },
@@ -256,12 +252,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           description:
             'When catastrophic thinking comes with a racing body: map and interventions.',
           href: '/recursos/ansiedad-y-preocupacion',
-        },
-        {
-          label: 'Evidence that informs Anto',
-          description:
-            'How we read CBT, scales, and digital mental health — and what we do not claim.',
-          href: '/investigacion',
         },
       ],
     },

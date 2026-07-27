@@ -159,7 +159,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           'Ganas de creerlo al instante (“ya está, es así”).',
           'Palabras absolutas: siempre, nunca, todo el mundo, imposible.',
           'Ansiedad, vergüenza o rabia que llegan antes de mirar los hechos.',
-          'Impulso de revisar, evitar o pedir certeza para bajar un poco.',
         ],
       },
       {
@@ -171,9 +170,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           'Todo o nada: «si no sale perfecto, es un fracaso total».',
           'Catastrofismo: «si me equivoco en la reunión, se acabó mi carrera».',
           'Lectura de mente: «seguro piensa que soy un pesado».',
-          'Filtro mental: del día entero solo te quedas con lo que salió mal.',
-          'Personalización: cargar con culpa por cosas que no controlas.',
-          'Deberías: «debería poder con todo sin pedir ayuda».',
           'Sobregeneralización: un tropiezo se vuelve «siempre me pasa».',
         ],
       },
@@ -256,12 +252,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           description:
             'Cuando el pensamiento catastrófico viene con el cuerpo acelerado: mapa e intervenciones.',
           href: '/recursos/ansiedad-y-preocupacion',
-        },
-        {
-          label: 'Evidencia que informa Anto',
-          description:
-            'Cómo leemos TCC, escalas y salud mental digital — y qué no afirmamos.',
-          href: '/investigacion',
         },
       ],
     },
