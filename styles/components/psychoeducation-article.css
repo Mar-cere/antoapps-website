@@ -264,6 +264,13 @@
   margin: 0;
 }
 
+.psycho-guide__product-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
 .psycho-guide__product-suggestions-label {
   margin: 0 0 0.55rem;
   font-size: 0.6875rem;
@@ -1367,8 +1374,7 @@
   }
 
   .psycho-guide--dossier .psycho-guide__product-suggestions {
-    grid-column: 1 / -1;
-    padding-top: 0.15rem;
+    padding-top: 0;
   }
 
   .psycho-guide--dossier .psycho-guide__product-suggestions-label {

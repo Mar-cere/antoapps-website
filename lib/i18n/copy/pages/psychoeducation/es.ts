@@ -285,7 +285,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
         {
           apa: 'Burns, D. D. (1999). The feeling good handbook (Rev. ed.). Plume.',
-          href: 'https://www.penguinrandomhouse.com/books/322160/the-feeling-good-handbook-by-david-d-burns-md/',
+          href: 'https://www.penguinrandomhouse.com/books/329278/the-feeling-good-handbook-by-david-d-burns/',
           note: 'Catálogo accesible de distorsiones cognitivas y ejercicios de cuestionamiento para el lector general.',
         },
       ],
@@ -536,7 +536,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
         {
           apa: 'Burns, D. D. (1999). The feeling good handbook (Rev. ed.). Plume.',
-          href: 'https://www.penguinrandomhouse.com/books/322160/the-feeling-good-handbook-by-david-d-burns-md/',
+          href: 'https://www.penguinrandomhouse.com/books/329278/the-feeling-good-handbook-by-david-d-burns/',
           note: 'Taxonomías accesibles de distorsiones (referencia; aquí se usan como clusters, no como lista a memorizar).',
         },
         {
