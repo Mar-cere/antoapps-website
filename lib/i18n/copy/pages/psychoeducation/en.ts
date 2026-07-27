@@ -1021,9 +1021,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         bullets: [
           'A regular wake time (including weekends) — anchors the body clock even after an irregular night.',
           'A 30–60 minute wind-down without screens: dim light, something quiet, no scrolling.',
-          'Keep caffeine away from the afternoon; alcohol may induce sleep early and fragment it later.',
           'Bed for sleep and rest — not work, not meetings, not “just a bit” of phone.',
-          'If you cannot sleep in ~20 minutes, get up to another room with dim light and return when activation eases a little.',
         ],
       },
       {
@@ -1104,25 +1102,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           description:
             'Sensory anchors if the body is at 8/10 and you cannot write or sleep yet.',
           href: '/recursos/grounding-ansiedad-crisis',
-        },
-        {
-          label: 'Mindfulness: brief guide',
-          description:
-            'Present-moment attention without emptying the mind — useful in the wind-down before sleep.',
-          href: '/recursos/mindfulness-guia-breve',
-        },
-        {
-          label: 'Evidence that informs Anto',
-          description:
-            'How we read CBT, sleep, and digital mental health — and what we do not claim.',
-          href: '/investigacion',
-        },
-        {
-          label: 'MedlinePlus — Insomnia',
-          description:
-            'Public NIH (U.S.) material on causes, symptoms, and when to seek care.',
-          href: 'https://medlineplus.gov/insomnia.html',
-          external: true,
         },
       ],
     },

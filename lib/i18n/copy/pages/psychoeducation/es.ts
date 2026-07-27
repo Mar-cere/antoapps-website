@@ -1021,9 +1021,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         bullets: [
           'Horario regular de levantarte (también el fin de semana) — ancla el reloj biológico aunque la noche haya sido irregular.',
           'Rutina de 30–60 minutos sin pantallas antes de dormir: luz tenue, algo quieto, sin scroll.',
-          'Cafeína lejos de la tarde; el alcohol puede inducir sueño al inicio y fragmentarlo después.',
           'Cama para dormir y descanso — no trabajo, no reuniones, no «solo un rato» de móvil.',
-          'Si no concilias en ~20 minutos, levántate a otra estancia con luz tenue y vuelve cuando baje un poco la activación.',
         ],
       },
       {
@@ -1104,25 +1102,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           description:
             'Anclas sensoriales si el cuerpo está en 8/10 y aún no puedes escribir ni dormir.',
           href: '/recursos/grounding-ansiedad-crisis',
-        },
-        {
-          label: 'Mindfulness: guía breve',
-          description:
-            'Atención al presente sin vaciar la mente — útil en la rutina previa al sueño.',
-          href: '/recursos/mindfulness-guia-breve',
-        },
-        {
-          label: 'Evidencia que informa Anto',
-          description:
-            'Cómo leemos TCC, sueño y salud mental digital — y qué no afirmamos.',
-          href: '/investigacion',
-        },
-        {
-          label: 'MedlinePlus — Insomnio (español)',
-          description:
-            'Material público de los NIH (EE. UU.) sobre causas, síntomas y cuándo buscar atención.',
-          href: 'https://medlineplus.gov/spanish/insomnia.html',
-          external: true,
         },
       ],
     },
