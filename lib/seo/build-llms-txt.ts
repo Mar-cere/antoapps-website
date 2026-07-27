@@ -301,6 +301,14 @@ function formatGuideEntry(
     }
   }
 
+  if (guide.references?.items.length) {
+    lines.push(`- ${isEs ? 'Referencias (APA)' : 'References (APA)'}:`);
+    for (const ref of guide.references.items) {
+      const note = ref.note ? ` — ${ref.note}` : '';
+      lines.push(`  - [${ref.apa}](${ref.href})${note}`);
+    }
+  }
+
   lines.push(
     `- ${isEs ? 'Guías relacionadas' : 'Related guides'}: ${related}`,
     `- ${isEs ? 'Aviso' : 'Notice'}: ${guide.disclaimer}`,
@@ -651,6 +659,8 @@ export function llmsTxtRequiredSnippets(): string[] {
     'evidencia de categoría',
     'category evidence',
     'doi.org/10.4088/jcp.v69n0415',
+    'pensamientos en bucle',
+    'thoughts in a loop',
     DEFAULT_APP_STORE_URL,
     'apps.apple.com',
   ];

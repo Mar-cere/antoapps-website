@@ -80,7 +80,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           label: 'Distorsiones cognitivas',
           description:
-            'Ejemplos frecuentes (catastrofismo, todo o nada, lectura de mente) y un ejercicio para cuestionarlas.',
+            'Catastrofismo, todo o nada, lectura de mente y un ejercicio para mirar el pensamiento de cerca.',
           href: '/recursos/distorsiones-cognitivas',
         },
         {
@@ -119,7 +119,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       openGraphDescription:
         'Cuando la mente salta a conclusiones: ejemplos cotidianos, un paso a paso para crear distancia y el camino al marco TCC.',
       keywords:
-        'distorsiones cognitivas, pensamientos automáticos, catastrofismo, todo o nada, lectura de mente, reformulación, TCC, técnica ABC, psicoeducación, Anto',
+        'distorsiones cognitivas, pensamientos en bucle, pensamientos automáticos, catastrofismo, todo o nada, lectura de mente, filtro mental, sobregeneralización, reformulación, TCC, técnica ABC, psicoeducación, Anto',
     },
     hero: {
       title: 'Distorsiones cognitivas',
@@ -525,6 +525,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/grounding-ansiedad-crisis',
         },
         {
+          label: 'Distorsiones cognitivas',
+          description:
+            'Catastrofismo, todo o nada, lectura de mente y un ejercicio para mirar el pensamiento de cerca.',
+          href: '/recursos/distorsiones-cognitivas',
+        },
+        {
           label: 'PHQ-9 y GAD-7',
           description:
             'Escalas de cribado: qué miden, rangos orientativos y límites frente al diagnóstico.',
@@ -588,7 +594,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.grounding, SLUGS.scales, SLUGS.tcc],
+    relatedSlugs: [SLUGS.grounding, SLUGS.distortions, SLUGS.tcc],
     disclaimer:
       'Psicoeducación. No diagnostica ni sustituye evaluación o tratamiento clínico. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
     ctaBridge:

@@ -80,7 +80,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           label: 'Cognitive distortions',
           description:
-            'Common examples (catastrophising, all-or-nothing, mind reading) and an exercise to question them.',
+            'Catastrophising, all-or-nothing, mind reading, and an exercise to look closely at a thought.',
           href: '/recursos/distorsiones-cognitivas',
         },
         {
@@ -119,7 +119,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       openGraphDescription:
         'When the mind jumps to conclusions: everyday examples, a step-by-step to create distance, and the path to the fuller CBT frame.',
       keywords:
-        'cognitive distortions, automatic thoughts, catastrophising, all-or-nothing, mind reading, reframing, CBT, ABC technique, psychoeducation, Anto',
+        'cognitive distortions, thoughts in a loop, automatic thoughts, catastrophising, all-or-nothing, mind reading, mental filter, overgeneralisation, reframing, CBT, ABC technique, psychoeducation, Anto',
     },
     hero: {
       title: 'Cognitive distortions',
@@ -525,6 +525,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/grounding-ansiedad-crisis',
         },
         {
+          label: 'Cognitive distortions',
+          description:
+            'Catastrophising, all-or-nothing, mind reading, and an exercise to look closely at a thought.',
+          href: '/recursos/distorsiones-cognitivas',
+        },
+        {
           label: 'PHQ-9 and GAD-7',
           description:
             'Screening scales: what they measure, orienting ranges, and limits versus diagnosis.',
@@ -588,7 +594,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.grounding, SLUGS.scales, SLUGS.tcc],
+    relatedSlugs: [SLUGS.grounding, SLUGS.distortions, SLUGS.tcc],
     disclaimer:
       'Psychoeducation. Does not diagnose or replace clinical assessment or treatment. In suicidal risk or violence, seek local emergency help immediately.',
     ctaBridge:

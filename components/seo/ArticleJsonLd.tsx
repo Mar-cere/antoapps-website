@@ -90,6 +90,8 @@ export function getArticleJsonLd(locale: Locale, path: string, guide: Psychoeduc
     articleBody: bodyText,
     about,
     keywords,
+    isAccessibleForFree: true,
+    educationalUse: isEn ? 'Psychoeducation' : 'Psicoeducación',
   };
 
   if (imageUrl && guide.figure) {
