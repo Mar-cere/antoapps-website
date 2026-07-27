@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import type { CSSProperties } from 'react';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
 import type { PsychoeducationGuide } from '@/lib/i18n/copy/pages/psychoeducation';
@@ -134,7 +135,19 @@ export default function PsychoeducationGuidePageContent({
                 </div>
 
                 {guide.figure ? (
-                  <figure className="psycho-guide__figure reveal-on-scroll">
+                  <figure
+                    className="psycho-guide__figure reveal-on-scroll"
+                    style={
+                      {
+                        ...(guide.figure.objectPosition
+                          ? { '--psycho-figure-position': guide.figure.objectPosition }
+                          : null),
+                        ...(guide.figure.desktopAspectRatio
+                          ? { '--psycho-figure-desktop-aspect': guide.figure.desktopAspectRatio }
+                          : null),
+                      } as CSSProperties
+                    }
+                  >
                     <div className="psycho-guide__figure-frame">
                       <Image
                         src={guide.figure.src}

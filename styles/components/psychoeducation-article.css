@@ -152,7 +152,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: var(--psycho-figure-position, center center);
 }
 
 .psycho-guide__figure-caption {
@@ -901,7 +901,7 @@
   }
 
   .psycho-guide__figure-frame {
-    aspect-ratio: 2.4 / 1;
+    aspect-ratio: var(--psycho-figure-desktop-aspect, 2.4 / 1);
   }
 
   /* Ensayo en dos columnas; la viñeta producto (si hay) ocupa el ancho completo. */

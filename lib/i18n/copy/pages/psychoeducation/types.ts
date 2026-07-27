@@ -20,6 +20,16 @@ export type PsychoeducationFigure = {
   caption?: string;
   width: number;
   height: number;
+  /**
+   * CSS object-position para el crop (p. ej. desktop panorámico).
+   * Útil cuando el sujeto narrativo no está centrado.
+   */
+  objectPosition?: string;
+  /**
+   * aspect-ratio del frame en desktop (≥960px). Por defecto 2.4 / 1.
+   * Usar un valor más bajo (p. ej. 2 / 1) si la foto necesita más altura útil.
+   */
+  desktopAspectRatio?: string;
 };
 
 export type PsychoeducationFurtherLink = {

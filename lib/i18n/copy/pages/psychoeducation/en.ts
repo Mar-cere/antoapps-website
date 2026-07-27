@@ -135,6 +135,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         'An unanswered message. The fact is one thing. The story we invent on top is often another.',
       width: 1536,
       height: 1024,
+      /*
+       * Dense scene: the notebook (written mind-reading) lives in the lower third.
+       * Keep 3/2 on desktop so the panorama crop does not eat the story.
+       */
+      objectPosition: '42% 52%',
+      desktopAspectRatio: '3 / 2',
     },
     sections: [
       {

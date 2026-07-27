@@ -135,6 +135,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         'Un mensaje sin contestar. El hecho es uno. La historia que inventamos encima suele ser otra.',
       width: 1536,
       height: 1024,
+      /*
+       * Escena densa: el cuaderno (lectura de mente escrita) vive abajo.
+       * Mantener 3/2 en desktop evita el panorámico que se come la historia.
+       */
+      objectPosition: '42% 52%',
+      desktopAspectRatio: '3 / 2',
     },
     sections: [
       {
