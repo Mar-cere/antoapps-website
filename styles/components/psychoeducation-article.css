@@ -133,6 +133,40 @@
   overflow-wrap: break-word;
 }
 
+.psycho-guide__companion {
+  margin: 1.15rem 0 0;
+  max-width: 42ch;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--home-v2-soft);
+}
+
+.psycho-guide__companion-support {
+  color: var(--home-v2-soft);
+}
+
+.psycho-guide__companion-link {
+  color: var(--color-primary, #1adddb);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, var(--color-primary, #1adddb) 45%, transparent);
+  transition: text-decoration-color 160ms ease, color 160ms ease;
+}
+
+@media (hover: hover) {
+  .psycho-guide__companion-link:hover {
+    color: var(--home-v2-ink);
+    text-decoration-color: var(--color-primary, #1adddb);
+  }
+}
+
+.psycho-guide__companion-link:focus-visible {
+  outline: 2px solid var(--color-primary, #1adddb);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 .psycho-guide__figure {
   margin: 0 0 2rem;
   max-width: 46rem;

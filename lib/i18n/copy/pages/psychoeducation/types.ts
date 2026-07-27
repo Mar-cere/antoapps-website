@@ -93,6 +93,15 @@ export type PsychoeducationGuide = {
   hero: {
     title: string;
     subtitle: string;
+    /**
+     * Enlace discreto a la hermana breve/completa (p. ej. mapa ↔ guía práctica).
+     * Path lógico sin locale (p. ej. /recursos/distorsiones-cognitivas).
+     */
+    companionLink?: {
+      href: string;
+      label: string;
+      support?: string;
+    };
   };
   /** Cita editorial bajo el hero (ritmo de revista). */
   pullQuote?: string;

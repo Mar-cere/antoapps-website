@@ -132,6 +132,11 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       title: 'Distorsiones cognitivas',
       subtitle:
         'Esos atajos mentales que hacen que un silencio se sienta como un veredicto. Nombrarlos ayuda a no creerlos al instante — sin obligarte a “pensar positivo”.',
+      companionLink: {
+        href: '/recursos/mapa-distorsiones-cognitivas',
+        support: '¿Quieres el mapa clínico?',
+        label: 'Ir a la guía completa →',
+      },
     },
     pullQuote:
       'A veces la mente no miente del todo. Solo exagera. Y en esa exageración se te va el resto del día.',
@@ -322,17 +327,22 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       title: 'Distorsiones cognitivas: mapa completo',
       subtitle:
         'Una lectura más clínica: qué son en el modelo cognitivo, cómo se clasifican, por qué se mantienen y qué intervenciones suelen usarse en TCC.',
+      companionLink: {
+        href: '/recursos/distorsiones-cognitivas',
+        support: '¿Prefieres empezar breve?',
+        label: 'Ver la guía práctica →',
+      },
     },
     pullQuote:
       'El sesgo no es un defecto de carácter. Es un atajo perceptual que, repetido, organiza la emoción y la conducta — a veces a costa de la evidencia.',
     figure: {
-      src: '/assets/images/editorial/anto-editorial-desk-rain.webp',
-      alt: 'Escritorio junto a una ventana con lluvia — cuaderno, luz tenue y el espacio quieto donde se revisa un pensamiento',
+      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
+      alt: 'Atardecer en una habitación quieta con luz cálida — espacio para revisar un pensamiento sin prisa',
       caption:
         'La reestructuración no ocurre en el pico. Suele empezar cuando hay margen para escribir el pensamiento tal cual.',
       width: 1536,
       height: 1024,
-      objectPosition: '48% 42%',
+      objectPosition: '50% 45%',
       desktopAspectRatio: '3 / 2',
     },
     sections: [
@@ -407,6 +417,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'Ejercicio: reestructuración paso a paso',
         paragraphs: [
           'Protocolo breve alineado con el trabajo de pensamientos automáticos en TCC. Hazlo fuera del pico cuando puedas. Si estás muy activado, regula primero y escribe después.',
+          'Ejemplo trabajado: A — Te trabaste dos veces en una presentación. B — «Fue un fracaso total; todos lo notaron». Emoción 8/10. Distorsión probable: dicotomía + lectura de mente. Evidencia a favor: te trabaste. En contra: terminaste, nadie te lo dijo, en el pasado tropiezos similares no definieron tu carrera. Alternativa: «Me trabé y aun así entregué el contenido; no sé qué pensaron los demás». Emoción 5/10. Experimento: pedir un feedback concreto a una persona de confianza esta semana, sin buscar certeza absoluta.',
         ],
         ordered: true,
         bullets: [
@@ -416,6 +427,18 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           'Evidencia a favor y en contra — como si evaluaras el caso de un tercero.',
           'Pensamiento alternativo equilibrado (no necesariamente “positivo”); vuelve a puntuar creencia e intensidad.',
           'Si aplica: una acción o experimento pequeño para probar la predicción esta semana.',
+        ],
+      },
+      {
+        heading: 'Qué no es / límites',
+        paragraphs: [
+          'Nombrar una distorsión no diagnostica un trastorno ni demuestra que “piensas mal”. Tampoco es pensar positivo: a veces el contenido apunta a un problema real; lo que tuerce es el absoluto, la certeza imposible o la generalización.',
+          'Si la intensidad afectiva es ≥8/10, prioriza regulación (respiración, grounding, compañía) antes de un debate cognitivo detallado. Tras trauma reciente, ideación de daño o desesperanza intensa, no uses esta guía como sustituto de evaluación profesional.',
+        ],
+        bullets: [
+          'No es un test de personalidad ni una etiqueta de identidad.',
+          'No exige “demostrar” que el pensamiento es falso: basta una lectura más proporcional.',
+          'Si reestructurar aumenta la rumia sin alivio, pausa y pide ayuda clínica.',
         ],
       },
       {
@@ -486,6 +509,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/ansiedad-y-preocupacion',
         },
         {
+          label: 'Depresión: guía breve',
+          description:
+            'Señales, filtro mental y el papel de la activación conductual junto al trabajo cognitivo.',
+          href: '/recursos/depresion-guia-breve',
+        },
+        {
           label: 'Qué es la TCC',
           description:
             'Modelo cognitivo-conductual: pensamientos, emociones, conductas y exposición.',
@@ -526,7 +555,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.distortions, SLUGS.abc, SLUGS.anxiety],
+    relatedSlugs: [SLUGS.distortions, SLUGS.abc, SLUGS.depression],
     disclaimer:
       'Psicoeducación. No diagnostica ni sustituye evaluación o tratamiento clínico. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
     ctaBridge:

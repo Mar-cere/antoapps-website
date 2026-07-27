@@ -132,6 +132,11 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       title: 'Cognitive distortions',
       subtitle:
         'Those mental shortcuts that turn a silence into a verdict. Naming them helps you not believe them instantly — without forcing yourself to “think positive.”',
+      companionLink: {
+        href: '/recursos/mapa-distorsiones-cognitivas',
+        support: 'Want the clinical map?',
+        label: 'Go to the full guide →',
+      },
     },
     pullQuote:
       'Sometimes the mind is not entirely wrong. It just exaggerates. And in that exaggeration, the rest of the day slips away.',
@@ -322,17 +327,22 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       title: 'Cognitive distortions: full map',
       subtitle:
         'A more clinical reading: what they are in the cognitive model, how they are classified, why they persist, and which interventions CBT usually uses.',
+      companionLink: {
+        href: '/recursos/distorsiones-cognitivas',
+        support: 'Prefer a shorter start?',
+        label: 'See the practical guide →',
+      },
     },
     pullQuote:
       'A bias is not a character flaw. It is a perceptual shortcut that, when repeated, organises emotion and behaviour — sometimes at the expense of evidence.',
     figure: {
-      src: '/assets/images/editorial/anto-editorial-desk-rain.webp',
-      alt: 'Desk by a rainy window — notebook, soft light, and the quiet space where a thought is reviewed',
+      src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
+      alt: 'Quiet evening room with warm light — space to review a thought without rush',
       caption:
         'Restructuring rarely happens at the peak. It usually starts when there is room to write the thought exactly as it is.',
       width: 1536,
       height: 1024,
-      objectPosition: '48% 42%',
+      objectPosition: '50% 45%',
       desktopAspectRatio: '3 / 2',
     },
     sections: [
@@ -407,6 +417,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'Exercise: step-by-step restructuring',
         paragraphs: [
           'A short protocol aligned with automatic-thought work in CBT. Do it outside the peak when you can. If you are highly activated, regulate first and write after.',
+          'Worked example: A — You stumbled twice in a presentation. B — “It was a total failure; everyone noticed.” Emotion 8/10. Likely distortion: all-or-nothing + mind reading. Evidence for: you stumbled. Against: you finished, no one said so, similar stumbles before did not define your career. Alternative: “I stumbled and still delivered the content; I don’t know what others thought.” Emotion 5/10. Experiment: ask one trusted person for concrete feedback this week, without demanding absolute certainty.',
         ],
         ordered: true,
         bullets: [
@@ -416,6 +427,18 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           'Evidence for and against — as if you were evaluating a third person’s case.',
           'Balanced alternative thought (not necessarily “positive”); re-rate belief and intensity.',
           'If relevant: one small action or experiment to test the prediction this week.',
+        ],
+      },
+      {
+        heading: 'What this is not / limits',
+        paragraphs: [
+          'Naming a distortion does not diagnose a disorder or prove you “think badly”. It is also not positive thinking: sometimes the content points to a real problem; what twists it is the absolute, the impossible certainty, or the overgeneralisation.',
+          'If affective intensity is ≥8/10, prioritise regulation (breathing, grounding, company) before a detailed cognitive debate. After recent trauma, harm ideation, or intense hopelessness, do not use this guide as a substitute for professional assessment.',
+        ],
+        bullets: [
+          'It is not a personality test or an identity label.',
+          'It does not require “proving” the thought is false: a more proportionate reading is enough.',
+          'If restructuring increases rumination without relief, pause and seek clinical help.',
         ],
       },
       {
@@ -486,6 +509,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/ansiedad-y-preocupacion',
         },
         {
+          label: 'Depression: brief guide',
+          description:
+            'Signs, mental filter, and the role of behavioural activation alongside cognitive work.',
+          href: '/recursos/depresion-guia-breve',
+        },
+        {
           label: 'What is CBT',
           description:
             'Cognitive-behavioural model: thoughts, emotions, behaviours, and exposure.',
@@ -526,7 +555,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.distortions, SLUGS.abc, SLUGS.anxiety],
+    relatedSlugs: [SLUGS.distortions, SLUGS.abc, SLUGS.depression],
     disclaimer:
       'Psychoeducation. Does not diagnose or replace clinical assessment or treatment. If there is suicidal risk or violence, seek local emergency help immediately.',
     ctaBridge:

@@ -125,6 +125,21 @@ export default function PsychoeducationGuidePageContent({
                     </p>
                     <h1 className="psycho-guide__title">{guide.hero.title}</h1>
                     <p className="psycho-guide__subtitle">{guide.hero.subtitle}</p>
+                    {guide.hero.companionLink ? (
+                      <p className="psycho-guide__companion reveal-on-scroll">
+                        {guide.hero.companionLink.support ? (
+                          <span className="psycho-guide__companion-support">
+                            {guide.hero.companionLink.support}{' '}
+                          </span>
+                        ) : null}
+                        <Link
+                          href={resolveGuideHref(locale, guide.hero.companionLink.href)}
+                          className="psycho-guide__companion-link"
+                        >
+                          {guide.hero.companionLink.label}
+                        </Link>
+                      </p>
+                    ) : null}
                   </header>
 
                   {guide.pullQuote ? (
