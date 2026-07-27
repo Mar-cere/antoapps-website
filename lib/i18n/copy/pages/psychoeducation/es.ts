@@ -973,6 +973,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   [SLUGS.sleep]: {
     slug: SLUGS.sleep,
     readingMinutes: 6,
+    layout: 'brief',
     meta: {
       title: 'Cuando no puedes dormir | Guía breve Anto',
       description:
@@ -1113,7 +1114,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           apa: 'Irish, L. A., Kline, C. E., Gunn, H. E., Buysse, D. J., & Hall, M. H. (2015). The role of sleep hygiene in promoting public health: A review of empirical evidence. Sleep Medicine Reviews, 22, 23–36. https://doi.org/10.1016/j.smrv.2014.10.001',
           href: 'https://doi.org/10.1016/j.smrv.2014.10.001',
-          note: 'Revisa la evidencia de componentes de higiene del sueño (horario, cafeína, alcohol, estrés) en población general.',
+          note: 'Revisa evidencia de hábitos de descanso (horario, pantallas, asociación cama–sueño) en población general.',
         },
         {
           apa: 'Baglioni, C., Battagliese, G., Feige, B., Spiegelhalder, K., Nissen, C., Voderholzer, U., Lombardo, C., & Riemann, D. (2011). Insomnia as a predictor of depression: A meta-analytic evaluation of longitudinal epidemiological studies. Journal of Affective Disorders, 135(1–3), 10–19. https://doi.org/10.1016/j.jad.2011.01.011',
@@ -1126,7 +1127,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     disclaimer:
       'Psicoeducación. No diagnostica ni sustituye evaluación médica o terapia del sueño. El insomnio persistente puede requerir atención profesional. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
     ctaBridge:
-      'Si esta noche solo necesitas compañía para bajar un poco el volumen — sin presión — puedes seguir en el teléfono.',
+      'Si esta noche solo necesitas que alguien baje el volumen contigo — sin presión — puedes seguir en el teléfono.',
     cta: { label: 'Apoyo en Anto →', path: '/bienvenida' },
     howTo: {
       name: 'Ritual si la mente no para',

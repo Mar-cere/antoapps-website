@@ -1058,6 +1058,47 @@
 }
 
 /* -------------------------------------------------------------------------- */
+/* Brief — guías cortas: medida de lectura, producto a ancho de shell          */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 960px) {
+  .psycho-guide--brief .psycho-guide__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2.35rem;
+    max-width: none;
+  }
+
+  .psycho-guide--brief .psycho-guide__section {
+    max-width: 42rem;
+  }
+
+  .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__product) {
+    grid-column: auto;
+    width: 100%;
+    max-width: none;
+  }
+
+  .psycho-guide--brief .psycho-guide__closing {
+    max-width: 56rem;
+  }
+
+  .psycho-guide--brief .psycho-guide__closing .psycho-guide__refs {
+    padding-left: 2rem;
+  }
+
+  .psycho-guide--brief .psycho-guide__outro {
+    max-width: 56rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .psycho-guide--brief .psycho-guide__section {
+    max-width: 44rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
 /* Dossier — mapa clínico: índice sticky + stream de lectura                  */
 /* -------------------------------------------------------------------------- */
 

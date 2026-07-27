@@ -113,7 +113,11 @@ export default function PsychoeducationGuidePageContent({
         <main
           id="main-content"
           className={`home-landing-page home-landing-page--v2 psycho-guide${
-            guide.layout === 'dossier' ? ' psycho-guide--dossier' : ''
+            guide.layout === 'dossier'
+              ? ' psycho-guide--dossier'
+              : guide.layout === 'brief'
+                ? ' psycho-guide--brief'
+                : ''
           }`}
           role="main"
           lang={locale}

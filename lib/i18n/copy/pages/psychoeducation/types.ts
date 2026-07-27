@@ -85,9 +85,10 @@ export type PsychoeducationGuide = {
   /**
    * Variante de composición desktop.
    * - default: ensayo en dos columnas (resto de guías)
-   * - dossier: índice sticky del mapa + lectura (mapa clínico)
+   * - dossier: índice sticky del mapa + stream de lectura
+   * - brief: columna de lectura (guías cortas con foto + producto)
    */
-  layout?: 'default' | 'dossier';
+  layout?: 'default' | 'dossier' | 'brief';
   meta: {
     title: string;
     description: string;

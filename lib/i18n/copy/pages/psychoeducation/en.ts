@@ -973,6 +973,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   [SLUGS.sleep]: {
     slug: SLUGS.sleep,
     readingMinutes: 6,
+    layout: 'brief',
     meta: {
       title: 'When you cannot sleep | Anto brief guide',
       description:
@@ -1113,7 +1114,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           apa: 'Irish, L. A., Kline, C. E., Gunn, H. E., Buysse, D. J., & Hall, M. H. (2015). The role of sleep hygiene in promoting public health: A review of empirical evidence. Sleep Medicine Reviews, 22, 23–36. https://doi.org/10.1016/j.smrv.2014.10.001',
           href: 'https://doi.org/10.1016/j.smrv.2014.10.001',
-          note: 'Reviews evidence for sleep-hygiene components (schedule, caffeine, alcohol, stress) in the general population.',
+          note: 'Reviews evidence for rest habits (schedule, screens, bed–sleep association) in the general population.',
         },
         {
           apa: 'Baglioni, C., Battagliese, G., Feige, B., Spiegelhalder, K., Nissen, C., Voderholzer, U., Lombardo, C., & Riemann, D. (2011). Insomnia as a predictor of depression: A meta-analytic evaluation of longitudinal epidemiological studies. Journal of Affective Disorders, 135(1–3), 10–19. https://doi.org/10.1016/j.jad.2011.01.011',
@@ -1126,7 +1127,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     disclaimer:
       'Psychoeducation. Does not diagnose or replace medical evaluation or sleep therapy. Persistent insomnia may require professional care. If there is suicide risk or violence, seek local emergency help immediately.',
     ctaBridge:
-      'If tonight you only need company to turn the volume down a little — without pressure — you can continue on your phone.',
+      'If tonight you only need someone to turn the volume down with you — without pressure — you can continue on your phone.',
     cta: { label: 'Support in Anto →', path: '/bienvenida' },
     howTo: {
       name: 'Ritual when the mind will not stop',
