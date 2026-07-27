@@ -241,7 +241,7 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         subtitle:
           'Short psychoeducation on anxiety, techniques, and patterns — plus how Anto works. Not a substitute for professional care.',
         seoIntro:
-          'Educational guides on anxiety, cognitive behavioural therapy (CBT), looping thoughts, grounding, sleep, depression, emotional regulation, burnout, and clinical scales such as PHQ-9 and GAD-7. Free to read. Complements — does not replace — human therapy.',
+          'Educational guides on anxiety, cognitive behavioural therapy (CBT), looping thoughts, the clinical map of cognitive distortions, grounding, sleep, depression, emotional regulation, burnout, and clinical scales such as PHQ-9 and GAD-7. Free to read. Complements — does not replace — human therapy.',
       },
       featured: {
         ariaLabel: 'Start here',
@@ -277,7 +277,7 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
       subtitle:
         'Psicoeducación breve sobre ansiedad, técnicas y patrones — y cómo funciona Anto. No sustituye atención profesional.',
       seoIntro:
-        'Guías educativas sobre ansiedad, terapia cognitivo-conductual (TCC), pensamientos en bucle, grounding, sueño, depresión, regulación emocional, burnout y escalas como PHQ-9 y GAD-7. Lectura gratuita. Complementan — no reemplazan — la terapia humana.',
+        'Guías educativas sobre ansiedad, terapia cognitivo-conductual (TCC), pensamientos en bucle, el mapa clínico de distorsiones cognitivas, grounding, sueño, depresión, regulación emocional, burnout y escalas como PHQ-9 y GAD-7. Lectura gratuita. Complementan — no reemplazan — la terapia humana.',
     },
     featured: {
       ariaLabel: 'Empieza por aquí',

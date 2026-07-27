@@ -121,12 +121,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Cognitive distortions: spot them and question them | Anto',
       description:
-        'What cognitive distortions are, everyday examples (catastrophising, all-or-nothing, mind reading), and a short exercise to look at them closely. Practical psychoeducation with a link to the fuller CBT frame. Does not replace professional care.',
+        'What cognitive distortions are, everyday examples (catastrophising, all-or-nothing, mind reading), and a short exercise to look at them closely. Practical psychoeducation with a link to the fuller clinical map. Does not replace professional care.',
       openGraphTitle: 'Cognitive distortions — recognise and question',
       openGraphDescription:
-        'When the mind jumps to conclusions: everyday examples, a step-by-step to create distance, and the path to the fuller CBT frame.',
+        'When the mind jumps to conclusions: everyday examples, a step-by-step to create distance, and the path to the fuller clinical map.',
       keywords:
-        'cognitive distortions, thoughts in a loop, automatic thoughts, catastrophising, all-or-nothing, mind reading, mental filter, overgeneralisation, reframing, CBT, ABC technique, psychoeducation, Anto',
+        'cognitive distortions, thoughts in a loop, automatic thoughts, catastrophising, all-or-nothing, mind reading, mental filter, overgeneralisation, reframing, cognitive distortions map, CBT, ABC technique, psychoeducation, Anto',
     },
     hero: {
       title: 'Cognitive distortions',
@@ -311,12 +311,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Cognitive distortions: full clinical map | Anto',
       description:
-        'Psychoeducation map of cognitive distortions: clinical definition, automatic thoughts vs. biases, common types, maintenance mechanisms, cognitive restructuring, links to anxiety and depression, and when to seek assessment. Does not diagnose or replace therapy.',
+        'Psychoeducation map of cognitive distortions: clinical definition, automatic thoughts vs. biases, common types, maintenance mechanisms, cognitive restructuring, links to anxiety and depression, and when to seek assessment. Complements the brief looping-thoughts guide. Does not diagnose or replace therapy.',
       openGraphTitle: 'Cognitive distortions — full map',
       openGraphDescription:
         'From clinical definition to restructuring: types, maintenance, CBT-informed interventions, and when to seek assessment.',
       keywords:
-        'cognitive distortions, cognitive map, automatic thoughts, cognitive restructuring, catastrophising, all-or-nothing, mind reading, overgeneralisation, personalisation, Beck, Burns, CBT, clinical psychoeducation, Anto',
+        'cognitive distortions, clinical map, cognitive distortions map, thoughts in a loop, automatic thoughts, cognitive restructuring, thinking errors, catastrophising, all-or-nothing, mind reading, overgeneralisation, personalisation, Beck, Burns, CBT, clinical psychoeducation, Anto',
     },
     hero: {
       title: 'Cognitive distortions: full map',

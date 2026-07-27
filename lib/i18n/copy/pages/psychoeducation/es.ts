@@ -121,12 +121,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Distorsiones cognitivas: reconocerlas y cuestionarlas | Anto',
       description:
-        'Qué son las distorsiones cognitivas, ejemplos del día a día (catastrofismo, todo o nada, lectura de mente) y un ejercicio breve para mirarlas de cerca. Psicoeducación práctica con enlace al marco TCC. No sustituye atención profesional.',
+        'Qué son las distorsiones cognitivas, ejemplos del día a día (catastrofismo, todo o nada, lectura de mente) y un ejercicio breve para mirarlas de cerca. Psicoeducación práctica con enlace al mapa clínico completo. No sustituye atención profesional.',
       openGraphTitle: 'Distorsiones cognitivas — reconocer y cuestionar',
       openGraphDescription:
-        'Cuando la mente salta a conclusiones: ejemplos cotidianos, un paso a paso para crear distancia y el camino al marco TCC.',
+        'Cuando la mente salta a conclusiones: ejemplos cotidianos, un paso a paso para crear distancia y el camino al mapa clínico completo.',
       keywords:
-        'distorsiones cognitivas, pensamientos en bucle, pensamientos automáticos, catastrofismo, todo o nada, lectura de mente, filtro mental, sobregeneralización, reformulación, TCC, técnica ABC, psicoeducación, Anto',
+        'distorsiones cognitivas, pensamientos en bucle, pensamientos automáticos, catastrofismo, todo o nada, lectura de mente, filtro mental, sobregeneralización, reformulación, mapa de distorsiones, TCC, técnica ABC, psicoeducación, Anto',
     },
     hero: {
       title: 'Distorsiones cognitivas',
@@ -311,12 +311,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Distorsiones cognitivas: mapa clínico completo | Anto',
       description:
-        'Mapa de psicoeducación sobre distorsiones cognitivas: definición clínica, pensamientos automáticos vs. sesgos, tipos frecuentes, mecanismos de mantenimiento, reestructuración cognitiva, relación con ansiedad y depresión, y criterios para pedir evaluación. No diagnostica ni sustituye terapia.',
+        'Mapa de psicoeducación sobre distorsiones cognitivas: definición clínica, pensamientos automáticos vs. sesgos, tipos frecuentes, mecanismos de mantenimiento, reestructuración cognitiva, relación con ansiedad y depresión, y criterios para pedir evaluación. Complementa la guía breve de pensamientos en bucle. No diagnostica ni sustituye terapia.',
       openGraphTitle: 'Distorsiones cognitivas — mapa completo',
       openGraphDescription:
         'De la definición clínica a la reestructuración: tipos, mantenimiento, intervenciones con base en TCC y cuándo pedir evaluación.',
       keywords:
-        'distorsiones cognitivas, mapa cognitivo, pensamientos automáticos, reestructuración cognitiva, catastrofismo, dicotomía, lectura de mente, sobregeneralización, personalización, Beck, Burns, TCC, psicoeducación clínica, Anto',
+        'distorsiones cognitivas, mapa clínico, mapa de distorsiones, pensamientos en bucle, pensamientos automáticos, reestructuración cognitiva, sesgos cognitivos, catastrofismo, dicotomía, lectura de mente, sobregeneralización, personalización, Beck, Burns, TCC, psicoeducación clínica, Anto',
     },
     hero: {
       title: 'Distorsiones cognitivas: mapa completo',

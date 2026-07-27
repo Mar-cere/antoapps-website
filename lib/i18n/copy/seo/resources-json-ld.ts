@@ -62,6 +62,10 @@ export function getResourcesCollectionJsonLd(locale: Locale) {
           },
           {
             '@type': 'Thing',
+            name: isEn ? 'Cognitive restructuring' : 'Reestructuración cognitiva',
+          },
+          {
+            '@type': 'Thing',
             name: isEn ? 'Emotional support education' : 'Educación en acompañamiento emocional',
           },
         ],

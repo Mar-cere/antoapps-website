@@ -163,8 +163,8 @@ function formatResourcesDiscoveryBlock(locale: Locale): string[] {
       slugs: ['grounding-ansiedad-crisis', 'ansiedad-y-preocupacion', 'estres-y-carga'],
     },
     {
-      labelEs: 'TCC / pensamientos / ABC',
-      labelEn: 'CBT / thoughts / ABC',
+      labelEs: 'TCC / distorsiones (breve + mapa clínico) / ABC',
+      labelEn: 'CBT / distortions (brief + clinical map) / ABC',
       slugs: [
         'que-es-tcc',
         'distorsiones-cognitivas',
@@ -666,6 +666,10 @@ export function llmsTxtRequiredSnippets(): string[] {
     'doi.org/10.4088/jcp.v69n0415',
     'pensamientos en bucle',
     'thoughts in a loop',
+    'mapa clínico completo',
+    'full clinical map',
+    'reestructuración cognitiva',
+    'cognitive restructuring',
     DEFAULT_APP_STORE_URL,
     'apps.apple.com',
   ];
