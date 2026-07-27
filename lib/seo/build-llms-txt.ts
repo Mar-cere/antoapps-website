@@ -177,6 +177,7 @@ function formatResourcesDiscoveryBlock(locale: Locale): string[] {
       labelEn: 'Sleep / regulation / mindfulness',
       slugs: [
         'higiene-sueno-salud-mental',
+        'mapa-sueno-e-insomnio',
         'regulacion-emocional',
         'mindfulness-guia-breve',
         'autocompasion',

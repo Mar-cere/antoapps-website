@@ -142,6 +142,7 @@ export const PSYCHOEDUCATION_SLUGS = [
   'escalas-phq9-gad7',
   'autocompasion',
   'higiene-sueno-salud-mental',
+  'mapa-sueno-e-insomnio',
   'mindfulness-guia-breve',
   'depresion-guia-breve',
   'activacion-conductual',

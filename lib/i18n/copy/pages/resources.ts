@@ -230,7 +230,7 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
       meta: {
         title: 'Resources — Anto | Psychoeducation for anxiety, CBT, sleep and quiet hours',
         description:
-          `${PSYCHOEDUCATION_SLUGS.length} free psychoeducation guides: anxiety, CBT, cognitive distortions (brief + clinical map), grounding, sleep, depression, PHQ-9/GAD-7, and more — plus Anto on iPhone, privacy, and evidence. Complements care; does not replace a therapist.`,
+        `${PSYCHOEDUCATION_SLUGS.length} free psychoeducation guides: anxiety, CBT, cognitive distortions (brief + clinical map), sleep (brief + full map), grounding, depression, PHQ-9/GAD-7, and more — plus Anto on iPhone, privacy, and evidence. Complements care; does not replace a therapist.`,
         openGraphTitle: 'Anto resources — guides for anxiety and quiet hours',
         openGraphDescription:
           'Start with anxiety, looping thoughts, sleep, or CBT. Short educational guides — not a diagnosis.',
@@ -266,7 +266,7 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
     meta: {
       title: 'Recursos — Anto | Psicoeducación para ansiedad, TCC, sueño y horas quietas',
       description:
-        `${PSYCHOEDUCATION_SLUGS.length} guías gratuitas de psicoeducación: ansiedad, TCC, distorsiones cognitivas (breve + mapa clínico), grounding, sueño, depresión, PHQ-9/GAD-7 y más — más Anto en iPhone, privacidad y evidencia. Complementa; no reemplaza a un terapeuta.`,
+        `${PSYCHOEDUCATION_SLUGS.length} guías gratuitas de psicoeducación: ansiedad, TCC, distorsiones cognitivas (breve + mapa clínico), sueño (breve + mapa completo), grounding, depresión, PHQ-9/GAD-7 y más — más Anto en iPhone, privacidad y evidencia. Complementa; no reemplaza a un terapeuta.`,
       openGraphTitle: 'Recursos Anto — guías para ansiedad y horas quietas',
       openGraphDescription:
         'Empieza por ansiedad, pensamientos en bucle, sueño o TCC. Guías educativas breves — no son un diagnóstico.',
