@@ -53,7 +53,7 @@ const uiCopy: Record<Locale, GuideUiCopy> = {
     backToLibrary: 'Volver a recursos',
     crumbAria: 'Breadcrumb',
     externalLinkHint: 'Abre en una pestaña nueva',
-    mapIndexLabel: 'En este mapa',
+    mapIndexLabel: 'Mapa',
     mapIndexAria: 'Índice del mapa',
   },
   en: {
@@ -66,7 +66,7 @@ const uiCopy: Record<Locale, GuideUiCopy> = {
     backToLibrary: 'Back to resources',
     crumbAria: 'Breadcrumb',
     externalLinkHint: 'Opens in a new tab',
-    mapIndexLabel: 'In this map',
+    mapIndexLabel: 'Map',
     mapIndexAria: 'Map index',
   },
 };
@@ -140,7 +140,8 @@ export default function PsychoeducationGuidePageContent({
                 <div className="psycho-guide__masthead">
                   <header className="psycho-guide__header reveal-on-scroll">
                     <p className="psycho-guide__eyebrow">
-                      {locale === 'en' ? 'Guide' : 'Guía'} · {ui.readingTime(guide.readingMinutes)}
+                      Anto · {locale === 'en' ? 'Guide' : 'Guía'} ·{' '}
+                      {ui.readingTime(guide.readingMinutes)}
                     </p>
                     <h1 className="psycho-guide__title">{guide.hero.title}</h1>
                     <p className="psycho-guide__subtitle">{guide.hero.subtitle}</p>
