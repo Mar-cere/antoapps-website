@@ -82,6 +82,12 @@ export type PsychoeducationProductMoment = {
 export type PsychoeducationGuide = {
   slug: string;
   readingMinutes: number;
+  /**
+   * Variante de composición desktop.
+   * - default: ensayo en dos columnas (resto de guías)
+   * - cascade: columna única asimétrica, foto a sangre, capítulos numerados
+   */
+  layout?: 'default' | 'cascade';
   meta: {
     title: string;
     description: string;

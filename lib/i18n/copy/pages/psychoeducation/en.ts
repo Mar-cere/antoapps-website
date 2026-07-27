@@ -313,6 +313,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   [SLUGS.distortionsMap]: {
     slug: SLUGS.distortionsMap,
     readingMinutes: 12,
+    layout: 'cascade',
     meta: {
       title: 'Cognitive distortions: full clinical map | Anto',
       description:
@@ -342,8 +343,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         'Rain outside, prediction in the notebook. The clinical map is written: hypothesis, test, data — not only argued.',
       width: 1536,
       height: 1024,
-      objectPosition: '38% 58%',
-      desktopAspectRatio: '3 / 2',
+      objectPosition: '38% 52%',
+      /* Cascade: cinematic full-bleed (not a 3/2 inset card). */
+      desktopAspectRatio: '21 / 9',
     },
     sections: [
       {

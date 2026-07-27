@@ -95,7 +95,9 @@ export default function PsychoeducationGuidePageContent({
         />
         <main
           id="main-content"
-          className="home-landing-page home-landing-page--v2 psycho-guide"
+          className={`home-landing-page home-landing-page--v2 psycho-guide${
+            guide.layout === 'cascade' ? ' psycho-guide--cascade' : ''
+          }`}
           role="main"
           lang={locale}
         >
