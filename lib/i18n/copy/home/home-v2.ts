@@ -250,7 +250,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       },
       recognize: {
         lead: 'Some days you are not exactly unwell.',
-        body: 'Everything just costs a little more. Anto is for those quiet hours. No appointment required.',
+        body: 'You do not need a full crisis to need company. Anto is there for the stretch between the day and sleep — no appointment required.',
         imageAlt: 'Rainy night desk with an open notebook and a warm lamp',
       },
       moments: [
@@ -302,14 +302,14 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
               insightLabel: 'What stood out',
               insight: 'The nights you scrolled less, things felt a bit quieter the next day',
               disclaimer:
-                'Just an example. These check-ins help you notice patterns — they don’t diagnose or replace professional care.',
+                'Just an example. These check-ins help you notice patterns — they do not diagnose or replace professional care.',
             },
           },
         },
         {
           id: 'privacy',
           title: 'Your space stays yours.',
-          body: 'Conversations are encrypted. We do not sell your data. Care without an audience.',
+          body: 'End-to-end encryption. We do not sell your story or build ads on it.',
           media: {
             kind: 'privacy',
             privacy: {
@@ -341,13 +341,13 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           },
           {
             title: 'Between sessions',
-            body: 'Available any hour. It complements therapy; it does not replace a human clinician.',
+            body: 'Available any hour, including nights when there is no appointment in sight.',
           },
         ],
         proofSignals: [
           { value: '5.0', label: 'on the App Store' },
           { value: '8', label: 'clinical protocols' },
-          { value: 'Encrypted', label: 'end to end' },
+          { value: 'Encrypted', label: 'end-to-end' },
         ],
       },
       still: {
@@ -397,12 +397,12 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'What is Anto?',
             answer:
-              'Anto is an app for ongoing emotional support: a place to land between sessions or day to day. It uses AI assistance in the background. It does not replace clinical care — a human therapist or professional remains the stronger recommendation. Available on iPhone.',
+              'Anto is an app for ongoing emotional support between sessions or day to day. It uses AI assistance in the background. It does not replace clinical care — a human therapist or professional remains the stronger recommendation. Available on iPhone.',
           },
           {
             question: 'What else is there besides chat?',
             answer:
-              'Theme memory, a techniques hub (including an interactive ABC canvas), quiet check-ins to notice patterns, and a home for day-to-day tasks. It is not only conversation — it is a system that accompanies you between sessions.',
+              'Theme memory, a techniques hub (including an interactive ABC canvas), quiet check-ins to notice patterns, and a home for day-to-day tasks. Not only conversation: a system that stays with you when talking is not enough.',
           },
           {
             question: 'Are my conversations private?',
@@ -412,7 +412,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'Does Anto replace therapy?',
             answer:
-              'No. Anto accompanies you between sessions or on days when you need a place to land. It is not a substitute for professional care.',
+              'No. It accompanies you between sessions or on hard days. It is not a substitute for professional care.',
           },
           {
             question: 'Is there a free trial?',
@@ -428,12 +428,12 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             href: '/recursos',
             label: 'Resources',
-            description: 'Guides to land with',
+            description: 'Anxiety, grounding, CBT, and more guides',
           },
           {
-            href: '/recursos/que-es-tcc',
-            label: 'What is CBT',
-            description: 'A brief guide to cognitive behavioural therapy',
+            href: '/recursos/grounding-ansiedad-crisis',
+            label: 'When anxiety rises',
+            description: 'Grounding 5-4-3-2-1 for intense moments',
           },
           {
             href: '/app',
@@ -502,7 +502,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
     },
     recognize: {
       lead: 'Hay días en que no estás exactamente mal.',
-      body: 'Solo sientes que todo cuesta un poco más. Anto está para esas horas quietas. Sin cita previa.',
+      body: 'No hace falta estar en crisis para necesitar compañía. Anto está para ese rato entre el día y la cama — sin cita previa.',
       imageAlt: 'Escritorio de noche con lluvia en la ventana, libreta abierta y lámpara cálida',
     },
     moments: [
@@ -561,7 +561,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       {
         id: 'privacy',
         title: 'Tu espacio sigue siendo tuyo.',
-        body: 'Conversaciones cifradas. No vendemos tus datos. Cuidado sin audiencia.',
+        body: 'Cifrado de extremo a extremo. No vendemos tu historia ni hacemos anuncios con ella.',
         media: {
           kind: 'privacy',
           privacy: {
@@ -593,7 +593,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         },
         {
           title: 'Entre sesiones',
-          body: 'Disponible a cualquier hora. Complementa la terapia; no reemplaza a un clínico humano.',
+          body: 'Disponible a cualquier hora, también las noches en que no hay cita a la vista.',
         },
       ],
       proofSignals: [
@@ -649,12 +649,12 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           question: '¿Qué es Anto?',
           answer:
-            'Anto es una app de acompañamiento emocional continuo: un lugar donde aterrizar entre sesiones o en el día a día. Usa asistencia de IA en segundo plano. No sustituye atención clínica: un terapeuta o profesional humano sigue siendo lo más recomendable. Disponible en iPhone.',
+            'Anto es una app de acompañamiento emocional continuo entre sesiones o en el día a día. Usa asistencia de IA en segundo plano. No sustituye atención clínica: un terapeuta o profesional humano sigue siendo lo más recomendable. Disponible en iPhone.',
         },
         {
           question: '¿Qué hay además del chat?',
           answer:
-            'Memoria de temas, un hub de técnicas (incluido un lienzo ABC interactivo), chequeos quietos para notar patrones y un home para el día a día. No es solo conversación: es un sistema que te acompaña entre sesiones.',
+            'Memoria de temas, un hub de técnicas (incluido un lienzo ABC interactivo), chequeos quietos para notar patrones y un home para el día a día. No es solo conversación: es un sistema que permanece cuando hablar no alcanza.',
         },
         {
           question: '¿Mis conversaciones son privadas?',
@@ -664,7 +664,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           question: '¿Anto reemplaza la terapia?',
           answer:
-            'No. Te acompaña entre sesiones o en los días en que necesitas un lugar donde aterrizar. No sustituye atención profesional.',
+            'No. Te acompaña entre sesiones o en los días duros. No sustituye atención profesional.',
         },
         {
           question: '¿Hay prueba gratis?',
@@ -680,12 +680,12 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           href: '/recursos',
           label: 'Recursos',
-          description: 'Guías para aterrizar',
+          description: 'Guías de ansiedad, grounding, TCC y más',
         },
         {
-          href: '/recursos/que-es-tcc',
-          label: 'Qué es la TCC',
-          description: 'Guía breve de terapia cognitivo-conductual',
+          href: '/recursos/grounding-ansiedad-crisis',
+          label: 'Cuando la ansiedad sube',
+          description: 'Grounding 5-4-3-2-1 para momentos intensos',
         },
         {
           href: '/app',

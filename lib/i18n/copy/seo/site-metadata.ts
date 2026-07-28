@@ -2,9 +2,9 @@ import type { Locale } from '@/lib/i18n/config';
 
 export const siteKeywords: Record<Locale, string> = {
   es:
-    'salud mental, bienestar emocional, psicoeducación, terapia cognitivo conductual, distorsiones cognitivas, técnica ABC, app ansiedad, PHQ-9, GAD-7, mindfulness, autocompasión, app depresión chile, chatbot salud mental, asistente IA bienestar, técnicas CBT app',
+    'Anto, acompañamiento emocional, ansiedad, horas quietas, entre sesiones, app salud mental, grounding, 5-4-3-2-1, TCC, psicoeducación, iPhone, prueba gratis, bienestar emocional',
   en:
-    'mental health app, psychoeducation, cognitive behavioural therapy, cognitive distortions, ABC technique, anxiety app, PHQ-9, GAD-7, mindfulness, self-compassion, depression support app, mental health chatbot, wellbeing assistant, CBT techniques app',
+    'Anto, ongoing emotional support, anxiety, quiet hours, between therapy sessions, mental health app, grounding, 5-4-3-2-1, CBT, psychoeducation, iPhone, free trial, wellbeing',
 };
 
 export const manifestPath: Record<Locale, string> = {
