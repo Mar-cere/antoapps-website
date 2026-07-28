@@ -1067,22 +1067,23 @@
 }
 
 /* -------------------------------------------------------------------------- */
-/* Brief — guías cortas: medida de lectura, producto a ancho de shell          */
+/* Brief — guías cortas: composición editorial (shell ancho, no blog 1-col)   */
 /* -------------------------------------------------------------------------- */
 
 @media (min-width: 960px) {
-  /* Brief: shell de lectura — sin masthead 2-col ni foto a ancho de revista */
   .psycho-guide--brief .psycho-guide__article > .home-landing-container {
-    max-width: min(48rem, 100%);
+    max-width: min(72rem, 100%);
   }
 
+  /* Masthead revista: título | pull, columnas equilibradas */
   .psycho-guide--brief .psycho-guide__masthead {
-    display: flex;
-    flex-direction: column;
-    gap: 1.35rem;
-    max-width: 42rem;
-    margin: 0 0 1.75rem;
-    padding-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.95fr);
+    gap: 1.5rem 2.75rem;
+    align-items: start;
+    max-width: none;
+    margin: 0 0 2.5rem;
+    padding-bottom: 2rem;
     border-bottom: 1px solid var(--home-v2-hairline);
   }
 
@@ -1094,104 +1095,114 @@
   }
 
   .psycho-guide--brief .psycho-guide__title {
-    max-width: 16ch;
+    max-width: 12ch;
+    font-size: clamp(2.55rem, 4.2vw, 3.55rem);
+    line-height: 1.02;
   }
 
   .psycho-guide--brief .psycho-guide__subtitle {
-    max-width: 48ch;
+    max-width: 38ch;
   }
 
   .psycho-guide--brief .psycho-guide__pullquote {
-    margin: 0;
-    max-width: 36rem;
+    margin: 2.85rem 0 0;
+    max-width: none;
+    padding-left: 1.2rem;
   }
 
+  .psycho-guide--brief .psycho-guide__pullquote p {
+    font-size: clamp(1.3rem, 1.95vw, 1.55rem);
+    line-height: 1.3;
+  }
+
+  /* Foto a ancho de shell — ancla editorial, no card de blog */
   .psycho-guide--brief .psycho-guide__figure {
-    max-width: 42rem;
-    margin: 0 0 2.25rem;
+    max-width: none;
+    margin: 0 0 3.25rem;
   }
 
   .psycho-guide--brief .psycho-guide__figure-frame {
-    aspect-ratio: var(--psycho-figure-desktop-aspect, 2.2 / 1);
+    aspect-ratio: var(--psycho-figure-desktop-aspect, 2.4 / 1);
   }
 
+  .psycho-guide--brief .psycho-guide__figure-caption {
+    max-width: 52ch;
+  }
+
+  /* Cuerpo ensayo a 2 columnas (hereda el grid global; no forzar 1-col) */
   .psycho-guide--brief .psycho-guide__body {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 2.35rem;
-    max-width: 42rem;
-  }
-
-  .psycho-guide--brief .psycho-guide__section {
-    max-width: 42rem;
-  }
-
-  /* Una columna: ritual → producto debajo (anula el split 2-col global) */
-  .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__product) {
-    grid-column: auto;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 42rem;
-    gap: 1.75rem;
-  }
-
-  .psycho-guide--brief .psycho-guide__closing {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    max-width: 42rem;
-  }
-
-  .psycho-guide--brief .psycho-guide__closing .psycho-guide__further,
-  .psycho-guide--brief .psycho-guide__closing .psycho-guide__refs {
-    margin-top: 0;
-    padding-left: 0;
-    border-left: 0;
     max-width: none;
   }
 
+  .psycho-guide--brief .psycho-guide__section {
+    max-width: none;
+  }
+
+  /* Ritual ∥ producto: composición editorial, no stack de blog */
+  .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__product) {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 26rem);
+    gap: 1.75rem 2.75rem;
+    align-items: start;
+    width: auto;
+    max-width: none;
+  }
+
+  .psycho-guide--brief .psycho-guide__closing {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    max-width: none;
+  }
+
+  .psycho-guide--brief .psycho-guide__closing .psycho-guide__further {
+    max-width: 44rem;
+  }
+
   .psycho-guide--brief .psycho-guide__outro {
-    max-width: 42rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.35rem;
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem 3.5rem;
+    align-items: end;
     margin-top: 2.75rem;
     padding-top: 2rem;
   }
 
   .psycho-guide--brief .psycho-guide__cta {
     margin-top: 0;
-    order: 1;
+    order: 2;
+    max-width: none;
   }
 
   .psycho-guide--brief .psycho-guide__disclaimer {
     margin-top: 0;
-    order: 2;
+    order: 1;
+    max-width: none;
+  }
+
+  .psycho-guide--brief .psycho-guide__refs--after-cta {
+    max-width: 44rem;
   }
 }
 
 @media (min-width: 1200px) {
   .psycho-guide--brief .psycho-guide__article > .home-landing-container {
-    max-width: min(50rem, 100%);
+    max-width: min(76rem, 100%);
   }
 
-  .psycho-guide--brief .psycho-guide__masthead,
-  .psycho-guide--brief .psycho-guide__figure,
-  .psycho-guide--brief .psycho-guide__body,
-  .psycho-guide--brief .psycho-guide__section,
-  .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__product),
-  .psycho-guide--brief .psycho-guide__closing,
-  .psycho-guide--brief .psycho-guide__outro,
-  .psycho-guide--brief .psycho-guide__refs--after-cta {
-    max-width: 44rem;
+  .psycho-guide--brief .psycho-guide__masthead {
+    gap: 1.75rem 4rem;
   }
 
   .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__product) {
-    display: flex;
-    flex-direction: column;
-    grid-template-columns: none;
+    grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 28rem);
+    gap: 2rem 3.5rem;
+  }
+
+  .psycho-guide--brief .psycho-guide__outro {
+    gap: 2rem 4rem;
   }
 }
 
@@ -1204,7 +1215,24 @@
 }
 
 .psycho-guide--brief .psycho-guide__refs--after-cta {
-  max-width: 42rem;
+  max-width: 44rem;
+}
+
+/* Peak-end móvil: CTA antes del aviso */
+@media (max-width: 959px) {
+  .psycho-guide--brief .psycho-guide__outro {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+  }
+
+  .psycho-guide--brief .psycho-guide__cta {
+    order: 1;
+  }
+
+  .psycho-guide--brief .psycho-guide__disclaimer {
+    order: 2;
+  }
 }
 
 .psycho-guide--brief .psycho-guide__refs-title {

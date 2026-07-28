@@ -197,7 +197,7 @@ export default function PsychoeducationGuidePageContent({
                         width={guide.figure.width}
                         height={guide.figure.height}
                         className="psycho-guide__figure-img"
-                        sizes="(max-width: 720px) 100vw, (max-width: 1100px) 92vw, min(50rem, 100vw)"
+                        sizes="(max-width: 720px) 100vw, (max-width: 1100px) 92vw, min(76rem, 100vw)"
                         priority
                       />
                     </div>

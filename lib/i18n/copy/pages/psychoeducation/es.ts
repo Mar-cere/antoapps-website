@@ -999,7 +999,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       width: 1536,
       height: 1024,
       objectPosition: '52% 45%',
-      desktopAspectRatio: '2.2 / 1',
+      desktopAspectRatio: '2.4 / 1',
     },
     sections: [
       {
