@@ -1071,11 +1071,55 @@
 /* -------------------------------------------------------------------------- */
 
 @media (min-width: 960px) {
+  /* Brief: shell de lectura — sin masthead 2-col ni foto a ancho de revista */
+  .psycho-guide--brief .psycho-guide__article > .home-landing-container {
+    max-width: min(48rem, 100%);
+  }
+
+  .psycho-guide--brief .psycho-guide__masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+    max-width: 42rem;
+    margin: 0 0 1.75rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--home-v2-hairline);
+  }
+
+  .psycho-guide--brief .psycho-guide__header {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    max-width: none;
+  }
+
+  .psycho-guide--brief .psycho-guide__title {
+    max-width: 16ch;
+  }
+
+  .psycho-guide--brief .psycho-guide__subtitle {
+    max-width: 48ch;
+  }
+
+  .psycho-guide--brief .psycho-guide__pullquote {
+    margin: 0;
+    max-width: 36rem;
+  }
+
+  .psycho-guide--brief .psycho-guide__figure {
+    max-width: 42rem;
+    margin: 0 0 2.25rem;
+  }
+
+  .psycho-guide--brief .psycho-guide__figure-frame {
+    aspect-ratio: var(--psycho-figure-desktop-aspect, 2.2 / 1);
+  }
+
   .psycho-guide--brief .psycho-guide__body {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     row-gap: 2.35rem;
-    max-width: none;
+    max-width: 42rem;
   }
 
   .psycho-guide--brief .psycho-guide__section {
@@ -1129,20 +1173,25 @@
 }
 
 @media (min-width: 1200px) {
-  .psycho-guide--brief .psycho-guide__section {
+  .psycho-guide--brief .psycho-guide__article > .home-landing-container {
+    max-width: min(50rem, 100%);
+  }
+
+  .psycho-guide--brief .psycho-guide__masthead,
+  .psycho-guide--brief .psycho-guide__figure,
+  .psycho-guide--brief .psycho-guide__body,
+  .psycho-guide--brief .psycho-guide__section,
+  .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__product),
+  .psycho-guide--brief .psycho-guide__closing,
+  .psycho-guide--brief .psycho-guide__outro,
+  .psycho-guide--brief .psycho-guide__refs--after-cta {
     max-width: 44rem;
   }
 
   .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__product) {
-    max-width: 44rem;
     display: flex;
     flex-direction: column;
     grid-template-columns: none;
-  }
-
-  .psycho-guide--brief .psycho-guide__closing,
-  .psycho-guide--brief .psycho-guide__outro {
-    max-width: 44rem;
   }
 }
 
