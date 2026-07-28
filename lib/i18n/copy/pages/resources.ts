@@ -102,13 +102,13 @@ export const FEATURED_HUMAN_LABELS: Record<
   Record<(typeof FEATURED_GUIDE_SLUGS)[number], string>
 > = {
   es: {
-    'grounding-ansiedad-crisis': 'Cuando la ansiedad sube',
+    'grounding-ansiedad-crisis': 'Cuando la ansiedad sube (grounding)',
     'distorsiones-cognitivas': 'Pensamientos en bucle',
     'higiene-sueno-salud-mental': 'Cuando no puedes dormir',
     'que-es-tcc': 'Entender la TCC',
   },
   en: {
-    'grounding-ansiedad-crisis': 'When anxiety rises',
+    'grounding-ansiedad-crisis': 'When anxiety rises (grounding)',
     'distorsiones-cognitivas': 'Thoughts in a loop',
     'higiene-sueno-salud-mental': 'When you cannot sleep',
     'que-es-tcc': 'Understanding CBT',

@@ -54,6 +54,12 @@ export function getResourcesCollectionJsonLd(locale: Locale) {
           },
           {
             '@type': 'Thing',
+            name: isEn
+              ? 'Grounding and sensory regulation (5-4-3-2-1)'
+              : 'Grounding y regulación sensorial (5-4-3-2-1)',
+          },
+          {
+            '@type': 'Thing',
             name: isEn ? 'Cognitive behavioural therapy (CBT)' : 'Terapia cognitivo-conductual (TCC)',
           },
           {
@@ -70,7 +76,7 @@ export function getResourcesCollectionJsonLd(locale: Locale) {
           },
           {
             '@type': 'Thing',
-            name: isEn ? 'Core beliefs' : 'Creencias nucleares',
+            name: isEn ? 'Sleep and insomnia psychoeducation' : 'Psicoeducación sobre sueño e insomnio',
           },
           {
             '@type': 'Thing',

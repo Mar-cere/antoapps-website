@@ -1673,27 +1673,26 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.grounding,
     readingMinutes: 7,
     meta: {
-      title: 'Cuando la ansiedad sube: técnicas de grounding | Anto',
+      title: 'Grounding 5-4-3-2-1: cuando la ansiedad sube | Anto',
       description:
-        'Grounding y ejercicio 5-4-3-2-1 para ansiedad o crisis: anclas sensoriales, señales en el cuerpo y cuándo pedir ayuda. Psicoeducación práctica con enlaces a material más clínico. No sustituye terapia ni emergencias.',
+        'Ejercicio de grounding 5-4-3-2-1 para ansiedad intensa, pánico o crisis: anclas sensoriales, señales en el cuerpo, alternativas rápidas y cuándo pedir ayuda. Guía breve Anto; complementa el mapa de ansiedad. No sustituye terapia ni emergencias.',
       openGraphTitle: 'Cuando la ansiedad sube — grounding 5-4-3-2-1',
       openGraphDescription:
-        'Aterriza en el presente con cinco sentidos. Guía breve de grounding + camino a lectura más completa sobre ansiedad.',
+        'Ejercicio 5-4-3-2-1 y anclas sensoriales cuando la ansiedad sube. Guía breve de grounding + camino al mapa de ansiedad.',
       keywords:
-        'grounding, aterrizaje, ansiedad, crisis, 5-4-3-2-1, cinco sentidos, pánico, psicoeducación, anclas sensoriales, Anto',
+        'grounding, aterrizaje, ejercicio grounding, técnica 5-4-3-2-1, cinco sentidos, ansiedad, crisis, ataque de pánico, ansiedad aguda, anclas sensoriales, disociación, psicoeducación, Anto',
     },
     hero: {
       title: 'Cuando la ansiedad sube',
       subtitle:
-        'Técnicas de grounding para anclarte al aquí y ahora cuando el cuerpo reacciona como si el peligro fuera inmediato.',
+        'Cuando el cuerpo reacciona como si el peligro fuera inmediato, primero hay que aterrizar; después se puede pensar.',
     },
     pullQuote:
       'No se trata de “pensar positivo”. Se trata de volver al cuerpo el tiempo suficiente para que la ola no te arrastre entera.',
     figure: {
       src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
       alt: 'Persona sentada de espaldas en la cama al anochecer, mirando la ciudad por la ventana — el momento quieto cuando la ansiedad sube',
-      caption:
-        'La ola llega de noche. El grounding empieza por lo que ya está aquí: luz, cuerpo, ventana.',
+      caption: 'Empieza por lo que ya está aquí: luz, cuerpo, ventana.',
       width: 1536,
       height: 1024,
       objectPosition: '50% 40%',
@@ -1703,9 +1702,8 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Qué es el grounding',
         paragraphs: [
-          'Grounding — aterrizaje — son gestos sencillos que llevan la atención a lo que puedes ver, tocar, oír, oler o saborear ahora mismo.',
-          'No resuelven lo que duele de fondo. Bajan la activación del sistema nervioso para que puedas pensar un poco más claro, pedir ayuda o esperar a que pase la ola.',
-          'Se usan en ansiedad intensa, pánico, disociación leve o cuando un recuerdo te arranca del presente. Son herramientas de estabilización — no un tratamiento por sí solas.',
+          'El grounding (aterrizaje) reúne gestos sencillos que llevan la atención a lo que puedes ver, tocar, oír, oler o saborear ahora mismo. No resuelven lo que duele de fondo: bajan la activación para que puedas pensar un poco más claro, pedir ayuda o esperar a que pase la ola.',
+          'Se usan en ansiedad intensa, pánico, disociación leve o cuando un recuerdo te arranca del presente. Son herramientas de estabilización, no un tratamiento por sí solas.',
         ],
       },
       {
@@ -1714,7 +1712,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           'Antes de “hacer algo”, ayuda reconocer la señal: corazón acelerado, pecho apretado, manos frías, mente que salta, sensación de no estar del todo aquí.',
         ],
         bullets: [
-          'El cuerpo interpreta amenaza aunque no haya peligro objetivo.',
+          'El cuerpo puede leer amenaza aunque no haya peligro objetivo.',
           'El grounding no niega la emoción: le da un marco sensorial más amplio.',
           'Si la intensidad es 9/10, empieza por un solo ancla (pies en el suelo) antes del 5-4-3-2-1 completo.',
         ],
@@ -1722,11 +1720,11 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Ejercicio 5-4-3-2-1',
         paragraphs: [
-          'Hazlo despacio. Si un sentido no responde, salta al siguiente. No hay nota perfecta: cuenta con lo que encuentres.',
+          'Hazlo despacio. Si un sentido no responde, salta al siguiente. No hay nota perfecta: trabaja con lo que encuentres.',
         ],
         ordered: true,
         bullets: [
-          '5 cosas que ves — elige detalles concretos (un borde, un color, una sombra), no inventar la habitación entera.',
+          '5 cosas que ves — elige detalles concretos (un borde, un color, una sombra); no inventes la habitación entera.',
           '4 cosas que tocas — temperatura, textura, peso. La ropa, el asiento, tus propias manos.',
           '3 cosas que oyes — cerca o lejos: un motor, tu respiración, un reloj, voces en otra habitación.',
           '2 cosas que hueles — o, si no hay olor claro, recuerda uno familiar sin forzar la escena.',
@@ -1736,22 +1734,21 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Otras opciones rápidas',
         paragraphs: [
-          'Si el 5-4-3-2-1 se siente largo, prueba un solo ancla: un cubito de hielo en la mano, nombrar en voz alta dónde estás y qué día es, o empujar suavemente los pies contra el suelo.',
-          'También puedes contar hacia atrás de 3 en 3, o describir un objeto como si se lo explicaras a alguien que no puede verlo.',
-          'La clave es involucrar sentidos, no analizar el problema en ese momento.',
+          'Si el 5-4-3-2-1 se siente largo, cambia de ancla: un cubito de hielo en la mano, decir en voz alta dónde estás y qué día es, contar hacia atrás de 3 en 3, o describir un objeto como si alguien no pudiera verlo.',
+          'La clave es involucrar los sentidos, no analizar el problema en ese momento.',
         ],
       },
       {
         heading: 'Cuándo es crisis',
         paragraphs: [
           'Si hay ideas de hacerte daño, riesgo inmediato o no puedes cuidarte, contacta emergencias o una línea de crisis de tu país.',
-          'Anto puede detectar señales de riesgo y ofrecer recursos, pero no sustituye servicios de emergencia.',
+          'Anto puede ofrecer recursos ante señales de riesgo, pero no sustituye servicios de emergencia.',
         ],
       },
     ],
     productMoment: {
       title: 'Así se ve en Anto',
-      body: 'Cuando la ansiedad sube, puedes escribirlo y recibir un paso concreto — sin presión de “arreglarlo todo”.',
+      body: 'Puedes escribirlo tal cual y recibir un paso concreto, sin presión de “arreglarlo todo”.',
       afterHeading: 'Ejercicio 5-4-3-2-1',
       chat: {
         ariaLabel: 'Ejemplo de conversación en Anto cuando la ansiedad sube',
@@ -1780,7 +1777,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Ir más a fondo',
       support:
-        'Esta página es práctica y breve. Si quieres el mapa amplio — síntomas, ciclos, estrategias, cuándo pedir ayuda — empieza aquí:',
+        'Esta página es práctica y breve. Para el mapa amplio — síntomas, ciclos y estrategias — empieza aquí:',
       links: [
         {
           label: 'Ansiedad y preocupación (mapa completo)',
@@ -1803,6 +1800,23 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       ],
     },
     relatedSlugs: [SLUGS.anxiety, SLUGS.mindfulness, SLUGS.trauma],
+    references: {
+      title: 'Referencias (APA)',
+      support:
+        'Fuentes que enmarcan la regulación sensorial y la tolerancia al malestar cuando la activación es alta. No sustituyen evaluación clínica individual.',
+      items: [
+        {
+          apa: 'Linehan, M. M. (2015). DBT skills training manual (2nd ed.). Guilford Press.',
+          href: 'https://www.guilford.com/books/DBT-Skills-Training-Manual/Marsha-Linehan/9781462516995',
+          note: 'Marco clínico de tolerancia al malestar y autorregulación sensorial (p. ej. calmarse con los cinco sentidos) cuando el arousal es intenso.',
+        },
+        {
+          apa: 'Neacsiu, A. D., Eberle, J. W., Kramer, R., Wiesmann, T., & Linehan, M. M. (2014). Dialectical behavior therapy skills for transdiagnostic emotion dysregulation: A pilot randomized controlled trial. Behaviour Research and Therapy, 59, 40–51. https://doi.org/10.1016/j.brat.2014.05.005',
+          href: 'https://doi.org/10.1016/j.brat.2014.05.005',
+          note: 'Ensayo piloto: habilidades de DBT (incluida tolerancia al malestar) pueden reducir desregulación emocional más allá de un solo diagnóstico.',
+        },
+      ],
+    },
     disclaimer:
       'Psicoeducación. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
     ctaBridge:
@@ -1811,7 +1825,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     howTo: {
       name: 'Ejercicio de grounding 5-4-3-2-1',
       description:
-        'Técnica sensorial para bajar la activación cuando la ansiedad sube: cinco sentidos, un paso a la vez.',
+        'Técnica sensorial de aterrizaje para bajar la activación en ansiedad intensa o crisis: cinco sentidos, un paso a la vez.',
       totalTime: 'PT5M',
       steps: [
         'Nombra 5 cosas que puedes ver, con detalle concreto.',

@@ -1674,27 +1674,26 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.grounding,
     readingMinutes: 7,
     meta: {
-      title: 'When anxiety rises: grounding techniques | Anto',
+      title: 'Grounding 5-4-3-2-1: when anxiety rises | Anto',
       description:
-        'Grounding and the 5-4-3-2-1 exercise for anxiety or crisis: sensory anchors, body signals, and when to seek help. Practical psychoeducation with links to deeper clinical reading. Does not replace therapy or emergency care.',
+        '5-4-3-2-1 grounding exercise for intense anxiety, panic, or crisis: sensory anchors, body signals, quick alternatives, and when to seek help. Anto brief guide; complements the anxiety map. Does not replace therapy or emergency care.',
       openGraphTitle: 'When anxiety rises — grounding 5-4-3-2-1',
       openGraphDescription:
-        'Land in the present with five senses. A short grounding guide plus a path to fuller anxiety reading.',
+        '5-4-3-2-1 exercise and sensory anchors when anxiety rises. A short grounding guide plus a path to the fuller anxiety map.',
       keywords:
-        'grounding, anxiety, crisis, 5-4-3-2-1, five senses, panic, psychoeducation, sensory anchors, Anto',
+        'grounding, grounding exercise, 5-4-3-2-1 technique, five senses, anxiety, crisis, panic attack, acute anxiety, sensory anchors, dissociation, psychoeducation, Anto',
     },
     hero: {
       title: 'When anxiety rises',
       subtitle:
-        'Grounding techniques to anchor yourself in the here and now when your body reacts as if danger were immediate.',
+        'When the body reacts as if danger were immediate, first you need to land; thinking can come after.',
     },
     pullQuote:
       'This is not about “thinking positive”. It is about returning to the body long enough that the wave does not carry you away whole.',
     figure: {
       src: '/assets/images/editorial/anto-editorial-hero-evening.webp',
       alt: 'Person sitting on a bed at dusk, back to the camera, looking at the city through the window — the quiet moment when anxiety rises',
-      caption:
-        'The wave arrives at night. Grounding starts with what is already here: light, body, window.',
+      caption: 'Start with what is already here: light, body, window.',
       width: 1536,
       height: 1024,
       objectPosition: '50% 40%',
@@ -1704,9 +1703,8 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'What grounding is',
         paragraphs: [
-          'Grounding is a set of simple gestures that bring attention to what you can see, touch, hear, smell, or taste right now.',
-          'They do not fix what hurts underneath. They lower nervous-system activation so you can think a little more clearly, ask for help, or wait for the wave to pass.',
-          'They are used in intense anxiety, panic, mild dissociation, or when a memory pulls you out of the present. They are stabilisation tools — not a treatment on their own.',
+          'Grounding gathers simple gestures that bring attention to what you can see, touch, hear, smell, or taste right now. They do not fix what hurts underneath: they lower activation so you can think a little more clearly, ask for help, or wait for the wave to pass.',
+          'They are used in intense anxiety, panic, mild dissociation, or when a memory pulls you out of the present. They are stabilisation tools, not a treatment on their own.',
         ],
       },
       {
@@ -1716,7 +1714,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         ],
         bullets: [
           'The body can read threat even when there is no objective danger.',
-          'Grounding does not deny the emotion — it widens the sensory frame around it.',
+          'Grounding does not deny the emotion: it widens the sensory frame around it.',
           'If intensity is 9/10, start with a single anchor (feet on the floor) before the full 5-4-3-2-1.',
         ],
       },
@@ -1727,7 +1725,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         ],
         ordered: true,
         bullets: [
-          '5 things you see — pick concrete details (an edge, a colour, a shadow), not the whole room at once.',
+          '5 things you see — pick concrete details (an edge, a colour, a shadow); do not invent the whole room at once.',
           '4 things you touch — temperature, texture, weight. Clothes, the seat, your own hands.',
           '3 things you hear — near or far: an engine, your breath, a clock, voices in another room.',
           '2 things you smell — or, if nothing is clear, calmly recall a familiar scent without forcing a scene.',
@@ -1737,8 +1735,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Other quick options',
         paragraphs: [
-          'If 5-4-3-2-1 feels long, try a single anchor: an ice cube in your hand, naming aloud where you are and what day it is, or gently pressing your feet into the floor.',
-          'You can also count backwards by threes, or describe an object as if explaining it to someone who cannot see it.',
+          'If 5-4-3-2-1 feels long, switch anchors: an ice cube in your hand, naming aloud where you are and what day it is, counting backwards by threes, or describing an object as if someone could not see it.',
           'The point is engaging the senses, not analysing the problem in that moment.',
         ],
       },
@@ -1746,13 +1743,13 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'When it is a crisis',
         paragraphs: [
           'If you have thoughts of harming yourself, immediate risk, or cannot care for yourself, contact emergency services or a crisis line in your country.',
-          'Anto can detect risk signals and offer resources, but does not replace emergency services.',
+          'Anto can offer resources when risk signals appear, but it does not replace emergency services.',
         ],
       },
     ],
     productMoment: {
       title: 'How it looks in Anto',
-      body: 'When anxiety rises, you can write it down and get a concrete next step — without pressure to “fix everything”.',
+      body: 'You can write it down as it is and get one concrete next step, without pressure to “fix everything”.',
       afterHeading: '5-4-3-2-1 exercise',
       chat: {
         ariaLabel: 'Sample Anto conversation when anxiety rises',
@@ -1781,7 +1778,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Go deeper',
       support:
-        'This page is practical and short. For the wider map — symptoms, cycles, strategies, when to seek help — start here:',
+        'This page is practical and short. For the wider map — symptoms, cycles, and strategies — start here:',
       links: [
         {
           label: 'Anxiety and worry (complete map)',
@@ -1804,15 +1801,32 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       ],
     },
     relatedSlugs: [SLUGS.anxiety, SLUGS.mindfulness, SLUGS.trauma],
+    references: {
+      title: 'References (APA)',
+      support:
+        'Sources that frame sensory regulation and distress tolerance when activation is high. They do not replace individual clinical evaluation.',
+      items: [
+        {
+          apa: 'Linehan, M. M. (2015). DBT skills training manual (2nd ed.). Guilford Press.',
+          href: 'https://www.guilford.com/books/DBT-Skills-Training-Manual/Marsha-Linehan/9781462516995',
+          note: 'Clinical frame for distress tolerance and sensory self-soothing (e.g. calming with the five senses) when arousal is intense.',
+        },
+        {
+          apa: 'Neacsiu, A. D., Eberle, J. W., Kramer, R., Wiesmann, T., & Linehan, M. M. (2014). Dialectical behavior therapy skills for transdiagnostic emotion dysregulation: A pilot randomized controlled trial. Behaviour Research and Therapy, 59, 40–51. https://doi.org/10.1016/j.brat.2014.05.005',
+          href: 'https://doi.org/10.1016/j.brat.2014.05.005',
+          note: 'Pilot RCT: DBT skills (including distress tolerance) can reduce emotion dysregulation beyond a single diagnosis.',
+        },
+      ],
+    },
     disclaimer:
-      'Psychoeducation. In case of suicidal risk or violence, seek local emergency help immediately.',
+      'Psychoeducation. If there is suicide risk or violence, seek local emergency help immediately.',
     ctaBridge:
       'When the wave eases a little, you can keep going with company on your phone — no pressure.',
     cta: { label: 'Support in Anto →', path: '/bienvenida' },
     howTo: {
       name: '5-4-3-2-1 grounding exercise',
       description:
-        'A sensory technique to lower activation when anxiety rises: five senses, one step at a time.',
+        'A sensory landing technique to lower activation in intense anxiety or crisis: five senses, one step at a time.',
       totalTime: 'PT5M',
       steps: [
         'Name 5 things you can see, with concrete detail.',
