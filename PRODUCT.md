@@ -33,13 +33,15 @@ Skill **`editorial-emotional-web`**: composición editorial viva, fotografía li
 2. **Identidad en tokens**: `styles/tokens/`, Inter/SF/system y primary `#1adddb` ganan sobre defaults anti-Inter o paletas abiertas de skills.
 3. **Una composición por viewport** en marketing; brand hero-level; foto estructural, no decorativa.
 4. **Responsive editorial**: mobile-first es el orden CSS; desktop recompondrá (shell vs medida de lectura). No dejar páginas marketing como columna ~46rem centrada. Ver rule `marketing-responsive-editorial` y `editorial-emotional-web/anto-responsive.md`.
-5. **Accesibilidad WCAG 2.1 AA** y `prefers-reduced-motion` no son opcionales.
-6. **Copy observacional** en español neutro: reconocimiento antes que consejo; evitar jerga motivacional vacía.
-7. **Imágenes/producto reales** como ancla; mockups de teléfono inclinados y stock clínico están prohibidos por defecto.
+5. **Forma home + guías**: anatomía fija (brief/dossier/default), una idea por bloque, ES/EN en paridad, SEO/IA sin “chatbot”. Ver rule `marketing-editorial-form`.
+6. **Accesibilidad WCAG 2.1 AA** y `prefers-reduced-motion` no son opcionales.
+7. **Copy observacional** en español neutro: reconocimiento antes que consejo; evitar jerga motivacional vacía.
+8. **Imágenes/producto reales** como ancla; mockups de teléfono inclinados y stock clínico están prohibidos por defecto.
 
 ## Skills routing
 - Marketing / landing / rediseño / evaluación estética: `editorial-emotional-web` (regidor) + `design-taste-frontend` (dials Anto `5 / 3 / 3`, modo preserve).
 - Audit / polish / craft estructurado / UI de producto: `/impeccable`.
+- Home-v2 / guías `/recursos` / copy / SEO-IA de esas superficies: rule `marketing-editorial-form`.
 - Conflicto: editorial (dirección) > tokens Anto > este archivo > defaults de Taste/Impeccable.
 - No forzar Tailwind ni otro design system empaquetado sobre el CSS actual.
 

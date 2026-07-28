@@ -1,0 +1,45 @@
+---
+description: Forma editorial Anto para home-v2 y guías /recursos — layout, copy sin reverberación, SEO/IA
+globs: "{lib/i18n/copy/home/**,lib/i18n/copy/pages/psychoeducation/**,lib/i18n/copy/pages/home-metadata.ts,lib/i18n/copy/seo/**,lib/seo/build-llms-txt.ts,components/pages/Psychoeducation*,components/pages/HomeV2*,components/sections/HomeV2*,styles/components/psychoeducation*,styles/pages/home-v2*}"
+alwaysApply: false
+---
+
+# Forma editorial: home + guías de recursos
+
+Canon vivo: `home-v2.ts`, guías en `psychoeducation/{es,en}.ts`, CSS `psychoeducation-article.css` / `home-v2.css`. Dirección de arte: skill `editorial-emotional-web`. Responsive: rule `marketing-responsive-editorial`.
+
+## Guías `/recursos/[slug]`
+
+| `layout` | Uso | Forma desktop |
+|----------|-----|----------------|
+| `brief` | Entrada práctica corta (sueño, etc.) | Columna de lectura; ritual∥producto bajo fold; cierre further → CTA → aviso → APA |
+| `dossier` | Mapa clínico largo | Índice sticky + stream; capítulos numerados |
+| default | Guía estándar | Masthead 2 col (título\|pull); body recompuesto; producto contextual |
+
+**Anatomía (una idea por bloque):** eyebrow Anto · título · subtítulo · pull (opcional) · figura lifestyle · secciones · `productMoment` tras el ritual (no en hero) · `furtherReading` (1 primaria) · outro (aviso + `ctaBridge` + CTA) · refs APA · related corto.
+
+**Prohibido:** chips en hero; cards SaaS; companion denso en primer viewport; further×3 + related×3 + cookie compitiendo el peak-end; claim “chatbot”.
+
+## Home-v2
+
+Presupuesto hero: **brand + H1 + apoyo + CTA + 1 ancla visual/chat**. Recognize **avanza** la escena; no repite el H1. Privacidad: cuerpo ≠ lead del panel. FAQ / disclaimer legal: una vez con fuerza; no re-explicar en cada pilar. Explore: hub + 1 guía featured de intención (p. ej. grounding) + app + seguridad.
+
+## Copy ES/EN (antes de pulir UI)
+
+1. **Una idea una vez** — si el heading ya lo dice, el párrafo aporta dato nuevo o se corta.
+2. **Motivo ≠ eco** — pull/caption/CTA pueden rimar; no clonar la misma frase en 3 bloques seguidos.
+3. **Paridad ES/EN** — misma estructura y claims; español neutro; EN UK (`behaviour`, `colour`) si el archivo ya lo usa.
+4. **Voz** — reconocimiento antes que consejo; límites clínicos honestos; sin wellness vacío.
+
+## SEO + búsqueda IA (checklist mínimo)
+
+- Title con query + voz; H1 puede ser más humano.
+- Description: intención (ansiedad / entre sesiones / técnica) + iPhone/prueba si es home + no reemplaza terapia.
+- Keywords naturales; **nunca** “chatbot”.
+- Guías: `keywords`, `howTo` si hay ritual, `references` APA cuando hay claim clínico, `furtherReading` hermana, `relatedSlugs` acotados.
+- Schema vía `ArticleJsonLd` / FAQ home; featured labels en `resources.ts` con keyword humana (`… (grounding)`).
+- Tras editar copy de guías/home: `validate-psychoeducation` / `validate-home-metadata` / `validate:llms` según toque.
+
+## Conflicto
+
+Editorial emotional > tokens Anto > esta rule (forma/copy/SEO de superficies) > defaults Taste/Impeccable.

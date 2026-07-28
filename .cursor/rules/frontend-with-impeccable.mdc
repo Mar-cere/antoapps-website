@@ -21,6 +21,7 @@ Taste e Impeccable **ejecutan** craft, anti-slop y audit bajo esa dirección; no
 | Landing, marketing, rediseño visual, “mejor diseño”, páginas HTML/CSS del sitio, propuesta/evaluación estética | Skill `editorial-emotional-web` (dirección) + `design-taste-frontend` (Design Read + dials Anto + anti-slop) |
 | Mejorar UI existente, a11y, polish, tipografía, motion, layout, critique técnico | Skill `impeccable` (flujo `context.mjs` + comando implícito más cercano); si es marketing, también `editorial-emotional-web` |
 | Layout / adapt responsive de marketing o ensayos (`/investigacion`, guías, home) | Rule `marketing-responsive-editorial` + `editorial-emotional-web/anto-responsive.md`; comando Impeccable `adapt`/`layout` si hace falta |
+| Home-v2, guías `/recursos`, copy ES/EN, SEO/IA de esas superficies | Rule `marketing-editorial-form` (forma + anti-reverberación + checklist SEO/llms); skills editorial/impeccable según el resto |
 | Rediseño visual grande | Editorial primero → Taste (dials) → tokens Anto → Impeccable `polish`/`audit` al cierre |
 | Solo backend / API / infra sin UI | No cargar ninguna |
 
@@ -33,6 +34,7 @@ Si varias aplican, úsalas; no esperes a que el usuario diga “usa Editorial”
 | Dirección de arte, narrativa, foto, voz, ritmo editorial, evaluación estética 1–10 | `editorial-emotional-web` |
 | Anti-slop, Design Read, dials, pre-flight de layout | `design-taste-frontend` |
 | Craft/audit/critique/polish estructurado, PRODUCT.md, UI de producto | `impeccable` |
+| Forma de home/guías, anti-reverberación de copy, checklist SEO/IA de marketing | Rule `marketing-editorial-form` |
 | Tokens, Inter/SF, teal `#1adddb`, dark azul, CSS del repo | Esta rule + `PRODUCT.md` + puente Anto en la skill editorial |
 
 Conflicto: **editorial-emotional (dirección) > identidad Anto (tokens) > PRODUCT.md > skill pedida > defaults de Taste/Impeccable**.
