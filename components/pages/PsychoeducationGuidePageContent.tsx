@@ -39,6 +39,8 @@ type GuideUiCopy = {
   externalLinkHint: string;
   mapIndexLabel: string;
   mapIndexAria: string;
+  refsExpandHint: string;
+  refsCollapseHint: string;
 };
 
 const uiCopy: Record<Locale, GuideUiCopy> = {
@@ -54,6 +56,8 @@ const uiCopy: Record<Locale, GuideUiCopy> = {
     externalLinkHint: 'Abre en una pestaña nueva',
     mapIndexLabel: 'Mapa',
     mapIndexAria: 'Índice del mapa',
+    refsExpandHint: 'Mostrar',
+    refsCollapseHint: 'Ocultar',
   },
   en: {
     resourcesLabel: 'Resources',
@@ -67,6 +71,8 @@ const uiCopy: Record<Locale, GuideUiCopy> = {
     externalLinkHint: 'Opens in a new tab',
     mapIndexLabel: 'Map',
     mapIndexAria: 'Map index',
+    refsExpandHint: 'Show',
+    refsCollapseHint: 'Hide',
   },
 };
 
@@ -200,12 +206,12 @@ export default function PsychoeducationGuidePageContent({
                         sizes="(max-width: 720px) 100vw, (max-width: 1100px) 92vw, min(76rem, 100vw)"
                         priority
                       />
+                      {guide.figure.caption ? (
+                        <figcaption className="psycho-guide__figure-caption">
+                          {guide.figure.caption}
+                        </figcaption>
+                      ) : null}
                     </div>
-                    {guide.figure.caption ? (
-                      <figcaption className="psycho-guide__figure-caption">
-                        {guide.figure.caption}
-                      </figcaption>
-                    ) : null}
                   </figure>
                 ) : null}
 
@@ -445,30 +451,49 @@ export default function PsychoeducationGuidePageContent({
                         className="psycho-guide__refs psycho-guide__refs--after-cta reveal-on-scroll"
                         aria-labelledby="psycho-guide-refs-title"
                       >
-                        <h2 id="psycho-guide-refs-title" className="psycho-guide__refs-title">
-                          {guide.references.title}
-                        </h2>
-                        <p className="psycho-guide__refs-support">{guide.references.support}</p>
-                        <ol className="psycho-guide__refs-list">
-                          {guide.references.items.map((ref) => (
-                            <li key={ref.href} className="psycho-guide__refs-item">
-                              <p className="psycho-guide__refs-apa">
-                                <a
-                                  href={ref.href}
-                                  className="psycho-guide__refs-link"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  {ref.apa}
-                                </a>
-                                <span className="visually-hidden">{ui.externalLinkHint}</span>
-                              </p>
-                              {ref.note ? (
-                                <p className="psycho-guide__refs-note">{ref.note}</p>
-                              ) : null}
-                            </li>
-                          ))}
-                        </ol>
+                        <details className="psycho-guide__refs-details">
+                          <summary>
+                            <span className="psycho-guide__refs-summary-row">
+                              <h2
+                                id="psycho-guide-refs-title"
+                                className="psycho-guide__refs-title"
+                              >
+                                {guide.references.title}
+                              </h2>
+                              <span className="psycho-guide__refs-summary-hint" aria-hidden="true">
+                                <span className="psycho-guide__refs-summary-hint--closed">
+                                  {ui.refsExpandHint}
+                                </span>
+                                <span className="psycho-guide__refs-summary-hint--open">
+                                  {ui.refsCollapseHint}
+                                </span>
+                              </span>
+                            </span>
+                            <span className="psycho-guide__refs-support">
+                              {guide.references.support}
+                            </span>
+                          </summary>
+                          <ol className="psycho-guide__refs-list">
+                            {guide.references.items.map((ref) => (
+                              <li key={ref.href} className="psycho-guide__refs-item">
+                                <p className="psycho-guide__refs-apa">
+                                  <a
+                                    href={ref.href}
+                                    className="psycho-guide__refs-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    {ref.apa}
+                                  </a>
+                                  <span className="visually-hidden">{ui.externalLinkHint}</span>
+                                </p>
+                                {ref.note ? (
+                                  <p className="psycho-guide__refs-note">{ref.note}</p>
+                                ) : null}
+                              </li>
+                            ))}
+                          </ol>
+                        </details>
                       </aside>
                     ) : null}
 

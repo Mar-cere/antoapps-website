@@ -251,6 +251,19 @@ function formatGuideEntry(
   const lines = [
     `### ${title}`,
     `- URL: ${url}`,
+    `- ${isEs ? 'Formato' : 'Format'}: ${
+      guide.layout === 'dossier'
+        ? isEs
+          ? 'mapa clínico'
+          : 'clinical map'
+        : guide.layout === 'brief'
+          ? isEs
+            ? 'guía breve'
+            : 'brief guide'
+          : isEs
+            ? 'guía'
+            : 'guide'
+    }`,
     `- ${isEs ? 'Tiempo de lectura' : 'Reading time'}: ~${guide.readingMinutes} min`,
     `- ${isEs ? 'Resumen' : 'Summary'}: ${guide.hero.subtitle}`,
     `- ${isEs ? 'Descripción' : 'Description'}: ${guide.meta.description}`,
@@ -273,6 +286,20 @@ function formatGuideEntry(
     if (guide.figure.caption) {
       lines.push(`- ${isEs ? 'Pie de foto' : 'Caption'}: ${guide.figure.caption}`);
     }
+  }
+
+  const companionLink =
+    guide.hero.companionLink ??
+    guide.furtherReading?.links.find(
+      (link) => !link.external && link.href.startsWith('/recursos/')
+    );
+  if (companionLink) {
+    const companionUrl = companionLink.href.startsWith('http')
+      ? companionLink.href
+      : absoluteUrl(locale, companionLink.href);
+    lines.push(
+      `- ${isEs ? 'Hermana / lectura relacionada' : 'Companion / related reading'}: [${companionLink.label}](${companionUrl})`
+    );
   }
 
   if (guide.howTo) {

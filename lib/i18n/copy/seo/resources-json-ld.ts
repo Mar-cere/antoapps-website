@@ -12,7 +12,7 @@ const SITE_ORG = 'https://antoapps.com';
 /** Fecha de publicación de la colección (ISO date). */
 export const RESOURCES_COLLECTION_DATE_PUBLISHED = '2026-05-01';
 /** Última actualización relevante del hub / guías para schema. */
-export const RESOURCES_COLLECTION_DATE_MODIFIED = '2026-07-26';
+export const RESOURCES_COLLECTION_DATE_MODIFIED = '2026-07-28';
 
 export function getResourcesCollectionJsonLd(locale: Locale) {
   const copy = getResourcesPageCopy(locale);

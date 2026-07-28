@@ -67,6 +67,13 @@ export function getArticleJsonLd(locale: Locale, path: string, guide: Psychoeduc
     datePublished: RESOURCES_COLLECTION_DATE_PUBLISHED,
     dateModified: RESOURCES_COLLECTION_DATE_MODIFIED,
     timeRequired: `PT${guide.readingMinutes}M`,
+    articleSection: guide.layout === 'dossier'
+      ? isEn
+        ? 'Clinical map'
+        : 'Mapa clínico'
+      : isEn
+        ? 'Brief guide'
+        : 'Guía breve',
     isPartOf: {
       '@type': 'CollectionPage',
       '@id': `${hubUrl}#collection`,
@@ -107,11 +114,29 @@ export function getArticleJsonLd(locale: Locale, path: string, guide: Psychoeduc
     article.thumbnailUrl = imageUrl;
   }
 
+  const speakableSelectors = ['.psycho-guide__title', '.psycho-guide__subtitle'];
   if (guide.pullQuote) {
-    article.speakable = {
-      '@type': 'SpeakableSpecification',
-      cssSelector: ['.psycho-guide__title', '.psycho-guide__subtitle', '.psycho-guide__pullquote'],
-    };
+    speakableSelectors.push('.psycho-guide__pullquote');
+  }
+  if (guide.figure?.caption) {
+    speakableSelectors.push('.psycho-guide__figure-caption');
+  }
+  article.speakable = {
+    '@type': 'SpeakableSpecification',
+    cssSelector: speakableSelectors,
+  };
+
+  const companionHref =
+    guide.hero.companionLink?.href ??
+    guide.furtherReading?.links.find(
+      (link) => !link.external && link.href.startsWith('/recursos/')
+    )?.href;
+  if (companionHref) {
+    const companionUrl = companionHref.startsWith('http')
+      ? companionHref
+      : siteUrl(locale, companionHref);
+    article.relatedLink = companionUrl;
+    article.significantLink = companionUrl;
   }
 
   if (guide.references?.items.length) {

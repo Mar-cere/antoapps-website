@@ -977,12 +977,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'When you cannot sleep | Anto brief guide',
       description:
-        'Brief guide on sleep and emotions: why night amplifies rumination, concrete rest habits, a short ritual when the mind will not stop, and when to seek help. Psychoeducation; does not replace professional care or sleep therapy.',
+        'Brief guide on sleep and emotions: why night amplifies rumination, concrete rest habits, a short ritual when the mind will not stop, and when to seek help. Complements the sleep and insomnia map. Psychoeducation; does not replace professional care or sleep therapy.',
       openGraphTitle: 'When you cannot sleep — brief guide',
       openGraphDescription:
         'The light still on at 3am: sleep–mood link, useful habits, and a short ritual when the mind will not let go.',
       keywords:
-        'sleep, cannot sleep, night rumination, sleep hygiene, insomnia, night anxiety, rest habits, 3am, psychoeducation, Anto',
+        'sleep, cannot sleep, night rumination, sleep hygiene, insomnia, night anxiety, rest habits, 3am, CBT-I, sleep map, psychoeducation, Anto',
     },
     hero: {
       title: 'When you cannot sleep',
@@ -1079,25 +1079,13 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Go further',
       support:
-        'This page is practical and brief. If you want the map — presentations, maintenance cycles, CBT-I-style components, and when to seek evaluation — start here:',
+        'If tonight is not enough and you want the map — presentations, cycles, and when to seek evaluation — continue here:',
       links: [
         {
           label: 'Sleep and insomnia (full map)',
           description:
             'Presentations, the cycle that maintains the problem, limits of hygiene, CBT-I-style components, and evaluation criteria.',
           href: '/recursos/mapa-sueno-e-insomnio',
-        },
-        {
-          label: 'Anxiety and worry',
-          description:
-            'When night will not let go because the threat system stays on: map and interventions.',
-          href: '/recursos/ansiedad-y-preocupacion',
-        },
-        {
-          label: 'When anxiety rises (grounding)',
-          description:
-            'Sensory anchors if the body is at 8/10 and you cannot write or sleep yet.',
-          href: '/recursos/grounding-ansiedad-crisis',
         },
       ],
     },

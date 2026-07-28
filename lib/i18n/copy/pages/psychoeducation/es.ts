@@ -977,12 +977,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Cuando no puedes dormir | Guía breve Anto',
       description:
-        'Guía breve sobre sueño y emociones: por qué la noche amplifica la rumia, hábitos concretos de descanso, un ritual si la mente no para y cuándo pedir ayuda. Psicoeducación; no sustituye atención profesional ni terapia del sueño.',
+        'Guía breve sobre sueño y emociones: por qué la noche amplifica la rumia, hábitos concretos de descanso, un ritual si la mente no para y cuándo pedir ayuda. Complementa el mapa de sueño e insomnio. Psicoeducación; no sustituye atención profesional ni terapia del sueño.',
       openGraphTitle: 'Cuando no puedes dormir — guía breve',
       openGraphDescription:
         'La cama encendida a las 3am: vínculo sueño–ánimo, hábitos útiles y un ritual corto cuando la mente no suelta.',
       keywords:
-        'sueño, no puedo dormir, rumiación nocturna, higiene del sueño, insomnio, ansiedad nocturna, hábitos de descanso, 3am, psicoeducación, Anto',
+        'sueño, no puedo dormir, rumiación nocturna, higiene del sueño, insomnio, ansiedad nocturna, hábitos de descanso, 3am, TCC-I, mapa sueño, psicoeducación, Anto',
     },
     hero: {
       title: 'Cuando no puedes dormir',
@@ -1079,25 +1079,13 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Ir más a fondo',
       support:
-        'Esta página es práctica y breve. Si quieres el mapa — tipos, ciclos de mantenimiento, componentes tipo TCC-I y cuándo evaluar — empieza aquí:',
+        'Si esta noche no alcanza y quieres el mapa — presentaciones, ciclos y cuándo evaluar — sigue aquí:',
       links: [
         {
           label: 'Sueño e insomnio (mapa completo)',
           description:
             'Presentaciones, ciclo que mantiene el problema, límites de la higiene, componentes tipo TCC-I y criterios de evaluación.',
           href: '/recursos/mapa-sueno-e-insomnio',
-        },
-        {
-          label: 'Ansiedad y preocupación',
-          description:
-            'Cuando la noche no suelta porque el sistema de amenaza sigue encendido: mapa e intervenciones.',
-          href: '/recursos/ansiedad-y-preocupacion',
-        },
-        {
-          label: 'Cuando la ansiedad sube (grounding)',
-          description:
-            'Anclas sensoriales si el cuerpo está en 8/10 y aún no puedes escribir ni dormir.',
-          href: '/recursos/grounding-ansiedad-crisis',
         },
       ],
     },
