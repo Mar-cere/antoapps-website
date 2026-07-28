@@ -4,6 +4,17 @@ export type PsychoeducationSection = {
   bullets?: readonly string[];
   /** Si true, renderiza <ol> en vez de <ul> (p. ej. ejercicios paso a paso). */
   ordered?: boolean;
+  /**
+   * Énfasis visual distinto al H2 estándar.
+   * `crisis`: contrato de seguridad (no card SaaS; plano editorial con acento secondary).
+   */
+  emphasis?: 'crisis';
+  /** Enlace accionable bajo el cuerpo de la sección (p. ej. directorio de líneas de crisis). */
+  link?: {
+    label: string;
+    href: string;
+    external?: boolean;
+  };
 };
 
 export type PsychoeducationHowTo = {
@@ -108,6 +119,14 @@ export type PsychoeducationGuide = {
       href: string;
       label: string;
       support?: string;
+    };
+    /**
+     * Salto de lectura al ritual/sección clave (escaneo o relectura).
+     * El `sectionHeading` debe coincidir exactamente con una sección.
+     */
+    scanLink?: {
+      label: string;
+      sectionHeading: string;
     };
   };
   /** Cita editorial bajo el hero (ritmo de revista). */

@@ -1686,6 +1686,10 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       title: 'Cuando la ansiedad sube',
       subtitle:
         'Cuando el cuerpo reacciona como si el peligro fuera inmediato, primero hay que aterrizar; después se puede pensar.',
+      scanLink: {
+        label: 'Ir al ejercicio 5-4-3-2-1 →',
+        sectionHeading: 'Ejercicio 5-4-3-2-1',
+      },
     },
     pullQuote:
       'No se trata de “pensar positivo”. Se trata de volver al cuerpo el tiempo suficiente para que la ola no te arrastre entera.',
@@ -1740,16 +1744,22 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       },
       {
         heading: 'Cuándo es crisis',
+        emphasis: 'crisis',
         paragraphs: [
-          'Si hay ideas de hacerte daño, riesgo inmediato o no puedes cuidarte, contacta emergencias o una línea de crisis de tu país.',
-          'Anto puede ofrecer recursos ante señales de riesgo, pero no sustituye servicios de emergencia.',
+          'El grounding ayuda a bajar la ola. No alcanza si hay ideas de hacerte daño, riesgo inmediato para ti o para alguien, o si no puedes cuidarte en lo básico.',
+          'En ese caso, contacta emergencias locales o una línea de crisis de tu país. Anto puede mostrar recursos ante señales de riesgo; no sustituye esos servicios.',
         ],
+        link: {
+          label: 'Buscar una línea de crisis cerca de ti →',
+          href: 'https://findahelpline.com/',
+          external: true,
+        },
       },
     ],
     productMoment: {
       title: 'Así se ve en Anto',
       body: 'Puedes escribirlo tal cual y recibir un paso concreto, sin presión de “arreglarlo todo”.',
-      afterHeading: 'Ejercicio 5-4-3-2-1',
+      afterHeading: 'Cuándo es crisis',
       chat: {
         ariaLabel: 'Ejemplo de conversación en Anto cuando la ansiedad sube',
         messages: [
@@ -1771,7 +1781,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
         ],
       },
-      suggestionsLabel: 'Sugerencias',
+      suggestionsLabel: 'Ejemplos en la app',
       suggestions: ['Ejercicio 5-4-3-2-1', 'Un solo ancla'],
     },
     furtherReading: {
@@ -1782,24 +1792,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           label: 'Ansiedad y preocupación (mapa completo)',
           description:
-            'Activación autonómica, conductas de seguridad, intervenciones tipo TCC, GAD-7 y cuándo pedir evaluación.',
+            'Cómo se mantiene el ciclo, conductas de seguridad, intervenciones útiles y cuándo pedir evaluación.',
           href: '/recursos/ansiedad-y-preocupacion',
-        },
-        {
-          label: 'Evidencia que informa Anto',
-          description:
-            'Cómo leemos TCC, escalas y salud mental digital — y qué no afirmamos. Citas APA con DOI.',
-          href: '/investigacion',
-        },
-        {
-          label: 'NIMH — Trastornos de ansiedad (español)',
-          description: 'Material clínico público del National Institute of Mental Health (EE. UU.).',
-          href: 'https://www.nimh.nih.gov/health/publications/espanol/trastorno-de-ansiedad-generalizada-cuando-no-se-pueden-controlar-las-preocupaciones-new',
-          external: true,
         },
       ],
     },
-    relatedSlugs: [SLUGS.anxiety, SLUGS.mindfulness, SLUGS.trauma],
+    relatedSlugs: [SLUGS.mindfulness, SLUGS.emotionRegulation],
     references: {
       title: 'Referencias (APA)',
       support:
@@ -1818,7 +1816,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       ],
     },
     disclaimer:
-      'Psicoeducación. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
+      'Psicoeducación. No sustituye terapia ni servicios de emergencia. Si estás en riesgo inmediato, usa la sección «Cuándo es crisis» arriba.',
     ctaBridge:
       'Cuando baje un poco la ola, puedes seguir con compañía en el teléfono — sin presión.',
     cta: { label: 'Apoyo en Anto →', path: '/bienvenida' },

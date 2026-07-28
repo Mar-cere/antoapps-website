@@ -94,6 +94,15 @@ function sectionAnchorId(heading: string, index: number): string {
   return `mapa-${index + 1}-${slug || 'seccion'}`;
 }
 
+function findSectionAnchor(
+  sections: PsychoeducationGuide['sections'],
+  sectionHeading: string
+): string | null {
+  const index = sections.findIndex((section) => section.heading === sectionHeading);
+  if (index < 0) return null;
+  return sectionAnchorId(sections[index].heading, index);
+}
+
 export default function PsychoeducationGuidePageContent({
   locale,
   slug,
@@ -103,6 +112,10 @@ export default function PsychoeducationGuidePageContent({
   const articlePath = `/recursos/${slug}`;
   const resourcesHref = localePath(locale, ui.resourcesHref);
   const homeHref = localePath(locale, '/');
+  const hasCrisisEmphasis = guide.sections.some((section) => section.emphasis === 'crisis');
+  const scanAnchor = guide.hero.scanLink
+    ? findSectionAnchor(guide.sections, guide.hero.scanLink.sectionHeading)
+    : null;
 
   return (
     <LocaleProvider locale={locale}>
@@ -158,6 +171,13 @@ export default function PsychoeducationGuidePageContent({
                     </p>
                     <h1 className="psycho-guide__title">{guide.hero.title}</h1>
                     <p className="psycho-guide__subtitle">{guide.hero.subtitle}</p>
+                    {guide.hero.scanLink && scanAnchor ? (
+                      <p className="psycho-guide__scan reveal-on-scroll">
+                        <a href={`#${scanAnchor}`} className="psycho-guide__scan-link">
+                          {guide.hero.scanLink.label}
+                        </a>
+                      </p>
+                    ) : null}
                     {guide.hero.companionLink ? (
                       <p className="psycho-guide__companion reveal-on-scroll">
                         {guide.hero.companionLink.support ? (
@@ -257,7 +277,13 @@ export default function PsychoeducationGuidePageContent({
                           <div key={section.heading} className="psycho-guide__section-stack">
                             <section
                               id={anchorId}
-                              className={`psycho-guide__section${section.ordered ? ' psycho-guide__section--steps' : ''} reveal-on-scroll`}
+                              className={`psycho-guide__section${
+                                section.ordered ? ' psycho-guide__section--steps' : ''
+                              }${
+                                section.emphasis === 'crisis'
+                                  ? ' psycho-guide__section--crisis'
+                                  : ''
+                              } reveal-on-scroll`}
                             >
                               <h2>{section.heading}</h2>
                               {section.paragraphs?.map((paragraph) => (
@@ -270,6 +296,33 @@ export default function PsychoeducationGuidePageContent({
                                   ))}
                                 </ListTag>
                               )}
+                              {section.link ? (
+                                <p className="psycho-guide__section-action">
+                                  {section.link.external ||
+                                  section.link.href.startsWith('http://') ||
+                                  section.link.href.startsWith('https://') ? (
+                                    <a
+                                      href={section.link.href}
+                                      className="psycho-guide__section-link"
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                    >
+                                      {section.link.label}
+                                      <span className="visually-hidden">
+                                        {' '}
+                                        {ui.externalLinkHint}
+                                      </span>
+                                    </a>
+                                  ) : (
+                                    <Link
+                                      href={resolveGuideHref(locale, section.link.href)}
+                                      className="psycho-guide__section-link"
+                                    >
+                                      {section.link.label}
+                                    </Link>
+                                  )}
+                                </p>
+                              ) : null}
                             </section>
 
                             {showProduct ? (
@@ -301,8 +354,8 @@ export default function PsychoeducationGuidePageContent({
                                       className="psycho-guide__product-suggestions-list"
                                       aria-label={
                                         locale === 'en'
-                                          ? 'Example suggestions shown in the app'
-                                          : 'Ejemplos de sugerencias en la app'
+                                          ? 'Example phrases shown in the app'
+                                          : 'Ejemplos de frases en la app'
                                       }
                                     >
                                       {showProduct.suggestions.map((suggestion) => (
@@ -533,7 +586,11 @@ export default function PsychoeducationGuidePageContent({
           </div>
         </main>
         <HomeMinimalFooter locale={locale} switchPath={articlePath} />
-        <CookieConsent compact bannerDelayMs={6000} showAfterScrollPx={320} />
+        <CookieConsent
+          compact
+          bannerDelayMs={hasCrisisEmphasis ? 14000 : 6000}
+          showAfterScrollPx={hasCrisisEmphasis ? 900 : 320}
+        />
       </div>
     </LocaleProvider>
   );

@@ -427,6 +427,86 @@
   line-height: 1;
 }
 
+/* Contrato de seguridad: plano editorial, no card SaaS ni border-left grueso */
+.psycho-guide__section--crisis {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 62ch;
+  padding: 1.2rem 1.25rem 1.3rem;
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 28%, var(--home-v2-hairline-strong));
+  border-radius: calc(var(--home-v2-radius) + 2px);
+  background: color-mix(in srgb, var(--color-bg-tertiary) 62%, transparent);
+  scroll-margin-top: 5.5rem;
+  scroll-margin-bottom: calc(var(--home-v2-cookie-dock, 0px) + 1.25rem);
+}
+
+.psycho-guide__section--crisis h2 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.3rem, 2.2vw, 1.55rem);
+  color: var(--home-v2-ink);
+}
+
+.psycho-guide__section--crisis p {
+  color: color-mix(in srgb, var(--home-v2-muted) 92%, var(--color-secondary));
+}
+
+.psycho-guide__section-action {
+  margin: 1rem 0 0 !important;
+}
+
+.psycho-guide__section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-primary);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+@media (hover: hover) {
+  .psycho-guide__section-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+}
+
+.psycho-guide__section-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.psycho-guide__scan {
+  margin: 0.85rem 0 0;
+}
+
+.psycho-guide__scan-link {
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 45%, transparent);
+  padding-bottom: 0.05rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .psycho-guide__scan-link:hover {
+    color: var(--color-primary);
+    border-bottom-color: color-mix(in srgb, var(--color-primary) 55%, transparent);
+  }
+}
+
+.psycho-guide__scan-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 .psycho-guide__further {
   margin-top: 2.75rem;
   max-width: 42rem;
@@ -989,6 +1069,28 @@
     align-items: start;
   }
 
+  /* Crisis: ancho completo; producto debajo, no en paralelo (contrato de seguridad primero) */
+  .psycho-guide__section-stack:has(.psycho-guide__section--crisis) {
+    grid-column: 1 / -1;
+  }
+
+  .psycho-guide__section-stack:has(.psycho-guide__section--crisis):has(.psycho-guide__product) {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .psycho-guide__section-stack:has(.psycho-guide__section--crisis) .psycho-guide__section--crisis {
+    max-width: 42rem;
+  }
+
+  .psycho-guide__section-stack:has(.psycho-guide__section--crisis):has(.psycho-guide__product) .psycho-guide__product {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem);
+    gap: 1.5rem 2.75rem;
+    align-items: start;
+  }
+
   .psycho-guide__section-stack:has(.psycho-guide__product) .psycho-guide__section {
     max-width: none;
   }
@@ -1334,10 +1436,20 @@
   color: var(--home-v2-soft);
 }
 
-/* Cookie: no tapar el CTA del cierre en guías */
+/* Cookie: no tapar el CTA del cierre ni la sección de crisis en guías */
 .psycho-guide-shell:has(.cookie-consent.show) .psycho-guide__outro {
   scroll-margin-bottom: calc(var(--home-v2-cookie-dock, 4.75rem) + 1rem);
   padding-bottom: 0.5rem;
+}
+
+.psycho-guide-shell:has(.cookie-consent.show) .psycho-guide__section--crisis {
+  scroll-margin-bottom: calc(var(--home-v2-cookie-dock, 4.75rem) + 1.5rem);
+}
+
+/* Guías con contrato de crisis: el dock no compite tanto en el primer viewport */
+.psycho-guide-shell:has(.psycho-guide__section--crisis) .cookie-consent--compact {
+  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--color-bg-primary) 88%, transparent);
 }
 
 /* -------------------------------------------------------------------------- */

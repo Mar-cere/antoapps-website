@@ -1687,6 +1687,10 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       title: 'When anxiety rises',
       subtitle:
         'When the body reacts as if danger were immediate, first you need to land; thinking can come after.',
+      scanLink: {
+        label: 'Go to the 5-4-3-2-1 exercise →',
+        sectionHeading: '5-4-3-2-1 exercise',
+      },
     },
     pullQuote:
       'This is not about “thinking positive”. It is about returning to the body long enough that the wave does not carry you away whole.',
@@ -1741,16 +1745,22 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       },
       {
         heading: 'When it is a crisis',
+        emphasis: 'crisis',
         paragraphs: [
-          'If you have thoughts of harming yourself, immediate risk, or cannot care for yourself, contact emergency services or a crisis line in your country.',
-          'Anto can offer resources when risk signals appear, but it does not replace emergency services.',
+          'Grounding helps bring the wave down. It is not enough if you have thoughts of harming yourself, immediate risk to yourself or someone else, or you cannot manage basic self-care.',
+          'In that case, contact local emergency services or a crisis line in your country. Anto can surface resources when risk signals appear; it does not replace those services.',
         ],
+        link: {
+          label: 'Find a crisis line near you →',
+          href: 'https://findahelpline.com/',
+          external: true,
+        },
       },
     ],
     productMoment: {
       title: 'How it looks in Anto',
       body: 'You can write it down as it is and get one concrete next step, without pressure to “fix everything”.',
-      afterHeading: '5-4-3-2-1 exercise',
+      afterHeading: 'When it is a crisis',
       chat: {
         ariaLabel: 'Sample Anto conversation when anxiety rises',
         messages: [
@@ -1772,7 +1782,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
         ],
       },
-      suggestionsLabel: 'Suggestions',
+      suggestionsLabel: 'Examples in the app',
       suggestions: ['5-4-3-2-1 exercise', 'Single anchor'],
     },
     furtherReading: {
@@ -1783,24 +1793,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           label: 'Anxiety and worry (complete map)',
           description:
-            'Autonomic activation, safety behaviours, CBT-style interventions, GAD-7, and when to seek assessment.',
+            'How the cycle is maintained, safety behaviours, useful interventions, and when to seek assessment.',
           href: '/recursos/ansiedad-y-preocupacion',
-        },
-        {
-          label: 'Evidence that informs Anto',
-          description:
-            'How we read CBT, scales, and digital mental health — and what we do not claim. APA citations with DOIs.',
-          href: '/investigacion',
-        },
-        {
-          label: 'NIMH — Anxiety disorders',
-          description: 'Public clinical material from the U.S. National Institute of Mental Health.',
-          href: 'https://www.nimh.nih.gov/health/topics/anxiety-disorders',
-          external: true,
         },
       ],
     },
-    relatedSlugs: [SLUGS.anxiety, SLUGS.mindfulness, SLUGS.trauma],
+    relatedSlugs: [SLUGS.mindfulness, SLUGS.emotionRegulation],
     references: {
       title: 'References (APA)',
       support:
@@ -1819,7 +1817,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       ],
     },
     disclaimer:
-      'Psychoeducation. If there is suicide risk or violence, seek local emergency help immediately.',
+      'Psychoeducation. Does not replace therapy or emergency services. If you are in immediate risk, use the “When it is a crisis” section above.',
     ctaBridge:
       'When the wave eases a little, you can keep going with company on your phone — no pressure.',
     cta: { label: 'Support in Anto →', path: '/bienvenida' },
