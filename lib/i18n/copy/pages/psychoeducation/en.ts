@@ -988,11 +988,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       title: 'When you cannot sleep',
       subtitle:
         'Better sleep does not fix everything. But poor sleep amplifies anxiety, irritability, and the voice that replays the day once the body is already in bed.',
-      companionLink: {
-        href: '/recursos/mapa-sueno-e-insomnio',
-        support: 'Want the full map?',
-        label: 'Go to the complete guide →',
-      },
     },
     pullQuote:
       'At 3am the mind does not invent new problems. It only turns the volume up.',
@@ -1078,7 +1073,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
         ],
       },
-      suggestionsLabel: 'Suggestions',
+      suggestionsLabel: 'Examples in the app',
       suggestions: ['Ritual when the mind will not stop', 'Lower the activation'],
     },
     furtherReading: {

@@ -10,7 +10,6 @@ import {
   getPsychoeducationGuide,
   psychoeducationGuidePath,
 } from '@/lib/i18n/copy/pages/psychoeducation';
-import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { LocaleProvider } from '@/lib/i18n/context';
 import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
@@ -95,7 +94,6 @@ export default function PsychoeducationGuidePageContent({
   guide,
 }: PsychoeducationGuidePageContentProps) {
   const ui = uiCopy[locale];
-  const nav = getHomeV2Copy(locale).nav;
   const articlePath = `/recursos/${slug}`;
   const resourcesHref = localePath(locale, ui.resourcesHref);
   const homeHref = localePath(locale, '/');
@@ -108,7 +106,12 @@ export default function PsychoeducationGuidePageContent({
         <HomeMinimalNav
           locale={locale}
           ctaHref={localePath(locale, '/bienvenida')}
-          ctaLabel={nav.cta}
+          ctaLabel={locale === 'en' ? 'Support' : 'Apoyo'}
+          ctaAria={
+            locale === 'en'
+              ? 'Continue to Anto support'
+              : 'Continuar al apoyo en Anto'
+          }
         />
         <main
           id="main-content"
@@ -288,7 +291,14 @@ export default function PsychoeducationGuidePageContent({
                                     <p className="psycho-guide__product-suggestions-label">
                                       {showProduct.suggestionsLabel}
                                     </p>
-                                    <ul className="psycho-guide__product-suggestions-list">
+                                    <ul
+                                      className="psycho-guide__product-suggestions-list"
+                                      aria-label={
+                                        locale === 'en'
+                                          ? 'Example suggestions shown in the app'
+                                          : 'Ejemplos de sugerencias en la app'
+                                      }
+                                    >
                                       {showProduct.suggestions.map((suggestion) => (
                                         <li key={suggestion}>
                                           <span className="psycho-guide__product-chip">
@@ -377,7 +387,8 @@ export default function PsychoeducationGuidePageContent({
                         </aside>
                       ) : null}
 
-                      {guide.references ? (
+                      {/* Default/dossier: refs en el cierre a dos columnas. Brief: refs tras CTA. */}
+                      {guide.references && guide.layout !== 'brief' ? (
                         <aside
                           className="psycho-guide__refs reveal-on-scroll"
                           aria-labelledby="psycho-guide-refs-title"
@@ -428,6 +439,38 @@ export default function PsychoeducationGuidePageContent({
                         </Link>
                       </div>
                     </div>
+
+                    {guide.references && guide.layout === 'brief' ? (
+                      <aside
+                        className="psycho-guide__refs psycho-guide__refs--after-cta reveal-on-scroll"
+                        aria-labelledby="psycho-guide-refs-title"
+                      >
+                        <h2 id="psycho-guide-refs-title" className="psycho-guide__refs-title">
+                          {guide.references.title}
+                        </h2>
+                        <p className="psycho-guide__refs-support">{guide.references.support}</p>
+                        <ol className="psycho-guide__refs-list">
+                          {guide.references.items.map((ref) => (
+                            <li key={ref.href} className="psycho-guide__refs-item">
+                              <p className="psycho-guide__refs-apa">
+                                <a
+                                  href={ref.href}
+                                  className="psycho-guide__refs-link"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {ref.apa}
+                                </a>
+                                <span className="visually-hidden">{ui.externalLinkHint}</span>
+                              </p>
+                              {ref.note ? (
+                                <p className="psycho-guide__refs-note">{ref.note}</p>
+                              ) : null}
+                            </li>
+                          ))}
+                        </ol>
+                      </aside>
+                    ) : null}
 
                     {guide.relatedSlugs.length > 0 && (
                       <nav

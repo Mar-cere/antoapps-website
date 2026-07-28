@@ -988,11 +988,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       title: 'Cuando no puedes dormir',
       subtitle:
         'Dormir mejor no cura todo. Pero un sueño pobre amplifica ansiedad, irritabilidad y esa voz que repasa el día cuando el cuerpo ya está en la cama.',
-      companionLink: {
-        href: '/recursos/mapa-sueno-e-insomnio',
-        support: '¿Quieres el mapa completo?',
-        label: 'Ir a la guía completa →',
-      },
     },
     pullQuote:
       'A las 3am la mente no inventa problemas nuevos. Solo les pone el volumen más alto.',
@@ -1078,7 +1073,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
         ],
       },
-      suggestionsLabel: 'Sugerencias',
+      suggestionsLabel: 'Ejemplos en la app',
       suggestions: ['Ritual si la mente no para', 'Bajar la activación'],
     },
     furtherReading: {
