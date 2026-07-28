@@ -173,8 +173,8 @@ function formatResourcesDiscoveryBlock(locale: Locale): string[] {
       ],
     },
     {
-      labelEs: 'Sueño / regulación / mindfulness',
-      labelEn: 'Sleep / regulation / mindfulness',
+      labelEs: 'Sueño (breve + mapa: ciclo, higiene, TCC-I) / regulación / mindfulness',
+      labelEn: 'Sleep (brief + map: cycle, hygiene, CBT-I) / regulation / mindfulness',
       slugs: [
         'higiene-sueno-salud-mental',
         'mapa-sueno-e-insomnio',

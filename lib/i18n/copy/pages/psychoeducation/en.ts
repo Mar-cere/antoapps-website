@@ -988,6 +988,11 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       title: 'When you cannot sleep',
       subtitle:
         'Better sleep does not fix everything. But poor sleep amplifies anxiety, irritability, and the voice that replays the day once the body is already in bed.',
+      companionLink: {
+        href: '/recursos/mapa-sueno-e-insomnio',
+        support: 'Want the clinical map?',
+        label: 'Go to the full guide →',
+      },
     },
     pullQuote:
       'At 3am the mind does not invent new problems. It only turns the volume up.',
@@ -1130,19 +1135,19 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 12,
     layout: 'dossier',
     meta: {
-      title: 'Sleep and insomnia: full map | Anto',
+      title: 'Sleep and insomnia: full clinical map | Anto',
       description:
-        'Clinical-practical sleep and insomnia map: presentations, maintenance cycle, limits of hygiene, CBT-I-style components (stimulus control, sleep window, cognition), links to anxiety/mood, and when to seek evaluation. Does not diagnose or replace sleep therapy.',
-      openGraphTitle: 'Sleep and insomnia — full map',
+        'Clinical map of sleep and insomnia: presentations, maintenance cycle, limits of sleep hygiene, CBT-I-style components (stimulus control, sleep window), links to anxiety/mood, and when to seek evaluation. Complements the brief guide; does not diagnose or replace sleep therapy.',
+      openGraphTitle: 'Sleep and insomnia — clinical map',
       openGraphDescription:
-        'Beyond one bad night: what maintains insomnia, what hygiene can do, and what CBT-I usually includes.',
+        'Beyond one bad night: what maintains insomnia, how far hygiene goes, and what CBT-I usually includes.',
       keywords:
-        'insomnia, sleep, sleep map, CBT-I, sleep hygiene, stimulus control, sleep restriction, sleep window, night rumination, night anxiety, psychoeducation, Anto',
+        'insomnia, sleep, clinical map, sleep map, CBT-I, cognitive behavioural therapy for insomnia, sleep hygiene, stimulus control, sleep restriction, sleep window, sleep efficiency, maintenance cycle, night rumination, night anxiety, chronic insomnia, psychoeducation, Anto',
     },
     hero: {
       title: 'Sleep and insomnia: full map',
       subtitle:
-        'Presentations, the cycle that maintains the problem, limits of hygiene, and CBT-I-style components — a clinical-practical map without claiming to replace sleep therapy.',
+        'What the brief guide does not cover: presentations, the maintenance cycle, limits of hygiene, CBT-I-style components, and when to seek evaluation.',
       companionLink: {
         href: '/recursos/higiene-sueno-salud-mental',
         support: 'If tonight you only need a short ritual:',
@@ -1166,9 +1171,8 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Beyond one bad night',
         paragraphs: [
-          'Everyone has bad nights. Insomnia, in a broad clinical sense, means recurrent difficulty falling asleep, staying asleep, or waking too early — with daytime fatigue, irritability, or functional impairment. Being tired is not enough: frequency, duration, and daytime impact matter.',
-          'This map adds architecture: presentations, behaviours that maintain the problem, how far hygiene goes, and what cognitive behavioural therapy for insomnia (CBT-I) usually includes — psychoeducation, not a full self-directed protocol (Trauer et al., 2015).',
-          'This page does not diagnose. It helps when you already recognise the night pattern and want to read it in more depth.',
+          'Everyone has bad nights. Insomnia, in a broad clinical sense, means recurrent difficulty falling asleep, staying asleep, or waking too early — with daytime fatigue, irritability, or functional impairment. Frequency, duration, and daytime impact matter, not only “being tired”.',
+          'This page helps when you already recognise the pattern and want to read it in more depth. It does not diagnose, and it is not a full self-directed protocol.',
         ],
       },
       {
@@ -1180,7 +1184,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           'Onset: it takes a long time to fall asleep; bed becomes “here comes the fight”.',
           'Maintenance: you wake and struggle to return; clock-watching often raises activation.',
           'Early waking: the day starts before the body is ready; sometimes with rumination or low mood.',
-          'Acute vs persistent: days/weeks after a stressor vs a pattern lasting ≥1 month with daytime impact.',
+          'Acute vs persistent: days or weeks after a stressor versus a pattern lasting a month or more with daytime impact.',
           'Comorbid: sleep intertwines with anxiety, depression, pain, shifts, or stimulants — not “hygiene only”.',
         ],
       },
@@ -1188,13 +1192,13 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'The cycle that maintains insomnia',
         paragraphs: [
           'A classic model distinguishes predisposition, precipitant, and perpetuation (Spielman et al., 1987): there may be vulnerability (anxiety, irregular rhythm), a trigger (stress, travel, illness), then behaviours that keep the problem going after the trigger has passed.',
-          'Maintenance is often behavioural and cognitive: more time in bed “just in case”, compensatory naps, caffeine to survive the day, a clock on the nightstand, fighting thoughts, using the phone “for a minute”. Short relief reinforces fear of not sleeping.',
+          'That maintenance is often behavioural and cognitive. Short relief — more time in bed “just in case”, caffeine to survive the day, the phone “for a minute” — reinforces fear of not sleeping.',
         ],
         bullets: [
           'Bed = threat: the body activates at bedtime because it anticipates another bad night.',
-          'Clock and checking: each glance confirms “it is already 3:40” and raises arousal.',
-          'Extended time in bed: more hours lying down ≠ more sleep; efficiency drops.',
-          'Daytime compensation: long naps, late caffeine, cancelled plans — sustain the cycle.',
+          'Clock and checking: each glance confirms the hour and raises activation.',
+          'More hours lying down ≠ more sleep: efficiency drops.',
+          'Daytime compensation — long naps, late caffeine, cancelled plans — sustains the cycle.',
         ],
       },
       {
@@ -1205,53 +1209,52 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         ],
         bullets: [
           'Useful: cut late caffeine, dim light, bed not-an-office, stable wake time.',
-          'Not enough alone: weeks of insomnia with impairment, intense fear of not sleeping, suspected apnea.',
-          'Hygiene prepares; it does not replace stimulus control, a sleep window, or cognitive work when those are needed.',
+          'Not enough alone: weeks of insomnia with impairment, intense fear of not sleeping, or suspected apnea.',
+          'When maintenance is already behavioural, other modules are needed (e.g. stimulus control or a sleep window), not only more rules.',
         ],
       },
       {
         heading: 'CBT-I-style components',
         paragraphs: [
-          'CBT-I combines several modules; meta-analyses place it as an effective intervention for chronic insomnia in adults (Trauer et al., 2015). They are described here to orient you — not to self-dose sleep restriction without support.',
+          'Cognitive behavioural therapy for insomnia (CBT-I) combines several modules; meta-analyses place it as an effective intervention for chronic insomnia in adults (Trauer et al., 2015). They are described here to orient you — not to self-dose sleep restriction without support.',
         ],
         bullets: [
           'Stimulus control: bed and bedroom linked to sleep/sex; if sleep does not come, leave for dim light and return without forcing.',
           'Sleep window / restriction: shorten time in bed to raise efficiency — high potency; better with clinical guidance if daytime sleepiness is dangerous.',
           'Cognitive work: reduce night catastrophising (“if I do not sleep, tomorrow will be a disaster”) and fusion with the thought.',
-          'Relaxation / regulation: lower arousal before or during the night without fighting “I must fall asleep now”.',
+          'Relaxation / regulation: lower activation before or during the night without fighting “I must fall asleep now”.',
           'Hygiene as support: not as the only module when maintenance is already behavioural.',
         ],
       },
       {
         heading: 'Exercise: stimulus control (night)',
         paragraphs: [
-          'A psychoeducation version of stimulus control. If there is extreme sleepiness while driving, suspected apnea, or severe depression, prioritise evaluation before sleep experiments.',
+          'A short version of the module to practise. If there is extreme sleepiness while driving, suspected apnea, or severe depression, prioritise evaluation before experimenting with sleep.',
         ],
         ordered: true,
         bullets: [
-          'Go to bed only when sleepy — not “because it is time” with the body at 8/10 activation.',
+          'Go to bed only when sleepy — not “because it is time” with the body highly activated.',
           'Bed for sleep (and sex): no work, no scrolling, no long arguments.',
-          'If you do not fall asleep in ~20 minutes, leave for another room with dim light; do something quiet without bright screens.',
+          'If you do not fall asleep in about 20 minutes, leave for another room with dim light; do something quiet without bright screens.',
           'Return when activation eases a little; repeat without punishing yourself.',
           'Wake at the same time every day — anchor the clock even after an irregular night.',
-          'Note three nights: time in bed vs approximate sleep? Observation only, no verdict.',
+          'Note three nights: time in bed versus approximate sleep. Observation only, no verdict.',
         ],
       },
       {
         heading: 'Sleep, anxiety, and mood',
         paragraphs: [
           'The link is bidirectional: insomnia predicts higher depression risk in longitudinal studies (Baglioni et al., 2011); anxiety sustains the hyperarousal that makes sleep harder. Treating only “the thought” or only “the mattress” often falls short.',
-          'If night is dominated by anticipatory threat, the anxiety map and grounding help in the spike. If daytime is heavy with low mood and inertia, behavioural activation and mood evaluation may be the next step — alongside sleep habits, not instead of them.',
+          'If night is dominated by anticipatory threat, the anxiety map and grounding help in the spike. If daytime is heavy with low mood and inertia, behavioural activation and a mood evaluation may be the next step — alongside sleep habits, not instead of them.',
         ],
       },
       {
         heading: 'When to seek evaluation',
         paragraphs: [
-          'Professional evaluation is warranted if the pattern lasts weeks, worsens, impairs work or safety (driving, caregiving), involves alcohol/sedatives to “switch off”, or shows signs of another sleep disorder (loud snoring, breathing pauses, restless legs).',
+          'Professional evaluation is warranted if the pattern lasts weeks, worsens, impairs work or safety (driving, caregiving), involves alcohol or sedatives to “switch off”, or shows signs of another sleep disorder (loud snoring, breathing pauses, restless legs).',
           'If there is suicidal ideation, immediate risk, or you cannot care for yourself: emergency services or a crisis line in your country. Anto can offer resources; it does not replace those services or CBT-I with a sleep clinician.',
         ],
         bullets: [
-          'If tonight you only need a short ritual, the brief sleep guide complements this map.',
           'It does not replace polysomnography, medication adjustment, or individual formulation.',
           'If sleep restriction or experiments increase distress, pause and seek evaluation.',
         ],
@@ -1259,7 +1262,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     ],
     productMoment: {
       title: 'How it looks in Anto',
-      body: 'When you already see the cycle — bed, clock, rumination — you can describe it and get one concrete step: leave the bed, paper ritual, or lower activation — without trying to “fix sleep entirely” in one night.',
+      body: 'You can describe the pattern as it is and get one concrete step — leave the bed, a paper ritual, or lower activation — without trying to fix sleep entirely in one night.',
       afterHeading: 'When to seek evaluation',
       chat: {
         ariaLabel: 'Example Anto conversation about the cycle that maintains insomnia',
@@ -1270,7 +1273,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
           {
             role: 'anto',
-            text: 'That sounds like a maintenance cycle: more time in bed + checking. Tonight, can we try leaving for dim light if sleep does not come in ~20 minutes?',
+            text: 'That sounds like a maintenance cycle: more time in bed and checking. Tonight, can we try leaving for dim light if sleep does not come in about 20 minutes?',
           },
           {
             role: 'user',
@@ -1287,13 +1290,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     },
     furtherReading: {
       title: 'Go further',
-      support:
-        'This text is the clinical-practical map. For a short ritual tonight, parallel anxiety, or public reference material:',
+      support: 'For a short ritual tonight, parallel anxiety, or public reference material:',
       links: [
         {
           label: 'When you cannot sleep (brief guide)',
           description:
-            'Ritual when the mind will not stop, rest habits, and when to seek help — a short complement to this map.',
+            'Rest habits, a ritual when the mind will not stop, and when to seek help.',
           href: '/recursos/higiene-sueno-salud-mental',
         },
         {
@@ -1324,7 +1326,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           apa: 'Irish, L. A., Kline, C. E., Gunn, H. E., Buysse, D. J., & Hall, M. H. (2015). The role of sleep hygiene in promoting public health: A review of empirical evidence. Sleep Medicine Reviews, 22, 23–36. https://doi.org/10.1016/j.smrv.2014.10.001',
           href: 'https://doi.org/10.1016/j.smrv.2014.10.001',
-          note: 'Limits and utility of sleep hygiene in the general population vs clinical treatment.',
+          note: 'Limits and utility of sleep hygiene in the general population versus clinical treatment.',
         },
         {
           apa: 'Trauer, J. M., Qian, M. Y., Doyle, J. S., Rajaratnam, S. M. W., & Cunnington, D. (2015). Cognitive behavioral therapy for chronic insomnia: A systematic review and meta-analysis. Annals of Internal Medicine, 163(3), 191–204. https://doi.org/10.7326/M14-2841',
@@ -1334,7 +1336,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           apa: 'Baglioni, C., Battagliese, G., Feige, B., Spiegelhalder, K., Nissen, C., Voderholzer, U., Lombardo, C., & Riemann, D. (2011). Insomnia as a predictor of depression: A meta-analytic evaluation of longitudinal epidemiological studies. Journal of Affective Disorders, 135(1–3), 10–19. https://doi.org/10.1016/j.jad.2011.01.011',
           href: 'https://doi.org/10.1016/j.jad.2011.01.011',
-          note: 'Insomnia predicts higher depression risk — the sleep–mood link is not only subjective.',
+          note: 'Insomnia predicts higher depression risk: the sleep–mood link is not only subjective.',
         },
       ],
     },
@@ -1342,7 +1344,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     disclaimer:
       'Psychoeducation. Does not diagnose or replace medical evaluation, polysomnography, or CBT-I with a professional. If there is suicide risk or violence, seek local emergency help immediately.',
     ctaBridge:
-      'If you want company to look at tonight’s cycle — without pressure to “fix it all” — you can continue on your phone.',
+      'If you want company to look at tonight’s cycle — without pressure to fix it all — you can continue on your phone.',
     cta: { label: 'Support in Anto →', path: '/bienvenida' },
     howTo: {
       name: 'Stimulus control (night)',
@@ -1352,9 +1354,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       steps: [
         'Go to bed when sleepy, not only by schedule.',
         'Reserve the bed for sleep (and sex); no screens or work.',
-        'If there is no sleep in ~20 minutes, leave for dim light and return without forcing.',
+        'If there is no sleep in about 20 minutes, leave for dim light and return without forcing.',
         'Keep the same wake time the next day.',
-        'Observe three nights: time in bed vs approximate sleep.',
+        'Observe three nights: time in bed versus approximate sleep.',
       ],
     },
   },

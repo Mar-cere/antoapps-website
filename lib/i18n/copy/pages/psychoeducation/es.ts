@@ -988,6 +988,11 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       title: 'Cuando no puedes dormir',
       subtitle:
         'Dormir mejor no cura todo. Pero un sueño pobre amplifica ansiedad, irritabilidad y esa voz que repasa el día cuando el cuerpo ya está en la cama.',
+      companionLink: {
+        href: '/recursos/mapa-sueno-e-insomnio',
+        support: '¿Quieres el mapa clínico?',
+        label: 'Ir a la guía completa →',
+      },
     },
     pullQuote:
       'A las 3am la mente no inventa problemas nuevos. Solo les pone el volumen más alto.',
@@ -1130,19 +1135,19 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 12,
     layout: 'dossier',
     meta: {
-      title: 'Sueño e insomnio: mapa completo | Anto',
+      title: 'Sueño e insomnio: mapa clínico completo | Anto',
       description:
-        'Mapa clínico-práctico de sueño e insomnio: presentaciones, ciclo de mantenimiento, límites de la higiene, componentes tipo TCC-I (control de estímulos, ventana de sueño, cognición), vínculo con ansiedad/ánimo y cuándo pedir evaluación. No diagnostica ni sustituye terapia del sueño.',
-      openGraphTitle: 'Sueño e insomnio — mapa completo',
+        'Mapa clínico de sueño e insomnio: presentaciones, ciclo de mantenimiento, límites de la higiene del sueño, componentes tipo TCC-I (control de estímulos, ventana de sueño), vínculo con ansiedad/ánimo y cuándo pedir evaluación. Complementa la guía breve; no diagnostica ni sustituye terapia del sueño.',
+      openGraphTitle: 'Sueño e insomnio — mapa clínico',
       openGraphDescription:
-        'Más allá de una mala noche: qué sostiene el insomnio, qué aporta la higiene y qué suele hacer la TCC-I.',
+        'Más allá de una mala noche: qué sostiene el insomnio, hasta dónde llega la higiene y qué suele incluir la TCC-I.',
       keywords:
-        'insomnio, sueño, mapa sueño, TCC-I, higiene del sueño, control de estímulos, restricción de sueño, ventana de sueño, rumiación nocturna, ansiedad nocturna, psicoeducación, Anto',
+        'insomnio, sueño, mapa clínico, mapa sueño, TCC-I, terapia cognitivo-conductual para el insomnio, higiene del sueño, control de estímulos, restricción de sueño, ventana de sueño, eficiencia del sueño, ciclo de mantenimiento, rumiación nocturna, ansiedad nocturna, insomnio crónico, psicoeducación, Anto',
     },
     hero: {
       title: 'Sueño e insomnio: mapa completo',
       subtitle:
-        'Presentaciones, el ciclo que mantiene el problema, límites de la higiene y componentes tipo TCC-I — un mapa clínico-práctico sin pretender sustituir una terapia del sueño.',
+        'Lo que la guía breve no cubre: presentaciones, ciclo de mantenimiento, límites de la higiene, componentes tipo TCC-I y cuándo pedir evaluación.',
       companionLink: {
         href: '/recursos/higiene-sueno-salud-mental',
         support: 'Si esta noche solo necesitas un ritual corto:',
@@ -1166,21 +1171,20 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Más allá de una mala noche',
         paragraphs: [
-          'Todo el mundo tiene noches malas. El insomnio, en sentido clínico amplio, habla de dificultad recurrente para conciliar, mantener el sueño o despertar demasiado temprano — con cansancio diurno, irritabilidad o deterioro funcional. No basta “estar cansado”: importa la frecuencia, la duración y el impacto en el día.',
-          'Este mapa añade arquitectura: qué presentaciones se ven, qué conductas mantienen el problema, hasta dónde llega la higiene y qué componentes usa la terapia cognitivo-conductual para el insomnio (TCC-I) — psicoeducación, no protocolo autodirigido completo (Trauer et al., 2015).',
-          'Esta página no diagnostica. Sirve cuando ya reconoces el patrón nocturno y quieres leerlo con más profundidad.',
+          'Todo el mundo tiene noches malas. El insomnio, en sentido clínico amplio, habla de dificultad recurrente para conciliar, mantener el sueño o despertar demasiado temprano — con cansancio diurno, irritabilidad o deterioro funcional. Importan la frecuencia, la duración y el impacto en el día, no solo “estar cansado”.',
+          'Esta página orienta cuando ya reconoces el patrón y quieres leerlo con más profundidad. No diagnostica ni es un protocolo autodirigido completo.',
         ],
       },
       {
         heading: 'Presentaciones frecuentes (no diagnóstico)',
         paragraphs: [
-          'En la práctica se describen patrones — no etiquetas que puedas autoasignarte. Pueden coexistir o cambiar con el tiempo:',
+          'En la práctica se describen patrones — no etiquetas para autoasignarte. Pueden coexistir o cambiar con el tiempo:',
         ],
         bullets: [
           'Inicio: tardas mucho en quedarte dormido; la cama se asocia a “ahora empieza la pelea”.',
-          'Mantenimiento: te despiertas y cuesta volver; mirar el reloj suele empeorar la activación.',
+          'Mantenimiento: te despiertas y cuesta volver; mirar el reloj suele subir la activación.',
           'Despertar precoz: el día empieza antes de que el cuerpo esté listo; a veces con rumia o ánimo bajo.',
-          'Agudo vs. persistente: días/semanas tras un estrés vs. patrón de ≥1 mes con impacto diurno.',
+          'Agudo vs. persistente: días o semanas tras un estrés frente a un patrón de un mes o más con impacto diurno.',
           'Comórbido: el sueño se entrelaza con ansiedad, depresión, dolor, turnos o estimulantes — no “solo higiene”.',
         ],
       },
@@ -1188,78 +1192,77 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'El ciclo que mantiene el insomnio',
         paragraphs: [
           'Un modelo clásico distingue predisposición, precipitante y perpetuación (Spielman et al., 1987): puede haber vulnerabilidad (ansiedad, ritmo irregular), un gatillo (estrés, viaje, enfermedad) y luego conductas que mantienen el problema aunque el gatillo ya pasó.',
-          'El mantenimiento suele ser conductual y cognitivo: más tiempo en cama “por si acaso”, siestas de compensación, cafeína para sobrevivir el día, reloj en la mesita, pelearte con el pensamiento, usar el móvil “solo un minuto”. El alivio corto refuerza el miedo a no dormir.',
+          'Ese mantenimiento suele ser conductual y cognitivo. El alivio corto — más tiempo en cama “por si acaso”, cafeína para sobrevivir el día, móvil “solo un minuto” — refuerza el miedo a no dormir.',
         ],
         bullets: [
           'Cama = amenaza: el cuerpo se activa al acostarse porque anticipa otra noche mala.',
-          'Reloj y checking: cada mirada confirma “ya son las 3:40” y sube la arousal.',
-          'Extensión de tiempo en cama: más horas acostado no igual a más sueño; baja la eficiencia.',
-          'Compensaciones diurnas: siesta larga, cafeína tarde, cancelar planes — sostienen el ciclo.',
+          'Reloj y comprobaciones: cada mirada confirma la hora y sube la activación.',
+          'Más horas acostado no igual a más sueño: baja la eficiencia.',
+          'Compensaciones diurnas — siesta larga, cafeína tarde, cancelar planes — sostienen el ciclo.',
         ],
       },
       {
         heading: 'Límites de la higiene del sueño',
         paragraphs: [
-          'Los hábitos de descanso (horario, cafeína, pantallas, ambiente) se asocian con mejor sueño en población general, pero la evidencia de paquetes “higiene sola” como tratamiento del insomnio clínico es limitada (Irish et al., 2015). Sirven como línea base; rara vez bastan cuando el ciclo de mantenimiento ya está instalado.',
+          'Los hábitos de descanso (horario, cafeína, pantallas, ambiente) se asocian con mejor sueño en población general, pero la evidencia de paquetes de “higiene sola” como tratamiento del insomnio clínico es limitada (Irish et al., 2015). Sirven como línea base; rara vez bastan cuando el ciclo de mantenimiento ya está instalado.',
           'Úsalas sin convertirlas en otra exigencia nocturna. Si la lista de reglas se vuelve rumia (“fallé el protocolo”), estás reforzando el problema que querías resolver.',
         ],
         bullets: [
           'Útil: reducir cafeína tarde, luz tenue, cama no-oficina, horario de levantarte estable.',
-          'Insuficiente sola: semanas de insomnio con deterioro, miedo intenso a no dormir, apnea sospechada.',
-          'La higiene prepara; no sustituye control de estímulos, ventana de sueño ni trabajo cognitivo cuando hacen falta.',
+          'Insuficiente sola: semanas de insomnio con deterioro, miedo intenso a no dormir o apnea sospechada.',
+          'Cuando el mantenimiento ya es conductual, hacen falta otros módulos (p. ej. control de estímulos o ventana de sueño), no solo más reglas.',
         ],
       },
       {
         heading: 'Componentes tipo TCC-I',
         paragraphs: [
-          'La TCC-I combina varios módulos; los metaanálisis la sitúan como intervención eficaz para insomnio crónico en adultos (Trauer et al., 2015). Aquí se describen para orientarte — no para autodosificar restricción de sueño sin acompañamiento.',
+          'La terapia cognitivo-conductual para el insomnio (TCC-I) combina varios módulos; los metaanálisis la sitúan como intervención eficaz para insomnio crónico en adultos (Trauer et al., 2015). Aquí se describen para orientarte — no para autodosificar restricción de sueño sin acompañamiento.',
         ],
         bullets: [
           'Control de estímulos: cama y habitación asociadas a sueño/sexo; si no hay sueño, salir a luz tenue y volver sin forzar.',
           'Ventana / restricción de sueño: acotar el tiempo en cama para subir eficiencia — potencia alta; mejor con guía clínica si hay somnolencia diurna peligrosa.',
           'Trabajo cognitivo: bajar catastrofismo nocturno (“si no duermo, mañana será un desastre”) y fusión con el pensamiento.',
-          'Relajación / regulación: bajar arousal antes o durante la noche (respiración, relajación muscular) sin pelearte con “tengo que dormirme ya”.',
+          'Relajación / regulación: bajar la activación antes o durante la noche sin pelearte con “tengo que dormirme ya”.',
           'Higiene como apoyo: no como módulo único cuando el mantenimiento ya es conductual.',
         ],
       },
       {
         heading: 'Ejercicio: control de estímulos (noche)',
         paragraphs: [
-          'Versión psicoeducativa del control de estímulos. Si hay somnolencia extrema al volante, apnea sospechada o depresión grave, prioriza evaluación antes de experimentos con el sueño.',
+          'Una versión breve para practicar el módulo. Si hay somnolencia extrema al volante, apnea sospechada o depresión grave, prioriza evaluación antes de experimentar con el sueño.',
         ],
         ordered: true,
         bullets: [
-          'Acuéstate solo cuando tengas sueño — no “porque ya toca” con el cuerpo en 8/10 de activación.',
+          'Acuéstate solo cuando tengas sueño — no “porque ya toca” con el cuerpo muy activado.',
           'Cama para dormir (y sexo): no trabajo, no scroll, no discusiones largas.',
-          'Si no concilias ~20 minutos, sal a otra estancia con luz tenue; haz algo quieto sin pantallas brillantes.',
+          'Si no concilias unos 20 minutos, sal a otra estancia con luz tenue; haz algo quieto sin pantallas brillantes.',
           'Vuelve a la cama cuando baje un poco la activación; repite sin castigarte.',
           'Levántate a la misma hora todos los días — ancla el reloj aunque la noche haya sido irregular.',
-          'Anota tres noches: ¿cuánto tiempo en cama vs. sueño aproximado? Solo observación, no juicio.',
+          'Anota tres noches: tiempo en cama frente a sueño aproximado. Solo observación, no juicio.',
         ],
       },
       {
         heading: 'Sueño, ansiedad y ánimo',
         paragraphs: [
           'El vínculo es bidireccional: el insomnio predice mayor riesgo de depresión en estudios longitudinales (Baglioni et al., 2011); la ansiedad mantiene la hiperactivación que dificulta dormir. Tratar solo “el pensamiento” o solo “el colchón” suele quedarse corto.',
-          'Si de noche domina la amenaza anticipatoria, el mapa de ansiedad y el grounding ayudan en el pico. Si de día pesa el ánimo bajo y la inercia, activación conductual y evaluación del ánimo pueden ser el siguiente paso — en paralelo a hábitos de sueño, no en vez.',
+          'Si de noche domina la amenaza anticipatoria, el mapa de ansiedad y el grounding ayudan en el pico. Si de día pesa el ánimo bajo y la inercia, la activación conductual y una evaluación del ánimo pueden ser el siguiente paso — en paralelo a los hábitos de sueño, no en su lugar.',
         ],
       },
       {
         heading: 'Cuándo pedir evaluación',
         paragraphs: [
-          'Conviene evaluación profesional si el patrón dura semanas, empeora, hay deterioro laboral o de seguridad (conducir, cuidar), uso de alcohol/sedantes para “apagar”, o signos de otro trastorno del sueño (ronquidos intensos, pausas respiratorias, piernas inquietas).',
-          'Ante ideación suicida, riesgo inmediato o incapacidad de cuidarte: emergencias o línea de crisis de tu país. Anto puede ofrecer recursos; no sustituye esos servicios ni TCC-I con un clínico del sueño.',
+          'Conviene evaluación profesional si el patrón dura semanas, empeora, hay deterioro laboral o de seguridad (conducir, cuidar), uso de alcohol o sedantes para “apagar”, o signos de otro trastorno del sueño (ronquidos intensos, pausas respiratorias, piernas inquietas).',
+          'Ante ideación suicida, riesgo inmediato o incapacidad de cuidarte: emergencias o una línea de crisis de tu país. Anto puede ofrecer recursos; no sustituye esos servicios ni una TCC-I con un clínico del sueño.',
         ],
         bullets: [
-          'Si esta noche solo necesitas un ritual corto, la guía breve de sueño complementa este mapa.',
-          'No sustituye polisomnografía, ajuste de medicación ni formulación individual.',
+          'No reemplaza polisomnografía, ajuste de medicación ni formulación individual.',
           'Si la restricción de sueño o los experimentos aumentan el malestar, pausa y pide evaluación.',
         ],
       },
     ],
     productMoment: {
       title: 'Así se ve en Anto',
-      body: 'Cuando ya ves el ciclo — cama, reloj, rumia — puedes describirlo y recibir un paso concreto: salir de la cama, ritual en papel o bajar activación — sin pretender “arreglar el sueño entero” en una noche.',
+      body: 'Puedes describir el patrón tal cual y recibir un paso concreto — salir de la cama, ritual en papel o bajar activación — sin pretender resolver el sueño entero en una noche.',
       afterHeading: 'Cuándo pedir evaluación',
       chat: {
         ariaLabel: 'Ejemplo de conversación en Anto sobre el ciclo que mantiene el insomnio',
@@ -1270,7 +1273,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
           {
             role: 'anto',
-            text: 'Eso suena a ciclo de mantenimiento: más tiempo en cama + checking. ¿Esta noche podemos probar salir a luz tenue si no hay sueño en ~20 minutos?',
+            text: 'Eso suena a ciclo de mantenimiento: más tiempo en cama y comprobaciones. ¿Esta noche podemos probar salir a luz tenue si no hay sueño en unos 20 minutos?',
           },
           {
             role: 'user',
@@ -1278,7 +1281,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
           {
             role: 'anto',
-            text: 'Aparquemos el teléfono. Si no hay sueño, sal un rato quieto — y mantén la hora de levantarte. Después vemos qué pasó vs. lo que temías.',
+            text: 'Aparquemos el teléfono. Si no hay sueño, sal un rato quieto — y mantén la hora de levantarte. Después comparamos qué pasó con lo que temías.',
           },
         ],
       },
@@ -1287,13 +1290,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     },
     furtherReading: {
       title: 'Ir más a fondo',
-      support:
-        'Este texto es el mapa clínico-práctico. Para un ritual corto esta noche, ansiedad en paralelo o material público de referencia:',
+      support: 'Para un ritual corto esta noche, ansiedad en paralelo o material público de referencia:',
       links: [
         {
           label: 'Cuando no puedes dormir (guía breve)',
           description:
-            'Ritual si la mente no para, hábitos de descanso y cuándo pedir ayuda — complemento corto a este mapa.',
+            'Hábitos de descanso, ritual si la mente no para y cuándo pedir ayuda.',
           href: '/recursos/higiene-sueno-salud-mental',
         },
         {
@@ -1324,7 +1326,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           apa: 'Irish, L. A., Kline, C. E., Gunn, H. E., Buysse, D. J., & Hall, M. H. (2015). The role of sleep hygiene in promoting public health: A review of empirical evidence. Sleep Medicine Reviews, 22, 23–36. https://doi.org/10.1016/j.smrv.2014.10.001',
           href: 'https://doi.org/10.1016/j.smrv.2014.10.001',
-          note: 'Límites y utilidad de la higiene del sueño en población general vs. tratamiento clínico.',
+          note: 'Límites y utilidad de la higiene del sueño en población general frente al tratamiento clínico.',
         },
         {
           apa: 'Trauer, J. M., Qian, M. Y., Doyle, J. S., Rajaratnam, S. M. W., & Cunnington, D. (2015). Cognitive behavioral therapy for chronic insomnia: A systematic review and meta-analysis. Annals of Internal Medicine, 163(3), 191–204. https://doi.org/10.7326/M14-2841',
@@ -1334,7 +1336,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         {
           apa: 'Baglioni, C., Battagliese, G., Feige, B., Spiegelhalder, K., Nissen, C., Voderholzer, U., Lombardo, C., & Riemann, D. (2011). Insomnia as a predictor of depression: A meta-analytic evaluation of longitudinal epidemiological studies. Journal of Affective Disorders, 135(1–3), 10–19. https://doi.org/10.1016/j.jad.2011.01.011',
           href: 'https://doi.org/10.1016/j.jad.2011.01.011',
-          note: 'El insomnio predice mayor riesgo de depresión — el vínculo sueño–ánimo no es solo subjetivo.',
+          note: 'El insomnio predice mayor riesgo de depresión: el vínculo sueño–ánimo no es solo subjetivo.',
         },
       ],
     },
@@ -1342,7 +1344,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     disclaimer:
       'Psicoeducación. No diagnostica ni sustituye evaluación médica, polisomnografía ni TCC-I con un profesional. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
     ctaBridge:
-      'Si quieres compañía para mirar el ciclo de esta noche — sin presión de “arreglarlo todo” — puedes seguir en el teléfono.',
+      'Si quieres compañía para mirar el ciclo de esta noche — sin presión de resolverlo todo — puedes seguir en el teléfono.',
     cta: { label: 'Apoyo en Anto →', path: '/bienvenida' },
     howTo: {
       name: 'Control de estímulos (noche)',
@@ -1352,9 +1354,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       steps: [
         'Acuéstate cuando tengas sueño, no solo por horario.',
         'Reserva la cama para dormir (y sexo); sin pantallas ni trabajo.',
-        'Si no hay sueño en ~20 minutos, sal a luz tenue y vuelve sin forzar.',
+        'Si no hay sueño en unos 20 minutos, sal a luz tenue y vuelve sin forzar.',
         'Mantén la misma hora de levantarte al día siguiente.',
-        'Observa tres noches tiempo en cama vs. sueño aproximado.',
+        'Observa tres noches: tiempo en cama frente a sueño aproximado.',
       ],
     },
   },
