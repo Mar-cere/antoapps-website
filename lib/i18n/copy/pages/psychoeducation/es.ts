@@ -1132,7 +1132,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Sueño e insomnio: mapa completo | Anto',
       description:
-        'Mapa de sueño e insomnio: presentaciones frecuentes, ciclo de mantenimiento, límites de la higiene del sueño, componentes tipo TCC-I (control de estímulos, ventana de sueño, cognición), vínculo con ansiedad/ánimo y cuándo pedir evaluación. Complementa la guía breve; no diagnostica ni sustituye terapia del sueño.',
+        'Mapa clínico-práctico de sueño e insomnio: presentaciones, ciclo de mantenimiento, límites de la higiene, componentes tipo TCC-I (control de estímulos, ventana de sueño, cognición), vínculo con ansiedad/ánimo y cuándo pedir evaluación. No diagnostica ni sustituye terapia del sueño.',
       openGraphTitle: 'Sueño e insomnio — mapa completo',
       openGraphDescription:
         'Más allá de una mala noche: qué sostiene el insomnio, qué aporta la higiene y qué suele hacer la TCC-I.',
@@ -1142,11 +1142,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     hero: {
       title: 'Sueño e insomnio: mapa completo',
       subtitle:
-        'Lo que la guía breve no cubre: presentaciones, el ciclo que mantiene el problema, límites de la higiene y componentes tipo TCC-I — sin pretender sustituir una terapia del sueño.',
+        'Presentaciones, el ciclo que mantiene el problema, límites de la higiene y componentes tipo TCC-I — un mapa clínico-práctico sin pretender sustituir una terapia del sueño.',
       companionLink: {
         href: '/recursos/higiene-sueno-salud-mental',
-        support: '¿Aún no tienes un ritual para esta noche?',
-        label: 'Empieza por la guía práctica →',
+        support: 'Si esta noche solo necesitas un ritual corto:',
+        label: 'Guía breve de sueño →',
+        placement: 'afterFigure',
       },
     },
     pullQuote:
@@ -1166,7 +1167,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'Más allá de una mala noche',
         paragraphs: [
           'Todo el mundo tiene noches malas. El insomnio, en sentido clínico amplio, habla de dificultad recurrente para conciliar, mantener el sueño o despertar demasiado temprano — con cansancio diurno, irritabilidad o deterioro funcional. No basta “estar cansado”: importa la frecuencia, la duración y el impacto en el día.',
-          'La guía breve da hábitos y un ritual nocturno. Este mapa añade arquitectura: qué presentaciones se ven, qué conductas mantienen el problema, hasta dónde llega la higiene y qué componentes usa la terapia cognitivo-conductual para el insomnio (TCC-I) — psicoeducación, no protocolo autodirigido completo (Trauer et al., 2015).',
+          'Este mapa añade arquitectura: qué presentaciones se ven, qué conductas mantienen el problema, hasta dónde llega la higiene y qué componentes usa la terapia cognitivo-conductual para el insomnio (TCC-I) — psicoeducación, no protocolo autodirigido completo (Trauer et al., 2015).',
           'Esta página no diagnostica. Sirve cuando ya reconoces el patrón nocturno y quieres leerlo con más profundidad.',
         ],
       },
@@ -1250,7 +1251,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           'Ante ideación suicida, riesgo inmediato o incapacidad de cuidarte: emergencias o línea de crisis de tu país. Anto puede ofrecer recursos; no sustituye esos servicios ni TCC-I con un clínico del sueño.',
         ],
         bullets: [
-          'Esta página asume que ya tienes un ritual breve (guía práctica).',
+          'Si esta noche solo necesitas un ritual corto, la guía breve de sueño complementa este mapa.',
           'No sustituye polisomnografía, ajuste de medicación ni formulación individual.',
           'Si la restricción de sueño o los experimentos aumentan el malestar, pausa y pide evaluación.',
         ],
@@ -1259,7 +1260,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     productMoment: {
       title: 'Así se ve en Anto',
       body: 'Cuando ya ves el ciclo — cama, reloj, rumia — puedes describirlo y recibir un paso concreto: salir de la cama, ritual en papel o bajar activación — sin pretender “arreglar el sueño entero” en una noche.',
-      afterHeading: 'Componentes tipo TCC-I',
+      afterHeading: 'Cuándo pedir evaluación',
       chat: {
         ariaLabel: 'Ejemplo de conversación en Anto sobre el ciclo que mantiene el insomnio',
         messages: [
@@ -1281,18 +1282,18 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
         ],
       },
-      suggestionsLabel: 'Sugerencias',
+      suggestionsLabel: 'Ejemplos en la app',
       suggestions: ['Control de estímulos', 'Ritual si la mente no para'],
     },
     furtherReading: {
       title: 'Ir más a fondo',
       support:
-        'Este texto es el mapa. Para el ritual de esta noche, ansiedad en pico o evidencia Anto, sigue aquí:',
+        'Este texto es el mapa clínico-práctico. Para un ritual corto esta noche, ansiedad en paralelo o material público de referencia:',
       links: [
         {
           label: 'Cuando no puedes dormir (guía breve)',
           description:
-            'Entrada práctica: hábitos, ritual si la mente no para y cuándo pedir ayuda.',
+            'Ritual si la mente no para, hábitos de descanso y cuándo pedir ayuda — complemento corto a este mapa.',
           href: '/recursos/higiene-sueno-salud-mental',
         },
         {
@@ -1300,24 +1301,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           description:
             'Cuando el mantenimiento nocturno viene con hiperactivación y evitación diurna.',
           href: '/recursos/ansiedad-y-preocupacion',
-        },
-        {
-          label: 'Cuando la ansiedad sube (grounding)',
-          description:
-            'Anclas sensoriales si el cuerpo está en 8/10 antes de cualquier experimento de sueño.',
-          href: '/recursos/grounding-ansiedad-crisis',
-        },
-        {
-          label: 'Depresión: guía breve',
-          description:
-            'Cuando el despertar precoz o el cansancio se entrelazan con ánimo bajo.',
-          href: '/recursos/depresion-guia-breve',
-        },
-        {
-          label: 'Evidencia que informa Anto',
-          description:
-            'Cómo leemos TCC, sueño y salud mental digital — y qué no afirmamos.',
-          href: '/investigacion',
         },
         {
           label: 'MedlinePlus — Insomnio (español)',
@@ -1355,7 +1338,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.sleep, SLUGS.anxiety, SLUGS.grounding],
+    relatedSlugs: [SLUGS.depression, SLUGS.grounding],
     disclaimer:
       'Psicoeducación. No diagnostica ni sustituye evaluación médica, polisomnografía ni TCC-I con un profesional. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
     ctaBridge:

@@ -119,6 +119,11 @@ export type PsychoeducationGuide = {
       href: string;
       label: string;
       support?: string;
+      /**
+       * `hero` (default): bajo el subtítulo.
+       * `afterFigure`: tras la foto — el hero queda 100% mapa/ensayo.
+       */
+      placement?: 'hero' | 'afterFigure';
     };
     /**
      * Salto de lectura al ritual/sección clave (escaneo o relectura).

@@ -1132,7 +1132,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Sleep and insomnia: full map | Anto',
       description:
-        'Sleep and insomnia map: common presentations, maintenance cycle, limits of sleep hygiene, CBT-I-style components (stimulus control, sleep window, cognition), links to anxiety/mood, and when to seek evaluation. Complements the brief guide; does not diagnose or replace sleep therapy.',
+        'Clinical-practical sleep and insomnia map: presentations, maintenance cycle, limits of hygiene, CBT-I-style components (stimulus control, sleep window, cognition), links to anxiety/mood, and when to seek evaluation. Does not diagnose or replace sleep therapy.',
       openGraphTitle: 'Sleep and insomnia — full map',
       openGraphDescription:
         'Beyond one bad night: what maintains insomnia, what hygiene can do, and what CBT-I usually includes.',
@@ -1142,11 +1142,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     hero: {
       title: 'Sleep and insomnia: full map',
       subtitle:
-        'What the brief guide does not cover: presentations, the cycle that maintains the problem, limits of hygiene, and CBT-I-style components — without claiming to replace sleep therapy.',
+        'Presentations, the cycle that maintains the problem, limits of hygiene, and CBT-I-style components — a clinical-practical map without claiming to replace sleep therapy.',
       companionLink: {
         href: '/recursos/higiene-sueno-salud-mental',
-        support: 'Need a ritual for tonight first?',
-        label: 'Start with the practical guide →',
+        support: 'If tonight you only need a short ritual:',
+        label: 'Brief sleep guide →',
+        placement: 'afterFigure',
       },
     },
     pullQuote:
@@ -1166,7 +1167,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'Beyond one bad night',
         paragraphs: [
           'Everyone has bad nights. Insomnia, in a broad clinical sense, means recurrent difficulty falling asleep, staying asleep, or waking too early — with daytime fatigue, irritability, or functional impairment. Being tired is not enough: frequency, duration, and daytime impact matter.',
-          'The brief guide offers habits and a night ritual. This map adds architecture: presentations, behaviours that maintain the problem, how far hygiene goes, and what cognitive behavioural therapy for insomnia (CBT-I) usually includes — psychoeducation, not a full self-directed protocol (Trauer et al., 2015).',
+          'This map adds architecture: presentations, behaviours that maintain the problem, how far hygiene goes, and what cognitive behavioural therapy for insomnia (CBT-I) usually includes — psychoeducation, not a full self-directed protocol (Trauer et al., 2015).',
           'This page does not diagnose. It helps when you already recognise the night pattern and want to read it in more depth.',
         ],
       },
@@ -1250,7 +1251,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           'If there is suicidal ideation, immediate risk, or you cannot care for yourself: emergency services or a crisis line in your country. Anto can offer resources; it does not replace those services or CBT-I with a sleep clinician.',
         ],
         bullets: [
-          'This page assumes you already have a brief ritual (practical guide).',
+          'If tonight you only need a short ritual, the brief sleep guide complements this map.',
           'It does not replace polysomnography, medication adjustment, or individual formulation.',
           'If sleep restriction or experiments increase distress, pause and seek evaluation.',
         ],
@@ -1259,7 +1260,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     productMoment: {
       title: 'How it looks in Anto',
       body: 'When you already see the cycle — bed, clock, rumination — you can describe it and get one concrete step: leave the bed, paper ritual, or lower activation — without trying to “fix sleep entirely” in one night.',
-      afterHeading: 'CBT-I-style components',
+      afterHeading: 'When to seek evaluation',
       chat: {
         ariaLabel: 'Example Anto conversation about the cycle that maintains insomnia',
         messages: [
@@ -1281,18 +1282,18 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
         ],
       },
-      suggestionsLabel: 'Suggestions',
+      suggestionsLabel: 'Examples in the app',
       suggestions: ['Stimulus control', 'Ritual when the mind will not stop'],
     },
     furtherReading: {
       title: 'Go further',
       support:
-        'This text is the map. For tonight’s ritual, peak anxiety, or Anto evidence, continue here:',
+        'This text is the clinical-practical map. For a short ritual tonight, parallel anxiety, or public reference material:',
       links: [
         {
           label: 'When you cannot sleep (brief guide)',
           description:
-            'Practical entry: habits, ritual when the mind will not stop, and when to seek help.',
+            'Ritual when the mind will not stop, rest habits, and when to seek help — a short complement to this map.',
           href: '/recursos/higiene-sueno-salud-mental',
         },
         {
@@ -1300,24 +1301,6 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           description:
             'When night maintenance comes with hyperarousal and daytime avoidance.',
           href: '/recursos/ansiedad-y-preocupacion',
-        },
-        {
-          label: 'When anxiety rises (grounding)',
-          description:
-            'Sensory anchors if the body is at 8/10 before any sleep experiment.',
-          href: '/recursos/grounding-ansiedad-crisis',
-        },
-        {
-          label: 'Depression: brief guide',
-          description:
-            'When early waking or fatigue intertwines with low mood.',
-          href: '/recursos/depresion-guia-breve',
-        },
-        {
-          label: 'Evidence that informs Anto',
-          description:
-            'How we read CBT, sleep, and digital mental health — and what we do not claim.',
-          href: '/investigacion',
         },
         {
           label: 'MedlinePlus — Insomnia',
@@ -1355,7 +1338,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.sleep, SLUGS.anxiety, SLUGS.grounding],
+    relatedSlugs: [SLUGS.depression, SLUGS.grounding],
     disclaimer:
       'Psychoeducation. Does not diagnose or replace medical evaluation, polysomnography, or CBT-I with a professional. If there is suicide risk or violence, seek local emergency help immediately.',
     ctaBridge:

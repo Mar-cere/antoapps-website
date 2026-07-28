@@ -141,6 +141,15 @@
   color: var(--home-v2-soft);
 }
 
+.psycho-guide__companion-slot {
+  margin: -0.35rem 0 2.25rem;
+  max-width: 48rem;
+}
+
+.psycho-guide__companion-slot .psycho-guide__companion {
+  margin-top: 0;
+}
+
 .psycho-guide__companion-support {
   color: var(--home-v2-soft);
 }
@@ -1333,6 +1342,10 @@
   max-width: 40rem;
 }
 
+.psycho-guide--dossier .psycho-guide__refs--after-cta {
+  max-width: 54ch;
+}
+
 /* Peak-end móvil: CTA antes del aviso */
 @media (max-width: 959px) {
   .psycho-guide--brief .psycho-guide__outro {
@@ -1467,8 +1480,35 @@
   border-top: 0;
 }
 
-.psycho-guide__index-label {
+.psycho-guide__index-panel {
+  margin: 0;
+}
+
+.psycho-guide__index-summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
   margin: 0 0 0.75rem;
+}
+
+.psycho-guide__index-summary::-webkit-details-marker {
+  display: none;
+}
+
+.psycho-guide__index-toggle {
+  display: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-secondary);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 40%, transparent);
+  padding-bottom: 0.05rem;
+}
+
+.psycho-guide__index-label {
+  margin: 0;
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -1497,7 +1537,7 @@
   color: var(--color-text-secondary, #a3b8e8);
   border-radius: 0;
   border-left: 1px solid transparent;
-  transition: color 160ms ease, border-color 160ms ease;
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
 }
 
 .psycho-guide__index-link:hover,
@@ -1506,6 +1546,16 @@
   background: transparent;
   border-left-color: var(--color-primary);
   outline: none;
+}
+
+.psycho-guide__index-link.is-active {
+  color: var(--color-text-primary, #f4f7fb);
+  border-left-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+}
+
+.psycho-guide__index-link.is-active .psycho-guide__index-num {
+  color: var(--color-primary);
 }
 
 .psycho-guide__index-num {
@@ -1556,6 +1606,14 @@
     border-bottom: 1px solid var(--home-v2-hairline);
   }
 
+  .psycho-guide__index-toggle {
+    display: inline;
+  }
+
+  .psycho-guide__index-panel:not([open]) .psycho-guide__index-summary {
+    margin-bottom: 0;
+  }
+
   .psycho-guide__index-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1570,9 +1628,27 @@
   }
 
   .psycho-guide__index-link:hover,
-  .psycho-guide__index-link:focus-visible {
+  .psycho-guide__index-link:focus-visible,
+  .psycho-guide__index-link.is-active {
     border-left-color: transparent;
     color: var(--color-primary);
+    background: transparent;
+  }
+
+  .psycho-guide__index-link.is-active .psycho-guide__index-text {
+    border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 55%, transparent);
+  }
+}
+
+@media (min-width: 960px) {
+  .psycho-guide__index-summary {
+    pointer-events: none;
+    cursor: default;
+    margin-bottom: 0.75rem;
+  }
+
+  .psycho-guide__index-toggle {
+    display: none !important;
   }
 }
 

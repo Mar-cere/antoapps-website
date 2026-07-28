@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import type { CSSProperties } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
 import type { PsychoeducationGuide } from '@/lib/i18n/copy/pages/psychoeducation';
@@ -39,8 +39,12 @@ type GuideUiCopy = {
   externalLinkHint: string;
   mapIndexLabel: string;
   mapIndexAria: string;
+  mapIndexToggle: string;
   refsExpandHint: string;
   refsCollapseHint: string;
+  guideKindDefault: string;
+  guideKindDossier: string;
+  guideKindBrief: string;
 };
 
 const uiCopy: Record<Locale, GuideUiCopy> = {
@@ -56,8 +60,12 @@ const uiCopy: Record<Locale, GuideUiCopy> = {
     externalLinkHint: 'Abre en una pestaña nueva',
     mapIndexLabel: 'Mapa',
     mapIndexAria: 'Índice del mapa',
+    mapIndexToggle: 'Ver mapa',
     refsExpandHint: 'Mostrar',
     refsCollapseHint: 'Ocultar',
+    guideKindDefault: 'Guía',
+    guideKindDossier: 'Mapa',
+    guideKindBrief: 'Guía breve',
   },
   en: {
     resourcesLabel: 'Resources',
@@ -71,8 +79,12 @@ const uiCopy: Record<Locale, GuideUiCopy> = {
     externalLinkHint: 'Opens in a new tab',
     mapIndexLabel: 'Map',
     mapIndexAria: 'Map index',
+    mapIndexToggle: 'Show map',
     refsExpandHint: 'Show',
     refsCollapseHint: 'Hide',
+    guideKindDefault: 'Guide',
+    guideKindDossier: 'Map',
+    guideKindBrief: 'Brief guide',
   },
 };
 
@@ -116,6 +128,99 @@ export default function PsychoeducationGuidePageContent({
   const scanAnchor = guide.hero.scanLink
     ? findSectionAnchor(guide.sections, guide.hero.scanLink.sectionHeading)
     : null;
+  const companionInHero =
+    Boolean(guide.hero.companionLink) &&
+    (guide.hero.companionLink?.placement ?? 'hero') === 'hero';
+  const companionAfterFigure =
+    Boolean(guide.hero.companionLink) &&
+    guide.hero.companionLink?.placement === 'afterFigure';
+  const guideKind =
+    guide.layout === 'dossier'
+      ? ui.guideKindDossier
+      : guide.layout === 'brief'
+        ? ui.guideKindBrief
+        : ui.guideKindDefault;
+  const collapseReferences = guide.layout === 'brief' || guide.layout === 'dossier';
+  const sectionIds = guide.sections.map((section, index) =>
+    sectionAnchorId(section.heading, index)
+  );
+
+  const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
+  const [tocOpen, setTocOpen] = useState(true);
+
+  useEffect(() => {
+    if (guide.layout !== 'dossier' || sectionIds.length === 0) return;
+
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+    if (elements.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]?.target?.id) {
+          setActiveSectionId(visible[0].target.id);
+        }
+      },
+      {
+        root: null,
+        rootMargin: '-20% 0px -55% 0px',
+        threshold: [0.1, 0.25, 0.5],
+      }
+    );
+
+    for (const el of elements) observer.observe(el);
+    return () => observer.disconnect();
+  }, [guide.layout, sectionIds.join('|')]);
+
+  useEffect(() => {
+    if (guide.layout !== 'dossier') return;
+    const mq = window.matchMedia('(min-width: 960px)');
+    const sync = () => setTocOpen(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, [guide.layout]);
+
+  const companionBlock = guide.hero.companionLink ? (
+    <p className="psycho-guide__companion reveal-on-scroll">
+      {guide.hero.companionLink.support ? (
+        <span className="psycho-guide__companion-support">
+          {guide.hero.companionLink.support}{' '}
+        </span>
+      ) : null}
+      <Link
+        href={resolveGuideHref(locale, guide.hero.companionLink.href)}
+        className="psycho-guide__companion-link"
+      >
+        {guide.hero.companionLink.label}
+      </Link>
+    </p>
+  ) : null;
+
+  const referencesList = guide.references ? (
+    <ol className="psycho-guide__refs-list">
+      {guide.references.items.map((ref) => (
+        <li key={ref.href} className="psycho-guide__refs-item">
+          <p className="psycho-guide__refs-apa">
+            <a
+              href={ref.href}
+              className="psycho-guide__refs-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {ref.apa}
+            </a>
+            <span className="visually-hidden">{ui.externalLinkHint}</span>
+          </p>
+          {ref.note ? <p className="psycho-guide__refs-note">{ref.note}</p> : null}
+        </li>
+      ))}
+    </ol>
+  ) : null;
 
   return (
     <LocaleProvider locale={locale}>
@@ -166,8 +271,7 @@ export default function PsychoeducationGuidePageContent({
                 <div className="psycho-guide__masthead">
                   <header className="psycho-guide__header reveal-on-scroll">
                     <p className="psycho-guide__eyebrow">
-                      Anto · {locale === 'en' ? 'Guide' : 'Guía'} ·{' '}
-                      {ui.readingTime(guide.readingMinutes)}
+                      Anto · {guideKind} · {ui.readingTime(guide.readingMinutes)}
                     </p>
                     <h1 className="psycho-guide__title">{guide.hero.title}</h1>
                     <p className="psycho-guide__subtitle">{guide.hero.subtitle}</p>
@@ -178,21 +282,7 @@ export default function PsychoeducationGuidePageContent({
                         </a>
                       </p>
                     ) : null}
-                    {guide.hero.companionLink ? (
-                      <p className="psycho-guide__companion reveal-on-scroll">
-                        {guide.hero.companionLink.support ? (
-                          <span className="psycho-guide__companion-support">
-                            {guide.hero.companionLink.support}{' '}
-                          </span>
-                        ) : null}
-                        <Link
-                          href={resolveGuideHref(locale, guide.hero.companionLink.href)}
-                          className="psycho-guide__companion-link"
-                        >
-                          {guide.hero.companionLink.label}
-                        </Link>
-                      </p>
-                    ) : null}
+                    {companionInHero ? companionBlock : null}
                   </header>
 
                   {guide.pullQuote ? (
@@ -235,6 +325,10 @@ export default function PsychoeducationGuidePageContent({
                   </figure>
                 ) : null}
 
+                {companionAfterFigure ? (
+                  <div className="psycho-guide__companion-slot">{companionBlock}</div>
+                ) : null}
+
                 <div
                   className={
                     guide.layout === 'dossier'
@@ -244,22 +338,40 @@ export default function PsychoeducationGuidePageContent({
                 >
                   {guide.layout === 'dossier' ? (
                     <nav className="psycho-guide__index reveal-on-scroll" aria-label={ui.mapIndexAria}>
-                      <p className="psycho-guide__index-label">{ui.mapIndexLabel}</p>
-                      <ol className="psycho-guide__index-list">
-                        {guide.sections.map((section, index) => (
-                          <li key={section.heading} className="psycho-guide__index-item">
-                            <a
-                              href={`#${sectionAnchorId(section.heading, index)}`}
-                              className="psycho-guide__index-link"
-                            >
-                              <span className="psycho-guide__index-num" aria-hidden="true">
-                                {String(index + 1).padStart(2, '0')}
-                              </span>
-                              <span className="psycho-guide__index-text">{section.heading}</span>
-                            </a>
-                          </li>
-                        ))}
-                      </ol>
+                      <details
+                        className="psycho-guide__index-panel"
+                        open={tocOpen}
+                        onToggle={(event) => {
+                          setTocOpen((event.target as HTMLDetailsElement).open);
+                        }}
+                      >
+                        <summary className="psycho-guide__index-summary">
+                          <span className="psycho-guide__index-label">{ui.mapIndexLabel}</span>
+                          <span className="psycho-guide__index-toggle">{ui.mapIndexToggle}</span>
+                        </summary>
+                        <ol className="psycho-guide__index-list">
+                          {guide.sections.map((section, index) => {
+                            const id = sectionAnchorId(section.heading, index);
+                            const isActive = activeSectionId === id;
+                            return (
+                              <li key={section.heading} className="psycho-guide__index-item">
+                                <a
+                                  href={`#${id}`}
+                                  className={`psycho-guide__index-link${
+                                    isActive ? ' is-active' : ''
+                                  }`}
+                                  aria-current={isActive ? 'location' : undefined}
+                                >
+                                  <span className="psycho-guide__index-num" aria-hidden="true">
+                                    {String(index + 1).padStart(2, '0')}
+                                  </span>
+                                  <span className="psycho-guide__index-text">{section.heading}</span>
+                                </a>
+                              </li>
+                            );
+                          })}
+                        </ol>
+                      </details>
                     </nav>
                   ) : null}
 
@@ -446,8 +558,8 @@ export default function PsychoeducationGuidePageContent({
                         </aside>
                       ) : null}
 
-                      {/* Default/dossier: refs en el cierre a dos columnas. Brief: refs tras CTA. */}
-                      {guide.references && guide.layout !== 'brief' ? (
+                      {/* Default: refs abiertas en el cierre. Brief/dossier: APA tras CTA en details (confianza sin muro). */}
+                      {guide.references && !collapseReferences ? (
                         <aside
                           className="psycho-guide__refs reveal-on-scroll"
                           aria-labelledby="psycho-guide-refs-title"
@@ -456,26 +568,7 @@ export default function PsychoeducationGuidePageContent({
                             {guide.references.title}
                           </h2>
                           <p className="psycho-guide__refs-support">{guide.references.support}</p>
-                          <ol className="psycho-guide__refs-list">
-                            {guide.references.items.map((ref) => (
-                              <li key={ref.href} className="psycho-guide__refs-item">
-                                <p className="psycho-guide__refs-apa">
-                                  <a
-                                    href={ref.href}
-                                    className="psycho-guide__refs-link"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                  >
-                                    {ref.apa}
-                                  </a>
-                                  <span className="visually-hidden">{ui.externalLinkHint}</span>
-                                </p>
-                                {ref.note ? (
-                                  <p className="psycho-guide__refs-note">{ref.note}</p>
-                                ) : null}
-                              </li>
-                            ))}
-                          </ol>
+                          {referencesList}
                         </aside>
                       ) : null}
                     </div>
@@ -499,7 +592,7 @@ export default function PsychoeducationGuidePageContent({
                       </div>
                     </div>
 
-                    {guide.references && guide.layout === 'brief' ? (
+                    {guide.references && collapseReferences ? (
                       <aside
                         className="psycho-guide__refs psycho-guide__refs--after-cta reveal-on-scroll"
                         aria-labelledby="psycho-guide-refs-title"
@@ -526,26 +619,7 @@ export default function PsychoeducationGuidePageContent({
                               {guide.references.support}
                             </span>
                           </summary>
-                          <ol className="psycho-guide__refs-list">
-                            {guide.references.items.map((ref) => (
-                              <li key={ref.href} className="psycho-guide__refs-item">
-                                <p className="psycho-guide__refs-apa">
-                                  <a
-                                    href={ref.href}
-                                    className="psycho-guide__refs-link"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                  >
-                                    {ref.apa}
-                                  </a>
-                                  <span className="visually-hidden">{ui.externalLinkHint}</span>
-                                </p>
-                                {ref.note ? (
-                                  <p className="psycho-guide__refs-note">{ref.note}</p>
-                                ) : null}
-                              </li>
-                            ))}
-                          </ol>
+                          {referencesList}
                         </details>
                       </aside>
                     ) : null}
