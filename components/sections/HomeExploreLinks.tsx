@@ -24,8 +24,8 @@ const copy: Record<Locale, { title: string; links: { href: string; label: string
       },
       {
         href: '/recursos/que-es-tcc',
-        label: 'Qué es la TCC',
-        description: 'Guía breve de terapia cognitivo-conductual',
+        label: 'Pensamientos y emociones (TCC)',
+        description: 'Guía breve: interpretación y un paso pequeño',
       },
       {
         href: '/recursos/grounding-ansiedad-crisis',
@@ -59,8 +59,8 @@ const copy: Record<Locale, { title: string; links: { href: string; label: string
       },
       {
         href: '/recursos/que-es-tcc',
-        label: 'What is CBT',
-        description: 'Brief cognitive behavioural therapy guide',
+        label: 'Thoughts and emotions (CBT)',
+        description: 'Brief guide: interpretation and a small step',
       },
       {
         href: '/recursos/grounding-ansiedad-crisis',

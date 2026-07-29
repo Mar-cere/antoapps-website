@@ -26,32 +26,51 @@ const SLUGS = {
 const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   [SLUGS.tcc]: {
     slug: SLUGS.tcc,
-    readingMinutes: 7,
+    readingMinutes: 6,
+    layout: 'brief',
     meta: {
-      title: 'What is cognitive behavioural therapy (CBT)? | Anto Guide',
+      title: 'Thoughts, emotions, and behaviour (CBT) | Anto brief guide',
       description:
-        'What CBT is, how it works, and why it is one of the most evidence-based approaches for anxiety and depression. Psychoeducation; does not replace professional care.',
-      openGraphTitle: 'What is CBT? Psychoeducation guide',
+        'Brief guide to cognitive behavioural therapy (CBT): how thought, emotion, and behaviour connect, an everyday example, and a small step to look at the interpretation. Gateway to distortions and ABC. Psychoeducation; does not replace professional care.',
+      openGraphTitle: 'Thoughts, emotions, and what you do next',
       openGraphDescription:
-        'Learn the principles of cognitive behavioural therapy and how to apply them in daily life.',
+        'CBT in brief: not positive thinking — looking at the interpretation and trying a small step.',
+      keywords:
+        'CBT, cognitive behavioural therapy, thoughts emotions behaviour, automatic thoughts, interpretation, evidence for and against, ABC technique, cognitive distortions, anxiety, depression, brief guide, psychoeducation, Anto',
     },
     hero: {
-      title: 'What is cognitive behavioural therapy (CBT)?',
+      title: 'Thoughts, emotions, and what you do next',
       subtitle:
-        'A brief guide to how thoughts, emotions, and behaviours influence each other — and what you can do about it.',
+        'Cognitive behavioural therapy (CBT) in brief: it is not about positive thinking — it is about looking at the interpretation and trying a small step.',
+      scanLink: {
+        label: 'Go to the example →',
+        sectionHeading: 'Everyday example',
+      },
+    },
+    pullQuote:
+      'The fact did not change. What changed was the story you told on top of it — and with it, what you did next.',
+    figure: {
+      src: '/assets/images/editorial/anto-editorial-thought-loop.webp',
+      alt: 'Hands holding a phone open to an unanswered chat, beside a notebook with handwritten questions',
+      caption:
+        'The chat does not reply. The mind already wrote the verdict. That is where CBT work begins.',
+      width: 1536,
+      height: 1024,
+      objectPosition: '42% 52%',
+      desktopAspectRatio: '3 / 2',
     },
     sections: [
       {
         heading: 'The core idea',
         paragraphs: [
-          'Cognitive behavioural therapy (CBT) starts from a simple premise: we do not always react to facts themselves, but to how we interpret them. The same event can trigger very different emotions depending on the meaning we assign.',
-          'CBT works on three connected levels: thoughts (cognitions), emotions, and behaviours. The goal is not “positive thinking”, but spotting unhelpful patterns and testing more realistic, actionable alternatives.',
+          'We do not always react to facts themselves, but to how we interpret them. The same unanswered message can mean “they are busy” or “I no longer matter” — and the body answers that story.',
+          'CBT works on three connected levels: thoughts, emotions, and behaviours. The goal is not “positive thinking”, but spotting unhelpful patterns and testing more realistic, actionable alternatives.',
         ],
       },
       {
         heading: 'What is it used for?',
         paragraphs: [
-          'CBT is among the most scientifically supported psychological approaches for depression, generalised anxiety, phobias, insomnia, and prolonged stress. It does not replace an in-person clinical assessment, but it offers concrete tools for everyday life.',
+          'It is among the most supported psychological approaches for anxiety, depression, phobias, insomnia, and prolonged stress (Hofmann et al., 2012). It does not replace a clinical assessment, but it offers concrete tools for everyday life.',
         ],
         bullets: [
           'Identify automatic thoughts in difficult situations',
@@ -63,58 +82,112 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Everyday example',
         paragraphs: [
-          'Imagine a friend’s message goes unanswered. An automatic thought might be: “I did something wrong and they no longer want to talk to me.” That can trigger sadness or anxiety and lead you to avoid reaching out.',
-          'In CBT, the next step is to review evidence for and against, consider alternative explanations (they are busy, they did not see the message), and choose a small action: send a brief message or wait a reasonable time before concluding.',
+          'A friend’s message goes unanswered. Automatic thought: “I did something wrong and they no longer want to talk to me.” That can trigger sadness or anxiety and lead you to avoid reaching out.',
+          'Next step: evidence for and against, other explanations (they are busy, they did not see it), and a small action — a brief message, or waiting a while before concluding.',
         ],
       },
       {
-        heading: 'How Anto fits in',
+        heading: 'What this is not',
         paragraphs: [
-          'Anto integrates CBT-aligned approaches in chat, structured protocols, and the techniques hub (including the ABC technique). The app can suggest micro-steps and help you track patterns, but it does not replace therapy with a professional.',
+          'This page is the brief frame. It is not a full clinical protocol or a map of CBT techniques — that deeper guide comes later. It is also not therapy with a professional.',
+          'Looking at an interpretation does not deny what you feel. Sometimes the thought points to something real; what twists is the absolute certainty.',
+        ],
+      },
+      {
+        heading: 'When to seek help',
+        paragraphs: [
+          'Talk to a professional if these loops do not ease, take your sleep, work, or desire to be with people, or if rumination leaves you no room to act.',
+          'If there are thoughts of harming yourself, immediate risk, or you cannot care for yourself: contact emergency services or a crisis line in your country. Anto can offer resources; it does not replace those services.',
         ],
       },
     ],
+    productMoment: {
+      title: 'How it looks in Anto',
+      body: 'When the chat silence already has a story on top, you can bring that sentence as-is and look at evidence — without pressure to “fix everything”.',
+      afterHeading: 'Everyday example',
+      chat: {
+        ariaLabel: 'Example conversation in Anto when a message goes unanswered',
+        messages: [
+          {
+            role: 'user',
+            text: 'Hours with no reply. I already invented that I am in trouble.',
+          },
+          {
+            role: 'anto',
+            text: 'That hurts. Is that a fact from the message, or the story you are writing on top?',
+          },
+          {
+            role: 'user',
+            text: 'The story. But it feels like truth.',
+          },
+          {
+            role: 'anto',
+            text: 'Let’s write the thought as-is — then evidence for and against. Then one small action, without forcing.',
+          },
+        ],
+      },
+      suggestionsLabel: 'Suggestions',
+      suggestions: ['Separate fact from story', 'Evidence for and against'],
+    },
     furtherReading: {
-      title: 'Go deeper',
+      title: 'Go further',
       support:
-        'This text is the broader frame. For concrete thinking patterns or a situational record, continue here:',
+        'This page is the brief frame. For concrete patterns or a situational record:',
       links: [
-        {
-          label: 'Cognitive distortions (full map)',
-          description:
-            'Cognitive levels, clusters, maintenance, behavioural experiments, and anxiety/depression profiles.',
-          href: '/recursos/mapa-distorsiones-cognitivas',
-        },
         {
           label: 'Cognitive distortions (brief guide)',
           description:
-            'Practical entry: everyday examples and a short exercise to look closely at a thought.',
+            'Everyday examples and a short exercise to look closely at a thought.',
           href: '/recursos/distorsiones-cognitivas',
         },
         {
           label: 'ABC technique',
           description:
-            'Situational record: Activating event → Belief → Consequence.',
+            'Situational record: what happened → what you told yourself → what you felt and did.',
           href: '/recursos/tecnica-abc',
-        },
-        {
-          label: 'Anxiety and worry',
-          description:
-            'Map of arousal, avoidance, and CBT-informed interventions.',
-          href: '/recursos/ansiedad-y-preocupacion',
-        },
-        {
-          label: 'Evidence that informs Anto',
-          description:
-            'How we read CBT, scales, and digital mental health — and what we do not claim.',
-          href: '/investigacion',
         },
       ],
     },
-    relatedSlugs: [SLUGS.distortionsMap, SLUGS.abc, SLUGS.anxiety],
+    references: {
+      title: 'References (APA)',
+      support:
+        'Sources that support the CBT frame and its evidence. They do not replace a personal evaluation.',
+      items: [
+        {
+          apa: 'Beck, A. T. (1976). Cognitive therapy and the emotional disorders. International Universities Press.',
+          href: 'https://openlibrary.org/works/OL457087W/Cognitive_Therapy_and_the_Emotional_Disorders',
+          note: 'Foundational frame: the role of interpretations in emotional distress.',
+        },
+        {
+          apa: 'Beck, J. S. (2020). Cognitive behavior therapy: Basics and beyond (3rd ed.). Guilford Press.',
+          href: 'https://www.guilford.com/books/Cognitive-Behavior-Therapy/Judith-Beck/9781462544196',
+          note: 'Clinical CBT manual: automatic thoughts and cognitive restructuring.',
+        },
+        {
+          apa: 'Hofmann, S. G., Asnaani, A., Vonk, I. J. J., Sawyer, A. T., & Fang, A. (2012). The efficacy of cognitive behavioral therapy: A review of meta-analyses. Cognitive Therapy and Research, 36(5), 427–440. https://doi.org/10.1007/s10608-012-9476-1',
+          href: 'https://doi.org/10.1007/s10608-012-9476-1',
+          note: 'Review of meta-analyses: CBT efficacy across disorders.',
+        },
+      ],
+    },
+    relatedSlugs: [SLUGS.distortionsMap, SLUGS.anxiety],
     disclaimer:
-      'This guide is psychoeducation material and is not diagnosis or treatment. If your symptoms are intense or persistent, consult a mental health professional.',
-    cta: { label: 'Practice techniques in Anto →', path: '/bienvenida' },
+      'Psychoeducation. Does not diagnose or replace clinical evaluation or treatment. If there is suicide risk or violence, seek local emergency help immediately.',
+    ctaBridge:
+      'If you want company to look closely at an interpretation — without pressure — you can continue on your phone.',
+    cta: { label: 'Support in Anto →', path: '/bienvenida' },
+    howTo: {
+      name: 'Look at an interpretation (short step)',
+      description:
+        'Brief CBT-style exercise: write the thought, review evidence, and choose a small action.',
+      totalTime: 'PT8M',
+      steps: [
+        'Write the automatic thought exactly as it appears.',
+        'List evidence for and against, as if helping a friend.',
+        'Note one or two alternative explanations.',
+        'Choose a small action (brief message, wait, or ask for help).',
+      ],
+    },
   },
   [SLUGS.distortions]: {
     slug: SLUGS.distortions,
@@ -250,9 +323,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/mapa-distorsiones-cognitivas',
         },
         {
-          label: 'What is CBT',
+          label: 'Thoughts, emotions, and behaviour (CBT)',
           description:
-            'How thoughts, emotions, and behaviours relate, and why it helps to question what we take as certain.',
+            'Brief frame: how interpretation, emotion, and what you do next connect — before the distortions map.',
           href: '/recursos/que-es-tcc',
         },
         {
@@ -798,9 +871,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/escalas-phq9-gad7',
         },
         {
-          label: 'What is CBT',
+          label: 'Thoughts, emotions, and behaviour (CBT)',
           description:
-            'Cognitive–behavioural model: thoughts, emotions, behaviours, and exposure.',
+            'Brief frame: interpretation, emotion, and what you do next.',
           href: '/recursos/que-es-tcc',
         },
         {

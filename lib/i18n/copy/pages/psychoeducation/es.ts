@@ -26,32 +26,51 @@ const SLUGS = {
 const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   [SLUGS.tcc]: {
     slug: SLUGS.tcc,
-    readingMinutes: 7,
+    readingMinutes: 6,
+    layout: 'brief',
     meta: {
-      title: '¿Qué es la terapia cognitivo-conductual (TCC)? | Guía Anto',
+      title: 'Pensamientos, emociones y conducta (TCC) | Guía breve Anto',
       description:
-        'Qué es la TCC, cómo funciona y por qué es una de las intervenciones con más evidencia para ansiedad y depresión. Psicoeducación; no sustituye atención profesional.',
-      openGraphTitle: '¿Qué es la TCC? Guía de psicoeducación',
+        'Guía breve de terapia cognitivo-conductual (TCC): cómo se conectan pensamiento, emoción y conducta, un ejemplo cotidiano y un paso pequeño para mirar la interpretación. Puerta a distorsiones y ABC. Psicoeducación; no sustituye atención profesional.',
+      openGraphTitle: 'Pensamientos, emociones y lo que haces después',
       openGraphDescription:
-        'Aprende los principios de la terapia cognitivo-conductual y cómo aplicarlos en tu día a día.',
+        'TCC en versión breve: no es pensar positivo — es mirar la interpretación y probar un paso pequeño.',
+      keywords:
+        'TCC, terapia cognitivo-conductual, pensamientos emociones conducta, pensamientos automáticos, interpretación, evidencia a favor y en contra, técnica ABC, distorsiones cognitivas, ansiedad, depresión, guía breve, psicoeducación, Anto',
     },
     hero: {
-      title: '¿Qué es la terapia cognitivo-conductual (TCC)?',
+      title: 'Pensamientos, emociones y lo que haces después',
       subtitle:
-        'Una guía breve sobre cómo pensamientos, emociones y conductas se influyen entre sí — y qué puedes hacer con eso.',
+        'La terapia cognitivo-conductual (TCC) en versión breve: no se trata de pensar positivo — se trata de mirar la interpretación y probar un paso pequeño.',
+      scanLink: {
+        label: 'Ir al ejemplo →',
+        sectionHeading: 'Ejemplo cotidiano',
+      },
+    },
+    pullQuote:
+      'El hecho no cambió. Cambió la historia que te contaste encima — y con ella, lo que hiciste después.',
+    figure: {
+      src: '/assets/images/editorial/anto-editorial-thought-loop.webp',
+      alt: 'Manos con el teléfono abierto a un chat sin respuesta y, al lado, un cuaderno con preguntas escritas a mano',
+      caption:
+        'El chat no contesta. La mente ya escribió el veredicto. Ahí empieza el trabajo de la TCC.',
+      width: 1536,
+      height: 1024,
+      objectPosition: '42% 52%',
+      desktopAspectRatio: '3 / 2',
     },
     sections: [
       {
         heading: 'La idea central',
         paragraphs: [
-          'La terapia cognitivo-conductual (TCC) parte de una premisa sencilla: no siempre reaccionamos a los hechos en sí, sino a la forma en que los interpretamos. Un mismo evento puede generar emociones muy distintas según el significado que le demos.',
-          'La TCC trabaja en tres niveles conectados: pensamientos (cogniciones), emociones y conductas. El objetivo no es «pensar positivo», sino detectar patrones poco útiles y probar alternativas más realistas y accionables.',
+          'No siempre reaccionamos a los hechos en sí, sino a cómo los interpretamos. Un mismo mensaje sin respuesta puede ser «está ocupado» o «ya no le importo» — y el cuerpo responde a esa historia.',
+          'La TCC trabaja en tres niveles conectados: pensamientos, emociones y conductas. El objetivo no es «pensar positivo», sino detectar patrones poco útiles y probar alternativas más realistas y accionables.',
         ],
       },
       {
         heading: '¿Para qué suele usarse?',
         paragraphs: [
-          'La TCC es una de las intervenciones psicológicas con mayor respaldo científico para problemas como depresión, ansiedad generalizada, fobias, insomnio y estrés prolongado. No sustituye una evaluación clínica presencial, pero sí ofrece herramientas concretas para el día a día.',
+          'Es una de las intervenciones psicológicas con más respaldo para ansiedad, depresión, fobias, insomnio y estrés prolongado (Hofmann et al., 2012). No sustituye una evaluación clínica, pero sí ofrece herramientas concretas para el día a día.',
         ],
         bullets: [
           'Identificar pensamientos automáticos ante situaciones difíciles',
@@ -63,58 +82,112 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Ejemplo cotidiano',
         paragraphs: [
-          'Imagina que un mensaje de un amigo no recibe respuesta. Un pensamiento automático podría ser: «hice algo mal y ya no quiere hablar conmigo». Eso puede activar tristeza o ansiedad y llevarte a evitar escribirle.',
-          'En TCC, el paso siguiente sería revisar evidencia a favor y en contra, considerar explicaciones alternativas (está ocupado, no vio el mensaje) y elegir una acción pequeña: enviar un mensaje breve o esperar un tiempo razonable antes de sacar conclusiones.',
+          'Un mensaje de un amigo no recibe respuesta. Pensamiento automático: «hice algo mal y ya no quiere hablar conmigo». Eso puede activar tristeza o ansiedad y llevarte a evitar escribirle.',
+          'El paso siguiente: evidencia a favor y en contra, otras explicaciones (está ocupado, no vio el mensaje) y una acción pequeña — un mensaje breve, o esperar un rato antes de sacar conclusiones.',
         ],
       },
       {
-        heading: 'Cómo encaja con Anto',
+        heading: 'Qué no es esto',
         paragraphs: [
-          'Anto integra enfoques alineados con TCC en el chat, en protocolos estructurados y en el hub de técnicas (incluida la técnica ABC). La app puede sugerir micro-pasos y ayudarte a registrar patrones, pero no reemplaza terapia con un profesional.',
+          'Esta página es el marco breve. No es un protocolo clínico completo ni un mapa de técnicas TCC — eso llegará en una guía más profunda. Tampoco es terapia con un profesional.',
+          'Mirar una interpretación no niega lo que sientes. A veces el pensamiento apunta a algo real; lo que tuerce es la certeza absoluta.',
+        ],
+      },
+      {
+        heading: 'Cuándo pedir ayuda',
+        paragraphs: [
+          'Habla con un profesional si estos bucles no aflojan, te quitan el sueño, el trabajo o las ganas de estar con gente, o si la rumia te deja sin margen para actuar.',
+          'Si hay ideas de hacerte daño, riesgo inmediato o no puedes cuidarte: contacta emergencias o una línea de crisis de tu país. Anto puede ofrecer recursos; no sustituye esos servicios.',
         ],
       },
     ],
+    productMoment: {
+      title: 'Así se ve en Anto',
+      body: 'Cuando el silencio del chat ya tiene una historia encima, puedes traer esa frase tal cual y mirar evidencia — sin presión de «arreglarlo todo».',
+      afterHeading: 'Ejemplo cotidiano',
+      chat: {
+        ariaLabel: 'Ejemplo de conversación en Anto cuando un mensaje no tiene respuesta',
+        messages: [
+          {
+            role: 'user',
+            text: 'Lleva horas sin contestar. Ya me inventé que estoy en problemas.',
+          },
+          {
+            role: 'anto',
+            text: 'Duele. ¿Eso es un hecho del mensaje, o la historia que estás escribiendo encima?',
+          },
+          {
+            role: 'user',
+            text: 'La historia. Pero la siento como verdad.',
+          },
+          {
+            role: 'anto',
+            text: 'Anotemos el pensamiento tal cual — y después evidencia a favor y en contra. Luego una acción pequeña, sin forzar.',
+          },
+        ],
+      },
+      suggestionsLabel: 'Sugerencias',
+      suggestions: ['Separar hecho de historia', 'Evidencia a favor y en contra'],
+    },
     furtherReading: {
       title: 'Ir más a fondo',
       support:
-        'Este texto es el marco amplio. Para patrones de pensamiento concretos o un registro situacional, sigue aquí:',
+        'Esta página es el marco breve. Para patrones concretos o un registro situacional:',
       links: [
-        {
-          label: 'Distorsiones cognitivas (mapa completo)',
-          description:
-            'Niveles cognitivos, clusters, mantenimiento, experimentos conductuales y perfiles en ansiedad o depresión.',
-          href: '/recursos/mapa-distorsiones-cognitivas',
-        },
         {
           label: 'Distorsiones cognitivas (guía breve)',
           description:
-            'Entrada práctica: ejemplos cotidianos y un ejercicio corto para mirar un pensamiento de cerca.',
+            'Ejemplos cotidianos y un ejercicio corto para mirar un pensamiento de cerca.',
           href: '/recursos/distorsiones-cognitivas',
         },
         {
           label: 'Técnica ABC',
           description:
-            'Registro situacional: Activating event → Belief → Consequence.',
+            'Registro situacional: qué pasó → qué te dijiste → qué sentiste y hiciste.',
           href: '/recursos/tecnica-abc',
-        },
-        {
-          label: 'Ansiedad y preocupación',
-          description:
-            'Mapa de activación, evitación e intervenciones con base en TCC.',
-          href: '/recursos/ansiedad-y-preocupacion',
-        },
-        {
-          label: 'Evidencia que informa Anto',
-          description:
-            'Cómo leemos TCC, escalas y salud mental digital — y qué no afirmamos.',
-          href: '/investigacion',
         },
       ],
     },
-    relatedSlugs: [SLUGS.distortionsMap, SLUGS.abc, SLUGS.anxiety],
+    references: {
+      title: 'Referencias (APA)',
+      support:
+        'Fuentes que sustentan el marco TCC y su evidencia. No sustituyen una evaluación personal.',
+      items: [
+        {
+          apa: 'Beck, A. T. (1976). Cognitive therapy and the emotional disorders. International Universities Press.',
+          href: 'https://openlibrary.org/works/OL457087W/Cognitive_Therapy_and_the_Emotional_Disorders',
+          note: 'Marco fundacional: el papel de las interpretaciones en el malestar emocional.',
+        },
+        {
+          apa: 'Beck, J. S. (2020). Cognitive behavior therapy: Basics and beyond (3rd ed.). Guilford Press.',
+          href: 'https://www.guilford.com/books/Cognitive-Behavior-Therapy/Judith-Beck/9781462544196',
+          note: 'Manual clínico de TCC: pensamientos automáticos y reestructuración cognitiva.',
+        },
+        {
+          apa: 'Hofmann, S. G., Asnaani, A., Vonk, I. J. J., Sawyer, A. T., & Fang, A. (2012). The efficacy of cognitive behavioral therapy: A review of meta-analyses. Cognitive Therapy and Research, 36(5), 427–440. https://doi.org/10.1007/s10608-012-9476-1',
+          href: 'https://doi.org/10.1007/s10608-012-9476-1',
+          note: 'Revisión de metaanálisis: eficacia de la TCC en varios trastornos.',
+        },
+      ],
+    },
+    relatedSlugs: [SLUGS.distortionsMap, SLUGS.anxiety],
     disclaimer:
-      'Esta guía es material de psicoeducación y no constituye diagnóstico ni tratamiento. Si tus síntomas son intensos o persistentes, consulta con un profesional de salud mental.',
-    cta: { label: 'Practicar técnicas en Anto →', path: '/bienvenida' },
+      'Psicoeducación. No diagnostica ni sustituye evaluación o tratamiento clínico. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
+    ctaBridge:
+      'Si quieres compañía para mirar una interpretación de cerca — sin presión — puedes seguir en el teléfono.',
+    cta: { label: 'Apoyo en Anto →', path: '/bienvenida' },
+    howTo: {
+      name: 'Mirar una interpretación (paso corto)',
+      description:
+        'Ejercicio breve al estilo TCC: anotar el pensamiento, revisar evidencia y elegir una acción pequeña.',
+      totalTime: 'PT8M',
+      steps: [
+        'Escribe el pensamiento automático tal cual aparece.',
+        'Lista evidencia a favor y en contra, como si ayudaras a un amigo.',
+        'Anota una o dos explicaciones alternativas.',
+        'Elige una acción pequeña (mensaje breve, esperar, o pedir ayuda).',
+      ],
+    },
   },
   [SLUGS.distortions]: {
     slug: SLUGS.distortions,
@@ -250,9 +323,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/mapa-distorsiones-cognitivas',
         },
         {
-          label: 'Qué es la TCC',
+          label: 'Pensamientos, emociones y conducta (TCC)',
           description:
-            'Cómo se relacionan pensamientos, emociones y conductas, y por qué ayuda cuestionar lo que damos por cierto.',
+            'Marco breve: cómo se conectan interpretación, emoción y lo que haces después — antes del mapa de distorsiones.',
           href: '/recursos/que-es-tcc',
         },
         {
@@ -798,9 +871,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/escalas-phq9-gad7',
         },
         {
-          label: 'Qué es la TCC',
+          label: 'Pensamientos, emociones y conducta (TCC)',
           description:
-            'Modelo cognitivo-conductual: pensamientos, emociones, conductas y exposición.',
+            'Marco breve: interpretación, emoción y lo que haces después.',
           href: '/recursos/que-es-tcc',
         },
         {
