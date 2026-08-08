@@ -1,0 +1,48 @@
+{
+  "type": "object",
+  "value": {
+    "title": "Sueño e insomnio: mapa completo | Anto",
+    "h1": "Sueño e insomnio: mapa completo",
+    "companion": "¿Aún no tienes un ritual para esta noche? Empieza por la guía práctica →",
+    "indexLinks": [
+      "01Más allá de una mala noche",
+      "02Presentaciones frecuentes (no diagnóstico)",
+      "03El ciclo que mantiene el insomnio",
+      "04Límites de la higiene del sueño",
+      "05Componentes tipo TCC-I",
+      "06Ejercicio: control de estímulos (noche)",
+      "07Sueño, ansiedad y ánimo",
+      "08Cuándo pedir evaluación"
+    ],
+    "sections": [
+      "Más allá de una mala noche",
+      "Presentaciones frecuentes (no diagnóstico)",
+      "El ciclo que mantiene el insomnio",
+      "Límites de la higiene del sueño",
+      "Componentes tipo TCC-I",
+      "Ejercicio: control de estímulos (noche)",
+      "Sueño, ansiedad y ánimo",
+      "Cuándo pedir evaluación"
+    ],
+    "furtherLinks": [
+      "Cuando no puedes dormir (guía breve)",
+      "Ansiedad y preocupación",
+      "Cuando la ansiedad sube (grounding)",
+      "Depresión: guía breve",
+      "Evidencia que informa Anto",
+      "MedlinePlus — Insomnio (español)"
+    ],
+    "related": [
+      "Cuando no puedes dormir→",
+      "Ansiedad y preocupación→",
+      "Cuando la ansiedad sube→"
+    ],
+    "cta": "Si quieres compañía para mirar el ciclo de esta noche — sin presión de “arreglarlo todo” — puedes seguir en el teléfono.Apoyo en Anto →",
+    "hasStickyIndex": "static",
+    "dossierClass": "home-landing-page home-landing-page--v2 psycho-guide psycho-guide--dossier",
+    "activeIndex": false,
+    "cookieVisible": false,
+    "readingMinutes": "Anto · Guía · 12 min de lectura",
+    "productTitle": "Así se ve en Anto"
+  }
+}

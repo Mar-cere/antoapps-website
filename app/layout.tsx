@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import HtmlLang from '@/components/i18n/HtmlLang';
 import { ToastProvider } from '@/components/ui/ToastContainer';
+import ClarityAnalytics from '@/components/Clarity';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -36,6 +37,21 @@ export default function RootLayout({
       <body className={inter.className}>
         <HtmlLang />
         <ToastProvider>{children}</ToastProvider>
+      </body>
+    </html>
+  );
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="es">
+      <body>
+        <ClarityAnalytics />
+        {children}
       </body>
     </html>
   );

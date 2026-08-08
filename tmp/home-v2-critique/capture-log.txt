@@ -1,0 +1,727 @@
+[
+  {
+    "tag": "MAIN",
+    "id": "main-content",
+    "className": "home-landing-page home-landing-page--v2",
+    "top": 67,
+    "h": 7236
+  },
+  {
+    "tag": "SECTION",
+    "id": "inicio",
+    "className": "home-v2-hero",
+    "top": 67,
+    "h": 849
+  },
+  {
+    "tag": "H1",
+    "id": "home-v2-hero-title",
+    "className": "home-v2-hero__title home-v2-enter",
+    "top": 140,
+    "h": 56
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-recognize",
+    "top": 915,
+    "h": 511
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-recognize-title",
+    "className": "home-v2-recognize__lead",
+    "top": 1260,
+    "h": 55
+  },
+  {
+    "tag": "DIV",
+    "id": "",
+    "className": "home-v2-moments",
+    "top": 1426,
+    "h": 2380
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-moment ",
+    "top": 1427,
+    "h": 533
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-moment-patterns",
+    "className": "home-v2-moment__title",
+    "top": 1487,
+    "h": 27
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-moment home-v2-moment--reverse",
+    "top": 1960,
+    "h": 639
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-moment-distortion",
+    "className": "home-v2-moment__title",
+    "top": 2020,
+    "h": 55
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-moment ",
+    "top": 2599,
+    "h": 782
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-moment-evidence",
+    "className": "home-v2-moment__title",
+    "top": 2660,
+    "h": 82
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-moment home-v2-moment--reverse",
+    "top": 3381,
+    "h": 425
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-moment-privacy",
+    "className": "home-v2-moment__title",
+    "top": 3442,
+    "h": 27
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-still",
+    "top": 3806,
+    "h": 384
+  },
+  {
+    "tag": "P",
+    "id": "home-v2-still-line",
+    "className": "home-v2-still__line reveal-on-scroll",
+    "top": 4092,
+    "h": 59
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-reviews",
+    "top": 4190,
+    "h": 647
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-reviews-title",
+    "className": "home-v2-reviews__title",
+    "top": 4257,
+    "h": 60
+  },
+  {
+    "tag": "SECTION",
+    "id": "precios",
+    "className": "home-v2-pricing",
+    "top": 4837,
+    "h": 871
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-pricing-title",
+    "className": "home-v2-pricing__title",
+    "top": 4906,
+    "h": 60
+  },
+  {
+    "tag": "SECTION",
+    "id": "android",
+    "className": "home-v2-android",
+    "top": 5708,
+    "h": 451
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-android-title",
+    "className": "home-v2-android__title",
+    "top": 5798,
+    "h": 30
+  },
+  {
+    "tag": "DIV",
+    "id": "R1ssv7mj6",
+    "className": "android-early-access",
+    "top": 5951,
+    "h": 162
+  },
+  {
+    "tag": "SECTION",
+    "id": "faq",
+    "className": "home-v2-faq",
+    "top": 6158,
+    "h": 691
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-faq-title",
+    "className": "home-v2-faq__title",
+    "top": 6219,
+    "h": 58
+  },
+  {
+    "tag": "BUTTON",
+    "id": "home-v2-faq-button-0",
+    "className": "home-v2-faq__question",
+    "top": 6306,
+    "h": 61
+  },
+  {
+    "tag": "DIV",
+    "id": "home-v2-faq-panel-0",
+    "className": "home-v2-faq__answer",
+    "top": 6366,
+    "h": 190
+  },
+  {
+    "tag": "BUTTON",
+    "id": "home-v2-faq-button-1",
+    "className": "home-v2-faq__question",
+    "top": 6557,
+    "h": 61
+  },
+  {
+    "tag": "DIV",
+    "id": "home-v2-faq-panel-1",
+    "className": "home-v2-faq__answer",
+    "top": 0,
+    "h": 0
+  },
+  {
+    "tag": "BUTTON",
+    "id": "home-v2-faq-button-2",
+    "className": "home-v2-faq__question",
+    "top": 6619,
+    "h": 61
+  },
+  {
+    "tag": "DIV",
+    "id": "home-v2-faq-panel-2",
+    "className": "home-v2-faq__answer",
+    "top": 0,
+    "h": 0
+  },
+  {
+    "tag": "BUTTON",
+    "id": "home-v2-faq-button-3",
+    "className": "home-v2-faq__question",
+    "top": 6681,
+    "h": 61
+  },
+  {
+    "tag": "DIV",
+    "id": "home-v2-faq-panel-3",
+    "className": "home-v2-faq__answer",
+    "top": 0,
+    "h": 0
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-final-cta",
+    "top": 6849,
+    "h": 333
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-final-cta-title",
+    "className": "home-v2-final-cta__title",
+    "top": 6928,
+    "h": 57
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-landing-footer-trust reveal-on-scroll",
+    "top": 7204,
+    "h": 120
+  }
+]
+TARGETS {
+  "moments": {
+    "sel": ".home-v2-moments",
+    "top": 1426,
+    "h": 2380
+  },
+  "still": {
+    "sel": ".home-v2-still",
+    "top": 3806,
+    "h": 384
+  },
+  "pricing": {
+    "sel": "#precios",
+    "top": 4837,
+    "h": 871
+  },
+  "finalCta": {
+    "sel": ".home-v2-final-cta",
+    "top": 6849,
+    "h": 333
+  },
+  "recognize": {
+    "sel": ".home-v2-recognize",
+    "top": 915,
+    "h": 511
+  },
+  "panels": [
+    {
+      "className": "home-v2-panel home-v2-panel--hero home-v2-chat home-v2-chat--live",
+      "top": 457
+    },
+    {
+      "className": "home-v2-panel__chrome",
+      "top": 470
+    },
+    {
+      "className": "home-v2-panel__dot",
+      "top": 475
+    },
+    {
+      "className": "home-v2-panel__dot",
+      "top": 475
+    },
+    {
+      "className": "home-v2-panel__dot",
+      "top": 475
+    },
+    {
+      "className": "home-v2-panel__title",
+      "top": 470
+    },
+    {
+      "className": "home-v2-moments",
+      "top": 1426
+    },
+    {
+      "className": "home-v2-moment ",
+      "top": 1427
+    },
+    {
+      "className": "home-landing-container home-v2-moment__grid",
+      "top": 1465
+    },
+    {
+      "className": "home-v2-moment__text reveal-on-scroll",
+      "top": 1487
+    },
+    {
+      "className": "home-v2-moment__title",
+      "top": 1487
+    },
+    {
+      "className": "home-v2-moment__body",
+      "top": 1526
+    },
+    {
+      "className": "home-v2-moment__media reveal-on-scroll",
+      "top": 1596
+    },
+    {
+      "className": "home-v2-panel home-v2-panel--moment home-v2-summary",
+      "top": 1596
+    },
+    {
+      "className": "home-v2-panel__chrome",
+      "top": 1609
+    },
+    {
+      "className": "home-v2-panel__dot",
+      "top": 1614
+    },
+    {
+      "className": "home-v2-panel__dot",
+      "top": 1614
+    },
+    {
+      "className": "home-v2-panel__dot",
+      "top": 1614
+    },
+    {
+      "className": "home-v2-panel__title",
+      "top": 1609
+    },
+    {
+      "className": "home-v2-moment home-v2-moment--reverse",
+      "top": 1960
+    }
+  ]
+}
+[
+  {
+    "tag": "MAIN",
+    "id": "main-content",
+    "className": "home-landing-page home-landing-page--v2",
+    "top": 63,
+    "h": 6876
+  },
+  {
+    "tag": "SECTION",
+    "id": "inicio",
+    "className": "home-v2-hero",
+    "top": 63,
+    "h": 725
+  },
+  {
+    "tag": "H1",
+    "id": "home-v2-hero-title",
+    "className": "home-v2-hero__title home-v2-enter",
+    "top": 232,
+    "h": 171
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-recognize",
+    "top": 788,
+    "h": 623
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-recognize-title",
+    "className": "home-v2-recognize__lead",
+    "top": 980,
+    "h": 183
+  },
+  {
+    "tag": "DIV",
+    "id": "",
+    "className": "home-v2-moments",
+    "top": 1411,
+    "h": 2099
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-moment ",
+    "top": 1412,
+    "h": 495
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-moment-patterns",
+    "className": "home-v2-moment__title",
+    "top": 1601,
+    "h": 92
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-moment home-v2-moment--reverse",
+    "top": 1907,
+    "h": 575
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-moment-distortion",
+    "className": "home-v2-moment__title",
+    "top": 2101,
+    "h": 137
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-moment ",
+    "top": 2482,
+    "h": 640
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-moment-evidence",
+    "className": "home-v2-moment__title",
+    "top": 2663,
+    "h": 229
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-moment home-v2-moment--reverse",
+    "top": 3122,
+    "h": 387
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-moment-privacy",
+    "className": "home-v2-moment__title",
+    "top": 3245,
+    "h": 92
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-still",
+    "top": 3510,
+    "h": 534
+  },
+  {
+    "tag": "P",
+    "id": "home-v2-still-line",
+    "className": "home-v2-still__line reveal-on-scroll",
+    "top": 3753,
+    "h": 155
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-reviews",
+    "top": 4044,
+    "h": 451
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-reviews-title",
+    "className": "home-v2-reviews__title",
+    "top": 4139,
+    "h": 86
+  },
+  {
+    "tag": "SECTION",
+    "id": "precios",
+    "className": "home-v2-pricing",
+    "top": 4495,
+    "h": 753
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-pricing-title",
+    "className": "home-v2-pricing__title",
+    "top": 4568,
+    "h": 86
+  },
+  {
+    "tag": "SECTION",
+    "id": "android",
+    "className": "home-v2-android",
+    "top": 5248,
+    "h": 323
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-android-title",
+    "className": "home-v2-android__title",
+    "top": 5343,
+    "h": 41
+  },
+  {
+    "tag": "DIV",
+    "id": "R1ssv7mj6",
+    "className": "android-early-access",
+    "top": 5355,
+    "h": 166
+  },
+  {
+    "tag": "SECTION",
+    "id": "faq",
+    "className": "home-v2-faq",
+    "top": 5571,
+    "h": 682
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-faq-title",
+    "className": "home-v2-faq__title",
+    "top": 5635,
+    "h": 83
+  },
+  {
+    "tag": "BUTTON",
+    "id": "home-v2-faq-button-0",
+    "className": "home-v2-faq__question",
+    "top": 5747,
+    "h": 61
+  },
+  {
+    "tag": "DIV",
+    "id": "home-v2-faq-panel-0",
+    "className": "home-v2-faq__answer",
+    "top": 5808,
+    "h": 141
+  },
+  {
+    "tag": "BUTTON",
+    "id": "home-v2-faq-button-1",
+    "className": "home-v2-faq__question",
+    "top": 5949,
+    "h": 61
+  },
+  {
+    "tag": "DIV",
+    "id": "home-v2-faq-panel-1",
+    "className": "home-v2-faq__answer",
+    "top": 0,
+    "h": 0
+  },
+  {
+    "tag": "BUTTON",
+    "id": "home-v2-faq-button-2",
+    "className": "home-v2-faq__question",
+    "top": 6011,
+    "h": 61
+  },
+  {
+    "tag": "DIV",
+    "id": "home-v2-faq-panel-2",
+    "className": "home-v2-faq__answer",
+    "top": 0,
+    "h": 0
+  },
+  {
+    "tag": "BUTTON",
+    "id": "home-v2-faq-button-3",
+    "className": "home-v2-faq__question",
+    "top": 6073,
+    "h": 61
+  },
+  {
+    "tag": "DIV",
+    "id": "home-v2-faq-panel-3",
+    "className": "home-v2-faq__answer",
+    "top": 0,
+    "h": 0
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-v2-final-cta",
+    "top": 6253,
+    "h": 566
+  },
+  {
+    "tag": "H2",
+    "id": "home-v2-final-cta-title",
+    "className": "home-v2-final-cta__title",
+    "top": 6384,
+    "h": 161
+  },
+  {
+    "tag": "SECTION",
+    "id": "",
+    "className": "home-landing-footer-trust reveal-on-scroll",
+    "top": 6841,
+    "h": 120
+  }
+]
+TARGETS {
+  "moments": {
+    "sel": ".home-v2-moments",
+    "top": 1411,
+    "h": 2099
+  },
+  "still": {
+    "sel": ".home-v2-still",
+    "top": 3510,
+    "h": 534
+  },
+  "pricing": {
+    "sel": "#precios",
+    "top": 4495,
+    "h": 753
+  },
+  "finalCta": {
+    "sel": ".home-v2-final-cta",
+    "top": 6253,
+    "h": 566
+  },
+  "recognize": {
+    "sel": ".home-v2-recognize",
+    "top": 788,
+    "h": 623
+  },
+  "panels": [
+    {
+      "className": "home-v2-panel home-v2-panel--hero home-v2-chat home-v2-chat--live",
+      "top": 203
+    },
+    {
+      "className": "home-v2-panel__chrome",
+      "top": 218
+    },
+    {
+      "className": "home-v2-panel__dot",
+      "top": 223
+    },
+    {
+      "className": "home-v2-panel__dot",
+      "top": 223
+    },
+    {
+      "className": "home-v2-panel__dot",
+      "top": 223
+    },
+    {
+      "className": "home-v2-panel__title",
+      "top": 218
+    },
+    {
+      "className": "home-v2-moments",
+      "top": 1411
+    },
+    {
+      "className": "home-v2-moment ",
+      "top": 1412
+    },
+    {
+      "className": "home-landing-container home-v2-moment__grid",
+      "top": 1484
+    },
+    {
+      "className": "home-v2-moment__text reveal-on-scroll",
+      "top": 1601
+    },
+    {
+      "className": "home-v2-moment__title",
+      "top": 1601
+    },
+    {
+      "className": "home-v2-moment__body",
+      "top": 1709
+    },
+    {
+      "className": "home-v2-moment__media reveal-on-scroll",
+      "top": 1506
+    },
+    {
+      "className": "home-v2-panel home-v2-panel--moment home-v2-summary",
+      "top": 1506
+    },
+    {
+      "className": "home-v2-panel__chrome",
+      "top": 1520
+    },
+    {
+      "className": "home-v2-panel__dot",
+      "top": 1525
+    },
+    {
+      "className": "home-v2-panel__dot",
+      "top": 1525
+    },
+    {
+      "className": "home-v2-panel__dot",
+      "top": 1525
+    },
+    {
+      "className": "home-v2-panel__title",
+      "top": 1520
+    },
+    {
+      "className": "home-v2-moment home-v2-moment--reverse",
+      "top": 1907
+    }
+  ]
+}
+DONE

@@ -1,0 +1,40 @@
+{
+  "mainClass": "home-landing-page home-landing-page--v2 psycho-guide psycho-guide--brief",
+  "hasBrief": true,
+  "companionCount": 0,
+  "stackDisplay": "flex",
+  "stackFlexDirection": "column",
+  "sectionTop": 2045.265625,
+  "productTop": 2534.0625,
+  "productBelowSection": true,
+  "navCtaText": "Apoyo",
+  "order": {
+    "furtherTop": 3674.625,
+    "outroTop": 4096.78125,
+    "refsTop": 4429.5625
+  },
+  "furtherBeforeOutro": true,
+  "outroBeforeRefs": true,
+  "chips": [
+    {
+      "text": "Ritual si la mente no para",
+      "fontStyle": "italic",
+      "borderStyle": "none",
+      "borderWidth": "0px",
+      "borderRadius": "0px",
+      "display": "inline",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px"
+    },
+    {
+      "text": "Bajar la activación",
+      "fontStyle": "italic",
+      "borderStyle": "none",
+      "borderWidth": "0px",
+      "borderRadius": "0px",
+      "display": "inline",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px"
+    }
+  ]
+}
