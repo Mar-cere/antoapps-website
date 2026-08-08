@@ -35,23 +35,9 @@ export default function RootLayout({
   return (
     <html lang="es" className={inter.variable}>
       <body className={inter.className}>
+        <ClarityAnalytics />
         <HtmlLang />
         <ToastProvider>{children}</ToastProvider>
-      </body>
-    </html>
-  );
-}
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="es">
-      <body>
-        <ClarityAnalytics />
-        {children}
       </body>
     </html>
   );

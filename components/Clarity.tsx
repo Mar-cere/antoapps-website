@@ -1,15 +1,20 @@
 'use client';
 
 import { useEffect } from 'react';
-import Clarity from '@microsoft/clarity';
+import { initClarity } from '@/lib/analytics/clarity';
 
+/** Arranca Clarity en el root si el usuario ya aceptó cookies, o al aceptar. */
 export default function ClarityAnalytics() {
   useEffect(() => {
-    const projectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
+    const tryInit = () => {
+      if (localStorage.getItem('cookieConsent') === 'accepted') {
+        initClarity();
+      }
+    };
 
-    if (projectId) {
-      Clarity.init(projectId);
-    }
+    tryInit();
+    window.addEventListener('cookie-consent-accepted', tryInit);
+    return () => window.removeEventListener('cookie-consent-accepted', tryInit);
   }, []);
 
   return null;

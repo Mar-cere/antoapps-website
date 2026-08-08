@@ -28,6 +28,9 @@ export function useCookieConsent(options: UseCookieConsentOptions = {}) {
           import('@/lib/analytics/meta-pixel').then((module) => {
             module.initMetaPixel();
           });
+          import('@/lib/analytics/clarity').then((module) => {
+            module.initClarity();
+          });
         }
       }
       return;
@@ -73,6 +76,9 @@ export function useCookieConsent(options: UseCookieConsentOptions = {}) {
       });
       import('@/lib/analytics/meta-pixel').then((module) => {
         module.initMetaPixel();
+      });
+      import('@/lib/analytics/clarity').then((module) => {
+        module.initClarity();
       });
       window.dispatchEvent(new Event('cookie-consent-accepted'));
     }
