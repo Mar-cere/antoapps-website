@@ -6,9 +6,9 @@ export type HomeCtaCopy = {
   title: string;
   subtitle: string;
   storeAria: string;
+  androidStoreAria: string;
   privacyLabel: string;
   privacyHref: string;
-  androidCta: string;
   trackingPage: string;
 };
 
@@ -20,9 +20,9 @@ export function getHomeCtaCopy(locale: Locale): HomeCtaCopy {
       title: 'Ready to get started?',
       subtitle: `Download Anto on your device: account setup and full use happen in the mobile app. ${trial.heroNote}`,
       storeAria: 'Download Anto on the App Store',
+      androidStoreAria: 'Download Anto on Google Play',
       privacyLabel: 'View Privacy Policy',
       privacyHref: localePath('en', '/privacidad'),
-      androidCta: 'Android early access',
       trackingPage: '/en',
     };
   }
@@ -31,9 +31,9 @@ export function getHomeCtaCopy(locale: Locale): HomeCtaCopy {
     title: '¿Listo para comenzar?',
     subtitle: `Descarga Anto en tu dispositivo: la cuenta y el uso completo son en la aplicación móvil. ${trial.heroNote}`,
     storeAria: 'Descargar Anto en App Store',
+    androidStoreAria: 'Descargar Anto en Google Play',
     privacyLabel: 'Ver Política de Privacidad',
     privacyHref: localePath('es', '/privacidad'),
-    androidCta: 'Acceso anticipado Android',
     trackingPage: '/',
   };
 }

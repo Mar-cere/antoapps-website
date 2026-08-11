@@ -13,16 +13,20 @@ const PLACEHOLDER_AUTHORS = /usuario de app store|app store user/i;
 
 const FOOTER_LINK_PATHS: Record<Locale, readonly string[]> = {
   es: [
+    localePath('es', '/recursos'),
+    localePath('es', '/app'),
+    localePath('es', '/seguridad'),
     localePath('es', '/privacidad'),
     localePath('es', '/terminos'),
     localePath('es', '/contacto'),
-    localePath('es', '/changelog'),
   ],
   en: [
+    localePath('en', '/recursos'),
+    localePath('en', '/app'),
+    localePath('en', '/seguridad'),
     localePath('en', '/privacidad'),
     localePath('en', '/terminos'),
     localePath('en', '/contacto'),
-    localePath('en', '/changelog'),
   ],
 };
 
@@ -64,8 +68,8 @@ export function assertHomeLandingCopyInvariants(): string[] {
     if (!copy.reviews.title.trim()) {
       errors.push(`${tag} reviews.title vacío`);
     }
-    if (copy.minimalFooter.links.length !== 4) {
-      errors.push(`${tag} minimalFooter debe tener 4 enlaces`);
+    if (copy.minimalFooter.links.length !== 6) {
+      errors.push(`${tag} minimalFooter debe tener 6 enlaces`);
     }
     if (!copy.minimalFooter.linksAria.trim()) {
       errors.push(`${tag} minimalFooter.linksAria vacío`);

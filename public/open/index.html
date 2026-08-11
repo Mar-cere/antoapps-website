@@ -111,8 +111,8 @@
           >Descargar en App Store</a
         >
         <p class="hint" id="androidHint">
-          En Android, si Anto ya está instalada y no se abrió, ábrela desde el icono. El acceso
-          anticipado puede no estar en Play Store pública.
+          En Android, si Anto ya está instalada y no se abrió, ábrela desde el icono o
+          descárgala en Google Play.
         </p>
       </div>
     </main>
@@ -120,10 +120,13 @@
     <script>
       (function () {
         var APP_STORE = 'https://apps.apple.com/cl/app/anto/id6756631911';
+        var PLAY_STORE_ES = 'https://play.google.com/store/apps/details?id=com.anto.app&hl=es_419';
+        var PLAY_STORE_EN = 'https://play.google.com/store/apps/details?id=com.anto.app&hl=en_us';
         var params = new URLSearchParams(window.location.search);
         var to = (params.get('to') || 'app').trim().toLowerCase();
         var lang = (params.get('lang') || navigator.language || 'es').slice(0, 2).toLowerCase();
         var en = lang === 'en';
+        var isAndroid = /android/i.test(navigator.userAgent || '');
 
         var deepLink;
         if (!to || to === 'app' || to === 'home') {
@@ -143,15 +146,18 @@
           title.textContent = 'Opening Anto…';
           status.textContent = 'If the app is installed, it should open in a few seconds.';
           retry.textContent = 'Try opening Anto again';
-          store.textContent = 'Download on the App Store';
+          store.textContent = isAndroid ? 'Get it on Google Play' : 'Download on the App Store';
           androidHint.textContent =
-            'On Android, if Anto is installed and did not open, launch it from the home screen. Early access may not be on the public Play Store.';
+            'On Android, if Anto is installed and did not open, launch it from the home screen or download it on Google Play.';
           document.documentElement.lang = 'en';
           document.title = 'Open Anto';
+        } else if (isAndroid) {
+          store.textContent = 'Descargar en Google Play';
         }
 
         retry.href = deepLink;
-        store.href = APP_STORE;
+        store.href = isAndroid ? (en ? PLAY_STORE_EN : PLAY_STORE_ES) : APP_STORE;
+        androidHint.hidden = !isAndroid;
 
         var hidden = false;
         function showFallback() {

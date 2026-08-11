@@ -57,6 +57,8 @@ export type BienvenidaCopy = {
   };
   privacyBadge: string;
   androidHeroCta: string;
+  androidLink: string;
+  androidStoreAria: string;
   desktopPicker: {
     prompt: string;
     iphone: string;
@@ -65,12 +67,8 @@ export type BienvenidaCopy = {
     iphoneHint: string;
   };
   androidDevice: {
-    waitlistLine: string;
+    leadLine: string;
     iosFallback: string;
-  };
-  androidWaitlist: {
-    incentive: string;
-    counterTemplate: string;
   };
   reviews: {
     sectionTitle: string;
@@ -196,9 +194,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           B: `Download — ${trial.short}`,
           C: `Download — ${trial.short}`,
         },
-        stickyAndroidCta: 'Join Android waitlist',
+        stickyAndroidCta: 'Get it on Google Play',
         stickyDesktopCta: 'See download options',
-        stickyAndroidAria: 'Go to Android waitlist form',
+        stickyAndroidAria: 'Download Anto on Google Play',
         stickyDesktopAria: 'Go to download options',
         finalCta: `Download on the App Store — ${trial.short}`,
         line: `${trial.short} · cancel anytime in the App Store`,
@@ -209,7 +207,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         faqAnswer: trial.faqPricingAnswer,
       },
       privacyBadge: 'Your conversations are private',
-      androidHeroCta: 'Android waitlist',
+      androidHeroCta: 'Google Play',
+      androidLink: 'Also on Google Play for Android',
+      androidStoreAria: 'Download Anto on Google Play',
       desktopPicker: {
         prompt: 'Which device do you use?',
         iphone: 'I have an iPhone',
@@ -218,12 +218,8 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         iphoneHint: 'Opens the App Store — install on your iPhone',
       },
       androidDevice: {
-        waitlistLine: 'Join the waitlist and we will notify you when Anto is on Google Play.',
+        leadLine: 'Anto is on Google Play. Download it on your Android phone.',
         iosFallback: 'On iPhone? Download on the App Store',
-      },
-      androidWaitlist: {
-        incentive: 'Early access — be among the first on the waitlist',
-        counterTemplate: '{count} people on the waitlist',
       },
       reviews: {
         sectionTitle: 'What users say on the App Store',
@@ -331,9 +327,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       },
       trustStrip: {
         ratingOnAppStore: appStoreRatingWithReviews('en'),
-        availableOn: 'Available on iPhone',
+        availableOn: 'Available on iPhone and Android',
       },
-      androidCta: 'Join the waitlist',
+      androidCta: 'Get it on Google Play',
       appPreview: {
         ariaLabel: 'Anto app preview',
         userMessage: "I can't stop thinking about everything going wrong",
@@ -370,7 +366,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ctaStoreText: 'App Store',
         ctaBadge: trial.short,
         ctaMicro: `Start free today · No card · Private`,
-        androidLink: 'Request early access for Android',
+        androidLink: 'Also on Google Play for Android',
         chatSectionLabel: 'On your iPhone',
         chat: {
           ariaLabel: 'Sample Anto chat: racing mind, then one concrete step',
@@ -449,9 +445,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         B: `Descargar — ${trial.short}`,
         C: `Descargar — ${trial.short}`,
       },
-      stickyAndroidCta: 'Lista de espera Android',
+      stickyAndroidCta: 'Descargar en Google Play',
       stickyDesktopCta: 'Ver opciones de descarga',
-      stickyAndroidAria: 'Ir al formulario de lista de espera Android',
+      stickyAndroidAria: 'Descargar Anto en Google Play',
       stickyDesktopAria: 'Ir a las opciones de descarga',
       finalCta: `Descargar en App Store — ${trial.short}`,
       line: `${trial.short} · cancelas cuando quieras en App Store`,
@@ -462,7 +458,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       faqAnswer: trial.faqPricingAnswer,
     },
     privacyBadge: 'Tus conversaciones son privadas',
-    androidHeroCta: 'Lista de espera Android',
+    androidHeroCta: 'Google Play',
+    androidLink: 'También en Google Play para Android',
+    androidStoreAria: 'Descargar Anto en Google Play',
     desktopPicker: {
       prompt: '¿Desde qué dispositivo nos visitas?',
       iphone: 'Tengo iPhone',
@@ -471,12 +469,8 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       iphoneHint: 'Abre App Store — instálala en tu iPhone',
     },
     androidDevice: {
-      waitlistLine: 'Únete a la lista y te avisamos cuando Anto esté en Google Play.',
+      leadLine: 'Anto está en Google Play. Descárgala en tu Android.',
       iosFallback: '¿Tienes iPhone? Descarga en App Store',
-    },
-    androidWaitlist: {
-      incentive: 'Acceso anticipado — sé de los primeros en la lista',
-      counterTemplate: '{count} personas en la lista de espera',
     },
     reviews: {
       sectionTitle: 'Lo que dicen en App Store',
@@ -584,9 +578,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
     },
     trustStrip: {
       ratingOnAppStore: appStoreRatingWithReviews('es'),
-      availableOn: 'Disponible en iPhone',
+      availableOn: 'Disponible en iPhone y Android',
     },
-    androidCta: 'Unirme a la lista',
+    androidCta: 'Descargar en Google Play',
     appPreview: {
       ariaLabel: 'Vista previa de la app Anto',
       userMessage: 'no puedo parar de pensar en todo malo',
@@ -623,7 +617,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       ctaStoreText: 'App Store',
       ctaBadge: trial.short,
       ctaMicro: `Empieza gratis hoy · Sin tarjeta · Privado`,
-      androidLink: 'Solicitar acceso anticipado para Android',
+      androidLink: 'También en Google Play para Android',
       chatSectionLabel: 'Así se ve en tu iPhone',
       chat: {
         ariaLabel: 'Chat de ejemplo en Anto: mente que no para y un paso concreto',

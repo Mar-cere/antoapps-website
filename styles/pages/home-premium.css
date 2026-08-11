@@ -137,17 +137,6 @@
     color: var(--color-text-secondary);
 }
 
-.hero--premium .hero-android-form {
-    width: 100%;
-    max-width: 22rem;
-    display: none;
-    margin-top: var(--spacing-3);
-}
-
-.hero--premium .hero-android-form.is-open {
-    display: block;
-}
-
 /* Screenshot hero */
 .hero--premium .hero-visual {
     display: flex;

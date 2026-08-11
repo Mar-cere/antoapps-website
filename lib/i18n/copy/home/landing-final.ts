@@ -48,7 +48,7 @@ export type HomeLandingFinalCopy = {
     ctaMicro: string;
     androidLink: string;
     storeAria: string;
-    androidCta: string;
+    androidStoreAria: string;
     heroReview: { quote: string; author: string; source: string };
     starsAria: string;
     heroScreenshot: HomeLandingScreenshotKey;
@@ -121,9 +121,9 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       ctaStoreText: 'App Store',
       ctaBadge: 'Gratis',
       ctaMicro: '1 día de prueba · Sin tarjeta · Cancela cuando quieras',
-      androidLink: 'Solicitar acceso anticipado para Android',
+      androidLink: 'También en Google Play',
       storeAria: 'Descargar Anto en App Store',
-      androidCta: 'Quiero acceso Android',
+      androidStoreAria: 'Descargar Anto en Google Play',
       heroReview: {
         quote: 'La uso cuando la ansiedad me despierta. En minutos bajo un poco la intensidad.',
         author: 'Camila S.',
@@ -332,9 +332,9 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       ctaStoreText: 'App Store',
       ctaBadge: 'Free',
       ctaMicro: '1-day trial · No card required · Cancel anytime',
-      androidLink: 'Request early access for Android',
+      androidLink: 'Also on Google Play',
       storeAria: 'Download Anto on the App Store',
-      androidCta: 'I want Android access',
+      androidStoreAria: 'Download Anto on Google Play',
       heroReview: {
         quote: 'I use it when anxiety wakes me up. Within minutes the intensity eases a bit.',
         author: 'Camila S.',

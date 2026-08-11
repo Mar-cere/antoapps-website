@@ -17,6 +17,7 @@ export type HomeHeroCopy = {
   storeAria: string;
   androidCta: string;
   androidLink: string;
+  androidStoreAria: string;
   starsAria: string;
   trustItems: readonly { icon: BienvenidaV2TrustIcon; label: string }[];
   appHref: string;
@@ -39,8 +40,9 @@ const homeHeroCopy: Record<Locale, (trialShort: string) => HomeHeroCopy> = {
     ctaMicro: `${trialShort} · Sin tarjeta · Cancela cuando quieras`,
     ctaSecondary: 'Ver cómo funciona',
     storeAria: 'Descargar Anto en App Store',
-    androidCta: 'Quiero acceso Android',
-    androidLink: 'Solicitar acceso anticipado para Android',
+    androidCta: 'Descargar en Google Play',
+    androidLink: 'También en Google Play',
+    androidStoreAria: 'Descargar Anto en Google Play',
     starsAria: '5 estrellas en App Store',
     trustItems: [
       { icon: 'lock', label: 'Privado' },
@@ -65,8 +67,9 @@ const homeHeroCopy: Record<Locale, (trialShort: string) => HomeHeroCopy> = {
     ctaMicro: `${trialShort} · No card required · Cancel anytime`,
     ctaSecondary: 'See how it works',
     storeAria: 'Download Anto on the App Store',
-    androidCta: 'I want Android access',
-    androidLink: 'Request early access for Android',
+    androidCta: 'Get it on Google Play',
+    androidLink: 'Also on Google Play',
+    androidStoreAria: 'Download Anto on Google Play',
     starsAria: '5 stars on the App Store',
     trustItems: [
       { icon: 'lock', label: 'Private' },

@@ -43,31 +43,6 @@ textarea::placeholder {
     color: var(--color-text-tertiary);
 }
 
-/* Android early access (home y otras páginas) */
-.android-early-access {
-    background: var(--color-surface-card);
-    border-color: var(--color-border);
-}
-
-.android-early-access-title {
-    color: var(--color-text-primary);
-}
-
-.android-early-access-subtitle,
-.android-early-access-footnote {
-    color: var(--color-text-muted);
-}
-
-.android-early-access-input {
-    background: var(--color-surface-hover);
-    color: var(--color-text-primary);
-    border-color: var(--color-border);
-}
-
-.android-early-access-footnote a {
-    color: var(--color-link);
-}
-
 /* Cookie consent */
 .cookie-consent {
     background: var(--color-overlay-light);

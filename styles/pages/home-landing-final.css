@@ -288,16 +288,6 @@
     color: rgba(255, 255, 255, 0.55);
 }
 
-.home-landing-android-form {
-    display: none;
-    max-width: 21.25rem;
-    margin-top: 1rem;
-}
-
-.home-landing-android-form.is-open {
-    display: block;
-}
-
 .home-landing-hero__right {
     display: flex;
     flex-direction: column;
@@ -1180,8 +1170,7 @@
         order: 2;
     }
 
-    .home-landing-cta-wrap,
-    .home-landing-android-form {
+    .home-landing-cta-wrap {
         max-width: none;
     }
 

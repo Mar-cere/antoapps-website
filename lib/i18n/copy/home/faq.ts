@@ -151,7 +151,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 6,
           question: '¿En qué dispositivos está disponible?',
           answer:
-            'Anto está disponible con descarga directa en App Store para iOS (iPhone y iPad con iOS 13 o superior). En Android, actualmente operamos con acceso anticipado por invitación enviada por correo. Estamos trabajando activamente en una versión web que estará disponible en los próximos meses.',
+            'Anto está disponible en App Store para iOS (iPhone y iPad con iOS 13 o superior) y en Google Play para Android. Estamos trabajando activamente en una versión web que estará disponible en los próximos meses.',
           category: 'tecnica',
         },
         {
@@ -202,7 +202,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 110,
           question: '¿Anto está disponible en Android?',
           answer:
-            'Por ahora la descarga directa está en App Store para iPhone (iOS). En Android operamos con acceso anticipado por invitación por correo mientras completamos verificaciones. La experiencia principal hoy es iOS; Android se irá abriendo de forma gradual.',
+            'Sí. Anto está en Google Play para Android y en App Store para iPhone (iOS). Puedes descargarla desde la tienda de tu dispositivo.',
           category: 'tecnica',
         },
         {
@@ -273,7 +273,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 20,
           question: '¿Puedo usar Anto en múltiples dispositivos?',
           answer:
-            'Sí, puedes usar Anto en múltiples dispositivos con una sola cuenta. En iOS, tus datos, conversaciones y análisis se sincronizan automáticamente de forma segura. En Android, esta continuidad aplica para cuentas que ya tengan acceso anticipado habilitado.',
+            'Sí, puedes usar Anto en múltiples dispositivos con una sola cuenta. En iOS y Android, tus datos, conversaciones y análisis se sincronizan automáticamente de forma segura.',
           category: 'funcionalidad',
         },
         {
@@ -425,7 +425,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 6,
         question: 'Which devices is Anto available on?',
         answer:
-          'Anto is available for direct download on the App Store for iOS (iPhone and iPad with iOS 13 or later). On Android, we currently operate with early access by email invitation. We are actively working on a web version that will be available in the coming months.',
+          'Anto is available on the App Store for iOS (iPhone and iPad with iOS 13 or later) and on Google Play for Android. We are actively working on a web version that will be available in the coming months.',
         category: 'tecnica',
       },
       {
@@ -476,7 +476,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 110,
         question: 'Is Anto available on Android?',
         answer:
-          'For now, direct download is on the App Store for iPhone (iOS). On Android we operate with early access by email invitation while we complete verifications. The main experience today is iOS; Android will open gradually.',
+          'Yes. Anto is on Google Play for Android and on the App Store for iPhone (iOS). You can download it from your device store.',
         category: 'tecnica',
       },
       {
@@ -547,7 +547,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 20,
         question: 'Can I use Anto on multiple devices?',
         answer:
-          'Yes, you can use Anto on multiple devices with a single account. On iOS, your data, conversations, and analyses sync automatically and securely. On Android, this continuity applies to accounts that already have early access enabled.',
+          'Yes, you can use Anto on multiple devices with a single account. On iOS and Android, your data, conversations, and analyses sync automatically and securely.',
         category: 'funcionalidad',
       },
       {

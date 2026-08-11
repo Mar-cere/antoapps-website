@@ -326,16 +326,6 @@
     line-height: 1.5;
 }
 
-.lad-v2-android-form {
-    width: 100%;
-    margin-top: 1rem;
-    display: none;
-}
-
-.lad-v2-android-form.is-open {
-    display: block;
-}
-
 .lad-v2-fold--pending {
     min-height: 7.5rem;
 }

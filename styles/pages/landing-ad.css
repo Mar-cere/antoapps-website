@@ -554,14 +554,6 @@
     color: var(--lad-text-muted);
 }
 
-.lad-android-waitlist-counter {
-    margin: 0 0 var(--spacing-2);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    text-align: center;
-    color: var(--lad-accent);
-}
-
 @keyframes lad-typing-bounce {
     0%,
     80%,
@@ -855,14 +847,6 @@
     max-width: 14rem;
 }
 
-.lad-android-reveal--static {
-    max-height: none;
-    opacity: 1;
-    transform: none;
-    overflow: visible;
-    margin-top: 0;
-}
-
 .lad-hero-trial-line {
     margin: var(--spacing-3) 0 0;
     font-size: var(--font-size-sm);
@@ -907,60 +891,6 @@
     flex-shrink: 0;
     color: var(--lad-accent);
     opacity: 0.9;
-}
-
-.lad-page .android-early-access--landing {
-    margin-top: 0;
-    padding: var(--spacing-3);
-    background: var(--lad-surface);
-    border: 1px solid var(--lad-border);
-    border-radius: var(--radius-lg);
-}
-
-.lad-page .android-early-access--landing .android-early-access-title {
-    color: var(--lad-text);
-}
-
-.lad-page .android-early-access--landing .android-early-access-subtitle {
-    color: var(--lad-text-muted);
-}
-
-.lad-page .android-early-access--landing .android-early-access-input {
-    color: var(--lad-text);
-    background: var(--lad-surface-strong);
-    border-color: var(--lad-border);
-}
-
-.lad-page .android-early-access--landing .android-early-access-input::placeholder {
-    color: rgba(244, 247, 251, 0.4);
-}
-
-.lad-page .android-early-access--landing .android-early-access-footnote {
-    color: rgba(244, 247, 251, 0.45);
-}
-
-.lad-page .android-early-access--landing .android-early-access-footnote a {
-    color: var(--lad-accent);
-}
-
-.lad-page .android-early-access--landing .android-early-access-incentive {
-    color: var(--lad-accent);
-}
-
-.lad-android-reveal {
-    width: 100%;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transform: translateY(-8px);
-    transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.25s ease;
-}
-
-.lad-android-reveal.is-open {
-    max-height: 400px;
-    opacity: 1;
-    transform: translateY(0);
-    margin-top: var(--spacing-3);
 }
 
 .lad-hero-cta-btn {

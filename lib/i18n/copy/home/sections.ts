@@ -174,7 +174,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         {
           title: 'Descarga la App',
           description:
-            'Disponible gratis en App Store. En Android puedes solicitar acceso anticipado con tu correo de Google Play. La descarga es rápida (menos de 40MB) y la instalación toma menos de un minuto.',
+            'Disponible gratis en App Store y Google Play. La descarga es rápida (menos de 40MB) y la instalación toma menos de un minuto.',
         },
         {
           title: 'Crea tu Perfil',
@@ -444,7 +444,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         {
           title: 'Download the App',
           description:
-            'Available free on the App Store. On Android you can request early access with your Google Play email. The download is quick (under 40MB) and installation takes less than a minute.',
+            'Available free on the App Store and Google Play. The download is quick (under 40MB) and installation takes less than a minute.',
         },
         {
           title: 'Create Your Profile',

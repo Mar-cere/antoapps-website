@@ -2,14 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import DownloadLink from '@/components/DownloadLink';
-import {
-  dispatchOpenAndroidForm,
-  scrollToHeroCta,
-} from '@/lib/bienvenida/android-form-events';
+import { scrollToHeroCta } from '@/lib/bienvenida/landing-cta-events';
 import { getAttributionContext } from '@/lib/analytics/attribution';
 import { trackCustomEvent, withAttribution } from '@/lib/analytics/events';
 import { useLandingDevice } from '@/lib/hooks/useLandingDevice';
 import type { LandingDevice } from '@/lib/device/landing-device';
+import { googlePlayHref } from '@/lib/download-links';
+import type { Locale } from '@/lib/i18n/config';
 import type { BienvenidaCopy, BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 
 type BienvenidaStickyCtaProps = {
@@ -17,6 +16,7 @@ type BienvenidaStickyCtaProps = {
   landingVariant: BienvenidaVariant;
   pagePath: string;
   copy: BienvenidaCopy;
+  locale?: Locale;
   initialDevice?: LandingDevice;
 };
 
@@ -36,10 +36,12 @@ export default function BienvenidaStickyCta({
   landingVariant,
   pagePath,
   copy,
+  locale = 'es',
   initialDevice = 'ios',
 }: BienvenidaStickyCtaProps) {
   const device = useLandingDevice(initialDevice);
   const [visible, setVisible] = useState(false);
+  const playHref = googlePlayHref(locale);
 
   useEffect(() => {
     const heroCta = document.getElementById('descargar');
@@ -56,12 +58,6 @@ export default function BienvenidaStickyCta({
     return () => observer.disconnect();
   }, []);
 
-  const handleAndroidSticky = () => {
-    trackStickyAction('android_waitlist', pagePath, landingVariant);
-    scrollToHeroCta();
-    dispatchOpenAndroidForm();
-  };
-
   const handleDesktopSticky = () => {
     trackStickyAction('desktop_options_scroll', pagePath, landingVariant);
     scrollToHeroCta();
@@ -70,14 +66,17 @@ export default function BienvenidaStickyCta({
   const renderCta = () => {
     if (device === 'android') {
       return (
-        <button
-          type="button"
+        <DownloadLink
+          href={playHref}
           className="btn btn-primary lad-sticky-cta-btn"
-          onClick={handleAndroidSticky}
+          trackingPlacement="bienvenida_sticky_play_store"
+          trackingPage={pagePath}
+          trackingLabel={`sticky_play_${landingVariant}`}
           aria-label={copy.trial.stickyAndroidAria}
+          onClick={() => trackStickyAction('android_play_store', pagePath, landingVariant)}
         >
           {copy.trial.stickyAndroidCta}
-        </button>
+        </DownloadLink>
       );
     }
 

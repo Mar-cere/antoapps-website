@@ -81,12 +81,22 @@ assert(
   'URL no-App-Store intacta'
 );
 
-function resolveWaitlistDisplayCount(actual, floor = 847) {
-  return Math.max(actual, floor);
+function isGooglePlayUrl(href) {
+  if (!href.startsWith('http://') && !href.startsWith('https://')) return false;
+  try {
+    const host = new URL(href).hostname.toLowerCase();
+    return host === 'play.google.com';
+  } catch {
+    return false;
+  }
 }
 
-assert(resolveWaitlistDisplayCount(12) === 847, 'waitlist: aplica piso mínimo');
-assert(resolveWaitlistDisplayCount(900) === 900, 'waitlist: respeta conteo real si es mayor');
+assert(
+  isGooglePlayUrl('https://play.google.com/store/apps/details?id=com.anto.app&hl=es_419'),
+  'Google Play URL válida'
+);
+assert(!isGooglePlayUrl('https://evil.com/play.google.com'), 'host Play malicioso rechazado');
+assert(!isGooglePlayUrl('/bienvenida'), 'ruta relativa Play rechazada');
 
 function parseBienvenidaVariant(value) {
   const raw = Array.isArray(value) ? value[0] : value;

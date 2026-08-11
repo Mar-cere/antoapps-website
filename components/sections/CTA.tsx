@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import DownloadLink from '@/components/DownloadLink';
 import AppStoreBadge from '@/components/AppStoreBadge';
-import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
-import { appStoreHref } from '@/lib/download-links';
+import GooglePlayBadge from '@/components/GooglePlayBadge';
+import { appStoreHref, googlePlayHref } from '@/lib/download-links';
 import { getHomeCtaCopy } from '@/lib/i18n/copy/home/cta';
 import { localeFromPathname } from '@/lib/i18n/path-from-pathname';
 
@@ -30,19 +30,19 @@ export default function CTA() {
           >
             <AppStoreBadge locale={locale} />
           </DownloadLink>
+          <DownloadLink
+            href={googlePlayHref(locale)}
+            className="store-badge-link"
+            trackingPlacement="home_cta_play_store_badge"
+            trackingPage={copy.trackingPage}
+            trackingLabel="home_cta_play_badge"
+            aria-label={copy.androidStoreAria}
+          >
+            <GooglePlayBadge locale={locale} />
+          </DownloadLink>
           <Link href={copy.privacyHref} className="btn btn-secondary btn-large">
             {copy.privacyLabel}
           </Link>
-        </div>
-        <div className="section-cta-row section-cta-row--flex">
-          <AndroidEarlyAccessForm
-            locale={locale}
-            id="android-early-access-cta"
-            placement="home_cta_android_early_access"
-            page={copy.trackingPage}
-            compact
-            buttonLabel={copy.androidCta}
-          />
         </div>
       </div>
     </section>

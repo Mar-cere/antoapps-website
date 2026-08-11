@@ -1,7 +1,8 @@
 'use client';
 
-import { useId } from 'react';
-import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
+import DownloadLink from '@/components/DownloadLink';
+import GooglePlayBadge from '@/components/GooglePlayBadge';
+import { googlePlayHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 
@@ -9,11 +10,10 @@ type HomeV2AndroidProps = {
   locale?: Locale;
 };
 
-/** Acceso Android fuera del hero para no romper el primer viewport. */
+/** Google Play fuera del hero para no romper el primer viewport. */
 export default function HomeV2Android({ locale = 'es' }: HomeV2AndroidProps) {
   const { android } = getHomeV2Copy(locale);
   const pagePath = locale === 'en' ? '/en' : '/';
-  const formId = useId().replace(/:/g, '');
 
   return (
     <section
@@ -30,14 +30,16 @@ export default function HomeV2Android({ locale = 'es' }: HomeV2AndroidProps) {
           <p className="home-v2-android__body">{android.body}</p>
         </div>
         <div className="home-v2-android__form reveal-on-scroll">
-          <AndroidEarlyAccessForm
-            locale={locale}
-            id={formId}
-            placement="home_android_early_access"
-            page={pagePath}
-            compact
-            buttonLabel={android.cta}
-          />
+          <DownloadLink
+            href={googlePlayHref(locale)}
+            className="store-badge-link"
+            trackingPlacement="home_android_play_store"
+            trackingPage={pagePath}
+            trackingLabel="home_android_badge"
+            aria-label={android.storeAria}
+          >
+            <GooglePlayBadge locale={locale} />
+          </DownloadLink>
         </div>
       </div>
     </section>

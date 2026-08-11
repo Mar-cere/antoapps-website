@@ -1,17 +1,12 @@
 'use client';
 
-import { useCallback, useEffect, useId, useState } from 'react';
+import { useState } from 'react';
 import AppStoreBadge from '@/components/AppStoreBadge';
+import GooglePlayBadge from '@/components/GooglePlayBadge';
 import DownloadLink from '@/components/DownloadLink';
-import AndroidWaitlistCounter from '@/components/bienvenida/AndroidWaitlistCounter';
-import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
-import {
-  LAD_DESKTOP_CHOOSE_ANDROID_EVENT,
-  LAD_OPEN_ANDROID_FORM_EVENT,
-} from '@/lib/bienvenida/android-form-events';
 import type { LandingDevice } from '@/lib/device/landing-device';
-import { prefersReducedMotion } from '@/lib/device/motion';
 import { useLandingDevice } from '@/lib/hooks/useLandingDevice';
+import { googlePlayHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
 import type { BienvenidaCopy, BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 
@@ -90,75 +85,12 @@ export default function HeroDualCta({
   placement = 'hero',
 }: HeroDualCtaProps) {
   const device = useLandingDevice(initialDevice);
-  const reactId = useId();
-  const [showAndroidInput, setShowAndroidInput] = useState(false);
-  const [autoFocusAndroidInput, setAutoFocusAndroidInput] = useState(false);
   const [desktopChoice, setDesktopChoice] = useState<DesktopChoice>(null);
   const isFinal = placement === 'final';
   const isHero = !isFinal;
   const primaryCtaText = primaryCtaLabel(copy, landingVariant, isFinal);
   const deviceModifier = `lad-hero-fold-cta--${device}`;
-  const androidFormId = isFinal
-    ? 'android-early-access-bienvenida-final'
-    : 'android-early-access-bienvenida-hero';
-  const androidButtonId = `${reactId}-android-toggle`;
-
-  const openAndroidForm = useCallback((withFocus = true) => {
-    setShowAndroidInput(true);
-    if (withFocus && !prefersReducedMotion()) {
-      setAutoFocusAndroidInput(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (isHero && device === 'android') {
-      openAndroidForm(!prefersReducedMotion());
-    }
-  }, [device, isHero, openAndroidForm]);
-
-  useEffect(() => {
-    if (!isHero) return;
-
-    const openHandler = () => openAndroidForm(true);
-    const desktopAndroidHandler = () => {
-      setDesktopChoice('android');
-      openAndroidForm(true);
-    };
-
-    window.addEventListener(LAD_OPEN_ANDROID_FORM_EVENT, openHandler);
-    window.addEventListener(LAD_DESKTOP_CHOOSE_ANDROID_EVENT, desktopAndroidHandler);
-    return () => {
-      window.removeEventListener(LAD_OPEN_ANDROID_FORM_EVENT, openHandler);
-      window.removeEventListener(LAD_DESKTOP_CHOOSE_ANDROID_EVENT, desktopAndroidHandler);
-    };
-  }, [isHero, openAndroidForm]);
-
-  useEffect(() => {
-    if (showAndroidInput && !prefersReducedMotion()) {
-      setAutoFocusAndroidInput(true);
-    }
-  }, [showAndroidInput]);
-
-  const handleAndroidToggle = () => {
-    setShowAndroidInput((prev) => {
-      const next = !prev;
-      if (next && !prefersReducedMotion()) {
-        setAutoFocusAndroidInput(true);
-      }
-      return next;
-    });
-  };
-
-  const handleDesktopAndroid = () => {
-    setDesktopChoice('android');
-    openAndroidForm(true);
-  };
-
-  const resetDesktopChoice = () => {
-    setDesktopChoice(null);
-    setShowAndroidInput(false);
-    setAutoFocusAndroidInput(false);
-  };
+  const playHref = googlePlayHref(locale);
 
   const iosTrackingPlacement = isFinal
     ? 'bienvenida_final_primary_cta'
@@ -166,6 +98,9 @@ export default function HeroDualCta({
   const iosTrackingLabel = isFinal
     ? `final_primary_variant_${landingVariant}`
     : `hero_primary_variant_${landingVariant}`;
+  const androidTrackingPlacement = isFinal
+    ? 'bienvenida_final_play_store'
+    : 'bienvenida_hero_play_store';
 
   const renderIosStoreCta = (useBadge: boolean, className = '') => {
     if (useBadge) {
@@ -197,34 +132,33 @@ export default function HeroDualCta({
     );
   };
 
-  const renderAndroidForm = (alwaysOpen = false) => {
-    const isOpen = alwaysOpen || showAndroidInput;
+  const renderPlayStoreCta = (useBadge: boolean, className = '') => {
+    if (useBadge) {
+      return (
+        <DownloadLink
+          href={playHref}
+          className={`lad-hero-cta-badge-wrap lad-hero-cta-btn--android ${className}`.trim()}
+          trackingPlacement={androidTrackingPlacement}
+          trackingPage={pagePath}
+          trackingLabel={`play_store_badge_${landingVariant}`}
+          aria-label={copy.androidStoreAria}
+        >
+          <GooglePlayBadge locale={locale} className="lad-hero-store-badge" priority />
+        </DownloadLink>
+      );
+    }
+
     return (
-      <div
-        className={`lad-android-reveal ${isOpen ? 'is-open lad-android-reveal--static' : ''}`}
-        aria-hidden={!isOpen}
+      <DownloadLink
+        href={playHref}
+        className={`btn btn-primary btn-large lad-hero-cta-btn lad-hero-cta-btn--android ${className}`.trim()}
+        trackingPlacement={androidTrackingPlacement}
+        trackingPage={pagePath}
+        trackingLabel={`play_store_${landingVariant}`}
+        aria-label={copy.androidStoreAria}
       >
-        <AndroidWaitlistCounter
-          locale={locale}
-          labelTemplate={copy.androidWaitlist.counterTemplate}
-        />
-        <AndroidEarlyAccessForm
-          locale={locale}
-          id={androidFormId}
-          placement={
-            isFinal
-              ? 'bienvenida_final_android_early_access'
-              : 'bienvenida_hero_android_early_access'
-          }
-          page={pagePath}
-          landingVariant={landingVariant}
-          className="android-early-access android-early-access--landing"
-          compact
-          autoFocus={autoFocusAndroidInput}
-          buttonLabel={copy.androidCta}
-          incentiveLine={alwaysOpen ? undefined : copy.androidWaitlist.incentive}
-        />
-      </div>
+        {copy.androidCta}
+      </DownloadLink>
     );
   };
 
@@ -237,24 +171,34 @@ export default function HeroDualCta({
         {isHero ? (
           <div className="lad-hero-cta-row lad-hero-cta-row--ios">
             {renderIosStoreCta(true)}
-            <button
-              type="button"
-              id={androidButtonId}
-              className={`btn btn-secondary btn-large lad-hero-cta-btn lad-hero-cta-btn--android ${
-                showAndroidInput ? 'is-active' : ''
-              }`}
-              onClick={handleAndroidToggle}
-              aria-expanded={showAndroidInput}
-              aria-controls={androidFormId}
+            <DownloadLink
+              href={playHref}
+              className="btn btn-secondary btn-large lad-hero-cta-btn lad-hero-cta-btn--android"
+              trackingPlacement={androidTrackingPlacement}
+              trackingPage={pagePath}
+              trackingLabel={`play_store_secondary_${landingVariant}`}
+              aria-label={copy.androidStoreAria}
             >
               {copy.androidHeroCta}
-            </button>
+            </DownloadLink>
           </div>
         ) : (
           <div className="lad-hero-cta-single">{renderIosStoreCta(false)}</div>
         )}
         <TrustLines copy={copy} showIosTrial />
-        {isHero && renderAndroidForm()}
+        {isFinal && (
+          <p className="lad-hero-ios-fallback">
+            <DownloadLink
+              href={playHref}
+              className="lad-hero-ios-fallback-link"
+              trackingPlacement="bienvenida_final_play_store_fallback"
+              trackingPage={pagePath}
+              trackingLabel={`play_fallback_${landingVariant}`}
+            >
+              {copy.androidLink}
+            </DownloadLink>
+          </p>
+        )}
       </div>
     );
   }
@@ -265,8 +209,8 @@ export default function HeroDualCta({
         className={`lad-hero-fold-cta ${isFinal ? 'lad-hero-fold-cta--final' : ''} ${deviceModifier}`}
         id={isFinal ? 'descargar-final' : 'descargar'}
       >
-        <p className="lad-hero-android-lead">{copy.androidDevice.waitlistLine}</p>
-        {renderAndroidForm(true)}
+        <p className="lad-hero-android-lead">{copy.androidDevice.leadLine}</p>
+        {renderPlayStoreCta(true)}
         <TrustLines copy={copy} showIosTrial={false} />
         <p className="lad-hero-ios-fallback">
           <DownloadLink
@@ -304,7 +248,7 @@ export default function HeroDualCta({
           <button
             type="button"
             className="btn btn-secondary lad-desktop-picker-btn"
-            onClick={handleDesktopAndroid}
+            onClick={() => setDesktopChoice('android')}
           >
             {copy.desktopPicker.android}
           </button>
@@ -323,7 +267,7 @@ export default function HeroDualCta({
         <div className="lad-hero-cta-single">{renderIosStoreCta(true, 'lad-hero-cta-badge-wrap--desktop')}</div>
         <p className="lad-desktop-iphone-hint">{copy.desktopPicker.iphoneHint}</p>
         <TrustLines copy={copy} showIosTrial />
-        <button type="button" className="lad-desktop-change-device" onClick={resetDesktopChoice}>
+        <button type="button" className="lad-desktop-change-device" onClick={() => setDesktopChoice(null)}>
           {copy.desktopPicker.changeDevice}
         </button>
       </div>
@@ -335,10 +279,10 @@ export default function HeroDualCta({
       className={`lad-hero-fold-cta ${isFinal ? 'lad-hero-fold-cta--final' : ''} ${deviceModifier}`}
       id={isFinal ? 'descargar-final' : 'descargar'}
     >
-      <p className="lad-hero-android-lead">{copy.androidDevice.waitlistLine}</p>
-      {renderAndroidForm(true)}
+      <p className="lad-hero-android-lead">{copy.androidDevice.leadLine}</p>
+      {renderPlayStoreCta(true, 'lad-hero-cta-badge-wrap--desktop')}
       <TrustLines copy={copy} showIosTrial={false} />
-      <button type="button" className="lad-desktop-change-device" onClick={resetDesktopChoice}>
+      <button type="button" className="lad-desktop-change-device" onClick={() => setDesktopChoice(null)}>
         {copy.desktopPicker.changeDevice}
       </button>
     </div>

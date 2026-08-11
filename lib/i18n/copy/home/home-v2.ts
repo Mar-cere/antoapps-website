@@ -143,6 +143,7 @@ export type HomeV2Copy = {
     ctaMicro: string;
     storeAria: string;
     androidLink: string;
+    androidStoreAria: string;
     imageAlt: string;
     chat: HomeV2ChatThread;
   };
@@ -181,7 +182,7 @@ export type HomeV2Copy = {
   android: {
     title: string;
     body: string;
-    cta: string;
+    storeAria: string;
   };
   faq: {
     title: string;
@@ -220,7 +221,8 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         ctaBadge: trial.short,
         ctaMicro: `${trial.short} · No card · Cancel anytime`,
         storeAria: 'Download Anto on the App Store',
-        androidLink: 'Android early access',
+        androidLink: 'Also on Google Play',
+        androidStoreAria: 'Download Anto on Google Play',
         imageAlt: 'Quiet evening light through a window, empty room at dusk',
         chat: {
           ariaLabel: 'Sample Anto conversation about work anxiety',
@@ -387,9 +389,9 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         ctaMicro: `${trial.short} · No card required`,
       },
       android: {
-        title: 'On Android soon.',
-        body: 'iPhone is available now. If you want early Android access, leave the email tied to your Google Play account.',
-        cta: 'I want Android access',
+        title: 'On Android too.',
+        body: 'Anto is on Google Play. Download it on your Android phone — same emotional support, same privacy.',
+        storeAria: 'Download Anto on Google Play',
       },
       faq: {
         title: 'What people usually ask.',
@@ -397,7 +399,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'What is Anto?',
             answer:
-              'Anto is an app for ongoing emotional support between sessions or day to day. It uses AI assistance in the background. It does not replace clinical care — a human therapist or professional remains the stronger recommendation. Available on iPhone.',
+              'Anto is an app for ongoing emotional support between sessions or day to day. It uses AI assistance in the background. It does not replace clinical care — a human therapist or professional remains the stronger recommendation. Available on iPhone and Android.',
           },
           {
             question: 'What else is there besides chat?',
@@ -472,7 +474,8 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       ctaBadge: trial.short,
       ctaMicro: `${trial.short} · Sin tarjeta · Cancela cuando quieras`,
       storeAria: 'Descargar Anto en App Store',
-      androidLink: 'Acceso anticipado Android',
+      androidLink: 'También en Google Play',
+      androidStoreAria: 'Descargar Anto en Google Play',
       imageAlt: 'Luz de tarde en una habitación quieta, ventana al anochecer',
       chat: {
         ariaLabel: 'Conversación de ejemplo en Anto sobre ansiedad laboral',
@@ -639,9 +642,9 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       ctaMicro: `${trial.short} · Sin tarjeta`,
     },
     android: {
-      title: 'En Android, pronto.',
-      body: 'En iPhone ya puedes descargar. Si quieres acceso anticipado en Android, deja el correo de tu cuenta de Google Play.',
-      cta: 'Quiero acceso Android',
+      title: 'También en Android.',
+      body: 'Anto está en Google Play. Descárgala en tu Android — el mismo acompañamiento emocional, la misma privacidad.',
+      storeAria: 'Descargar Anto en Google Play',
     },
     faq: {
       title: 'Lo que suele preguntarse.',
@@ -649,7 +652,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           question: '¿Qué es Anto?',
           answer:
-            'Anto es una app de acompañamiento emocional continuo entre sesiones o en el día a día. Usa asistencia de IA en segundo plano. No sustituye atención clínica: un terapeuta o profesional humano sigue siendo lo más recomendable. Disponible en iPhone.',
+            'Anto es una app de acompañamiento emocional continuo entre sesiones o en el día a día. Usa asistencia de IA en segundo plano. No sustituye atención clínica: un terapeuta o profesional humano sigue siendo lo más recomendable. Disponible en iPhone y Android.',
         },
         {
           question: '¿Qué hay además del chat?',

@@ -5,6 +5,7 @@ import { getHomeFaqCopy } from '@/lib/i18n/copy/home/faq';
 import { getHomeSectionsCopy } from '@/lib/i18n/copy/home/sections';
 import { getWhatsNewCopy } from '@/lib/i18n/copy/home/whats-new';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
+import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import {
   getFaqPageJsonLd,
   getSoftwareApplicationJsonLd,
@@ -14,7 +15,7 @@ const LOCALES: readonly Locale[] = ['es', 'en'];
 
 const EXPECTED_FEATURE_CARD_COUNT = 9;
 const EXPECTED_WHATS_NEW_ITEMS = 6;
-const EXPECTED_FAQ_VISIBLE = 11;
+const EXPECTED_FAQ_VISIBLE = 19;
 
 const V15_LANDING_MARKERS: Record<Locale, RegExp[]> = {
   es: [/hub de técnicas/i, /grafo/i, /sesión persistente|insight diario/i],
@@ -125,9 +126,10 @@ export function assertHomeCopyInvariants(): string[] {
 
     const faqJsonLd = getFaqPageJsonLd(locale);
     const mainEntity = Array.isArray(faqJsonLd.mainEntity) ? faqJsonLd.mainEntity : [];
-    if (mainEntity.length !== allFaq.length) {
+    const publishedFaqCount = getHomeV2Copy(locale).faq.items.length;
+    if (mainEntity.length !== publishedFaqCount) {
       errors.push(
-        `${tag} FAQ JSON-LD (${mainEntity.length}) no coincide con FAQ copy (${allFaq.length})`
+        `${tag} FAQ JSON-LD (${mainEntity.length}) no coincide con FAQ home publicada (${publishedFaqCount})`
       );
     }
   }

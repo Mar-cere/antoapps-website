@@ -1,17 +1,16 @@
 'use client';
 
-import { useId, useState } from 'react';
 import Image from 'next/image';
 import AppReviewCard from '@/components/ui/AppReviewCard';
 import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
-import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
+import DownloadLink from '@/components/DownloadLink';
 import {
   APP_SCREENSHOT_HEIGHT,
   APP_SCREENSHOT_WIDTH,
   getHomeLandingScreenshotAlt,
   getHomeLandingScreenshotPath,
 } from '@/lib/assets/app-screenshots';
-import { appStoreHref } from '@/lib/download-links';
+import { appStoreHref, googlePlayHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 import HomeHeroTrust from '@/components/sections/HomeHeroTrust';
@@ -25,8 +24,6 @@ type HeroProps = {
 export default function Hero({ locale = 'es' }: HeroProps) {
   const copy = getHomeLandingFinalCopy(locale).hero;
   const pagePath = locale === 'en' ? '/en' : '/';
-  const androidFormId = useId().replace(/:/g, '');
-  const [androidFormOpen, setAndroidFormOpen] = useState(false);
 
   return (
     <section id="inicio" className="home-landing-hero" data-fade-section aria-labelledby="hero-title">
@@ -55,27 +52,16 @@ export default function Hero({ locale = 'es' }: HeroProps) {
             />
             <p className="home-landing-cta-micro">{copy.ctaMicro}</p>
             <HomeHeroTrust locale={locale} />
-            <button
-              type="button"
+            <DownloadLink
+              href={googlePlayHref(locale)}
               className="home-landing-android-link"
-              onClick={() => {
-                setAndroidFormOpen(true);
-                document.getElementById(androidFormId)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-              }}
+              trackingPlacement="home_hero_play_store"
+              trackingPage={pagePath}
+              trackingLabel="home_hero_android"
+              aria-label={copy.androidStoreAria}
             >
               {copy.androidLink}
-            </button>
-          </div>
-          <div className={`home-landing-android-form ${androidFormOpen ? 'is-open' : ''}`}>
-            <AndroidEarlyAccessForm
-              locale={locale}
-              id={androidFormId}
-              placement="home_hero_android_early_access"
-              page={pagePath}
-              compact
-              autoFocus={androidFormOpen}
-              buttonLabel={copy.androidCta}
-            />
+            </DownloadLink>
           </div>
         </div>
 

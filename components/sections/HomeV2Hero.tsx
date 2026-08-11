@@ -1,13 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
 import HomeV2ChatVignette from '@/components/sections/HomeV2ChatVignette';
-import { appStoreHref } from '@/lib/download-links';
+import { appStoreHref, googlePlayHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
+import DownloadLink from '@/components/DownloadLink';
 
 type HomeV2HeroProps = {
   locale?: Locale;
@@ -76,9 +76,16 @@ export default function HomeV2Hero({ locale = 'es' }: HomeV2HeroProps) {
               trackingLabel="home_hero"
           />
           <p className="home-v2-hero__micro">{hero.ctaMicro}</p>
-          <Link href="#android" className="home-v2-hero__android">
+          <DownloadLink
+            href={googlePlayHref(locale)}
+            className="home-v2-hero__android"
+            trackingPlacement="home_hero_play_store"
+            trackingPage={pagePath}
+            trackingLabel="home_v2_android"
+            aria-label={hero.androidStoreAria}
+          >
             {hero.androidLink}
-          </Link>
+          </DownloadLink>
         </div>
       </div>
       <span className="sr-only">{hero.imageAlt}</span>

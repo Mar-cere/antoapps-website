@@ -174,6 +174,7 @@ export default function BienvenidaLandingV2({
         landingVariant={landingVariant}
         pagePath={pagePath}
         copy={copy}
+        locale={locale}
         initialDevice={initialDevice}
       />
 

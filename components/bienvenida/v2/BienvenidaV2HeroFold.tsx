@@ -1,14 +1,11 @@
 'use client';
 
-import { useEffect, useId, useState } from 'react';
 import DownloadLink from '@/components/DownloadLink';
-import AndroidWaitlistCounter from '@/components/bienvenida/AndroidWaitlistCounter';
+import GooglePlayBadge from '@/components/GooglePlayBadge';
 import InstagramBrowserHint from '@/components/bienvenida/InstagramBrowserHint';
 import BienvenidaV2StoreCta from '@/components/bienvenida/v2/BienvenidaV2StoreCta';
-import AndroidEarlyAccessForm from '@/components/forms/AndroidEarlyAccessForm';
-import { LAD_OPEN_ANDROID_FORM_EVENT } from '@/lib/bienvenida/android-form-events';
 import type { LandingDevice } from '@/lib/device/landing-device';
-import { prefersReducedMotion } from '@/lib/device/motion';
+import { googlePlayHref } from '@/lib/download-links';
 import { useLandingDevice } from '@/lib/hooks/useLandingDevice';
 import type { Locale } from '@/lib/i18n/config';
 import type { BienvenidaCopy, BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
@@ -33,51 +30,22 @@ export default function BienvenidaV2HeroFold({
   placement = 'hero',
 }: BienvenidaV2HeroFoldProps) {
   const device = useLandingDevice(initialDevice);
-  const reactId = useId();
   const v2 = copy.v2;
   const isHero = placement === 'hero';
-  const [androidFormOpen, setAndroidFormOpen] = useState(initialDevice === 'android');
-  const [autoFocusAndroid, setAutoFocusAndroid] = useState(false);
-  const androidFormId = isHero
-    ? 'android-early-access-bienvenida-v2-hero'
-    : 'android-early-access-bienvenida-v2-final';
-
-  useEffect(() => {
-    if (!isHero) return;
-    const handler = () => {
-      setAndroidFormOpen(true);
-      if (!prefersReducedMotion()) setAutoFocusAndroid(true);
-    };
-    window.addEventListener(LAD_OPEN_ANDROID_FORM_EVENT, handler);
-    return () => window.removeEventListener(LAD_OPEN_ANDROID_FORM_EVENT, handler);
-  }, [isHero]);
-
-  useEffect(() => {
-    if (isHero && device === 'android') {
-      setAndroidFormOpen(true);
-      if (!prefersReducedMotion()) setAutoFocusAndroid(true);
-    }
-  }, [device, isHero]);
-
-  const handleAndroidLink = () => {
-    setAndroidFormOpen(true);
-    if (!prefersReducedMotion()) setAutoFocusAndroid(true);
-    document.getElementById(androidFormId)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  };
+  const playHref = googlePlayHref(locale);
 
   const showIosStoreCta = device === 'ios' || device === 'desktop';
-  // En iOS el Android waitlist no debe competir en el fold: solo en el CTA final.
+  const showAndroidPrimary = device === 'android';
+  // En iOS el Play Store no compite en el fold: solo en el CTA final.
   const showAndroidLink = !isHero && (device === 'ios' || device === 'desktop');
-  const showAndroidLead = device === 'android';
-  const showAndroidForm = device === 'android' || (!isHero && androidFormOpen);
 
   return (
     <div
       className={`lad-v2-fold ${isHero ? '' : 'lad-v2-fold--final'}`}
       id={isHero ? 'descargar' : 'descargar-final'}
     >
-      {showAndroidLead && (
-        <p className="lad-v2-android-lead">{copy.androidDevice.waitlistLine}</p>
+      {showAndroidPrimary && (
+        <p className="lad-v2-android-lead">{copy.androidDevice.leadLine}</p>
       )}
 
       {showIosStoreCta && (
@@ -88,6 +56,21 @@ export default function BienvenidaV2HeroFold({
           copy={copy}
           placement={placement}
         />
+      )}
+
+      {showAndroidPrimary && (
+        <DownloadLink
+          href={playHref}
+          className="lad-hero-cta-badge-wrap lad-hero-cta-btn--android"
+          trackingPlacement={
+            isHero ? 'bienvenida_v2_hero_play_store' : 'bienvenida_v2_final_play_store'
+          }
+          trackingPage={pagePath}
+          trackingLabel={`play_store_${landingVariant}`}
+          aria-label={copy.androidStoreAria}
+        >
+          <GooglePlayBadge locale={locale} className="lad-hero-store-badge" priority />
+        </DownloadLink>
       )}
 
       {showIosStoreCta && <p className="lad-v2-cta-micro">{v2.ctaMicro}</p>}
@@ -101,34 +84,19 @@ export default function BienvenidaV2HeroFold({
       )}
 
       {showAndroidLink && (
-        <button type="button" className="lad-v2-android-link" onClick={handleAndroidLink}>
+        <DownloadLink
+          href={playHref}
+          className="lad-v2-android-link"
+          trackingPlacement="bienvenida_v2_final_play_store_link"
+          trackingPage={pagePath}
+          trackingLabel={`play_link_${landingVariant}`}
+          aria-label={copy.androidStoreAria}
+        >
           {v2.androidLink}
-        </button>
+        </DownloadLink>
       )}
 
-      {showAndroidForm && (
-        <div className="lad-v2-android-form is-open" id={`${reactId}-android-panel`}>
-          <AndroidWaitlistCounter locale={locale} labelTemplate={copy.androidWaitlist.counterTemplate} />
-          <AndroidEarlyAccessForm
-            locale={locale}
-            id={androidFormId}
-            placement={
-              isHero
-                ? 'bienvenida_v2_hero_android_early_access'
-                : 'bienvenida_v2_final_android_early_access'
-            }
-            page={pagePath}
-            landingVariant={landingVariant}
-            className="android-early-access android-early-access--landing"
-            compact
-            autoFocus={autoFocusAndroid}
-            buttonLabel={copy.androidCta}
-            incentiveLine={device === 'android' ? undefined : copy.androidWaitlist.incentive}
-          />
-        </div>
-      )}
-
-      {showAndroidLead && (
+      {showAndroidPrimary && (
         <p className="lad-v2-ios-fallback">
           <DownloadLink
             href={storeHref}

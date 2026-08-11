@@ -26,7 +26,7 @@ export default function InstagramBrowserHint({
 
   const browserAction = platform === 'ios' ? copy.iosBrowser : copy.androidBrowser;
 
-  // En Android la ruta útil es waitlist; el hint Safari/Chrome solo aporta en iOS.
+  // En Android in-app el CTA abre Google Play; el hint Safari/Chrome solo aporta en iOS.
   if (platform !== 'ios') return null;
 
   if (variant === 'cta') {

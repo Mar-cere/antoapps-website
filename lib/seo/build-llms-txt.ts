@@ -1,5 +1,5 @@
 import { APP_VERSION } from '@/lib/app-version';
-import { DEFAULT_APP_STORE_URL } from '@/lib/download-links';
+import { DEFAULT_APP_STORE_URL, DEFAULT_GOOGLE_PLAY_URL_ES, DEFAULT_GOOGLE_PLAY_URL_EN } from '@/lib/download-links';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { getHomeFaqCopy } from '@/lib/i18n/copy/home/faq';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
@@ -531,7 +531,7 @@ function productFactsTable(trialLabel: string): string[] {
     `| 6-month plan | ~${formatUsdPrice(PRICING_USD.sixMonths, 'en')} (save 12%) |`,
     `| 1-year plan | ~${formatUsdPrice(PRICING_USD.year, 'en')} (save 17%) |`,
     `| Free trial | ${trialLabel} on iPhone (iOS, App Store) |`,
-    '| Platforms | iOS (App Store download), Android (early access waitlist) |',
+    '| Platforms | iOS (App Store), Android (Google Play) |',
     '| Languages | Spanish (ES), English (EN) |',
     '| Clinical scales | PHQ-9, GAD-7 |',
     '| Structured protocols | 8 (CBT-based: depression, anxiety, OCD/ERP, trauma/PTSD, anger, sleep, self-compassion, mindfulness) |',
@@ -591,6 +591,8 @@ export function buildLlmsTxt(): string {
     `- LLMs full: ${SITE_ORIGIN}/llms-full.txt`,
     `- Well-known mirror: ${SITE_ORIGIN}/.well-known/llms.txt`,
     `- App Store (iOS): ${DEFAULT_APP_STORE_URL}`,
+    `- Google Play (Android, ES): ${DEFAULT_GOOGLE_PLAY_URL_ES}`,
+    `- Google Play (Android, EN): ${DEFAULT_GOOGLE_PLAY_URL_EN}`,
     '',
     ...aiDiscoveryBlock(),
     '',
@@ -706,6 +708,8 @@ export function llmsTxtRequiredSnippets(): string[] {
     'cognitive restructuring',
     DEFAULT_APP_STORE_URL,
     'apps.apple.com',
+    DEFAULT_GOOGLE_PLAY_URL_ES,
+    'play.google.com',
   ];
 
   for (const slug of PSYCHOEDUCATION_SLUGS) {

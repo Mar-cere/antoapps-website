@@ -55,12 +55,12 @@ export function assertBienvenidaCopyInvariants(): string[] {
       errors.push(`${tag} audience: se requieren 3 escenarios`);
     }
 
-    if (!copy.androidWaitlist.incentive.trim()) {
-      errors.push(`${tag} androidWaitlist.incentive vacío`);
+    if (!copy.androidCta.trim() || !copy.androidLink.trim() || !copy.androidStoreAria.trim()) {
+      errors.push(`${tag} copy de Google Play incompleto`);
     }
 
-    if (!copy.androidWaitlist.counterTemplate.includes('{count}')) {
-      errors.push(`${tag} androidWaitlist.counterTemplate sin placeholder {count}`);
+    if (!copy.androidDevice.leadLine.trim()) {
+      errors.push(`${tag} androidDevice.leadLine vacío`);
     }
 
     if (locale === 'es') {
