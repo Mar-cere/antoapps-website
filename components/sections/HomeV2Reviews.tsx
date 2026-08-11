@@ -17,7 +17,7 @@ export default function HomeV2Reviews({ locale = 'es' }: HomeV2ReviewsProps) {
   return (
     <section className="home-v2-reviews" aria-labelledby="home-v2-reviews-title" data-fade-section>
       <div className="home-landing-container">
-        <div className="home-v2-reviews__head reveal-on-scroll">
+        <div className="home-v2-reviews__head">
           <h2 id="home-v2-reviews-title" className="home-v2-reviews__title">
             {section.title}
           </h2>
@@ -25,7 +25,7 @@ export default function HomeV2Reviews({ locale = 'es' }: HomeV2ReviewsProps) {
         </div>
         <ul className="home-v2-reviews__grid">
           {reviews.map((review) => (
-            <li key={review.author} className="reveal-on-scroll" data-stagger-item>
+            <li key={review.author}>
               <AppReviewCard
                 quote={review.quote}
                 author={review.author}

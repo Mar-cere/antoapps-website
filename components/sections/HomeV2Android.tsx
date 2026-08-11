@@ -22,13 +22,13 @@ export default function HomeV2Android({ locale = 'es' }: HomeV2AndroidProps) {
       data-fade-section
     >
       <div className="home-landing-container home-v2-android__inner">
-        <div className="home-v2-android__copy reveal-on-scroll">
+        <div className="home-v2-android__copy">
           <h2 id="home-v2-android-title" className="home-v2-android__title">
             {android.title}
           </h2>
           <p className="home-v2-android__body">{android.body}</p>
         </div>
-        <div className="home-v2-android__form reveal-on-scroll">
+        <div className="home-v2-android__form">
           <PremiumStoreCta
             store="google"
             storeHref={googlePlayHref(locale)}

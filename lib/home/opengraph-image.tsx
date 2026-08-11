@@ -13,12 +13,10 @@ export function homeOgImageAlt(locale: Locale): string {
 
 /** OG home alineado a la voz editorial publicada (home-v2). */
 export function renderHomeOpenGraphImage(locale: Locale) {
-  const { hero, foundation } = getHomeV2Copy(locale);
+  const { hero, explore } = getHomeV2Copy(locale);
   const trial = getTrialCopy(locale);
   const headline = `${hero.titleLine1} ${hero.titleAccent}`;
-  const trustLine = foundation.proofSignals
-    .map((signal) => `${signal.value} ${signal.label}`)
-    .join(' · ');
+  const trustLine = explore.coda.trust.join(' · ');
 
   return new ImageResponse(
     (

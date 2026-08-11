@@ -44,13 +44,13 @@ export default function HomeV2Moments({ locale = 'es' }: HomeV2MomentsProps) {
           data-fade-section
         >
           <div className="home-landing-container home-v2-moment__grid">
-            <div className="home-v2-moment__text reveal-on-scroll">
+            <div className="home-v2-moment__text">
               <h2 id={`home-v2-moment-${moment.id}`} className="home-v2-moment__title">
                 {moment.title}
               </h2>
               <p className="home-v2-moment__body">{moment.body}</p>
             </div>
-            <div className="home-v2-moment__media reveal-on-scroll">
+            <div className="home-v2-moment__media">
               <MomentMedia media={moment.media} locale={locale} />
             </div>
           </div>

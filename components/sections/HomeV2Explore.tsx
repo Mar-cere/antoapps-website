@@ -14,12 +14,12 @@ export default function HomeV2Explore({ locale = 'es' }: HomeV2ExploreProps) {
   return (
     <section className="home-v2-explore" aria-labelledby="home-v2-explore-title" data-fade-section>
       <div className="home-landing-container">
-        <h2 id="home-v2-explore-title" className="home-v2-explore__title reveal-on-scroll">
+        <h2 id="home-v2-explore-title" className="home-v2-explore__title">
           {explore.title}
         </h2>
         <ul className="home-v2-explore__list">
           {explore.links.map((link) => (
-            <li key={link.href} className="reveal-on-scroll" data-stagger-item>
+            <li key={link.href}>
               <Link href={localePath(locale, link.href)} className="home-v2-explore__link">
                 <span className="home-v2-explore__label">{link.label}</span>
                 <span className="home-v2-explore__desc">{link.description}</span>
@@ -30,7 +30,7 @@ export default function HomeV2Explore({ locale = 'es' }: HomeV2ExploreProps) {
             </li>
           ))}
         </ul>
-        <div className="home-v2-explore__coda reveal-on-scroll">
+        <div className="home-v2-explore__coda">
           <p className="home-v2-explore__trust">
             {explore.coda.trust.map((item, index) => (
               <span key={item}>

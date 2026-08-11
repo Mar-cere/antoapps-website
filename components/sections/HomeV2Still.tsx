@@ -28,7 +28,7 @@ export default function HomeV2Still({ locale = 'es' }: HomeV2StillProps) {
         <div className="home-v2-still__scrim" aria-hidden="true" />
       </div>
       <div className="home-landing-container home-v2-still__inner">
-        <p id="home-v2-still-line" className="home-v2-still__line reveal-on-scroll">
+        <p id="home-v2-still-line" className="home-v2-still__line">
           {still.line}
         </p>
       </div>

@@ -5,6 +5,8 @@ export const EDITORIAL_IMAGE_PATHS = {
   deskRain: '/assets/images/editorial/anto-editorial-desk-rain.webp',
   morningPause: '/assets/images/editorial/anto-editorial-morning-pause.webp',
   thoughtLoop: '/assets/images/editorial/anto-editorial-thought-loop.webp',
+  /** Cierre / peak-end: distinta del hero `evening`. */
+  sleeplessNight: '/assets/images/editorial/anto-editorial-sleepless-night.webp',
 } as const;
 
 export type EditorialImageKey = keyof typeof EDITORIAL_IMAGE_PATHS;

@@ -18,7 +18,6 @@ export default function HomeV2SessionSummary({
       className={`home-v2-summary ${className}`.trim()}
       ariaLabel={summary.ariaLabel}
     >
-      <p className="home-v2-summary__eyebrow">{summary.eyebrow}</p>
       <div className="home-v2-summary__mood" aria-hidden="true">
         <span className="home-v2-summary__mood-from">{summary.moodFrom}</span>
         <span className="home-v2-summary__mood-arrow">→</span>

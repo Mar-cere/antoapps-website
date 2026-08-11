@@ -19,7 +19,6 @@ export default function HomeV2TechniqueCard({
       ariaLabel={technique.ariaLabel}
     >
       <div className="home-v2-technique__head">
-        <p className="home-v2-technique__eyebrow">{technique.eyebrow}</p>
         <div className="home-v2-technique__tags">
           <span className="home-v2-technique__tag">{technique.tag}</span>
           <span className="home-v2-technique__duration">{technique.duration}</span>

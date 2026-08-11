@@ -396,9 +396,7 @@ function localeNarrative(locale: Locale): string[] {
     isEs ? '### Por qué no es un chat genérico' : '### Why it is not a generic chat',
     ...formatFoundation(locale),
     '',
-    ...copy.foundation.proofSignals.map(
-      (signal) => `- ${signal.value} ${signal.label}`
-    ),
+    ...copy.explore.coda.trust.map((item) => `- ${item}`),
     '',
     ...formatPricingBlock(locale),
     '',

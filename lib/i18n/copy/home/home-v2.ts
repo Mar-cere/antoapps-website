@@ -17,7 +17,6 @@ export type HomeV2ChatThread = {
 export type HomeV2SummaryPanel = {
   ariaLabel: string;
   chromeTitle: string;
-  eyebrow: string;
   moodFrom: string;
   moodTo: string;
   moodLabel: string;
@@ -37,7 +36,6 @@ export type HomeV2TechniqueStep = {
 export type HomeV2TechniquePanel = {
   ariaLabel: string;
   chromeTitle: string;
-  eyebrow: string;
   name: string;
   tag: string;
   duration: string;
@@ -49,7 +47,6 @@ export type HomeV2TechniquePanel = {
 export type HomeV2PrivacyPanel = {
   ariaLabel: string;
   chromeTitle: string;
-  eyebrow: string;
   lead: string;
   points: readonly string[];
 };
@@ -57,7 +54,6 @@ export type HomeV2PrivacyPanel = {
 export type HomeV2DistortionPanel = {
   ariaLabel: string;
   chromeTitle: string;
-  eyebrow: string;
   thoughtLabel: string;
   thought: string;
   labelHint: string;
@@ -76,7 +72,6 @@ export type HomeV2EvidenceBar = {
 export type HomeV2EvidencePanel = {
   ariaLabel: string;
   chromeTitle: string;
-  eyebrow: string;
   scaleName: string;
   scaleRange: string;
   currentLabel: string;
@@ -120,11 +115,6 @@ export type HomeV2FoundationPillar = {
   body: string;
 };
 
-export type HomeV2FoundationProofSignal = {
-  value: string;
-  label: string;
-};
-
 export type HomeV2ExploreLink = {
   href: string;
   label: string;
@@ -163,7 +153,6 @@ export type HomeV2Copy = {
     title: string;
     support: string;
     pillars: readonly HomeV2FoundationPillar[];
-    proofSignals: readonly HomeV2FoundationProofSignal[];
   };
   still: {
     line: string;
@@ -220,7 +209,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         titleLine1: 'When everything costs',
         titleAccent: 'a little more.',
         support:
-          'Ongoing emotional support for quiet hours: write what you feel, leave with clarity and one concrete step. Complements care — does not replace a human therapist.',
+          'Ongoing emotional support for quiet hours: write what you feel, leave with clarity and one concrete step.',
         ctaStoreLabel: 'Download on',
         ctaStoreText: 'App Store',
         ctaBadge: trial.short,
@@ -259,26 +248,25 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       },
       recognize: {
         lead: 'Some days you are not exactly unwell.',
-        body: 'You do not need a full crisis to need company. Anto is there for the stretch between the day and sleep — no appointment required.',
+        body: 'You do not need a full crisis to need company. Anto is there for the stretch between the day and sleep - no appointment required.',
         imageAlt: 'Rainy night desk with an open notebook and a warm lamp',
       },
       moments: [
         {
           id: 'distortion',
           title: 'It catches the spiral. Then helps you loosen it.',
-          body: 'When your mind jumps to the worst ending, Anto names it — and offers a small way through.',
+          body: 'When your mind jumps to the worst ending, Anto names it - and offers a small way through.',
           media: {
             kind: 'distortion',
             distortion: {
               ariaLabel: 'Example of naming a worst-case thought and suggesting a short exercise',
               chromeTitle: 'In the chat',
-              eyebrow: 'Tonight',
               thoughtLabel: 'What showed up',
               thought: '“If I blank out, my career is over.”',
               labelHint: 'Sounds like',
               labelName: 'Jumping to the worst ending',
               reframeLabel: 'Another way to hold it',
-              reframe: 'Blanking on one slide is awkward — not the end of a career.',
+              reframe: 'Blanking on one slide is awkward - not the end of a career.',
               techniqueLabel: 'A next move',
               technique: 'A short exercise (~3 min): separate what happened from what you imagined.',
             },
@@ -294,7 +282,6 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             evidence: {
               ariaLabel: 'Sample of how anxiety felt across four weeks',
               chromeTitle: 'Check-in',
-              eyebrow: 'How anxiety felt · example',
               scaleName: 'Anxiety',
               scaleRange: 'brief check-in',
               currentLabel: 'This week',
@@ -311,7 +298,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
               insightLabel: 'What stood out',
               insight: 'The nights you scrolled less, things felt a bit quieter the next day',
               disclaimer:
-                'Just an example. These check-ins help you notice patterns — they do not diagnose or replace professional care.',
+                'Just an example. These check-ins help you notice patterns - they do not diagnose or replace professional care.',
             },
           },
         },
@@ -324,7 +311,6 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             privacy: {
               ariaLabel: 'Privacy commitments in Anto',
               chromeTitle: 'Privacy',
-              eyebrow: 'By design',
               lead: 'Care without an audience.',
               points: [
                 'End-to-end encrypted conversations',
@@ -342,21 +328,16 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         pillars: [
           {
             title: 'Memory that stays with you',
-            body: 'Themes that return, patterns you can notice, and one concrete next step — not a blank conversation every time.',
+            body: 'Themes that return, patterns you can notice, and one concrete next step - not a blank conversation every time.',
           },
           {
             title: 'Techniques when you need them',
-            body: 'A hub with evidence-based exercises — CBT, exposure, mindfulness — including an interactive ABC canvas.',
+            body: 'A hub with evidence-based exercises - CBT, exposure, mindfulness - including an interactive ABC canvas.',
           },
           {
             title: 'Between sessions',
             body: 'Available any hour, including nights when there is no appointment in sight.',
           },
-        ],
-        proofSignals: [
-          { value: '5.0', label: 'on the App Store' },
-          { value: '8', label: 'clinical protocols' },
-          { value: 'Encrypted', label: 'end-to-end' },
         ],
       },
       still: {
@@ -397,7 +378,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       },
       android: {
         title: 'On Android too.',
-        body: 'Anto is on Google Play. Download it on your Android phone — same emotional support, same privacy.',
+        body: 'Anto is on Google Play. Download it on your Android phone - same emotional support, same privacy.',
         storeAria: 'Download Anto on Google Play',
         ctaPlayLabel: 'Get it on',
         ctaPlayText: 'Google Play',
@@ -409,7 +390,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'What is Anto?',
             answer:
-              'Anto is an app for ongoing emotional support between sessions or day to day. It uses AI assistance in the background. It does not replace clinical care — a human therapist or professional remains the stronger recommendation. Available on iPhone and Android.',
+              'Anto is an app for ongoing emotional support between sessions or day to day. It uses AI assistance in the background. It does not replace clinical care - a human therapist or professional remains the stronger recommendation. Available on iPhone and Android.',
           },
           {
             question: 'What else is there besides chat?',
@@ -450,7 +431,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             href: '/app',
             label: 'The app',
-            description: 'What Anto includes on iPhone',
+            description: 'What Anto includes on iPhone and Android',
           },
           {
             href: '/seguridad',
@@ -467,7 +448,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       finalCta: {
         title: 'When the intensity needs to ease.',
         subtitle: 'Start today. One free day, no card.',
-        imageAlt: 'Person sitting on the edge of a bed at dusk, facing the window',
+        imageAlt: 'Quiet sleepless night: dim room, soft lamp light near an empty bed',
       },
     };
   }
@@ -478,7 +459,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       titleLine1: 'Cuando todo cuesta',
       titleAccent: 'un poco más.',
       support:
-        'Acompañamiento emocional continuo para las horas quietas: escribe lo que sientes, sal con claridad y un paso concreto. Complementa — no reemplaza — a un terapeuta humano.',
+        'Acompañamiento emocional continuo para las horas quietas: escribe lo que sientes, sal con claridad y un paso concreto.',
       ctaStoreLabel: 'Descargar en',
       ctaStoreText: 'App Store',
       ctaBadge: trial.short,
@@ -517,26 +498,25 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
     },
     recognize: {
       lead: 'Hay días en que no estás exactamente mal.',
-      body: 'No hace falta estar en crisis para necesitar compañía. Anto está para ese rato entre el día y la cama — sin cita previa.',
+      body: 'No hace falta estar en crisis para necesitar compañía. Anto está para ese rato entre el día y la cama - sin cita previa.',
       imageAlt: 'Escritorio de noche con lluvia en la ventana, libreta abierta y lámpara cálida',
     },
     moments: [
       {
         id: 'distortion',
         title: 'Atrapa la espiral. Después ayuda a soltarla.',
-        body: 'Cuando la mente salta al peor final, Anto lo nombra — y ofrece un camino pequeño.',
+        body: 'Cuando la mente salta al peor final, Anto lo nombra - y ofrece un camino pequeño.',
         media: {
           kind: 'distortion',
           distortion: {
             ariaLabel: 'Ejemplo de nombrar un pensamiento catastrófico y sugerir un ejercicio breve',
             chromeTitle: 'En el chat',
-            eyebrow: 'Esta noche',
             thoughtLabel: 'Lo que apareció',
             thought: '“Si me quedo en blanco, se acabó mi carrera.”',
             labelHint: 'Suena a',
             labelName: 'Imaginar el peor final',
             reframeLabel: 'Otra forma de verlo',
-            reframe: 'Quedarte en blanco en una diapositiva es incómodo — no el fin de una carrera.',
+            reframe: 'Quedarte en blanco en una diapositiva es incómodo - no el fin de una carrera.',
             techniqueLabel: 'Un siguiente paso',
             technique: 'Un ejercicio corto (~3 min): separar lo que pasó de lo que imaginaste.',
           },
@@ -552,7 +532,6 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           evidence: {
             ariaLabel: 'Ejemplo de cómo se sintió la ansiedad en cuatro semanas',
             chromeTitle: 'Chequeo',
-            eyebrow: 'Cómo se sintió la ansiedad · ejemplo',
             scaleName: 'Ansiedad',
             scaleRange: 'chequeo breve',
             currentLabel: 'Esta semana',
@@ -569,7 +548,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             insightLabel: 'Lo que se notó',
             insight: 'Las noches con menos scroll, al día siguiente se sintió un poco más quieto',
             disclaimer:
-              'Solo un ejemplo. Estos chequeos ayudan a notar patrones — no diagnostican ni reemplazan el cuidado profesional.',
+              'Solo un ejemplo. Estos chequeos ayudan a notar patrones - no diagnostican ni reemplazan el cuidado profesional.',
           },
         },
       },
@@ -582,7 +561,6 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           privacy: {
             ariaLabel: 'Compromisos de privacidad en Anto',
             chromeTitle: 'Privacidad',
-            eyebrow: 'Por diseño',
             lead: 'Cuidado sin audiencia.',
             points: [
               'Conversaciones cifradas de extremo a extremo',
@@ -600,21 +578,16 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       pillars: [
         {
           title: 'Memoria que acompaña',
-          body: 'Temas que vuelven, patrones que se notan y un siguiente paso concreto — no una conversación en blanco cada vez.',
+          body: 'Temas que vuelven, patrones que se notan y un siguiente paso concreto - no una conversación en blanco cada vez.',
         },
         {
           title: 'Técnicas cuando hacen falta',
-          body: 'Un hub con ejercicios basados en evidencia — TCC, exposición, mindfulness — incluido un lienzo ABC interactivo.',
+          body: 'Un hub con ejercicios basados en evidencia - TCC, exposición, mindfulness - incluido un lienzo ABC interactivo.',
         },
         {
           title: 'Entre sesiones',
           body: 'Disponible a cualquier hora, también las noches en que no hay cita a la vista.',
         },
-      ],
-      proofSignals: [
-        { value: '5.0', label: 'en App Store' },
-        { value: '8', label: 'protocolos clínicos' },
-        { value: 'Cifrado', label: 'de extremo a extremo' },
       ],
     },
     still: {
@@ -655,7 +628,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
     },
     android: {
       title: 'También en Android.',
-      body: 'Anto está en Google Play. Descárgala en tu Android — el mismo acompañamiento emocional, la misma privacidad.',
+      body: 'Anto está en Google Play. Descárgala en tu Android - el mismo acompañamiento emocional, la misma privacidad.',
       storeAria: 'Descargar Anto en Google Play',
       ctaPlayLabel: 'Disponible en',
       ctaPlayText: 'Google Play',
@@ -708,7 +681,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           href: '/app',
           label: 'La app',
-          description: 'Qué incluye Anto en iPhone',
+          description: 'Qué incluye Anto en iPhone y Android',
         },
         {
           href: '/seguridad',
@@ -725,7 +698,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
     finalCta: {
       title: 'Cuando necesites bajar la intensidad.',
       subtitle: 'Empieza hoy. Un día gratis, sin tarjeta.',
-      imageAlt: 'Persona sentada al borde de la cama al anochecer, de espaldas a la cámara',
+      imageAlt: 'Noche en vela: habitación en penumbra, luz suave de lámpara junto a una cama',
     },
   };
 }

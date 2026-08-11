@@ -21,7 +21,6 @@ export default function HomeV2EvidencePanel({
       ariaLabel={evidence.ariaLabel}
     >
       <div className="home-v2-evidence__head">
-        <p className="home-v2-evidence__eyebrow">{evidence.eyebrow}</p>
         <div className="home-v2-evidence__scale">
           <span className="home-v2-evidence__scale-name">{evidence.scaleName}</span>
           <span className="home-v2-evidence__scale-range">{evidence.scaleRange}</span>

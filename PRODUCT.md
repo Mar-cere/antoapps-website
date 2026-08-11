@@ -1,8 +1,5 @@
 # PRODUCT.md — Anto (SquareAnto)
 
-## Register
-brand
-
 ## Platform
 web
 

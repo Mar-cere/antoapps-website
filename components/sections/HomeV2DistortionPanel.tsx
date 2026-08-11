@@ -18,8 +18,6 @@ export default function HomeV2DistortionPanel({
       className={`home-v2-distortion ${className}`.trim()}
       ariaLabel={distortion.ariaLabel}
     >
-      <p className="home-v2-distortion__eyebrow">{distortion.eyebrow}</p>
-
       <div className="home-v2-distortion__block">
         <span className="home-v2-distortion__kicker">{distortion.thoughtLabel}</span>
         <p className="home-v2-distortion__thought">{distortion.thought}</p>

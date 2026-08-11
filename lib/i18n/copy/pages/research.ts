@@ -270,7 +270,6 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
               evidence: {
                 ariaLabel: 'Sample anxiety check-in across four weeks — not a diagnosis',
                 chromeTitle: 'Check-in',
-                eyebrow: 'How anxiety felt · example',
                 scaleName: 'Anxiety',
                 scaleRange: 'brief check-in',
                 currentLabel: 'This week',
@@ -299,7 +298,6 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
               summary: {
                 ariaLabel: 'Sample session closing that names a thought–emotion pattern',
                 chromeTitle: 'Closing',
-                eyebrow: 'Tonight',
                 moodFrom: 'Tight',
                 moodTo: 'Steadier',
                 moodLabel: 'mood arc',
@@ -447,7 +445,6 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
             evidence: {
               ariaLabel: 'Ejemplo de chequeo de ansiedad en cuatro semanas — no un diagnóstico',
               chromeTitle: 'Chequeo',
-              eyebrow: 'Cómo se sintió la ansiedad · ejemplo',
               scaleName: 'Ansiedad',
               scaleRange: 'chequeo breve',
               currentLabel: 'Esta semana',
@@ -476,7 +473,6 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
             summary: {
               ariaLabel: 'Ejemplo de cierre de sesión que nombra un patrón pensamiento–emoción',
               chromeTitle: 'Cierre',
-              eyebrow: 'Esta noche',
               moodFrom: 'Apretado',
               moodTo: 'más firme',
               moodLabel: 'arco del ánimo',

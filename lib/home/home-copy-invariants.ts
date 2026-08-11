@@ -132,6 +132,40 @@ export function assertHomeCopyInvariants(): string[] {
         `${tag} FAQ JSON-LD (${mainEntity.length}) no coincide con FAQ home publicada (${publishedFaqCount})`
       );
     }
+
+    // Home-v2 (Sprint A–C): contratos de forma editorial
+    const homeV2 = getHomeV2Copy(locale);
+    const clinicalInHero =
+      /reemplaza|replace|terapeuta humano|human therapist/i.test(homeV2.hero.support);
+    if (clinicalInHero) {
+      errors.push(`${tag} home-v2 hero.support no debe cargar el límite clínico (va en FAQ/coda)`);
+    }
+    if (!/crisis/i.test(homeV2.explore.coda.disclaimer)) {
+      errors.push(`${tag} home-v2 explore.coda.disclaimer debe mencionar crisis`);
+    }
+    const appExplore = homeV2.explore.links.find((link) => link.href === '/app');
+    if (!appExplore || !/android/i.test(appExplore.description)) {
+      errors.push(`${tag} home-v2 explore /app debe mencionar Android`);
+    }
+    if (homeV2.explore.links.length !== 4) {
+      errors.push(`${tag} home-v2 explore debe tener 4 links (hub + guía + app + seguridad)`);
+    }
+    if (homeV2.moments.length !== 3) {
+      errors.push(`${tag} home-v2 moments debe tener 3 ítems`);
+    }
+    if ('proofSignals' in homeV2.foundation) {
+      errors.push(`${tag} home-v2 foundation no debe incluir proofSignals`);
+    }
+    for (const moment of homeV2.moments) {
+      const media = moment.media as { distortion?: { eyebrow?: string }; evidence?: { eyebrow?: string }; privacy?: { eyebrow?: string } };
+      const panel = media.distortion ?? media.evidence ?? media.privacy;
+      if (panel && 'eyebrow' in panel) {
+        errors.push(`${tag} home-v2 moment "${moment.id}" no debe incluir eyebrow de panel`);
+      }
+    }
+    if (homeV2.pricing.cards.filter((card) => card.popular).length !== 1) {
+      errors.push(`${tag} home-v2 pricing debe tener exactamente 1 plan popular`);
+    }
   }
 
   const esCards = getHomeSectionsCopy('es').features.cards.length;

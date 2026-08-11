@@ -65,14 +65,14 @@ export default function HomeV2PageContent({ locale }: HomeV2PageContentProps) {
               <HomeV2Pricing locale={locale} />
               <HomeV2Android locale={locale} />
               <HomeV2Faq locale={locale} />
-              <HomeV2FinalCta locale={locale} />
               <HomeV2Explore locale={locale} />
+              <HomeV2FinalCta locale={locale} />
             </div>
           </main>
         </PullToRefresh>
         <HomeMinimalFooter locale={locale} />
         <FaqJsonLd />
-        <CookieConsent compact bannerDelayMs={6000} showAfterScrollPx={320} />
+        <CookieConsent compact bannerDelayMs={8000} showAfterScrollPx={900} />
       </div>
     </LocaleProvider>
   );

@@ -18,7 +18,6 @@ export default function HomeV2PrivacyPanel({
       className={`home-v2-privacy ${className}`.trim()}
       ariaLabel={privacy.ariaLabel}
     >
-      <p className="home-v2-privacy__eyebrow">{privacy.eyebrow}</p>
       <p className="home-v2-privacy__lead">{privacy.lead}</p>
       <ul className="home-v2-privacy__list">
         {privacy.points.map((point) => (
