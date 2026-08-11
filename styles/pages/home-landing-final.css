@@ -263,29 +263,17 @@
     max-width: none;
 }
 
+.home-landing-cta-wrap .premium-store-cta-stack {
+    width: 100%;
+    max-width: none;
+}
+
 .home-landing-cta-micro {
     margin: 0;
     font-size: 0.6875rem;
     color: var(--hl-text-tertiary);
     text-align: center;
     line-height: 1.45;
-}
-
-.home-landing-android-link {
-    width: 100%;
-    padding: 0;
-    border: none;
-    background: none;
-    font-size: 0.6875rem;
-    color: var(--hl-text-tertiary);
-    text-align: center;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    cursor: pointer;
-}
-
-.home-landing-android-link:hover {
-    color: rgba(255, 255, 255, 0.55);
 }
 
 .home-landing-hero__right {
@@ -666,6 +654,7 @@
     gap: 0.625rem;
 }
 
+.home-landing-price-cta .premium-store-cta-stack,
 .home-landing-price-cta .premium-store-cta {
     width: 100%;
     max-width: none;

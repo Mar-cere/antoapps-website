@@ -1,8 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
-import { appStoreHref } from '@/lib/download-links';
+import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
@@ -33,14 +32,11 @@ export default function HomeV2FinalCta({ locale = 'es' }: HomeV2FinalCtaProps) {
           {copy.finalCta.title}
         </h2>
         <p className="home-v2-final-cta__sub">{copy.finalCta.subtitle}</p>
-        <PremiumStoreCta
-          storeHref={appStoreHref()}
-          storeLabel={copy.hero.ctaStoreLabel}
-          storeName={copy.hero.ctaStoreText}
-          badge={copy.hero.ctaBadge}
-          ariaLabel={copy.hero.storeAria}
-          trackingPlacement="home_final_store_cta"
+        <PremiumStoreCtaPair
+          locale={locale}
+          copy={copy.hero}
           trackingPage={pagePath}
+          trackingPlacementPrefix="home_final"
           trackingLabel="home_final_cta"
         />
         <p className="home-v2-final-cta__micro">{copy.hero.ctaMicro}</p>

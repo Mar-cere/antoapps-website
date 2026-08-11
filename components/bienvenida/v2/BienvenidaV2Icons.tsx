@@ -73,6 +73,15 @@ export function AppleIcon({ size = 17 }: { size?: number }) {
   );
 }
 
+/** Marca Google Play (triángulo) para el CTA premium gemelo del de App Store. */
+export function PlayIcon({ size = 17 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M3 20.5V3.5c0-.8.8-1.3 1.5-.9l14.2 8.5c.7.4.7 1.4 0 1.8L4.5 21.4c-.7.4-1.5-.1-1.5-.9z" />
+    </svg>
+  );
+}
+
 export function StarIcon({ size = 11 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

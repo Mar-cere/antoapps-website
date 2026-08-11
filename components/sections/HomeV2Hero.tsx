@@ -1,13 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
+import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import HomeV2ChatVignette from '@/components/sections/HomeV2ChatVignette';
-import { appStoreHref, googlePlayHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
-import DownloadLink from '@/components/DownloadLink';
 
 type HomeV2HeroProps = {
   locale?: Locale;
@@ -65,27 +63,14 @@ export default function HomeV2Hero({ locale = 'es' }: HomeV2HeroProps) {
           className="home-v2-hero__cta home-v2-enter"
           style={{ '--home-v2-i': 4 } as React.CSSProperties}
         >
-          <PremiumStoreCta
-            storeHref={appStoreHref()}
-            storeLabel={hero.ctaStoreLabel}
-            storeName={hero.ctaStoreText}
-            badge={hero.ctaBadge}
-            ariaLabel={hero.storeAria}
-            trackingPlacement="home_hero_store_cta"
-              trackingPage={pagePath}
-              trackingLabel="home_hero"
+          <PremiumStoreCtaPair
+            locale={locale}
+            copy={hero}
+            trackingPage={pagePath}
+            trackingPlacementPrefix="home_hero"
+            trackingLabel="home_hero"
           />
           <p className="home-v2-hero__micro">{hero.ctaMicro}</p>
-          <DownloadLink
-            href={googlePlayHref(locale)}
-            className="home-v2-hero__android"
-            trackingPlacement="home_hero_play_store"
-            trackingPage={pagePath}
-            trackingLabel="home_v2_android"
-            aria-label={hero.androidStoreAria}
-          >
-            {hero.androidLink}
-          </DownloadLink>
         </div>
       </div>
       <span className="sr-only">{hero.imageAlt}</span>

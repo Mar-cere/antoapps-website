@@ -1,7 +1,6 @@
 'use client';
 
-import DownloadLink from '@/components/DownloadLink';
-import GooglePlayBadge from '@/components/GooglePlayBadge';
+import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
 import { googlePlayHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
@@ -30,16 +29,17 @@ export default function HomeV2Android({ locale = 'es' }: HomeV2AndroidProps) {
           <p className="home-v2-android__body">{android.body}</p>
         </div>
         <div className="home-v2-android__form reveal-on-scroll">
-          <DownloadLink
-            href={googlePlayHref(locale)}
-            className="store-badge-link"
+          <PremiumStoreCta
+            store="google"
+            storeHref={googlePlayHref(locale)}
+            storeLabel={android.ctaPlayLabel}
+            storeName={android.ctaPlayText}
+            badge={android.ctaPlayBadge}
+            ariaLabel={android.storeAria}
             trackingPlacement="home_android_play_store"
             trackingPage={pagePath}
-            trackingLabel="home_android_badge"
-            aria-label={android.storeAria}
-          >
-            <GooglePlayBadge locale={locale} />
-          </DownloadLink>
+            trackingLabel="home_android"
+          />
         </div>
       </div>
     </section>

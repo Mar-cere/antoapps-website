@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import AppStoreBadge from '@/components/AppStoreBadge';
-import GooglePlayBadge from '@/components/GooglePlayBadge';
 import DownloadLink from '@/components/DownloadLink';
+import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
 import type { LandingDevice } from '@/lib/device/landing-device';
 import { useLandingDevice } from '@/lib/hooks/useLandingDevice';
 import { googlePlayHref } from '@/lib/download-links';
@@ -132,33 +132,20 @@ export default function HeroDualCta({
     );
   };
 
-  const renderPlayStoreCta = (useBadge: boolean, className = '') => {
-    if (useBadge) {
-      return (
-        <DownloadLink
-          href={playHref}
-          className={`lad-hero-cta-badge-wrap lad-hero-cta-btn--android ${className}`.trim()}
-          trackingPlacement={androidTrackingPlacement}
-          trackingPage={pagePath}
-          trackingLabel={`play_store_badge_${landingVariant}`}
-          aria-label={copy.androidStoreAria}
-        >
-          <GooglePlayBadge locale={locale} className="lad-hero-store-badge" priority />
-        </DownloadLink>
-      );
-    }
-
+  const renderPlayStoreCta = (className = '') => {
     return (
-      <DownloadLink
-        href={playHref}
-        className={`btn btn-primary btn-large lad-hero-cta-btn lad-hero-cta-btn--android ${className}`.trim()}
+      <PremiumStoreCta
+        store="google"
+        storeHref={playHref}
+        storeLabel={copy.v2.ctaPlayLabel}
+        storeName={copy.v2.ctaPlayText}
+        badge={copy.v2.ctaPlayBadge}
+        ariaLabel={copy.androidStoreAria}
         trackingPlacement={androidTrackingPlacement}
         trackingPage={pagePath}
         trackingLabel={`play_store_${landingVariant}`}
-        aria-label={copy.androidStoreAria}
-      >
-        {copy.androidCta}
-      </DownloadLink>
+        className={className}
+      />
     );
   };
 
@@ -169,36 +156,17 @@ export default function HeroDualCta({
         id={isFinal ? 'descargar-final' : 'descargar'}
       >
         {isHero ? (
-          <div className="lad-hero-cta-row lad-hero-cta-row--ios">
+          <div className="premium-store-cta-stack">
             {renderIosStoreCta(true)}
-            <DownloadLink
-              href={playHref}
-              className="btn btn-secondary btn-large lad-hero-cta-btn lad-hero-cta-btn--android"
-              trackingPlacement={androidTrackingPlacement}
-              trackingPage={pagePath}
-              trackingLabel={`play_store_secondary_${landingVariant}`}
-              aria-label={copy.androidStoreAria}
-            >
-              {copy.androidHeroCta}
-            </DownloadLink>
+            {renderPlayStoreCta()}
           </div>
         ) : (
-          <div className="lad-hero-cta-single">{renderIosStoreCta(false)}</div>
+          <div className="premium-store-cta-stack">
+            {renderIosStoreCta(false)}
+            {renderPlayStoreCta()}
+          </div>
         )}
         <TrustLines copy={copy} showIosTrial />
-        {isFinal && (
-          <p className="lad-hero-ios-fallback">
-            <DownloadLink
-              href={playHref}
-              className="lad-hero-ios-fallback-link"
-              trackingPlacement="bienvenida_final_play_store_fallback"
-              trackingPage={pagePath}
-              trackingLabel={`play_fallback_${landingVariant}`}
-            >
-              {copy.androidLink}
-            </DownloadLink>
-          </p>
-        )}
       </div>
     );
   }
@@ -210,7 +178,7 @@ export default function HeroDualCta({
         id={isFinal ? 'descargar-final' : 'descargar'}
       >
         <p className="lad-hero-android-lead">{copy.androidDevice.leadLine}</p>
-        {renderPlayStoreCta(true)}
+        {renderPlayStoreCta()}
         <TrustLines copy={copy} showIosTrial={false} />
         <p className="lad-hero-ios-fallback">
           <DownloadLink
@@ -280,7 +248,7 @@ export default function HeroDualCta({
       id={isFinal ? 'descargar-final' : 'descargar'}
     >
       <p className="lad-hero-android-lead">{copy.androidDevice.leadLine}</p>
-      {renderPlayStoreCta(true, 'lad-hero-cta-badge-wrap--desktop')}
+      {renderPlayStoreCta()}
       <TrustLines copy={copy} showIosTrial={false} />
       <button type="button" className="lad-desktop-change-device" onClick={() => setDesktopChoice(null)}>
         {copy.desktopPicker.changeDevice}

@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import DownloadLink from '@/components/DownloadLink';
 import BienvenidaV2StoreCta from '@/components/bienvenida/v2/BienvenidaV2StoreCta';
+import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
 import { scrollToHeroCta } from '@/lib/bienvenida/landing-cta-events';
 import { getAttributionContext } from '@/lib/analytics/attribution';
 import { trackCustomEvent, withAttribution } from '@/lib/analytics/events';
@@ -46,7 +46,7 @@ export default function BienvenidaV2StickyCta({
 }: BienvenidaV2StickyCtaProps) {
   const device = useLandingDevice(initialDevice);
   const [visible, setVisible] = useState(false);
-  const playHref = googlePlayHref(locale);
+  const v2 = copy.v2;
 
   useEffect(() => {
     const heroCta = document.getElementById('descargar');
@@ -81,17 +81,17 @@ export default function BienvenidaV2StickyCta({
         />
       )}
       {device === 'android' && (
-        <DownloadLink
-          href={playHref}
-          className="lad-v2-sticky__alt"
+        <PremiumStoreCta
+          store="google"
+          storeHref={googlePlayHref(locale)}
+          storeLabel={v2.ctaPlayLabel}
+          storeName={v2.ctaPlayText}
+          badge={v2.ctaPlayBadge}
+          ariaLabel={copy.trial.stickyAndroidAria}
           trackingPlacement="bienvenida_v2_sticky_play_store"
           trackingPage={pagePath}
           trackingLabel={`sticky_play_${landingVariant}`}
-          aria-label={copy.trial.stickyAndroidAria}
-          onClick={() => trackStickyAction('android_play_store', pagePath, landingVariant)}
-        >
-          {copy.trial.stickyAndroidCta}
-        </DownloadLink>
+        />
       )}
       {device === 'desktop' && (
         <button type="button" className="lad-v2-sticky__alt" onClick={handleDesktopSticky}>

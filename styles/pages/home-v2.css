@@ -248,6 +248,11 @@
   width: 100%;
 }
 
+.home-v2-hero__cta .premium-store-cta-stack {
+  width: 100%;
+  max-width: 22rem;
+}
+
 @media (min-width: 900px) {
   .home-v2-hero {
     min-height: min(88vh, 52rem);
@@ -290,29 +295,6 @@
   text-align: left;
   line-height: 1.4;
   letter-spacing: 0.01em;
-}
-
-.home-v2-hero__android {
-  width: auto;
-  padding: 0;
-  border: none;
-  background: none;
-  font: inherit;
-  font-size: 0.75rem;
-  color: var(--color-primary);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
-.home-v2-hero__android:hover {
-  opacity: 0.85;
-}
-
-.home-v2-hero__android:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
 }
 
 /* ── Android (fuera del hero) ── */
@@ -1864,9 +1846,14 @@
   align-items: flex-start;
   gap: 0.75rem;
   width: 100%;
-  max-width: 21.25rem;
+  max-width: 22rem;
   margin-top: 0.25rem;
   padding-top: 0.25rem;
+}
+
+.home-v2-pricing__cta .premium-store-cta-stack {
+  width: 100%;
+  max-width: none;
 }
 
 .home-v2-pricing__micro {
@@ -2268,8 +2255,13 @@
   max-width: 34ch;
 }
 
+.home-v2-final-cta__inner .premium-store-cta-stack {
+  width: min(100%, 22rem);
+}
+
 .home-v2-final-cta__inner .premium-store-cta {
-  width: min(100%, 21.25rem);
+  width: 100%;
+  max-width: none;
 }
 
 .home-v2-final-cta__micro {

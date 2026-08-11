@@ -319,6 +319,10 @@
     outline-offset: 3px;
 }
 
+.lad-v2-play-secondary {
+    margin-top: 0.75rem;
+}
+
 .lad-v2-android-lead {
     margin: 0 0 1rem;
     font-size: 0.875rem;

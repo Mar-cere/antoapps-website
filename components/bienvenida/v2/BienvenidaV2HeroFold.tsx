@@ -1,9 +1,9 @@
 'use client';
 
 import DownloadLink from '@/components/DownloadLink';
-import GooglePlayBadge from '@/components/GooglePlayBadge';
 import InstagramBrowserHint from '@/components/bienvenida/InstagramBrowserHint';
 import BienvenidaV2StoreCta from '@/components/bienvenida/v2/BienvenidaV2StoreCta';
+import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
 import type { LandingDevice } from '@/lib/device/landing-device';
 import { googlePlayHref } from '@/lib/download-links';
 import { useLandingDevice } from '@/lib/hooks/useLandingDevice';
@@ -36,8 +36,23 @@ export default function BienvenidaV2HeroFold({
 
   const showIosStoreCta = device === 'ios' || device === 'desktop';
   const showAndroidPrimary = device === 'android';
-  // En iOS el Play Store no compite en el fold: solo en el CTA final.
-  const showAndroidLink = !isHero && (device === 'ios' || device === 'desktop');
+  const showAndroidSecondary = !isHero && (device === 'ios' || device === 'desktop');
+
+  const playCta = (
+    <PremiumStoreCta
+      store="google"
+      storeHref={playHref}
+      storeLabel={v2.ctaPlayLabel}
+      storeName={v2.ctaPlayText}
+      badge={v2.ctaPlayBadge}
+      ariaLabel={copy.androidStoreAria}
+      trackingPlacement={
+        isHero ? 'bienvenida_v2_hero_play_store' : 'bienvenida_v2_final_play_store'
+      }
+      trackingPage={pagePath}
+      trackingLabel={`play_store_${landingVariant}`}
+    />
+  );
 
   return (
     <div
@@ -58,19 +73,10 @@ export default function BienvenidaV2HeroFold({
         />
       )}
 
-      {showAndroidPrimary && (
-        <DownloadLink
-          href={playHref}
-          className="lad-hero-cta-badge-wrap lad-hero-cta-btn--android"
-          trackingPlacement={
-            isHero ? 'bienvenida_v2_hero_play_store' : 'bienvenida_v2_final_play_store'
-          }
-          trackingPage={pagePath}
-          trackingLabel={`play_store_${landingVariant}`}
-          aria-label={copy.androidStoreAria}
-        >
-          <GooglePlayBadge locale={locale} className="lad-hero-store-badge" priority />
-        </DownloadLink>
+      {showAndroidPrimary && playCta}
+
+      {showAndroidSecondary && (
+        <div className="premium-store-cta-stack lad-v2-play-secondary">{playCta}</div>
       )}
 
       {showIosStoreCta && <p className="lad-v2-cta-micro">{v2.ctaMicro}</p>}
@@ -81,19 +87,6 @@ export default function BienvenidaV2HeroFold({
 
       {isHero && showIosStoreCta && (
         <InstagramBrowserHint copy={copy.inAppHint} locale={locale} variant="cta" />
-      )}
-
-      {showAndroidLink && (
-        <DownloadLink
-          href={playHref}
-          className="lad-v2-android-link"
-          trackingPlacement="bienvenida_v2_final_play_store_link"
-          trackingPage={pagePath}
-          trackingLabel={`play_link_${landingVariant}`}
-          aria-label={copy.androidStoreAria}
-        >
-          {v2.androidLink}
-        </DownloadLink>
       )}
 
       {showAndroidPrimary && (

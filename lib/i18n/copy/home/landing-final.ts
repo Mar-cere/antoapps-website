@@ -46,7 +46,9 @@ export type HomeLandingFinalCopy = {
     ctaStoreText: string;
     ctaBadge: string;
     ctaMicro: string;
-    androidLink: string;
+    ctaPlayLabel: string;
+    ctaPlayText: string;
+    ctaPlayBadge: string;
     storeAria: string;
     androidStoreAria: string;
     heroReview: { quote: string; author: string; source: string };
@@ -121,7 +123,9 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       ctaStoreText: 'App Store',
       ctaBadge: 'Gratis',
       ctaMicro: '1 día de prueba · Sin tarjeta · Cancela cuando quieras',
-      androidLink: 'También en Google Play',
+      ctaPlayLabel: 'Disponible en',
+      ctaPlayText: 'Google Play',
+      ctaPlayBadge: 'Gratis',
       storeAria: 'Descargar Anto en App Store',
       androidStoreAria: 'Descargar Anto en Google Play',
       heroReview: {
@@ -332,7 +336,9 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       ctaStoreText: 'App Store',
       ctaBadge: 'Free',
       ctaMicro: '1-day trial · No card required · Cancel anytime',
-      androidLink: 'Also on Google Play',
+      ctaPlayLabel: 'Get it on',
+      ctaPlayText: 'Google Play',
+      ctaPlayBadge: 'Free',
       storeAria: 'Download Anto on the App Store',
       androidStoreAria: 'Download Anto on Google Play',
       heroReview: {

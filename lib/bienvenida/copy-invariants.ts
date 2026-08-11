@@ -58,6 +58,9 @@ export function assertBienvenidaCopyInvariants(): string[] {
     if (!copy.androidCta.trim() || !copy.androidLink.trim() || !copy.androidStoreAria.trim()) {
       errors.push(`${tag} copy de Google Play incompleto`);
     }
+    if (!copy.v2.ctaPlayLabel.trim() || !copy.v2.ctaPlayBadge.trim()) {
+      errors.push(`${tag} v2 Google Play CTA incompleto`);
+    }
 
     if (!copy.androidDevice.leadLine.trim()) {
       errors.push(`${tag} androidDevice.leadLine vacío`);
@@ -91,7 +94,7 @@ export function assertBienvenidaCopyInvariants(): string[] {
     if (!v2.eyebrow.trim() || !v2.heroTitlePrefix.trim() || !v2.heroTitleHighlight.trim()) {
       errors.push(`${tag} v2 hero copy incompleto`);
     }
-    if (!v2.heroSub.trim() || !v2.ctaMicro.trim() || !v2.androidLink.trim()) {
+    if (!v2.heroSub.trim() || !v2.ctaMicro.trim() || !v2.ctaPlayText.trim()) {
       errors.push(`${tag} v2 CTA copy incompleto`);
     }
     if (!v2.heroReview.quote.trim() || !v2.heroReview.author.trim()) {

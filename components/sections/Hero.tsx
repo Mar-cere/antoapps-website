@@ -2,15 +2,13 @@
 
 import Image from 'next/image';
 import AppReviewCard from '@/components/ui/AppReviewCard';
-import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
-import DownloadLink from '@/components/DownloadLink';
+import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import {
   APP_SCREENSHOT_HEIGHT,
   APP_SCREENSHOT_WIDTH,
   getHomeLandingScreenshotAlt,
   getHomeLandingScreenshotPath,
 } from '@/lib/assets/app-screenshots';
-import { appStoreHref, googlePlayHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 import HomeHeroTrust from '@/components/sections/HomeHeroTrust';
@@ -40,28 +38,15 @@ export default function Hero({ locale = 'es' }: HeroProps) {
           </h1>
           <p className="home-landing-hero__sub">{copy.subtitle}</p>
           <div className="home-landing-cta-wrap">
-            <PremiumStoreCta
-              storeHref={appStoreHref()}
-              storeLabel={copy.ctaStoreLabel}
-              storeName={copy.ctaStoreText}
-              badge={copy.ctaBadge}
-              ariaLabel={copy.storeAria}
-              trackingPlacement="home_hero_store_cta"
+            <PremiumStoreCtaPair
+              locale={locale}
+              copy={copy}
               trackingPage={pagePath}
+              trackingPlacementPrefix="home_hero"
               trackingLabel="home_hero_final"
             />
             <p className="home-landing-cta-micro">{copy.ctaMicro}</p>
             <HomeHeroTrust locale={locale} />
-            <DownloadLink
-              href={googlePlayHref(locale)}
-              className="home-landing-android-link"
-              trackingPlacement="home_hero_play_store"
-              trackingPage={pagePath}
-              trackingLabel="home_hero_android"
-              aria-label={copy.androidStoreAria}
-            >
-              {copy.androidLink}
-            </DownloadLink>
           </div>
         </div>
 

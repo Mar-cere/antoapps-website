@@ -140,7 +140,9 @@ export type BienvenidaCopy = {
     ctaStoreText: string;
     ctaBadge: string;
     ctaMicro: string;
-    androidLink: string;
+    ctaPlayLabel: string;
+    ctaPlayText: string;
+    ctaPlayBadge: string;
     chatSectionLabel: string;
     chat: BienvenidaV2ChatThread;
     features: readonly { icon: BienvenidaV2FeatureIcon; title: string; subtitle: string }[];
@@ -366,7 +368,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ctaStoreText: 'App Store',
         ctaBadge: trial.short,
         ctaMicro: `Start free today · No card · Private`,
-        androidLink: 'Also on Google Play for Android',
+        ctaPlayLabel: 'Get it on',
+        ctaPlayText: 'Google Play',
+        ctaPlayBadge: trial.short,
         chatSectionLabel: 'On your iPhone',
         chat: {
           ariaLabel: 'Sample Anto chat: racing mind, then one concrete step',
@@ -617,7 +621,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       ctaStoreText: 'App Store',
       ctaBadge: trial.short,
       ctaMicro: `Empieza gratis hoy · Sin tarjeta · Privado`,
-      androidLink: 'También en Google Play para Android',
+      ctaPlayLabel: 'Disponible en',
+      ctaPlayText: 'Google Play',
+      ctaPlayBadge: trial.short,
       chatSectionLabel: 'Así se ve en tu iPhone',
       chat: {
         ariaLabel: 'Chat de ejemplo en Anto: mente que no para y un paso concreto',

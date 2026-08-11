@@ -142,7 +142,9 @@ export type HomeV2Copy = {
     ctaBadge: string;
     ctaMicro: string;
     storeAria: string;
-    androidLink: string;
+    ctaPlayLabel: string;
+    ctaPlayText: string;
+    ctaPlayBadge: string;
     androidStoreAria: string;
     imageAlt: string;
     chat: HomeV2ChatThread;
@@ -183,6 +185,9 @@ export type HomeV2Copy = {
     title: string;
     body: string;
     storeAria: string;
+    ctaPlayLabel: string;
+    ctaPlayText: string;
+    ctaPlayBadge: string;
   };
   faq: {
     title: string;
@@ -221,7 +226,9 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         ctaBadge: trial.short,
         ctaMicro: `${trial.short} · No card · Cancel anytime`,
         storeAria: 'Download Anto on the App Store',
-        androidLink: 'Also on Google Play',
+        ctaPlayLabel: 'Get it on',
+        ctaPlayText: 'Google Play',
+        ctaPlayBadge: trial.short,
         androidStoreAria: 'Download Anto on Google Play',
         imageAlt: 'Quiet evening light through a window, empty room at dusk',
         chat: {
@@ -392,6 +399,9 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         title: 'On Android too.',
         body: 'Anto is on Google Play. Download it on your Android phone — same emotional support, same privacy.',
         storeAria: 'Download Anto on Google Play',
+        ctaPlayLabel: 'Get it on',
+        ctaPlayText: 'Google Play',
+        ctaPlayBadge: trial.short,
       },
       faq: {
         title: 'What people usually ask.',
@@ -474,7 +484,9 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       ctaBadge: trial.short,
       ctaMicro: `${trial.short} · Sin tarjeta · Cancela cuando quieras`,
       storeAria: 'Descargar Anto en App Store',
-      androidLink: 'También en Google Play',
+      ctaPlayLabel: 'Disponible en',
+      ctaPlayText: 'Google Play',
+      ctaPlayBadge: trial.short,
       androidStoreAria: 'Descargar Anto en Google Play',
       imageAlt: 'Luz de tarde en una habitación quieta, ventana al anochecer',
       chat: {
@@ -645,6 +657,9 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       title: 'También en Android.',
       body: 'Anto está en Google Play. Descárgala en tu Android — el mismo acompañamiento emocional, la misma privacidad.',
       storeAria: 'Descargar Anto en Google Play',
+      ctaPlayLabel: 'Disponible en',
+      ctaPlayText: 'Google Play',
+      ctaPlayBadge: trial.short,
     },
     faq: {
       title: 'Lo que suele preguntarse.',

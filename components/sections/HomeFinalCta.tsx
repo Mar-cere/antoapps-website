@@ -1,7 +1,6 @@
 'use client';
 
-import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
-import { appStoreHref } from '@/lib/download-links';
+import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 
@@ -26,14 +25,11 @@ export default function HomeFinalCta({ locale = 'es' }: HomeFinalCtaProps) {
           {finalCta.title}
         </h2>
         <p className="home-landing-final-cta__sub">{finalCta.subtitle}</p>
-        <PremiumStoreCta
-          storeHref={appStoreHref()}
-          storeLabel={hero.ctaStoreLabel}
-          storeName={hero.ctaStoreText}
-          badge={hero.ctaBadge}
-          ariaLabel={hero.storeAria}
-          trackingPlacement="home_final_store_cta"
+        <PremiumStoreCtaPair
+          locale={locale}
+          copy={hero}
           trackingPage={pagePath}
+          trackingPlacementPrefix="home_final"
           trackingLabel="home_final_cta"
         />
         <p className="home-landing-cta-micro">{hero.ctaMicro}</p>

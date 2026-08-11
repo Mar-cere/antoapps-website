@@ -956,6 +956,14 @@
     flex-wrap: wrap;
 }
 
+.cta-buttons--stores {
+    flex-direction: column;
+}
+
+.cta-buttons--stores .premium-store-cta-stack {
+    margin-inline: auto;
+}
+
 .cta-badges {
     display: flex;
     gap: var(--spacing-3);

@@ -72,13 +72,34 @@
     white-space: nowrap;
 }
 
+.premium-store-cta--google .premium-store-cta__icon {
+    background: #111;
+}
+
+.premium-store-cta-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    width: 100%;
+    max-width: 22rem;
+}
+
+.premium-store-cta-stack .premium-store-cta {
+    max-width: none;
+}
+
 .lad-v2-sticky .premium-store-cta {
     max-width: none;
     margin: 0;
 }
 
+.lad-v2-sticky .premium-store-cta-stack {
+    max-width: none;
+}
+
 @media (min-width: 968px) {
-    .hero--premium .premium-store-cta {
+    .hero--premium .premium-store-cta,
+    .hero--premium .premium-store-cta-stack {
         max-width: 20rem;
     }
 }
