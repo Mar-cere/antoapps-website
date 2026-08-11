@@ -20,7 +20,7 @@ Descargar Anto: **par igual** App Store + Google Play en hero, pricing y Final C
 1. Hero budget: brand + H1 + apoyo corto + par de stores + ancla chat/foto. Límite clínico con fuerza en FAQ + coda Explore (no en el support del hero).
 2. Peak-end: Final CTA es el último beat editorial. Explore va **antes** del Final CTA.
 3. Fotografía de cierre distinta del hero (`sleeplessNight` ≠ `evening`).
-4. Cookie: sólido sin blur; no tapa `#precios` / Final CTA; scroll ≥900px + delay 8s.
+4. Cookie: sólido sin blur; no tapa `#precios` / Final CTA. Aparece solo con **delay Y scroll** (desktop 8s/900px; móvil 12s/1600px). Barra compacta en viewport estrecho.
 5. Motion: un momento = burbujas del chat hero. Sin reveal genérico en el resto.
 6. Sin franja hero-metric; paneles sin eyebrows de plantilla.
 7. Explore: hub + 1 guía featured + app (iPhone y Android) + seguridad. Copy muted/disclaimer con contraste tintado al secondary.

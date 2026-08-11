@@ -12,6 +12,9 @@ type CookieConsentProps = {
   compact?: boolean;
   bannerDelayMs?: number;
   showAfterScrollPx?: number;
+  mobileBannerDelayMs?: number;
+  mobileShowAfterScrollPx?: number;
+  mobileMaxWidthPx?: number;
 };
 
 function resolveLocale(pathname: string): Locale {
@@ -22,6 +25,9 @@ export default function CookieConsent({
   compact = false,
   bannerDelayMs,
   showAfterScrollPx,
+  mobileBannerDelayMs,
+  mobileShowAfterScrollPx,
+  mobileMaxWidthPx,
 }: CookieConsentProps) {
   const pathname = usePathname();
   const locale = resolveLocale(pathname ?? '');
@@ -31,6 +37,9 @@ export default function CookieConsent({
   const { showBanner, acceptCookies, rejectCookies } = useCookieConsent({
     bannerDelayMs,
     showAfterScrollPx,
+    mobileBannerDelayMs,
+    mobileShowAfterScrollPx,
+    mobileMaxWidthPx,
   });
 
   if (!showBanner) return null;

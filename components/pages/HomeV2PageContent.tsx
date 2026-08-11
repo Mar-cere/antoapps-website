@@ -70,7 +70,13 @@ export default function HomeV2PageContent({ locale }: HomeV2PageContentProps) {
         </PullToRefresh>
         <HomeMinimalFooter locale={locale} />
         <FaqJsonLd />
-        <CookieConsent compact bannerDelayMs={8000} showAfterScrollPx={900} />
+        <CookieConsent
+          compact
+          bannerDelayMs={8000}
+          showAfterScrollPx={900}
+          mobileBannerDelayMs={12000}
+          mobileShowAfterScrollPx={1600}
+        />
       </div>
     </LocaleProvider>
   );
