@@ -62,7 +62,15 @@
   --home-v2-ink: #ffffff;
   --home-v2-muted: rgba(255, 255, 255, 0.86);
   --home-v2-soft: rgba(255, 255, 255, 0.74);
+  /* Shell unificado: layout usa --hl-max; prosa puede usar medida ch. */
+  --home-v2-read: 42ch;
+  --home-v2-cta-w: 22rem;
   background: var(--color-bg-primary);
+}
+
+.home-landing-page--v2 .home-landing-container {
+  width: 100%;
+  max-width: var(--hl-max, 72rem);
 }
 
 /* Sin grilla/glow “soft product 2022” ni acentos azules del landing legacy */
@@ -88,6 +96,7 @@
   box-shadow: none;
   transition:
     background 0.22s ease,
+    border-color 0.22s ease,
     color 0.22s ease,
     transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -96,6 +105,7 @@
   transform: translateY(-1px);
   box-shadow: none;
   background: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .home-landing-page--v2 .premium-store-cta:hover .premium-store-cta__name,
@@ -126,6 +136,56 @@
 .home-landing-page--v2 .premium-store-cta:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
+}
+
+/* Play: ghost teal sobre dark (mismo peso, color distinto al blanco del App Store) */
+.home-landing-page--v2 .premium-store-cta--google {
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  border-color: color-mix(in srgb, var(--color-primary) 45%, transparent);
+}
+
+.home-landing-page--v2 .premium-store-cta--google .premium-store-cta__name {
+  color: var(--home-v2-ink);
+}
+
+.home-landing-page--v2 .premium-store-cta--google .premium-store-cta__label {
+  color: var(--home-v2-soft);
+}
+
+.home-landing-page--v2 .premium-store-cta--google .premium-store-cta__icon {
+  background: var(--color-primary);
+  color: #030a24;
+}
+
+.home-landing-page--v2 .premium-store-cta--google .premium-store-cta__badge {
+  background: color-mix(in srgb, var(--color-primary) 18%, transparent);
+  color: var(--color-primary);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 40%, transparent);
+}
+
+.home-landing-page--v2 .premium-store-cta--google:hover {
+  background: color-mix(in srgb, var(--color-secondary) 22%, transparent);
+  border-color: color-mix(in srgb, var(--color-secondary) 55%, transparent);
+}
+
+.home-landing-page--v2 .premium-store-cta--google:hover .premium-store-cta__name,
+.home-landing-page--v2 .premium-store-cta--google:hover .premium-store-cta__label {
+  color: var(--home-v2-ink);
+}
+
+.home-landing-page--v2 .premium-store-cta--google:hover .premium-store-cta__icon {
+  background: var(--color-secondary);
+  color: #030a24;
+}
+
+.home-landing-page--v2 .premium-store-cta--google:hover .premium-store-cta__badge {
+  background: color-mix(in srgb, var(--color-secondary) 22%, transparent);
+  color: var(--color-secondary);
+  border-color: color-mix(in srgb, var(--color-secondary) 50%, transparent);
+}
+
+.home-landing-page--v2 .premium-store-cta--google:focus-visible {
+  outline-color: var(--color-secondary);
 }
 
 /* ── Hero ── */
@@ -207,7 +267,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.75rem;
-  max-width: 21.25rem;
+  max-width: var(--home-v2-cta-w, 22rem);
+  width: 100%;
   align-self: start;
 }
 
@@ -250,7 +311,7 @@
 
 .home-v2-hero__cta .premium-store-cta-stack {
   width: 100%;
-  max-width: 22rem;
+  max-width: none;
 }
 
 @media (min-width: 900px) {
@@ -295,54 +356,6 @@
   text-align: left;
   line-height: 1.4;
   letter-spacing: 0.01em;
-}
-
-/* ── Android (fuera del hero) ── */
-
-.home-v2-android {
-  padding: var(--home-v2-section-y) 0;
-  border-top: 1px solid var(--home-v2-hairline);
-  background: var(--color-bg-secondary);
-}
-
-.home-v2-android__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: clamp(1.5rem, 4vw, 2.75rem);
-  align-items: start;
-}
-
-.home-v2-android__title {
-  margin: 0 0 0.75rem;
-  font-size: clamp(1.65rem, 3.5vw, 2.25rem);
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  line-height: 1.15;
-  color: #fff;
-  text-wrap: balance;
-}
-
-.home-v2-android__body {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.55;
-  color: var(--home-v2-muted);
-  max-width: 36ch;
-}
-
-.home-v2-android__form {
-  max-width: 24rem;
-}
-
-@media (max-width: 899px) {
-  .home-v2-android__inner {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .home-v2-android__form {
-    max-width: none;
-  }
 }
 
 /* ── Paneles de producto (familia visual única) ── */
@@ -1239,7 +1252,7 @@
 
 .home-v2-foundation__head {
   margin: 0 0 2.25rem;
-  max-width: 36rem;
+  max-width: none;
 }
 
 .home-v2-foundation__title {
@@ -1254,7 +1267,7 @@
 
 .home-v2-foundation__support {
   margin: 0;
-  max-width: 42ch;
+  max-width: var(--home-v2-read, 42ch);
   font-size: 1.05rem;
   line-height: 1.55;
   color: var(--home-v2-muted);
@@ -1266,6 +1279,7 @@
   margin: 0;
   padding: 0;
   border-top: 1px solid var(--home-v2-hairline-strong);
+  width: 100%;
 }
 
 .home-v2-foundation__item {
@@ -1287,7 +1301,7 @@
 
 .home-v2-foundation__item-body {
   margin: 0;
-  max-width: 48ch;
+  max-width: min(65ch, 100%);
   font-size: 0.975rem;
   line-height: 1.55;
   color: var(--home-v2-muted);
@@ -1372,7 +1386,7 @@
 
 .home-v2-explore__coda {
   margin-top: 1.35rem;
-  max-width: 38rem;
+  max-width: min(65ch, 100%);
 }
 
 .home-v2-explore__trust {
@@ -1474,7 +1488,7 @@
 
 .home-v2-reviews__head {
   margin: 0 0 2.5rem;
-  max-width: 20rem;
+  max-width: none;
 }
 
 .home-v2-reviews__title {
@@ -1621,7 +1635,7 @@
 
 .home-v2-pricing__head {
   margin: 0;
-  max-width: 30rem;
+  max-width: none;
 }
 
 .home-v2-pricing__title {
@@ -1638,14 +1652,15 @@
   font-size: 1.0625rem;
   line-height: 1.5;
   color: var(--home-v2-muted);
-  max-width: 34ch;
+  max-width: var(--home-v2-read, 42ch);
 }
 
 .home-v2-pricing__body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-width: 28rem;
+  max-width: none;
+  width: 100%;
 }
 
 .home-v2-pricing__featured {
@@ -1739,7 +1754,7 @@
   align-items: flex-start;
   gap: 0.75rem;
   width: 100%;
-  max-width: 22rem;
+  max-width: var(--home-v2-cta-w, 22rem);
   margin-top: 0.25rem;
   padding-top: 0.25rem;
 }
@@ -2048,7 +2063,7 @@
 }
 
 .home-v2-final-cta__inner .premium-store-cta-stack {
-  width: min(100%, 22rem);
+  width: min(100%, var(--home-v2-cta-w, 22rem));
 }
 
 .home-v2-final-cta__inner .premium-store-cta {

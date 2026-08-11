@@ -170,14 +170,6 @@ export type HomeV2Copy = {
     cards: readonly HomeV2PriceCard[];
     ctaMicro: string;
   };
-  android: {
-    title: string;
-    body: string;
-    storeAria: string;
-    ctaPlayLabel: string;
-    ctaPlayText: string;
-    ctaPlayBadge: string;
-  };
   faq: {
     title: string;
     items: readonly { question: string; answer: string }[];
@@ -375,14 +367,6 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           },
         ],
         ctaMicro: `${trial.short} · No card required`,
-      },
-      android: {
-        title: 'On Android too.',
-        body: 'Anto is on Google Play. Download it on your Android phone - same emotional support, same privacy.',
-        storeAria: 'Download Anto on Google Play',
-        ctaPlayLabel: 'Get it on',
-        ctaPlayText: 'Google Play',
-        ctaPlayBadge: trial.short,
       },
       faq: {
         title: 'What people usually ask.',
@@ -625,14 +609,6 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         },
       ],
       ctaMicro: `${trial.short} · Sin tarjeta`,
-    },
-    android: {
-      title: 'También en Android.',
-      body: 'Anto está en Google Play. Descárgala en tu Android - el mismo acompañamiento emocional, la misma privacidad.',
-      storeAria: 'Descargar Anto en Google Play',
-      ctaPlayLabel: 'Disponible en',
-      ctaPlayText: 'Google Play',
-      ctaPlayBadge: trial.short,
     },
     faq: {
       title: 'Lo que suele preguntarse.',

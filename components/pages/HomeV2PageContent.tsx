@@ -14,7 +14,6 @@ import HomeV2Foundation from '@/components/sections/HomeV2Foundation';
 import HomeV2Still from '@/components/sections/HomeV2Still';
 import HomeV2Reviews from '@/components/sections/HomeV2Reviews';
 import HomeV2Pricing from '@/components/sections/HomeV2Pricing';
-import HomeV2Android from '@/components/sections/HomeV2Android';
 import HomeV2Faq from '@/components/sections/HomeV2Faq';
 import HomeV2FinalCta from '@/components/sections/HomeV2FinalCta';
 import HomeV2Explore from '@/components/sections/HomeV2Explore';
@@ -63,7 +62,6 @@ export default function HomeV2PageContent({ locale }: HomeV2PageContentProps) {
               <HomeV2Still locale={locale} />
               <HomeV2Reviews locale={locale} />
               <HomeV2Pricing locale={locale} />
-              <HomeV2Android locale={locale} />
               <HomeV2Faq locale={locale} />
               <HomeV2Explore locale={locale} />
               <HomeV2FinalCta locale={locale} />

@@ -8,12 +8,17 @@
     max-width: 22rem;
     padding: 0.9375rem 1.25rem;
     background: #fff;
-    border: none;
+    border: 1px solid transparent;
     border-radius: 0.875rem;
     text-decoration: none;
     box-sizing: border-box;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.22s ease,
+        border-color 0.22s ease,
+        color 0.22s ease;
 }
 
 .premium-store-cta:hover {
@@ -68,12 +73,24 @@
     padding: 0.3125rem 0.75rem;
     font-size: 0.75rem;
     font-weight: 500;
-    color: #fff;
+    color: #030a24;
     white-space: nowrap;
 }
 
+/* Google Play: misma estructura, tono teal suave (no gemelo del App Store) */
+.premium-store-cta--google {
+    background: color-mix(in srgb, var(--color-primary, #1adddb) 16%, #fff);
+    border-color: color-mix(in srgb, var(--color-primary, #1adddb) 42%, transparent);
+}
+
 .premium-store-cta--google .premium-store-cta__icon {
-    background: #111;
+    background: var(--color-primary, #1adddb);
+    color: #030a24;
+}
+
+.premium-store-cta--google .premium-store-cta__badge {
+    background: #030a24;
+    color: var(--color-primary, #1adddb);
 }
 
 .premium-store-cta-stack {

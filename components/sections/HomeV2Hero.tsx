@@ -1,12 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
+import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import HomeV2ChatVignette from '@/components/sections/HomeV2ChatVignette';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
-import { appStoreHref } from '@/lib/download-links';
 
 type HomeV2HeroProps = {
   locale?: Locale;
@@ -47,16 +46,12 @@ export default function HomeV2Hero({ locale = 'es' }: HomeV2HeroProps) {
         </div>
 
         <div className="home-v2-hero__cta">
-          <PremiumStoreCta
-            store="apple"
-            storeHref={appStoreHref()}
-            storeLabel={hero.ctaStoreLabel}
-            storeName={hero.ctaStoreText}
-            badge={hero.ctaBadge}
-            ariaLabel={hero.storeAria}
-            trackingPlacement="home_hero_app_store"
+          <PremiumStoreCtaPair
+            locale={locale}
+            copy={hero}
             trackingPage={pagePath}
-            trackingLabel="home_hero_ios"
+            trackingPlacementPrefix="home_hero"
+            trackingLabel="home_hero"
           />
           <p className="home-v2-hero__micro">{hero.ctaMicro}</p>
         </div>

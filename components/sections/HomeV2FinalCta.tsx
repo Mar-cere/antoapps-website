@@ -1,17 +1,16 @@
 'use client';
 
 import Image from 'next/image';
-import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
+import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
-import { appStoreHref } from '@/lib/download-links';
 
 type HomeV2FinalCtaProps = {
   locale?: Locale;
 };
 
-/** Cierre peak-end: foto distinta del hero + un CTA primario (App Store). */
+/** Cierre peak-end: foto distinta del hero + par App Store / Google Play. */
 export default function HomeV2FinalCta({ locale = 'es' }: HomeV2FinalCtaProps) {
   const copy = getHomeV2Copy(locale);
   const pagePath = locale === 'en' ? '/en' : '/';
@@ -35,16 +34,12 @@ export default function HomeV2FinalCta({ locale = 'es' }: HomeV2FinalCtaProps) {
           {copy.finalCta.title}
         </h2>
         <p className="home-v2-final-cta__sub">{copy.finalCta.subtitle}</p>
-        <PremiumStoreCta
-          store="apple"
-          storeHref={appStoreHref()}
-          storeLabel={hero.ctaStoreLabel}
-          storeName={hero.ctaStoreText}
-          badge={hero.ctaBadge}
-          ariaLabel={hero.storeAria}
-          trackingPlacement="home_final_app_store"
+        <PremiumStoreCtaPair
+          locale={locale}
+          copy={hero}
           trackingPage={pagePath}
-          trackingLabel="home_final_cta_ios"
+          trackingPlacementPrefix="home_final"
+          trackingLabel="home_final_cta"
         />
         <p className="home-v2-final-cta__micro">{hero.ctaMicro}</p>
       </div>

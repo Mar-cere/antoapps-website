@@ -54,7 +54,7 @@ const PAGE_LABELS: Record<Locale, Record<string, string>> = {
 
 const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
   es: {
-    '': 'Home editorial: acompañamiento para horas quietas, demos de producto, foundation (memoria/técnicas), reviews, precios, FAQ y descarga App Store.',
+    '': 'Home editorial: acompañamiento para horas quietas, demos de producto, foundation (memoria/técnicas), reviews, precios, FAQ y descarga en App Store y Google Play.',
     '/bienvenida': 'Landing de conversión (Meta Ads): apoyo emocional para ansiedad en iPhone; prueba 1 día gratis.',
     '/app': 'Detalle de funcionalidades, capturas y enlaces de descarga.',
     '/seguridad': 'Cifrado, política de datos, límites clínicos y cumplimiento.',
@@ -69,7 +69,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '/terminos': 'Condiciones de uso del servicio.',
   },
   en: {
-    '': 'Editorial home: support for quiet hours, product demos, foundation (memory/techniques), reviews, pricing, FAQ, App Store download.',
+    '': 'Editorial home: support for quiet hours, product demos, foundation (memory/techniques), reviews, pricing, FAQ, App Store and Google Play download.',
     '/bienvenida': 'Conversion landing (Meta Ads): emotional support for anxiety on iPhone; 1-day free trial.',
     '/app': 'Feature detail, screenshots, download links.',
     '/seguridad': 'Encryption, data policy, clinical limits, compliance.',
