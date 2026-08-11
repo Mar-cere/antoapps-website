@@ -2,6 +2,7 @@
 
 import type { Locale } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
+import type { LandingDevice } from '@/lib/device/landing-device';
 import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
@@ -24,11 +25,15 @@ import '@/styles/pages/home-v2.css';
 
 type HomeV2PageContentProps = {
   locale: Locale;
+  initialDevice?: LandingDevice;
 };
 
 /** Home publicada — editorial Anto. */
-export default function HomeV2PageContent({ locale }: HomeV2PageContentProps) {
-  const nav = getHomeV2Copy(locale).nav;
+export default function HomeV2PageContent({
+  locale,
+  initialDevice = 'ios',
+}: HomeV2PageContentProps) {
+  const { nav, hero } = getHomeV2Copy(locale);
 
   return (
     <LocaleProvider locale={locale}>
@@ -36,9 +41,10 @@ export default function HomeV2PageContent({ locale }: HomeV2PageContentProps) {
         <ClientInitializer />
         <HomeMinimalNav
           locale={locale}
-          ctaHref="#precios"
           ctaLabel={nav.cta}
-          ctaAria={nav.ctaAria}
+          ctaAria={hero.storeAria}
+          ctaAriaAndroid={hero.androidStoreAria}
+          initialDevice={initialDevice}
         />
         <PullToRefresh
           onRefresh={async () => {

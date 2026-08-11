@@ -14,7 +14,7 @@ Persuade
 Visitante que busca apoyo emocional digital y evalúa confianza, claridad y privacidad antes de descargar.
 
 ## Primary action
-Descargar Anto: **par igual** App Store + Google Play en hero, pricing y Final CTA (mismo componente `PremiumStoreCtaPair`). Sin sección `#android` dedicada.
+Descargar Anto: **par igual** App Store + Google Play en hero, pricing y Final CTA (`PremiumStoreCtaPair`). Nav “Descargar” abre la store del dispositivo (iOS → App Store, Android → Play; desktop → App Store). Sin sección `#android` dedicada.
 
 ## Sprint A–C contracts (binding)
 1. Hero budget: brand + H1 + apoyo corto + par de stores + ancla chat/foto. Límite clínico con fuerza en FAQ + coda Explore (no en el support del hero).

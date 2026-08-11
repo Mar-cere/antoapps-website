@@ -236,7 +236,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       },
       nav: {
         cta: 'Download',
-        ctaAria: 'Go to pricing and download options',
+        ctaAria: 'Download Anto for your device',
       },
       recognize: {
         lead: 'Some days you are not exactly unwell.',
@@ -478,7 +478,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
     },
     nav: {
       cta: 'Descargar',
-      ctaAria: 'Ir a precios y opciones de descarga',
+      ctaAria: 'Descargar Anto para tu dispositivo',
     },
     recognize: {
       lead: 'Hay días en que no estás exactamente mal.',
