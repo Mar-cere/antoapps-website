@@ -123,6 +123,20 @@ export function assertBienvenidaCopyInvariants(): string[] {
     if (v2.dashboard.image.src !== APP_SCREENSHOT_PATHS.home) {
       errors.push(`${tag} v2.dashboard.image.src debe usar APP_SCREENSHOT_PATHS.home`);
     }
+    if (!v2.photoAlt.trim()) {
+      errors.push(`${tag} v2.photoAlt vacío`);
+    }
+    if (!v2.limitsHeading.trim()) {
+      errors.push(`${tag} v2.limitsHeading vacío`);
+    }
+    if (v2.limits.length !== 3) {
+      errors.push(`${tag} v2.limits debe tener 3 ítems`);
+    }
+    for (const limit of v2.limits) {
+      if (!limit.title.trim() || !limit.body.trim()) {
+        errors.push(`${tag} v2.limits incompleto`);
+      }
+    }
     for (const image of copy.screenshots.images) {
       if (!image.src.trim() || !image.alt.trim()) {
         errors.push(`${tag} screenshots.images incompleto`);

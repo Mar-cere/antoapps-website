@@ -153,6 +153,9 @@ export type BienvenidaCopy = {
       image: { src: string; alt: string };
     };
     trustItems: readonly { icon: BienvenidaV2TrustIcon; label: string }[];
+    photoAlt: string;
+    limitsHeading: string;
+    limits: readonly { title: string; body: string }[];
   };
 };
 
@@ -162,7 +165,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
   if (locale === 'en') {
     return {
       meta: {
-        title: 'Anto — Emotional support for anxiety | iPhone app',
+        title: 'Anto: Emotional support for anxiety | iPhone app',
         description:
           'Emotional support app for iPhone: when anxiety or a racing mind won\'t stop, write what you feel and get clarity with one concrete step. 1-day free trial on the App Store.',
         socialDescription:
@@ -354,8 +357,8 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       },
       v2: {
         eyebrow: 'Emotional support for anxiety',
-        heroTitlePrefix: 'When your mind\nwon\'t slow down,',
-        heroTitleHighlight: 'Anto helps you\nland.',
+        heroTitlePrefix: 'When your mind won\'t slow down,',
+        heroTitleHighlight: 'Anto helps you land.',
         heroSub:
           'Write what you feel. Get clarity and one concrete step when anxiety won\'t let go.',
         heroReview: {
@@ -409,13 +412,29 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           { icon: 'no-card', label: 'No card' },
           { icon: 'chile', label: 'Made in Chile' },
         ],
+        photoAlt: 'A quiet bedroom at night when sleep will not come',
+        limitsHeading: 'Worth knowing',
+        limits: [
+          {
+            title: 'Not therapy',
+            body: 'Anto does not diagnose or replace clinical care.',
+          },
+          {
+            title: 'Private',
+            body: 'Only you read your conversations.',
+          },
+          {
+            title: 'If you are in crisis',
+            body: 'Seek professional or emergency help in your country.',
+          },
+        ],
       },
     };
   }
 
   return {
     meta: {
-      title: 'Anto — Apoyo emocional para ansiedad | App iPhone',
+      title: 'Anto: Apoyo emocional para ansiedad | App iPhone',
       description:
         'App de apoyo emocional para iPhone: cuando la ansiedad o tu mente no paran, escribe lo que sientes y recibe claridad con un paso concreto. Prueba 1 día gratis en App Store.',
       socialDescription:
@@ -607,8 +626,8 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
     },
     v2: {
       eyebrow: 'Apoyo emocional para ansiedad',
-      heroTitlePrefix: 'Cuando tu mente\nno para,',
-      heroTitleHighlight: 'Anto te ayuda\na aterrizar.',
+      heroTitlePrefix: 'Cuando tu mente no para,',
+      heroTitleHighlight: 'Anto te ayuda a aterrizar.',
       heroSub:
         'Escribe lo que sientes. Claridad y un paso concreto cuando la ansiedad no te deja.',
       heroReview: {
@@ -661,6 +680,22 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         { icon: 'lock', label: 'Privado' },
         { icon: 'no-card', label: 'Sin tarjeta' },
         { icon: 'chile', label: 'Hecho en Chile' },
+      ],
+      photoAlt: 'Una habitación de noche, cuando el sueño no llega',
+      limitsHeading: 'Importante saber',
+      limits: [
+        {
+          title: 'No es terapia',
+          body: 'Anto no diagnostica ni sustituye atención clínica.',
+        },
+        {
+          title: 'Privado',
+          body: 'Solo tú lees tus conversaciones.',
+        },
+        {
+          title: 'Si estás en crisis',
+          body: 'Busca ayuda profesional o de emergencia en tu país.',
+        },
       ],
     },
   };

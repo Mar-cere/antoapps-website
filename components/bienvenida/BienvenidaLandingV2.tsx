@@ -15,6 +15,7 @@ import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
 import type { LandingDevice } from '@/lib/device/landing-device';
+import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import { getBienvenidaCopy, type BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 import { appStoreHref } from '@/lib/download-links';
 import '@/styles/components/buttons.css';
@@ -51,6 +52,7 @@ export default function BienvenidaLandingV2({
   const storeHref = appStoreHref();
   const pagePath = localePath(locale, '/bienvenida');
   const year = new Date().getFullYear();
+  const photoSrc = getEditorialImagePath('sleeplessNight');
 
   return (
     <div className="lad-page lad-page--v2" lang={locale}>
@@ -73,32 +75,47 @@ export default function BienvenidaLandingV2({
 
       <main className="lad-v2-main" id="contenido-principal">
         <section className="lad-v2-s1" aria-labelledby="lad-v2-hero-title">
-          <p className="lad-v2-eyebrow">{v2.eyebrow}</p>
-          <h1 id="lad-v2-hero-title" className="lad-v2-hero-h1">
-            <MultilineText text={v2.heroTitlePrefix} />
-            <span className="lad-v2-hero-h1-accent">
-              <MultilineText text={v2.heroTitleHighlight} />
-            </span>
-          </h1>
-          <p className="lad-v2-hero-sub">{v2.heroSub}</p>
+          <div className="lad-v2-hero-copy">
+            <h1 id="lad-v2-hero-title" className="lad-v2-hero-h1">
+              {v2.heroTitlePrefix}{' '}
+              <span className="lad-v2-hero-h1-accent">{v2.heroTitleHighlight}</span>
+            </h1>
+            <p className="lad-v2-hero-sub">{v2.heroSub}</p>
+          </div>
 
-          <div className="lad-v2-hero-product">
-            <HomeV2ChatVignette
-              thread={v2.chat}
+          <div className="lad-v2-hero-cta">
+            <BienvenidaV2HeroFold
+              storeHref={storeHref}
+              pagePath={pagePath}
+              landingVariant={landingVariant}
+              copy={copy}
               locale={locale}
-              size="ads"
-              className="lad-v2-chat"
+              initialDevice={initialDevice}
             />
           </div>
 
-          <BienvenidaV2HeroFold
-            storeHref={storeHref}
-            pagePath={pagePath}
-            landingVariant={landingVariant}
-            copy={copy}
-            locale={locale}
-            initialDevice={initialDevice}
-          />
+          <div className="lad-v2-hero-visual">
+            <div className="lad-v2-hero-photo">
+              <Image
+                src={photoSrc}
+                alt=""
+                fill
+                sizes="(min-width: 960px) 40vw, 100vw"
+                className="lad-v2-hero-photo-img"
+                quality={80}
+              />
+              <div className="lad-v2-hero-photo-scrim" aria-hidden="true" />
+            </div>
+            <div className="lad-v2-hero-product">
+              <HomeV2ChatVignette
+                thread={v2.chat}
+                locale={locale}
+                size="ads"
+                className="lad-v2-chat"
+              />
+            </div>
+            <span className="sr-only">{v2.photoAlt}</span>
+          </div>
         </section>
 
         <div className="lad-v2-divider" aria-hidden="true" />
@@ -122,7 +139,6 @@ export default function BienvenidaLandingV2({
         </section>
 
         <section className="lad-v2-s4" aria-labelledby="lad-v2-dash-headline">
-          <p className="lad-v2-section-label">{v2.dashboard.label}</p>
           <h2 id="lad-v2-dash-headline" className="lad-v2-dash-headline">
             <MultilineText text={v2.dashboard.headline} />
           </h2>
@@ -136,6 +152,20 @@ export default function BienvenidaLandingV2({
               className="lad-v2-screenshot lad-v2-screenshot--crop"
             />
           </div>
+        </section>
+
+        <section className="lad-v2-limits" aria-labelledby="lad-v2-limits-title">
+          <h2 id="lad-v2-limits-title" className="lad-v2-limits-title">
+            {v2.limitsHeading}
+          </h2>
+          <ul className="lad-v2-limits-list">
+            {v2.limits.map((item) => (
+              <li key={item.title} className="lad-v2-limit">
+                <p className="lad-v2-limit__title">{item.title}</p>
+                <p className="lad-v2-limit__body">{item.body}</p>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className="lad-v2-s5" aria-label={copy.trial.finalCta}>
