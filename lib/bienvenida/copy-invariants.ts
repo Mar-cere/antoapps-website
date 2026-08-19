@@ -1,5 +1,5 @@
 import type { Locale } from '@/lib/i18n/config';
-import { APP_SCREENSHOT_PATHS } from '@/lib/assets/app-screenshots';
+import { HOME_LANDING_SCREENSHOT_PATHS } from '@/lib/assets/app-screenshots';
 import { getBienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 import { BIENVENIDA_VARIANTS } from '@/lib/bienvenida/parse-variant';
 
@@ -120,8 +120,8 @@ export function assertBienvenidaCopyInvariants(): string[] {
         errors.push(`${tag} v2.chat.messages incompleto`);
       }
     }
-    if (v2.dashboard.image.src !== APP_SCREENSHOT_PATHS.home) {
-      errors.push(`${tag} v2.dashboard.image.src debe usar APP_SCREENSHOT_PATHS.home`);
+    if (v2.dashboard.image.src !== HOME_LANDING_SCREENSHOT_PATHS.sessionSummary) {
+      errors.push(`${tag} v2.dashboard.image.src debe usar HOME_LANDING_SCREENSHOT_PATHS.sessionSummary`);
     }
     if (!v2.photoAlt.trim()) {
       errors.push(`${tag} v2.photoAlt vacío`);

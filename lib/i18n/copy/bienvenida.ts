@@ -3,7 +3,9 @@ import { getAppStoreReviewSnippets } from '@/lib/app-store-reviews';
 import { appStoreRatingWithReviews } from '@/lib/app-store-social-proof';
 import {
   APP_SCREENSHOT_PATHS,
+  HOME_LANDING_SCREENSHOT_PATHS,
   getAppScreenshotAlt,
+  getHomeLandingScreenshotAlt,
 } from '@/lib/assets/app-screenshots';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
@@ -400,11 +402,11 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ],
         dashboard: {
           label: 'More than a chat',
-          headline: 'See your patterns\nover time.',
-          subtitle: 'Emotional tracking to notice patterns of anxiety and stress over time.',
+          headline: 'See the pattern\nin what you write.',
+          subtitle: 'After a conversation, Anto names how you think and leaves one concrete next step.',
           image: {
-            src: APP_SCREENSHOT_PATHS.home,
-            alt: getAppScreenshotAlt('home', 'en'),
+            src: HOME_LANDING_SCREENSHOT_PATHS.sessionSummary,
+            alt: getHomeLandingScreenshotAlt('sessionSummary', 'en'),
           },
         },
         trustItems: [
@@ -669,11 +671,11 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       ],
       dashboard: {
         label: 'Más que un chat',
-        headline: 'Mira tus patrones\ncon el tiempo.',
-        subtitle: 'Seguimiento emocional para notar patrones de ansiedad y estrés con el tiempo.',
+        headline: 'Mira el patrón\nde lo que escribes.',
+        subtitle: 'Después de una conversación, Anto nombra cómo piensas y te deja un siguiente paso concreto.',
         image: {
-          src: APP_SCREENSHOT_PATHS.home,
-          alt: getAppScreenshotAlt('home', 'es'),
+          src: HOME_LANDING_SCREENSHOT_PATHS.sessionSummary,
+          alt: getHomeLandingScreenshotAlt('sessionSummary', 'es'),
         },
       },
       trustItems: [

@@ -15,6 +15,10 @@ import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
 import type { LandingDevice } from '@/lib/device/landing-device';
+import {
+  APP_SCREENSHOT_HEIGHT,
+  APP_SCREENSHOT_WIDTH,
+} from '@/lib/assets/app-screenshots';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import { getBienvenidaCopy, type BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 import { appStoreHref } from '@/lib/download-links';
@@ -147,8 +151,8 @@ export default function BienvenidaLandingV2({
             <Image
               src={v2.dashboard.image.src}
               alt={v2.dashboard.image.alt}
-              width={390}
-              height={844}
+              width={APP_SCREENSHOT_WIDTH}
+              height={APP_SCREENSHOT_HEIGHT}
               className="lad-v2-screenshot lad-v2-screenshot--crop"
             />
           </div>

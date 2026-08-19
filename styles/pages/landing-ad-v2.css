@@ -422,6 +422,8 @@
     overflow: hidden;
     border: 0.5px solid rgba(255, 255, 255, 0.1);
     width: 100%;
+    max-width: 18.5rem;
+    margin-inline: auto;
 }
 
 .lad-v2-screenshot {
@@ -432,10 +434,8 @@
 
 .lad-v2-screenshot--crop {
     object-fit: cover;
-    object-position: center 48%;
-    max-height: 21.25rem;
-    transform: scale(1.12);
-    transform-origin: center 55%;
+    object-position: top center;
+    max-height: 22.5rem;
 }
 
 .lad-v2-s3 {
@@ -830,6 +830,13 @@
 
     .lad-v2-screenshot-crop {
         grid-area: shot;
+        max-width: 20rem;
+        justify-self: end;
+        margin-inline: 0;
+    }
+
+    .lad-v2-screenshot--crop {
+        max-height: 34rem;
     }
 
     .lad-page--v2 .lad-v2-legal {
