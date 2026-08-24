@@ -18,6 +18,7 @@ const CANONICAL_PATH = '/recursos';
  */
 export const FEATURED_GUIDE_SLUGS = [
   'grounding-ansiedad-crisis',
+  'escalas-phq9-gad7',
   'distorsiones-cognitivas',
   'higiene-sueno-salud-mental',
   'que-es-tcc',
@@ -103,12 +104,14 @@ export const FEATURED_HUMAN_LABELS: Record<
 > = {
   es: {
     'grounding-ansiedad-crisis': 'Cuando la ansiedad sube (grounding)',
+    'escalas-phq9-gad7': 'PHQ-9 y GAD-7',
     'distorsiones-cognitivas': 'Pensamientos en bucle',
     'higiene-sueno-salud-mental': 'Cuando no puedes dormir (sueño)',
     'que-es-tcc': 'Pensamientos y emociones (TCC)',
   },
   en: {
     'grounding-ansiedad-crisis': 'When anxiety rises (grounding)',
+    'escalas-phq9-gad7': 'PHQ-9 and GAD-7',
     'distorsiones-cognitivas': 'Thoughts in a loop',
     'higiene-sueno-salud-mental': 'When you cannot sleep (sleep)',
     'que-es-tcc': 'Thoughts and emotions (CBT)',

@@ -950,51 +950,184 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   },
   [SLUGS.scales]: {
     slug: SLUGS.scales,
-    readingMinutes: 6,
+    readingMinutes: 8,
+    layout: 'brief',
     meta: {
       title: 'PHQ-9 and GAD-7: what they measure and how to interpret them | Anto',
       description:
-        'Guide to PHQ-9 (depression) and GAD-7 (anxiety): what they measure, how to interpret them, and why they are not for self-diagnosis. Psychoeducation; does not replace clinical assessment.',
-      openGraphTitle: 'PHQ-9 and GAD-7 explained',
-      openGraphDescription: 'Understand the scales Anto uses to track depressive and anxiety symptoms.',
+        'Guide to PHQ-9 (depression) and GAD-7 (anxiety): what they measure, orienting score ranges, and official Spanish translations. Screening, not self-diagnosis. Psychoeducation; does not replace clinical assessment.',
+      openGraphTitle: 'PHQ-9 and GAD-7: interpretation guide',
+      openGraphDescription:
+        'Mood and anxiety screening: what these scales measure, how to read a range, and why a number is not a diagnosis.',
+      keywords:
+        'PHQ-9, GAD-7, PHQ-9 GAD-7, PHQ-9 GAD-7 Spanish, spanish, depression screening, anxiety screening, score ranges, psychoeducation, Anto',
     },
     hero: {
       title: 'PHQ-9 and GAD-7: interpretation guide',
-      subtitle: 'Validated screening scales — useful for trends, not for self-diagnosis.',
+      subtitle:
+        'Screening scales for mood and anxiety. Useful for seeing a trend — not for giving yourself a diagnosis.',
+      scanLink: {
+        label: 'Go to the ranges →',
+        sectionHeading: 'Orienting ranges',
+      },
+    },
+    pullQuote:
+      'The score names a trend. It does not name you.',
+    figure: {
+      src: '/assets/images/editorial/anto-editorial-morning-pause.webp',
+      alt: 'A morning pause by a window in soft light — a quiet moment when you notice how the week is landing',
+      caption:
+        'It is not a form on the table. It is noticing how the weeks feel when nobody is taking notes.',
+      width: 1536,
+      height: 1024,
+      objectPosition: '48% 42%',
+      desktopAspectRatio: '3 / 2',
     },
     sections: [
       {
         heading: 'What are they?',
         paragraphs: [
-          'PHQ-9 (Patient Health Questionnaire-9) assesses depressive symptoms over the last two weeks. GAD-7 (Generalized Anxiety Disorder-7) measures generalised anxiety symptoms over the same period. Both are widely used in primary care and mental health.',
+          'The PHQ-9 (Patient Health Questionnaire-9) assesses depressive symptoms over the last two weeks. The GAD-7 (Generalized Anxiety Disorder-7) measures generalised anxiety symptoms over the same period. Both are used in primary care and mental health as screening: a first reading, not a verdict.',
+          'Nine mood items; seven for anxiety. The window matters: they ask about two weeks, not about today. A bad Sunday is not the whole questionnaire.',
         ],
+      },
+      {
+        heading: 'Orienting ranges',
+        paragraphs: [
+          'Published cut points help you read a number. They do not label the person. A single point weighs less than the series: whether it rises, falls, or holds.',
+          'PHQ-9 (Kroenke, Spitzer and Williams, 2001), total 0–27:',
+        ],
+        bullets: [
+          '0–4: none or minimal',
+          '5–9: mild',
+          '10–14: moderate',
+          '15–19: moderately severe',
+          '20–27: severe',
+        ],
+      },
+      {
+        heading: 'GAD-7: anxiety cut points',
+        paragraphs: [
+          'GAD-7 (Spitzer et al., 2006), total 0–21. In the validation study, a cut point ≥10 optimised sensitivity and specificity for probable generalised anxiety disorder; 5–9 is often treated as mild symptoms to watch.',
+        ],
+        bullets: [
+          '0–4: minimal',
+          '5–9: mild',
+          '10–14: moderate',
+          '15–21: severe',
+        ],
+      },
+      {
+        heading: 'The official instrument',
+        paragraphs: [
+          'The validated items — and the reviewed translations, including Spanish — are published on PHQ Screeners, not on this page. We do not copy the questionnaire here: the licence sits with the authors. If you need the form to print or take to a consultation, go to the source.',
+        ],
+        link: {
+          label: 'PHQ Screeners — official instruments →',
+          href: 'https://www.phqscreeners.com/',
+          external: true,
+        },
       },
       {
         heading: 'How Anto uses them',
         paragraphs: [
-          'Anto can complete these scales from conversation analysis and show history with trends. This helps you see whether symptoms rise or fall over time, especially alongside a professional or as informed self-care.',
+          'Anto can estimate these scales from conversation analysis and show a history with trends. That does not replace the paper form or a clinical interview. It helps you see whether mood or anxiety is moving over time, especially if you already have a professional or want informed self-care.',
         ],
       },
       {
         heading: 'Important limits',
         bullets: [
-          'They are screening tools, not clinical diagnosis',
-          'A bad day can temporarily raise the score',
-          'Physical factors, grief, or acute stress affect responses',
+          'They are screening, not clinical diagnosis',
+          'A bad day can raise the number without changing the picture',
+          'Grief, physical illness, sleep, or stimulants affect answers',
           'Only a professional can diagnose and plan treatment',
         ],
       },
       {
-        heading: 'What to do with results',
+        heading: 'What to do with the result',
         paragraphs: [
-          'If scores stay high, share reports with your doctor or psychologist. If moderate, combine tracking with sleep habits, activity, regulation techniques, and social support.',
+          'If scores stay high, take them to your doctor or psychologist: the report is a data point, not the closing. If they sit in a moderate range, combine tracking with sleep, movement, regulation, and someone you trust.',
+          'If there are thoughts of harming yourself, immediate risk, or you cannot care for yourself: contact emergency services or a crisis line in your country. Anto can offer resources; it does not replace those services.',
         ],
       },
     ],
-    relatedSlugs: [SLUGS.anxiety, SLUGS.tcc, SLUGS.sleep],
+    productMoment: {
+      title: 'How it looks in Anto',
+      body: 'When a number frightens you, you can bring it as it is and look at the trend — without turning screening into a verdict.',
+      afterHeading: 'What to do with the result',
+      chat: {
+        ariaLabel: 'Example conversation in Anto when a scale score is worrying',
+        messages: [
+          {
+            role: 'user',
+            text: 'It came out higher than last time. Is that already a diagnosis?',
+          },
+          {
+            role: 'anto',
+            text: 'No. It is screening: one point over two weeks. Did it jump, or have several readings looked like this?',
+          },
+          {
+            role: 'user',
+            text: 'Two times in a row. The number scares me.',
+          },
+          {
+            role: 'anto',
+            text: 'It makes sense that it scares you. Let’s look at the trend and what to do with it — not the name a number cannot give you.',
+          },
+        ],
+      },
+      suggestionsLabel: 'Examples in the app',
+      suggestions: ['Read the trend', 'What to do with a high range'],
+    },
+    furtherReading: {
+      title: 'Go deeper',
+      support:
+        'If mood is what sits behind the number, continue here — signs, duration, and a small step:',
+      links: [
+        {
+          label: 'Depression: brief guide',
+          description:
+            'When the low mood lasts, what tends to help, and how it differs from a passing sadness.',
+          href: '/recursos/depresion-guia-breve',
+        },
+      ],
+    },
+    references: {
+      title: 'References (APA)',
+      support:
+        'Original validations of the scales. The ranges on this page come from those studies; they do not replace individual clinical assessment.',
+      items: [
+        {
+          apa: 'Kroenke, K., Spitzer, R. L., & Williams, J. B. W. (2001). The PHQ-9: Validity of a brief depression severity measure. Journal of General Internal Medicine, 16(9), 606–613. https://doi.org/10.1046/j.1525-1497.2001.016009606.x',
+          href: 'https://doi.org/10.1046/j.1525-1497.2001.016009606.x',
+          note: 'Validation of the PHQ-9 and severity ranges (0–27) used as screening orientation.',
+        },
+        {
+          apa: 'Spitzer, R. L., Kroenke, K., Williams, J. B. W., & Löwe, B. (2006). A brief measure for assessing generalized anxiety disorder: The GAD-7. Archives of Internal Medicine, 166(10), 1092–1097. https://doi.org/10.1001/archinte.166.10.1092',
+          href: 'https://doi.org/10.1001/archinte.166.10.1092',
+          note: 'Validation of the GAD-7; cut point ≥10 for probable GAD and severity ranges (0–21).',
+        },
+      ],
+    },
+    relatedSlugs: [SLUGS.anxiety, SLUGS.tcc],
     disclaimer:
-      'Scales do not replace in-person assessment. Anto does not diagnose mental health conditions.',
-    cta: { label: 'See how Anto works →', path: '/app' },
+      'Psychoeducation. The scales do not diagnose or replace clinical assessment or treatment. In suicidal risk or violence, seek local emergency help immediately.',
+    ctaBridge:
+      'If you want company between sessions — or while you decide to seek assessment — you can continue on your phone, at your pace.',
+    cta: { label: 'Support in Anto →', path: '/bienvenida' },
+    howTo: {
+      name: 'How to read a PHQ-9 or GAD-7 score',
+      description:
+        'Steps to interpret a screening result: time window, published range, trend, and when to take it to a professional. Does not diagnose.',
+      totalTime: 'PT5M',
+      steps: [
+        'Confirm the window: the scales ask about the last two weeks, not about today.',
+        'Place the number in the published range (orientation, not a label).',
+        'If there are earlier readings, compare: the trend matters more than a single point.',
+        'If it stays high, take it to a professional; do not close a diagnosis on the number alone.',
+        'If there is risk or you cannot care for yourself, prioritise emergency help.',
+      ],
+    },
   },
   [SLUGS.selfCompassion]: {
     slug: SLUGS.selfCompassion,

@@ -189,8 +189,8 @@ function formatResourcesDiscoveryBlock(locale: Locale): string[] {
       slugs: ['depresion-guia-breve', 'activacion-conductual', 'agotamiento-y-burnout'],
     },
     {
-      labelEs: 'Escalas / protocolos (TOC, trauma, ira, duelo)',
-      labelEn: 'Scales / protocols (OCD, trauma, anger, grief)',
+      labelEs: 'PHQ-9 y GAD-7 / protocolos (TOC, trauma, ira, duelo)',
+      labelEn: 'PHQ-9 and GAD-7 / protocols (OCD, trauma, anger, grief)',
       slugs: [
         'escalas-phq9-gad7',
         'toc-y-erp',
