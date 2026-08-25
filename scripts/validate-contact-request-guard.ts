@@ -66,43 +66,51 @@ async function post(headers: Record<string, string>): Promise<Response> {
   );
 }
 
-resetContactRateLimit();
-const missingOrigin = await post({ 'x-forwarded-for': '203.0.113.1' });
-assert(missingOrigin.status === 403, `POST sin Origin debe ser 403, fue ${missingOrigin.status}`);
+async function runRouteChecks(): Promise<void> {
+  resetContactRateLimit();
+  const missingOrigin = await post({ 'x-forwarded-for': '203.0.113.1' });
+  assert(missingOrigin.status === 403, `POST sin Origin debe ser 403, fue ${missingOrigin.status}`);
 
-resetContactRateLimit();
-const oddOrigin = await post({
-  origin: 'https://evil.example',
-  'x-forwarded-for': '203.0.113.2',
-});
-assert(oddOrigin.status === 403, `POST Origin extraño debe ser 403, fue ${oddOrigin.status}`);
-
-resetContactRateLimit();
-const siteOrigin = await post({
-  origin: 'https://antoapps.com',
-  'x-forwarded-for': '203.0.113.3',
-});
-assert(
-  siteOrigin.status === 503 || siteOrigin.status === 400 || siteOrigin.status === 200,
-  `POST del sitio no debe ser 403/429, fue ${siteOrigin.status}`
-);
-assert(siteOrigin.status !== 403, 'POST del sitio no debe ser 403');
-
-resetContactRateLimit();
-let lastStatus = 0;
-for (let i = 0; i < CONTACT_RATE_LIMIT.maxRequests + 1; i += 1) {
-  const response = await post({
-    origin: 'https://www.antoapps.com',
-    'x-forwarded-for': '203.0.113.4',
+  resetContactRateLimit();
+  const oddOrigin = await post({
+    origin: 'https://evil.example',
+    'x-forwarded-for': '203.0.113.2',
   });
-  lastStatus = response.status;
-}
-assert(lastStatus === 429, `POST en ráfaga debe ser 429, fue ${lastStatus}`);
+  assert(oddOrigin.status === 403, `POST Origin extraño debe ser 403, fue ${oddOrigin.status}`);
 
-if (errors.length > 0) {
-  console.error('validate-contact-request-guard falló:');
-  for (const error of errors) console.error(`- ${error}`);
-  process.exit(1);
+  resetContactRateLimit();
+  const siteOrigin = await post({
+    origin: 'https://antoapps.com',
+    'x-forwarded-for': '203.0.113.3',
+  });
+  assert(
+    siteOrigin.status === 503 || siteOrigin.status === 400 || siteOrigin.status === 200,
+    `POST del sitio no debe ser 403/429, fue ${siteOrigin.status}`
+  );
+  assert(siteOrigin.status !== 403, 'POST del sitio no debe ser 403');
+
+  resetContactRateLimit();
+  let lastStatus = 0;
+  for (let i = 0; i < CONTACT_RATE_LIMIT.maxRequests + 1; i += 1) {
+    const response = await post({
+      origin: 'https://www.antoapps.com',
+      'x-forwarded-for': '203.0.113.4',
+    });
+    lastStatus = response.status;
+  }
+  assert(lastStatus === 429, `POST en ráfaga debe ser 429, fue ${lastStatus}`);
 }
 
-console.log('validate-contact-request-guard: ok');
+runRouteChecks()
+  .then(() => {
+    if (errors.length > 0) {
+      console.error('validate-contact-request-guard falló:');
+      for (const error of errors) console.error(`- ${error}`);
+      process.exit(1);
+    }
+    console.log('validate-contact-request-guard: ok');
+  })
+  .catch((error: unknown) => {
+    console.error(error);
+    process.exit(1);
+  });
