@@ -70,8 +70,10 @@ export type AppPageCopy = {
   cta: {
     title: string;
     subtitle: string;
-    downloadLabel: string;
-    downloadHref: string;
+    appStoreLabel: string;
+    playLabel: string;
+    appStoreAria: string;
+    playAria: string;
     contactLabel: string;
     contactHref: string;
   };
@@ -115,7 +117,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
         currentLabel: 'The App',
       },
       hero: {
-        title: 'Your emotional wellness, in your pocket',
+        title: 'When everything costs a little more. On your phone.',
         subtitle:
           'Anto is a mobile app that accompanies you with guided conversation, self-care tools, and support when you need it most. Current version {version}.',
         badges: {
@@ -171,7 +173,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
             icon: '🚨',
             label: 'Support in difficult moments',
             description:
-              'If the app detects risk signals, it can guide you toward resources and people you trust.',
+              'If risk signals come up, the app can guide you toward resources and people you trust.',
           },
         ],
       },
@@ -189,7 +191,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
           icon: '📊',
           label: 'Actionable summaries',
           description:
-            'Observational reports, navigable "what helps you", and post-session therapeutic alliance (WAI).',
+            'Observational reports and navigable "what helps you" after a conversation.',
         },
         {
           icon: '🔐',
@@ -212,17 +214,18 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
         },
       },
       featuresLink: {
-        title: 'Looking for the full feature list?',
-        subtitle:
-          'Clinical scales, protocols, conversation modes, and technical details live on the home page.',
-        label: 'View all features',
+        title: 'Looking for more detail?',
+        subtitle: 'What Anto includes: chat, exercise hub, check-ins, home.',
+        label: 'View on the home page',
         href: featuresHref,
       },
       cta: {
         title: 'Ready to try Anto?',
         subtitle: `Download the app and start at your own pace. ${trial.heroNote}`,
-        downloadLabel: 'Download',
-        downloadHref: localePath(locale, '/bienvenida'),
+        appStoreLabel: 'App Store',
+        playLabel: 'Google Play',
+        appStoreAria: 'Download Anto on the App Store',
+        playAria: 'Download Anto on Google Play',
         contactLabel: 'Contact',
         contactHref: localePath(locale, '/contacto'),
       },
@@ -236,7 +239,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       currentLabel: 'La Aplicación',
     },
     hero: {
-      title: 'Tu bienestar emocional, en el bolsillo',
+      title: 'Cuando todo cuesta un poco más. En el teléfono.',
       subtitle:
         'Anto es una aplicación móvil que te acompaña con conversación guiada, herramientas de autocuidado y apoyo cuando más lo necesitas. Versión actual {version}.',
       badges: {
@@ -292,7 +295,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
           icon: '🚨',
           label: 'Apoyo en momentos difíciles',
           description:
-            'Si detectamos señales de riesgo, la app puede orientarte hacia recursos y personas de confianza.',
+            'Si aparecen señales de riesgo, la app puede orientarte hacia recursos y personas de confianza.',
         },
       ],
     },
@@ -310,7 +313,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
           icon: '📊',
           label: 'Resúmenes accionables',
           description:
-            'Informes observacionales, «lo que te ayuda» navegable y WAI post-sesión (alianza terapéutica).',
+            'Informes observacionales y «lo que te ayuda» navegable después de una conversación.',
         },
         {
           icon: '🔐',
@@ -333,17 +336,18 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       },
     },
     featuresLink: {
-      title: '¿Buscas el detalle de funciones?',
-      subtitle:
-        'Escalas clínicas, protocolos, modos de conversación y especificaciones están en la sección Características del inicio.',
-      label: 'Ver todas las características',
+      title: '¿Buscas más detalle?',
+      subtitle: 'Qué incluye Anto: chat, hub de ejercicios, chequeos, home.',
+      label: 'Ver en el inicio',
       href: featuresHref,
     },
     cta: {
       title: '¿Listo para probar Anto?',
       subtitle: `Descarga la app y empieza a tu ritmo. ${trial.heroNote}`,
-      downloadLabel: 'Descargar',
-      downloadHref: localePath(locale, '/bienvenida'),
+      appStoreLabel: 'App Store',
+      playLabel: 'Google Play',
+      appStoreAria: 'Descargar Anto en App Store',
+      playAria: 'Descargar Anto en Google Play',
       contactLabel: 'Contactar',
       contactHref: localePath(locale, '/contacto'),
     },

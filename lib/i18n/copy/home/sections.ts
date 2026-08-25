@@ -142,9 +142,9 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
         {
           icon: 'protocols',
-          title: 'Protocolos estructurados',
+          title: 'Hub de ejercicios',
           description:
-            '8 rutas basadas en evidencia: depresión, ansiedad, trauma, TOC, TEPT, ira, autocompasión e higiene del sueño.',
+            'En el hub hay ejercicios (TCC, ABC, mindfulness) para cuando hablar no alcanza. No es tratamiento ni reemplaza a un profesional.',
         },
         {
           icon: 'tasks',
@@ -299,13 +299,13 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       cards: [
         {
           icon: 'encryption',
-          title: 'Cifrado de extremo a extremo',
+          title: 'Cifrado en tránsito y en reposo',
           description:
-            'Tus conversaciones se cifran con AES-256. Solo tú tienes acceso a tu contenido.',
+            'Tus conversaciones se cifran en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio.',
           features: [
-            '✓ Encriptación AES-256',
-            '✓ Claves de encriptación únicas por usuario',
-            '✓ Sin acceso de terceros',
+            '✓ TLS en tránsito',
+            '✓ Cifrado en reposo',
+            '✓ El modelo lee el texto para prestar el servicio',
             '✓ Verificación de integridad de datos',
           ],
         },
@@ -412,9 +412,9 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
         {
           icon: 'protocols',
-          title: 'Structured protocols',
+          title: 'Exercise hub',
           description:
-            '8 evidence-based paths: depression, anxiety, trauma, OCD, PTSD, anger, self-compassion, and sleep hygiene.',
+            'The hub has exercises (CBT, ABC, mindfulness) for when talking is not enough. It is not treatment and does not replace a professional.',
         },
         {
           icon: 'tasks',
@@ -569,13 +569,13 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       cards: [
         {
           icon: 'encryption',
-          title: 'End-to-end encryption',
+          title: 'Encryption in transit and at rest',
           description:
-            'Your conversations are encrypted with AES-256. Only you have access to your content.',
+            'Conversations are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service.',
           features: [
-            '✓ AES-256 encryption',
-            '✓ Unique encryption keys per user',
-            '✓ No third-party access',
+            '✓ TLS in transit',
+            '✓ Encryption at rest',
+            '✓ The model reads the text to provide the service',
             '✓ Data integrity verification',
           ],
         },

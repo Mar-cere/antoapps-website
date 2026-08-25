@@ -64,8 +64,8 @@ function assertAssetInvariants(): string[] {
       errors.push(`${tag} v2.chat.messages must have exactly 3 items (ads vignette)`);
     }
 
-    if (copy.v2.dashboard.image.src !== HOME_LANDING_SCREENSHOT_PATHS.sessionSummary) {
-      errors.push(`${tag} v2.dashboard.image.src must use HOME_LANDING_SCREENSHOT_PATHS.sessionSummary`);
+    if (!copy.v2.dashboard.mock.title.trim() || !copy.v2.dashboard.mock.quote.trim()) {
+      errors.push(`${tag} v2.dashboard.mock incompleto`);
     }
 
     if (copy.v2.features.length !== 4) {

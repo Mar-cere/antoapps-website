@@ -11,6 +11,7 @@ import {
   INDEXABLE_LOGICAL_PATHS,
   INDEXABLE_ROUTES,
   NON_INDEXABLE_PATH_PREFIXES,
+  ROBOTS_DISALLOW_PATH_PREFIXES,
   REDIRECT_ONLY_PATHS,
   type IndexableRoute,
 } from '@/lib/seo/indexable-routes';
@@ -403,10 +404,17 @@ function assertRobotsConfig(errors: string[]): void {
         ? [rule.disallow]
         : [];
 
-    for (const prefix of NON_INDEXABLE_PATH_PREFIXES) {
+    for (const prefix of ROBOTS_DISALLOW_PATH_PREFIXES) {
       if (!disallow.includes(prefix)) {
         errors.push(
           `robots (${String(rule.userAgent ?? '*')}): falta disallow "${prefix}".`
+        );
+      }
+    }
+    for (const prefix of NON_INDEXABLE_PATH_PREFIXES) {
+      if (!(ROBOTS_DISALLOW_PATH_PREFIXES as readonly string[]).includes(prefix) && disallow.includes(prefix)) {
+        errors.push(
+          `robots (${String(rule.userAgent ?? '*')}): no debe listar "${prefix}".`
         );
       }
     }
@@ -465,9 +473,14 @@ function assertBuildArtifacts(options: SitemapInvariantOptions, errors: string[]
     errors.push('Artefacto robots.txt: falta directiva Host.');
   }
 
-  for (const prefix of NON_INDEXABLE_PATH_PREFIXES) {
+  for (const prefix of ROBOTS_DISALLOW_PATH_PREFIXES) {
     if (!robotsTxt.includes(`Disallow: ${prefix}`)) {
       errors.push(`Artefacto robots.txt: falta Disallow: ${prefix}`);
+    }
+  }
+  for (const prefix of NON_INDEXABLE_PATH_PREFIXES) {
+    if (!(ROBOTS_DISALLOW_PATH_PREFIXES as readonly string[]).includes(prefix) && robotsTxt.includes(`Disallow: ${prefix}`)) {
+      errors.push(`Artefacto robots.txt: no debe listar Disallow: ${prefix}`);
     }
   }
 }

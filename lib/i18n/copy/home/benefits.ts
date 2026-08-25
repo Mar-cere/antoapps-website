@@ -36,7 +36,7 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
         {
           title: 'Privacidad Garantizada',
           description:
-            'Conversaciones confidenciales con encriptación de extremo a extremo. No vendemos tus datos.',
+            'Conversaciones confidenciales, cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos tus datos.',
         },
         {
           title: 'Apoyo que se adapta a ti',
@@ -113,7 +113,7 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
         {
           title: 'Privacy Guaranteed',
           description:
-            'Confidential conversations with end-to-end encryption. We do not sell your data.',
+            'Confidential conversations, encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell your data.',
         },
         {
           title: 'Support that adapts to you',

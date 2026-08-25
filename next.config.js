@@ -88,6 +88,18 @@ const nextConfig = {
   },
   // Headers de seguridad
   async headers() {
+    const cspReportOnly = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https:",
+      "font-src 'self' data:",
+      "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://www.facebook.com https://connect.facebook.net https://graph.facebook.com",
+      "frame-ancestors 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+    ].join('; ');
+
     const globalHeaders = [
       {
         key: 'X-Content-Type-Options',
@@ -98,10 +110,6 @@ const nextConfig = {
         value: 'DENY',
       },
       {
-        key: 'X-XSS-Protection',
-        value: '1; mode=block',
-      },
-      {
         key: 'Referrer-Policy',
         value: 'strict-origin-when-cross-origin',
       },
@@ -109,12 +117,20 @@ const nextConfig = {
         key: 'Permissions-Policy',
         value: 'geolocation=(), microphone=(), camera=()',
       },
+      {
+        key: 'Content-Security-Policy-Report-Only',
+        value: cspReportOnly,
+      },
     ];
 
-    const noReferrer = [
+    const noIndexNoReferrer = [
       {
         key: 'Referrer-Policy',
         value: 'no-referrer',
+      },
+      {
+        key: 'X-Robots-Tag',
+        value: 'noindex, nofollow',
       },
     ];
 
@@ -149,15 +165,15 @@ const nextConfig = {
       // Ruta opaca: menos filtración del host al enlazar o pedir recursos externos
       {
         source: '/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a',
-        headers: noReferrer,
+        headers: noIndexNoReferrer,
       },
       {
         source: '/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a/resultado',
-        headers: noReferrer,
+        headers: noIndexNoReferrer,
       },
       {
         source: '/api/rq7vn3k8mx2pw9yt5z',
-        headers: noReferrer,
+        headers: noIndexNoReferrer,
       },
     ];
   },

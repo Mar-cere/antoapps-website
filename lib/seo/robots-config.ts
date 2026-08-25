@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { NON_INDEXABLE_PATH_PREFIXES } from '@/lib/seo/indexable-routes';
+import { ROBOTS_DISALLOW_PATH_PREFIXES } from '@/lib/seo/indexable-routes';
 import { SITE_HOST, SITE_ORIGIN } from '@/lib/seo/site';
 
 /**
@@ -11,7 +11,7 @@ import { SITE_HOST, SITE_ORIGIN } from '@/lib/seo/site';
  *   exclusiones de rutas privadas/técnicas.
  */
 export function buildRobotsConfig(): MetadataRoute.Robots {
-  const sharedDisallow = [...NON_INDEXABLE_PATH_PREFIXES];
+  const sharedDisallow = [...ROBOTS_DISALLOW_PATH_PREFIXES];
 
   const aiUserAgents = [
     'GPTBot',

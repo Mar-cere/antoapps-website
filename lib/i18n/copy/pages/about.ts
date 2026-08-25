@@ -127,7 +127,7 @@ function buildAboutPageCopy(locale: Locale): AboutPageCopy {
             icon: '🛡️',
             title: 'Privacy',
             description:
-              'Your information is sacred. We guarantee maximum security and confidentiality with end-to-end encryption and strict compliance with international regulations.',
+              'Your information is sacred. We guarantee security and confidentiality with encryption in transit and at rest, and strict compliance with international regulations. Anto and the model read the text to provide the service.',
           },
           {
             icon: '💡',
@@ -277,7 +277,7 @@ function buildAboutPageCopy(locale: Locale): AboutPageCopy {
           icon: '🛡️',
           title: 'Privacidad',
           description:
-            'Tu información es sagrada. Garantizamos la máxima seguridad y confidencialidad con encriptación de extremo a extremo y cumplimiento estricto de regulaciones internacionales.',
+            'Tu información es sagrada. Garantizamos seguridad y confidencialidad con cifrado en tránsito y en reposo, y cumplimiento estricto de regulaciones internacionales. Anto y el modelo leen el texto para prestar el servicio.',
         },
         {
           icon: '💡',

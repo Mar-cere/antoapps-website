@@ -117,7 +117,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 1,
           question: '¿Mis conversaciones son realmente privadas?',
           answer:
-            'Sí, absolutamente. Todas tus conversaciones están encriptadas de extremo a extremo (E2E) utilizando estándares de grado militar (AES-256). Esto significa que solo tú y el sistema pueden leer tus mensajes. Ni siquiera nuestros administradores pueden acceder al contenido de tus conversaciones. Nunca compartimos, vendemos o comercializamos tu información con terceros. Tu privacidad es nuestra máxima prioridad y cumplimos con todas las regulaciones internacionales de protección de datos, incluyendo GDPR y HIPAA.',
+            'Sí, absolutamente. Tus conversaciones van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. Nunca compartimos, vendemos o comercializamos tu información con terceros. Tu privacidad es nuestra máxima prioridad y cumplimos con todas las regulaciones internacionales de protección de datos, incluyendo GDPR y HIPAA.',
           category: 'privacidad',
         },
         {
@@ -186,7 +186,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 11,
           question: '¿Qué protocolos terapéuticos incluye Anto?',
           answer:
-            'Anto incluye 8 protocolos estructurados basados en evidencia: depresión (CBT), ansiedad generalizada (CBT), manejo de ira, autocompasión, higiene del sueño, trauma, TOC (ERP) y TEPT. Se activan cuando el sistema detecta síntomas relevantes y guían el apoyo paso a paso.',
+            'En el hub hay ejercicios (TCC, ABC, mindfulness) para cuando hablar no alcanza. No es tratamiento ni reemplaza a un profesional.',
           category: 'funcionalidad',
         },
       ],
@@ -265,7 +265,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 19,
           question: '¿Qué hace único a Anto como herramienta de bienestar?',
           answer:
-            'Anto combina un asistente de IA con memoria de temas, hub de técnicas terapéuticas, grafo de insights con «lo que te ayuda», escalas clínicas validadas (PHQ-9, GAD-7), 8 protocolos estructurados, WAI post-sesión, detección proactiva de crisis, tareas y hábitos unificados, home personalizado con insight diario, sesión persistente y soporte bilingüe ES/EN. Priorizamos privacidad, transparencia y utilidad práctica — sin vender datos de usuarios. ' +
+            'Anto combina un asistente de IA con memoria de temas, hub de técnicas, grafo de insights con «lo que te ayuda», tareas y hábitos unificados, home personalizado con insight diario, sesión persistente y soporte bilingüe ES/EN. Priorizamos privacidad, transparencia y utilidad práctica — sin vender datos de usuarios. ' +
             trial.differentiatorSuffix,
           category: 'funcionalidad',
         },
@@ -391,7 +391,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 1,
         question: 'Are my conversations really private?',
         answer:
-          'Yes, absolutely. All your conversations are end-to-end (E2E) encrypted using military-grade standards (AES-256). This means only you and the system can read your messages. Not even our administrators can access the content of your conversations. We never share, sell, or commercialise your information with third parties. Your privacy is our top priority and we comply with all international data protection regulations, including GDPR and HIPAA.',
+          'Yes, absolutely. Conversations are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We never share, sell, or commercialise your information with third parties. Your privacy is our top priority and we comply with all international data protection regulations, including GDPR and HIPAA.',
         category: 'privacidad',
       },
       {
@@ -460,7 +460,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 11,
         question: 'Which therapeutic protocols does Anto include?',
         answer:
-          'Anto includes 8 evidence-based structured protocols: depression (CBT), generalised anxiety (CBT), anger management, self-compassion, sleep hygiene, trauma, OCD (ERP), and PTSD. They activate when relevant symptoms are detected and guide support step by step.',
+          'The hub has exercises (CBT, ABC, mindfulness) for when talking is not enough. It is not treatment and does not replace a professional.',
         category: 'funcionalidad',
       },
     ],
@@ -539,7 +539,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 19,
         question: 'What makes Anto unique as a wellness tool?',
         answer:
-          'Anto combines an AI assistant with topic memory, a therapeutic techniques hub, an insights graph with navigable "what helps you", validated clinical scales (PHQ-9, GAD-7), 8 structured protocols, post-session WAI, proactive crisis detection, unified tasks and habits, a personalised home with daily insight, persistent session, and bilingual ES/EN support. We prioritise privacy, transparency, and practical utility — without selling user data. ' +
+          'Anto combines an AI assistant with topic memory, a techniques hub, an insights graph with navigable "what helps you", unified tasks and habits, a personalised home with daily insight, persistent session, and bilingual ES/EN support. We prioritise privacy, transparency, and practical utility — without selling user data. ' +
           trial.differentiatorSuffix,
         category: 'funcionalidad',
       },

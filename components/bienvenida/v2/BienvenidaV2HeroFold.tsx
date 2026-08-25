@@ -35,8 +35,7 @@ export default function BienvenidaV2HeroFold({
   const playHref = googlePlayHref(locale);
 
   const showIosStoreCta = device === 'ios' || device === 'desktop';
-  const showAndroidPrimary = device === 'android';
-  const showAndroidSecondary = !isHero && (device === 'ios' || device === 'desktop');
+  const androidFirst = device === 'android';
 
   const playCta = (
     <PremiumStoreCta
@@ -59,9 +58,11 @@ export default function BienvenidaV2HeroFold({
       className={`lad-v2-fold ${isHero ? '' : 'lad-v2-fold--final'}`}
       id={isHero ? 'descargar' : 'descargar-final'}
     >
-      {showAndroidPrimary && (
+      {androidFirst && (
         <p className="lad-v2-android-lead">{copy.androidDevice.leadLine}</p>
       )}
+
+      {androidFirst && playCta}
 
       {showIosStoreCta && (
         <BienvenidaV2StoreCta
@@ -73,19 +74,15 @@ export default function BienvenidaV2HeroFold({
         />
       )}
 
-      {showAndroidPrimary && playCta}
+      {!androidFirst && playCta}
 
-      {showAndroidSecondary && (
-        <div className="premium-store-cta-stack lad-v2-play-secondary">{playCta}</div>
-      )}
-
-      {showIosStoreCta && <p className="lad-v2-cta-micro">{v2.ctaMicro}</p>}
+      {(showIosStoreCta || androidFirst) && <p className="lad-v2-cta-micro">{v2.ctaMicro}</p>}
 
       {isHero && showIosStoreCta && (
         <InstagramBrowserHint copy={copy.inAppHint} locale={locale} variant="cta" />
       )}
 
-      {showAndroidPrimary && (
+      {androidFirst && (
         <p className="lad-v2-ios-fallback">
           <DownloadLink
             href={storeHref}

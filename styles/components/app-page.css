@@ -1,3 +1,5 @@
+@import '../components/premium-store-cta.css';
+
 /* ============================================
    APP PAGE STYLES
    ============================================ */
@@ -37,6 +39,18 @@
     gap: var(--spacing-sm);
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.app-hero-stores {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-6);
+}
+
+.app-hero-stores .premium-store-cta-stack,
+.app-cta-buttons .premium-store-cta-stack {
+    width: 100%;
+    max-width: 22rem;
 }
 
 .app-badge {
@@ -437,10 +451,11 @@
 
 .app-cta-buttons {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: var(--spacing-sm);
     justify-content: center;
     margin-top: var(--spacing-6);
-    flex-wrap: wrap;
 }
 
 /* Responsive */

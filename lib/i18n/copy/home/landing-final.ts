@@ -147,7 +147,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         tags: [
           'Responde en menos de 3 s',
           'Hub de técnicas',
-          '8 protocolos clínicos',
+          'Hub de ejercicios',
           'PHQ-9 · GAD-7',
         ],
         screenshot: 'chatAnxiety',
@@ -173,8 +173,8 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         titlePrefix: 'Catálogo completo,',
         titleHighlight: 'acceso inmediato.',
         subtitle:
-          'Técnicas terapéuticas en la navegación principal, lienzo ABC interactivo y 8 protocolos basados en evidencia — TCC, exposición, autocompasión y mindfulness.',
-        tags: ['ABC interactivo', '8 protocolos validados', 'TCC paso a paso', 'Basados en evidencia'],
+          'Técnicas terapéuticas en la navegación principal, lienzo ABC interactivo y ejercicios (TCC, ABC, mindfulness) para cuando hablar no alcanza.',
+        tags: ['ABC interactivo', '1 hub de ejercicios', 'TCC paso a paso', 'Basados en evidencia'],
         screenshot: 'tccProtocol',
       },
       {
@@ -201,9 +201,9 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       subtitle: 'No es intuición — es ciencia clínica integrada en cada conversación.',
       stats: [
         {
-          value: '8',
-          label: 'Protocolos clínicos',
-          detail: 'TCC, exposición, autocompasión y mindfulness — basados en evidencia',
+          value: 'Hub',
+          label: 'Ejercicios',
+          detail: 'TCC, ABC y mindfulness — para cuando hablar no alcanza',
         },
         {
           value: '15',
@@ -360,7 +360,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         tags: [
           'Replies in under 3 s',
           'Techniques hub',
-          '8 clinical protocols',
+          'Exercise hub',
           'PHQ-9 · GAD-7',
         ],
         screenshot: 'chatAnxiety',
@@ -386,8 +386,8 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         titlePrefix: 'Full catalog,',
         titleHighlight: 'instant access.',
         subtitle:
-          'Therapeutic techniques in main navigation, interactive ABC canvas, and 8 evidence-based protocols — CBT, exposure, self-compassion, and mindfulness.',
-        tags: ['Interactive ABC', '8 validated protocols', 'Step-by-step CBT', 'Evidence-based'],
+          'Therapeutic techniques in main navigation, interactive ABC canvas, and exercises (CBT, ABC, mindfulness) for when talking is not enough.',
+        tags: ['Interactive ABC', '1 exercise hub', 'Step-by-step CBT', 'Evidence-based'],
         screenshot: 'tccProtocol',
       },
       {
@@ -414,9 +414,9 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       subtitle: 'Not intuition — clinical science integrated into every conversation.',
       stats: [
         {
-          value: '8',
-          label: 'Clinical protocols',
-          detail: 'CBT, exposure, self-compassion, and mindfulness — evidence-based',
+          value: 'Hub',
+          label: 'Exercises',
+          detail: 'CBT, ABC, and mindfulness — for when talking is not enough',
         },
         {
           value: '15',

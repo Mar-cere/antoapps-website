@@ -1148,7 +1148,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'In Anto',
         paragraphs: [
-          'Anto includes a self-compassion protocol among its 8 structured paths, accessible from chat and the techniques hub when context warrants it.',
+          'The hub has exercises (CBT, ABC, mindfulness) for when talking is not enough. It is not treatment and does not replace a professional.',
         ],
       },
     ],
@@ -1638,7 +1638,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'In Anto',
         paragraphs: [
-          'Anto includes a CBT-based depression protocol, PHQ-9 scale for trend tracking, and unified tasks/habits to structure micro-steps. It does not diagnose or prescribe medication.',
+          'The hub has exercises (CBT, ABC, mindfulness) for when talking is not enough. It is not treatment and does not replace a professional. It does not diagnose or prescribe medication.',
         ],
       },
     ],
@@ -1687,7 +1687,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'In Anto',
         paragraphs: [
-          'Use unified tasks and habits to schedule micro-steps, reminders, and Pomodoro. The depression protocol and chat can suggest activities aligned with your context.',
+          'The hub has exercises (CBT, ABC, mindfulness) for when talking is not enough. It is not treatment and does not replace a professional.',
         ],
       },
     ],
@@ -1736,14 +1736,14 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'In Anto',
         paragraphs: [
-          'Anto includes an OCD (ERP) protocol among its 8 structured paths. Chat can help identify patterns, but moderate or severe OCD treatment requires specialised clinical support.',
+          'The hub has exercises (CBT, ABC, mindfulness) for when talking is not enough. It is not treatment and does not replace a professional. Moderate or severe OCD treatment requires specialised clinical support.',
         ],
       },
     ],
     relatedSlugs: [SLUGS.anxiety, SLUGS.tcc, SLUGS.abc],
     disclaimer:
       'Psychoeducation. Not an OCD diagnosis and not a substitute for professional treatment. Unsupervised ERP can worsen symptoms in severe cases. Consult a specialist.',
-    cta: { label: 'Explore Anto protocols →', path: '/app' },
+      cta: { label: 'Explore Anto →', path: '/app' },
   },
   [SLUGS.trauma]: {
     slug: SLUGS.trauma,
@@ -1785,7 +1785,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'In Anto',
         paragraphs: [
-          'Anto includes a trauma and PTSD protocol among its structured paths. It can support you between sessions, but complex trauma requires a trauma-trained therapist — it does not replace that work.',
+          'The hub has exercises (CBT, ABC, mindfulness) for when talking is not enough. It is not treatment and does not replace a professional. Complex trauma requires a trauma-trained therapist.',
         ],
       },
     ],
@@ -1833,7 +1833,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'In Anto',
         paragraphs: [
-          'The anger management protocol guides structured steps in chat. You can also use ABC and grounding techniques from the hub when intensity rises.',
+          'The hub has exercises (CBT, ABC, mindfulness) for when talking is not enough. It is not treatment and does not replace a professional.',
         ],
       },
     ],
