@@ -57,7 +57,7 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
         blocks: [
           {
             kind: 'p',
-            text: 'Anto is a mental health application that provides emotional support through artificial intelligence. The service is designed to complement, not replace, professional mental health treatment.',
+            text: 'Anto is an emotional support application. It provides accompaniment through artificial intelligence. The service is designed to complement, not replace, professional mental health treatment.',
           },
         ],
       },
@@ -75,7 +75,6 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
               '24/7 AI assistant for emotional wellness (does not replace clinical care)',
               'Advanced emotional analysis with clinical scales (PHQ-9, GAD-7)',
               'Cognitive distortion detection',
-              'Proactive crisis detection',
               'Wellness tools and progress tracking',
             ],
           },
@@ -253,7 +252,7 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
       blocks: [
         {
           kind: 'p',
-          text: 'Anto es una aplicación de salud mental que proporciona apoyo emocional mediante inteligencia artificial. El servicio está diseñado para complementar, no reemplazar, el tratamiento profesional de salud mental.',
+          text: 'Anto es una aplicación de acompañamiento emocional. Proporciona apoyo mediante inteligencia artificial. El servicio está diseñado para complementar, no reemplazar, el tratamiento profesional de salud mental.',
         },
       ],
     },
@@ -271,7 +270,6 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
             'Asistente de IA para bienestar emocional 24/7 (no sustituye atención clínica)',
             'Análisis emocional avanzado con escalas clínicas (PHQ-9, GAD-7)',
             'Detección de distorsiones cognitivas',
-            'Detección proactiva de crisis',
             'Herramientas de bienestar y seguimiento de progreso',
           ],
         },

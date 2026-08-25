@@ -154,9 +154,9 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
         {
           icon: 'crisis',
-          title: 'Detección de crisis',
+          title: 'Si estás en crisis',
           description:
-            'Identificación temprana de señales de riesgo, contactos de emergencia y recursos de apoyo inmediato cuando más lo necesitas.',
+            'Líneas de ayuda, contactos de emergencia y recursos de apoyo. No reemplaza servicios de urgencia.',
         },
         {
           icon: 'language',
@@ -344,15 +344,15 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
           techBadges: ['OpenAI GPT-5.4 Mini', 'MongoDB', 'NLP'],
         },
         {
-          title: 'Detección Automática de Crisis',
+          title: 'Recursos en momentos difíciles',
           description:
-            'Analiza patrones de lenguaje en tiempo real. Ante señales de riesgo, activa recursos de apoyo y puede notificar contactos de confianza vía Twilio (WhatsApp/SMS) y SendGrid.',
+            'Líneas de ayuda y, si el usuario lo configura, aviso a contactos de confianza vía Twilio (WhatsApp/SMS) y SendGrid. No reemplaza servicios de urgencia.',
           techBadges: ['Análisis de Patrones', 'Twilio', 'SendGrid'],
         },
         {
           title: 'Motor de apoyo estructurado',
           description:
-            'Según el contexto de cada conversación, el sistema sugiere rutas y herramientas clínicas sin que tengas que configurar protocolos a mano.',
+            'Según el contexto de cada conversación, el sistema sugiere ejercicios del hub (TCC, ABC, mindfulness). No es tratamiento ni reemplaza a un profesional.',
           techBadges: ['Automatizado', 'Basado en Evidencia', 'Contextual'],
         },
         {
@@ -424,9 +424,9 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
         {
           icon: 'crisis',
-          title: 'Crisis detection',
+          title: 'If you are in crisis',
           description:
-            'Early identification of risk signals, emergency contacts, and immediate support resources when you need them most.',
+            'Helplines, emergency contacts, and support resources. It does not replace emergency services.',
         },
         {
           icon: 'language',
@@ -614,15 +614,15 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
           techBadges: ['OpenAI GPT-5.4 Mini', 'MongoDB', 'NLP'],
         },
         {
-          title: 'Automatic Crisis Detection',
+          title: 'Resources in hard moments',
           description:
-            'Analyses language patterns in real time. When risk signals appear, it surfaces support resources and can notify trusted contacts via Twilio (WhatsApp/SMS) and SendGrid.',
+            'Helplines and, if the user sets them up, notices to trusted contacts via Twilio (WhatsApp/SMS) and SendGrid. It does not replace emergency services.',
           techBadges: ['Pattern Analysis', 'Twilio', 'SendGrid'],
         },
         {
           title: 'Structured support engine',
           description:
-            'Based on each conversation, the system suggests clinical routes and tools without you having to configure protocols manually.',
+            'Based on each conversation, the system suggests hub exercises (CBT, ABC, mindfulness). It is not treatment and does not replace a professional.',
           techBadges: ['Automated', 'Evidence-Based', 'Contextual'],
         },
         {
