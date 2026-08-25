@@ -950,7 +950,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   },
   [SLUGS.scales]: {
     slug: SLUGS.scales,
-    readingMinutes: 8,
+    readingMinutes: 6,
     layout: 'brief',
     meta: {
       title: 'PHQ-9 and GAD-7: what they measure and how to interpret them | Anto',
@@ -975,9 +975,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       'The score names a trend. It does not name you.',
     figure: {
       src: '/assets/images/editorial/anto-editorial-morning-pause.webp',
-      alt: 'A morning pause by a window in soft light — a quiet moment when you notice how the week is landing',
+      alt: 'A person from behind walks towards a window in soft light, phone in hand',
       caption:
-        'It is not a form on the table. It is noticing how the weeks feel when nobody is taking notes.',
+        'The morning has already started. If there is a number, it speaks of the two weeks behind you — not of this instant.',
       width: 1536,
       height: 1024,
       objectPosition: '48% 42%',
@@ -987,40 +987,8 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'What are they?',
         paragraphs: [
-          'The PHQ-9 (Patient Health Questionnaire-9) assesses depressive symptoms over the last two weeks. The GAD-7 (Generalized Anxiety Disorder-7) measures generalised anxiety symptoms over the same period. Both are used in primary care and mental health as screening: a first reading, not a verdict.',
-          'Nine mood items; seven for anxiety. The window matters: they ask about two weeks, not about today. A bad Sunday is not the whole questionnaire.',
-        ],
-      },
-      {
-        heading: 'Orienting ranges',
-        paragraphs: [
-          'Published cut points help you read a number. They do not label the person. A single point weighs less than the series: whether it rises, falls, or holds.',
-          'PHQ-9 (Kroenke, Spitzer and Williams, 2001), total 0–27:',
-        ],
-        bullets: [
-          '0–4: none or minimal',
-          '5–9: mild',
-          '10–14: moderate',
-          '15–19: moderately severe',
-          '20–27: severe',
-        ],
-      },
-      {
-        heading: 'GAD-7: anxiety cut points',
-        paragraphs: [
-          'GAD-7 (Spitzer et al., 2006), total 0–21. In the validation study, a cut point ≥10 optimised sensitivity and specificity for probable generalised anxiety disorder; 5–9 is often treated as mild symptoms to watch.',
-        ],
-        bullets: [
-          '0–4: minimal',
-          '5–9: mild',
-          '10–14: moderate',
-          '15–21: severe',
-        ],
-      },
-      {
-        heading: 'The official instrument',
-        paragraphs: [
-          'The validated items — and the reviewed translations, including Spanish — are published on PHQ Screeners, not on this page. We do not copy the questionnaire here: the licence sits with the authors. If you need the form to print or take to a consultation, go to the source.',
+          'The PHQ-9 looks at depressive symptoms; the GAD-7, at generalised anxiety. Both ask about the last two weeks and are used as screening: a first reading, not a verdict.',
+          'The validated items — and the reviewed translations, including Spanish — live on PHQ Screeners. We do not copy the questionnaire here.',
         ],
         link: {
           label: 'PHQ Screeners — official instruments →',
@@ -1029,32 +997,25 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       },
       {
-        heading: 'How Anto uses them',
+        heading: 'Orienting ranges',
         paragraphs: [
-          'Anto can estimate these scales from conversation analysis and show a history with trends. That does not replace the paper form or a clinical interview. It helps you see whether mood or anxiety is moving over time, especially if you already have a professional or want informed self-care.',
-        ],
-      },
-      {
-        heading: 'Important limits',
-        bullets: [
-          'They are screening, not clinical diagnosis',
-          'A bad day can raise the number without changing the picture',
-          'Grief, physical illness, sleep, or stimulants affect answers',
-          'Only a professional can diagnose and plan treatment',
+          'A number names two weeks. The series — whether it rises, falls, or holds — weighs more than a single point.',
+          'PHQ-9 (Kroenke, Spitzer and Williams, 2001), 0–27: 0–4 none or minimal; 5–9 mild; 10–14 moderate; 15–19 moderately severe; 20–27 severe.',
+          'GAD-7 (Spitzer et al., 2006), 0–21: 0–4 minimal; 5–9 mild; 10–14 moderate; 15–21 severe. In the validation study, a cut point ≥10 optimised screening for probable GAD.',
         ],
       },
       {
         heading: 'What to do with the result',
         paragraphs: [
-          'If scores stay high, take them to your doctor or psychologist: the report is a data point, not the closing. If they sit in a moderate range, combine tracking with sleep, movement, regulation, and someone you trust.',
-          'If there are thoughts of harming yourself, immediate risk, or you cannot care for yourself: contact emergency services or a crisis line in your country. Anto can offer resources; it does not replace those services.',
+          'If it stays high, take it to a doctor or psychologist. A bad day, grief, or a sick body can raise the number without changing the picture. Only a professional diagnoses.',
+          'If there are thoughts of harming yourself, immediate risk, or you cannot care for yourself: emergency services or a crisis line in your country. Anto can offer resources; it does not replace those services.',
         ],
       },
     ],
     productMoment: {
       title: 'How it looks in Anto',
-      body: 'When a number frightens you, you can bring it as it is and look at the trend — without turning screening into a verdict.',
-      afterHeading: 'What to do with the result',
+      body: 'When the number frightens you, you can bring it and see whether it was a jump or a streak — not the name a figure cannot give you.',
+      afterHeading: 'Orienting ranges',
       chat: {
         ariaLabel: 'Example conversation in Anto when a scale score is worrying',
         messages: [
@@ -1072,7 +1033,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
           {
             role: 'anto',
-            text: 'It makes sense that it scares you. Let’s look at the trend and what to do with it — not the name a number cannot give you.',
+            text: 'It makes sense that it scares you. Let’s look at the streak — and what to do with it.',
           },
         ],
       },
@@ -1109,7 +1070,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.anxiety, SLUGS.tcc],
+    relatedSlugs: [],
     disclaimer:
       'Psychoeducation. The scales do not diagnose or replace clinical assessment or treatment. In suicidal risk or violence, seek local emergency help immediately.',
     ctaBridge:

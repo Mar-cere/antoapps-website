@@ -950,7 +950,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
   },
   [SLUGS.scales]: {
     slug: SLUGS.scales,
-    readingMinutes: 8,
+    readingMinutes: 6,
     layout: 'brief',
     meta: {
       title: 'PHQ-9 y GAD-7 en español: qué miden y cómo interpretarlas | Anto',
@@ -975,9 +975,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       'La puntuación nombra una tendencia. No te pone un nombre.',
     figure: {
       src: '/assets/images/editorial/anto-editorial-morning-pause.webp',
-      alt: 'Mañana en pausa junto a una ventana con luz suave — un momento quieto en el que se nota cómo viene la semana',
+      alt: 'Persona de espaldas camina hacia una ventana con luz suave, teléfono en la mano',
       caption:
-        'No es un formulario sobre la mesa. Es notar cómo se sienten las semanas cuando nadie está tomando nota.',
+        'La mañana ya empezó. Si hay un número, habla de las dos semanas que quedaron atrás — no de este instante.',
       width: 1536,
       height: 1024,
       objectPosition: '48% 42%',
@@ -987,40 +987,8 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: '¿Qué son?',
         paragraphs: [
-          'El PHQ-9 (Patient Health Questionnaire-9) evalúa síntomas depresivos en las últimas dos semanas. El GAD-7 (Generalized Anxiety Disorder-7) mide síntomas de ansiedad generalizada en el mismo periodo. Ambas se usan en atención primaria y salud mental como cribado: una primera lectura, no un veredicto.',
-          'Nueve ítems de ánimo; siete de ansiedad. El periodo importa: preguntan por dos semanas, no por el día de hoy. Un mal domingo no es el cuestionario entero.',
-        ],
-      },
-      {
-        heading: 'Rangos orientativos',
-        paragraphs: [
-          'Los cortes publicados ayudan a leer un número. No etiquetan a la persona. Un punto aislado pesa menos que la serie: si sube, baja o se queda.',
-          'PHQ-9 (Kroenke, Spitzer y Williams, 2001), suma 0–27:',
-        ],
-        bullets: [
-          '0–4: mínima o ninguna',
-          '5–9: leve',
-          '10–14: moderada',
-          '15–19: moderadamente grave',
-          '20–27: grave',
-        ],
-      },
-      {
-        heading: 'GAD-7: los cortes de ansiedad',
-        paragraphs: [
-          'GAD-7 (Spitzer et al., 2006), suma 0–21. En el estudio de validación, un punto de corte ≥10 optimizó sensibilidad y especificidad para probable trastorno de ansiedad generalizada; 5–9 se usa a menudo como sintomatología leve a vigilar.',
-        ],
-        bullets: [
-          '0–4: mínima',
-          '5–9: leve',
-          '10–14: moderada',
-          '15–21: grave',
-        ],
-      },
-      {
-        heading: 'El instrumento oficial',
-        paragraphs: [
-          'Los ítems validados —y las traducciones revisadas, también al español— se publican en PHQ Screeners, no en esta página. Aquí no copiamos el cuestionario: la licencia es de los autores. Si necesitas el formulario para imprimir o para consulta, ve a la fuente.',
+          'El PHQ-9 mira síntomas depresivos; el GAD-7, ansiedad generalizada. Ambas preguntan por las últimas dos semanas y se usan como cribado: una primera lectura, no un veredicto.',
+          'Los ítems validados —y las traducciones revisadas, también al español— están en PHQ Screeners. Aquí no copiamos el cuestionario.',
         ],
         link: {
           label: 'PHQ Screeners — instrumentos oficiales →',
@@ -1029,32 +997,25 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       },
       {
-        heading: 'Cómo las usa Anto',
+        heading: 'Rangos orientativos',
         paragraphs: [
-          'Anto puede estimar estas escalas a partir del análisis de conversaciones y mostrar un historial con tendencias. Eso no sustituye el formulario en papel ni una entrevista clínica. Sirve para ver si el ánimo o la ansiedad se mueven con el tiempo, sobre todo si ya tienes un profesional o quieres un autocuidado informado.',
-        ],
-      },
-      {
-        heading: 'Límites importantes',
-        bullets: [
-          'Son cribado, no diagnóstico clínico',
-          'Un día malo puede subir el número sin cambiar el cuadro',
-          'Duelo, enfermedad física, sueño o estimulantes influyen en las respuestas',
-          'Solo un profesional puede diagnosticar y planificar tratamiento',
+          'Un número nombra dos semanas. La serie —si sube, baja o se queda— pesa más que un punto.',
+          'PHQ-9 (Kroenke, Spitzer y Williams, 2001), 0–27: 0–4 mínima; 5–9 leve; 10–14 moderada; 15–19 moderadamente grave; 20–27 grave.',
+          'GAD-7 (Spitzer et al., 2006), 0–21: 0–4 mínima; 5–9 leve; 10–14 moderada; 15–21 grave. En la validación, un corte ≥10 optimizó el cribado de probable TAG.',
         ],
       },
       {
         heading: 'Qué hacer con el resultado',
         paragraphs: [
-          'Si las puntuaciones se mantienen altas, llévalas a tu médico o psicólogo: el reporte es un dato, no el cierre. Si están en un rango moderado, combina seguimiento con sueño, movimiento, regulación y alguien de confianza.',
-          'Si hay ideas de hacerte daño, riesgo inmediato o no puedes cuidarte: contacta emergencias o una línea de crisis de tu país. Anto puede ofrecer recursos; no sustituye esos servicios.',
+          'Si se mantiene alta, llévala a un médico o psicólogo. Un mal día, el duelo o el cuerpo enfermo pueden subir el número sin cambiar el cuadro. Solo un profesional diagnostica.',
+          'Si hay ideas de hacerte daño, riesgo inmediato o no puedes cuidarte: emergencias o una línea de crisis de tu país. Anto puede ofrecer recursos; no sustituye esos servicios.',
         ],
       },
     ],
     productMoment: {
       title: 'Así se ve en Anto',
-      body: 'Cuando un número asusta, puedes traerlo tal cual y mirar la tendencia — sin convertir el cribado en un veredicto.',
-      afterHeading: 'Qué hacer con el resultado',
+      body: 'Cuando el número asusta, puedes traerlo y mirar si fue un salto o una racha — no el nombre que una cifra no puede darte.',
+      afterHeading: 'Rangos orientativos',
       chat: {
         ariaLabel: 'Ejemplo de conversación en Anto cuando una puntuación de escala preocupa',
         messages: [
@@ -1072,7 +1033,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
           {
             role: 'anto',
-            text: 'Tiene sentido que asuste. Miremos la tendencia y qué hacer con ella — no el nombre que el número no puede darte.',
+            text: 'Tiene sentido que asuste. Miremos la racha — y qué hacer con ella.',
           },
         ],
       },
@@ -1109,7 +1070,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.anxiety, SLUGS.tcc],
+    relatedSlugs: [],
     disclaimer:
       'Psicoeducación. Las escalas no diagnostican ni sustituyen evaluación o tratamiento clínico. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
     ctaBridge:
