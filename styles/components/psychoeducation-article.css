@@ -407,6 +407,16 @@
   max-width: 22rem;
 }
 
+@media (min-width: 768px) {
+  .psycho-guide__bands {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.5rem 2.75rem;
+    align-items: start;
+    max-width: none;
+  }
+}
+
 .psycho-guide__bands-group {
   margin: 0;
 }
@@ -1330,7 +1340,7 @@
     max-width: 44rem;
   }
 
-  /* Ritual ∥ producto: composición editorial, no stack de blog */
+  /* Ritual corto ∥ producto (TCC, sueño). */
   .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__product) {
     grid-column: 1 / -1;
     display: grid;
@@ -1345,8 +1355,31 @@
     max-width: none;
   }
 
-  .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__product) .psycho-guide__bands {
+  /*
+    Rangos: el par PHQ|GAD es el contenido. El chat va debajo
+    (copy | viñeta), no en paralelo — no son columnas equivalentes.
+  */
+  .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__bands):has(.psycho-guide__product) {
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+    align-items: stretch;
+  }
+
+  .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__bands) .psycho-guide__section {
     max-width: none;
+    width: 100%;
+  }
+
+  .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__bands) .psycho-guide__section > p {
+    max-width: 62ch;
+  }
+
+  .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__bands):has(.psycho-guide__product) .psycho-guide__product {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(20rem, 28rem);
+    gap: 1.5rem 2.75rem;
+    align-items: start;
   }
 
   .psycho-guide--brief .psycho-guide__closing {
@@ -1399,6 +1432,11 @@
 
   .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__product) {
     grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 28rem);
+    gap: 2rem 3.5rem;
+  }
+
+  .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__bands):has(.psycho-guide__product) .psycho-guide__product {
+    grid-template-columns: minmax(0, 1fr) minmax(22rem, 30rem);
     gap: 2rem 3.5rem;
   }
 }
