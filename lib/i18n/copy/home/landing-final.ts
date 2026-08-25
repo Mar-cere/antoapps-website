@@ -22,9 +22,9 @@ export type HomeCredentialStat = {
   detail: string;
 };
 
-export type HomeProtocolCard = {
+export type HomeAccompanimentNote = {
   title: string;
-  subtitle: string;
+  body: string;
 };
 
 export type HomePricingCard = {
@@ -61,7 +61,7 @@ export type HomeLandingFinalCopy = {
     title: string;
     subtitle: string;
     stats: readonly HomeCredentialStat[];
-    protocols: readonly HomeProtocolCard[];
+    accompaniment: HomeAccompanimentNote;
   };
   pricing: {
     eyebrow: string;
@@ -113,12 +113,12 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
   if (locale === 'es') {
     return {
     hero: {
-      kicker: 'Apoyo emocional con IA · iOS',
+      kicker: 'Apoyo emocional con IA · iPhone y Android',
       titleLine1: 'Tu mente tiene',
       titleLine2: 'un lugar donde',
       titleAccent: 'aterrizar.',
       subtitle:
-        'Anto combina IA avanzada con protocolos clínicos validados para acompañarte cuando más lo necesitas. Sin citas. Sin horarios. Sin juicios.',
+        'Anto te acompaña con conversación y un hub de ejercicios cuando hablar no alcanza. Sin citas. Sin horarios. Sin juicios.',
       ctaStoreLabel: 'Descargar en',
       ctaStoreText: 'App Store',
       ctaBadge: 'Gratis',
@@ -196,9 +196,9 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       },
     ],
     credentials: {
-      eyebrow: 'Credenciales',
-      title: 'Construido sobre\nevidencia real.',
-      subtitle: 'No es intuición — es ciencia clínica integrada en cada conversación.',
+      eyebrow: 'Acompañamiento',
+      title: 'Un lugar donde\naterrizar.',
+      subtitle: 'No es tratamiento ni reemplaza a un profesional. Es apoyo para el día a día.',
       stats: [
         {
           value: 'Hub',
@@ -206,9 +206,9 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
           detail: 'TCC, ABC y mindfulness — para cuando hablar no alcanza',
         },
         {
-          value: '15',
-          label: 'Distorsiones detectadas',
-          detail: 'Catastrofismo, personalización y más — identificadas en cada sesión',
+          value: 'Chat',
+          label: 'Acompañamiento',
+          detail: 'Escribes cómo te sientes. Recibes un paso concreto. Sin etiqueta de trastorno',
         },
         {
           value: '5.0',
@@ -221,11 +221,10 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
           detail: 'Sin citas, sin horarios, sin lista de espera',
         },
       ],
-      protocols: [
-        { title: 'Depresión · Ansiedad', subtitle: 'Protocolos CBT validados clínicamente' },
-        { title: 'Trauma · TOC · TEPT', subtitle: 'Rutas estructuradas basadas en evidencia' },
-        { title: 'Autocompasión · Ira · Sueño', subtitle: 'Acompañamiento paso a paso' },
-      ],
+      accompaniment: {
+        title: 'Qué hay en el hub',
+        body: 'Ejercicios (TCC, ABC, mindfulness) para cuando hablar no alcanza. No es tratamiento ni detección. No reemplaza a un profesional.',
+      },
     },
     pricing: {
       eyebrow: 'Planes',
@@ -285,7 +284,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         {
           question: '¿Mis conversaciones son privadas?',
           answer:
-            'Sí. Tus conversaciones están cifradas (AES-256) y no vendemos ni compartimos tu información con terceros.',
+            'Sí. Van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos ni compartimos tu información con terceros.',
         },
         {
           question: '¿Anto reemplaza la terapia?',
@@ -326,12 +325,12 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
 
   return {
     hero: {
-      kicker: 'AI emotional support · iOS',
+      kicker: 'AI emotional support · iPhone and Android',
       titleLine1: 'Your mind has',
       titleLine2: 'a place to',
       titleAccent: 'land.',
       subtitle:
-        'Anto combines advanced AI with validated clinical protocols to support you when you need it most. No appointments. No schedules. No judgment.',
+        'Anto accompanies you with conversation and an exercise hub for when talking is not enough. No appointments. No schedules. No judgment.',
       ctaStoreLabel: 'Download on',
       ctaStoreText: 'App Store',
       ctaBadge: 'Free',
@@ -409,9 +408,9 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       },
     ],
     credentials: {
-      eyebrow: 'Credentials',
-      title: 'Built on\nreal evidence.',
-      subtitle: 'Not intuition — clinical science integrated into every conversation.',
+      eyebrow: 'Support',
+      title: 'A place to\nland.',
+      subtitle: 'It is not treatment and does not replace a professional. It is day-to-day support.',
       stats: [
         {
           value: 'Hub',
@@ -419,9 +418,9 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
           detail: 'CBT, ABC, and mindfulness — for when talking is not enough',
         },
         {
-          value: '15',
-          label: 'Distortions detected',
-          detail: 'Catastrophizing, personalization, and more — identified each session',
+          value: 'Chat',
+          label: 'Companionship',
+          detail: 'You write how you feel. You get a concrete next step. No disorder label',
         },
         {
           value: '5.0',
@@ -434,11 +433,10 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
           detail: 'No appointments, no schedules, no waiting list',
         },
       ],
-      protocols: [
-        { title: 'Depression · Anxiety', subtitle: 'Clinically validated CBT protocols' },
-        { title: 'Trauma · OCD · PTSD', subtitle: 'Structured evidence-based pathways' },
-        { title: 'Self-compassion · Anger · Sleep', subtitle: 'Step-by-step guidance' },
-      ],
+      accompaniment: {
+        title: 'What is in the hub',
+        body: 'Exercises (CBT, ABC, mindfulness) for when talking is not enough. Not treatment and not detection. It does not replace a professional.',
+      },
     },
     pricing: {
       eyebrow: 'Plans',
@@ -498,7 +496,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         {
           question: 'Are my conversations private?',
           answer:
-            'Yes. Your conversations are encrypted (AES-256) and we do not sell or share your information with third parties.',
+            'Yes. They are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell or share your information with third parties.',
         },
         {
           question: 'Does Anto replace therapy?',

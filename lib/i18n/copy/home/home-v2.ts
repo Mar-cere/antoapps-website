@@ -384,7 +384,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'Are my conversations private?',
             answer:
-              'Yes. Conversations are encrypted and we do not sell or share your information with third parties.',
+              'Yes. They are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell or share your information with third parties.',
           },
           {
             question: 'Does Anto replace therapy?',
@@ -626,7 +626,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           question: '¿Mis conversaciones son privadas?',
           answer:
-            'Sí. Están cifradas y no vendemos ni compartimos tu información con terceros.',
+            'Sí. Van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos ni compartimos tu información con terceros.',
         },
         {
           question: '¿Anto reemplaza la terapia?',

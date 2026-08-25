@@ -15,7 +15,7 @@ const LOCALES: readonly Locale[] = ['es', 'en'];
 
 const EXPECTED_FEATURE_CARD_COUNT = 9;
 const EXPECTED_WHATS_NEW_ITEMS = 6;
-const EXPECTED_FAQ_VISIBLE = 19;
+const EXPECTED_FAQ_VISIBLE = 18;
 
 const V15_LANDING_MARKERS: Record<Locale, RegExp[]> = {
   es: [/hub de técnicas/i, /grafo/i, /sesión persistente|insight diario/i],
@@ -105,6 +105,13 @@ export function assertHomeCopyInvariants(): string[] {
       if (!pattern.test(faqQuestions)) {
         errors.push(`${tag} FAQ falta pregunta v1.5 esperada: ${pattern}`);
       }
+    }
+    const faqSurface = allFaq.map((item) => `${item.question} ${item.answer}`).join('\n');
+    if (/qué protocolos terapéuticos|which therapeutic protocols/i.test(faqSurface)) {
+      errors.push(`${tag} FAQ no debe presentar protocolos terapéuticos como producto`);
+    }
+    if (/detección de crisis proactiva|proactive crisis detection|crisis detection/i.test(faqSurface)) {
+      errors.push(`${tag} FAQ no debe vender detección de crisis`);
     }
 
     const landingText = landingFeatureText(locale);

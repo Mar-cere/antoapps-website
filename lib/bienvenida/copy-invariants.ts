@@ -45,6 +45,10 @@ export function assertBienvenidaCopyInvariants(): string[] {
     if (copy.clinicalPillars.items.length !== 3) {
       errors.push(`${tag} clinicalPillars: se requieren 3 ítems`);
     }
+    const pillarsText = copy.clinicalPillars.items.map((item) => `${item.title} ${item.description}`).join('\n');
+    if (/detecta crisis|crisis detection|alertas proactivas|proactive alerts/i.test(pillarsText)) {
+      errors.push(`${tag} clinicalPillars no debe vender detección de crisis`);
+    }
 
     if (copy.conversationDemo.messages.length < 3) {
       errors.push(`${tag} conversationDemo: se requieren al menos 3 mensajes`);

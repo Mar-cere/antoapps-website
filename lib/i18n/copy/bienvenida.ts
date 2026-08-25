@@ -248,8 +248,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           },
           {
             icon: 'crisis',
-            title: '24/7 crisis detection',
-            description: 'Proactive alerts and resources if you need urgent support.',
+            title: 'If you are in crisis',
+            description:
+              'Anto can point you to helplines and resources. It does not replace emergency care or a professional.',
           },
           {
             icon: 'privacy',
@@ -521,8 +522,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         },
         {
           icon: 'crisis',
-          title: 'Detecta crisis 24/7',
-          description: 'Alertas proactivas y recursos si necesitas apoyo urgente.',
+          title: 'Si estás en crisis',
+          description:
+            'Anto puede orientarte a líneas de ayuda y recursos. No reemplaza una emergencia ni a un profesional.',
         },
         {
           icon: 'privacy',
