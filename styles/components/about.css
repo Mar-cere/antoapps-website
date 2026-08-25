@@ -1,280 +1,84 @@
-/* ============================================
-   ABOUT PAGE STYLES
-   ============================================ */
+/* /sobre-nosotros — columna de manifiesto, chrome de home */
 
-.about-hero {
-    background: var(--color-bg-glow), var(--color-bg-primary);
-    padding: var(--page-hero-padding-top) 0 var(--page-hero-padding-bottom);
-    text-align: center;
-}
-
-.about-title {
-    font-size: clamp(var(--font-size-4xl), 6vw, var(--font-size-6xl));
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-primary);
-    margin-bottom: var(--spacing-4);
-}
-
-.about-subtitle {
-    font-size: var(--font-size-xl);
-    color: var(--color-text-secondary);
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-2);
-}
-
-.about-story {
-    background: var(--color-bg-primary);
-}
-
-.about-content {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.about-text p {
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--spacing-4);
-}
-
-.about-text p strong {
-    color: var(--color-text-primary);
-    font-weight: var(--font-weight-semibold);
-}
-
-.about-mission {
-    background: var(--color-bg-secondary);
-}
-
-.mission-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-    gap: var(--spacing-6);
-    margin-top: var(--spacing-6);
-}
-
-.mission-card {
-    background: var(--color-surface);
-    border: var(--border-width-1) solid var(--color-border);
-    border-radius: var(--radius-2xl);
-    padding: var(--spacing-8);
-    text-align: center;
-    box-shadow: var(--shadow-xs);
-}
-
-.mission-icon {
-    font-size: 4rem;
-    margin-bottom: var(--spacing-md);
-}
-
-.mission-card h3 {
-    color: var(--color-text-primary);
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--spacing-4);
-}
-
-.mission-card p {
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
-    font-size: var(--font-size-base);
-}
-
-.about-values {
-    background: var(--color-bg-primary);
-}
-
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-    gap: var(--spacing-6);
-    margin-top: var(--spacing-6);
-}
-
-.value-item {
-    background: var(--color-surface);
-    border: var(--border-width-1) solid var(--color-border);
-    border-radius: var(--radius-xl);
-    padding: var(--spacing-6);
-    text-align: center;
-    transition: var(--transition-base);
-    box-shadow: var(--shadow-xs);
-}
-
-@media (hover: hover) {
-    .value-item:hover {
-        border-color: var(--color-primary);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-    }
-}
-
-.value-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-md);
-}
-
-.value-item h3 {
-    color: var(--color-text-primary);
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--spacing-3);
-}
-
-.value-item p {
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-base);
-    font-size: var(--font-size-base);
-}
-
-.about-process {
-    background: var(--color-bg-secondary);
-}
-
-.process-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-    gap: var(--spacing-6);
-    margin-top: var(--spacing-6);
-}
-
-.process-step {
-    background: var(--color-surface);
-    border: var(--border-width-1) solid var(--color-border);
-    border-radius: var(--radius-xl);
-    padding: var(--spacing-6);
-    text-align: center;
-    box-shadow: var(--shadow-xs);
-}
-
-.process-step .step-number {
-    width: 50px;
-    height: 50px;
-    background: var(--color-primary);
-    color: var(--color-text-on-primary);
-    border-radius: var(--radius-full);
+.about-page {
+    --hl-max: 72rem;
+    --hl-pad-x: 2rem;
+    --home-accent: var(--color-primary, #1adddb);
+    min-height: 100dvh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
-    margin: 0 auto var(--spacing-4);
+    flex-direction: column;
+    background:
+        radial-gradient(ellipse 85% 55% at 72% -8%, rgba(26, 221, 219, 0.07), transparent 58%),
+        radial-gradient(ellipse 55% 45% at 8% 18%, rgba(163, 184, 232, 0.05), transparent 52%),
+        #050d1f;
+    color: var(--color-text-primary, #f4f7fb);
 }
 
-.process-step h3 {
-    color: var(--color-text-primary);
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--spacing-3);
+.about-page__main {
+    flex: 1;
+    padding: 3.25rem 1.25rem 4rem;
 }
 
-.process-step p {
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-base);
-    font-size: var(--font-size-base);
-}
-
-.about-commitment {
-    background: var(--color-bg-primary);
-}
-
-.commitment-content {
-    max-width: 1000px;
+.about-page__column {
+    max-width: 36rem;
     margin: 0 auto;
 }
 
-.commitment-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-    gap: var(--spacing-6);
-    margin-top: var(--spacing-6);
+.about-page__title {
+    font-size: clamp(2rem, 5.2vw, 2.75rem);
+    font-weight: var(--font-weight-bold, 700);
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    margin: 0 0 0.85rem;
+    color: var(--color-text-primary, #f4f7fb);
 }
 
-.commitment-item {
-    background: var(--color-surface);
-    border: var(--border-width-1) solid var(--color-border);
-    border-radius: var(--radius-xl);
-    padding: var(--spacing-6);
-    box-shadow: var(--shadow-xs);
+.about-page__lede {
+    font-size: clamp(1.125rem, 2.5vw, 1.3125rem);
+    line-height: 1.45;
+    color: var(--color-secondary, #a3b8e8);
+    margin: 0 0 2rem;
 }
 
-.commitment-item h3 {
-    color: var(--color-text-primary);
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--spacing-3);
+.about-page__body {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: rgba(244, 247, 251, 0.84);
+    margin: 0 0 1.2rem;
 }
 
-.commitment-item p {
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-base);
-    font-size: var(--font-size-base);
+.about-page__stores {
+    margin: 2.15rem 0 0.9rem;
 }
 
-.about-cta {
-    background: var(--color-bg-secondary);
-    text-align: center;
+.about-page__stores .premium-store-cta-stack,
+.about-page__stores .premium-store-cta {
+    width: 100%;
+    max-width: none;
 }
 
-/* Responsive */
-@media (max-width: 968px) {
-    .mission-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .about-title {
-        font-size: var(--font-size-4xl);
-    }
+.about-page__micro {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: rgba(244, 247, 251, 0.58);
+    margin: 0 0 1.75rem;
 }
 
-@media (max-width: 768px) {
-    .about-hero {
-        padding: var(--page-hero-padding-top-tight) 0 var(--page-hero-padding-bottom-tight);
-    }
+.about-page__disclaimer {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: rgba(244, 247, 251, 0.74);
+    margin: 0;
+}
 
-    .about-title {
-        font-size: var(--font-size-3xl);
-    }
-
-    .about-subtitle {
-        font-size: var(--font-size-lg);
-    }
-
-    .values-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .process-steps,
-    .commitment-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .mission-card {
-        padding: var(--spacing-6);
+@media (min-width: 768px) {
+    .about-page__main {
+        padding: 4.5rem 2rem 5.25rem;
     }
 }
 
-@media (max-width: 480px) {
-    .about-title {
-        font-size: clamp(1.5rem, 7vw, 2rem);
-    }
-
-    .about-text p {
-        font-size: var(--font-size-base);
-    }
-
-    .mission-card,
-    .value-item,
-    .process-step,
-    .commitment-item {
-        padding: var(--spacing-4);
-    }
-
-    .mission-icon,
-    .value-icon {
-        font-size: 2.5rem;
+@media (prefers-reduced-motion: reduce) {
+    .about-page__stores .premium-store-cta:hover {
+        transform: none;
     }
 }
-
