@@ -3,7 +3,7 @@ import { getBienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
 export const runtime = 'edge';
-export const alt = 'Anto — Emotional support for anxiety on iPhone';
+export const alt = 'Anto — Emotional support for anxiety on iPhone and Android';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -78,7 +78,7 @@ export default function BienvenidaOpenGraphImageEn() {
             fontWeight: 600,
           }}
         >
-          <span>iPhone app</span>
+          <span>iPhone and Android app</span>
           <span>·</span>
           <span>{trial.short}</span>
         </div>

@@ -87,7 +87,7 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
           },
           {
             kind: 'p',
-            text: 'Upon renewal, the subscription price will be automatically charged to your payment method associated with the Apple App Store.',
+            text: 'Upon renewal, the subscription price will be automatically charged to your payment method associated with the Apple App Store (iPhone) or Google Play (Android).',
           },
           { kind: 'h3', text: '3.3. Pricing and Billing' },
           {
@@ -105,14 +105,14 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
           },
           {
             kind: 'p',
-            text: 'All prices include applicable taxes. Payments are processed through the Apple App Store and are subject to Apple\'s terms and conditions.',
+            text: 'All prices include applicable taxes. Payments are processed through the Apple App Store (iPhone) or Google Play (Android) and are subject to their respective terms and conditions.',
           },
           { kind: 'h3', text: '3.4. Subscription Cancellation' },
           {
             kind: 'p',
-            text: 'You can cancel your subscription at any time from your Apple ID account settings in the App Store. Cancellation will take effect at the end of the current billing period, and you will retain access to all features until that time.',
+            text: 'You can cancel your subscription at any time. Cancellation will take effect at the end of the current billing period, and you will retain access to all features until that time.',
           },
-          { kind: 'p', text: 'To cancel:' },
+          { kind: 'p', text: 'To cancel on iPhone (iOS):' },
           {
             kind: 'ol',
             items: [
@@ -123,14 +123,33 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
               'Tap "Cancel Subscription"',
             ],
           },
+          { kind: 'p', text: 'To cancel on Android:' },
+          {
+            kind: 'ol',
+            items: [
+              'Open the Google Play Store app',
+              'Tap your profile icon at the top right',
+              'Tap "Payments & subscriptions" → "Subscriptions"',
+              'Select your Anto subscription',
+              'Tap "Cancel subscription" and follow the instructions',
+            ],
+          },
           { kind: 'h3', text: '3.5. Refunds' },
           {
             kind: 'p',
-            text: 'Refunds are subject to the Apple App Store refund policy. If you request a refund, contact Apple Support directly through reportaproblema.apple.com.',
+            text: 'Refunds are subject to the Apple App Store refund policy (iPhone) or Google Play refund policy (Android).',
           },
           {
             kind: 'p',
-            text: 'Anto does not process refunds directly, as all transactions are handled through the Apple App Store.',
+            text: 'For iPhone: Contact Apple Support directly through reportaproblema.apple.com.',
+          },
+          {
+            kind: 'p',
+            text: 'For Android: Request a refund through the Google Play Store (Payments & subscriptions → Budget & history → find the purchase → Request a refund), or contact Google Play Support.',
+          },
+          {
+            kind: 'p',
+            text: 'Anto does not process refunds directly, as all transactions are handled through the respective app stores.',
           },
           { kind: 'h3', text: '3.6. Price Changes' },
           {
@@ -140,7 +159,7 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
           { kind: 'h3', text: '3.7. Free Trial Period' },
           {
             kind: 'p',
-            text: 'Anto may offer a 1-day trial period to explore the features, depending on the plan and app store. The exact conditions (start, scope, and billing after the trial) are shown at the time of purchase or subscription in the app and on the Apple App Store.',
+            text: 'Anto may offer a 1-day trial period to explore the features, depending on the plan and app store. The exact conditions (start, scope, and billing after the trial) are shown at the time of purchase or subscription in the app and on the Apple App Store (iPhone) or Google Play (Android).',
           },
         ],
       },
@@ -265,7 +284,7 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
         },
         {
           kind: 'p',
-          text: 'Al renovarse, se cargará automáticamente el precio de la suscripción a tu método de pago asociado en Apple App Store.',
+          text: 'Al renovarse, se cargará automáticamente el precio de la suscripción a tu método de pago asociado en Apple App Store (iPhone) o Google Play (Android).',
         },
         { kind: 'h3', text: '3.3. Precios y Facturación' },
         {
@@ -283,14 +302,14 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
         },
         {
           kind: 'p',
-          text: 'Todos los precios incluyen impuestos aplicables. Los pagos se procesan a través de Apple App Store y están sujetos a los términos y condiciones de Apple.',
+          text: 'Todos los precios incluyen impuestos aplicables. Los pagos se procesan a través de Apple App Store (iPhone) o Google Play (Android) y están sujetos a sus respectivos términos y condiciones.',
         },
         { kind: 'h3', text: '3.4. Cancelación de Suscripción' },
         {
           kind: 'p',
-          text: 'Puedes cancelar tu suscripción en cualquier momento desde la configuración de tu cuenta de Apple ID en App Store. La cancelación entrará en vigor al final del período de facturación actual, y mantendrás acceso a todas las funcionalidades hasta ese momento.',
+          text: 'Puedes cancelar tu suscripción en cualquier momento. La cancelación entrará en vigor al final del período de facturación actual, y mantendrás acceso a todas las funcionalidades hasta ese momento.',
         },
-        { kind: 'p', text: 'Para cancelar:' },
+        { kind: 'p', text: 'Para cancelar en iPhone (iOS):' },
         {
           kind: 'ol',
           items: [
@@ -301,14 +320,33 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
             'Toca "Cancelar suscripción"',
           ],
         },
+        { kind: 'p', text: 'Para cancelar en Android:' },
+        {
+          kind: 'ol',
+          items: [
+            'Abre la aplicación Google Play Store',
+            'Toca el ícono de tu perfil en la esquina superior derecha',
+            'Toca "Pagos y suscripciones" → "Suscripciones"',
+            'Selecciona tu suscripción a Anto',
+            'Toca "Cancelar suscripción" y sigue las instrucciones',
+          ],
+        },
         { kind: 'h3', text: '3.5. Reembolsos' },
         {
           kind: 'p',
-          text: 'Los reembolsos están sujetos a la política de reembolsos de Apple App Store. Si solicitas un reembolso, contacta directamente con el soporte de Apple a través de reportaproblema.apple.com.',
+          text: 'Los reembolsos están sujetos a la política de reembolsos de Apple App Store (iPhone) o de Google Play (Android).',
         },
         {
           kind: 'p',
-          text: 'Anto no procesa reembolsos directamente, ya que todas las transacciones se manejan a través de Apple App Store.',
+          text: 'Para iPhone: Contacta directamente con el soporte de Apple a través de reportaproblema.apple.com.',
+        },
+        {
+          kind: 'p',
+          text: 'Para Android: Solicita un reembolso a través de Google Play Store (Pagos y suscripciones → Presupuesto e historial → busca la compra → Solicitar reembolso), o contacta con el soporte de Google Play.',
+        },
+        {
+          kind: 'p',
+          text: 'Anto no procesa reembolsos directamente, ya que todas las transacciones se manejan a través de las respectivas tiendas de aplicaciones.',
         },
         { kind: 'h3', text: '3.6. Cambios de Precio' },
         {
@@ -318,7 +356,7 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
         { kind: 'h3', text: '3.7. Período de Prueba Gratuita' },
         {
           kind: 'p',
-          text: 'Anto puede ofrecer un período de prueba de 1 día para explorar las funcionalidades, según el plan y la tienda de aplicaciones. Las condiciones exactas (inicio, alcance y facturación tras la prueba) se muestran en el momento de la compra o suscripción en la app y en Apple App Store.',
+          text: 'Anto puede ofrecer un período de prueba de 1 día para explorar las funcionalidades, según el plan y la tienda de aplicaciones. Las condiciones exactas (inicio, alcance y facturación tras la prueba) se muestran en el momento de la compra o suscripción en la app y en Apple App Store (iPhone) o Google Play (Android).',
         },
       ],
     },

@@ -167,15 +167,15 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
   if (locale === 'en') {
     return {
       meta: {
-        title: 'Anto: Emotional support for anxiety | iPhone app',
+        title: 'Anto: Emotional support for anxiety | iPhone and Android app',
         description:
-          'Emotional support app for iPhone: when anxiety or a racing mind won\'t stop, write what you feel and get clarity with one concrete step. 1-day free trial on the App Store.',
+          'Emotional support app for iPhone and Android: when anxiety or a racing mind won\'t stop, write what you feel and get clarity with one concrete step. 1-day free trial on the App Store or Google Play.',
         socialDescription:
-          'Emotional support when anxiety won\'t let go. Clarity in minutes — 1-day free trial on iPhone.',
+          'Emotional support when anxiety won\'t let go. Clarity in minutes — 1-day free trial on iPhone and Android.',
         ogHeadline: 'Emotional support when your mind won\'t slow down',
         ogSubline:
           'Write what you feel. Get clarity and one concrete step — not just a chatbot reply.',
-        ogAlt: 'Anto — Emotional support for anxiety on iPhone',
+        ogAlt: 'Anto — Emotional support for anxiety on iPhone and Android',
       },
       hero: {
         titleLine1: 'When your mind won\'t slow down,',
@@ -192,8 +192,8 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       },
       trial: {
         heroCta: {
-          A: 'Download on iPhone',
-          B: 'Start on iPhone',
+          A: 'Download on App Store',
+          B: 'Start on App Store',
           C: 'App Store',
         },
         stickyCta: {
@@ -436,15 +436,15 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
 
   return {
     meta: {
-      title: 'Anto: Apoyo emocional para ansiedad | App iPhone',
+      title: 'Anto: Apoyo emocional para ansiedad | App iPhone y Android',
       description:
-        'App de apoyo emocional para iPhone: cuando la ansiedad o tu mente no paran, escribe lo que sientes y recibe claridad con un paso concreto. Prueba 1 día gratis en App Store.',
+        'App de apoyo emocional para iPhone y Android: cuando la ansiedad o tu mente no paran, escribe lo que sientes y recibe claridad con un paso concreto. Prueba 1 día gratis en App Store o Google Play.',
       socialDescription:
-        'Apoyo emocional cuando la ansiedad no te deja. Claridad en minutos — prueba 1 día gratis en iPhone.',
+        'Apoyo emocional cuando la ansiedad no te deja. Claridad en minutos — prueba 1 día gratis en iPhone y Android.',
       ogHeadline: 'Apoyo emocional cuando tu mente no para',
       ogSubline:
         'Escribe lo que sientes. Recibe claridad y un paso concreto — no solo una respuesta genérica.',
-      ogAlt: 'Anto — Apoyo emocional para ansiedad en iPhone',
+      ogAlt: 'Anto — Apoyo emocional para ansiedad en iPhone y Android',
     },
     hero: {
       titleLine1: 'Cuando tu mente va a mil,',
@@ -461,8 +461,8 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
     },
     trial: {
       heroCta: {
-        A: 'Descargar en iPhone',
-        B: 'Empezar en iPhone',
+        A: 'Descargar en App Store',
+        B: 'Empezar en App Store',
         C: 'App Store',
       },
       stickyCta: {

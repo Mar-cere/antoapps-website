@@ -62,7 +62,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 101,
           question: '¿Qué es Anto?',
           answer:
-            'Anto es una app de acompañamiento emocional continuo: un lugar donde aterrizar cuando necesitas apoyo entre sesiones o en el día a día. Usa asistencia de IA en segundo plano, con herramientas y seguimiento pensados para el bienestar. No sustituye atención clínica: un terapeuta o profesional humano sigue siendo lo más recomendable. Disponible en iPhone.',
+            'Anto es una app de acompañamiento emocional continuo: un lugar donde aterrizar cuando necesitas apoyo entre sesiones o en el día a día. Usa asistencia de IA en segundo plano, con herramientas y seguimiento pensados para el bienestar. No sustituye atención clínica: un terapeuta o profesional humano sigue siendo lo más recomendable. Disponible en iPhone y Android.',
           category: 'funcionalidad',
         },
         {
@@ -336,7 +336,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 101,
         question: 'What is Anto?',
         answer:
-          'Anto is an app for ongoing emotional support: a place to land when you need support between sessions or day to day. It uses AI assistance in the background, with tools and tracking designed for wellbeing. It does not replace clinical care — a human therapist or professional remains the stronger recommendation. Available on iPhone.',
+          'Anto is an app for ongoing emotional support: a place to land when you need support between sessions or day to day. It uses AI assistance in the background, with tools and tracking designed for wellbeing. It does not replace clinical care — a human therapist or professional remains the stronger recommendation. Available on iPhone and Android.',
         category: 'funcionalidad',
       },
       {
