@@ -73,8 +73,6 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
             kind: 'ul',
             items: [
               '24/7 AI assistant for emotional wellness (does not replace clinical care)',
-              'Advanced emotional analysis with clinical scales (PHQ-9, GAD-7)',
-              'Cognitive distortion detection',
               'Wellness tools and progress tracking',
             ],
           },
@@ -268,8 +266,6 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
           kind: 'ul',
           items: [
             'Asistente de IA para bienestar emocional 24/7 (no sustituye atención clínica)',
-            'Análisis emocional avanzado con escalas clínicas (PHQ-9, GAD-7)',
-            'Detección de distorsiones cognitivas',
             'Herramientas de bienestar y seguimiento de progreso',
           ],
         },
