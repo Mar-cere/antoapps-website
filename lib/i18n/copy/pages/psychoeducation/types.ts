@@ -1,7 +1,18 @@
+export type PsychoeducationBandGroup = {
+  label: string;
+  items: readonly {
+    range: string;
+    label: string;
+  }[];
+  note?: string;
+};
+
 export type PsychoeducationSection = {
   heading: string;
   paragraphs?: readonly string[];
   bullets?: readonly string[];
+  /** Leyenda de rangos (PHQ-9 / GAD-7): una fila por banda, no un párrafo corrido. */
+  bands?: readonly PsychoeducationBandGroup[];
   /** Si true, renderiza <ol> en vez de <ul> (p. ej. ejercicios paso a paso). */
   ordered?: boolean;
   /**

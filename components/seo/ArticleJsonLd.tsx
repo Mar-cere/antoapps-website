@@ -22,6 +22,11 @@ export function getArticleJsonLd(locale: Locale, path: string, guide: Psychoeduc
     .flatMap((section) => [
       ...(section.paragraphs ?? []),
       ...(section.bullets ?? []),
+      ...(section.bands ?? []).flatMap((group) => [
+        group.label,
+        ...group.items.map((item) => `${item.range} ${item.label}`),
+        ...(group.note ? [group.note] : []),
+      ]),
     ])
     .join(' ');
 

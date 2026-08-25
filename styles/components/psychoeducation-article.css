@@ -340,6 +340,7 @@
   padding: 0;
   min-width: 0;
   max-width: 100%;
+  scroll-margin-top: 5.5rem;
 }
 
 .psycho-guide__section h2 {
@@ -396,6 +397,67 @@
   height: 0.35rem;
   border-radius: 50%;
   background: color-mix(in srgb, var(--color-primary) 75%, transparent);
+}
+
+.psycho-guide__bands {
+  display: flex;
+  flex-direction: column;
+  gap: 1.45rem;
+  margin: 1rem 0 0;
+  max-width: 22rem;
+}
+
+.psycho-guide__bands-group {
+  margin: 0;
+}
+
+.psycho-guide__bands-label {
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--home-v2-ink);
+}
+
+.psycho-guide__bands-dl {
+  margin: 0;
+  border-top: 1px solid var(--home-v2-hairline);
+}
+
+.psycho-guide__bands-row {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  column-gap: 0.9rem;
+  align-items: baseline;
+  margin: 0;
+}
+
+.psycho-guide__bands-row dt,
+.psycho-guide__bands-row dd {
+  margin: 0;
+  padding: 0.42rem 0;
+  border-bottom: 1px solid var(--home-v2-hairline);
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.psycho-guide__bands-row dt {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--home-v2-ink);
+  white-space: nowrap;
+}
+
+.psycho-guide__bands-row dd {
+  color: var(--home-v2-muted);
+}
+
+.psycho-guide__bands-note {
+  margin: 0.55rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--home-v2-muted);
+  max-width: 36ch;
 }
 
 .psycho-guide__section--steps {
@@ -1256,13 +1318,16 @@
     font-size: 0.9375rem;
   }
 
-  /* Cuerpo ensayo a 2 columnas (hereda el grid global; no forzar 1-col) */
+  /* Cuerpo: columna de lectura. Solo el ritual ∥ producto usa el shell. */
   .psycho-guide--brief .psycho-guide__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
     max-width: none;
   }
 
   .psycho-guide--brief .psycho-guide__section {
-    max-width: none;
+    max-width: 44rem;
   }
 
   /* Ritual ∥ producto: composición editorial, no stack de blog */
@@ -1273,6 +1338,14 @@
     gap: 1.75rem 2.75rem;
     align-items: start;
     width: auto;
+    max-width: none;
+  }
+
+  .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__product) .psycho-guide__section {
+    max-width: none;
+  }
+
+  .psycho-guide--brief .psycho-guide__section-stack:has(.psycho-guide__product) .psycho-guide__bands {
     max-width: none;
   }
 

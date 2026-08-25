@@ -57,7 +57,8 @@ export function assertPsychoeducationInvariants(): string[] {
         const paragraphs = section.paragraphs ?? [];
         const hasContent =
           paragraphs.some((p) => p.trim().length >= MIN_PARAGRAPH_CHARS) ||
-          (section.bullets && section.bullets.length > 0);
+          (section.bullets && section.bullets.length > 0) ||
+          (section.bands && section.bands.length > 0);
         if (!hasContent) {
           errors.push(`${tag} guía "${guide.slug}" sección "${section.heading}" sin contenido suficiente`);
         }

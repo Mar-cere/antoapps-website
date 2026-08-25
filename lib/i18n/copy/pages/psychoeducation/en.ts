@@ -1000,8 +1000,28 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'Orienting ranges',
         paragraphs: [
           'A number names two weeks. The series — whether it rises, falls, or holds — weighs more than a single point.',
-          'PHQ-9 (Kroenke, Spitzer and Williams, 2001), 0–27: 0–4 none or minimal; 5–9 mild; 10–14 moderate; 15–19 moderately severe; 20–27 severe.',
-          'GAD-7 (Spitzer et al., 2006), 0–21: 0–4 minimal; 5–9 mild; 10–14 moderate; 15–21 severe. In the validation study, a cut point ≥10 optimised screening for probable GAD.',
+        ],
+        bands: [
+          {
+            label: 'PHQ-9 · 0–27',
+            items: [
+              { range: '0–4', label: 'none or minimal' },
+              { range: '5–9', label: 'mild' },
+              { range: '10–14', label: 'moderate' },
+              { range: '15–19', label: 'moderately severe' },
+              { range: '20–27', label: 'severe' },
+            ],
+          },
+          {
+            label: 'GAD-7 · 0–21',
+            items: [
+              { range: '0–4', label: 'minimal' },
+              { range: '5–9', label: 'mild' },
+              { range: '10–14', label: 'moderate' },
+              { range: '15–21', label: 'severe' },
+            ],
+            note: 'Cut point ≥10 for probable GAD.',
+          },
         ],
       },
       {

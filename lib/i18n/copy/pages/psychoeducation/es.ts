@@ -1000,8 +1000,28 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'Rangos orientativos',
         paragraphs: [
           'Un número nombra dos semanas. La serie —si sube, baja o se queda— pesa más que un punto.',
-          'PHQ-9 (Kroenke, Spitzer y Williams, 2001), 0–27: 0–4 mínima; 5–9 leve; 10–14 moderada; 15–19 moderadamente grave; 20–27 grave.',
-          'GAD-7 (Spitzer et al., 2006), 0–21: 0–4 mínima; 5–9 leve; 10–14 moderada; 15–21 grave. En la validación, un corte ≥10 optimizó el cribado de probable TAG.',
+        ],
+        bands: [
+          {
+            label: 'PHQ-9 · 0–27',
+            items: [
+              { range: '0–4', label: 'mínima' },
+              { range: '5–9', label: 'leve' },
+              { range: '10–14', label: 'moderada' },
+              { range: '15–19', label: 'moderadamente grave' },
+              { range: '20–27', label: 'grave' },
+            ],
+          },
+          {
+            label: 'GAD-7 · 0–21',
+            items: [
+              { range: '0–4', label: 'mínima' },
+              { range: '5–9', label: 'leve' },
+              { range: '10–14', label: 'moderada' },
+              { range: '15–21', label: 'grave' },
+            ],
+            note: 'Corte ≥10 para probable TAG.',
+          },
         ],
       },
       {

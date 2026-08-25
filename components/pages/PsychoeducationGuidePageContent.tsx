@@ -408,6 +408,29 @@ export default function PsychoeducationGuidePageContent({
                                   ))}
                                 </ListTag>
                               )}
+                              {section.bands && (
+                                <div className="psycho-guide__bands">
+                                  {section.bands.map((group) => (
+                                    <div key={group.label} className="psycho-guide__bands-group">
+                                      <p className="psycho-guide__bands-label">{group.label}</p>
+                                      <dl className="psycho-guide__bands-dl">
+                                        {group.items.map((item) => (
+                                          <div
+                                            key={`${group.label}-${item.range}`}
+                                            className="psycho-guide__bands-row"
+                                          >
+                                            <dt>{item.range}</dt>
+                                            <dd>{item.label}</dd>
+                                          </div>
+                                        ))}
+                                      </dl>
+                                      {group.note ? (
+                                        <p className="psycho-guide__bands-note">{group.note}</p>
+                                      ) : null}
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
                               {section.link ? (
                                 <p className="psycho-guide__section-action">
                                   {section.link.external ||
