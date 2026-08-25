@@ -2,12 +2,11 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import DownloadLink from '@/components/DownloadLink';
+import HeaderDownloadChooser from '@/components/layout/HeaderDownloadChooser';
 import type { LandingDevice } from '@/lib/device/landing-device';
-import { appStoreHref, googlePlayHref } from '@/lib/download-links';
-import { useLandingDevice } from '@/lib/hooks/useLandingDevice';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
+import { getSiteLayoutCopy } from '@/lib/i18n/copy/home';
 
 type HomeMinimalNavProps = {
   locale: Locale;
@@ -28,19 +27,12 @@ export default function HomeMinimalNav({
   ctaHref,
   ctaLabel,
   ctaAria,
-  ctaAriaAndroid,
-  initialDevice = 'ios',
 }: HomeMinimalNavProps) {
   const copy = getHomeLandingFinalCopy(locale);
+  const layout = getSiteLayoutCopy(locale);
   const homeHref = locale === 'en' ? '/en' : '/';
-  const pagePath = homeHref;
   const label = ctaLabel ?? copy.minimalNav.cta;
-  const device = useLandingDevice(initialDevice);
-  const storeHref = device === 'android' ? googlePlayHref(locale) : appStoreHref();
-  const aria =
-    !ctaHref && device === 'android'
-      ? (ctaAriaAndroid ?? ctaAria ?? copy.hero.androidStoreAria)
-      : (ctaAria ?? copy.hero.storeAria);
+  const aria = ctaAria ?? copy.hero.storeAria;
 
   return (
     <header className="home-landing-nav" role="banner">
@@ -63,18 +55,17 @@ export default function HomeMinimalNav({
             {label}
           </Link>
         ) : (
-          <DownloadLink
-            href={storeHref}
-            className="home-landing-nav__cta"
-            trackingPlacement="home_minimal_nav_cta"
-            trackingPage={pagePath}
-            trackingLabel={
-              device === 'android' ? 'home_minimal_nav_android' : 'home_minimal_nav_ios'
-            }
-            aria-label={aria}
-          >
-            {label}
-          </DownloadLink>
+          <HeaderDownloadChooser
+            locale={locale}
+            downloadLabel={label}
+            downloadAria={layout.header.downloadAria}
+            appStoreLabel={layout.header.appStore}
+            playLabel={layout.header.googlePlay}
+            appStoreAria={layout.header.appStoreAria}
+            playAria={layout.header.googlePlayAria}
+            toggleClassName="home-landing-nav__cta"
+            wrapperClassName="home-landing-nav__download"
+          />
         )}
       </nav>
     </header>

@@ -384,6 +384,13 @@
     position: relative;
 }
 
+button.home-landing-nav__cta {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    appearance: none;
+}
+
 .nav-download__menu {
     position: absolute;
     top: calc(100% + 0.4rem);

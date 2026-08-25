@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import DownloadLink from '@/components/DownloadLink';
 import { appStoreHref, googlePlayHref } from '@/lib/download-links';
 import type { Locale } from '@/lib/i18n/config';
+import '@/styles/layout/header.css';
 
 type HeaderDownloadChooserProps = {
   locale: Locale;
@@ -13,6 +14,8 @@ type HeaderDownloadChooserProps = {
   playLabel: string;
   appStoreAria: string;
   playAria: string;
+  toggleClassName?: string;
+  wrapperClassName?: string;
 };
 
 export default function HeaderDownloadChooser({
@@ -23,6 +26,8 @@ export default function HeaderDownloadChooser({
   playLabel,
   appStoreAria,
   playAria,
+  toggleClassName = 'btn btn-primary nav-download__toggle',
+  wrapperClassName,
 }: HeaderDownloadChooserProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -49,10 +54,13 @@ export default function HeaderDownloadChooser({
   }, [open]);
 
   return (
-    <div className={`nav-download${open ? ' is-open' : ''}`} ref={rootRef}>
+    <div
+      className={`nav-download${open ? ' is-open' : ''}${wrapperClassName ? ` ${wrapperClassName}` : ''}`}
+      ref={rootRef}
+    >
       <button
         type="button"
-        className="btn btn-primary nav-download__toggle"
+        className={toggleClassName}
         aria-label={downloadAria}
         aria-expanded={open}
         aria-controls={menuId}
