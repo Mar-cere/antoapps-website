@@ -953,19 +953,19 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 6,
     layout: 'brief',
     meta: {
-      title: 'PHQ-9 y GAD-7 en español: qué miden y cómo interpretarlas | Anto',
+      title: 'PHQ-9 y GAD-7: rangos y cómo leerlas | Anto',
       description:
-        'Guía de PHQ-9 (depresión) y GAD-7 (ansiedad): qué miden, rangos orientativos y traducciones oficiales. Cribado, no autodiagnóstico. Psicoeducación; no sustituye evaluación clínica.',
-      openGraphTitle: 'PHQ-9 y GAD-7: guía de interpretación',
+        'Qué miden PHQ-9 (ánimo) y GAD-7 (ansiedad), rangos orientativos e instrumentos oficiales. Cribado de dos semanas, no diagnóstico. En Anto las lecturas van al historial.',
+      openGraphTitle: 'PHQ-9 y GAD-7: qué miden y cómo leerlas',
       openGraphDescription:
-        'Cribado de ánimo y ansiedad: qué miden estas escalas, cómo leer un rango y por qué un número no es un diagnóstico.',
+        'Cribado de ánimo y ansiedad: rangos, tendencia y por qué un número no es un diagnóstico.',
       keywords:
-        'PHQ-9, GAD-7, PHQ-9 GAD-7, PHQ-9 en español, GAD-7 en español, spanish, cribado depresión, cribado ansiedad, rangos, psicoeducación, Anto',
+        'PHQ-9, GAD-7, PHQ-9 GAD-7, rangos, cribado depresión, cribado ansiedad, historial, psicoeducación, Anto',
     },
     hero: {
-      title: 'PHQ-9 y GAD-7: guía de interpretación',
+      title: 'PHQ-9 y GAD-7: qué miden y cómo leerlas',
       subtitle:
-        'Escalas de cribado para ánimo y ansiedad. Útiles para ver una tendencia — no para ponerse un diagnóstico.',
+        'Dos escalas de cribado sobre las últimas dos semanas. Sirven para ver si sube, baja o se queda — no para ponerse un diagnóstico.',
       scanLink: {
         label: 'Ir a los rangos →',
         sectionHeading: 'Rangos orientativos',
@@ -988,7 +988,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: '¿Qué son?',
         paragraphs: [
           'El PHQ-9 mira síntomas depresivos; el GAD-7, ansiedad generalizada. Ambas preguntan por las últimas dos semanas y se usan como cribado: una primera lectura, no un veredicto.',
-          'Los ítems validados —y las traducciones revisadas, también al español— están en PHQ Screeners. Aquí no copiamos el cuestionario.',
+          'Los ítems validados —y las traducciones revisadas— están en PHQ Screeners. Aquí no copiamos el cuestionario.',
         ],
         link: {
           label: 'PHQ Screeners — instrumentos oficiales →',
@@ -1033,11 +1033,11 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       },
     ],
     productMoment: {
-      title: 'Así se ve en Anto',
-      body: 'Cuando el número asusta, puedes traerlo y mirar si fue un salto o una racha — no el nombre que una cifra no puede darte.',
+      title: 'Dónde queda el número en Anto',
+      body: 'No es una técnica que eliges. Las lecturas se arman a partir de lo que cuentas y se ven en el historial, con tendencia. Siguen siendo cribado.',
       afterHeading: 'Rangos orientativos',
       chat: {
-        ariaLabel: 'Ejemplo de conversación en Anto cuando una puntuación de escala preocupa',
+        ariaLabel: 'Ejemplo de cómo Anto sitúa una lectura de escala en el historial, no como técnica',
         messages: [
           {
             role: 'user',
@@ -1045,7 +1045,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
           {
             role: 'anto',
-            text: 'No. Es cribado: un punto en dos semanas. ¿Subió de golpe o llevas varias lecturas así?',
+            text: 'No. Es cribado: una lectura de dos semanas. En Anto queda en el historial; no te pone un nombre.',
           },
           {
             role: 'user',
@@ -1053,12 +1053,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
           {
             role: 'anto',
-            text: 'Tiene sentido que asuste. Miremos la racha — y qué hacer con ella.',
+            text: 'Tiene sentido que asuste. Lo que pesa es si se sostiene. Si se sostiene, llévalo a un profesional.',
           },
         ],
       },
-      suggestionsLabel: 'Ejemplos en la app',
-      suggestions: ['Leer la tendencia', 'Qué hacer con un rango alto'],
+      suggestionsLabel: 'En la app',
+      suggestions: ['Historial de lecturas', 'Reportes de tendencia'],
     },
     furtherReading: {
       title: 'Ir más a fondo',
@@ -1094,8 +1094,8 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     disclaimer:
       'Psicoeducación. Las escalas no diagnostican ni sustituyen evaluación o tratamiento clínico. Ante riesgo suicida o violencia, busca ayuda de emergencia local de inmediato.',
     ctaBridge:
-      'Si quieres compañía entre sesiones — o mientras decides pedir evaluación — puedes seguir en el teléfono, a tu ritmo.',
-    cta: { label: 'Apoyo en Anto →', path: '/bienvenida' },
+      'Si quieres esas lecturas en el teléfono — historial y tendencia, no un nombre clínico — puedes descargar Anto.',
+    cta: { label: 'Descargar Anto →', path: '/bienvenida' },
     howTo: {
       name: 'Cómo leer una puntuación de PHQ-9 o GAD-7',
       description:

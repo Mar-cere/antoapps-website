@@ -953,19 +953,19 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 6,
     layout: 'brief',
     meta: {
-      title: 'PHQ-9 and GAD-7: what they measure and how to interpret them | Anto',
+      title: 'PHQ-9 and GAD-7: score ranges and how to read them | Anto',
       description:
-        'Guide to PHQ-9 (depression) and GAD-7 (anxiety): what they measure, orienting score ranges, and official Spanish translations. Screening, not self-diagnosis. Psychoeducation; does not replace clinical assessment.',
-      openGraphTitle: 'PHQ-9 and GAD-7: interpretation guide',
+        'What PHQ-9 (mood) and GAD-7 (anxiety) measure, orienting ranges, and official instruments. Two-week screening, not a diagnosis. In Anto the readings land in your history.',
+      openGraphTitle: 'PHQ-9 and GAD-7: what they measure and how to read them',
       openGraphDescription:
-        'Mood and anxiety screening: what these scales measure, how to read a range, and why a number is not a diagnosis.',
+        'Mood and anxiety screening: ranges, trend, and why a number is not a diagnosis.',
       keywords:
-        'PHQ-9, GAD-7, PHQ-9 GAD-7, PHQ-9 GAD-7 Spanish, spanish, depression screening, anxiety screening, score ranges, psychoeducation, Anto',
+        'PHQ-9, GAD-7, PHQ-9 GAD-7, score ranges, depression screening, anxiety screening, history, psychoeducation, Anto',
     },
     hero: {
-      title: 'PHQ-9 and GAD-7: interpretation guide',
+      title: 'PHQ-9 and GAD-7: what they measure and how to read them',
       subtitle:
-        'Screening scales for mood and anxiety. Useful for seeing a trend — not for giving yourself a diagnosis.',
+        'Two screening scales about the last two weeks. They help you see whether it rises, falls, or holds — not to give yourself a diagnosis.',
       scanLink: {
         label: 'Go to the ranges →',
         sectionHeading: 'Orienting ranges',
@@ -988,7 +988,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'What are they?',
         paragraphs: [
           'The PHQ-9 looks at depressive symptoms; the GAD-7, at generalised anxiety. Both ask about the last two weeks and are used as screening: a first reading, not a verdict.',
-          'The validated items — and the reviewed translations, including Spanish — live on PHQ Screeners. We do not copy the questionnaire here.',
+          'The validated items — and the reviewed translations — live on PHQ Screeners. We do not copy the questionnaire here.',
         ],
         link: {
           label: 'PHQ Screeners — official instruments →',
@@ -1033,11 +1033,11 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       },
     ],
     productMoment: {
-      title: 'How it looks in Anto',
-      body: 'When the number frightens you, you can bring it and see whether it was a jump or a streak — not the name a figure cannot give you.',
+      title: 'Where the number lives in Anto',
+      body: 'It is not a technique you pick. Readings are built from what you tell Anto and show up in your history, with a trend. They remain screening.',
       afterHeading: 'Orienting ranges',
       chat: {
-        ariaLabel: 'Example conversation in Anto when a scale score is worrying',
+        ariaLabel: 'Example of how Anto places a scale reading in history, not as a technique',
         messages: [
           {
             role: 'user',
@@ -1045,7 +1045,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
           {
             role: 'anto',
-            text: 'No. It is screening: one point over two weeks. Did it jump, or have several readings looked like this?',
+            text: 'No. It is screening: a two-week reading. In Anto it lives in your history; it does not name you.',
           },
           {
             role: 'user',
@@ -1053,12 +1053,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           },
           {
             role: 'anto',
-            text: 'It makes sense that it scares you. Let’s look at the streak — and what to do with it.',
+            text: 'It makes sense that it scares you. What weighs is whether it holds. If it holds, take it to a professional.',
           },
         ],
       },
-      suggestionsLabel: 'Examples in the app',
-      suggestions: ['Read the trend', 'What to do with a high range'],
+      suggestionsLabel: 'In the app',
+      suggestions: ['Reading history', 'Trend reports'],
     },
     furtherReading: {
       title: 'Go deeper',
@@ -1094,8 +1094,8 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     disclaimer:
       'Psychoeducation. The scales do not diagnose or replace clinical assessment or treatment. In suicidal risk or violence, seek local emergency help immediately.',
     ctaBridge:
-      'If you want company between sessions — or while you decide to seek assessment — you can continue on your phone, at your pace.',
-    cta: { label: 'Support in Anto →', path: '/bienvenida' },
+      'If you want those readings on your phone — history and trend, not a clinical name — you can download Anto.',
+    cta: { label: 'Download Anto →', path: '/bienvenida' },
     howTo: {
       name: 'How to read a PHQ-9 or GAD-7 score',
       description:
