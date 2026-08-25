@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { isGmailConfigured, sendContactEmail } from '@/lib/server/gmail';
+import { guardContactPost } from '@/lib/server/request-guard';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -16,6 +17,9 @@ function cleanText(value: unknown, maxLength: number): string {
 }
 
 export async function POST(request: Request) {
+  const blocked = guardContactPost(request);
+  if (blocked) return blocked;
+
   if (!isGmailConfigured()) {
     console.error(
       '[contact][config] Missing GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_REFRESH_TOKEN or GMAIL_USER'
