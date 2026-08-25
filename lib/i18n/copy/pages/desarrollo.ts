@@ -202,7 +202,7 @@ const processStepsEs: DesarrolloProcessStep[] = [
       'API REST con Express.js',
       'Integración con GPT-5.4 Mini',
       'Sistema de autenticación JWT',
-      'Encriptación end-to-end',
+      'Cifrado en tránsito y en reposo',
       'WebSockets para tiempo real',
     ],
   },
@@ -265,7 +265,7 @@ const processStepsEn: DesarrolloProcessStep[] = [
       'REST API with Express.js',
       'GPT-5.4 Mini integration',
       'JWT authentication system',
-      'End-to-end encryption',
+      'Encryption in transit and at rest',
       'WebSockets for real-time',
     ],
   },
@@ -473,7 +473,7 @@ const challengesEs: DesarrolloChallenge[] = [
     title: 'Seguridad y Privacidad',
     challenge: 'Garantizar la privacidad total de conversaciones sensibles sobre salud mental.',
     solution:
-      'Encriptación end-to-end, autenticación JWT, headers de seguridad, y cumplimiento GDPR/HIPAA.',
+      'Cifrado en tránsito y en reposo, autenticación JWT, headers de seguridad, y cumplimiento GDPR/HIPAA.',
   },
   {
     icon: '📱',
@@ -517,7 +517,7 @@ const challengesEn: DesarrolloChallenge[] = [
     title: 'Security and Privacy',
     challenge: 'Ensure total privacy of sensitive mental health conversations.',
     solution:
-      'End-to-end encryption, JWT authentication, security headers, and GDPR/HIPAA compliance.',
+      'Encryption in transit and at rest, JWT authentication, security headers, and GDPR/HIPAA compliance.',
   },
   {
     icon: '📱',

@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { useMobileMenu } from '@/lib/hooks/useNavigation';
 import { useSwipeGestures } from '@/lib/hooks/useSwipeGestures';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
+import HeaderDownloadChooser from '@/components/layout/HeaderDownloadChooser';
 import { type Locale } from '@/lib/i18n/config';
 import { localeFromPathname, pathWithoutLocale } from '@/lib/i18n/path-from-pathname';
 import { getSiteLayoutCopy } from '@/lib/i18n/copy/home';
@@ -21,7 +22,6 @@ export default function Header() {
   const locale = resolveLocale(pathname ?? '');
   const copy = getSiteLayoutCopy(locale);
   const homeHref = locale === 'en' ? '/en' : '/';
-  const downloadHref = locale === 'en' ? '/en/bienvenida' : '/bienvenida';
   const langSwitchPath = pathWithoutLocale(pathname ?? '/');
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -151,13 +151,15 @@ export default function Header() {
 
           <div className="nav-actions">
             <LanguageSwitcher locale={locale} path={langSwitchPath} className="nav-lang-switch" />
-            <Link
-              href={downloadHref}
-              className="btn btn-primary"
-              aria-label={copy.header.downloadAria}
-            >
-              {copy.header.download}
-            </Link>
+            <HeaderDownloadChooser
+              locale={locale}
+              downloadLabel={copy.header.download}
+              downloadAria={copy.header.downloadAria}
+              appStoreLabel={copy.header.appStore}
+              playLabel={copy.header.googlePlay}
+              appStoreAria={copy.header.appStoreAria}
+              playAria={copy.header.googlePlayAria}
+            />
             <button
               id="navToggle"
               className={`nav-toggle ${isMobileMenuOpen ? 'active' : ''}`}

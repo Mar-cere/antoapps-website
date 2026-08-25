@@ -77,7 +77,7 @@ export const SECURITY_FAQ_ES: SecurityFaqItem[] = [
   {
     question: '¿Quién puede acceder a mis conversaciones?',
     answer:
-      'Solo tú puedes acceder a tus conversaciones. Ni siquiera nuestros administradores pueden leer el contenido de tus mensajes debido a la encriptación end-to-end. El sistema de IA procesa tus mensajes de forma segura sin que humanos puedan verlos.',
+      'Solo tú inicias sesión en tu cuenta. Las conversaciones van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio.',
   },
   {
     question: '¿Qué pasa si hay una brecha de seguridad?',
@@ -99,7 +99,7 @@ export const SECURITY_FAQ_EN: SecurityFaqItem[] = [
   {
     question: 'Who can access my conversations?',
     answer:
-      'Only you can access your conversations. Not even our administrators can read the content of your messages due to end-to-end encryption. The AI system processes your messages securely without humans being able to view them.',
+      'Only you sign in to your account. Conversations are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service.',
   },
   {
     question: 'What happens if there is a security breach?',
@@ -181,9 +181,9 @@ const certificationsEn: SecurityCertification[] = [
 const measuresEs: SecurityMeasure[] = [
   {
     icon: '🔐',
-    title: 'Encriptación End-to-End',
+    title: 'Cifrado en tránsito y en reposo',
     description:
-      'Todas las conversaciones están encriptadas con AES-256, el mismo estándar usado por bancos y gobiernos. Las claves de encriptación son únicas para cada usuario y se almacenan de forma segura.',
+      'Las conversaciones se cifran en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio.',
     details: [
       'AES-256 para datos en reposo',
       'TLS 1.3 para datos en tránsito',
@@ -253,9 +253,9 @@ const measuresEs: SecurityMeasure[] = [
 const measuresEn: SecurityMeasure[] = [
   {
     icon: '🔐',
-    title: 'End-to-End Encryption',
+    title: 'Encryption in transit and at rest',
     description:
-      'All conversations are encrypted with AES-256, the same standard used by banks and governments. Encryption keys are unique per user and stored securely.',
+      'Conversations are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service.',
     details: [
       'AES-256 for data at rest',
       'TLS 1.3 for data in transit',

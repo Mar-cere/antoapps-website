@@ -236,7 +236,6 @@ const versionsEs: ChangelogVersion[] = [
     highlights: [
       'Sistema de chat mejorado con escalas clínicas validadas',
       'Detección avanzada de distorsiones cognitivas (15 tipos)',
-      '8 protocolos terapéuticos estructurados basados en evidencia',
       'Reportes profesionales con estadísticas detalladas',
       'Optimizaciones móviles avanzadas',
     ],
@@ -253,22 +252,17 @@ const versionsEs: ChangelogVersion[] = [
       {
         type: 'feature',
         description:
-          '8 protocolos terapéuticos estructurados basados en evidencia científica (Depresión, Ansiedad, Trauma, TOC, TEPT, etc.)',
-      },
-      {
-        type: 'feature',
-        description:
           'Reportes profesionales con análisis detallado de progreso, escalas clínicas y estadísticas de distorsiones cognitivas',
       },
       {
         type: 'improvement',
         description:
-          'Sistema de chat mejorado con evaluación clínica automática y protocolos personalizados según detecciones',
+          'Sistema de chat mejorado con seguimiento emocional y herramientas del hub según el contexto',
       },
       {
         type: 'improvement',
         description:
-          'Análisis emocional avanzado ahora incluye evaluación clínica objetiva mediante escalas validadas',
+          'Análisis emocional avanzado ahora incluye seguimiento de tendencias a lo largo del tiempo',
       },
       {
         type: 'improvement',
@@ -319,7 +313,7 @@ const versionsEs: ChangelogVersion[] = [
         type: 'feature',
         description: 'Herramientas de bienestar: ejercicios de mindfulness, meditación y técnicas de relajación',
       },
-      { type: 'feature', description: 'Encriptación end-to-end para máxima privacidad y seguridad de datos' },
+      { type: 'feature', description: 'Cifrado en tránsito (TLS) y en reposo para proteger los datos' },
       { type: 'feature', description: 'Disponibilidad 24/7 sin límites de uso ni esperas' },
       { type: 'feature', description: 'Sistema de autenticación seguro con JWT y autenticación biométrica' },
       { type: 'feature', description: 'Integración con Mercado Pago para suscripciones y pagos seguros' },
@@ -499,7 +493,6 @@ const versionsEn: ChangelogVersion[] = [
     highlights: [
       'Enhanced chat system with validated clinical scales',
       'Advanced detection of cognitive distortions (15 types)',
-      '8 evidence-based structured therapeutic protocols',
       'Professional reports with detailed statistics',
       'Advanced mobile optimizations',
     ],
@@ -516,22 +509,17 @@ const versionsEn: ChangelogVersion[] = [
       {
         type: 'feature',
         description:
-          '8 evidence-based structured therapeutic protocols (Depression, Anxiety, Trauma, OCD, PTSD, etc.)',
-      },
-      {
-        type: 'feature',
-        description:
           'Professional reports with detailed progress analysis, clinical scales, and cognitive distortion statistics',
       },
       {
         type: 'improvement',
         description:
-          'Enhanced chat system with automatic clinical assessment and personalized protocols based on detections',
+          'Enhanced chat system with emotional tracking and hub tools according to context',
       },
       {
         type: 'improvement',
         description:
-          'Advanced emotional analysis now includes objective clinical assessment through validated scales',
+          'Advanced emotional analysis now includes trend tracking over time',
       },
       {
         type: 'improvement',
@@ -581,7 +569,7 @@ const versionsEn: ChangelogVersion[] = [
         type: 'feature',
         description: 'Wellness tools: mindfulness exercises, meditation, and relaxation techniques',
       },
-      { type: 'feature', description: 'End-to-end encryption for maximum data privacy and security' },
+      { type: 'feature', description: 'Encryption in transit (TLS) and at rest to protect data' },
       { type: 'feature', description: '24/7 availability with no usage limits or waiting times' },
       { type: 'feature', description: 'Secure authentication system with JWT and biometric authentication' },
       { type: 'feature', description: 'Mercado Pago integration for subscriptions and secure payments' },

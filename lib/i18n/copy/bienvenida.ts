@@ -3,9 +3,7 @@ import { getAppStoreReviewSnippets } from '@/lib/app-store-reviews';
 import { appStoreRatingWithReviews } from '@/lib/app-store-social-proof';
 import {
   APP_SCREENSHOT_PATHS,
-  HOME_LANDING_SCREENSHOT_PATHS,
   getAppScreenshotAlt,
-  getHomeLandingScreenshotAlt,
 } from '@/lib/assets/app-screenshots';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 
@@ -152,7 +150,13 @@ export type BienvenidaCopy = {
       label: string;
       headline: string;
       subtitle: string;
-      image: { src: string; alt: string };
+      mock: {
+        title: string;
+        quote: string;
+        reframe: string;
+        step: string;
+        footnote: string;
+      };
     };
     trustItems: readonly { icon: BienvenidaV2TrustIcon; label: string }[];
     photoAlt: string;
@@ -167,15 +171,15 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
   if (locale === 'en') {
     return {
       meta: {
-        title: 'Anto: Emotional support for anxiety | iPhone app',
+        title: 'Anto: Emotional support for anxiety | iPhone and Android app',
         description:
-          'Emotional support app for iPhone: when anxiety or a racing mind won\'t stop, write what you feel and get clarity with one concrete step. 1-day free trial on the App Store.',
+          'Emotional support app for iPhone and Android: when anxiety or a racing mind won\'t stop, write what you feel and get clarity with one concrete step. 1-day free trial on the App Store or Google Play.',
         socialDescription:
-          'Emotional support when anxiety won\'t let go. Clarity in minutes — 1-day free trial on iPhone.',
+          'Emotional support when anxiety won\'t let go. Clarity in minutes — 1-day free trial on iPhone and Android.',
         ogHeadline: 'Emotional support when your mind won\'t slow down',
         ogSubline:
           'Write what you feel. Get clarity and one concrete step — not just a chatbot reply.',
-        ogAlt: 'Anto — Emotional support for anxiety on iPhone',
+        ogAlt: 'Anto — Emotional support for anxiety on iPhone and Android',
       },
       hero: {
         titleLine1: 'When your mind won\'t slow down,',
@@ -192,8 +196,8 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       },
       trial: {
         heroCta: {
-          A: 'Download on iPhone',
-          B: 'Start on iPhone',
+          A: 'Download on App Store',
+          B: 'Start on App Store',
           C: 'App Store',
         },
         stickyCta: {
@@ -240,12 +244,13 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           {
             icon: 'evidence',
             title: 'Clinically grounded',
-            description: 'PHQ-9/GAD-7 scales and 8 evidence-based protocols — not generic chat.',
+            description: 'Exercises in the hub (CBT, ABC, mindfulness) — not generic chat.',
           },
           {
             icon: 'crisis',
-            title: '24/7 crisis detection',
-            description: 'Proactive alerts and resources if you need urgent support.',
+            title: 'If you are in crisis',
+            description:
+              'Anto can point you to helplines and resources. It does not replace emergency care or a professional.',
           },
           {
             icon: 'privacy',
@@ -401,12 +406,16 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           { icon: 'crisis', title: 'No judgment', subtitle: 'A calm space to untangle what you feel' },
         ],
         dashboard: {
-          label: 'More than a chat',
-          headline: 'See the pattern\nin what you write.',
-          subtitle: 'After a conversation, Anto names how you think and leaves one concrete next step.',
-          image: {
-            src: HOME_LANDING_SCREENSHOT_PATHS.sessionSummary,
-            alt: getHomeLandingScreenshotAlt('sessionSummary', 'en'),
+          label: 'A mirror of what you wrote',
+        headline: 'A mirror of what you wrote.',
+          subtitle:
+            'After you talk, Anto gives back what was heard and one concrete step. No label. No score.',
+          mock: {
+            title: 'What was heard',
+            quote: 'My mind won\'t stop. I can\'t sleep.',
+            reframe: 'Tonight is heavy. It does not all have to be solved now.',
+            step: 'Write 3 things you can control. Two minutes.',
+            footnote: 'Just an example. This is not a diagnosis.',
           },
         },
         trustItems: [
@@ -436,15 +445,15 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
 
   return {
     meta: {
-      title: 'Anto: Apoyo emocional para ansiedad | App iPhone',
+      title: 'Anto: Apoyo emocional para ansiedad | App iPhone y Android',
       description:
-        'App de apoyo emocional para iPhone: cuando la ansiedad o tu mente no paran, escribe lo que sientes y recibe claridad con un paso concreto. Prueba 1 día gratis en App Store.',
+        'App de apoyo emocional para iPhone y Android: cuando la ansiedad o tu mente no paran, escribe lo que sientes y recibe claridad con un paso concreto. Prueba 1 día gratis en App Store o Google Play.',
       socialDescription:
-        'Apoyo emocional cuando la ansiedad no te deja. Claridad en minutos — prueba 1 día gratis en iPhone.',
+        'Apoyo emocional cuando la ansiedad no te deja. Claridad en minutos — prueba 1 día gratis en iPhone y Android.',
       ogHeadline: 'Apoyo emocional cuando tu mente no para',
       ogSubline:
         'Escribe lo que sientes. Recibe claridad y un paso concreto — no solo una respuesta genérica.',
-      ogAlt: 'Anto — Apoyo emocional para ansiedad en iPhone',
+      ogAlt: 'Anto — Apoyo emocional para ansiedad en iPhone y Android',
     },
     hero: {
       titleLine1: 'Cuando tu mente va a mil,',
@@ -461,8 +470,8 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
     },
     trial: {
       heroCta: {
-        A: 'Descargar en iPhone',
-        B: 'Empezar en iPhone',
+        A: 'Descargar en App Store',
+        B: 'Empezar en App Store',
         C: 'App Store',
       },
       stickyCta: {
@@ -509,12 +518,13 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         {
           icon: 'evidence',
           title: 'Basado en evidencia clínica',
-          description: 'Escalas PHQ-9/GAD-7 y 8 protocolos con respaldo — no es un chat genérico.',
+          description: 'Ejercicios en el hub (TCC, ABC, mindfulness) — no es un chat genérico.',
         },
         {
           icon: 'crisis',
-          title: 'Detecta crisis 24/7',
-          description: 'Alertas proactivas y recursos si necesitas apoyo urgente.',
+          title: 'Si estás en crisis',
+          description:
+            'Anto puede orientarte a líneas de ayuda y recursos. No reemplaza una emergencia ni a un profesional.',
         },
         {
           icon: 'privacy',
@@ -670,12 +680,16 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         { icon: 'crisis', title: 'Sin juicio', subtitle: 'Un espacio calmado para ordenar lo que sientes' },
       ],
       dashboard: {
-        label: 'Más que un chat',
-        headline: 'Mira el patrón\nde lo que escribes.',
-        subtitle: 'Después de una conversación, Anto nombra cómo piensas y te deja un siguiente paso concreto.',
-        image: {
-          src: HOME_LANDING_SCREENSHOT_PATHS.sessionSummary,
-          alt: getHomeLandingScreenshotAlt('sessionSummary', 'es'),
+        label: 'Un espejo de lo que escribiste',
+        headline: 'Un espejo de lo que escribiste.',
+        subtitle:
+          'Después de hablar, Anto te devuelve lo que se oyó y un paso concreto. Sin etiqueta. Sin puntaje.',
+        mock: {
+          title: 'Lo que se oyó',
+          quote: 'Mi mente no para. No puedo dormir.',
+          reframe: 'Esta noche está pesada. No tiene que resolverse toda ahora.',
+          step: 'Escribe 3 cosas que sí controlas. Dos minutos.',
+          footnote: 'Solo un ejemplo. No es un diagnóstico.',
         },
       },
       trustItems: [

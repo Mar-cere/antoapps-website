@@ -7,6 +7,10 @@ export type SiteLayoutCopy = {
     menuToggleAria: string;
     downloadAria: string;
     download: string;
+    appStore: string;
+    googlePlay: string;
+    appStoreAria: string;
+    googlePlayAria: string;
     links: { href: string; label: string }[];
   };
   stickyNav: {
@@ -43,8 +47,12 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       navAria: 'Navegación principal',
       logoAria: 'Anto - Ir a inicio',
       menuToggleAria: 'Abrir o cerrar menú de navegación',
-      downloadAria: 'Ir a opciones de descarga de Anto',
+      downloadAria: 'Elegir tienda para descargar Anto',
       download: 'Descargar',
+      appStore: 'App Store',
+      googlePlay: 'Google Play',
+      appStoreAria: 'Descargar Anto en App Store',
+      googlePlayAria: 'Descargar Anto en Google Play',
       links: [
         { href: '/', label: 'Inicio' },
         { href: '/app', label: 'La App' },
@@ -105,8 +113,12 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       navAria: 'Main navigation',
       logoAria: 'Anto - Go to home',
       menuToggleAria: 'Open or close navigation menu',
-      downloadAria: 'Go to Anto download options',
+      downloadAria: 'Choose a store to download Anto',
       download: 'Download',
+      appStore: 'App Store',
+      googlePlay: 'Google Play',
+      appStoreAria: 'Download Anto on the App Store',
+      googlePlayAria: 'Download Anto on Google Play',
       links: [
         { href: '/en', label: 'Home' },
         { href: '/en/app', label: 'The App' },

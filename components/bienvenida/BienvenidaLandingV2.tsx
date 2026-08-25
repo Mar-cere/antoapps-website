@@ -15,10 +15,6 @@ import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
 import type { LandingDevice } from '@/lib/device/landing-device';
-import {
-  APP_SCREENSHOT_HEIGHT,
-  APP_SCREENSHOT_WIDTH,
-} from '@/lib/assets/app-screenshots';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import { getBienvenidaCopy, type BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 import { appStoreHref } from '@/lib/download-links';
@@ -31,20 +27,6 @@ type BienvenidaLandingV2Props = {
   landingVariant: BienvenidaVariant;
   initialDevice: LandingDevice;
 };
-
-function MultilineText({ text }: { text: string }) {
-  const lines = text.split('\n');
-  return (
-    <>
-      {lines.map((line, index) => (
-        <span key={line}>
-          {line}
-          {index < lines.length - 1 && <br />}
-        </span>
-      ))}
-    </>
-  );
-}
 
 export default function BienvenidaLandingV2({
   locale,
@@ -144,17 +126,17 @@ export default function BienvenidaLandingV2({
 
         <section className="lad-v2-s4" aria-labelledby="lad-v2-dash-headline">
           <h2 id="lad-v2-dash-headline" className="lad-v2-dash-headline">
-            <MultilineText text={v2.dashboard.headline} />
+            {v2.dashboard.headline}
           </h2>
           <p className="lad-v2-dash-sub">{v2.dashboard.subtitle}</p>
-          <div className="lad-v2-screenshot-crop">
-            <Image
-              src={v2.dashboard.image.src}
-              alt={v2.dashboard.image.alt}
-              width={APP_SCREENSHOT_WIDTH}
-              height={APP_SCREENSHOT_HEIGHT}
-              className="lad-v2-screenshot lad-v2-screenshot--crop"
-            />
+          <div className="lad-v2-heard" aria-label={v2.dashboard.mock.title}>
+            <p className="lad-v2-heard__title">{v2.dashboard.mock.title}</p>
+            <blockquote className="lad-v2-heard__quote">
+              {v2.dashboard.mock.quote}
+            </blockquote>
+            <p className="lad-v2-heard__reframe">{v2.dashboard.mock.reframe}</p>
+            <p className="lad-v2-heard__step">{v2.dashboard.mock.step}</p>
+            <p className="lad-v2-heard__note">{v2.dashboard.mock.footnote}</p>
           </div>
         </section>
 

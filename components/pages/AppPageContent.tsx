@@ -11,6 +11,8 @@ import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AppScreenshots from '@/components/sections/AppScreenshots';
+import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
+import { getTrialCopy } from '@/lib/i18n/copy/trial';
 import '@/styles/components/app-page.css';
 
 function fillVars(text: string): string {
@@ -23,6 +25,18 @@ type AppPageContentProps = {
 
 export default function AppPageContent({ locale }: AppPageContentProps) {
   const copy = getAppPageCopy(locale);
+  const trial = getTrialCopy(locale);
+  const storePair = {
+    ctaStoreLabel: locale === 'en' ? 'Download on' : 'Descargar en',
+    ctaStoreText: copy.cta.appStoreLabel,
+    ctaBadge: trial.short,
+    storeAria: copy.cta.appStoreAria,
+    ctaPlayLabel: locale === 'en' ? 'Get it on' : 'Disponible en',
+    ctaPlayText: copy.cta.playLabel,
+    ctaPlayBadge: trial.short,
+    androidStoreAria: copy.cta.playAria,
+  };
+  const pagePath = locale === 'en' ? '/en/app' : '/app';
 
   return (
     <LocaleProvider locale={locale}>
@@ -46,6 +60,15 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
                 <span className="app-badge">{copy.hero.badges.availability}</span>
                 <span className="app-badge">{copy.hero.badges.privacy}</span>
                 <span className="app-badge">{copy.hero.badges.languages}</span>
+              </div>
+              <div className="app-hero-stores reveal-on-scroll">
+                <PremiumStoreCtaPair
+                  locale={locale}
+                  copy={storePair}
+                  trackingPage={pagePath}
+                  trackingPlacementPrefix="app_hero"
+                  trackingLabel="app_page"
+                />
               </div>
             </div>
           </div>
@@ -130,9 +153,13 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
             <h2 className="section-title reveal-on-scroll">{copy.cta.title}</h2>
             <p className="section-subtitle reveal-on-scroll">{copy.cta.subtitle}</p>
             <div className="app-cta-buttons reveal-on-scroll">
-              <Link href={copy.cta.downloadHref} className="btn btn-primary btn-large">
-                {copy.cta.downloadLabel}
-              </Link>
+              <PremiumStoreCtaPair
+                locale={locale}
+                copy={storePair}
+                trackingPage={pagePath}
+                trackingPlacementPrefix="app_cta"
+                trackingLabel="app_page"
+              />
               <Link href={copy.cta.contactHref} className="btn btn-secondary btn-large">
                 {copy.cta.contactLabel}
               </Link>

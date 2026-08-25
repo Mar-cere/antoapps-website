@@ -29,18 +29,14 @@ export default function HomeCredentials({ locale = 'es' }: HomeCredentialsProps)
           </div>
         ))}
       </div>
-      <div className="home-landing-cred__proto-grid">
-        {copy.protocols.map((proto) => (
-          <div key={proto.title} className="home-landing-cred__proto reveal-on-scroll" data-stagger-item>
-            <div className="home-landing-cred__proto-icon" aria-hidden="true">
-              <span className="home-landing-cred__proto-dot" />
-            </div>
-            <div>
-              <p className="home-landing-cred__proto-t">{proto.title}</p>
-              <p className="home-landing-cred__proto-s">{proto.subtitle}</p>
-            </div>
-          </div>
-        ))}
+      <div className="home-landing-cred__proto reveal-on-scroll">
+        <div className="home-landing-cred__proto-icon" aria-hidden="true">
+          <span className="home-landing-cred__proto-dot" />
+        </div>
+        <div>
+          <p className="home-landing-cred__proto-t">{copy.accompaniment.title}</p>
+          <p className="home-landing-cred__proto-s">{copy.accompaniment.body}</p>
+        </div>
       </div>
     </section>
   );

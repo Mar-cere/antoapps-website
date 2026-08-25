@@ -297,7 +297,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           id: 'privacy',
           title: 'Your space stays yours.',
-          body: 'End-to-end encryption. We do not sell your story or build ads on it.',
+          body: 'TLS in transit and encryption at rest. Anto and the model read the text to provide the service. We do not sell your story or build ads on it.',
           media: {
             kind: 'privacy',
             privacy: {
@@ -305,7 +305,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
               chromeTitle: 'Privacy',
               lead: 'Care without an audience.',
               points: [
-                'End-to-end encrypted conversations',
+                'Conversations encrypted in transit and at rest',
                 'We do not sell your data',
                 'No ads built on your story',
               ],
@@ -384,7 +384,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'Are my conversations private?',
             answer:
-              'Yes. Conversations are encrypted and we do not sell or share your information with third parties.',
+              'Yes. They are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell or share your information with third parties.',
           },
           {
             question: 'Does Anto replace therapy?',
@@ -539,7 +539,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       {
         id: 'privacy',
         title: 'Tu espacio sigue siendo tuyo.',
-        body: 'Cifrado de extremo a extremo. No vendemos tu historia ni hacemos anuncios con ella.',
+        body: 'Cifrado en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos tu historia ni hacemos anuncios con ella.',
         media: {
           kind: 'privacy',
           privacy: {
@@ -547,7 +547,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             chromeTitle: 'Privacidad',
             lead: 'Cuidado sin audiencia.',
             points: [
-              'Conversaciones cifradas de extremo a extremo',
+              'Conversaciones cifradas en tránsito y en reposo',
               'No vendemos tus datos',
               'Sin anuncios sobre tu historia',
             ],
@@ -626,7 +626,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           question: '¿Mis conversaciones son privadas?',
           answer:
-            'Sí. Están cifradas y no vendemos ni compartimos tu información con terceros.',
+            'Sí. Van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos ni compartimos tu información con terceros.',
         },
         {
           question: '¿Anto reemplaza la terapia?',

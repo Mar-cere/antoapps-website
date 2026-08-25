@@ -1148,7 +1148,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'En Anto',
         paragraphs: [
-          'Anto incluye un protocolo de autocompasión entre sus 8 rutas estructuradas, accesible desde el chat y el hub de técnicas cuando el contexto lo amerita.',
+          'En el hub hay ejercicios (TCC, ABC, mindfulness) para cuando hablar no alcanza. No es tratamiento ni reemplaza a un profesional.',
         ],
       },
     ],
@@ -1638,7 +1638,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'En Anto',
         paragraphs: [
-          'Anto incluye protocolo de depresión basado en TCC, escala PHQ-9 para seguimiento de tendencias y tareas/hábitos unificados para estructurar micro-pasos. No diagnostica ni prescribe medicación.',
+          'En el hub hay ejercicios (TCC, ABC, mindfulness) para cuando hablar no alcanza. No es tratamiento ni reemplaza a un profesional. No diagnostica ni prescribe medicación.',
         ],
       },
     ],
@@ -1687,7 +1687,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'En Anto',
         paragraphs: [
-          'Usa tareas y hábitos unificados para programar micro-pasos, recordatorios y Pomodoro. El protocolo de depresión y el chat pueden sugerir actividades alineadas con tu contexto.',
+          'En el hub hay ejercicios (TCC, ABC, mindfulness) para cuando hablar no alcanza. No es tratamiento ni reemplaza a un profesional.',
         ],
       },
     ],
@@ -1736,14 +1736,14 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'En Anto',
         paragraphs: [
-          'Anto incluye protocolo de TOC (ERP) entre sus 8 rutas estructuradas. El chat puede ayudarte a identificar patrones, pero el tratamiento de TOC moderado o severo requiere acompañamiento clínico especializado.',
+          'En el hub hay ejercicios (TCC, ABC, mindfulness) para cuando hablar no alcanza. No es tratamiento ni reemplaza a un profesional. El tratamiento de TOC moderado o severo requiere acompañamiento clínico especializado.',
         ],
       },
     ],
     relatedSlugs: [SLUGS.anxiety, SLUGS.tcc, SLUGS.abc],
     disclaimer:
       'Psicoeducación. No es diagnóstico de TOC ni sustituye tratamiento profesional. La ERP sin supervisión puede empeorar síntomas en casos graves. Consulta con un especialista.',
-    cta: { label: 'Conocer protocolos de Anto →', path: '/app' },
+      cta: { label: 'Conocer Anto →', path: '/app' },
   },
   [SLUGS.trauma]: {
     slug: SLUGS.trauma,
@@ -1784,7 +1784,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'En Anto',
         paragraphs: [
-          'Anto incluye protocolo de trauma y TEPT entre sus rutas estructuradas. Puede acompañarte entre sesiones, pero trauma complejo requiere terapeuta formado en trauma — no sustituye ese trabajo.',
+          'En el hub hay ejercicios (TCC, ABC, mindfulness) para cuando hablar no alcanza. No es tratamiento ni reemplaza a un profesional. Trauma complejo requiere terapeuta formado en trauma.',
         ],
       },
     ],
@@ -1832,7 +1832,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'En Anto',
         paragraphs: [
-          'El protocolo de manejo de ira guía pasos estructurados en el chat. También puedes usar técnicas ABC y grounding del hub cuando notes que la intensidad sube.',
+          'En el hub hay ejercicios (TCC, ABC, mindfulness) para cuando hablar no alcanza. No es tratamiento ni reemplaza a un profesional.',
         ],
       },
     ],

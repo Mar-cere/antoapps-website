@@ -62,7 +62,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 101,
           question: '¿Qué es Anto?',
           answer:
-            'Anto es una app de acompañamiento emocional continuo: un lugar donde aterrizar cuando necesitas apoyo entre sesiones o en el día a día. Usa asistencia de IA en segundo plano, con herramientas y seguimiento pensados para el bienestar. No sustituye atención clínica: un terapeuta o profesional humano sigue siendo lo más recomendable. Disponible en iPhone.',
+            'Anto es una app de acompañamiento emocional continuo: un lugar donde aterrizar cuando necesitas apoyo entre sesiones o en el día a día. Usa asistencia de IA en segundo plano, con herramientas y seguimiento pensados para el bienestar. No sustituye atención clínica: un terapeuta o profesional humano sigue siendo lo más recomendable. Disponible en iPhone y Android.',
           category: 'funcionalidad',
         },
         {
@@ -96,7 +96,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 106,
           question: '¿En qué se diferencia Anto de ChatGPT u otros chats de IA?',
           answer:
-            'Anto está orientado al bienestar emocional: memoria de temas de cuidado, técnicas y protocolos, escalas de seguimiento (como PHQ-9 y GAD-7), detección de crisis y un diseño de privacidad pensado para acompañamiento. Un chat generalista puede conversar de todo; Anto está acotado a apoyo emocional continuo y no pretende ser terapia ni diagnóstico.',
+            'Anto está orientado al bienestar emocional: memoria de temas de cuidado, técnicas y ejercicios en el hub, escalas de seguimiento (como PHQ-9 y GAD-7), y un diseño de privacidad pensado para acompañamiento. Un chat generalista puede conversar de todo; Anto está acotado a apoyo emocional continuo y no pretende ser terapia ni diagnóstico.',
           category: 'funcionalidad',
         },
         {
@@ -117,14 +117,14 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 1,
           question: '¿Mis conversaciones son realmente privadas?',
           answer:
-            'Sí, absolutamente. Todas tus conversaciones están encriptadas de extremo a extremo (E2E) utilizando estándares de grado militar (AES-256). Esto significa que solo tú y el sistema pueden leer tus mensajes. Ni siquiera nuestros administradores pueden acceder al contenido de tus conversaciones. Nunca compartimos, vendemos o comercializamos tu información con terceros. Tu privacidad es nuestra máxima prioridad y cumplimos con todas las regulaciones internacionales de protección de datos, incluyendo GDPR y HIPAA.',
+            'Sí, absolutamente. Tus conversaciones van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. Nunca compartimos, vendemos o comercializamos tu información con terceros. Tu privacidad es nuestra máxima prioridad y cumplimos con todas las regulaciones internacionales de protección de datos, incluyendo GDPR y HIPAA.',
           category: 'privacidad',
         },
         {
           id: 2,
           question: '¿Cómo funciona el asistente de Anto?',
           answer:
-            'Conversas en un espacio de acompañamiento emocional. Detrás hay asistencia de IA (OpenAI GPT-5.4 Mini) con técnicas alineadas con evidencia cuando encajan (por ejemplo enfoques tipo CBT), tono profesional y práctico. No sustituye terapia presencial ni diagnóstico clínico. Puede recordar temas recurrentes, conectar patrones con el grafo de insights y el hub de técnicas, e incluir escalas validadas (PHQ-9, GAD-7) y protocolos estructurados. Puedes ajustar preferencias de estilo cuando la app lo ofrece.',
+            'Conversas en un espacio de acompañamiento emocional. Detrás hay asistencia de IA (OpenAI GPT-5.4 Mini) con técnicas alineadas con evidencia cuando encajan (por ejemplo enfoques tipo CBT), tono profesional y práctico. No sustituye terapia presencial ni diagnóstico clínico. Puede recordar temas recurrentes, conectar patrones con el grafo de insights y el hub de técnicas, e incluir escalas validadas (PHQ-9, GAD-7). Puedes ajustar preferencias de estilo cuando la app lo ofrece.',
           category: 'funcionalidad',
         },
         {
@@ -136,9 +136,9 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         },
         {
           id: 4,
-          question: '¿Qué pasa si el sistema detecta una crisis?',
+          question: '¿Qué pasa si estoy en crisis?',
           answer:
-            'Nuestro sistema de detección de crisis utiliza algoritmos avanzados para identificar señales de riesgo. Si detectamos una situación de crisis, inmediatamente te ofrecemos recursos de apoyo, incluyendo líneas de ayuda 24/7, contactos de emergencia locales, y técnicas de estabilización. En casos graves donde detectamos riesgo inminente, podemos ayudarte a contactar servicios de emergencia. El sistema está diseñado para ser proactivo pero respetuoso, priorizando siempre tu seguridad y bienestar.',
+            'Si te sientes en riesgo, busca ayuda humana de inmediato: líneas de ayuda 24/7, contactos de emergencia locales o servicios de urgencia. Anto puede orientarte hacia esos recursos. No reemplaza una emergencia.',
           category: 'funcionalidad',
         },
         {
@@ -158,7 +158,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 7,
           question: '¿Cuánto cuesta usar Anto?',
           answer:
-            'Ofrecemos planes flexibles basados en duración: 1 Mes (US$4.20), 3 Meses (US$12.62), 6 Meses (US$22.09) y 1 Año (US$42.09). Todos los planes incluyen las mismas funcionalidades premium: acceso completo al asistente AI, análisis emocional avanzado, detección de crisis proactiva, herramientas de bienestar y soporte 24/7.',
+            'Ofrecemos planes flexibles basados en duración: 1 Mes (US$4.20), 3 Meses (US$12.62), 6 Meses (US$22.09) y 1 Año (US$42.09). Todos los planes incluyen las mismas funcionalidades premium: acceso completo al asistente AI, análisis emocional avanzado, herramientas de bienestar y soporte 24/7.',
           category: 'precios',
         },
         {
@@ -172,7 +172,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 9,
           question: '¿Qué son los modos de conversación?',
           answer:
-            'Son distintos enfoques del asistente según lo que necesites en cada momento: orientación práctica con micro-pasos, exploración emocional más conversada o acompañamiento estructurado con protocolos basados en evidencia. Puedes elegir el modo que mejor encaje con tu situación.',
+            'Son distintos enfoques del asistente según lo que necesites en cada momento: orientación práctica con micro-pasos, exploración emocional más conversada o acompañamiento estructurado con ejercicios del hub. Puedes elegir el modo que mejor encaje con tu situación.',
           category: 'funcionalidad',
         },
         {
@@ -180,13 +180,6 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           question: '¿Qué escalas clínicas usa Anto?',
           answer:
             'Anto integra las escalas validadas PHQ-9 (depresión) y GAD-7 (ansiedad). Se completan de forma automática a partir del análisis de tus conversaciones y se reflejan en tu historial con tendencias y reportes. No sustituyen una evaluación clínica presencial.',
-          category: 'funcionalidad',
-        },
-        {
-          id: 11,
-          question: '¿Qué protocolos terapéuticos incluye Anto?',
-          answer:
-            'Anto incluye 8 protocolos estructurados basados en evidencia: depresión (CBT), ansiedad generalizada (CBT), manejo de ira, autocompasión, higiene del sueño, trauma, TOC (ERP) y TEPT. Se activan cuando el sistema detecta síntomas relevantes y guían el apoyo paso a paso.',
           category: 'funcionalidad',
         },
       ],
@@ -223,7 +216,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 13,
           question: '¿Cómo funciona el análisis emocional?',
           answer:
-            'El análisis emocional de Anto utiliza procesamiento de lenguaje natural y machine learning para analizar tus conversaciones, patrones de uso, y respuestas a cuestionarios. El sistema identifica emociones, detecta patrones a lo largo del tiempo, y te proporciona insights personalizados sobre tu bienestar mental. Recibirás gráficos visuales de tu estado emocional, alertas proactivas cuando detectemos cambios significativos, y reportes semanales y mensuales con recomendaciones personalizadas.',
+            'El análisis emocional de Anto utiliza procesamiento de lenguaje natural y machine learning para analizar tus conversaciones, patrones de uso, y respuestas a cuestionarios. El sistema identifica emociones y patrones a lo largo del tiempo, y te proporciona insights personalizados sobre tu bienestar mental. Recibirás gráficos visuales de tu estado emocional y reportes semanales y mensuales con recomendaciones personalizadas.',
           category: 'funcionalidad',
         },
         {
@@ -265,7 +258,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 19,
           question: '¿Qué hace único a Anto como herramienta de bienestar?',
           answer:
-            'Anto combina un asistente de IA con memoria de temas, hub de técnicas terapéuticas, grafo de insights con «lo que te ayuda», escalas clínicas validadas (PHQ-9, GAD-7), 8 protocolos estructurados, WAI post-sesión, detección proactiva de crisis, tareas y hábitos unificados, home personalizado con insight diario, sesión persistente y soporte bilingüe ES/EN. Priorizamos privacidad, transparencia y utilidad práctica — sin vender datos de usuarios. ' +
+            'Anto combina un asistente de IA con memoria de temas, hub de técnicas, grafo de insights con «lo que te ayuda», tareas y hábitos unificados, home personalizado con insight diario, sesión persistente y soporte bilingüe ES/EN. Priorizamos privacidad, transparencia y utilidad práctica — sin vender datos de usuarios. ' +
             trial.differentiatorSuffix,
           category: 'funcionalidad',
         },
@@ -336,7 +329,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 101,
         question: 'What is Anto?',
         answer:
-          'Anto is an app for ongoing emotional support: a place to land when you need support between sessions or day to day. It uses AI assistance in the background, with tools and tracking designed for wellbeing. It does not replace clinical care — a human therapist or professional remains the stronger recommendation. Available on iPhone.',
+          'Anto is an app for ongoing emotional support: a place to land when you need support between sessions or day to day. It uses AI assistance in the background, with tools and tracking designed for wellbeing. It does not replace clinical care — a human therapist or professional remains the stronger recommendation. Available on iPhone and Android.',
         category: 'funcionalidad',
       },
       {
@@ -370,7 +363,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 106,
         question: 'How is Anto different from ChatGPT or other AI chats?',
         answer:
-          'Anto is oriented to emotional wellbeing: care-topic memory, techniques and protocols, tracking scales (such as PHQ-9 and GAD-7), crisis detection, and a privacy design built for support. A generalist chat can talk about anything; Anto is scoped to ongoing emotional support and does not claim to be therapy or diagnosis.',
+          'Anto is oriented to emotional wellbeing: care-topic memory, techniques and hub exercises, tracking scales (such as PHQ-9 and GAD-7), and a privacy design built for support. A generalist chat can talk about anything; Anto is scoped to ongoing emotional support and does not claim to be therapy or diagnosis.',
         category: 'funcionalidad',
       },
       {
@@ -391,14 +384,14 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 1,
         question: 'Are my conversations really private?',
         answer:
-          'Yes, absolutely. All your conversations are end-to-end (E2E) encrypted using military-grade standards (AES-256). This means only you and the system can read your messages. Not even our administrators can access the content of your conversations. We never share, sell, or commercialise your information with third parties. Your privacy is our top priority and we comply with all international data protection regulations, including GDPR and HIPAA.',
+          'Yes, absolutely. Conversations are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We never share, sell, or commercialise your information with third parties. Your privacy is our top priority and we comply with all international data protection regulations, including GDPR and HIPAA.',
         category: 'privacidad',
       },
       {
         id: 2,
         question: 'How does Anto’s assistant work?',
         answer:
-          'You converse in a space for emotional support. Behind it is AI assistance (OpenAI GPT-5.4 Mini) with evidence-aligned techniques when they fit (for example CBT-style approaches), in a professional, practical tone. It does not replace in-person therapy or clinical diagnosis. It can remember recurring topics, connect patterns to the insights graph and techniques hub, and include validated scales (PHQ-9, GAD-7) and structured protocols. You can adjust style preferences when the app offers them.',
+          'You converse in a space for emotional support. Behind it is AI assistance (OpenAI GPT-5.4 Mini) with evidence-aligned techniques when they fit (for example CBT-style approaches), in a professional, practical tone. It does not replace in-person therapy or clinical diagnosis. It can remember recurring topics, connect patterns to the insights graph and techniques hub, and include validated scales (PHQ-9, GAD-7). You can adjust style preferences when the app offers them.',
         category: 'funcionalidad',
       },
       {
@@ -410,9 +403,9 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
       },
       {
         id: 4,
-        question: 'What happens if the system detects a crisis?',
+        question: 'What happens if I am in crisis?',
         answer:
-          'Our crisis detection system uses advanced algorithms to identify risk signals. If we detect a crisis situation, we immediately offer support resources, including 24/7 helplines, local emergency contacts, and stabilisation techniques. In severe cases where we detect imminent risk, we can help you contact emergency services. The system is designed to be proactive yet respectful, always prioritising your safety and wellbeing.',
+          'If you feel at risk, seek human help immediately: 24/7 helplines, local emergency contacts, or urgent care. Anto can point you toward those resources. It does not replace an emergency.',
         category: 'funcionalidad',
       },
       {
@@ -432,7 +425,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 7,
         question: 'How much does Anto cost?',
         answer:
-          'We offer flexible duration-based plans: 1 Month (US$4.20), 3 Months (US$12.62), 6 Months (US$22.09), and 1 Year (US$42.09). All plans include the same premium features: full access to the AI assistant, advanced emotional analysis, proactive crisis detection, wellbeing tools, and 24/7 support.',
+          'We offer flexible duration-based plans: 1 Month (US$4.20), 3 Months (US$12.62), 6 Months (US$22.09), and 1 Year (US$42.09). All plans include the same premium features: full access to the AI assistant, advanced emotional analysis, wellbeing tools, and 24/7 support.',
         category: 'precios',
       },
       {
@@ -446,7 +439,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 9,
         question: 'What are conversation modes?',
         answer:
-          'They are different assistant approaches depending on what you need: practical guidance with micro-steps, more conversational emotional exploration, or structured support with evidence-based protocols. You can choose the mode that best fits your situation.',
+          'They are different assistant approaches depending on what you need: practical guidance with micro-steps, more conversational emotional exploration, or structured support with hub exercises. You can choose the mode that best fits your situation.',
         category: 'funcionalidad',
       },
       {
@@ -454,13 +447,6 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         question: 'Which clinical scales does Anto use?',
         answer:
           'Anto integrates the validated PHQ-9 (depression) and GAD-7 (anxiety) scales. They are completed automatically from the analysis of your conversations and reflected in your history with trends and reports. They do not replace an in-person clinical assessment.',
-        category: 'funcionalidad',
-      },
-      {
-        id: 11,
-        question: 'Which therapeutic protocols does Anto include?',
-        answer:
-          'Anto includes 8 evidence-based structured protocols: depression (CBT), generalised anxiety (CBT), anger management, self-compassion, sleep hygiene, trauma, OCD (ERP), and PTSD. They activate when relevant symptoms are detected and guide support step by step.',
         category: 'funcionalidad',
       },
     ],
@@ -497,7 +483,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 13,
         question: 'How does emotional analysis work?',
         answer:
-          'Anto\'s emotional analysis uses natural language processing and machine learning to analyse your conversations, usage patterns, and questionnaire responses. The system identifies emotions, detects patterns over time, and provides personalised insights about your mental wellbeing. You will receive visual charts of your emotional state, proactive alerts when we detect significant changes, and weekly and monthly reports with personalised recommendations.',
+          'Anto\'s emotional analysis uses natural language processing and machine learning to analyse your conversations, usage patterns, and questionnaire responses. The system identifies emotions and patterns over time, and provides personalised insights about your mental wellbeing. You will receive visual charts of your emotional state and weekly and monthly reports with personalised recommendations.',
         category: 'funcionalidad',
       },
       {
@@ -539,7 +525,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 19,
         question: 'What makes Anto unique as a wellness tool?',
         answer:
-          'Anto combines an AI assistant with topic memory, a therapeutic techniques hub, an insights graph with navigable "what helps you", validated clinical scales (PHQ-9, GAD-7), 8 structured protocols, post-session WAI, proactive crisis detection, unified tasks and habits, a personalised home with daily insight, persistent session, and bilingual ES/EN support. We prioritise privacy, transparency, and practical utility — without selling user data. ' +
+          'Anto combines an AI assistant with topic memory, a techniques hub, an insights graph with navigable "what helps you", unified tasks and habits, a personalised home with daily insight, persistent session, and bilingual ES/EN support. We prioritise privacy, transparency, and practical utility — without selling user data. ' +
           trial.differentiatorSuffix,
         category: 'funcionalidad',
       },

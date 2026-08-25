@@ -36,7 +36,7 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
         {
           title: 'Privacidad Garantizada',
           description:
-            'Conversaciones confidenciales con encriptación de extremo a extremo. No vendemos tus datos.',
+            'Conversaciones confidenciales, cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos tus datos.',
         },
         {
           title: 'Apoyo que se adapta a ti',
@@ -44,9 +44,9 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
             'Respuestas según tu situación, con modos de conversación y preferencias de estilo cuando la app lo permite.',
         },
         {
-          title: 'Detección Proactiva de Crisis',
+          title: 'Apoyo si estás en crisis',
           description:
-            'Si detectamos señales de riesgo, te orientamos hacia recursos y líneas de ayuda de inmediato.',
+            'Te orientamos hacia recursos y líneas de ayuda. No reemplaza una emergencia ni a un profesional.',
         },
       ],
       profesionales: [
@@ -61,9 +61,9 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
             'Tendencias agregadas del progreso emocional para orientar el trabajo en sesión.',
         },
         {
-          title: 'Alertas de crisis',
+          title: 'Recursos para el paciente',
           description:
-            'Avisos tempranos cuando el sistema detecta señales de riesgo en un paciente.',
+            'Pueden acceder a líneas de ayuda y recursos. Eso no sustituye tu criterio clínico ni una urgencia.',
         },
         {
           title: 'Datos para la consulta',
@@ -113,7 +113,7 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
         {
           title: 'Privacy Guaranteed',
           description:
-            'Confidential conversations with end-to-end encryption. We do not sell your data.',
+            'Confidential conversations, encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell your data.',
         },
         {
           title: 'Support that adapts to you',
@@ -121,9 +121,9 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
             'Responses tailored to your situation, with conversation modes and style preferences when the app allows.',
         },
         {
-          title: 'Proactive Crisis Detection',
+          title: 'Support if you are in crisis',
           description:
-            'If we detect risk signals, we guide you toward resources and helplines right away.',
+            'We point you toward resources and helplines. It does not replace an emergency or a professional.',
         },
       ],
       profesionales: [
@@ -138,9 +138,9 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
             'Aggregated emotional progress trends to guide your work in session.',
         },
         {
-          title: 'Crisis alerts',
+          title: 'Recursos para el paciente',
           description:
-            'Early warnings when the system detects risk signals in a patient.',
+            'Pueden acceder a líneas de ayuda y recursos. Eso no sustituye tu criterio clínico ni una urgencia.',
         },
         {
           title: 'Data for sessions',

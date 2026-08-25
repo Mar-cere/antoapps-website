@@ -35,7 +35,7 @@ const copy: Record<Locale, { title: string; links: { href: string; label: string
       {
         href: '/app',
         label: 'La app',
-        description: 'Anto en iPhone — qué incluye',
+        description: 'Anto en iPhone y Android — qué incluye',
       },
       {
         href: '/seguridad',
@@ -70,7 +70,7 @@ const copy: Record<Locale, { title: string; links: { href: string; label: string
       {
         href: '/app',
         label: 'The app',
-        description: 'Anto on iPhone — what is included',
+        description: 'Anto on iPhone and Android — what is included',
       },
       {
         href: '/seguridad',

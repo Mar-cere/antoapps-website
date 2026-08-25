@@ -141,8 +141,45 @@ export function assertHomeLandingCopyInvariants(): string[] {
         errors.push(`${tag} credentials stat "${stat.label}" sin detail`);
       }
     }
-    if (copy.credentials.protocols.length !== 3) {
-      errors.push(`${tag} credentials.protocols debe tener 3 ítems`);
+    if (!copy.credentials.accompaniment.title.trim() || !copy.credentials.accompaniment.body.trim()) {
+      errors.push(`${tag} credentials.accompaniment incompleto`);
+    }
+    const accompaniment = `${copy.credentials.accompaniment.title} ${copy.credentials.accompaniment.body}`;
+    if (!/tcc|cbt/i.test(accompaniment) || !/mindfulness/i.test(accompaniment)) {
+      errors.push(`${tag} credentials.accompaniment debe mencionar el hub (TCC/CBT y mindfulness)`);
+    }
+    if (!/no es tratamiento|not treatment/i.test(accompaniment)) {
+      errors.push(`${tag} credentials.accompaniment debe decir que no es tratamiento`);
+    }
+
+    const productSurface = [
+      copy.hero.kicker,
+      copy.hero.subtitle,
+      copy.credentials.title,
+      copy.credentials.subtitle,
+      accompaniment,
+      ...copy.credentials.stats.map((stat) => `${stat.label} ${stat.detail}`),
+      ...copy.faqLite.items.map((item) => `${item.question} ${item.answer}`),
+    ].join('\n');
+    const bannedProductClaims = [
+      /protocolos clínicos/i,
+      /validados clínicamente/i,
+      /clinically validated/i,
+      /validated clinical protocols/i,
+      /distorsiones detectadas/i,
+      /distortions detected/i,
+      /trauma\s*·\s*toc/i,
+    ];
+    for (const pattern of bannedProductClaims) {
+      if (pattern.test(productSurface)) {
+        errors.push(`${tag} landing-final/credentials no debe reclamar producto clínico (${pattern})`);
+      }
+    }
+    if (/\bios\b/i.test(copy.hero.kicker) && !/android/i.test(copy.hero.kicker)) {
+      errors.push(`${tag} hero.kicker no debe mencionar solo iOS`);
+    }
+    if (/iphone/i.test(copy.hero.kicker) && !/android/i.test(copy.hero.kicker)) {
+      errors.push(`${tag} hero.kicker no debe mencionar solo iPhone`);
     }
 
     if (copy.pricing.cards.length !== 4) {

@@ -79,18 +79,18 @@
 
 /* Google Play: misma estructura, tono teal suave (no gemelo del App Store) */
 .premium-store-cta--google {
-    background: color-mix(in srgb, var(--color-primary, #1adddb) 16%, #fff);
-    border-color: color-mix(in srgb, var(--color-primary, #1adddb) 42%, transparent);
+    background: #fff;
+    border-color: transparent;
 }
 
 .premium-store-cta--google .premium-store-cta__icon {
-    background: var(--color-primary, #1adddb);
-    color: #030a24;
+    background: #030a24;
+    color: #fff;
 }
 
 .premium-store-cta--google .premium-store-cta__badge {
-    background: #030a24;
-    color: var(--color-primary, #1adddb);
+    background: var(--home-accent, var(--color-primary, #1adddb));
+    color: #030a24;
 }
 
 .premium-store-cta-stack {

@@ -1,5 +1,4 @@
 import type { Locale } from '@/lib/i18n/config';
-import { HOME_LANDING_SCREENSHOT_PATHS } from '@/lib/assets/app-screenshots';
 import { getBienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 import { BIENVENIDA_VARIANTS } from '@/lib/bienvenida/parse-variant';
 
@@ -45,6 +44,10 @@ export function assertBienvenidaCopyInvariants(): string[] {
 
     if (copy.clinicalPillars.items.length !== 3) {
       errors.push(`${tag} clinicalPillars: se requieren 3 ítems`);
+    }
+    const pillarsText = copy.clinicalPillars.items.map((item) => `${item.title} ${item.description}`).join('\n');
+    if (/detecta crisis|crisis detection|alertas proactivas|proactive alerts/i.test(pillarsText)) {
+      errors.push(`${tag} clinicalPillars no debe vender detección de crisis`);
     }
 
     if (copy.conversationDemo.messages.length < 3) {
@@ -120,8 +123,17 @@ export function assertBienvenidaCopyInvariants(): string[] {
         errors.push(`${tag} v2.chat.messages incompleto`);
       }
     }
-    if (v2.dashboard.image.src !== HOME_LANDING_SCREENSHOT_PATHS.sessionSummary) {
-      errors.push(`${tag} v2.dashboard.image.src debe usar HOME_LANDING_SCREENSHOT_PATHS.sessionSummary`);
+    if (!v2.dashboard.mock.title.trim() || !v2.dashboard.mock.quote.trim()) {
+      errors.push(`${tag} v2.dashboard.mock incompleto`);
+    }
+    if (!v2.dashboard.mock.reframe.trim() || !v2.dashboard.mock.step.trim()) {
+      errors.push(`${tag} v2.dashboard.mock incompleto`);
+    }
+    if (!v2.dashboard.mock.footnote.trim()) {
+      errors.push(`${tag} v2.dashboard.mock.footnote vacío`);
+    }
+    if (/detectamos|6\/10/i.test(`${v2.dashboard.headline} ${v2.dashboard.subtitle} ${Object.values(v2.dashboard.mock).join(' ')}`)) {
+      errors.push(`${tag} demo bienvenida no debe incluir Detectamos ni 6/10`);
     }
     if (!v2.photoAlt.trim()) {
       errors.push(`${tag} v2.photoAlt vacío`);

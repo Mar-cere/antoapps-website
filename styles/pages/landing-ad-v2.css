@@ -499,6 +499,50 @@
     max-width: 46ch;
 }
 
+.lad-v2-heard {
+    max-width: 28rem;
+    padding: 1.15rem 1.25rem 1.05rem;
+    border-radius: var(--home-v2-radius-media, 1rem);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lad-v2-heard__title {
+    margin: 0 0 0.75rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+}
+
+.lad-v2-heard__quote {
+    margin: 0 0 0.85rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.4;
+}
+
+.lad-v2-heard__reframe {
+    margin: 0 0 0.75rem;
+    font-size: 0.9rem;
+    color: var(--lad-v2-text-secondary);
+    line-height: 1.5;
+}
+
+.lad-v2-heard__step {
+    margin: 0 0 0.9rem;
+    font-size: 0.9rem;
+    color: #fff;
+    line-height: 1.45;
+}
+
+.lad-v2-heard__note {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--lad-v2-text-secondary);
+}
+
 .lad-v2-limits {
     padding: 2.25rem var(--lad-v2-pad-x) 0;
 }

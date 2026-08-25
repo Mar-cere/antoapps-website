@@ -138,54 +138,54 @@
   outline-offset: 3px;
 }
 
-/* Play: ghost teal sobre dark (mismo peso, color distinto al blanco del App Store) */
+/* Play y App Store: mismo peso visual (sólido blanco) */
 .home-landing-page--v2 .premium-store-cta--google {
-  background: color-mix(in srgb, var(--color-primary) 16%, transparent);
-  border-color: color-mix(in srgb, var(--color-primary) 58%, transparent);
+  background: #fff;
+  border-color: transparent;
 }
 
 .home-landing-page--v2 .premium-store-cta--google .premium-store-cta__name {
-  color: var(--home-v2-ink);
-}
-
-.home-landing-page--v2 .premium-store-cta--google .premium-store-cta__label {
-  color: var(--home-v2-muted);
-}
-
-.home-landing-page--v2 .premium-store-cta--google .premium-store-cta__icon {
-  background: var(--color-primary);
   color: #030a24;
 }
 
+.home-landing-page--v2 .premium-store-cta--google .premium-store-cta__label {
+  color: #5c5c5c;
+}
+
+.home-landing-page--v2 .premium-store-cta--google .premium-store-cta__icon {
+  background: #030a24;
+  color: #fff;
+}
+
 .home-landing-page--v2 .premium-store-cta--google .premium-store-cta__badge {
-  background: rgba(3, 10, 36, 0.72);
+  background: #030a24;
   color: var(--color-primary);
-  border: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+  border: 0;
 }
 
 .home-landing-page--v2 .premium-store-cta--google:hover {
-  background: color-mix(in srgb, var(--color-secondary) 22%, transparent);
-  border-color: color-mix(in srgb, var(--color-secondary) 55%, transparent);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .home-landing-page--v2 .premium-store-cta--google:hover .premium-store-cta__name,
 .home-landing-page--v2 .premium-store-cta--google:hover .premium-store-cta__label {
-  color: var(--home-v2-ink);
-}
-
-.home-landing-page--v2 .premium-store-cta--google:hover .premium-store-cta__icon {
-  background: var(--color-secondary);
   color: #030a24;
 }
 
+.home-landing-page--v2 .premium-store-cta--google:hover .premium-store-cta__icon {
+  background: #030a24;
+  color: var(--color-primary);
+}
+
 .home-landing-page--v2 .premium-store-cta--google:hover .premium-store-cta__badge {
-  background: color-mix(in srgb, var(--color-secondary) 22%, transparent);
-  color: var(--color-secondary);
-  border-color: color-mix(in srgb, var(--color-secondary) 50%, transparent);
+  background: rgba(3, 10, 36, 0.18);
+  color: #030a24;
+  border: 0;
 }
 
 .home-landing-page--v2 .premium-store-cta--google:focus-visible {
-  outline-color: var(--color-secondary);
+  outline-color: var(--color-primary);
 }
 
 /* ── Hero ── */

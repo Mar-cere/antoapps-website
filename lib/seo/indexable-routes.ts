@@ -135,17 +135,25 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
 export const INDEXABLE_LOGICAL_PATHS = INDEXABLE_ROUTES.map((r) => r.path);
 
 /**
- * Rutas que nunca deben aparecer en el sitemap ni ser rastreadas.
- * Mantener sincronizado con app/robots.ts (disallow) y metadata noindex.
+ * Rutas que nunca deben aparecer en el sitemap.
+ * `ROBOTS_DISALLOW_PATH_PREFIXES` es lo que se publica en robots.txt.
  */
-export const NON_INDEXABLE_PATH_PREFIXES = [
+export const ROBOTS_DISALLOW_PATH_PREFIXES = [
   '/api/',
   '/_next/',
   '/404',
-  '/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a',
   '/home-v2',
   '/en/home-v2',
   '/open',
+] as const;
+
+export const UNLISTED_APP_PATH_PREFIXES = [
+  '/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a',
+] as const;
+
+export const NON_INDEXABLE_PATH_PREFIXES = [
+  ...ROBOTS_DISALLOW_PATH_PREFIXES,
+  ...UNLISTED_APP_PATH_PREFIXES,
 ] as const;
 
 /** Redirects cortos — no indexables, no deben estar en sitemap. */

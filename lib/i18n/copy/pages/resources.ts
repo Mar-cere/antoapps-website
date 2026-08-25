@@ -137,7 +137,7 @@ function siteResources(locale: Locale): ResourceItem[] {
     return [
       {
         id: 'site-1',
-        title: `Anto on iPhone (${APP_VERSION_LABEL})`,
+        title: `Anto on iPhone and Android (${APP_VERSION_LABEL})`,
         description: 'Ongoing emotional support on your phone — conversation, techniques, daily tools.',
         link: localePath(locale, '/app'),
       },
@@ -171,7 +171,7 @@ function siteResources(locale: Locale): ResourceItem[] {
   return [
     {
       id: 'site-1',
-      title: `Anto en iPhone (${APP_VERSION_LABEL})`,
+      title: `Anto en iPhone y Android (${APP_VERSION_LABEL})`,
       description: 'Acompañamiento emocional en el teléfono — conversación, técnicas, día a día.',
       link: localePath(locale, '/app'),
     },
@@ -233,7 +233,7 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
       meta: {
         title: 'Resources — Anto | Psychoeducation for anxiety, CBT, sleep and quiet hours',
         description:
-        `${PSYCHOEDUCATION_SLUGS.length} free psychoeducation guides: anxiety, CBT, cognitive distortions (brief + clinical map), sleep (brief + full map), grounding, depression, PHQ-9/GAD-7, and more — plus Anto on iPhone, privacy, and evidence. Complements care; does not replace a therapist.`,
+        `${PSYCHOEDUCATION_SLUGS.length} free psychoeducation guides: anxiety, CBT, cognitive distortions (brief + clinical map), sleep (brief + full map), grounding, depression, PHQ-9/GAD-7, and more — plus Anto on iPhone and Android, privacy, and evidence. Complements care; does not replace a therapist.`,
         openGraphTitle: 'Anto resources — guides for anxiety and quiet hours',
         openGraphDescription:
           'Start with anxiety, looping thoughts, sleep, or CBT. Short educational guides — not a diagnosis.',
