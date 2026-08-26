@@ -33,10 +33,14 @@ export default function HomeV2ChatVignette({
       <ul className="home-v2-chat__thread">
         {thread.messages.map((message, index) => {
           const isUser = message.role === 'user';
+          const hideFirstExchangeOnNarrow =
+            size === 'hero' && thread.messages.length >= 4 && index < thread.messages.length - 2;
           return (
             <li
               key={`${message.role}-${index}`}
-              className={`home-v2-chat__row ${isUser ? 'home-v2-chat__row--user' : 'home-v2-chat__row--anto'}`}
+              className={`home-v2-chat__row ${isUser ? 'home-v2-chat__row--user' : 'home-v2-chat__row--anto'}${
+                hideFirstExchangeOnNarrow ? ' home-v2-chat__row--desktop' : ''
+              }`}
               style={{ '--home-v2-i': index } as CSSProperties}
             >
               <span className="home-v2-chat__who" aria-hidden="true">
