@@ -30,23 +30,35 @@ export default function HomeV2Pricing({ locale = 'es' }: HomeV2PricingProps) {
             <span className="home-v2-pricing__badge">{pricing.popularBadge}</span>
             <p className="home-v2-pricing__period">{featured.period}</p>
             <p className="home-v2-pricing__amount">{featured.price}</p>
-            <p className="home-v2-pricing__unit">{featured.unit}</p>
+            {featured.perMonth ? (
+              <p className="home-v2-pricing__per-month">{featured.perMonth}</p>
+            ) : (
+              <p className="home-v2-pricing__unit">{featured.unit}</p>
+            )}
           </div>
 
           <ul className="home-v2-pricing__list">
-            {others.map((card) => (
-              <li
-                key={card.period}
-                className={`home-v2-pricing__row${card.save ? ' home-v2-pricing__row--save' : ''}`}
-              >
-                <span className="home-v2-pricing__row-period">{card.period}</span>
-                <span className="home-v2-pricing__row-price">
-                  {card.price}
-                  <span className="home-v2-pricing__row-unit"> {card.unit}</span>
-                </span>
-                {card.save ? <span className="home-v2-pricing__row-save">{card.save}</span> : null}
-              </li>
-            ))}
+            {others.map((card) => {
+              const hasDetail = Boolean(card.perMonth || card.save);
+              return (
+                <li
+                  key={card.period}
+                  className={`home-v2-pricing__row${hasDetail ? ' home-v2-pricing__row--detail' : ''}${
+                    card.save ? ' home-v2-pricing__row--save' : ''
+                  }`}
+                >
+                  <span className="home-v2-pricing__row-period">{card.period}</span>
+                  <span className="home-v2-pricing__row-price">
+                    {card.price}
+                    <span className="home-v2-pricing__row-unit"> {card.unit}</span>
+                  </span>
+                  {card.perMonth ? (
+                    <span className="home-v2-pricing__row-per-month">{card.perMonth}</span>
+                  ) : null}
+                  {card.save ? <span className="home-v2-pricing__row-save">{card.save}</span> : null}
+                </li>
+              );
+            })}
           </ul>
 
           <div className="home-v2-pricing__cta">

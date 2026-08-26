@@ -104,11 +104,24 @@ export type HomeV2Moment = {
 
 export type HomeV2PriceCard = {
   period: string;
+  /** Total del plan (o tarifa mensual en el plan de 1 mes). */
   price: string;
+  /** Unidad junto al número grande o al total de la fila (`USD`, `/ mes`, `/ mo`). */
   unit: string;
+  /** Equivalente mensual a 2 decimales (total ÷ meses). No redondear 4.21 a 4.20. */
+  perMonth?: string;
   save?: string;
   popular?: boolean;
 };
+
+function usdAmount(value: number): string {
+  return `$${value.toFixed(2)}`;
+}
+
+/** Equivalente mensual: total ÷ meses, siempre 2 decimales. */
+function usdPerMonth(total: number, months: number): string {
+  return usdAmount(total / months);
+}
 
 export type HomeV2FoundationPillar = {
   title: string;
@@ -346,23 +359,26 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         subtitle: 'One free day. Full access on every plan. Cancel anytime.',
         popularBadge: 'Often chosen',
         cards: [
-          { period: '1 month', price: `$${PRICING_USD.month.toFixed(2)}`, unit: 'USD / month' },
+          { period: '1 month', price: usdAmount(PRICING_USD.month), unit: '/ mo' },
           {
             period: '3 months',
-            price: `$${PRICING_USD.threeMonths.toFixed(2)}`,
+            price: usdAmount(PRICING_USD.threeMonths),
             unit: 'USD',
+            perMonth: `${usdPerMonth(PRICING_USD.threeMonths, 3)} / mo · USD`,
             popular: true,
           },
           {
             period: '6 months',
-            price: `$${PRICING_USD.sixMonths.toFixed(2)}`,
+            price: usdAmount(PRICING_USD.sixMonths),
             unit: 'USD',
+            perMonth: `${usdPerMonth(PRICING_USD.sixMonths, 6)} / mo`,
             save: 'Save 12%',
           },
           {
             period: '1 year',
-            price: `$${PRICING_USD.year.toFixed(2)}`,
+            price: usdAmount(PRICING_USD.year),
             unit: 'USD',
+            perMonth: `${usdPerMonth(PRICING_USD.year, 12)} / mo`,
             save: 'Save 17%',
           },
         ],
@@ -588,23 +604,26 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       subtitle: 'Un día gratis. Acceso completo en todos los planes. Cancela cuando quieras.',
       popularBadge: 'Suele elegirse',
       cards: [
-        { period: '1 mes', price: `$${PRICING_USD.month.toFixed(2)}`, unit: 'USD / mes' },
+        { period: '1 mes', price: usdAmount(PRICING_USD.month), unit: '/ mes' },
         {
           period: '3 meses',
-          price: `$${PRICING_USD.threeMonths.toFixed(2)}`,
+          price: usdAmount(PRICING_USD.threeMonths),
           unit: 'USD',
+          perMonth: `${usdPerMonth(PRICING_USD.threeMonths, 3)} / mes · USD`,
           popular: true,
         },
         {
           period: '6 meses',
-          price: `$${PRICING_USD.sixMonths.toFixed(2)}`,
+          price: usdAmount(PRICING_USD.sixMonths),
           unit: 'USD',
+          perMonth: `${usdPerMonth(PRICING_USD.sixMonths, 6)} / mes`,
           save: 'Ahorra 12%',
         },
         {
           period: '1 año',
-          price: `$${PRICING_USD.year.toFixed(2)}`,
+          price: usdAmount(PRICING_USD.year),
           unit: 'USD',
+          perMonth: `${usdPerMonth(PRICING_USD.year, 12)} / mes`,
           save: 'Ahorra 17%',
         },
       ],

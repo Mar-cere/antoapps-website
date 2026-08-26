@@ -6,6 +6,7 @@ import { getHomeSectionsCopy } from '@/lib/i18n/copy/home/sections';
 import { getWhatsNewCopy } from '@/lib/i18n/copy/home/whats-new';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
+import { PRICING_USD } from '@/lib/pricing/plans';
 import {
   getFaqPageJsonLd,
   getSoftwareApplicationJsonLd,
@@ -172,6 +173,69 @@ export function assertHomeCopyInvariants(): string[] {
     }
     if (homeV2.pricing.cards.filter((card) => card.popular).length !== 1) {
       errors.push(`${tag} home-v2 pricing debe tener exactamente 1 plan popular`);
+    }
+
+    const [monthCard, threeCard, sixCard, yearCard] = homeV2.pricing.cards;
+    const monthUnit = locale === 'en' ? '/ mo' : '/ mes';
+    const perMonthUnit = locale === 'en' ? '/ mo' : '/ mes';
+    const threePerMonth = (PRICING_USD.threeMonths / 3).toFixed(2);
+    const sixPerMonth = (PRICING_USD.sixMonths / 6).toFixed(2);
+    const yearPerMonth = (PRICING_USD.year / 12).toFixed(2);
+
+    if (!monthCard.price.includes(PRICING_USD.month.toFixed(2))) {
+      errors.push(`${tag} home-v2 1 mes debe mostrar ${PRICING_USD.month.toFixed(2)}`);
+    }
+    if (monthCard.unit !== monthUnit) {
+      errors.push(`${tag} home-v2 1 mes unit debe ser "${monthUnit}" (sin total duplicado)`);
+    }
+    if (monthCard.perMonth || monthCard.save) {
+      errors.push(`${tag} home-v2 1 mes no debe duplicar total ni badge Ahorra`);
+    }
+    if (!threeCard.popular) {
+      errors.push(`${tag} home-v2 3 meses debe ser el plan popular`);
+    }
+    if (!threeCard.price.includes(PRICING_USD.threeMonths.toFixed(2))) {
+      errors.push(`${tag} home-v2 3 meses número grande debe ser el total ${PRICING_USD.threeMonths.toFixed(2)}`);
+    }
+    if (threeCard.save) {
+      errors.push(`${tag} home-v2 3 meses no debe mostrar Ahorra (no hay ahorro vs 1 mes)`);
+    }
+    if (!threeCard.perMonth?.includes(threePerMonth) || threePerMonth === PRICING_USD.month.toFixed(2)) {
+      errors.push(
+        `${tag} home-v2 3 meses /mes debe ser ${threePerMonth} (no redondear a ${PRICING_USD.month.toFixed(2)})`
+      );
+    }
+    if (!threeCard.perMonth?.includes(perMonthUnit)) {
+      errors.push(`${tag} home-v2 3 meses debe incluir ${perMonthUnit} bajo el total`);
+    }
+    if (!sixCard.price.includes(PRICING_USD.sixMonths.toFixed(2)) || !sixCard.perMonth?.includes(sixPerMonth)) {
+      errors.push(`${tag} home-v2 6 meses debe mostrar total y ${sixPerMonth}${perMonthUnit}`);
+    }
+    if (!yearCard.price.includes(PRICING_USD.year.toFixed(2)) || !yearCard.perMonth?.includes(yearPerMonth)) {
+      errors.push(`${tag} home-v2 1 año debe mostrar total y ${yearPerMonth}${perMonthUnit}`);
+    }
+    if (locale === 'es' && (sixCard.save !== 'Ahorra 12%' || yearCard.save !== 'Ahorra 17%')) {
+      errors.push(`${tag} home-v2 6 meses/año deben mostrar Ahorra 12% y 17%`);
+    }
+    if (locale === 'en' && (sixCard.save !== 'Save 12%' || yearCard.save !== 'Save 17%')) {
+      errors.push(`${tag} home-v2 6-month/year must show Save 12% and 17%`);
+    }
+
+    const heroMessages = homeV2.hero.chat.messages;
+    if (heroMessages.length !== 4) {
+      errors.push(`${tag} home-v2 hero chat debe tener 4 burbujas (segundo intercambio = móvil)`);
+    } else if (locale === 'es') {
+      if (!/quedarme en blanco/i.test(heroMessages[2].text)) {
+        errors.push(`${tag} home-v2 hero chat móvil (user) debe ser el segundo intercambio`);
+      }
+      if (!/esta noche solo abre la primera diapositiva/i.test(heroMessages[3].text)) {
+        errors.push(`${tag} home-v2 hero chat móvil (Anto) debe ser el segundo intercambio`);
+      }
+    } else if (
+      !/blanking out/i.test(heroMessages[2].text) ||
+      !/tonight just open slide one/i.test(heroMessages[3].text)
+    ) {
+      errors.push(`${tag} home-v2 hero EN debe conservar el último par user+Anto del mock`);
     }
   }
 

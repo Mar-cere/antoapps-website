@@ -465,6 +465,35 @@
   font-size: 0.9375rem;
 }
 
+/* ≤640: solo el segundo intercambio del mock hero. Sin fade ni recorte. */
+@media (max-width: 640px) {
+  .home-v2-hero .home-v2-chat__row--desktop {
+    display: none;
+  }
+
+  .home-v2-hero .home-v2-chat--live .home-v2-chat__row {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .home-v2-hero .home-v2-panel--hero {
+    overflow: visible;
+    height: auto;
+    min-height: 0;
+  }
+
+  .home-v2-hero .home-v2-chat__thread {
+    overflow: visible;
+    min-height: 0;
+  }
+
+  .home-v2-hero__media {
+    min-height: 0;
+    overflow: visible;
+  }
+}
+
 /* Resumen de sesión */
 
 .home-v2-summary__mood {
@@ -1696,10 +1725,12 @@
   color: var(--home-v2-ink);
 }
 
-.home-v2-pricing__unit {
+.home-v2-pricing__unit,
+.home-v2-pricing__per-month {
   margin: 0.4rem 0 0;
-  font-size: 0.8125rem;
-  color: var(--home-v2-soft);
+  font-size: 0.875rem;
+  /* AA sobre ~#0c1322 / fondo dark: no grey apagado */
+  color: #c5d0dc;
 }
 
 .home-v2-pricing__list {
@@ -1712,14 +1743,14 @@
 .home-v2-pricing__row {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 1rem;
+  gap: 0.35rem 1rem;
   align-items: baseline;
   padding: 0.9rem 0;
   border-bottom: 1px solid var(--home-v2-hairline-strong);
 }
 
-.home-v2-pricing__row--save {
-  grid-template-columns: 1fr auto auto;
+.home-v2-pricing__row--detail {
+  grid-template-columns: 1fr auto auto auto;
 }
 
 .home-v2-pricing__row-period {
@@ -1736,14 +1767,31 @@
 }
 
 .home-v2-pricing__row-unit {
-  font-size: 0.75rem;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+.home-v2-pricing__row--detail .home-v2-pricing__row-unit {
+  font-size: 0.8125rem;
   font-weight: 400;
-  color: var(--home-v2-soft);
+  letter-spacing: 0;
+  color: #c5d0dc;
+}
+
+.home-v2-pricing__row-per-month {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: #c5d0dc;
+  text-align: right;
 }
 
 .home-v2-pricing__row-save {
-  font-size: 0.75rem;
-  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  /* #00edc2 supera WCAG AA vs #0c1322 (~12:1) */
+  color: #00edc2;
   min-width: 4.5rem;
   text-align: right;
 }
@@ -1783,10 +1831,18 @@
     max-width: none;
   }
 
+  .home-v2-pricing__row--detail,
   .home-v2-pricing__row--save {
     grid-template-columns: 1fr auto;
   }
 
+  .home-v2-pricing__row--detail .home-v2-pricing__row-per-month {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: left;
+  }
+
+  .home-v2-pricing__row--detail .home-v2-pricing__row-save,
   .home-v2-pricing__row--save .home-v2-pricing__row-save {
     grid-column: 2;
     grid-row: 2;
