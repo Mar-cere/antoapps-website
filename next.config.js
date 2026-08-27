@@ -34,7 +34,9 @@ const nextConfig = {
     return [
       { source: '/l', destination: '/bienvenida', permanent: false },
       { source: '/en/l', destination: '/en/bienvenida', permanent: false },
-      { source: '/welcome', destination: '/en/bienvenida', permanent: false },
+      { source: '/welcome', destination: '/en/bienvenida', permanent: true },
+      { source: '/index', destination: '/', permanent: true },
+      { source: '/en/index', destination: '/en', permanent: true },
       { source: '/login', destination: '/#descargar', permanent: false },
       { source: '/signup', destination: '/#descargar', permanent: false },
       { source: '/chat', destination: '/#descargar', permanent: false },
