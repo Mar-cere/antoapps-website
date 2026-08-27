@@ -7,8 +7,9 @@ import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import { LegalDocument } from '@/components/legal/LegalDocument';
+import '@/styles/pages/home-landing-final.css';
+import '@/styles/utils/hl-chrome-wrapper.css';
 import '@/styles/components/privacy.css';
 
 type LegalPageContentProps = {
@@ -28,15 +29,10 @@ export default function LegalPageContent({ locale, copy }: LegalPageContentProps
   return (
     <LocaleProvider locale={locale}>
       <ClientInitializer />
-      <HomeMinimalNav locale={locale} />
-      <main className="legal-page" lang={locale}>
-        <Breadcrumbs
-          items={[
-            { label: copy.breadcrumbs.homeLabel, href: copy.breadcrumbs.homeHref },
-            { label: copy.breadcrumbs.currentLabel },
-          ]}
-        />
-        <LegalDocument copy={copy} />
+      <div className="hl-chrome-wrapper">
+        <HomeMinimalNav locale={locale} />
+        <main className="legal-page" lang={locale}>
+          <LegalDocument copy={copy} />
 
         <section className="legal-disclaimer" data-fade-section>
           <div className="container">
@@ -45,6 +41,7 @@ export default function LegalPageContent({ locale, copy }: LegalPageContentProps
         </section>
       </main>
       <HomeMinimalFooter locale={locale} switchPath={switchPath} />
+      </div>
       <CookieConsent compact bannerDelayMs={3000} showAfterScrollPx={120} />
     </LocaleProvider>
   );

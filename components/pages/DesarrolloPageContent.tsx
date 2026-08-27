@@ -8,7 +8,8 @@ import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
-import Breadcrumbs from '@/components/Breadcrumbs';
+import '@/styles/pages/home-landing-final.css';
+import '@/styles/utils/hl-chrome-wrapper.css';
 import '@/styles/components/development.css';
 
 type DesarrolloPageContentProps = {
@@ -26,16 +27,10 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
   return (
     <LocaleProvider locale={locale}>
       <ClientInitializer />
-      <HomeMinimalNav locale={locale} />
-      <main lang={locale}>
-        <Breadcrumbs
-          items={[
-            { label: copy.breadcrumbs.homeLabel, href: copy.breadcrumbs.homeHref },
-            { label: copy.breadcrumbs.currentLabel },
-          ]}
-        />
-
-        <section className="development-hero" data-fade-section>
+      <div className="hl-chrome-wrapper">
+        <HomeMinimalNav locale={locale} />
+        <main lang={locale}>
+          <section className="development-hero" data-fade-section>
           <div className="container">
             <span className="development-badge reveal-on-scroll">{copy.hero.badge}</span>
             <h1 className="development-title reveal-on-scroll">{copy.hero.title}</h1>
@@ -237,6 +232,7 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
         </section>
       </main>
       <HomeMinimalFooter locale={locale} switchPath="/desarrollo" />
+      </div>
       <CookieConsent compact bannerDelayMs={3000} showAfterScrollPx={120} />
     </LocaleProvider>
   );

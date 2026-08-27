@@ -8,7 +8,8 @@ import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
-import Breadcrumbs from '@/components/Breadcrumbs';
+import '@/styles/pages/home-landing-final.css';
+import '@/styles/utils/hl-chrome-wrapper.css';
 import '@/styles/components/security-page.css';
 
 type SecurityPageContentProps = {
@@ -30,16 +31,10 @@ export default function SecurityPageContent({ locale }: SecurityPageContentProps
   return (
     <LocaleProvider locale={locale}>
       <ClientInitializer />
-      <HomeMinimalNav locale={locale} />
-      <main lang={locale}>
-        <Breadcrumbs
-          items={[
-            { label: copy.breadcrumbs.homeLabel, href: copy.breadcrumbs.homeHref },
-            { label: copy.breadcrumbs.currentLabel },
-          ]}
-        />
-
-        <section className="security-hero" data-fade-section>
+      <div className="hl-chrome-wrapper">
+        <HomeMinimalNav locale={locale} />
+        <main lang={locale}>
+          <section className="security-hero" data-fade-section>
           <div className="container">
             <h1 className="security-title reveal-on-scroll">{copy.hero.title}</h1>
             <p className="security-subtitle reveal-on-scroll">{copy.hero.subtitle}</p>
@@ -160,6 +155,7 @@ export default function SecurityPageContent({ locale }: SecurityPageContentProps
         </section>
       </main>
       <HomeMinimalFooter locale={locale} switchPath="/seguridad" />
+      </div>
       <CookieConsent compact bannerDelayMs={3000} showAfterScrollPx={120} />
     </LocaleProvider>
   );

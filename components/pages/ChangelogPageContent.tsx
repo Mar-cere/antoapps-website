@@ -12,7 +12,8 @@ import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
-import Breadcrumbs from '@/components/Breadcrumbs';
+import '@/styles/pages/home-landing-final.css';
+import '@/styles/utils/hl-chrome-wrapper.css';
 import '@/styles/components/changelog.css';
 
 type ChangelogPageContentProps = {
@@ -51,17 +52,11 @@ export default function ChangelogPageContent({ locale }: ChangelogPageContentPro
   return (
     <LocaleProvider locale={locale}>
       <ClientInitializer />
-      <HomeMinimalNav locale={locale} />
-      <main id="main-content" role="main" className="changelog-page" lang={locale}>
-        <div className="container">
-          <Breadcrumbs
-            items={[
-              { label: copy.breadcrumbs.homeLabel, href: copy.breadcrumbs.homeHref },
-              { label: copy.breadcrumbs.currentLabel },
-            ]}
-          />
-
-          <div className="changelog-container">
+      <div className="hl-chrome-wrapper">
+        <HomeMinimalNav locale={locale} />
+        <main id="main-content" role="main" className="changelog-page" lang={locale}>
+          <div className="container">
+            <div className="changelog-container">
             <div className="changelog-header">
               <h1 className="changelog-title">{copy.header.title}</h1>
               <p className="changelog-subtitle">{copy.header.subtitle}</p>
@@ -153,6 +148,7 @@ export default function ChangelogPageContent({ locale }: ChangelogPageContentPro
         </div>
       </main>
       <HomeMinimalFooter locale={locale} switchPath="/changelog" />
+      </div>
       <CookieConsent compact bannerDelayMs={3000} showAfterScrollPx={120} />
     </LocaleProvider>
   );
