@@ -106,14 +106,6 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
     note: 'Contacto y soporte',
   },
   {
-    path: '/desarrollo',
-    changeFrequency: 'monthly',
-    priorityEs: 0.65,
-    priorityEn: 0.55,
-    lastModified: '2026-04-01',
-    note: 'Roadmap / estado del producto',
-  },
-  {
     path: '/privacidad',
     changeFrequency: 'monthly',
     priorityEs: 0.6,
