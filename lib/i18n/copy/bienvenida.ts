@@ -399,9 +399,9 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
             },
           ],
         },
-        features: [
-          { icon: 'privacy', title: 'Private', subtitle: 'Only you read your conversations' },
-          { icon: 'clock', title: 'Anytime', subtitle: 'There when your mind won\'t stop' },
+      features: [
+        { icon: 'privacy', title: 'Private', subtitle: 'Anto and the model read the text. Encrypted in transit (TLS) and at rest.' },
+        { icon: 'clock', title: 'Anytime', subtitle: 'There when your mind won\'t stop' },
           { icon: 'evidence', title: 'Clear steps', subtitle: 'One concrete next step, not vague advice' },
           { icon: 'crisis', title: 'No judgment', subtitle: 'A calm space to untangle what you feel' },
         ],
@@ -432,7 +432,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           },
           {
             title: 'Private',
-            body: 'Only you read your conversations.',
+            body: 'They are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service.',
           },
           {
             title: 'If you are in crisis',
@@ -674,7 +674,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ],
       },
       features: [
-        { icon: 'privacy', title: 'Privado', subtitle: 'Solo tú lees tus conversaciones' },
+        { icon: 'privacy', title: 'Privado', subtitle: 'Anto y el modelo leen el texto. Cifrado en tránsito (TLS) y en reposo.' },
         { icon: 'clock', title: 'Cuando lo necesitas', subtitle: 'Ahí cuando tu mente no para' },
         { icon: 'evidence', title: 'Pasos claros', subtitle: 'Un siguiente paso concreto, no consejos vagos' },
         { icon: 'crisis', title: 'Sin juicio', subtitle: 'Un espacio calmado para ordenar lo que sientes' },
@@ -706,7 +706,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         },
         {
           title: 'Privado',
-          body: 'Solo tú lees tus conversaciones.',
+          body: 'Van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio.',
         },
         {
           title: 'Si estás en crisis',
