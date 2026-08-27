@@ -21,7 +21,9 @@ export default function LegalPageContent({ locale, copy }: LegalPageContentProps
     locale === 'en'
       ? 'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.'
       : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
-  const switchPath = copy.canonical === '/privacidad' ? '/privacidad' : '/terminos';
+  const isPrivacy = copy.breadcrumbs.currentLabel.toLowerCase().includes('privacidad') || 
+                    copy.breadcrumbs.currentLabel.toLowerCase().includes('privacy');
+  const switchPath = isPrivacy ? '/privacidad' : '/terminos';
 
   return (
     <LocaleProvider locale={locale}>
