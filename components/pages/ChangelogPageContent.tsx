@@ -8,8 +8,8 @@ import {
   type ChangelogChangeType,
   type ChangelogVersionStatus,
 } from '@/lib/i18n/copy/pages/changelog';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
+import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -43,11 +43,15 @@ function getStatusLabel(
 
 export default function ChangelogPageContent({ locale }: ChangelogPageContentProps) {
   const copy = getChangelogPageCopy(locale);
+  const disclaimer =
+    locale === 'en'
+      ? 'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.'
+      : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
 
   return (
     <LocaleProvider locale={locale}>
       <ClientInitializer />
-      <Header />
+      <HomeMinimalNav locale={locale} />
       <main id="main-content" role="main" className="changelog-page" lang={locale}>
         <div className="container">
           <Breadcrumbs
@@ -141,11 +145,15 @@ export default function ChangelogPageContent({ locale }: ChangelogPageContentPro
                 {copy.footer.textAfterContact}
               </p>
             </div>
+
+            <div className="changelog-disclaimer">
+              <p className="disclaimer-text">{disclaimer}</p>
+            </div>
           </div>
         </div>
       </main>
-      <Footer />
-      <CookieConsent />
+      <HomeMinimalFooter locale={locale} switchPath="/changelog" />
+      <CookieConsent compact bannerDelayMs={3000} showAfterScrollPx={120} />
     </LocaleProvider>
   );
 }
