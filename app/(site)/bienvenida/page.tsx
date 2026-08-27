@@ -6,15 +6,17 @@ import { parseBienvenidaVariant } from '@/lib/bienvenida/parse-variant';
 export const metadata: Metadata = bienvenidaMetadata('es');
 
 type BienvenidaLandingPageProps = {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
-export default function BienvenidaLandingPage({ searchParams }: BienvenidaLandingPageProps) {
+export default async function BienvenidaLandingPage({ searchParams }: BienvenidaLandingPageProps) {
+  const params = await searchParams;
+  const initialDevice = await getServerLandingDevice();
   return (
     <BienvenidaLanding
       locale="es"
-      landingVariant={parseBienvenidaVariant(searchParams?.ab)}
-      initialDevice={getServerLandingDevice()}
+      landingVariant={parseBienvenidaVariant(params?.ab)}
+      initialDevice={initialDevice}
     />
   );
 }

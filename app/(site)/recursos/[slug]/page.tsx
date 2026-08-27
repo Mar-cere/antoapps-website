@@ -9,31 +9,33 @@ import {
 import { psychoeducationGuideMetadata } from '@/lib/i18n/copy/pages/psychoeducation/metadata';
 
 type PageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams(): { slug: PsychoeducationSlug }[] {
   return PSYCHOEDUCATION_SLUGS.map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: PageProps) {
-  if (!isPsychoeducationSlug(params.slug)) {
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  if (!isPsychoeducationSlug(slug)) {
     return {};
   }
-  return psychoeducationGuideMetadata('es', params.slug);
+  return psychoeducationGuideMetadata('es', slug);
 }
 
-export default function PsychoeducationGuidePageEs({ params }: PageProps) {
-  if (!isPsychoeducationSlug(params.slug)) {
+export default async function PsychoeducationGuidePageEs({ params }: PageProps) {
+  const { slug } = await params;
+  if (!isPsychoeducationSlug(slug)) {
     notFound();
   }
 
-  const guide = getPsychoeducationGuide('es', params.slug);
+  const guide = getPsychoeducationGuide('es', slug);
   if (!guide) {
     notFound();
   }
 
   return (
-    <PsychoeducationGuidePageContent locale="es" slug={params.slug} guide={guide} />
+    <PsychoeducationGuidePageContent locale="es" slug={slug} guide={guide} />
   );
 }
