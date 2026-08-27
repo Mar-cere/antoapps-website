@@ -13,6 +13,7 @@ import {
   NON_INDEXABLE_PATH_PREFIXES,
   ROBOTS_DISALLOW_PATH_PREFIXES,
   REDIRECT_ONLY_PATHS,
+  SITE_PAGES_EXCLUDED_FROM_SITEMAP,
   type IndexableRoute,
 } from '@/lib/seo/indexable-routes';
 import {
@@ -200,9 +201,10 @@ function assertFilesystemCoverage(root: string, errors: string[]): void {
     expandDynamicFilesystemPaths(collectSitePageLogicalPaths(sitePagesDir))
   );
   const configPaths = new Set(ALL_INDEXABLE_LOGICAL_PATHS);
+  const excludedPaths = new Set(SITE_PAGES_EXCLUDED_FROM_SITEMAP);
 
   for (const fsPath of filesystemPaths) {
-    if (!configPaths.has(fsPath)) {
+    if (!configPaths.has(fsPath) && !excludedPaths.has(fsPath)) {
       errors.push(
         `Página en app/(site) sin entrada en INDEXABLE_ROUTES: "${fsPath || '/'}".`
       );

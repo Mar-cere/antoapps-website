@@ -12,7 +12,6 @@ export const METADATA_CANONICAL_PATHS: readonly string[] = [
   '/changelog',
   '/sobre-nosotros',
   '/contacto',
-  '/desarrollo',
   '/privacidad',
   '/terminos',
 ] as const;

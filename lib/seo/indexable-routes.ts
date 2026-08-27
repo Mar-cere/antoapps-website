@@ -106,14 +106,6 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
     note: 'Contacto y soporte',
   },
   {
-    path: '/desarrollo',
-    changeFrequency: 'monthly',
-    priorityEs: 0.65,
-    priorityEn: 0.55,
-    lastModified: '2026-04-01',
-    note: 'Roadmap / estado del producto',
-  },
-  {
     path: '/privacidad',
     changeFrequency: 'monthly',
     priorityEs: 0.6,
@@ -133,6 +125,15 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
 
 /** Paths lógicos indexables (sin prefijo /en), derivados de la config. */
 export const INDEXABLE_LOGICAL_PATHS = INDEXABLE_ROUTES.map((r) => r.path);
+
+/**
+ * Páginas del sitio en app/(site) que existen intencionalmente pero
+ * no deben aparecer en sitemap ni en INDEXABLE_ROUTES.
+ * - Accesibles (200) pero no promocionadas
+ * - NO van a robots.txt Disallow
+ * - NO tienen noindex header (salvo que el page.tsx lo especifique)
+ */
+export const SITE_PAGES_EXCLUDED_FROM_SITEMAP: readonly string[] = ['/desarrollo'] as const;
 
 /**
  * Rutas que nunca deben aparecer en el sitemap.
