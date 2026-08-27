@@ -127,6 +127,15 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
 export const INDEXABLE_LOGICAL_PATHS = INDEXABLE_ROUTES.map((r) => r.path);
 
 /**
+ * Páginas del sitio en app/(site) que existen intencionalmente pero
+ * no deben aparecer en sitemap ni en INDEXABLE_ROUTES.
+ * - Accesibles (200) pero no promocionadas
+ * - NO van a robots.txt Disallow
+ * - NO tienen noindex header (salvo que el page.tsx lo especifique)
+ */
+export const SITE_PAGES_EXCLUDED_FROM_SITEMAP: readonly string[] = ['/desarrollo'] as const;
+
+/**
  * Rutas que nunca deben aparecer en el sitemap.
  * `ROBOTS_DISALLOW_PATH_PREFIXES` es lo que se publica en robots.txt.
  */
