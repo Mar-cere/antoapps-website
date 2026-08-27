@@ -8,11 +8,12 @@ import {
   type ChangelogChangeType,
   type ChangelogVersionStatus,
 } from '@/lib/i18n/copy/pages/changelog';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
+import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
-import Breadcrumbs from '@/components/Breadcrumbs';
+import '@/styles/pages/home-landing-final.css';
+import '@/styles/utils/hl-chrome-wrapper.css';
 import '@/styles/components/changelog.css';
 
 type ChangelogPageContentProps = {
@@ -43,21 +44,19 @@ function getStatusLabel(
 
 export default function ChangelogPageContent({ locale }: ChangelogPageContentProps) {
   const copy = getChangelogPageCopy(locale);
+  const disclaimer =
+    locale === 'en'
+      ? 'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.'
+      : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
 
   return (
     <LocaleProvider locale={locale}>
       <ClientInitializer />
-      <Header />
-      <main id="main-content" role="main" className="changelog-page" lang={locale}>
-        <div className="container">
-          <Breadcrumbs
-            items={[
-              { label: copy.breadcrumbs.homeLabel, href: copy.breadcrumbs.homeHref },
-              { label: copy.breadcrumbs.currentLabel },
-            ]}
-          />
-
-          <div className="changelog-container">
+      <div className="hl-chrome-wrapper">
+        <HomeMinimalNav locale={locale} />
+        <main id="main-content" role="main" className="changelog-page" lang={locale}>
+          <div className="container">
+            <div className="changelog-container">
             <div className="changelog-header">
               <h1 className="changelog-title">{copy.header.title}</h1>
               <p className="changelog-subtitle">{copy.header.subtitle}</p>
@@ -141,11 +140,16 @@ export default function ChangelogPageContent({ locale }: ChangelogPageContentPro
                 {copy.footer.textAfterContact}
               </p>
             </div>
+
+            <div className="changelog-disclaimer">
+              <p className="disclaimer-text">{disclaimer}</p>
+            </div>
           </div>
         </div>
       </main>
-      <Footer />
-      <CookieConsent />
+      <HomeMinimalFooter locale={locale} switchPath="/changelog" />
+      </div>
+      <CookieConsent compact bannerDelayMs={3000} showAfterScrollPx={120} />
     </LocaleProvider>
   );
 }

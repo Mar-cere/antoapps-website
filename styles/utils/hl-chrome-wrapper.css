@@ -1,0 +1,16 @@
+/* Minimal wrapper for HomeMinimalNav/Footer chrome on inner pages */
+.hl-chrome-wrapper {
+    --hl-max: 72rem;
+    --hl-pad-x: 2rem;
+    --hl-text-tertiary: rgba(255, 255, 255, 0.5);
+    --hl-text-secondary: rgba(255, 255, 255, 0.68);
+    --hl-text-muted: rgba(255, 255, 255, 0.45);
+    --hl-accent: #5b8fff;
+    --hl-accent-soft: #7fa6ff;
+}
+
+@media (max-width: 768px) {
+    .hl-chrome-wrapper {
+        --hl-pad-x: 1.25rem;
+    }
+}

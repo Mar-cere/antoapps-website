@@ -567,6 +567,7 @@
     }
 }
 
+/* impeccable-disable gradient-text */
 .metric-value {
     font-size: 3rem;
     font-weight: 700;
@@ -576,6 +577,7 @@
     background-clip: text;
     margin-bottom: 0.5rem;
 }
+/* impeccable-enable gradient-text */
 
 .metric-label {
     font-size: 1rem;
@@ -716,5 +718,21 @@
         padding: var(--spacing-3);
         border-radius: var(--radius-lg);
     }
+}
+
+/* Disclaimer Section - D1 chrome addition */
+.development-disclaimer {
+    padding: var(--spacing-6) 0;
+    background: var(--color-bg-primary);
+}
+
+.development-disclaimer .disclaimer-text {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: rgba(244, 247, 251, 0.74);
+    margin: 0;
+    text-align: center;
+    max-width: 48rem;
+    margin-inline: auto;
 }
 
