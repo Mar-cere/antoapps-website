@@ -253,13 +253,12 @@
 
 .nexus-organism__fallback {
   position: absolute;
-  inset: 8% 6% 14% 18%;
+  inset: 10% 8% 16% 16%;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 28% 22% at 62% 22%, rgba(79, 124, 255, 0.18), transparent 72%),
-    radial-gradient(ellipse 22% 26% at 44% 38%, rgba(166, 92, 255, 0.14), transparent 70%),
-    radial-gradient(ellipse 24% 30% at 68% 52%, rgba(34, 211, 238, 0.12), transparent 74%),
-    radial-gradient(ellipse 20% 18% at 52% 78%, rgba(96, 165, 250, 0.08), transparent 76%);
+    radial-gradient(ellipse 32% 28% at 42% 28%, rgba(124, 92, 255, 0.2), transparent 72%),
+    radial-gradient(ellipse 36% 32% at 64% 42%, rgba(34, 211, 238, 0.18), transparent 74%),
+    radial-gradient(ellipse 28% 24% at 52% 72%, rgba(253, 186, 116, 0.12), transparent 76%);
   filter: blur(22px);
 }
 

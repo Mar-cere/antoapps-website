@@ -41,10 +41,10 @@ void main() {
   pos.z += 0.007 * sin(uTime * 0.21 + aCenter.z * 2.4);
   float wake = max(act(pos, uWake0, 0.28), max(act(pos, uWake1, 0.24), act(pos, uWake2, 0.26)));
   float nexus = act(pos, uNexus, 0.16) * uBoost;
-  float dim = 0.28 + wake * 0.1;
-  float hot = 0.82 + wake * 0.22 + nexus * 0.48;
+  float dim = 0.52 + wake * 0.14;
+  float hot = 1.05 + wake * 0.2 + nexus * 0.35;
   float activity = mix(dim, hot, aBright);
-  activity *= mix(1.0, 0.5, aMist);
+  activity *= mix(1.0, 0.42, aMist);
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.35, 0.55, clip.w);
   float farDim = smoothstep(3.1, 4.4, clip.w);
@@ -97,7 +97,7 @@ void main() {
   float wake = max(act(aPosition, uWake0, 0.3), max(act(aPosition, uWake1, 0.26), act(aPosition, uWake2, 0.28)));
   float nexus = act(aPosition, uNexus, 0.18) * uBoost;
   gl_Position = uViewProj * vec4(aPosition, 1.0);
-  vAlpha = aAlpha * (0.42 + 0.55 * wake + nexus * 0.4);
+  vAlpha = aAlpha * (0.72 + 0.38 * wake + nexus * 0.28);
   vColor = mix(aColor, vec3(0.81, 0.98, 0.996), nexus * 0.5);
 }
 `;
@@ -107,7 +107,7 @@ precision mediump float;
 varying float vAlpha;
 varying vec3 vColor;
 void main() {
-  gl_FragColor = vec4(vColor, vAlpha);
+  gl_FragColor = vec4(vColor * vAlpha, vAlpha);
 }
 `;
 
@@ -494,8 +494,8 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       gl.viewport(0, 0, canvas.width, canvas.height);
-      const proj = perspective((40 * Math.PI) / 180, width / height, 0.12, 10);
-      const view = lookAt(-0.38, 0.02, 2.48, 0.18, 0.1, 0);
+      const proj = perspective((36 * Math.PI) / 180, width / height, 0.12, 10);
+      const view = lookAt(-0.18, 0.0, 1.92, 0.06, 0.02, 0);
       viewProj = multiply4(proj, view);
       const budget = nexusBudget(window.innerWidth);
       if (budget.nodes !== lastBudget) {
