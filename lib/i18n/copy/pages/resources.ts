@@ -137,9 +137,9 @@ function siteResources(locale: Locale): ResourceItem[] {
     return [
       {
         id: 'site-1',
-        title: `Anto on iPhone and Android (${APP_VERSION_LABEL})`,
-        description: 'Ongoing emotional support on your phone — conversation, techniques, daily tools.',
-        link: localePath(locale, '/app'),
+        title: 'What Anto is',
+        description: 'A companion for when everything costs a little more.',
+        link: localePath(locale, '/sobre-nosotros'),
       },
       {
         id: 'site-3',
@@ -171,9 +171,9 @@ function siteResources(locale: Locale): ResourceItem[] {
   return [
     {
       id: 'site-1',
-      title: `Anto en iPhone y Android (${APP_VERSION_LABEL})`,
-      description: 'Acompañamiento emocional en el teléfono — conversación, técnicas, día a día.',
-      link: localePath(locale, '/app'),
+      title: 'Qué es Anto',
+      description: 'Un acompañante para cuando todo cuesta un poco más.',
+      link: localePath(locale, '/sobre-nosotros'),
     },
     {
       id: 'site-3',
