@@ -68,18 +68,18 @@ void main() {
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.28, 0.5, clip.w);
   float farDim = smoothstep(3.15, 4.7, clip.w);
-  float sizePx = aSize * mix(1.15, mix(1.35, 2.15, conv), mix(moderate, 1.0, active));
-  sizePx *= mix(1.0, 2.35, aMist);
-  sizePx *= 1.0 + nearBlur * 0.35 + wake * 0.08;
+  float sizePx = aSize * mix(1.15, mix(1.35, 2.35, conv), mix(moderate, 1.0, active));
+  sizePx *= mix(1.0, 1.42, aMist);
+  sizePx *= 1.0 + nearBlur * 0.28 + wake * 0.08;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
   vCorner = aCorner;
   vMist = aMist;
   vGlow = conv;
-  vec3 nexusTint = vec3(0.92, 0.98, 1.0);
-  vColor = mix(aColor, nexusTint, conv * (0.22 + nexus * 0.28 + sync * 0.12));
-  vAlpha = mix(0.28 + 0.62 * activity, 0.1 + 0.12 * activity, aMist);
-  vAlpha *= (1.0 - farDim * 0.45) * (1.0 - nearBlur * 0.1);
+  vec3 nexusTint = vec3(0.9, 0.94, 1.0);
+  vColor = mix(aColor, nexusTint, conv * (0.12 + nexus * 0.16 + sync * 0.08));
+  vAlpha = mix(0.3 + 0.58 * activity, 0.1 + 0.07 * activity, aMist);
+  vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
 `;
 
@@ -93,11 +93,11 @@ varying float vGlow;
 void main() {
   float d = length(vCorner);
   if (d > 1.0) discard;
-  float core = exp(-d * d * mix(16.0, 3.2, vMist));
-  float halo = exp(-d * d * mix(4.2, 1.4, vMist)) * mix(0.28, 0.4, vMist);
-  halo += exp(-d * d * 1.15) * vGlow * 0.55;
+  float core = exp(-d * d * mix(18.0, 4.4, vMist));
+  float halo = exp(-d * d * mix(5.0, 1.55, vMist)) * mix(0.22, 0.34, vMist);
+  halo += exp(-d * d * 1.05) * vGlow * 0.72;
   float a = (core + halo) * vAlpha;
-  if (a < 0.008) discard;
+  if (a < 0.007) discard;
   gl_FragColor = vec4(vColor * a, a);
 }
 `;
@@ -123,6 +123,7 @@ uniform vec3 uFocus3;
 uniform float uTime;
 varying float vAlpha;
 varying vec3 vColor;
+varying float vSide;
 float act(vec3 p, vec3 w, float r) {
   vec3 d = p - w;
   return exp(-dot(d, d) / (r * r));
@@ -149,11 +150,12 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
-  float px = 0.95;
+  float px = 1.08;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
-  vAlpha = aAlpha * (0.58 + focus * 0.3 + wake * 0.16 + nexus * 0.1);
-  vColor = mix(aColor, vec3(0.82, 0.95, 1.0), nexus * 0.14);
+  vSide = aSide;
+  vAlpha = aAlpha * (0.54 + focus * 0.24 + wake * 0.12 + nexus * 0.08);
+  vColor = mix(aColor, vec3(0.88, 0.9, 1.0), nexus * 0.06);
 }
 `;
 
@@ -161,8 +163,11 @@ const LINE_FRAG = `
 precision mediump float;
 varying float vAlpha;
 varying vec3 vColor;
+varying float vSide;
 void main() {
-  gl_FragColor = vec4(vColor * vAlpha, vAlpha);
+  float fall = exp(-vSide * vSide * 3.4);
+  float a = vAlpha * fall;
+  gl_FragColor = vec4(vColor * a, a);
 }
 `;
 
@@ -196,7 +201,7 @@ void main() {
   float edge = min(min(vBary.x, vBary.y), vBary.z);
   float veil = smoothstep(0.0, 0.34, edge);
   veil *= 0.92;
-  float a = veil * vAlpha * 0.88;
+  float a = veil * vAlpha * 1.05;
   if (a < 0.003) discard;
   gl_FragColor = vec4(vColor * a, a);
 }
@@ -686,19 +691,10 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.disable(gl.DEPTH_TEST);
-
-      disableAttribs(gl);
       gl.enable(gl.BLEND);
-      gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-      bindMemb();
-      gl.uniformMatrix4fv(uMemb.view, false, viewProj);
-      gl.uniform1f(uMemb.time, time);
-      if (membCount) {
-        gl.drawArrays(gl.TRIANGLES, 0, membCount);
-      }
+      gl.blendFunc(gl.ONE, gl.ONE);
 
       disableAttribs(gl);
-      gl.blendFunc(gl.ONE, gl.ONE);
       bindNodes();
       gl.uniformMatrix4fv(uNode.view, false, viewProj);
       gl.uniform2f(uNode.res, width, height);
@@ -714,6 +710,14 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.uniform3f(uNode.f3, foci[3].x, foci[3].y, foci[3].z);
       if (mistCount) {
         gl.drawArrays(gl.TRIANGLES, 0, mistCount);
+      }
+
+      disableAttribs(gl);
+      bindMemb();
+      gl.uniformMatrix4fv(uMemb.view, false, viewProj);
+      gl.uniform1f(uMemb.time, time);
+      if (membCount) {
+        gl.drawArrays(gl.TRIANGLES, 0, membCount);
       }
 
       disableAttribs(gl);

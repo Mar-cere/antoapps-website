@@ -246,14 +246,15 @@
 .nexus-organism::before {
   content: '';
   position: absolute;
-  inset: 22% 12% 26% 26%;
+  inset: 14% 6% 18% 18%;
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 50% 44% at 58% 36%, rgba(139, 92, 246, 0.28), transparent 72%),
-    radial-gradient(ellipse 46% 40% at 52% 48%, rgba(34, 211, 238, 0.22), transparent 70%),
-    radial-gradient(ellipse 34% 30% at 38% 60%, rgba(255, 176, 96, 0.12), transparent 66%);
-  filter: blur(30px);
+    radial-gradient(ellipse 44% 52% at 32% 26%, rgba(168, 72, 255, 0.38), transparent 70%),
+    radial-gradient(ellipse 36% 34% at 26% 68%, rgba(255, 148, 72, 0.26), transparent 68%),
+    radial-gradient(ellipse 56% 46% at 64% 48%, rgba(34, 211, 238, 0.34), transparent 72%),
+    radial-gradient(ellipse 30% 36% at 46% 40%, rgba(99, 92, 255, 0.18), transparent 66%);
+  filter: blur(42px);
 }
 
 .nexus-organism__canvas {
@@ -269,9 +270,9 @@
   inset: 10% 8% 16% 16%;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 48% 36% at 48% 38%, rgba(124, 92, 255, 0.22), transparent 74%),
-    radial-gradient(ellipse 52% 40% at 62% 34%, rgba(34, 211, 238, 0.2), transparent 76%),
-    radial-gradient(ellipse 44% 38% at 40% 48%, rgba(79, 124, 255, 0.18), transparent 78%);
+    radial-gradient(ellipse 46% 42% at 34% 28%, rgba(168, 72, 255, 0.28), transparent 74%),
+    radial-gradient(ellipse 38% 34% at 28% 66%, rgba(255, 132, 64, 0.2), transparent 72%),
+    radial-gradient(ellipse 52% 40% at 64% 48%, rgba(34, 211, 238, 0.24), transparent 76%);
   filter: blur(26px);
 }
 
