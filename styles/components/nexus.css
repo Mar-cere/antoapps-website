@@ -243,6 +243,22 @@
   min-height: 22rem;
 }
 
+.nexus-organism::before {
+  content: '';
+  position: absolute;
+  inset: 22% 10% 24% 26%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 52% 44% at 58% 36%, rgba(139, 92, 246, 0.5), transparent 72%),
+    radial-gradient(ellipse 46% 40% at 42% 54%, rgba(34, 211, 238, 0.42), transparent 70%),
+    radial-gradient(ellipse 44% 38% at 68% 52%, rgba(79, 124, 255, 0.44), transparent 70%),
+    radial-gradient(ellipse 34% 30% at 50% 46%, rgba(167, 139, 250, 0.28), transparent 64%),
+    radial-gradient(ellipse 38% 32% at 62% 62%, rgba(45, 212, 191, 0.26), transparent 66%),
+    radial-gradient(ellipse 60% 50% at 56% 48%, rgba(22, 48, 110, 0.3), transparent 76%);
+  filter: blur(24px);
+}
+
 .nexus-organism__canvas {
   position: relative;
   z-index: 1;
@@ -256,9 +272,9 @@
   inset: 10% 8% 16% 16%;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 48% 36% at 48% 38%, rgba(124, 92, 255, 0.16), transparent 74%),
-    radial-gradient(ellipse 52% 40% at 62% 34%, rgba(34, 211, 238, 0.14), transparent 76%),
-    radial-gradient(ellipse 44% 38% at 40% 48%, rgba(79, 124, 255, 0.12), transparent 78%);
+    radial-gradient(ellipse 48% 36% at 48% 38%, rgba(124, 92, 255, 0.22), transparent 74%),
+    radial-gradient(ellipse 52% 40% at 62% 34%, rgba(34, 211, 238, 0.2), transparent 76%),
+    radial-gradient(ellipse 44% 38% at 40% 48%, rgba(79, 124, 255, 0.18), transparent 78%);
   filter: blur(26px);
 }
 
@@ -273,10 +289,10 @@
   align-items: flex-start;
   gap: 0.3rem;
   max-width: 8.4rem;
-  padding: 0.26rem 0.36rem;
+  padding: 0.3rem 0.42rem;
   border-radius: 0.32rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(6, 11, 24, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(6, 11, 24, 0.72);
   color: var(--nexus-muted);
   pointer-events: none;
   opacity: 0;
@@ -287,7 +303,7 @@
 }
 
 .nexus-event.is-on {
-  opacity: 0.76;
+  opacity: 0.96;
 }
 
 .nexus-event__icon {
@@ -296,22 +312,22 @@
   margin-top: 0.06rem;
   color: var(--nexus-cyan);
   flex-shrink: 0;
-  opacity: 0.82;
+  opacity: 0.95;
 }
 
 .nexus-event__title {
   display: block;
-  font-size: 0.5rem;
+  font-size: 0.5625rem;
   font-weight: 500;
   letter-spacing: 0.01em;
-  color: rgba(244, 247, 251, 0.88);
+  color: rgba(244, 247, 251, 1);
 }
 
 .nexus-event__sub {
   display: block;
   margin-top: 0.06rem;
   font-size: 0.4375rem;
-  color: var(--nexus-faint);
+  color: rgba(244, 247, 251, 0.58);
 }
 
 .nexus-page .home-landing-footer {
@@ -381,6 +397,10 @@
 
   .nexus-event {
     max-width: 7.6rem;
+  }
+
+  .nexus-organism::before {
+    inset: 10% 6% 16% 8%;
   }
 }
 
