@@ -63,7 +63,6 @@ const versionsEs: ChangelogVersion[] = [
     highlights: [
       `Versión ${APP_VERSION} (Expo) — línea actual en tiendas (iOS build 39, Android 25)`,
       'Home y dashboard rediseñados con insights rotativos y foco unificado',
-      'Hub de técnicas terapéuticas y tareas/hábitos unificados',
       'Sesión persistente, onboarding renovado y grafo conectado al chat',
     ],
     changes: [
@@ -91,10 +90,6 @@ const versionsEs: ChangelogVersion[] = [
         type: 'feature',
         description:
           'Resumen e informe observacional rediseñados con «lo que te ayuda» navegable y UX accionable',
-      },
-      {
-        type: 'feature',
-        description: 'WAI post-sesión (alianza terapéutica) con 4 ejes y psicoeducación avanzada en el grafo',
       },
       {
         type: 'improvement',
@@ -222,11 +217,6 @@ const versionsEs: ChangelogVersion[] = [
         type: 'improvement',
         description: 'Transparencia: información de privacidad integrada en la experiencia de chat',
       },
-      {
-        type: 'feature',
-        description:
-          'Mantiene escalas PHQ-9/GAD-7, distorsiones cognitivas y protocolos estructurados de versiones anteriores',
-      },
     ],
   },
   {
@@ -234,25 +224,13 @@ const versionsEs: ChangelogVersion[] = [
     date: '2026-01-08',
     status: 'stable',
     highlights: [
-      'Sistema de chat mejorado con escalas clínicas validadas',
       'Detección avanzada de distorsiones cognitivas (15 tipos)',
-      'Reportes profesionales con estadísticas detalladas',
       'Optimizaciones móviles avanzadas',
     ],
     changes: [
       {
         type: 'feature',
-        description:
-          'Escalas clínicas validadas: PHQ-9 para depresión y GAD-7 para ansiedad con evaluación automática',
-      },
-      {
-        type: 'feature',
         description: 'Detección automática de 15 tipos de distorsiones cognitivas durante las conversaciones',
-      },
-      {
-        type: 'feature',
-        description:
-          'Reportes profesionales con análisis detallado de progreso, escalas clínicas y estadísticas de distorsiones cognitivas',
       },
       {
         type: 'improvement',
@@ -263,11 +241,6 @@ const versionsEs: ChangelogVersion[] = [
         type: 'improvement',
         description:
           'Análisis emocional avanzado ahora incluye seguimiento de tendencias a lo largo del tiempo',
-      },
-      {
-        type: 'improvement',
-        description:
-          'Dashboard de métricas actualizado con visualización de escalas clínicas y distorsiones cognitivas',
       },
       { type: 'feature', description: 'Pull-to-refresh en dispositivos móviles para actualizar contenido fácilmente' },
       { type: 'feature', description: 'Gestos swipe mejorados para navegación móvil y cierre de menús' },
@@ -297,14 +270,12 @@ const versionsEs: ChangelogVersion[] = [
     highlights: [
       'Lanzamiento inicial de Anto',
       'Asistente de IA para bienestar emocional',
-      'Detección de crisis en tiempo real',
     ],
     changes: [
       {
         type: 'feature',
         description: 'Asistente de IA con conversaciones orientadas al bienestar y técnicas basadas en evidencia',
       },
-      { type: 'feature', description: 'Sistema de detección de crisis en tiempo real con alertas tempranas' },
       {
         type: 'feature',
         description: 'Análisis emocional avanzado con seguimiento de patrones y estados de ánimo',
@@ -333,7 +304,6 @@ const versionsEn: ChangelogVersion[] = [
     highlights: [
       `Version ${APP_VERSION} (Expo) — current store release (iOS build 39, Android 25)`,
       'Redesigned home and dashboard with rotating insights and unified focus',
-      'Therapeutic techniques hub and unified tasks/habits',
       'Persistent session, renewed onboarding, and graph connected to chat',
     ],
     changes: [
@@ -361,10 +331,6 @@ const versionsEn: ChangelogVersion[] = [
         type: 'feature',
         description:
           'Redesigned summary and observational report with navigable "what helps you" and actionable UX',
-      },
-      {
-        type: 'feature',
-        description: 'Post-session WAI (therapeutic alliance) with 4 axes and advanced psychoeducation in the graph',
       },
       {
         type: 'improvement',
@@ -479,11 +445,6 @@ const versionsEn: ChangelogVersion[] = [
         type: 'improvement',
         description: 'Transparency: privacy information integrated into the chat experience',
       },
-      {
-        type: 'feature',
-        description:
-          'Retains PHQ-9/GAD-7 scales, cognitive distortions, and structured protocols from previous versions',
-      },
     ],
   },
   {
@@ -491,25 +452,13 @@ const versionsEn: ChangelogVersion[] = [
     date: '2026-01-08',
     status: 'stable',
     highlights: [
-      'Enhanced chat system with validated clinical scales',
       'Advanced detection of cognitive distortions (15 types)',
-      'Professional reports with detailed statistics',
       'Advanced mobile optimizations',
     ],
     changes: [
       {
         type: 'feature',
-        description:
-          'Validated clinical scales: PHQ-9 for depression and GAD-7 for anxiety with automatic assessment',
-      },
-      {
-        type: 'feature',
         description: 'Automatic detection of 15 types of cognitive distortions during conversations',
-      },
-      {
-        type: 'feature',
-        description:
-          'Professional reports with detailed progress analysis, clinical scales, and cognitive distortion statistics',
       },
       {
         type: 'improvement',
@@ -520,10 +469,6 @@ const versionsEn: ChangelogVersion[] = [
         type: 'improvement',
         description:
           'Advanced emotional analysis now includes trend tracking over time',
-      },
-      {
-        type: 'improvement',
-        description: 'Updated metrics dashboard with clinical scales and cognitive distortion visualization',
       },
       { type: 'feature', description: 'Pull-to-refresh on mobile devices to easily update content' },
       { type: 'feature', description: 'Improved swipe gestures for mobile navigation and menu closing' },
@@ -553,14 +498,12 @@ const versionsEn: ChangelogVersion[] = [
     highlights: [
       'Initial launch of Anto',
       'AI assistant for emotional wellness',
-      'Real-time crisis detection',
     ],
     changes: [
       {
         type: 'feature',
         description: 'AI assistant with wellness-oriented conversations and evidence-based techniques',
       },
-      { type: 'feature', description: 'Real-time crisis detection system with early alerts' },
       {
         type: 'feature',
         description: 'Advanced emotional analysis with pattern and mood tracking',
@@ -591,9 +534,9 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
       },
       meta: {
         title: 'Version History | Anto',
-        description: `Anto app version history (Expo). Current version ${APP_VERSION}: 1-day trial, i18n ES/EN, chat UX, and clinical scales.`,
+        description: `Anto app version history (Expo). Current version ${APP_VERSION}: 1-day trial, i18n ES/EN, and chat UX improvements.`,
         openGraphTitle: 'Version History | Anto',
-        openGraphDescription: `Anto app changelog: ${APP_VERSION} published with i18n, chat improvements, clinical scales, and protocols.`,
+        openGraphDescription: `Anto app changelog: ${APP_VERSION} published with i18n and chat improvements.`,
         canonicalPath: CANONICAL_PATH,
       },
       header: {
@@ -629,9 +572,9 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
     },
     meta: {
       title: 'Control de versiones | Anto',
-      description: `Historial de versiones de la app Anto (Expo). Versión actual ${APP_VERSION}: prueba 1 día, i18n ES/EN, UX de chat y escalas clínicas.`,
+      description: `Historial de versiones de la app Anto (Expo). Versión actual ${APP_VERSION}: prueba 1 día, i18n ES/EN y mejoras de UX de chat.`,
       openGraphTitle: 'Control de versiones | Anto',
-      openGraphDescription: `Changelog de la aplicación Anto: ${APP_VERSION} publicada con i18n, mejoras de chat, escalas clínicas y protocolos.`,
+      openGraphDescription: `Changelog de la aplicación Anto: ${APP_VERSION} publicada con i18n y mejoras de chat.`,
       canonicalPath: CANONICAL_PATH,
     },
     header: {
