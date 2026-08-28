@@ -171,11 +171,11 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
   if (locale === 'en') {
     return {
       meta: {
-        title: 'Anto: Emotional support for anxiety | iPhone and Android app',
+        title: 'When your mind won\'t slow down, Anto helps you land.',
         description:
           'Emotional support app for iPhone and Android: when anxiety or a racing mind won\'t stop, write what you feel and get clarity with one concrete step. 1-day free trial on the App Store or Google Play.',
         socialDescription:
-          'Emotional support when anxiety won\'t let go. Clarity in minutes — 1-day free trial on iPhone and Android.',
+          'Start free today · No card · Private',
         ogHeadline: 'Emotional support when your mind won\'t slow down',
         ogSubline:
           'Write what you feel. Get clarity and one concrete step — not just a chatbot reply.',
@@ -445,11 +445,11 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
 
   return {
     meta: {
-      title: 'Anto: Apoyo emocional para ansiedad | App iPhone y Android',
+      title: 'Cuando tu mente no para, Anto te ayuda a aterrizar.',
       description:
         'App de apoyo emocional para iPhone y Android: cuando la ansiedad o tu mente no paran, escribe lo que sientes y recibe claridad con un paso concreto. Prueba 1 día gratis en App Store o Google Play.',
       socialDescription:
-        'Apoyo emocional cuando la ansiedad no te deja. Claridad en minutos — prueba 1 día gratis en iPhone y Android.',
+        'Empieza gratis hoy · Sin tarjeta · Privado',
       ogHeadline: 'Apoyo emocional cuando tu mente no para',
       ogSubline:
         'Escribe lo que sientes. Recibe claridad y un paso concreto — no solo una respuesta genérica.',
