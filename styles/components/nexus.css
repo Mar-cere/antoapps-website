@@ -246,17 +246,14 @@
 .nexus-organism::before {
   content: '';
   position: absolute;
-  inset: 22% 10% 24% 26%;
+  inset: 22% 12% 26% 26%;
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 52% 44% at 58% 36%, rgba(139, 92, 246, 0.5), transparent 72%),
-    radial-gradient(ellipse 46% 40% at 42% 54%, rgba(34, 211, 238, 0.42), transparent 70%),
-    radial-gradient(ellipse 44% 38% at 68% 52%, rgba(79, 124, 255, 0.44), transparent 70%),
-    radial-gradient(ellipse 34% 30% at 50% 46%, rgba(167, 139, 250, 0.28), transparent 64%),
-    radial-gradient(ellipse 38% 32% at 62% 62%, rgba(45, 212, 191, 0.26), transparent 66%),
-    radial-gradient(ellipse 60% 50% at 56% 48%, rgba(22, 48, 110, 0.3), transparent 76%);
-  filter: blur(24px);
+    radial-gradient(ellipse 50% 44% at 58% 36%, rgba(139, 92, 246, 0.28), transparent 72%),
+    radial-gradient(ellipse 46% 40% at 52% 48%, rgba(34, 211, 238, 0.22), transparent 70%),
+    radial-gradient(ellipse 34% 30% at 38% 60%, rgba(255, 176, 96, 0.12), transparent 66%);
+  filter: blur(30px);
 }
 
 .nexus-organism__canvas {

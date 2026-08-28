@@ -58,28 +58,28 @@ void main() {
   float active = smoothstep(0.42, 0.68, aBright);
   float conv = smoothstep(0.85, 1.0, aBright);
   float pulse = 0.88 + 0.12 * sin(uTime * 0.92 + aCluster * 1.4 + aCenter.x * 2.0);
-  float quiet = 0.38 + tissue * 0.1 + wake * 0.03;
-  float mid = 0.44 + focus * 0.08 + wake * 0.08 + pulse * 0.03;
-  float lit = 0.49 + focus * 0.08 + wake * 0.08;
-  float hot = 0.58 + nexus * 0.08 + wake * 0.04 + sync * 0.05;
+  float quiet = 0.42 + tissue * 0.12 + wake * 0.04;
+  float mid = 0.55 + focus * 0.12 + wake * 0.08 + pulse * 0.04;
+  float lit = 0.72 + focus * 0.12 + wake * 0.08;
+  float hot = 0.92 + nexus * 0.08 + wake * 0.04 + sync * 0.06;
   float activity = mix(quiet, mid, moderate);
   activity = mix(activity, lit, active);
   activity = mix(activity, hot, conv);
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.28, 0.5, clip.w);
   float farDim = smoothstep(3.15, 4.7, clip.w);
-  float sizePx = aSize * mix(0.82, mix(0.92, 1.12, conv), mix(moderate, 1.0, active));
-  sizePx *= mix(1.0, 3.55, aMist);
-  sizePx *= 1.0 + nearBlur * mix(0.7, 0.95, mix(moderate, 1.0, active)) + wake * 0.1;
+  float sizePx = aSize * mix(1.15, mix(1.35, 2.15, conv), mix(moderate, 1.0, active));
+  sizePx *= mix(1.0, 2.35, aMist);
+  sizePx *= 1.0 + nearBlur * 0.35 + wake * 0.08;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
   vCorner = aCorner;
   vMist = aMist;
   vGlow = conv;
-  vec3 nexusTint = vec3(0.812, 0.98, 0.996);
-  vColor = mix(aColor, nexusTint, conv * (0.08 + nexus * 0.18 + sync * 0.08));
-  vAlpha = mix(0.12 + 0.46 * activity, 0.24 + 0.28 * activity, aMist);
-  vAlpha *= (1.0 - farDim * 0.55) * (1.0 - nearBlur * 0.12);
+  vec3 nexusTint = vec3(0.92, 0.98, 1.0);
+  vColor = mix(aColor, nexusTint, conv * (0.22 + nexus * 0.28 + sync * 0.12));
+  vAlpha = mix(0.28 + 0.62 * activity, 0.1 + 0.12 * activity, aMist);
+  vAlpha *= (1.0 - farDim * 0.45) * (1.0 - nearBlur * 0.1);
 }
 `;
 
@@ -93,21 +93,24 @@ varying float vGlow;
 void main() {
   float d = length(vCorner);
   if (d > 1.0) discard;
-  float radial = 1.0 - smoothstep(0.2, 1.0, d);
-  float core = exp(-d * d * mix(8.4, 2.35, vMist));
-  float halo = exp(-d * d * mix(2.4, 0.95, vMist)) * mix(0.22, 0.5, vMist);
-  halo += exp(-d * d * 1.6) * vGlow * 0.22;
-  float a = (core + halo) * vAlpha * mix(1.0, radial, vMist);
+  float core = exp(-d * d * mix(16.0, 3.2, vMist));
+  float halo = exp(-d * d * mix(4.2, 1.4, vMist)) * mix(0.28, 0.4, vMist);
+  halo += exp(-d * d * 1.15) * vGlow * 0.55;
+  float a = (core + halo) * vAlpha;
   if (a < 0.008) discard;
   gl_FragColor = vec4(vColor * a, a);
 }
 `;
 
 const LINE_VERT = `
-attribute vec3 aPosition;
+attribute vec3 aA;
+attribute vec3 aB;
 attribute vec3 aColor;
 attribute float aAlpha;
+attribute float aEnd;
+attribute float aSide;
 uniform mat4 uViewProj;
+uniform vec2 uResolution;
 uniform vec3 uWake0;
 uniform vec3 uWake1;
 uniform vec3 uWake2;
@@ -125,16 +128,32 @@ float act(vec3 p, vec3 w, float r) {
   return exp(-dot(d, d) / (r * r));
 }
 void main() {
-  float wake = max(act(aPosition, uWake0, 0.22), max(act(aPosition, uWake1, 0.2), act(aPosition, uWake2, 0.2)));
-  float f0 = act(aPosition, uFocus0, 0.17) * (0.56 + 0.44 * (0.5 + 0.5 * sin(uTime * 0.29)));
-  float f1 = act(aPosition, uFocus1, 0.16) * (0.56 + 0.44 * (0.5 + 0.5 * sin(uTime * 0.23 + 1.9)));
-  float f2 = act(aPosition, uFocus2, 0.15) * (0.56 + 0.44 * (0.5 + 0.5 * sin(uTime * 0.26 + 3.4)));
-  float f3 = act(aPosition, uFocus3, 0.12) * (0.56 + 0.44 * (0.5 + 0.5 * sin(uTime * 0.21 + 0.7)));
+  vec3 world = mix(aA, aB, aEnd);
+  float wake = max(act(world, uWake0, 0.22), max(act(world, uWake1, 0.2), act(world, uWake2, 0.2)));
+  float f0 = act(world, uFocus0, 0.17) * (0.56 + 0.44 * (0.5 + 0.5 * sin(uTime * 0.29)));
+  float f1 = act(world, uFocus1, 0.16) * (0.56 + 0.44 * (0.5 + 0.5 * sin(uTime * 0.23 + 1.9)));
+  float f2 = act(world, uFocus2, 0.15) * (0.56 + 0.44 * (0.5 + 0.5 * sin(uTime * 0.26 + 3.4)));
+  float f3 = act(world, uFocus3, 0.12) * (0.56 + 0.44 * (0.5 + 0.5 * sin(uTime * 0.21 + 0.7)));
   float focus = max(f0, max(f1, max(f2, f3)));
-  float nexus = act(aPosition, uNexus, 0.12) * uBoost;
-  gl_Position = uViewProj * vec4(aPosition, 1.0);
-  vAlpha = aAlpha * (0.62 + focus * 0.38 + wake * 0.28 + nexus * 0.12);
-  vColor = mix(aColor, vec3(0.75, 0.9, 0.98), nexus * 0.16);
+  float nexus = act(world, uNexus, 0.12) * uBoost;
+  vec4 cA = uViewProj * vec4(aA, 1.0);
+  vec4 cB = uViewProj * vec4(aB, 1.0);
+  vec2 nA = cA.xy / max(0.0001, cA.w);
+  vec2 nB = cB.xy / max(0.0001, cB.w);
+  vec2 dir = nB - nA;
+  float len = length(dir);
+  if (len > 0.00001) {
+    dir = dir / len;
+  } else {
+    dir = vec2(1.0, 0.0);
+  }
+  vec2 perp = vec2(-dir.y, dir.x);
+  vec4 pos = mix(cA, cB, aEnd);
+  float px = 0.95;
+  pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
+  gl_Position = pos;
+  vAlpha = aAlpha * (0.58 + focus * 0.3 + wake * 0.16 + nexus * 0.1);
+  vColor = mix(aColor, vec3(0.82, 0.95, 1.0), nexus * 0.14);
 }
 `;
 
@@ -394,28 +413,35 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
 
       let lineVerts = 0;
       for (const filament of field.filaments) {
-        lineVerts += Math.max(0, filament.points.length - 1) * 2;
+        lineVerts += Math.max(0, filament.points.length - 1) * 6;
       }
-      const lines = new Float32Array(lineVerts * 7);
+      const lineStride = 12;
+      const lines = new Float32Array(lineVerts * lineStride);
       let li = 0;
+      const pushLineVert = (a: Vec3, b: Vec3, end: number, side: number, filament: { r: number; g: number; b: number; alpha: number }) => {
+        lines[li++] = a.x;
+        lines[li++] = a.y;
+        lines[li++] = a.z;
+        lines[li++] = b.x;
+        lines[li++] = b.y;
+        lines[li++] = b.z;
+        lines[li++] = filament.r;
+        lines[li++] = filament.g;
+        lines[li++] = filament.b;
+        lines[li++] = filament.alpha;
+        lines[li++] = end;
+        lines[li++] = side;
+      };
       for (const filament of field.filaments) {
         for (let i = 0; i < filament.points.length - 1; i += 1) {
           const a = filament.points[i];
           const b = filament.points[i + 1];
-          lines[li++] = a.x;
-          lines[li++] = a.y;
-          lines[li++] = a.z;
-          lines[li++] = filament.r;
-          lines[li++] = filament.g;
-          lines[li++] = filament.b;
-          lines[li++] = filament.alpha;
-          lines[li++] = b.x;
-          lines[li++] = b.y;
-          lines[li++] = b.z;
-          lines[li++] = filament.r;
-          lines[li++] = filament.g;
-          lines[li++] = filament.b;
-          lines[li++] = filament.alpha;
+          pushLineVert(a, b, 0, -1, filament);
+          pushLineVert(a, b, 0, 1, filament);
+          pushLineVert(a, b, 1, 1, filament);
+          pushLineVert(a, b, 0, -1, filament);
+          pushLineVert(a, b, 1, 1, filament);
+          pushLineVert(a, b, 1, -1, filament);
         }
       }
       lineCount = lineVerts;
@@ -501,15 +527,25 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     const bindLines = () => {
       gl.useProgram(lineProg);
       gl.bindBuffer(gl.ARRAY_BUFFER, lineBuffer);
-      const locP = gl.getAttribLocation(lineProg, 'aPosition');
+      const stride = 48;
+      const locA = gl.getAttribLocation(lineProg, 'aA');
+      const locB = gl.getAttribLocation(lineProg, 'aB');
       const locC = gl.getAttribLocation(lineProg, 'aColor');
-      const locA = gl.getAttribLocation(lineProg, 'aAlpha');
-      gl.enableVertexAttribArray(locP);
-      gl.vertexAttribPointer(locP, 3, gl.FLOAT, false, 28, 0);
-      gl.enableVertexAttribArray(locC);
-      gl.vertexAttribPointer(locC, 3, gl.FLOAT, false, 28, 12);
+      const locAl = gl.getAttribLocation(lineProg, 'aAlpha');
+      const locE = gl.getAttribLocation(lineProg, 'aEnd');
+      const locS = gl.getAttribLocation(lineProg, 'aSide');
       gl.enableVertexAttribArray(locA);
-      gl.vertexAttribPointer(locA, 1, gl.FLOAT, false, 28, 24);
+      gl.vertexAttribPointer(locA, 3, gl.FLOAT, false, stride, 0);
+      gl.enableVertexAttribArray(locB);
+      gl.vertexAttribPointer(locB, 3, gl.FLOAT, false, stride, 12);
+      gl.enableVertexAttribArray(locC);
+      gl.vertexAttribPointer(locC, 3, gl.FLOAT, false, stride, 24);
+      gl.enableVertexAttribArray(locAl);
+      gl.vertexAttribPointer(locAl, 1, gl.FLOAT, false, stride, 36);
+      gl.enableVertexAttribArray(locE);
+      gl.vertexAttribPointer(locE, 1, gl.FLOAT, false, stride, 40);
+      gl.enableVertexAttribArray(locS);
+      gl.vertexAttribPointer(locS, 1, gl.FLOAT, false, stride, 44);
     };
 
     const bindMemb = () => {
@@ -579,6 +615,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     };
     const uLine = {
       view: gl.getUniformLocation(lineProg, 'uViewProj'),
+      res: gl.getUniformLocation(lineProg, 'uResolution'),
       w0: gl.getUniformLocation(lineProg, 'uWake0'),
       w1: gl.getUniformLocation(lineProg, 'uWake1'),
       w2: gl.getUniformLocation(lineProg, 'uWake2'),
@@ -661,6 +698,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       }
 
       disableAttribs(gl);
+      gl.blendFunc(gl.ONE, gl.ONE);
       bindNodes();
       gl.uniformMatrix4fv(uNode.view, false, viewProj);
       gl.uniform2f(uNode.res, width, height);
@@ -682,6 +720,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.blendFunc(gl.ONE, gl.ONE);
       bindLines();
       gl.uniformMatrix4fv(uLine.view, false, viewProj);
+      gl.uniform2f(uLine.res, width, height);
       gl.uniform3f(uLine.w0, wakes[0].x, wakes[0].y, wakes[0].z);
       gl.uniform3f(uLine.w1, wakes[1].x, wakes[1].y, wakes[1].z);
       gl.uniform3f(uLine.w2, wakes[2].x, wakes[2].y, wakes[2].z);
@@ -693,7 +732,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.uniform3f(uLine.f3, foci[3].x, foci[3].y, foci[3].z);
       gl.uniform1f(uLine.time, time);
       if (lineCount) {
-        gl.drawArrays(gl.LINES, 0, lineCount);
+        gl.drawArrays(gl.TRIANGLES, 0, lineCount);
       }
 
       disableAttribs(gl);
