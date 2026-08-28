@@ -78,22 +78,22 @@ export type ContactPageCopy = {
 
 const metadataByLocale: Record<Locale, ContactPageMetadata> = {
   es: {
-    title: 'Contacto - Anto | Estamos aquí para ayudarte',
+    title: 'Contacto | Anto',
     description:
-      'Contáctanos para cualquier pregunta sobre Anto. Soporte técnico, consultas comerciales, o información sobre nuestros planes empresariales.',
+      'Una persona. Te respondo cuando pueda.',
     openGraph: {
-      title: 'Contacto - Anto',
-      description: 'Contáctanos para cualquier pregunta sobre Anto.',
+      title: 'Contacto | Anto',
+      description: 'Una persona. Te respondo cuando pueda.',
       url: 'https://antoapps.com/contacto',
     },
   },
   en: {
-    title: 'Contact - Anto | We are here to help',
+    title: 'Contact | Anto',
     description:
-      'Contact us with any questions about Anto. Technical support, business inquiries, or information about our enterprise plans.',
+      'One person. I'll get back when I can.',
     openGraph: {
-      title: 'Contact - Anto',
-      description: 'Contact us with any questions about Anto.',
+      title: 'Contact | Anto',
+      description: 'One person. I'll get back when I can.',
       url: 'https://antoapps.com/en/contacto',
     },
   },
@@ -116,25 +116,25 @@ function buildContactPageCopy(locale: Locale): ContactPageCopy {
         currentLabel: 'Contact',
       },
       hero: {
-        title: 'We are here to help',
+        title: 'Contact',
         subtitle:
-          'Have questions? We would love to hear from you. Contact us and we will respond as soon as possible.',
+          'One person. I'll get back when I can.',
       },
       formSection: {
         title: 'Send us a message',
         form: {
           labels: {
-            name: 'Full name',
+            name: 'Name',
             email: 'Email',
             message: 'Message',
             requiredMark: '*',
           },
-          submit: 'Send Message',
+          submit: 'Send',
           sending: 'Sending...',
           success: {
             title: 'Message sent',
             message:
-              'We received your message and will reply within 24 hours. Check your inbox in case we need more details.',
+              'I received your message and will get back when I can. Check your inbox in case I need more details.',
             dismiss: 'Send another message',
           },
           toast: {
@@ -203,28 +203,28 @@ function buildContactPageCopy(locale: Locale): ContactPageCopy {
       homeHref: localePath(locale, '/'),
       currentLabel: 'Contacto',
     },
-    hero: {
-      title: 'Estamos aquí para ayudarte',
-      subtitle:
-        '¿Tienes preguntas? Nos encantaría escucharte. Contáctanos y te responderemos lo antes posible.',
-    },
-    formSection: {
-      title: 'Envíanos un mensaje',
-      form: {
-        labels: {
-          name: 'Nombre completo',
-          email: 'Email',
-          message: 'Mensaje',
-          requiredMark: '*',
-        },
-        submit: 'Enviar Mensaje',
-        sending: 'Enviando...',
-        success: {
-          title: 'Mensaje enviado',
-          message:
-            'Recibimos tu mensaje y te responderemos en un plazo de 24 horas. Revisa tu bandeja por si necesitamos más datos.',
-          dismiss: 'Enviar otro mensaje',
-        },
+      hero: {
+        title: 'Contacto',
+        subtitle:
+          'Una persona. Te respondo cuando pueda.',
+      },
+      formSection: {
+        title: 'Envíanos un mensaje',
+        form: {
+          labels: {
+            name: 'Nombre',
+            email: 'Email',
+            message: 'Mensaje',
+            requiredMark: '*',
+          },
+          submit: 'Enviar',
+          sending: 'Enviando...',
+          success: {
+            title: 'Mensaje enviado',
+            message:
+              'Recibí tu mensaje y te respondo cuando pueda. Revisa tu bandeja por si necesito más datos.',
+            dismiss: 'Enviar otro mensaje',
+          },
         toast: {
           error: 'Error al enviar el mensaje. Por favor, intenta nuevamente.',
         },

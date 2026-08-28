@@ -27,24 +27,40 @@
     background: var(--color-bg-primary);
 }
 
-.contact-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--spacing-xl);
-    align-items: start;
-    padding: var(--spacing-xl) 0 var(--spacing-10);
-}
-
 .contact-form-container {
+    max-width: 42rem;
+    margin: 0 auto;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-2xl);
     padding: clamp(var(--spacing-6), 4vw, var(--spacing-8));
     box-shadow: var(--shadow-sm);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-10);
 }
 
 .contact-form-container .section-title {
     margin-bottom: var(--spacing-6);
+}
+
+.contact-email-link {
+    margin-top: var(--spacing-8);
+    padding-top: var(--spacing-6);
+    border-top: 1px solid var(--color-border-light, var(--color-border));
+    text-align: center;
+}
+
+.contact-email-link a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    transition: color 0.2s ease;
+}
+
+.contact-email-link a:hover {
+    color: var(--color-text-primary);
+    text-decoration: underline;
 }
 
 /* —— Formulario de contacto —— */
@@ -662,32 +678,12 @@
 
 /* Responsive */
 @media (max-width: 968px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-form-container,
-    .contact-info-container {
+    .contact-form-container {
         max-width: 100%;
     }
     
     .contact-title {
         font-size: 2rem;
-    }
-    
-    .contact-info {
-        padding: var(--spacing-lg);
-    }
-    
-    .quick-contact-cta {
-        bottom: 15px;
-        right: 15px;
-    }
-    
-    .quick-contact-btn {
-        width: 50px;
-        height: 50px;
-        font-size: var(--font-size-xl);
     }
 }
 
@@ -705,37 +701,6 @@
     .contact-title {
         font-size: clamp(1.5rem, 6vw, 1.75rem);
         padding: 0 var(--spacing-1);
-    }
-
-    .contact-info {
-        padding: var(--spacing-4);
-        border-radius: var(--radius-xl);
-    }
-
-    .contact-detail-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-3);
-    }
-
-    .social-links {
-        flex-direction: column;
-    }
-
-    .social-link {
-        width: 100%;
-        justify-content: center;
-        box-sizing: border-box;
-    }
-
-    .quick-contact-cta {
-        bottom: max(12px, env(safe-area-inset-bottom, 0px));
-        right: max(12px, env(safe-area-inset-right, 0px));
-    }
-
-    .quick-contact-btn {
-        width: 52px;
-        height: 52px;
     }
 }
 

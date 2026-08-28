@@ -39,59 +39,10 @@ export default function ContactPageContent({ locale }: ContactPageContentProps) 
 
         <section className="contact-section" data-fade-section>
           <div className="container">
-            <div className="contact-grid">
-              <div className="contact-form-container">
-                <h2 className="section-title reveal-on-scroll">{copy.formSection.title}</h2>
-                <ContactForm copy={copy.formSection.form} locale={locale} />
-              </div>
-
-              <div className="contact-info reveal-on-scroll">
-                <h2 className="section-title">{copy.contactInfo.title}</h2>
-
-                <div className="contact-methods">
-                  {copy.contactInfo.methods.map((method) => (
-                    <div key={method.title} className="contact-method">
-                      <div className="contact-icon">{method.icon}</div>
-                      <h3>{method.title}</h3>
-                      <p>{method.description}</p>
-                      {method.email && (
-                        <a href={`mailto:${method.email}`}>{method.email}</a>
-                      )}
-                      {method.githubLinks && (
-                        <div className="developer-github-links">
-                          {method.githubLinks.map((link) => (
-                            <a
-                              key={link.href}
-                              href={link.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {link.label}
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="contact-social">
-                  <h3>{copy.social.title}</h3>
-                  <div className="social-links">
-                    {copy.social.links.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="social-link"
-                      >
-                        <span>{link.icon}</span>
-                        <span>{link.label}</span>
-                      </a>
-                    ))}
-                  </div>
-                </div>
+            <div className="contact-form-container">
+              <ContactForm copy={copy.formSection.form} locale={locale} />
+              <div className="contact-email-link">
+                <a href="mailto:marcelo.ull@antoapps.com">marcelo.ull@antoapps.com</a>
               </div>
             </div>
           </div>
@@ -103,10 +54,6 @@ export default function ContactPageContent({ locale }: ContactPageContentProps) 
           </div>
         </section>
       </main>
-
-      <Link href="#contactForm" className="quick-contact-cta" aria-label={copy.quickCtaAria}>
-        <div className="quick-contact-btn">💬</div>
-      </Link>
 
       <HomeMinimalFooter locale={locale} switchPath="/contacto" />
       </div>
