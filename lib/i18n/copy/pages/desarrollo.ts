@@ -110,37 +110,32 @@ const architectureLayersEs: DesarrolloArchitectureLayer[] = [
   {
     icon: '📱',
     title: 'Cliente móvil',
-    description:
-      'React Native + Expo (EAS Build). Estado local con AsyncStorage, navegación con React Navigation, cliente Socket.IO para eventos en tiempo real.',
-    tags: ['React Native', 'Expo SDK', 'TypeScript', 'Socket.IO Client'],
+    description: 'React Native + Expo. Navegación nativa y Socket.IO.',
+    tags: ['React Native', 'Expo', 'TypeScript', 'Socket.IO'],
   },
   {
     icon: '🌐',
     title: 'Cliente web',
-    description:
-      'Next.js 14 App Router, TypeScript estricto, CSS con design tokens, PWA con Service Workers y rutas i18n ES/EN.',
-    tags: ['Next.js 14', 'React 18', 'TypeScript', 'PWA'],
+    description: 'Next.js, TypeScript, rutas ES/EN.',
+    tags: ['Next.js', 'React', 'TypeScript', 'CSS'],
   },
   {
     icon: '⚙️',
     title: 'API y tiempo real',
-    description:
-      'Node.js + Express.js: REST JSON, middleware de seguridad (Helmet, rate limit), WebSockets con Socket.IO y logging estructurado (Winston).',
-    tags: ['Node.js', 'Express.js', 'Socket.IO', 'REST + WS'],
+    description: 'Express, REST, Socket.IO, logs Winston.',
+    tags: ['Node.js', 'Express', 'Socket.IO', 'Winston'],
   },
   {
     icon: '🤖',
     title: 'Capa de IA',
-    description:
-      'OpenAI GPT-5.4 Mini vía API REST: prompts con contexto de sesión, historial en MongoDB y análisis de sentimiento previo a cada respuesta.',
-    tags: ['GPT-5.4 Mini', 'OpenAI API', 'NLP', 'Prompt pipeline'],
+    description: 'OpenAI, prompts con contexto de sesión, historial en MongoDB.',
+    tags: ['OpenAI', 'Prompts', 'MongoDB', 'Redis'],
   },
   {
     icon: '💾',
     title: 'Persistencia',
-    description:
-      'MongoDB + Mongoose (documentos de usuario, chat, suscripciones). Redis para caché de sesión y colas de respuesta frecuentes.',
-    tags: ['MongoDB', 'Mongoose', 'Redis', 'Índices compuestos'],
+    description: 'MongoDB (usuarios, chat, suscripciones). Redis para sesión.',
+    tags: ['MongoDB', 'Mongoose', 'Redis', 'Índices'],
   },
 ];
 
@@ -148,163 +143,88 @@ const architectureLayersEn: DesarrolloArchitectureLayer[] = [
   {
     icon: '📱',
     title: 'Mobile client',
-    description:
-      'React Native + Expo (EAS Build). Local state with AsyncStorage, React Navigation, Socket.IO client for real-time events.',
-    tags: ['React Native', 'Expo SDK', 'TypeScript', 'Socket.IO Client'],
+    description: 'React Native + Expo. Native navigation and Socket.IO.',
+    tags: ['React Native', 'Expo', 'TypeScript', 'Socket.IO'],
   },
   {
     icon: '🌐',
     title: 'Web client',
-    description:
-      'Next.js 14 App Router, strict TypeScript, CSS design tokens, PWA with Service Workers, and ES/EN i18n routes.',
-    tags: ['Next.js 14', 'React 18', 'TypeScript', 'PWA'],
+    description: 'Next.js, TypeScript, ES/EN routes.',
+    tags: ['Next.js', 'React', 'TypeScript', 'CSS'],
   },
   {
     icon: '⚙️',
     title: 'API and real-time',
-    description:
-      'Node.js + Express.js: JSON REST, security middleware (Helmet, rate limit), Socket.IO WebSockets, and structured logging (Winston).',
-    tags: ['Node.js', 'Express.js', 'Socket.IO', 'REST + WS'],
+    description: 'Express, REST, Socket.IO, Winston logs.',
+    tags: ['Node.js', 'Express', 'Socket.IO', 'Winston'],
   },
   {
     icon: '🤖',
     title: 'AI layer',
-    description:
-      'OpenAI GPT-5.4 Mini via REST API: session-context prompts, MongoDB chat history, and sentiment analysis before each reply.',
-    tags: ['GPT-5.4 Mini', 'OpenAI API', 'NLP', 'Prompt pipeline'],
+    description: 'OpenAI, session-context prompts, chat history in MongoDB.',
+    tags: ['OpenAI', 'Prompts', 'MongoDB', 'Redis'],
   },
   {
     icon: '💾',
     title: 'Persistence',
-    description:
-      'MongoDB + Mongoose (user, chat, subscription documents). Redis for session cache and frequent-response queues.',
-    tags: ['MongoDB', 'Mongoose', 'Redis', 'Compound indexes'],
+    description: 'MongoDB (users, chat, subscriptions). Redis for session.',
+    tags: ['MongoDB', 'Mongoose', 'Redis', 'Indexes'],
   },
 ];
 
 const processStepsEs: DesarrolloProcessStep[] = [
   {
-    title: 'Planificación y Diseño',
-    description:
-      'Análisis de requisitos, diseño de arquitectura, wireframes y prototipos. Definición de stack tecnológico y estructura de base de datos.',
-    details: [
-      'Diseño de arquitectura del sistema',
-      'Prototipado de UI/UX',
-      'Definición de APIs',
-      'Planificación de sprints',
-    ],
+    title: 'Plan',
+    description: 'Arquitectura, APIs, cómo se ve.',
+    details: [],
   },
   {
-    title: 'Desarrollo del Backend',
-    description:
-      'Implementación de APIs RESTful, integración con servicios de IA, sistema de autenticación y autorización, y configuración de base de datos.',
-    details: [
-      'API REST con Express.js',
-      'Integración con GPT-5.4 Mini',
-      'Sistema de autenticación JWT',
-      'Cifrado en tránsito y en reposo',
-      'WebSockets para tiempo real',
-    ],
+    title: 'API',
+    description: 'Express, OpenAI, JWT. Cifrado en tránsito (TLS) y en reposo. Anto y el modelo leen el texto. WebSockets.',
+    details: [],
   },
   {
-    title: 'Desarrollo del Frontend',
-    description:
-      'Desarrollo de la aplicación móvil con React Native y del sitio web con Next.js, implementando PWA y optimizaciones de rendimiento.',
-    details: [
-      'Aplicación móvil multiplataforma',
-      'Sitio web responsive',
-      'PWA con Service Workers',
-      'Optimizaciones de rendimiento',
-      'Animaciones y microinteracciones',
-    ],
+    title: 'Clientes',
+    description: 'React Native y Next.js.',
+    details: [],
   },
   {
-    title: 'Integración y Testing',
-    description:
-      'Integración de todos los componentes, pruebas unitarias, de integración y de usuario. Optimización de rendimiento y seguridad.',
-    details: [
-      'Testing unitario y de integración',
-      'Pruebas de seguridad',
-      'Optimización de rendimiento',
-      'Testing de carga',
-      'Corrección de bugs',
-    ],
+    title: 'Revisión',
+    description: 'Lint, types, build en GitHub Actions.',
+    details: [],
   },
   {
-    title: 'Despliegue y Monitoreo',
-    description:
-      'Despliegue en producción, configuración de CI/CD, monitoreo de errores y rendimiento, y actualizaciones continuas.',
-    details: [
-      'Sitio web en Vercel (Next.js)',
-      'API en Render (Node.js)',
-      'CI/CD con GitHub Actions',
-      'Monitoreo con Sentry',
-      'Analytics y métricas',
-      'Actualizaciones continuas',
-    ],
+    title: 'Deploy',
+    description: 'Sitio en Vercel, API en Render, Sentry.',
+    details: [],
   },
 ];
 
 const processStepsEn: DesarrolloProcessStep[] = [
   {
-    title: 'Planning and Design',
-    description:
-      'Requirements analysis, architecture design, wireframes, and prototypes. Technology stack definition and database structure.',
-    details: [
-      'System architecture design',
-      'UI/UX prototyping',
-      'API definition',
-      'Sprint planning',
-    ],
+    title: 'Plan',
+    description: 'Architecture, APIs, how it looks.',
+    details: [],
   },
   {
-    title: 'Backend Development',
-    description:
-      'RESTful API implementation, AI service integration, authentication and authorization system, and database configuration.',
-    details: [
-      'REST API with Express.js',
-      'GPT-5.4 Mini integration',
-      'JWT authentication system',
-      'Encryption in transit and at rest',
-      'WebSockets for real-time',
-    ],
+    title: 'API',
+    description: 'Express, OpenAI, JWT. Encryption in transit (TLS) and at rest. Anto and the model read the text. WebSockets.',
+    details: [],
   },
   {
-    title: 'Frontend Development',
-    description:
-      'Mobile app development with React Native and website with Next.js, implementing PWA and performance optimizations.',
-    details: [
-      'Cross-platform mobile app',
-      'Responsive website',
-      'PWA with Service Workers',
-      'Performance optimizations',
-      'Animations and micro-interactions',
-    ],
+    title: 'Clients',
+    description: 'React Native and Next.js.',
+    details: [],
   },
   {
-    title: 'Integration and Testing',
-    description:
-      'Integration of all components, unit, integration, and user testing. Performance and security optimization.',
-    details: [
-      'Unit and integration testing',
-      'Security testing',
-      'Performance optimization',
-      'Load testing',
-      'Bug fixes',
-    ],
+    title: 'Review',
+    description: 'Lint, types, build on GitHub Actions.',
+    details: [],
   },
   {
-    title: 'Deployment and Monitoring',
-    description:
-      'Production deployment, CI/CD configuration, error and performance monitoring, and continuous updates.',
-    details: [
-      'Website on Vercel (Next.js)',
-      'API on Render (Node.js)',
-      'CI/CD with GitHub Actions',
-      'Monitoring with Sentry',
-      'Analytics and metrics',
-      'Continuous updates',
-    ],
+    title: 'Deploy',
+    description: 'Site on Vercel, API on Render, Sentry.',
+    details: [],
   },
 ];
 
@@ -313,73 +233,68 @@ const techStackEs: DesarrolloTechCategory[] = [
     icon: '📱',
     title: 'Frontend móvil',
     items: [
-      { name: 'React Native', spec: 'iOS + Android · código compartido' },
-      { name: 'Expo SDK', spec: 'EAS Build · OTA updates' },
-      { name: 'TypeScript', spec: 'Tipado estricto en toda la app' },
-      { name: 'React Navigation', spec: 'Stack + tabs nativos' },
-      { name: 'Socket.IO Client', spec: 'Eventos bidireccionales <2.5s' },
-      { name: 'Expo Notifications', spec: 'Push APNs / FCM' },
+      { name: 'React Native', spec: 'iOS y Android' },
+      { name: 'Expo', spec: '' },
+      { name: 'TypeScript', spec: '' },
+      { name: 'React Navigation', spec: '' },
+      { name: 'Socket.IO', spec: '' },
+      { name: 'Expo Notifications', spec: '' },
     ],
   },
   {
     icon: '🌐',
     title: 'Frontend web',
     items: [
-      { name: 'Next.js 14', spec: 'App Router · SSR/SSG' },
-      { name: 'React 18', spec: 'Server + Client Components' },
-      { name: 'TypeScript 5', spec: 'tsc --noEmit en CI' },
-      { name: 'CSS design tokens', spec: 'Variables · dark mode' },
-      { name: 'Service Workers', spec: 'PWA offline-first' },
-      { name: 'socket.io-client', spec: 'Sync con backend en vivo' },
+      { name: 'Next.js', spec: '' },
+      { name: 'React', spec: '' },
+      { name: 'TypeScript', spec: '' },
+      { name: 'CSS tokens', spec: '' },
+      { name: 'socket.io-client', spec: '' },
     ],
   },
   {
     icon: '⚡',
     title: 'Backend',
     items: [
-      { name: 'Node.js', spec: 'Runtime LTS · APIs JSON' },
-      { name: 'Express.js', spec: 'Middleware chain · REST' },
-      { name: 'MongoDB + Mongoose', spec: 'Esquemas · índices de chat' },
-      { name: 'Socket.IO', spec: 'Rooms por usuario · heartbeat' },
-      { name: 'Winston', spec: 'Logs estructurados JSON' },
-      { name: 'Sentry', spec: 'Trazas de error en producción' },
+      { name: 'Node.js', spec: '' },
+      { name: 'Express', spec: '' },
+      { name: 'MongoDB', spec: '' },
+      { name: 'Socket.IO', spec: '' },
+      { name: 'Winston', spec: '' },
+      { name: 'Sentry', spec: '' },
     ],
   },
   {
     icon: '🤖',
     title: 'IA y datos',
     items: [
-      { name: 'OpenAI GPT-5.4 Mini', spec: 'Chat completions · streaming' },
-      { name: 'Pipeline de prompts', spec: 'Contexto + tono clínico-práctico' },
-      { name: 'Análisis de sentimiento', spec: 'Pre-filtro antes del LLM' },
-      { name: 'Detección de crisis', spec: 'Patrones + Twilio / SendGrid' },
-      { name: 'Redis', spec: 'Caché de sesión y respuestas' },
-      { name: 'i18n backend', spec: 'Respuestas ES/EN según locale' },
+      { name: 'OpenAI', spec: '' },
+      { name: 'Pipeline de prompts', spec: 'contexto de sesión' },
+      { name: 'Redis', spec: '' },
+      { name: 'i18n ES/EN', spec: '' },
     ],
   },
   {
     icon: '🔒',
     title: 'Seguridad',
     items: [
-      { name: 'JWT + refresh', spec: 'Sesiones con expiración' },
-      { name: 'bcrypt', spec: 'Cost factor 12 en passwords' },
-      { name: 'Helmet.js', spec: 'CSP · HSTS · XSS' },
-      { name: 'Joi', spec: 'Validación de payloads API' },
-      { name: 'DOMPurify', spec: 'Sanitización de inputs' },
-      { name: 'Rate limiting', spec: 'Anti-abuso por IP y usuario' },
+      { name: 'JWT + refresh', spec: '' },
+      { name: 'bcrypt', spec: '' },
+      { name: 'Helmet', spec: '' },
+      { name: 'validación de payloads', spec: '' },
+      { name: 'rate limiting', spec: '' },
     ],
   },
   {
     icon: '🚀',
     title: 'DevOps e integraciones',
     items: [
-      { name: 'GitHub Actions', spec: 'CI: lint · type-check · build' },
-      { name: 'Vercel', spec: 'Sitio web Next.js · preview branches' },
-      { name: 'Render', spec: 'API Node.js · auto-deploy desde Git' },
-      { name: 'Mercado Pago', spec: 'Suscripciones in-app' },
-      { name: 'SendGrid', spec: 'Emails transaccionales' },
-      { name: 'Twilio', spec: 'WhatsApp/SMS en crisis' },
-      { name: 'ESLint + Prettier', spec: 'Estilo unificado en monorepo' },
+      { name: 'GitHub Actions', spec: '' },
+      { name: 'Vercel', spec: '' },
+      { name: 'Render', spec: '' },
+      { name: 'Mercado Pago', spec: '' },
+      { name: 'SendGrid', spec: '' },
+      { name: 'ESLint', spec: '' },
     ],
   },
 ];
@@ -389,73 +304,68 @@ const techStackEn: DesarrolloTechCategory[] = [
     icon: '📱',
     title: 'Mobile frontend',
     items: [
-      { name: 'React Native', spec: 'iOS + Android · shared codebase' },
-      { name: 'Expo SDK', spec: 'EAS Build · OTA updates' },
-      { name: 'TypeScript', spec: 'Strict typing across the app' },
-      { name: 'React Navigation', spec: 'Native stack + tabs' },
-      { name: 'Socket.IO Client', spec: 'Bidirectional events <2.5s' },
-      { name: 'Expo Notifications', spec: 'Push APNs / FCM' },
+      { name: 'React Native', spec: 'iOS and Android' },
+      { name: 'Expo', spec: '' },
+      { name: 'TypeScript', spec: '' },
+      { name: 'React Navigation', spec: '' },
+      { name: 'Socket.IO', spec: '' },
+      { name: 'Expo Notifications', spec: '' },
     ],
   },
   {
     icon: '🌐',
     title: 'Web frontend',
     items: [
-      { name: 'Next.js 14', spec: 'App Router · SSR/SSG' },
-      { name: 'React 18', spec: 'Server + Client Components' },
-      { name: 'TypeScript 5', spec: 'tsc --noEmit in CI' },
-      { name: 'CSS design tokens', spec: 'Variables · dark mode' },
-      { name: 'Service Workers', spec: 'PWA offline-first' },
-      { name: 'socket.io-client', spec: 'Live sync with backend' },
+      { name: 'Next.js', spec: '' },
+      { name: 'React', spec: '' },
+      { name: 'TypeScript', spec: '' },
+      { name: 'CSS tokens', spec: '' },
+      { name: 'socket.io-client', spec: '' },
     ],
   },
   {
     icon: '⚡',
     title: 'Backend',
     items: [
-      { name: 'Node.js', spec: 'LTS runtime · JSON APIs' },
-      { name: 'Express.js', spec: 'Middleware chain · REST' },
-      { name: 'MongoDB + Mongoose', spec: 'Schemas · chat indexes' },
-      { name: 'Socket.IO', spec: 'Per-user rooms · heartbeat' },
-      { name: 'Winston', spec: 'Structured JSON logs' },
-      { name: 'Sentry', spec: 'Production error traces' },
+      { name: 'Node.js', spec: '' },
+      { name: 'Express', spec: '' },
+      { name: 'MongoDB', spec: '' },
+      { name: 'Socket.IO', spec: '' },
+      { name: 'Winston', spec: '' },
+      { name: 'Sentry', spec: '' },
     ],
   },
   {
     icon: '🤖',
     title: 'AI and data',
     items: [
-      { name: 'OpenAI GPT-5.4 Mini', spec: 'Chat completions · streaming' },
-      { name: 'Prompt pipeline', spec: 'Context + clinical-practical tone' },
-      { name: 'Sentiment analysis', spec: 'Pre-filter before LLM' },
-      { name: 'Crisis detection', spec: 'Patterns + Twilio / SendGrid' },
-      { name: 'Redis', spec: 'Session and response cache' },
-      { name: 'Backend i18n', spec: 'ES/EN replies by locale' },
+      { name: 'OpenAI', spec: '' },
+      { name: 'Prompt pipeline', spec: 'session context' },
+      { name: 'Redis', spec: '' },
+      { name: 'i18n ES/EN', spec: '' },
     ],
   },
   {
     icon: '🔒',
     title: 'Security',
     items: [
-      { name: 'JWT + refresh', spec: 'Sessions with expiry' },
-      { name: 'bcrypt', spec: 'Cost factor 12 on passwords' },
-      { name: 'Helmet.js', spec: 'CSP · HSTS · XSS' },
-      { name: 'Joi', spec: 'API payload validation' },
-      { name: 'DOMPurify', spec: 'Input sanitisation' },
-      { name: 'Rate limiting', spec: 'Anti-abuse per IP and user' },
+      { name: 'JWT + refresh', spec: '' },
+      { name: 'bcrypt', spec: '' },
+      { name: 'Helmet', spec: '' },
+      { name: 'payload validation', spec: '' },
+      { name: 'rate limiting', spec: '' },
     ],
   },
   {
     icon: '🚀',
     title: 'DevOps and integrations',
     items: [
-      { name: 'GitHub Actions', spec: 'CI: lint · type-check · build' },
-      { name: 'Vercel', spec: 'Next.js website · preview branches' },
-      { name: 'Render', spec: 'Node.js API · auto-deploy from Git' },
-      { name: 'Mercado Pago', spec: 'In-app subscriptions' },
-      { name: 'SendGrid', spec: 'Transactional email' },
-      { name: 'Twilio', spec: 'WhatsApp/SMS on crisis' },
-      { name: 'ESLint + Prettier', spec: 'Unified style in monorepo' },
+      { name: 'GitHub Actions', spec: '' },
+      { name: 'Vercel', spec: '' },
+      { name: 'Render', spec: '' },
+      { name: 'Mercado Pago', spec: '' },
+      { name: 'SendGrid', spec: '' },
+      { name: 'ESLint', spec: '' },
     ],
   },
 ];
@@ -463,127 +373,103 @@ const techStackEn: DesarrolloTechCategory[] = [
 const challengesEs: DesarrolloChallenge[] = [
   {
     icon: '⚡',
-    title: 'Rendimiento en Tiempo Real',
-    challenge: 'Procesar y responder conversaciones en tiempo real con baja latencia.',
-    solution:
-      'Implementación de WebSockets con Socket.IO, caché con Redis, y optimización de queries a la base de datos.',
+    title: 'Rendimiento en tiempo real',
+    challenge: 'Responder conversaciones al momento.',
+    solution: 'WebSockets con Socket.IO, Redis y consultas simples.',
   },
   {
     icon: '🔒',
-    title: 'Seguridad y Privacidad',
-    challenge: 'Garantizar la privacidad total de conversaciones sensibles sobre salud mental.',
+    title: 'Privacidad',
+    challenge: 'Cuidar conversaciones privadas.',
     solution:
-      'Cifrado en tránsito y en reposo, autenticación JWT, headers de seguridad, y cumplimiento GDPR/HIPAA.',
+      'Cifrado en tránsito (TLS) y en reposo. Anto y el modelo leen el texto. Autenticación JWT y headers de seguridad.',
   },
   {
     icon: '📱',
     title: 'Multiplataforma',
-    challenge: 'Mantener consistencia entre iOS, Android y Web.',
-    solution: 'React Native para móvil, código compartido, y diseño responsive para web.',
+    challenge: 'iOS, Android y web sin tres productos.',
+    solution: 'React Native en el teléfono y este sitio en Next.js.',
   },
   {
     icon: '🤖',
-    title: 'Integración con IA',
-    challenge: 'Integrar GPT de forma eficiente y con contexto emocional.',
-    solution:
-      'Sistema de prompts optimizados, caché de respuestas comunes, y análisis de sentimiento previo.',
+    title: 'IA',
+    challenge: 'Integrar OpenAI con el hilo de la persona.',
+    solution: 'Prompts con contexto de sesión.',
   },
   {
     icon: '📊',
-    title: 'Escalabilidad',
-    challenge: 'Escalar para manejar millones de usuarios y conversaciones.',
-    solution:
-      'Arquitectura modular, bases de datos distribuidas, CDN, y auto-scaling en la nube.',
+    title: 'Escala',
+    challenge: 'Escalar la app y las conversaciones.',
+    solution: 'API en Render, sitio en Vercel, GitHub Actions.',
   },
   {
     icon: '🎨',
-    title: 'Experiencia de Usuario',
-    challenge: 'Crear una interfaz intuitiva y accesible para todos los usuarios.',
-    solution:
-      'Diseño centrado en el usuario, testing constante, accesibilidad WCAG, y feedback continuo.',
+    title: 'Uso',
+    challenge: 'Que se entienda y se pueda usar.',
+    solution: 'Una interfaz simple, la misma voz que el resto del sitio.',
   },
 ];
 
 const challengesEn: DesarrolloChallenge[] = [
   {
     icon: '⚡',
-    title: 'Real-Time Performance',
-    challenge: 'Process and respond to conversations in real time with low latency.',
-    solution:
-      'WebSockets with Socket.IO, Redis caching, and optimized database queries.',
+    title: 'Real-time',
+    challenge: 'Reply as the conversation happens.',
+    solution: 'Socket.IO, Redis, simple queries.',
   },
   {
     icon: '🔒',
-    title: 'Security and Privacy',
-    challenge: 'Ensure total privacy of sensitive mental health conversations.',
+    title: 'Privacy',
+    challenge: 'Keep conversations private.',
     solution:
-      'Encryption in transit and at rest, JWT authentication, security headers, and GDPR/HIPAA compliance.',
+      'Encryption in transit (TLS) and at rest. Anto and the model read the text. JWT auth and security headers.',
   },
   {
     icon: '📱',
-    title: 'Cross-Platform',
-    challenge: 'Maintain consistency across iOS, Android, and Web.',
-    solution: 'React Native for mobile, shared code, and responsive design for web.',
+    title: 'Cross-platform',
+    challenge: 'iOS, Android, and web without three products.',
+    solution: 'React Native on the phone, Next.js for this site.',
   },
   {
     icon: '🤖',
-    title: 'AI Integration',
-    challenge: 'Integrate GPT efficiently with emotional context.',
-    solution:
-      'Optimized prompt system, common response caching, and prior sentiment analysis.',
+    title: 'AI',
+    challenge: 'Use OpenAI with the person's thread.',
+    solution: 'Prompts with session context.',
   },
   {
     icon: '📊',
-    title: 'Scalability',
-    challenge: 'Scale to handle millions of users and conversations.',
-    solution:
-      'Modular architecture, distributed databases, CDN, and cloud auto-scaling.',
+    title: 'Scale',
+    challenge: 'Scale the app and conversations.',
+    solution: 'API on Render, site on Vercel, GitHub Actions.',
   },
   {
     icon: '🎨',
-    title: 'User Experience',
-    challenge: 'Create an intuitive and accessible interface for all users.',
-    solution:
-      'User-centered design, constant testing, WCAG accessibility, and continuous feedback.',
+    title: 'Use',
+    challenge: 'Make it understandable and usable.',
+    solution: 'A simple interface, the same voice as the rest of the site.',
   },
 ];
 
-const metricsEs: DesarrolloMetric[] = [
-  { value: '15K+', label: 'LOC TypeScript/JS' },
-  { value: 'PWA', label: 'Web responsive + apps iOS y Android' },
-  { value: '97%+', label: 'Tests en CI' },
-  { value: '<2.5s', label: 'Latencia chat (p95)' },
-  { value: 'REST+WS', label: 'API dual (HTTP + Socket.IO)' },
-  { value: '6', label: 'Capas de seguridad activas' },
-];
+const metricsEs: DesarrolloMetric[] = [];
 
-const metricsEn: DesarrolloMetric[] = [
-  { value: '15K+', label: 'LOC TypeScript/JS' },
-  { value: 'PWA', label: 'Responsive web + iOS/Android apps' },
-  { value: '97%+', label: 'CI test pass rate' },
-  { value: '<2.5s', label: 'Chat latency (p95)' },
-  { value: 'REST+WS', label: 'Dual API (HTTP + Socket.IO)' },
-  { value: '6', label: 'Active security layers' },
-];
+const metricsEn: DesarrolloMetric[] = [];
 
 const heroHighlightTechs = [
   'React Native',
-  'Expo SDK',
-  'Next.js 14',
+  'Expo',
+  'Next.js',
   'TypeScript',
   'Node.js',
-  'Express.js',
+  'Express',
   'MongoDB',
   'Socket.IO',
   'Redis',
-  'GPT-5.4 Mini',
-  'OpenAI API',
+  'OpenAI',
   'JWT',
   'GitHub Actions',
   'Vercel',
   'Render',
   'Sentry',
-  'Twilio',
   'SendGrid',
   'Mercado Pago',
 ];
@@ -599,10 +485,10 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
       meta: {
         title: 'Development - Anto | Stack and Architecture',
         description:
-          'Full-stack technical documentation: React Native, Next.js 14, Node.js, MongoDB, Socket.IO, OpenAI GPT-5.4 Mini, and production security.',
+          'Full-stack architecture, conversational AI, and real-time messaging built for reliable everyday use.',
         openGraphTitle: 'Development - Anto | Technology Stack',
         openGraphDescription:
-          'React Native · Next.js · Node.js · MongoDB · GPT-5.4 Mini — how Anto is engineered.',
+          'React Native · Next.js · Node.js · MongoDB · OpenAI — how Anto is engineered.',
         canonicalPath: CANONICAL_PATH,
       },
       hero: {
@@ -610,28 +496,27 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
         title: 'The engineering behind Anto',
         subtitle:
           'Full-stack architecture, conversational AI, and real-time messaging built for reliable everyday use.',
-        stackLine:
-          'React Native (Expo) → Express.js / Socket.IO → MongoDB → OpenAI GPT-5.4 Mini',
+        stackLine: 'React Native (Expo) → Express.js / Socket.IO → MongoDB → OpenAI',
         highlightTechs: heroHighlightTechs,
       },
       architecture: {
         sectionTitle: 'Layered architecture',
         intro:
-          'Five decoupled layers: mobile and web clients, Node.js API with WebSockets, AI pipeline with session context, and MongoDB + Redis persistence. Each layer has its own scaling and security policies.',
+          'Mobile and web clients, Node API with WebSockets, AI pipeline with session context, MongoDB and Redis.',
         layers: architectureLayersEn,
       },
       process: {
         sectionTitle: 'Build pipeline',
-        sectionSubtitle: 'From monorepo to production (Vercel web · Render API · EAS · GitHub Actions)',
+        sectionSubtitle: 'From the repo to production (Vercel, Render, EAS, GitHub Actions).',
         steps: processStepsEn,
       },
       techStack: {
         title: 'Production technology stack',
-        intro: 'Libraries and services that power the Anto mobile app, API, and this website.',
+        intro: 'Libraries and services that run the app, the API, and this site.',
         categories: techStackEn,
       },
       challenges: {
-        sectionTitle: 'Technical Challenges and Solutions',
+        sectionTitle: 'Challenges and solutions',
         challengeLabel: 'Challenge:',
         solutionLabel: 'Solution:',
         items: challengesEn,
@@ -641,9 +526,9 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
         items: metricsEn,
       },
       developer: {
-        sectionTitle: 'Lead Developer',
+        sectionTitle: 'Who builds it',
         name: 'Marcelo Ull Marambio',
-        bio: 'Full-stack engineer: React Native/Expo, Next.js, Node.js, MongoDB, Socket.IO, and OpenAI integrations for production mental-health products.',
+        bio: 'Full-stack engineer: React Native/Expo, Next.js, Node.js, MongoDB, Socket.IO, and OpenAI integrations.',
         email: DEVELOPER_EMAIL,
         githubAriaLabel: 'Marcelo Ull Marambio on GitHub',
         githubLabel: 'GitHub',
@@ -653,9 +538,8 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
         linkedinHref: LINKEDIN_PROFILE,
       },
       cta: {
-        title: 'Questions about the stack?',
-        description:
-          'For technical inquiries, integrations, or collaboration on infrastructure, get in touch.',
+        title: 'If you have a question about how Anto is built, write to me.',
+        description: '',
         contactLabel: 'Contact',
         contactHref: localePath(locale, '/contacto'),
         emailLabel: 'Direct Email',
@@ -673,10 +557,10 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
     meta: {
       title: 'Desarrollo - Anto | Stack y arquitectura',
       description:
-        'Documentación técnica full-stack: React Native, Next.js 14, Node.js, MongoDB, Socket.IO, OpenAI GPT-5.4 Mini y seguridad en producción.',
+        'Arquitectura full-stack, IA conversacional y mensajería en tiempo real pensadas para un uso fiable en el día a día.',
       openGraphTitle: 'Desarrollo - Anto | Stack tecnológico',
       openGraphDescription:
-        'React Native · Next.js · Node.js · MongoDB · GPT-5.4 Mini — así está construido Anto.',
+        'React Native · Next.js · Node.js · MongoDB · OpenAI — así está construido Anto.',
       canonicalPath: CANONICAL_PATH,
     },
     hero: {
@@ -684,28 +568,27 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
       title: 'La ingeniería detrás de Anto',
       subtitle:
         'Arquitectura full-stack, IA conversacional y mensajería en tiempo real pensadas para un uso fiable en el día a día.',
-      stackLine:
-        'React Native (Expo) → Express.js / Socket.IO → MongoDB → OpenAI GPT-5.4 Mini',
+      stackLine: 'React Native (Expo) → Express.js / Socket.IO → MongoDB → OpenAI',
       highlightTechs: heroHighlightTechs,
     },
     architecture: {
       sectionTitle: 'Arquitectura en capas',
       intro:
-        'Cinco capas desacopladas: clientes móvil y web, API Node.js con WebSockets, pipeline de IA con contexto de sesión, y persistencia MongoDB + Redis. Cada capa tiene políticas propias de escalado y seguridad.',
+        'Clientes móvil y web, API Node con WebSockets, pipeline de IA con contexto de sesión, persistencia MongoDB y Redis.',
       layers: architectureLayersEs,
     },
     process: {
       sectionTitle: 'Pipeline de construcción',
-      sectionSubtitle: 'Del monorepo a producción (Vercel web · Render API · EAS · GitHub Actions)',
+      sectionSubtitle: 'Del repo a producción (Vercel, Render, EAS, GitHub Actions).',
       steps: processStepsEs,
     },
     techStack: {
       title: 'Stack tecnológico en producción',
-      intro: 'Librerías y servicios que impulsan la app móvil Anto, la API y este sitio web.',
+      intro: 'Librerías y servicios que mueven la app, la API y este sitio.',
       categories: techStackEs,
     },
     challenges: {
-      sectionTitle: 'Desafíos Técnicos y Soluciones',
+      sectionTitle: 'Desafíos y soluciones',
       challengeLabel: 'Desafío:',
       solutionLabel: 'Solución:',
       items: challengesEs,
@@ -715,9 +598,9 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
       items: metricsEs,
     },
     developer: {
-      sectionTitle: 'Desarrollador Principal',
+      sectionTitle: 'Quién lo construye',
       name: 'Marcelo Ull Marambio',
-      bio: 'Ingeniero full-stack: React Native/Expo, Next.js, Node.js, MongoDB, Socket.IO e integraciones OpenAI en productos de salud mental en producción.',
+      bio: 'Ingeniero full-stack: React Native/Expo, Next.js, Node.js, MongoDB, Socket.IO e integraciones OpenAI.',
       email: DEVELOPER_EMAIL,
       githubAriaLabel: 'GitHub de Marcelo Ull Marambio',
       githubLabel: 'GitHub',
@@ -727,9 +610,8 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
       linkedinHref: LINKEDIN_PROFILE,
     },
     cta: {
-      title: '¿Preguntas sobre el stack?',
-      description:
-        'Para consultas técnicas, integraciones o colaboración en infraestructura, escríbeme.',
+      title: 'Si tenés una duda sobre cómo está armado Anto, escribime.',
+      description: '',
       contactLabel: 'Contactar',
       contactHref: localePath(locale, '/contacto'),
       emailLabel: 'Email Directo',
