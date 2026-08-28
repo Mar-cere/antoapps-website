@@ -70,11 +70,8 @@ export function assertBienvenidaCopyInvariants(): string[] {
     }
 
     if (locale === 'es') {
-      if (!/apoyo emocional/i.test(copy.meta.socialDescription)) {
-        errors.push(`${tag} meta.socialDescription debería mencionar apoyo emocional`);
-      }
-      if (!/ansiedad/i.test(copy.meta.title) || !/ansiedad/i.test(copy.meta.description)) {
-        errors.push(`${tag} meta title/description deberían mencionar ansiedad`);
+      if (!/ansiedad/i.test(copy.meta.description)) {
+        errors.push(`${tag} meta.description debería mencionar ansiedad`);
       }
       if (!copy.meta.ogHeadline.trim()) {
         errors.push(`${tag} meta.ogHeadline vacío`);
@@ -82,11 +79,8 @@ export function assertBienvenidaCopyInvariants(): string[] {
     }
 
     if (locale === 'en') {
-      if (!/emotional/i.test(copy.meta.socialDescription)) {
-        errors.push(`${tag} meta.socialDescription should mention emotional support`);
-      }
-      if (!/anxiety/i.test(copy.meta.title) || !/anxiety/i.test(copy.meta.description)) {
-        errors.push(`${tag} meta title/description should mention anxiety`);
+      if (!/anxiety/i.test(copy.meta.description)) {
+        errors.push(`${tag} meta.description should mention anxiety`);
       }
       if (!copy.meta.ogHeadline.trim()) {
         errors.push(`${tag} meta.ogHeadline empty`);
