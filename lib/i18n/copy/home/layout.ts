@@ -77,6 +77,7 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       rights: 'Todos los derechos reservados.',
       productLinks: [
         { href: '/app', label: 'La Aplicación' },
+        { href: '/nexus', label: 'Nexus' },
         { href: '/#home-feat-product', label: 'La app' },
         { href: '/#precios', label: 'Precios' },
         { href: '/privacidad', label: 'Privacidad' },
@@ -143,6 +144,7 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       rights: 'All rights reserved.',
       productLinks: [
         { href: '/en/app', label: 'The App' },
+        { href: '/en/nexus', label: 'Nexus' },
         { href: '/en#home-feat-product', label: 'The app' },
         { href: '/en#precios', label: 'Pricing' },
         { href: '/en/privacidad', label: 'Privacy' },

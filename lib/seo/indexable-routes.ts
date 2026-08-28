@@ -106,6 +106,14 @@ export const INDEXABLE_ROUTES: readonly IndexableRoute[] = [
     note: 'Contacto y soporte',
   },
   {
+    path: '/nexus',
+    changeFrequency: 'monthly',
+    priorityEs: 0.7,
+    priorityEn: 0.6,
+    lastModified: '2026-08-27',
+    note: 'Hero cinematográfico Inside Anto Nexus',
+  },
+  {
     path: '/privacidad',
     changeFrequency: 'monthly',
     priorityEs: 0.6,

@@ -312,6 +312,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       links: [
         { href: localePath('es', '/recursos'), label: 'Recursos' },
         { href: localePath('es', '/app'), label: 'App' },
+        { href: localePath('es', '/nexus'), label: 'Nexus' },
         { href: localePath('es', '/sobre-nosotros'), label: 'Sobre Anto' },
         { href: localePath('es', '/seguridad'), label: 'Seguridad' },
         { href: localePath('es', '/privacidad'), label: 'Privacidad' },
@@ -525,6 +526,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
       links: [
         { href: localePath('en', '/recursos'), label: 'Resources' },
         { href: localePath('en', '/app'), label: 'App' },
+        { href: localePath('en', '/nexus'), label: 'Nexus' },
         { href: localePath('en', '/sobre-nosotros'), label: 'About Anto' },
         { href: localePath('en', '/seguridad'), label: 'Security' },
         { href: localePath('en', '/privacidad'), label: 'Privacy' },

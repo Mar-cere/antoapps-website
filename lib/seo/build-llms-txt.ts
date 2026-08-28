@@ -33,6 +33,7 @@ const PAGE_LABELS: Record<Locale, Record<string, string>> = {
     '/sobre-nosotros': 'Qué es Anto y qué no es',
     '/contacto': 'Contacto y soporte',
     '/desarrollo': 'Roadmap del producto',
+    '/nexus': 'Inside Anto Nexus — visualización de la inteligencia adaptativa',
     '/privacidad': 'Política de privacidad',
     '/terminos': 'Términos de servicio',
   },
@@ -47,6 +48,7 @@ const PAGE_LABELS: Record<Locale, Record<string, string>> = {
     '/sobre-nosotros': 'What Anto is and is not',
     '/contacto': 'Contact and support',
     '/desarrollo': 'Product roadmap',
+    '/nexus': 'Inside Anto Nexus — visualization of adaptive intelligence',
     '/privacidad': 'Privacy policy',
     '/terminos': 'Terms of service',
   },
@@ -65,6 +67,8 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '/sobre-nosotros': 'Acompañamiento emocional con IA; no diagnostica ni reemplaza terapia. Hecho en Chile.',
     '/contacto': 'Formulario y email soporte@antoapps.com.',
     '/desarrollo': 'Estado del producto y roadmap público.',
+    '/nexus':
+      'Página de una escena: cada conversación forma la inteligencia que te comprende. Visualización viva de cómo Anto conecta conocimiento, contexto y aprendizaje. Sin métricas promocionales.',
     '/privacidad': 'Tratamiento de datos, cifrado, derechos del usuario.',
     '/terminos': 'Condiciones de uso del servicio.',
   },
@@ -80,6 +84,8 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '/sobre-nosotros': 'AI emotional accompaniment; does not diagnose or replace therapy. Made in Chile.',
     '/contacto': 'Contact form and email soporte@antoapps.com.',
     '/desarrollo': 'Product status and public roadmap.',
+    '/nexus':
+      'Single-scene page: every conversation shapes the intelligence that understands you. Living visualization of how Anto connects knowledge, context and learning. No promotional metrics.',
     '/privacidad': 'Data handling, encryption, user rights.',
     '/terminos': 'Terms of service.',
   },

@@ -10,14 +10,25 @@
     "ignoreValues": [
       {
         "rule": "overused-font",
-        "value": "Inter",
+        "value": "inter",
         "reason": "Parte del stack tipográfico intencional de Anto"
       },
       {
         "rule": "overused-font",
-        "value": "Roboto",
+        "value": "roboto",
         "reason": "Fallback del stack tipográfico existente"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "styles/components/nexus.css"
+        ],
+        "createdAt": "2026-08-28T00:03:07.809Z",
+        "reason": "Brief de /nexus: highlight violeta-cian solo en understands you / te comprende"
       }
-    ]
+    ],
+    "ignoreRules": [],
+    "ignoreFiles": []
   }
 }
