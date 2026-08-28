@@ -61,6 +61,7 @@ export type NexusBudget = {
 
 const PSYCHE = [
   [0.486, 0.361, 1.0],
+  [0.545, 0.361, 0.965],
   [0.659, 0.333, 0.969],
   [0.714, 0.424, 1.0],
 ];
@@ -73,6 +74,11 @@ const CORTEX = [
   [0.231, 0.51, 0.965],
   [0.31, 0.486, 1.0],
   [0.376, 0.647, 0.98],
+];
+const DEEP = [
+  [0.059, 0.122, 0.302],
+  [0.063, 0.165, 0.337],
+  [0.075, 0.169, 0.373],
 ];
 const WARM = [0.992, 0.729, 0.455];
 
@@ -187,43 +193,48 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
     ribbon(p, -0.12, 0.02, -0.08, 2.28, 3.1, 0.19, 0.15) * 0.85 +
     ribbon(p, 0.06, 0.2, -0.02, 1.6, 4.2, 0.18, 0.14) * 0.55;
   const rC = ribbon(p, 0.04, 0.05, 0.1, 1.55, 0.85, 0.24, 0.2);
-  let psyche = 0.34 + rP * 2.6 + n * 0.05;
-  let persona = 0.16 + rN * 2.7 + (1 - n) * 0.03;
-  let cortex = 0.18 + rC * 1.45 + Math.abs(p.z) * 0.04;
+  let psyche = 0.4 + rP * 2.45 + n * 0.06;
+  let persona = 0.13 + rN * 2.1 + (1 - n) * 0.03;
+  let cortex = 0.24 + rC * 1.55 + Math.abs(p.z) * 0.05;
+  let deep = 0.4 + (1 - Math.max(rP, rN, rC)) * 0.45;
   let warm = 0;
   for (const focus of FOCI) {
     const influence = Math.min(1.1, Math.max(0, gauss(p, { ...focus, weight: 1 })));
     if (focus.kind === 'vp') {
       psyche += influence * 0.95;
-      persona += influence * 0.55;
-    } else if (focus.kind === 'cp') {
-      cortex += influence * 0.9;
-      persona += influence * 0.58;
-    } else if (focus.kind === 'vc') {
-      psyche += influence * 0.82;
-      cortex += influence * 0.8;
-    } else {
       persona += influence * 0.5;
-      cortex += influence * 0.32;
-      psyche += influence * 0.18;
+    } else if (focus.kind === 'cp') {
+      cortex += influence * 0.88;
+      persona += influence * 0.52;
+    } else if (focus.kind === 'vc') {
+      psyche += influence * 0.84;
+      cortex += influence * 0.78;
+    } else {
+      persona += influence * 0.42;
+      cortex += influence * 0.28;
+      psyche += influence * 0.22;
     }
   }
   psyche = Math.max(0.03, psyche);
   persona = Math.max(0.03, persona);
   cortex = Math.max(0.04, cortex);
-  const sum = psyche + persona + cortex + warm;
+  deep = Math.max(0.08, deep);
+  const sum = psyche + persona + cortex + deep + warm;
   psyche /= sum;
   persona /= sum;
   cortex /= sum;
+  deep /= sum;
   warm /= sum;
-  const pA = PSYCHE[n > 0.66 ? 2 : n > 0.33 ? 1 : 0];
+  const pA = PSYCHE[n > 0.75 ? 3 : n > 0.5 ? 2 : n > 0.25 ? 1 : 0];
   const nA = PERSONA[n2 > 0.62 ? 2 : n2 > 0.3 ? 1 : 0];
   const cA = CORTEX[n > 0.7 ? 2 : n > 0.4 ? 1 : 0];
-  const r = pA[0] * psyche + nA[0] * persona + cA[0] * cortex + WARM[0] * warm;
-  const g = pA[1] * psyche + nA[1] * persona + cA[1] * cortex + WARM[1] * warm;
-  const b = pA[2] * psyche + nA[2] * persona + cA[2] * cortex + WARM[2] * warm;
+  const dA = DEEP[n2 > 0.66 ? 2 : n2 > 0.33 ? 1 : 0];
+  const r = pA[0] * psyche + nA[0] * persona + cA[0] * cortex + dA[0] * deep + WARM[0] * warm;
+  const g = pA[1] * psyche + nA[1] * persona + cA[1] * cortex + dA[1] * deep + WARM[1] * warm;
+  const b = pA[2] * psyche + nA[2] * persona + cA[2] * cortex + dA[2] * deep + WARM[2] * warm;
   const ribbonStrength = Math.max(rP, rN, rC);
-  return { r, g, b, ribbon: ribbonStrength };
+  const dusk = 0.8 + ribbonStrength * 0.12;
+  return { r: r * dusk, g: g * dusk, b: b * dusk, ribbon: ribbonStrength };
 }
 
 function dist2(a: Vec3, b: Vec3): number {
@@ -311,10 +322,11 @@ function assignActivity(nodes: NexusNode[], rng: () => number) {
   if (n === 0) {
     return;
   }
-  const convTarget = Math.max(8, Math.round(n * 0.04));
-  const netTarget = Math.max(24, Math.round(n * 0.17));
-  const tissueNet = Math.round(netTarget * 0.22);
-  const regionalNet = netTarget - tissueNet;
+  const convTarget = Math.max(4, Math.round(n * 0.02));
+  const activeTarget = Math.max(8, Math.round(n * 0.05));
+  const moderateTarget = Math.max(16, Math.round(n * 0.18));
+  const tissueMod = Math.round(moderateTarget * 0.28);
+  const regionalMod = moderateTarget - tissueMod;
   const share = [0.34, 0.28, 0.22, 0.16];
   const buckets: { i: number; score: number }[][] = [[], [], [], []];
   const tissue: { i: number; score: number }[] = [];
@@ -342,42 +354,48 @@ function assignActivity(nodes: NexusNode[], rng: () => number) {
 
   for (let f = 0; f < FOCI.length; f += 1) {
     buckets[f].sort((a, b) => a.score - b.score);
-    const convTake = Math.max(2, Math.round(convTarget * share[f]));
-    const netTake = Math.max(4, Math.round(regionalNet * share[f]));
+    const convTake = Math.max(1, Math.round(convTarget * share[f]));
+    const activeTake = Math.max(2, Math.round(activeTarget * share[f]));
+    const modTake = Math.max(3, Math.round(regionalMod * share[f]));
     for (let k = 0; k < convTake && k < buckets[f].length; k += 1) {
-      mark(buckets[f][k].i, 1, 2.05);
+      mark(buckets[f][k].i, 1, 1.32);
     }
-    for (let k = convTake; k < convTake + netTake && k < buckets[f].length; k += 1) {
-      mark(buckets[f][k].i, 0.42, 1.62);
+    for (let k = convTake; k < convTake + activeTake && k < buckets[f].length; k += 1) {
+      mark(buckets[f][k].i, 0.55, 1.2);
+    }
+    for (let k = convTake + activeTake; k < convTake + activeTake + modTake && k < buckets[f].length; k += 1) {
+      mark(buckets[f][k].i, 0.22, 1.08);
     }
   }
 
   tissue.sort((a, b) => a.score - b.score);
   let added = 0;
   for (const item of tissue) {
-    if (added >= tissueNet) {
+    if (added >= tissueMod) {
       break;
     }
     if (taken.has(item.i)) {
       continue;
     }
-    mark(item.i, 0.42, 1.48);
+    mark(item.i, 0.22, 1.05);
     added += 1;
   }
 
-  const nexusTint = [0.875, 0.98, 0.996];
+  const nexusTint = [0.812, 0.98, 0.996];
   for (const node of nodes) {
     if (node.bright < 0.9) {
       continue;
     }
-    const t = 0.28 + rng() * 0.24;
-    node.r = node.r * (1 - t) + nexusTint[0] * t;
-    node.g = node.g * (1 - t) + nexusTint[1] * t;
-    node.b = node.b * (1 - t) + nexusTint[2] * t;
-    if (rng() < 0.1) {
-      node.r = node.r * 0.62 + WARM[0] * 0.38;
-      node.g = node.g * 0.66 + WARM[1] * 0.34;
-      node.b = node.b * 0.82 + WARM[2] * 0.18;
+    if (rng() < 0.4) {
+      const t = 0.1 + rng() * 0.12;
+      node.r = node.r * (1 - t) + nexusTint[0] * t;
+      node.g = node.g * (1 - t) + nexusTint[1] * t;
+      node.b = node.b * (1 - t) + nexusTint[2] * t;
+    }
+    if (rng() < 0.08) {
+      node.r = node.r * 0.7 + WARM[0] * 0.3;
+      node.g = node.g * 0.72 + WARM[1] * 0.28;
+      node.b = node.b * 0.88 + WARM[2] * 0.12;
     }
   }
 }
@@ -576,7 +594,7 @@ export function nexusBudget(width: number): NexusBudget {
 
 export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField {
   const rng = mulberry32(seed);
-  const coreTarget = Math.floor(budget.nodes * 0.955);
+  const coreTarget = Math.floor(budget.nodes * 0.9);
   const mistTarget = budget.nodes - coreTarget;
   const nodes: NexusNode[] = [];
   const maxAttempts = coreTarget * 60;
@@ -622,7 +640,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       r: color.r,
       g: color.g,
       b: color.b,
-      size: 1.35 + density * 1.45 + rng() * 0.3 + color.ribbon * 0.35 - edge * 0.25,
+      size: 1.08 + density * 0.85 + rng() * 0.22 + color.ribbon * 0.18 - edge * 0.2,
       cluster,
       density,
       bright: 0,
@@ -653,7 +671,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       r: color.r,
       g: color.g,
       b: color.b,
-      size: 1.5 + density * 1.2 + color.ribbon * 0.35,
+      size: 1.15 + density * 0.7 + color.ribbon * 0.2,
       cluster,
       density: Math.max(density, 0.22),
       bright: 0,
@@ -676,23 +694,29 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       z: (rng() * 2 - 1) * 0.44,
     };
     const { density, cluster } = fieldAt(p);
-    if (density > 0.14) {
+    const interior = density > 0.05 && density < 0.36;
+    const fringe = density <= 0.05;
+    if (!interior && !fringe) {
       continue;
     }
-    if (density < 0.018 && rng() > 0.14) {
+    if (fringe && rng() > 0.18) {
+      continue;
+    }
+    if (interior && rng() > 0.55) {
       continue;
     }
     const color = mixColor(p);
+    const falloff = interior ? 1 : 0.62;
     nodes.push({
       x: p.x,
       y: p.y,
       z: p.z,
-      r: color.r,
-      g: color.g,
-      b: color.b,
-      size: 1.35 + rng() * 0.9,
+      r: (color.r * 0.55 + PSYCHE[1][0] * 0.22 + DEEP[1][0] * 0.23) * falloff,
+      g: (color.g * 0.42 + PERSONA[0][1] * 0.12 + DEEP[1][1] * 0.28) * falloff,
+      b: (color.b * 0.5 + PSYCHE[0][2] * 0.22 + DEEP[1][2] * 0.28) * falloff,
+      size: interior ? 2.45 + rng() * 1.25 : 1.25 + rng() * 0.75,
       cluster,
-      density: Math.max(0.04, density * 0.32),
+      density: Math.max(0.04, density * 0.4),
       bright: 0,
       mist: 1,
     });
@@ -704,10 +728,9 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
 
   const pairs: Array<[number, number]> = [
     [0, 1],
-    [1, 2],
+    [1, 3],
     [2, 3],
-    [3, 0],
-    [0, 2],
+    [0, 3],
   ];
   for (let c = 0; c < pairs.length; c += 1) {
     const from = FOCI[pairs[c][0]];
@@ -736,7 +759,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     const tint = mixColor(mid);
     filaments.push({
       points: tessellate(a, mid, b, 14),
-      alpha: 0.3 + rng() * 0.08,
+      alpha: 0.14 + rng() * 0.05,
       r: tint.r,
       g: tint.g,
       b: tint.b,
@@ -750,7 +773,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
           y: (b.y + branch.y) * 0.5 + (rng() - 0.5) * 0.05,
           z: (b.z + branch.z) * 0.5 + (rng() - 0.5) * 0.05,
         }, branch, 8),
-        alpha: 0.24 + rng() * 0.06,
+        alpha: 0.1 + rng() * 0.04,
         r: tint.r,
         g: tint.g,
         b: tint.b,
@@ -770,23 +793,23 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       nearFocus(start) < 1.55 ||
       nearFocus(end) < 1.55 ||
       nearVoid(mid) < 1.25;
-    filament.alpha *= meaningful ? 2.15 : 0.64;
+    filament.alpha *= meaningful ? 0.92 : 0.12;
   }
 
   const membranes: NexusMembrane[] = [];
-  const patchCount = 12;
+  const patchCount = 14;
   for (let p = 0; p < patchCount; p += 1) {
     const start = coreNodes[Math.floor(rng() * coreNodes.length)];
     const picks: NexusNode[] = [start];
     for (const candidate of coreNodes) {
-      if (picks.length >= 8) {
+      if (picks.length >= 5) {
         break;
       }
-      if (dist2(start, candidate) < 0.085 && rng() > 0.4) {
+      if (dist2(start, candidate) < 0.04 && rng() > 0.35) {
         picks.push(candidate);
       }
     }
-    if (picks.length < 5) {
+    if (picks.length < 4) {
       continue;
     }
     const centroid = {
@@ -795,6 +818,11 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       z: picks.reduce((sum, node) => sum + node.z, 0) / picks.length,
     };
     const tint = mixColor(centroid);
+    const silk = {
+      r: tint.r * 0.62 + DEEP[1][0] * 0.28 + PSYCHE[1][0] * 0.1,
+      g: tint.g * 0.48 + DEEP[1][1] * 0.38,
+      b: tint.b * 0.7 + DEEP[1][2] * 0.22 + 0.08,
+    };
     for (let i = 0; i < picks.length - 1; i += 1) {
       membranes.push({
         ax: centroid.x,
@@ -806,22 +834,22 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
         cx: picks[i + 1].x,
         cy: picks[i + 1].y,
         cz: picks[i + 1].z,
-        r: tint.r,
-        g: tint.g,
-        b: tint.b,
-        alpha: 0.014 + rng() * 0.01,
+        r: silk.r,
+        g: silk.g,
+        b: silk.b,
+        alpha: 0.012 + rng() * 0.008,
       });
     }
   }
 
-  for (let s = 0; s < 10; s += 1) {
+  for (let s = 0; s < 8; s += 1) {
     const a = coreNodes[Math.floor(rng() * coreNodes.length)];
     let b = a;
     let cNode = a;
     for (let k = 0; k < 24; k += 1) {
       const candidate = coreNodes[Math.floor(rng() * coreNodes.length)];
       const d = dist2(a, candidate);
-      if (d > 0.02 && d < 0.08) {
+      if (d > 0.012 && d < 0.042) {
         b = candidate;
         break;
       }
@@ -829,7 +857,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     for (let k = 0; k < 24; k += 1) {
       const candidate = coreNodes[Math.floor(rng() * coreNodes.length)];
       const d = dist2(a, candidate);
-      if (candidate !== b && d > 0.02 && d < 0.09) {
+      if (candidate !== b && d > 0.012 && d < 0.046) {
         cNode = candidate;
         break;
       }
@@ -853,10 +881,10 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       cx: cNode.x,
       cy: cNode.y,
       cz: cNode.z,
-      r: tint.r,
-      g: tint.g,
-      b: tint.b,
-      alpha: 0.015 + rng() * 0.008,
+      r: tint.r * 0.58 + DEEP[0][0] * 0.42,
+      g: tint.g * 0.45 + DEEP[0][1] * 0.55,
+      b: tint.b * 0.68 + DEEP[0][2] * 0.32,
+      alpha: 0.01 + rng() * 0.007,
     });
   }
 

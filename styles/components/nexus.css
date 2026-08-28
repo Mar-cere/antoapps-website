@@ -275,8 +275,8 @@
   max-width: 8.4rem;
   padding: 0.26rem 0.36rem;
   border-radius: 0.32rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(6, 11, 24, 0.34);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(6, 11, 24, 0.42);
   color: var(--nexus-muted);
   pointer-events: none;
   opacity: 0;
@@ -287,7 +287,7 @@
 }
 
 .nexus-event.is-on {
-  opacity: 0.7;
+  opacity: 0.76;
 }
 
 .nexus-event__icon {

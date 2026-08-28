@@ -54,29 +54,32 @@ void main() {
   float sync = min(min(max(f0, f1), max(f2, f3)), max(max(f0, f2), max(f1, f3)));
   float nexus = act(pos, uNexus, 0.1) * uBoost;
   float tissue = smoothstep(0.08, 0.52, aDensity);
-  float network = smoothstep(0.18, 0.52, aBright);
-  float conv = smoothstep(0.72, 1.0, aBright);
-  float pulse = 0.84 + 0.16 * sin(uTime * 1.05 + aCluster * 1.4 + aCenter.x * 2.0);
-  float quiet = 0.105 + tissue * 0.05 + wake * 0.04;
-  float net = 0.58 + focus * 0.2 + wake * 0.24 + pulse * 0.05;
-  float hot = 0.9 + nexus * 0.18 + wake * 0.08 + sync * 0.1;
-  float activity = mix(quiet, net, network);
+  float moderate = smoothstep(0.12, 0.32, aBright);
+  float active = smoothstep(0.42, 0.68, aBright);
+  float conv = smoothstep(0.85, 1.0, aBright);
+  float pulse = 0.88 + 0.12 * sin(uTime * 0.92 + aCluster * 1.4 + aCenter.x * 2.0);
+  float quiet = 0.18 + tissue * 0.1 + wake * 0.03;
+  float mid = 0.32 + focus * 0.1 + wake * 0.14 + pulse * 0.04;
+  float lit = 0.48 + focus * 0.12 + wake * 0.18;
+  float hot = 0.7 + nexus * 0.1 + wake * 0.06 + sync * 0.07;
+  float activity = mix(quiet, mid, moderate);
+  activity = mix(activity, lit, active);
   activity = mix(activity, hot, conv);
-  activity *= mix(1.0, 0.22, aMist);
+  activity *= mix(1.0, 0.7, aMist);
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.28, 0.5, clip.w);
   float farDim = smoothstep(3.15, 4.7, clip.w);
-  float sizePx = aSize * mix(0.5, mix(1.38, 1.72, conv), network);
-  sizePx *= mix(1.0, 1.28, aMist);
-  sizePx *= 1.0 + nearBlur * mix(0.55, 1.2, network) + wake * 0.18;
+  float sizePx = aSize * mix(0.78, mix(0.88, 1.08, conv), mix(moderate, 1.0, active));
+  sizePx *= mix(1.0, 2.15, aMist);
+  sizePx *= 1.0 + nearBlur * mix(0.7, 0.95, mix(moderate, 1.0, active)) + wake * 0.1;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
   vCorner = aCorner;
   vMist = aMist;
   vGlow = conv;
-  vec3 nexusTint = vec3(0.875, 1.0, 0.996);
-  vColor = mix(aColor, nexusTint, conv * (0.22 + nexus * 0.4 + sync * 0.2));
-  vAlpha = (0.08 + 0.62 * activity) * (1.0 - farDim * 0.64) * (1.0 - nearBlur * 0.16);
+  vec3 nexusTint = vec3(0.812, 0.98, 0.996);
+  vColor = mix(aColor, nexusTint, conv * (0.08 + nexus * 0.2 + sync * 0.1));
+  vAlpha = (0.08 + 0.5 * activity) * (1.0 - farDim * 0.7) * (1.0 - nearBlur * 0.14);
 }
 `;
 
@@ -89,9 +92,9 @@ varying float vMist;
 varying float vGlow;
 void main() {
   float d = length(vCorner);
-  float core = exp(-d * d * mix(7.4, 1.6, vMist));
-  float halo = exp(-d * d * mix(2.2, 0.55, vMist)) * mix(0.18, 0.48, vMist);
-  halo += exp(-d * d * 1.35) * vGlow * 0.28;
+  float core = exp(-d * d * mix(8.2, 0.85, vMist));
+  float halo = exp(-d * d * mix(2.6, 0.32, vMist)) * mix(0.14, 0.72, vMist);
+  halo += exp(-d * d * 1.8) * vGlow * 0.16;
   float a = (core + halo) * vAlpha;
   if (a < 0.01) discard;
   gl_FragColor = vec4(vColor * a, a);
@@ -128,8 +131,8 @@ void main() {
   float focus = max(f0, max(f1, max(f2, f3)));
   float nexus = act(aPosition, uNexus, 0.12) * uBoost;
   gl_Position = uViewProj * vec4(aPosition, 1.0);
-  vAlpha = aAlpha * (0.55 + focus * 0.5 + wake * 0.62 + nexus * 0.22);
-  vColor = mix(aColor, vec3(0.87, 1.0, 0.996), nexus * 0.38);
+  vAlpha = aAlpha * (0.1 + focus * 0.7 + wake * 0.95 + nexus * 0.16);
+  vColor = mix(aColor, vec3(0.75, 0.9, 0.98), nexus * 0.16);
 }
 `;
 
@@ -170,9 +173,10 @@ varying float vAlpha;
 varying vec3 vBary;
 void main() {
   float edge = min(min(vBary.x, vBary.y), vBary.z);
-  float veil = smoothstep(0.0, 0.1, edge) * (1.0 - smoothstep(0.18, 0.62, edge) * 0.45);
-  float a = veil * vAlpha * 1.35;
-  if (a < 0.004) discard;
+  float veil = smoothstep(0.0, 0.28, edge);
+  veil *= 0.55;
+  float a = veil * vAlpha * 0.7;
+  if (a < 0.003) discard;
   gl_FragColor = vec4(vColor * a, a);
 }
 `;
@@ -191,8 +195,8 @@ const SPARK_FRAG = `
 precision mediump float;
 void main() {
   vec2 p = gl_PointCoord * 2.0 - 1.0;
-  float a = exp(-dot(p, p) * 5.2) * 0.42;
-  gl_FragColor = vec4(vec3(0.78, 0.94, 0.99) * a, a);
+  float a = exp(-dot(p, p) * 5.8) * 0.22;
+  gl_FragColor = vec4(vec3(0.62, 0.82, 0.96) * a, a);
 }
 `;
 
@@ -350,7 +354,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     let nodeCount = 0;
     let lineCount = 0;
     let membCount = 0;
-    const sparkCount = 6;
+    const sparkCount = 4;
     const sparkData = new Float32Array(sparkCount * 3);
     const sparkMeta: { filament: number; speed: number; offset: number }[] = [];
 
