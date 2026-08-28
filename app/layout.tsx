@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { headers } from 'next/headers';
 import HtmlLang from '@/components/i18n/HtmlLang';
 import { ToastProvider } from '@/components/ui/ToastContainer';
 import ClarityAnalytics from '@/components/Clarity';
@@ -27,13 +28,16 @@ export const viewport = {
   viewportFit: 'cover' as const,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = await headers();
+  const locale = headersList.get('x-locale') || 'es';
+
   return (
-    <html lang="es" className={inter.variable}>
+    <html lang={locale} className={inter.variable}>
       <body className={inter.className}>
         <ClarityAnalytics />
         <HtmlLang />
