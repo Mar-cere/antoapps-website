@@ -436,7 +436,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             href: '/seguridad',
             label: 'Security',
-            description: 'Encryption, privacy, and clinical limits',
+            description: 'Encryption and privacy',
           },
         ],
         coda: {
@@ -681,7 +681,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           href: '/seguridad',
           label: 'Seguridad',
-          description: 'Cifrado, privacidad y límites clínicos',
+          description: 'Cifrado y privacidad',
         },
       ],
       coda: {
