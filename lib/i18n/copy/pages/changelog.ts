@@ -533,14 +533,14 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
         currentLabel: 'Changelog',
       },
       meta: {
-        title: 'Version History | Anto',
+        title: 'Version history | Anto',
         description: `Anto app version history (Expo). Current version ${APP_VERSION}: 1-day trial, i18n ES/EN, and chat UX improvements.`,
-        openGraphTitle: 'Version History | Anto',
+        openGraphTitle: 'Version history | Anto',
         openGraphDescription: `Anto app changelog: ${APP_VERSION} published with i18n and chat improvements.`,
         canonicalPath: CANONICAL_PATH,
       },
       header: {
-        title: 'Version History',
+        title: 'Version history',
         subtitle: 'Version history and updates for the Anto application',
         storeVersionBadge: `Store version: ${APP_VERSION}`,
         statusText: `Published according to the App Store release (iOS build 39, Android 25). This site is the public reference for Anto version history and product updates.`,
