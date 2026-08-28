@@ -172,12 +172,12 @@ function tessellate(a: Vec3, m: Vec3, b: Vec3, steps: number): Vec3[] {
 
 export function nexusBudget(width: number): NexusBudget {
   if (width < 768) {
-    return { nodes: 700, filaments: 42 };
+    return { nodes: 900, filaments: 70 };
   }
   if (width < 1024) {
-    return { nodes: 1400, filaments: 90 };
+    return { nodes: 1800, filaments: 130 };
   }
-  return { nodes: 3000, filaments: 180 };
+  return { nodes: 3600, filaments: 260 };
 }
 
 export function buildNexusField(budget: NexusBudget, seed = 0xa170): NexusField {
@@ -206,7 +206,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xa170): NexusField 
       r: color.r,
       g: color.g,
       b: color.b,
-      size: 2.1 + density * 5.4 + rng() * 1.5,
+      size: 3.6 + density * 7.4 + rng() * 2.2,
       cluster,
       density,
     });
@@ -262,7 +262,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xa170): NexusField 
         };
         filaments.push({
           points: tessellate(a, mid, b, 7),
-          alpha: 0.2 + rng() * 0.14,
+          alpha: 0.38 + rng() * 0.2,
         });
       }
     }
@@ -284,7 +284,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xa170): NexusField 
       };
       filaments.push({
         points: [a, kink, b],
-        alpha: 0.1 + rng() * 0.08,
+        alpha: 0.22 + rng() * 0.12,
       });
     } else {
       const mid: Vec3 = {
@@ -294,7 +294,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xa170): NexusField 
       };
       filaments.push({
         points: tessellate(a, mid, b, 11),
-        alpha: 0.09 + rng() * 0.1,
+        alpha: 0.2 + rng() * 0.14,
       });
     }
   }

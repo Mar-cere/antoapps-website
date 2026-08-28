@@ -41,12 +41,12 @@ void main() {
   float nexus = act(pos, uNexus, 0.24) * uBoost;
   activity += nexus * 0.85;
   vec4 clip = uViewProj * vec4(pos, 1.0);
-  float sizePx = aSize * activity;
+  float sizePx = aSize * activity * 1.35;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
   vCorner = aCorner;
-  vColor = mix(aColor, vec3(0.875, 1.0, 1.0), nexus * 0.72) * (0.5 + 0.5 * activity);
-  vAlpha = 0.14 + 0.42 * activity;
+  vColor = mix(aColor, vec3(0.875, 1.0, 1.0), nexus * 0.72) * (0.72 + 0.38 * activity);
+  vAlpha = 0.34 + 0.58 * activity;
 }
 `;
 
@@ -57,7 +57,7 @@ varying float vAlpha;
 varying vec2 vCorner;
 void main() {
   float d = length(vCorner);
-  float a = (exp(-d * d * 6.4) + exp(-d * d * 1.8) * 0.22) * vAlpha;
+  float a = (exp(-d * d * 5.2) + exp(-d * d * 1.45) * 0.34) * vAlpha;
   if (a < 0.014) discard;
   gl_FragColor = vec4(vColor * a, a);
 }
@@ -82,8 +82,8 @@ void main() {
   float activity = 0.34 + 0.66 * max(act(aPosition, uWake0, 0.4), max(act(aPosition, uWake1, 0.34), act(aPosition, uWake2, 0.36)));
   float nexus = act(aPosition, uNexus, 0.26) * uBoost;
   gl_Position = uViewProj * vec4(aPosition, 1.0);
-  vAlpha = aAlpha * (0.32 + 0.9 * activity + nexus * 0.5);
-  vColor = mix(vec3(0.42, 0.6, 0.96), vec3(0.87, 1.0, 1.0), nexus);
+  vAlpha = aAlpha * (0.58 + 1.05 * activity + nexus * 0.55);
+  vColor = mix(vec3(0.55, 0.72, 1.0), vec3(0.9, 1.0, 1.0), nexus);
 }
 `;
 
@@ -102,7 +102,7 @@ uniform mat4 uViewProj;
 void main() {
   vec4 clip = uViewProj * vec4(aPosition, 1.0);
   gl_Position = clip;
-  gl_PointSize = max(1.6, 5.5 * (1.8 / max(0.45, clip.w)));
+  gl_PointSize = max(2.2, 7.2 * (1.8 / max(0.45, clip.w)));
 }
 `;
 
@@ -366,8 +366,8 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       gl.viewport(0, 0, canvas.width, canvas.height);
-      const proj = perspective((38 * Math.PI) / 180, width / height, 0.12, 8);
-      const view = lookAt(0.16, 0.09, 2.32, 0.05, 0.1, 0);
+      const proj = perspective((34 * Math.PI) / 180, width / height, 0.12, 8);
+      const view = lookAt(0.1, 0.05, 1.78, 0.04, 0.08, 0);
       viewProj = multiply4(proj, view);
       const budget = nexusBudget(window.innerWidth);
       if (budget.nodes !== lastBudget) {

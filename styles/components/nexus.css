@@ -145,8 +145,8 @@
   display: grid;
   grid-template-columns: 1fr;
   min-height: 100dvh;
-  padding: calc(4.75rem + env(safe-area-inset-top, 0px)) var(--nexus-pad-x) 2.25rem;
-  gap: 1.25rem;
+  padding: calc(4.75rem + env(safe-area-inset-top, 0px)) var(--nexus-pad-x) 1.5rem;
+  gap: 0.75rem;
 }
 
 .nexus-copy {
@@ -232,15 +232,15 @@
 
 .nexus-stage {
   position: relative;
-  min-height: 52vh;
-  margin: 0 -0.4rem;
+  min-height: 64vh;
+  margin: 0 calc(var(--nexus-pad-x) * -0.55);
 }
 
 .nexus-organism {
   position: relative;
   width: 100%;
-  height: 52vh;
-  min-height: 18rem;
+  height: 64vh;
+  min-height: 22rem;
 }
 
 .nexus-organism__canvas {
@@ -401,37 +401,42 @@
 
 @media (min-width: 768px) {
   .nexus-hero {
-    grid-template-columns: minmax(16rem, 0.4fr) minmax(0, 0.6fr);
-    align-items: center;
-    gap: 1rem 1.5rem;
-    max-width: 90rem;
-    margin: 0 auto;
-    padding-top: calc(5rem + env(safe-area-inset-top, 0px));
-    padding-bottom: 2.5rem;
+    grid-template-columns: minmax(15rem, 0.32fr) minmax(0, 0.68fr);
+    align-items: stretch;
+    gap: 0.5rem 0.75rem;
+    max-width: none;
+    margin: 0;
+    padding: calc(4.25rem + env(safe-area-inset-top, 0px)) 0 0 var(--nexus-pad-x);
+  }
+
+  .nexus-copy {
+    justify-content: center;
+    padding-right: 0.75rem;
   }
 
   .nexus-stage {
-    min-height: calc(100dvh - 6.5rem);
+    min-height: calc(100dvh - 4.25rem);
     margin: 0;
   }
 
   .nexus-organism {
-    height: min(72vh, calc(100dvh - 7.5rem));
-    min-height: 28rem;
+    height: calc(100dvh - 4.25rem);
+    min-height: 32rem;
+  }
+
+  .nexus-aside {
+    right: 4%;
+    bottom: 5%;
   }
 }
 
 @media (min-width: 960px) {
   .nexus-hero {
-    grid-template-columns: minmax(18rem, 0.36fr) minmax(0, 0.64fr);
+    grid-template-columns: minmax(17rem, 0.3fr) minmax(0, 0.7fr);
   }
 
   .nexus-copy {
-    padding-right: 0.5rem;
-  }
-
-  .nexus-organism {
-    height: min(78vh, calc(100dvh - 6.5rem));
+    padding-right: 0.35rem;
   }
 }
 
