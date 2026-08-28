@@ -65,7 +65,6 @@ export default function NexusPageContent({ locale }: NexusPageContentProps) {
             </div>
             <div className="nexus-stage">
               <NexusOrganism events={copy.events} label={copy.organismAria} />
-              <p className="nexus-aside">{copy.aside}</p>
             </div>
           </section>
         </main>
