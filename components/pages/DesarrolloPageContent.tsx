@@ -126,21 +126,6 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
           </div>
         </section>
 
-        <section className="metrics-section" data-fade-section>
-          <div className="container">
-            <h2 className="section-title reveal-on-scroll">{copy.metrics.sectionTitle}</h2>
-
-            <div className="metrics-grid" data-stagger>
-              {copy.metrics.items.map((metric) => (
-                <div key={metric.label} className="metric-card reveal-on-scroll" data-stagger-item>
-                  <div className="metric-value">{metric.value}</div>
-                  <div className="metric-label">{metric.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="development-process" data-fade-section>
           <div className="container">
             <h2 className="section-title reveal-on-scroll">{copy.process.sectionTitle}</h2>
