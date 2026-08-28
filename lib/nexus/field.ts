@@ -51,6 +51,7 @@ export type NexusField = {
   filaments: NexusFilament[];
   membranes: NexusMembrane[];
   hubs: NexusHub[];
+  foci: Vec3[];
 };
 
 export type NexusBudget = {
@@ -101,8 +102,14 @@ const LOBES: readonly Ellipsoid[] = [
   { cx: 0.1, cy: 0.52, cz: 0.04, rx: 0.16, ry: 0.14, rz: 0.14, weight: 0.62 },
 ];
 
+const FOCI: readonly Ellipsoid[] = [
+  { cx: 0.14, cy: 0.24, cz: 0.06, rx: 0.12, ry: 0.11, rz: 0.1, weight: 1.05 },
+  { cx: -0.16, cy: 0.3, cz: -0.05, rx: 0.11, ry: 0.1, rz: 0.09, weight: 0.92 },
+  { cx: 0.06, cy: -0.16, cz: 0.03, rx: 0.11, ry: 0.1, rz: 0.09, weight: 0.88 },
+];
+
 const VOIDS: readonly Ellipsoid[] = [
-  { cx: 0.02, cy: 0.12, cz: 0.02, rx: 0.08, ry: 0.09, rz: 0.07, weight: -0.52 },
+  { cx: 0.22, cy: 0.08, cz: -0.12, rx: 0.08, ry: 0.09, rz: 0.07, weight: -0.48 },
 ];
 
 function mulberry32(seed: number): () => number {
@@ -137,6 +144,9 @@ function fieldAt(p: Vec3): { density: number; cluster: number } {
   }
   for (const hole of VOIDS) {
     density += gauss(p, hole);
+  }
+  for (const focus of FOCI) {
+    density += gauss(p, focus);
   }
   if (p.y < -0.52) {
     density *= 0.5 + (p.y + 0.85) * 0.6;
@@ -244,7 +254,7 @@ function buildPlexus(core: NexusNode[], maxEdges: number, rng: () => number): Ne
 
   const filaments: NexusFilament[] = [];
   const used = new Set<string>();
-  const maxD = 0.068 * 0.068;
+  const maxD = 0.09 * 0.09;
 
   for (let i = 0; i < core.length && filaments.length < maxEdges; i += 1) {
     const a = core[i];
@@ -273,7 +283,7 @@ function buildPlexus(core: NexusNode[], maxEdges: number, rng: () => number): Ne
       }
     }
     near.sort((left, right) => left.d - right.d);
-    const take = Math.min(3, near.length);
+    const take = Math.min(2, near.length);
     for (let n = 0; n < take; n += 1) {
       if (filaments.length >= maxEdges) {
         break;
@@ -287,36 +297,24 @@ function buildPlexus(core: NexusNode[], maxEdges: number, rng: () => number): Ne
       }
       used.add(edge);
       const b = core[j];
-      const curve = rng() < 0.12;
       const tint = {
         r: (a.r + b.r) * 0.5,
         g: (a.g + b.g) * 0.5,
         b: (a.b + b.b) * 0.5,
       };
-      if (curve) {
-        const mid: Vec3 = {
-          x: (a.x + b.x) * 0.5 + (rng() - 0.5) * 0.04,
-          y: (a.y + b.y) * 0.5 + (rng() - 0.5) * 0.035,
-          z: (a.z + b.z) * 0.5 + (rng() - 0.5) * 0.045,
-        };
-        filaments.push({
-          points: tessellate(a, mid, b, 5),
-          alpha: 0.34 + rng() * 0.14,
-          r: tint.r,
-          g: tint.g,
-          b: tint.b,
-          current: false,
-        });
-      } else {
-        filaments.push({
-          points: [a, b],
-          alpha: 0.3 + rng() * 0.14,
-          r: tint.r,
-          g: tint.g,
-          b: tint.b,
-          current: false,
-        });
-      }
+      const mid: Vec3 = {
+        x: (a.x + b.x) * 0.5 + (rng() - 0.5) * 0.08,
+        y: (a.y + b.y) * 0.5 + (rng() - 0.5) * 0.07,
+        z: (a.z + b.z) * 0.5 + (rng() - 0.5) * 0.09,
+      };
+      filaments.push({
+        points: tessellate(a, mid, b, 7),
+        alpha: 0.13 + rng() * 0.07,
+        r: tint.r,
+        g: tint.g,
+        b: tint.b,
+        current: false,
+      });
     }
   }
 
@@ -325,12 +323,12 @@ function buildPlexus(core: NexusNode[], maxEdges: number, rng: () => number): Ne
 
 export function nexusBudget(width: number): NexusBudget {
   if (width < 768) {
-    return { nodes: 1400, filaments: 1100 };
+    return { nodes: 1500, filaments: 420 };
   }
   if (width < 1024) {
-    return { nodes: 2800, filaments: 2000 };
+    return { nodes: 3000, filaments: 640 };
   }
-  return { nodes: 4800, filaments: 3200 };
+  return { nodes: 5000, filaments: 880 };
 }
 
 export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField {
@@ -391,6 +389,16 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       node.bright = 1;
       node.size = Math.max(node.size, 2.6 + rng() * 1.2);
     }
+    const nearFocus = FOCI.some((focus) => {
+      const dx = (node.x - focus.cx) / focus.rx;
+      const dy = (node.y - focus.cy) / focus.ry;
+      const dz = (node.z - focus.cz) / focus.rz;
+      return dx * dx + dy * dy + dz * dz < 1.15;
+    });
+    if (nearFocus && rng() < 0.22) {
+      node.bright = 1;
+      node.size = Math.max(node.size, 3.2 + rng() * 1.4);
+    }
   }
 
   let mistAttempts = 0;
@@ -432,36 +440,50 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
 
   const filaments = buildPlexus(coreNodes, budget.filaments, rng);
 
-  const currentSeeds = 5;
+  const currentSeeds = 7;
   for (let c = 0; c < currentSeeds; c += 1) {
-    const from = byCluster[c % byCluster.length];
-    const to = byCluster[(c + 2) % byCluster.length];
+    const focus = FOCI[c % FOCI.length];
+    const fromPool = coreNodes.filter((node) => {
+      const dx = (node.x - focus.cx) / 0.2;
+      const dy = (node.y - focus.cy) / 0.2;
+      return dx * dx + dy * dy < 1;
+    });
+    const toFocus = FOCI[(c + 1) % FOCI.length];
+    const toPool = coreNodes.filter((node) => {
+      const dx = (node.x - toFocus.cx) / 0.22;
+      const dy = (node.y - toFocus.cy) / 0.22;
+      return dx * dx + dy * dy < 1;
+    });
+    const from = fromPool.length > 3 ? fromPool : byCluster[c % byCluster.length];
+    const to = toPool.length > 3 ? toPool : byCluster[(c + 2) % byCluster.length];
     if (from.length < 4 || to.length < 4) {
       continue;
     }
     const a = from[Math.floor(rng() * from.length)];
     const b = to[Math.floor(rng() * to.length)];
-    if (dist2(a, b) < 0.06 || dist2(a, b) > 0.55) {
+    if (dist2(a, b) < 0.05 || dist2(a, b) > 0.62) {
       continue;
     }
     const mid: Vec3 = {
-      x: (a.x + b.x) * 0.5 + (rng() - 0.5) * 0.12,
-      y: (a.y + b.y) * 0.5 + (rng() - 0.5) * 0.1,
-      z: (a.z + b.z) * 0.5 + (rng() - 0.5) * 0.12,
+      x: (a.x + b.x) * 0.5 + (rng() - 0.5) * 0.18,
+      y: (a.y + b.y) * 0.5 + (rng() - 0.5) * 0.14,
+      z: (a.z + b.z) * 0.5 + (rng() - 0.5) * 0.16,
     };
-    const path = tessellate(a, mid, b, 10);
+    const path = tessellate(a, mid, b, 14);
     const dx = b.x - a.x;
     const dy = b.y - a.y;
     const len = Math.hypot(dx, dy) || 1;
     const tint = mixColor(mid);
-    filaments.push({
-      points: path.map((point) => offsetPoint(point, -dy / len, dx / len, 0.25, 0.012)),
-      alpha: 0.16 + rng() * 0.06,
-      r: tint.r * 0.7 + 0.25,
-      g: tint.g * 0.7 + 0.22,
-      b: tint.b * 0.7 + 0.28,
-      current: true,
-    });
+    for (const amount of [-0.014, 0.014]) {
+      filaments.push({
+        points: path.map((point) => offsetPoint(point, -dy / len, dx / len, 0.22, amount)),
+        alpha: 0.42 + rng() * 0.14,
+        r: tint.r * 0.65 + 0.28,
+        g: tint.g * 0.65 + 0.24,
+        b: tint.b * 0.65 + 0.3,
+        current: true,
+      });
+    }
   }
 
   const membranes: NexusMembrane[] = [];
@@ -542,24 +564,15 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     });
   }
 
-  const hubs: NexusHub[] = [];
-  const used = new Set<number>();
-  for (const node of ranked) {
-    if (hubs.length >= 4) {
-      break;
-    }
-    if (used.has(node.cluster) && hubs.length < 3) {
-      continue;
-    }
-    const tooClose = hubs.some((hub) => dist2(hub, node) < 0.1);
-    if (tooClose) {
-      continue;
-    }
-    used.add(node.cluster);
-    hubs.push({ x: node.x, y: node.y, z: node.z, cluster: node.cluster });
-  }
+  const foci: Vec3[] = FOCI.map((focus) => ({ x: focus.cx, y: focus.cy, z: focus.cz }));
+  const hubs: NexusHub[] = foci.map((focus, index) => ({
+    x: focus.x,
+    y: focus.y,
+    z: focus.z,
+    cluster: index,
+  }));
 
-  return { nodes, filaments, membranes, hubs };
+  return { nodes, filaments, membranes, hubs, foci };
 }
 
 export function wakePositions(time: number): { wakes: [Vec3, Vec3, Vec3]; nexus: Vec3; boost: number } {

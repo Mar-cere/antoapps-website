@@ -26,6 +26,9 @@ uniform vec3 uWake1;
 uniform vec3 uWake2;
 uniform vec3 uNexus;
 uniform float uBoost;
+uniform vec3 uFocus0;
+uniform vec3 uFocus1;
+uniform vec3 uFocus2;
 varying vec3 vColor;
 varying float vAlpha;
 varying vec2 vCorner;
@@ -39,18 +42,19 @@ void main() {
   pos.x += 0.01 * sin(uTime * 0.29 + aCenter.y * 3.6 + aCluster);
   pos.y += 0.009 * cos(uTime * 0.25 + aCenter.x * 2.8 + aCluster * 0.7);
   pos.z += 0.007 * sin(uTime * 0.21 + aCenter.z * 2.4);
-  float wake = max(act(pos, uWake0, 0.28), max(act(pos, uWake1, 0.24), act(pos, uWake2, 0.26)));
-  float nexus = act(pos, uNexus, 0.16) * uBoost;
-  float dim = 0.52 + wake * 0.14;
-  float hot = 1.05 + wake * 0.2 + nexus * 0.35;
+  float wake = max(act(pos, uWake0, 0.18), max(act(pos, uWake1, 0.16), act(pos, uWake2, 0.17)));
+  float focus = max(act(pos, uFocus0, 0.15), max(act(pos, uFocus1, 0.14), act(pos, uFocus2, 0.14)));
+  float nexus = act(pos, uNexus, 0.14) * uBoost;
+  float dim = 0.22 + focus * 0.2 + wake * 0.08;
+  float hot = 0.62 + focus * 0.7 + wake * 0.18 + nexus * 0.4;
   float activity = mix(dim, hot, aBright);
   activity *= mix(1.0, 0.42, aMist);
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.35, 0.55, clip.w);
   float farDim = smoothstep(3.1, 4.4, clip.w);
-  float sizePx = aSize * mix(0.72, 1.22, aBright);
+  float sizePx = aSize * mix(0.68, 1.35, aBright);
   sizePx *= mix(1.0, 2.35, aMist);
-  sizePx *= 1.0 + nearBlur * 1.4;
+  sizePx *= 1.0 + nearBlur * 1.4 + focus * 0.55;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
   vCorner = aCorner;
@@ -87,6 +91,9 @@ uniform vec3 uWake1;
 uniform vec3 uWake2;
 uniform vec3 uNexus;
 uniform float uBoost;
+uniform vec3 uFocus0;
+uniform vec3 uFocus1;
+uniform vec3 uFocus2;
 varying float vAlpha;
 varying vec3 vColor;
 float act(vec3 p, vec3 w, float r) {
@@ -94,11 +101,12 @@ float act(vec3 p, vec3 w, float r) {
   return exp(-dot(d, d) / (r * r));
 }
 void main() {
-  float wake = max(act(aPosition, uWake0, 0.3), max(act(aPosition, uWake1, 0.26), act(aPosition, uWake2, 0.28)));
-  float nexus = act(aPosition, uNexus, 0.18) * uBoost;
+  float wake = max(act(aPosition, uWake0, 0.2), max(act(aPosition, uWake1, 0.18), act(aPosition, uWake2, 0.18)));
+  float focus = max(act(aPosition, uFocus0, 0.17), max(act(aPosition, uFocus1, 0.16), act(aPosition, uFocus2, 0.16)));
+  float nexus = act(aPosition, uNexus, 0.16) * uBoost;
   gl_Position = uViewProj * vec4(aPosition, 1.0);
-  vAlpha = aAlpha * (0.72 + 0.38 * wake + nexus * 0.28);
-  vColor = mix(aColor, vec3(0.81, 0.98, 0.996), nexus * 0.5);
+  vAlpha = aAlpha * (0.38 + focus * 0.95 + wake * 0.28 + nexus * 0.22);
+  vColor = mix(aColor, vec3(0.81, 0.98, 0.996), nexus * 0.5 + focus * 0.18);
 }
 `;
 
@@ -325,6 +333,9 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
 
     const uploadField = (field: NexusField) => {
       fieldRef.current = field;
+      if (field.foci[0] && field.foci[1] && field.foci[2]) {
+        foci = [field.foci[0], field.foci[1], field.foci[2]];
+      }
       const ordered = [...field.nodes].sort((a, b) => b.mist - a.mist || a.bright - b.bright);
       const nodeStride = 12;
       const data = new Float32Array(ordered.length * 6 * nodeStride);
@@ -485,6 +496,11 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     let height = 0;
     let viewProj: Float32Array = new Float32Array(16);
     let lastBudget = 0;
+    let foci: [Vec3, Vec3, Vec3] = [
+      { x: 0.14, y: 0.24, z: 0.06 },
+      { x: -0.16, y: 0.3, z: -0.05 },
+      { x: 0.06, y: -0.16, z: 0.03 },
+    ];
 
     const resize = () => {
       const rect = wrap.getBoundingClientRect();
@@ -498,8 +514,8 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       const view = lookAt(-0.18, 0.0, 1.92, 0.06, 0.02, 0);
       viewProj = multiply4(proj, view);
       const budget = nexusBudget(window.innerWidth);
-      if (budget.nodes !== lastBudget) {
-        lastBudget = budget.nodes;
+      if (budget.nodes + budget.filaments !== lastBudget) {
+        lastBudget = budget.nodes + budget.filaments;
         uploadField(buildNexusField(budget));
       }
     };
@@ -517,6 +533,9 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       w2: gl.getUniformLocation(nodeProg, 'uWake2'),
       nexus: gl.getUniformLocation(nodeProg, 'uNexus'),
       boost: gl.getUniformLocation(nodeProg, 'uBoost'),
+      f0: gl.getUniformLocation(nodeProg, 'uFocus0'),
+      f1: gl.getUniformLocation(nodeProg, 'uFocus1'),
+      f2: gl.getUniformLocation(nodeProg, 'uFocus2'),
     };
     const uLine = {
       view: gl.getUniformLocation(lineProg, 'uViewProj'),
@@ -525,6 +544,9 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       w2: gl.getUniformLocation(lineProg, 'uWake2'),
       nexus: gl.getUniformLocation(lineProg, 'uNexus'),
       boost: gl.getUniformLocation(lineProg, 'uBoost'),
+      f0: gl.getUniformLocation(lineProg, 'uFocus0'),
+      f1: gl.getUniformLocation(lineProg, 'uFocus1'),
+      f2: gl.getUniformLocation(lineProg, 'uFocus2'),
     };
     const uMemb = {
       view: gl.getUniformLocation(membProg, 'uViewProj'),
@@ -605,6 +627,9 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.uniform3f(uLine.w2, wakes[2].x, wakes[2].y, wakes[2].z);
       gl.uniform3f(uLine.nexus, nexus.x, nexus.y, nexus.z);
       gl.uniform1f(uLine.boost, boost);
+      gl.uniform3f(uLine.f0, foci[0].x, foci[0].y, foci[0].z);
+      gl.uniform3f(uLine.f1, foci[1].x, foci[1].y, foci[1].z);
+      gl.uniform3f(uLine.f2, foci[2].x, foci[2].y, foci[2].z);
       if (lineCount) {
         gl.drawArrays(gl.LINES, 0, lineCount);
       }
@@ -619,6 +644,9 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.uniform3f(uNode.w2, wakes[2].x, wakes[2].y, wakes[2].z);
       gl.uniform3f(uNode.nexus, nexus.x, nexus.y, nexus.z);
       gl.uniform1f(uNode.boost, boost);
+      gl.uniform3f(uNode.f0, foci[0].x, foci[0].y, foci[0].z);
+      gl.uniform3f(uNode.f1, foci[1].x, foci[1].y, foci[1].z);
+      gl.uniform3f(uNode.f2, foci[2].x, foci[2].y, foci[2].z);
       if (nodeCount) {
         gl.drawArrays(gl.TRIANGLES, 0, nodeCount);
       }
