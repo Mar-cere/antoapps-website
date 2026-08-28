@@ -571,14 +571,14 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
       currentLabel: 'Changelog',
     },
     meta: {
-      title: 'Control de versiones | Anto',
+      title: 'Historial de versiones | Anto',
       description: `Historial de versiones de la app Anto (Expo). Versión actual ${APP_VERSION}: prueba 1 día, i18n ES/EN y mejoras de UX de chat.`,
-      openGraphTitle: 'Control de versiones | Anto',
+      openGraphTitle: 'Historial de versiones | Anto',
       openGraphDescription: `Changelog de la aplicación Anto: ${APP_VERSION} publicada con i18n y mejoras de chat.`,
       canonicalPath: CANONICAL_PATH,
     },
     header: {
-      title: 'Control de Versiones',
+      title: 'Historial de versiones',
       subtitle: 'Historial de versiones y actualizaciones de la aplicación Anto',
       storeVersionBadge: `Versión en tiendas: ${APP_VERSION}`,
       statusText: `Publicada según la versión en App Store (iOS build 39, Android 25). Este sitio es la referencia pública del historial de versiones y novedades de Anto.`,
