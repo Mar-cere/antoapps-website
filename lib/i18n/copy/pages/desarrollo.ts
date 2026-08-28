@@ -433,7 +433,7 @@ const challengesEn: DesarrolloChallenge[] = [
   {
     icon: '🤖',
     title: 'AI',
-    challenge: 'Use OpenAI with the person's thread.',
+    challenge: 'Use OpenAI with the person\'s thread.',
     solution: 'Prompts with session context.',
   },
   {
