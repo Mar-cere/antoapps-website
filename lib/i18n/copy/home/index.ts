@@ -49,9 +49,6 @@ export {
   type ContactPageCopy,
   type ContactPageMetadata,
   type ContactFormCopy,
-  type ContactMethod,
-  type ContactSocialLink,
-  type ContactGithubLink,
 } from '../contact';
 
 export {

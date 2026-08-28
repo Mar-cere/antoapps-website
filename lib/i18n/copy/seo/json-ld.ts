@@ -103,13 +103,9 @@ export function getOrganizationJsonLd(locale: Locale): JsonLd {
     url: SITE_ORIGIN,
     logo: `${SITE_ORIGIN}/assets/images/antoIcon.png`,
     description: copy.description,
-    sameAs: [
-      'https://www.linkedin.com/in/marcelo-ull-marambio-7314a6177/',
-      'https://t.me/marcere23',
-    ],
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'soporte@antoapps.com',
+      email: 'marcelo.ull@antoapps.com',
       contactType: 'customer service',
       availableLanguage: ['Spanish', 'English'],
     },
