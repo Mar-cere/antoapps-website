@@ -106,7 +106,6 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
     events: [
       { id: 'memory', title: 'Recuerdo recuperado', subtitle: 'Un hilo de esta conversación' },
       { id: 'pattern', title: 'Patrón conectado', subtitle: 'Una señal que se repite' },
-      { id: 'knowledge', title: 'Conocimiento enlazado', subtitle: 'Un mecanismo útil ahora' },
       { id: 'strategy', title: 'Estrategia elegida', subtitle: 'El siguiente paso más útil' },
     ],
     aside: 'Nexus no solo recuerda. Sigue construyendo contexto.',
@@ -163,7 +162,6 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
     events: [
       { id: 'memory', title: 'Memory recalled', subtitle: 'A thread from this conversation' },
       { id: 'pattern', title: 'Pattern connected', subtitle: 'A signal that keeps returning' },
-      { id: 'knowledge', title: 'Knowledge linked', subtitle: 'A mechanism useful now' },
       { id: 'strategy', title: 'Strategy selected', subtitle: 'The most useful next step' },
     ],
     aside: 'Nexus does not just remember. It keeps building context.',

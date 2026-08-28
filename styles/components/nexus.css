@@ -256,10 +256,10 @@
   inset: 10% 8% 16% 16%;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 32% 28% at 42% 28%, rgba(124, 92, 255, 0.2), transparent 72%),
-    radial-gradient(ellipse 36% 32% at 64% 42%, rgba(34, 211, 238, 0.18), transparent 74%),
-    radial-gradient(ellipse 28% 24% at 52% 72%, rgba(253, 186, 116, 0.12), transparent 76%);
-  filter: blur(22px);
+    radial-gradient(ellipse 48% 36% at 48% 38%, rgba(124, 92, 255, 0.16), transparent 74%),
+    radial-gradient(ellipse 52% 40% at 62% 34%, rgba(34, 211, 238, 0.14), transparent 76%),
+    radial-gradient(ellipse 44% 38% at 40% 48%, rgba(79, 124, 255, 0.12), transparent 78%);
+  filter: blur(26px);
 }
 
 .nexus-organism.is-live .nexus-organism__fallback {
@@ -271,56 +271,60 @@
   z-index: 2;
   display: flex;
   align-items: flex-start;
-  gap: 0.38rem;
-  max-width: 9.5rem;
-  padding: 0.34rem 0.45rem;
-  border-radius: 0.4rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(6, 11, 24, 0.4);
+  gap: 0.3rem;
+  max-width: 8.4rem;
+  padding: 0.26rem 0.36rem;
+  border-radius: 0.32rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(6, 11, 24, 0.22);
   color: var(--nexus-muted);
   pointer-events: none;
   opacity: 0;
-  transform: translate(-12%, -110%) scale(0.84);
+  transform: translate(-12%, -110%) scale(0.78);
   transform-origin: left bottom;
   transition: opacity 0.6s ease;
+  box-shadow: none;
 }
 
 .nexus-event.is-on {
-  opacity: 0.78;
+  opacity: 0.58;
 }
 
 .nexus-event__icon {
-  width: 0.75rem;
-  height: 0.75rem;
-  margin-top: 0.08rem;
+  width: 0.62rem;
+  height: 0.62rem;
+  margin-top: 0.06rem;
   color: var(--nexus-cyan);
   flex-shrink: 0;
+  opacity: 0.7;
 }
 
 .nexus-event__title {
   display: block;
-  font-size: 0.5625rem;
+  font-size: 0.5rem;
   font-weight: 500;
   letter-spacing: 0.01em;
 }
 
 .nexus-event__sub {
   display: block;
-  margin-top: 0.1rem;
-  font-size: 0.5rem;
+  margin-top: 0.06rem;
+  font-size: 0.4375rem;
   color: var(--nexus-faint);
 }
 
 .nexus-aside {
   position: absolute;
-  right: 14%;
-  bottom: 30%;
+  right: 7%;
+  bottom: 5.5%;
   margin: 0;
-  max-width: 18rem;
-  color: var(--nexus-muted);
-  font-size: 0.8125rem;
-  line-height: 1.45;
+  max-width: 16rem;
+  color: var(--nexus-faint);
+  font-size: 0.6875rem;
+  line-height: 1.4;
   text-align: right;
+  opacity: 0.34;
+  pointer-events: none;
 }
 
 .nexus-page .home-landing-footer {
@@ -389,14 +393,16 @@
   }
 
   .nexus-event {
-    max-width: 8.5rem;
+    max-width: 7.6rem;
   }
 
   .nexus-aside {
     position: static;
     max-width: none;
-    margin: 0.75rem 0.4rem 0;
+    margin: 0.55rem 0.4rem 0;
     text-align: left;
+    opacity: 0.4;
+    font-size: 0.6875rem;
   }
 }
 
@@ -426,8 +432,8 @@
   }
 
   .nexus-aside {
-    right: 12%;
-    bottom: 28%;
+    right: 6%;
+    bottom: 4.5%;
   }
 }
 
@@ -443,6 +449,6 @@
 
 @media (max-width: 767px) {
   .nexus-event {
-    max-width: 9.5rem;
+    max-width: 8.2rem;
   }
 }

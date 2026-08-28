@@ -17,6 +17,7 @@ attribute float aSize;
 attribute float aCluster;
 attribute float aBright;
 attribute float aMist;
+attribute float aDensity;
 attribute vec2 aCorner;
 uniform mat4 uViewProj;
 uniform vec2 uResolution;
@@ -42,26 +43,27 @@ void main() {
   pos.x += 0.01 * sin(uTime * 0.29 + aCenter.y * 3.6 + aCluster);
   pos.y += 0.009 * cos(uTime * 0.25 + aCenter.x * 2.8 + aCluster * 0.7);
   pos.z += 0.007 * sin(uTime * 0.21 + aCenter.z * 2.4);
-  float wake = max(act(pos, uWake0, 0.18), max(act(pos, uWake1, 0.16), act(pos, uWake2, 0.17)));
-  float focus = max(act(pos, uFocus0, 0.15), max(act(pos, uFocus1, 0.14), act(pos, uFocus2, 0.14)));
-  float nexus = act(pos, uNexus, 0.14) * uBoost;
-  float dim = 0.22 + focus * 0.2 + wake * 0.08;
-  float hot = 0.62 + focus * 0.7 + wake * 0.18 + nexus * 0.4;
+  float wake = max(act(pos, uWake0, 0.22), max(act(pos, uWake1, 0.2), act(pos, uWake2, 0.21)));
+  float focus = max(act(pos, uFocus0, 0.2), max(act(pos, uFocus1, 0.19), act(pos, uFocus2, 0.19)));
+  float nexus = act(pos, uNexus, 0.12) * uBoost;
+  float tissue = smoothstep(0.08, 0.52, aDensity);
+  float dim = 0.36 + tissue * 0.2 + wake * 0.15 + focus * 0.06;
+  float hot = 0.58 + wake * 0.32 + focus * 0.14 + nexus * 0.28;
   float activity = mix(dim, hot, aBright);
-  activity *= mix(1.0, 0.42, aMist);
+  activity *= mix(1.0, 0.32, aMist);
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.35, 0.55, clip.w);
-  float farDim = smoothstep(3.1, 4.4, clip.w);
-  float sizePx = aSize * mix(0.68, 1.35, aBright);
-  sizePx *= mix(1.0, 2.35, aMist);
-  sizePx *= 1.0 + nearBlur * 1.4 + focus * 0.55;
+  float farDim = smoothstep(3.2, 4.6, clip.w);
+  float sizePx = aSize * mix(0.86, 1.26, aBright);
+  sizePx *= mix(1.0, 1.65, aMist);
+  sizePx *= 1.0 + nearBlur * 1.15 + wake * 0.3;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
   vCorner = aCorner;
   vMist = aMist;
   vec3 nexusTint = vec3(0.875, 1.0, 0.996);
-  vColor = mix(aColor, nexusTint, nexus * aBright * 0.62) * (0.72 + 0.38 * activity);
-  vAlpha = (0.16 + 0.7 * activity) * (1.0 - farDim * 0.55) * (1.0 - nearBlur * 0.35);
+  vColor = mix(aColor, nexusTint, nexus * aBright * 0.32 * uBoost);
+  vAlpha = (0.24 + 0.52 * activity) * (1.0 - farDim * 0.48) * (1.0 - nearBlur * 0.28);
 }
 `;
 
@@ -101,12 +103,12 @@ float act(vec3 p, vec3 w, float r) {
   return exp(-dot(d, d) / (r * r));
 }
 void main() {
-  float wake = max(act(aPosition, uWake0, 0.2), max(act(aPosition, uWake1, 0.18), act(aPosition, uWake2, 0.18)));
-  float focus = max(act(aPosition, uFocus0, 0.17), max(act(aPosition, uFocus1, 0.16), act(aPosition, uFocus2, 0.16)));
-  float nexus = act(aPosition, uNexus, 0.16) * uBoost;
+  float wake = max(act(aPosition, uWake0, 0.24), max(act(aPosition, uWake1, 0.22), act(aPosition, uWake2, 0.22)));
+  float focus = max(act(aPosition, uFocus0, 0.22), max(act(aPosition, uFocus1, 0.2), act(aPosition, uFocus2, 0.2)));
+  float nexus = act(aPosition, uNexus, 0.14) * uBoost;
   gl_Position = uViewProj * vec4(aPosition, 1.0);
-  vAlpha = aAlpha * (0.38 + focus * 0.95 + wake * 0.28 + nexus * 0.22);
-  vColor = mix(aColor, vec3(0.81, 0.98, 0.996), nexus * 0.5 + focus * 0.18);
+  vAlpha = aAlpha * (0.82 + focus * 0.16 + wake * 0.3 + nexus * 0.12);
+  vColor = mix(aColor, vec3(0.81, 0.98, 0.996), nexus * 0.28 * uBoost);
 }
 `;
 
@@ -160,7 +162,7 @@ uniform mat4 uViewProj;
 void main() {
   vec4 clip = uViewProj * vec4(aPosition, 1.0);
   gl_Position = clip;
-  gl_PointSize = max(1.6, 3.8 * (1.6 / max(0.55, clip.w)));
+  gl_PointSize = max(1.4, 3.1 * (1.6 / max(0.55, clip.w)));
 }
 `;
 
@@ -168,8 +170,8 @@ const SPARK_FRAG = `
 precision mediump float;
 void main() {
   vec2 p = gl_PointCoord * 2.0 - 1.0;
-  float a = exp(-dot(p, p) * 4.6) * 0.55;
-  gl_FragColor = vec4(vec3(0.87, 1.0, 0.996) * a, a);
+  float a = exp(-dot(p, p) * 5.2) * 0.42;
+  gl_FragColor = vec4(vec3(0.78, 0.94, 0.99) * a, a);
 }
 `;
 
@@ -327,7 +329,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     let nodeCount = 0;
     let lineCount = 0;
     let membCount = 0;
-    const sparkCount = 12;
+    const sparkCount = 8;
     const sparkData = new Float32Array(sparkCount * 3);
     const sparkMeta: { filament: number; speed: number; offset: number }[] = [];
 
@@ -337,7 +339,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
         foci = [field.foci[0], field.foci[1], field.foci[2]];
       }
       const ordered = [...field.nodes].sort((a, b) => b.mist - a.mist || a.bright - b.bright);
-      const nodeStride = 12;
+      const nodeStride = 13;
       const data = new Float32Array(ordered.length * 6 * nodeStride);
       let o = 0;
       for (const node of ordered) {
@@ -352,6 +354,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
           data[o++] = node.cluster;
           data[o++] = node.bright;
           data[o++] = node.mist;
+          data[o++] = node.density;
           data[o++] = QUAD_CORNERS[c * 2];
           data[o++] = QUAD_CORNERS[c * 2 + 1];
         }
@@ -437,13 +440,14 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     const bindNodes = () => {
       gl.useProgram(nodeProg);
       gl.bindBuffer(gl.ARRAY_BUFFER, nodeBuffer);
-      const stride = 48;
+      const stride = 52;
       const locC = gl.getAttribLocation(nodeProg, 'aCenter');
       const locCol = gl.getAttribLocation(nodeProg, 'aColor');
       const locS = gl.getAttribLocation(nodeProg, 'aSize');
       const locK = gl.getAttribLocation(nodeProg, 'aCluster');
       const locB = gl.getAttribLocation(nodeProg, 'aBright');
       const locM = gl.getAttribLocation(nodeProg, 'aMist');
+      const locD = gl.getAttribLocation(nodeProg, 'aDensity');
       const locQ = gl.getAttribLocation(nodeProg, 'aCorner');
       gl.enableVertexAttribArray(locC);
       gl.vertexAttribPointer(locC, 3, gl.FLOAT, false, stride, 0);
@@ -457,8 +461,12 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.vertexAttribPointer(locB, 1, gl.FLOAT, false, stride, 32);
       gl.enableVertexAttribArray(locM);
       gl.vertexAttribPointer(locM, 1, gl.FLOAT, false, stride, 36);
+      if (locD >= 0) {
+        gl.enableVertexAttribArray(locD);
+        gl.vertexAttribPointer(locD, 1, gl.FLOAT, false, stride, 40);
+      }
       gl.enableVertexAttribArray(locQ);
-      gl.vertexAttribPointer(locQ, 2, gl.FLOAT, false, stride, 40);
+      gl.vertexAttribPointer(locQ, 2, gl.FLOAT, false, stride, 44);
     };
 
     const bindLines = () => {
@@ -497,9 +505,9 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     let viewProj: Float32Array = new Float32Array(16);
     let lastBudget = 0;
     let foci: [Vec3, Vec3, Vec3] = [
-      { x: 0.14, y: 0.24, z: 0.06 },
-      { x: -0.16, y: 0.3, z: -0.05 },
-      { x: 0.06, y: -0.16, z: 0.03 },
+      { x: 0.1, y: 0.14, z: 0.04 },
+      { x: -0.06, y: 0.1, z: -0.03 },
+      { x: 0.18, y: 0.02, z: 0.07 },
     ];
 
     const resize = () => {
@@ -510,8 +518,8 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       gl.viewport(0, 0, canvas.width, canvas.height);
-      const proj = perspective((36 * Math.PI) / 180, width / height, 0.12, 10);
-      const view = lookAt(-0.18, 0.0, 1.92, 0.06, 0.02, 0);
+      const proj = perspective((40 * Math.PI) / 180, width / height, 0.12, 10);
+      const view = lookAt(-0.08, 0.1, 1.86, 0.1, 0.1, 0);
       viewProj = multiply4(proj, view);
       const budget = nexusBudget(window.innerWidth);
       if (budget.nodes + budget.filaments !== lastBudget) {
