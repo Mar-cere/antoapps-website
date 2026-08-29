@@ -57,11 +57,22 @@ export type ChangelogPageCopy = {
 
 const versionsEs: ChangelogVersion[] = [
   {
-    version: APP_VERSION,
-    date: '2026-06-23',
+    version: '1.6.1',
+    date: '2026-08-27',
     status: 'current',
     highlights: [
-      `Versión ${APP_VERSION} (Expo) — línea actual en tiendas (iOS build 39, Android 25)`,
+      'Onboarding más corto: un tour de 3 pasos que termina en el chat.',
+      'Las escalas de auto-chequeo ya no salen al empezar.',
+      'El interés inicial es opcional. Inicio espera hasta que hay un hilo.',
+    ],
+    changes: [],
+  },
+  {
+    version: '1.5.0',
+    date: '2026-06-23',
+    status: 'stable',
+    highlights: [
+      `Versión 1.5.0 (Expo) — línea actual en tiendas (iOS build 39, Android 25)`,
       'Home y dashboard rediseñados con insights rotativos y foco unificado',
       'Sesión persistente, onboarding renovado y grafo conectado al chat',
     ],
@@ -298,11 +309,22 @@ const versionsEs: ChangelogVersion[] = [
 
 const versionsEn: ChangelogVersion[] = [
   {
-    version: APP_VERSION,
-    date: '2026-06-23',
+    version: '1.6.1',
+    date: '2026-08-27',
     status: 'current',
     highlights: [
-      `Version ${APP_VERSION} (Expo) — current store release (iOS build 39, Android 25)`,
+      'Shorter onboarding: a 3-step tour that ends in chat.',
+      'Self-check scales no longer appear when you start.',
+      'Starting interest is optional. Home waits until there is a thread.',
+    ],
+    changes: [],
+  },
+  {
+    version: '1.5.0',
+    date: '2026-06-23',
+    status: 'stable',
+    highlights: [
+      `Version 1.5.0 (Expo) — current store release (iOS build 39, Android 25)`,
       'Redesigned home and dashboard with rotating insights and unified focus',
       'Persistent session, renewed onboarding, and graph connected to chat',
     ],
@@ -543,7 +565,7 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
         title: 'Version history',
         subtitle: 'Version history and updates for the Anto application',
         storeVersionBadge: `Store version: ${APP_VERSION}`,
-        statusText: `Published according to the App Store release (iOS build 39, Android 25). This site is the public reference for Anto version history and product updates.`,
+        statusText: `This site is the public reference for Anto version history and product updates.`,
       },
       versionLabels: {
         highlightsTitle: 'Highlights',
@@ -581,7 +603,7 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
       title: 'Historial de versiones',
       subtitle: 'Historial de versiones y actualizaciones de la aplicación Anto',
       storeVersionBadge: `Versión en tiendas: ${APP_VERSION}`,
-      statusText: `Publicada según la versión en App Store (iOS build 39, Android 25). Este sitio es la referencia pública del historial de versiones y novedades de Anto.`,
+      statusText: `Este sitio es la referencia pública del historial de versiones y novedades de Anto.`,
     },
     versionLabels: {
       highlightsTitle: 'Destacados',
