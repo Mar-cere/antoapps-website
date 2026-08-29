@@ -200,10 +200,10 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
             'Return without re-entering your password; automatic JWT refresh and renewed onboarding.',
         },
       ],
-        note: {
-          beforeChangelog: 'Full detail in the',
-          changelogLabel: 'Changelog',
-          changelogHref: localePath(locale, '/changelog'),
+      note: {
+        beforeChangelog: 'Full detail in the',
+        changelogLabel: 'Version history',
+        changelogHref: localePath(locale, '/changelog'),
           betweenChangelogBienvenida: ', explore the',
           bienvenidaLabel: 'Welcome',
           bienvenidaHref: localePath(locale, '/bienvenida'),
@@ -324,7 +324,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       ],
       note: {
         beforeChangelog: 'Detalle completo en',
-        changelogLabel: 'Control de Versiones',
+        changelogLabel: 'Historial de versiones',
         changelogHref: localePath(locale, '/changelog'),
         betweenChangelogBienvenida: ', conoce el flujo de',
         bienvenidaLabel: 'Bienvenida',
