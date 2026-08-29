@@ -134,6 +134,21 @@ export type HomeV2ExploreLink = {
   description: string;
 };
 
+export type HomeV2InPhoneTab = {
+  index: string;
+  label: string;
+  body: string;
+  imageSrc: string;
+  imageAlt: string;
+};
+
+export type HomeV2InPhone = {
+  kicker: string;
+  title: string;
+  dek: string;
+  tabs: readonly HomeV2InPhoneTab[];
+};
+
 export type HomeV2Copy = {
   hero: {
     brand: string;
@@ -161,6 +176,7 @@ export type HomeV2Copy = {
     body: string;
     imageAlt: string;
   };
+  inPhone: HomeV2InPhone;
   moments: readonly HomeV2Moment[];
   foundation: {
     title: string;
@@ -255,6 +271,34 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         lead: 'Some days you are not exactly unwell.',
         body: 'You do not need a full crisis to need company. Anto is there for the stretch between the day and sleep - no appointment required.',
         imageAlt: 'Rainy night desk with an open notebook and a warm lamp',
+      },
+      inPhone: {
+        kicker: 'On the phone',
+        title: 'This is what you see when you open it.',
+        dek: 'Chat, one step, and the hub if talking isn't enough.',
+        tabs: [
+          {
+            index: '01',
+            label: 'Chat',
+            body: 'You write. Anto gives you something concrete.',
+            imageSrc: '/assets/images/product/anto-phone-chat-en.webp',
+            imageAlt: 'Chat de Anto en el teléfono',
+          },
+          {
+            index: '02',
+            label: 'One step',
+            body: 'For tonight. Not a life plan.',
+            imageSrc: '/assets/images/product/anto-phone-step-en.webp',
+            imageAlt: 'Pantalla de un paso en Anto',
+          },
+          {
+            index: '03',
+            label: 'The hub',
+            body: 'Short exercises and the ABC canvas, if talking isn't enough.',
+            imageSrc: '/assets/images/product/anto-phone-hub-en.webp',
+            imageAlt: 'Hub de técnicas en Anto',
+          },
+        ],
       },
       moments: [
         {
@@ -500,6 +544,34 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       lead: 'Hay días en que no estás exactamente mal.',
       body: 'No hace falta estar en crisis para necesitar compañía. Anto está para ese rato entre el día y la cama - sin cita previa.',
       imageAlt: 'Escritorio de noche con lluvia en la ventana, libreta abierta y lámpara cálida',
+    },
+    inPhone: {
+      kicker: 'En el teléfono',
+      title: 'Así se ve cuando la abres.',
+      dek: 'Chat, un paso, y el hub si hablar no alcanza.',
+      tabs: [
+        {
+          index: '01',
+          label: 'El chat',
+          body: 'Escribes. Anto te devuelve algo concreto.',
+          imageSrc: '/assets/images/product/anto-phone-chat-es.webp',
+          imageAlt: 'Chat de Anto en el teléfono',
+        },
+        {
+          index: '02',
+          label: 'Un paso',
+          body: 'Para esta noche. No un plan de vida.',
+          imageSrc: '/assets/images/product/anto-phone-step-es.webp',
+          imageAlt: 'Pantalla de un paso en Anto',
+        },
+        {
+          index: '03',
+          label: 'El hub',
+          body: 'Ejercicios cortos y el lienzo ABC, si con hablar no alcanza.',
+          imageSrc: '/assets/images/product/anto-phone-hub-es.webp',
+          imageAlt: 'Hub de técnicas en Anto',
+        },
+      ],
     },
     moments: [
       {
