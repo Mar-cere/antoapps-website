@@ -150,11 +150,11 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
-  float px = 0.88;
+  float px = 0.76;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
-  vAlpha = aAlpha * (0.36 + focus * 0.16 + wake * 0.08 + nexus * 0.06);
+  vAlpha = aAlpha * (0.28 + focus * 0.14 + wake * 0.06 + nexus * 0.05);
   vColor = mix(aColor, vec3(0.88, 0.9, 1.0), nexus * 0.06);
 }
 `;

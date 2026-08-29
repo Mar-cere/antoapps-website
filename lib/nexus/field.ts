@@ -105,8 +105,8 @@ const LOBES: readonly Ellipsoid[] = [
   { cx: -0.06, cy: 0.04, cz: -0.18, rx: 0.2, ry: 0.18, rz: 0.15, weight: 0.56 },
   { cx: -0.12, cy: 0.34, cz: 0.03, rx: 0.16, ry: 0.2, rz: 0.12, weight: 0.58 },
   { cx: 0.2, cy: 0.2, cz: -0.1, rx: 0.18, ry: 0.16, rz: 0.13, weight: 0.48 },
-  { cx: 0.42, cy: 0.4, cz: 0.02, rx: 0.14, ry: 0.22, rz: 0.1, weight: 0.46 },
-  { cx: -0.22, cy: -0.12, cz: 0.02, rx: 0.28, ry: 0.2, rz: 0.14, weight: 0.92 },
+  { cx: 0.44, cy: 0.42, cz: 0.02, rx: 0.16, ry: 0.26, rz: 0.11, weight: 0.58 },
+  { cx: -0.2, cy: -0.14, cz: 0.02, rx: 0.3, ry: 0.22, rz: 0.14, weight: 1.05 },
 ];
 
 type RegionKind = 'vp' | 'cp' | 'vc' | 'nx';
@@ -125,7 +125,7 @@ const VOIDS: readonly Ellipsoid[] = [
   { cx: 0.28, cy: -0.08, cz: -0.06, rx: 0.1, ry: 0.12, rz: 0.08, weight: -0.42 },
   { cx: -0.1, cy: 0.22, cz: 0.06, rx: 0.08, ry: 0.09, rz: 0.07, weight: -0.36 },
   { cx: 0.16, cy: 0.28, cz: -0.14, rx: 0.07, ry: 0.06, rz: 0.06, weight: -0.3 },
-  { cx: 0.34, cy: 0.08, cz: 0.1, rx: 0.07, ry: 0.08, rz: 0.06, weight: -0.28 },
+  { cx: 0.38, cy: -0.02, cz: 0.08, rx: 0.09, ry: 0.1, rz: 0.07, weight: -0.38 },
 ];
 
 function mulberry32(seed: number): () => number {
@@ -167,13 +167,14 @@ function fieldAt(p: Vec3): { density: number; cluster: number } {
   if (p.y < -0.3) {
     density *= Math.max(0, 0.28 + (p.y + 0.52) * 1.55);
   }
-  const rx = (p.x - 0.04) / 0.64;
-  const ry = (p.y - 0.1) / 0.52;
-  const rz = p.z / 0.34;
-  let rad = rx * rx * 0.82 + ry * ry * 1.08 + rz * rz;
-  rad += Math.max(0, p.x - 0.2) * Math.max(0, -0.1 - p.y) * 4.6;
-  if (rad > 1.02) {
-    density *= Math.max(0, 1.18 - rad * 0.44);
+  const rx = (p.x - 0.02) / 0.7;
+  const ry = (p.y - 0.12) / 0.56;
+  const rz = p.z / 0.32;
+  let rad = rx * rx * 0.78 + ry * ry * 1.12 + rz * rz;
+  rad += Math.max(0, p.x - 0.22) * Math.max(0, -0.06 - p.y) * 5.2;
+  rad += Math.max(0, 0.18 - p.x) * Math.max(0, p.y - 0.34) * 1.8;
+  if (rad > 0.98) {
+    density *= Math.max(0, 1.14 - rad * 0.48);
   }
   return { density, cluster };
 }
@@ -212,13 +213,13 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
   const left = smoothstep(0.3, -0.3, p.x);
   const right = smoothstep(-0.1, 0.44, p.x);
   const high = smoothstep(-0.04, 0.36, p.y);
-  const low = smoothstep(0.1, -0.3, p.y);
+  const low = smoothstep(0.16, -0.28, p.y);
   let psyche = 0.1 + left * 1.4 + high * 0.9 + left * high * 0.75 + rP * 0.5;
   let persona = 0.16 + right * 1.5 + (1 - left) * 0.28 + rN * 0.45;
   let cortex = 0.06 + (1 - left) * 0.2 + rC * 0.32;
   let deep = 0.03;
-  let warm = low * (1.15 + left * 2.6) + Math.max(0, 0.06 - p.y) * Math.max(0, 0.26 - p.x) * 6.4;
-  psyche *= 1 - low * 0.82;
+  let warm = low * (1.4 + left * 3.0) + Math.max(0, 0.08 - p.y) * Math.max(0, 0.28 - p.x) * 7.2;
+  psyche *= 1 - low * 0.88;
   persona *= 1 - low * left * 0.4;
   psyche += (n - 0.5) * 0.1;
   persona += (n2 - 0.5) * 0.08;
@@ -614,12 +615,12 @@ function buildPlexus(core: NexusNode[], maxEdges: number, rng: () => number): Ne
 
 export function nexusBudget(width: number): NexusBudget {
   if (width < 768) {
-    return { nodes: 2800, filaments: 2100 };
+    return { nodes: 2800, filaments: 1700 };
   }
   if (width < 1024) {
-    return { nodes: 4800, filaments: 3200 };
+    return { nodes: 4800, filaments: 2600 };
   }
-  return { nodes: 7200, filaments: 4200 };
+  return { nodes: 7200, filaments: 3400 };
 }
 
 export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField {
@@ -744,7 +745,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     mistMade += 1;
   }
 
-  const warmExtra = Math.floor(mistTarget * 0.22);
+  const warmExtra = Math.floor(mistTarget * 0.32);
   let warmTries = 0;
   let warmMade = 0;
   while (warmMade < warmExtra && warmTries < warmExtra * 20) {
