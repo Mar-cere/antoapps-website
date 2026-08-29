@@ -113,19 +113,21 @@ export default function ChangelogPageContent({ locale }: ChangelogPageContentPro
                       </div>
                     )}
 
-                    <div className="version-changes">
-                      <h3 className="changes-title">{copy.versionLabels.changesTitle}</h3>
-                      <ul className="changes-list">
-                        {version.changes.map((change) => (
-                          <li key={change.description} className={`change-item change-${change.type}`}>
-                            <span className={`change-icon change-icon-${change.type}`}>
-                              {getChangeIcon(change.type)}
-                            </span>
-                            <span className="change-description">{change.description}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    {version.changes.length > 0 && (
+                      <div className="version-changes">
+                        <h3 className="changes-title">{copy.versionLabels.changesTitle}</h3>
+                        <ul className="changes-list">
+                          {version.changes.map((change) => (
+                            <li key={change.description} className={`change-item change-${change.type}`}>
+                              <span className={`change-icon change-icon-${change.type}`}>
+                                {getChangeIcon(change.type)}
+                              </span>
+                              <span className="change-description">{change.description}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 );
               })}
