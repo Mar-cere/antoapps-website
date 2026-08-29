@@ -275,7 +275,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       inPhone: {
         kicker: 'On the phone',
         title: 'This is what you see when you open it.',
-        dek: 'Chat, one step, and the hub if talking isn't enough.',
+        dek: "Chat, one step, and the hub if talking isn't enough.",
         tabs: [
           {
             index: '01',
@@ -294,7 +294,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             index: '03',
             label: 'The hub',
-            body: 'Short exercises and the ABC canvas, if talking isn't enough.',
+            body: "Short exercises and the ABC canvas, if talking isn't enough.",
             imageSrc: '/assets/images/product/anto-phone-hub-en.webp',
             imageAlt: 'Hub de técnicas en Anto',
           },
