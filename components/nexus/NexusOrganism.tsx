@@ -58,7 +58,7 @@ void main() {
   float active = smoothstep(0.42, 0.68, aBright);
   float conv = smoothstep(0.85, 1.0, aBright);
   float pulse = 0.88 + 0.12 * sin(uTime * 0.92 + aCluster * 1.4 + aCenter.x * 2.0);
-  float quiet = 0.42 + tissue * 0.12 + wake * 0.04;
+  float quiet = 0.34 + tissue * 0.12 + wake * 0.04;
   float mid = 0.55 + focus * 0.12 + wake * 0.08 + pulse * 0.04;
   float lit = 0.72 + focus * 0.12 + wake * 0.08;
   float hot = 0.92 + nexus * 0.08 + wake * 0.04 + sync * 0.06;
@@ -78,7 +78,7 @@ void main() {
   vGlow = conv;
   vec3 nexusTint = vec3(0.9, 0.94, 1.0);
   vColor = mix(aColor, nexusTint, conv * (0.12 + nexus * 0.16 + sync * 0.08));
-  vAlpha = mix(0.3 + 0.58 * activity, 0.14 + 0.08 * activity, aMist);
+  vAlpha = mix(0.3 + 0.58 * activity, 0.1 + 0.06 * activity, aMist);
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
 `;
@@ -150,11 +150,11 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
-  float px = 0.76;
+  float px = 0.85;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
-  vAlpha = aAlpha * (0.28 + focus * 0.14 + wake * 0.06 + nexus * 0.05);
+  vAlpha = aAlpha * (0.46 + focus * 0.18 + wake * 0.08 + nexus * 0.06);
   vColor = mix(aColor, vec3(0.88, 0.9, 1.0), nexus * 0.06);
 }
 `;
