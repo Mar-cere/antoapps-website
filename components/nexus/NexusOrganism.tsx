@@ -78,7 +78,7 @@ void main() {
   vGlow = conv;
   vec3 nexusTint = vec3(0.9, 0.94, 1.0);
   vColor = mix(aColor, nexusTint, conv * (0.12 + nexus * 0.16 + sync * 0.08));
-  vAlpha = mix(0.3 + 0.58 * activity, 0.1 + 0.07 * activity, aMist);
+  vAlpha = mix(0.3 + 0.58 * activity, 0.14 + 0.08 * activity, aMist);
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
 `;
@@ -150,11 +150,11 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
-  float px = 1.08;
+  float px = 0.88;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
-  vAlpha = aAlpha * (0.54 + focus * 0.24 + wake * 0.12 + nexus * 0.08);
+  vAlpha = aAlpha * (0.36 + focus * 0.16 + wake * 0.08 + nexus * 0.06);
   vColor = mix(aColor, vec3(0.88, 0.9, 1.0), nexus * 0.06);
 }
 `;

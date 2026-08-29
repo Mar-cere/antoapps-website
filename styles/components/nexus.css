@@ -250,11 +250,11 @@
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 44% 52% at 32% 26%, rgba(168, 72, 255, 0.38), transparent 70%),
-    radial-gradient(ellipse 36% 34% at 26% 68%, rgba(255, 148, 72, 0.26), transparent 68%),
-    radial-gradient(ellipse 56% 46% at 64% 48%, rgba(34, 211, 238, 0.34), transparent 72%),
-    radial-gradient(ellipse 30% 36% at 46% 40%, rgba(99, 92, 255, 0.18), transparent 66%);
-  filter: blur(42px);
+    radial-gradient(ellipse 46% 54% at 34% 28%, rgba(168, 72, 255, 0.4), transparent 72%),
+    radial-gradient(ellipse 42% 38% at 28% 72%, rgba(255, 158, 78, 0.5), transparent 70%),
+    radial-gradient(ellipse 58% 48% at 64% 48%, rgba(34, 211, 238, 0.36), transparent 74%),
+    radial-gradient(ellipse 32% 38% at 46% 42%, rgba(99, 92, 255, 0.16), transparent 68%);
+  filter: blur(46px);
 }
 
 .nexus-organism__canvas {
