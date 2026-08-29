@@ -648,7 +648,7 @@ function addCentralFilaments(core: NexusNode[], maxCount: number, rng: () => num
       y: (a.y + best.y) * 0.5 + (rng() - 0.5) * 0.04,
       z: (a.z + best.z) * 0.5 + (rng() - 0.5) * 0.042,
     };
-    out.push(makeFilament(a, best, mid, 6, 0.12 + rng() * 0.03, false));
+    out.push(makeFilament(a, best, mid, 6, 0.16 + rng() * 0.035, false));
   }
   return out;
 }

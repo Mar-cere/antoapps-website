@@ -164,7 +164,7 @@ void main() {
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
-  vAlpha = aAlpha * (0.4 + focus * 0.42 + wake * 0.12 + nexus * 0.14);
+  vAlpha = aAlpha * (0.34 + focus * 0.48 + wake * 0.14 + nexus * 0.16);
   vec3 lumaWeights = vec3(0.22, 0.55, 0.23);
   float baseLuma = dot(aColor, lumaWeights);
   vec3 cyanTint = vec3(0.1, 0.94, 1.0);
@@ -226,7 +226,7 @@ void main() {
   float edge = min(min(vBary.x, vBary.y), vBary.z);
   float veil = smoothstep(0.0, 0.34, edge);
   veil *= 0.92;
-  float a = veil * vAlpha * 1.5;
+  float a = veil * vAlpha * 1.9;
   if (a < 0.003) discard;
   gl_FragColor = vec4(vColor * a, a);
 }
