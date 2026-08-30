@@ -187,11 +187,11 @@ function hash3(x: number, y: number, z: number): number {
 
 function ribbon(p: Vec3, ax: number, ay: number, az: number, freq: number, phase: number, ry: number, rz: number): number {
   const t = p.x * 1.35 + p.z * 0.55;
-  const yPath = ay + 0.18 * Math.sin(t * freq + phase);
+  const yPath = ay + 0.22 * Math.sin(t * freq + phase);
   const zPath = az + 0.1 * Math.cos(t * freq * 0.82 + phase);
   const dy = (p.y - yPath) / ry;
   const dz = (p.z - zPath) / rz;
-  const dx = (p.x - ax) * 0.22;
+  const dx = (p.x - ax) * 3.6;
   return Math.exp(-(dy * dy + dz * dz + dx * dx));
 }
 
@@ -199,50 +199,48 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
   const n = hash3(p.x, p.y, p.z);
   const n2 = hash3(p.z + 1.7, p.x - 0.4, p.y + 2.1);
   const rViolet =
-    ribbon(p, -0.18, 0.22, -0.04, 2.05, 0.3, 0.2, 0.15) * 1.1 +
-    ribbon(p, -0.06, 0.04, 0.04, 1.7, 1.6, 0.15, 0.12) * 0.82 +
-    ribbon(p, 0.18, -0.1, 0.02, 1.58, 3.8, 0.14, 0.11) * 0.68;
+    ribbon(p, -0.14, 0.18, -0.04, 2.05, 0.3, 0.22, 0.15) * 1.15 +
+    ribbon(p, 0.04, 0.02, 0.04, 1.7, 2.1, 0.18, 0.13) * 0.62 +
+    ribbon(p, 0.18, -0.16, 0.02, 1.58, 3.8, 0.16, 0.12) * 0.58;
   const rCyan =
-    ribbon(p, 0.24, 0.18, 0.04, 1.88, 1.15, 0.17, 0.13) * 1.18 +
-    ribbon(p, 0.12, 0.04, -0.03, 1.85, 2.2, 0.16, 0.12) * 1.05 +
-    ribbon(p, 0.08, -0.08, 0.02, 1.6, 3.2, 0.14, 0.11) * 0.78;
+    ribbon(p, 0.2, 0.16, 0.04, 1.88, 1.15, 0.2, 0.14) * 1.3 +
+    ribbon(p, 0.1, 0.04, -0.03, 1.85, 2.4, 0.18, 0.13) * 0.88 +
+    ribbon(p, 0.22, -0.06, 0.02, 1.6, 2.8, 0.16, 0.12) * 0.7;
   const rTeal =
-    ribbon(p, 0.18, 0.02, -0.06, 1.74, 0.9, 0.13, 0.11) * 0.42;
+    ribbon(p, 0.18, 0.08, -0.06, 1.74, 0.9, 0.14, 0.11) * 0.42;
   const rBlue =
-    ribbon(p, 0.1, 0.26, 0.08, 1.55, 0.85, 0.16, 0.13) * 0.48 +
-    ribbon(p, -0.14, 0.02, 0.02, 1.82, 1.7, 0.14, 0.11) * 0.32;
+    ribbon(p, -0.04, 0.26, 0.08, 1.55, 0.85, 0.16, 0.12) * 0.42 +
+    ribbon(p, -0.16, 0.02, 0.02, 1.82, 1.7, 0.14, 0.11) * 0.32;
   const rWarm =
-    ribbon(p, -0.08, -0.1, 0.02, 1.7, 1.3, 0.14, 0.11) * 0.88 +
-    ribbon(p, 0.04, -0.04, 0.0, 1.5, 2.0, 0.11, 0.09) * 0.42 +
-    ribbon(p, 0.16, -0.18, 0.0, 1.55, 2.6, 0.12, 0.1) * 0.4 +
-    ribbon(p, -0.2, 0.14, 0.02, 1.6, 0.8, 0.12, 0.1) * 0.46 +
-    ribbon(p, 0.26, 0.02, -0.02, 1.55, 1.1, 0.12, 0.1) * 0.42;
+    ribbon(p, -0.04, -0.1, 0.02, 1.7, 1.3, 0.16, 0.12) * 0.92 +
+    ribbon(p, 0.04, 0.08, 0.0, 1.45, 2.2, 0.18, 0.12) * 0.78 +
+    ribbon(p, 0.12, -0.18, 0.0, 1.55, 2.6, 0.14, 0.1) * 0.4;
   const bandV = Math.pow(0.5 + 0.5 * Math.sin(p.x * 3.4 + p.y * 2.6 + p.z * 2.1 + 0.7), 3.6);
   const bandC = Math.pow(0.5 + 0.5 * Math.sin(p.x * 2.9 - p.y * 3.4 + p.z * 2.2 + 3.9), 3.6);
   const bandB = Math.pow(0.5 + 0.5 * Math.sin(-p.x * 2.4 + p.y * 3.8 - p.z * 1.8 + 2.2), 3.6);
   const bandW = Math.pow(0.5 + 0.5 * Math.sin(p.x * 2.2 + p.y * 3.6 + p.z * 1.6 + 4.7), 3.6);
-  let psyche = rViolet * 1.34 + bandV * 0.2 + (n - 0.5) * 0.03;
-  let persona = rCyan * 1.68 + rTeal * 0.46 + bandC * 0.24;
-  let cortex = rBlue * 0.82 + bandB * 0.16 + (n2 - 0.5) * 0.02;
+  let psyche = rViolet * 1.44 + bandV * 0.18 + (n - 0.5) * 0.03;
+  let persona = rCyan * 1.55 + rTeal * 0.42 + bandC * 0.16;
+  let cortex = rBlue * 0.8 + bandB * 0.14 + (n2 - 0.5) * 0.02;
   let deep = 0.03;
-  let warm = rWarm * 1.48 + bandW * 0.2;
+  let warm = rWarm * 1.72 + bandW * 0.18;
   for (const focus of FOCI) {
     const influence = Math.min(1.1, Math.max(0, gauss(p, { ...focus, weight: 1 })));
     if (focus.kind === 'vp') {
-      psyche += influence * 0.14;
-      persona += influence * 0.12;
-      warm += influence * 0.08;
+      persona += influence * 0.16;
+      psyche += influence * 0.08;
+      warm += influence * 0.05;
     } else if (focus.kind === 'cp') {
-      psyche += influence * 0.1;
-      persona += influence * 0.12;
-      cortex += influence * 0.1;
-    } else if (focus.kind === 'vc') {
-      persona += influence * 0.12;
-      warm += influence * 0.14;
+      psyche += influence * 0.18;
       cortex += influence * 0.08;
+      persona += influence * 0.04;
+    } else if (focus.kind === 'vc') {
+      persona += influence * 0.14;
+      warm += influence * 0.12;
+      cortex += influence * 0.06;
     } else {
       persona += influence * 0.1;
-      psyche += influence * 0.1;
+      psyche += influence * 0.08;
       warm += influence * 0.1;
     }
   }
