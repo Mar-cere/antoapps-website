@@ -152,9 +152,9 @@
 .nexus-copy {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   max-width: 38rem;
-  padding-top: 0.5rem;
+  padding-top: 0.35rem;
 }
 
 .nexus-eyebrow {
@@ -396,7 +396,9 @@
   }
 
   .nexus-copy {
-    justify-content: center;
+    justify-content: flex-start;
+    align-self: start;
+    padding-top: clamp(1.5rem, 7vh, 3.5rem);
     padding-right: 0.75rem;
   }
 
