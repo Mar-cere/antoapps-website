@@ -42,14 +42,14 @@ float act(vec3 p, vec3 w, float r) {
 }
 void main() {
   vec3 pos = aCenter;
-  pos.x += 0.01 * sin(uTime * 0.29 + aCenter.y * 3.6 + aCluster);
-  pos.y += 0.009 * cos(uTime * 0.25 + aCenter.x * 2.8 + aCluster * 0.7);
-  pos.z += 0.007 * sin(uTime * 0.21 + aCenter.z * 2.4);
+  pos.x += 0.016 * sin(uTime * 0.38 + aCenter.y * 3.6 + aCluster);
+  pos.y += 0.014 * cos(uTime * 0.33 + aCenter.x * 2.8 + aCluster * 0.7);
+  pos.z += 0.011 * sin(uTime * 0.28 + aCenter.z * 2.4);
   float wake = max(act(pos, uWake0, 0.2), max(act(pos, uWake1, 0.18), act(pos, uWake2, 0.19)));
-  float f0 = act(pos, uFocus0, 0.18) * (0.62 + 0.38 * (0.5 + 0.5 * sin(uTime * 0.29)));
-  float f1 = act(pos, uFocus1, 0.17) * (0.62 + 0.38 * (0.5 + 0.5 * sin(uTime * 0.23 + 1.9)));
-  float f2 = act(pos, uFocus2, 0.16) * (0.62 + 0.38 * (0.5 + 0.5 * sin(uTime * 0.26 + 3.4)));
-  float f3 = act(pos, uFocus3, 0.12) * (0.62 + 0.38 * (0.5 + 0.5 * sin(uTime * 0.21 + 0.7)));
+  float f0 = act(pos, uFocus0, 0.18) * (0.58 + 0.42 * (0.5 + 0.5 * sin(uTime * 0.38)));
+  float f1 = act(pos, uFocus1, 0.17) * (0.58 + 0.42 * (0.5 + 0.5 * sin(uTime * 0.31 + 1.9)));
+  float f2 = act(pos, uFocus2, 0.16) * (0.58 + 0.42 * (0.5 + 0.5 * sin(uTime * 0.34 + 3.4)));
+  float f3 = act(pos, uFocus3, 0.12) * (0.58 + 0.42 * (0.5 + 0.5 * sin(uTime * 0.28 + 0.7)));
   float focus = max(f0, max(f1, max(f2, f3)));
   float sync = min(min(max(f0, f1), max(f2, f3)), max(max(f0, f2), max(f1, f3)));
   float nexus = act(pos, uNexus, 0.1) * uBoost;
@@ -57,7 +57,7 @@ void main() {
   float moderate = smoothstep(0.12, 0.32, aBright);
   float active = smoothstep(0.42, 0.68, aBright);
   float conv = smoothstep(0.85, 1.0, aBright);
-  float pulse = 0.88 + 0.12 * sin(uTime * 0.92 + aCluster * 1.4 + aCenter.x * 2.0);
+  float pulse = 0.84 + 0.16 * sin(uTime * 1.15 + aCluster * 1.4 + aCenter.x * 2.0);
   float quiet = 0.2 + tissue * 0.08 + wake * 0.03;
   float mid = 0.4 + focus * 0.1 + wake * 0.06 + pulse * 0.03;
   float lit = 0.7 + focus * 0.12 + wake * 0.07;
@@ -146,10 +146,10 @@ float act(vec3 p, vec3 w, float r) {
 void main() {
   vec3 world = mix(aA, aB, aEnd);
   float wake = max(act(world, uWake0, 0.22), max(act(world, uWake1, 0.2), act(world, uWake2, 0.2)));
-  float f0 = act(world, uFocus0, 0.17) * (0.56 + 0.44 * (0.5 + 0.5 * sin(uTime * 0.29)));
-  float f1 = act(world, uFocus1, 0.16) * (0.56 + 0.44 * (0.5 + 0.5 * sin(uTime * 0.23 + 1.9)));
-  float f2 = act(world, uFocus2, 0.15) * (0.56 + 0.44 * (0.5 + 0.5 * sin(uTime * 0.26 + 3.4)));
-  float f3 = act(world, uFocus3, 0.12) * (0.56 + 0.44 * (0.5 + 0.5 * sin(uTime * 0.21 + 0.7)));
+  float f0 = act(world, uFocus0, 0.17) * (0.52 + 0.48 * (0.5 + 0.5 * sin(uTime * 0.38)));
+  float f1 = act(world, uFocus1, 0.16) * (0.52 + 0.48 * (0.5 + 0.5 * sin(uTime * 0.31 + 1.9)));
+  float f2 = act(world, uFocus2, 0.15) * (0.52 + 0.48 * (0.5 + 0.5 * sin(uTime * 0.34 + 3.4)));
+  float f3 = act(world, uFocus3, 0.12) * (0.52 + 0.48 * (0.5 + 0.5 * sin(uTime * 0.28 + 0.7)));
   float focus = max(f0, max(f1, max(f2, f3)));
   float nexus = act(world, uNexus, 0.12) * uBoost;
   vec4 cA = uViewProj * vec4(aA, 1.0);
@@ -214,8 +214,8 @@ varying float vAlpha;
 varying vec3 vBary;
 void main() {
   vec3 pos = aPosition;
-  pos.x += 0.006 * sin(uTime * 0.18 + aPosition.y * 2.0);
-  pos.y += 0.005 * cos(uTime * 0.16 + aPosition.x * 1.7);
+  pos.x += 0.01 * sin(uTime * 0.24 + aPosition.y * 2.0);
+  pos.y += 0.008 * cos(uTime * 0.21 + aPosition.x * 1.7);
   gl_Position = uViewProj * vec4(pos, 1.0);
   vec3 lumaWeights = vec3(0.22, 0.55, 0.23);
   float baseLuma = dot(aColor, lumaWeights);
@@ -233,7 +233,7 @@ void main() {
   materialColor = mix(materialColor, cyanTint, cyanId * 0.4);
   vColor = mix(materialColor, warmTint, warmId * 0.48);
   float flowStrength = max(violetId, max(cyanId, warmId));
-  vAlpha = aAlpha * (0.68 + flowStrength * 0.28) * (0.82 + 0.18 * sin(uTime * 0.35 + aPosition.z * 3.0));
+  vAlpha = aAlpha * (0.68 + flowStrength * 0.28) * (0.78 + 0.22 * sin(uTime * 0.48 + aPosition.z * 3.0));
   vBary = aBary;
 }
 `;
@@ -636,8 +636,8 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       canvas.height = Math.floor(height * dpr);
       gl.viewport(0, 0, canvas.width, canvas.height);
       const proj = perspective((40 * Math.PI) / 180, width / height, 0.12, 10);
-      const dist = width / height < 0.9 ? 1.46 : 1.45;
-      const view = lookAt(-0.06, 0.12, dist, 0.04, 0.18, 0);
+      const dist = width / height < 0.9 ? 1.24 : 1.22;
+      const view = lookAt(-0.05, 0.1, dist, 0.03, 0.12, 0);
       viewProj = multiply4(proj, view);
       const budget = nexusBudget(window.innerWidth);
       if (budget.nodes + budget.filaments !== lastBudget) {
@@ -731,7 +731,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       if (!inView || !pageVisible) {
         return;
       }
-      const time = reduced ? 4.35 : now * 0.001;
+      const time = reduced ? 4.35 : now * 0.00125;
       const { wakes, nexus, boost } = wakePositions(time);
 
       gl.clearColor(0, 0, 0, 0);
