@@ -199,50 +199,51 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
   const n = hash3(p.x, p.y, p.z);
   const n2 = hash3(p.z + 1.7, p.x - 0.4, p.y + 2.1);
   const rViolet =
-    ribbon(p, -0.18, 0.22, -0.04, 2.05, 0.3, 0.22, 0.16) * 1.1 +
-    ribbon(p, 0.06, 0.06, 0.04, 1.7, 1.8, 0.2, 0.15) * 0.72 +
-    ribbon(p, 0.14, -0.26, 0.02, 1.58, 4.1, 0.16, 0.12) * 0.48;
+    ribbon(p, -0.18, 0.22, -0.04, 2.05, 0.3, 0.2, 0.15) * 1.1 +
+    ribbon(p, -0.06, 0.04, 0.04, 1.7, 1.6, 0.15, 0.12) * 0.82 +
+    ribbon(p, 0.18, -0.1, 0.02, 1.58, 3.8, 0.14, 0.11) * 0.68;
   const rCyan =
-    ribbon(p, 0.26, 0.2, 0.04, 1.88, 1.15, 0.2, 0.15) * 1.25 +
-    ribbon(p, 0.04, 0.1, -0.04, 1.9, 2.4, 0.18, 0.14) * 0.95 +
-    ribbon(p, 0.1, -0.16, 0.02, 1.6, 3.6, 0.16, 0.12) * 0.62 +
-    ribbon(p, -0.12, -0.06, 0.02, 1.6, 3.6, 0.16, 0.12) * 0.38;
+    ribbon(p, 0.24, 0.18, 0.04, 1.88, 1.15, 0.17, 0.13) * 1.18 +
+    ribbon(p, 0.12, 0.04, -0.03, 1.85, 2.2, 0.16, 0.12) * 1.05 +
+    ribbon(p, 0.08, -0.08, 0.02, 1.6, 3.2, 0.14, 0.11) * 0.78;
   const rTeal =
-    ribbon(p, 0.18, 0.02, -0.06, 1.74, 0.9, 0.16, 0.13) * 0.5;
+    ribbon(p, 0.18, 0.02, -0.06, 1.74, 0.9, 0.13, 0.11) * 0.42;
   const rBlue =
-    ribbon(p, 0.08, 0.24, 0.08, 1.55, 0.85, 0.18, 0.14) * 0.55 +
-    ribbon(p, -0.14, 0.04, 0.02, 1.82, 1.7, 0.16, 0.12) * 0.38;
+    ribbon(p, 0.1, 0.26, 0.08, 1.55, 0.85, 0.16, 0.13) * 0.48 +
+    ribbon(p, -0.14, 0.02, 0.02, 1.82, 1.7, 0.14, 0.11) * 0.32;
   const rWarm =
-    ribbon(p, 0.0, -0.18, 0.02, 1.7, 1.4, 0.16, 0.12) * 0.78 +
-    ribbon(p, 0.12, -0.02, 0.0, 1.5, 2.1, 0.15, 0.11) * 0.58 +
-    ribbon(p, -0.1, -0.08, 0.02, 1.55, 2.8, 0.13, 0.1) * 0.38;
+    ribbon(p, -0.08, -0.1, 0.02, 1.7, 1.3, 0.14, 0.11) * 0.88 +
+    ribbon(p, 0.04, -0.04, 0.0, 1.5, 2.0, 0.11, 0.09) * 0.42 +
+    ribbon(p, 0.16, -0.18, 0.0, 1.55, 2.6, 0.12, 0.1) * 0.4 +
+    ribbon(p, -0.2, 0.14, 0.02, 1.6, 0.8, 0.12, 0.1) * 0.46 +
+    ribbon(p, 0.26, 0.02, -0.02, 1.55, 1.1, 0.12, 0.1) * 0.42;
   const bandV = Math.pow(0.5 + 0.5 * Math.sin(p.x * 3.4 + p.y * 2.6 + p.z * 2.1 + 0.7), 3.6);
   const bandC = Math.pow(0.5 + 0.5 * Math.sin(p.x * 2.9 - p.y * 3.4 + p.z * 2.2 + 3.9), 3.6);
   const bandB = Math.pow(0.5 + 0.5 * Math.sin(-p.x * 2.4 + p.y * 3.8 - p.z * 1.8 + 2.2), 3.6);
   const bandW = Math.pow(0.5 + 0.5 * Math.sin(p.x * 2.2 + p.y * 3.6 + p.z * 1.6 + 4.7), 3.6);
-  let psyche = rViolet * 1.45 + bandV * 0.28 + (n - 0.5) * 0.03;
-  let persona = rCyan * 1.85 + rTeal * 0.62 + bandC * 0.36;
-  let cortex = rBlue * 0.95 + bandB * 0.22 + (n2 - 0.5) * 0.02;
+  let psyche = rViolet * 1.34 + bandV * 0.2 + (n - 0.5) * 0.03;
+  let persona = rCyan * 1.68 + rTeal * 0.46 + bandC * 0.24;
+  let cortex = rBlue * 0.82 + bandB * 0.16 + (n2 - 0.5) * 0.02;
   let deep = 0.03;
-  let warm = rWarm * 1.55 + bandW * 0.32;
+  let warm = rWarm * 1.48 + bandW * 0.2;
   for (const focus of FOCI) {
     const influence = Math.min(1.1, Math.max(0, gauss(p, { ...focus, weight: 1 })));
     if (focus.kind === 'vp') {
-      psyche += influence * 0.16;
+      psyche += influence * 0.14;
       persona += influence * 0.12;
-      warm += influence * 0.06;
+      warm += influence * 0.08;
     } else if (focus.kind === 'cp') {
-      psyche += influence * 0.12;
-      cortex += influence * 0.12;
-      persona += influence * 0.08;
-    } else if (focus.kind === 'vc') {
+      psyche += influence * 0.1;
       persona += influence * 0.12;
       cortex += influence * 0.1;
-      warm += influence * 0.1;
+    } else if (focus.kind === 'vc') {
+      persona += influence * 0.12;
+      warm += influence * 0.14;
+      cortex += influence * 0.08;
     } else {
+      persona += influence * 0.1;
       psyche += influence * 0.1;
-      persona += influence * 0.08;
-      warm += influence * 0.08;
+      warm += influence * 0.1;
     }
   }
   psyche = Math.max(0.012, psyche);
@@ -252,9 +253,9 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
   warm = Math.max(0.008, warm);
   const peak = Math.max(psyche, persona, cortex, warm);
   if (peak > 0) {
-    if (psyche === peak) psyche *= 1.12;
-    else if (persona === peak) persona *= 1.12;
-    else if (warm === peak) warm *= 1.12;
+    if (psyche === peak) psyche *= 1.16;
+    else if (persona === peak) persona *= 1.16;
+    else if (warm === peak) warm *= 1.16;
     else cortex *= 1.08;
   }
   const sum = psyche + persona + cortex + deep + warm;
@@ -873,9 +874,14 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   const membranes: NexusMembrane[] = [];
   const densePool = coreNodes.filter((node) => node.density > 0.5);
   const pool = densePool.length > 16 ? densePool : coreNodes;
+  const cyanPool = pool.filter((node) => node.g - node.r > 0.12 && node.g > 0.4);
+  const violetPool = pool.filter((node) => node.b - node.g > 0.08 && node.b > 0.45 && node.r > 0.28);
+  const warmPool = pool.filter((node) => node.r - node.b > 0.12 && node.r > 0.45);
   const patchCount = 44;
   for (let p = 0; p < patchCount; p += 1) {
-    const start = pool[Math.floor(rng() * pool.length)];
+    const bucket = p % 3 === 0 ? cyanPool : p % 3 === 1 ? violetPool : warmPool;
+    const source = bucket.length > 4 ? bucket : pool;
+    const start = source[Math.floor(rng() * source.length)];
     const picks: NexusNode[] = [start];
     for (const candidate of pool) {
       if (picks.length >= 6) {
@@ -893,11 +899,10 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       y: picks.reduce((sum, node) => sum + node.y, 0) / picks.length,
       z: picks.reduce((sum, node) => sum + node.z, 0) / picks.length,
     };
-    const tint = mixColor(centroid);
     const silk = {
-      r: Math.min(1.1, tint.r * 1.04),
-      g: Math.min(1.1, tint.g * 1.0),
-      b: Math.min(1.1, tint.b * 1.04),
+      r: Math.min(1.1, start.r),
+      g: Math.min(1.1, start.g),
+      b: Math.min(1.1, start.b),
     };
     for (let i = 0; i < picks.length - 1; i += 1) {
       membranes.push({
