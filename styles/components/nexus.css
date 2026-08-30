@@ -389,7 +389,7 @@
 
 @media (min-width: 768px) {
   .nexus-hero {
-    grid-template-columns: minmax(14rem, 0.26fr) minmax(0, 0.74fr);
+    grid-template-columns: minmax(15rem, 0.32fr) minmax(0, 0.68fr);
     align-items: stretch;
     gap: 0.5rem 0.75rem;
     max-width: none;
@@ -406,7 +406,7 @@
 
   .nexus-stage {
     min-height: calc(100dvh - 4.25rem);
-    margin: 0 0 0 -22%;
+    margin: 0 0 0 -16%;
   }
 
   .nexus-organism {
@@ -417,7 +417,7 @@
 
 @media (min-width: 960px) {
   .nexus-hero {
-    grid-template-columns: minmax(16rem, 0.24fr) minmax(0, 0.76fr);
+    grid-template-columns: minmax(17rem, 0.3fr) minmax(0, 0.7fr);
   }
 
   .nexus-copy {
