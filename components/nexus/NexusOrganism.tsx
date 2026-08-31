@@ -185,7 +185,7 @@ void main() {
   materialColor = mix(materialColor, cyanTint, cyanId * 0.34);
   materialColor = mix(materialColor, warmTint, warmId * 0.36);
   vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.025);
-  vColor *= 0.76;
+  vColor *= 0.84;
 }
 `;
 
@@ -199,8 +199,8 @@ void main() {
   float a = vAlpha * fall;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  if (peak > 0.42) {
-    c *= 0.42 / peak;
+  if (peak > 0.48) {
+    c *= 0.48 / peak;
   }
   gl_FragColor = vec4(c, a);
 }
@@ -769,7 +769,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       }
 
       disableAttribs(gl);
-      gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+      gl.blendFunc(gl.ONE, gl.ONE);
       bindLines();
       gl.uniformMatrix4fv(uLine.view, false, viewProj);
       gl.uniform2f(uLine.res, width, height);
