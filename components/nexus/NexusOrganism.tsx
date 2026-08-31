@@ -90,10 +90,10 @@ void main() {
   vec3 materialColor = aColor;
   materialColor = mix(materialColor, violetTint, violetId * 0.32);
   materialColor = mix(materialColor, cyanTint, cyanId * 0.42);
-  materialColor = mix(materialColor, warmTint, warmId * 0.5);
+  materialColor = mix(materialColor, warmTint, warmId * 0.32);
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
-  vColor = mix(materialColor, nexusTint, conv * (0.08 + nexus * 0.1 + sync * 0.06));
-  vAlpha = mix(0.2 + 0.48 * activity, 0.05 + 0.03 * activity, aMist);
+  vColor = mix(materialColor, nexusTint, conv * (0.06 + nexus * 0.08 + sync * 0.04));
+  vAlpha = mix(0.2 + 0.48 * activity, 0.03 + 0.02 * activity, aMist);
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
 `;
@@ -109,8 +109,8 @@ void main() {
   float d = length(vCorner);
   if (d > 1.0) discard;
   float core = exp(-d * d * mix(18.0, 6.2, vMist));
-  float halo = exp(-d * d * mix(5.0, 2.3, vMist)) * mix(0.16, 0.18, vMist);
-  halo += exp(-d * d * 1.25) * vGlow * 0.58;
+  float halo = exp(-d * d * mix(6.4, 3.2, vMist)) * mix(0.12, 0.08, vMist);
+  halo += exp(-d * d * 1.8) * vGlow * 0.28;
   float a = (core + halo) * vAlpha;
   if (a < 0.007) discard;
   gl_FragColor = vec4(vColor * a, a);
@@ -185,7 +185,7 @@ void main() {
   vec3 materialColor = aColor;
   materialColor = mix(materialColor, violetTint, violetId * 0.34);
   materialColor = mix(materialColor, cyanTint, cyanId * 0.4);
-  materialColor = mix(materialColor, warmTint, warmId * 0.52);
+  materialColor = mix(materialColor, warmTint, warmId * 0.34);
   vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.05);
 }
 `;
@@ -231,9 +231,9 @@ void main() {
   vec3 materialColor = aColor;
   materialColor = mix(materialColor, violetTint, violetId * 0.32);
   materialColor = mix(materialColor, cyanTint, cyanId * 0.4);
-  vColor = mix(materialColor, warmTint, warmId * 0.48);
+  vColor = mix(materialColor, warmTint, warmId * 0.3);
   float flowStrength = max(violetId, max(cyanId, warmId));
-  vAlpha = aAlpha * (0.68 + flowStrength * 0.28) * (0.78 + 0.22 * sin(uTime * 0.48 + aPosition.z * 3.0));
+  vAlpha = aAlpha * (0.52 + flowStrength * 0.2) * (0.78 + 0.22 * sin(uTime * 0.48 + aPosition.z * 3.0));
   vBary = aBary;
 }
 `;
@@ -247,7 +247,7 @@ void main() {
   float edge = min(min(vBary.x, vBary.y), vBary.z);
   float veil = smoothstep(0.0, 0.3, edge);
   float fold = exp(-abs(edge - 0.07) * 18.0) * 0.24;
-  float a = (veil * 0.85 + fold) * vAlpha * 1.18;
+  float a = (veil * 0.7 + fold) * vAlpha * 0.85;
   if (a < 0.003) discard;
   gl_FragColor = vec4(vColor * a, a);
 }
