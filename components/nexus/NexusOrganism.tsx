@@ -58,19 +58,19 @@ void main() {
   float active = smoothstep(0.42, 0.68, aBright);
   float conv = smoothstep(0.85, 1.0, aBright);
   float pulse = 0.84 + 0.16 * sin(uTime * 1.15 + aCluster * 1.4 + aCenter.x * 2.0);
-  float quiet = 0.4 + tissue * 0.16 + wake * 0.03;
-  float mid = 0.52 + focus * 0.08 + wake * 0.05 + pulse * 0.03;
-  float lit = 0.64 + focus * 0.08 + wake * 0.05;
-  float hot = 0.72 + nexus * 0.05 + wake * 0.03 + sync * 0.03;
+  float quiet = 0.36 + tissue * 0.12 + wake * 0.02;
+  float mid = 0.46 + focus * 0.05 + wake * 0.03 + pulse * 0.02;
+  float lit = 0.5 + focus * 0.04 + wake * 0.025;
+  float hot = 0.54 + nexus * 0.025 + sync * 0.015;
   float activity = mix(quiet, mid, moderate);
   activity = mix(activity, lit, active);
   activity = mix(activity, hot, conv);
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.28, 0.5, clip.w);
   float farDim = smoothstep(3.15, 4.7, clip.w);
-  float sizePx = aSize * mix(1.22, mix(1.32, 1.52, conv), mix(moderate, 1.0, active));
-  sizePx *= mix(1.0, 1.7, aMist);
-  sizePx *= 1.0 + nearBlur * 0.28 + wake * 0.08;
+  float sizePx = aSize * mix(1.16, mix(1.22, 1.28, conv), mix(moderate, 1.0, active));
+  sizePx *= mix(1.0, 1.65, aMist);
+  sizePx *= 1.0 + nearBlur * 0.26 + wake * 0.07;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
   vCorner = aCorner;
@@ -84,13 +84,14 @@ void main() {
   vec3 cyanTint = vec3(0.1, 0.94, 0.98);
   vec3 warmTint = vec3(1.0, 0.72, 0.18);
   vec3 materialColor = aColor;
-  materialColor = mix(materialColor, violetTint, violetId * 0.64);
-  materialColor = mix(materialColor, cyanTint, cyanId * 0.7);
-  materialColor = mix(materialColor, warmTint, warmId * 0.74);
+  materialColor = mix(materialColor, violetTint, violetId * 0.38);
+  materialColor = mix(materialColor, cyanTint, cyanId * 0.42);
+  materialColor = mix(materialColor, warmTint, warmId * 0.44);
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
-  vColor = mix(materialColor, nexusTint, conv * (0.06 + nexus * 0.08 + sync * 0.04));
-  vAlpha = mix(0.34 + 0.36 * activity, 0.36 + 0.18 * activity, aMist);
-  vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.52;
+  vColor = mix(materialColor, nexusTint, conv * (0.03 + nexus * 0.04 + sync * 0.02));
+  vColor *= mix(0.74, 0.96, aMist);
+  vAlpha = mix(0.26 + 0.24 * activity, 0.32 + 0.14 * activity, aMist);
+  vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.12;
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
 `;
@@ -105,12 +106,17 @@ varying float vGlow;
 void main() {
   float d = length(vCorner);
   if (d > 1.0) discard;
-  float core = exp(-d * d * mix(14.0, 3.2, vMist));
-  float halo = exp(-d * d * mix(6.8, 1.55, vMist)) * mix(0.1, 0.34, vMist);
-  halo += exp(-d * d * 2.6) * vGlow * 0.08;
+  float core = exp(-d * d * mix(12.4, 3.2, vMist));
+  float halo = exp(-d * d * mix(6.2, 1.55, vMist)) * mix(0.055, 0.3, vMist);
+  halo += exp(-d * d * 3.4) * vGlow * 0.025;
   float a = (core + halo) * vAlpha;
   if (a < 0.007) discard;
-  gl_FragColor = vec4(vColor * a, a);
+  vec3 c = vColor * a;
+  float peak = max(c.r, max(c.g, c.b));
+  if (peak > 0.7) {
+    c *= 0.7 / peak;
+  }
+  gl_FragColor = vec4(c, a);
 }
 `;
 
@@ -170,15 +176,16 @@ void main() {
   float violetId = smoothstep(0.03, 0.18, aColor.b - aColor.g) * smoothstep(0.08, 0.28, aColor.r);
   float warmId = smoothstep(0.02, 0.14, aColor.r - aColor.b) * smoothstep(0.02, 0.12, aColor.g);
   float flowStrength = max(violetId, max(cyanId, warmId));
-  vAlpha = aAlpha * (0.3 + flowStrength * 0.48 + focus * 0.12 + wake * 0.05 + nexus * 0.05);
+  vAlpha = aAlpha * (0.26 + flowStrength * 0.32 + focus * 0.09 + wake * 0.035 + nexus * 0.035);
   vec3 violetTint = vec3(0.86, 0.24, 1.0);
   vec3 cyanTint = vec3(0.1, 0.94, 0.98);
   vec3 warmTint = vec3(1.0, 0.72, 0.18);
   vec3 materialColor = aColor;
-  materialColor = mix(materialColor, violetTint, violetId * 0.66);
-  materialColor = mix(materialColor, cyanTint, cyanId * 0.7);
-  materialColor = mix(materialColor, warmTint, warmId * 0.76);
-  vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.05);
+  materialColor = mix(materialColor, violetTint, violetId * 0.4);
+  materialColor = mix(materialColor, cyanTint, cyanId * 0.44);
+  materialColor = mix(materialColor, warmTint, warmId * 0.46);
+  vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.035);
+  vColor *= 0.78;
 }
 `;
 
@@ -190,7 +197,12 @@ varying float vSide;
 void main() {
   float fall = exp(-vSide * vSide * 4.8);
   float a = vAlpha * fall;
-  gl_FragColor = vec4(vColor * a, a);
+  vec3 c = vColor * a;
+  float peak = max(c.r, max(c.g, c.b));
+  if (peak > 0.52) {
+    c *= 0.52 / peak;
+  }
+  gl_FragColor = vec4(c, a);
 }
 `;
 
@@ -246,7 +258,7 @@ uniform mat4 uViewProj;
 void main() {
   vec4 clip = uViewProj * vec4(aPosition, 1.0);
   gl_Position = clip;
-  gl_PointSize = max(1.4, 3.1 * (1.6 / max(0.55, clip.w)));
+  gl_PointSize = max(1.1, 2.1 * (1.6 / max(0.55, clip.w)));
 }
 `;
 
@@ -254,8 +266,8 @@ const SPARK_FRAG = `
 precision mediump float;
 void main() {
   vec2 p = gl_PointCoord * 2.0 - 1.0;
-  float a = exp(-dot(p, p) * 5.8) * 0.22;
-  gl_FragColor = vec4(vec3(0.62, 0.82, 0.96) * a, a);
+  float a = exp(-dot(p, p) * 6.4) * 0.1;
+  gl_FragColor = vec4(vec3(0.55, 0.74, 0.88) * a, a);
 }
 `;
 
