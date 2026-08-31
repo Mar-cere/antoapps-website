@@ -142,6 +142,7 @@
 }
 
 .nexus-hero {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   min-height: 100dvh;
@@ -233,16 +234,18 @@
 }
 
 .nexus-stage {
-  position: relative;
-  min-height: 90vh;
-  margin: 0 calc(var(--nexus-pad-x) * -0.55);
+  position: absolute;
+  inset: calc(4.75rem + env(safe-area-inset-top, 0px)) 0 0;
+  z-index: 1;
+  min-height: 0;
+  margin: 0 calc(var(--nexus-pad-x) * -1);
 }
 
 .nexus-organism {
   position: relative;
   width: 100%;
-  height: 90vh;
-  min-height: 32rem;
+  height: 100%;
+  min-height: 22rem;
 }
 
 .nexus-organism__canvas {
@@ -405,13 +408,13 @@
   }
 
   .nexus-stage {
-    min-height: calc(100dvh - 4.25rem);
-    margin: 0 0 0 -16%;
+    inset: 0 0 0 6%;
+    margin: 0;
   }
 
   .nexus-organism {
-    height: calc(100dvh - 4.25rem);
-    min-height: 32rem;
+    height: 100%;
+    min-height: 0;
   }
 }
 

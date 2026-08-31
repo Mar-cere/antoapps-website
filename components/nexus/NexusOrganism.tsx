@@ -636,7 +636,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       canvas.height = Math.floor(height * dpr);
       gl.viewport(0, 0, canvas.width, canvas.height);
       const proj = perspective((40 * Math.PI) / 180, width / height, 0.12, 10);
-      const dist = width / height < 0.9 ? 1.0 : 0.92;
+      const dist = width / height < 0.9 ? 0.86 : 0.78;
       const view = lookAt(-0.05, 0.1, dist, 0.03, 0.12, 0);
       viewProj = multiply4(proj, view);
       const budget = nexusBudget(window.innerWidth);
