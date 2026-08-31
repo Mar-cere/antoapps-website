@@ -214,21 +214,24 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
   const n = hash3(p.x, p.y, p.z);
   const n2 = hash3(p.z + 1.7, p.x - 0.4, p.y + 2.1);
   const rViolet =
-    ribbon(p, -0.14, 0.18, -0.04, 2.05, 0.3, 0.2, 0.14) * 1.12 +
-    slant(p, -0.16, 0.24, 0.1, -0.1, 0.02, 0.08, 0.1) * 0.95 +
-    ribbon(p, 0.16, -0.16, 0.02, 1.58, 3.8, 0.15, 0.11) * 0.42;
+    ribbon(p, -0.14, 0.18, -0.04, 2.05, 0.3, 0.2, 0.14) * 1.32 +
+    slant(p, -0.16, 0.24, 0.08, -0.06, 0.02, 0.08, 0.1) * 1.18 +
+    ribbon(p, 0.16, -0.16, 0.02, 1.58, 3.8, 0.15, 0.11) * 0.48;
   const rCyan =
     ribbon(p, 0.2, 0.18, 0.04, 1.88, 1.15, 0.18, 0.13) * 1.22 +
-    slant(p, 0.22, 0.26, -0.02, -0.08, -0.02, 0.08, 0.1) * 1.18 +
+    slant(p, 0.22, 0.26, 0.04, -0.04, -0.02, 0.075, 0.1) * 0.92 +
     ribbon(p, 0.22, -0.04, 0.02, 1.6, 2.8, 0.14, 0.11) * 0.48;
   const rTeal =
     ribbon(p, 0.18, 0.1, -0.06, 1.74, 0.9, 0.13, 0.1) * 0.32;
   const rBlue =
     ribbon(p, -0.06, 0.26, 0.08, 1.55, 0.85, 0.15, 0.11) * 0.3 +
     ribbon(p, -0.16, 0.02, 0.02, 1.82, 1.7, 0.13, 0.1) * 0.24;
+  const rise = Math.max(0, Math.min(1, (p.y - 0.1) / 0.24));
   const rWarm =
-    slant(p, -0.18, -0.28, 0.06, 0.28, 0.0, 0.075, 0.1) * 1.55 +
-    slant(p, -0.1, -0.16, 0.1, 0.1, -0.03, 0.065, 0.09) * 0.7;
+    (slant(p, -0.18, -0.28, -0.02, 0.3, 0.0, 0.068, 0.1) * 1.28 +
+      slant(p, -0.12, 0.1, -0.02, 0.36, 0.01, 0.065, 0.09) * 1.42 +
+      slant(p, -0.1, -0.16, 0.04, 0.06, -0.03, 0.055, 0.08) * 0.32) *
+    (1 + rise * 1.45);
   const bandV = Math.pow(0.5 + 0.5 * Math.sin(p.x * 3.4 + p.y * 2.6 + p.z * 2.1 + 0.7), 3.6);
   const bandC = Math.pow(0.5 + 0.5 * Math.sin(p.x * 2.9 - p.y * 3.4 + p.z * 2.2 + 3.9), 3.6);
   const bandB = Math.pow(0.5 + 0.5 * Math.sin(-p.x * 2.4 + p.y * 3.8 - p.z * 1.8 + 2.2), 3.6);
@@ -295,19 +298,19 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
     let sr: number;
     let sg: number;
     let sb: number;
-    const warmLead = rWarm >= rCyan && rWarm >= rViolet;
-    if (rCyan >= rViolet && rCyan >= rWarm) {
-      sr = nA[0];
-      sg = nA[1];
-      sb = nA[2];
-    } else if (rViolet >= rWarm) {
-      sr = pA[0];
-      sg = pA[1];
-      sb = pA[2];
-    } else {
+    const warmLead = rWarm >= rCyan * (p.y > 0.04 ? 0.7 : 1) && rWarm >= rViolet * (p.y > 0.04 ? 0.7 : 1);
+    if (warmLead) {
       sr = WARM[0];
       sg = WARM[1];
       sb = WARM[2];
+    } else if (rCyan >= rViolet) {
+      sr = nA[0];
+      sg = nA[1];
+      sb = nA[2];
+    } else {
+      sr = pA[0];
+      sg = pA[1];
+      sb = pA[2];
     }
     const stampLuma = sr * 0.22 + sg * 0.55 + sb * 0.23;
     const lift = ((warmLead ? 0.5 : 0.42) + thread * 0.32) / Math.max(0.08, stampLuma);
