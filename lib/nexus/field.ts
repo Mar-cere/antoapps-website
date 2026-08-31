@@ -589,7 +589,7 @@ function buildPlexus(core: NexusNode[], maxEdges: number, rng: () => number): Ne
       }
     }
     near.sort((left, right) => left.d - right.d);
-    const take = a.density > 0.48 ? 6 : a.density > 0.16 ? 5 : 3;
+    const take = a.density > 0.48 ? 8 : a.density > 0.16 ? 6 : 4;
     for (let n = 0; n < Math.min(take, near.length); n += 1) {
       const j = near[n].j;
       const b = core[j];
@@ -598,7 +598,7 @@ function buildPlexus(core: NexusNode[], maxEdges: number, rng: () => number): Ne
         y: (a.y + b.y) * 0.5 + (rng() - 0.5) * 0.018,
         z: (a.z + b.z) * 0.5 + (rng() - 0.5) * 0.02,
       };
-      const alpha = 0.16 + Math.min(a.density, b.density) * 0.1 + rng() * 0.04;
+      const alpha = 0.13 + Math.min(a.density, b.density) * 0.14 + rng() * 0.04;
       tryEdge(i, j, mid, 4, alpha, false);
     }
   }
@@ -730,17 +730,17 @@ function addCentralFilaments(core: NexusNode[], maxCount: number, rng: () => num
 
 export function nexusBudget(width: number): NexusBudget {
   if (width < 768) {
-    return { nodes: 2800, filaments: 2200 };
+    return { nodes: 3000, filaments: 2800 };
   }
   if (width < 1024) {
-    return { nodes: 4800, filaments: 3600 };
+    return { nodes: 5200, filaments: 4400 };
   }
-  return { nodes: 7200, filaments: 5200 };
+  return { nodes: 7800, filaments: 6800 };
 }
 
 export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField {
   const rng = mulberry32(seed);
-  const coreTarget = Math.floor(budget.nodes * 0.88);
+  const coreTarget = Math.floor(budget.nodes * 0.82);
   const mistTarget = budget.nodes - coreTarget;
   const nodes: NexusNode[] = [];
   const maxAttempts = coreTarget * 60;
@@ -840,7 +840,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       z: (rng() * 2 - 1) * 0.28,
     };
     const { density, cluster } = fieldAt(p);
-    if (density < 0.1 || density > 0.36) {
+    if (density < 0.09 || density > 0.48) {
       continue;
     }
     const color = mixColor(p);
@@ -851,7 +851,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       r: Math.min(1.15, color.r * 0.92),
       g: Math.min(1.15, color.g * 0.86),
       b: Math.min(1.15, color.b * 0.9),
-      size: (budget.nodes < 3500 ? 1.2 : 1.45) + rng() * 0.45,
+      size: (budget.nodes < 3500 ? 1.45 : 1.75) + rng() * 0.55,
       cluster,
       density: Math.max(0.05, density * 0.55),
       bright: 0,
@@ -939,7 +939,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       nearFocus(start) < 1.55 ||
       nearFocus(end) < 1.55 ||
       nearVoid(mid) < 1.25;
-    filament.alpha *= meaningful ? 1.08 : 0.72;
+    filament.alpha *= meaningful ? 1.12 : 0.88;
   }
 
   const membranes: NexusMembrane[] = [];
@@ -948,7 +948,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   const cyanPool = pool.filter((node) => node.g - node.r > 0.12 && node.g > 0.4);
   const violetPool = pool.filter((node) => node.b - node.g > 0.08 && node.b > 0.45 && node.r > 0.28);
   const warmPool = pool.filter((node) => node.r - node.b > 0.12 && node.r > 0.45);
-  const patchCount = 26;
+  const patchCount = 42;
   for (let p = 0; p < patchCount; p += 1) {
     const bucket = p % 3 === 0 ? cyanPool : p % 3 === 1 ? violetPool : warmPool;
     const source = bucket.length > 4 ? bucket : pool;
@@ -958,7 +958,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       if (picks.length >= 6) {
         break;
       }
-      if (dist2(start, candidate) < 0.055 && rng() > 0.32) {
+      if (dist2(start, candidate) < 0.07 && rng() > 0.28) {
         picks.push(candidate);
       }
     }
@@ -989,7 +989,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
         r: silk.r,
         g: silk.g,
         b: silk.b,
-        alpha: 0.02 + rng() * 0.01,
+        alpha: 0.034 + rng() * 0.016,
       });
     }
   }

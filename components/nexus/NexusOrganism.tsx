@@ -89,7 +89,7 @@ void main() {
   materialColor = mix(materialColor, warmTint, warmId * 0.74);
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
   vColor = mix(materialColor, nexusTint, conv * (0.06 + nexus * 0.08 + sync * 0.04));
-  vAlpha = mix(0.2 + 0.48 * activity, 0.03 + 0.02 * activity, aMist);
+  vAlpha = mix(0.2 + 0.48 * activity, 0.08 + 0.05 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.52;
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
@@ -105,8 +105,8 @@ varying float vGlow;
 void main() {
   float d = length(vCorner);
   if (d > 1.0) discard;
-  float core = exp(-d * d * mix(18.0, 6.2, vMist));
-  float halo = exp(-d * d * mix(6.4, 3.2, vMist)) * mix(0.12, 0.08, vMist);
+  float core = exp(-d * d * mix(18.0, 5.2, vMist));
+  float halo = exp(-d * d * mix(6.4, 2.6, vMist)) * mix(0.12, 0.16, vMist);
   halo += exp(-d * d * 1.8) * vGlow * 0.28;
   float a = (core + halo) * vAlpha;
   if (a < 0.007) discard;
@@ -162,7 +162,7 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
-  float px = 0.85;
+  float px = 0.5;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
@@ -188,7 +188,7 @@ varying float vAlpha;
 varying vec3 vColor;
 varying float vSide;
 void main() {
-  float fall = exp(-vSide * vSide * 3.4);
+  float fall = exp(-vSide * vSide * 4.8);
   float a = vAlpha * fall;
   gl_FragColor = vec4(vColor * a, a);
 }
@@ -234,7 +234,7 @@ void main() {
   float edge = min(min(vBary.x, vBary.y), vBary.z);
   float veil = smoothstep(0.0, 0.3, edge);
   float fold = exp(-abs(edge - 0.07) * 18.0) * 0.24;
-  float a = (veil * 0.7 + fold) * vAlpha * 0.85;
+  float a = (veil * 0.82 + fold) * vAlpha * 0.95;
   if (a < 0.003) discard;
   gl_FragColor = vec4(vColor * a, a);
 }
