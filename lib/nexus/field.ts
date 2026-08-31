@@ -983,13 +983,13 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   }
 
   const hazeRng = mulberry32((seed ^ 0xa5c3) >>> 0);
-  const extraHaze = Math.floor(mistTarget * 1.48);
+  const extraHaze = Math.floor(mistTarget * 1.62);
   let extraMade = 0;
   let extraTries = 0;
   while (extraMade < extraHaze && extraTries < extraHaze * 22) {
     extraTries += 1;
     const p = {
-      x: hazeRng() * 0.26 + 0.0,
+      x: hazeRng() * 0.3 - 0.04,
       y: hazeRng() * 0.2 + 0.02,
       z: (hazeRng() * 2 - 1) * 0.2,
     };
@@ -1049,8 +1049,8 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   for (const node of nodes) {
     const torso = node.y > -0.08 && node.y < 0.24 && node.x > -0.16;
     const inCove = node.x <= -0.04 && node.x > -0.26 && node.y > -0.02 && node.y < 0.26;
-    if (node.y < -0.12) {
-      const foot = node.y < -0.22 ? 0.28 : 0.48;
+    if (node.y < -0.1) {
+      const foot = node.y < -0.2 ? 0.22 : 0.38;
       node.size *= foot;
       node.r *= foot + 0.12;
       node.g *= foot + 0.1;
@@ -1060,7 +1060,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       }
     }
     if (node.mist) {
-      if (node.y < -0.12) {
+      if (node.y < -0.1) {
         continue;
       } else if (inCove) {
         node.r *= 0.98;
@@ -1075,26 +1075,26 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       continue;
     }
     if (node.bright > 0.85) {
-      node.size *= torso ? 0.7 : 0.58;
-      node.bright = torso ? 0.46 : 0.34;
-      node.r *= torso ? 0.82 : 0.72;
-      node.g *= torso ? 0.82 : 0.72;
-      node.b *= torso ? 0.86 : 0.76;
+      node.size *= torso ? 0.62 : 0.58;
+      node.bright = torso ? 0.82 : 0.34;
+      node.r *= torso ? 0.94 : 0.72;
+      node.g *= torso ? 0.94 : 0.72;
+      node.b *= torso ? 0.96 : 0.76;
     } else if (node.bright > 0.45) {
-      node.size *= 0.72;
-      node.bright = torso ? 0.4 : 0.32;
-      node.r *= torso ? 0.86 : 0.78;
-      node.g *= torso ? 0.86 : 0.78;
-      node.b *= torso ? 0.88 : 0.8;
+      node.size *= torso ? 0.68 : 0.72;
+      node.bright = torso ? 0.62 : 0.32;
+      node.r *= torso ? 0.92 : 0.78;
+      node.g *= torso ? 0.92 : 0.78;
+      node.b *= torso ? 0.94 : 0.8;
     }
     if (torso && node.bright < 0.3) {
-      node.r = Math.min(1.08, node.r * 1.1);
-      node.g = Math.min(1.08, node.g * 1.08);
-      node.b = Math.min(1.08, node.b * 1.1);
+      node.r = Math.min(1.1, node.r * 1.12);
+      node.g = Math.min(1.1, node.g * 1.1);
+      node.b = Math.min(1.1, node.b * 1.12);
     }
     const luma = node.r * 0.22 + node.g * 0.55 + node.b * 0.23;
-    if (luma > (torso ? 0.52 : 0.4)) {
-      const s = (torso ? 0.52 : 0.4) / luma;
+    if (luma > (torso ? 0.72 : 0.4)) {
+      const s = (torso ? 0.72 : 0.4) / luma;
       node.r *= s;
       node.g *= s;
       node.b *= s;

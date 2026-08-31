@@ -58,17 +58,17 @@ void main() {
   float active = smoothstep(0.42, 0.68, aBright);
   float conv = smoothstep(0.85, 1.0, aBright);
   float pulse = 0.84 + 0.16 * sin(uTime * 1.15 + aCluster * 1.4 + aCenter.x * 2.0);
-  float quiet = 0.3 + tissue * 0.1 + wake * 0.015;
-  float mid = 0.38 + focus * 0.04 + wake * 0.02 + pulse * 0.015;
-  float lit = 0.42 + focus * 0.03 + wake * 0.02;
-  float hot = 0.46 + nexus * 0.02 + sync * 0.01;
+  float quiet = 0.34 + tissue * 0.1 + wake * 0.015;
+  float mid = 0.44 + focus * 0.04 + wake * 0.02 + pulse * 0.015;
+  float lit = 0.54 + focus * 0.04 + wake * 0.02;
+  float hot = 0.82 + nexus * 0.04 + sync * 0.02;
   float activity = mix(quiet, mid, moderate);
   activity = mix(activity, lit, active);
   activity = mix(activity, hot, conv);
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.28, 0.5, clip.w);
   float farDim = smoothstep(3.15, 4.7, clip.w);
-  float sizePx = aSize * mix(1.12, mix(1.16, 1.2, conv), mix(moderate, 1.0, active));
+  float sizePx = aSize * mix(1.1, mix(1.08, 0.92, conv), mix(moderate, 1.0, active));
   sizePx *= mix(1.0, 1.85, aMist);
   sizePx *= 1.0 + nearBlur * 0.22 + wake * 0.05;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
@@ -89,8 +89,8 @@ void main() {
   materialColor = mix(materialColor, warmTint, warmId * 0.32);
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
   vColor = mix(materialColor, nexusTint, conv * (0.02 + nexus * 0.03 + sync * 0.015));
-  vColor *= mix(0.54, 0.92, aMist);
-  vAlpha = mix(0.18 + 0.14 * activity, 0.4 + 0.16 * activity, aMist);
+  vColor *= mix(0.62, 0.94, aMist);
+  vAlpha = mix(0.28 + 0.28 * activity, 0.42 + 0.16 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.06;
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
@@ -113,7 +113,7 @@ void main() {
   if (a < 0.007) discard;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  float cap = mix(0.36, 0.3, vMist);
+  float cap = mix(0.78, 0.32, vMist);
   if (peak > cap) {
     c *= cap / peak;
   }
