@@ -194,7 +194,15 @@ function ribbon(p: Vec3, ax: number, ay: number, az: number, freq: number, phase
   const dy = (p.y - yPath) / ry;
   const dz = (p.z - zPath) / rz;
   const dx = (p.x - ax) * 3.6;
-  return Math.pow(Math.exp(-(dy * dy + dz * dz + dx * dx)), 2.6);
+  return Math.pow(Math.exp(-(dy * dy + dz * dz + dx * dx)), 2.15);
+}
+
+function climb(p: Vec3, ax: number, y0: number, y1: number, az: number, rx: number, rz: number): number {
+  const yOn = Math.max(y0, Math.min(y1, p.y));
+  const dx = (p.x - ax) / rx;
+  const dy = (p.y - yOn) / 0.07;
+  const dz = (p.z - az) / rz;
+  return Math.pow(Math.exp(-(dx * dx + dy * dy + dz * dz)), 2.15);
 }
 
 function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } {
@@ -205,24 +213,24 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
     ribbon(p, -0.02, 0.04, 0.04, 1.7, 2.4, 0.16, 0.12) * 0.72 +
     ribbon(p, 0.16, -0.16, 0.02, 1.58, 3.8, 0.15, 0.11) * 0.52;
   const rCyan =
-    ribbon(p, 0.2, 0.18, 0.04, 1.88, 1.15, 0.18, 0.13) * 1.22 +
-    ribbon(p, 0.08, 0.06, -0.03, 1.85, 2.6, 0.16, 0.12) * 0.98 +
-    ribbon(p, 0.22, -0.04, 0.02, 1.6, 2.8, 0.14, 0.11) * 0.55;
+    ribbon(p, 0.2, 0.18, 0.04, 1.88, 1.15, 0.18, 0.13) * 1.28 +
+    ribbon(p, 0.08, 0.06, -0.03, 1.85, 2.6, 0.16, 0.12) * 1.12 +
+    ribbon(p, 0.22, -0.04, 0.02, 1.6, 2.8, 0.14, 0.11) * 0.62;
   const rTeal =
     ribbon(p, 0.18, 0.1, -0.06, 1.74, 0.9, 0.13, 0.1) * 0.38;
   const rBlue =
     ribbon(p, -0.06, 0.26, 0.08, 1.55, 0.85, 0.15, 0.11) * 0.36 +
     ribbon(p, -0.16, 0.02, 0.02, 1.82, 1.7, 0.13, 0.1) * 0.28;
   const rWarm =
-    ribbon(p, -0.1, -0.12, 0.02, 1.7, 1.3, 0.14, 0.11) * 0.82 +
-    ribbon(p, -0.04, 0.08, 0.0, 1.45, 2.4, 0.14, 0.1) * 0.48 +
-    ribbon(p, 0.06, -0.2, 0.0, 1.55, 2.6, 0.12, 0.09) * 0.3;
+    climb(p, -0.15, -0.3, 0.34, 0.01, 0.085, 0.1) * 1.42 +
+    climb(p, -0.08, -0.1, 0.2, -0.03, 0.07, 0.09) * 0.62 +
+    ribbon(p, -0.12, 0.18, 0.0, 1.48, 1.1, 0.12, 0.09) * 0.32;
   const bandV = Math.pow(0.5 + 0.5 * Math.sin(p.x * 3.4 + p.y * 2.6 + p.z * 2.1 + 0.7), 3.6);
   const bandC = Math.pow(0.5 + 0.5 * Math.sin(p.x * 2.9 - p.y * 3.4 + p.z * 2.2 + 3.9), 3.6);
   const bandB = Math.pow(0.5 + 0.5 * Math.sin(-p.x * 2.4 + p.y * 3.8 - p.z * 1.8 + 2.2), 3.6);
   const bandW = Math.pow(0.5 + 0.5 * Math.sin(p.x * 2.2 + p.y * 3.6 + p.z * 1.6 + 4.7), 3.6);
   const ribbonPeak = Math.max(rViolet, rCyan, rWarm);
-  const thread = Math.min(1, Math.max(0, (ribbonPeak - 0.2) / 0.48));
+  const thread = Math.min(1, Math.max(0, (ribbonPeak - 0.14) / 0.5));
   let psyche = rViolet * 1.4 + bandV * 0.05 + (n - 0.5) * 0.02;
   let persona = rCyan * 1.58 + rTeal * 0.28 + bandC * 0.05;
   let cortex = rBlue * 0.55 + bandB * 0.05 + (n2 - 0.5) * 0.02;
@@ -237,10 +245,11 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
     } else if (focus.kind === 'cp') {
       psyche += influence * 0.18;
       cortex += influence * 0.08;
+      warm += influence * 0.08;
       persona += influence * 0.04;
     } else if (focus.kind === 'vc') {
-      persona += influence * 0.14;
-      warm += influence * 0.12;
+      persona += influence * 0.16;
+      warm += influence * 0.04;
       cortex += influence * 0.06;
     } else {
       persona += influence * 0.1;
@@ -278,10 +287,11 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
   r = Math.min(1.2, Math.max(0, luma + (r - luma) * sat));
   g = Math.min(1.2, Math.max(0, luma + (g - luma) * sat));
   b = Math.min(1.2, Math.max(0, luma + (b - luma) * sat));
-  if (thread > 0.35) {
+  if (thread > 0.22) {
     let sr: number;
     let sg: number;
     let sb: number;
+    const warmLead = rWarm >= rCyan && rWarm >= rViolet;
     if (rCyan >= rViolet && rCyan >= rWarm) {
       sr = nA[0];
       sg = nA[1];
@@ -296,7 +306,7 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
       sb = WARM[2];
     }
     const stampLuma = sr * 0.22 + sg * 0.55 + sb * 0.23;
-    const lift = (0.4 + thread * 0.32) / Math.max(0.08, stampLuma);
+    const lift = ((warmLead ? 0.5 : 0.42) + thread * 0.32) / Math.max(0.08, stampLuma);
     sr = Math.min(1.2, sr * lift);
     sg = Math.min(1.2, sg * lift);
     sb = Math.min(1.2, sb * lift);
@@ -305,8 +315,8 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
     g = g * (1 - w) + sg * w;
     b = b * (1 - w) + sb * w;
   }
-  if (thread < 0.35) {
-    const body = 1 - thread / 0.35;
+  if (thread < 0.22) {
+    const body = 1 - thread / 0.22;
     const crush = (0.13 + thread * 0.22) / Math.max(0.05, r * 0.22 + g * 0.55 + b * 0.23);
     r = Math.max(0, (r * (1 - body * 0.62) + dA[0] * body * 0.62) * crush);
     g = Math.max(0, (g * (1 - body * 0.62) + dA[1] * body * 0.62) * crush);

@@ -84,13 +84,13 @@ void main() {
   vec3 cyanTint = vec3(0.1, 0.94, 0.98);
   vec3 warmTint = vec3(1.0, 0.72, 0.18);
   vec3 materialColor = aColor;
-  materialColor = mix(materialColor, violetTint, violetId * 0.58);
-  materialColor = mix(materialColor, cyanTint, cyanId * 0.64);
-  materialColor = mix(materialColor, warmTint, warmId * 0.64);
+  materialColor = mix(materialColor, violetTint, violetId * 0.64);
+  materialColor = mix(materialColor, cyanTint, cyanId * 0.7);
+  materialColor = mix(materialColor, warmTint, warmId * 0.74);
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
   vColor = mix(materialColor, nexusTint, conv * (0.06 + nexus * 0.08 + sync * 0.04));
   vAlpha = mix(0.2 + 0.48 * activity, 0.03 + 0.02 * activity, aMist);
-  vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.42;
+  vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.52;
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
 `;
@@ -170,14 +170,14 @@ void main() {
   float violetId = smoothstep(0.03, 0.18, aColor.b - aColor.g) * smoothstep(0.08, 0.28, aColor.r);
   float warmId = smoothstep(0.02, 0.14, aColor.r - aColor.b) * smoothstep(0.02, 0.12, aColor.g);
   float flowStrength = max(violetId, max(cyanId, warmId));
-  vAlpha = aAlpha * (0.16 + flowStrength * 0.56 + focus * 0.18 + wake * 0.08 + nexus * 0.08);
+  vAlpha = aAlpha * (0.16 + flowStrength * 0.68 + focus * 0.18 + wake * 0.08 + nexus * 0.08);
   vec3 violetTint = vec3(0.86, 0.24, 1.0);
   vec3 cyanTint = vec3(0.1, 0.94, 0.98);
   vec3 warmTint = vec3(1.0, 0.72, 0.18);
   vec3 materialColor = aColor;
-  materialColor = mix(materialColor, violetTint, violetId * 0.6);
-  materialColor = mix(materialColor, cyanTint, cyanId * 0.64);
-  materialColor = mix(materialColor, warmTint, warmId * 0.64);
+  materialColor = mix(materialColor, violetTint, violetId * 0.66);
+  materialColor = mix(materialColor, cyanTint, cyanId * 0.7);
+  materialColor = mix(materialColor, warmTint, warmId * 0.76);
   vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.05);
 }
 `;
@@ -216,9 +216,9 @@ void main() {
   vec3 cyanTint = vec3(0.1, 0.94, 0.98);
   vec3 warmTint = vec3(1.0, 0.72, 0.18);
   vec3 materialColor = aColor;
-  materialColor = mix(materialColor, violetTint, violetId * 0.56);
-  materialColor = mix(materialColor, cyanTint, cyanId * 0.6);
-  vColor = mix(materialColor, warmTint, warmId * 0.58);
+  materialColor = mix(materialColor, violetTint, violetId * 0.62);
+  materialColor = mix(materialColor, cyanTint, cyanId * 0.66);
+  vColor = mix(materialColor, warmTint, warmId * 0.7);
   float flowStrength = max(violetId, max(cyanId, warmId));
   vAlpha = aAlpha * (0.58 + flowStrength * 0.28) * (0.78 + 0.22 * sin(uTime * 0.48 + aPosition.z * 3.0));
   vBary = aBary;
