@@ -210,17 +210,29 @@ function slant(p: Vec3, x0: number, y0: number, x1: number, y1: number, az: numb
   return Math.pow(Math.exp(-(dx * dx + dy * dy + dz * dz)), 2.15);
 }
 
+function blob(p: Vec3, cx: number, cy: number, cz: number, rx: number, ry: number, rz: number): number {
+  const dx = (p.x - cx) / rx;
+  const dy = (p.y - cy) / ry;
+  const dz = (p.z - cz) / rz;
+  return Math.pow(Math.exp(-(dx * dx + dy * dy + dz * dz)), 1.28);
+}
+
 function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } {
   const n = hash3(p.x, p.y, p.z);
   const n2 = hash3(p.z + 1.7, p.x - 0.4, p.y + 2.1);
+  const violetPatch = blob(p, -0.06, 0.18, -0.02, 0.15, 0.14, 0.11);
+  const cyanPatch = blob(p, 0.2, 0.2, 0.03, 0.18, 0.16, 0.12);
+  const warmPatch = blob(p, 0.05, 0.02, 0.0, 0.14, 0.13, 0.1);
   const rViolet =
     ribbon(p, -0.14, 0.18, -0.04, 2.05, 0.3, 0.2, 0.14) * 1.32 +
     slant(p, -0.16, 0.24, 0.08, -0.06, 0.02, 0.08, 0.1) * 1.18 +
-    ribbon(p, 0.16, -0.16, 0.02, 1.58, 3.8, 0.15, 0.11) * 0.48;
+    ribbon(p, 0.16, -0.16, 0.02, 1.58, 3.8, 0.15, 0.11) * 0.18 +
+    violetPatch * 1.05;
   const rCyan =
     ribbon(p, 0.2, 0.18, 0.04, 1.88, 1.15, 0.18, 0.13) * 1.22 +
     slant(p, 0.22, 0.26, 0.04, -0.04, -0.02, 0.075, 0.1) * 0.92 +
-    ribbon(p, 0.22, -0.04, 0.02, 1.6, 2.8, 0.14, 0.11) * 0.48;
+    ribbon(p, 0.22, -0.04, 0.02, 1.6, 2.8, 0.14, 0.11) * 0.48 +
+    cyanPatch * 1.18;
   const rTeal =
     ribbon(p, 0.18, 0.1, -0.06, 1.74, 0.9, 0.13, 0.1) * 0.32;
   const rBlue =
@@ -228,10 +240,11 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
     ribbon(p, -0.16, 0.02, 0.02, 1.82, 1.7, 0.13, 0.1) * 0.24;
   const rise = Math.max(0, Math.min(1, (p.y - 0.1) / 0.24));
   const rWarm =
-    (slant(p, -0.18, -0.28, -0.02, 0.3, 0.0, 0.068, 0.1) * 1.28 +
-      slant(p, -0.12, 0.1, -0.02, 0.36, 0.01, 0.065, 0.09) * 1.42 +
-      slant(p, -0.1, -0.16, 0.04, 0.06, -0.03, 0.055, 0.08) * 0.32) *
-    (1 + rise * 1.45);
+    (slant(p, -0.18, -0.28, -0.02, 0.3, 0.0, 0.068, 0.1) * 0.82 +
+      slant(p, -0.12, 0.1, -0.02, 0.36, 0.01, 0.065, 0.09) * 0.95 +
+      slant(p, -0.1, -0.16, 0.04, 0.06, -0.03, 0.055, 0.08) * 0.28 +
+      warmPatch * 1.35) *
+    (1 + rise * 0.85);
   const bandV = Math.pow(0.5 + 0.5 * Math.sin(p.x * 3.4 + p.y * 2.6 + p.z * 2.1 + 0.7), 3.6);
   const bandC = Math.pow(0.5 + 0.5 * Math.sin(p.x * 2.9 - p.y * 3.4 + p.z * 2.2 + 3.9), 3.6);
   const bandB = Math.pow(0.5 + 0.5 * Math.sin(-p.x * 2.4 + p.y * 3.8 - p.z * 1.8 + 2.2), 3.6);
@@ -322,12 +335,12 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
     g = g * (1 - w) + sg * w;
     b = b * (1 - w) + sb * w;
   }
-  if (thread < 0.22) {
-    const body = 1 - thread / 0.22;
-    const crush = (0.13 + thread * 0.22) / Math.max(0.05, r * 0.22 + g * 0.55 + b * 0.23);
-    r = Math.max(0, (r * (1 - body * 0.62) + dA[0] * body * 0.62) * crush);
-    g = Math.max(0, (g * (1 - body * 0.62) + dA[1] * body * 0.62) * crush);
-    b = Math.max(0, (b * (1 - body * 0.62) + dA[2] * body * 0.62) * crush);
+  if (thread < 0.18) {
+    const body = 1 - thread / 0.18;
+    const crush = (0.22 + thread * 0.32) / Math.max(0.05, r * 0.22 + g * 0.55 + b * 0.23);
+    r = Math.max(0, (r * (1 - body * 0.42) + dA[0] * body * 0.42) * crush);
+    g = Math.max(0, (g * (1 - body * 0.42) + dA[1] * body * 0.42) * crush);
+    b = Math.max(0, (b * (1 - body * 0.42) + dA[2] * body * 0.42) * crush);
   }
   const ribbonStrength = Math.max(rViolet, rCyan, rTeal, rBlue, rWarm);
   return { r, g, b, ribbon: ribbonStrength };
@@ -860,6 +873,57 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     mistMade += 1;
   }
 
+  const hazeRng = mulberry32((seed ^ 0xa5c3) >>> 0);
+  const extraHaze = Math.floor(mistTarget * 0.58);
+  let extraMade = 0;
+  let extraTries = 0;
+  while (extraMade < extraHaze && extraTries < extraHaze * 22) {
+    extraTries += 1;
+    const p = {
+      x: hazeRng() * 0.34 + 0.04,
+      y: hazeRng() * 0.34 + 0.06,
+      z: (hazeRng() * 2 - 1) * 0.2,
+    };
+    const { density, cluster } = fieldAt(p);
+    if (density < 0.1 || density > 0.52) {
+      continue;
+    }
+    const color = mixColor(p);
+    nodes.push({
+      x: p.x,
+      y: p.y,
+      z: p.z,
+      r: Math.min(1.18, color.r * 1.02),
+      g: Math.min(1.18, color.g * 0.96),
+      b: Math.min(1.18, color.b * 1.0),
+      size: (budget.nodes < 3500 ? 1.7 : 2.05) + hazeRng() * 0.6,
+      cluster,
+      density: Math.max(0.06, density * 0.62),
+      bright: 0,
+      mist: 1,
+    });
+    extraMade += 1;
+  }
+
+  for (const node of nodes) {
+    if (!node.mist) {
+      continue;
+    }
+    if (node.y < -0.18) {
+      node.size *= 0.48;
+      node.r *= 0.55;
+      node.g *= 0.55;
+      node.b *= 0.6;
+    } else {
+      node.r = Math.min(1.2, node.r * 1.18);
+      node.g = Math.min(1.2, node.g * 1.12);
+      node.b = Math.min(1.2, node.b * 1.14);
+      if (node.y > -0.02 && node.x > -0.06) {
+        node.size *= 1.22;
+      }
+    }
+  }
+
   const coreNodes = nodes.filter((node) => !node.mist);
   const centralBudget = Math.floor(budget.filaments * 0.045);
   const filaments = buildPlexus(coreNodes, Math.max(1, budget.filaments - centralBudget), rng);
@@ -991,6 +1055,17 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
         b: silk.b,
         alpha: 0.034 + rng() * 0.016,
       });
+    }
+  }
+
+  for (const membrane of membranes) {
+    const cy = (membrane.ay + membrane.by + membrane.cy) / 3;
+    if (cy < -0.16) {
+      membrane.alpha *= 0.12;
+    } else if (cy < -0.06) {
+      membrane.alpha *= 0.4;
+    } else if (cy > 0.02) {
+      membrane.alpha *= 1.28;
     }
   }
 
