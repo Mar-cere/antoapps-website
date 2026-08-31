@@ -194,7 +194,7 @@ function ribbon(p: Vec3, ax: number, ay: number, az: number, freq: number, phase
   const dy = (p.y - yPath) / ry;
   const dz = (p.z - zPath) / rz;
   const dx = (p.x - ax) * 3.6;
-  return Math.exp(-(dy * dy + dz * dz + dx * dx));
+  return Math.pow(Math.exp(-(dy * dy + dz * dz + dx * dx)), 2.6);
 }
 
 function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } {
@@ -221,11 +221,13 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
   const bandC = Math.pow(0.5 + 0.5 * Math.sin(p.x * 2.9 - p.y * 3.4 + p.z * 2.2 + 3.9), 3.6);
   const bandB = Math.pow(0.5 + 0.5 * Math.sin(-p.x * 2.4 + p.y * 3.8 - p.z * 1.8 + 2.2), 3.6);
   const bandW = Math.pow(0.5 + 0.5 * Math.sin(p.x * 2.2 + p.y * 3.6 + p.z * 1.6 + 4.7), 3.6);
-  let psyche = rViolet * 1.4 + bandV * 0.12 + (n - 0.5) * 0.03;
-  let persona = rCyan * 1.58 + rTeal * 0.38 + bandC * 0.14;
-  let cortex = rBlue * 0.76 + bandB * 0.12 + (n2 - 0.5) * 0.02;
-  let deep = 0.04;
-  let warm = rWarm * 1.42 + bandW * 0.12;
+  const ribbonPeak = Math.max(rViolet, rCyan, rWarm);
+  const thread = Math.min(1, Math.max(0, (ribbonPeak - 0.2) / 0.48));
+  let psyche = rViolet * 1.4 + bandV * 0.05 + (n - 0.5) * 0.02;
+  let persona = rCyan * 1.58 + rTeal * 0.28 + bandC * 0.05;
+  let cortex = rBlue * 0.55 + bandB * 0.05 + (n2 - 0.5) * 0.02;
+  let deep = 0.16 * (1 - thread * 0.92);
+  let warm = rWarm * 1.7 + bandW * 0.05;
   for (const focus of FOCI) {
     const influence = Math.min(1.1, Math.max(0, gauss(p, { ...focus, weight: 1 })));
     if (focus.kind === 'vp') {
@@ -272,10 +274,44 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
   let g = pA[1] * psyche + nA[1] * persona + cA[1] * cortex + dA[1] * deep + WARM[1] * warm;
   let b = pA[2] * psyche + nA[2] * persona + cA[2] * cortex + dA[2] * deep + WARM[2] * warm;
   const luma = r * 0.22 + g * 0.55 + b * 0.23;
-  const sat = 1.52;
-  r = Math.min(1.15, Math.max(0, luma + (r - luma) * sat));
-  g = Math.min(1.15, Math.max(0, luma + (g - luma) * sat));
-  b = Math.min(1.15, Math.max(0, luma + (b - luma) * sat));
+  const sat = 1.42 + thread * 0.7;
+  r = Math.min(1.2, Math.max(0, luma + (r - luma) * sat));
+  g = Math.min(1.2, Math.max(0, luma + (g - luma) * sat));
+  b = Math.min(1.2, Math.max(0, luma + (b - luma) * sat));
+  if (thread > 0.35) {
+    let sr: number;
+    let sg: number;
+    let sb: number;
+    if (rCyan >= rViolet && rCyan >= rWarm) {
+      sr = nA[0];
+      sg = nA[1];
+      sb = nA[2];
+    } else if (rViolet >= rWarm) {
+      sr = pA[0];
+      sg = pA[1];
+      sb = pA[2];
+    } else {
+      sr = WARM[0];
+      sg = WARM[1];
+      sb = WARM[2];
+    }
+    const stampLuma = sr * 0.22 + sg * 0.55 + sb * 0.23;
+    const lift = (0.4 + thread * 0.32) / Math.max(0.08, stampLuma);
+    sr = Math.min(1.2, sr * lift);
+    sg = Math.min(1.2, sg * lift);
+    sb = Math.min(1.2, sb * lift);
+    const w = thread * 0.76;
+    r = r * (1 - w) + sr * w;
+    g = g * (1 - w) + sg * w;
+    b = b * (1 - w) + sb * w;
+  }
+  if (thread < 0.35) {
+    const body = 1 - thread / 0.35;
+    const crush = (0.13 + thread * 0.22) / Math.max(0.05, r * 0.22 + g * 0.55 + b * 0.23);
+    r = Math.max(0, (r * (1 - body * 0.62) + dA[0] * body * 0.62) * crush);
+    g = Math.max(0, (g * (1 - body * 0.62) + dA[1] * body * 0.62) * crush);
+    b = Math.max(0, (b * (1 - body * 0.62) + dA[2] * body * 0.62) * crush);
+  }
   const ribbonStrength = Math.max(rViolet, rCyan, rTeal, rBlue, rWarm);
   return { r, g, b, ribbon: ribbonStrength };
 }
@@ -453,13 +489,24 @@ function makeFilament(
 ): NexusFilament {
   const tint = mixColor(mid);
   const luma = tint.r * 0.22 + tint.g * 0.55 + tint.b * 0.23;
-  const sat = 1.35;
+  const onThread = tint.ribbon > 0.28;
+  const sat = onThread ? 1.88 : 1.4;
+  let cr = Math.min(1.2, Math.max(0, luma + (tint.r - luma) * sat));
+  let cg = Math.min(1.2, Math.max(0, luma + (tint.g - luma) * sat));
+  let cb = Math.min(1.2, Math.max(0, luma + (tint.b - luma) * sat));
+  if (onThread) {
+    const nextLuma = cr * 0.22 + cg * 0.55 + cb * 0.23;
+    const lift = Math.min(1.08, luma + 0.16 + tint.ribbon * 0.14) / Math.max(0.06, nextLuma);
+    cr = Math.min(1.2, cr * lift);
+    cg = Math.min(1.2, cg * lift);
+    cb = Math.min(1.2, cb * lift);
+  }
   return {
     points: tessellate(a, mid, b, steps),
-    alpha,
-    r: Math.min(1.15, luma + (tint.r - luma) * sat),
-    g: Math.min(1.15, luma + (tint.g - luma) * sat),
-    b: Math.min(1.15, luma + (tint.b - luma) * sat),
+    alpha: onThread ? alpha * 1.32 : alpha,
+    r: cr,
+    g: cg,
+    b: cb,
     current,
   };
 }
@@ -722,7 +769,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       r: color.r,
       g: color.g,
       b: color.b,
-      size: 1.05 + density * 0.55 + rng() * 0.16 + color.ribbon * 0.12 - edge * 0.12,
+      size: 1.05 + density * 0.55 + rng() * 0.16 + color.ribbon * 0.22 - edge * 0.12,
       cluster,
       density,
       bright: 0,
@@ -834,7 +881,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     const tint = mixColor(mid);
     filaments.push({
       points: tessellate(a, mid, b, 14),
-      alpha: 0.12 + rng() * 0.04,
+      alpha: 0.16 + rng() * 0.05,
       r: tint.r,
       g: tint.g,
       b: tint.b,
@@ -848,7 +895,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
           y: (b.y + branch.y) * 0.5 + (rng() - 0.5) * 0.05,
           z: (b.z + branch.z) * 0.5 + (rng() - 0.5) * 0.05,
         }, branch, 8),
-        alpha: 0.12 + rng() * 0.04,
+        alpha: 0.16 + rng() * 0.05,
         r: tint.r,
         g: tint.g,
         b: tint.b,
@@ -858,6 +905,13 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   }
 
   for (const filament of filaments) {
+    const onFlow =
+      filament.g - filament.r > 0.14 ||
+      filament.b - filament.g > 0.14 ||
+      filament.r - filament.b > 0.14;
+    if (onFlow) {
+      filament.alpha *= 1.18;
+    }
     if (filament.current) {
       continue;
     }
@@ -918,7 +972,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
         r: silk.r,
         g: silk.g,
         b: silk.b,
-        alpha: 0.012 + rng() * 0.006,
+        alpha: 0.02 + rng() * 0.01,
       });
     }
   }
