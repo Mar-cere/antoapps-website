@@ -753,68 +753,97 @@ function addCoveTissue(
   const interior = nodes.filter(
     (node) => node.x > -0.26 && node.x < -0.04 && node.y > -0.02 && node.y < 0.26,
   );
-  const rim = coreNodes.filter(
-    (node) => node.x > -0.16 && node.x < 0.06 && node.y > -0.06 && node.y < 0.28,
+  const leftCore = coreNodes.filter(
+    (node) => node.x > -0.22 && node.x < 0.02 && node.y > -0.06 && node.y < 0.28,
+  );
+  const rightCore = coreNodes.filter(
+    (node) => node.x > 0.05 && node.x < 0.24 && node.y > -0.06 && node.y < 0.26,
   );
   const torso = coreNodes.filter(
-    (node) => node.x > -0.04 && node.x < 0.14 && node.y > -0.06 && node.y < 0.26,
+    (node) => node.x > -0.04 && node.x < 0.16 && node.y > -0.06 && node.y < 0.26,
   );
-  if (interior.length < 8) {
-    return;
-  }
 
-  const weave = Math.min(300, Math.floor(interior.length * 0.7));
-  for (let i = 0; i < weave; i += 1) {
-    const a = interior[Math.floor(rng() * interior.length)];
-    let best = a;
-    let bestD = 9;
-    for (let k = 0; k < 12; k += 1) {
-      const candidate = interior[Math.floor(rng() * interior.length)];
-      const d = dist2(a, candidate);
-      if (d > 0.0005 && d < bestD) {
-        bestD = d;
-        best = candidate;
+  if (interior.length >= 8) {
+    const weave = Math.min(280, Math.floor(interior.length * 0.7));
+    for (let i = 0; i < weave; i += 1) {
+      const a = interior[Math.floor(rng() * interior.length)];
+      let best = a;
+      let bestD = 9;
+      for (let k = 0; k < 12; k += 1) {
+        const candidate = interior[Math.floor(rng() * interior.length)];
+        const d = dist2(a, candidate);
+        if (d > 0.0005 && d < bestD) {
+          bestD = d;
+          best = candidate;
+        }
       }
-    }
-    if (best === a || bestD > 0.062) {
-      continue;
-    }
-    const mid: Vec3 = {
-      x: (a.x + best.x) * 0.5 + (rng() - 0.5) * 0.03,
-      y: (a.y + best.y) * 0.5 + (rng() - 0.5) * 0.028,
-      z: (a.z + best.z) * 0.5 + (rng() - 0.5) * 0.026,
-    };
-    const tint = mixColor(mid);
-    filaments.push({
-      points: tessellate(a, mid, best, 7),
-      alpha: 0.14 + rng() * 0.05,
-      r: Math.min(1.08, tint.r * 0.96),
-      g: Math.min(1.08, tint.g * 0.92),
-      b: Math.min(1.08, tint.b * 0.98),
-      current: tint.ribbon > 0.2,
-    });
-  }
-
-  if (rim.length > 6 && torso.length > 6) {
-    const bridges = Math.min(160, Math.min(rim.length, torso.length));
-    for (let i = 0; i < bridges; i += 1) {
-      const a = rim[Math.floor(rng() * rim.length)];
-      const b = torso[Math.floor(rng() * torso.length)];
-      if (dist2(a, b) > 0.18) {
+      if (best === a || bestD > 0.062) {
         continue;
       }
       const mid: Vec3 = {
-        x: (a.x + b.x) * 0.5 + (rng() - 0.35) * 0.04,
-        y: (a.y + b.y) * 0.5 + (rng() - 0.5) * 0.04,
-        z: (a.z + b.z) * 0.5 + (rng() - 0.5) * 0.035,
+        x: (a.x + best.x) * 0.5 + (rng() - 0.5) * 0.03,
+        y: (a.y + best.y) * 0.5 + (rng() - 0.5) * 0.028,
+        z: (a.z + best.z) * 0.5 + (rng() - 0.5) * 0.026,
       };
       const tint = mixColor(mid);
       filaments.push({
-        points: tessellate(a, mid, b, 9),
-        alpha: 0.13 + rng() * 0.05,
-        r: Math.min(1.08, tint.r * 0.94),
-        g: Math.min(1.08, tint.g * 0.9),
-        b: Math.min(1.08, tint.b * 0.96),
+        points: tessellate(a, mid, best, 7),
+        alpha: 0.3 + rng() * 0.08,
+        r: Math.min(1.08, tint.r * 0.96),
+        g: Math.min(1.08, tint.g * 0.92),
+        b: Math.min(1.08, tint.b * 0.98),
+        current: tint.ribbon > 0.2,
+      });
+    }
+  }
+
+  const spanPool = torso.length > 8 ? torso : rightCore;
+  if (spanPool.length > 8) {
+    const spans = Math.min(280, spanPool.length);
+    for (let i = 0; i < spans; i += 1) {
+      const a = spanPool[Math.floor(rng() * spanPool.length)];
+      const tip: Vec3 = {
+        x: -0.36 + rng() * 0.14,
+        y: 0.02 + rng() * 0.18,
+        z: (rng() * 2 - 1) * 0.12,
+      };
+      const mid: Vec3 = {
+        x: (a.x + tip.x) * 0.5 + (rng() - 0.55) * 0.05,
+        y: (a.y + tip.y) * 0.5 + (rng() - 0.5) * 0.045,
+        z: (a.z + tip.z) * 0.5 + (rng() - 0.5) * 0.04,
+      };
+      const tint = mixColor(mid);
+      filaments.push({
+        points: tessellate(a, mid, tip, 10),
+        alpha: 0.4 + rng() * 0.1,
+        r: Math.min(1.1, tint.r * 0.98),
+        g: Math.min(1.08, tint.g * 0.94),
+        b: Math.min(1.1, tint.b * 1.0),
+        current: true,
+      });
+    }
+  }
+
+  if (leftCore.length > 8 && rightCore.length > 8) {
+    const crosses = Math.min(240, Math.min(leftCore.length, rightCore.length));
+    for (let i = 0; i < crosses; i += 1) {
+      const a = leftCore[Math.floor(rng() * leftCore.length)];
+      const b = rightCore[Math.floor(rng() * rightCore.length)];
+      if (dist2(a, b) > 0.28) {
+        continue;
+      }
+      const mid: Vec3 = {
+        x: (a.x + b.x) * 0.5 + (rng() - 0.5) * 0.05,
+        y: (a.y + b.y) * 0.5 + (rng() - 0.5) * 0.045,
+        z: (a.z + b.z) * 0.5 + (rng() - 0.5) * 0.04,
+      };
+      const tint = mixColor(mid);
+      filaments.push({
+        points: tessellate(a, mid, b, 11),
+        alpha: 0.32 + rng() * 0.09,
+        r: Math.min(1.1, tint.r),
+        g: Math.min(1.1, tint.g),
+        b: Math.min(1.1, tint.b),
         current: true,
       });
     }
@@ -986,18 +1015,18 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   }
 
   const coveRng = mulberry32((seed ^ 0xc0a1) >>> 0);
-  const coveTarget = Math.floor(mistTarget * 0.52);
+  const coveTarget = Math.floor(mistTarget * 0.48);
   let coveMade = 0;
   let coveTries = 0;
-  while (coveMade < coveTarget && coveTries < coveTarget * 36) {
+  while (coveMade < coveTarget && coveTries < coveTarget * 40) {
     coveTries += 1;
     const p = {
-      x: coveRng() * 0.18 - 0.24,
+      x: coveRng() * 0.2 - 0.24,
       y: coveRng() * 0.2 + 0.02,
       z: (coveRng() * 2 - 1) * 0.14,
     };
     const { density, cluster } = fieldAt(p);
-    if (density > 0.2) {
+    if (density > 0.24) {
       continue;
     }
     const color = mixColor(p);
@@ -1005,10 +1034,10 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       x: p.x,
       y: p.y,
       z: p.z,
-      r: Math.min(1.02, color.r * 0.78),
-      g: Math.min(1.0, color.g * 0.7),
-      b: Math.min(1.04, color.b * 0.8),
-      size: (budget.nodes < 3500 ? 1.35 : 1.65) + coveRng() * 0.4,
+      r: Math.min(1.06, color.r * 0.9),
+      g: Math.min(1.04, color.g * 0.82),
+      b: Math.min(1.08, color.b * 0.92),
+      size: (budget.nodes < 3500 ? 1.15 : 1.35) + coveRng() * 0.32,
       cluster,
       density: Math.max(0.04, density * 0.42),
       bright: 0,
@@ -1027,10 +1056,9 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
         node.g *= 0.5;
         node.b *= 0.55;
       } else if (inCove) {
-        node.size *= 0.92;
-        node.r *= 0.88;
-        node.g *= 0.84;
-        node.b *= 0.9;
+        node.r *= 0.98;
+        node.g *= 0.94;
+        node.b *= 0.98;
       } else if (torso && node.x > -0.04) {
         node.r = Math.min(1.1, node.r * 1.08);
         node.g = Math.min(1.1, node.g * 1.04);

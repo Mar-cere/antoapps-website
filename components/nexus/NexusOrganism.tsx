@@ -89,8 +89,8 @@ void main() {
   materialColor = mix(materialColor, warmTint, warmId * 0.32);
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
   vColor = mix(materialColor, nexusTint, conv * (0.02 + nexus * 0.03 + sync * 0.015));
-  vColor *= mix(0.62, 0.94, aMist);
-  vAlpha = mix(0.2 + 0.16 * activity, 0.36 + 0.16 * activity, aMist);
+  vColor *= mix(0.55, 0.82, aMist);
+  vAlpha = mix(0.18 + 0.14 * activity, 0.32 + 0.14 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.06;
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
@@ -113,8 +113,8 @@ void main() {
   if (a < 0.007) discard;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  if (peak > 0.42) {
-    c *= 0.42 / peak;
+  if (peak > 0.32) {
+    c *= 0.32 / peak;
   }
   gl_FragColor = vec4(c, a);
 }
@@ -168,7 +168,7 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
-  float px = 0.5;
+  float px = 0.62;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
@@ -176,16 +176,16 @@ void main() {
   float violetId = smoothstep(0.03, 0.18, aColor.b - aColor.g) * smoothstep(0.08, 0.28, aColor.r);
   float warmId = smoothstep(0.02, 0.14, aColor.r - aColor.b) * smoothstep(0.02, 0.12, aColor.g);
   float flowStrength = max(violetId, max(cyanId, warmId));
-  vAlpha = aAlpha * (0.26 + flowStrength * 0.26 + focus * 0.08 + wake * 0.03 + nexus * 0.03);
+  vAlpha = aAlpha * (0.2 + flowStrength * 0.16 + focus * 0.06 + wake * 0.02 + nexus * 0.02);
   vec3 violetTint = vec3(0.86, 0.24, 1.0);
   vec3 cyanTint = vec3(0.1, 0.94, 0.98);
   vec3 warmTint = vec3(1.0, 0.72, 0.18);
   vec3 materialColor = aColor;
-  materialColor = mix(materialColor, violetTint, violetId * 0.3);
-  materialColor = mix(materialColor, cyanTint, cyanId * 0.34);
-  materialColor = mix(materialColor, warmTint, warmId * 0.36);
-  vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.025);
-  vColor *= 0.84;
+  materialColor = mix(materialColor, violetTint, violetId * 0.22);
+  materialColor = mix(materialColor, cyanTint, cyanId * 0.26);
+  materialColor = mix(materialColor, warmTint, warmId * 0.28);
+  vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.02);
+  vColor *= 0.74;
 }
 `;
 
@@ -199,8 +199,8 @@ void main() {
   float a = vAlpha * fall;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  if (peak > 0.48) {
-    c *= 0.48 / peak;
+  if (peak > 0.34) {
+    c *= 0.34 / peak;
   }
   gl_FragColor = vec4(c, a);
 }
