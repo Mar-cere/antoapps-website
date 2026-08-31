@@ -197,10 +197,15 @@ function ribbon(p: Vec3, ax: number, ay: number, az: number, freq: number, phase
   return Math.pow(Math.exp(-(dy * dy + dz * dz + dx * dx)), 2.15);
 }
 
-function climb(p: Vec3, ax: number, y0: number, y1: number, az: number, rx: number, rz: number): number {
-  const yOn = Math.max(y0, Math.min(y1, p.y));
-  const dx = (p.x - ax) / rx;
-  const dy = (p.y - yOn) / 0.07;
+function slant(p: Vec3, x0: number, y0: number, x1: number, y1: number, az: number, rx: number, rz: number): number {
+  const sx = x1 - x0;
+  const sy = y1 - y0;
+  const len2 = Math.max(0.0001, sx * sx + sy * sy);
+  const t = Math.max(0, Math.min(1, ((p.x - x0) * sx + (p.y - y0) * sy) / len2));
+  const px = x0 + sx * t;
+  const py = y0 + sy * t;
+  const dx = (p.x - px) / rx;
+  const dy = (p.y - py) / 0.075;
   const dz = (p.z - az) / rz;
   return Math.pow(Math.exp(-(dx * dx + dy * dy + dz * dz)), 2.15);
 }
@@ -209,22 +214,21 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
   const n = hash3(p.x, p.y, p.z);
   const n2 = hash3(p.z + 1.7, p.x - 0.4, p.y + 2.1);
   const rViolet =
-    ribbon(p, -0.14, 0.18, -0.04, 2.05, 0.3, 0.2, 0.14) * 1.18 +
-    ribbon(p, -0.02, 0.04, 0.04, 1.7, 2.4, 0.16, 0.12) * 0.72 +
-    ribbon(p, 0.16, -0.16, 0.02, 1.58, 3.8, 0.15, 0.11) * 0.52;
+    ribbon(p, -0.14, 0.18, -0.04, 2.05, 0.3, 0.2, 0.14) * 1.12 +
+    slant(p, -0.16, 0.24, 0.1, -0.1, 0.02, 0.08, 0.1) * 0.95 +
+    ribbon(p, 0.16, -0.16, 0.02, 1.58, 3.8, 0.15, 0.11) * 0.42;
   const rCyan =
-    ribbon(p, 0.2, 0.18, 0.04, 1.88, 1.15, 0.18, 0.13) * 1.28 +
-    ribbon(p, 0.08, 0.06, -0.03, 1.85, 2.6, 0.16, 0.12) * 1.12 +
-    ribbon(p, 0.22, -0.04, 0.02, 1.6, 2.8, 0.14, 0.11) * 0.62;
+    ribbon(p, 0.2, 0.18, 0.04, 1.88, 1.15, 0.18, 0.13) * 1.22 +
+    slant(p, 0.22, 0.26, -0.02, -0.08, -0.02, 0.08, 0.1) * 1.18 +
+    ribbon(p, 0.22, -0.04, 0.02, 1.6, 2.8, 0.14, 0.11) * 0.48;
   const rTeal =
-    ribbon(p, 0.18, 0.1, -0.06, 1.74, 0.9, 0.13, 0.1) * 0.38;
+    ribbon(p, 0.18, 0.1, -0.06, 1.74, 0.9, 0.13, 0.1) * 0.32;
   const rBlue =
-    ribbon(p, -0.06, 0.26, 0.08, 1.55, 0.85, 0.15, 0.11) * 0.36 +
-    ribbon(p, -0.16, 0.02, 0.02, 1.82, 1.7, 0.13, 0.1) * 0.28;
+    ribbon(p, -0.06, 0.26, 0.08, 1.55, 0.85, 0.15, 0.11) * 0.3 +
+    ribbon(p, -0.16, 0.02, 0.02, 1.82, 1.7, 0.13, 0.1) * 0.24;
   const rWarm =
-    climb(p, -0.15, -0.3, 0.34, 0.01, 0.085, 0.1) * 1.42 +
-    climb(p, -0.08, -0.1, 0.2, -0.03, 0.07, 0.09) * 0.62 +
-    ribbon(p, -0.12, 0.18, 0.0, 1.48, 1.1, 0.12, 0.09) * 0.32;
+    slant(p, -0.18, -0.28, 0.06, 0.28, 0.0, 0.075, 0.1) * 1.55 +
+    slant(p, -0.1, -0.16, 0.1, 0.1, -0.03, 0.065, 0.09) * 0.7;
   const bandV = Math.pow(0.5 + 0.5 * Math.sin(p.x * 3.4 + p.y * 2.6 + p.z * 2.1 + 0.7), 3.6);
   const bandC = Math.pow(0.5 + 0.5 * Math.sin(p.x * 2.9 - p.y * 3.4 + p.z * 2.2 + 3.9), 3.6);
   const bandB = Math.pow(0.5 + 0.5 * Math.sin(-p.x * 2.4 + p.y * 3.8 - p.z * 1.8 + 2.2), 3.6);
