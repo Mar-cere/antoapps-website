@@ -89,8 +89,8 @@ void main() {
   materialColor = mix(materialColor, warmTint, warmId * 0.32);
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
   vColor = mix(materialColor, nexusTint, conv * (0.02 + nexus * 0.03 + sync * 0.015));
-  vColor *= mix(0.52, 0.8, aMist);
-  vAlpha = mix(0.17 + 0.13 * activity, 0.31 + 0.13 * activity, aMist);
+  vColor *= mix(0.54, 0.92, aMist);
+  vAlpha = mix(0.18 + 0.14 * activity, 0.4 + 0.16 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.06;
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
@@ -107,14 +107,15 @@ void main() {
   float d = length(vCorner);
   if (d > 1.0) discard;
   float core = exp(-d * d * mix(9.2, 2.8, vMist));
-  float halo = exp(-d * d * mix(4.8, 1.4, vMist)) * mix(0.045, 0.34, vMist);
-  halo += exp(-d * d * 3.4) * vGlow * 0.012;
+  float halo = exp(-d * d * mix(4.8, 1.25, vMist)) * mix(0.05, 0.4, vMist);
+  halo += exp(-d * d * 3.4) * vGlow * 0.014;
   float a = (core + halo) * vAlpha;
   if (a < 0.007) discard;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  if (peak > 0.3) {
-    c *= 0.3 / peak;
+  float cap = mix(0.36, 0.3, vMist);
+  if (peak > cap) {
+    c *= cap / peak;
   }
   gl_FragColor = vec4(c, a);
 }
@@ -176,7 +177,7 @@ void main() {
   float violetId = smoothstep(0.03, 0.18, aColor.b - aColor.g) * smoothstep(0.08, 0.28, aColor.r);
   float warmId = smoothstep(0.02, 0.14, aColor.r - aColor.b) * smoothstep(0.02, 0.12, aColor.g);
   float flowStrength = max(violetId, max(cyanId, warmId));
-  vAlpha = aAlpha * (0.18 + flowStrength * 0.13 + focus * 0.05 + wake * 0.02 + nexus * 0.02);
+  vAlpha = aAlpha * (0.19 + flowStrength * 0.14 + focus * 0.05 + wake * 0.02 + nexus * 0.02);
   vec3 violetTint = vec3(0.86, 0.24, 1.0);
   vec3 cyanTint = vec3(0.1, 0.94, 0.98);
   vec3 warmTint = vec3(1.0, 0.72, 0.18);
@@ -185,7 +186,7 @@ void main() {
   materialColor = mix(materialColor, cyanTint, cyanId * 0.24);
   materialColor = mix(materialColor, warmTint, warmId * 0.26);
   vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.02);
-  vColor *= 0.68;
+  vColor *= 0.7;
 }
 `;
 
@@ -199,8 +200,8 @@ void main() {
   float a = vAlpha * fall;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  if (peak > 0.3) {
-    c *= 0.3 / peak;
+  if (peak > 0.32) {
+    c *= 0.32 / peak;
   }
   gl_FragColor = vec4(c, a);
 }
