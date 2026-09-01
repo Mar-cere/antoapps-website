@@ -61,7 +61,7 @@ void main() {
   float quiet = 0.34 + tissue * 0.1 + wake * 0.015;
   float mid = 0.44 + focus * 0.04 + wake * 0.02 + pulse * 0.015;
   float lit = 0.54 + focus * 0.04 + wake * 0.02;
-  float hot = 0.86 + nexus * 0.04 + sync * 0.02;
+  float hot = 0.76 + nexus * 0.03 + sync * 0.02;
   float activity = mix(quiet, mid, moderate);
   activity = mix(activity, lit, active);
   activity = mix(activity, hot, conv);
@@ -69,7 +69,7 @@ void main() {
   float nearBlur = smoothstep(1.28, 0.5, clip.w);
   float farDim = smoothstep(3.15, 4.7, clip.w);
   float sizePx = aSize * mix(1.14, mix(1.16, 0.96, conv), mix(moderate, 1.0, active));
-  sizePx *= mix(1.0, 2.15, aMist);
+  sizePx *= mix(1.0, 1.95, aMist);
   sizePx *= 1.0 + nearBlur * 0.22 + wake * 0.05;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
@@ -89,8 +89,8 @@ void main() {
   materialColor = mix(materialColor, warmTint, warmId * 0.32);
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
   vColor = mix(materialColor, nexusTint, conv * (0.02 + nexus * 0.03 + sync * 0.015));
-  vColor *= mix(0.62, 0.96, aMist);
-  vAlpha = mix(0.26 + 0.26 * activity, 0.5 + 0.2 * activity, aMist);
+  vColor *= mix(0.58, 0.84, aMist);
+  vAlpha = mix(0.24 + 0.22 * activity, 0.42 + 0.14 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.06;
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
@@ -113,7 +113,7 @@ void main() {
   if (a < 0.007) discard;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  float cap = mix(0.86, 0.3, vMist);
+  float cap = mix(0.62, 0.26, vMist);
   if (peak > cap) {
     c *= cap / peak;
   }
@@ -186,7 +186,7 @@ void main() {
   materialColor = mix(materialColor, cyanTint, cyanId * 0.24);
   materialColor = mix(materialColor, warmTint, warmId * 0.26);
   vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.02);
-  vColor *= 0.7;
+  vColor *= 0.64;
 }
 `;
 
@@ -200,8 +200,8 @@ void main() {
   float a = vAlpha * fall;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  if (peak > 0.32) {
-    c *= 0.32 / peak;
+  if (peak > 0.28) {
+    c *= 0.28 / peak;
   }
   gl_FragColor = vec4(c, a);
 }
