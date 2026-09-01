@@ -1,6 +1,9 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  outputFileTracingRoot: path.join(__dirname),
   // Deshabilitar ESLint durante el build para evitar errores con ESLint 9
   eslint: {
     ignoreDuringBuilds: true,

@@ -4,9 +4,9 @@
   "description": "Sitio web de AntoApps - Next.js",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NEXT_IGNORE_INCORRECT_LOCKFILE=1 next dev",
     "prebuild": "tsx scripts/validate-sitemap.ts",
-    "build": "next build",
+    "build": "NEXT_IGNORE_INCORRECT_LOCKFILE=1 next build",
     "postbuild": "tsx scripts/validate-sitemap-artifacts.ts",
     "validate:sitemap": "tsx scripts/validate-sitemap.ts",
     "validate:sitemap:artifacts": "tsx scripts/validate-sitemap-artifacts.ts",
