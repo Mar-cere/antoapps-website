@@ -788,7 +788,7 @@ function addCoveTissue(
       const tint = mixColor(mid);
       filaments.push({
         points: tessellate(a, mid, best, 7),
-        alpha: 0.26 + rng() * 0.07,
+        alpha: 0.32 + rng() * 0.08,
         r: Math.min(1.08, tint.r * 0.96),
         g: Math.min(1.08, tint.g * 0.92),
         b: Math.min(1.08, tint.b * 0.98),
@@ -799,11 +799,11 @@ function addCoveTissue(
 
   const spanPool = torso.length > 8 ? torso : rightCore;
   if (spanPool.length > 8) {
-    const spans = Math.min(240, spanPool.length);
+    const spans = Math.min(280, spanPool.length);
     for (let i = 0; i < spans; i += 1) {
       const a = spanPool[Math.floor(rng() * spanPool.length)];
       const tip: Vec3 = {
-        x: -0.34 + rng() * 0.12,
+        x: -0.36 + rng() * 0.13,
         y: 0.02 + rng() * 0.18,
         z: (rng() * 2 - 1) * 0.12,
       };
@@ -815,7 +815,7 @@ function addCoveTissue(
       const tint = mixColor(mid);
       filaments.push({
         points: tessellate(a, mid, tip, 10),
-        alpha: 0.34 + rng() * 0.08,
+        alpha: 0.4 + rng() * 0.1,
         r: Math.min(1.1, tint.r * 0.98),
         g: Math.min(1.08, tint.g * 0.94),
         b: Math.min(1.1, tint.b * 1.0),
@@ -840,7 +840,7 @@ function addCoveTissue(
       const tint = mixColor(mid);
       filaments.push({
         points: tessellate(a, mid, b, 11),
-        alpha: 0.3 + rng() * 0.08,
+        alpha: 0.36 + rng() * 0.09,
         r: Math.min(1.1, tint.r),
         g: Math.min(1.1, tint.g),
         b: Math.min(1.1, tint.b),
@@ -983,7 +983,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   }
 
   const hazeRng = mulberry32((seed ^ 0xa5c3) >>> 0);
-  const extraHaze = Math.floor(mistTarget * 1.62);
+  const extraHaze = Math.floor(mistTarget * 1.7);
   let extraMade = 0;
   let extraTries = 0;
   while (extraMade < extraHaze && extraTries < extraHaze * 22) {
@@ -1014,8 +1014,40 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     extraMade += 1;
   }
 
+  const bridgeRng = mulberry32((seed ^ 0xd1e4) >>> 0);
+  const bridgeTarget = Math.floor(mistTarget * 0.55);
+  let bridgeMade = 0;
+  let bridgeTries = 0;
+  while (bridgeMade < bridgeTarget && bridgeTries < bridgeTarget * 28) {
+    bridgeTries += 1;
+    const p = {
+      x: bridgeRng() * 0.2 - 0.08,
+      y: bridgeRng() * 0.18 + 0.02,
+      z: (bridgeRng() * 2 - 1) * 0.16,
+    };
+    const { density, cluster } = fieldAt(p);
+    if (density < 0.06 || density > 0.55) {
+      continue;
+    }
+    const color = mixColor(p);
+    nodes.push({
+      x: p.x,
+      y: p.y,
+      z: p.z,
+      r: Math.min(1.18, color.r * 1.04),
+      g: Math.min(1.16, color.g * 0.98),
+      b: Math.min(1.18, color.b * 1.02),
+      size: (budget.nodes < 3500 ? 1.7 : 2.05) + bridgeRng() * 0.45,
+      cluster,
+      density: Math.max(0.05, density * 0.58),
+      bright: 0,
+      mist: 1,
+    });
+    bridgeMade += 1;
+  }
+
   const coveRng = mulberry32((seed ^ 0xc0a1) >>> 0);
-  const coveTarget = Math.floor(mistTarget * 0.48);
+  const coveTarget = Math.floor(mistTarget * 0.56);
   let coveMade = 0;
   let coveTries = 0;
   while (coveMade < coveTarget && coveTries < coveTarget * 40) {

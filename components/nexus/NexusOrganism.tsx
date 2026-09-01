@@ -68,8 +68,8 @@ void main() {
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.28, 0.5, clip.w);
   float farDim = smoothstep(3.15, 4.7, clip.w);
-  float sizePx = aSize * mix(1.1, mix(1.08, 0.92, conv), mix(moderate, 1.0, active));
-  sizePx *= mix(1.0, 1.85, aMist);
+  float sizePx = aSize * mix(1.14, mix(1.16, 0.96, conv), mix(moderate, 1.0, active));
+  sizePx *= mix(1.0, 2.15, aMist);
   sizePx *= 1.0 + nearBlur * 0.22 + wake * 0.05;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
@@ -90,7 +90,7 @@ void main() {
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
   vColor = mix(materialColor, nexusTint, conv * (0.02 + nexus * 0.03 + sync * 0.015));
   vColor *= mix(0.62, 0.94, aMist);
-  vAlpha = mix(0.28 + 0.28 * activity, 0.42 + 0.16 * activity, aMist);
+  vAlpha = mix(0.26 + 0.26 * activity, 0.48 + 0.18 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.06;
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
