@@ -58,10 +58,10 @@ void main() {
   float active = smoothstep(0.42, 0.68, aBright);
   float conv = smoothstep(0.85, 1.0, aBright);
   float pulse = 0.84 + 0.16 * sin(uTime * 1.15 + aCluster * 1.4 + aCenter.x * 2.0);
-  float quiet = 0.34 + tissue * 0.1 + wake * 0.015;
-  float mid = 0.44 + focus * 0.04 + wake * 0.02 + pulse * 0.015;
-  float lit = 0.54 + focus * 0.04 + wake * 0.02;
-  float hot = 0.76 + nexus * 0.03 + sync * 0.02;
+  float quiet = 0.4 + tissue * 0.12 + wake * 0.015;
+  float mid = 0.5 + focus * 0.04 + wake * 0.02 + pulse * 0.015;
+  float lit = 0.58 + focus * 0.04 + wake * 0.02;
+  float hot = 0.8 + nexus * 0.03 + sync * 0.02;
   float activity = mix(quiet, mid, moderate);
   activity = mix(activity, lit, active);
   activity = mix(activity, hot, conv);
@@ -69,7 +69,7 @@ void main() {
   float nearBlur = smoothstep(1.28, 0.5, clip.w);
   float farDim = smoothstep(3.15, 4.7, clip.w);
   float sizePx = aSize * mix(1.14, mix(1.16, 0.96, conv), mix(moderate, 1.0, active));
-  sizePx *= mix(1.0, 1.95, aMist);
+  sizePx *= mix(1.0, 1.88, aMist);
   sizePx *= 1.0 + nearBlur * 0.22 + wake * 0.05;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
@@ -89,8 +89,8 @@ void main() {
   materialColor = mix(materialColor, warmTint, warmId * 0.32);
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
   vColor = mix(materialColor, nexusTint, conv * (0.02 + nexus * 0.03 + sync * 0.015));
-  vColor *= mix(0.58, 0.84, aMist);
-  vAlpha = mix(0.24 + 0.22 * activity, 0.42 + 0.14 * activity, aMist);
+  vColor *= mix(0.68, 0.88, aMist);
+  vAlpha = mix(0.32 + 0.28 * activity, 0.4 + 0.14 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.06;
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
@@ -113,7 +113,7 @@ void main() {
   if (a < 0.007) discard;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  float cap = mix(0.62, 0.26, vMist);
+  float cap = mix(0.7, 0.32, vMist);
   if (peak > cap) {
     c *= cap / peak;
   }
@@ -169,7 +169,7 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
-  float px = 0.66;
+  float px = 0.88;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
@@ -177,7 +177,7 @@ void main() {
   float violetId = smoothstep(0.03, 0.18, aColor.b - aColor.g) * smoothstep(0.08, 0.28, aColor.r);
   float warmId = smoothstep(0.02, 0.14, aColor.r - aColor.b) * smoothstep(0.02, 0.12, aColor.g);
   float flowStrength = max(violetId, max(cyanId, warmId));
-  vAlpha = aAlpha * (0.19 + flowStrength * 0.14 + focus * 0.05 + wake * 0.02 + nexus * 0.02);
+  vAlpha = aAlpha * (0.32 + flowStrength * 0.2 + focus * 0.05 + wake * 0.02 + nexus * 0.02);
   vec3 violetTint = vec3(0.86, 0.24, 1.0);
   vec3 cyanTint = vec3(0.1, 0.94, 0.98);
   vec3 warmTint = vec3(1.0, 0.72, 0.18);
@@ -186,7 +186,7 @@ void main() {
   materialColor = mix(materialColor, cyanTint, cyanId * 0.24);
   materialColor = mix(materialColor, warmTint, warmId * 0.26);
   vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.02);
-  vColor *= 0.64;
+  vColor *= 0.82;
 }
 `;
 
@@ -200,8 +200,8 @@ void main() {
   float a = vAlpha * fall;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  if (peak > 0.28) {
-    c *= 0.28 / peak;
+  if (peak > 0.4) {
+    c *= 0.4 / peak;
   }
   gl_FragColor = vec4(c, a);
 }
