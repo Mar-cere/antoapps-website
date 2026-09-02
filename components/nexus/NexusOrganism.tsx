@@ -304,6 +304,123 @@ void main() {
 
 const QUAD_CORNERS = [-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1];
 
+const VOL_VERT = `
+attribute vec3 aCorner;
+uniform mat4 uViewProj;
+uniform vec3 uOrigin;
+uniform vec3 uSize;
+varying vec3 vWorld;
+void main() {
+  vWorld = uOrigin + aCorner * uSize;
+  gl_Position = uViewProj * vec4(vWorld, 1.0);
+}
+`;
+
+const VOL_FRAG = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+uniform sampler2D uVol;
+uniform vec3 uOrigin;
+uniform vec3 uSize;
+uniform vec3 uCam;
+uniform vec3 uWake0;
+uniform vec3 uWake1;
+uniform vec3 uWake2;
+uniform float uTime;
+uniform vec2 uAtlas;
+uniform vec2 uGrid;
+uniform vec2 uTiles;
+uniform float uNz;
+varying vec3 vWorld;
+
+float act(vec3 p, vec3 w) {
+  vec3 d = p - w;
+  return exp(-dot(d, d) / 0.048);
+}
+
+vec4 sampleSlice(vec3 p, float slice) {
+  float col = mod(slice, uTiles.x);
+  float row = floor(slice / uTiles.x);
+  vec2 tile = uGrid + 2.0;
+  vec2 origin = vec2(col, row) * tile + 1.0;
+  vec2 px = origin + clamp(p.xy, 0.0, 1.0) * max(uGrid - 1.0, vec2(1.0));
+  return texture2D(uVol, px / uAtlas);
+}
+
+vec4 sampleVol(vec3 world) {
+  vec3 p = (world - uOrigin) / uSize;
+  if (min(min(p.x, p.y), p.z) < 0.0 || max(max(p.x, p.y), p.z) > 1.0) {
+    return vec4(0.0);
+  }
+  float z = p.z * (uNz - 1.0);
+  float z0 = floor(z);
+  float z1 = min(z0 + 1.0, uNz - 1.0);
+  return mix(sampleSlice(p, z0), sampleSlice(p, z1), z - z0);
+}
+
+void main() {
+  vec3 ro = uCam;
+  vec3 rd = normalize(vWorld - uCam);
+  vec3 inv = 1.0 / rd;
+  vec3 t0 = (uOrigin - ro) * inv;
+  vec3 t1 = (uOrigin + uSize - ro) * inv;
+  vec3 tmin = min(t0, t1);
+  vec3 tmax = max(t0, t1);
+  float tN = max(max(tmin.x, tmin.y), tmin.z);
+  float tF = min(min(tmax.x, tmax.y), tmax.z);
+  if (tF < 0.0 || tN > tF) {
+    discard;
+  }
+  tN = max(tN, 0.0);
+  vec3 acc = vec3(0.0);
+  float alpha = 0.0;
+  float dt = (tF - tN) / 36.0;
+  for (int i = 0; i < 36; i += 1) {
+    vec3 pos = ro + rd * (tN + (float(i) + 0.5) * dt);
+    pos.x += 0.006 * sin(uTime * 0.32 + pos.y * 2.1);
+    pos.y += 0.004 * cos(uTime * 0.28 + pos.x * 1.7);
+    vec4 s = sampleVol(pos);
+    if (s.a >= 0.08) {
+      float wake = max(act(pos, uWake0), max(act(pos, uWake1), act(pos, uWake2)));
+      float dens = max(0.0, s.a - 0.06) * (1.0 + wake * 0.1);
+      float absorb = 1.0 - exp(-dens * dens * 7.5 * dt * 22.0);
+      float keep = 1.0 - alpha;
+      acc += s.rgb * absorb * keep;
+      alpha += absorb * keep;
+    }
+    if (alpha > 0.92) {
+      break;
+    }
+  }
+  if (alpha < 0.012) {
+    discard;
+  }
+  float luma = dot(acc, vec3(0.22, 0.55, 0.23));
+  if (luma > 0.4) {
+    acc *= 0.4 / luma;
+  }
+  float peak = max(acc.r, max(acc.g, acc.b));
+  if (peak > 0.52) {
+    acc *= 0.52 / peak;
+  }
+  gl_FragColor = vec4(acc, alpha);
+}
+`;
+
+function cubeCorners(): Float32Array {
+  return new Float32Array([
+    0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0,
+    0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1,
+    0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1,
+    1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0,
+    0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0,
+    0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1,
+  ]);
+}
+
 function compile(gl: WebGLRenderingContext, type: number, source: string): WebGLShader | null {
   const shader = gl.createShader(type);
   if (!shader) {
@@ -427,6 +544,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     const lineProg = program(gl, LINE_VERT, LINE_FRAG);
     const membProg = program(gl, MEMB_VERT, MEMB_FRAG);
     const sparkProg = program(gl, SPARK_VERT, SPARK_FRAG);
+    const volProg = program(gl, VOL_VERT, VOL_FRAG);
     if (!nodeProg || !lineProg || !membProg || !sparkProg) {
       return;
     }
@@ -458,6 +576,11 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     const lineBuffer = gl.createBuffer();
     const membBuffer = gl.createBuffer();
     const sparkBuffer = gl.createBuffer();
+    const volBuffer = gl.createBuffer();
+    const volTex = gl.createTexture();
+    gl.bindBuffer(gl.ARRAY_BUFFER, volBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, cubeCorners(), gl.STATIC_DRAW);
+    let volReady = false;
     let nodeCount = 0;
     let mistCount = 0;
     let lineCount = 0;
@@ -584,6 +707,18 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.bindBuffer(gl.ARRAY_BUFFER, membBuffer);
       gl.bufferData(gl.ARRAY_BUFFER, memb, gl.STATIC_DRAW);
 
+      if (volProg && volTex && field.volume) {
+        const vol = field.volume;
+        gl.bindTexture(gl.TEXTURE_2D, volTex);
+        gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, vol.atlasW, vol.atlasH, 0, gl.RGBA, gl.UNSIGNED_BYTE, vol.data);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        volReady = true;
+      }
+
       const currents = field.filaments
         .map((filament, index) => (filament.current ? index : -1))
         .filter((index) => index >= 0);
@@ -693,6 +828,9 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     let width = 0;
     let height = 0;
     let viewProj: Float32Array = new Float32Array(16);
+    let camX = -0.03;
+    let camY = 0.28;
+    let camZ = 0.74;
     let lastBudget = 0;
     let foci: [Vec3, Vec3, Vec3, Vec3] = [
       { x: 0.14, y: 0.44, z: 0.04 },
@@ -711,10 +849,13 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.viewport(0, 0, canvas.width, canvas.height);
       const proj = perspective((34 * Math.PI) / 180, width / height, 0.12, 10);
       const portrait = width / height < 0.9;
-      const dist = portrait ? 0.86 : 0.74;
+      const dist = portrait ? 1.12 : 0.84;
+      camX = -0.03;
+      camY = 0.28;
+      camZ = dist;
       const view = portrait
-        ? lookAt(-0.03, 0.28, dist, 0.06, 0.44, 0)
-        : lookAt(-0.03, 0.28, 0.74, 0.06, 0.44, 0);
+        ? lookAt(camX, camY, camZ, 0.06, 0.42, 0)
+        : lookAt(camX, camY, camZ, 0.06, 0.42, 0);
       viewProj = multiply4(proj, view);
       const budget = nexusBudget(window.innerWidth);
       const mark = budget.nodes + budget.filaments + NEXUS_FIELD_REV;
@@ -763,6 +904,23 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     const uSpark = {
       view: gl.getUniformLocation(sparkProg, 'uViewProj'),
     };
+    const uVol = volProg
+      ? {
+          view: gl.getUniformLocation(volProg, 'uViewProj'),
+          origin: gl.getUniformLocation(volProg, 'uOrigin'),
+          size: gl.getUniformLocation(volProg, 'uSize'),
+          cam: gl.getUniformLocation(volProg, 'uCam'),
+          w0: gl.getUniformLocation(volProg, 'uWake0'),
+          w1: gl.getUniformLocation(volProg, 'uWake1'),
+          w2: gl.getUniformLocation(volProg, 'uWake2'),
+          time: gl.getUniformLocation(volProg, 'uTime'),
+          atlas: gl.getUniformLocation(volProg, 'uAtlas'),
+          grid: gl.getUniformLocation(volProg, 'uGrid'),
+          tiles: gl.getUniformLocation(volProg, 'uTiles'),
+          nz: gl.getUniformLocation(volProg, 'uNz'),
+          vol: gl.getUniformLocation(volProg, 'uVol'),
+        }
+      : null;
 
     let frame = 0;
     let lastCycle = 0;
@@ -818,6 +976,38 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.enable(gl.BLEND);
       gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
 
+      const fieldNow = fieldRef.current;
+      if (volProg && uVol && volReady && volTex && fieldNow?.volume) {
+        const vol = fieldNow.volume;
+        disableAttribs(gl);
+        gl.useProgram(volProg);
+        gl.bindBuffer(gl.ARRAY_BUFFER, volBuffer);
+        const locCorner = gl.getAttribLocation(volProg, 'aCorner');
+        if (locCorner >= 0) {
+          gl.enableVertexAttribArray(locCorner);
+          gl.vertexAttribPointer(locCorner, 3, gl.FLOAT, false, 12, 0);
+        }
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, volTex);
+        gl.uniform1i(uVol.vol, 0);
+        gl.uniformMatrix4fv(uVol.view, false, viewProj);
+        gl.uniform3f(uVol.origin, vol.origin.x, vol.origin.y, vol.origin.z);
+        gl.uniform3f(uVol.size, vol.size.x, vol.size.y, vol.size.z);
+        gl.uniform3f(uVol.cam, camX, camY, camZ);
+        gl.uniform3f(uVol.w0, wakes[0].x, wakes[0].y, wakes[0].z);
+        gl.uniform3f(uVol.w1, wakes[1].x, wakes[1].y, wakes[1].z);
+        gl.uniform3f(uVol.w2, wakes[2].x, wakes[2].y, wakes[2].z);
+        gl.uniform1f(uVol.time, time);
+        gl.uniform2f(uVol.atlas, vol.atlasW, vol.atlasH);
+        gl.uniform2f(uVol.grid, vol.nx, vol.ny);
+        gl.uniform2f(uVol.tiles, vol.cols, vol.rows);
+        gl.uniform1f(uVol.nz, vol.nz);
+        gl.enable(gl.CULL_FACE);
+        gl.cullFace(gl.BACK);
+        gl.drawArrays(gl.TRIANGLES, 0, 36);
+        gl.disable(gl.CULL_FACE);
+      }
+
       disableAttribs(gl);
       bindNodes();
       gl.uniformMatrix4fv(uNode.view, false, viewProj);
@@ -834,14 +1024,6 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.uniform3f(uNode.f3, foci[3].x, foci[3].y, foci[3].z);
       if (mistCount) {
         gl.drawArrays(gl.TRIANGLES, 0, mistCount);
-      }
-
-      disableAttribs(gl);
-      bindMemb();
-      gl.uniformMatrix4fv(uMemb.view, false, viewProj);
-      gl.uniform1f(uMemb.time, time);
-      if (membCount) {
-        gl.drawArrays(gl.TRIANGLES, 0, membCount);
       }
 
       disableAttribs(gl);
@@ -930,10 +1112,15 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.deleteBuffer(lineBuffer);
       gl.deleteBuffer(membBuffer);
       gl.deleteBuffer(sparkBuffer);
+      gl.deleteBuffer(volBuffer);
+      gl.deleteTexture(volTex);
       gl.deleteProgram(nodeProg);
       gl.deleteProgram(lineProg);
       gl.deleteProgram(membProg);
       gl.deleteProgram(sparkProg);
+      if (volProg) {
+        gl.deleteProgram(volProg);
+      }
     };
   }, [events]);
 

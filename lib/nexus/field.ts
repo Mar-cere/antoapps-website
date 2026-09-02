@@ -46,12 +46,26 @@ export type NexusHub = {
   cluster: number;
 };
 
+export type NexusVolume = {
+  data: Uint8Array;
+  atlasW: number;
+  atlasH: number;
+  nx: number;
+  ny: number;
+  nz: number;
+  cols: number;
+  rows: number;
+  origin: Vec3;
+  size: Vec3;
+};
+
 export type NexusField = {
   nodes: NexusNode[];
   filaments: NexusFilament[];
   membranes: NexusMembrane[];
   hubs: NexusHub[];
   foci: Vec3[];
+  volume: NexusVolume;
 };
 
 export type NexusBudget = {
@@ -954,20 +968,100 @@ function addCrownTissue(
 
 export function nexusBudget(width: number): NexusBudget {
   if (width < 768) {
-    return { nodes: 3000, filaments: 1600 };
+    return { nodes: 1400, filaments: 480 };
   }
   if (width < 1024) {
-    return { nodes: 5200, filaments: 2800 };
+    return { nodes: 1800, filaments: 640 };
   }
-  return { nodes: 7800, filaments: 4000 };
+  return { nodes: 2200, filaments: 800 };
 }
 
-export const NEXUS_FIELD_REV = 23;
+export const NEXUS_FIELD_REV = 24;
+
+export const NEXUS_VOLUME_BOUNDS = {
+  origin: { x: -0.16, y: 0.1, z: -0.16 },
+  size: { x: 0.4, y: 0.64, z: 0.32 },
+};
+
+export function bakeNexusVolume(): NexusVolume {
+  const nx = 28;
+  const ny = 44;
+  const nz = 24;
+  const cols = 6;
+  const rows = 4;
+  const pad = 1;
+  const tileW = nx + pad * 2;
+  const tileH = ny + pad * 2;
+  const atlasW = cols * tileW;
+  const atlasH = rows * tileH;
+  const data = new Uint8Array(atlasW * atlasH * 4);
+  const { origin, size } = NEXUS_VOLUME_BOUNDS;
+
+  const writePx = (ax: number, ay: number, r: number, g: number, b: number, a: number) => {
+    if (ax < 0 || ay < 0 || ax >= atlasW || ay >= atlasH) {
+      return;
+    }
+    const i = (ay * atlasW + ax) * 4;
+    data[i] = r;
+    data[i + 1] = g;
+    data[i + 2] = b;
+    data[i + 3] = a;
+  };
+
+  for (let z = 0; z < nz; z += 1) {
+    const col = z % cols;
+    const row = Math.floor(z / cols);
+    const ox = col * tileW + pad;
+    const oy = row * tileH + pad;
+    for (let y = 0; y < ny; y += 1) {
+      for (let x = 0; x < nx; x += 1) {
+        const p = {
+          x: origin.x + ((x + 0.5) / nx) * size.x,
+          y: origin.y + ((y + 0.5) / ny) * size.y,
+          z: origin.z + ((z + 0.5) / nz) * size.z,
+        };
+        const { density } = fieldAt(p);
+        let r = 0;
+        let g = 0;
+        let b = 0;
+        let a = 0;
+        if (density > 0.11) {
+          const color = mixColor(p);
+          const dens = Math.min(1, Math.pow((density - 0.08) / 0.95, 0.85));
+          const luma = color.r * 0.22 + color.g * 0.55 + color.b * 0.23;
+          const crush = luma > 0.46 ? 0.46 / luma : 1;
+          r = Math.min(255, Math.max(0, color.r * crush * 255));
+          g = Math.min(255, Math.max(0, color.g * crush * 255));
+          b = Math.min(255, Math.max(0, color.b * crush * 255));
+          a = Math.min(255, dens * 255);
+        }
+        writePx(ox + x, oy + y, r, g, b, a);
+      }
+    }
+    const readInner = (sx: number, sy: number) => {
+      const cx = ox + Math.max(0, Math.min(nx - 1, sx));
+      const cy = oy + Math.max(0, Math.min(ny - 1, sy));
+      const i = (cy * atlasW + cx) * 4;
+      return [data[i], data[i + 1], data[i + 2], data[i + 3]] as const;
+    };
+    for (let y = -1; y <= ny; y += 1) {
+      for (let x = -1; x <= nx; x += 1) {
+        if (x >= 0 && x < nx && y >= 0 && y < ny) {
+          continue;
+        }
+        const [pr, pg, pb, pa] = readInner(x, y);
+        writePx(ox + x, oy + y, pr, pg, pb, pa);
+      }
+    }
+  }
+
+  return { data, atlasW, atlasH, nx, ny, nz, cols, rows, origin, size };
+}
 
 export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField {
   const rng = mulberry32(seed);
-  const coreTarget = Math.floor(budget.nodes * 0.88);
-  const mistTarget = budget.nodes - coreTarget;
+  const coreTarget = budget.nodes;
+  const mistTarget = 0;
   const nodes: NexusNode[] = [];
   const maxAttempts = coreTarget * 60;
 
@@ -1576,7 +1670,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     { x: FOCI[2].cx + 0.06, y: FOCI[2].cy - 0.1, z: FOCI[2].cz, cluster: 2 },
   ];
 
-  return { nodes, filaments, membranes, hubs, foci };
+  return { nodes, filaments, membranes, hubs, foci, volume: bakeNexusVolume() };
 }
 
 export function wakePositions(time: number): { wakes: [Vec3, Vec3, Vec3]; nexus: Vec3; boost: number } {
