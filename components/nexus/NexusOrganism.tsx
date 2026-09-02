@@ -88,12 +88,13 @@ void main() {
   vec3 cyanTint = vec3(0.16, 0.9, 0.96);
   vec3 warmTint = vec3(0.72, 0.42, 0.46);
   vec3 materialColor = aColor;
-  materialColor = mix(materialColor, violetTint, violetId * 0.3);
-  materialColor = mix(materialColor, cyanTint, cyanId * 0.06);
+  materialColor = mix(materialColor, violetTint, violetId * 0.34);
+  materialColor = mix(materialColor, cyanTint, cyanId * 0.08);
   materialColor = mix(materialColor, warmTint, warmId * 0.04);
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
   vColor = mix(materialColor, nexusTint, conv * (0.02 + nexus * 0.03 + sync * 0.015));
-  vColor *= mix(1.05, 0.28, aMist);
+  vColor *= mix(1.06, 0.28, aMist);
+  vColor = mix(vColor, violetTint, violetId * (1.0 - aMist) * 0.06);
   vAlpha = mix(0.28 + 0.55 * activity, 0.035 + 0.016 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.05 + wake * mix(0.12, 0.02, aMist) + focus * mix(0.18, 0.02, aMist);
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);

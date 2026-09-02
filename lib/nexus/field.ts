@@ -97,12 +97,12 @@ type Ellipsoid = {
  * Los lóbulos se solapan a propósito: un organismo, no islas.
  */
 const LOBES: readonly Ellipsoid[] = [
-  { cx: 0.07, cy: 0.6, cz: 0.0, rx: 0.11, ry: 0.18, rz: 0.09, weight: 1.16 },
-  { cx: 0.12, cy: 0.5, cz: 0.03, rx: 0.12, ry: 0.16, rz: 0.09, weight: 1.1 },
-  { cx: 0.02, cy: 0.46, cz: -0.04, rx: 0.1, ry: 0.14, rz: 0.08, weight: 0.92 },
-  { cx: 0.1, cy: 0.36, cz: 0.02, rx: 0.11, ry: 0.14, rz: 0.1, weight: 1.04 },
-  { cx: 0.06, cy: 0.24, cz: 0.0, rx: 0.1, ry: 0.12, rz: 0.09, weight: 0.78 },
-  { cx: 0.09, cy: 0.16, cz: 0.02, rx: 0.08, ry: 0.08, rz: 0.07, weight: 0.28 },
+  { cx: 0.08, cy: 0.62, cz: 0.0, rx: 0.13, ry: 0.18, rz: 0.09, weight: 1.2 },
+  { cx: 0.15, cy: 0.52, cz: 0.03, rx: 0.12, ry: 0.15, rz: 0.09, weight: 1.06 },
+  { cx: -0.01, cy: 0.5, cz: -0.04, rx: 0.12, ry: 0.15, rz: 0.08, weight: 1.04 },
+  { cx: 0.08, cy: 0.36, cz: 0.02, rx: 0.1, ry: 0.13, rz: 0.1, weight: 0.96 },
+  { cx: 0.04, cy: 0.24, cz: 0.0, rx: 0.09, ry: 0.1, rz: 0.08, weight: 0.58 },
+  { cx: 0.08, cy: 0.15, cz: 0.02, rx: 0.07, ry: 0.07, rz: 0.07, weight: 0.2 },
 ];
 
 type RegionKind = 'vp' | 'cp' | 'vc' | 'nx';
@@ -171,10 +171,10 @@ function fieldAt(p: Vec3): { density: number; cluster: number } {
   if (p.y < 0.02) {
     density *= 0.05;
   }
-  if (p.y > 0.34 && p.y < 0.66 && p.x > -0.02 && p.x < 0.18) {
-    density *= 1.72;
-  } else if (p.y > 0.2 && p.y < 0.62 && p.x > -0.04 && p.x < 0.2) {
-    density *= 1.38;
+  if (p.y > 0.46 && p.y < 0.7 && p.x > -0.06 && p.x < 0.2) {
+    density *= 1.95;
+  } else if (p.y > 0.32 && p.y < 0.62 && p.x > -0.04 && p.x < 0.18) {
+    density *= 1.42;
   }
   const rx = (p.x - 0.04) / 0.3;
   const ry = (p.y - 0.28) / 0.74;
@@ -228,21 +228,21 @@ function blob(p: Vec3, cx: number, cy: number, cz: number, rx: number, ry: numbe
 function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } {
   const n = hash3(p.x, p.y, p.z);
   const n2 = hash3(p.z + 1.7, p.x - 0.4, p.y + 2.1);
-  const violetPatch = blob(p, -0.08, 0.34, -0.02, 0.13, 0.16, 0.1);
-  const cyanPatch = blob(p, 0.16, 0.4, 0.03, 0.15, 0.16, 0.1);
+  const violetPatch = blob(p, 0.0, 0.4, -0.02, 0.14, 0.18, 0.1);
+  const cyanPatch = blob(p, 0.16, 0.5, 0.03, 0.13, 0.14, 0.1);
   const warmPatch = blob(p, -0.02, 0.16, 0.0, 0.045, 0.04, 0.045);
   const rViolet =
-    ribbon(p, -0.14, 0.28, -0.04, 2.05, 0.3, 0.18, 0.13) * 1.18 +
-    slant(p, 0.22, 0.16, -0.16, 0.48, 0.02, 0.07, 0.09) * 0.55 +
-    slant(p, -0.16, 0.22, 0.1, 0.46, 0.0, 0.075, 0.1) * 0.62 +
-    ribbon(p, 0.12, 0.2, -0.03, 1.72, 1.1, 0.13, 0.1) * 0.42 +
-    violetPatch * 0.42;
+    ribbon(p, -0.06, 0.36, -0.04, 2.05, 0.3, 0.18, 0.13) * 1.38 +
+    slant(p, 0.16, 0.2, -0.1, 0.54, 0.02, 0.07, 0.09) * 0.72 +
+    slant(p, -0.08, 0.26, 0.08, 0.5, 0.0, 0.075, 0.1) * 0.8 +
+    ribbon(p, 0.04, 0.28, -0.03, 1.72, 1.1, 0.13, 0.1) * 0.58 +
+    violetPatch * 0.58;
   const rCyan =
-    ribbon(p, 0.18, 0.32, 0.04, 1.88, 1.15, 0.16, 0.12) * 1.7 +
-    slant(p, -0.16, 0.14, 0.24, 0.5, -0.02, 0.07, 0.09) * 1.15 +
-    slant(p, 0.2, 0.22, -0.08, 0.44, 0.0, 0.068, 0.08) * 1.25 +
-    ribbon(p, -0.08, 0.18, 0.02, 1.64, 2.4, 0.12, 0.1) * 0.7 +
-    cyanPatch * 0.88;
+    ribbon(p, 0.16, 0.42, 0.04, 1.88, 1.15, 0.15, 0.11) * 1.48 +
+    slant(p, 0.0, 0.2, 0.2, 0.58, -0.02, 0.07, 0.09) * 0.98 +
+    slant(p, 0.18, 0.28, -0.02, 0.52, 0.0, 0.068, 0.08) * 1.08 +
+    ribbon(p, 0.1, 0.22, 0.02, 1.64, 2.4, 0.12, 0.1) * 0.58 +
+    cyanPatch * 0.82;
   const rTeal =
     ribbon(p, 0.18, 0.1, -0.06, 1.74, 0.9, 0.13, 0.1) * 0.32;
   const rBlue =
@@ -254,7 +254,7 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
   const bandB = Math.pow(0.5 + 0.5 * Math.sin(-p.x * 2.4 + p.y * 3.8 - p.z * 1.8 + 2.2), 3.6);
   const ribbonPeak = Math.max(rViolet, rCyan, rWarm);
   const thread = Math.min(1, Math.max(0, (ribbonPeak - 0.14) / 0.5));
-  let psyche = rViolet * 1.72 + bandV * 0.05 + (n - 0.5) * 0.02;
+  let psyche = rViolet * 1.5 + bandV * 0.05 + (n - 0.5) * 0.02;
   let persona = rCyan * 1.38 + rTeal * 0.28 + bandC * 0.04;
   let cortex = rBlue * 0.7 + bandB * 0.05 + (n2 - 0.5) * 0.02;
   let deep = 0.2 * (1 - thread * 0.8);
@@ -337,14 +337,14 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
     g = Math.max(0, (g * (1 - body * mixDeep) + dA[1] * body * mixDeep) * crush);
     b = Math.max(0, (b * (1 - body * mixDeep) + dA[2] * body * mixDeep) * crush);
   }
-  if (p.y > 0.38 && p.x > 0.12) {
-    const crownCyan = Math.min(0.3, 0.1 + (p.y - 0.38) * 0.65 + Math.max(0, p.x - 0.12) * 0.32);
+  if (p.y > 0.42 && p.x > 0.08) {
+    const crownCyan = Math.min(0.32, 0.1 + (p.y - 0.42) * 0.6 + Math.max(0, p.x - 0.08) * 0.3);
     r = r * (1 - crownCyan) + nA[0] * crownCyan;
     g = g * (1 - crownCyan) + nA[1] * crownCyan;
     b = b * (1 - crownCyan) + nA[2] * crownCyan;
   }
-  if (p.x < 0.12 && p.y > 0.16) {
-    const leftViolet = Math.min(0.48, 0.16 + (0.12 - p.x) * 0.95);
+  if (p.x < 0.1 && p.y > 0.22 && p.y < 0.56) {
+    const leftViolet = Math.min(0.5, 0.2 + (0.1 - p.x) * 1.05);
     r = r * (1 - leftViolet) + pA[0] * leftViolet;
     g = g * (1 - leftViolet) + pA[1] * leftViolet;
     b = b * (1 - leftViolet) + pA[2] * leftViolet;
@@ -966,7 +966,7 @@ export function nexusBudget(width: number): NexusBudget {
   return { nodes: 7800, filaments: 4000 };
 }
 
-export const NEXUS_FIELD_REV = 18;
+export const NEXUS_FIELD_REV = 20;
 
 export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField {
   const rng = mulberry32(seed);
@@ -1363,13 +1363,14 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       node.g = Math.min(1.08, node.g * 1.1);
       node.b = Math.min(1.12, node.b * 1.16);
     }
-    if (torso && node.bright < 0.3) {
-      node.r = Math.min(1.02, node.r * 0.94);
-      node.g = Math.min(1.04, node.g * 1.02);
-      node.b = Math.min(1.08, node.b * 1.06);
+    const violet = node.b > node.g * 1.12 && node.r > node.g * 0.82;
+    if (violet && !node.mist) {
+      node.r = Math.min(1.18, node.r * 1.22);
+      node.b = Math.min(1.22, node.b * 1.18);
+      node.g = Math.min(node.g * 0.9, node.r * 0.52);
     }
     const luma = node.r * 0.22 + node.g * 0.55 + node.b * 0.23;
-    const lumaCap = node.mist ? 0.1 : crown ? 0.48 : torso ? 0.4 : 0.22;
+    const lumaCap = node.mist ? 0.1 : violet ? 0.5 : crown ? 0.5 : torso ? 0.4 : 0.24;
     if (luma > lumaCap) {
       const s = lumaCap / luma;
       node.r *= s;
