@@ -97,16 +97,13 @@ type Ellipsoid = {
  * Los lóbulos se solapan a propósito: un organismo, no islas.
  */
 const LOBES: readonly Ellipsoid[] = [
-  { cx: 0.14, cy: 0.42, cz: 0.02, rx: 0.16, ry: 0.2, rz: 0.11, weight: 1.05 },
-  { cx: -0.04, cy: 0.36, cz: -0.05, rx: 0.11, ry: 0.16, rz: 0.09, weight: 0.78 },
-  { cx: 0.22, cy: 0.24, cz: 0.06, rx: 0.12, ry: 0.16, rz: 0.1, weight: 0.68 },
-  { cx: 0.08, cy: 0.14, cz: 0.0, rx: 0.14, ry: 0.2, rz: 0.12, weight: 0.96 },
-  { cx: -0.16, cy: 0.08, cz: -0.04, rx: 0.11, ry: 0.12, rz: 0.09, weight: 0.52 },
-  { cx: 0.02, cy: -0.06, cz: 0.03, rx: 0.12, ry: 0.1, rz: 0.1, weight: 0.34 },
-  { cx: 0.18, cy: -0.14, cz: 0.05, rx: 0.08, ry: 0.08, rz: 0.07, weight: 0.2 },
-  { cx: 0.1, cy: -0.28, cz: 0.0, rx: 0.07, ry: 0.07, rz: 0.06, weight: 0.1 },
-  { cx: -0.12, cy: -0.16, cz: -0.02, rx: 0.06, ry: 0.06, rz: 0.05, weight: 0.1 },
-  { cx: 0.12, cy: 0.04, cz: 0.02, rx: 0.12, ry: 0.14, rz: 0.1, weight: 0.68 },
+  { cx: 0.14, cy: 0.5, cz: 0.02, rx: 0.16, ry: 0.2, rz: 0.11, weight: 1.12 },
+  { cx: -0.04, cy: 0.44, cz: -0.05, rx: 0.11, ry: 0.16, rz: 0.09, weight: 0.84 },
+  { cx: 0.22, cy: 0.32, cz: 0.06, rx: 0.12, ry: 0.16, rz: 0.1, weight: 0.72 },
+  { cx: 0.08, cy: 0.24, cz: 0.0, rx: 0.14, ry: 0.18, rz: 0.12, weight: 0.96 },
+  { cx: -0.16, cy: 0.18, cz: -0.04, rx: 0.11, ry: 0.12, rz: 0.09, weight: 0.5 },
+  { cx: 0.12, cy: 0.14, cz: 0.02, rx: 0.12, ry: 0.12, rz: 0.1, weight: 0.58 },
+  { cx: 0.02, cy: 0.06, cz: 0.03, rx: 0.1, ry: 0.08, rz: 0.08, weight: 0.16 },
 ];
 
 type RegionKind = 'vp' | 'cp' | 'vc' | 'nx';
@@ -114,10 +111,10 @@ type RegionKind = 'vp' | 'cp' | 'vc' | 'nx';
 type ActivityRegion = Ellipsoid & { kind: RegionKind };
 
 const FOCI: readonly ActivityRegion[] = [
-  { cx: 0.16, cy: 0.28, cz: 0.04, rx: 0.18, ry: 0.14, rz: 0.12, weight: 0.18, kind: 'vp' },
-  { cx: -0.12, cy: 0.08, cz: -0.06, rx: 0.16, ry: 0.14, rz: 0.11, weight: 0.16, kind: 'cp' },
-  { cx: 0.2, cy: 0.02, cz: 0.07, rx: 0.15, ry: 0.12, rz: 0.1, weight: 0.14, kind: 'vc' },
-  { cx: 0.04, cy: 0.16, cz: -0.1, rx: 0.13, ry: 0.12, rz: 0.1, weight: 0.12, kind: 'nx' },
+  { cx: 0.16, cy: 0.36, cz: 0.04, rx: 0.16, ry: 0.13, rz: 0.11, weight: 0.2, kind: 'vp' },
+  { cx: -0.12, cy: 0.18, cz: -0.06, rx: 0.15, ry: 0.13, rz: 0.1, weight: 0.17, kind: 'cp' },
+  { cx: 0.2, cy: 0.14, cz: 0.07, rx: 0.14, ry: 0.11, rz: 0.1, weight: 0.15, kind: 'vc' },
+  { cx: 0.04, cy: 0.26, cz: -0.1, rx: 0.12, ry: 0.12, rz: 0.1, weight: 0.14, kind: 'nx' },
 ];
 
 const VOIDS: readonly Ellipsoid[] = [
@@ -169,17 +166,17 @@ function fieldAt(p: Vec3): { density: number; cluster: number } {
   for (const focus of FOCI) {
     density += gauss(p, focus);
   }
-  if (p.y < -0.04) {
-    density *= Math.max(0, 0.14 + (p.y + 0.36) * 1.7);
+  if (p.y < 0.1) {
+    density *= Math.max(0, 0.08 + p.y * 0.7);
   }
-  if (p.y < -0.16) {
-    density *= Math.max(0, 0.06 + (p.y + 0.4) * 1.15);
+  if (p.y < 0.02) {
+    density *= 0.05;
   }
-  if (p.y > 0.18 && p.y < 0.54 && p.x > -0.14 && p.x < 0.32) {
-    density *= 1.42;
+  if (p.y > 0.22 && p.y < 0.6 && p.x > -0.14 && p.x < 0.32) {
+    density *= 1.58;
   }
   const rx = (p.x - 0.04) / 0.38;
-  const ry = (p.y - 0.1) / 0.68;
+  const ry = (p.y - 0.22) / 0.68;
   const rz = p.z / 0.3;
   let rad = rx * rx * 1.15 + ry * ry * 0.82 + rz * rz;
   rad += Math.max(0, p.x - 0.28) * 3.8;
@@ -348,7 +345,7 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
     b = b * (1 - w) + sb * w;
   }
   if (thread < 0.18) {
-    const inTorso = p.y > -0.08 && p.y < 0.24 && p.x > -0.12;
+    const inTorso = p.y > 0.1 && p.y < 0.36 && p.x > -0.12;
     const body = 1 - thread / 0.18;
     const mixDeep = inTorso ? 0.1 : 0.42;
     const crush = ((inTorso ? 0.56 : 0.22) + thread * 0.32) / Math.max(0.05, r * 0.22 + g * 0.55 + b * 0.23);
@@ -456,7 +453,7 @@ function assignActivity(nodes: NexusNode[], rng: () => number) {
 
   for (let i = 0; i < n; i += 1) {
     const node = nodes[i];
-    if (node.y < -0.04) {
+    if (node.y < 0.1) {
       continue;
     }
     const { index, proximity } = nearestFocusIndex(node);
@@ -766,16 +763,16 @@ function addCoveTissue(
 ) {
   const rng = mulberry32((seed ^ 0xb7e2) >>> 0);
   const interior = nodes.filter(
-    (node) => node.x > -0.32 && node.x < -0.02 && node.y > -0.04 && node.y < 0.28,
+    (node) => node.x > -0.32 && node.x < -0.02 && node.y > 0.08 && node.y < 0.34,
   );
   const leftCore = coreNodes.filter(
-    (node) => node.x > -0.22 && node.x < 0.02 && node.y > -0.06 && node.y < 0.28,
+    (node) => node.x > -0.22 && node.x < 0.02 && node.y > 0.08 && node.y < 0.34,
   );
   const rightCore = coreNodes.filter(
-    (node) => node.x > 0.05 && node.x < 0.24 && node.y > -0.06 && node.y < 0.26,
+    (node) => node.x > 0.05 && node.x < 0.24 && node.y > 0.08 && node.y < 0.32,
   );
   const torso = coreNodes.filter(
-    (node) => node.x > -0.04 && node.x < 0.16 && node.y > -0.06 && node.y < 0.26,
+    (node) => node.x > -0.04 && node.x < 0.16 && node.y > 0.1 && node.y < 0.32,
   );
 
   if (interior.length >= 8) {
@@ -819,7 +816,7 @@ function addCoveTissue(
       const a = spanPool[Math.floor(rng() * spanPool.length)];
       const tip: Vec3 = {
         x: -0.32 + rng() * 0.12,
-        y: 0.02 + rng() * 0.18,
+        y: 0.12 + rng() * 0.16,
         z: (rng() * 2 - 1) * 0.12,
       };
       const mid: Vec3 = {
@@ -903,7 +900,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   for (let attempt = 0; attempt < maxAttempts && nodes.length < coreTarget; attempt += 1) {
     const p = {
       x: (rng() * 2 - 1) * 0.44 + 0.04,
-      y: (rng() * 2 - 1) * 0.72 + 0.08,
+      y: (rng() * 2 - 1) * 0.68 + 0.18,
       z: (rng() * 2 - 1) * 0.36,
     };
     const { density, cluster } = fieldAt(p);
@@ -911,11 +908,11 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       continue;
     }
     let keep = 0.08 + Math.pow(Math.min(1.25, density), 1.55) * 0.78;
-    if (p.y < -0.04) {
-      keep *= 0.22;
+    if (p.y < 0.1) {
+      keep *= 0.16;
     }
-    if (p.y < -0.14) {
-      keep *= 0.12;
+    if (p.y < 0.02) {
+      keep *= 0.05;
     }
     if (p.x > 0.3) {
       keep *= 0.38;
@@ -923,8 +920,8 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     if (p.x > 0.38) {
       keep *= 0.2;
     }
-    if (p.y > 0.2 && p.x > -0.1 && p.x < 0.28) {
-      keep *= 1.62;
+    if (p.y > 0.26 && p.x > -0.1 && p.x < 0.28) {
+      keep *= 1.9;
     }
     if (rng() > keep) {
       continue;
@@ -988,11 +985,11 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     mistAttempts += 1;
     const p = {
       x: (rng() * 2 - 1) * 0.4 + 0.04,
-      y: (rng() * 2 - 1) * 0.62 + 0.08,
+      y: (rng() * 2 - 1) * 0.5 + 0.2,
       z: (rng() * 2 - 1) * 0.28,
     };
     const { density, cluster } = fieldAt(p);
-    if (density < 0.09 || density > 0.48 || p.y < -0.02 || p.x > 0.34) {
+    if (density < 0.09 || density > 0.48 || p.y < 0.08 || p.x > 0.34) {
       continue;
     }
     const color = mixColor(p);
@@ -1013,14 +1010,14 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   }
 
   const hazeRng = mulberry32((seed ^ 0xa5c3) >>> 0);
-  const extraHaze = Math.floor(mistTarget * 1.15);
+  const extraHaze = Math.floor(mistTarget * 0.85);
   let extraMade = 0;
   let extraTries = 0;
   while (extraMade < extraHaze && extraTries < extraHaze * 22) {
     extraTries += 1;
     const p = {
       x: hazeRng() * 0.28 - 0.1,
-      y: hazeRng() * 0.22 + 0.04,
+      y: hazeRng() * 0.2 + 0.12,
       z: (hazeRng() * 2 - 1) * 0.18,
     };
     const { density, cluster } = fieldAt(p);
@@ -1045,14 +1042,14 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   }
 
   const crownRng = mulberry32((seed ^ 0xe2b7) >>> 0);
-  const crownTarget = Math.floor(mistTarget * 0.72);
+  const crownTarget = Math.floor(mistTarget * 0.95);
   let crownMade = 0;
   let crownTries = 0;
   while (crownMade < crownTarget && crownTries < crownTarget * 28) {
     crownTries += 1;
     const p = {
       x: crownRng() * 0.22 - 0.02,
-      y: crownRng() * 0.24 + 0.2,
+      y: crownRng() * 0.26 + 0.28,
       z: (crownRng() * 2 - 1) * 0.16,
     };
     const { density, cluster } = fieldAt(p);
@@ -1084,7 +1081,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     bridgeTries += 1;
     const p = {
       x: bridgeRng() * 0.16 - 0.04,
-      y: bridgeRng() * 0.2,
+      y: bridgeRng() * 0.18 + 0.12,
       z: (bridgeRng() * 2 - 1) * 0.16,
     };
     const { density, cluster } = fieldAt(p);
@@ -1116,7 +1113,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     coveTries += 1;
     const p = {
       x: coveRng() * 0.2 - 0.24,
-      y: coveRng() * 0.2 + 0.02,
+      y: coveRng() * 0.18 + 0.1,
       z: (coveRng() * 2 - 1) * 0.14,
     };
     const { density, cluster } = fieldAt(p);
@@ -1141,17 +1138,17 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   }
 
   for (const node of nodes) {
-    const torso = node.y > -0.06 && node.y < 0.28 && node.x > -0.12 && node.x < 0.26;
-    const inCove = node.x <= -0.04 && node.x > -0.24 && node.y > 0.0 && node.y < 0.24;
-    const crown = node.y > 0.2 && node.x > -0.1 && node.x < 0.28;
-    if (node.y < 0.02) {
-      const foot = node.y < -0.1 ? 0.05 : 0.1;
+    const torso = node.y > 0.1 && node.y < 0.36 && node.x > -0.12 && node.x < 0.26;
+    const inCove = node.x <= -0.04 && node.x > -0.24 && node.y > 0.1 && node.y < 0.3;
+    const crown = node.y > 0.3 && node.x > -0.1 && node.x < 0.28;
+    if (node.y < 0.12) {
+      const foot = node.y < 0.04 ? 0.06 : 0.14;
       node.size *= foot;
-      node.r *= foot + 0.06;
-      node.g *= foot + 0.05;
-      node.b *= foot + 0.08;
+      node.r *= foot + 0.04;
+      node.g *= foot + 0.03;
+      node.b *= foot + 0.05;
       if (!node.mist) {
-        node.bright *= 0.12;
+        node.bright *= 0.06;
       }
     }
     if (node.x > 0.28) {
@@ -1165,7 +1162,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       }
     }
     if (node.mist) {
-      if (node.y < -0.08) {
+      if (node.y < 0.1) {
         continue;
       } else if (inCove) {
         node.r = Math.min(1.08, node.r * 1.04);
@@ -1298,13 +1295,13 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     }
     const gx = (start.x + end.x + mid.x) / 3;
     const gy = (start.y + end.y + mid.y) / 3;
-    if (gy > 0.2 && gy < 0.5) {
-      filament.alpha *= 1.48;
-    } else if (gy > -0.02 && gy < 0.22) {
-      filament.alpha *= 1.16;
-    } else if (gy < -0.1) {
+    if (gy > 0.28 && gy < 0.58) {
+      filament.alpha *= 1.55;
+    } else if (gy > 0.12 && gy < 0.28) {
+      filament.alpha *= 1.12;
+    } else if (gy < 0.04) {
       filament.alpha *= 0.12;
-    } else if (gy < -0.02) {
+    } else if (gy < 0.12) {
       filament.alpha *= 0.28;
     }
     if (gx > 0.3) {
@@ -1368,20 +1365,20 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
 
   for (const membrane of membranes) {
     const cy = (membrane.ay + membrane.by + membrane.cy) / 3;
-    if (cy < -0.1) {
+    if (cy < 0.08) {
       membrane.alpha *= 0.04;
-    } else if (cy < -0.02) {
-      membrane.alpha *= 0.14;
-    } else if (cy > 0.2) {
-      membrane.alpha *= 1.55;
-    } else if (cy > -0.02 && cy < 0.24) {
-      membrane.alpha *= 1.45;
+    } else if (cy < 0.14) {
+      membrane.alpha *= 0.18;
+    } else if (cy > 0.3) {
+      membrane.alpha *= 1.6;
+    } else if (cy > 0.14 && cy < 0.3) {
+      membrane.alpha *= 1.35;
     }
   }
 
   const coveMembRng = mulberry32((seed ^ 0xc3d9) >>> 0);
   const coveFlesh = nodes.filter(
-    (node) => node.mist && node.x < -0.04 && node.x > -0.26 && node.y > 0.02 && node.y < 0.24,
+    (node) => node.mist && node.x < -0.04 && node.x > -0.26 && node.y > 0.1 && node.y < 0.32,
   );
   if (coveFlesh.length > 10) {
     for (let p = 0; p < 16; p += 1) {
