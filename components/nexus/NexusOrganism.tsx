@@ -621,10 +621,10 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     let viewProj: Float32Array = new Float32Array(16);
     let lastBudget = 0;
     let foci: [Vec3, Vec3, Vec3, Vec3] = [
-      { x: 0.16, y: 0.36, z: 0.04 },
-      { x: -0.12, y: 0.18, z: -0.06 },
-      { x: 0.2, y: 0.14, z: 0.07 },
-      { x: 0.04, y: 0.26, z: -0.1 },
+      { x: 0.14, y: 0.44, z: 0.04 },
+      { x: -0.1, y: 0.22, z: -0.06 },
+      { x: 0.18, y: 0.18, z: 0.07 },
+      { x: 0.04, y: 0.32, z: -0.1 },
     ];
 
     const resize = () => {
