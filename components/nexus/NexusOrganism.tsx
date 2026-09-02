@@ -58,10 +58,10 @@ void main() {
   float active = smoothstep(0.42, 0.68, aBright);
   float conv = smoothstep(0.85, 1.0, aBright);
   float pulse = 0.84 + 0.16 * sin(uTime * 1.15 + aCluster * 1.4 + aCenter.x * 2.0);
-  float quiet = 0.4 + tissue * 0.12 + wake * 0.015;
-  float mid = 0.5 + focus * 0.04 + wake * 0.02 + pulse * 0.015;
-  float lit = 0.58 + focus * 0.04 + wake * 0.02;
-  float hot = 0.8 + nexus * 0.03 + sync * 0.02;
+  float quiet = 0.3 + tissue * 0.1 + wake * 0.015;
+  float mid = 0.46 + focus * 0.04 + wake * 0.02 + pulse * 0.015;
+  float lit = 0.66 + focus * 0.05 + wake * 0.02;
+  float hot = 0.82 + nexus * 0.03 + sync * 0.02;
   float activity = mix(quiet, mid, moderate);
   activity = mix(activity, lit, active);
   activity = mix(activity, hot, conv);
@@ -108,7 +108,7 @@ void main() {
   if (d > 1.0) discard;
   float core = exp(-d * d * mix(9.2, 2.8, vMist));
   float halo = exp(-d * d * mix(4.8, 1.25, vMist)) * mix(0.05, 0.4, vMist);
-  halo += exp(-d * d * 3.4) * vGlow * 0.014;
+  halo += exp(-d * d * 4.2) * vGlow * 0.05;
   float a = (core + halo) * vAlpha;
   if (a < 0.007) discard;
   vec3 c = vColor * a;
@@ -639,8 +639,8 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       const portrait = width / height < 0.9;
       const dist = portrait ? 0.86 : 0.78;
       const view = portrait
-        ? lookAt(-0.05, 0.12, dist, 0.03, 0.14, 0)
-        : lookAt(-0.04, 0.12, dist, -0.1, 0.14, 0);
+        ? lookAt(-0.05, 0.12, dist, 0.03, 0.16, 0)
+        : lookAt(-0.04, 0.13, dist, -0.08, 0.17, 0);
       viewProj = multiply4(proj, view);
       const budget = nexusBudget(window.innerWidth);
       if (budget.nodes + budget.filaments !== lastBudget) {
