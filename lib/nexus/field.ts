@@ -60,10 +60,10 @@ export type NexusBudget = {
 };
 
 const PSYCHE = [
-  [0.62, 0.26, 0.9],
-  [0.68, 0.3, 0.86],
-  [0.54, 0.22, 0.88],
-  [0.7, 0.34, 0.82],
+  [0.66, 0.24, 0.92],
+  [0.72, 0.28, 0.88],
+  [0.58, 0.2, 0.9],
+  [0.74, 0.32, 0.84],
 ];
 const PERSONA = [
   [0.14, 0.9, 0.96],
@@ -173,16 +173,17 @@ function fieldAt(p: Vec3): { density: number; cluster: number } {
   if (p.y < 0.02) {
     density *= 0.05;
   }
-  if (p.y > 0.32 && p.y < 0.62 && p.x > -0.16 && p.x < 0.3) {
-    density *= 1.85;
-  } else if (p.y > 0.22 && p.y < 0.6 && p.x > -0.14 && p.x < 0.32) {
-    density *= 1.42;
+  if (p.y > 0.34 && p.y < 0.66 && p.x > -0.12 && p.x < 0.24) {
+    density *= 2.05;
+  } else if (p.y > 0.24 && p.y < 0.62 && p.x > -0.1 && p.x < 0.26) {
+    density *= 1.48;
   }
-  const rx = (p.x - 0.04) / 0.38;
-  const ry = (p.y - 0.22) / 0.68;
-  const rz = p.z / 0.3;
-  let rad = rx * rx * 1.15 + ry * ry * 0.82 + rz * rz;
-  rad += Math.max(0, p.x - 0.28) * 3.8;
+  const rx = (p.x - 0.04) / 0.3;
+  const ry = (p.y - 0.28) / 0.74;
+  const rz = p.z / 0.28;
+  let rad = rx * rx * 1.45 + ry * ry * 0.72 + rz * rz;
+  rad += Math.max(0, p.x - 0.22) * 4.4;
+  rad += Math.max(0, Math.abs(p.x - 0.04) - 0.15) * 2.2;
   rad += Math.max(0, p.x - 0.22) * Math.max(0, -0.04 - p.y) * 4.6;
   rad += Math.max(0, -0.24 - p.x) * Math.max(0, p.y - 0.16) * 3.4;
   if (rad > 0.88) {
@@ -255,8 +256,8 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
   const bandB = Math.pow(0.5 + 0.5 * Math.sin(-p.x * 2.4 + p.y * 3.8 - p.z * 1.8 + 2.2), 3.6);
   const ribbonPeak = Math.max(rViolet, rCyan, rWarm);
   const thread = Math.min(1, Math.max(0, (ribbonPeak - 0.14) / 0.5));
-  let psyche = rViolet * 1.48 + bandV * 0.04 + (n - 0.5) * 0.02;
-  let persona = rCyan * 1.55 + rTeal * 0.32 + bandC * 0.05;
+  let psyche = rViolet * 1.72 + bandV * 0.05 + (n - 0.5) * 0.02;
+  let persona = rCyan * 1.38 + rTeal * 0.28 + bandC * 0.04;
   let cortex = rBlue * 0.7 + bandB * 0.05 + (n2 - 0.5) * 0.02;
   let deep = 0.2 * (1 - thread * 0.8);
   let warm = rWarm * 0.08;
@@ -338,11 +339,17 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
     g = Math.max(0, (g * (1 - body * mixDeep) + dA[1] * body * mixDeep) * crush);
     b = Math.max(0, (b * (1 - body * mixDeep) + dA[2] * body * mixDeep) * crush);
   }
-  if (p.y > 0.36 && p.x > 0.1) {
-    const crownCyan = Math.min(0.34, 0.12 + (p.y - 0.36) * 0.7 + Math.max(0, p.x - 0.1) * 0.35);
+  if (p.y > 0.38 && p.x > 0.12) {
+    const crownCyan = Math.min(0.3, 0.1 + (p.y - 0.38) * 0.65 + Math.max(0, p.x - 0.12) * 0.32);
     r = r * (1 - crownCyan) + nA[0] * crownCyan;
     g = g * (1 - crownCyan) + nA[1] * crownCyan;
     b = b * (1 - crownCyan) + nA[2] * crownCyan;
+  }
+  if (p.x < 0.04 && p.y > 0.2) {
+    const leftViolet = Math.min(0.36, 0.12 + (0.04 - p.x) * 0.8);
+    r = r * (1 - leftViolet) + pA[0] * leftViolet;
+    g = g * (1 - leftViolet) + pA[1] * leftViolet;
+    b = b * (1 - leftViolet) + pA[2] * leftViolet;
   }
   const gold = Math.max(0, r - Math.max(g, b) * 0.82);
   if (gold > 0.02) {
@@ -961,7 +968,7 @@ export function nexusBudget(width: number): NexusBudget {
   return { nodes: 7800, filaments: 6800 };
 }
 
-export const NEXUS_FIELD_REV = 10;
+export const NEXUS_FIELD_REV = 11;
 
 export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField {
   const rng = mulberry32(seed);
@@ -990,8 +997,8 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
 
   for (let attempt = 0; attempt < maxAttempts && nodes.length < coreTarget; attempt += 1) {
     const p = {
-      x: (rng() * 2 - 1) * 0.44 + 0.04,
-      y: (rng() * 2 - 1) * 0.68 + 0.18,
+      x: (rng() * 2 - 1) * 0.32 + 0.04,
+      y: (rng() * 2 - 1) * 0.72 + 0.2,
       z: (rng() * 2 - 1) * 0.36,
     };
     const { density, cluster } = fieldAt(p);
@@ -1005,16 +1012,19 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     if (p.y < 0.02) {
       keep *= 0.05;
     }
+    if (p.x > 0.22) {
+      keep *= 0.32;
+    }
     if (p.x > 0.3) {
-      keep *= 0.38;
+      keep *= 0.16;
     }
-    if (p.x > 0.38) {
-      keep *= 0.2;
+    if (p.x < -0.14) {
+      keep *= 0.42;
     }
-    if (p.y > 0.34 && p.x > -0.12 && p.x < 0.28) {
-      keep *= 1.85;
-    } else if (p.y > 0.26 && p.x > -0.1 && p.x < 0.28) {
-      keep *= 1.45;
+    if (p.y > 0.38 && p.x > -0.1 && p.x < 0.24) {
+      keep *= 2.05;
+    } else if (p.y > 0.28 && p.x > -0.08 && p.x < 0.24) {
+      keep *= 1.5;
     }
     if (rng() > keep) {
       continue;
