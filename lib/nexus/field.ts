@@ -552,7 +552,7 @@ function makeFilament(
   }
   return {
     points: tessellate(a, mid, b, steps),
-    alpha: onThread ? alpha * 1.32 : alpha,
+    alpha: onThread ? alpha * 1.08 : alpha,
     r: cr,
     g: cg,
     b: cb,
@@ -621,7 +621,7 @@ function buildPlexus(core: NexusNode[], maxEdges: number, rng: () => number): Ne
       }
     }
     near.sort((left, right) => left.d - right.d);
-    const take = a.density > 0.48 ? 5 : a.density > 0.16 ? 4 : 3;
+    const take = a.density > 0.48 ? 3 : a.density > 0.16 ? 3 : 2;
     for (let n = 0; n < Math.min(take, near.length); n += 1) {
       const j = near[n].j;
       const b = core[j];
@@ -630,7 +630,7 @@ function buildPlexus(core: NexusNode[], maxEdges: number, rng: () => number): Ne
         y: (a.y + b.y) * 0.5 + (rng() - 0.5) * 0.018,
         z: (a.z + b.z) * 0.5 + (rng() - 0.5) * 0.02,
       };
-      const alpha = 0.13 + Math.min(a.density, b.density) * 0.14 + rng() * 0.04;
+      const alpha = 0.09 + Math.min(a.density, b.density) * 0.1 + rng() * 0.03;
       tryEdge(i, j, mid, 4, alpha, false);
     }
   }
@@ -668,7 +668,7 @@ function buildPlexus(core: NexusNode[], maxEdges: number, rng: () => number): Ne
       y: (rng() - 0.5) * 0.03,
       z: (rng() - 0.5) * 0.04,
     });
-    tryEdge(i, best, mid, 5, 0.13 + rng() * 0.04, false);
+    tryEdge(i, best, mid, 5, 0.07 + rng() * 0.02, false);
   }
 
   const chainStart = filaments.length;
@@ -715,7 +715,7 @@ function buildPlexus(core: NexusNode[], maxEdges: number, rng: () => number): Ne
         y: (a.y + b.y) * 0.5 + (rng() - 0.5) * 0.016,
         z: (a.z + b.z) * 0.5 + (rng() - 0.5) * 0.018,
       };
-      tryEdge(i, next, mid, 3, 0.14 + rng() * 0.04, false);
+      tryEdge(i, next, mid, 3, 0.07 + rng() * 0.02, false);
       i = next;
     }
   }
@@ -755,7 +755,7 @@ function addCentralFilaments(core: NexusNode[], maxCount: number, rng: () => num
       y: (a.y + best.y) * 0.5 + (rng() - 0.5) * 0.04,
       z: (a.z + best.z) * 0.5 + (rng() - 0.5) * 0.042,
     };
-    out.push(makeFilament(a, best, mid, 6, 0.13 + rng() * 0.03, false));
+    out.push(makeFilament(a, best, mid, 6, 0.07 + rng() * 0.02, false));
   }
   return out;
 }
@@ -781,7 +781,7 @@ function addCoveTissue(
   );
 
   if (interior.length >= 8) {
-    const weave = Math.min(180, Math.floor(interior.length * 0.5));
+    const weave = Math.min(70, Math.floor(interior.length * 0.22));
     for (let i = 0; i < weave; i += 1) {
       const a = interior[Math.floor(rng() * interior.length)];
       let best = a;
@@ -805,7 +805,7 @@ function addCoveTissue(
       const tint = mixColor(mid);
       filaments.push({
         points: tessellate(a, mid, best, 7),
-        alpha: 0.16 + rng() * 0.05,
+        alpha: 0.08 + rng() * 0.03,
         r: Math.min(1.0, tint.r * 0.9),
         g: Math.min(1.0, tint.g * 0.88),
         b: Math.min(1.0, tint.b * 0.92),
@@ -816,7 +816,7 @@ function addCoveTissue(
 
   const spanPool = torso.length > 8 ? torso : rightCore;
   if (spanPool.length > 8) {
-    const spans = Math.min(90, Math.floor(spanPool.length * 0.45));
+    const spans = Math.min(28, Math.floor(spanPool.length * 0.16));
     for (let i = 0; i < spans; i += 1) {
       const a = spanPool[Math.floor(rng() * spanPool.length)];
       const tip: Vec3 = {
@@ -832,7 +832,7 @@ function addCoveTissue(
       const tint = mixColor(mid);
       filaments.push({
         points: tessellate(a, mid, tip, 10),
-        alpha: 0.15 + rng() * 0.05,
+        alpha: 0.07 + rng() * 0.03,
         r: Math.min(1.0, tint.r * 0.92),
         g: Math.min(1.0, tint.g * 0.9),
         b: Math.min(1.0, tint.b * 0.94),
@@ -842,7 +842,7 @@ function addCoveTissue(
   }
 
   if (leftCore.length > 8 && rightCore.length > 8) {
-    const crosses = Math.min(50, Math.min(leftCore.length, rightCore.length));
+    const crosses = Math.min(18, Math.min(leftCore.length, rightCore.length));
     for (let i = 0; i < crosses; i += 1) {
       const a = leftCore[Math.floor(rng() * leftCore.length)];
       const b = rightCore[Math.floor(rng() * rightCore.length)];
@@ -857,7 +857,7 @@ function addCoveTissue(
       const tint = mixColor(mid);
       filaments.push({
         points: tessellate(a, mid, b, 11),
-        alpha: 0.14 + rng() * 0.04,
+        alpha: 0.07 + rng() * 0.03,
         r: Math.min(1.0, tint.r * 0.9),
         g: Math.min(1.0, tint.g * 0.88),
         b: Math.min(1.0, tint.b * 0.92),
@@ -884,7 +884,7 @@ function addCrownTissue(
     return;
   }
 
-  const weave = Math.min(220, Math.floor(crown.length * 0.62));
+  const weave = Math.min(90, Math.floor(crown.length * 0.26));
   for (let i = 0; i < weave; i += 1) {
     const a = crown[Math.floor(rng() * crown.length)];
     let best = a;
@@ -905,10 +905,10 @@ function addCrownTissue(
       y: (a.y + best.y) * 0.5 + (rng() - 0.35) * 0.03,
       z: (a.z + best.z) * 0.5 + (rng() - 0.5) * 0.024,
     };
-    filaments.push(makeFilament(a, best, midPt, 7, 0.18 + rng() * 0.05, false));
+    filaments.push(makeFilament(a, best, midPt, 7, 0.08 + rng() * 0.03, false));
   }
 
-  const wisps = Math.min(70, Math.floor(crown.length * 0.5));
+  const wisps = Math.min(28, Math.floor(crown.length * 0.2));
   for (let i = 0; i < wisps; i += 1) {
     const a = crown[Math.floor(rng() * crown.length)];
     const tip: Vec3 = {
@@ -921,14 +921,14 @@ function addCrownTissue(
       y: (a.y + tip.y) * 0.5 + rng() * 0.03,
       z: (a.z + tip.z) * 0.5 + (rng() - 0.5) * 0.03,
     };
-    filaments.push(makeFilament(a, tip, midPt, 8, 0.13 + rng() * 0.04, true));
+    filaments.push(makeFilament(a, tip, midPt, 8, 0.07 + rng() * 0.02, true));
   }
 
   const leftCrown = crown.filter((node) => node.x < 0.06);
   const rightCrown = crown.filter((node) => node.x > 0.08);
   const leftMid = mid.filter((node) => node.x < 0.04);
   const rightMid = mid.filter((node) => node.x > 0.06);
-  const crossA = leftMid.length > 6 && rightCrown.length > 6 ? Math.min(36, leftMid.length) : 0;
+  const crossA = leftMid.length > 6 && rightCrown.length > 6 ? Math.min(16, leftMid.length) : 0;
   for (let i = 0; i < crossA; i += 1) {
     const a = leftMid[Math.floor(rng() * leftMid.length)];
     const b = rightCrown[Math.floor(rng() * rightCrown.length)];
@@ -940,9 +940,9 @@ function addCrownTissue(
       y: (a.y + b.y) * 0.5 + (rng() - 0.35) * 0.04,
       z: (a.z + b.z) * 0.5 + (rng() - 0.5) * 0.04,
     };
-    filaments.push(makeFilament(a, b, midPt, 11, 0.13 + rng() * 0.04, false));
+    filaments.push(makeFilament(a, b, midPt, 11, 0.07 + rng() * 0.02, false));
   }
-  const crossB = rightMid.length > 6 && leftCrown.length > 6 ? Math.min(36, rightMid.length) : 0;
+  const crossB = rightMid.length > 6 && leftCrown.length > 6 ? Math.min(16, rightMid.length) : 0;
   for (let i = 0; i < crossB; i += 1) {
     const a = rightMid[Math.floor(rng() * rightMid.length)];
     const b = leftCrown[Math.floor(rng() * leftCrown.length)];
@@ -954,21 +954,21 @@ function addCrownTissue(
       y: (a.y + b.y) * 0.5 + (rng() - 0.35) * 0.04,
       z: (a.z + b.z) * 0.5 + (rng() - 0.5) * 0.04,
     };
-    filaments.push(makeFilament(a, b, midPt, 11, 0.13 + rng() * 0.04, false));
+    filaments.push(makeFilament(a, b, midPt, 11, 0.07 + rng() * 0.02, false));
   }
 }
 
 export function nexusBudget(width: number): NexusBudget {
   if (width < 768) {
-    return { nodes: 3000, filaments: 2800 };
+    return { nodes: 3000, filaments: 1600 };
   }
   if (width < 1024) {
-    return { nodes: 5200, filaments: 4400 };
+    return { nodes: 5200, filaments: 2800 };
   }
-  return { nodes: 7800, filaments: 6800 };
+  return { nodes: 7800, filaments: 4000 };
 }
 
-export const NEXUS_FIELD_REV = 11;
+export const NEXUS_FIELD_REV = 13;
 
 export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField {
   const rng = mulberry32(seed);
@@ -1408,7 +1408,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     const tint = mixColor(mid);
     filaments.push({
       points: tessellate(a, mid, b, 14),
-      alpha: 0.16 + rng() * 0.05,
+      alpha: 0.08 + rng() * 0.03,
       r: tint.r,
       g: tint.g,
       b: tint.b,
@@ -1422,7 +1422,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
           y: (b.y + branch.y) * 0.5 + (rng() - 0.5) * 0.05,
           z: (b.z + branch.z) * 0.5 + (rng() - 0.5) * 0.05,
         }, branch, 8),
-        alpha: 0.16 + rng() * 0.05,
+        alpha: 0.07 + rng() * 0.03,
         r: tint.r,
         g: tint.g,
         b: tint.b,
@@ -1445,9 +1445,9 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     const gx = (start.x + end.x + mid.x) / 3;
     const gy = (start.y + end.y + mid.y) / 3;
     if (gy > 0.32 && gy < 0.6) {
-      filament.alpha *= 0.82;
+      filament.alpha *= 0.62;
     } else if (gy > 0.12 && gy < 0.32) {
-      filament.alpha *= 0.7;
+      filament.alpha *= 0.5;
     } else if (gy < 0.04) {
       filament.alpha *= 0.12;
     } else if (gy < 0.12) {
@@ -1507,7 +1507,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
         r: silk.r,
         g: silk.g,
         b: silk.b,
-        alpha: 0.034 + rng() * 0.016,
+        alpha: 0.05 + rng() * 0.02,
       });
     }
   }
