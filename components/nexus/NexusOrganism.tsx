@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import type { NexusEventCopy } from '@/lib/i18n/copy/pages/nexus';
-import { buildNexusField, nexusBudget, wakePositions, type NexusField, type Vec3 } from '@/lib/nexus/field';
+import { buildNexusField, nexusBudget, NEXUS_FIELD_REV, wakePositions, type NexusField, type Vec3 } from '@/lib/nexus/field';
 import { lookAt, multiply4, perspective, projectPoint } from '@/lib/nexus/math';
 
 type NexusOrganismProps = {
@@ -72,8 +72,8 @@ void main() {
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.28, 0.5, clip.w);
   float farDim = smoothstep(3.15, 4.7, clip.w);
-  float sizePx = aSize * mix(1.14, mix(1.16, 0.96, conv), mix(moderate, 1.0, active));
-  sizePx *= mix(1.0, 1.88, aMist);
+  float sizePx = aSize * mix(1.18, mix(1.38, 1.52, conv), mix(moderate, 1.0, active));
+  sizePx *= mix(1.0, 1.22, aMist);
   sizePx *= 1.0 + nearBlur * 0.22 + wake * 0.08 + focus * 0.1;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
@@ -84,17 +84,17 @@ void main() {
   float violetId = smoothstep(0.03, 0.18, aColor.b - aColor.g) * smoothstep(0.08, 0.28, aColor.r);
   float warmId = smoothstep(0.02, 0.14, aColor.r - aColor.b) * smoothstep(0.02, 0.12, aColor.g);
   float flowStrength = max(violetId, max(cyanId, warmId));
-  vec3 violetTint = vec3(0.86, 0.24, 1.0);
-  vec3 cyanTint = vec3(0.1, 0.94, 0.98);
-  vec3 warmTint = vec3(1.0, 0.72, 0.18);
+  vec3 violetTint = vec3(0.66, 0.3, 0.9);
+  vec3 cyanTint = vec3(0.16, 0.9, 0.96);
+  vec3 warmTint = vec3(0.72, 0.42, 0.46);
   vec3 materialColor = aColor;
-  materialColor = mix(materialColor, violetTint, violetId * 0.14);
-  materialColor = mix(materialColor, cyanTint, cyanId * 0.16);
-  materialColor = mix(materialColor, warmTint, warmId * 0.16);
+  materialColor = mix(materialColor, violetTint, violetId * 0.1);
+  materialColor = mix(materialColor, cyanTint, cyanId * 0.22);
+  materialColor = mix(materialColor, warmTint, warmId * 0.04);
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
   vColor = mix(materialColor, nexusTint, conv * (0.02 + nexus * 0.03 + sync * 0.015));
-  vColor *= mix(0.64, 0.8, aMist);
-  vAlpha = mix(0.3 + 0.26 * activity, 0.36 + 0.12 * activity, aMist);
+  vColor *= mix(0.8, 0.52, aMist);
+  vAlpha = mix(0.4 + 0.32 * activity, 0.14 + 0.08 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.04 + wake * 0.12 + focus * 0.2;
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
@@ -186,7 +186,7 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
-  float px = 0.72 + flowPulse * 0.2;
+  float px = 0.82 + flowPulse * 0.18;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
@@ -194,14 +194,14 @@ void main() {
   float violetId = smoothstep(0.03, 0.18, aColor.b - aColor.g) * smoothstep(0.08, 0.28, aColor.r);
   float warmId = smoothstep(0.02, 0.14, aColor.r - aColor.b) * smoothstep(0.02, 0.12, aColor.g);
   float flowStrength = max(violetId, max(cyanId, warmId));
-  vAlpha = aAlpha * (0.22 + flowStrength * 0.08 + focus * 0.04 + wake * 0.04 + nexus * 0.02 + flowPulse * 0.32);
-  vec3 violetTint = vec3(0.72, 0.32, 0.92);
-  vec3 cyanTint = vec3(0.22, 0.82, 0.9);
-  vec3 warmTint = vec3(0.92, 0.68, 0.28);
+  vAlpha = aAlpha * (0.36 + flowStrength * 0.1 + focus * 0.05 + wake * 0.04 + nexus * 0.02 + flowPulse * 0.28);
+  vec3 violetTint = vec3(0.68, 0.3, 0.9);
+  vec3 cyanTint = vec3(0.18, 0.86, 0.92);
+  vec3 warmTint = vec3(0.72, 0.42, 0.46);
   vec3 materialColor = aColor;
   materialColor = mix(materialColor, violetTint, violetId * 0.08);
-  materialColor = mix(materialColor, cyanTint, cyanId * 0.1);
-  materialColor = mix(materialColor, warmTint, warmId * 0.08);
+  materialColor = mix(materialColor, cyanTint, cyanId * 0.12);
+  materialColor = mix(materialColor, warmTint, warmId * 0.04);
   vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.02);
   vColor *= 0.7 + flowPulse * 0.2;
   vFlow = flowPulse;
@@ -245,13 +245,13 @@ void main() {
   float cyanId = smoothstep(0.02, 0.16, aColor.g - aColor.r) * smoothstep(0.08, 0.32, aColor.b);
   float violetId = smoothstep(0.03, 0.18, aColor.b - aColor.g) * smoothstep(0.08, 0.28, aColor.r);
   float warmId = smoothstep(0.02, 0.14, aColor.r - aColor.b) * smoothstep(0.02, 0.12, aColor.g);
-  vec3 violetTint = vec3(0.86, 0.24, 1.0);
-  vec3 cyanTint = vec3(0.1, 0.94, 0.98);
-  vec3 warmTint = vec3(1.0, 0.72, 0.18);
+  vec3 violetTint = vec3(0.64, 0.28, 0.9);
+  vec3 cyanTint = vec3(0.16, 0.88, 0.96);
+  vec3 warmTint = vec3(0.7, 0.4, 0.48);
   vec3 materialColor = aColor;
-  materialColor = mix(materialColor, violetTint, violetId * 0.62);
-  materialColor = mix(materialColor, cyanTint, cyanId * 0.66);
-  vColor = mix(materialColor, warmTint, warmId * 0.7);
+  materialColor = mix(materialColor, violetTint, violetId * 0.28);
+  materialColor = mix(materialColor, cyanTint, cyanId * 0.32);
+  vColor = mix(materialColor, warmTint, warmId * 0.08);
   float flowStrength = max(violetId, max(cyanId, warmId));
   vAlpha = aAlpha * (0.58 + flowStrength * 0.28) * (0.78 + 0.22 * sin(uTime * 0.48 + aPosition.z * 3.0));
   vBary = aBary;
@@ -712,12 +712,13 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       const portrait = width / height < 0.9;
       const dist = portrait ? 0.86 : 0.78;
       const view = portrait
-        ? lookAt(-0.05, 0.14, dist, 0.03, 0.18, 0)
-        : lookAt(-0.04, 0.16, dist, -0.08, 0.24, 0);
+        ? lookAt(-0.05, 0.2, dist, 0.02, 0.3, 0)
+        : lookAt(-0.04, 0.22, 0.8, -0.02, 0.32, 0);
       viewProj = multiply4(proj, view);
       const budget = nexusBudget(window.innerWidth);
-      if (budget.nodes + budget.filaments !== lastBudget) {
-        lastBudget = budget.nodes + budget.filaments;
+      const mark = budget.nodes + budget.filaments + NEXUS_FIELD_REV;
+      if (mark !== lastBudget) {
+        lastBudget = mark;
         uploadField(buildNexusField(budget));
       }
     };
