@@ -26,10 +26,16 @@ export default function NexusStatus({ copy }: NexusStatusProps) {
       for (let i = 0; i < samples; i += 1) {
         const x = (i / (samples - 1)) * width;
         const t = reduced ? 1.2 : time * 0.0016;
+        const along = i / (samples - 1);
+        const packet = t * 0.22 % 1;
+        let span = Math.abs(along - packet);
+        span = Math.min(span, 1 - span);
+        const current = Math.exp(-span * span * 72);
         const y =
           height / 2 +
           Math.sin(i * 0.62 + t * 2.1) * 3.2 +
-          Math.sin(i * 1.15 + t * 3.4) * 1.4;
+          Math.sin(i * 1.15 + t * 3.4) * 1.4 +
+          current * 2.4;
         points.push(`${x.toFixed(2)},${y.toFixed(2)}`);
       }
       line.setAttribute('points', points.join(' '));
