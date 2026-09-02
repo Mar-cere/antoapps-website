@@ -709,12 +709,12 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       gl.viewport(0, 0, canvas.width, canvas.height);
-      const proj = perspective((36 * Math.PI) / 180, width / height, 0.12, 10);
+      const proj = perspective((33 * Math.PI) / 180, width / height, 0.12, 10);
       const portrait = width / height < 0.9;
-      const dist = portrait ? 0.82 : 0.7;
+      const dist = portrait ? 0.9 : 0.8;
       const view = portrait
-        ? lookAt(-0.02, 0.28, dist, 0.06, 0.42, 0)
-        : lookAt(-0.02, 0.3, 0.68, 0.07, 0.42, 0);
+        ? lookAt(-0.04, 0.3, dist, 0.06, 0.48, 0)
+        : lookAt(-0.04, 0.3, 0.8, 0.06, 0.48, 0);
       viewProj = multiply4(proj, view);
       const budget = nexusBudget(window.innerWidth);
       const mark = budget.nodes + budget.filaments + NEXUS_FIELD_REV;
