@@ -62,7 +62,7 @@ void main() {
   float active = smoothstep(0.42, 0.68, aBright);
   float conv = smoothstep(0.85, 1.0, aBright);
   float pulse = 0.84 + 0.16 * sin(uTime * 1.15 + aCluster * 1.4 + aCenter.x * 2.0);
-  float quiet = 0.1 + tissue * 0.04 + wake * 0.03;
+  float quiet = 0.07 + tissue * 0.03 + wake * 0.02;
   float mid = 0.38 + focus * 0.08 + wake * 0.04 + pulse * 0.02;
   float lit = 0.7 + focus * 0.08 + wake * 0.04;
   float hot = 0.86 + nexus * 0.04 + sync * 0.02;
@@ -72,8 +72,8 @@ void main() {
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.28, 0.5, clip.w);
   float farDim = smoothstep(3.15, 4.7, clip.w);
-  float sizePx = aSize * mix(0.58, mix(1.35, 2.05, conv), mix(moderate, 1.0, active));
-  sizePx *= mix(1.0, 2.15, aMist);
+  float sizePx = aSize * mix(0.52, mix(1.28, 1.85, conv), mix(moderate, 1.0, active));
+  sizePx *= mix(1.0, 1.55, aMist);
   sizePx *= 1.0 + nearBlur * 0.22 + wake * 0.08 + focus * 0.1;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
@@ -88,14 +88,14 @@ void main() {
   vec3 cyanTint = vec3(0.16, 0.9, 0.96);
   vec3 warmTint = vec3(0.72, 0.42, 0.46);
   vec3 materialColor = aColor;
-  materialColor = mix(materialColor, violetTint, violetId * 0.1);
-  materialColor = mix(materialColor, cyanTint, cyanId * 0.22);
+  materialColor = mix(materialColor, violetTint, violetId * 0.22);
+  materialColor = mix(materialColor, cyanTint, cyanId * 0.08);
   materialColor = mix(materialColor, warmTint, warmId * 0.04);
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
   vColor = mix(materialColor, nexusTint, conv * (0.02 + nexus * 0.03 + sync * 0.015));
-  vColor *= mix(0.88, 0.46, aMist);
-  vAlpha = mix(0.14 + 0.52 * activity, 0.08 + 0.04 * activity, aMist);
-  vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.04 + wake * 0.12 + focus * 0.2;
+  vColor *= mix(0.86, 0.34, aMist);
+  vAlpha = mix(0.12 + 0.48 * activity, 0.045 + 0.02 * activity, aMist);
+  vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.04 + wake * mix(0.1, 0.03, aMist) + focus * mix(0.16, 0.03, aMist);
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
 `;
@@ -111,13 +111,13 @@ void main() {
   float d = length(vCorner);
   if (d > 1.0) discard;
   float core = exp(-d * d * mix(8.4, 0.72, vMist));
-  float halo = exp(-d * d * mix(3.4, 0.62, vMist)) * mix(0.14, 0.48, vMist);
+  float halo = exp(-d * d * mix(3.4, 0.7, vMist)) * mix(0.12, 0.28, vMist);
   halo += exp(-d * d * 4.6) * vGlow * 0.12;
   float a = (core + halo) * vAlpha;
   if (a < 0.007) discard;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  float cap = mix(0.58, 0.2, vMist);
+  float cap = mix(0.4, 0.11, vMist);
   if (peak > cap) {
     c *= cap / peak;
   }

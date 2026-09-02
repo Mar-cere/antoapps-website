@@ -173,10 +173,10 @@ function fieldAt(p: Vec3): { density: number; cluster: number } {
   if (p.y < 0.02) {
     density *= 0.05;
   }
-  if (p.y > 0.34 && p.y < 0.66 && p.x > -0.12 && p.x < 0.24) {
-    density *= 2.05;
-  } else if (p.y > 0.24 && p.y < 0.62 && p.x > -0.1 && p.x < 0.26) {
-    density *= 1.48;
+  if (p.y > 0.38 && p.y < 0.62 && p.x > -0.06 && p.x < 0.2) {
+    density *= 1.32;
+  } else if (p.y > 0.26 && p.y < 0.58 && p.x > -0.08 && p.x < 0.22) {
+    density *= 1.14;
   }
   const rx = (p.x - 0.04) / 0.3;
   const ry = (p.y - 0.28) / 0.74;
@@ -345,8 +345,8 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
     g = g * (1 - crownCyan) + nA[1] * crownCyan;
     b = b * (1 - crownCyan) + nA[2] * crownCyan;
   }
-  if (p.x < 0.04 && p.y > 0.2) {
-    const leftViolet = Math.min(0.36, 0.12 + (0.04 - p.x) * 0.8);
+  if (p.x < 0.12 && p.y > 0.16) {
+    const leftViolet = Math.min(0.48, 0.16 + (0.12 - p.x) * 0.95);
     r = r * (1 - leftViolet) + pA[0] * leftViolet;
     g = g * (1 - leftViolet) + pA[1] * leftViolet;
     b = b * (1 - leftViolet) + pA[2] * leftViolet;
@@ -968,7 +968,7 @@ export function nexusBudget(width: number): NexusBudget {
   return { nodes: 7800, filaments: 4000 };
 }
 
-export const NEXUS_FIELD_REV = 14;
+export const NEXUS_FIELD_REV = 15;
 
 export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField {
   const rng = mulberry32(seed);
@@ -1022,9 +1022,9 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       keep *= 0.42;
     }
     if (p.y > 0.38 && p.x > -0.1 && p.x < 0.24) {
-      keep *= 2.05;
+      keep *= 1.35;
     } else if (p.y > 0.28 && p.x > -0.08 && p.x < 0.24) {
-      keep *= 1.5;
+      keep *= 1.18;
     }
     if (rng() > keep) {
       continue;
@@ -1135,7 +1135,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       r: Math.min(1.15, color.r * 0.92),
       g: Math.min(1.15, color.g * 0.86),
       b: Math.min(1.15, color.b * 0.9),
-      size: (budget.nodes < 3500 ? 2.05 : 2.45) + rng() * 0.7,
+      size: (budget.nodes < 3500 ? 1.45 : 1.7) + rng() * 0.4,
       cluster,
       density: Math.max(0.05, density * 0.55),
       bright: 0,
@@ -1145,7 +1145,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   }
 
   const hazeRng = mulberry32((seed ^ 0xa5c3) >>> 0);
-  const extraHaze = Math.floor(mistTarget * 0.14);
+  const extraHaze = Math.floor(mistTarget * 0.08);
   let extraMade = 0;
   let extraTries = 0;
   while (extraMade < extraHaze && extraTries < extraHaze * 22) {
@@ -1167,7 +1167,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       r: Math.min(1.08, color.r * 0.88),
       g: Math.min(1.1, color.g * 0.98),
       b: Math.min(1.12, color.b * 1.04),
-      size: (budget.nodes < 3500 ? 2.2 : 2.65) + hazeRng() * 0.55,
+      size: (budget.nodes < 3500 ? 1.5 : 1.75) + hazeRng() * 0.35,
       cluster,
       density: Math.max(0.06, density * 0.62),
       bright: 0,
@@ -1177,7 +1177,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   }
 
   const crownRng = mulberry32((seed ^ 0xe2b7) >>> 0);
-  const crownTarget = Math.floor(mistTarget * 0.4);
+  const crownTarget = Math.floor(mistTarget * 0.22);
   let crownMade = 0;
   let crownTries = 0;
   while (crownMade < crownTarget && crownTries < crownTarget * 28) {
@@ -1199,7 +1199,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       r: Math.min(1.02, color.r * 0.78),
       g: Math.min(1.14, color.g * 1.12),
       b: Math.min(1.16, color.b * 1.14),
-      size: (budget.nodes < 3500 ? 2.1 : 2.5) + crownRng() * 0.55,
+      size: (budget.nodes < 3500 ? 1.45 : 1.7) + crownRng() * 0.35,
       cluster,
       density: Math.max(0.06, density * 0.6),
       bright: 0,
@@ -1209,7 +1209,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   }
 
   const bridgeRng = mulberry32((seed ^ 0xd1e4) >>> 0);
-  const bridgeTarget = Math.floor(mistTarget * 0.1);
+  const bridgeTarget = Math.floor(mistTarget * 0.06);
   let bridgeMade = 0;
   let bridgeTries = 0;
   while (bridgeMade < bridgeTarget && bridgeTries < bridgeTarget * 28) {
@@ -1231,7 +1231,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       r: Math.min(1.06, color.r * 0.9),
       g: Math.min(1.1, color.g * 1.0),
       b: Math.min(1.12, color.b * 1.04),
-      size: (budget.nodes < 3500 ? 2.0 : 2.4) + bridgeRng() * 0.5,
+      size: (budget.nodes < 3500 ? 1.4 : 1.65) + bridgeRng() * 0.3,
       cluster,
       density: Math.max(0.05, density * 0.58),
       bright: 0,
@@ -1241,7 +1241,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   }
 
   const coveRng = mulberry32((seed ^ 0xc0a1) >>> 0);
-  const coveTarget = Math.floor(mistTarget * 0.2);
+  const coveTarget = Math.floor(mistTarget * 0.12);
   let coveMade = 0;
   let coveTries = 0;
   while (coveMade < coveTarget && coveTries < coveTarget * 40) {
@@ -1263,7 +1263,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       r: Math.min(1.12, color.r * 1.0),
       g: Math.min(1.08, color.g * 0.92),
       b: Math.min(1.14, color.b * 1.02),
-      size: (budget.nodes < 3500 ? 2.05 : 2.45) + coveRng() * 0.55,
+      size: (budget.nodes < 3500 ? 1.4 : 1.65) + coveRng() * 0.3,
       cluster,
       density: Math.max(0.04, density * 0.42),
       bright: 0,
@@ -1297,7 +1297,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       }
     }
     if (node.mist) {
-      if (node.r > node.g * 1.04 && node.r > node.b * 0.92) {
+      if (node.r > node.g * 1.04 && node.r > node.b) {
         node.r = node.r * 0.55 + node.g * 0.12 + 0.18;
         node.g = Math.min(1.08, node.g * 1.08);
         node.b = Math.min(1.12, node.b * 1.12);
@@ -1350,7 +1350,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       node.size *= 0.46;
     }
     const keepWarm = node.bright > 0.8 && node.y > 0.13 && node.y < 0.2 && node.x > -0.06 && node.x < 0.06;
-    if (!keepWarm && node.r > node.g * 1.04 && node.r > node.b * 0.88) {
+    if (!keepWarm && node.r > node.g * 1.04 && node.r > node.b) {
       node.r = node.r * 0.58 + 0.22;
       node.g = Math.min(1.08, node.g * 1.1);
       node.b = Math.min(1.12, node.b * 1.16);
@@ -1361,7 +1361,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       node.b = Math.min(1.08, node.b * 1.06);
     }
     const luma = node.r * 0.22 + node.g * 0.55 + node.b * 0.23;
-    const lumaCap = crown ? 0.4 : torso ? 0.28 : 0.26;
+    const lumaCap = crown ? 0.24 : torso ? 0.16 : 0.15;
     if (luma > lumaCap) {
       const s = lumaCap / luma;
       node.r *= s;
