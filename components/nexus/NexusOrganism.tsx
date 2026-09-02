@@ -42,31 +42,30 @@ float act(vec3 p, vec3 w, float r) {
 }
 void main() {
   vec3 pos = aCenter;
-  pos.x += 0.018 * sin(uTime * 0.38 + aCenter.y * 3.6 + aCluster);
-  pos.y += 0.016 * cos(uTime * 0.33 + aCenter.x * 2.8 + aCluster * 0.7);
-  pos.z += 0.012 * sin(uTime * 0.28 + aCenter.z * 2.4);
-  float wake = max(act(pos, uWake0, 0.26), max(act(pos, uWake1, 0.24), act(pos, uWake2, 0.24)));
-  float thought0 = pow(max(0.0, sin(uTime * 0.86)), 5.5);
-  float thought1 = pow(max(0.0, sin(uTime * 0.86 + 1.5708)), 5.5);
-  float thought2 = pow(max(0.0, sin(uTime * 0.86 + 3.1416)), 5.5);
-  float thought3 = pow(max(0.0, sin(uTime * 0.86 + 4.7124)), 5.5);
-  float f0 = act(pos, uFocus0, 0.23) * (0.22 + 0.78 * thought0);
-  float f1 = act(pos, uFocus1, 0.22) * (0.22 + 0.78 * thought1);
-  float f2 = act(pos, uFocus2, 0.2) * (0.22 + 0.78 * thought2);
-  float f3 = act(pos, uFocus3, 0.18) * (0.22 + 0.78 * thought3);
-  float sweep = pow(max(0.0, sin(uTime * 0.64 + pos.x * 4.6 + pos.y * 2.4)), 4.8);
+  pos.x += 0.014 * sin(uTime * 0.38 + aCenter.y * 3.6 + aCluster);
+  pos.y += 0.012 * cos(uTime * 0.33 + aCenter.x * 2.8 + aCluster * 0.7);
+  pos.z += 0.01 * sin(uTime * 0.28 + aCenter.z * 2.4);
+  float wake = max(act(pos, uWake0, 0.22), max(act(pos, uWake1, 0.2), act(pos, uWake2, 0.2)));
+  float thought0 = pow(max(0.0, sin(uTime * 0.74)), 6.5);
+  float thought1 = pow(max(0.0, sin(uTime * 0.74 + 1.5708)), 6.5);
+  float thought2 = pow(max(0.0, sin(uTime * 0.74 + 3.1416)), 6.5);
+  float thought3 = pow(max(0.0, sin(uTime * 0.74 + 4.7124)), 6.5);
+  float f0 = act(pos, uFocus0, 0.18) * (0.4 + 0.6 * thought0);
+  float f1 = act(pos, uFocus1, 0.17) * (0.4 + 0.6 * thought1);
+  float f2 = act(pos, uFocus2, 0.16) * (0.4 + 0.6 * thought2);
+  float f3 = act(pos, uFocus3, 0.14) * (0.4 + 0.6 * thought3);
   float focus = max(f0, max(f1, max(f2, f3)));
   float sync = min(min(max(f0, f1), max(f2, f3)), max(max(f0, f2), max(f1, f3)));
-  float nexus = act(pos, uNexus, 0.11) * uBoost;
+  float nexus = act(pos, uNexus, 0.1) * uBoost;
   float tissue = smoothstep(0.08, 0.52, aDensity);
   float moderate = smoothstep(0.12, 0.32, aBright);
   float active = smoothstep(0.42, 0.68, aBright);
   float conv = smoothstep(0.85, 1.0, aBright);
-  float pulse = 0.78 + 0.22 * sin(uTime * 1.35 + aCluster * 1.4 + aCenter.x * 2.0);
-  float quiet = 0.22 + tissue * 0.08 + wake * 0.07;
-  float mid = 0.44 + focus * 0.14 + wake * 0.1 + pulse * 0.04 + sweep * 0.08;
-  float lit = 0.72 + focus * 0.14 + wake * 0.1 + sweep * 0.06;
-  float hot = 0.84 + nexus * 0.06 + sync * 0.04;
+  float pulse = 0.84 + 0.16 * sin(uTime * 1.15 + aCluster * 1.4 + aCenter.x * 2.0);
+  float quiet = 0.22 + tissue * 0.08 + wake * 0.04;
+  float mid = 0.44 + focus * 0.06 + wake * 0.04 + pulse * 0.02;
+  float lit = 0.72 + focus * 0.06 + wake * 0.04;
+  float hot = 0.84 + nexus * 0.04 + sync * 0.02;
   float activity = mix(quiet, mid, moderate);
   activity = mix(activity, lit, active);
   activity = mix(activity, hot, conv);
@@ -75,7 +74,7 @@ void main() {
   float farDim = smoothstep(3.15, 4.7, clip.w);
   float sizePx = aSize * mix(1.14, mix(1.16, 0.96, conv), mix(moderate, 1.0, active));
   sizePx *= mix(1.0, 1.88, aMist);
-  sizePx *= 1.0 + nearBlur * 0.22 + wake * 0.18 + focus * 0.2 + sweep * 0.08;
+  sizePx *= 1.0 + nearBlur * 0.22 + wake * 0.08 + focus * 0.1;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
   vCorner = aCorner;
@@ -89,15 +88,14 @@ void main() {
   vec3 cyanTint = vec3(0.1, 0.94, 0.98);
   vec3 warmTint = vec3(1.0, 0.72, 0.18);
   vec3 materialColor = aColor;
-  materialColor = mix(materialColor, violetTint, violetId * 0.26);
-  materialColor = mix(materialColor, cyanTint, cyanId * 0.3);
-  materialColor = mix(materialColor, warmTint, warmId * 0.32);
+  materialColor = mix(materialColor, violetTint, violetId * 0.14);
+  materialColor = mix(materialColor, cyanTint, cyanId * 0.16);
+  materialColor = mix(materialColor, warmTint, warmId * 0.16);
   vec3 nexusTint = vec3(0.94, 0.9, 0.8);
   vColor = mix(materialColor, nexusTint, conv * (0.02 + nexus * 0.03 + sync * 0.015));
-  vColor = mix(vColor, mix(cyanTint, violetTint, fract(aCluster * 0.31)), (focus * 0.26 + sweep * 0.14) * (1.0 - aMist));
   vColor *= mix(0.64, 0.8, aMist);
   vAlpha = mix(0.3 + 0.26 * activity, 0.36 + 0.12 * activity, aMist);
-  vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.06 + wake * 0.28 + focus * 0.42 + sweep * 0.18;
+  vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.04 + wake * 0.12 + focus * 0.2;
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
 `;
@@ -112,8 +110,8 @@ varying float vGlow;
 void main() {
   float d = length(vCorner);
   if (d > 1.0) discard;
-  float core = exp(-d * d * mix(9.2, 2.8, vMist));
-  float halo = exp(-d * d * mix(4.8, 1.25, vMist)) * mix(0.05, 0.4, vMist);
+  float core = exp(-d * d * mix(7.0, 2.4, vMist));
+  float halo = exp(-d * d * mix(3.2, 1.15, vMist)) * mix(0.16, 0.46, vMist);
   halo += exp(-d * d * 5.0) * vGlow * 0.08;
   float a = (core + halo) * vAlpha;
   if (a < 0.007) discard;
@@ -149,7 +147,6 @@ uniform vec3 uFocus1;
 uniform vec3 uFocus2;
 uniform vec3 uFocus3;
 uniform float uTime;
-uniform float uPacketOnly;
 varying float vAlpha;
 varying vec3 vColor;
 varying float vSide;
@@ -160,34 +157,22 @@ float act(vec3 p, vec3 w, float r) {
 }
 void main() {
   vec3 world = mix(aA, aB, aEnd);
-  float wake = max(act(world, uWake0, 0.24), max(act(world, uWake1, 0.22), act(world, uWake2, 0.22)));
-  float thought0 = pow(max(0.0, sin(uTime * 0.86)), 5.5);
-  float thought1 = pow(max(0.0, sin(uTime * 0.86 + 1.5708)), 5.5);
-  float thought2 = pow(max(0.0, sin(uTime * 0.86 + 3.1416)), 5.5);
-  float thought3 = pow(max(0.0, sin(uTime * 0.86 + 4.7124)), 5.5);
-  float f0 = act(world, uFocus0, 0.22) * (0.2 + 0.8 * thought0);
-  float f1 = act(world, uFocus1, 0.21) * (0.2 + 0.8 * thought1);
-  float f2 = act(world, uFocus2, 0.19) * (0.2 + 0.8 * thought2);
-  float f3 = act(world, uFocus3, 0.17) * (0.2 + 0.8 * thought3);
+  float wake = max(act(world, uWake0, 0.2), max(act(world, uWake1, 0.18), act(world, uWake2, 0.18)));
+  float thought0 = pow(max(0.0, sin(uTime * 0.74)), 6.5);
+  float thought1 = pow(max(0.0, sin(uTime * 0.74 + 1.5708)), 6.5);
+  float thought2 = pow(max(0.0, sin(uTime * 0.74 + 3.1416)), 6.5);
+  float thought3 = pow(max(0.0, sin(uTime * 0.74 + 4.7124)), 6.5);
+  float f0 = act(world, uFocus0, 0.16) * (0.4 + 0.6 * thought0);
+  float f1 = act(world, uFocus1, 0.15) * (0.4 + 0.6 * thought1);
+  float f2 = act(world, uFocus2, 0.14) * (0.4 + 0.6 * thought2);
+  float f3 = act(world, uFocus3, 0.12) * (0.4 + 0.6 * thought3);
   float focus = max(f0, max(f1, max(f2, f3)));
-  float nexus = act(world, uNexus, 0.12) * uBoost;
-  float packet = fract(uTime * 0.28 + aPhase);
+  float nexus = act(world, uNexus, 0.1) * uBoost;
+  float packet = fract(uTime * 0.22 + aPhase);
   float span = abs(aAlong - packet);
   span = min(span, 1.0 - span);
-  float current = exp(-span * span * 38.0);
-  float packet2 = fract(uTime * 0.18 + aPhase + 0.41);
-  float span2 = abs(aAlong - packet2);
-  span2 = min(span2, 1.0 - span2);
-  float current2 = exp(-span2 * span2 * 56.0);
-  float flowPulse = current * mix(0.2, 1.0, aCurrent) + current2 * mix(0.08, 0.42, aCurrent);
-  if (uPacketOnly > 0.5 && aCurrent < 0.5) {
-    gl_Position = vec4(2.0, 2.0, 2.0, 1.0);
-    vAlpha = 0.0;
-    vColor = vec3(0.0);
-    vSide = aSide;
-    vFlow = 0.0;
-    return;
-  }
+  float current = exp(-span * span * 70.0);
+  float flowPulse = current * aCurrent * 0.55;
   vec4 cA = uViewProj * vec4(aA, 1.0);
   vec4 cB = uViewProj * vec4(aB, 1.0);
   vec2 nA = cA.xy / max(0.0001, cA.w);
@@ -201,7 +186,7 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
-  float px = mix(0.88 + flowPulse * 0.2, 1.15 + flowPulse * 0.7, uPacketOnly);
+  float px = 0.72 + flowPulse * 0.2;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
@@ -209,20 +194,17 @@ void main() {
   float violetId = smoothstep(0.03, 0.18, aColor.b - aColor.g) * smoothstep(0.08, 0.28, aColor.r);
   float warmId = smoothstep(0.02, 0.14, aColor.r - aColor.b) * smoothstep(0.02, 0.12, aColor.g);
   float flowStrength = max(violetId, max(cyanId, warmId));
-  float baseAlpha = aAlpha * (0.32 + flowStrength * 0.2 + focus * 0.08 + wake * 0.06 + nexus * 0.03 + flowPulse * 0.12);
-  float packetAlpha = aAlpha * flowPulse * 0.92;
-  vAlpha = mix(baseAlpha, packetAlpha, uPacketOnly);
-  vec3 violetTint = vec3(0.86, 0.24, 1.0);
-  vec3 cyanTint = vec3(0.1, 0.94, 0.98);
-  vec3 warmTint = vec3(1.0, 0.72, 0.18);
+  vAlpha = aAlpha * (0.22 + flowStrength * 0.08 + focus * 0.04 + wake * 0.04 + nexus * 0.02 + flowPulse * 0.32);
+  vec3 violetTint = vec3(0.72, 0.32, 0.92);
+  vec3 cyanTint = vec3(0.22, 0.82, 0.9);
+  vec3 warmTint = vec3(0.92, 0.68, 0.28);
   vec3 materialColor = aColor;
-  materialColor = mix(materialColor, violetTint, violetId * 0.2);
-  materialColor = mix(materialColor, cyanTint, cyanId * 0.24);
-  materialColor = mix(materialColor, warmTint, warmId * 0.26);
+  materialColor = mix(materialColor, violetTint, violetId * 0.08);
+  materialColor = mix(materialColor, cyanTint, cyanId * 0.1);
+  materialColor = mix(materialColor, warmTint, warmId * 0.08);
   vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.02);
-  vColor = mix(vColor, mix(cyanTint, violetTint, aPhase), flowPulse * mix(0.16, 0.5, uPacketOnly));
-  vColor *= mix(0.82, 0.9 + flowPulse * 0.22, uPacketOnly);
-  vFlow = flowPulse * uPacketOnly;
+  vColor *= 0.7 + flowPulse * 0.2;
+  vFlow = flowPulse;
 }
 `;
 
@@ -237,7 +219,7 @@ void main() {
   float a = vAlpha * fall;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  float cap = mix(0.4, 0.46, clamp(vFlow, 0.0, 1.0));
+  float cap = mix(0.28, 0.36, clamp(vFlow, 0.0, 1.0));
   if (peak > cap) {
     c *= cap / peak;
   }
@@ -299,7 +281,7 @@ varying vec3 vColor;
 void main() {
   vec4 clip = uViewProj * vec4(aPosition, 1.0);
   gl_Position = clip;
-  gl_PointSize = max(1.4, 3.2 * (1.6 / max(0.55, clip.w)));
+  gl_PointSize = max(1.15, 2.2 * (1.6 / max(0.55, clip.w)));
   vColor = aColor;
 }
 `;
@@ -309,7 +291,7 @@ precision mediump float;
 varying vec3 vColor;
 void main() {
   vec2 p = gl_PointCoord * 2.0 - 1.0;
-  float a = exp(-dot(p, p) * 4.6) * 0.26;
+  float a = exp(-dot(p, p) * 6.2) * 0.14;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
   if (peak > 0.38) {
@@ -479,7 +461,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     let mistCount = 0;
     let lineCount = 0;
     let membCount = 0;
-    const sparkCount = 28;
+    const sparkCount = 12;
     const sparkData = new Float32Array(sparkCount * 6);
     const sparkMeta: { filament: number; speed: number; offset: number; r: number; g: number; b: number }[] = [];
 
@@ -553,9 +535,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
           continue;
         }
         const phase = filamentPhase(filament.points[0]);
-        const colored =
-          Math.abs(filament.g - filament.r) > 0.08 || Math.abs(filament.b - filament.g) > 0.08;
-        const current = filament.current || (colored && phase < 0.16) ? 1 : 0;
+        const current = filament.current ? 1 : 0;
         for (let i = 0; i < segs; i += 1) {
           const a = filament.points[i];
           const b = filament.points[i + 1];
@@ -773,7 +753,6 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       f2: gl.getUniformLocation(lineProg, 'uFocus2'),
       f3: gl.getUniformLocation(lineProg, 'uFocus3'),
       time: gl.getUniformLocation(lineProg, 'uTime'),
-      packet: gl.getUniformLocation(lineProg, 'uPacketOnly'),
     };
     const uMemb = {
       view: gl.getUniformLocation(membProg, 'uViewProj'),
@@ -878,7 +857,6 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.uniform3f(uLine.f2, foci[2].x, foci[2].y, foci[2].z);
       gl.uniform3f(uLine.f3, foci[3].x, foci[3].y, foci[3].z);
       gl.uniform1f(uLine.time, time);
-      gl.uniform1f(uLine.packet, 0);
       if (lineCount) {
         gl.drawArrays(gl.TRIANGLES, 0, lineCount);
       }
@@ -901,26 +879,6 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       const coreCount = Math.max(0, nodeCount - mistCount);
       if (coreCount) {
         gl.drawArrays(gl.TRIANGLES, mistCount, coreCount);
-      }
-
-      disableAttribs(gl);
-      gl.blendFunc(gl.ONE, gl.ONE);
-      bindLines();
-      gl.uniformMatrix4fv(uLine.view, false, viewProj);
-      gl.uniform2f(uLine.res, width, height);
-      gl.uniform3f(uLine.w0, wakes[0].x, wakes[0].y, wakes[0].z);
-      gl.uniform3f(uLine.w1, wakes[1].x, wakes[1].y, wakes[1].z);
-      gl.uniform3f(uLine.w2, wakes[2].x, wakes[2].y, wakes[2].z);
-      gl.uniform3f(uLine.nexus, nexus.x, nexus.y, nexus.z);
-      gl.uniform1f(uLine.boost, boost);
-      gl.uniform3f(uLine.f0, foci[0].x, foci[0].y, foci[0].z);
-      gl.uniform3f(uLine.f1, foci[1].x, foci[1].y, foci[1].z);
-      gl.uniform3f(uLine.f2, foci[2].x, foci[2].y, foci[2].z);
-      gl.uniform3f(uLine.f3, foci[3].x, foci[3].y, foci[3].z);
-      gl.uniform1f(uLine.time, time);
-      gl.uniform1f(uLine.packet, 1);
-      if (lineCount) {
-        gl.drawArrays(gl.TRIANGLES, 0, lineCount);
       }
 
       const field = fieldRef.current;
