@@ -72,9 +72,9 @@ void main() {
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.28, 0.5, clip.w);
   float farDim = smoothstep(3.15, 4.7, clip.w);
-  float sizePx = aSize * mix(0.92, mix(1.85, 2.55, conv), mix(moderate, 1.0, active));
+  float sizePx = aSize * mix(0.88, mix(1.35, 1.7, conv), mix(moderate, 1.0, active));
   sizePx *= mix(1.0, 1.85, aMist);
-  sizePx *= 1.0 + nearBlur * 0.22 + wake * 0.08 + focus * 0.1;
+  sizePx *= 1.0 + nearBlur * 0.14 + wake * 0.05 + focus * 0.06;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
   vCorner = aCorner;
@@ -95,7 +95,7 @@ void main() {
   vColor = mix(materialColor, nexusTint, conv * (0.01 + nexus * 0.02 + sync * 0.01));
   vColor *= mix(1.06, 0.28, aMist);
   vColor = mix(vColor, violetTint, violetId * (1.0 - aMist) * 0.06);
-  vAlpha = mix(0.28 + 0.55 * activity, 0.035 + 0.016 * activity, aMist);
+  vAlpha = mix(0.16 + 0.28 * activity, 0.03 + 0.012 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.05 + wake * mix(0.12, 0.02, aMist) + focus * mix(0.18, 0.02, aMist);
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
@@ -111,14 +111,14 @@ varying float vGlow;
 void main() {
   float d = length(vCorner);
   if (d > 1.0) discard;
-  float core = exp(-d * d * mix(8.4, 0.72, vMist));
-  float halo = exp(-d * d * mix(3.6, 0.82, vMist)) * mix(0.16, 0.2, vMist);
-  halo += exp(-d * d * 5.2) * vGlow * 0.1;
+  float core = exp(-d * d * mix(11.2, 0.72, vMist));
+  float halo = exp(-d * d * mix(5.4, 0.82, vMist)) * mix(0.08, 0.16, vMist);
+  halo += exp(-d * d * 6.4) * vGlow * 0.04;
   float a = (core + halo) * vAlpha;
   if (a < 0.007) discard;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  float cap = mix(0.46, 0.08, vMist);
+  float cap = mix(0.34, 0.07, vMist);
   if (peak > cap) {
     c *= cap / peak;
   }
@@ -195,7 +195,7 @@ void main() {
   float violetId = smoothstep(0.03, 0.18, aColor.b - aColor.g) * smoothstep(0.08, 0.28, aColor.r);
   float warmId = smoothstep(0.02, 0.14, aColor.r - aColor.b) * smoothstep(0.02, 0.12, aColor.g);
   float flowStrength = max(violetId, max(cyanId, warmId));
-  vAlpha = aAlpha * (0.32 + flowStrength * 0.06 + focus * 0.05 + wake * 0.03 + nexus * 0.015 + flowPulse * 0.16);
+  vAlpha = aAlpha * (0.42 + flowStrength * 0.08 + focus * 0.05 + wake * 0.03 + nexus * 0.015 + flowPulse * 0.18);
   vec3 violetTint = vec3(0.68, 0.3, 0.9);
   vec3 cyanTint = vec3(0.18, 0.86, 0.92);
   vec3 warmTint = vec3(0.72, 0.42, 0.46);
@@ -385,8 +385,8 @@ void main() {
     vec4 s = sampleVol(pos);
     if (s.a >= 0.12) {
       float wake = max(act(pos, uWake0), max(act(pos, uWake1), act(pos, uWake2)));
-      float dens = max(0.0, s.a - 0.16) * (1.0 + wake * 0.06);
-      float absorb = 1.0 - exp(-dens * dens * 1.8 * dt * 10.0);
+      float dens = max(0.0, s.a - 0.2) * (1.0 + wake * 0.05);
+      float absorb = 1.0 - exp(-dens * dens * 1.35 * dt * 8.0);
       float keep = 1.0 - alpha;
       acc += s.rgb * absorb * keep;
       alpha += absorb * keep;
@@ -399,12 +399,12 @@ void main() {
     discard;
   }
   float luma = dot(acc, vec3(0.22, 0.55, 0.23));
-  if (luma > 0.3) {
-    acc *= 0.3 / luma;
+  if (luma > 0.24) {
+    acc *= 0.24 / luma;
   }
   float peak = max(acc.r, max(acc.g, acc.b));
-  if (peak > 0.4) {
-    acc *= 0.4 / peak;
+  if (peak > 0.34) {
+    acc *= 0.34 / peak;
   }
   gl_FragColor = vec4(acc, alpha);
 }

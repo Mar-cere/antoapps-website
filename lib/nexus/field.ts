@@ -199,7 +199,7 @@ function fieldAt(p: Vec3): { density: number; cluster: number } {
   }
   const lean = 0.08 + Math.max(0, p.y - 0.4) * 0.08;
   const rx = (p.x - lean) / (0.2 + Math.max(0, 0.42 - p.y) * 0.03);
-  const ry = (p.y - 0.4) / 0.78;
+  const ry = (p.y - 0.4) / 0.86;
   const rz = p.z / 0.22;
   let rad = rx * rx * 1.7 + ry * ry * 0.52 + rz * rz;
   rad += Math.max(0, p.x - 0.3) * 5.6;
@@ -469,9 +469,9 @@ function assignActivity(nodes: NexusNode[], rng: () => number) {
   if (n === 0) {
     return;
   }
-  const convTarget = Math.max(3, Math.round(n * 0.01));
-  const activeTarget = Math.max(8, Math.round(n * 0.045));
-  const moderateTarget = Math.max(16, Math.round(n * 0.11));
+  const convTarget = Math.max(3, Math.round(n * 0.006));
+  const activeTarget = Math.max(6, Math.round(n * 0.028));
+  const moderateTarget = Math.max(12, Math.round(n * 0.07));
   const tissueMod = Math.round(moderateTarget * 0.36);
   const regionalMod = moderateTarget - tissueMod;
   const share = [0.34, 0.28, 0.22, 0.16];
@@ -509,13 +509,13 @@ function assignActivity(nodes: NexusNode[], rng: () => number) {
     const modTake = Math.max(3, Math.round(regionalMod * share[f]));
     for (let k = 0; k < convTake && k < buckets[f].length; k += 1) {
       // Evitar glow central y nodos a blanco: por debajo del umbral de "conv".
-      mark(buckets[f][k].i, 0.78, 1.6);
+      mark(buckets[f][k].i, 0.58, 2.15);
     }
     for (let k = convTake; k < convTake + activeTake && k < buckets[f].length; k += 1) {
-      mark(buckets[f][k].i, 0.62, 1.32);
+      mark(buckets[f][k].i, 0.46, 1.55);
     }
     for (let k = convTake + activeTake; k < convTake + activeTake + modTake && k < buckets[f].length; k += 1) {
-      mark(buckets[f][k].i, 0.28, 0.92);
+      mark(buckets[f][k].i, 0.22, 1.05);
     }
   }
 
@@ -528,7 +528,7 @@ function assignActivity(nodes: NexusNode[], rng: () => number) {
     if (taken.has(item.i)) {
       continue;
     }
-    mark(item.i, 0.22, 0.88);
+    mark(item.i, 0.16, 0.95);
     added += 1;
   }
 
@@ -983,19 +983,19 @@ function addCrownTissue(
 
 export function nexusBudget(width: number): NexusBudget {
   if (width < 768) {
-    return { nodes: 1400, filaments: 480 };
+    return { nodes: 1100, filaments: 420 };
   }
   if (width < 1024) {
-    return { nodes: 1800, filaments: 640 };
+    return { nodes: 1300, filaments: 520 };
   }
-  return { nodes: 2200, filaments: 800 };
+  return { nodes: 1500, filaments: 640 };
 }
 
-export const NEXUS_FIELD_REV = 29;
+export const NEXUS_FIELD_REV = 30;
 
 export const NEXUS_VOLUME_BOUNDS = {
-  origin: { x: -0.14, y: 0.06, z: -0.14 },
-  size: { x: 0.44, y: 0.72, z: 0.28 },
+  origin: { x: -0.14, y: 0.04, z: -0.14 },
+  size: { x: 0.42, y: 0.78, z: 0.28 },
 };
 
 export function bakeNexusVolume(): NexusVolume {
@@ -1040,11 +1040,11 @@ export function bakeNexusVolume(): NexusVolume {
         let g = 0;
         let b = 0;
         let a = 0;
-        if (density > 0.2) {
+        if (density > 0.24) {
           const color = mixColor(p);
-          const dens = Math.min(1, Math.pow((density - 0.16) / 0.95, 1.05));
+          const dens = Math.min(1, Math.pow((density - 0.2) / 0.95, 1.12));
           const luma = color.r * 0.22 + color.g * 0.55 + color.b * 0.23;
-          const crush = luma > 0.36 ? 0.36 / luma : 1;
+          const crush = luma > 0.28 ? 0.28 / luma : 1;
           r = Math.min(255, Math.max(0, color.r * crush * 255));
           g = Math.min(255, Math.max(0, color.g * crush * 255));
           b = Math.min(255, Math.max(0, color.b * crush * 255));
@@ -1138,7 +1138,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       r: color.r,
       g: color.g,
       b: color.b,
-      size: 1.72 + density * 1.15 + rng() * 0.28 + color.ribbon * 0.48 - edge * 0.06,
+      size: 1.05 + density * 0.55 + rng() * 0.18 + color.ribbon * 1.15 - edge * 0.08,
       cluster,
       density,
       bright: 0,
@@ -1169,7 +1169,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       r: color.r,
       g: color.g,
       b: color.b,
-      size: 1.48 + density * 0.95 + color.ribbon * 0.32,
+      size: 1.08 + density * 0.5 + color.ribbon * 0.85,
       cluster,
       density: Math.max(density, 0.22),
       bright: 0,
@@ -1179,7 +1179,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   }
 
   const crownCoreRng = mulberry32((seed ^ 0x91c2) >>> 0);
-  const crownCoreTarget = Math.floor(coreTarget * 0.16);
+  const crownCoreTarget = Math.floor(coreTarget * 0.08);
   let crownCoreMade = 0;
   let crownCoreTries = 0;
   while (crownCoreMade < crownCoreTarget && crownCoreTries < crownCoreTarget * 40) {
@@ -1201,7 +1201,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       r: color.r,
       g: color.g,
       b: color.b,
-      size: 1.42 + density * 0.78 + color.ribbon * 0.34,
+      size: 1.02 + density * 0.48 + color.ribbon * 0.9,
       cluster,
       density: Math.max(density, 0.2),
       bright: 0,
