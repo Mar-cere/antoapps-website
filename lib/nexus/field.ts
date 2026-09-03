@@ -360,18 +360,23 @@ function mixColor(p: Vec3): { r: number; g: number; b: number; ribbon: number } 
     g = Math.max(0, (g * (1 - body * mixDeep) + dA[1] * body * mixDeep) * crush);
     b = Math.max(0, (b * (1 - body * mixDeep) + dA[2] * body * mixDeep) * crush);
   }
-  if (p.y > 0.64 && p.x > 0.12) {
-    const crownCyan = Math.min(0.22, 0.06 + (p.y - 0.64) * 0.55 + Math.max(0, p.x - 0.12) * 0.2);
-    r = r * (1 - crownCyan) + nA[0] * crownCyan;
-    g = g * (1 - crownCyan) + nA[1] * crownCyan;
-    b = b * (1 - crownCyan) + nA[2] * crownCyan;
-  }
-  if (p.x < 0.0 && p.y > 0.12 && p.y < 0.34) {
-    const lowViolet = Math.min(0.22, 0.08 + (0.0 - p.x) * 0.7);
-    r = r * (1 - lowViolet) + pA[0] * lowViolet;
-    g = g * (1 - lowViolet) + pA[1] * lowViolet;
-    b = b * (1 - lowViolet) + pA[2] * lowViolet;
-  }
+  // Split cromático como "corrientes" (izquierda/derecha), no como dos regiones (arriba/abajo).
+  // Se modula con una frontera diagonal basada en (x,y) para evitar lectura tipo busto.
+  const flow = p.x * 1.05 + (p.y - 0.35) * 0.28;
+  const leftFlow = Math.max(0, Math.min(1, (-flow + 0.06) / 0.32));
+  const rightFlow = Math.max(0, Math.min(1, (flow + 0.02) / 0.32));
+
+  let violetStrength = (0.04 + leftFlow * 0.26) * (0.55 + p.y) * 0.65;
+  let cyanStrength = (0.04 + rightFlow * 0.25) * (0.5 + p.y) * 0.7;
+  const blend = violetStrength + cyanStrength;
+  const cap = 0.24; // evita saturar y terminar en "nodos a blanco"
+  const k = blend > cap ? cap / blend : 1;
+  violetStrength *= k;
+  cyanStrength *= k;
+
+  r = r * (1 - cyanStrength - violetStrength) + nA[0] * cyanStrength + pA[0] * violetStrength;
+  g = g * (1 - cyanStrength - violetStrength) + nA[1] * cyanStrength + pA[1] * violetStrength;
+  b = b * (1 - cyanStrength - violetStrength) + nA[2] * cyanStrength + pA[2] * violetStrength;
   const gold = Math.max(0, r - Math.max(g, b) * 0.82);
   if (gold > 0.02) {
     const t = Math.min(1, gold * 12);
@@ -507,13 +512,14 @@ function assignActivity(nodes: NexusNode[], rng: () => number) {
     const activeTake = Math.max(2, Math.round(activeTarget * share[f]));
     const modTake = Math.max(3, Math.round(regionalMod * share[f]));
     for (let k = 0; k < convTake && k < buckets[f].length; k += 1) {
-      mark(buckets[f][k].i, 1, 1.85);
+      // Evitar glow central y nodos a blanco: por debajo del umbral de "conv".
+      mark(buckets[f][k].i, 0.78, 1.6);
     }
     for (let k = convTake; k < convTake + activeTake && k < buckets[f].length; k += 1) {
-      mark(buckets[f][k].i, 0.68, 1.42);
+      mark(buckets[f][k].i, 0.62, 1.32);
     }
     for (let k = convTake + activeTake; k < convTake + activeTake + modTake && k < buckets[f].length; k += 1) {
-      mark(buckets[f][k].i, 0.36, 1.02);
+      mark(buckets[f][k].i, 0.28, 0.92);
     }
   }
 
@@ -526,7 +532,7 @@ function assignActivity(nodes: NexusNode[], rng: () => number) {
     if (taken.has(item.i)) {
       continue;
     }
-    mark(item.i, 0.34, 1.0);
+    mark(item.i, 0.22, 0.88);
     added += 1;
   }
 
@@ -989,7 +995,7 @@ export function nexusBudget(width: number): NexusBudget {
   return { nodes: 2200, filaments: 800 };
 }
 
-export const NEXUS_FIELD_REV = 27;
+export const NEXUS_FIELD_REV = 28;
 
 export const NEXUS_VOLUME_BOUNDS = {
   origin: { x: -0.1, y: 0.02, z: -0.13 },
