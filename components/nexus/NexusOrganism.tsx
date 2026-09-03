@@ -91,8 +91,8 @@ void main() {
   materialColor = mix(materialColor, violetTint, violetId * 0.34);
   materialColor = mix(materialColor, cyanTint, cyanId * 0.08);
   materialColor = mix(materialColor, warmTint, warmId * 0.04);
-  vec3 nexusTint = vec3(0.94, 0.9, 0.8);
-  vColor = mix(materialColor, nexusTint, conv * (0.02 + nexus * 0.03 + sync * 0.015));
+  vec3 nexusTint = vec3(0.42, 0.72, 0.94);
+  vColor = mix(materialColor, nexusTint, conv * (0.01 + nexus * 0.02 + sync * 0.01));
   vColor *= mix(1.06, 0.28, aMist);
   vColor = mix(vColor, violetTint, violetId * (1.0 - aMist) * 0.06);
   vAlpha = mix(0.28 + 0.55 * activity, 0.035 + 0.016 * activity, aMist);
@@ -118,7 +118,7 @@ void main() {
   if (a < 0.007) discard;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  float cap = mix(0.62, 0.09, vMist);
+  float cap = mix(0.46, 0.08, vMist);
   if (peak > cap) {
     c *= cap / peak;
   }
@@ -385,8 +385,8 @@ void main() {
     vec4 s = sampleVol(pos);
     if (s.a >= 0.12) {
       float wake = max(act(pos, uWake0), max(act(pos, uWake1), act(pos, uWake2)));
-      float dens = max(0.0, s.a - 0.14) * (1.0 + wake * 0.07);
-      float absorb = 1.0 - exp(-dens * dens * 2.6 * dt * 12.0);
+      float dens = max(0.0, s.a - 0.16) * (1.0 + wake * 0.06);
+      float absorb = 1.0 - exp(-dens * dens * 1.8 * dt * 10.0);
       float keep = 1.0 - alpha;
       acc += s.rgb * absorb * keep;
       alpha += absorb * keep;
@@ -399,12 +399,12 @@ void main() {
     discard;
   }
   float luma = dot(acc, vec3(0.22, 0.55, 0.23));
-  if (luma > 0.4) {
-    acc *= 0.4 / luma;
+  if (luma > 0.3) {
+    acc *= 0.3 / luma;
   }
   float peak = max(acc.r, max(acc.g, acc.b));
-  if (peak > 0.52) {
-    acc *= 0.52 / peak;
+  if (peak > 0.4) {
+    acc *= 0.4 / peak;
   }
   gl_FragColor = vec4(acc, alpha);
 }
@@ -847,15 +847,15 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       gl.viewport(0, 0, canvas.width, canvas.height);
-      const proj = perspective((36 * Math.PI) / 180, width / height, 0.12, 10);
+      const proj = perspective((38 * Math.PI) / 180, width / height, 0.12, 10);
       const portrait = width / height < 0.9;
-      const dist = portrait ? 1.2 : 0.94;
+      const dist = portrait ? 1.22 : 1.04;
       camX = -0.02;
-      camY = 0.34;
+      camY = 0.3;
       camZ = dist;
       const view = portrait
-        ? lookAt(camX, camY, camZ, 0.1, 0.48, 0)
-        : lookAt(camX, camY, camZ, 0.1, 0.48, 0);
+        ? lookAt(camX, camY, camZ, 0.08, 0.4, 0)
+        : lookAt(camX, camY, camZ, 0.08, 0.4, 0);
       viewProj = multiply4(proj, view);
       const budget = nexusBudget(window.innerWidth);
       const mark = budget.nodes + budget.filaments + NEXUS_FIELD_REV;
