@@ -383,15 +383,15 @@ void main() {
     pos.x += 0.006 * sin(uTime * 0.32 + pos.y * 2.1);
     pos.y += 0.004 * cos(uTime * 0.28 + pos.x * 1.7);
     vec4 s = sampleVol(pos);
-    if (s.a >= 0.08) {
+    if (s.a >= 0.12) {
       float wake = max(act(pos, uWake0), max(act(pos, uWake1), act(pos, uWake2)));
-      float dens = max(0.0, s.a - 0.06) * (1.0 + wake * 0.1);
-      float absorb = 1.0 - exp(-dens * dens * 7.5 * dt * 22.0);
+      float dens = max(0.0, s.a - 0.14) * (1.0 + wake * 0.07);
+      float absorb = 1.0 - exp(-dens * dens * 2.6 * dt * 12.0);
       float keep = 1.0 - alpha;
       acc += s.rgb * absorb * keep;
       alpha += absorb * keep;
     }
-    if (alpha > 0.92) {
+    if (alpha > 0.76) {
       break;
     }
   }
@@ -847,15 +847,15 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       gl.viewport(0, 0, canvas.width, canvas.height);
-      const proj = perspective((34 * Math.PI) / 180, width / height, 0.12, 10);
+      const proj = perspective((36 * Math.PI) / 180, width / height, 0.12, 10);
       const portrait = width / height < 0.9;
-      const dist = portrait ? 1.12 : 0.84;
-      camX = -0.03;
-      camY = 0.28;
+      const dist = portrait ? 1.2 : 0.94;
+      camX = -0.02;
+      camY = 0.34;
       camZ = dist;
       const view = portrait
-        ? lookAt(camX, camY, camZ, 0.06, 0.42, 0)
-        : lookAt(camX, camY, camZ, 0.06, 0.42, 0);
+        ? lookAt(camX, camY, camZ, 0.1, 0.48, 0)
+        : lookAt(camX, camY, camZ, 0.1, 0.48, 0);
       viewProj = multiply4(proj, view);
       const budget = nexusBudget(window.innerWidth);
       const mark = budget.nodes + budget.filaments + NEXUS_FIELD_REV;
