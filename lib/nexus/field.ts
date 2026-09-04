@@ -477,9 +477,9 @@ function assignActivity(nodes: NexusNode[], rng: () => number) {
   if (n === 0) {
     return;
   }
-  const convTarget = Math.max(3, Math.round(n * 0.006));
-  const activeTarget = Math.max(6, Math.round(n * 0.028));
-  const moderateTarget = Math.max(12, Math.round(n * 0.07));
+  const convTarget = Math.max(5, Math.round(n * 0.016));
+  const activeTarget = Math.max(10, Math.round(n * 0.055));
+  const moderateTarget = Math.max(18, Math.round(n * 0.12));
   const tissueMod = Math.round(moderateTarget * 0.36);
   const regionalMod = moderateTarget - tissueMod;
   const share = [0.34, 0.28, 0.22, 0.16];
@@ -517,13 +517,13 @@ function assignActivity(nodes: NexusNode[], rng: () => number) {
     const modTake = Math.max(3, Math.round(regionalMod * share[f]));
     for (let k = 0; k < convTake && k < buckets[f].length; k += 1) {
       // Evitar glow central y nodos a blanco: por debajo del umbral de "conv".
-      mark(buckets[f][k].i, 0.58, 1.05);
+      mark(buckets[f][k].i, 0.72, 1.35);
     }
     for (let k = convTake; k < convTake + activeTake && k < buckets[f].length; k += 1) {
-      mark(buckets[f][k].i, 0.46, 0.85);
+      mark(buckets[f][k].i, 0.58, 1.08);
     }
     for (let k = convTake + activeTake; k < convTake + activeTake + modTake && k < buckets[f].length; k += 1) {
-      mark(buckets[f][k].i, 0.22, 0.62);
+      mark(buckets[f][k].i, 0.32, 0.78);
     }
   }
 
@@ -991,15 +991,15 @@ function addCrownTissue(
 
 export function nexusBudget(width: number): NexusBudget {
   if (width < 768) {
-    return { nodes: 220, filaments: 72 };
+    return { nodes: 280, filaments: 88 };
   }
   if (width < 1024) {
-    return { nodes: 280, filaments: 92 };
+    return { nodes: 360, filaments: 110 };
   }
-  return { nodes: 360, filaments: 118 };
+  return { nodes: 460, filaments: 140 };
 }
 
-export const NEXUS_FIELD_REV = 43;
+export const NEXUS_FIELD_REV = 44;
 
 export const NEXUS_CONSTELLATION_PLATE = '/assets/images/nexus/nexus-constellation-plate.webp?v=2';
 export const NEXUS_CONSTELLATION_PLATE_PNG = '/assets/images/nexus/nexus-constellation-plate.png?v=2';
@@ -1476,21 +1476,21 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     }
     if (node.bright > 0.85) {
       const lit = inBody;
-      node.size *= lit ? 1.08 : 0.4;
-      node.bright = lit ? 0.96 : 0.16;
+      node.size *= lit ? 1.22 : 0.4;
+      node.bright = lit ? 0.98 : 0.16;
       node.r = Math.min(1.16, node.r * (lit ? 1.08 : 0.62));
       node.g = Math.min(1.12, node.g * (lit ? 1.04 : 0.62));
       node.b = Math.min(1.18, node.b * (lit ? 1.1 : 0.66));
     } else if (node.bright > 0.45) {
       const lit = inBody;
-      node.size *= lit ? 0.96 : 0.4;
-      node.bright = lit ? 0.82 : 0.18;
+      node.size *= lit ? 1.08 : 0.4;
+      node.bright = lit ? 0.88 : 0.18;
       node.r = Math.min(1.14, node.r * (lit ? 1.08 : 0.7));
       node.g = Math.min(1.1, node.g * (lit ? 1.06 : 0.7));
       node.b = Math.min(1.16, node.b * (lit ? 1.12 : 0.72));
     } else if (inBody && node.bright > 0.18) {
-      node.size *= 0.88;
-      node.bright = 0.42;
+      node.size *= 0.96;
+      node.bright = 0.52;
       node.r = Math.min(1.06, node.r * 1.02);
       node.g = Math.min(1.06, node.g * 1.04);
       node.b = Math.min(1.1, node.b * 1.06);
@@ -1523,10 +1523,11 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
   const ranked = [...coreNodes].sort(
     (a, b) => b.bright * 2 + b.size + b.density * 0.3 - (a.bright * 2 + a.size + a.density * 0.3)
   );
-  const hubKeep = Math.min(14, Math.max(8, Math.round(ranked.length * 0.04)));
+  const hubKeep = Math.min(22, Math.max(12, Math.round(ranked.length * 0.07)));
   for (let i = 0; i < hubKeep && i < ranked.length; i += 1) {
-    ranked[i].size = Math.min(1.7, Math.max(ranked[i].size, 1.05));
-    ranked[i].bright = Math.max(ranked[i].bright, 0.7);
+    const star = i < Math.ceil(hubKeep * 0.35);
+    ranked[i].size = Math.min(star ? 2.35 : 1.95, Math.max(ranked[i].size, star ? 1.55 : 1.22));
+    ranked[i].bright = Math.max(ranked[i].bright, star ? 0.94 : 0.82);
   }
   const filaments = buildPlexus(coreNodes, budget.filaments, rng);
   filaments.push(...addCentralFilaments(coreNodes, Math.min(6, Math.floor(budget.filaments * 0.06)), rng));

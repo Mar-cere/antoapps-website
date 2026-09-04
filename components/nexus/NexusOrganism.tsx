@@ -85,7 +85,7 @@ void main() {
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.28, 0.5, clip.w);
   float farDim = smoothstep(3.15, 4.7, clip.w);
-  float sizePx = aSize * mix(1.2, mix(1.7, 2.85, conv), mix(moderate, 1.0, active));
+  float sizePx = aSize * mix(1.28, mix(2.15, 3.7, conv), mix(moderate, 1.0, active));
   sizePx *= mix(1.0, 1.85, aMist);
   sizePx *= 1.0 + nearBlur * 0.14 + wake * 0.1 + focus * 0.26 + beat * mix(0.78, 0.08, aMist);
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
