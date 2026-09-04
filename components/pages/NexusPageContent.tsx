@@ -8,7 +8,6 @@ import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import NexusNav from '@/components/nexus/NexusNav';
-import NexusStatus from '@/components/nexus/NexusStatus';
 import { NEXUS_CONSTELLATION_PLATE, NEXUS_CONSTELLATION_PLATE_PNG } from '@/lib/nexus/field';
 import '@/styles/pages/home-landing-final.css';
 import '@/styles/components/nexus.css';
@@ -67,7 +66,6 @@ export default function NexusPageContent({ locale }: NexusPageContentProps) {
                   <span key={line}>{line}</span>
                 ))}
               </p>
-              <NexusStatus copy={copy.status} />
             </div>
             <div className="nexus-stage">
               <NexusOrganism events={copy.events} label={copy.organismAria} />
