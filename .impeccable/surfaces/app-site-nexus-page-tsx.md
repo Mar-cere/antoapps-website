@@ -17,7 +17,7 @@ Visitante curious-trust que debe sentir que la inteligencia de Anto está viva, 
 Probar Anto → `/bienvenida` (CTA único en el header).
 
 ## Direction
-Brief-pinned: organismo neural procedural suspendido (WebGL), no cerebro, no tres lóbulos, no foto editorial. Excepción acotada a esta ruta.
+Brief-pinned: constelación orgánica (placa WebP + WebGL sutil), no cerebro, no tres lóbulos, no foto editorial. Excepción acotada a esta ruta.
 
 ## Memorable moment
 Campo vivo a la derecha (Psyche/Persona/Cortex mezclados; Nexus como convergencia temporal) + titular “te comprende / understands you”.

@@ -9,6 +9,7 @@ import CookieConsent from '@/components/CookieConsent';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import NexusNav from '@/components/nexus/NexusNav';
 import NexusStatus from '@/components/nexus/NexusStatus';
+import { NEXUS_CONSTELLATION_PLATE, NEXUS_CONSTELLATION_PLATE_PNG } from '@/lib/nexus/field';
 import '@/styles/pages/home-landing-final.css';
 import '@/styles/components/nexus.css';
 
@@ -16,7 +17,12 @@ const NexusOrganism = dynamic(() => import('@/components/nexus/NexusOrganism'), 
   ssr: false,
   loading: () => (
     <div className="nexus-organism">
-      <div className="nexus-organism__fallback" aria-hidden="true" />
+      <div className="nexus-organism__field" aria-hidden="true">
+        <picture>
+          <source srcSet={NEXUS_CONSTELLATION_PLATE} type="image/webp" />
+          <img className="nexus-organism__plate" src={NEXUS_CONSTELLATION_PLATE_PNG} alt="" />
+        </picture>
+      </div>
     </div>
   ),
 });
@@ -25,11 +31,11 @@ type NexusPageContentProps = {
   locale: Locale;
 };
 
-const CONTRACT = `THESIS: Anto's intelligence as a living suspended field, not a brain diagram and not three lobes.
-OWN-WORLD: Near-black navy, Inter/SF, teal chrome; Psyche/Persona/Cortex only inside the GPU field; sparse event chips.
+const CONTRACT = `THESIS: Anto's intelligence as a living constellation, not a brain, a cloud, or a particle sphere.
+OWN-WORLD: Near-black navy, Inter/SF, teal chrome; plate plus subtle WebGL; glass event cards.
 STORY: Conversations shape a system that understands you; try Anto.
-FIRST VIEWPORT: 36/64 split, copy left, organism right, CTA in nav only.
-FORM: brief-pinned cinematic organism.
+FIRST VIEWPORT: copy left, organic constellation center-right, CTA in nav only.
+FORM: brief-pinned cinematic constellation.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md`;
 
 export default function NexusPageContent({ locale }: NexusPageContentProps) {

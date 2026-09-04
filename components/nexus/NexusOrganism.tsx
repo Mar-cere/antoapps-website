@@ -2,8 +2,17 @@
 
 import { useEffect, useRef } from 'react';
 import type { NexusEventCopy } from '@/lib/i18n/copy/pages/nexus';
-import { buildNexusField, nexusBudget, NEXUS_FIELD_REV, wakePositions, type NexusField, type Vec3 } from '@/lib/nexus/field';
-import { lookAt, multiply4, perspective, projectPoint } from '@/lib/nexus/math';
+import {
+  buildNexusField,
+  nexusBudget,
+  NEXUS_CONSTELLATION_PLATE,
+  NEXUS_CONSTELLATION_PLATE_PNG,
+  NEXUS_FIELD_REV,
+  wakePositions,
+  type NexusField,
+  type Vec3,
+} from '@/lib/nexus/field';
+import { lookAt, multiply4, perspective } from '@/lib/nexus/math';
 
 type NexusOrganismProps = {
   events: readonly NexusEventCopy[];
@@ -61,7 +70,7 @@ void main() {
   float moderate = smoothstep(0.12, 0.32, aBright);
   float active = smoothstep(0.42, 0.68, aBright);
   float conv = smoothstep(0.85, 1.0, aBright);
-  float pulse = 0.84 + 0.16 * sin(uTime * 1.15 + aCluster * 1.4 + aCenter.x * 2.0);
+  float pulse = 0.72 + 0.28 * sin(uTime * 0.82 + aCluster * 1.4 + aCenter.x * 2.0);
   float quiet = 0.2 + tissue * 0.08 + wake * 0.04;
   float mid = 0.38 + focus * 0.08 + wake * 0.04 + pulse * 0.02;
   float lit = 0.7 + focus * 0.08 + wake * 0.04;
@@ -72,7 +81,7 @@ void main() {
   vec4 clip = uViewProj * vec4(pos, 1.0);
   float nearBlur = smoothstep(1.28, 0.5, clip.w);
   float farDim = smoothstep(3.15, 4.7, clip.w);
-  float sizePx = aSize * mix(0.88, mix(1.35, 1.7, conv), mix(moderate, 1.0, active));
+  float sizePx = aSize * mix(1.2, mix(1.7, 2.85, conv), mix(moderate, 1.0, active));
   sizePx *= mix(1.0, 1.85, aMist);
   sizePx *= 1.0 + nearBlur * 0.14 + wake * 0.05 + focus * 0.06;
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
@@ -95,7 +104,7 @@ void main() {
   vColor = mix(materialColor, nexusTint, conv * (0.01 + nexus * 0.02 + sync * 0.01));
   vColor *= mix(1.06, 0.28, aMist);
   vColor = mix(vColor, violetTint, violetId * (1.0 - aMist) * 0.06);
-  vAlpha = mix(0.16 + 0.28 * activity, 0.03 + 0.012 * activity, aMist);
+  vAlpha = mix(0.26 + 0.38 * activity, 0.03 + 0.012 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.05 + wake * mix(0.12, 0.02, aMist) + focus * mix(0.18, 0.02, aMist);
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
@@ -111,14 +120,13 @@ varying float vGlow;
 void main() {
   float d = length(vCorner);
   if (d > 1.0) discard;
-  float core = exp(-d * d * mix(11.2, 0.72, vMist));
-  float halo = exp(-d * d * mix(5.4, 0.82, vMist)) * mix(0.08, 0.16, vMist);
-  halo += exp(-d * d * 6.4) * vGlow * 0.04;
+  float core = exp(-d * d * mix(16.5, 0.72, vMist));
+  float halo = exp(-d * d * mix(7.4, 0.82, vMist)) * mix(0.05, 0.12, vMist);
   float a = (core + halo) * vAlpha;
   if (a < 0.007) discard;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  float cap = mix(0.34, 0.07, vMist);
+  float cap = mix(0.4, 0.07, vMist);
   if (peak > cap) {
     c *= cap / peak;
   }
@@ -187,7 +195,7 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
-  float px = 0.64 + flowPulse * 0.1;
+  float px = 0.52 + flowPulse * 0.1;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
@@ -195,7 +203,7 @@ void main() {
   float violetId = smoothstep(0.03, 0.18, aColor.b - aColor.g) * smoothstep(0.08, 0.28, aColor.r);
   float warmId = smoothstep(0.02, 0.14, aColor.r - aColor.b) * smoothstep(0.02, 0.12, aColor.g);
   float flowStrength = max(violetId, max(cyanId, warmId));
-  vAlpha = aAlpha * (0.42 + flowStrength * 0.08 + focus * 0.05 + wake * 0.03 + nexus * 0.015 + flowPulse * 0.18);
+  vAlpha = aAlpha * (0.58 + flowStrength * 0.1 + focus * 0.05 + wake * 0.03 + nexus * 0.015 + flowPulse * 0.2);
   vec3 violetTint = vec3(0.68, 0.3, 0.9);
   vec3 cyanTint = vec3(0.18, 0.86, 0.92);
   vec3 warmTint = vec3(0.72, 0.42, 0.46);
@@ -220,7 +228,7 @@ void main() {
   float a = vAlpha * fall;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  float cap = mix(0.16, 0.22, clamp(vFlow, 0.0, 1.0));
+  float cap = mix(0.2, 0.28, clamp(vFlow, 0.0, 1.0));
   if (peak > cap) {
     c *= cap / peak;
   }
@@ -380,13 +388,13 @@ void main() {
   float dt = (tF - tN) / 36.0;
   for (int i = 0; i < 36; i += 1) {
     vec3 pos = ro + rd * (tN + (float(i) + 0.5) * dt);
-    pos.x += 0.006 * sin(uTime * 0.32 + pos.y * 2.1);
-    pos.y += 0.004 * cos(uTime * 0.28 + pos.x * 1.7);
+    pos.x += 0.012 * sin(uTime * 0.32 + pos.y * 2.4 + pos.z * 1.3);
+    pos.y += 0.008 * cos(uTime * 0.28 + pos.x * 1.9);
     vec4 s = sampleVol(pos);
-    if (s.a >= 0.12) {
+    if (s.a >= 0.1) {
       float wake = max(act(pos, uWake0), max(act(pos, uWake1), act(pos, uWake2)));
-      float dens = max(0.0, s.a - 0.2) * (1.0 + wake * 0.05);
-      float absorb = 1.0 - exp(-dens * dens * 1.35 * dt * 8.0);
+      float dens = max(0.0, s.a - 0.14) * (1.0 + wake * 0.05);
+      float absorb = 1.0 - exp(-dens * dens * 1.45 * dt * 8.0);
       float keep = 1.0 - alpha;
       acc += s.rgb * absorb * keep;
       alpha += absorb * keep;
@@ -399,12 +407,12 @@ void main() {
     discard;
   }
   float luma = dot(acc, vec3(0.22, 0.55, 0.23));
-  if (luma > 0.24) {
-    acc *= 0.24 / luma;
+  if (luma > 0.2) {
+    acc *= 0.2 / luma;
   }
   float peak = max(acc.r, max(acc.g, acc.b));
-  if (peak > 0.34) {
-    acc *= 0.34 / peak;
+  if (peak > 0.36) {
+    acc *= 0.36 / peak;
   }
   gl_FragColor = vec4(acc, alpha);
 }
@@ -519,6 +527,7 @@ function EventMark({ id }: { id: NexusEventCopy['id'] }) {
 
 export default function NexusOrganism({ events, label }: NexusOrganismProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
+  const fieldBoxRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const eventRefs = useRef<Array<HTMLDivElement | null>>([]);
   const fieldRef = useRef<NexusField | null>(null);
@@ -526,7 +535,8 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
   useEffect(() => {
     const canvas = canvasRef.current;
     const wrap = wrapRef.current;
-    if (!canvas || !wrap) {
+    const fieldBox = fieldBoxRef.current;
+    if (!canvas || !wrap || !fieldBox) {
       return;
     }
 
@@ -545,7 +555,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     const membProg = program(gl, MEMB_VERT, MEMB_FRAG);
     const sparkProg = program(gl, SPARK_VERT, SPARK_FRAG);
     const volProg = program(gl, VOL_VERT, VOL_FRAG);
-    if (!nodeProg || !lineProg || !membProg || !sparkProg) {
+    if (!nodeProg || !lineProg || !sparkProg) {
       return;
     }
     wrap.classList.add('is-live');
@@ -840,22 +850,20 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     ];
 
     const resize = () => {
-      const rect = wrap.getBoundingClientRect();
+      const rect = fieldBox.getBoundingClientRect();
       width = Math.max(1, rect.width);
       height = Math.max(1, rect.height);
-      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      const dpr = Math.min(1.5, window.devicePixelRatio || 1);
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       gl.viewport(0, 0, canvas.width, canvas.height);
-      const proj = perspective((38 * Math.PI) / 180, width / height, 0.12, 10);
+      const proj = perspective((34 * Math.PI) / 180, width / height, 0.12, 10);
       const portrait = width / height < 0.9;
-      const dist = portrait ? 1.22 : 1.04;
+      const dist = portrait ? 1.18 : 1.02;
       camX = -0.02;
-      camY = 0.3;
+      camY = 0.34;
       camZ = dist;
-      const view = portrait
-        ? lookAt(camX, camY, camZ, 0.08, 0.4, 0)
-        : lookAt(camX, camY, camZ, 0.08, 0.4, 0);
+      const view = lookAt(camX, camY, camZ, 0.1, 0.4, 0);
       viewProj = multiply4(proj, view);
       const budget = nexusBudget(window.innerWidth);
       const mark = budget.nodes + budget.filaments + NEXUS_FIELD_REV;
@@ -867,7 +875,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
 
     resize();
     const ro = new ResizeObserver(resize);
-    ro.observe(wrap);
+    ro.observe(fieldBox);
 
     const uNode = {
       view: gl.getUniformLocation(nodeProg, 'uViewProj'),
@@ -926,39 +934,23 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     let lastCycle = 0;
     let eventCursor = 0;
 
-    const placeEvents = (time: number, wakesNexus: Vec3, boost: number) => {
-      const field = fieldRef.current;
-      if (!field) {
-        return;
-      }
-      const count = width < 768 ? 1 : Math.min(3, events.length);
-      if (time - lastCycle > 4200) {
+    const placeEvents = (time: number) => {
+      const mobile = window.innerWidth < 768;
+      const count = mobile ? 1 : events.length;
+      if (mobile && time - lastCycle > 5200) {
         lastCycle = time;
         eventCursor = (eventCursor + 1) % Math.max(1, events.length);
       }
       const shown = new Set<number>();
       for (let k = 0; k < count; k += 1) {
-        shown.add((eventCursor + k) % events.length);
+        shown.add(mobile ? (eventCursor + k) % events.length : k);
       }
       for (let i = 0; i < events.length; i += 1) {
         const el = eventRefs.current[i];
         if (!el) {
           continue;
         }
-        const hub = field.hubs[(i + (boost > 0.45 ? 1 : 0)) % field.hubs.length] ?? field.hubs[0];
-        if (!hub) {
-          el.classList.remove('is-on');
-          continue;
-        }
-        const jitter: Vec3 = {
-          x: hub.x + wakesNexus.x * 0.08,
-          y: hub.y + wakesNexus.y * 0.08,
-          z: hub.z,
-        };
-        const p = projectPoint(jitter.x, jitter.y, jitter.z, viewProj, width, height);
-        el.style.left = `${p.x}px`;
-        el.style.top = `${p.y}px`;
-        el.classList.toggle('is-on', shown.has(i) && p.visible);
+        el.classList.toggle('is-on', shown.has(i));
       }
     };
 
@@ -975,38 +967,6 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.disable(gl.DEPTH_TEST);
       gl.enable(gl.BLEND);
       gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-
-      const fieldNow = fieldRef.current;
-      if (volProg && uVol && volReady && volTex && fieldNow?.volume) {
-        const vol = fieldNow.volume;
-        disableAttribs(gl);
-        gl.useProgram(volProg);
-        gl.bindBuffer(gl.ARRAY_BUFFER, volBuffer);
-        const locCorner = gl.getAttribLocation(volProg, 'aCorner');
-        if (locCorner >= 0) {
-          gl.enableVertexAttribArray(locCorner);
-          gl.vertexAttribPointer(locCorner, 3, gl.FLOAT, false, 12, 0);
-        }
-        gl.activeTexture(gl.TEXTURE0);
-        gl.bindTexture(gl.TEXTURE_2D, volTex);
-        gl.uniform1i(uVol.vol, 0);
-        gl.uniformMatrix4fv(uVol.view, false, viewProj);
-        gl.uniform3f(uVol.origin, vol.origin.x, vol.origin.y, vol.origin.z);
-        gl.uniform3f(uVol.size, vol.size.x, vol.size.y, vol.size.z);
-        gl.uniform3f(uVol.cam, camX, camY, camZ);
-        gl.uniform3f(uVol.w0, wakes[0].x, wakes[0].y, wakes[0].z);
-        gl.uniform3f(uVol.w1, wakes[1].x, wakes[1].y, wakes[1].z);
-        gl.uniform3f(uVol.w2, wakes[2].x, wakes[2].y, wakes[2].z);
-        gl.uniform1f(uVol.time, time);
-        gl.uniform2f(uVol.atlas, vol.atlasW, vol.atlasH);
-        gl.uniform2f(uVol.grid, vol.nx, vol.ny);
-        gl.uniform2f(uVol.tiles, vol.cols, vol.rows);
-        gl.uniform1f(uVol.nz, vol.nz);
-        gl.enable(gl.CULL_FACE);
-        gl.cullFace(gl.BACK);
-        gl.drawArrays(gl.TRIANGLES, 0, 36);
-        gl.disable(gl.CULL_FACE);
-      }
 
       disableAttribs(gl);
       bindNodes();
@@ -1097,7 +1057,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
         gl.drawArrays(gl.POINTS, 0, sparkCount);
       }
 
-      placeEvents(now, nexus, boost);
+      placeEvents(now);
     };
 
     frame = window.requestAnimationFrame(draw);
@@ -1126,8 +1086,19 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
 
   return (
     <div className="nexus-organism" ref={wrapRef}>
-      <div className="nexus-organism__fallback" aria-hidden="true" />
-      <canvas ref={canvasRef} className="nexus-organism__canvas" aria-hidden="true" />
+      <div className="nexus-organism__field" ref={fieldBoxRef} aria-hidden="true">
+        <picture>
+          <source srcSet={NEXUS_CONSTELLATION_PLATE} type="image/webp" />
+          <img
+            className="nexus-organism__plate"
+            src={NEXUS_CONSTELLATION_PLATE_PNG}
+            alt=""
+            draggable={false}
+            fetchPriority="high"
+          />
+        </picture>
+        <canvas ref={canvasRef} className="nexus-organism__canvas" aria-hidden="true" />
+      </div>
       <span className="visually-hidden">{label}</span>
       {events.map((event, index) => (
         <div
@@ -1136,6 +1107,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
             eventRefs.current[index] = el;
           }}
           className="nexus-event"
+          data-event={event.id}
         >
           <EventMark id={event.id} />
           <span>
