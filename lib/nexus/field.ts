@@ -1576,9 +1576,9 @@ export function wakePositions(time: number): { wakes: [Vec3, Vec3, Vec3]; nexus:
   const c = { x: FOCI[2].cx, y: FOCI[2].cy, z: FOCI[2].cz };
   const d = { x: FOCI[3].cx, y: FOCI[3].cy, z: FOCI[3].cz };
   const wakes: [Vec3, Vec3, Vec3] = [
-    lerp(a, b, 0.5 + 0.48 * Math.sin(t * 0.48)),
-    lerp(c, d, 0.5 + 0.46 * Math.sin(t * 0.41 + 1.15)),
-    lerp(b, d, 0.5 + 0.44 * Math.sin(t * 0.36 + 2.35)),
+    lerp(a, b, 0.5 + 0.48 * Math.sin(t * 0.62)),
+    lerp(c, d, 0.5 + 0.46 * Math.sin(t * 0.54 + 1.15)),
+    lerp(b, d, 0.5 + 0.44 * Math.sin(t * 0.48 + 2.35)),
   ];
 
   const d01 = Math.hypot(wakes[0].x - wakes[1].x, wakes[0].y - wakes[1].y, wakes[0].z - wakes[1].z);

@@ -25,17 +25,17 @@ export default function NexusStatus({ copy }: NexusStatusProps) {
       const points: string[] = [];
       for (let i = 0; i < samples; i += 1) {
         const x = (i / (samples - 1)) * width;
-        const t = reduced ? 1.2 : time * 0.0016;
+        const t = reduced ? 1.2 : time * 0.0022;
         const along = i / (samples - 1);
-        const packet = t * 0.22 % 1;
+        const packet = (t * 0.34) % 1;
         let span = Math.abs(along - packet);
         span = Math.min(span, 1 - span);
-        const current = Math.exp(-span * span * 72);
+        const current = Math.exp(-span * span * 56);
         const y =
           height / 2 +
-          Math.sin(i * 0.62 + t * 2.1) * 3.2 +
-          Math.sin(i * 1.15 + t * 3.4) * 1.4 +
-          current * 2.4;
+          Math.sin(i * 0.62 + t * 2.6) * 3.6 +
+          Math.sin(i * 1.15 + t * 4.1) * 1.7 +
+          current * 3.1;
         points.push(`${x.toFixed(2)},${y.toFixed(2)}`);
       }
       line.setAttribute('points', points.join(' '));
@@ -66,10 +66,10 @@ export default function NexusStatus({ copy }: NexusStatusProps) {
           ref={pathRef}
           fill="none"
           stroke="#22d3ee"
-          strokeWidth="1.15"
+          strokeWidth="1.2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          opacity="0.85"
+          opacity="0.92"
         />
       </svg>
     </div>
