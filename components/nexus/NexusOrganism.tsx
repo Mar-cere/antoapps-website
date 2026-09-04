@@ -87,7 +87,7 @@ void main() {
   float farDim = smoothstep(3.15, 4.7, clip.w);
   float sizePx = aSize * mix(1.28, mix(2.15, 3.7, conv), mix(moderate, 1.0, active));
   sizePx *= mix(1.0, 1.85, aMist);
-  sizePx *= 1.0 + nearBlur * 0.14 + wake * 0.1 + focus * 0.26 + beat * mix(0.78, 0.08, aMist);
+  sizePx *= 1.0 + nearBlur * 0.05 + wake * 0.08 + focus * 0.2 + beat * mix(0.52, 0.06, aMist);
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
   vCorner = aCorner;
@@ -124,8 +124,8 @@ varying float vGlow;
 void main() {
   float d = length(vCorner);
   if (d > 1.0) discard;
-  float core = exp(-d * d * mix(11.2, 0.72, vMist));
-  float halo = exp(-d * d * mix(4.2, 0.82, vMist)) * mix(0.12 + vGlow * 0.28, 0.14, vMist);
+  float core = exp(-d * d * mix(16.8, 0.86, vMist));
+  float halo = exp(-d * d * mix(7.2, 0.96, vMist)) * mix(0.08 + vGlow * 0.16, 0.1, vMist);
   float a = (core + halo) * vAlpha;
   if (a < 0.007) discard;
   vec3 c = vColor * a;
@@ -206,7 +206,7 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
-  float px = 0.7 + flowPulse * 0.78;
+  float px = 0.58 + flowPulse * 0.62;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
@@ -235,7 +235,7 @@ varying vec3 vColor;
 varying float vSide;
 varying float vFlow;
 void main() {
-  float fall = exp(-vSide * vSide * 3.8);
+  float fall = exp(-vSide * vSide * 6.2);
   float a = vAlpha * fall;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
@@ -301,7 +301,7 @@ varying vec3 vColor;
 void main() {
   vec4 clip = uViewProj * vec4(aPosition, 1.0);
   gl_Position = clip;
-  gl_PointSize = max(2.1, 5.4 * (1.6 / max(0.55, clip.w)));
+  gl_PointSize = max(1.8, 4.2 * (1.6 / max(0.55, clip.w)));
   vColor = aColor;
 }
 `;
@@ -311,7 +311,7 @@ precision mediump float;
 varying vec3 vColor;
 void main() {
   vec2 p = gl_PointCoord * 2.0 - 1.0;
-  float a = exp(-dot(p, p) * 3.4) * 0.64;
+  float a = exp(-dot(p, p) * 5.6) * 0.7;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
   if (peak > 0.7) {
@@ -864,10 +864,9 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     ];
 
     const resize = () => {
-      const rect = fieldBox.getBoundingClientRect();
-      width = Math.max(1, rect.width);
-      height = Math.max(1, rect.height);
-      const dpr = Math.min(1.5, window.devicePixelRatio || 1);
+      width = Math.max(1, fieldBox.clientWidth);
+      height = Math.max(1, fieldBox.clientHeight);
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       gl.viewport(0, 0, canvas.width, canvas.height);
