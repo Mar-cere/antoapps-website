@@ -271,7 +271,7 @@ body:has(.nexus-page) {
 
 .nexus-organism__field {
   position: absolute;
-  inset: 14% 0 0 18%;
+  inset: 8% 0 4% 18%;
   z-index: 1;
   pointer-events: none;
   background: transparent;
@@ -641,7 +641,7 @@ body:has(.nexus-page) {
   }
 
   .nexus-organism__field {
-    inset: 8% -2% 4% 12%;
+    inset: 4% -2% 8% 12%;
     transform: scale(1.38) rotate(44deg);
     transform-origin: 66% 30%;
     -webkit-mask-image:
@@ -703,7 +703,7 @@ body:has(.nexus-page) {
     top: 50%;
     width: min(76vw, 68rem);
     height: min(96vh, 56rem);
-    transform: translate(0%, -16%) scale(1.6, 1.26) rotate(44deg);
+    transform: translate(0%, -23%) scale(1.6, 1.26) rotate(44deg);
     transform-origin: 64% 34%;
     -webkit-mask-image:
       linear-gradient(180deg, transparent 0%, #000 8%, #000 82%, transparent 100%),
