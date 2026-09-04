@@ -819,6 +819,9 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     };
 
     const bindMemb = () => {
+      if (!membProg) {
+        return;
+      }
       gl.useProgram(membProg);
       gl.bindBuffer(gl.ARRAY_BUFFER, membBuffer);
       const locP = gl.getAttribLocation(membProg, 'aPosition');
@@ -905,10 +908,12 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       f3: gl.getUniformLocation(lineProg, 'uFocus3'),
       time: gl.getUniformLocation(lineProg, 'uTime'),
     };
-    const uMemb = {
-      view: gl.getUniformLocation(membProg, 'uViewProj'),
-      time: gl.getUniformLocation(membProg, 'uTime'),
-    };
+    const uMemb = membProg
+      ? {
+          view: gl.getUniformLocation(membProg, 'uViewProj'),
+          time: gl.getUniformLocation(membProg, 'uTime'),
+        }
+      : null;
     const uSpark = {
       view: gl.getUniformLocation(sparkProg, 'uViewProj'),
     };
@@ -1076,7 +1081,9 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
       gl.deleteTexture(volTex);
       gl.deleteProgram(nodeProg);
       gl.deleteProgram(lineProg);
-      gl.deleteProgram(membProg);
+      if (membProg) {
+        gl.deleteProgram(membProg);
+      }
       gl.deleteProgram(sparkProg);
       if (volProg) {
         gl.deleteProgram(volProg);
