@@ -270,12 +270,12 @@ body:has(.nexus-page) {
 
 .nexus-organism__field {
   position: absolute;
-  inset: 18% 0 -2% 22%;
+  inset: 14% -6% -6% 14%;
   z-index: 1;
   pointer-events: none;
   background: transparent;
-  transform: rotate(22deg);
-  transform-origin: 88% 24%;
+  transform: rotate(28deg);
+  transform-origin: 86% 22%;
   -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
   mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
 }
@@ -602,9 +602,9 @@ body:has(.nexus-page) {
   }
 
   .nexus-organism__field {
-    inset: 4% 0 2% 8%;
-    transform: rotate(24deg);
-    transform-origin: 58% 44%;
+    inset: 2% -4% 0 4%;
+    transform: scale(1.12) rotate(28deg);
+    transform-origin: 60% 42%;
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
   }
@@ -619,16 +619,16 @@ body:has(.nexus-page) {
   }
 
   .nexus-event[data-event='memory'] {
-    top: 22%;
+    top: 24%;
     bottom: auto;
-    left: 28%;
+    left: 26%;
   }
 
   .nexus-event[data-event='pattern'] {
-    top: 9%;
+    top: 7%;
     bottom: auto;
     left: auto;
-    right: 2%;
+    right: 1%;
   }
 
   .nexus-event[data-event='knowledge'] {
@@ -637,8 +637,8 @@ body:has(.nexus-page) {
 
   .nexus-event[data-event='strategy'] {
     top: auto;
-    bottom: 18%;
-    left: 34%;
+    bottom: 16%;
+    left: 32%;
     right: auto;
   }
 }
@@ -655,10 +655,10 @@ body:has(.nexus-page) {
   .nexus-organism__field {
     inset: auto 1% auto auto;
     top: 50%;
-    width: min(58vw, 52rem);
-    height: min(86vh, 46rem);
-    transform: translate(8%, -40%) scale(1.22, 1.02) rotate(26deg);
-    transform-origin: 62% 42%;
+    width: min(64vw, 58rem);
+    height: min(94vh, 52rem);
+    transform: translate(10%, -42%) scale(1.34, 1.12) rotate(28deg);
+    transform-origin: 64% 40%;
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 78%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 0%, #000 78%, transparent 100%);
   }
