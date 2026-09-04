@@ -999,7 +999,7 @@ export function nexusBudget(width: number): NexusBudget {
   return { nodes: 460, filaments: 140 };
 }
 
-export const NEXUS_FIELD_REV = 45;
+export const NEXUS_FIELD_REV = 46;
 
 export const NEXUS_CONSTELLATION_PLATE = '/assets/images/nexus/nexus-constellation-plate.webp?v=2';
 export const NEXUS_CONSTELLATION_PLATE_PNG = '/assets/images/nexus/nexus-constellation-plate.png?v=2';
@@ -1537,7 +1537,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     const end = filament.points[filament.points.length - 1];
     const mid = filament.points[Math.floor(filament.points.length / 2)] ?? start;
     if (filament.current) {
-      filament.alpha *= 1.45;
+      filament.alpha *= 1.2;
     } else {
       const meaningful =
         nearFocus(start) < 1.55 ||

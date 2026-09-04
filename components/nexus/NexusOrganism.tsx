@@ -190,9 +190,9 @@ void main() {
   spanB = min(spanB, 1.0 - spanB);
   float spanC = abs(aAlong - packetC);
   spanC = min(spanC, 1.0 - spanC);
-  float current = max(exp(-spanA * spanA * 11.0), max(exp(-spanB * spanB * 16.0) * 0.88, exp(-spanC * spanC * 22.0) * 0.7));
-  float strand = 0.5 + 0.5 * pow(max(0.0, sin(uTime * 1.38 + aPhase * 6.2831)), 1.4);
-  float flowPulse = current * max(aCurrent, 0.82) * 1.55 * strand;
+  float current = max(exp(-spanA * spanA * 16.0), max(exp(-spanB * spanB * 23.0) * 0.82, exp(-spanC * spanC * 30.0) * 0.64));
+  float strand = 0.56 + 0.44 * pow(max(0.0, sin(uTime * 1.38 + aPhase * 6.2831)), 1.6);
+  float flowPulse = current * max(aCurrent, 0.74) * 1.36 * strand;
   vec4 cA = uViewProj * vec4(aA, 1.0);
   vec4 cB = uViewProj * vec4(aB, 1.0);
   vec2 nA = cA.xy / max(0.0001, cA.w);
@@ -206,7 +206,7 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
-  float px = 0.92 + flowPulse * 1.15;
+  float px = 0.7 + flowPulse * 0.78;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
@@ -214,7 +214,7 @@ void main() {
   float violetId = smoothstep(0.03, 0.18, aColor.b - aColor.g) * smoothstep(0.08, 0.28, aColor.r);
   float warmId = smoothstep(0.02, 0.14, aColor.r - aColor.b) * smoothstep(0.02, 0.12, aColor.g);
   float flowStrength = max(violetId, max(cyanId, warmId));
-  vAlpha = aAlpha * (0.88 + flowStrength * 0.16 + focus * 0.16 + wake * 0.08 + nexus * 0.04 + flowPulse * 1.35 + strand * 0.28);
+  vAlpha = aAlpha * (0.8 + flowStrength * 0.14 + focus * 0.14 + wake * 0.07 + nexus * 0.03 + flowPulse * 1.12 + strand * 0.2);
   vec3 violetTint = vec3(0.68, 0.3, 0.9);
   vec3 cyanTint = vec3(0.18, 0.86, 0.92);
   vec3 warmTint = vec3(0.72, 0.42, 0.46);
@@ -223,7 +223,7 @@ void main() {
   materialColor = mix(materialColor, cyanTint, cyanId * 0.12);
   materialColor = mix(materialColor, warmTint, warmId * 0.04);
   vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.02);
-  vColor *= 0.95 + flowPulse * 1.15;
+  vColor *= 0.84 + flowPulse * 0.92;
   vFlow = flowPulse;
 }
 `;
@@ -235,11 +235,11 @@ varying vec3 vColor;
 varying float vSide;
 varying float vFlow;
 void main() {
-  float fall = exp(-vSide * vSide * 2.6);
+  float fall = exp(-vSide * vSide * 3.8);
   float a = vAlpha * fall;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  float cap = mix(0.38, 1.0, clamp(vFlow, 0.0, 1.0));
+  float cap = mix(0.3, 0.88, clamp(vFlow, 0.0, 1.0));
   if (peak > cap) {
     c *= cap / peak;
   }
@@ -301,7 +301,7 @@ varying vec3 vColor;
 void main() {
   vec4 clip = uViewProj * vec4(aPosition, 1.0);
   gl_Position = clip;
-  gl_PointSize = max(2.4, 6.4 * (1.6 / max(0.55, clip.w)));
+  gl_PointSize = max(2.1, 5.4 * (1.6 / max(0.55, clip.w)));
   vColor = aColor;
 }
 `;
@@ -311,11 +311,11 @@ precision mediump float;
 varying vec3 vColor;
 void main() {
   vec2 p = gl_PointCoord * 2.0 - 1.0;
-  float a = exp(-dot(p, p) * 3.0) * 0.74;
+  float a = exp(-dot(p, p) * 3.4) * 0.64;
   vec3 c = vColor * a;
   float peak = max(c.r, max(c.g, c.b));
-  if (peak > 0.82) {
-    c *= 0.82 / peak;
+  if (peak > 0.7) {
+    c *= 0.7 / peak;
   }
   gl_FragColor = vec4(c, a);
 }
@@ -606,7 +606,7 @@ export default function NexusOrganism({ events, label }: NexusOrganismProps) {
     let mistCount = 0;
     let lineCount = 0;
     let membCount = 0;
-    const sparkCount = 56;
+    const sparkCount = 46;
     const sparkData = new Float32Array(sparkCount * 6);
     const sparkMeta: { filament: number; speed: number; offset: number; r: number; g: number; b: number }[] = [];
 
