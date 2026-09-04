@@ -258,6 +258,7 @@ body:has(.nexus-page) {
   z-index: 1;
   min-height: 0;
   margin: 0 calc(var(--nexus-pad-x) * -1);
+  overflow: hidden;
 }
 
 .nexus-organism {
@@ -270,14 +271,20 @@ body:has(.nexus-page) {
 
 .nexus-organism__field {
   position: absolute;
-  inset: 14% -6% -6% 14%;
+  inset: 16% 4% 0 16%;
   z-index: 1;
   pointer-events: none;
   background: transparent;
-  transform: rotate(28deg);
-  transform-origin: 86% 22%;
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
+  transform: rotate(34deg);
+  transform-origin: 82% 18%;
+  -webkit-mask-image:
+    linear-gradient(180deg, transparent 0%, #000 12%, #000 74%, transparent 100%),
+    linear-gradient(90deg, #000 0%, #000 74%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(180deg, transparent 0%, #000 12%, #000 74%, transparent 100%),
+    linear-gradient(90deg, #000 0%, #000 74%, transparent 100%);
+  mask-composite: intersect;
 }
 
 .nexus-organism__field picture,
@@ -582,7 +589,7 @@ body:has(.nexus-page) {
   }
 
   .nexus-stage {
-    inset: 0 0 0 10%;
+    inset: calc(4.25rem + env(safe-area-inset-top, 0px)) 0 0 10%;
     margin: 0;
   }
 
@@ -602,11 +609,17 @@ body:has(.nexus-page) {
   }
 
   .nexus-organism__field {
-    inset: 2% -4% 0 4%;
-    transform: scale(1.12) rotate(28deg);
-    transform-origin: 60% 42%;
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
+    inset: 8% 6% 4% 8%;
+    transform: scale(1.22) rotate(34deg);
+    transform-origin: 74% 24%;
+    -webkit-mask-image:
+      linear-gradient(180deg, transparent 0%, #000 10%, #000 76%, transparent 100%),
+      linear-gradient(90deg, #000 0%, #000 76%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(180deg, transparent 0%, #000 10%, #000 76%, transparent 100%),
+      linear-gradient(90deg, #000 0%, #000 76%, transparent 100%);
+    mask-composite: intersect;
   }
 
   .nexus-organism__plate {
@@ -619,16 +632,17 @@ body:has(.nexus-page) {
   }
 
   .nexus-event[data-event='memory'] {
-    top: 24%;
+    top: 28%;
     bottom: auto;
-    left: 26%;
+    left: 12%;
+    right: auto;
   }
 
   .nexus-event[data-event='pattern'] {
-    top: 7%;
+    top: 20%;
     bottom: auto;
     left: auto;
-    right: 1%;
+    right: 12%;
   }
 
   .nexus-event[data-event='knowledge'] {
@@ -637,8 +651,8 @@ body:has(.nexus-page) {
 
   .nexus-event[data-event='strategy'] {
     top: auto;
-    bottom: 16%;
-    left: 32%;
+    bottom: 18%;
+    left: 22%;
     right: auto;
   }
 }
@@ -655,12 +669,18 @@ body:has(.nexus-page) {
   .nexus-organism__field {
     inset: auto 1% auto auto;
     top: 50%;
-    width: min(64vw, 58rem);
-    height: min(94vh, 52rem);
-    transform: translate(10%, -42%) scale(1.34, 1.12) rotate(28deg);
-    transform-origin: 64% 40%;
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 78%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 78%, transparent 100%);
+    width: min(68vw, 60rem);
+    height: min(92vh, 52rem);
+    transform: translate(-8%, -28%) scale(1.4, 1.16) rotate(34deg);
+    transform-origin: 72% 28%;
+    -webkit-mask-image:
+      linear-gradient(180deg, transparent 0%, #000 10%, #000 78%, transparent 100%),
+      linear-gradient(90deg, #000 0%, #000 78%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(180deg, transparent 0%, #000 10%, #000 78%, transparent 100%),
+      linear-gradient(90deg, #000 0%, #000 78%, transparent 100%);
+    mask-composite: intersect;
   }
 }
 
