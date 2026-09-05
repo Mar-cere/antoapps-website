@@ -23,6 +23,7 @@ export type NexusBeatCopy = {
   id: NexusBeatId;
   title: string;
   body: string;
+  detail: string;
 };
 
 export type NexusTrustItem = {
@@ -150,16 +151,19 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           id: 'memory',
           title: 'Recupera el hilo',
           body: 'Anto no trata cada mensaje como si fuera el primero. Recupera el hilo: lo que ya dijiste, lo que sigue pesando, hacia dónde ibas.',
+          detail: 'El insomnio de anoche. La conversación que no cerraste. Hacia dónde ibas.',
         },
         {
           id: 'pattern',
           title: 'Nombra lo que se repite',
           body: 'Cuando algo se repite, lo nombra. No para catalogarte: para entender qué está pasando ahora, no solo lo que escribiste hace un segundo.',
+          detail: 'La misma prisa al anochecer. El mismo nudo cuando hablas de casa.',
         },
         {
           id: 'strategy',
           title: 'Elige el siguiente paso',
           body: 'Con ese contexto elige el siguiente paso más útil. No un discurso. Una dirección concreta para este momento.',
+          detail: 'Una pregunta precisa. Un límite. Un paso que se puede dar ahora.',
         },
       ],
     },
@@ -261,16 +265,19 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           id: 'memory',
           title: 'Recovers the thread',
           body: 'Anto does not treat each message as if it were the first. It recovers the thread: what you already said, what still weighs, where you were heading.',
+          detail: 'Last night without sleep. The conversation you did not close. Where you were heading.',
         },
         {
           id: 'pattern',
           title: 'Names what repeats',
           body: 'When something repeats, it names it. Not to label you: to understand what is happening now, not only what you wrote a second ago.',
+          detail: 'The same rush at dusk. The same knot when home comes up.',
         },
         {
           id: 'strategy',
           title: 'Chooses the next step',
           body: 'With that context it chooses the most useful next step. Not a speech. A concrete direction for this moment.',
+          detail: 'A precise question. A boundary. A step you can take now.',
         },
       ],
     },

@@ -762,6 +762,7 @@ body:has(.nexus-page) {
   .nexus-beat__mark,
   .nexus-beat__title,
   .nexus-beat__body,
+  .nexus-beat__detail,
   .nexus-bridge__lead,
   .nexus-bridge__promise,
   .nexus-invite__title,
@@ -845,24 +846,24 @@ body:has(.nexus-page) {
   }
 
   .nexus-world[data-beat='memory'] .nexus-organism__field {
-    --nexus-look-x: 5%;
-    --nexus-look-y: -4%;
-    --nexus-look-s: 1.08;
-    --nexus-look-r: -4deg;
+    --nexus-look-x: 8%;
+    --nexus-look-y: -7%;
+    --nexus-look-s: 1.12;
+    --nexus-look-r: -8deg;
   }
 
   .nexus-world[data-beat='pattern'] .nexus-organism__field {
-    --nexus-look-x: 8%;
-    --nexus-look-y: 3%;
-    --nexus-look-s: 1.1;
-    --nexus-look-r: 3deg;
+    --nexus-look-x: 12%;
+    --nexus-look-y: 5%;
+    --nexus-look-s: 1.14;
+    --nexus-look-r: 6deg;
   }
 
   .nexus-world[data-beat='strategy'] .nexus-organism__field {
-    --nexus-look-x: 2%;
-    --nexus-look-y: 7%;
-    --nexus-look-s: 1.08;
-    --nexus-look-r: 6deg;
+    --nexus-look-x: 4%;
+    --nexus-look-y: 10%;
+    --nexus-look-s: 1.12;
+    --nexus-look-r: 10deg;
   }
 
   .nexus-world[data-beat='after'] .nexus-organism__field {
@@ -941,24 +942,24 @@ body:has(.nexus-page) {
 
 @media (min-width: 768px) {
   .nexus-world[data-beat='memory'] .nexus-organism__field {
-    --nexus-look-x: 10%;
-    --nexus-look-y: -8%;
-    --nexus-look-s: 1.12;
-    --nexus-look-r: -7deg;
+    --nexus-look-x: 14%;
+    --nexus-look-y: -12%;
+    --nexus-look-s: 1.14;
+    --nexus-look-r: -14deg;
   }
 
   .nexus-world[data-beat='pattern'] .nexus-organism__field {
-    --nexus-look-x: 16%;
-    --nexus-look-y: 5%;
-    --nexus-look-s: 1.16;
-    --nexus-look-r: 5deg;
+    --nexus-look-x: 22%;
+    --nexus-look-y: 8%;
+    --nexus-look-s: 1.18;
+    --nexus-look-r: 11deg;
   }
 
   .nexus-world[data-beat='strategy'] .nexus-organism__field {
-    --nexus-look-x: 6%;
-    --nexus-look-y: 14%;
-    --nexus-look-s: 1.12;
-    --nexus-look-r: 10deg;
+    --nexus-look-x: 10%;
+    --nexus-look-y: 20%;
+    --nexus-look-s: 1.14;
+    --nexus-look-r: 18deg;
   }
 
   .nexus-world[data-beat='after'] .nexus-organism__field {
@@ -1059,6 +1060,16 @@ body:has(.nexus-page) {
   font-size: 1.02rem;
   font-weight: 400;
   line-height: 1.55;
+}
+
+.nexus-beat__detail {
+  margin: 0.8rem 0 0;
+  max-width: 34rem;
+  color: rgba(244, 247, 251, 0.9);
+  font-size: 1.02rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
 }
 
 .nexus-bridge__lead,

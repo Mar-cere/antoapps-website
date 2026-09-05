@@ -1015,7 +1015,7 @@ export default function NexusOrganism({
       const time = reduced ? 4.35 : now * 0.0025;
       const beat = beatRef.current as NexusBeatLookId;
       const shot = reduced ? NEXUS_BEAT_LOOK.hero : NEXUS_BEAT_LOOK[beat] ?? NEXUS_BEAT_LOOK.hero;
-      const ease = reduced ? 1 : 0.062;
+      const ease = reduced ? 1 : 0.05;
       camX = mix(camX, shot.camX, ease);
       camY = mix(camY, shot.camY, ease);
       camZ = mix(camZ, Math.max(0.42, baseDist * shot.camZMul), ease);
@@ -1033,7 +1033,15 @@ export default function NexusOrganism({
       tintAmt = mix(tintAmt, shot.tintAmt, ease);
       dim = mix(dim, shot.dim, ease);
       wakePin = mix(wakePin, shot.wakePin, ease);
-      applyCamera();
+      const orbit = reduced ? 0 : shot.orbit;
+      const phase = beat === 'memory' ? 0.35 : beat === 'pattern' ? 2.15 : beat === 'strategy' ? 4.05 : 0;
+      const ang = time * 0.4 + phase;
+      const amp = orbit * (window.innerWidth < 768 ? 0.038 : 0.09);
+      const liveX = camX + Math.sin(ang) * amp;
+      const liveY = camY + Math.cos(ang * 0.62) * amp * 0.4;
+      const liveZ = camZ + Math.cos(ang) * amp * 0.52;
+      const proj = perspective((fovDeg * Math.PI) / 180, aspect, 0.12, 10);
+      viewProj = multiply4(proj, lookAt(liveX, liveY, liveZ, lookX, lookY, lookZ));
 
       const scene = wakePositions(time);
       const focus = reduced ? nexusFocusForBeat('hero') : nexusFocusForBeat(beat);
@@ -1059,7 +1067,7 @@ export default function NexusOrganism({
         y: mix(scene.nexus.y, focus.y, wakePin * 0.55),
         z: mix(scene.nexus.z, focus.z, wakePin * 0.55),
       };
-      const boost = Math.min(1.35, scene.boost * mix(1, shot.boostMul, 0.85));
+      const boost = Math.min(1.48, scene.boost * mix(1, shot.boostMul, 0.85));
 
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
