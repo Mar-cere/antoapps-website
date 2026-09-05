@@ -991,15 +991,15 @@ function addCrownTissue(
 
 export function nexusBudget(width: number): NexusBudget {
   if (width < 768) {
-    return { nodes: 340, filaments: 104 };
+    return { nodes: 280, filaments: 88 };
   }
   if (width < 1024) {
-    return { nodes: 440, filaments: 132 };
+    return { nodes: 360, filaments: 110 };
   }
-  return { nodes: 560, filaments: 168 };
+  return { nodes: 460, filaments: 140 };
 }
 
-export const NEXUS_FIELD_REV = 48;
+export const NEXUS_FIELD_REV = 46;
 
 export const NEXUS_CONSTELLATION_PLATE = '/assets/images/nexus/nexus-constellation-plate.webp?v=2';
 export const NEXUS_CONSTELLATION_PLATE_PNG = '/assets/images/nexus/nexus-constellation-plate.png?v=2';
@@ -1066,9 +1066,9 @@ export function bakeNexusVolume(): NexusVolume {
         let g = 0;
         let b = 0;
         let a = 0;
-        if (density > 0.12) {
+        if (density > 0.16) {
           const color = mixColor(p);
-          const dens = Math.min(1, Math.pow((density - 0.1) / 0.9, 1.08));
+          const dens = Math.min(1, Math.pow((density - 0.12) / 0.9, 1.15));
           let cr = color.r;
           let cg = color.g;
           let cb = color.b;
@@ -1086,7 +1086,7 @@ export function bakeNexusVolume(): NexusVolume {
           r = Math.min(255, Math.max(0, cr * 255));
           g = Math.min(255, Math.max(0, cg * 255));
           b = Math.min(255, Math.max(0, cb * 255));
-          a = Math.min(255, dens * 236);
+          a = Math.min(255, dens * 220);
         }
         writePx(ox + x, oy + y, r, g, b, a);
       }
@@ -1111,51 +1111,10 @@ export function bakeNexusVolume(): NexusVolume {
   return { data, atlasW, atlasH, nx, ny, nz, cols, rows, origin, size };
 }
 
-function buildMembranes(nodes: NexusNode[], rng: () => number): NexusMembrane[] {
-  const dense = nodes
-    .filter((node) => !node.mist && node.density > 0.22)
-    .sort((a, b) => b.density - a.density)
-    .slice(0, 56);
-  const patches: NexusMembrane[] = [];
-  if (dense.length < 8) {
-    return patches;
-  }
-  for (let i = 0; i < dense.length && patches.length < 32; i += 1) {
-    const a = dense[i];
-    const b = dense[(i * 5 + 7) % dense.length];
-    const c = dense[(i * 9 + 13) % dense.length];
-    const ab = dist2(a, b);
-    const bc = dist2(b, c);
-    const ca = dist2(c, a);
-    if (ab < 0.002 || bc < 0.002 || ca < 0.002) {
-      continue;
-    }
-    if (ab > 0.048 || bc > 0.048 || ca > 0.048) {
-      continue;
-    }
-    patches.push({
-      ax: a.x,
-      ay: a.y,
-      az: a.z,
-      bx: b.x,
-      by: b.y,
-      bz: b.z,
-      cx: c.x,
-      cy: c.y,
-      cz: c.z,
-      r: (a.r + b.r + c.r) / 3,
-      g: (a.g + b.g + c.g) / 3,
-      b: (a.b + b.b + c.b) / 3,
-      alpha: 0.08 + rng() * 0.045,
-    });
-  }
-  return patches;
-}
-
 export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField {
   const rng = mulberry32(seed);
   const coreTarget = budget.nodes;
-  const mistTarget = budget.nodes < 360 ? 40 : budget.nodes < 500 ? 62 : 84;
+  const mistTarget = 0;
   const nodes: NexusNode[] = [];
   const maxAttempts = coreTarget * 60;
 
@@ -1217,7 +1176,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       r: color.r,
       g: color.g,
       b: color.b,
-      size: 0.54 + density * 0.28 + rng() * 0.12 + color.ribbon * 0.28 - edge * 0.06,
+      size: 0.38 + density * 0.16 + rng() * 0.1 + color.ribbon * 0.28 - edge * 0.08,
       cluster,
       density,
       bright: 0,
@@ -1589,16 +1548,16 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     const gx = (start.x + end.x + mid.x) / 3;
     const gy = (start.y + end.y + mid.y) / 3;
     if (gy > 0.32 && gy < 0.6) {
-      filament.alpha *= 0.82;
+      filament.alpha *= 0.62;
     } else if (gy > 0.12 && gy < 0.32) {
-      filament.alpha *= 0.72;
+      filament.alpha *= 0.5;
     } else if (gy < 0.04) {
-      filament.alpha *= 0.2;
+      filament.alpha *= 0.12;
     } else if (gy < 0.12) {
-      filament.alpha *= 0.4;
+      filament.alpha *= 0.28;
     }
     if (gx > 0.3) {
-      filament.alpha *= 0.5;
+      filament.alpha *= 0.32;
     }
   }
 
@@ -1610,15 +1569,7 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
     { x: 0.12, y: 0.08, z: 0.02, cluster: 3 },
   ];
 
-  const membranes = buildMembranes(coreNodes, rng);
-  return {
-    nodes,
-    filaments,
-    membranes,
-    hubs,
-    foci,
-    volume: bakeNexusVolume(),
-  };
+  return { nodes, filaments, membranes: [], hubs, foci, volume: emptyVolume() };
 }
 
 export function wakePositions(time: number): { wakes: [Vec3, Vec3, Vec3]; nexus: Vec3; boost: number } {
