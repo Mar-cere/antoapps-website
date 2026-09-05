@@ -695,7 +695,7 @@ body:has(.nexus-page) {
   .nexus-bridge,
   .nexus-invite {
     display: grid;
-    grid-template-columns: minmax(16rem, 0.36fr) minmax(0, 0.64fr);
+    grid-template-columns: minmax(20rem, 0.42fr) minmax(0, 0.58fr);
     align-items: start;
     padding: 0 0 0 var(--nexus-pad-x);
   }
@@ -718,10 +718,10 @@ body:has(.nexus-page) {
   .nexus-invite__inner {
     position: sticky;
     isolation: isolate;
-    top: calc(4.25rem + env(safe-area-inset-top, 0px) + 18vh);
-    padding-right: 0.75rem;
+    top: calc(4.25rem + env(safe-area-inset-top, 0px) + 7vh);
+    padding-right: 1.25rem;
     padding-top: 0.25rem;
-    padding-bottom: 14vh;
+    padding-bottom: 10vh;
   }
 
   .nexus-beat__copy::before,
@@ -770,13 +770,13 @@ body:has(.nexus-page) {
   .nexus-beat,
   .nexus-bridge,
   .nexus-invite {
-    grid-template-columns: minmax(18rem, 0.34fr) minmax(0, 0.66fr);
+    grid-template-columns: minmax(22rem, 0.44fr) minmax(0, 0.56fr);
   }
 
   .nexus-beat__copy,
   .nexus-bridge__copy,
   .nexus-invite__inner {
-    padding-right: 0.35rem;
+    padding-right: 1.75rem;
   }
 
   .nexus-organism__field {
@@ -917,10 +917,10 @@ body:has(.nexus-page) {
 
 @media (min-width: 768px) {
   .nexus-world[data-beat='memory'] .nexus-organism__field {
-    --nexus-look-x: 22%;
-    --nexus-look-y: -2%;
-    --nexus-look-s: 1.06;
-    --nexus-look-r: -24deg;
+    --nexus-look-x: 10%;
+    --nexus-look-y: -4%;
+    --nexus-look-s: 1.08;
+    --nexus-look-r: -16deg;
   }
 
   .nexus-world[data-beat='pattern'] .nexus-organism__field {
@@ -994,7 +994,7 @@ body:has(.nexus-page) {
 .nexus-beat__copy,
 .nexus-bridge__copy {
   position: relative;
-  max-width: 38rem;
+  max-width: 42rem;
 }
 
 .nexus-beat__mark {
@@ -1020,21 +1020,29 @@ body:has(.nexus-page) {
 }
 
 .nexus-beat__title {
-  margin: 0 0 0.8rem;
-  font-size: clamp(1.75rem, 3.5vw, 2.85rem);
+  margin: 0 0 1.15rem;
+  font-size: clamp(2.05rem, 4.2vw, 3.35rem);
   font-weight: 400;
-  line-height: 1.12;
+  line-height: 1.1;
   letter-spacing: -0.03em;
   color: #fff;
 }
 
 .nexus-beat__body {
   margin: 0;
-  max-width: 36rem;
-  color: rgba(244, 247, 251, 0.86);
-  font-size: 1.02rem;
+  max-width: 40rem;
+  color: rgba(244, 247, 251, 0.9);
+  font-size: clamp(1.12rem, 1.5vw, 1.35rem);
   font-weight: 400;
   line-height: 1.55;
+}
+
+.nexus-beat__lead {
+  color: #fff;
+}
+
+.nexus-beat__body + .nexus-beat__body {
+  margin-top: 1.15rem;
 }
 
 .nexus-bridge__lead,

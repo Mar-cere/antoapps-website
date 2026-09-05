@@ -22,7 +22,7 @@ export type NexusActiveBeat = 'hero' | NexusBeatId | 'after';
 export type NexusBeatCopy = {
   id: NexusBeatId;
   title: string;
-  body: string;
+  paragraphs: readonly string[];
 };
 
 export type NexusTrustItem = {
@@ -147,17 +147,29 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
         {
           id: 'memory',
           title: 'Recupera el hilo',
-          body: 'El insomnio de anoche. La conversación que no cerraste. Lo que sigue pesando entra en este mensaje.',
+          paragraphs: [
+            'El insomnio de anoche. La conversación que no cerraste.',
+            'Lo que sigue pesando entra en este mensaje. Anto no responde como si acabaras de aparecer.',
+            'Vuelve a lo que ya estaba abierto y hacia dónde ibas.',
+          ],
         },
         {
           id: 'pattern',
           title: 'Nombra lo que se repite',
-          body: 'La misma prisa al anochecer. El mismo nudo cuando hablas de casa. Eso es lo que está pasando ahora, no solo lo que escribiste hace un segundo.',
+          paragraphs: [
+            'La misma prisa al anochecer. El mismo nudo cuando hablas de casa.',
+            'Cuando algo vuelve, lo nombra. No para catalogarte.',
+            'Así entiende qué está pasando ahora, no solo lo que escribiste hace un segundo.',
+          ],
         },
         {
           id: 'strategy',
           title: 'Elige el siguiente paso',
-          body: 'Una pregunta precisa. Un límite. Un paso que se puede dar ahora. Una dirección para este momento, no un discurso.',
+          paragraphs: [
+            'Una pregunta precisa. Un límite. Un paso que se puede dar ahora.',
+            'Con el recuerdo y el patrón, elige una dirección para este momento.',
+            'No un discurso: el siguiente paso más útil, concreto.',
+          ],
         },
       ],
     },
@@ -256,17 +268,29 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
         {
           id: 'memory',
           title: 'Recovers the thread',
-          body: 'Last night without sleep. The conversation you did not close. What still weighs enters this message.',
+          paragraphs: [
+            'Last night without sleep. The conversation you did not close.',
+            'What still weighs enters this message. Anto does not answer as if you had just appeared.',
+            'It returns to what was already open and to where you were heading.',
+          ],
         },
         {
           id: 'pattern',
           title: 'Names what repeats',
-          body: 'The same rush at dusk. The same knot when home comes up. That is what is happening now, not only what you wrote a second ago.',
+          paragraphs: [
+            'The same rush at dusk. The same knot when home comes up.',
+            'When something returns, it names it. Not to label you.',
+            'That is how it understands what is happening now, not only what you wrote a second ago.',
+          ],
         },
         {
           id: 'strategy',
           title: 'Chooses the next step',
-          body: 'A precise question. A boundary. A step you can take now. A direction for this moment, not a speech.',
+          paragraphs: [
+            'A precise question. A boundary. A step you can take now.',
+            'With the memory and the pattern, it chooses a direction for this moment.',
+            'Not a speech: the most useful next step, concrete.',
+          ],
         },
       ],
     },

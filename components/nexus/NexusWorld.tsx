@@ -180,7 +180,14 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
               <h2 id={`nexus-beat-${beat.id}`} className="nexus-beat__title">
                 {beat.title}
               </h2>
-              <p className="nexus-beat__body">{beat.body}</p>
+              {beat.paragraphs.map((paragraph, index) => (
+                <p
+                  key={paragraph}
+                  className={index === 0 ? 'nexus-beat__body nexus-beat__lead' : 'nexus-beat__body'}
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </article>
         ))}
