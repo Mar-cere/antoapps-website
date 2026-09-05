@@ -1055,7 +1055,7 @@ export default function NexusOrganism({
       }
       const toX = shot.camX;
       const toY = shot.camY;
-      const toZ = Math.max(0.42, baseDist * shot.camZMul);
+      const toZ = Math.max(0.64, baseDist * shot.camZMul);
       const te = travelT * travelT * (3 - 2 * travelT);
       const arc = Math.sin(travelT * Math.PI);
       camX = mix(fromX, toX, te);

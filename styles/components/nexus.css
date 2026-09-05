@@ -821,24 +821,24 @@ body:has(.nexus-page) {
   }
 
   .nexus-world[data-beat='memory'] .nexus-organism__field {
-    --nexus-look-x: 16%;
+    --nexus-look-x: 10%;
     --nexus-look-y: -2%;
-    --nexus-look-s: 1.06;
-    --nexus-look-r: -20deg;
+    --nexus-look-s: 1.03;
+    --nexus-look-r: -12deg;
   }
 
   .nexus-world[data-beat='pattern'] .nexus-organism__field {
     --nexus-look-x: 0%;
-    --nexus-look-y: 20%;
-    --nexus-look-s: 0.96;
-    --nexus-look-r: 4deg;
+    --nexus-look-y: 12%;
+    --nexus-look-s: 0.98;
+    --nexus-look-r: 3deg;
   }
 
   .nexus-world[data-beat='strategy'] .nexus-organism__field {
-    --nexus-look-x: 7%;
-    --nexus-look-y: 14%;
-    --nexus-look-s: 1.12;
-    --nexus-look-r: 8deg;
+    --nexus-look-x: 4%;
+    --nexus-look-y: 8%;
+    --nexus-look-s: 1.04;
+    --nexus-look-r: 4deg;
   }
 
   .nexus-world[data-beat='after'] .nexus-organism__field {
@@ -917,24 +917,24 @@ body:has(.nexus-page) {
 
 @media (min-width: 768px) {
   .nexus-world[data-beat='memory'] .nexus-organism__field {
-    --nexus-look-x: 16%;
-    --nexus-look-y: -6%;
-    --nexus-look-s: 1.1;
-    --nexus-look-r: -22deg;
+    --nexus-look-x: 10%;
+    --nexus-look-y: -4%;
+    --nexus-look-s: 1.04;
+    --nexus-look-r: -12deg;
   }
 
   .nexus-world[data-beat='pattern'] .nexus-organism__field {
     --nexus-look-x: 0%;
-    --nexus-look-y: 28%;
-    --nexus-look-s: 0.94;
-    --nexus-look-r: 4deg;
+    --nexus-look-y: 14%;
+    --nexus-look-s: 0.97;
+    --nexus-look-r: 3deg;
   }
 
   .nexus-world[data-beat='strategy'] .nexus-organism__field {
-    --nexus-look-x: 8%;
-    --nexus-look-y: 16%;
-    --nexus-look-s: 1.16;
-    --nexus-look-r: 8deg;
+    --nexus-look-x: 5%;
+    --nexus-look-y: 8%;
+    --nexus-look-s: 1.03;
+    --nexus-look-r: 4deg;
   }
 
   .nexus-world[data-beat='after'] .nexus-organism__field {
