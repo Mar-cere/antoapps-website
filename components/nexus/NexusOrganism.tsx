@@ -93,11 +93,11 @@ void main() {
   activity = mix(activity, lit, active);
   activity = mix(activity, hot, conv);
   vec4 clip = uViewProj * vec4(pos, 1.0);
-  float nearBlur = smoothstep(1.28, 0.5, clip.w);
-  float farDim = smoothstep(3.15, 4.7, clip.w);
-  float sizePx = aSize * mix(1.28, mix(2.15, 3.7, conv), mix(moderate, 1.0, active));
+  float nearLift = smoothstep(1.55, 0.42, clip.w);
+  float farDim = smoothstep(2.85, 4.4, clip.w);
+  float sizePx = aSize * mix(1.42, mix(2.25, 3.9, conv), mix(moderate, 1.0, active));
   sizePx *= mix(1.0, 1.85, aMist);
-  sizePx *= 1.0 + nearBlur * 0.05 + wake * 0.08 + focus * 0.2 + beat * mix(0.52, 0.06, aMist);
+  sizePx *= 1.0 + nearLift * 0.58 + wake * 0.08 + focus * 0.2 + beat * mix(0.52, 0.06, aMist);
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
   vCorner = aCorner;
@@ -123,7 +123,9 @@ void main() {
   vAlpha = mix(0.36 + 0.48 * activity, 0.034 + 0.016 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.08 + wake * mix(0.26, 0.04, aMist) + focus * mix(0.5, 0.06, aMist) + beat * mix(1.15, 0.06, aMist);
   vAlpha *= mix(uDim, 1.0, isolate);
-  vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
+  float occlude = smoothstep(0.1, 0.48, aDensity);
+  vAlpha *= (1.0 + nearLift * 0.32) * mix(0.62, 1.0, occlude);
+  vAlpha *= 1.0 - farDim * 0.55;
 }
 `;
 
@@ -223,7 +225,9 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
-  float px = 0.58 + flowPulse * 0.62;
+  float px = 0.95 + flowPulse * 0.78;
+  float nearLift = smoothstep(1.6, 0.45, pos.w);
+  px *= 1.0 + nearLift * 0.7;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
@@ -422,15 +426,15 @@ void main() {
     pos.x += 0.012 * sin(uTime * 0.32 + pos.y * 2.4 + pos.z * 1.3);
     pos.y += 0.008 * cos(uTime * 0.28 + pos.x * 1.9);
     vec4 s = sampleVol(pos);
-    if (s.a >= 0.1) {
+    if (s.a >= 0.06) {
       float wake = max(act(pos, uWake0), max(act(pos, uWake1), act(pos, uWake2)));
-      float dens = max(0.0, s.a - 0.14) * (1.0 + wake * 0.05);
-      float absorb = 1.0 - exp(-dens * dens * 1.45 * dt * 8.0);
+      float dens = max(0.0, s.a - 0.08) * (1.0 + wake * 0.08);
+      float absorb = 1.0 - exp(-dens * dens * 1.55 * dt * 8.0);
       float keep = 1.0 - alpha;
-      acc += s.rgb * absorb * keep;
+      acc += s.rgb * absorb * keep * 1.45;
       alpha += absorb * keep;
     }
-    if (alpha > 0.76) {
+    if (alpha > 0.88) {
       break;
     }
   }
@@ -438,12 +442,12 @@ void main() {
     discard;
   }
   float luma = dot(acc, vec3(0.22, 0.55, 0.23));
-  if (luma > 0.2) {
-    acc *= 0.2 / luma;
+  if (luma > 0.52) {
+    acc *= 0.52 / luma;
   }
   float peak = max(acc.r, max(acc.g, acc.b));
-  if (peak > 0.36) {
-    acc *= 0.36 / peak;
+  if (peak > 0.7) {
+    acc *= 0.7 / peak;
   }
   gl_FragColor = vec4(acc, alpha);
 }
@@ -728,7 +732,8 @@ export default function NexusOrganism({
       gl.bindBuffer(gl.ARRAY_BUFFER, membBuffer);
       gl.bufferData(gl.ARRAY_BUFFER, memb, gl.STATIC_DRAW);
 
-      if (volProg && volTex && field.volume) {
+      volReady = false;
+      if (volProg && volTex && field.volume.nz > 1) {
         const vol = field.volume;
         gl.bindTexture(gl.TEXTURE_2D, volTex);
         gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
@@ -1128,6 +1133,43 @@ export default function NexusOrganism({
       gl.disable(gl.DEPTH_TEST);
       gl.enable(gl.BLEND);
       gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+
+      const fieldNow = fieldRef.current;
+      if (volReady && volProg && uVol && volTex && fieldNow && fieldNow.volume.nz > 1) {
+        const vol = fieldNow.volume;
+        disableAttribs(gl);
+        gl.useProgram(volProg);
+        gl.bindBuffer(gl.ARRAY_BUFFER, volBuffer);
+        const locCorner = gl.getAttribLocation(volProg, 'aCorner');
+        if (locCorner >= 0) {
+          gl.enableVertexAttribArray(locCorner);
+          gl.vertexAttribPointer(locCorner, 3, gl.FLOAT, false, 0, 0);
+        }
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, volTex);
+        gl.uniform1i(uVol.vol, 0);
+        gl.uniformMatrix4fv(uVol.view, false, viewProj);
+        gl.uniform3f(uVol.origin, vol.origin.x, vol.origin.y, vol.origin.z);
+        gl.uniform3f(uVol.size, vol.size.x, vol.size.y, vol.size.z);
+        gl.uniform3f(uVol.cam, liveX, liveY, liveZ);
+        gl.uniform3f(uVol.w0, wakes[0].x, wakes[0].y, wakes[0].z);
+        gl.uniform3f(uVol.w1, wakes[1].x, wakes[1].y, wakes[1].z);
+        gl.uniform3f(uVol.w2, wakes[2].x, wakes[2].y, wakes[2].z);
+        gl.uniform1f(uVol.time, time);
+        gl.uniform2f(uVol.atlas, vol.atlasW, vol.atlasH);
+        gl.uniform2f(uVol.grid, vol.nx, vol.ny);
+        gl.uniform2f(uVol.tiles, vol.cols, vol.rows);
+        gl.uniform1f(uVol.nz, vol.nz);
+        gl.drawArrays(gl.TRIANGLES, 0, 36);
+      }
+
+      if (membCount && membProg && uMemb) {
+        disableAttribs(gl);
+        bindMemb();
+        gl.uniformMatrix4fv(uMemb.view, false, viewProj);
+        gl.uniform1f(uMemb.time, time);
+        gl.drawArrays(gl.TRIANGLES, 0, membCount);
+      }
 
       const setNodeScene = () => {
         gl.uniformMatrix4fv(uNode.view, false, viewProj);

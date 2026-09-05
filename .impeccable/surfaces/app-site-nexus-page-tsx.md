@@ -20,7 +20,7 @@ Probar Anto → `/bienvenida`. CTA quieto en el header; CTA grande después de l
 Brief-pinned: constelación orgánica (placa WebP + WebGL sutil), no cerebro, no tres lóbulos, no foto editorial. Excepción acotada a esta ruta. Un mundo, dos actos: el campo continúa al scroll y las etiquetas se vuelven lectura.
 
 ## Memorable moment
-Campo vivo a la derecha; al bajar, la cámara viaja en arco a un plano distinto (lado, arriba, cerca) y orbita el nudo. Cada pensamiento es una columna de lectura precisa: título más tres párrafos. Al CTA, el campo se queda quieto y bajo; la confianza es solo tipo.
+Campo vivo a la derecha; al bajar, la cámara viaja en arco a un plano distinto (lado, arriba, cerca) y orbita el nudo. De cerca el campo tiene masa, no es un recorte. Cada pensamiento es una columna de lectura precisa: título más tres párrafos. Al CTA, el campo se queda quieto y bajo; la confianza es solo tipo.
 
 ## Constraints
 Chrome Anto (Inter/SF, teal, navy). Violeta solo en el canvas y en el highlight del H1. Sin KPI. `prefers-reduced-motion`. Paridad ES/EN. Footer mínimo para idioma y legal. Confianza al final con puentes a `/seguridad` e `/investigacion`.

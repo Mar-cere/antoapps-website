@@ -324,8 +324,8 @@ body:has(.nexus-page) {
   height: 100%;
   pointer-events: none;
   background: transparent;
-  mix-blend-mode: plus-lighter;
-  filter: contrast(1.08);
+  mix-blend-mode: normal;
+  filter: contrast(1.12);
 }
 
 .nexus-event {
@@ -502,11 +502,9 @@ body:has(.nexus-page) {
   0%,
   100% {
     transform: scale(1);
-    opacity: 0.66;
   }
   50% {
     transform: scale(1.012);
-    opacity: 0.76;
   }
 }
 
@@ -658,7 +656,7 @@ body:has(.nexus-page) {
   }
 
   .nexus-organism__plate {
-    opacity: 0.72;
+    opacity: 0.5;
     object-position: 52% 44%;
   }
 
@@ -949,19 +947,15 @@ body:has(.nexus-page) {
   }
 }
 
-.nexus-world[data-beat='memory'] .nexus-organism__plate {
-  opacity: 0.8;
-  filter: saturate(1.2) contrast(1.22);
-}
-
-.nexus-world[data-beat='pattern'] .nexus-organism__plate {
-  opacity: 0.78;
-  filter: saturate(1.18) contrast(1.2);
-}
-
+.nexus-world[data-beat='memory'] .nexus-organism__plate,
+.nexus-world[data-beat='pattern'] .nexus-organism__plate,
 .nexus-world[data-beat='strategy'] .nexus-organism__plate {
-  opacity: 0.76;
-  filter: saturate(1.16) contrast(1.18);
+  opacity: 0.2;
+  filter: saturate(1.08) contrast(1.12);
+}
+
+.nexus-world[data-beat='after'] .nexus-organism__plate {
+  opacity: 0.3;
 }
 
 .nexus-world.is-released .nexus-stage {
