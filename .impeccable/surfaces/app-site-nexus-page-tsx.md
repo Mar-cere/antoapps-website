@@ -14,13 +14,13 @@ Experience + Persuade
 Visitante curious-trust que debe sentir que la inteligencia de Anto está viva, comprende y sigue construyendo contexto.
 
 ## Primary action
-Probar Anto → `/bienvenida` (CTA único en el header).
+Probar Anto → `/bienvenida`. CTA quieto en el header; CTA grande después de la tríada (mismo intent, otra jerarquía).
 
 ## Direction
-Brief-pinned: constelación orgánica (placa WebP + WebGL sutil), no cerebro, no tres lóbulos, no foto editorial. Excepción acotada a esta ruta.
+Brief-pinned: constelación orgánica (placa WebP + WebGL sutil), no cerebro, no tres lóbulos, no foto editorial. Excepción acotada a esta ruta. Un mundo, dos actos: el campo continúa al scroll y las etiquetas se vuelven lectura.
 
 ## Memorable moment
-Campo vivo a la derecha (Psyche/Persona/Cortex mezclados; Nexus como convergencia temporal) + titular “te comprende / understands you”.
+Campo vivo a la derecha (Psyche/Persona/Cortex mezclados; Nexus como convergencia temporal) + titular “te comprende / understands you”, luego recuerdo → patrón → estrategia.
 
 ## Constraints
-Chrome Anto (Inter/SF, teal, navy). Violeta solo en el canvas y en el highlight del H1. Sin KPI. `prefers-reduced-motion`. Paridad ES/EN. Una escena; footer mínimo para idioma y legal.
+Chrome Anto (Inter/SF, teal, navy). Violeta solo en el canvas y en el highlight del H1. Sin KPI. `prefers-reduced-motion`. Paridad ES/EN. Footer mínimo para idioma y legal. Confianza al final con puentes a `/seguridad` e `/investigacion`.

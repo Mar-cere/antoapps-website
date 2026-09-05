@@ -1,6 +1,6 @@
 'use client';
 
-import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getNexusPageCopy } from '@/lib/i18n/copy/pages/nexus';
@@ -8,23 +8,9 @@ import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import NexusNav from '@/components/nexus/NexusNav';
-import { NEXUS_CONSTELLATION_PLATE, NEXUS_CONSTELLATION_PLATE_PNG } from '@/lib/nexus/field';
+import NexusWorld from '@/components/nexus/NexusWorld';
 import '@/styles/pages/home-landing-final.css';
 import '@/styles/components/nexus.css';
-
-const NexusOrganism = dynamic(() => import('@/components/nexus/NexusOrganism'), {
-  ssr: false,
-  loading: () => (
-    <div className="nexus-organism">
-      <div className="nexus-organism__field" aria-hidden="true">
-        <picture>
-          <source srcSet={NEXUS_CONSTELLATION_PLATE} type="image/webp" />
-          <img className="nexus-organism__plate" src={NEXUS_CONSTELLATION_PLATE_PNG} alt="" />
-        </picture>
-      </div>
-    </div>
-  ),
-});
 
 type NexusPageContentProps = {
   locale: Locale;
@@ -32,9 +18,10 @@ type NexusPageContentProps = {
 
 const CONTRACT = `THESIS: Anto's intelligence as a living constellation, not a brain, a cloud, or a particle sphere.
 OWN-WORLD: Near-black navy, Inter/SF, teal chrome; plate plus subtle WebGL; glass event cards.
-STORY: Conversations shape a system that understands you; try Anto.
+STORY: Conversations shape a system that understands you; memory, pattern, strategy; try Anto.
 FIRST VIEWPORT: copy left, organic constellation center-right, CTA in nav only.
-FORM: brief-pinned cinematic constellation.
+SECOND ACT: same field continues; labels become reading; large CTA after; trust last.
+FORM: brief-pinned cinematic constellation in one world, two acts.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md`;
 
 export default function NexusPageContent({ locale }: NexusPageContentProps) {
@@ -50,26 +37,33 @@ export default function NexusPageContent({ locale }: NexusPageContentProps) {
         </a>
         <NexusNav locale={locale} copy={copy.nav} />
         <main id="main-content" lang={locale}>
-          <section className="nexus-hero" aria-labelledby="nexus-title">
-            <div className="nexus-copy">
-              <p className="nexus-eyebrow">{copy.hero.eyebrow}</p>
-              <h1 id="nexus-title" className="nexus-title">
-                <span className="nexus-title__line">{copy.hero.line1}</span>
-                <span className="nexus-title__line">{copy.hero.line2}</span>
-                <span className="nexus-title__line">
-                  {copy.hero.line3Prefix}
-                  <span className="nexus-highlight">{copy.hero.highlight}</span>
-                </span>
-              </h1>
-              <p className="nexus-support">
-                {copy.hero.supportLines.map((line) => (
-                  <span key={line}>{line}</span>
-                ))}
-              </p>
+          <NexusWorld copy={copy} />
+          <section className="nexus-invite" aria-labelledby="nexus-invite-title">
+            <div className="nexus-invite__inner">
+              <h2 id="nexus-invite-title" className="nexus-invite__title">
+                {copy.invite.title}
+              </h2>
+              <Link href={copy.invite.ctaHref} className="nexus-invite__cta">
+                {copy.invite.cta}
+              </Link>
+              <p className="nexus-invite__limit">{copy.invite.limit}</p>
             </div>
-            <div className="nexus-stage">
-              <NexusOrganism events={copy.events} label={copy.organismAria} />
-            </div>
+          </section>
+          <section className="nexus-trust" aria-labelledby="nexus-trust-title">
+            <h2 id="nexus-trust-title" className="visually-hidden">
+              {copy.trust.aria}
+            </h2>
+            <ul className="nexus-trust__list">
+              {copy.trust.items.map((item) => (
+                <li key={item.id} className="nexus-trust__item">
+                  <h3 className="nexus-trust__heading">{item.title}</h3>
+                  <p className="nexus-trust__body">{item.body}</p>
+                  <Link href={item.href} className="nexus-trust__link">
+                    {item.linkLabel}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </section>
         </main>
         <HomeMinimalFooter locale={locale} switchPath="/nexus" />

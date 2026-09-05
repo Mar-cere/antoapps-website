@@ -150,12 +150,17 @@ body:has(.nexus-page) {
     0 0 22px rgba(34, 211, 238, 0.16);
 }
 
+.nexus-world {
+  position: relative;
+}
+
 .nexus-hero {
   position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: 1fr;
   min-height: 100dvh;
-  overflow: hidden;
+  overflow: visible;
   padding: calc(4.75rem + env(safe-area-inset-top, 0px)) var(--nexus-pad-x) 1.5rem;
   gap: 0.75rem;
 }
@@ -226,11 +231,15 @@ body:has(.nexus-page) {
 
 .nexus-stage {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1;
+  height: 100dvh;
   min-height: 0;
-  margin: 0 calc(var(--nexus-pad-x) * -1);
   overflow: hidden;
+  pointer-events: none;
+  transition: opacity 0.65s ease, visibility 0.65s ease;
 }
 
 .nexus-organism {
@@ -240,6 +249,7 @@ body:has(.nexus-page) {
   height: 100%;
   min-height: 22rem;
   pointer-events: none;
+  transition: opacity 0.7s ease;
 }
 
 .nexus-organism::after {
@@ -270,11 +280,11 @@ body:has(.nexus-page) {
   transform: scale(1.16) rotate(44deg);
   transform-origin: 78% 22%;
   -webkit-mask-image:
-    linear-gradient(180deg, transparent 0%, #000 10%, #000 78%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 10%, #000 92%, transparent 100%),
     linear-gradient(90deg, #000 0%, #000 86%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(180deg, transparent 0%, #000 10%, #000 78%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 10%, #000 92%, transparent 100%),
     linear-gradient(90deg, #000 0%, #000 86%, transparent 100%);
   mask-composite: intersect;
 }
@@ -382,7 +392,7 @@ body:has(.nexus-page) {
 }
 
 @media (min-width: 768px) {
-  .nexus-event {
+  .nexus-event.is-on {
     opacity: 1;
   }
 }
@@ -422,7 +432,7 @@ body:has(.nexus-page) {
 .nexus-page .home-landing-footer {
   position: relative;
   z-index: 3;
-  background: transparent;
+  background: var(--nexus-bg);
   border-top: 0;
 }
 
@@ -609,8 +619,12 @@ body:has(.nexus-page) {
   }
 
   .nexus-stage {
-    inset: 0 0 0 10%;
-    margin: 0;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100dvh;
+    margin-bottom: -100dvh;
   }
 
   .nexus-organism::after {
@@ -641,15 +655,15 @@ body:has(.nexus-page) {
   }
 
   .nexus-organism__field {
-    inset: 4% -6% 8% 14%;
+    inset: 4% -6% 0 14%;
     transform: scale(1.44) rotate(50deg);
     transform-origin: 66% 30%;
     -webkit-mask-image:
-      linear-gradient(180deg, transparent 0%, #000 8%, #000 80%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 8%, #000 90%, transparent 100%),
       linear-gradient(90deg, #000 0%, #000 88%, transparent 100%);
     -webkit-mask-composite: source-in;
     mask-image:
-      linear-gradient(180deg, transparent 0%, #000 8%, #000 80%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 8%, #000 90%, transparent 100%),
       linear-gradient(90deg, #000 0%, #000 88%, transparent 100%);
     mask-composite: intersect;
   }
@@ -687,6 +701,36 @@ body:has(.nexus-page) {
     left: 30%;
     right: auto;
   }
+
+  .nexus-sequence {
+    background: transparent;
+  }
+
+  .nexus-beat,
+  .nexus-bridge {
+    display: grid;
+    grid-template-columns: minmax(16rem, 0.36fr) minmax(0, 0.64fr);
+    align-items: center;
+    padding: 0 0 0 var(--nexus-pad-x);
+  }
+
+  .nexus-beat {
+    min-height: 82dvh;
+  }
+
+  .nexus-bridge {
+    min-height: 58dvh;
+    padding-bottom: 8vh;
+  }
+
+  .nexus-beat__copy,
+  .nexus-bridge__copy {
+    padding-right: 0.75rem;
+  }
+
+  .nexus-world[data-beat='hero'] .nexus-event {
+    opacity: 1;
+  }
 }
 
 @media (min-width: 960px) {
@@ -703,6 +747,16 @@ body:has(.nexus-page) {
     max-width: min(46rem, 54vw);
   }
 
+  .nexus-beat,
+  .nexus-bridge {
+    grid-template-columns: minmax(18rem, 0.34fr) minmax(0, 0.66fr);
+  }
+
+  .nexus-beat__copy,
+  .nexus-bridge__copy {
+    padding-right: 0.35rem;
+  }
+
   .nexus-organism__field {
     inset: auto -8% auto auto;
     top: 50%;
@@ -711,11 +765,11 @@ body:has(.nexus-page) {
     transform: translate(7%, -24%) scale(1.68, 1.3) rotate(50deg);
     transform-origin: 64% 34%;
     -webkit-mask-image:
-      linear-gradient(180deg, transparent 0%, #000 16%, #000 82%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 16%, #000 92%, transparent 100%),
       linear-gradient(90deg, #000 0%, #000 90%, transparent 100%);
     -webkit-mask-composite: source-in;
     mask-image:
-      linear-gradient(180deg, transparent 0%, #000 16%, #000 82%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 16%, #000 92%, transparent 100%),
       linear-gradient(90deg, #000 0%, #000 90%, transparent 100%);
     mask-composite: intersect;
   }
@@ -724,5 +778,247 @@ body:has(.nexus-page) {
 @media (max-width: 767px) {
   .nexus-event {
     max-width: 8.2rem;
+  }
+
+  .nexus-sequence {
+    background: var(--nexus-bg);
+  }
+
+  .nexus-beat {
+    padding: 3.1rem var(--nexus-pad-x) 1.25rem;
+  }
+
+  .nexus-bridge {
+    padding: 2.75rem var(--nexus-pad-x) 4.25rem;
+  }
+}
+
+.nexus-world:not([data-beat='hero']) .nexus-event,
+.nexus-world:not([data-beat='hero']) .nexus-event.is-on {
+  opacity: 0;
+}
+
+.nexus-world.is-released .nexus-stage {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.nexus-world[data-beat='after'] .nexus-organism {
+  opacity: 0.48;
+}
+
+.nexus-world__end {
+  height: 1px;
+  pointer-events: none;
+}
+
+.nexus-sequence {
+  position: relative;
+  z-index: 2;
+}
+
+.nexus-beat__copy,
+.nexus-bridge__copy {
+  position: relative;
+  max-width: 38rem;
+}
+
+.nexus-beat__mark {
+  margin: 0 0 0.85rem;
+  line-height: 0;
+}
+
+.nexus-beat__icon {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.nexus-beat[data-event='memory'] .nexus-beat__icon {
+  color: #c4a0ff;
+}
+
+.nexus-beat[data-event='pattern'] .nexus-beat__icon {
+  color: var(--nexus-cyan);
+}
+
+.nexus-beat[data-event='strategy'] .nexus-beat__icon {
+  color: #f0a0c4;
+}
+
+.nexus-beat__title {
+  margin: 0 0 0.8rem;
+  font-size: clamp(1.55rem, 3.1vw, 2.35rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.nexus-beat__body {
+  margin: 0;
+  max-width: 36rem;
+  color: var(--nexus-muted);
+  font-size: 1.02rem;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.nexus-bridge__lead,
+.nexus-bridge__promise {
+  margin: 0;
+  max-width: 34rem;
+  color: var(--nexus-text);
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+.nexus-bridge__lead {
+  color: rgba(244, 247, 251, 0.82);
+}
+
+.nexus-bridge__promise {
+  margin-top: 0.55rem;
+  color: #fff;
+}
+
+.nexus-invite,
+.nexus-trust {
+  position: relative;
+  z-index: 3;
+  background: var(--nexus-bg);
+}
+
+.nexus-invite {
+  padding: clamp(4.25rem, 11vh, 6.75rem) var(--nexus-pad-x) clamp(3.25rem, 8vh, 5rem);
+}
+
+.nexus-invite__inner {
+  max-width: 36rem;
+}
+
+.nexus-invite__title {
+  margin: 0 0 1.45rem;
+  font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.032em;
+  color: #fff;
+}
+
+.nexus-invite__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.7rem 1.35rem;
+  border-radius: 0.65rem;
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.nexus-invite__cta:hover {
+  filter: brightness(1.06);
+}
+
+.nexus-invite__cta:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.nexus-invite__limit {
+  margin: 1.1rem 0 0;
+  max-width: 36rem;
+  color: var(--nexus-faint);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.nexus-trust {
+  padding: 0 var(--nexus-pad-x) clamp(4rem, 10vh, 6.5rem);
+}
+
+.nexus-trust__list {
+  list-style: none;
+  max-width: 42rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nexus-trust__item + .nexus-trust__item {
+  margin-top: 1.15rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nexus-trust__heading {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.nexus-trust__body {
+  margin: 0 0 0.45rem;
+  color: var(--nexus-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.nexus-trust__link {
+  color: var(--nexus-cyan);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.nexus-trust__link:hover {
+  text-decoration: underline;
+}
+
+.nexus-trust__link:focus-visible {
+  outline: 2px solid var(--nexus-cyan);
+  outline-offset: 3px;
+}
+
+.nexus-nav__link:focus-visible,
+.nexus-nav__cta:focus-visible,
+.nexus-nav__brand:focus-visible {
+  outline: 2px solid var(--nexus-cyan);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nexus-stage {
+    position: absolute;
+    margin-bottom: 0;
+  }
+
+  .nexus-sequence {
+    background: var(--nexus-bg);
+  }
+
+  .nexus-organism,
+  .nexus-world[data-beat='after'] .nexus-organism {
+    opacity: 1;
+    transition: none;
+  }
+
+  .nexus-beat {
+    min-height: 0;
+    padding-top: 2.75rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .nexus-bridge {
+    min-height: 0;
+    padding-bottom: 3.25rem;
   }
 }
