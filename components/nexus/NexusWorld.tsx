@@ -53,7 +53,7 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
 
     const visible = new Set<NexusActiveBeat>();
     const pick = () => {
-      const targetY = window.innerHeight * 0.32;
+      const targetY = window.innerHeight * 0.36;
       let containing: NexusActiveBeat | null = null;
       let best: NexusActiveBeat = 'hero';
       let bestDist = Number.POSITIVE_INFINITY;
@@ -66,7 +66,7 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
         if (rect.top <= targetY && rect.bottom >= targetY) {
           containing = id;
         }
-        const dist = Math.abs(rect.top + Math.min(rect.height * 0.18, 72) - targetY);
+        const dist = Math.abs(rect.top + Math.min(rect.height * 0.22, 88) - targetY);
         if (dist < bestDist) {
           bestDist = dist;
           best = id;
@@ -79,7 +79,7 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
       }
       const end = endRef.current;
       if (end) {
-        const gonePast = end.getBoundingClientRect().bottom < window.innerHeight * 0.38;
+        const gonePast = end.getBoundingClientRect().bottom < window.innerHeight * 0.42;
         setReleased((prev) => (prev === gonePast ? prev : gonePast));
       }
     };
@@ -99,7 +99,10 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
         }
         pick();
       },
-      { threshold: [0.08, 0.2, 0.35, 0.5, 0.7] }
+      {
+        threshold: [0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.5, 0.62, 0.75, 0.88, 1],
+        rootMargin: '-14% 0px -46% 0px',
+      }
     );
 
     for (const { el } of items) {
