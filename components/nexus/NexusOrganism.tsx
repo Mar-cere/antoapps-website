@@ -872,6 +872,9 @@ export default function NexusOrganism({
     let tintAmt = heroLook.tintAmt;
     let dim = heroLook.dim;
     let wakePin = heroLook.wakePin;
+    let orbitX = heroLook.orbitX;
+    let orbitY = heroLook.orbitY;
+    let orbitZ = heroLook.orbitZ;
     let lastBudget = 0;
     let foci: [Vec3, Vec3, Vec3, Vec3] = [
       { x: 0.14, y: 0.44, z: 0.04 },
@@ -1033,13 +1036,15 @@ export default function NexusOrganism({
       tintAmt = mix(tintAmt, shot.tintAmt, ease);
       dim = mix(dim, shot.dim, ease);
       wakePin = mix(wakePin, shot.wakePin, ease);
-      const orbit = reduced ? 0 : shot.orbit;
+      orbitX = mix(orbitX, reduced ? 0 : shot.orbitX, ease);
+      orbitY = mix(orbitY, reduced ? 0 : shot.orbitY, ease);
+      orbitZ = mix(orbitZ, reduced ? 0 : shot.orbitZ, ease);
       const phase = beat === 'memory' ? 0.35 : beat === 'pattern' ? 2.15 : beat === 'strategy' ? 4.05 : 0;
       const ang = time * 0.4 + phase;
-      const amp = orbit * (window.innerWidth < 768 ? 0.038 : 0.09);
-      const liveX = camX + Math.sin(ang) * amp;
-      const liveY = camY + Math.cos(ang * 0.62) * amp * 0.4;
-      const liveZ = camZ + Math.cos(ang) * amp * 0.52;
+      const amp = window.innerWidth < 768 ? 0.038 : 0.09;
+      const liveX = camX + Math.sin(ang) * amp * orbitX;
+      const liveY = camY + Math.cos(ang * 0.62) * amp * orbitY;
+      const liveZ = camZ + Math.cos(ang) * amp * orbitZ;
       const proj = perspective((fovDeg * Math.PI) / 180, aspect, 0.12, 10);
       viewProj = multiply4(proj, lookAt(liveX, liveY, liveZ, lookX, lookY, lookZ));
 

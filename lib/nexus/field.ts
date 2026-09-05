@@ -1618,7 +1618,9 @@ export type NexusBeatLook = {
   dim: number;
   boostMul: number;
   wakePin: number;
-  orbit: number;
+  orbitX: number;
+  orbitY: number;
+  orbitZ: number;
 };
 
 const FOCUS_MEMORY = { x: FOCI[0].cx, y: FOCI[0].cy, z: FOCI[0].cz };
@@ -1641,55 +1643,66 @@ export const NEXUS_BEAT_LOOK: Record<NexusBeatLookId, NexusBeatLook> = {
     dim: 1,
     boostMul: 1,
     wakePin: 0,
-    orbit: 0,
+    orbitX: 0,
+    orbitY: 0,
+    orbitZ: 0,
   },
+  // Perfil: cámara a la derecha, masa de lado.
   memory: {
-    camX: 0.22,
-    camY: 0.56,
-    camZMul: 0.56,
+    camX: 0.56,
+    camY: 0.38,
+    camZMul: 0.86,
     lookX: FOCUS_MEMORY.x,
     lookY: FOCUS_MEMORY.y,
     lookZ: FOCUS_MEMORY.z,
-    fov: 24,
+    fov: 28,
     gain: [2.35, 0.55, 0.48, 0.64],
     tint: [0.66, 0.3, 0.9],
     tintAmt: 0.18,
-    dim: 0.6,
+    dim: 0.62,
     boostMul: 1.45,
     wakePin: 0.4,
-    orbit: 1,
+    orbitX: 0.18,
+    orbitY: 0.42,
+    orbitZ: 1.28,
   },
+  // Picado: cámara alta, mira hacia abajo.
   pattern: {
-    camX: -0.24,
-    camY: 0.24,
-    camZMul: 0.54,
+    camX: 0.04,
+    camY: 0.78,
+    camZMul: 0.7,
     lookX: FOCUS_PATTERN.x,
     lookY: FOCUS_PATTERN.y,
     lookZ: FOCUS_PATTERN.z,
-    fov: 25,
+    fov: 32,
     gain: [0.5, 2.32, 0.52, 0.66],
     tint: [0.16, 0.9, 0.96],
     tintAmt: 0.16,
-    dim: 0.58,
+    dim: 0.6,
     boostMul: 1.4,
     wakePin: 0.38,
-    orbit: 1,
+    orbitX: 1.18,
+    orbitY: 0.12,
+    orbitZ: 1.05,
   },
+  // Primer plano: cerca del nudo de estrategia.
   strategy: {
-    camX: 0.26,
-    camY: 0.04,
-    camZMul: 0.52,
+    camX: 0.16,
+    camY: 0.2,
+    camZMul: 0.44,
     lookX: FOCUS_STRATEGY.x,
     lookY: FOCUS_STRATEGY.y,
     lookZ: FOCUS_STRATEGY.z,
-    fov: 23,
+    fov: 20,
     gain: [0.48, 0.5, 2.4, 0.8],
     tint: [0.82, 0.4, 0.5],
     tintAmt: 0.17,
-    dim: 0.58,
+    dim: 0.6,
     boostMul: 1.48,
     wakePin: 0.42,
-    orbit: 0.92,
+    orbitX: 0.28,
+    orbitY: 0.16,
+    orbitZ: 0.34,
   },
   after: {
     camX: -0.02,
@@ -1705,7 +1718,9 @@ export const NEXUS_BEAT_LOOK: Record<NexusBeatLookId, NexusBeatLook> = {
     dim: 0.9,
     boostMul: 0.72,
     wakePin: 0.06,
-    orbit: 0.08,
+    orbitX: 0.06,
+    orbitY: 0.04,
+    orbitZ: 0.08,
   },
 };
 

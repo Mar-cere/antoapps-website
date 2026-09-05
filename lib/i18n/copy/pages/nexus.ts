@@ -10,7 +10,7 @@ export type NexusNavItem = {
 };
 
 export type NexusEventCopy = {
-  id: 'memory' | 'pattern' | 'knowledge' | 'strategy';
+  id: 'memory' | 'pattern' | 'strategy';
   title: string;
   subtitle: string;
 };
@@ -23,7 +23,6 @@ export type NexusBeatCopy = {
   id: NexusBeatId;
   title: string;
   body: string;
-  detail: string;
 };
 
 export type NexusTrustItem = {
@@ -128,10 +127,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       line3Prefix: 'que ',
       highlight: 'te comprende.',
       supportLines: [
-        'Anto conecta conocimiento psicológico,',
-        'contexto personal y aprendizaje continuo',
-        'para entender lo que importa ahora',
-        'y encontrar el camino más útil.',
+        'No parte de un mensaje suelto.',
+        'Trae lo que ya dijiste y sigue pesando.',
       ],
     },
     status: {
@@ -150,20 +147,17 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
         {
           id: 'memory',
           title: 'Recupera el hilo',
-          body: 'Anto no trata cada mensaje como si fuera el primero. Recupera el hilo: lo que ya dijiste, lo que sigue pesando, hacia dónde ibas.',
-          detail: 'El insomnio de anoche. La conversación que no cerraste. Hacia dónde ibas.',
+          body: 'El insomnio de anoche. La conversación que no cerraste. Lo que sigue pesando entra en este mensaje.',
         },
         {
           id: 'pattern',
           title: 'Nombra lo que se repite',
-          body: 'Cuando algo se repite, lo nombra. No para catalogarte: para entender qué está pasando ahora, no solo lo que escribiste hace un segundo.',
-          detail: 'La misma prisa al anochecer. El mismo nudo cuando hablas de casa.',
+          body: 'La misma prisa al anochecer. El mismo nudo cuando hablas de casa. Eso es lo que está pasando ahora, no solo lo que escribiste hace un segundo.',
         },
         {
           id: 'strategy',
           title: 'Elige el siguiente paso',
-          body: 'Con ese contexto elige el siguiente paso más útil. No un discurso. Una dirección concreta para este momento.',
-          detail: 'Una pregunta precisa. Un límite. Un paso que se puede dar ahora.',
+          body: 'Una pregunta precisa. Un límite. Un paso que se puede dar ahora. Una dirección para este momento, no un discurso.',
         },
       ],
     },
@@ -242,10 +236,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       line3Prefix: 'that ',
       highlight: 'understands you.',
       supportLines: [
-        'Anto connects psychological knowledge,',
-        'personal context and continuous learning',
-        'to understand what matters now',
-        'and find the most useful way forward.',
+        'It does not start from a single message.',
+        'It brings what you already said and what still weighs.',
       ],
     },
     status: {
@@ -264,20 +256,17 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
         {
           id: 'memory',
           title: 'Recovers the thread',
-          body: 'Anto does not treat each message as if it were the first. It recovers the thread: what you already said, what still weighs, where you were heading.',
-          detail: 'Last night without sleep. The conversation you did not close. Where you were heading.',
+          body: 'Last night without sleep. The conversation you did not close. What still weighs enters this message.',
         },
         {
           id: 'pattern',
           title: 'Names what repeats',
-          body: 'When something repeats, it names it. Not to label you: to understand what is happening now, not only what you wrote a second ago.',
-          detail: 'The same rush at dusk. The same knot when home comes up.',
+          body: 'The same rush at dusk. The same knot when home comes up. That is what is happening now, not only what you wrote a second ago.',
         },
         {
           id: 'strategy',
           title: 'Chooses the next step',
-          body: 'With that context it chooses the most useful next step. Not a speech. A concrete direction for this moment.',
-          detail: 'A precise question. A boundary. A step you can take now.',
+          body: 'A precise question. A boundary. A step you can take now. A direction for this moment, not a speech.',
         },
       ],
     },

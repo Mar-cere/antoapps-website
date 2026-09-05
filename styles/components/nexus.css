@@ -361,7 +361,6 @@ body:has(.nexus-page) {
 }
 
 .nexus-event[data-event='pattern'],
-.nexus-event[data-event='knowledge'],
 .nexus-event[data-event='strategy'] {
   top: auto;
   bottom: 16%;
@@ -461,10 +460,6 @@ body:has(.nexus-page) {
     animation: nexus-float-b 8.6s ease-in-out infinite;
   }
 
-  .nexus-event[data-event='knowledge'] {
-    animation: nexus-float-c 6.8s ease-in-out infinite;
-  }
-
   .nexus-event[data-event='strategy'] {
     animation: nexus-float-a 9.2s ease-in-out infinite;
     animation-delay: -2.4s;
@@ -473,7 +468,6 @@ body:has(.nexus-page) {
   @media (max-width: 767px) {
     .nexus-event[data-event='memory'],
     .nexus-event[data-event='pattern'],
-    .nexus-event[data-event='knowledge'],
     .nexus-event[data-event='strategy'] {
       animation: none;
     }
@@ -484,10 +478,6 @@ body:has(.nexus-page) {
 
     .nexus-event.is-on[data-event='pattern'] {
       animation: nexus-float-b 8.6s ease-in-out infinite;
-    }
-
-    .nexus-event.is-on[data-event='knowledge'] {
-      animation: nexus-float-c 6.8s ease-in-out infinite;
     }
 
     .nexus-event.is-on[data-event='strategy'] {
@@ -537,16 +527,6 @@ body:has(.nexus-page) {
   }
   50% {
     translate: 3px -2px;
-  }
-}
-
-@keyframes nexus-float-c {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-  50% {
-    translate: -2px 3px;
   }
 }
 
@@ -700,10 +680,6 @@ body:has(.nexus-page) {
     right: 10%;
   }
 
-  .nexus-event[data-event='knowledge'] {
-    display: none;
-  }
-
   .nexus-event[data-event='strategy'] {
     top: auto;
     bottom: 16%;
@@ -762,7 +738,6 @@ body:has(.nexus-page) {
   .nexus-beat__mark,
   .nexus-beat__title,
   .nexus-beat__body,
-  .nexus-beat__detail,
   .nexus-bridge__lead,
   .nexus-bridge__promise,
   .nexus-invite__title,
@@ -846,24 +821,24 @@ body:has(.nexus-page) {
   }
 
   .nexus-world[data-beat='memory'] .nexus-organism__field {
-    --nexus-look-x: 8%;
-    --nexus-look-y: -7%;
-    --nexus-look-s: 1.12;
-    --nexus-look-r: -8deg;
+    --nexus-look-x: 18%;
+    --nexus-look-y: 0%;
+    --nexus-look-s: 1.04;
+    --nexus-look-r: -18deg;
   }
 
   .nexus-world[data-beat='pattern'] .nexus-organism__field {
-    --nexus-look-x: 12%;
-    --nexus-look-y: 5%;
-    --nexus-look-s: 1.14;
-    --nexus-look-r: 6deg;
+    --nexus-look-x: 2%;
+    --nexus-look-y: 16%;
+    --nexus-look-s: 0.98;
+    --nexus-look-r: 3deg;
   }
 
   .nexus-world[data-beat='strategy'] .nexus-organism__field {
-    --nexus-look-x: 4%;
-    --nexus-look-y: 10%;
-    --nexus-look-s: 1.12;
-    --nexus-look-r: 10deg;
+    --nexus-look-x: 6%;
+    --nexus-look-y: 12%;
+    --nexus-look-s: 1.08;
+    --nexus-look-r: 7deg;
   }
 
   .nexus-world[data-beat='after'] .nexus-organism__field {
@@ -942,24 +917,24 @@ body:has(.nexus-page) {
 
 @media (min-width: 768px) {
   .nexus-world[data-beat='memory'] .nexus-organism__field {
-    --nexus-look-x: 14%;
-    --nexus-look-y: -12%;
-    --nexus-look-s: 1.14;
-    --nexus-look-r: -14deg;
+    --nexus-look-x: 22%;
+    --nexus-look-y: -2%;
+    --nexus-look-s: 1.06;
+    --nexus-look-r: -24deg;
   }
 
   .nexus-world[data-beat='pattern'] .nexus-organism__field {
-    --nexus-look-x: 22%;
-    --nexus-look-y: 8%;
-    --nexus-look-s: 1.18;
-    --nexus-look-r: 11deg;
+    --nexus-look-x: 2%;
+    --nexus-look-y: 22%;
+    --nexus-look-s: 0.96;
+    --nexus-look-r: 2deg;
   }
 
   .nexus-world[data-beat='strategy'] .nexus-organism__field {
-    --nexus-look-x: 10%;
-    --nexus-look-y: 20%;
-    --nexus-look-s: 1.14;
-    --nexus-look-r: 18deg;
+    --nexus-look-x: 8%;
+    --nexus-look-y: 14%;
+    --nexus-look-s: 1.1;
+    --nexus-look-r: 6deg;
   }
 
   .nexus-world[data-beat='after'] .nexus-organism__field {
@@ -1056,20 +1031,10 @@ body:has(.nexus-page) {
 .nexus-beat__body {
   margin: 0;
   max-width: 36rem;
-  color: rgba(244, 247, 251, 0.72);
+  color: rgba(244, 247, 251, 0.86);
   font-size: 1.02rem;
   font-weight: 400;
   line-height: 1.55;
-}
-
-.nexus-beat__detail {
-  margin: 0.8rem 0 0;
-  max-width: 34rem;
-  color: rgba(244, 247, 251, 0.9);
-  font-size: 1.02rem;
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.5;
 }
 
 .nexus-bridge__lead,

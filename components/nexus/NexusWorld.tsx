@@ -181,7 +181,6 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
                 {beat.title}
               </h2>
               <p className="nexus-beat__body">{beat.body}</p>
-              <p className="nexus-beat__detail">{beat.detail}</p>
             </div>
           </article>
         ))}

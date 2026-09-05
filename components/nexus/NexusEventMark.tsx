@@ -33,15 +33,6 @@ export default function NexusEventMark({ id, className = 'nexus-event__icon' }: 
       </svg>
     );
   }
-  if (id === 'knowledge') {
-    return (
-      <svg className={className} viewBox="0 0 16 16" aria-hidden="true">
-        <circle cx="5" cy="8" r="1.5" fill="currentColor" />
-        <circle cx="11" cy="6.2" r="1.5" fill="currentColor" />
-        <path d="M6.4 7.6l3.2-1.1" stroke="currentColor" strokeWidth="1.2" />
-      </svg>
-    );
-  }
   return (
     <svg className={className} viewBox="0 0 16 16" aria-hidden="true">
       <path
