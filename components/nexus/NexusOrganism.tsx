@@ -875,6 +875,19 @@ export default function NexusOrganism({
     let orbitX = heroLook.orbitX;
     let orbitY = heroLook.orbitY;
     let orbitZ = heroLook.orbitZ;
+    let liveX = camX;
+    let liveY = camY;
+    let liveZ = camZ;
+    let lastShot: NexusBeatLookId = 'hero';
+    let travelT = 1;
+    let fromX = camX;
+    let fromY = camY;
+    let fromZ = camZ;
+    let fromLookX = lookX;
+    let fromLookY = lookY;
+    let fromLookZ = lookZ;
+    let fromFov = fovDeg;
+    let prevTs = 0;
     let lastBudget = 0;
     let foci: [Vec3, Vec3, Vec3, Vec3] = [
       { x: 0.14, y: 0.44, z: 0.04 },
@@ -1018,33 +1031,69 @@ export default function NexusOrganism({
       const time = reduced ? 4.35 : now * 0.0025;
       const beat = beatRef.current as NexusBeatLookId;
       const shot = reduced ? NEXUS_BEAT_LOOK.hero : NEXUS_BEAT_LOOK[beat] ?? NEXUS_BEAT_LOOK.hero;
-      const ease = reduced ? 1 : 0.05;
-      camX = mix(camX, shot.camX, ease);
-      camY = mix(camY, shot.camY, ease);
-      camZ = mix(camZ, Math.max(0.42, baseDist * shot.camZMul), ease);
-      lookX = mix(lookX, shot.lookX, ease);
-      lookY = mix(lookY, shot.lookY, ease);
-      lookZ = mix(lookZ, shot.lookZ, ease);
-      fovDeg = mix(fovDeg, shot.fov, ease);
-      gain0 = mix(gain0, shot.gain[0], ease);
-      gain1 = mix(gain1, shot.gain[1], ease);
-      gain2 = mix(gain2, shot.gain[2], ease);
-      gain3 = mix(gain3, shot.gain[3], ease);
-      tintR = mix(tintR, shot.tint[0], ease);
-      tintG = mix(tintG, shot.tint[1], ease);
-      tintB = mix(tintB, shot.tint[2], ease);
-      tintAmt = mix(tintAmt, shot.tintAmt, ease);
-      dim = mix(dim, shot.dim, ease);
-      wakePin = mix(wakePin, shot.wakePin, ease);
-      orbitX = mix(orbitX, reduced ? 0 : shot.orbitX, ease);
-      orbitY = mix(orbitY, reduced ? 0 : shot.orbitY, ease);
-      orbitZ = mix(orbitZ, reduced ? 0 : shot.orbitZ, ease);
+      if (prevTs === 0) {
+        prevTs = now;
+      }
+      const dt = Math.min(0.05, Math.max(0, (now - prevTs) / 1000));
+      prevTs = now;
+      if (!reduced && beat !== lastShot) {
+        fromX = liveX;
+        fromY = liveY;
+        fromZ = liveZ;
+        fromLookX = lookX;
+        fromLookY = lookY;
+        fromLookZ = lookZ;
+        fromFov = fovDeg;
+        travelT = 0;
+        lastShot = beat;
+      }
+      if (reduced) {
+        travelT = 1;
+        lastShot = beat;
+      } else {
+        travelT = Math.min(1, travelT + dt / 0.72);
+      }
+      const toX = shot.camX;
+      const toY = shot.camY;
+      const toZ = Math.max(0.42, baseDist * shot.camZMul);
+      const te = travelT * travelT * (3 - 2 * travelT);
+      const arc = Math.sin(travelT * Math.PI);
+      camX = mix(fromX, toX, te);
+      camY = mix(fromY, toY, te);
+      camZ = mix(fromZ, toZ, te);
+      lookX = mix(fromLookX, shot.lookX, te);
+      lookY = mix(fromLookY, shot.lookY, te);
+      lookZ = mix(fromLookZ, shot.lookZ, te);
+      fovDeg = mix(fromFov, shot.fov, te) + (reduced ? 0 : arc * 5.5);
+      const gainEase = reduced ? 1 : 0.09;
+      gain0 = mix(gain0, shot.gain[0], gainEase);
+      gain1 = mix(gain1, shot.gain[1], gainEase);
+      gain2 = mix(gain2, shot.gain[2], gainEase);
+      gain3 = mix(gain3, shot.gain[3], gainEase);
+      tintR = mix(tintR, shot.tint[0], gainEase);
+      tintG = mix(tintG, shot.tint[1], gainEase);
+      tintB = mix(tintB, shot.tint[2], gainEase);
+      tintAmt = mix(tintAmt, shot.tintAmt, gainEase);
+      dim = mix(dim, shot.dim, gainEase);
+      wakePin = mix(wakePin, shot.wakePin, gainEase);
+      orbitX = mix(orbitX, reduced ? 0 : shot.orbitX, gainEase);
+      orbitY = mix(orbitY, reduced ? 0 : shot.orbitY, gainEase);
+      orbitZ = mix(orbitZ, reduced ? 0 : shot.orbitZ, gainEase);
+      const dx = toX - fromX;
+      const dy = toY - fromY;
+      const dz = toZ - fromZ;
+      const travelLen = Math.hypot(dx, dy, dz) || 1;
+      const arcScale = reduced ? 0 : (window.innerWidth < 768 ? 0.11 : 0.26) * arc;
       const phase = beat === 'memory' ? 0.35 : beat === 'pattern' ? 2.15 : beat === 'strategy' ? 4.05 : 0;
-      const ang = time * 0.4 + phase;
-      const amp = window.innerWidth < 768 ? 0.038 : 0.09;
-      const liveX = camX + Math.sin(ang) * amp * orbitX;
-      const liveY = camY + Math.cos(ang * 0.62) * amp * orbitY;
-      const liveZ = camZ + Math.cos(ang) * amp * orbitZ;
+      const ang = time * (0.38 + 0.5 * travelT) + phase;
+      const orbitFade = reduced ? 0 : 0.22 + 0.78 * travelT;
+      const amp = (window.innerWidth < 768 ? 0.06 : 0.155) * orbitFade;
+      liveX = camX + (-dz / travelLen) * arcScale + Math.sin(ang) * amp * orbitX;
+      liveY =
+        camY +
+        (beat === 'pattern' ? -0.55 : 0.38) * arcScale +
+        Math.cos(ang * 0.62) * amp * orbitY;
+      liveZ = camZ + (dx / travelLen) * arcScale + Math.cos(ang) * amp * orbitZ;
       const proj = perspective((fovDeg * Math.PI) / 180, aspect, 0.12, 10);
       viewProj = multiply4(proj, lookAt(liveX, liveY, liveZ, lookX, lookY, lookZ));
 
@@ -1072,7 +1121,7 @@ export default function NexusOrganism({
         y: mix(scene.nexus.y, focus.y, wakePin * 0.55),
         z: mix(scene.nexus.z, focus.z, wakePin * 0.55),
       };
-      const boost = Math.min(1.48, scene.boost * mix(1, shot.boostMul, 0.85));
+      const boost = Math.min(1.72, scene.boost * mix(1, shot.boostMul, 0.85) * (1 + arc * 0.28));
 
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);

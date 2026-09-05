@@ -127,8 +127,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       line3Prefix: 'que ',
       highlight: 'te comprende.',
       supportLines: [
-        'No parte de un mensaje suelto.',
-        'Trae lo que ya dijiste y sigue pesando.',
+        'No responde a un mensaje aislado.',
+        'Recupera el contexto previo y lo usa en este turno.',
       ],
     },
     status: {
@@ -137,9 +137,9 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       liveAria: 'Estado del sistema: activo. Nexus está pensando.',
     },
     events: [
-      { id: 'memory', title: 'Recuerdo recuperado', subtitle: 'Un hilo de esta conversación' },
-      { id: 'pattern', title: 'Patrón conectado', subtitle: 'Una señal que se repite' },
-      { id: 'strategy', title: 'Estrategia elegida', subtitle: 'El siguiente paso más útil' },
+      { id: 'memory', title: 'Recuerdo recuperado', subtitle: 'Contexto de esta conversación' },
+      { id: 'pattern', title: 'Patrón conectado', subtitle: 'Recurrencia en el proceso' },
+      { id: 'strategy', title: 'Estrategia elegida', subtitle: 'Siguiente movimiento útil' },
     ],
     sequence: {
       aria: 'Cómo Nexus usa un recuerdo, un patrón y una estrategia',
@@ -149,8 +149,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Recupera el hilo',
           paragraphs: [
             'El insomnio de anoche. La conversación que no cerraste.',
-            'Lo que sigue pesando entra en este mensaje. Anto no responde como si acabaras de aparecer.',
-            'Vuelve a lo que ya estaba abierto y hacia dónde ibas.',
+            'Anto recupera el contexto previo, lo que sigue abierto, y lo incorpora a este turno.',
+            'La respuesta se apoya en ese historial, no en el último mensaje aislado.',
           ],
         },
         {
@@ -158,8 +158,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Nombra lo que se repite',
           paragraphs: [
             'La misma prisa al anochecer. El mismo nudo cuando hablas de casa.',
-            'Cuando algo vuelve, lo nombra. No para catalogarte.',
-            'Así entiende qué está pasando ahora, no solo lo que escribiste hace un segundo.',
+            'Lee la recurrencia en el proceso. No etiqueta a la persona; nombra lo que vuelve.',
+            'Eso permite responder al estado actual, no solo al texto de este segundo.',
           ],
         },
         {
@@ -167,14 +167,14 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Elige el siguiente paso',
           paragraphs: [
             'Una pregunta precisa. Un límite. Un paso que se puede dar ahora.',
-            'Con el recuerdo y el patrón, elige una dirección para este momento.',
-            'No un discurso: el siguiente paso más útil, concreto.',
+            'Con memoria y patrón, selecciona el siguiente movimiento más útil para este momento.',
+            'No genera un discurso. Elige una dirección concreta para actuar ahora.',
           ],
         },
       ],
     },
     bridge: {
-      lead: 'Nexus no solo recuerda. Sigue construyendo contexto.',
+      lead: 'Nexus no solo recuerda. Integra cada turno al contexto que ya existe.',
       promise: 'Por eso no vuelves a empezar de cero.',
     },
     invite: {
@@ -248,8 +248,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       line3Prefix: 'that ',
       highlight: 'understands you.',
       supportLines: [
-        'It does not start from a single message.',
-        'It brings what you already said and what still weighs.',
+        'It does not answer an isolated message.',
+        'It retrieves prior context and uses it in this reply.',
       ],
     },
     status: {
@@ -258,9 +258,9 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       liveAria: 'System status: active. Nexus is thinking.',
     },
     events: [
-      { id: 'memory', title: 'Memory recalled', subtitle: 'A thread from this conversation' },
-      { id: 'pattern', title: 'Pattern connected', subtitle: 'A signal that keeps returning' },
-      { id: 'strategy', title: 'Strategy selected', subtitle: 'The most useful next step' },
+      { id: 'memory', title: 'Memory recalled', subtitle: 'Context from this conversation' },
+      { id: 'pattern', title: 'Pattern connected', subtitle: 'Recurrence in the process' },
+      { id: 'strategy', title: 'Strategy selected', subtitle: 'Most useful next move' },
     ],
     sequence: {
       aria: 'How Nexus uses a memory, a pattern and a strategy',
@@ -270,8 +270,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Recovers the thread',
           paragraphs: [
             'Last night without sleep. The conversation you did not close.',
-            'What still weighs enters this message. Anto does not answer as if you had just appeared.',
-            'It returns to what was already open and to where you were heading.',
+            'Anto retrieves prior context, what remains open, and brings it into this reply.',
+            'The answer rests on that history, not on the last isolated message.',
           ],
         },
         {
@@ -279,8 +279,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Names what repeats',
           paragraphs: [
             'The same rush at dusk. The same knot when home comes up.',
-            'When something returns, it names it. Not to label you.',
-            'That is how it understands what is happening now, not only what you wrote a second ago.',
+            'It reads recurrence in the process. It does not label the person; it names what returns.',
+            'That lets it answer the current state, not only the text of this second.',
           ],
         },
         {
@@ -288,14 +288,14 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Chooses the next step',
           paragraphs: [
             'A precise question. A boundary. A step you can take now.',
-            'With the memory and the pattern, it chooses a direction for this moment.',
-            'Not a speech: the most useful next step, concrete.',
+            'With memory and pattern, it selects the most useful next move for this moment.',
+            'It does not generate a speech. It chooses a concrete direction to act on now.',
           ],
         },
       ],
     },
     bridge: {
-      lead: 'Nexus does not just remember. It keeps building context.',
+      lead: 'Nexus does not just remember. It incorporates each reply into the context that already exists.',
       promise: 'That is why you do not start from scratch again.',
     },
     invite: {

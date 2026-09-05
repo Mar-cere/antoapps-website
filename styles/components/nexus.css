@@ -285,7 +285,7 @@ body:has(.nexus-page) {
   background: transparent;
   transform: scale(1.16) rotate(44deg) translate3d(var(--nexus-look-x), var(--nexus-look-y), 0) scale(var(--nexus-look-s)) rotate(var(--nexus-look-r));
   transform-origin: 78% 22%;
-  transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.58s cubic-bezier(0.16, 1, 0.3, 1);
   -webkit-mask-image:
     linear-gradient(180deg, transparent 0%, #000 10%, #000 92%, transparent 100%),
     linear-gradient(90deg, #000 0%, #000 86%, transparent 100%);
@@ -821,24 +821,24 @@ body:has(.nexus-page) {
   }
 
   .nexus-world[data-beat='memory'] .nexus-organism__field {
-    --nexus-look-x: 18%;
-    --nexus-look-y: 0%;
-    --nexus-look-s: 1.04;
-    --nexus-look-r: -18deg;
+    --nexus-look-x: 16%;
+    --nexus-look-y: -2%;
+    --nexus-look-s: 1.06;
+    --nexus-look-r: -20deg;
   }
 
   .nexus-world[data-beat='pattern'] .nexus-organism__field {
-    --nexus-look-x: 2%;
-    --nexus-look-y: 16%;
-    --nexus-look-s: 0.98;
-    --nexus-look-r: 3deg;
+    --nexus-look-x: 0%;
+    --nexus-look-y: 20%;
+    --nexus-look-s: 0.96;
+    --nexus-look-r: 4deg;
   }
 
   .nexus-world[data-beat='strategy'] .nexus-organism__field {
-    --nexus-look-x: 6%;
-    --nexus-look-y: 12%;
-    --nexus-look-s: 1.08;
-    --nexus-look-r: 7deg;
+    --nexus-look-x: 7%;
+    --nexus-look-y: 14%;
+    --nexus-look-s: 1.12;
+    --nexus-look-r: 8deg;
   }
 
   .nexus-world[data-beat='after'] .nexus-organism__field {
@@ -917,24 +917,24 @@ body:has(.nexus-page) {
 
 @media (min-width: 768px) {
   .nexus-world[data-beat='memory'] .nexus-organism__field {
-    --nexus-look-x: 10%;
-    --nexus-look-y: -4%;
-    --nexus-look-s: 1.08;
-    --nexus-look-r: -16deg;
+    --nexus-look-x: 16%;
+    --nexus-look-y: -6%;
+    --nexus-look-s: 1.1;
+    --nexus-look-r: -22deg;
   }
 
   .nexus-world[data-beat='pattern'] .nexus-organism__field {
-    --nexus-look-x: 2%;
-    --nexus-look-y: 22%;
-    --nexus-look-s: 0.96;
-    --nexus-look-r: 2deg;
+    --nexus-look-x: 0%;
+    --nexus-look-y: 28%;
+    --nexus-look-s: 0.94;
+    --nexus-look-r: 4deg;
   }
 
   .nexus-world[data-beat='strategy'] .nexus-organism__field {
     --nexus-look-x: 8%;
-    --nexus-look-y: 14%;
-    --nexus-look-s: 1.1;
-    --nexus-look-r: 6deg;
+    --nexus-look-y: 16%;
+    --nexus-look-s: 1.16;
+    --nexus-look-r: 8deg;
   }
 
   .nexus-world[data-beat='after'] .nexus-organism__field {
