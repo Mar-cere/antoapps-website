@@ -29,12 +29,14 @@ const SEQUENCE_BEATS: readonly NexusBeatId[] = ['memory', 'pattern', 'strategy']
 export default function NexusWorld({ copy }: NexusWorldProps) {
   const [activeBeat, setActiveBeat] = useState<NexusActiveBeat>('hero');
   const [released, setReleased] = useState(false);
+  const [tracking, setTracking] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const beatRefs = useRef<Partial<Record<NexusBeatId, HTMLElement | null>>>({});
   const afterRef = useRef<HTMLDivElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setTracking(true);
     const items: { id: NexusActiveBeat; el: HTMLElement }[] = [];
     if (heroRef.current) {
       items.push({ id: 'hero', el: heroRef.current });
@@ -111,7 +113,10 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
   }, []);
 
   return (
-    <div className={`nexus-world${released ? ' is-released' : ''}`} data-beat={activeBeat}>
+    <div
+      className={`nexus-world${released ? ' is-released' : ''}${tracking ? ' is-tracking' : ''}`}
+      data-beat={activeBeat}
+    >
       <div className="nexus-stage">
         <NexusOrganism events={copy.events} label={copy.organismAria} activeBeat={activeBeat} />
       </div>

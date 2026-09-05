@@ -6,10 +6,13 @@ import NexusEventMark from '@/components/nexus/NexusEventMark';
 import {
   buildNexusField,
   nexusBudget,
+  nexusFocusForBeat,
+  NEXUS_BEAT_LOOK,
   NEXUS_CONSTELLATION_PLATE,
   NEXUS_CONSTELLATION_PLATE_PNG,
   NEXUS_FIELD_REV,
   wakePositions,
+  type NexusBeatLookId,
   type NexusField,
   type Vec3,
 } from '@/lib/nexus/field';
@@ -42,6 +45,10 @@ uniform vec3 uFocus0;
 uniform vec3 uFocus1;
 uniform vec3 uFocus2;
 uniform vec3 uFocus3;
+uniform vec4 uFocusGain;
+uniform vec3 uTint;
+uniform float uTintAmt;
+uniform float uDim;
 varying vec3 vColor;
 varying float vAlpha;
 varying vec2 vCorner;
@@ -61,10 +68,10 @@ void main() {
   float thought1 = pow(max(0.0, sin(uTime * 1.22 + 1.5708)), 2.6);
   float thought2 = pow(max(0.0, sin(uTime * 1.22 + 3.1416)), 2.6);
   float thought3 = pow(max(0.0, sin(uTime * 1.22 + 4.7124)), 2.6);
-  float f0 = act(pos, uFocus0, 0.18) * (0.4 + 0.6 * thought0);
-  float f1 = act(pos, uFocus1, 0.17) * (0.4 + 0.6 * thought1);
-  float f2 = act(pos, uFocus2, 0.16) * (0.4 + 0.6 * thought2);
-  float f3 = act(pos, uFocus3, 0.14) * (0.4 + 0.6 * thought3);
+  float f0 = act(pos, uFocus0, 0.18) * (0.4 + 0.6 * thought0) * uFocusGain.x;
+  float f1 = act(pos, uFocus1, 0.17) * (0.4 + 0.6 * thought1) * uFocusGain.y;
+  float f2 = act(pos, uFocus2, 0.16) * (0.4 + 0.6 * thought2) * uFocusGain.z;
+  float f3 = act(pos, uFocus3, 0.14) * (0.4 + 0.6 * thought3) * uFocusGain.w;
   float focus = max(f0, max(f1, max(f2, f3)));
   float sync = min(min(max(f0, f1), max(f2, f3)), max(max(f0, f2), max(f1, f3)));
   float nexus = act(pos, uNexus, 0.1) * uBoost;
@@ -110,8 +117,11 @@ void main() {
   vColor = mix(materialColor, nexusTint, conv * (0.01 + nexus * 0.02 + sync * 0.01));
   vColor *= mix(1.2 + beat * 0.42, 0.3, aMist);
   vColor = mix(vColor, violetTint, violetId * (1.0 - aMist) * 0.06);
+  float isolate = clamp(focus * 1.35 + wake * 0.4 + nexus * 0.25, 0.0, 1.0);
+  vColor = mix(vColor, uTint, uTintAmt * (1.0 - aMist) * mix(0.2, 0.82, isolate));
   vAlpha = mix(0.36 + 0.48 * activity, 0.034 + 0.016 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.08 + wake * mix(0.26, 0.04, aMist) + focus * mix(0.5, 0.06, aMist) + beat * mix(1.15, 0.06, aMist);
+  vAlpha *= mix(uDim, 1.0, isolate);
   vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
 }
 `;
@@ -161,6 +171,10 @@ uniform vec3 uFocus0;
 uniform vec3 uFocus1;
 uniform vec3 uFocus2;
 uniform vec3 uFocus3;
+uniform vec4 uFocusGain;
+uniform vec3 uTint;
+uniform float uTintAmt;
+uniform float uDim;
 uniform float uTime;
 varying float vAlpha;
 varying vec3 vColor;
@@ -177,10 +191,10 @@ void main() {
   float thought1 = pow(max(0.0, sin(uTime * 1.22 + 1.5708)), 2.6);
   float thought2 = pow(max(0.0, sin(uTime * 1.22 + 3.1416)), 2.6);
   float thought3 = pow(max(0.0, sin(uTime * 1.22 + 4.7124)), 2.6);
-  float f0 = act(world, uFocus0, 0.16) * (0.4 + 0.6 * thought0);
-  float f1 = act(world, uFocus1, 0.15) * (0.4 + 0.6 * thought1);
-  float f2 = act(world, uFocus2, 0.14) * (0.4 + 0.6 * thought2);
-  float f3 = act(world, uFocus3, 0.12) * (0.4 + 0.6 * thought3);
+  float f0 = act(world, uFocus0, 0.16) * (0.4 + 0.6 * thought0) * uFocusGain.x;
+  float f1 = act(world, uFocus1, 0.15) * (0.4 + 0.6 * thought1) * uFocusGain.y;
+  float f2 = act(world, uFocus2, 0.14) * (0.4 + 0.6 * thought2) * uFocusGain.z;
+  float f3 = act(world, uFocus3, 0.12) * (0.4 + 0.6 * thought3) * uFocusGain.w;
   float focus = max(f0, max(f1, max(f2, f3)));
   float nexus = act(world, uNexus, 0.1) * uBoost;
   float packetA = fract(uTime * 0.48 + aPhase);
@@ -216,7 +230,9 @@ void main() {
   float violetId = smoothstep(0.03, 0.18, aColor.b - aColor.g) * smoothstep(0.08, 0.28, aColor.r);
   float warmId = smoothstep(0.02, 0.14, aColor.r - aColor.b) * smoothstep(0.02, 0.12, aColor.g);
   float flowStrength = max(violetId, max(cyanId, warmId));
+  float isolate = clamp(focus * 1.4 + wake * 0.35 + nexus * 0.2, 0.0, 1.0);
   vAlpha = aAlpha * (0.8 + flowStrength * 0.14 + focus * 0.14 + wake * 0.07 + nexus * 0.03 + flowPulse * 1.12 + strand * 0.2);
+  vAlpha *= mix(uDim, 1.0, isolate);
   vec3 violetTint = vec3(0.68, 0.3, 0.9);
   vec3 cyanTint = vec3(0.18, 0.86, 0.92);
   vec3 warmTint = vec3(0.72, 0.42, 0.46);
@@ -225,6 +241,7 @@ void main() {
   materialColor = mix(materialColor, cyanTint, cyanId * 0.12);
   materialColor = mix(materialColor, warmTint, warmId * 0.04);
   vColor = mix(materialColor, vec3(0.94, 0.88, 0.76), nexus * 0.02);
+  vColor = mix(vColor, uTint, uTintAmt * mix(0.12, 0.58, isolate));
   vColor *= 0.84 + flowPulse * 0.92;
   vFlow = flowPulse;
 }
@@ -503,6 +520,10 @@ function disableAttribs(gl: WebGLRenderingContext) {
   for (let i = 0; i < 12; i += 1) {
     gl.disableVertexAttribArray(i);
   }
+}
+
+function mix(a: number, b: number, t: number): number {
+  return a + (b - a) * t;
 }
 
 export default function NexusOrganism({ events, label, activeBeat = 'hero' }: NexusOrganismProps) {
@@ -822,10 +843,27 @@ export default function NexusOrganism({ events, label, activeBeat = 'hero' }: Ne
 
     let width = 0;
     let height = 0;
+    let aspect = 1;
+    let baseDist = 1.02;
     let viewProj: Float32Array = new Float32Array(16);
-    let camX = -0.03;
-    let camY = 0.28;
-    let camZ = 0.74;
+    const heroLook = NEXUS_BEAT_LOOK.hero;
+    let camX = heroLook.camX;
+    let camY = heroLook.camY;
+    let camZ = heroLook.camZMul;
+    let lookX = heroLook.lookX;
+    let lookY = heroLook.lookY;
+    let lookZ = heroLook.lookZ;
+    let fovDeg = heroLook.fov;
+    let gain0 = heroLook.gain[0];
+    let gain1 = heroLook.gain[1];
+    let gain2 = heroLook.gain[2];
+    let gain3 = heroLook.gain[3];
+    let tintR = heroLook.tint[0];
+    let tintG = heroLook.tint[1];
+    let tintB = heroLook.tint[2];
+    let tintAmt = heroLook.tintAmt;
+    let dim = heroLook.dim;
+    let wakePin = heroLook.wakePin;
     let lastBudget = 0;
     let foci: [Vec3, Vec3, Vec3, Vec3] = [
       { x: 0.14, y: 0.44, z: 0.04 },
@@ -834,21 +872,22 @@ export default function NexusOrganism({ events, label, activeBeat = 'hero' }: Ne
       { x: 0.04, y: 0.32, z: -0.1 },
     ];
 
+    const applyCamera = () => {
+      const proj = perspective((fovDeg * Math.PI) / 180, aspect, 0.12, 10);
+      const view = lookAt(camX, camY, camZ, lookX, lookY, lookZ);
+      viewProj = multiply4(proj, view);
+    };
+
     const resize = () => {
       width = Math.max(1, fieldBox.clientWidth);
       height = Math.max(1, fieldBox.clientHeight);
+      aspect = width / height;
       const dpr = Math.min(2, window.devicePixelRatio || 1);
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       gl.viewport(0, 0, canvas.width, canvas.height);
-      const proj = perspective((34 * Math.PI) / 180, width / height, 0.12, 10);
-      const portrait = width / height < 0.9;
-      const dist = portrait ? 1.18 : 1.02;
-      camX = -0.02;
-      camY = 0.34;
-      camZ = dist;
-      const view = lookAt(camX, camY, camZ, 0.1, 0.4, 0);
-      viewProj = multiply4(proj, view);
+      baseDist = aspect < 0.9 ? 1.18 : 1.02;
+      applyCamera();
       const budget = nexusBudget(window.innerWidth);
       const mark = budget.nodes + budget.filaments + NEXUS_FIELD_REV;
       if (mark !== lastBudget) {
@@ -874,6 +913,10 @@ export default function NexusOrganism({ events, label, activeBeat = 'hero' }: Ne
       f1: gl.getUniformLocation(nodeProg, 'uFocus1'),
       f2: gl.getUniformLocation(nodeProg, 'uFocus2'),
       f3: gl.getUniformLocation(nodeProg, 'uFocus3'),
+      gain: gl.getUniformLocation(nodeProg, 'uFocusGain'),
+      tint: gl.getUniformLocation(nodeProg, 'uTint'),
+      tintAmt: gl.getUniformLocation(nodeProg, 'uTintAmt'),
+      dim: gl.getUniformLocation(nodeProg, 'uDim'),
     };
     const uLine = {
       view: gl.getUniformLocation(lineProg, 'uViewProj'),
@@ -887,6 +930,10 @@ export default function NexusOrganism({ events, label, activeBeat = 'hero' }: Ne
       f1: gl.getUniformLocation(lineProg, 'uFocus1'),
       f2: gl.getUniformLocation(lineProg, 'uFocus2'),
       f3: gl.getUniformLocation(lineProg, 'uFocus3'),
+      gain: gl.getUniformLocation(lineProg, 'uFocusGain'),
+      tint: gl.getUniformLocation(lineProg, 'uTint'),
+      tintAmt: gl.getUniformLocation(lineProg, 'uTintAmt'),
+      dim: gl.getUniformLocation(lineProg, 'uDim'),
       time: gl.getUniformLocation(lineProg, 'uTime'),
     };
     const uMemb = membProg
@@ -958,7 +1005,53 @@ export default function NexusOrganism({ events, label, activeBeat = 'hero' }: Ne
         return;
       }
       const time = reduced ? 4.35 : now * 0.0025;
-      const { wakes, nexus, boost } = wakePositions(time);
+      const beat = beatRef.current as NexusBeatLookId;
+      const shot = reduced ? NEXUS_BEAT_LOOK.hero : NEXUS_BEAT_LOOK[beat] ?? NEXUS_BEAT_LOOK.hero;
+      const ease = reduced ? 1 : 0.048;
+      camX = mix(camX, shot.camX, ease);
+      camY = mix(camY, shot.camY, ease);
+      camZ = mix(camZ, Math.max(0.42, baseDist * shot.camZMul), ease);
+      lookX = mix(lookX, shot.lookX, ease);
+      lookY = mix(lookY, shot.lookY, ease);
+      lookZ = mix(lookZ, shot.lookZ, ease);
+      fovDeg = mix(fovDeg, shot.fov, ease);
+      gain0 = mix(gain0, shot.gain[0], ease);
+      gain1 = mix(gain1, shot.gain[1], ease);
+      gain2 = mix(gain2, shot.gain[2], ease);
+      gain3 = mix(gain3, shot.gain[3], ease);
+      tintR = mix(tintR, shot.tint[0], ease);
+      tintG = mix(tintG, shot.tint[1], ease);
+      tintB = mix(tintB, shot.tint[2], ease);
+      tintAmt = mix(tintAmt, shot.tintAmt, ease);
+      dim = mix(dim, shot.dim, ease);
+      wakePin = mix(wakePin, shot.wakePin, ease);
+      applyCamera();
+
+      const scene = wakePositions(time);
+      const focus = reduced ? nexusFocusForBeat('hero') : nexusFocusForBeat(beat);
+      const wakes: [Vec3, Vec3, Vec3] = [
+        {
+          x: mix(scene.wakes[0].x, focus.x, wakePin),
+          y: mix(scene.wakes[0].y, focus.y, wakePin),
+          z: mix(scene.wakes[0].z, focus.z, wakePin),
+        },
+        {
+          x: mix(scene.wakes[1].x, focus.x, wakePin * 0.72),
+          y: mix(scene.wakes[1].y, focus.y, wakePin * 0.72),
+          z: mix(scene.wakes[1].z, focus.z, wakePin * 0.72),
+        },
+        {
+          x: mix(scene.wakes[2].x, focus.x, wakePin * 0.46),
+          y: mix(scene.wakes[2].y, focus.y, wakePin * 0.46),
+          z: mix(scene.wakes[2].z, focus.z, wakePin * 0.46),
+        },
+      ];
+      const nexus = {
+        x: mix(scene.nexus.x, focus.x, wakePin * 0.55),
+        y: mix(scene.nexus.y, focus.y, wakePin * 0.55),
+        z: mix(scene.nexus.z, focus.z, wakePin * 0.55),
+      };
+      const boost = Math.min(1.35, scene.boost * mix(1, shot.boostMul, 0.85));
 
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
@@ -966,20 +1059,28 @@ export default function NexusOrganism({ events, label, activeBeat = 'hero' }: Ne
       gl.enable(gl.BLEND);
       gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
 
+      const setNodeScene = () => {
+        gl.uniformMatrix4fv(uNode.view, false, viewProj);
+        gl.uniform2f(uNode.res, width, height);
+        gl.uniform1f(uNode.time, time);
+        gl.uniform3f(uNode.w0, wakes[0].x, wakes[0].y, wakes[0].z);
+        gl.uniform3f(uNode.w1, wakes[1].x, wakes[1].y, wakes[1].z);
+        gl.uniform3f(uNode.w2, wakes[2].x, wakes[2].y, wakes[2].z);
+        gl.uniform3f(uNode.nexus, nexus.x, nexus.y, nexus.z);
+        gl.uniform1f(uNode.boost, boost);
+        gl.uniform3f(uNode.f0, foci[0].x, foci[0].y, foci[0].z);
+        gl.uniform3f(uNode.f1, foci[1].x, foci[1].y, foci[1].z);
+        gl.uniform3f(uNode.f2, foci[2].x, foci[2].y, foci[2].z);
+        gl.uniform3f(uNode.f3, foci[3].x, foci[3].y, foci[3].z);
+        gl.uniform4f(uNode.gain, gain0, gain1, gain2, gain3);
+        gl.uniform3f(uNode.tint, tintR, tintG, tintB);
+        gl.uniform1f(uNode.tintAmt, tintAmt);
+        gl.uniform1f(uNode.dim, dim);
+      };
+
       disableAttribs(gl);
       bindNodes();
-      gl.uniformMatrix4fv(uNode.view, false, viewProj);
-      gl.uniform2f(uNode.res, width, height);
-      gl.uniform1f(uNode.time, time);
-      gl.uniform3f(uNode.w0, wakes[0].x, wakes[0].y, wakes[0].z);
-      gl.uniform3f(uNode.w1, wakes[1].x, wakes[1].y, wakes[1].z);
-      gl.uniform3f(uNode.w2, wakes[2].x, wakes[2].y, wakes[2].z);
-      gl.uniform3f(uNode.nexus, nexus.x, nexus.y, nexus.z);
-      gl.uniform1f(uNode.boost, boost);
-      gl.uniform3f(uNode.f0, foci[0].x, foci[0].y, foci[0].z);
-      gl.uniform3f(uNode.f1, foci[1].x, foci[1].y, foci[1].z);
-      gl.uniform3f(uNode.f2, foci[2].x, foci[2].y, foci[2].z);
-      gl.uniform3f(uNode.f3, foci[3].x, foci[3].y, foci[3].z);
+      setNodeScene();
       if (mistCount) {
         gl.drawArrays(gl.TRIANGLES, 0, mistCount);
       }
@@ -997,6 +1098,10 @@ export default function NexusOrganism({ events, label, activeBeat = 'hero' }: Ne
       gl.uniform3f(uLine.f1, foci[1].x, foci[1].y, foci[1].z);
       gl.uniform3f(uLine.f2, foci[2].x, foci[2].y, foci[2].z);
       gl.uniform3f(uLine.f3, foci[3].x, foci[3].y, foci[3].z);
+      gl.uniform4f(uLine.gain, gain0, gain1, gain2, gain3);
+      gl.uniform3f(uLine.tint, tintR, tintG, tintB);
+      gl.uniform1f(uLine.tintAmt, tintAmt);
+      gl.uniform1f(uLine.dim, dim);
       gl.uniform1f(uLine.time, time);
       if (lineCount) {
         gl.drawArrays(gl.TRIANGLES, 0, lineCount);
@@ -1005,18 +1110,7 @@ export default function NexusOrganism({ events, label, activeBeat = 'hero' }: Ne
       disableAttribs(gl);
       gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
       bindNodes();
-      gl.uniformMatrix4fv(uNode.view, false, viewProj);
-      gl.uniform2f(uNode.res, width, height);
-      gl.uniform1f(uNode.time, time);
-      gl.uniform3f(uNode.w0, wakes[0].x, wakes[0].y, wakes[0].z);
-      gl.uniform3f(uNode.w1, wakes[1].x, wakes[1].y, wakes[1].z);
-      gl.uniform3f(uNode.w2, wakes[2].x, wakes[2].y, wakes[2].z);
-      gl.uniform3f(uNode.nexus, nexus.x, nexus.y, nexus.z);
-      gl.uniform1f(uNode.boost, boost);
-      gl.uniform3f(uNode.f0, foci[0].x, foci[0].y, foci[0].z);
-      gl.uniform3f(uNode.f1, foci[1].x, foci[1].y, foci[1].z);
-      gl.uniform3f(uNode.f2, foci[2].x, foci[2].y, foci[2].z);
-      gl.uniform3f(uNode.f3, foci[3].x, foci[3].y, foci[3].z);
+      setNodeScene();
       const coreCount = Math.max(0, nodeCount - mistCount);
       if (coreCount) {
         gl.drawArrays(gl.TRIANGLES, mistCount, coreCount);

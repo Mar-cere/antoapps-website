@@ -20,7 +20,7 @@ Probar Anto → `/bienvenida`. CTA quieto en el header; CTA grande después de l
 Brief-pinned: constelación orgánica (placa WebP + WebGL sutil), no cerebro, no tres lóbulos, no foto editorial. Excepción acotada a esta ruta. Un mundo, dos actos: el campo continúa al scroll y las etiquetas se vuelven lectura.
 
 ## Memorable moment
-Campo vivo a la derecha (Psyche/Persona/Cortex mezclados; Nexus como convergencia temporal) + titular “te comprende / understands you”, luego recuerdo → patrón → estrategia.
+Campo vivo a la derecha; al bajar, la constelación cambia de mirada (zoom, luz, color) con cada pensamiento: recuerdo, patrón, estrategia. El copy entra en el mismo hueco de lectura.
 
 ## Constraints
 Chrome Anto (Inter/SF, teal, navy). Violeta solo en el canvas y en el highlight del H1. Sin KPI. `prefers-reduced-motion`. Paridad ES/EN. Footer mínimo para idioma y legal. Confianza al final con puentes a `/seguridad` e `/investigacion`.

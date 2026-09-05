@@ -1601,3 +1601,117 @@ export function wakePositions(time: number): { wakes: [Vec3, Vec3, Vec3]; nexus:
 
   return { wakes, nexus, boost };
 }
+
+export type NexusBeatLookId = 'hero' | 'memory' | 'pattern' | 'strategy' | 'after';
+
+export type NexusBeatLook = {
+  camX: number;
+  camY: number;
+  camZMul: number;
+  lookX: number;
+  lookY: number;
+  lookZ: number;
+  fov: number;
+  gain: readonly [number, number, number, number];
+  tint: readonly [number, number, number];
+  tintAmt: number;
+  dim: number;
+  boostMul: number;
+  wakePin: number;
+};
+
+const FOCUS_MEMORY = { x: FOCI[0].cx, y: FOCI[0].cy, z: FOCI[0].cz };
+const FOCUS_PATTERN = { x: FOCI[1].cx, y: FOCI[1].cy, z: FOCI[1].cz };
+const FOCUS_STRATEGY = { x: FOCI[2].cx, y: FOCI[2].cy, z: FOCI[2].cz };
+const FOCUS_CENTER = { x: 0.1, y: 0.4, z: 0 };
+
+export const NEXUS_BEAT_LOOK: Record<NexusBeatLookId, NexusBeatLook> = {
+  hero: {
+    camX: -0.02,
+    camY: 0.34,
+    camZMul: 1,
+    lookX: FOCUS_CENTER.x,
+    lookY: FOCUS_CENTER.y,
+    lookZ: FOCUS_CENTER.z,
+    fov: 34,
+    gain: [1, 1, 1, 1],
+    tint: [0.42, 0.72, 0.94],
+    tintAmt: 0,
+    dim: 1,
+    boostMul: 1,
+    wakePin: 0,
+  },
+  memory: {
+    camX: 0.1,
+    camY: 0.48,
+    camZMul: 0.58,
+    lookX: FOCUS_MEMORY.x,
+    lookY: FOCUS_MEMORY.y,
+    lookZ: FOCUS_MEMORY.z,
+    fov: 23,
+    gain: [3.1, 0.1, 0.08, 0.18],
+    tint: [0.66, 0.3, 0.9],
+    tintAmt: 0.42,
+    dim: 0.2,
+    boostMul: 1.62,
+    wakePin: 0.74,
+  },
+  pattern: {
+    camX: -0.12,
+    camY: 0.28,
+    camZMul: 0.56,
+    lookX: FOCUS_PATTERN.x,
+    lookY: FOCUS_PATTERN.y,
+    lookZ: FOCUS_PATTERN.z,
+    fov: 24,
+    gain: [0.1, 3.0, 0.12, 0.22],
+    tint: [0.16, 0.9, 0.96],
+    tintAmt: 0.38,
+    dim: 0.18,
+    boostMul: 1.55,
+    wakePin: 0.72,
+  },
+  strategy: {
+    camX: 0.16,
+    camY: 0.12,
+    camZMul: 0.54,
+    lookX: FOCUS_STRATEGY.x,
+    lookY: FOCUS_STRATEGY.y,
+    lookZ: FOCUS_STRATEGY.z,
+    fov: 22,
+    gain: [0.08, 0.12, 3.05, 0.42],
+    tint: [0.82, 0.4, 0.5],
+    tintAmt: 0.36,
+    dim: 0.18,
+    boostMul: 1.68,
+    wakePin: 0.76,
+  },
+  after: {
+    camX: -0.02,
+    camY: 0.38,
+    camZMul: 1.48,
+    lookX: FOCUS_CENTER.x,
+    lookY: FOCUS_CENTER.y,
+    lookZ: FOCUS_CENTER.z,
+    fov: 46,
+    gain: [0.42, 0.42, 0.42, 0.58],
+    tint: [0.42, 0.72, 0.94],
+    tintAmt: 0.06,
+    dim: 0.62,
+    boostMul: 0.42,
+    wakePin: 0.08,
+  },
+};
+
+export function nexusFocusForBeat(beat: NexusBeatLookId): Vec3 {
+  if (beat === 'memory') {
+    return FOCUS_MEMORY;
+  }
+  if (beat === 'pattern') {
+    return FOCUS_PATTERN;
+  }
+  if (beat === 'strategy') {
+    return FOCUS_STRATEGY;
+  }
+  return FOCUS_CENTER;
+}
