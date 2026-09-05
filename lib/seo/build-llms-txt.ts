@@ -68,7 +68,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '/contacto': 'Formulario y email soporte@antoapps.com.',
     '/desarrollo': 'Estado del producto y roadmap público.',
     '/nexus':
-      'Inside Anto Nexus: cada conversación forma la inteligencia que te comprende. Constelación viva; al scroll, recuerdo, patrón y estrategia. CTA a probar Anto; privacidad, ciencia y límites al final. Sin métricas promocionales. No sustituye atención profesional.',
+      'Inside Anto Nexus: cada conversación forma la inteligencia que te comprende. Constelación viva; al scroll, historial, recurrencia y un paso concreto. CTA a probar Anto; privacidad, ciencia y límites al final. Sin métricas promocionales. No sustituye atención profesional.',
     '/privacidad': 'Tratamiento de datos, cifrado, derechos del usuario.',
     '/terminos': 'Condiciones de uso del servicio.',
   },
@@ -85,7 +85,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '/contacto': 'Contact form and email soporte@antoapps.com.',
     '/desarrollo': 'Product status and public roadmap.',
     '/nexus':
-      'Inside Anto Nexus: every conversation shapes the intelligence that understands you. Living constellation; on scroll, memory, pattern and strategy. CTA to try Anto; privacy, science and limits at the end. No promotional metrics. Does not replace professional care.',
+      'Inside Anto Nexus: every conversation shapes the intelligence that understands you. Living constellation; on scroll, history, recurrence and a concrete step. CTA to try Anto; privacy, science and limits at the end. No promotional metrics. Does not replace professional care.',
     '/privacidad': 'Data handling, encryption, user rights.',
     '/terminos': 'Terms of service.',
   },

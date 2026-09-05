@@ -127,8 +127,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       line3Prefix: 'que ',
       highlight: 'te comprende.',
       supportLines: [
-        'No responde a un mensaje aislado.',
-        'Recupera el contexto previo y lo usa en este turno.',
+        'Cada respuesta consulta el historial antes de escribirse.',
+        'Luego nombra lo que se repite y elige un paso.',
       ],
     },
     status: {
@@ -137,9 +137,9 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       liveAria: 'Estado del sistema: activo. Nexus está pensando.',
     },
     events: [
-      { id: 'memory', title: 'Recuerdo recuperado', subtitle: 'Contexto de esta conversación' },
-      { id: 'pattern', title: 'Patrón conectado', subtitle: 'Recurrencia en el proceso' },
-      { id: 'strategy', title: 'Estrategia elegida', subtitle: 'Siguiente movimiento útil' },
+      { id: 'memory', title: 'Recuerdo recuperado', subtitle: 'Historial y temas abiertos' },
+      { id: 'pattern', title: 'Patrón conectado', subtitle: 'Hábito que vuelve' },
+      { id: 'strategy', title: 'Estrategia elegida', subtitle: 'Paso o técnica del hub' },
     ],
     sequence: {
       aria: 'Cómo Nexus usa un recuerdo, un patrón y una estrategia',
@@ -149,8 +149,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Recupera el hilo',
           paragraphs: [
             'El insomnio de anoche. La conversación que no cerraste.',
-            'Anto recupera el contexto previo, lo que sigue abierto, y lo incorpora a este turno.',
-            'La respuesta se apoya en ese historial, no en el último mensaje aislado.',
+            'Antes de responder, consulta el historial y la memoria de temas que ya abriste. Ese contexto entra en este turno.',
+            'La continuidad vale entre sesiones, no solo dentro de este chat.',
           ],
         },
         {
@@ -158,8 +158,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Nombra lo que se repite',
           paragraphs: [
             'La misma prisa al anochecer. El mismo nudo cuando hablas de casa.',
-            'Lee la recurrencia en el proceso. No etiqueta a la persona; nombra lo que vuelve.',
-            'Eso permite responder al estado actual, no solo al texto de este segundo.',
+            'Cruza los temas que vuelven en el proceso. No te asigna un tipo; nombra el hábito que se activó ahora.',
+            'Así responde al estado actual, no solo a esta frase.',
           ],
         },
         {
@@ -167,14 +167,14 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Elige el siguiente paso',
           paragraphs: [
             'Una pregunta precisa. Un límite. Un paso que se puede dar ahora.',
-            'Con memoria y patrón, selecciona el siguiente movimiento más útil para este momento.',
-            'No genera un discurso. Elige una dirección concreta para actuar ahora.',
+            'Con ese contexto selecciona un micro-paso o un ejercicio del hub de técnicas, según este momento.',
+            'No genera un discurso ni un protocolo clínico.',
           ],
         },
       ],
     },
     bridge: {
-      lead: 'Nexus no solo recuerda. Integra cada turno al contexto que ya existe.',
+      lead: 'Cada turno se escribe sobre el historial, la recurrencia y el paso elegido.',
       promise: 'Por eso no vuelves a empezar de cero.',
     },
     invite: {
@@ -248,8 +248,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       line3Prefix: 'that ',
       highlight: 'understands you.',
       supportLines: [
-        'It does not answer an isolated message.',
-        'It retrieves prior context and uses it in this reply.',
+        'Each reply consults the history before it is written.',
+        'Then it names what repeats and chooses a step.',
       ],
     },
     status: {
@@ -258,9 +258,9 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       liveAria: 'System status: active. Nexus is thinking.',
     },
     events: [
-      { id: 'memory', title: 'Memory recalled', subtitle: 'Context from this conversation' },
-      { id: 'pattern', title: 'Pattern connected', subtitle: 'Recurrence in the process' },
-      { id: 'strategy', title: 'Strategy selected', subtitle: 'Most useful next move' },
+      { id: 'memory', title: 'Memory recalled', subtitle: 'History and open topics' },
+      { id: 'pattern', title: 'Pattern connected', subtitle: 'A habit that returns' },
+      { id: 'strategy', title: 'Strategy selected', subtitle: 'Step or hub exercise' },
     ],
     sequence: {
       aria: 'How Nexus uses a memory, a pattern and a strategy',
@@ -270,8 +270,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Recovers the thread',
           paragraphs: [
             'Last night without sleep. The conversation you did not close.',
-            'Anto retrieves prior context, what remains open, and brings it into this reply.',
-            'The answer rests on that history, not on the last isolated message.',
+            'Before it replies, it consults the history and the topic memory you already opened. That context enters this reply.',
+            'Continuity holds across sessions, not only inside this chat.',
           ],
         },
         {
@@ -279,8 +279,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Names what repeats',
           paragraphs: [
             'The same rush at dusk. The same knot when home comes up.',
-            'It reads recurrence in the process. It does not label the person; it names what returns.',
-            'That lets it answer the current state, not only the text of this second.',
+            'It crosses themes that return in the process. It does not assign you a type; it names the habit that activated now.',
+            'That lets it answer the current state, not only this sentence.',
           ],
         },
         {
@@ -288,14 +288,14 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Chooses the next step',
           paragraphs: [
             'A precise question. A boundary. A step you can take now.',
-            'With memory and pattern, it selects the most useful next move for this moment.',
-            'It does not generate a speech. It chooses a concrete direction to act on now.',
+            'With that context it selects a micro-step or an exercise from the techniques hub, for this moment.',
+            'It does not generate a speech or a clinical protocol.',
           ],
         },
       ],
     },
     bridge: {
-      lead: 'Nexus does not just remember. It incorporates each reply into the context that already exists.',
+      lead: 'Each reply is written on the history, the recurrence and the step already chosen.',
       promise: 'That is why you do not start from scratch again.',
     },
     invite: {
