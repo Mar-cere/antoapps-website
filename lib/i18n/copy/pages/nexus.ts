@@ -148,17 +148,17 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       beats: [
         {
           id: 'memory',
-          title: 'Recuerdo recuperado',
+          title: 'Recupera el hilo',
           body: 'Anto no trata cada mensaje como si fuera el primero. Recupera el hilo: lo que ya dijiste, lo que sigue pesando, hacia dónde ibas.',
         },
         {
           id: 'pattern',
-          title: 'Patrón conectado',
+          title: 'Nombra lo que se repite',
           body: 'Cuando algo se repite, lo nombra. No para catalogarte: para entender qué está pasando ahora, no solo lo que escribiste hace un segundo.',
         },
         {
           id: 'strategy',
-          title: 'Estrategia elegida',
+          title: 'Elige el siguiente paso',
           body: 'Con ese contexto elige el siguiente paso más útil. No un discurso. Una dirección concreta para este momento.',
         },
       ],
@@ -259,17 +259,17 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       beats: [
         {
           id: 'memory',
-          title: 'Memory recalled',
+          title: 'Recovers the thread',
           body: 'Anto does not treat each message as if it were the first. It recovers the thread: what you already said, what still weighs, where you were heading.',
         },
         {
           id: 'pattern',
-          title: 'Pattern connected',
+          title: 'Names what repeats',
           body: 'When something repeats, it names it. Not to label you: to understand what is happening now, not only what you wrote a second ago.',
         },
         {
           id: 'strategy',
-          title: 'Strategy selected',
+          title: 'Chooses the next step',
           body: 'With that context it chooses the most useful next step. Not a speech. A concrete direction for this moment.',
         },
       ],

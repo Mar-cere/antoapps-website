@@ -38,17 +38,6 @@ export default function NexusPageContent({ locale }: NexusPageContentProps) {
         <NexusNav locale={locale} copy={copy.nav} />
         <main id="main-content" lang={locale}>
           <NexusWorld copy={copy} />
-          <section className="nexus-invite" aria-labelledby="nexus-invite-title">
-            <div className="nexus-invite__inner">
-              <h2 id="nexus-invite-title" className="nexus-invite__title">
-                {copy.invite.title}
-              </h2>
-              <Link href={copy.invite.ctaHref} className="nexus-invite__cta">
-                {copy.invite.cta}
-              </Link>
-              <p className="nexus-invite__limit">{copy.invite.limit}</p>
-            </div>
-          </section>
           <section className="nexus-trust" aria-labelledby="nexus-trust-title">
             <h2 id="nexus-trust-title" className="visually-hidden">
               {copy.trust.aria}

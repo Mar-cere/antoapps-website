@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import type { NexusActiveBeat, NexusBeatId, NexusPageCopy } from '@/lib/i18n/copy/pages/nexus';
 import { NEXUS_CONSTELLATION_PLATE, NEXUS_CONSTELLATION_PLATE_PNG } from '@/lib/nexus/field';
 import NexusEventMark from '@/components/nexus/NexusEventMark';
@@ -30,9 +31,11 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
   const [activeBeat, setActiveBeat] = useState<NexusActiveBeat>('hero');
   const [released, setReleased] = useState(false);
   const [tracking, setTracking] = useState(false);
+  const [inviting, setInviting] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const beatRefs = useRef<Partial<Record<NexusBeatId, HTMLElement | null>>>({});
   const afterRef = useRef<HTMLDivElement>(null);
+  const inviteRef = useRef<HTMLElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -50,8 +53,11 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
     if (afterRef.current) {
       items.push({ id: 'after', el: afterRef.current });
     }
+    if (inviteRef.current) {
+      items.push({ id: 'after', el: inviteRef.current });
+    }
 
-    const visible = new Set<NexusActiveBeat>();
+    const visibleEls = new Set<HTMLElement>();
     const pick = () => {
       const targetY = window.innerHeight * 0.36;
       let containing: NexusActiveBeat | null = null;
@@ -59,7 +65,7 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
       let bestDist = Number.POSITIVE_INFINITY;
       let found = false;
       for (const { id, el } of items) {
-        if (!visible.has(id)) {
+        if (!visibleEls.has(el)) {
           continue;
         }
         const rect = el.getBoundingClientRect();
@@ -77,9 +83,15 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
       if (next) {
         setActiveBeat((prev) => (prev === next ? prev : next));
       }
+      const invite = inviteRef.current;
+      if (invite) {
+        const rect = invite.getBoundingClientRect();
+        const nextInviting = rect.top <= targetY && rect.bottom >= targetY;
+        setInviting((prev) => (prev === nextInviting ? prev : nextInviting));
+      }
       const end = endRef.current;
       if (end) {
-        const gonePast = end.getBoundingClientRect().bottom < window.innerHeight * 0.42;
+        const gonePast = end.getBoundingClientRect().bottom < window.innerHeight * 0.55;
         setReleased((prev) => (prev === gonePast ? prev : gonePast));
       }
     };
@@ -87,14 +99,11 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          const id = entry.target.getAttribute('data-nexus-beat') as NexusActiveBeat | null;
-          if (!id) {
-            continue;
-          }
+          const el = entry.target as HTMLElement;
           if (entry.isIntersecting) {
-            visible.add(id);
+            visibleEls.add(el);
           } else {
-            visible.delete(id);
+            visibleEls.delete(el);
           }
         }
         pick();
@@ -117,11 +126,18 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
 
   return (
     <div
-      className={`nexus-world${released ? ' is-released' : ''}${tracking ? ' is-tracking' : ''}`}
+      className={`nexus-world${released ? ' is-released' : ''}${tracking ? ' is-tracking' : ''}${
+        inviting ? ' is-inviting' : ''
+      }`}
       data-beat={activeBeat}
     >
       <div className="nexus-stage">
-        <NexusOrganism events={copy.events} label={copy.organismAria} activeBeat={activeBeat} />
+        <NexusOrganism
+          events={copy.events}
+          label={copy.organismAria}
+          activeBeat={activeBeat}
+          released={released}
+        />
       </div>
       <section
         ref={heroRef}
@@ -130,7 +146,6 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
         aria-labelledby="nexus-title"
       >
         <div className="nexus-copy">
-          <p className="nexus-eyebrow">{copy.hero.eyebrow}</p>
           <h1 id="nexus-title" className="nexus-title">
             <span className="nexus-title__line">{copy.hero.line1}</span>
             <span className="nexus-title__line">{copy.hero.line2}</span>
@@ -175,8 +190,24 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
             <p className="nexus-bridge__promise">{copy.bridge.promise}</p>
           </div>
         </div>
-        <div ref={endRef} className="nexus-world__end" aria-hidden="true" />
       </section>
+      <section
+        ref={inviteRef}
+        className="nexus-invite"
+        data-nexus-beat="after"
+        aria-labelledby="nexus-invite-title"
+      >
+        <div className="nexus-invite__inner">
+          <h2 id="nexus-invite-title" className="nexus-invite__title">
+            {copy.invite.title}
+          </h2>
+          <Link href={copy.invite.ctaHref} className="nexus-invite__cta">
+            {copy.invite.cta}
+          </Link>
+          <p className="nexus-invite__limit">{copy.invite.limit}</p>
+        </div>
+      </section>
+      <div ref={endRef} className="nexus-world__end" aria-hidden="true" />
     </div>
   );
 }

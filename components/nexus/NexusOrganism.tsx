@@ -22,6 +22,7 @@ type NexusOrganismProps = {
   events: readonly NexusEventCopy[];
   label: string;
   activeBeat?: NexusActiveBeat;
+  released?: boolean;
 };
 
 const NODE_VERT = `
@@ -526,14 +527,21 @@ function mix(a: number, b: number, t: number): number {
   return a + (b - a) * t;
 }
 
-export default function NexusOrganism({ events, label, activeBeat = 'hero' }: NexusOrganismProps) {
+export default function NexusOrganism({
+  events,
+  label,
+  activeBeat = 'hero',
+  released = false,
+}: NexusOrganismProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const fieldBoxRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const eventRefs = useRef<Array<HTMLDivElement | null>>([]);
   const fieldRef = useRef<NexusField | null>(null);
   const beatRef = useRef<NexusActiveBeat>(activeBeat);
+  const releasedRef = useRef(released);
   beatRef.current = activeBeat;
+  releasedRef.current = released;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -1001,7 +1009,7 @@ export default function NexusOrganism({ events, label, activeBeat = 'hero' }: Ne
 
     const draw = (now: number) => {
       frame = window.requestAnimationFrame(draw);
-      if (!inView || !pageVisible) {
+      if (!inView || !pageVisible || releasedRef.current) {
         return;
       }
       const time = reduced ? 4.35 : now * 0.0025;
