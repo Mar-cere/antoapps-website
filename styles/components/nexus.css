@@ -210,7 +210,7 @@ body:has(.nexus-page) {
 .nexus-support {
   margin: 0 0 1.75rem;
   max-width: 32rem;
-  color: var(--nexus-muted);
+  color: rgba(244, 247, 251, 0.82);
   font-size: 0.98rem;
   font-weight: 400;
   line-height: 1.55;
@@ -309,6 +309,7 @@ body:has(.nexus-page) {
 .nexus-organism__plate {
   object-fit: contain;
   object-position: 58% 40%;
+  transform-origin: 58% 40%;
   opacity: 0.4;
   filter: saturate(1.16) contrast(1.2);
   mix-blend-mode: plus-lighter;
@@ -336,7 +337,7 @@ body:has(.nexus-page) {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .nexus-organism.is-live .nexus-organism__plate {
+  .nexus-world[data-beat='hero'] .nexus-organism.is-live .nexus-organism__plate {
     animation: nexus-breathe 9s ease-in-out infinite;
   }
 }
@@ -477,6 +478,7 @@ body:has(.nexus-page) {
   .nexus-organism__plate {
     opacity: 0.72;
     object-position: 52% 44%;
+    transform-origin: 52% 44%;
   }
 
   .nexus-sequence {

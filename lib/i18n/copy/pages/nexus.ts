@@ -136,7 +136,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       liveAria: 'Estado del sistema: activo. Nexus está pensando.',
     },
     sequence: {
-      aria: 'Cómo Nexus usa un recuerdo, un patrón y una estrategia',
+      aria: 'Cómo Nexus recupera el hilo, nombra lo que se repite y elige un paso',
       beats: [
         {
           id: 'memory',
@@ -252,7 +252,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       liveAria: 'System status: active. Nexus is thinking.',
     },
     sequence: {
-      aria: 'How Nexus uses a memory, a pattern and a strategy',
+      aria: 'How Nexus recovers the thread, names what repeats and chooses a next step',
       beats: [
         {
           id: 'memory',
