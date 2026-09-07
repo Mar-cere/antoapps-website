@@ -697,7 +697,7 @@ function buildPlexus(core: NexusNode[], maxEdges: number, rng: () => number): Ne
     const mid = towardCenter(a, b, 0.28, {
       x: (rng() - 0.5) * 0.04,
       y: (rng() - 0.5) * 0.03,
-      z: (rng() - 0.5) * 0.04,
+      z: (rng() - 0.5) * 0.07,
     });
     tryEdge(i, best, mid, 5, 0.07 + rng() * 0.02, false);
   }
@@ -744,7 +744,7 @@ function buildPlexus(core: NexusNode[], maxEdges: number, rng: () => number): Ne
       const mid: Vec3 = {
         x: (a.x + b.x) * 0.5 + (rng() - 0.5) * 0.018,
         y: (a.y + b.y) * 0.5 + (rng() - 0.5) * 0.016,
-        z: (a.z + b.z) * 0.5 + (rng() - 0.5) * 0.018,
+        z: (a.z + b.z) * 0.5 + (rng() - 0.5) * 0.03,
       };
       tryEdge(i, next, mid, 3, 0.07 + rng() * 0.02, false);
       i = next;
@@ -999,7 +999,7 @@ export function nexusBudget(width: number): NexusBudget {
   return { nodes: 460, filaments: 140 };
 }
 
-export const NEXUS_FIELD_REV = 46;
+export const NEXUS_FIELD_REV = 47;
 
 export const NEXUS_CONSTELLATION_PLATE = '/assets/images/nexus/nexus-constellation-plate.webp?v=2';
 export const NEXUS_CONSTELLATION_PLATE_PNG = '/assets/images/nexus/nexus-constellation-plate.png?v=2';
@@ -1516,6 +1516,18 @@ export function buildNexusField(budget: NexusBudget, seed = 0xd4a1): NexusField 
       node.r *= s;
       node.g *= s;
       node.b *= s;
+    }
+  }
+
+  for (const node of nodes) {
+    if (node.mist) {
+      continue;
+    }
+    node.z *= 1.38;
+    if (node.z > 0.34) {
+      node.z = 0.34;
+    } else if (node.z < -0.34) {
+      node.z = -0.34;
     }
   }
 

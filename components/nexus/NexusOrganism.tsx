@@ -61,7 +61,7 @@ void main() {
   vec3 pos = aCenter;
   pos.x += 0.014 * sin(uTime * 0.38 + aCenter.y * 3.6 + aCluster);
   pos.y += 0.012 * cos(uTime * 0.33 + aCenter.x * 2.8 + aCluster * 0.7);
-  pos.z += 0.01 * sin(uTime * 0.28 + aCenter.z * 2.4);
+  pos.z += 0.018 * sin(uTime * 0.28 + aCenter.z * 2.4);
   float wake = max(act(pos, uWake0, 0.22), max(act(pos, uWake1, 0.2), act(pos, uWake2, 0.2)));
   float thought0 = pow(max(0.0, sin(uTime * 1.22)), 2.6);
   float thought1 = pow(max(0.0, sin(uTime * 1.22 + 1.5708)), 2.6);
@@ -91,11 +91,11 @@ void main() {
   activity = mix(activity, lit, active);
   activity = mix(activity, hot, conv);
   vec4 clip = uViewProj * vec4(pos, 1.0);
-  float nearBlur = smoothstep(1.28, 0.5, clip.w);
-  float farDim = smoothstep(3.15, 4.7, clip.w);
+  float nearLift = smoothstep(1.55, 0.52, clip.w);
+  float farDim = smoothstep(2.55, 4.15, clip.w);
   float sizePx = aSize * mix(1.28, mix(2.15, 3.7, conv), mix(moderate, 1.0, active));
   sizePx *= mix(1.0, 1.85, aMist);
-  sizePx *= 1.0 + nearBlur * 0.05 + wake * 0.08 + focus * 0.2 + beat * mix(0.52, 0.06, aMist);
+  sizePx *= 1.0 + nearLift * 0.38 + wake * 0.08 + focus * 0.2 + beat * mix(0.52, 0.06, aMist);
   clip.xy += aCorner * vec2(sizePx / uResolution.x, sizePx / uResolution.y) * clip.w;
   gl_Position = clip;
   vCorner = aCorner;
@@ -121,7 +121,7 @@ void main() {
   vAlpha = mix(0.36 + 0.48 * activity, 0.034 + 0.016 * activity, aMist);
   vAlpha *= 1.0 + flowStrength * (1.0 - aMist) * 0.08 + wake * mix(0.26, 0.04, aMist) + focus * mix(0.5, 0.06, aMist) + beat * mix(1.15, 0.06, aMist);
   vAlpha *= mix(uDim, 1.0, isolate);
-  vAlpha *= (1.0 - farDim * 0.4) * (1.0 - nearBlur * 0.08);
+  vAlpha *= (1.0 + nearLift * 0.22) * (1.0 - farDim * 0.52);
 }
 `;
 
@@ -221,7 +221,10 @@ void main() {
   }
   vec2 perp = vec2(-dir.y, dir.x);
   vec4 pos = mix(cA, cB, aEnd);
+  float nearLift = smoothstep(1.6, 0.52, pos.w);
+  float farDim = smoothstep(2.55, 4.15, pos.w);
   float px = 0.58 + flowPulse * 0.62;
+  px *= 1.0 + nearLift * 0.4;
   pos.xy += perp * aSide * (px / uResolution) * 2.0 * pos.w;
   gl_Position = pos;
   vSide = aSide;
@@ -232,6 +235,7 @@ void main() {
   float isolate = clamp(focus * 1.4 + wake * 0.35 + nexus * 0.2, 0.0, 1.0);
   vAlpha = aAlpha * (0.8 + flowStrength * 0.14 + focus * 0.14 + wake * 0.07 + nexus * 0.03 + flowPulse * 1.12 + strand * 0.2);
   vAlpha *= mix(uDim, 1.0, isolate);
+  vAlpha *= (1.0 + nearLift * 0.16) * (1.0 - farDim * 0.45);
   vec3 violetTint = vec3(0.68, 0.3, 0.9);
   vec3 cyanTint = vec3(0.18, 0.86, 0.92);
   vec3 warmTint = vec3(0.72, 0.42, 0.46);
