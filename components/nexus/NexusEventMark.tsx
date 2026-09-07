@@ -5,7 +5,7 @@ type NexusEventMarkProps = {
   className?: string;
 };
 
-export default function NexusEventMark({ id, className = 'nexus-event__icon' }: NexusEventMarkProps) {
+export default function NexusEventMark({ id, className = 'nexus-beat__icon' }: NexusEventMarkProps) {
   if (id === 'memory') {
     return (
       <svg className={className} viewBox="0 0 16 16" aria-hidden="true">

@@ -17,7 +17,7 @@ type NexusPageContentProps = {
 };
 
 const CONTRACT = `THESIS: Anto's intelligence as a living constellation, not a brain, a cloud, or a particle sphere.
-OWN-WORLD: Near-black navy, Inter/SF, teal chrome; plate plus subtle WebGL; glass event cards.
+OWN-WORLD: Near-black navy, Inter/SF, teal chrome; plate plus subtle WebGL.
 STORY: Conversations shape a system that understands you; memory, pattern, strategy; try Anto.
 FIRST VIEWPORT: copy left, organic constellation center-right, CTA in nav only.
 SECOND ACT: same field continues; labels become reading; large CTA after; trust last.

@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import type { NexusActiveBeat, NexusEventCopy } from '@/lib/i18n/copy/pages/nexus';
-import NexusEventMark from '@/components/nexus/NexusEventMark';
+import type { NexusActiveBeat } from '@/lib/i18n/copy/pages/nexus';
 import {
   buildNexusField,
   nexusBudget,
@@ -19,7 +18,6 @@ import {
 import { lookAt, multiply4, perspective } from '@/lib/nexus/math';
 
 type NexusOrganismProps = {
-  events: readonly NexusEventCopy[];
   label: string;
   activeBeat?: NexusActiveBeat;
   released?: boolean;
@@ -528,7 +526,6 @@ function mix(a: number, b: number, t: number): number {
 }
 
 export default function NexusOrganism({
-  events,
   label,
   activeBeat = 'hero',
   released = false,
@@ -536,7 +533,6 @@ export default function NexusOrganism({
   const wrapRef = useRef<HTMLDivElement>(null);
   const fieldBoxRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const eventRefs = useRef<Array<HTMLDivElement | null>>([]);
   const fieldRef = useRef<NexusField | null>(null);
   const beatRef = useRef<NexusActiveBeat>(activeBeat);
   const releasedRef = useRef(released);
@@ -988,40 +984,6 @@ export default function NexusOrganism({
       : null;
 
     let frame = 0;
-    let lastCycle = 0;
-    let eventCursor = 0;
-
-    const placeEvents = (time: number) => {
-      const beat = beatRef.current;
-      if (beat !== 'hero') {
-        for (let i = 0; i < events.length; i += 1) {
-          const el = eventRefs.current[i];
-          if (!el) {
-            continue;
-          }
-          el.classList.remove('is-on', 'is-thinking');
-        }
-        return;
-      }
-      const mobile = window.innerWidth < 768;
-      const count = mobile ? 1 : events.length;
-      if (!reduced && time - lastCycle > (mobile ? 5200 : 3600)) {
-        lastCycle = time;
-        eventCursor = (eventCursor + 1) % Math.max(1, events.length);
-      }
-      const shown = new Set<number>();
-      for (let k = 0; k < count; k += 1) {
-        shown.add(mobile ? (eventCursor + k) % events.length : k);
-      }
-      for (let i = 0; i < events.length; i += 1) {
-        const el = eventRefs.current[i];
-        if (!el) {
-          continue;
-        }
-        el.classList.toggle('is-on', shown.has(i));
-        el.classList.toggle('is-thinking', !reduced && shown.has(i) && i === eventCursor);
-      }
-    };
 
     const draw = (now: number) => {
       frame = window.requestAnimationFrame(draw);
@@ -1218,8 +1180,6 @@ export default function NexusOrganism({
         gl.uniformMatrix4fv(uSpark.view, false, viewProj);
         gl.drawArrays(gl.POINTS, 0, sparkCount);
       }
-
-      placeEvents(now);
     };
 
     frame = window.requestAnimationFrame(draw);
@@ -1246,7 +1206,7 @@ export default function NexusOrganism({
         gl.deleteProgram(volProg);
       }
     };
-  }, [events]);
+  }, []);
 
   return (
     <div className="nexus-organism" ref={wrapRef}>
@@ -1264,22 +1224,6 @@ export default function NexusOrganism({
         <canvas ref={canvasRef} className="nexus-organism__canvas" aria-hidden="true" />
       </div>
       <span className="visually-hidden">{label}</span>
-      {events.map((event, index) => (
-        <div
-          key={event.id}
-          ref={(el) => {
-            eventRefs.current[index] = el;
-          }}
-          className="nexus-event"
-          data-event={event.id}
-        >
-          <NexusEventMark id={event.id} />
-          <span>
-            <span className="nexus-event__title">{event.title}</span>
-            <span className="nexus-event__sub">{event.subtitle}</span>
-          </span>
-        </div>
-      ))}
     </div>
   );
 }

@@ -133,7 +133,6 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
     >
       <div className="nexus-stage">
         <NexusOrganism
-          events={copy.events}
           label={copy.organismAria}
           activeBeat={activeBeat}
           released={released}

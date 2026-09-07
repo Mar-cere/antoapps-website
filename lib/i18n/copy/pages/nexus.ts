@@ -67,7 +67,6 @@ export type NexusPageCopy = {
     thinking: string;
     liveAria: string;
   };
-  events: readonly NexusEventCopy[];
   sequence: {
     aria: string;
     beats: readonly NexusBeatCopy[];
@@ -95,12 +94,12 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
     meta: {
       title: 'Inside Anto Nexus | Anto',
       description:
-        'Cada conversación forma la inteligencia que te comprende. Recuerdo, patrón y estrategia en un sistema vivo. Complementa; no sustituye atención profesional.',
+        'Cada conversación forma la inteligencia que te comprende. Historial, recurrencia y un paso concreto. Complementa; no sustituye atención profesional.',
       keywords:
         'Anto Nexus, inteligencia adaptativa, acompañamiento emocional, contexto personal, aprendizaje continuo',
       openGraphTitle: 'Inside Anto Nexus',
       openGraphDescription:
-        'Cada conversación forma la inteligencia que te comprende. Un sistema que conecta conocimiento, contexto y aprendizaje.',
+        'Cada conversación forma la inteligencia que te comprende. Historial, recurrencia y un paso concreto.',
       canonicalPath: CANONICAL_PATH,
       ogAlt: 'Inside Anto Nexus. Cada conversación forma la inteligencia que te comprende.',
     },
@@ -127,8 +126,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       line3Prefix: 'que ',
       highlight: 'te comprende.',
       supportLines: [
-        'Cada respuesta consulta el historial antes de escribirse.',
-        'Luego nombra lo que se repite y elige un paso.',
+        'Lo que ya contaste entra en esta respuesta.',
+        'No parte de un mensaje aislado.',
       ],
     },
     status: {
@@ -136,11 +135,6 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       thinking: 'Nexus está pensando',
       liveAria: 'Estado del sistema: activo. Nexus está pensando.',
     },
-    events: [
-      { id: 'memory', title: 'Recuerdo recuperado', subtitle: 'Historial y temas abiertos' },
-      { id: 'pattern', title: 'Patrón conectado', subtitle: 'Hábito que vuelve' },
-      { id: 'strategy', title: 'Estrategia elegida', subtitle: 'Paso o técnica del hub' },
-    ],
     sequence: {
       aria: 'Cómo Nexus usa un recuerdo, un patrón y una estrategia',
       beats: [
@@ -149,7 +143,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Recupera el hilo',
           paragraphs: [
             'El insomnio de anoche. La conversación que no cerraste.',
-            'Antes de responder, consulta el historial y la memoria de temas que ya abriste. Ese contexto entra en este turno.',
+            'Antes de responder, consulta el historial y la memoria de temas que ya abriste.',
             'La continuidad vale entre sesiones, no solo dentro de este chat.',
           ],
         },
@@ -216,12 +210,12 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
     meta: {
       title: 'Inside Anto Nexus | Anto',
       description:
-        'Every conversation shapes the intelligence that understands you. Memory, pattern and strategy in a living system. Complements; does not replace professional care.',
+        'Every conversation shapes the intelligence that understands you. History, recurrence and a concrete step. Complements; does not replace professional care.',
       keywords:
         'Anto Nexus, adaptive intelligence, emotional companion, personal context, continuous learning',
       openGraphTitle: 'Inside Anto Nexus',
       openGraphDescription:
-        'Every conversation shapes the intelligence that understands you. A system that connects knowledge, context and learning.',
+        'Every conversation shapes the intelligence that understands you. History, recurrence and a concrete step.',
       canonicalPath: CANONICAL_PATH,
       ogAlt: 'Inside Anto Nexus. Every conversation shapes the intelligence that understands you.',
     },
@@ -248,8 +242,8 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       line3Prefix: 'that ',
       highlight: 'understands you.',
       supportLines: [
-        'Each reply consults the history before it is written.',
-        'Then it names what repeats and chooses a step.',
+        'What you already shared enters this reply.',
+        'It does not start from an isolated message.',
       ],
     },
     status: {
@@ -257,11 +251,6 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       thinking: 'Nexus is thinking',
       liveAria: 'System status: active. Nexus is thinking.',
     },
-    events: [
-      { id: 'memory', title: 'Memory recalled', subtitle: 'History and open topics' },
-      { id: 'pattern', title: 'Pattern connected', subtitle: 'A habit that returns' },
-      { id: 'strategy', title: 'Strategy selected', subtitle: 'Step or hub exercise' },
-    ],
     sequence: {
       aria: 'How Nexus uses a memory, a pattern and a strategy',
       beats: [
@@ -270,7 +259,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
           title: 'Recovers the thread',
           paragraphs: [
             'Last night without sleep. The conversation you did not close.',
-            'Before it replies, it consults the history and the topic memory you already opened. That context enters this reply.',
+            'Before it replies, it consults the history and the topic memory you already opened.',
             'Continuity holds across sessions, not only inside this chat.',
           ],
         },
