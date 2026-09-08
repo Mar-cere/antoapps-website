@@ -11,12 +11,13 @@ import {
 } from 'react';
 import type {
   ComponentStatus,
+  ObservatoryConnection,
+  ObservatoryFeed,
   ObservatorySnapshot,
   ScenarioDefinition,
   ScenarioId,
   TraceEnvelope,
 } from '@/lib/observatory/data/types';
-import { defaultSource } from '@/lib/observatory/data/source';
 import { participatingFor, STAGE_LABELS } from '@/lib/observatory/copy/labels';
 import {
   currentStageId,
@@ -26,6 +27,7 @@ import {
 } from '@/lib/observatory/simulation/engine';
 
 type ObservatoryContextValue = {
+  connection: ObservatoryConnection;
   snapshot: ObservatorySnapshot;
   scenarios: ScenarioDefinition[];
   scenario: ScenarioDefinition;
@@ -34,6 +36,8 @@ type ObservatoryContextValue = {
   speed: 0.5 | 1 | 2 | 4;
   elapsedMs: number;
   selectedStageId: string | null;
+  demoPlayback: boolean;
+  refresh: () => void;
   setScenarioId: (id: ScenarioId) => void;
   play: () => void;
   pause: () => void;
@@ -46,24 +50,57 @@ type ObservatoryContextValue = {
 const ObservatoryContext = createContext<ObservatoryContextValue | null>(null);
 
 export function ObservatoryProvider({ children }: { children: ReactNode }) {
-  const source = defaultSource;
-  const scenarios = useMemo(() => source.listScenarios(), []);
-  const base = useMemo(() => source.getSnapshot(), []);
-
+  const [feed, setFeed] = useState<ObservatoryFeed | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [scenarioId, setScenarioIdState] = useState<ScenarioId>('venting');
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState<0.5 | 1 | 2 | 4>(1);
   const [elapsedMs, setElapsedMs] = useState(0);
   const [selectedStageId, setSelectedStageId] = useState<string | null>(null);
-  const [clock, setClock] = useState(base.last_updated);
+  const [clock, setClock] = useState(() => new Date().toISOString());
 
-  const scenario = useMemo(
-    () => scenarios.find((s) => s.id === scenarioId) ?? scenarios[0],
-    [scenarios, scenarioId]
-  );
+  const load = useCallback(async () => {
+    const response = await fetch('/api/observatorio/snapshot', { credentials: 'same-origin' });
+    if (response.status === 401) {
+      window.location.href = '/nexus/ingreso';
+      return;
+    }
+    let data: ObservatoryFeed & { ok?: boolean; error?: string };
+    try {
+      data = (await response.json()) as ObservatoryFeed & { ok?: boolean; error?: string };
+    } catch {
+      throw new Error('El snapshot no es JSON.');
+    }
+    if (!response.ok || data.ok === false) {
+      throw new Error(data.error ?? 'No se pudo cargar el observatorio.');
+    }
+    if (!data.connection || !data.snapshot || !Array.isArray(data.scenarios)) {
+      throw new Error('El snapshot está incompleto.');
+    }
+    setFeed({
+      connection: data.connection,
+      snapshot: data.snapshot,
+      scenarios: data.scenarios,
+    });
+  }, []);
 
   useEffect(() => {
-    if (!playing) return;
+    let cancelled = false;
+    load().catch((error: unknown) => {
+      if (!cancelled) setLoadError(error instanceof Error ? error.message : 'Error de carga');
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [load]);
+
+  const demoPlayback = Boolean(feed && !(feed.connection.kind === 'http' && feed.connection.reachable));
+  const scenarios = feed?.scenarios ?? [];
+  const base = feed?.snapshot;
+  const scenario = scenarios.find((s) => s.id === scenarioId) ?? scenarios[0];
+
+  useEffect(() => {
+    if (!demoPlayback || !playing || !scenario) return;
     const id = window.setInterval(() => {
       setElapsedMs((prev) => {
         const next = prev + 40 * speed;
@@ -76,14 +113,23 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
       });
     }, 40);
     return () => window.clearInterval(id);
-  }, [playing, speed, scenario]);
+  }, [demoPlayback, playing, speed, scenario]);
 
   useEffect(() => {
+    if (!demoPlayback) return;
     const tick = () => setClock(new Date().toISOString());
     tick();
     const id = window.setInterval(tick, 1000);
     return () => window.clearInterval(id);
-  }, []);
+  }, [demoPlayback]);
+
+  useEffect(() => {
+    if (!feed?.connection.configured) return;
+    const id = window.setInterval(() => {
+      load().catch(() => undefined);
+    }, 15000);
+    return () => window.clearInterval(id);
+  }, [feed?.connection.configured, load]);
 
   const setScenarioId = useCallback((id: ScenarioId) => {
     setScenarioIdState(id);
@@ -100,7 +146,7 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
 
   const pause = useCallback(() => setPlaying(false), []);
   const resume = useCallback(() => {
-    if (!isFinished(scenario, elapsedMs)) setPlaying(true);
+    if (scenario && !isFinished(scenario, elapsedMs)) setPlaying(true);
   }, [elapsedMs, scenario]);
 
   const reset = useCallback(() => {
@@ -109,7 +155,10 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
     setSelectedStageId(null);
   }, []);
 
-  const snapshot = useMemo<ObservatorySnapshot>(() => {
+  const snapshot = useMemo<ObservatorySnapshot | null>(() => {
+    if (!base || !scenario) return null;
+    if (!demoPlayback) return base;
+
     const spans = liveSpans(scenario, elapsedMs);
     const stage = currentStageId(scenario, elapsedMs);
     const finished = isFinished(scenario, elapsedMs);
@@ -168,9 +217,34 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
       components,
       traces: [liveTrace, ...base.traces.filter((t) => t.trace_id !== liveTrace.trace_id)],
     };
-  }, [base, clock, elapsedMs, playing, scenario]);
+  }, [base, clock, demoPlayback, elapsedMs, playing, scenario]);
+
+  if (loadError) {
+    return (
+      <div className="obs-boot">
+        <p>{loadError}</p>
+        <button
+          className="primary"
+          type="button"
+          onClick={() => {
+            setLoadError(null);
+            load().catch((error: unknown) => {
+              setLoadError(error instanceof Error ? error.message : 'Error de carga');
+            });
+          }}
+        >
+          Reintentar
+        </button>
+      </div>
+    );
+  }
+
+  if (!feed || !snapshot || !scenario) {
+    return <div className="obs-boot">Cargando observatorio…</div>;
+  }
 
   const value: ObservatoryContextValue = {
+    connection: feed.connection,
     snapshot,
     scenarios,
     scenario,
@@ -179,6 +253,10 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
     speed,
     elapsedMs,
     selectedStageId,
+    demoPlayback,
+    refresh: () => {
+      load().catch(() => undefined);
+    },
     setScenarioId,
     play,
     pause,

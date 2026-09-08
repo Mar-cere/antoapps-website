@@ -188,7 +188,7 @@ export type DecisionRecord = {
   decision_id: string;
   context_ref: string;
   trace_ref: string;
-  scenario_id: ScenarioId;
+  scenario_id: ScenarioId | string;
   summary_context: string;
   candidates: CandidateRecord[];
   hard_constraints: {
@@ -422,8 +422,22 @@ export type ScenarioDefinition = {
   hypotheses: HypothesisCard[];
 };
 
+export type ObservatoryConnection = {
+  kind: 'simulated' | 'http';
+  configured: boolean;
+  reachable: boolean;
+  endpoint: string | null;
+  detail: string;
+};
+
+export type ObservatoryFeed = {
+  connection: ObservatoryConnection;
+  snapshot: ObservatorySnapshot;
+  scenarios: ScenarioDefinition[];
+};
+
 export type ObservatorySnapshot = {
-  mode: 'simulation';
+  mode: 'simulation' | 'live';
   system_lifecycle: SystemLifecycle;
   processing: string;
   stage_label: string;

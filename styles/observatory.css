@@ -80,7 +80,7 @@
   min-height: 100dvh;
   display: grid;
   grid-template-columns: var(--nav-width) 1fr;
-  grid-template-rows: var(--banner-h) var(--header-h) 1fr;
+  grid-template-rows: auto var(--header-h) 1fr;
   grid-template-areas:
     'banner banner'
     'nav header'
@@ -92,15 +92,34 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
+  flex-wrap: wrap;
+  min-height: var(--banner-h);
+  padding: 8px 16px;
   background: #112040;
   border-bottom: 1px solid var(--color-border);
   font-size: 12px;
   letter-spacing: 0.02em;
   color: var(--color-text-primary);
+  text-align: center;
 }
 .obs-root .sim-banner strong{
   color: var(--color-warning);
   font-weight: 650;
+}
+.obs-root .sim-banner[data-kind="live"] strong{
+  color: var(--color-primary);
+}
+.obs-root .sim-banner[data-kind="down"] strong{
+  color: var(--color-error);
+}
+.obs-root .obs-boot .primary{
+  background: var(--color-primary);
+  color: #030a24;
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-weight: 650;
+  cursor: pointer;
 }
 .obs-root .header{
   grid-area: header;

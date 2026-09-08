@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useObservatory } from '@/components/observatory/shell/ObservatoryProvider';
 import { Provenance } from '@/components/observatory/ui/Provenance';
 import { StatusMark } from '@/components/observatory/ui/StatusMark';
-import { COMPONENT_LABELS, STAGE_LABELS } from '@/lib/observatory/copy/labels';
+import { COMPONENT_LABELS, stageLabel } from '@/lib/observatory/copy/labels';
 import type { ComponentId } from '@/lib/observatory/data/types';
 
 const SWATCH: Record<ComponentId, string> = {
@@ -18,12 +18,18 @@ const SWATCH: Record<ComponentId, string> = {
 };
 
 export function ResumenView() {
-  const { snapshot, scenario, play } = useObservatory();
+  const { snapshot, scenario, play, demoPlayback, connection } = useObservatory();
   const sprint = snapshot.program.sprints.find((s) => s.sprint_no === snapshot.program.current_sprint);
   const live = snapshot.traces[0];
   const featured = snapshot.components.filter((c) =>
     ['psyche', 'persona', 'state', 'cortex', 'nexus_engine', 'experience', 'governance'].includes(c.id)
   );
+  const processTitle =
+    snapshot.system_lifecycle === 'idle'
+      ? 'Nada en este momento'
+      : demoPlayback
+        ? scenario.title
+        : live?.session_ref ?? 'Turno publicado';
 
   return (
     <div className="page">
@@ -31,7 +37,7 @@ export function ResumenView() {
         <h2>Resumen</h2>
         <p>
           Qué está haciendo Nexus ahora, quién participa, qué se construye y dónde hay alerta.
-          Nada de esto es producción: cada cifra lleva procedencia.
+          Cada cifra lleva procedencia.
         </p>
       </header>
 
@@ -41,11 +47,11 @@ export function ResumenView() {
           <p className="v">
             <StatusMark status={snapshot.system_lifecycle} />
           </p>
-          <p className="d">Runtime simulado. El motor de producción aún no existe (Sprint 7).</p>
+          <p className="d">{connection.detail}</p>
         </article>
         <article>
           <p className="k">¿Qué está procesando?</p>
-          <p className="v">{snapshot.system_lifecycle === 'idle' ? 'Nada en este momento' : scenario.title}</p>
+          <p className="v">{processTitle}</p>
           <p className="d">{snapshot.processing}</p>
         </article>
         <article>
@@ -53,7 +59,7 @@ export function ResumenView() {
           <p className="v">{snapshot.stage_label}</p>
           <p className="d">
             {snapshot.current_stage
-              ? `Span canónico: ${STAGE_LABELS[snapshot.current_stage]}`
+              ? `Span canónico: ${stageLabel(snapshot.current_stage)}`
               : 'Cortex evalúa después de responder, nunca en el primer token.'}
           </p>
         </article>
@@ -68,31 +74,38 @@ export function ResumenView() {
         <section className="panel">
           <div className="row-between">
             <h3>Sesión o proceso activo</h3>
-            <Provenance kind="simulated" />
+            <Provenance kind={demoPlayback ? 'simulated' : live?.provenance ?? 'derived'} />
           </div>
           {snapshot.system_lifecycle === 'idle' ? (
             <div className="empty">
-              No hay turno en curso. Inicia una simulación para ver el recorrido, o sigue las
-              decisiones ya inspectables.
+              {demoPlayback
+                ? 'No hay turno en curso. Inicia una simulación para ver el recorrido, o sigue las decisiones ya inspectables.'
+                : 'No hay turno publicado por el runtime. El contrato es GET /v1/observatory/snapshot con traces[].'}
               <div className="controls" style={{ marginTop: 12 }}>
-                <button className="primary" type="button" onClick={play}>
-                  Iniciar simulación
-                </button>
+                {demoPlayback ? (
+                  <button className="primary" type="button" onClick={play}>
+                    Iniciar simulación
+                  </button>
+                ) : null}
                 <Link href="/observatorio/en-vivo">Abrir En vivo</Link>
               </div>
             </div>
           ) : (
             <>
               <p>
-                {scenario.content_minimized}
+                {demoPlayback
+                  ? scenario.content_minimized
+                  : 'Turno publicado por el runtime. Contenido de conversación off.'}
               </p>
               <p className="session-id">
-                {scenario.subject_ref} · {scenario.session_ref} · {live?.trace_id}
+                {demoPlayback
+                  ? `${scenario.subject_ref} · ${scenario.session_ref} · ${live?.trace_id}`
+                  : `${live?.subject_ref} · ${live?.session_ref} · ${live?.trace_id}`}
               </p>
               <div className="mini-flow" aria-label="Etapas del turno">
                 {live?.spans.map((span) => (
                   <button key={span.span_id} type="button" data-status={span.status} disabled>
-                    {STAGE_LABELS[span.stage_id]}
+                    {stageLabel(span.stage_id)}
                   </button>
                 ))}
               </div>
@@ -117,7 +130,11 @@ export function ResumenView() {
       <section>
         <div className="row-between" style={{ marginBottom: 8 }}>
           <h3 style={{ margin: 0 }}>Componentes</h3>
-          <span className="s">Participación del turno simulado, no madurez de producción</span>
+          <span className="s">
+            {demoPlayback
+              ? 'Participación del turno simulado, no madurez de producción'
+              : 'Participación del turno publicado, no madurez de producción'}
+          </span>
         </div>
         <div className="comp-map">
           {featured.map((c) => (
@@ -141,7 +158,7 @@ export function ResumenView() {
         <section className="panel">
           <h3>Alertas</h3>
           {snapshot.alerts.length === 0 ? (
-            <div className="empty">No hay alertas en esta simulación.</div>
+            <div className="empty">No hay alertas en este snapshot.</div>
           ) : (
             snapshot.alerts.map((alert) => (
               <Link key={alert.alert_id} href={alert.href} className="alert" data-sev={alert.severity}>
@@ -153,18 +170,25 @@ export function ResumenView() {
         </section>
         <section className="panel">
           <h3>Actividad reciente</h3>
-          {snapshot.activity.map((item) => (
-            <div key={item.activity_id} className="alert">
-              <span className="t">{item.title}</span>
-              <span className="s">{item.detail}</span>
-            </div>
-          ))}
+          {snapshot.activity.length === 0 ? (
+            <div className="empty">Sin actividad en este snapshot.</div>
+          ) : (
+            snapshot.activity.map((item) => (
+              <div key={item.activity_id} className="alert">
+                <span className="t">{item.title}</span>
+                <span className="s">{item.detail}</span>
+              </div>
+            ))
+          )}
         </section>
       </div>
 
       <section>
         <h3 style={{ margin: '0 0 8px' }}>Métricas principales</h3>
         <div className="metrics">
+          {snapshot.metrics.length === 0 ? (
+            <div className="empty">El snapshot no trajo métricas.</div>
+          ) : null}
           {snapshot.metrics.map((m) => (
             <article key={m.metric_id} className="metric">
               <p className="label">{m.label}</p>

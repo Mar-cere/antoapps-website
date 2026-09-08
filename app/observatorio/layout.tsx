@@ -15,7 +15,7 @@ export default function ObservatoryLayout({ children }: { children: ReactNode })
     <div className="obs-root">
       {/*
         THESIS: Un observatorio de misión calmado para ver Nexus decidir y a Cortex aprender, sin hero comercial ni estética cyberpunk.
-        OWN-WORLD: Azul profundo Anto, teal y colores de componente como puntos, densidad de operación, hairlines, banner de simulación permanente.
+        OWN-WORLD: Azul profundo Anto, teal y colores de componente como puntos, densidad de operación, hairlines, banner de procedencia (simulación, runtime no alcanzable o runtime conectado).
         STORY: El operador ve estado, turno, componentes, alertas y el sprint real del programa, sabiendo qué es simulado.
         FIRST VIEWPORT: Banda de cuatro respuestas, sesión activa, sprint, mapa de componentes, alertas y métricas con definición.
         FORM: user-pinned Operate observatory

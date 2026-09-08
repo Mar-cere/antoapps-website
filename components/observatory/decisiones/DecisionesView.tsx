@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useObservatory } from '@/components/observatory/shell/ObservatoryProvider';
 import { Provenance } from '@/components/observatory/ui/Provenance';
-import { DECISION_ACT_LABELS, SCENARIO_LABELS } from '@/lib/observatory/copy/labels';
+import { DECISION_ACT_LABELS, scenarioLabel } from '@/lib/observatory/copy/labels';
 import type { DecisionRecord } from '@/lib/observatory/data/types';
 
 export function DecisionesView() {
@@ -25,16 +25,22 @@ export function DecisionesView() {
       <div className="split">
         <section className="panel">
           <h3>DecisionRecord</h3>
-          <div className="list">
-            {snapshot.decisions.map((d) => (
-              <button key={d.decision_id} type="button" onClick={() => setId(d.decision_id)}>
-                <span className="t">
-                  {SCENARIO_LABELS[d.scenario_id]} · {DECISION_ACT_LABELS[d.decision_act]}
-                </span>
-                <span className="s">{d.decision_id} · {d.selected ?? 'sin elección'}</span>
-              </button>
-            ))}
-          </div>
+          {snapshot.decisions.length === 0 ? (
+            <div className="empty">
+              No hay DecisionRecord en este snapshot. En el programa de Nexus eso llega en Sprint 7.
+            </div>
+          ) : (
+            <div className="list">
+              {snapshot.decisions.map((d) => (
+                <button key={d.decision_id} type="button" onClick={() => setId(d.decision_id)}>
+                  <span className="t">
+                    {scenarioLabel(d.scenario_id)} · {DECISION_ACT_LABELS[d.decision_act] ?? d.decision_act}
+                  </span>
+                  <span className="s">{d.decision_id} · {d.selected ?? 'sin elección'}</span>
+                </button>
+              ))}
+            </div>
+          )}
         </section>
         {record ? <RecordPanel record={record} /> : null}
       </div>
@@ -66,7 +72,7 @@ export function DecisionesView() {
           </dl>
         </section>
       ) : (
-        <div className="empty">Sin ExperiencePlan. En producción esto llega en Sprint 8.</div>
+        <div className="empty">Sin ExperiencePlan en este snapshot. En el programa es Sprint 8.</div>
       )}
     </div>
   );
@@ -86,7 +92,7 @@ function RecordPanel({ record }: { record: DecisionRecord }) {
       <p>{record.summary_context}</p>
       <dl>
         <dt>Acto</dt>
-        <dd>{DECISION_ACT_LABELS[record.decision_act]}</dd>
+        <dd>{DECISION_ACT_LABELS[record.decision_act] ?? record.decision_act}</dd>
         <dt>Elegida</dt>
         <dd>{record.selected ?? 'ninguna'}</dd>
         <dt>Confianza</dt>

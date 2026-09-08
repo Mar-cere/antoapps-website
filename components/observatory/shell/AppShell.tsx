@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useObservatory } from '@/components/observatory/shell/ObservatoryProvider';
 import { StatusMark } from '@/components/observatory/ui/StatusMark';
 import { OBSERVATORY_NAV } from '@/lib/observatory/routes';
+import type { ObservatoryConnection } from '@/lib/observatory/data/types';
 
 function isActive(pathname: string, href: string) {
   if (href === '/observatorio') return pathname === '/observatorio';
@@ -45,16 +46,40 @@ function NavGlyph({ name, filled }: { name: (typeof OBSERVATORY_NAV)[number]['la
   );
 }
 
+function connectionBanner(connection: ObservatoryConnection) {
+  if (connection.kind === 'http' && connection.reachable) {
+    return {
+      kind: 'live',
+      title: 'Runtime conectado',
+      text: 'Vistas derivadas. El dashboard no consulta Mongo ni el warehouse. Contenido de conversación off.',
+    };
+  }
+  if (connection.configured) {
+    const detail = connection.detail.endsWith('.') ? connection.detail : `${connection.detail}.`;
+    return {
+      kind: 'down',
+      title: 'Runtime no alcanzable',
+      text: `${detail} Se muestran fixtures hasta que GET /v1/observatory/snapshot responda.`,
+    };
+  }
+  return {
+    kind: 'sim',
+    title: 'Modo simulación',
+    text: 'Sin URL de runtime. Datos ficticios. No es tráfico de producción ni una segunda fuente de verdad.',
+  };
+}
+
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const { snapshot } = useObservatory();
+  const { snapshot, connection, refresh } = useObservatory();
   const updated = snapshot.last_updated.slice(11, 19);
+  const banner = connectionBanner(connection);
 
   return (
     <div className="shell">
-      <div className="sim-banner" role="status">
-        <strong>Modo simulación</strong>
-        <span>Datos ficticios y redactados. No es tráfico de producción ni una segunda fuente de verdad.</span>
+      <div className="sim-banner" data-kind={banner.kind} role="status">
+        <strong>{banner.title}</strong>
+        <span>{banner.text}</span>
       </div>
       <header className="header">
         <div className="header-brand">
@@ -64,6 +89,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="header-meta">
           <StatusMark status={snapshot.system_lifecycle} />
           <span>Actualizado {updated} UTC</span>
+          {connection.configured ? (
+            <button type="button" className="obs-logout" onClick={refresh}>
+              Actualizar
+            </button>
+          ) : null}
           <form action="/api/observatorio/logout" method="post">
             <button type="submit" className="obs-logout">
               Salir

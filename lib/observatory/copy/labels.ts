@@ -37,6 +37,18 @@ export const COMPONENT_LABELS: Record<ComponentId | 'runtime', string> = {
   runtime: 'Nexus Runtime',
 };
 
+export function stageLabel(id: string): string {
+  return STAGE_LABELS[id as PipelineStageId] ?? id;
+}
+
+export function componentLabel(id: string): string {
+  return COMPONENT_LABELS[id as ComponentId | 'runtime'] ?? id;
+}
+
+export function scenarioLabel(id: string): string {
+  return SCENARIO_LABELS[id as ScenarioId] ?? id;
+}
+
 export const SCENARIO_LABELS: Record<ScenarioId, string> = {
   venting: 'Desahogo',
   couple_conflict: 'Conflicto de pareja',
