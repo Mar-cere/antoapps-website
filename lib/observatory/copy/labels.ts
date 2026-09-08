@@ -99,6 +99,53 @@ export const DECISION_ACT_LABELS = {
   blocked: 'Bloqueada',
 } as const;
 
+export const CHOICE_LABELS: Record<string, string> = {
+  listen: 'Escuchar',
+  ask: 'Preguntar',
+  structure: 'Estructurar',
+  intervene: 'Intervenir',
+  abstain: 'Abstenerse',
+  blocked: 'Bloqueada',
+  validate: 'Validar',
+  implicit_llm: 'Generación implícita',
+};
+
+export const SLICE_LABELS: Record<string, string> = {
+  none: 'Sin slice relacional',
+  vent: 'Desahogo',
+  couple: 'Pareja',
+  couple_and_vent: 'Pareja y desahogo',
+};
+
+export const DECISION_PATH_EVENTS = [
+  'consent.checked',
+  'safety.routed',
+  'state.estimated',
+  'decision.deliberated',
+  'experience.planned',
+  'extras.evaluated',
+  'decision.shadowed',
+  'relational.shadowed',
+] as const;
+
+export function choiceLabel(value: string | null | undefined): string {
+  if (value == null || value === '') return 'Sin dato';
+  return CHOICE_LABELS[value] ?? value;
+}
+
+export function sliceLabel(value: string | null | undefined): string {
+  if (value == null || value === '') return 'Sin dato';
+  return SLICE_LABELS[value] ?? value;
+}
+
+export function factLabel(value: string | number | boolean | null | undefined): string {
+  if (value == null || value === '') return 'Sin dato';
+  if (value === 'unknown' || value === 'unspecified') return 'Sin estimar';
+  if (value === 'none') return 'Ninguna';
+  if (typeof value === 'boolean') return value ? 'Sí' : 'No';
+  return CHOICE_LABELS[String(value)] ?? SLICE_LABELS[String(value)] ?? String(value);
+}
+
 export const SPAN_STATUS_LABELS: Record<SpanStatus, string> = {
   idle: 'En espera',
   queued: 'En cola',

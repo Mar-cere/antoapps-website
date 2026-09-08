@@ -88,6 +88,7 @@ export function ResumenView() {
                   </button>
                 ) : null}
                 <Link href="/observatorio/en-vivo">Abrir En vivo</Link>
+                <Link href="/observatorio/decisiones">Ver cómo se decidió</Link>
               </div>
             </div>
           ) : (
@@ -108,6 +109,10 @@ export function ResumenView() {
                     {stageLabel(span.stage_id)}
                   </button>
                 ))}
+              </div>
+              <div className="controls" style={{ marginTop: 12 }}>
+                <Link href="/observatorio/en-vivo">Abrir En vivo</Link>
+                <Link href="/observatorio/decisiones">Ver cómo se decidió</Link>
               </div>
             </>
           )}

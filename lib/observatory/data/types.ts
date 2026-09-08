@@ -124,7 +124,7 @@ export type TurnContext = {
 export type TraceSpan = {
   span_id: string;
   canonical_name: string;
-  stage_id: PipelineStageId;
+  stage_id: PipelineStageId | string;
   component: ComponentId | 'runtime';
   status: SpanStatus;
   duration_ms: number | null;
@@ -143,7 +143,7 @@ export type TraceEnvelope = {
   content_mode: 'off';
   started_at: string;
   completed_at: string | null;
-  current_stage: PipelineStageId | null;
+  current_stage: PipelineStageId | string | null;
   spans: TraceSpan[];
   provenance: DataProvenance;
 };
@@ -441,7 +441,7 @@ export type ObservatorySnapshot = {
   system_lifecycle: SystemLifecycle;
   processing: string;
   stage_label: string;
-  current_stage: PipelineStageId | null;
+  current_stage: PipelineStageId | string | null;
   last_updated: string;
   components: ComponentStatus[];
   alerts: AlertItem[];

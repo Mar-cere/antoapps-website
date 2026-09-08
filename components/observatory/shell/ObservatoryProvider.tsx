@@ -36,6 +36,8 @@ type ObservatoryContextValue = {
   speed: 0.5 | 1 | 2 | 4;
   elapsedMs: number;
   selectedStageId: string | null;
+  selectedTraceId: string | null;
+  selectedTrace: TraceEnvelope | null;
   demoPlayback: boolean;
   refresh: () => void;
   setScenarioId: (id: ScenarioId) => void;
@@ -45,6 +47,7 @@ type ObservatoryContextValue = {
   reset: () => void;
   setSpeed: (speed: 0.5 | 1 | 2 | 4) => void;
   selectStage: (id: string | null) => void;
+  selectTrace: (id: string) => void;
 };
 
 const ObservatoryContext = createContext<ObservatoryContextValue | null>(null);
@@ -57,6 +60,7 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
   const [speed, setSpeed] = useState<0.5 | 1 | 2 | 4>(1);
   const [elapsedMs, setElapsedMs] = useState(0);
   const [selectedStageId, setSelectedStageId] = useState<string | null>(null);
+  const [selectedTraceId, setSelectedTraceId] = useState<string | null>(null);
   const [clock, setClock] = useState(() => new Date().toISOString());
 
   const load = useCallback(async () => {
@@ -136,6 +140,7 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
     setElapsedMs(0);
     setPlaying(false);
     setSelectedStageId(null);
+    setSelectedTraceId(null);
   }, []);
 
   const play = useCallback(() => {
@@ -152,6 +157,11 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
   const reset = useCallback(() => {
     setElapsedMs(0);
     setPlaying(false);
+    setSelectedStageId(null);
+  }, []);
+
+  const selectTrace = useCallback((id: string) => {
+    setSelectedTraceId(id);
     setSelectedStageId(null);
   }, []);
 
@@ -243,6 +253,9 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
     return <div className="obs-boot">Cargando observatorio…</div>;
   }
 
+  const selectedTrace =
+    snapshot.traces.find((trace) => trace.trace_id === selectedTraceId) ?? snapshot.traces[0] ?? null;
+
   const value: ObservatoryContextValue = {
     connection: feed.connection,
     snapshot,
@@ -253,6 +266,8 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
     speed,
     elapsedMs,
     selectedStageId,
+    selectedTraceId: selectedTrace?.trace_id ?? null,
+    selectedTrace,
     demoPlayback,
     refresh: () => {
       load().catch(() => undefined);
@@ -264,6 +279,7 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
     reset,
     setSpeed,
     selectStage: setSelectedStageId,
+    selectTrace,
   };
 
   return <ObservatoryContext.Provider value={value}>{children}</ObservatoryContext.Provider>;

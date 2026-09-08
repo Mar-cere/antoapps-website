@@ -1,52 +1,178 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import { TurnPicker } from '@/components/observatory/live/TurnPicker';
 import { useObservatory } from '@/components/observatory/shell/ObservatoryProvider';
 import { Provenance } from '@/components/observatory/ui/Provenance';
-import { DECISION_ACT_LABELS, scenarioLabel } from '@/lib/observatory/copy/labels';
+import { StatusMark } from '@/components/observatory/ui/StatusMark';
+import {
+  choiceLabel,
+  DECISION_ACT_LABELS,
+  factLabel,
+  scenarioLabel,
+  sliceLabel,
+  stageLabel,
+} from '@/lib/observatory/copy/labels';
+import { storyFromTrace } from '@/lib/observatory/data/turnDecision';
 import type { DecisionRecord } from '@/lib/observatory/data/types';
 
 export function DecisionesView() {
-  const { snapshot } = useObservatory();
-  const [id, setId] = useState(snapshot.decisions[0]?.decision_id ?? '');
-  const record = snapshot.decisions.find((d) => d.decision_id === id) ?? snapshot.decisions[0];
+  const { snapshot, selectedTrace, selectTrace, selectedStageId, selectStage } = useObservatory();
+  const [recordId, setRecordId] = useState(snapshot.decisions[0]?.decision_id ?? '');
+  const record = snapshot.decisions.find((d) => d.decision_id === recordId) ?? snapshot.decisions[0];
   const plan = snapshot.plans.find((p) => p.decision_ref === record?.decision_id);
+  const story = selectedTrace ? storyFromTrace(selectedTrace) : null;
+  const selectedSpan =
+    story?.path.find((span) => span.stage_id === selectedStageId) ?? story?.path[0] ?? null;
 
   return (
     <div className="page">
       <header>
         <h2>Decisiones</h2>
         <p>
-          DecisionRecord es el contrato auditable de Nexus. Decision (con mayúscula) es el lienzo
-          de la persona y no guarda candidatos ni scores. No hay cadena privada de razonamiento.
+          Cómo se decidió el turno publicado: Engine en runtime, forma de Experience y sombra del
+          pipeline implícito. DecisionRecord de colección sigue vacío a propósito. No hay cadena
+          privada de razonamiento.
         </p>
       </header>
 
-      <div className="split">
-        <section className="panel">
-          <h3>DecisionRecord</h3>
-          {snapshot.decisions.length === 0 ? (
-            <div className="empty">
-              No hay DecisionRecord en este snapshot. En el programa de Nexus eso llega en Sprint 7.
-            </div>
-          ) : (
+      {!selectedTrace || !story ? (
+        <div className="empty">
+          No hay turnos en este snapshot. El runtime debe publicar traces[] en GET /v1/observatory/snapshot.
+        </div>
+      ) : (
+        <div className="decision-layout">
+          <section className="panel">
+            <h3>Turnos</h3>
+            <TurnPicker
+              traces={snapshot.traces}
+              selectedId={selectedTrace.trace_id}
+              onSelect={selectTrace}
+            />
+          </section>
+
+          <div className="decision-main">
+            <section className="decision-lead panel">
+              <div className="row-between">
+                <h3>{selectedTrace.session_ref}</h3>
+                <Provenance kind={selectedTrace.provenance} />
+              </div>
+              <p className="decision-headline">{story.headline}</p>
+              <p className="s">
+                {selectedTrace.subject_ref} · content {selectedTrace.content_mode}
+                {story.split ? ' · Engine y sombra no coinciden' : ''}
+              </p>
+            </section>
+
+            <section className="decision-compare" aria-label="Engine, forma y sombra">
+              <article>
+                <h3>Nexus Engine</h3>
+                <p className="decision-choice">{choiceLabel(story.engineChoice)}</p>
+                <p className="s">
+                  {factLabel(story.engineMode)} · {factLabel(story.engineDeliberation)}
+                </p>
+                <p className="s">
+                  {story.engineCandidates == null
+                    ? 'Sin recuento de candidatos'
+                    : `${story.engineCandidates} candidatos contados, sin puntuaciones`}
+                </p>
+              </article>
+              <article>
+                <h3>Experience</h3>
+                <p className="decision-choice">{choiceLabel(story.modality)}</p>
+                <p className="s">Modalidad del plan de forma. No es un ExperiencePlan persistido.</p>
+                <p className="s">
+                  Cue {factLabel(story.cue)} · {factLabel(story.reason)}
+                </p>
+              </article>
+              <article data-split={story.split ? 'yes' : 'no'}>
+                <h3>Sombra</h3>
+                <p className="decision-choice">{choiceLabel(story.shadowChoice)}</p>
+                <p className="s">
+                  {factLabel(story.shadowMode)} · {factLabel(story.shadowDeliberation)}
+                </p>
+                <p className="s">Observa el pipeline implícito. No reescribe la respuesta.</p>
+              </article>
+            </section>
+
+            <dl className="inspector decision-facts">
+              <dt>Safety</dt>
+              <dd>{factLabel(story.safetyRoute)}</dd>
+              <dt>Riesgo</dt>
+              <dd>{factLabel(story.riskClass)}</dd>
+              <dt>Persona</dt>
+              <dd>{factLabel(story.personaGrant)}</dd>
+              <dt>Slice relacional</dt>
+              <dd>{sliceLabel(story.slice)}</dd>
+              <dt>Postura relacional</dt>
+              <dd>{choiceLabel(story.stance)}</dd>
+              <dt>State</dt>
+              <dd>
+                activación {factLabel(story.activationBand)} · carga {factLabel(story.loadBand)} ·
+                apertura {factLabel(story.opennessBand)} · tiempo {factLabel(story.timeBand)}
+              </dd>
+              <dt>Trajectory</dt>
+              <dd>{factLabel(story.directionBand)}</dd>
+              <dt>TTFT</dt>
+              <dd>{story.ttftMs == null ? 'No medida' : `${story.ttftMs} ms. Cortex no entra aquí.`}</dd>
+              <dt>Restricciones</dt>
+              <dd>
+                {story.engineConstraintCount == null
+                  ? 'Sin dato'
+                  : `${story.engineConstraintCount} en el Engine`}
+              </dd>
+            </dl>
+
+            <section className="panel">
+              <h3>Recorrido de la decisión</h3>
+              <div className="decision-path">
+                {story.path.map((span, index) => (
+                  <button
+                    key={span.span_id}
+                    type="button"
+                    className="path-node"
+                    aria-selected={selectedSpan?.span_id === span.span_id}
+                    onClick={() => selectStage(span.stage_id)}
+                  >
+                    <span className="idx">{String(index + 1).padStart(2, '0')}</span>
+                    <strong>{stageLabel(span.canonical_name)}</strong>
+                    <StatusMark status={span.status} />
+                  </button>
+                ))}
+              </div>
+              {selectedSpan ? (
+                <p className="s" style={{ marginTop: 12 }}>
+                  {selectedSpan.what_happened}
+                </p>
+              ) : null}
+            </section>
+          </div>
+        </div>
+      )}
+
+      {snapshot.decisions.length > 0 ? (
+        <div className="split" style={{ marginTop: 18 }}>
+          <section className="panel">
+            <h3>DecisionRecord (simulación)</h3>
             <div className="list">
               {snapshot.decisions.map((d) => (
-                <button key={d.decision_id} type="button" onClick={() => setId(d.decision_id)}>
+                <button key={d.decision_id} type="button" onClick={() => setRecordId(d.decision_id)}>
                   <span className="t">
                     {scenarioLabel(d.scenario_id)} · {DECISION_ACT_LABELS[d.decision_act] ?? d.decision_act}
                   </span>
-                  <span className="s">{d.decision_id} · {d.selected ?? 'sin elección'}</span>
+                  <span className="s">
+                    {d.decision_id} · {d.selected ?? 'sin elección'}
+                  </span>
                 </button>
               ))}
             </div>
-          )}
-        </section>
-        {record ? <RecordPanel record={record} /> : null}
-      </div>
+          </section>
+          {record ? <RecordPanel record={record} /> : null}
+        </div>
+      ) : null}
 
       {plan ? (
-        <section className="panel">
+        <section className="panel" style={{ marginTop: 14 }}>
           <div className="row-between">
             <h3>Experience Plan resultante</h3>
             <Provenance kind={plan.provenance} />
@@ -71,9 +197,7 @@ export function DecisionesView() {
             <dd>{plan.consent_required.join(', ') || 'Ninguno'}</dd>
           </dl>
         </section>
-      ) : (
-        <div className="empty">Sin ExperiencePlan en este snapshot. En el programa es Sprint 8.</div>
-      )}
+      ) : null}
     </div>
   );
 }
@@ -153,7 +277,8 @@ function RecordPanel({ record }: { record: DecisionRecord }) {
         </table>
       </div>
       <p className="s" style={{ marginTop: 10 }}>
-        Descartadas / reserva: {discarded.map((c) => `${c.candidate_id}${c.discard_code ? ` (${c.discard_code})` : ''}`).join('; ')}
+        Descartadas / reserva:{' '}
+        {discarded.map((c) => `${c.candidate_id}${c.discard_code ? ` (${c.discard_code})` : ''}`).join('; ')}
       </p>
     </section>
   );
