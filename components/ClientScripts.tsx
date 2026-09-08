@@ -39,6 +39,10 @@ export default function ClientScripts() {
     }
   }, []);
 
+  if (pathname === '/nexus/ingreso') {
+    return null;
+  }
+
   return (
     <button
       id="scrollToTop"

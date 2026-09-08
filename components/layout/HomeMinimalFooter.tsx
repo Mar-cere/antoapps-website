@@ -10,9 +10,16 @@ type HomeMinimalFooterProps = {
   locale: Locale;
   /** Path lógico sin prefijo /en (p. ej. `/` o `/home-v2`). */
   switchPath?: string;
+  developerHref?: string;
+  developerLabel?: string;
 };
 
-export default function HomeMinimalFooter({ locale, switchPath = '/' }: HomeMinimalFooterProps) {
+export default function HomeMinimalFooter({
+  locale,
+  switchPath = '/',
+  developerHref,
+  developerLabel,
+}: HomeMinimalFooterProps) {
   const copy = getHomeLandingFinalCopy(locale);
   const { minimalFooter } = copy;
   const homeHref = localePath(locale, '/');
@@ -42,6 +49,11 @@ export default function HomeMinimalFooter({ locale, switchPath = '/' }: HomeMini
         <LanguageSwitcher locale={locale} path={switchPath} className="home-landing-footer__lang" />
         <p className="home-landing-footer__copy">{minimalFooter.copyright}</p>
       </div>
+      {developerHref && developerLabel ? (
+        <Link href={developerHref} className="home-landing-footer__dev">
+          {developerLabel}
+        </Link>
+      ) : null}
     </footer>
   );
 }

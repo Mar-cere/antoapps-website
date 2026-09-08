@@ -1,0 +1,95 @@
+.obs-login {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 48px 24px;
+  background:
+    radial-gradient(900px 420px at 8% -10%, rgba(26, 221, 219, 0.07), transparent 52%),
+    #030a24;
+  color: #f4f7fb;
+}
+
+.obs-login__panel {
+  width: min(28rem, 100%);
+}
+
+.obs-login h1 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+.obs-login__panel > p {
+  margin: 0 0 28px;
+  color: rgba(244, 247, 251, 0.62);
+  font-size: 0.9375rem;
+  max-width: 38ch;
+}
+
+.obs-login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.obs-login__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: rgba(244, 247, 251, 0.55);
+}
+
+.obs-login__field input {
+  appearance: none;
+  background: #0a1529;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #f4f7fb;
+  font: inherit;
+  font-size: 0.9375rem;
+}
+
+.obs-login__field input:focus-visible {
+  outline: 2px solid #1adddb;
+  outline-offset: 2px;
+}
+
+.obs-login__error {
+  margin: 0;
+  color: #ff6b6b;
+  font-size: 0.8125rem;
+}
+
+.obs-login__submit {
+  margin-top: 6px;
+  background: #1adddb;
+  color: #030a24;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.obs-login__submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.obs-login__back,
+.obs-login__fallback {
+  font-size: 0.8125rem;
+  color: rgba(244, 247, 251, 0.45);
+}
+
+.obs-login__back {
+  text-decoration: none;
+}
+
+.obs-login__back:hover {
+  color: #1adddb;
+}

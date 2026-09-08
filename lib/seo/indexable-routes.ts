@@ -8,6 +8,7 @@ import type { MetadataRoute } from 'next';
  * - /404 (página de error)
  * - /zt9kq7m2v8n4xpw6rb3yjh1cw5df8a (validador opaco, noindex)
  * - /open (puente HTTPS deep link correos, noindex)
+ * - /nexus/ingreso y /observatorio (operador, noindex)
  * - Redirects temporales: /l, /en/l, /welcome, /login, /signup, /chat
  */
 export type SitemapChangeFrequency = NonNullable<
@@ -141,7 +142,7 @@ export const INDEXABLE_LOGICAL_PATHS = INDEXABLE_ROUTES.map((r) => r.path);
  * - NO van a robots.txt Disallow
  * - NO tienen noindex header (salvo que el page.tsx lo especifique)
  */
-export const SITE_PAGES_EXCLUDED_FROM_SITEMAP: readonly string[] = ['/desarrollo'] as const;
+export const SITE_PAGES_EXCLUDED_FROM_SITEMAP: readonly string[] = ['/desarrollo', '/nexus/ingreso'] as const;
 
 /**
  * Rutas que nunca deben aparecer en el sitemap.
@@ -154,6 +155,8 @@ export const ROBOTS_DISALLOW_PATH_PREFIXES = [
   '/home-v2',
   '/en/home-v2',
   '/open',
+  '/nexus/ingreso',
+  '/observatorio',
 ] as const;
 
 export const UNLISTED_APP_PATH_PREFIXES = [

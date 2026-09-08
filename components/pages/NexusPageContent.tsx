@@ -55,7 +55,12 @@ export default function NexusPageContent({ locale }: NexusPageContentProps) {
             </ul>
           </section>
         </main>
-        <HomeMinimalFooter locale={locale} switchPath="/nexus" />
+        <HomeMinimalFooter
+          locale={locale}
+          switchPath="/nexus"
+          developerHref="/nexus/ingreso"
+          developerLabel="ingreso desarrolladores"
+        />
         <CookieConsent
           compact
           bannerDelayMs={8000}

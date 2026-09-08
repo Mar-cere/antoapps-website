@@ -336,6 +336,23 @@ body:has(.nexus-page) {
   border-top: 0;
 }
 
+.nexus-page .home-landing-footer__dev {
+  display: block;
+  width: 100%;
+  max-width: var(--hl-max);
+  margin: 0 auto;
+  padding: 0 var(--hl-pad-x) 1.35rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
+  color: rgba(244, 247, 251, 0.28);
+  text-decoration: none;
+}
+
+.nexus-page .home-landing-footer__dev:hover,
+.nexus-page .home-landing-footer__dev:focus-visible {
+  color: rgba(244, 247, 251, 0.55);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .nexus-world[data-beat='hero'] .nexus-organism.is-live .nexus-organism__plate {
     animation: nexus-breathe 9s ease-in-out infinite;
