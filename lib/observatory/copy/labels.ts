@@ -38,8 +38,25 @@ export const COMPONENT_LABELS: Record<ComponentId | 'runtime', string> = {
 };
 
 export function stageLabel(id: string): string {
-  return STAGE_LABELS[id as PipelineStageId] ?? id;
+  return STAGE_LABELS[id as PipelineStageId] ?? TRACE_EVENT_LABELS[id] ?? id;
 }
+
+export const TRACE_EVENT_LABELS: Record<string, string> = {
+  'turn.started': 'Turno iniciado',
+  'turn.completed': 'Turno cerrado',
+  'turn.failed': 'Turno fallido',
+  'consent.checked': 'Consentimiento',
+  'safety.routed': 'Ruta de safety',
+  'state.estimated': 'State estimado',
+  'decision.deliberated': 'Engine deliberó',
+  'experience.planned': 'Experience planificado',
+  'experience.evaluated': 'Experience evaluado',
+  'extras.evaluated': 'Extras evaluados',
+  'persona.snapshotted': 'Persona snapshot',
+  'trajectory.estimated': 'Trajectory estimada',
+  'decision.shadowed': 'Sombra de decisión',
+  'relational.shadowed': 'Sombra relacional',
+};
 
 export function componentLabel(id: string): string {
   return COMPONENT_LABELS[id as ComponentId | 'runtime'] ?? id;
