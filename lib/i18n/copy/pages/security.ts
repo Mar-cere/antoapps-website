@@ -1,40 +1,18 @@
 import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
+
 const CANONICAL_PATH = '/seguridad';
 const DEVELOPER_EMAIL = 'marcelo.ull@antoapps.com';
 
-export type SecurityFaqItem = {
-  question: string;
-  answer: string;
-};
-
-export type SecurityCertification = {
-  icon: string;
+export type SecurityCareBlock = {
   title: string;
-  description: string;
-  linkLabel?: string;
-  linkHref?: string;
-  status?: string;
-};
-
-export type SecurityMeasure = {
-  icon: string;
-  title: string;
-  description: string;
-  details: string[];
-};
-
-export type SecurityReport = {
-  title: string;
-  description: string;
-  buttonLabel?: string;
-  buttonHref?: string;
-  status?: string;
+  body: string;
 };
 
 export type SecurityPageCopy = {
   breadcrumbs: { homeLabel: string; homeHref: string; currentLabel: string };
+  crumbAria: string;
   meta: {
     title: string;
     description: string;
@@ -44,282 +22,24 @@ export type SecurityPageCopy = {
   };
   hero: {
     title: string;
-    subtitle: string;
-    badges: string[];
+    support: string;
   };
-  overview: {
-    sectionTitle: string;
+  care: {
+    items: readonly SecurityCareBlock[];
+  };
+  notThis: {
+    title: string;
     intro: string;
-    certificationsTitle: string;
-    certifications: SecurityCertification[];
+    items: readonly string[];
   };
-  measures: {
-    sectionTitle: string;
-    items: SecurityMeasure[];
-  };
-  reports: {
-    sectionTitle: string;
-    sectionSubtitle: string;
-    items: SecurityReport[];
-  };
-  faq: {
-    sectionTitle: string;
-    items: SecurityFaqItem[];
+  closing: {
+    disclaimer: string;
+    contactTitle: string;
+    contactLead: string;
+    contactEmail: string;
+    report: string;
   };
 };
-
-export const SECURITY_FAQ_ES: SecurityFaqItem[] = [
-  {
-    question: '¿Dónde se almacenan mis datos?',
-    answer:
-      'Tus datos se almacenan en servidores seguros ubicados en centros de datos de nivel empresarial con certificaciones SOC 2 y ISO 27001. Utilizamos proveedores de cloud líderes en la industria que garantizan redundancia, backups automáticos, y protección física de los servidores.',
-  },
-  {
-    question: '¿Quién puede acceder a mis conversaciones?',
-    answer:
-      'Solo tú inicias sesión en tu cuenta. Las conversaciones van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio.',
-  },
-  {
-    question: '¿Qué pasa si hay una brecha de seguridad?',
-    answer:
-      'En el improbable caso de una brecha de seguridad, te notificaremos inmediatamente (dentro de 72 horas según GDPR) y tomaremos todas las medidas necesarias para mitigar el impacto. Tenemos un plan de respuesta a incidentes documentado y probado regularmente.',
-  },
-  {
-    question: '¿Cómo puedo verificar la seguridad de Anto?',
-    answer: `Puedes revisar nuestros reportes de seguridad públicos, certificaciones, y políticas. También ofrecemos reportes de seguridad bajo NDA para clientes empresariales. Si tienes preguntas específicas, contacta a nuestro desarrollador principal en ${DEVELOPER_EMAIL}.`,
-  },
-];
-
-export const SECURITY_FAQ_EN: SecurityFaqItem[] = [
-  {
-    question: 'Where is my data stored?',
-    answer:
-      'Your data is stored on secure servers in enterprise-grade data centers with SOC 2 and ISO 27001 certifications. We use industry-leading cloud providers that guarantee redundancy, automatic backups, and physical server protection.',
-  },
-  {
-    question: 'Who can access my conversations?',
-    answer:
-      'Only you sign in to your account. Conversations are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service.',
-  },
-  {
-    question: 'What happens if there is a security breach?',
-    answer:
-      'In the unlikely event of a security breach, we will notify you immediately (within 72 hours per GDPR) and take all necessary measures to mitigate the impact. We have a documented incident response plan that is tested regularly.',
-  },
-  {
-    question: 'How can I verify Anto\'s security?',
-    answer: `You can review our public security reports, certifications, and policies. We also offer security reports under NDA for enterprise clients. If you have specific questions, contact our lead developer at ${DEVELOPER_EMAIL}.`,
-  },
-];
-
-const certificationsEs: SecurityCertification[] = [
-  {
-    icon: '🇪🇺',
-    title: 'GDPR Compliant',
-    description:
-      'Cumplimiento total con el Reglamento General de Protección de Datos de la UE. Tus derechos están completamente protegidos.',
-    linkLabel: 'Más sobre GDPR →',
-    linkHref: 'https://gdpr.eu',
-  },
-  {
-    icon: '🇺🇸',
-    title: 'HIPAA Compliant',
-    description:
-      'Cumplimiento con la Ley de Portabilidad y Responsabilidad del Seguro Médico de EE.UU. para datos de salud protegidos.',
-    linkLabel: 'Más sobre HIPAA →',
-    linkHref: 'https://www.hhs.gov/hipaa',
-  },
-  {
-    icon: '✅',
-    title: 'SOC 2 Type II',
-    description:
-      'Auditoría independiente que verifica nuestros controles de seguridad, disponibilidad, procesamiento, confidencialidad y privacidad.',
-    status: 'En proceso de certificación',
-  },
-  {
-    icon: '🔐',
-    title: 'ISO 27001',
-    description:
-      'Estándar internacional para sistemas de gestión de seguridad de la información. Implementamos todos los controles requeridos.',
-    status: 'En proceso de certificación',
-  },
-];
-
-const certificationsEn: SecurityCertification[] = [
-  {
-    icon: '🇪🇺',
-    title: 'GDPR Compliant',
-    description:
-      'Full compliance with the EU General Data Protection Regulation. Your rights are fully protected.',
-    linkLabel: 'Learn more about GDPR →',
-    linkHref: 'https://gdpr.eu',
-  },
-  {
-    icon: '🇺🇸',
-    title: 'HIPAA Compliant',
-    description:
-      'Compliance with the U.S. Health Insurance Portability and Accountability Act for protected health data.',
-    linkLabel: 'Learn more about HIPAA →',
-    linkHref: 'https://www.hhs.gov/hipaa',
-  },
-  {
-    icon: '✅',
-    title: 'SOC 2 Type II',
-    description:
-      'Independent audit verifying our security, availability, processing, confidentiality, and privacy controls.',
-    status: 'Certification in progress',
-  },
-  {
-    icon: '🔐',
-    title: 'ISO 27001',
-    description:
-      'International standard for information security management systems. We implement all required controls.',
-    status: 'Certification in progress',
-  },
-];
-
-const measuresEs: SecurityMeasure[] = [
-  {
-    icon: '🔐',
-    title: 'Cifrado en tránsito y en reposo',
-    description:
-      'Las conversaciones se cifran en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio.',
-    details: [
-      'AES-256 para datos en reposo',
-      'TLS 1.3 para datos en tránsito',
-      'Claves de encriptación únicas por usuario',
-      'Rotación automática de claves',
-    ],
-  },
-  {
-    icon: '🛡️',
-    title: 'Autenticación Multifactor',
-    description:
-      'Sistema robusto de autenticación con múltiples capas de seguridad para proteger tu cuenta.',
-    details: [
-      'Autenticación de dos factores (2FA)',
-      'Tokens JWT seguros con expiración',
-      'Detección de accesos sospechosos',
-      'Notificaciones de seguridad',
-    ],
-  },
-  {
-    icon: '🔍',
-    title: 'Monitoreo y Detección',
-    description: 'Monitoreo continuo 24/7 para detectar y prevenir amenazas de seguridad.',
-    details: [
-      'Monitoreo en tiempo real',
-      'Detección de intrusiones (IDS)',
-      'Análisis de comportamiento anómalo',
-      'Alertas automáticas',
-    ],
-  },
-  {
-    icon: '🚫',
-    title: 'Protección contra Ataques',
-    description: 'Múltiples capas de protección contra diversos tipos de ataques cibernéticos.',
-    details: [
-      'Rate limiting y DDoS protection',
-      'Firewall de aplicación web (WAF)',
-      'Protección contra SQL injection',
-      'Sanitización de inputs',
-    ],
-  },
-  {
-    icon: '💾',
-    title: 'Backups y Recuperación',
-    description: 'Tus datos están respaldados de forma segura con redundancia geográfica.',
-    details: [
-      'Backups automáticos diarios',
-      'Almacenamiento en múltiples ubicaciones',
-      'Pruebas de recuperación regulares',
-      'RTO (Recovery Time Objective) < 4 horas',
-    ],
-  },
-  {
-    icon: '👥',
-    title: 'Control de Acceso',
-    description:
-      'Principio de menor privilegio: solo el personal autorizado puede acceder a datos específicos.',
-    details: [
-      'Control de acceso basado en roles (RBAC)',
-      'Auditoría de accesos',
-      'Separación de entornos (dev/staging/prod)',
-      'Acceso con doble autenticación para empleados',
-    ],
-  },
-];
-
-const measuresEn: SecurityMeasure[] = [
-  {
-    icon: '🔐',
-    title: 'Encryption in transit and at rest',
-    description:
-      'Conversations are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service.',
-    details: [
-      'AES-256 for data at rest',
-      'TLS 1.3 for data in transit',
-      'Unique encryption keys per user',
-      'Automatic key rotation',
-    ],
-  },
-  {
-    icon: '🛡️',
-    title: 'Multi-Factor Authentication',
-    description: 'Robust authentication system with multiple security layers to protect your account.',
-    details: [
-      'Two-factor authentication (2FA)',
-      'Secure JWT tokens with expiration',
-      'Suspicious access detection',
-      'Security notifications',
-    ],
-  },
-  {
-    icon: '🔍',
-    title: 'Monitoring and Detection',
-    description: 'Continuous 24/7 monitoring to detect and prevent security threats.',
-    details: [
-      'Real-time monitoring',
-      'Intrusion detection (IDS)',
-      'Anomalous behavior analysis',
-      'Automatic alerts',
-    ],
-  },
-  {
-    icon: '🚫',
-    title: 'Attack Protection',
-    description: 'Multiple layers of protection against various types of cyberattacks.',
-    details: [
-      'Rate limiting and DDoS protection',
-      'Web application firewall (WAF)',
-      'SQL injection protection',
-      'Input sanitization',
-    ],
-  },
-  {
-    icon: '💾',
-    title: 'Backups and Recovery',
-    description: 'Your data is securely backed up with geographic redundancy.',
-    details: [
-      'Daily automatic backups',
-      'Storage in multiple locations',
-      'Regular recovery testing',
-      'RTO (Recovery Time Objective) < 4 hours',
-    ],
-  },
-  {
-    icon: '👥',
-    title: 'Access Control',
-    description:
-      'Principle of least privilege: only authorized personnel can access specific data.',
-    details: [
-      'Role-based access control (RBAC)',
-      'Access auditing',
-      'Environment separation (dev/staging/prod)',
-      'Dual authentication for employees',
-    ],
-  },
-];
 
 function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
   if (locale === 'en') {
@@ -329,60 +49,57 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
         homeHref: localePath(locale, '/'),
         currentLabel: 'Security',
       },
+      crumbAria: 'Breadcrumb',
       meta: {
-        title: 'Security - Anto | Encryption, privacy, and compliance',
+        title: 'How we care for what you write - Anto',
         description:
-          'Learn about Anto security measures: AES-256 encryption, secure authentication, audits, and compliance with GDPR, HIPAA, and more.',
-        openGraphTitle: 'Security - Anto',
-        openGraphDescription: 'How Anto protects your data and privacy.',
+          'Conversations are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. Anto does not diagnose or replace therapy.',
+        openGraphTitle: 'How we care for what you write - Anto',
+        openGraphDescription:
+          'TLS in transit, encryption at rest. Anto and the model read the text. Not a clinical service.',
         canonicalPath: CANONICAL_PATH,
       },
       hero: {
-        title: 'Your data, protected',
-        subtitle:
-          'AES-256 encryption, secure authentication, and compliance with international privacy standards.',
-        badges: ['AES-256', 'GDPR', 'HIPAA', 'SOC 2', 'ISO 27001'],
+        title: 'How we care for what you write',
+        support:
+          'Conversations travel encrypted and are stored encrypted. Anto and the model read the text to provide the service.',
       },
-      overview: {
-        sectionTitle: 'Our Commitment to Security',
-        intro:
-          'At Anto, we understand that mental health data is extremely sensitive. That is why we built our platform from the ground up with security as a fundamental priority. Every byte of information is protected with multiple layers of security.',
-        certificationsTitle: 'Certifications and Compliance',
-        certifications: certificationsEn,
-      },
-      measures: {
-        sectionTitle: 'Implemented Security Measures',
-        items: measuresEn,
-      },
-      reports: {
-        sectionTitle: 'Transparency and Reports',
-        sectionSubtitle: 'We believe in full transparency about our security practices',
+      care: {
         items: [
           {
-            title: '📊 Security Reports',
-            description:
-              'We publish quarterly reports on our security status, incidents (if any), and improvements implemented.',
-            buttonLabel: 'View Latest Report',
-            buttonHref: '#',
+            title: 'In transit',
+            body: 'Traffic between your device and the servers goes over HTTPS (TLS). That protects the path while messages are moving.',
           },
           {
-            title: '🔒 Responsible Disclosure Policy',
-            description:
-              'If you find a security vulnerability, we encourage you to report it responsibly. We have a rewards program.',
-            buttonLabel: 'Report Vulnerability',
-            buttonHref: `mailto:${DEVELOPER_EMAIL}`,
+            title: 'At rest',
+            body: 'Data is stored encrypted at rest, AES-256, on the host (Render). This is infrastructure encryption, not a unique key per person.',
           },
           {
-            title: '✅ External Audits',
-            description:
-              'We conduct regular security audits with independent firms to ensure our controls are effective.',
-            status: 'Last audit: Q4 2025',
+            title: 'Who reads',
+            body: 'You, when you sign in. Anto and the model, so they can reply. The model is an AI provider that processes the text. We do not sell the thread or use it for ads.',
           },
         ],
       },
-      faq: {
-        sectionTitle: 'Frequently Asked Security Questions',
-        items: SECURITY_FAQ_EN,
+      notThis: {
+        title: 'What this is not',
+        intro: 'These claims are not true of Anto today:',
+        items: [
+          'Not HIPAA',
+          'Not SOC 2',
+          'Not ISO 27001',
+          'Not end-to-end encryption',
+          'No published external audit',
+          'No rewards programme',
+        ],
+      },
+      closing: {
+        disclaimer:
+          'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.',
+        contactTitle: 'Contact',
+        contactLead: 'Technical questions:',
+        contactEmail: DEVELOPER_EMAIL,
+        report:
+          'If you find a security issue, write to the same address. There is no rewards programme.',
       },
     };
   }
@@ -393,60 +110,57 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
       homeHref: localePath(locale, '/'),
       currentLabel: 'Seguridad',
     },
+    crumbAria: 'Miga de pan',
     meta: {
-      title: 'Seguridad - Anto | Cifrado, privacidad y cumplimiento',
+      title: 'Cómo cuidamos lo que escribes - Anto',
       description:
-        'Conoce las medidas de seguridad de Anto: cifrado AES-256, autenticación segura, auditorías y cumplimiento con GDPR, HIPAA y más.',
-      openGraphTitle: 'Seguridad - Anto',
-      openGraphDescription: 'Cómo Anto protege tus datos y tu privacidad.',
+        'Las conversaciones van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. Anto no diagnostica ni sustituye terapia.',
+      openGraphTitle: 'Cómo cuidamos lo que escribes - Anto',
+      openGraphDescription:
+        'TLS en tránsito, cifrado en reposo. Anto y el modelo leen el texto. No es un servicio clínico.',
       canonicalPath: CANONICAL_PATH,
     },
     hero: {
-      title: 'Tus datos, protegidos',
-      subtitle:
-        'Cifrado AES-256, autenticación segura y cumplimiento con estándares internacionales de privacidad.',
-      badges: ['AES-256', 'GDPR', 'HIPAA', 'SOC 2', 'ISO 27001'],
+      title: 'Cómo cuidamos lo que escribes',
+      support:
+        'Las conversaciones viajan cifradas y se guardan cifradas. Anto y el modelo leen el texto para prestar el servicio.',
     },
-    overview: {
-      sectionTitle: 'Nuestro Compromiso con la Seguridad',
-      intro:
-        'En Anto, entendemos que los datos de salud mental son extremadamente sensibles. Por eso, hemos construido nuestra plataforma desde cero con seguridad como prioridad fundamental. Cada byte de información está protegido con múltiples capas de seguridad.',
-      certificationsTitle: 'Certificaciones y Compliance',
-      certifications: certificationsEs,
-    },
-    measures: {
-      sectionTitle: 'Medidas de Seguridad Implementadas',
-      items: measuresEs,
-    },
-    reports: {
-      sectionTitle: 'Transparencia y Reportes',
-      sectionSubtitle: 'Creemos en la transparencia total sobre nuestras prácticas de seguridad',
+    care: {
       items: [
         {
-          title: '📊 Reportes de Seguridad',
-          description:
-            'Publicamos reportes trimestrales sobre el estado de nuestra seguridad, incidentes (si los hay), y mejoras implementadas.',
-          buttonLabel: 'Ver Último Reporte',
-          buttonHref: '#',
+          title: 'Tránsito',
+          body: 'El tráfico entre tu dispositivo y los servidores va por HTTPS (TLS). Así se protege el camino mientras los mensajes están en movimiento.',
         },
         {
-          title: '🔒 Política de Divulgación Responsable',
-          description:
-            'Si encuentras una vulnerabilidad de seguridad, te animamos a reportarla de forma responsable. Tenemos un programa de recompensas.',
-          buttonLabel: 'Reportar Vulnerabilidad',
-          buttonHref: `mailto:${DEVELOPER_EMAIL}`,
+          title: 'Reposo',
+          body: 'Los datos se guardan cifrados en reposo, AES-256, en el hosting (Render). Es cifrado de infraestructura, no una clave única por persona.',
         },
         {
-          title: '✅ Auditorías Externas',
-          description:
-            'Realizamos auditorías de seguridad regulares con firmas independientes para asegurar que nuestros controles son efectivos.',
-          status: 'Última auditoría: Q4 2025',
+          title: 'Quién lee',
+          body: 'Tú, al iniciar sesión. Anto y el modelo, para responderte. El modelo es un proveedor de IA que procesa el texto. No vendemos el hilo ni lo usamos para anuncios.',
         },
       ],
     },
-    faq: {
-      sectionTitle: 'Preguntas Frecuentes sobre Seguridad',
-      items: SECURITY_FAQ_ES,
+    notThis: {
+      title: 'Qué no es',
+      intro: 'Estas afirmaciones no aplican a Anto hoy:',
+      items: [
+        'No es HIPAA',
+        'No es SOC 2',
+        'No es ISO 27001',
+        'No hay cifrado de extremo a extremo',
+        'No hay auditoría externa publicada',
+        'No hay programa de recompensas',
+      ],
+    },
+    closing: {
+      disclaimer:
+        'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.',
+      contactTitle: 'Contacto',
+      contactLead: 'Preguntas técnicas:',
+      contactEmail: DEVELOPER_EMAIL,
+      report:
+        'Si encuentras un fallo de seguridad, escribe al mismo correo. No hay programa de recompensas.',
     },
   };
 }

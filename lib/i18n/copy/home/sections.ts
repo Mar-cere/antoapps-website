@@ -293,43 +293,43 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       ],
     },
     security: {
-      title: 'Tus datos, protegidos',
+      title: 'Cómo cuidamos lo que escribes',
       subtitle:
-        'Cifrado AES-256, autenticación segura y cumplimiento con estándares internacionales de privacidad.',
+        'TLS en tránsito y cifrado en reposo. Anto y el modelo leen el texto para prestar el servicio.',
       cards: [
         {
           icon: 'encryption',
-          title: 'Cifrado en tránsito y en reposo',
+          title: 'Tránsito',
           description:
-            'Tus conversaciones se cifran en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio.',
+            'El tráfico entre tu dispositivo y los servidores va por HTTPS (TLS).',
           features: [
-            '✓ TLS en tránsito',
-            '✓ Cifrado en reposo',
-            '✓ El modelo lee el texto para prestar el servicio',
-            '✓ Verificación de integridad de datos',
+            'HTTPS (TLS) en el camino',
+            'No es cifrado de extremo a extremo',
           ],
         },
         {
           icon: 'compliance',
-          title: 'Cumplimiento regulatorio',
+          title: 'Reposo',
           description:
-            'Diseñado para alinearse con GDPR, HIPAA, LGPD y PIPEDA.',
-          features: ['✓ GDPR (Europa)', '✓ HIPAA (Estados Unidos)', '✓ LGPD (Brasil)', '✓ PIPEDA (Canadá)'],
+            'Los datos se guardan cifrados en reposo, AES-256, en el hosting (Render).',
+          features: [
+            'AES-256 en infraestructura',
+            'No hay clave única por persona',
+          ],
         },
         {
           icon: 'auth',
-          title: 'Autenticación segura',
+          title: 'Quién lee',
           description:
-            'Verificación en dos pasos, tokens seguros y detección de accesos inusuales.',
+            'Tú, al iniciar sesión. Anto y el modelo, para responderte. No vendemos el hilo.',
           features: [
-            '✓ Autenticación de dos factores (2FA)',
-            '✓ Tokens JWT seguros',
-            '✓ Detección de accesos sospechosos',
-            '✓ Sesión persistente con refresh seguro de JWT',
+            'Tú, Anto y el modelo',
+            'El modelo procesa el texto',
+            'Sin venta a terceros ni anuncios',
           ],
         },
       ],
-      cta: 'Ver información completa de seguridad →',
+      cta: 'Cómo cuidamos lo que escribes',
       ctaHref: localePath('es', '/seguridad'),
     },
     aiExplained: {
@@ -563,43 +563,43 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       ],
     },
     security: {
-      title: 'Your data, protected',
+      title: 'How we care for what you write',
       subtitle:
-        'AES-256 encryption, secure authentication, and compliance with international privacy standards.',
+        'TLS in transit and encryption at rest. Anto and the model read the text to provide the service.',
       cards: [
         {
           icon: 'encryption',
-          title: 'Encryption in transit and at rest',
+          title: 'In transit',
           description:
-            'Conversations are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service.',
+            'Traffic between your device and the servers goes over HTTPS (TLS).',
           features: [
-            '✓ TLS in transit',
-            '✓ Encryption at rest',
-            '✓ The model reads the text to provide the service',
-            '✓ Data integrity verification',
+            'HTTPS (TLS) on the path',
+            'Not end-to-end encryption',
           ],
         },
         {
           icon: 'compliance',
-          title: 'Regulatory compliance',
+          title: 'At rest',
           description:
-            'Designed to align with GDPR, HIPAA, LGPD, and PIPEDA.',
-          features: ['✓ GDPR (Europe)', '✓ HIPAA (United States)', '✓ LGPD (Brazil)', '✓ PIPEDA (Canada)'],
+            'Data is stored encrypted at rest, AES-256, on the host (Render).',
+          features: [
+            'AES-256 at the infrastructure layer',
+            'No unique key per person',
+          ],
         },
         {
           icon: 'auth',
-          title: 'Secure authentication',
+          title: 'Who reads',
           description:
-            'Two-step verification, secure tokens, and unusual access detection.',
+            'You, when you sign in. Anto and the model, to reply. We do not sell the thread.',
           features: [
-            '✓ Two-factor authentication (2FA)',
-            '✓ Secure JWT tokens',
-            '✓ Suspicious access detection',
-            '✓ Persistent session with secure JWT refresh',
+            'You, Anto, and the model',
+            'The model processes the text',
+            'No third-party sales or ads',
           ],
         },
       ],
-      cta: 'View full security information →',
+      cta: 'How we care for what you write',
       ctaHref: localePath('en', '/seguridad'),
     },
     aiExplained: {

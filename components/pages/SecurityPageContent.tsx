@@ -1,15 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getSecurityPageCopy } from '@/lib/i18n/copy/pages/security';
+import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import '@/styles/pages/home-landing-final.css';
-import '@/styles/utils/hl-chrome-wrapper.css';
+import '@/styles/pages/home-v2.css';
 import '@/styles/components/security-page.css';
 
 type SecurityPageContentProps = {
@@ -18,143 +20,83 @@ type SecurityPageContentProps = {
 
 export default function SecurityPageContent({ locale }: SecurityPageContentProps) {
   const copy = getSecurityPageCopy(locale);
-  const [activeFaqIndex, setActiveFaqIndex] = useState<number | null>(null);
-  const disclaimer =
-    locale === 'en'
-      ? 'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.'
-      : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
-
-  const toggleFaq = (index: number) => {
-    setActiveFaqIndex(activeFaqIndex === index ? null : index);
-  };
+  const nav = getHomeV2Copy(locale).nav;
 
   return (
     <LocaleProvider locale={locale}>
-      <ClientInitializer />
-      <div className="hl-chrome-wrapper">
-        <HomeMinimalNav locale={locale} />
-        <main lang={locale}>
-          <section className="security-hero" data-fade-section>
-          <div className="container">
-            <h1 className="security-title reveal-on-scroll">{copy.hero.title}</h1>
-            <p className="security-subtitle reveal-on-scroll">{copy.hero.subtitle}</p>
-            <div className="security-badges reveal-on-scroll">
-              {copy.hero.badges.map((badge) => (
-                <span key={badge} className="badge-cert">
-                  {badge}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
+      <div className="home-v2-shell security-shell">
+        <ClientInitializer />
+        <HomeMinimalNav
+          locale={locale}
+          ctaHref={localePath(locale, '/bienvenida')}
+          ctaLabel={nav.cta}
+        />
+        <main
+          id="main-content"
+          className="home-landing-page home-landing-page--v2 security-page"
+          role="main"
+          lang={locale}
+        >
+          <div className="home-landing-page__content">
+            <article className="security-page__article">
+              <div className="home-landing-container">
+                <nav className="security-page__crumb" aria-label={copy.crumbAria}>
+                  <Link href={copy.breadcrumbs.homeHref} className="security-page__crumb-link">
+                    {copy.breadcrumbs.homeLabel}
+                  </Link>
+                  <span className="security-page__crumb-sep" aria-hidden="true">
+                    /
+                  </span>
+                  <span className="security-page__crumb-current">{copy.breadcrumbs.currentLabel}</span>
+                </nav>
 
-        <section className="security-overview" data-fade-section>
-          <div className="container">
-            <div className="security-intro">
-              <h2 className="section-title reveal-on-scroll">{copy.overview.sectionTitle}</h2>
-              <p className="reveal-on-scroll">{copy.overview.intro}</p>
-            </div>
+                <header className="security-page__masthead">
+                  <h1 className="security-page__title">{copy.hero.title}</h1>
+                  <p className="security-page__support">{copy.hero.support}</p>
+                </header>
 
-            <div className="certifications-section">
-              <h3 className="reveal-on-scroll">{copy.overview.certificationsTitle}</h3>
-              <div className="certifications-grid" data-stagger>
-                {copy.overview.certifications.map((cert) => (
-                  <div key={cert.title} className="cert-card reveal-on-scroll" data-stagger-item>
-                    <div className="cert-icon">{cert.icon}</div>
-                    <h4>{cert.title}</h4>
-                    <p>{cert.description}</p>
-                    {cert.linkHref && cert.linkLabel && (
-                      <a
-                        href={cert.linkHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="cert-link"
-                      >
-                        {cert.linkLabel}
-                      </a>
-                    )}
-                    {cert.status && <span className="cert-status">{cert.status}</span>}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+                <div className="security-page__care">
+                  {copy.care.items.map((item) => (
+                    <section key={item.title} className="security-page__care-item">
+                      <h2 className="security-page__care-title">{item.title}</h2>
+                      <p className="security-page__care-body">{item.body}</p>
+                    </section>
+                  ))}
+                </div>
 
-        <section className="security-measures" data-fade-section>
-          <div className="container">
-            <h2 className="section-title reveal-on-scroll">{copy.measures.sectionTitle}</h2>
-
-            <div className="measures-grid" data-stagger>
-              {copy.measures.items.map((measure) => (
-                <div key={measure.title} className="measure-card reveal-on-scroll" data-stagger-item>
-                  <div className="measure-icon">{measure.icon}</div>
-                  <h3>{measure.title}</h3>
-                  <p>{measure.description}</p>
-                  <ul className="measure-details">
-                    {measure.details.map((detail) => (
-                      <li key={detail}>{detail}</li>
+                <section className="security-page__not" aria-labelledby="security-not-title">
+                  <h2 id="security-not-title" className="security-page__not-title">
+                    {copy.notThis.title}
+                  </h2>
+                  <p className="security-page__not-intro">{copy.notThis.intro}</p>
+                  <ul className="security-page__not-list">
+                    {copy.notThis.items.map((item) => (
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
+                </section>
+
+                <div className="security-page__closing">
+                  <p className="security-page__disclaimer">{copy.closing.disclaimer}</p>
+                  <section
+                    className="security-page__contact"
+                    aria-labelledby="security-contact-title"
+                  >
+                    <h2 id="security-contact-title" className="security-page__contact-title">
+                      {copy.closing.contactTitle}
+                    </h2>
+                    <p className="security-page__contact-lead">
+                      {copy.closing.contactLead}{' '}
+                      <a href={`mailto:${copy.closing.contactEmail}`}>{copy.closing.contactEmail}</a>
+                    </p>
+                    <p className="security-page__contact-report">{copy.closing.report}</p>
+                  </section>
                 </div>
-              ))}
-            </div>
+              </div>
+            </article>
           </div>
-        </section>
-
-        <section className="security-reports" data-fade-section>
-          <div className="container">
-            <h2 className="section-title reveal-on-scroll">{copy.reports.sectionTitle}</h2>
-            <p className="section-subtitle reveal-on-scroll">{copy.reports.sectionSubtitle}</p>
-
-            <div className="reports-grid" data-stagger>
-              {copy.reports.items.map((report) => (
-                <div key={report.title} className="report-card reveal-on-scroll" data-stagger-item>
-                  <h3>{report.title}</h3>
-                  <p>{report.description}</p>
-                  {report.buttonHref && report.buttonLabel && (
-                    <a href={report.buttonHref} className="btn btn-secondary">
-                      {report.buttonLabel}
-                    </a>
-                  )}
-                  {report.status && <span className="report-status">{report.status}</span>}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="security-faq" data-fade-section>
-          <div className="container">
-            <h2 className="section-title reveal-on-scroll">{copy.faq.sectionTitle}</h2>
-
-            <div className="faq-list">
-              {copy.faq.items.map((item, index) => {
-                const isOpen = activeFaqIndex === index;
-
-                return (
-                  <div key={item.question} className={`faq-item ${isOpen ? 'active' : ''}`}>
-                    <button type="button" className="faq-question" onClick={() => toggleFaq(index)}>
-                      <span>{item.question}</span>
-                      <span className="faq-icon">{isOpen ? '−' : '+'}</span>
-                    </button>
-                    <div className={`faq-answer ${isOpen ? 'active' : ''}`}>
-                      <p>{item.answer}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section className="security-disclaimer" data-fade-section>
-          <div className="container">
-            <p className="disclaimer-text reveal-on-scroll">{disclaimer}</p>
-          </div>
-        </section>
-      </main>
-      <HomeMinimalFooter locale={locale} switchPath="/seguridad" />
+        </main>
+        <HomeMinimalFooter locale={locale} switchPath="/seguridad" />
       </div>
       <CookieConsent compact bannerDelayMs={3000} showAfterScrollPx={120} />
     </LocaleProvider>

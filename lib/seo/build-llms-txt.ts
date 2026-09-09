@@ -59,7 +59,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '': 'Home editorial: acompañamiento para horas quietas, demos de producto, foundation (memoria/técnicas), reviews, precios, FAQ y descarga en App Store y Google Play.',
     '/bienvenida': 'Landing de conversión (Meta Ads): apoyo emocional para ansiedad en iPhone y Android; prueba 1 día gratis.',
     '/app': 'Detalle de funcionalidades, capturas y enlaces de descarga.',
-    '/seguridad': 'Cifrado, política de datos, límites clínicos y cumplimiento.',
+    '/seguridad': 'Cifrado en tránsito y en reposo, quién lee el texto, y límites clínicos. Sin HIPAA, SOC 2 ni ISO.',
     '/investigacion': 'Cómo Anto lee TCC, GAD-7 y agentes conversacionales; cómo se ve en el producto; citas APA; sin ensayos propios de Anto.',
     '/recursos':
       `Hub editorial: atajos humanos (ansiedad, pensamientos en bucle, sueño, TCC) + ${PSYCHOEDUCATION_SLUGS.length} guías de psicoeducación y páginas Sobre Anto (app, seguridad, investigación). Material educativo; no diagnóstico.`,
@@ -76,7 +76,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '': 'Editorial home: support for quiet hours, product demos, foundation (memory/techniques), reviews, pricing, FAQ, App Store and Google Play download.',
     '/bienvenida': 'Conversion landing (Meta Ads): emotional support for anxiety on iPhone and Android; 1-day free trial.',
     '/app': 'Feature detail, screenshots, download links.',
-    '/seguridad': 'Encryption, data policy, clinical limits, compliance.',
+    '/seguridad': 'Encryption in transit and at rest, who reads the text, and clinical limits. Not HIPAA, SOC 2, or ISO.',
     '/investigacion': 'How Anto reads CBT, GAD-7, and conversational agents; how it shows in the product; APA citations; no Anto-specific trials claimed.',
     '/recursos':
       `Editorial hub: human entry points (anxiety, looping thoughts, sleep, CBT) + ${PSYCHOEDUCATION_SLUGS.length} psychoeducation guides and About Anto pages (app, safety, research). Educational material; not a diagnosis.`,

@@ -117,7 +117,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 1,
           question: '¿Mis conversaciones son realmente privadas?',
           answer:
-            'Sí, absolutamente. Tus conversaciones van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. Nunca compartimos, vendemos o comercializamos tu información con terceros. Tu privacidad es nuestra máxima prioridad y cumplimos con todas las regulaciones internacionales de protección de datos, incluyendo GDPR y HIPAA.',
+            'Sí. Van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos ni compartimos tu información con terceros.',
           category: 'privacidad',
         },
         {
@@ -223,7 +223,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 14,
           question: '¿Puedo exportar mis datos?',
           answer:
-            'Sí, tienes control total sobre tus datos. Puedes exportar toda tu información en cualquier momento en formatos estándar (JSON, CSV, PDF). Esto incluye tus conversaciones, análisis emocionales, y reportes. También puedes solicitar la eliminación completa de tus datos en cualquier momento desde la configuración de la aplicación. Cumplimos con el derecho al olvido (GDPR) y eliminaremos permanentemente tu información dentro de 30 días tras tu solicitud.',
+            'Sí. Puedes exportar tu información en formatos estándar (JSON, CSV, PDF): conversaciones, análisis y reportes. También puedes pedir la eliminación de tus datos desde la configuración de la aplicación. Tras esa solicitud, los eliminamos de forma permanente en un plazo de 30 días.',
           category: 'privacidad',
         },
         {
@@ -384,7 +384,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 1,
         question: 'Are my conversations really private?',
         answer:
-          'Yes, absolutely. Conversations are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We never share, sell, or commercialise your information with third parties. Your privacy is our top priority and we comply with all international data protection regulations, including GDPR and HIPAA.',
+          'Yes. They are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell or share your information with third parties.',
         category: 'privacidad',
       },
       {
@@ -490,7 +490,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 14,
         question: 'Can I export my data?',
         answer:
-          'Yes, you have full control over your data. You can export all your information at any time in standard formats (JSON, CSV, PDF). This includes your conversations, emotional analyses, and reports. You can also request complete deletion of your data at any time from the app settings. We comply with the right to erasure (GDPR) and will permanently delete your information within 30 days of your request.',
+          'Yes. You can export your information in standard formats (JSON, CSV, PDF): conversations, analyses, and reports. You can also request deletion of your data from the app settings. After that request, we permanently delete it within 30 days.',
         category: 'privacidad',
       },
       {
