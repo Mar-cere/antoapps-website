@@ -65,8 +65,8 @@ export function ResumenView() {
         </article>
         <article className="band__sprint">
           <p className="k">¿Qué estamos construyendo?</p>
-          <p className="v">Sprint {snapshot.program.current_sprint}</p>
-          <p className="d">{sprint?.title}. {snapshot.program.phase_title}</p>
+          <p className="v">{snapshot.program.current_work}</p>
+          <p className="d">{snapshot.program.current_work_note}</p>
         </article>
       </section>
 
@@ -120,12 +120,13 @@ export function ResumenView() {
 
         <section className="panel">
           <div className="row-between">
-            <h3>Sprint actual</h3>
+            <h3>Trabajo actual</h3>
             <span className={`rag ${sprint?.rag}`}>{sprint?.rag}</span>
           </div>
-          <p className="t">{sprint?.title}</p>
-          <p className="s">{sprint?.rag_reason}</p>
-          <p className="s">Capacidad: {sprint?.owner_capability}. Persona: {sprint?.owner_person}.</p>
+          <p className="t">{snapshot.program.current_work}</p>
+          <p className="s">{snapshot.program.current_work_note}</p>
+          <p className="s">{snapshot.program.phase_title}</p>
+          <p className="s">Último sprint del programa: {sprint?.sprint_no} · {sprint?.title}.</p>
           <div style={{ marginTop: 12 }}>
             <Link href="/observatorio/roadmap">Ver programa completo</Link>
           </div>
@@ -153,7 +154,14 @@ export function ResumenView() {
               </header>
               <p>{c.role}</p>
               <p>{c.participating ? 'Participa ahora' : 'No está en el span actual'}.</p>
-              <p>{c.program_status === 'planned_active' ? 'Programa: trabajo actual' : 'Programa: no implementado'}. {c.sprint_ref}</p>
+              <p>
+                {c.program_status === 'complete'
+                  ? 'Programa: germen cerrado'
+                  : c.program_status === 'planned_active'
+                    ? 'Programa: trabajo actual'
+                    : 'Programa: no implementado'}
+                . {c.sprint_ref}
+              </p>
             </article>
           ))}
         </div>

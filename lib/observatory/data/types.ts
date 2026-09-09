@@ -304,6 +304,8 @@ export type ProgramSnapshot = {
   phase_id: string;
   phase_title: string;
   current_sprint: number;
+  current_work: string;
+  current_work_note: string;
   last_updated: string;
   sprints: SprintRecord[];
   launch_gates: LaunchGate[];

@@ -15,31 +15,32 @@ export function RoadmapView() {
       <header>
         <h2>Roadmap</h2>
         <p>
-          Programa de 18 sprints del documento maestro v2.2. Nada se marca implementado si solo
-          está diseñado. Los responsables reales se asignan en Sprint 0.
+          Programa de 18 sprints del destilado Nexus. Cada cierre es un germen en código: registra,
+          observa o reporta según el contrato. No se marca como capacidad que actúe si el destilado
+          lo prohíbe. El trabajo vivo es Apply v0.1, que no es Sprint 19.
         </p>
       </header>
 
       <section className="band" aria-label="Estado del programa">
         <article className="band__nudo">
-          <p className="k">Sprint actual</p>
-          <p className="v">Sprint {program.current_sprint}</p>
-          <p className="d">Taxonomía de eventos y baseline. Trabajo planificado, no producción.</p>
+          <p className="k">Trabajo actual</p>
+          <p className="v">{program.current_work}</p>
+          <p className="d">{program.current_work_note}</p>
         </article>
         <article className="band__process">
-          <p className="k">Fase actual</p>
+          <p className="k">Fase</p>
           <p className="v">{program.phase_title}</p>
-          <p className="d">Horizonte 0-3 meses: observabilidad y control. No bandits ni auto-promotion.</p>
+          <p className="d">Horizonte del destilado: 1–18 cerrados como germen. No bandits ni auto-promotion.</p>
         </article>
         <article className="band__stage">
           <p className="k">Completados</p>
-          <p className="v">{program.sprints.filter((s) => s.work_status === 'complete').length}</p>
-          <p className="d">Ningún sprint del programa se declara cerrado en esta versión.</p>
+          <p className="v">{program.sprints.filter((s) => s.work_status === 'complete').length} de {program.sprints.length}</p>
+          <p className="d">Germen cerrado no es canary, ni auto-promotion, ni DecisionRecord de colección.</p>
         </article>
         <article className="band__sprint">
           <p className="k">Bloqueos</p>
           <p className="v">{program.sprints.filter((s) => s.blocked_by).length}</p>
-          <p className="d">No hay bloqueo técnico simulado. Falta ownership real.</p>
+          <p className="d">LG6 sigue blocked: un pass de gate no promociona. No hay Sprint 19.</p>
         </article>
       </section>
 

@@ -46,9 +46,9 @@ export const SPRINTS: SprintRecord[] = [
     'Cobertura de trace; combinaciones inválidas rechazadas; paridad safety por fixture; missing IDs; TTFT/stalls por path; cobertura de etiquetas.',
     '>=95% de turnos con trace íntegro; 100% de contract tests de superficie/safety; contenido off verificado; episodio no reportado antes de ep_v1.',
     'Observabilidad + Nexus Runtime',
-    'planned_active',
-    'amber',
-    'Sprint actual según el documento maestro. Es trabajo planificado, no una capacidad en producción.'
+    'complete',
+    'green',
+    'Germen cerrado: emisor content-off en nexus_turn_traces. El observatorio ya lee traces derivados del runtime.'
   ),
   sprint(
     2,
@@ -60,9 +60,9 @@ export const SPRINTS: SprintRecord[] = [
     'Purpose-deny accuracy; revoke propagation; accesos sin grant; memory_mode enforcement.',
     'Purpose check 100% en rutas sensibles; pausa global y revoke end-to-end auditados.',
     'Soberanía de usuario + Privacy',
-    'not_started',
-    'pending',
-    'No iniciado. Depende de Sprint 1.'
+    'complete',
+    'green',
+    'Germen cerrado: purpose_registry_v1 y purpose-deny en el turno. Safety/crisis no pasan por el registry.'
   ),
   sprint(
     3,
@@ -74,9 +74,9 @@ export const SPRINTS: SprintRecord[] = [
     'Schema validity; duplicados; replay; outbox_lag; projection_divergence.',
     'Contract tests críticos 100%; una sola escritura autoritativa y proyecciones reconstruibles.',
     'Nexus Runtime + Data Platform',
-    'not_started',
-    'pending',
-    'No iniciado. DecisionRecord y ExperiencePlan en runtime pertenecen a este sprint y a los sprints 7-8, no a hoy.'
+    'complete',
+    'amber',
+    'Germen cerrado: sombra decision.shadowed. DecisionRecord de colección sigue vacío a propósito.'
   ),
   sprint(
     4,
@@ -88,9 +88,9 @@ export const SPRINTS: SprintRecord[] = [
     'Policy coverage; decisiones sin versión; rollback time; overdue reviews.',
     'Cambio IG1 completo en shadow, auditado y revertido en game day.',
     'Governance + Platform',
-    'not_started',
-    'pending',
-    'No iniciado. Los launch gates aún no tienen evidencia de cierre.'
+    'complete',
+    'green',
+    'Germen cerrado: turn_policy_v1 (mute/crisis/pack). Los launch gates reportan en Sprint 18; no promocionan.'
   ),
   sprint(
     5,
@@ -102,9 +102,9 @@ export const SPRINTS: SprintRecord[] = [
     'Calibration/ECE; intent correction; stale-state reuse; latency p95.',
     'Baseline por dominio; enum único; TTL test 100%; fallback seguro bajo deadline.',
     'Persona + Nexus Runtime',
-    'not_started',
-    'pending',
-    'Diseñado. No implementado.'
+    'complete',
+    'green',
+    'Germen cerrado: state.estimated content-off. No condiciona generación ni mute.'
   ),
   sprint(
     6,
@@ -116,9 +116,9 @@ export const SPRINTS: SprintRecord[] = [
     'Claims con provenance; applicability completeness; fidelity; expert disagreement.',
     '100% de candidatos activos con source, límites, expiry y decisión experta.',
     'Behavioral Science',
-    'not_started',
-    'pending',
-    'Diseñado. No implementado.'
+    'complete',
+    'amber',
+    'Germen cerrado: catálogo psyche_v1. Psyche no decide el turno.'
   ),
   sprint(
     7,
@@ -130,9 +130,9 @@ export const SPRINTS: SprintRecord[] = [
     'Decision accuracy; overclaim; unnecessary abstention; candidate margin; p95 deliberation.',
     'Golden safety/epistemic pasa; rationale estructurado en >=98% de decisiones.',
     'Nexus Runtime + Trust',
-    'not_started',
-    'pending',
-    'Diseñado. DecisionRecord en producción no existe todavía.'
+    'complete',
+    'amber',
+    'Germen cerrado: Engine v1 decision.deliberated. A menudo se abstiene. No aplica forma.'
   ),
   sprint(
     8,
@@ -144,9 +144,9 @@ export const SPRINTS: SprintRecord[] = [
     'Time-to-first-useful-move; felt understood; questions/turn; premature advice.',
     'Golden de alta activación pasa; ninguna venta o tool push en rutas prohibidas.',
     'Product Experience + Behavioral Science',
-    'not_started',
-    'pending',
-    'Diseñado. ExperiencePlan en producción no existe todavía.'
+    'complete',
+    'amber',
+    'Germen cerrado: experience.planned. Apply v0.1 es el camino autorizado para inyectar forma.'
   ),
   sprint(
     9,
@@ -158,9 +158,9 @@ export const SPRINTS: SprintRecord[] = [
     'Snapshot freshness; stale claim rate; projector lag; read p95.',
     'Persona read p95 <=50 ms en carga objetivo; time-travel tests pasan.',
     'Persona & Trust + Data Platform',
-    'not_started',
-    'pending',
-    'Diseñado. No implementado.'
+    'complete',
+    'amber',
+    'Germen cerrado: persona.snapshotted. No inyecta al prompt.'
   ),
   sprint(
     10,
@@ -172,9 +172,9 @@ export const SPRINTS: SprintRecord[] = [
     'Transition accuracy; interruption cost; third-party attribution.',
     'Adversarial de atribución sin fallos críticos; graph DB permanece opcional.',
     'Persona & Trust + Behavioral Science',
-    'not_started',
-    'pending',
-    'Diseñado. No implementado.'
+    'complete',
+    'amber',
+    'Germen cerrado: trajectory.estimated. No actúa sobre generación ni mute.'
   ),
   sprint(
     11,
@@ -186,9 +186,9 @@ export const SPRINTS: SprintRecord[] = [
     'Confirmation rate; correction; intrusiveness; deletion completion.',
     'Candidato nunca aparece como hecho; deletion certificada; proactividad apagada por defecto.',
     'Product Experience + Persona & Trust',
-    'not_started',
-    'pending',
-    'Diseñado. No implementado.'
+    'complete',
+    'amber',
+    'Germen cerrado: memoria visible y deletion certificada. Pull, no extra de chat.'
   ),
   sprint(
     12,
@@ -200,9 +200,9 @@ export const SPRINTS: SprintRecord[] = [
     'Agreement; sensitivity/specificity; calibration; leakage.',
     'Test sellado; disagreement queue activa; cero critical en release suite.',
     'Cortex Platform + Domain Review',
-    'not_started',
-    'pending',
-    'Diseñado. Eval Mesh no está en producción.'
+    'complete',
+    'amber',
+    'Germen cerrado: Eval Mesh v1 en CI. No actúa en el turno.'
   ),
   sprint(
     13,
@@ -214,9 +214,9 @@ export const SPRINTS: SprintRecord[] = [
     'Felt understood; clarity; activation delta; choice ownership; dependency signals.',
     'Engagement queda en Tier 4; autonomy puede detener experimento en game day.',
     'Cortex + Product + Governance',
-    'not_started',
-    'pending',
-    'Diseñado. No implementado.'
+    'complete',
+    'amber',
+    'Germen cerrado: outcomes O1–O3 pull. No actúa ni se ofrece desde el chat.'
   ),
   sprint(
     14,
@@ -228,9 +228,9 @@ export const SPRINTS: SprintRecord[] = [
     'Premature advice; excessive questions; directive stay/leave; third-party labels; safety recall.',
     'Shadow supera baseline en beneficio sin empeorar safety/autonomía; expert review aprobado.',
     'Cross-functional Relational Domain Team',
-    'not_started',
-    'pending',
-    'Diseñado. No implementado.'
+    'complete',
+    'amber',
+    'Germen cerrado: relational.shadowed. Observa, no actúa.'
   ),
   sprint(
     15,
@@ -242,9 +242,9 @@ export const SPRINTS: SprintRecord[] = [
     'Primary effect + interval; guardrails; sample ratio mismatch; rollback time.',
     'Stop rules probadas; canary limitada y promotion card completa.',
     'Experimentation + Release Council',
-    'not_started',
-    'pending',
-    'Diseñado. No implementado.'
+    'complete',
+    'amber',
+    'Germen cerrado: relational_policy_v1 registra. Canary porcentual y auto-promotion siguen fuera.'
   ),
   sprint(
     16,
@@ -256,9 +256,9 @@ export const SPRINTS: SprintRecord[] = [
     'Cluster stability; time-to-triage; false alerts; version attribution.',
     'Cada hallazgo conserva ejemplos, cohorte, incertidumbre y owner; cero auto-promotion.',
     'Cortex Platform',
-    'not_started',
-    'pending',
-    'Diseñado. Una correlación nunca se muestra como política aprobada.'
+    'complete',
+    'amber',
+    'Germen cerrado: semantic_cortex_v1. Propone hipótesis; no promociona.'
   ),
   sprint(
     17,
@@ -270,9 +270,9 @@ export const SPRINTS: SprintRecord[] = [
     'Coverage; freshness; conflict debt; review latency; implementation fidelity.',
     'Candidate-only automation; quarantine y approval audit probados end-to-end.',
     'Behavioral Science + Governance',
-    'not_started',
-    'pending',
-    'Diseñado. No implementado.'
+    'complete',
+    'amber',
+    'Germen cerrado: evidence_surveillance_v1. ReviewCase en candidate; no promociona.'
   ),
   sprint(
     18,
@@ -284,9 +284,9 @@ export const SPRINTS: SprintRecord[] = [
     'TTFT p50/p95 por superficie; error budget; fallback success; incident MTTR; deletion SLA.',
     'LG0-LG6 aprobados; rollback completo; riesgos residuales aceptados con responsable y fecha.',
     'Platform + Governance + Leadership',
-    'not_started',
-    'pending',
-    'Diseñado. No implementado.'
+    'complete',
+    'amber',
+    'Germen cerrado: launch gates reportan. LG5 skipped, LG6 blocked. No hay Sprint 19.'
   ),
 ];
 
@@ -295,59 +295,62 @@ export const LAUNCH_GATES: LaunchGate[] = [
     id: 'LG0',
     name: 'Scope',
     description: 'Promesa, usuarios, exclusiones, mercados, clasificación e impact classes aprobados.',
-    rag: 'amber',
-    explanation: 'El documento maestro define alcance. Falta el registro de ownership real de Sprint 0.',
+    rag: 'green',
+    explanation: 'pass del destilado: constitución y ADRs de fundación declarados. Un pass no promociona.',
   },
   {
     id: 'LG1',
     name: 'Data',
     description: 'Data map, consent, retention, deletion y vendor contracts probados.',
-    rag: 'pending',
-    explanation: 'Sprint 2. No hay evidencia de cierre.',
+    rag: 'green',
+    explanation: 'pass del destilado: content-off, purpose-deny y Mongo canónico. Un pass no promociona.',
   },
   {
     id: 'LG2',
     name: 'Behavior',
     description: 'Golden evals, epistemic checks, abstention y safety pasan.',
-    rag: 'pending',
-    explanation: 'Sprints 7 y 12. No hay evidencia de cierre.',
+    rag: 'amber',
+    explanation: 'pass del destilado: Engine y Experience registran; conversionSuppression nunca applied.',
   },
   {
     id: 'LG3',
     name: 'Experience',
     description: 'Burden, accessibility, boundaries y autonomy review pasan.',
-    rag: 'pending',
-    explanation: 'Sprints 8 y 13. No hay evidencia de cierre.',
+    rag: 'amber',
+    explanation: 'pass del destilado: Eval Mesh CI declarado. No exige 100–200 chats.',
   },
   {
     id: 'LG4',
     name: 'Operations',
     description: 'SLOs medidos por superficie, on-call, rollback, incident comms y game day pasan.',
-    rag: 'pending',
-    explanation: 'Sprint 18. No hay evidencia de cierre.',
+    rag: 'amber',
+    explanation: 'pass del destilado: O1–O3 pull. O4/O5 no son filas del catálogo.',
   },
   {
     id: 'LG5',
     name: 'Evidence',
     description: 'Claims y measures tienen owners, sources, expiry y limits.',
     rag: 'pending',
-    explanation: 'Sprints 6 y 17. No hay evidencia de cierre.',
+    explanation: 'skipped: no hay canary. skipped no es pass.',
   },
   {
     id: 'LG6',
     name: 'Canary',
     description: 'Exposure limitada, monitoring y stop rules activos.',
-    rag: 'pending',
-    explanation: 'Sprint 15. No hay evidencia de cierre.',
+    rag: 'red',
+    explanation: 'blocked: auto-promotion prohibida (ADR-007). Nunca approved.',
   },
 ];
 
 export const PROGRAM: ProgramSnapshot = {
-  phase_id: 'A',
-  phase_title: 'Fase A. Fundación observable y gobernada',
-  current_sprint: 1,
-  last_updated: '2026-09-08T14:00:00Z',
+  phase_id: 'E',
+  phase_title: 'Fase E cerrada. Apply v0.1 es el trabajo vivo.',
+  current_sprint: 18,
+  current_work: 'Apply v0.1',
+  current_work_note:
+    'Progresión conversacional en sombra por defecto. No es Sprint 19. El programa 1–18 quedó como germen en código.',
+  last_updated: '2026-09-09T12:00:00Z',
   sprints: SPRINTS,
   launch_gates: LAUNCH_GATES,
-  provenance: 'simulated',
+  provenance: 'derived',
 };
