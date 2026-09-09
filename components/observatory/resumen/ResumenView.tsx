@@ -42,19 +42,19 @@ export function ResumenView() {
       </header>
 
       <section className="band" aria-label="Estado general">
-        <article>
+        <article className="band__nudo">
           <p className="k">¿Nexus está activo?</p>
           <p className="v">
             <StatusMark status={snapshot.system_lifecycle} />
           </p>
           <p className="d">{connection.detail}</p>
         </article>
-        <article>
+        <article className="band__process">
           <p className="k">¿Qué está procesando?</p>
           <p className="v">{processTitle}</p>
           <p className="d">{snapshot.processing}</p>
         </article>
-        <article>
+        <article className="band__stage">
           <p className="k">¿En qué etapa?</p>
           <p className="v">{snapshot.stage_label}</p>
           <p className="d">
@@ -63,7 +63,7 @@ export function ResumenView() {
               : 'Cortex evalúa después de responder, nunca en el primer token.'}
           </p>
         </article>
-        <article>
+        <article className="band__sprint">
           <p className="k">¿Qué estamos construyendo?</p>
           <p className="v">Sprint {snapshot.program.current_sprint}</p>
           <p className="d">{sprint?.title}. {snapshot.program.phase_title}</p>

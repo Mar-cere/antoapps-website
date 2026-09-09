@@ -28,7 +28,12 @@ function NavGlyph({ name, filled }: { name: (typeof OBSERVATORY_NAV)[number]['la
         <circle cx="9" cy="9" r="5.5" fill="none" stroke="currentColor" strokeWidth={stroke} />
       ) : null}
       {name === 'Decisiones' ? (
-        <path d="M4 13.5l4-9 6 9" fill="none" stroke="currentColor" strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round" />
+        <>
+          <circle cx="9" cy="4.6" r="1.55" fill="currentColor" />
+          <circle cx="4.4" cy="12.6" r="1.35" fill="currentColor" />
+          <circle cx="13.6" cy="12.2" r="1.35" fill="currentColor" />
+          <path d="M9 4.6L4.4 12.6l9.2-.4L9 4.6" fill="none" stroke="currentColor" strokeWidth={stroke} />
+        </>
       ) : null}
       {name === 'Cortex' ? (
         <>
@@ -118,6 +123,22 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         })}
       </nav>
       <main className="main">{children}</main>
+      <nav className="mobile-nav" aria-label="Vistas móviles">
+        {OBSERVATORY_NAV.map((item) => {
+          const active = isActive(pathname, item.href);
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={active ? 'active' : undefined}
+              aria-current={active ? 'page' : undefined}
+            >
+              <NavGlyph name={item.label} filled={active} />
+              <span>{item.label}</span>
+            </Link>
+          );
+        })}
+      </nav>
     </div>
   );
 }

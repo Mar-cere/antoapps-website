@@ -42,7 +42,7 @@ export function DecisionesView() {
         </div>
       ) : (
         <div className="decision-layout">
-          <section className="panel">
+          <section className="turn-rail">
             <h3>Turnos</h3>
             <TurnPicker
               traces={snapshot.traces}
@@ -52,9 +52,9 @@ export function DecisionesView() {
           </section>
 
           <div className="decision-main">
-            <section className="decision-lead panel">
+            <section className="decision-lead">
               <div className="row-between">
-                <h3>{selectedTrace.session_ref}</h3>
+                <p className="session-id">{selectedTrace.session_ref}</p>
                 <Provenance kind={selectedTrace.provenance} />
               </div>
               <p className="decision-headline">{story.headline}</p>
@@ -64,8 +64,13 @@ export function DecisionesView() {
               </p>
             </section>
 
-            <section className="decision-compare" aria-label="Engine, forma y sombra">
-              <article>
+            <section
+              className="decision-field"
+              aria-label="Engine, forma y sombra"
+              data-split={story.split ? 'yes' : 'no'}
+            >
+              <article className="decision-node" data-role="engine">
+                <span className="decision-node__star" aria-hidden="true" />
                 <h3>Nexus Engine</h3>
                 <p className="decision-choice">{choiceLabel(story.engineChoice)}</p>
                 <p className="s">
@@ -77,7 +82,8 @@ export function DecisionesView() {
                     : `${story.engineCandidates} candidatos contados, sin puntuaciones`}
                 </p>
               </article>
-              <article>
+              <article className="decision-node" data-role="experience">
+                <span className="decision-node__star" aria-hidden="true" />
                 <h3>Experience</h3>
                 <p className="decision-choice">{choiceLabel(story.modality)}</p>
                 <p className="s">Modalidad del plan de forma. No es un ExperiencePlan persistido.</p>
@@ -85,7 +91,8 @@ export function DecisionesView() {
                   Cue {factLabel(story.cue)} · {factLabel(story.reason)}
                 </p>
               </article>
-              <article data-split={story.split ? 'yes' : 'no'}>
+              <article className="decision-node" data-role="shadow" data-split={story.split ? 'yes' : 'no'}>
+                <span className="decision-node__star" aria-hidden="true" />
                 <h3>Sombra</h3>
                 <p className="decision-choice">{choiceLabel(story.shadowChoice)}</p>
                 <p className="s">
@@ -123,7 +130,7 @@ export function DecisionesView() {
               </dd>
             </dl>
 
-            <section className="panel">
+            <section className="decision-orbit">
               <h3>Recorrido de la decisión</h3>
               <div className="decision-path">
                 {story.path.map((span, index) => (

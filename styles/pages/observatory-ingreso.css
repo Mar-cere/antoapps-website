@@ -1,12 +1,21 @@
+body:has(.obs-login) {
+  background-color: #020711;
+  background-image: none;
+}
+
 .obs-login {
   min-height: 100dvh;
   display: grid;
   place-items: center;
   padding: 48px 24px;
-  background:
-    radial-gradient(900px 420px at 8% -10%, rgba(26, 221, 219, 0.07), transparent 52%),
-    #030a24;
   color: #f4f7fb;
+  background:
+    radial-gradient(ellipse 46% 40% at 82% 8%, rgba(26, 221, 219, 0.07), transparent 68%),
+    radial-gradient(ellipse 38% 34% at 8% 82%, rgba(28, 72, 168, 0.16), transparent 70%),
+    radial-gradient(1.2px 1.2px at 18% 22%, rgba(244, 247, 251, 0.38), transparent),
+    radial-gradient(1px 1px at 72% 16%, rgba(26, 221, 219, 0.45), transparent),
+    radial-gradient(1px 1px at 88% 64%, rgba(244, 247, 251, 0.22), transparent),
+    #020711;
 }
 
 .obs-login__panel {
@@ -15,9 +24,9 @@
 
 .obs-login h1 {
   margin: 0 0 8px;
-  font-size: 1.5rem;
-  font-weight: 650;
-  letter-spacing: -0.03em;
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
 }
 
 .obs-login__panel > p {
@@ -43,8 +52,8 @@
 
 .obs-login__field input {
   appearance: none;
-  background: #0a1529;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(6, 16, 31, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 8px;
   padding: 10px 12px;
   color: #f4f7fb;
@@ -65,14 +74,20 @@
 
 .obs-login__submit {
   margin-top: 6px;
-  background: #1adddb;
-  color: #030a24;
-  border: 0;
+  background: rgba(4, 8, 23, 0.55);
+  color: #f4f7fb;
+  border: 1px solid rgba(26, 221, 219, 0.45);
   border-radius: 8px;
   padding: 10px 14px;
   font: inherit;
-  font-weight: 650;
+  font-weight: 500;
+  letter-spacing: 0.01em;
   cursor: pointer;
+  box-shadow: 0 2px 14px rgba(26, 221, 219, 0.1);
+}
+
+.obs-login__submit:hover:not(:disabled) {
+  border-color: rgba(26, 221, 219, 0.7);
 }
 
 .obs-login__submit:disabled {

@@ -28,7 +28,10 @@ export function TurnPicker({ traces, selectedId, onSelect }: TurnPickerProps) {
             aria-selected={selected}
             onClick={() => onSelect(trace.trace_id)}
           >
-            <span className="t">{choiceLabel(story.engineChoice)}</span>
+            <span className="t">
+              <span className="turn-star" data-choice={story.engineChoice ?? ''} aria-hidden="true" />
+              {choiceLabel(story.engineChoice)}
+            </span>
             <span className="s">
               {formatTurnWhen(trace.started_at)} · {trace.session_ref}
             </span>

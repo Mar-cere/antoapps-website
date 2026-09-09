@@ -20,34 +20,34 @@ export function RoadmapView() {
         </p>
       </header>
 
-      <section className="band">
-        <article>
-          <p className="k">Fase actual</p>
-          <p className="v">{program.phase_title}</p>
-          <p className="d">Horizonte 0-3 meses: observabilidad y control. No bandits ni auto-promotion.</p>
-        </article>
-        <article>
+      <section className="band" aria-label="Estado del programa">
+        <article className="band__nudo">
           <p className="k">Sprint actual</p>
           <p className="v">Sprint {program.current_sprint}</p>
           <p className="d">Taxonomía de eventos y baseline. Trabajo planificado, no producción.</p>
         </article>
-        <article>
+        <article className="band__process">
+          <p className="k">Fase actual</p>
+          <p className="v">{program.phase_title}</p>
+          <p className="d">Horizonte 0-3 meses: observabilidad y control. No bandits ni auto-promotion.</p>
+        </article>
+        <article className="band__stage">
           <p className="k">Completados</p>
           <p className="v">{program.sprints.filter((s) => s.work_status === 'complete').length}</p>
           <p className="d">Ningún sprint del programa se declara cerrado en esta versión.</p>
         </article>
-        <article>
+        <article className="band__sprint">
           <p className="k">Bloqueos</p>
           <p className="v">{program.sprints.filter((s) => s.blocked_by).length}</p>
           <p className="d">No hay bloqueo técnico simulado. Falta ownership real.</p>
         </article>
       </section>
 
-      <section>
-        <h3 style={{ margin: '0 0 8px' }}>Launch gates LG0-LG6</h3>
-        <div className="gates">
+      <section className="decision-orbit">
+        <h3>Launch gates LG0-LG6</h3>
+        <div className="gate-path">
           {program.launch_gates.map((g) => (
-            <article key={g.id} className="gate">
+            <article key={g.id} className="gate-node" data-rag={g.rag}>
               <h4>
                 {g.id} {g.name}
               </h4>
@@ -58,65 +58,58 @@ export function RoadmapView() {
         </div>
       </section>
 
-      <div className="split">
-        <section className="panel sprint-list">
+      <div className="decision-layout">
+        <section className="turn-rail">
           <div className="row-between">
             <h3>Sprints</h3>
             <Provenance kind={program.provenance} />
           </div>
-          {program.sprints.map((s) => (
-            <button
-              key={s.sprint_no}
-              type="button"
-              onClick={() => setOpen(s.sprint_no)}
-              className={s.sprint_no === open ? 'current' : undefined}
-              style={{
-                display: 'block',
-                width: '100%',
-                textAlign: 'left',
-                background: 'none',
-                border: 0,
-                borderBottom: '1px solid var(--color-border)',
-                padding: '12px 0',
-                cursor: 'pointer',
-              }}
-            >
-              <span className="row-between">
+          <div className="list turn-picker" role="listbox" aria-label="Sprints del programa">
+            {program.sprints.map((s) => (
+              <button
+                key={s.sprint_no}
+                type="button"
+                role="option"
+                aria-selected={s.sprint_no === open}
+                onClick={() => setOpen(s.sprint_no)}
+              >
                 <span className="t">
+                  <span className="turn-star" data-rag={s.rag} aria-hidden="true" />
                   Sprint {s.sprint_no} · {s.title}
                 </span>
-                <span className={`rag ${s.rag}`}>{s.rag}</span>
-              </span>
-              <span className="s">{s.phase}</span>
-            </button>
-          ))}
+                <span className="s">{s.phase}</span>
+              </button>
+            ))}
+          </div>
         </section>
         {current ? (
-          <section className="panel inspector">
-            <h3>
-              Sprint {current.sprint_no}
-            </h3>
-            <p className={`rag ${current.rag}`}>{current.rag_reason}</p>
-            <dl>
-              <dt>Objetivo</dt>
-              <dd>{current.objective}</dd>
-              <dt>Entregables</dt>
-              <dd>{current.deliverables}</dd>
-              <dt>Dependencias</dt>
-              <dd>{current.dependencies}</dd>
-              <dt>Métricas</dt>
-              <dd>{current.metrics}</dd>
-              <dt>Gate de salida</dt>
-              <dd>{current.exit_gate}</dd>
-              <dt>Capacidad</dt>
-              <dd>{current.owner_capability}</dd>
-              <dt>Persona</dt>
-              <dd>{current.owner_person}</dd>
-              <dt>Estado de trabajo</dt>
-              <dd>{current.work_status}</dd>
-              <dt>Bloqueo</dt>
-              <dd>{current.blocked_by ?? 'Ninguno declarado'}</dd>
-            </dl>
+          <section className="obs-field sprint-nudo" aria-label={`Sprint ${current.sprint_no}`}>
+            <article className="decision-node" data-role="nudo">
+              <span className="decision-node__star" aria-hidden="true" />
+              <h3>Sprint {current.sprint_no}</h3>
+              <p className="decision-choice">{current.title}</p>
+              <p className={`rag ${current.rag}`}>{current.rag_reason}</p>
+              <dl>
+                <dt>Objetivo</dt>
+                <dd>{current.objective}</dd>
+                <dt>Entregables</dt>
+                <dd>{current.deliverables}</dd>
+                <dt>Dependencias</dt>
+                <dd>{current.dependencies}</dd>
+                <dt>Métricas</dt>
+                <dd>{current.metrics}</dd>
+                <dt>Gate de salida</dt>
+                <dd>{current.exit_gate}</dd>
+                <dt>Capacidad</dt>
+                <dd>{current.owner_capability}</dd>
+                <dt>Persona</dt>
+                <dd>{current.owner_person}</dd>
+                <dt>Estado de trabajo</dt>
+                <dd>{current.work_status}</dd>
+                <dt>Bloqueo</dt>
+                <dd>{current.blocked_by ?? 'Ninguno declarado'}</dd>
+              </dl>
+            </article>
           </section>
         ) : null}
       </div>

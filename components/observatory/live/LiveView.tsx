@@ -58,7 +58,7 @@ export function LiveView() {
         </div>
       ) : snapshot.traces.length > 1 ? (
         <div className="live-layout">
-          <section className="panel">
+          <section className="turn-rail">
             <h3>Turnos</h3>
             <TurnPicker traces={snapshot.traces} selectedId={trace.trace_id} onSelect={selectTrace} />
           </section>

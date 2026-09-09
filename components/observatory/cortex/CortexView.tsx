@@ -23,7 +23,7 @@ export function CortexView() {
         </p>
       </header>
 
-      <section className="legend">
+      <section className="legend" aria-label="Estados epistémicos">
         {Object.entries(EPISTEMIC_LABELS).map(([k, label]) => (
           <span key={k} className={`epistemic ${k}`}>
             {label}
@@ -32,101 +32,117 @@ export function CortexView() {
       </section>
 
       <section className="band" aria-label="Salud de Cortex">
-        <article>
+        <article className="band__nudo">
           <p className="k">Cola de evaluaciones</p>
           <p className="v">{pending.length} pendientes</p>
           <p className="d">
             {completed} completadas en este snapshot. Eval Mesh de producción es Sprint 12.
           </p>
         </article>
-        <article>
+        <article className="band__process">
           <p className="k">Retraso de evaluación</p>
           <p className="v">{lag == null ? 'No disponible' : `${lag} ms${demoPlayback ? ' (sim)' : ''}`}</p>
           <p className="d">No debe afectar TTFT. Cortex fuera del camino crítico.</p>
         </article>
-        <article>
+        <article className="band__stage">
           <p className="k">Deuda de revisión</p>
           <p className="v">{snapshot.review_debt.value}</p>
           <p className="d">{snapshot.review_debt.note ?? 'Casos humanos, no FIFO puro.'}</p>
         </article>
-        <article>
+        <article className="band__sprint">
           <p className="k">Frescura de evidencia</p>
           <p className="v">{snapshot.evidence_freshness.value}</p>
           <p className="d">{snapshot.evidence_freshness.note}</p>
         </article>
       </section>
 
-      <div className="three">
-        <section className="panel">
-          <h3>Trazas recientes</h3>
-          {snapshot.traces.length === 0 ? (
-            <div className="empty">Sin trazas en este snapshot.</div>
-          ) : (
-            snapshot.traces.map((t) => (
-              <div key={t.trace_id} className="alert">
-                <span className="t">{t.trace_id}</span>
-                <span className="s">
-                  {t.session_ref} · content {t.content_mode} · {t.spans.length} spans ·{' '}
-                  <Provenance kind={t.provenance} />
-                </span>
-              </div>
-            ))
-          )}
-        </section>
-        <section className="panel">
+      <section className="obs-field" aria-label="Eval Mesh, trazas y anomalías">
+        <article className="decision-node" data-role="nudo">
+          <span className="decision-node__star" aria-hidden="true" />
           <h3>Eval Mesh</h3>
-          {snapshot.eval_queue.length === 0 ? (
-            <div className="empty">Sin evaluaciones en este snapshot. Eval Mesh es Sprint 12.</div>
-          ) : (
-            snapshot.eval_queue.map((e) => (
-              <div key={e.eval_id} className="alert">
-                <span className="t">{e.evaluator}</span>
-                <span className="s">
-                  {EVALUATOR_QUESTIONS[e.evaluator]} · {e.trace_ref}
-                </span>
-                <StatusMark
-                  status={
-                    e.status === 'completed'
-                      ? 'completed'
-                      : e.status === 'failed'
-                        ? 'failed'
-                        : e.status === 'running'
-                          ? 'active'
-                          : 'queued'
-                  }
-                />
-              </div>
-            ))
-          )}
-        </section>
-        <section className="panel">
+          <p className="decision-choice">
+            {snapshot.eval_queue.length === 0 ? 'Sin cola' : `${pending.length} pendientes`}
+          </p>
+          <p className="s">
+            {snapshot.eval_queue.length === 0
+              ? 'Eval Mesh de producción es Sprint 12.'
+              : `${completed} completadas en este snapshot. Cortex evalúa después de responder.`}
+          </p>
+          <div className="node-list">
+            {snapshot.eval_queue.length === 0 ? (
+              <div className="empty">Sin evaluaciones en este snapshot.</div>
+            ) : (
+              snapshot.eval_queue.map((e) => (
+                <div key={e.eval_id} className="alert">
+                  <span className="t">{e.evaluator}</span>
+                  <span className="s">
+                    {EVALUATOR_QUESTIONS[e.evaluator]} · {e.trace_ref}
+                  </span>
+                  <StatusMark
+                    status={
+                      e.status === 'completed'
+                        ? 'completed'
+                        : e.status === 'failed'
+                          ? 'failed'
+                          : e.status === 'running'
+                            ? 'active'
+                            : 'queued'
+                    }
+                  />
+                </div>
+              ))
+            )}
+          </div>
+        </article>
+        <article className="decision-node" data-role="experience">
+          <span className="decision-node__star" aria-hidden="true" />
+          <h3>Trazas recientes</h3>
+          <div className="node-list">
+            {snapshot.traces.length === 0 ? (
+              <div className="empty">Sin trazas en este snapshot.</div>
+            ) : (
+              snapshot.traces.map((t) => (
+                <div key={t.trace_id} className="alert">
+                  <span className="t">{t.trace_id}</span>
+                  <span className="s">
+                    {t.session_ref} · content {t.content_mode} · {t.spans.length} spans ·{' '}
+                    <Provenance kind={t.provenance} />
+                  </span>
+                </div>
+              ))
+            )}
+          </div>
+        </article>
+        <article className="decision-node" data-role="shadow">
+          <span className="decision-node__star" aria-hidden="true" />
           <h3>Errores o anomalías</h3>
-          {failed.length === 0 ? (
-            <div className="empty">
-              {demoPlayback
-                ? 'Sin fallos de evaluator en el turno activo. Hay un fallo simulado en outcome de pareja.'
-                : 'Sin fallos de evaluator en este snapshot.'}
-            </div>
-          ) : (
-            failed.map((e) => (
+          <div className="node-list">
+            {failed.length === 0 && snapshot.drift.length === 0 ? (
+              <div className="empty">
+                {demoPlayback
+                  ? 'Sin fallos de evaluator en el turno activo. Hay un fallo simulado en outcome de pareja.'
+                  : 'Sin fallos de evaluator en este snapshot.'}
+              </div>
+            ) : null}
+            {failed.map((e) => (
               <div key={e.eval_id} className="alert" data-sev="failed">
                 <span className="t">{e.evaluator} falló</span>
                 <span className="s">No se edita el evento original. Se puede invalidar y recomputar.</span>
               </div>
-            ))
-          )}
-          {snapshot.drift.map((d) => (
-            <div key={d.monitor_id} className="alert">
-              <span className="t">{d.name}</span>
-              <span className="s">{d.detail}</span>
-              <Provenance kind={d.provenance} />
-            </div>
-          ))}
-        </section>
-      </div>
+            ))}
+            {snapshot.drift.map((d) => (
+              <div key={d.monitor_id} className="alert">
+                <span className="t">{d.name}</span>
+                <span className="s">{d.detail}</span>
+                <Provenance kind={d.provenance} />
+              </div>
+            ))}
+          </div>
+        </article>
+      </section>
 
-      <div className="two">
-        <section className="panel">
+      <div className="split">
+        <section className="decision-orbit">
           <h3>Hipótesis y estado epistémico</h3>
           {snapshot.hypotheses.length === 0 ? (
             <div className="empty">Sin hipótesis en este snapshot.</div>
@@ -142,7 +158,7 @@ export function CortexView() {
             ))
           )}
         </section>
-        <section className="panel">
+        <section className="decision-orbit">
           <h3>Experimentos</h3>
           {snapshot.experiments.length === 0 ? (
             <div className="empty">Sin experimentos en este snapshot.</div>
@@ -160,8 +176,8 @@ export function CortexView() {
         </section>
       </div>
 
-      <div className="two">
-        <section className="panel">
+      <div className="split">
+        <section className="decision-orbit">
           <h3>Outcomes</h3>
           {snapshot.outcomes.length === 0 ? (
             <div className="empty">Sin outcomes en este snapshot.</div>
@@ -180,7 +196,7 @@ export function CortexView() {
             ))
           )}
         </section>
-        <section className="panel">
+        <section className="decision-orbit">
           <h3>Señales de autonomía</h3>
           {snapshot.autonomy.length === 0 ? (
             <div className="empty">Sin señales de autonomía en este snapshot.</div>
@@ -198,7 +214,7 @@ export function CortexView() {
         </section>
       </div>
 
-      <section className="panel">
+      <section className="decision-orbit">
         <h3>Casos que requieren revisión humana</h3>
         {snapshot.reviews.length === 0 ? (
           <div className="empty">No hay ReviewCase en este snapshot.</div>
