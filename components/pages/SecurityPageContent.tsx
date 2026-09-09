@@ -64,18 +64,6 @@ export default function SecurityPageContent({ locale }: SecurityPageContentProps
                   ))}
                 </div>
 
-                <section className="security-page__not" aria-labelledby="security-not-title">
-                  <h2 id="security-not-title" className="security-page__not-title">
-                    {copy.notThis.title}
-                  </h2>
-                  <p className="security-page__not-intro">{copy.notThis.intro}</p>
-                  <ul className="security-page__not-list">
-                    {copy.notThis.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </section>
-
                 <div className="security-page__closing">
                   <p className="security-page__disclaimer">{copy.closing.disclaimer}</p>
                   <section

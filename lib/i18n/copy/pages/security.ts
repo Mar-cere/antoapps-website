@@ -27,11 +27,6 @@ export type SecurityPageCopy = {
   care: {
     items: readonly SecurityCareBlock[];
   };
-  notThis: {
-    title: string;
-    intro: string;
-    items: readonly string[];
-  };
   closing: {
     disclaimer: string;
     contactTitle: string;
@@ -78,18 +73,6 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
             title: 'Who reads',
             body: 'You, when you sign in. Anto and the model, so they can reply. The model is an AI provider that processes the text. We do not sell the thread or use it for ads.',
           },
-        ],
-      },
-      notThis: {
-        title: 'What this is not',
-        intro: 'These claims are not true of Anto today:',
-        items: [
-          'Not HIPAA',
-          'Not SOC 2',
-          'Not ISO 27001',
-          'Not end-to-end encryption',
-          'No published external audit',
-          'No rewards programme',
         ],
       },
       closing: {
@@ -139,18 +122,6 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
           title: 'Quién lee',
           body: 'Tú, al iniciar sesión. Anto y el modelo, para responderte. El modelo es un proveedor de IA que procesa el texto. No vendemos el hilo ni lo usamos para anuncios.',
         },
-      ],
-    },
-    notThis: {
-      title: 'Qué no es',
-      intro: 'Estas afirmaciones no aplican a Anto hoy:',
-      items: [
-        'No es HIPAA',
-        'No es SOC 2',
-        'No es ISO 27001',
-        'No hay cifrado de extremo a extremo',
-        'No hay auditoría externa publicada',
-        'No hay programa de recompensas',
       ],
     },
     closing: {
