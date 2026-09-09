@@ -10,6 +10,7 @@ import CookieConsent from '@/components/CookieConsent';
 import PullToRefresh from '@/components/ui/PullToRefresh';
 import HomeV2Hero from '@/components/sections/HomeV2Hero';
 import HomeV2Recognize from '@/components/sections/HomeV2Recognize';
+import HomeV2InPhone from '@/components/sections/HomeV2InPhone';
 import HomeV2Moments from '@/components/sections/HomeV2Moments';
 import HomeV2Foundation from '@/components/sections/HomeV2Foundation';
 import HomeV2Still from '@/components/sections/HomeV2Still';
@@ -63,6 +64,7 @@ export default function HomeV2PageContent({
             <div className="home-landing-page__content">
               <HomeV2Hero locale={locale} />
               <HomeV2Recognize locale={locale} />
+              <HomeV2InPhone locale={locale} />
               <HomeV2Moments locale={locale} />
               <HomeV2Foundation locale={locale} />
               <HomeV2Still locale={locale} />
