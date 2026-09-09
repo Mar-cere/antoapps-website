@@ -26,7 +26,7 @@ const PAGE_LABELS: Record<Locale, Record<string, string>> = {
     '': 'Inicio — producto y descarga',
     '/bienvenida': 'Landing de conversión (Meta Ads, /l)',
     '/app': 'Página de producto / descarga',
-    '/seguridad': 'Privacidad, cifrado y disclaimers clínicos',
+    '/seguridad': 'Cómo se cuida el hilo: por qué se lee, cifrado, límites',
     '/investigacion': 'Evidencia que informa Anto: ensayo editorial, puente a producto, APA y límites honestos',
     '/recursos': 'Hub de recursos — guías de psicoeducación + Anto',
     '/changelog': 'Historial de versiones de la app',
@@ -41,7 +41,7 @@ const PAGE_LABELS: Record<Locale, Record<string, string>> = {
     '': 'Home — product and download',
     '/bienvenida': 'Conversion landing (Meta Ads, /l)',
     '/app': 'Product / download page',
-    '/seguridad': 'Privacy, encryption, clinical disclaimers',
+    '/seguridad': 'How the thread is kept: why it is read, encryption, limits',
     '/investigacion': 'Evidence that informs Anto: editorial essay, product bridge, APA citations, honest limits',
     '/recursos': 'Resources hub — psychoeducation guides + Anto',
     '/changelog': 'App release history',
@@ -59,7 +59,8 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '': 'Home editorial: acompañamiento para horas quietas, demos de producto, foundation (memoria/técnicas), reviews, precios, FAQ y descarga en App Store y Google Play.',
     '/bienvenida': 'Landing de conversión (Meta Ads): apoyo emocional para ansiedad en iPhone y Android; prueba 1 día gratis.',
     '/app': 'Detalle de funcionalidades, capturas y enlaces de descarga.',
-    '/seguridad': 'Cifrado en tránsito y en reposo, quién lee el texto, y límites clínicos.',
+    '/seguridad':
+      'Por qué Anto y el modelo leen el hilo, cifrado en tránsito y en reposo, cómo pedir que se borre, y el aviso de que no es terapia.',
     '/investigacion': 'Cómo Anto lee TCC, GAD-7 y agentes conversacionales; cómo se ve en el producto; citas APA; sin ensayos propios de Anto.',
     '/recursos':
       `Hub editorial: atajos humanos (ansiedad, pensamientos en bucle, sueño, TCC) + ${PSYCHOEDUCATION_SLUGS.length} guías de psicoeducación y páginas Sobre Anto (app, seguridad, investigación). Material educativo; no diagnóstico.`,
@@ -76,7 +77,8 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '': 'Editorial home: support for quiet hours, product demos, foundation (memory/techniques), reviews, pricing, FAQ, App Store and Google Play download.',
     '/bienvenida': 'Conversion landing (Meta Ads): emotional support for anxiety on iPhone and Android; 1-day free trial.',
     '/app': 'Feature detail, screenshots, download links.',
-    '/seguridad': 'Encryption in transit and at rest, who reads the text, and clinical limits.',
+    '/seguridad':
+      'Why Anto and the model read the thread, encryption in transit and at rest, how to request deletion, and the notice that this is not therapy.',
     '/investigacion': 'How Anto reads CBT, GAD-7, and conversational agents; how it shows in the product; APA citations; no Anto-specific trials claimed.',
     '/recursos':
       `Editorial hub: human entry points (anxiety, looping thoughts, sleep, CBT) + ${PSYCHOEDUCATION_SLUGS.length} psychoeducation guides and About Anto pages (app, safety, research). Educational material; not a diagnosis.`,

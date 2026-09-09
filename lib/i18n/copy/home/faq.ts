@@ -117,7 +117,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
           id: 1,
           question: '¿Mis conversaciones son realmente privadas?',
           answer:
-            'Sí. Van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos ni compartimos tu información con terceros.',
+            'Sí. Van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos el hilo ni lo usamos para anuncios.',
           category: 'privacidad',
         },
         {
@@ -384,7 +384,7 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
         id: 1,
         question: 'Are my conversations really private?',
         answer:
-          'Yes. They are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell or share your information with third parties.',
+          'Yes. They are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell the thread or use it for ads.',
         category: 'privacidad',
       },
       {

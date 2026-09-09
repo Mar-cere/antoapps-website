@@ -284,7 +284,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         {
           question: '¿Mis conversaciones son privadas?',
           answer:
-            'Sí. Van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos ni compartimos tu información con terceros.',
+            'Sí. Van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos el hilo ni lo usamos para anuncios.',
         },
         {
           question: '¿Anto reemplaza la terapia?',
@@ -498,7 +498,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         {
           question: 'Are my conversations private?',
           answer:
-            'Yes. They are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell or share your information with third parties.',
+            'Yes. They are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell the thread or use it for ads.',
         },
         {
           question: 'Does Anto replace therapy?',

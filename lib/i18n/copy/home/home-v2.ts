@@ -444,7 +444,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'Are my conversations private?',
             answer:
-              'Yes. They are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell or share your information with third parties.',
+              'Yes. They are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell the thread or use it for ads.',
           },
           {
             question: 'Does Anto replace therapy?',
@@ -480,7 +480,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             href: '/seguridad',
             label: 'Security',
-            description: 'Encryption and privacy',
+            description: 'Why the thread is read, and how it is kept',
           },
         ],
         coda: {
@@ -717,7 +717,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           question: '¿Mis conversaciones son privadas?',
           answer:
-            'Sí. Van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos ni compartimos tu información con terceros.',
+            'Sí. Van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos el hilo ni lo usamos para anuncios.',
         },
         {
           question: '¿Anto reemplaza la terapia?',
@@ -753,7 +753,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           href: '/seguridad',
           label: 'Seguridad',
-          description: 'Cifrado y privacidad',
+          description: 'Por qué se lee el hilo, y cómo se cuida',
         },
       ],
       coda: {

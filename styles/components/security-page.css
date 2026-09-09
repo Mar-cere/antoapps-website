@@ -1,6 +1,6 @@
 /**
- * /seguridad — página corta de lectura: tránsito, reposo, quién lee.
- * Shell vs medida. Sin badges, cards de certificación ni teatro hover.
+ * /seguridad — ensayo corto: por qué se lee, camino y archivo, límites.
+ * Shell vs medida. Sin badges, cards ni teatro de certificaciones.
  */
 
 .security-page.home-landing-page--v2 {
@@ -17,7 +17,7 @@
   content: '';
   position: absolute;
   inset: 0 0 auto;
-  height: min(22rem, 48vh);
+  height: min(28rem, 55vh);
   pointer-events: none;
   z-index: 0;
   background: radial-gradient(
@@ -71,16 +71,20 @@
 }
 
 .security-page__masthead {
-  margin: 0 0 2.25rem;
+  margin: 0 0 2.5rem;
+}
+
+.security-page__header {
+  margin: 0 0 1.5rem;
   padding-bottom: 1.85rem;
   border-bottom: 1px solid var(--home-v2-hairline);
 }
 
 .security-page__title {
-  margin: 0 0 1.1rem;
+  margin: 0;
   font-size: clamp(1.75rem, 4.8vw, 2.75rem);
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.08;
   letter-spacing: -0.04em;
   color: var(--home-v2-ink);
   text-wrap: balance;
@@ -88,53 +92,36 @@
   overflow-wrap: break-word;
 }
 
-.security-page__support {
+.security-page__pullquote {
   margin: 0;
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
-  color: var(--home-v2-muted);
-  max-width: 52ch;
-  line-height: 1.55;
-  overflow-wrap: break-word;
+  max-width: 34rem;
+  padding: 0 0 0 1.1rem;
+  border-left: 2px solid color-mix(in srgb, var(--color-primary) 55%, transparent);
+}
+
+.security-page__pullquote p {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+  color: var(--home-v2-ink);
+  text-wrap: pretty;
 }
 
 .security-page section {
   padding: 0;
 }
 
-.security-page__care {
-  margin: 0 0 2.75rem;
-  border-top: 1px solid var(--home-v2-hairline);
-  border-bottom: 1px solid var(--home-v2-hairline);
+.security-page__section {
+  padding: 0;
+  margin: 0 0 2.5rem;
+  max-width: 42rem;
+  min-width: 0;
 }
 
-.security-page__care-item {
-  padding: 1.35rem 0;
-}
-
-.security-page__care-item + .security-page__care-item {
-  border-top: 1px solid var(--home-v2-hairline);
-}
-
-.security-page__care-title {
-  margin: 0 0 0.55rem;
-  font-size: clamp(1.15rem, 2vw, 1.35rem);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  color: var(--home-v2-ink);
-}
-
-.security-page__care-body {
-  margin: 0;
-  color: var(--home-v2-muted);
-  line-height: 1.7;
-  font-size: 1.0625rem;
-  max-width: 62ch;
-  overflow-wrap: break-word;
-}
-
-.security-page__contact-title {
-  margin: 0 0 0.75rem;
+.security-page__section h2 {
+  margin: 0 0 0.85rem;
   font-size: clamp(1.25rem, 2.1vw, 1.5rem);
   font-weight: 500;
   letter-spacing: -0.03em;
@@ -142,28 +129,115 @@
   color: var(--home-v2-ink);
 }
 
+.security-page__section p {
+  margin: 0 0 1rem;
+  color: var(--home-v2-muted);
+  line-height: 1.72;
+  font-size: 1.0625rem;
+  max-width: 62ch;
+  overflow-wrap: break-word;
+}
+
+.security-page__section p:last-child {
+  margin-bottom: 0;
+}
+
+.security-page__figure {
+  margin: 0 0 3rem;
+  max-width: 46rem;
+}
+
+.security-page__figure-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: calc(var(--home-v2-radius) + 4px);
+  border: 1px solid var(--home-v2-hairline);
+  background: color-mix(in srgb, var(--home-v2-ink) 3%, transparent);
+}
+
+.security-page__figure-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.security-page__figure-caption {
+  margin: 0.85rem 0 0;
+  max-width: 46ch;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--home-v2-soft, rgba(255, 255, 255, 0.62));
+}
+
+.security-page__takes {
+  padding: 0;
+  margin: 0 0 3.25rem;
+  max-width: 42rem;
+}
+
+.security-page__takes-title {
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.25rem, 2.1vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--home-v2-ink);
+}
+
+.security-page__takes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--home-v2-hairline-strong);
+}
+
+.security-page__take {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--home-v2-hairline-strong);
+}
+
+.security-page__take-title {
+  margin: 0 0 0.85rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  color: var(--home-v2-ink);
+}
+
+.security-page__take-body {
+  margin: 0;
+  max-width: 58ch;
+  font-size: 1rem;
+  line-height: 1.72;
+  color: var(--home-v2-muted);
+}
+
 .security-page__closing {
   margin: 0;
 }
 
-.security-page__disclaimer {
-  margin: 0 0 1.75rem;
-  max-width: 48ch;
-  font-size: 0.9875rem;
-  line-height: 1.6;
-  color: var(--home-v2-soft, rgba(255, 255, 255, 0.62));
+.security-page__contact-title {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.25rem, 2.1vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--home-v2-ink);
 }
 
-.security-page__contact-lead,
-.security-page__contact-report {
-  margin: 0 0 0.75rem;
+.security-page__contact-line {
+  margin: 0 0 0.85rem;
   max-width: 48ch;
   color: var(--home-v2-muted);
   line-height: 1.62;
   font-size: 1.0625rem;
+  overflow-wrap: break-word;
 }
 
-.security-page__contact-report {
+.security-page__contact-line:last-child {
   margin-bottom: 0;
 }
 
@@ -188,6 +262,24 @@
   .security-page__article > .home-landing-container {
     max-width: min(56rem, 100%);
   }
+
+  .security-page__figure {
+    max-width: none;
+  }
+
+  .security-page__takes {
+    max-width: none;
+  }
+
+  .security-page__takes-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.25rem;
+  }
+
+  .security-page__take {
+    min-width: 0;
+  }
 }
 
 @media (min-width: 960px) {
@@ -202,56 +294,101 @@
   .security-page__masthead {
     display: grid;
     grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.85fr);
-    gap: 2rem 4rem;
-    align-items: end;
-    margin: 0 0 3.25rem;
+    gap: 2.25rem 4rem;
+    align-items: start;
+    margin: 0 0 3.5rem;
     padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--home-v2-hairline);
+  }
+
+  .security-page__header {
+    margin: 0;
+    padding: 0;
+    border: 0;
   }
 
   .security-page__title {
-    margin: 0;
-    max-width: 12ch;
+    max-width: 14ch;
     font-size: clamp(2.4rem, 4vw, 3.4rem);
     line-height: 1.02;
   }
 
-  .security-page__support {
+  .security-page__pullquote {
     max-width: none;
-    font-size: clamp(1.08rem, 1.5vw, 1.22rem);
+    margin-top: 2.75rem;
+    padding-left: 1.25rem;
   }
 
-  .security-page__care {
-    margin-bottom: 3.5rem;
+  .security-page__pullquote p {
+    font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+    line-height: 1.32;
   }
 
-  .security-page__care-item {
-    display: grid;
-    grid-template-columns: minmax(10rem, 14rem) minmax(0, 1fr);
-    gap: 1.5rem 3.5rem;
-    align-items: start;
-    padding: 1.85rem 0;
+  .security-page__reading {
+    margin-bottom: 3rem;
   }
 
-  .security-page__care-title {
-    margin: 0;
+  .security-page__figure {
+    max-width: none;
+    margin: 0 0 4rem;
   }
 
-  .security-page__care-body {
-    max-width: 58ch;
+  .security-page__figure-frame {
+    border-radius: calc(var(--home-v2-radius) + 6px);
+  }
+
+  .security-page__figure-img {
+    aspect-ratio: 16 / 9;
+    object-position: 50% 28%;
+  }
+
+  .security-page__figure-caption {
+    max-width: 56ch;
+  }
+
+  .security-page__takes {
+    margin-bottom: 4rem;
+  }
+
+  .security-page__takes-title {
+    font-size: clamp(1.45rem, 2.4vw, 1.75rem);
+  }
+
+  .security-page__takes-list {
+    column-gap: 3.5rem;
+  }
+
+  .security-page__take {
+    padding: 2rem 0;
+  }
+
+  .security-page__take-title {
+    font-size: 1.125rem;
   }
 
   .security-page__closing {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 2.5rem 4rem;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 2.75rem 4rem;
     align-items: start;
-    padding-top: 2rem;
-    border-top: 1px solid var(--home-v2-hairline);
+    margin: 0 0 1rem;
   }
 
-  .security-page__disclaimer {
+  .security-page__closing .security-page__limits {
+    max-width: none;
     margin: 0;
-    max-width: 42ch;
+  }
+
+  .security-page__closing .security-page__limits p {
+    max-width: 52ch;
+  }
+
+  .security-page__contact-title {
+    font-size: clamp(1.45rem, 2.4vw, 1.75rem);
+  }
+
+  .security-page__contact-line {
+    max-width: none;
   }
 }
 

@@ -144,7 +144,7 @@ function siteResources(locale: Locale): ResourceItem[] {
       {
         id: 'site-3',
         title: 'Security and privacy',
-        description: 'How conversations stay protected.',
+        description: 'Why the thread is read, how it travels, and how to ask for deletion.',
         link: localePath(locale, '/seguridad'),
       },
       {
@@ -178,7 +178,7 @@ function siteResources(locale: Locale): ResourceItem[] {
     {
       id: 'site-3',
       title: 'Seguridad y privacidad',
-      description: 'Cómo se protegen las conversaciones.',
+      description: 'Por qué se lee el hilo, cómo viaja y cómo pedir que se borre.',
       link: localePath(locale, '/seguridad'),
     },
     {
