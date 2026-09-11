@@ -75,11 +75,50 @@ export const SCENARIO_LABELS: Record<ScenarioId, string> = {
   cortex_pattern: 'Patrón a revisar',
 };
 
-export const PROVENANCE_LABELS: Record<'simulated' | 'unavailable' | 'derived', string> = {
+export const PROVENANCE_LABELS: Record<
+  'simulated' | 'unavailable' | 'derived' | 'live_trace' | 'script_offline',
+  string
+> = {
   simulated: 'Simulado',
-  unavailable: 'Aún no disponible',
+  unavailable: 'No está en este projector',
   derived: 'Vista derivada',
+  live_trace: 'Traza live',
+  script_offline: 'Script de ops',
 };
+
+export const MUTE_FLAG_LABELS: Record<string, string> = {
+  soft_landing: 'soft_landing',
+  crisis_extras: 'crisis_extras',
+  hard_stop: 'hard_stop',
+  protocol_93: 'protocol_93',
+  soft_19: 'soft_19',
+  safeguard_239: 'safeguard_239',
+  reentry: 'reentry',
+  guest: 'guest',
+  canvas_open: 'canvas_open',
+  technique_handoff: 'technique_handoff',
+};
+
+export const PIPELINE_EVENTS = [
+  'turn.started',
+  'consent.checked',
+  'safety.routed',
+  'state.estimated',
+  'decision.deliberated',
+  'experience.planned',
+  'persona.snapshotted',
+  'trajectory.estimated',
+  'experience.evaluated',
+  'extras.evaluated',
+  'turn.completed',
+  'decision.shadowed',
+  'relational.shadowed',
+] as const;
+
+export const PIPELINE_PRE_LLM = PIPELINE_EVENTS.slice(0, 8);
+export const PIPELINE_POST_RESPONSE = PIPELINE_EVENTS.slice(8);
+
+export const PIPELINE_OPTIONAL = new Set<string>(['safety.routed']);
 
 export const EPISTEMIC_LABELS = {
   observation: 'Observación',
@@ -117,16 +156,7 @@ export const SLICE_LABELS: Record<string, string> = {
   couple_and_vent: 'Pareja y desahogo',
 };
 
-export const DECISION_PATH_EVENTS = [
-  'consent.checked',
-  'safety.routed',
-  'state.estimated',
-  'decision.deliberated',
-  'experience.planned',
-  'extras.evaluated',
-  'decision.shadowed',
-  'relational.shadowed',
-] as const;
+export const DECISION_PATH_EVENTS = PIPELINE_EVENTS;
 
 export function choiceLabel(value: string | null | undefined): string {
   if (value == null || value === '') return 'Sin dato';
@@ -138,12 +168,20 @@ export function sliceLabel(value: string | null | undefined): string {
   return SLICE_LABELS[value] ?? value;
 }
 
-export function factLabel(value: string | number | boolean | null | undefined): string {
+export function factLabel(
+  value: string | number | boolean | string[] | null | undefined
+): string {
+  if (Array.isArray(value)) return value.length ? value.join(' · ') : 'Ninguno';
   if (value == null || value === '') return 'Sin dato';
-  if (value === 'unknown' || value === 'unspecified') return 'Sin estimar';
+  if (value === 'unspecified') return 'Sin estimar';
   if (value === 'none') return 'Ninguna';
   if (typeof value === 'boolean') return value ? 'Sí' : 'No';
-  return CHOICE_LABELS[String(value)] ?? SLICE_LABELS[String(value)] ?? String(value);
+  if (value === 'shadow') return 'shadow';
+  if (value === 'applied') return 'applied';
+  if (value === 'runtime') return 'runtime';
+  if (value === 'carried') return 'carried';
+  if (value === 'current') return 'current';
+  return CHOICE_LABELS[String(value)] ?? SLICE_LABELS[String(value)] ?? MUTE_FLAG_LABELS[String(value)] ?? String(value);
 }
 
 export const SPAN_STATUS_LABELS: Record<SpanStatus, string> = {

@@ -14,10 +14,10 @@ export default function ObservatoryLayout({ children }: { children: ReactNode })
   return (
     <div className="obs-root">
       {/*
-        THESIS: Un observatorio de misión en el mismo campo que /nexus: un nudo decide, el resto orbita, sin hero comercial ni estética cyberpunk.
-        OWN-WORLD: Fondo #020711, radiales teal y azul profundo, puntos como en la constelación, hairlines, Engine adelantado, Experience y Sombra a la deriva.
-        STORY: El operador lee cómo se decidió el turno en el mismo mundo visual de Nexus, sabiendo qué es simulado.
-        FIRST VIEWPORT: Campo profundo, nudo adelantado, lista de turnos o estado, facts y recorrido en órbita.
+        THESIS: Sala de control de gobernanza: qué decidió el turno, de dónde sale el dato, y qué no está en este snapshot.
+        OWN-WORLD: Fondo #020711, radiales teal y azul, hairlines, cuatro columnas de decisión, cinta de pipeline.
+        STORY: Producto/safety lee Engine, Experience, extras y mute sin Atlas y sin fingir Cortex.
+        FIRST VIEWPORT: Reloj honesto, leyenda, decisión de cuatro columnas, cinta en orden de pipeline.
         FORM: user-pinned Operate observatory
         FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
       */}

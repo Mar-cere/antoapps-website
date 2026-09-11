@@ -3,7 +3,7 @@
  * La UI solo consume estos tipos; no inventa razonamiento privado.
  */
 
-export type DataProvenance = 'simulated' | 'unavailable' | 'derived';
+export type DataProvenance = 'simulated' | 'unavailable' | 'derived' | 'live_trace' | 'script_offline';
 
 export type ComponentId =
   | 'psyche'
@@ -121,6 +121,8 @@ export type TurnContext = {
   content_minimized: string;
 };
 
+export type StructuredValue = string | number | boolean | null | string[];
+
 export type TraceSpan = {
   span_id: string;
   canonical_name: string;
@@ -131,7 +133,7 @@ export type TraceSpan = {
   confidence: number | null;
   result: string;
   constraints_applied: string[];
-  structured: Record<string, string | number | boolean | null>;
+  structured: Record<string, StructuredValue>;
   what_happened: string;
 };
 
@@ -145,6 +147,9 @@ export type TraceEnvelope = {
   completed_at: string | null;
   current_stage: PipelineStageId | string | null;
   spans: TraceSpan[];
+  pack_id?: string | null;
+  surface?: 'registered' | 'guest';
+  transport?: 'http' | 'sse' | 'socket';
   provenance: DataProvenance;
 };
 
@@ -317,7 +322,7 @@ export type AlertItem = {
   severity: 'info' | 'warning' | 'failed';
   title: string;
   detail: string;
-  related_component: ComponentId | 'program';
+  related_component: ComponentId | 'program' | 'runtime';
   href: '/observatorio/en-vivo' | '/observatorio/decisiones' | '/observatorio/cortex' | '/observatorio/roadmap';
   provenance: DataProvenance;
 };
@@ -406,7 +411,7 @@ export type StageScript = {
   result: string;
   confidence: number | null;
   constraints_applied: string[];
-  structured: Record<string, string | number | boolean | null>;
+  structured: Record<string, StructuredValue>;
 };
 
 export type ScenarioDefinition = {
@@ -438,9 +443,19 @@ export type ObservatoryFeed = {
   scenarios: ScenarioDefinition[];
 };
 
+export type SurveillanceNote = {
+  provenance: DataProvenance;
+  source?: string;
+  command?: string;
+  note: string;
+};
+
 export type ObservatorySnapshot = {
   mode: 'simulation' | 'live';
   system_lifecycle: SystemLifecycle;
+  in_flight: boolean;
+  last_event_at: string | null;
+  pack_id: string | null;
   processing: string;
   stage_label: string;
   current_stage: PipelineStageId | string | null;
@@ -460,6 +475,7 @@ export type ObservatorySnapshot = {
   experiments: ExperimentSpec[];
   drift: DriftMonitor[];
   autonomy: AutonomySignal[];
+  surveillance: SurveillanceNote;
   evidence_freshness: ProvenanceField<string>;
   review_debt: ProvenanceField<string>;
 };

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useObservatory } from '@/components/observatory/shell/ObservatoryProvider';
-import { StatusMark } from '@/components/observatory/ui/StatusMark';
+import { ObservatoryClock } from '@/components/observatory/ui/ObservatoryClock';
 import { OBSERVATORY_NAV } from '@/lib/observatory/routes';
 import type { ObservatoryConnection } from '@/lib/observatory/data/types';
 
@@ -55,8 +55,8 @@ function connectionBanner(connection: ObservatoryConnection) {
   if (connection.kind === 'http' && connection.reachable) {
     return {
       kind: 'live',
-      title: 'Runtime conectado',
-      text: 'Vistas derivadas. El dashboard no consulta Mongo ni el warehouse. Contenido de conversación off.',
+      title: 'Projector live',
+      text: 'Vista derivada de nexus_turn_traces. No es /health. Content-off. El dashboard no consulta Mongo ni Atlas.',
     };
   }
   if (connection.configured) {
@@ -77,7 +77,6 @@ function connectionBanner(connection: ObservatoryConnection) {
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { snapshot, connection, refresh } = useObservatory();
-  const updated = snapshot.last_updated.slice(11, 19);
   const banner = connectionBanner(connection);
 
   return (
@@ -92,8 +91,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <p>Solo lectura · observatorio privado</p>
         </div>
         <div className="header-meta">
-          <StatusMark status={snapshot.system_lifecycle} />
-          <span>Actualizado {updated} UTC</span>
+          <ObservatoryClock
+            inFlight={snapshot.in_flight}
+            lastEventAt={snapshot.last_event_at}
+            packId={snapshot.pack_id}
+            lifecycle={snapshot.system_lifecycle}
+          />
           {connection.configured ? (
             <button type="button" className="obs-logout" onClick={refresh}>
               Actualizar

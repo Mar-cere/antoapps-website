@@ -11,14 +11,16 @@ const LABELS: Record<SystemLifecycle, string> = {
 
 export function StatusMark({
   status,
+  hideLabel = false,
 }: {
   status: SpanStatus | SystemLifecycle;
+  hideLabel?: boolean;
 }) {
   const label = status in SPAN_STATUS_LABELS ? SPAN_STATUS_LABELS[status as SpanStatus] : LABELS[status as SystemLifecycle];
   return (
     <span className="status">
       <span className={`dot ${status}`} />
-      {label}
+      {hideLabel ? <span className="sr-only">{label}</span> : label}
     </span>
   );
 }

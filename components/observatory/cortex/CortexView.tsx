@@ -1,238 +1,61 @@
 'use client';
 
-import { useObservatory } from '@/components/observatory/shell/ObservatoryProvider';
+import { SurveillancePanel } from '@/components/observatory/ui/SurveillancePanel';
+import { ObservatoryLegend } from '@/components/observatory/ui/ObservatoryLegend';
 import { Provenance } from '@/components/observatory/ui/Provenance';
-import { StatusMark } from '@/components/observatory/ui/StatusMark';
-import { EPISTEMIC_LABELS, EVALUATOR_QUESTIONS } from '@/lib/observatory/copy/labels';
+import { useObservatory } from '@/components/observatory/shell/ObservatoryProvider';
 
 export function CortexView() {
   const { snapshot, demoPlayback } = useObservatory();
-  const completed = snapshot.eval_queue.filter((e) => e.status === 'completed').length;
-  const pending = snapshot.eval_queue.filter((e) => e.status === 'queued' || e.status === 'pending' || e.status === 'running');
-  const failed = snapshot.eval_queue.filter((e) => e.status === 'failed');
-  const lagValues = snapshot.eval_queue.map((e) => e.lag_ms).filter((n): n is number => n != null);
-  const lag = lagValues.length ? Math.max(...lagValues) : null;
 
   return (
     <div className="page">
       <header>
         <h2>Cortex</h2>
         <p>
-          Observación y aprendizaje después del turno. Una correlación no es una política. Un
-          outcome inferido no es un outcome confirmado. Engagement no es beneficio.
+          La vigilancia no vive en el poll de Render. Este projector deja reviews, hipótesis, eval_queue,
+          experimentos y drift vacíos a propósito.
         </p>
       </header>
+      <ObservatoryLegend />
+      <SurveillancePanel surveillance={snapshot.surveillance} live={!demoPlayback} />
 
-      <section className="legend" aria-label="Estados epistémicos">
-        {Object.entries(EPISTEMIC_LABELS).map(([k, label]) => (
-          <span key={k} className={`epistemic ${k}`}>
-            {label}
-          </span>
-        ))}
-      </section>
-
-      <section className="band" aria-label="Salud de Cortex">
-        <article className="band__nudo">
-          <p className="k">Cola de evaluaciones</p>
-          <p className="v">{pending.length} pendientes</p>
-          <p className="d">
-            {completed} completadas en este snapshot. Eval Mesh de producción es Sprint 12.
-          </p>
-        </article>
-        <article className="band__process">
-          <p className="k">Retraso de evaluación</p>
-          <p className="v">{lag == null ? 'No disponible' : `${lag} ms${demoPlayback ? ' (sim)' : ''}`}</p>
-          <p className="d">No debe afectar TTFT. Cortex fuera del camino crítico.</p>
-        </article>
-        <article className="band__stage">
-          <p className="k">Deuda de revisión</p>
-          <p className="v">{snapshot.review_debt.value}</p>
-          <p className="d">{snapshot.review_debt.note ?? 'Casos humanos, no FIFO puro.'}</p>
-        </article>
-        <article className="band__sprint">
-          <p className="k">Frescura de evidencia</p>
-          <p className="v">{snapshot.evidence_freshness.value}</p>
-          <p className="d">{snapshot.evidence_freshness.note}</p>
-        </article>
-      </section>
-
-      <section className="obs-field" aria-label="Eval Mesh, trazas y anomalías">
-        <article className="decision-node" data-role="nudo">
-          <span className="decision-node__star" aria-hidden="true" />
-          <h3>Eval Mesh</h3>
-          <p className="decision-choice">
-            {snapshot.eval_queue.length === 0 ? 'Sin cola' : `${pending.length} pendientes`}
-          </p>
-          <p className="s">
-            {snapshot.eval_queue.length === 0
-              ? 'Eval Mesh de producción es Sprint 12.'
-              : `${completed} completadas en este snapshot. Cortex evalúa después de responder.`}
-          </p>
-          <div className="node-list">
-            {snapshot.eval_queue.length === 0 ? (
-              <div className="empty">Sin evaluaciones en este snapshot.</div>
-            ) : (
-              snapshot.eval_queue.map((e) => (
-                <div key={e.eval_id} className="alert">
-                  <span className="t">{e.evaluator}</span>
-                  <span className="s">
-                    {EVALUATOR_QUESTIONS[e.evaluator]} · {e.trace_ref}
-                  </span>
-                  <StatusMark
-                    status={
-                      e.status === 'completed'
-                        ? 'completed'
-                        : e.status === 'failed'
-                          ? 'failed'
-                          : e.status === 'running'
-                            ? 'active'
-                            : 'queued'
-                    }
-                  />
-                </div>
-              ))
-            )}
-          </div>
-        </article>
-        <article className="decision-node" data-role="experience">
-          <span className="decision-node__star" aria-hidden="true" />
-          <h3>Trazas recientes</h3>
-          <div className="node-list">
-            {snapshot.traces.length === 0 ? (
-              <div className="empty">Sin trazas en este snapshot.</div>
-            ) : (
-              snapshot.traces.map((t) => (
-                <div key={t.trace_id} className="alert">
-                  <span className="t">{t.trace_id}</span>
-                  <span className="s">
-                    {t.session_ref} · content {t.content_mode} · {t.spans.length} spans ·{' '}
-                    <Provenance kind={t.provenance} />
-                  </span>
-                </div>
-              ))
-            )}
-          </div>
-        </article>
-        <article className="decision-node" data-role="shadow">
-          <span className="decision-node__star" aria-hidden="true" />
-          <h3>Errores o anomalías</h3>
-          <div className="node-list">
-            {failed.length === 0 && snapshot.drift.length === 0 ? (
-              <div className="empty">
-                {demoPlayback
-                  ? 'Sin fallos de evaluator en el turno activo. Hay un fallo simulado en outcome de pareja.'
-                  : 'Sin fallos de evaluator en este snapshot.'}
-              </div>
-            ) : null}
-            {failed.map((e) => (
-              <div key={e.eval_id} className="alert" data-sev="failed">
-                <span className="t">{e.evaluator} falló</span>
-                <span className="s">No se edita el evento original. Se puede invalidar y recomputar.</span>
-              </div>
-            ))}
-            {snapshot.drift.map((d) => (
-              <div key={d.monitor_id} className="alert">
-                <span className="t">{d.name}</span>
-                <span className="s">{d.detail}</span>
-                <Provenance kind={d.provenance} />
-              </div>
-            ))}
-          </div>
-        </article>
-      </section>
-
-      <div className="split">
-        <section className="decision-orbit">
-          <h3>Hipótesis y estado epistémico</h3>
-          {snapshot.hypotheses.length === 0 ? (
-            <div className="empty">Sin hipótesis en este snapshot.</div>
-          ) : (
-            snapshot.hypotheses.map((h) => (
-              <article key={h.hypothesis_id} className="alert">
-                <span className={`epistemic ${h.epistemic_status}`}>{EPISTEMIC_LABELS[h.epistemic_status]}</span>
-                <p className="t">{h.title}</p>
-                <p className="s">{h.cohort}</p>
-                <p className="s">{h.proposed_test}</p>
-                <p className="s">Incertidumbre: {h.uncertainty}</p>
-              </article>
-            ))
-          )}
-        </section>
-        <section className="decision-orbit">
-          <h3>Experimentos</h3>
-          {snapshot.experiments.length === 0 ? (
-            <div className="empty">Sin experimentos en este snapshot.</div>
-          ) : (
-            snapshot.experiments.map((e) => (
-              <div key={e.experiment_id} className="alert">
-                <span className="t">{e.status}</span>
-                <p className="s">{e.hypothesis}</p>
-                <p className="s">Primaria: {e.primary}</p>
-                <p className="s">Guardrails: {e.guardrails.join(', ')}</p>
-                <Provenance kind={e.provenance} />
-              </div>
-            ))
-          )}
-        </section>
-      </div>
-
-      <div className="split">
-        <section className="decision-orbit">
-          <h3>Outcomes</h3>
-          {snapshot.outcomes.length === 0 ? (
-            <div className="empty">Sin outcomes en este snapshot.</div>
-          ) : (
-            snapshot.outcomes.map((o) => (
-              <div key={o.event_id} className="alert">
-                <span className="t">
-                  {o.horizon} · {o.outcome_type}
-                </span>
-                <span className="s">{o.definition}</span>
-                <span className="s">
-                  valor {o.value ?? 'n/a'} · fuente {o.source} · {o.missingness_reason ?? 'sin missingness'}
-                </span>
-                <Provenance kind={o.provenance} />
-              </div>
-            ))
-          )}
-        </section>
-        <section className="decision-orbit">
-          <h3>Señales de autonomía</h3>
-          {snapshot.autonomy.length === 0 ? (
-            <div className="empty">Sin señales de autonomía en este snapshot.</div>
-          ) : (
-            snapshot.autonomy.map((a) => (
-              <div key={a.dimension} className="alert">
-                <span className="t">{a.dimension}</span>
-                <span className="s">Sano: {a.healthy_signal}</span>
-                <span className="s">Riesgo: {a.risk_signal}</span>
-                <span className="s">{a.current}</span>
-                <Provenance kind={a.provenance} />
-              </div>
-            ))
-          )}
-        </section>
-      </div>
-
-      <section className="decision-orbit">
-        <h3>Casos que requieren revisión humana</h3>
-        {snapshot.reviews.length === 0 ? (
-          <div className="empty">No hay ReviewCase en este snapshot.</div>
+      <section className="panel" style={{ marginTop: 16 }}>
+        <div className="row-between">
+          <h3>Trazas de sombra en el snapshot live</h3>
+          <Provenance kind={demoPlayback ? 'simulated' : 'live_trace'} />
+        </div>
+        <p className="s">
+          decision.shadowed y relational.shadowed sí pueden aparecer en cada turno. Semantic Cortex
+          (proposeSemanticHypotheses) y ReviewCases no.
+        </p>
+        {snapshot.traces.length === 0 ? (
+          <div className="empty">Sin trazas en este snapshot.</div>
         ) : (
-          snapshot.reviews.map((r) => (
-            <article key={r.case_id} className="alert">
-              <span className={`epistemic ${r.epistemic_status}`}>{EPISTEMIC_LABELS[r.epistemic_status]}</span>
-              <p className="t">
-                {r.case_id} · {r.trigger} · {r.impact_class}
-              </p>
-              <p className="s">
-                Prioridad {r.review_priority} · vence {r.due_at} · {r.requested_decision}
-              </p>
-              <p className="s">Paquete: {r.evidence_pack.join(', ')} · PII {r.pii_mode}</p>
-              <p className="s">SEV y IG no se convierten entre sí. Este caso no es una política aprobada.</p>
-            </article>
+          snapshot.traces.slice(0, 12).map((t) => (
+            <div key={t.trace_id} className="alert">
+              <span className="t">{t.session_ref}</span>
+              <span className="s">
+                {t.subject_ref} · {t.spans.filter((s) => s.canonical_name.endsWith('.shadowed')).length} sombras ·{' '}
+                <Provenance kind={t.provenance} />
+              </span>
+            </div>
           ))
         )}
+      </section>
+
+      <section className="panel" style={{ marginTop: 16 }}>
+        <h3>Lo que no se finge</h3>
+        <ul className="plain-list">
+          <li>reviews[] vacío — no hay ReviewCase en este projector</li>
+          <li>hypotheses[] vacío — Semantic Cortex es script_offline</li>
+          <li>eval_queue[] vacío — Eval Mesh de producción no se lee aquí</li>
+          <li>experiments[] y drift[] vacíos — no hay canary porcentual ni bandits en este tablero</li>
+          <li>LG5 skipped · LG6 blocked · nunca status approved</li>
+        </ul>
+        <p className="s">
+          Deuda de revisión: {snapshot.review_debt.value}. Frescura: {snapshot.evidence_freshness.value}.
+        </p>
       </section>
     </div>
   );

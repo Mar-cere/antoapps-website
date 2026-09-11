@@ -18,6 +18,8 @@ import type {
   ScenarioId,
   TraceEnvelope,
 } from '@/lib/observatory/data/types';
+import { DEFAULT_TURN_FILTERS, filterTraces, type TurnFilterState } from '@/lib/observatory/data/turnFilters';
+import { enrichScenarioSpans } from '@/lib/observatory/data/simRuntime';
 import { participatingFor, STAGE_LABELS } from '@/lib/observatory/copy/labels';
 import {
   currentStageId,
@@ -38,6 +40,9 @@ type ObservatoryContextValue = {
   selectedStageId: string | null;
   selectedTraceId: string | null;
   selectedTrace: TraceEnvelope | null;
+  filteredTraces: TraceEnvelope[];
+  filters: TurnFilterState;
+  setFilters: (next: TurnFilterState) => void;
   demoPlayback: boolean;
   refresh: () => void;
   setScenarioId: (id: ScenarioId) => void;
@@ -61,6 +66,7 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
   const [elapsedMs, setElapsedMs] = useState(0);
   const [selectedStageId, setSelectedStageId] = useState<string | null>(null);
   const [selectedTraceId, setSelectedTraceId] = useState<string | null>(null);
+  const [filters, setFilters] = useState<TurnFilterState>(DEFAULT_TURN_FILTERS);
   const [clock, setClock] = useState(() => new Date().toISOString());
 
   const load = useCallback(async () => {
@@ -168,8 +174,9 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
   const snapshot = useMemo<ObservatorySnapshot | null>(() => {
     if (!base || !scenario) return null;
     if (!demoPlayback) return base;
+    if (elapsedMs <= 0 && !playing) return base;
 
-    const spans = liveSpans(scenario, elapsedMs);
+    const spans = enrichScenarioSpans(scenario.id, liveSpans(scenario, elapsedMs));
     const stage = currentStageId(scenario, elapsedMs);
     const finished = isFinished(scenario, elapsedMs);
     const started = elapsedMs > 0 || playing;
@@ -184,6 +191,9 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
       completed_at: finished ? '2026-09-08T13:41:12Z' : null,
       current_stage: stage,
       spans,
+      pack_id: 'sim',
+      surface: 'registered',
+      transport: 'http',
       provenance: 'simulated',
     };
 
@@ -205,27 +215,31 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
       };
     });
 
-    let system: ObservatorySnapshot['system_lifecycle'] = 'idle';
-    if (playing) system = 'active';
-    else if (finished) {
-      const bad = spans.some((s) => s.status === 'failed');
-      const warn = spans.some((s) => s.status === 'blocked' || s.status === 'warning');
-      system = bad ? 'failed' : warn ? 'warning' : 'completed';
-    }
-
     const processing = !started
-      ? 'Ningún turno en curso. Nexus de producción no está implementado. Esto es una simulación del contrato.'
-      : `Turno ${scenario.session_ref} · ${scenario.title}`;
+      ? 'En espera. Esto es una simulación del contrato. No es /health ni un turno live.'
+      : `Turno simulado ${scenario.session_ref} · ${scenario.title}`;
 
     return {
       ...base,
-      system_lifecycle: system,
+      system_lifecycle: playing ? 'active' : 'idle',
+      in_flight: playing,
+      last_event_at: started ? clock : null,
+      pack_id: 'sim',
       processing,
-      stage_label: stage ? STAGE_LABELS[stage] : started && finished ? 'Turno cerrado' : 'En espera',
+      stage_label: playing && stage ? STAGE_LABELS[stage] : 'En espera',
       current_stage: stage,
       last_updated: clock,
       components,
       traces: [liveTrace, ...base.traces.filter((t) => t.trace_id !== liveTrace.trace_id)],
+      decisions: [],
+      plans: [],
+      outcomes: [],
+      reviews: [],
+      eval_queue: [],
+      hypotheses: [],
+      experiments: [],
+      drift: [],
+      autonomy: [],
     };
   }, [base, clock, demoPlayback, elapsedMs, playing, scenario]);
 
@@ -253,8 +267,9 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
     return <div className="obs-boot">Cargando observatorio…</div>;
   }
 
+  const filteredTraces = filterTraces(snapshot.traces, filters);
   const selectedTrace =
-    snapshot.traces.find((trace) => trace.trace_id === selectedTraceId) ?? snapshot.traces[0] ?? null;
+    filteredTraces.find((trace) => trace.trace_id === selectedTraceId) ?? filteredTraces[0] ?? null;
 
   const value: ObservatoryContextValue = {
     connection: feed.connection,
@@ -268,6 +283,9 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
     selectedStageId,
     selectedTraceId: selectedTrace?.trace_id ?? null,
     selectedTrace,
+    filteredTraces,
+    filters,
+    setFilters,
     demoPlayback,
     refresh: () => {
       load().catch(() => undefined);

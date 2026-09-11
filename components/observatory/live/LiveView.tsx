@@ -2,14 +2,20 @@
 
 import { Fragment } from 'react';
 import { TurnPicker } from '@/components/observatory/live/TurnPicker';
+import { PipelineTape } from '@/components/observatory/live/PipelineTape';
 import { SimControls } from '@/components/observatory/live/SimControls';
-import { useObservatory } from '@/components/observatory/shell/ObservatoryProvider';
+import { TurnDecisionBoard } from '@/components/observatory/decisiones/TurnDecisionBoard';
+import { CopyRef } from '@/components/observatory/ui/CopyRef';
+import { ObservatoryLegend } from '@/components/observatory/ui/ObservatoryLegend';
 import { Provenance } from '@/components/observatory/ui/Provenance';
 import { StatusMark } from '@/components/observatory/ui/StatusMark';
-import { componentLabel, factLabel, stageLabel } from '@/lib/observatory/copy/labels';
+import { TurnFilters } from '@/components/observatory/ui/TurnFilters';
+import { useObservatory } from '@/components/observatory/shell/ObservatoryProvider';
+import { componentLabel, factLabel, TRACE_EVENT_LABELS } from '@/lib/observatory/copy/labels';
+import { storyFromTrace, structuredEntries } from '@/lib/observatory/data/turnDecision';
 import type { TraceEnvelope, TraceSpan } from '@/lib/observatory/data/types';
 
-const HIDDEN_STRUCTURED = new Set(['transport', 'surface', 'packId', 'domainCandidate', 'intentCandidate']);
+const HIDDEN_STRUCTURED = new Set(['transport', 'surface', 'packId']);
 
 export function LiveView() {
   const {
@@ -20,52 +26,67 @@ export function LiveView() {
     selectStage,
     scenario,
     demoPlayback,
+    filteredTraces,
+    filters,
+    setFilters,
   } = useObservatory();
   const trace = selectedTrace;
   const selected =
     trace?.spans.find((span) => span.stage_id === selectedStageId) ??
-    trace?.spans.find((span) => span.stage_id === snapshot.current_stage) ??
+    trace?.spans.find((span) => span.canonical_name === snapshot.current_stage) ??
     trace?.spans[0] ??
     null;
+  const story = trace ? storyFromTrace(trace) : null;
 
   return (
     <div className="page">
       <header>
         <h2>En vivo</h2>
         <p>
-          Recorrido de un turno: del mensaje a Cortex. Cada nodo es inspectable. Cortex evalúa
-          después de la respuesta.
+          Cinta del pipeline real: pre-LLM, generación, post-respuesta. Un grafo de 7 componentes todos
+          in_progress no es este tablero. Content-off.
         </p>
       </header>
       {demoPlayback ? <SimControls /> : null}
+      <ObservatoryLegend />
+      <TurnFilters value={filters} onChange={setFilters} count={filteredTraces.length} total={snapshot.traces.length} />
       {demoPlayback ? (
         <p className="s">
           {scenario.content_minimized} · {scenario.subject_ref} · <Provenance kind="simulated" />
         </p>
       ) : (
         <p className="s">
-          {trace
-            ? `${trace.session_ref} · ${trace.subject_ref} · content ${trace.content_mode}`
-            : 'Sin turnos publicados.'}{' '}
-          {trace ? <Provenance kind={trace.provenance} /> : <Provenance kind="unavailable" />}
+          {trace ? (
+            <>
+              <CopyRef label="sesión" value={trace.session_ref} /> ·{' '}
+              <CopyRef label="sujeto" value={trace.subject_ref} /> · content {trace.content_mode}{' '}
+              <Provenance kind={trace.provenance} />
+            </>
+          ) : (
+            <>
+              Sin turnos publicados. <Provenance kind="unavailable" />
+            </>
+          )}
         </p>
       )}
 
       {!trace ? (
         <div className="empty">
-          No hay turnos en este snapshot. El runtime debe publicar traces[] en GET /v1/observatory/snapshot.
-          Contenido de conversación off.
+          {snapshot.traces.length === 0
+            ? 'No hay turnos en este snapshot. GET /v1/observatory/snapshot debe publicar traces[].'
+            : 'Ningún turno coincide con los filtros.'}
         </div>
-      ) : snapshot.traces.length > 1 ? (
+      ) : (
         <div className="live-layout">
           <section className="turn-rail">
             <h3>Turnos</h3>
-            <TurnPicker traces={snapshot.traces} selectedId={trace.trace_id} onSelect={selectTrace} />
+            <TurnPicker traces={filteredTraces} selectedId={trace.trace_id} onSelect={selectTrace} />
           </section>
-          <LiveFlow trace={trace} selected={selected} onSelectStage={selectStage} demoPlayback={demoPlayback} />
+          <div className="decision-main">
+            {story ? <TurnDecisionBoard story={story} /> : null}
+            <LiveFlow trace={trace} selected={selected} onSelectStage={selectStage} />
+          </div>
         </div>
-      ) : (
-        <LiveFlow trace={trace} selected={selected} onSelectStage={selectStage} demoPlayback={demoPlayback} />
       )}
     </div>
   );
@@ -75,79 +96,45 @@ function LiveFlow({
   trace,
   selected,
   onSelectStage,
-  demoPlayback,
 }: {
   trace: TraceEnvelope;
   selected: TraceSpan | null;
   onSelectStage: (id: string) => void;
-  demoPlayback: boolean;
 }) {
   return (
     <div className="flow">
-      <div className="flow-track">
-        {trace.spans.map((span, i) => (
-          <button
-            key={span.span_id}
-            type="button"
-            className="flow-node"
-            aria-selected={selected?.span_id === span.span_id}
-            onClick={() => onSelectStage(span.stage_id)}
-          >
-            <span className="idx">{String(i + 1).padStart(2, '0')}</span>
-            <span>
-              <strong>{stageLabel(span.stage_id)}</strong>
-              <span className="s" style={{ display: 'block' }}>
-                {componentLabel(span.component)} · {span.canonical_name}
-              </span>
-            </span>
-            <StatusMark status={span.status} />
-          </button>
-        ))}
+      <div>
+        <h3>Cinta de pipeline</h3>
+        <PipelineTape trace={trace} selectedId={selected?.stage_id} onSelect={onSelectStage} />
       </div>
-
       <aside className="panel inspector">
-        <h3>Inspector</h3>
-        {!selected ? (
-          <div className="empty">
-            {demoPlayback ? 'Selecciona un nodo o inicia la simulación.' : 'Selecciona un nodo del recorrido.'}
-          </div>
-        ) : (
-          <SpanInspector span={selected} />
-        )}
+        <h3>Inspector del span</h3>
+        {!selected ? <div className="empty">Selecciona un span emitido.</div> : <SpanInspector span={selected} />}
       </aside>
     </div>
   );
 }
 
 function SpanInspector({ span }: { span: TraceSpan }) {
-  const entries = Object.entries(span.structured).filter(([key, value]) => {
-    if (HIDDEN_STRUCTURED.has(key)) return false;
-    if (value == null || value === '') return false;
-    return true;
-  });
-
+  const entries = structuredEntries(span).filter(([key]) => !HIDDEN_STRUCTURED.has(key));
   return (
     <dl>
       <dt>Qué ocurrió</dt>
       <dd>{span.what_happened}</dd>
+      <dt>Evento</dt>
+      <dd>{TRACE_EVENT_LABELS[span.canonical_name] ?? span.canonical_name}</dd>
       <dt>Estado</dt>
       <dd>
         <StatusMark status={span.status} />
       </dd>
       <dt>Duración</dt>
       <dd>{span.duration_ms == null ? 'Pendiente' : `${span.duration_ms} ms`}</dd>
-      <dt>Resultado</dt>
-      <dd>{factLabel(span.result)}</dd>
-      <dt>Confianza</dt>
-      <dd>{span.confidence == null ? 'No aplica' : span.confidence.toFixed(2)}</dd>
-      <dt>Restricciones</dt>
-      <dd>{span.constraints_applied.join(', ') || 'Ninguna'}</dd>
       <dt>Componente</dt>
       <dd>{componentLabel(span.component)}</dd>
       {entries.map(([key, value]) => (
         <Fragment key={key}>
           <dt>{key}</dt>
-          <dd>{factLabel(value)}</dd>
+          <dd>{Array.isArray(value) ? value.join(' · ') || 'Ninguno' : factLabel(value)}</dd>
         </Fragment>
       ))}
     </dl>

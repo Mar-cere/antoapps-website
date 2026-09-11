@@ -63,7 +63,7 @@ export async function loadObservatoryFeed(): Promise<ObservatoryFeed> {
       configured: true,
       reachable: true,
       endpoint,
-      detail: 'Snapshot derivado del runtime. El dashboard no consulta Mongo ni el warehouse.',
+        detail: 'Snapshot derivado de nexus_turn_traces. No es /health. El dashboard no consulta Mongo ni Atlas.',
     },
     snapshot: applyRemoteSnapshot(upstream.snapshot),
     scenarios: SCENARIOS,
