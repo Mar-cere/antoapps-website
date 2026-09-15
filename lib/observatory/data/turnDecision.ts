@@ -2,7 +2,8 @@
  * Reconstruye la deliberación visible de un turno a partir de traces content-off.
  * No inventa DecisionRecord ni scores de candidatos.
  */
-import { choiceLabel, DECISION_PATH_EVENTS, PIPELINE_EVENTS, PIPELINE_OPTIONAL } from '@/lib/observatory/copy/labels';
+import { DECISION_PATH_EVENTS, PIPELINE_EVENTS, PIPELINE_OPTIONAL } from '@/lib/observatory/copy/labels';
+import { turnHeadline } from '@/lib/observatory/copy/turnReading';
 import type { StructuredValue, TraceEnvelope, TraceSpan } from '@/lib/observatory/data/types';
 
 export type TurnDecisionStory = {
@@ -99,34 +100,15 @@ function headlineFor(story: {
   shadowChoice: string | null;
   extrasMode: string | null;
   extrasDecision: string | null;
+  extrasApplied: boolean | null;
   extrasActiveDomain: string | null;
   extrasDomainSource: string | null;
   muteFlags: string[];
+  familyCarried: boolean;
+  cue: string | null;
+  safetyRoute: string | null;
 }): string {
-  const extrasBit =
-    story.extrasMode && story.extrasDecision
-      ? ` Extras ${story.extrasMode}/${story.extrasDecision}.`
-      : ' Sin extras.evaluated en este turno.';
-  const carryBit =
-    story.extrasActiveDomain === 'family' && story.extrasDomainSource === 'carried'
-      ? ' Carry familiar activo (domainSource=carried).'
-      : '';
-  const muteBit = story.muteFlags.includes('soft_landing')
-    ? ' Mute soft_landing: el inventario gobernado puede estar vacío.'
-    : '';
-  if (!story.engineChoice && !story.shadowChoice) {
-    return `Este turno no trajo deliberación ni sombra.${extrasBit}${carryBit}${muteBit}`;
-  }
-  if (story.engineChoice === 'abstain' && story.shadowChoice === 'implicit_llm') {
-    return `El Engine se abstuvo. El pipeline implícito igual generó texto. Eso no es un DecisionRecord.${extrasBit}${carryBit}${muteBit}`;
-  }
-  if (story.engineChoice && story.shadowChoice && story.engineChoice !== story.shadowChoice) {
-    return `El Engine eligió ${choiceLabel(story.engineChoice).toLowerCase()}. La sombra registró ${choiceLabel(story.shadowChoice).toLowerCase()}.${extrasBit}${carryBit}${muteBit}`;
-  }
-  if (story.engineChoice) {
-    return `El Engine eligió ${choiceLabel(story.engineChoice).toLowerCase()} en runtime.${extrasBit}${carryBit}${muteBit}`;
-  }
-  return `La sombra del pipeline registró ${choiceLabel(story.shadowChoice).toLowerCase()}.${extrasBit}${carryBit}${muteBit}`;
+  return turnHeadline(story);
 }
 
 export function storyFromTrace(trace: TraceEnvelope): TurnDecisionStory {
@@ -148,10 +130,14 @@ export function storyFromTrace(trace: TraceEnvelope): TurnDecisionStory {
   const shadowChoice = str(shadow, 'choice');
   const extrasMode = str(extras, 'mode');
   const extrasDecision = str(extras, 'decision');
+  const extrasApplied = bool(extras, 'applied');
   const extrasActiveDomain = str(extras, 'activeDomain');
   const extrasDomainSource = str(extras, 'domainSource');
   const muteFlags = collectMuteFlags(trace);
   const split = Boolean(engineChoice && shadowChoice && engineChoice !== shadowChoice);
+  const familyCarried = extrasActiveDomain === 'family' && extrasDomainSource === 'carried';
+  const cue = str(evaluated, 'cue');
+  const safetyRoute = str(safety, 'safetyRoute') ?? str(engine, 'safetyRoute') ?? str(started, 'safetyRoute');
   const pathTypes = new Set<string>(DECISION_PATH_EVENTS);
   const path = PIPELINE_EVENTS.map((name) => trace.spans.find((span) => span.canonical_name === name)).filter(
     (span): span is TraceSpan => Boolean(span)
@@ -164,9 +150,13 @@ export function storyFromTrace(trace: TraceEnvelope): TurnDecisionStory {
     shadowChoice,
     extrasMode,
     extrasDecision,
+    extrasApplied,
     extrasActiveDomain,
     extrasDomainSource,
     muteFlags,
+    familyCarried,
+    cue,
+    safetyRoute,
   };
 
   return {
@@ -184,7 +174,7 @@ export function storyFromTrace(trace: TraceEnvelope): TurnDecisionStory {
     experienceMode: str(evaluated, 'mode'),
     extrasMode,
     extrasDecision,
-    extrasApplied: bool(extras, 'applied'),
+    extrasApplied,
     extrasActiveDomain,
     extrasDomainSource,
     extrasThirdPartyBand: str(extras, 'thirdPartyBand'),
@@ -198,7 +188,7 @@ export function storyFromTrace(trace: TraceEnvelope): TurnDecisionStory {
     domainCandidate: str(started, 'domainCandidate'),
     slice: str(relational, 'slice'),
     stance: str(relational, 'stance'),
-    safetyRoute: str(safety, 'safetyRoute') ?? str(engine, 'safetyRoute') ?? str(started, 'safetyRoute'),
+    safetyRoute,
     riskClass: str(safety, 'riskClass') ?? str(engine, 'riskClass') ?? str(state, 'riskClass') ?? str(started, 'riskClass'),
     personaGrant: str(persona, 'personaGrant'),
     activationBand: str(state, 'activationBand'),
@@ -207,14 +197,14 @@ export function storyFromTrace(trace: TraceEnvelope): TurnDecisionStory {
     timeBand: str(state, 'timeBand'),
     directionBand: str(trajectory, 'directionBand'),
     claimType: str(state, 'claimType'),
-    cue: str(evaluated, 'cue'),
+    cue,
     reason: str(evaluated, 'reason'),
     ttftMs: num(completed, 'ttftMs'),
     surface: str(started, 'surface') ?? trace.surface ?? null,
     transport: str(started, 'transport') ?? trace.transport ?? null,
     packId: str(started, 'packId') ?? trace.pack_id ?? null,
     consentPurposeCount: num(consent, 'purposeDecisionCount'),
-    familyCarried: extrasActiveDomain === 'family' && extrasDomainSource === 'carried',
+    familyCarried,
     split,
     headline: headlineFor(storyCore),
     path: orderedPath.length > 0 ? orderedPath : trace.spans,

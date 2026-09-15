@@ -3,10 +3,9 @@
 import { TurnPicker } from '@/components/observatory/live/TurnPicker';
 import { PipelineTape } from '@/components/observatory/live/PipelineTape';
 import { TurnDecisionBoard } from '@/components/observatory/decisiones/TurnDecisionBoard';
-import { CopyRef } from '@/components/observatory/ui/CopyRef';
 import { ObservatoryLegend } from '@/components/observatory/ui/ObservatoryLegend';
-import { Provenance } from '@/components/observatory/ui/Provenance';
 import { TurnFilters } from '@/components/observatory/ui/TurnFilters';
+import { TurnLede } from '@/components/observatory/ui/TurnLede';
 import { useObservatory } from '@/components/observatory/shell/ObservatoryProvider';
 import { factLabel, sliceLabel } from '@/lib/observatory/copy/labels';
 import { storyFromTrace } from '@/lib/observatory/data/turnDecision';
@@ -22,18 +21,14 @@ export function DecisionesView() {
     <div className="page">
       <header>
         <h2>Decisiones</h2>
-        <p>
-          Qué decidió Nexus en este turno: Engine, Experience, extras y mute. DecisionRecord de colección sigue
-          vacío a propósito. Sin texto de conversación.
-        </p>
+        <p>Las cuatro decisiones del turno, con el detalle. Sin texto de conversación.</p>
       </header>
-      <ObservatoryLegend />
       <TurnFilters value={filters} onChange={setFilters} count={filteredTraces.length} total={snapshot.traces.length} />
 
       {!selectedTrace || !story ? (
         <div className="empty">
           {snapshot.traces.length === 0
-            ? 'No hay turnos en este snapshot. El runtime publica traces[] en GET /v1/observatory/snapshot.'
+            ? 'El runtime no publicó turnos en esta ventana.'
             : 'Ningún turno coincide con los filtros.'}
         </div>
       ) : (
@@ -43,46 +38,37 @@ export function DecisionesView() {
             <TurnPicker traces={filteredTraces} selectedId={selectedTrace.trace_id} onSelect={selectTrace} />
           </section>
           <div className="decision-main">
-            <section className="decision-lead">
-              <div className="row-between">
-                <CopyRef label="sesión" value={selectedTrace.session_ref} />
-                <Provenance kind={selectedTrace.provenance} />
-              </div>
-              <p className="decision-headline">{story.headline}</p>
-              <p className="s">
-                <CopyRef label="sujeto" value={selectedTrace.subject_ref} /> · content {selectedTrace.content_mode}
-                {story.split ? ' · Engine y sombra no coinciden' : ''} · {factLabel(story.transport)}
-              </p>
-            </section>
-            <TurnDecisionBoard story={story} />
+            <TurnLede story={story} trace={selectedTrace} />
+            <TurnDecisionBoard story={story} density="full" />
             <dl className="inspector decision-facts">
               <dt>Consentimiento</dt>
               <dd>
                 {story.consentPurposeCount == null
-                  ? 'Sin consent.checked en este turno.'
-                  : `${story.consentPurposeCount} decisions de finalidad. Purpose-deny no entra en muteFlags.`}
+                  ? 'Este turno no trajo consentimiento.'
+                  : `${story.consentPurposeCount} finalidades. El deny de purpose no silencia extras.`}
               </dd>
-              <dt>State (candidato)</dt>
+              <dt>Estado</dt>
               <dd>
                 {factLabel(story.claimType)} · activación {factLabel(story.activationBand)} · carga{' '}
                 {factLabel(story.loadBand)} · apertura {factLabel(story.opennessBand)} · tiempo {factLabel(story.timeBand)}
               </dd>
-              <dt>Trajectory</dt>
+              <dt>Trayectoria</dt>
               <dd>{factLabel(story.directionBand)}</dd>
               <dt>Persona</dt>
               <dd>{factLabel(story.personaGrant)}</dd>
-              <dt>Sombra relacional</dt>
+              <dt>Relación (sombra)</dt>
               <dd>
-                {sliceLabel(story.slice)} · {factLabel(story.stance)}. Series separadas; no hay KPI pareja OR desahogo.
+                {sliceLabel(story.slice)} · {factLabel(story.stance)}
               </dd>
               <dt>TTFT</dt>
-              <dd>{story.ttftMs == null ? 'No medida' : `${story.ttftMs} ms. Cortex no entra aquí.`}</dd>
+              <dd>{story.ttftMs == null ? 'No medida' : `${story.ttftMs} ms`}</dd>
             </dl>
-            <section className="decision-orbit">
-              <h3>Cinta de pipeline</h3>
+            <details className="obs-fold pipeline-fold">
+              <summary>Línea de tiempo</summary>
               <PipelineTape trace={selectedTrace} selectedId={selectedSpan?.stage_id} onSelect={selectStage} />
               {selectedSpan ? <p className="s">{selectedSpan.what_happened}</p> : null}
-            </section>
+            </details>
+            <ObservatoryLegend />
           </div>
         </div>
       )}

@@ -1,12 +1,41 @@
 import { MuteChips } from '@/components/observatory/ui/MuteChips';
 import { choiceLabel, factLabel } from '@/lib/observatory/copy/labels';
+import { domainLine, extrasOutcomeLabel, muteSummary, turnSignals } from '@/lib/observatory/copy/turnReading';
 import type { TurnDecisionStory } from '@/lib/observatory/data/turnDecision';
 
-export function TurnDecisionBoard({ story }: { story: TurnDecisionStory }) {
+export function TurnDecisionBoard({
+  story,
+  density = 'full',
+}: {
+  story: TurnDecisionStory;
+  density?: 'glance' | 'full';
+}) {
+  const signals = turnSignals(story);
   const emptyKinds =
     story.extrasMode === 'applied' &&
     story.muteFlags.includes('soft_landing') &&
     story.extrasCandidateKindsBefore.length === 0;
+
+  if (density === 'glance') {
+    return (
+      <section className="turn-story" aria-label="Qué pasó en este turno">
+        <ul className="signal-strip">
+          {signals.map((signal) => (
+            <li key={signal.id} data-tone={signal.tone ?? 'ok'}>
+              <p className="signal-v">{signal.value}</p>
+              <p className="signal-k">{signal.label}</p>
+              {signal.hint ? <p className="s">{signal.hint}</p> : null}
+            </li>
+          ))}
+        </ul>
+      </section>
+    );
+  }
+
+  const domain = domainLine(story);
+  const extrasKinds =
+    story.extrasCandidateKindsBefore.length > 0 || story.extrasCandidateKindsAfter.length > 0;
+  const extrasCounts = story.extrasCountBefore != null || story.extrasCountAfter != null;
 
   return (
     <section className="decision-board" aria-label="Decisión de este turno">
@@ -15,120 +44,133 @@ export function TurnDecisionBoard({ story }: { story: TurnDecisionStory }) {
         <p className="decision-choice">{choiceLabel(story.engineChoice)}</p>
         <dl className="col-facts">
           <div>
-            <dt>mode</dt>
+            <dt>Cómo</dt>
             <dd>{factLabel(story.engineMode)}</dd>
           </div>
           <div>
-            <dt>deliberation</dt>
+            <dt>Vía</dt>
             <dd>{factLabel(story.engineDeliberation)}</dd>
           </div>
           <div>
-            <dt>candidates</dt>
-            <dd>
-              {story.engineCandidates == null
-                ? 'Sin recuento'
-                : `${story.engineCandidates} ids servibles`}
-            </dd>
+            <dt>Opciones</dt>
+            <dd>{story.engineCandidates == null ? 'Sin recuento' : String(story.engineCandidates)}</dd>
           </div>
         </dl>
-        <p className="s">Psyche no decide. Participó si hubo candidates.</p>
+        {story.split ? (
+          <p className="turn-note">La sombra registró {choiceLabel(story.shadowChoice)}.</p>
+        ) : null}
       </article>
       <article className="decision-col" data-role="experience">
-        <h3>Experience</h3>
-        <p className="decision-choice">{factLabel(story.cue)}</p>
+        <h3>Forma</h3>
+        <p className="decision-choice">{choiceLabel(story.cue)}</p>
         <dl className="col-facts">
           <div>
-            <dt>cue mode</dt>
-            <dd>{factLabel(story.experienceMode)}</dd>
+            <dt>Cue</dt>
+            <dd>
+              {story.experienceMode === 'applied'
+                ? 'Aplicó la forma'
+                : story.experienceMode === 'shadow'
+                  ? 'Observó'
+                  : factLabel(story.experienceMode)}
+            </dd>
           </div>
           <div>
-            <dt>modalidad</dt>
+            <dt>Canal</dt>
             <dd>{choiceLabel(story.modality)}</dd>
           </div>
           <div>
-            <dt>conversionSuppression</dt>
-            <dd>{factLabel(story.conversionSuppression)}</dd>
+            <dt>Conversión</dt>
+            <dd>
+              {story.conversionSuppression === 'none' || !story.conversionSuppression
+                ? 'Sin supresión'
+                : factLabel(story.conversionSuppression)}
+            </dd>
           </div>
         </dl>
-        <p className="s">Apply de cue es un flag distinto al de extras.</p>
       </article>
       <article className="decision-col" data-role="extras">
         <h3>Extras</h3>
-        <p className="decision-choice">
-          {story.extrasMode ? `${story.extrasMode} / ${factLabel(story.extrasDecision)}` : 'Sin evento'}
-        </p>
+        <p className="decision-choice">{extrasOutcomeLabel(story)}</p>
         <dl className="col-facts">
-          <div>
-            <dt>applied</dt>
-            <dd>{factLabel(story.extrasApplied)}</dd>
-          </div>
-          <div>
-            <dt>activeDomain</dt>
-            <dd>{factLabel(story.extrasActiveDomain)}</dd>
-          </div>
-          <div>
-            <dt>domainSource</dt>
-            <dd>{factLabel(story.extrasDomainSource)}</dd>
-          </div>
-          <div>
-            <dt>thirdPartyBand</dt>
-            <dd>{factLabel(story.extrasThirdPartyBand)}</dd>
-          </div>
-          <div>
-            <dt>domainCandidate</dt>
-            <dd>{factLabel(story.domainCandidate)} (candidato)</dd>
-          </div>
-          <div>
-            <dt>kinds</dt>
-            <dd>
-              before {story.extrasCandidateKindsBefore.join(', ') || '[]'} → after{' '}
-              {story.extrasCandidateKindsAfter.join(', ') || '[]'}
-            </dd>
-          </div>
-          <div>
-            <dt>counts</dt>
-            <dd>
-              {factLabel(story.extrasCountBefore)} → {factLabel(story.extrasCountAfter)} · selected{' '}
-              {factLabel(story.extrasSelectedKind)}
-            </dd>
-          </div>
-          {story.extrasReasonCodes.length > 0 ? (
+          {domain ? (
             <div>
-              <dt>reasonCodes</dt>
-              <dd>{story.extrasReasonCodes.join(' · ')}</dd>
+              <dt>Dominio</dt>
+              <dd>{domain}</dd>
             </div>
           ) : null}
+          <div>
+            <dt>Decisión</dt>
+            <dd>{factLabel(story.extrasDecision)}</dd>
+          </div>
+          <div>
+            <dt>Terceros</dt>
+            <dd>{factLabel(story.extrasThirdPartyBand)}</dd>
+          </div>
         </dl>
-        {story.extrasMode ? (
-          <p className="s">
-            mode={story.extrasMode} es el canary. applied={String(story.extrasApplied)} no equivale a flag off.
-          </p>
-        ) : null}
-        {story.surface === 'guest' ? (
-          <p className="s">Guest: extras siempre shadow. Applied exige flag, canary hex y surface=registered.</p>
-        ) : null}
-        {story.familyCarried ? (
-          <p className="s">Carry familiar: activeDomain=family y domainSource=carried, aunque domainCandidate sea unknown.</p>
+        {extrasKinds || extrasCounts || story.extrasReasonCodes.length > 0 ? (
+          <details className="obs-fold">
+            <summary>Inventario y motivos</summary>
+            <dl className="col-facts">
+              {extrasKinds ? (
+                <div>
+                  <dt>Tipos</dt>
+                  <dd>
+                    {story.extrasCandidateKindsBefore.join(', ') || 'Ninguno'} →{' '}
+                    {story.extrasCandidateKindsAfter.join(', ') || 'Ninguno'}
+                  </dd>
+                </div>
+              ) : null}
+              {extrasCounts ? (
+                <div>
+                  <dt>Cantidad</dt>
+                  <dd>
+                    {factLabel(story.extrasCountBefore)} → {factLabel(story.extrasCountAfter)}
+                    {story.extrasSelectedKind && story.extrasSelectedKind !== 'none'
+                      ? ` · ${factLabel(story.extrasSelectedKind)}`
+                      : ''}
+                  </dd>
+                </div>
+              ) : null}
+              <div>
+                <dt>Candidato del turno</dt>
+                <dd>{factLabel(story.domainCandidate)}</dd>
+              </div>
+              {story.extrasReasonCodes.length > 0 ? (
+                <div>
+                  <dt>Motivos</dt>
+                  <dd>{story.extrasReasonCodes.join(' · ')}</dd>
+                </div>
+              ) : null}
+            </dl>
+          </details>
         ) : null}
         {emptyKinds ? (
-          <p className="s">Canary vivo con inventario vacío: soft_landing explica candidateKindsBefore=[].</p>
+          <p className="turn-note">El aterrizaje suave explica el inventario vacío.</p>
+        ) : null}
+        {story.surface === 'guest' ? (
+          <p className="turn-note">Invitado: extras siempre observan, no llegan al chat.</p>
         ) : null}
       </article>
       <article className="decision-col" data-role="safety">
-        <h3>Mute / Safety</h3>
-        <p className="decision-choice">{factLabel(story.safetyRoute)}</p>
+        <h3>Mute</h3>
+        <p className="decision-choice">
+          {story.muteFlags.length > 0
+            ? muteSummary(story.muteFlags)
+            : story.safetyRoute && story.safetyRoute !== 'none'
+              ? factLabel(story.safetyRoute)
+              : 'Nada silenciado'}
+        </p>
         <dl className="col-facts">
           <div>
-            <dt>riskClass</dt>
+            <dt>Riesgo</dt>
             <dd>{factLabel(story.riskClass)}</dd>
           </div>
           <div>
-            <dt>surface</dt>
+            <dt>Quién</dt>
             <dd>{factLabel(story.surface)}</dd>
           </div>
         </dl>
         <MuteChips flags={story.muteFlags} />
-        <p className="s">Consent purpose-deny no entra en muteFlags. Crisis no se mueve al prompt.</p>
       </article>
     </section>
   );

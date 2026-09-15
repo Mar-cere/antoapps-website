@@ -9,25 +9,23 @@ export function SurveillancePanel({
   live: boolean;
 }) {
   return (
-    <section className="surveillance" aria-label="Vigilancia fuera del projector">
+    <section className="surveillance" aria-label="Fuera de este poll">
       <div className="row-between">
-        <h3>Vigilancia: no está en este projector</h3>
+        <h3>Fuera de este poll</h3>
         <Provenance kind={live ? 'unavailable' : surveillance.provenance} />
       </div>
-      <p>
-        Semantic Cortex, Evidence Surveillance y launch gates LG0–LG6 no salen del poll live. No se rellenan
-        ReviewCases ni hipótesis con ceros. LG5 skipped. LG6 blocked. No hay auto-promotion.
-      </p>
-      <p className="s">{surveillance.note}</p>
+      <p>Semantic Cortex, reviews y gates LG0–LG6 no salen de este snapshot. No se rellenan con ceros.</p>
       {surveillance.command ? (
-        <p className="kv">
-          Ops: <code>{surveillance.command}</code>
-        </p>
-      ) : null}
-      <p className="s">
-        Tres planos distintos: colección producto <code>metrics</code>, <code>nexus_turn_traces</code>, y Atlas
-        Hardware Metrics. Este tablero lee el projector de traces, no Atlas ni /health.
-      </p>
+        <details className="obs-fold">
+          <summary>Comando de ops</summary>
+          <p className="kv">
+            <code>{surveillance.command}</code>
+          </p>
+          <p className="s">{surveillance.note}</p>
+        </details>
+      ) : (
+        <p className="s">{surveillance.note}</p>
+      )}
     </section>
   );
 }

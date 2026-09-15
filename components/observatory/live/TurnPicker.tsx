@@ -2,6 +2,7 @@
 
 import { MuteChips } from '@/components/observatory/ui/MuteChips';
 import { choiceLabel, factLabel } from '@/lib/observatory/copy/labels';
+import { domainLine, pickerExtrasLine } from '@/lib/observatory/copy/turnReading';
 import { formatTurnWhen, storyFromTrace } from '@/lib/observatory/data/turnDecision';
 import type { TraceEnvelope } from '@/lib/observatory/data/types';
 
@@ -21,6 +22,7 @@ export function TurnPicker({ traces, selectedId, onSelect }: TurnPickerProps) {
       {traces.map((trace) => {
         const story = storyFromTrace(trace);
         const selected = trace.trace_id === selectedId;
+        const domain = domainLine(story);
         return (
           <button
             key={trace.trace_id}
@@ -32,16 +34,13 @@ export function TurnPicker({ traces, selectedId, onSelect }: TurnPickerProps) {
             <span className="t">
               <span className="turn-star" data-choice={story.engineChoice ?? ''} aria-hidden="true" />
               {choiceLabel(story.engineChoice)}
-              {story.extrasMode ? ` · extras ${story.extrasMode}` : ' · sin extras'}
             </span>
+            <span className="turn-extra">{pickerExtrasLine(story)}</span>
             <span className="s">
-              {formatTurnWhen(trace.started_at)} · {trace.session_ref} · {factLabel(story.surface)}
-              {story.extrasActiveDomain
-                ? ` · ${story.extrasActiveDomain}/${factLabel(story.extrasDomainSource)}`
-                : ''}
-              {story.familyCarried ? ' · carry familiar' : ''}
+              {formatTurnWhen(trace.started_at)} · {factLabel(story.surface)}
+              {domain ? ` · ${domain}` : ''}
             </span>
-            {story.muteFlags.length > 0 ? <MuteChips flags={story.muteFlags} /> : null}
+            <MuteChips flags={story.muteFlags} />
           </button>
         );
       })}

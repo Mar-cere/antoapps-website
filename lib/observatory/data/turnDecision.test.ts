@@ -68,8 +68,8 @@ test('storyFromTrace muestra carry familiar y mute soft_landing sin texto', () =
   assert.deepEqual(story.muteFlags, ['soft_landing']);
   assert.equal(story.domainCandidate, 'unknown');
   assert.equal(story.extrasCandidateKindsBefore.length, 0);
-  assert.match(story.headline, /Carry familiar/);
-  assert.match(story.headline, /soft_landing/);
+  assert.match(story.headline, /familiar/i);
+  assert.match(story.headline, /aterrizaje suave/i);
 });
 
 test('el tramo pre-LLM no incluye extras ni sombras', () => {

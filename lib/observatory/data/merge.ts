@@ -65,8 +65,8 @@ function withSoftLandingAlert(traces: TraceEnvelope[], alerts: AlertItem[]): Ale
     {
       alert_id: 'extras_applied_soft_landing',
       severity: 'warning',
-      title: 'Canary de extras con mute soft_landing',
-      detail: `${count} turno(s) con extras.mode=applied y muteFlags.soft_landing. El canary está vivo; el inventario gobernado puede estar vacío.`,
+      title: 'Aterrizaje suave con extras en modo applied',
+      detail: `${count} turno(s) con canary de extras activo y aterrizaje suave. El inventario puede ir vacío.`,
       related_component: 'experience',
       href: '/observatorio/decisiones',
       provenance: 'derived',

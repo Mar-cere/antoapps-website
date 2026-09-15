@@ -14,30 +14,44 @@ export function PipelineTape({
 }) {
   const slots = pipelineSlots(trace);
   const byType = new Map(slots.map((slot) => [slot.eventType, slot]));
-  const pre = PIPELINE_PRE_LLM.map((eventType) => byType.get(eventType)).filter((slot): slot is PipelineSlot => Boolean(slot));
-  const post = PIPELINE_POST_RESPONSE.map((eventType) => byType.get(eventType)).filter(
+  const preAll = PIPELINE_PRE_LLM.map((eventType) => byType.get(eventType)).filter((slot): slot is PipelineSlot => Boolean(slot));
+  const postAll = PIPELINE_POST_RESPONSE.map((eventType) => byType.get(eventType)).filter(
     (slot): slot is PipelineSlot => Boolean(slot)
   );
   const failed = byType.get('turn.failed');
+  const postWithFail = failed?.status === 'present' ? insertAfter(postAll, 'turn.completed', failed) : postAll;
+  const pre = preAll.filter((slot) => slot.status === 'present');
+  const post = postWithFail.filter((slot) => slot.status === 'present');
+  const absent = [...preAll, ...postWithFail].filter((slot) => slot.status !== 'present');
 
   return (
-    <div className="pipeline-board" aria-label="Pipeline del turno">
+    <div className="pipeline-board" aria-label="Línea de tiempo del turno">
       <section className="pipeline-phase">
-        <h4>Pre-LLM · puede entrar en TTFT</h4>
-        <SlotList slots={pre} selectedId={selectedId} onSelect={onSelect} />
+        <h4>Antes de generar</h4>
+        <SlotList slots={pre} selectedId={selectedId} onSelect={onSelect} empty="Nada emitido antes del modelo." />
       </section>
       <p className="pipeline-gen" role="note">
-        Generación LLM o plantilla hard-stop. No es evento de traza. conversation_progression_v1 es cálculo CPU, no
-        span. Cortex no entra aquí.
+        Aquí el modelo genera. No es un evento de traza.
       </p>
       <section className="pipeline-phase">
-        <h4>Post-respuesta · no entra en TTFT</h4>
-        <SlotList
-          slots={failed?.status === 'present' ? insertAfter(post, 'turn.completed', failed) : post}
-          selectedId={selectedId}
-          onSelect={onSelect}
-        />
+        <h4>Después de responder</h4>
+        <SlotList slots={post} selectedId={selectedId} onSelect={onSelect} empty="Nada emitido después de la respuesta." />
       </section>
+      {absent.length > 0 ? (
+        <details className="obs-fold">
+          <summary>
+            {absent.length} {absent.length === 1 ? 'paso no emitido' : 'pasos no emitidos'}
+          </summary>
+          <ul className="pipeline-absent">
+            {absent.map((slot) => (
+              <li key={slot.eventType}>
+                {TRACE_EVENT_LABELS[slot.eventType] ?? slot.eventType}
+                {slot.eventType === 'safety.routed' ? ' — solo si hay crisis' : ''}
+              </li>
+            ))}
+          </ul>
+        </details>
+      ) : null}
     </div>
   );
 }
@@ -52,32 +66,22 @@ function SlotList({
   slots,
   selectedId,
   onSelect,
+  empty,
 }: {
   slots: PipelineSlot[];
   selectedId?: string | null;
   onSelect?: (stageId: string) => void;
+  empty: string;
 }) {
+  if (slots.length === 0) {
+    return <p className="s">{empty}</p>;
+  }
   return (
-    <ol className="pipeline-tape" aria-label="Spans del tramo">
+    <ol className="pipeline-tape" aria-label="Eventos emitidos">
       {slots.map((slot) => {
         const label = TRACE_EVENT_LABELS[slot.eventType] ?? slot.eventType;
         const selected = slot.span != null && slot.span.stage_id === selectedId;
-        if (!slot.span) {
-          return (
-            <li key={slot.eventType} className="pipeline-slot" data-status={slot.status}>
-              <strong>{label}</strong>
-              <span className="s">
-                {slot.status === 'optional_absent'
-                  ? slot.eventType === 'safety.routed'
-                    ? 'No emitido (solo si hay transición de crisis)'
-                    : slot.eventType === 'turn.failed'
-                      ? 'No emitido (el turno cerró)'
-                      : 'No exigido en este cierre'
-                  : 'No emitido en este turno'}
-              </span>
-            </li>
-          );
-        }
+        if (!slot.span) return null;
         const inner = (
           <>
             <strong>{label}</strong>

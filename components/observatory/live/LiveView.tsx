@@ -5,13 +5,11 @@ import { TurnPicker } from '@/components/observatory/live/TurnPicker';
 import { PipelineTape } from '@/components/observatory/live/PipelineTape';
 import { SimControls } from '@/components/observatory/live/SimControls';
 import { TurnDecisionBoard } from '@/components/observatory/decisiones/TurnDecisionBoard';
-import { CopyRef } from '@/components/observatory/ui/CopyRef';
-import { ObservatoryLegend } from '@/components/observatory/ui/ObservatoryLegend';
-import { Provenance } from '@/components/observatory/ui/Provenance';
 import { StatusMark } from '@/components/observatory/ui/StatusMark';
 import { TurnFilters } from '@/components/observatory/ui/TurnFilters';
+import { TurnLede } from '@/components/observatory/ui/TurnLede';
 import { useObservatory } from '@/components/observatory/shell/ObservatoryProvider';
-import { componentLabel, factLabel, TRACE_EVENT_LABELS } from '@/lib/observatory/copy/labels';
+import { factLabel, structuredKeyLabel, TRACE_EVENT_LABELS } from '@/lib/observatory/copy/labels';
 import { storyFromTrace, structuredEntries } from '@/lib/observatory/data/turnDecision';
 import type { TraceEnvelope, TraceSpan } from '@/lib/observatory/data/types';
 
@@ -24,7 +22,6 @@ export function LiveView() {
     selectTrace,
     selectedStageId,
     selectStage,
-    scenario,
     demoPlayback,
     filteredTraces,
     filters,
@@ -42,38 +39,15 @@ export function LiveView() {
     <div className="page">
       <header>
         <h2>En vivo</h2>
-        <p>
-          Cinta del pipeline real: pre-LLM, generación, post-respuesta. Un grafo de 7 componentes todos
-          in_progress no es este tablero. Content-off.
-        </p>
+        <p>Elige un turno y lee qué decidió Nexus, qué extra hubo y qué se silenció.</p>
       </header>
       {demoPlayback ? <SimControls /> : null}
-      <ObservatoryLegend />
       <TurnFilters value={filters} onChange={setFilters} count={filteredTraces.length} total={snapshot.traces.length} />
-      {demoPlayback ? (
-        <p className="s">
-          {scenario.content_minimized} · {scenario.subject_ref} · <Provenance kind="simulated" />
-        </p>
-      ) : (
-        <p className="s">
-          {trace ? (
-            <>
-              <CopyRef label="sesión" value={trace.session_ref} /> ·{' '}
-              <CopyRef label="sujeto" value={trace.subject_ref} /> · content {trace.content_mode}{' '}
-              <Provenance kind={trace.provenance} />
-            </>
-          ) : (
-            <>
-              Sin turnos publicados. <Provenance kind="unavailable" />
-            </>
-          )}
-        </p>
-      )}
 
       {!trace ? (
         <div className="empty">
           {snapshot.traces.length === 0
-            ? 'No hay turnos en este snapshot. GET /v1/observatory/snapshot debe publicar traces[].'
+            ? 'El runtime no publicó turnos en esta ventana.'
             : 'Ningún turno coincide con los filtros.'}
         </div>
       ) : (
@@ -83,8 +57,16 @@ export function LiveView() {
             <TurnPicker traces={filteredTraces} selectedId={trace.trace_id} onSelect={selectTrace} />
           </section>
           <div className="decision-main">
-            {story ? <TurnDecisionBoard story={story} /> : null}
-            <LiveFlow trace={trace} selected={selected} onSelectStage={selectStage} />
+            {story ? (
+              <>
+                <TurnLede story={story} trace={trace} />
+                <TurnDecisionBoard story={story} density="glance" />
+              </>
+            ) : null}
+            <details className="obs-fold pipeline-fold">
+              <summary>Línea de tiempo</summary>
+              <LiveFlow trace={trace} selected={selected} onSelectStage={selectStage} />
+            </details>
           </div>
         </div>
       )}
@@ -103,13 +85,10 @@ function LiveFlow({
 }) {
   return (
     <div className="flow">
-      <div>
-        <h3>Cinta de pipeline</h3>
-        <PipelineTape trace={trace} selectedId={selected?.stage_id} onSelect={onSelectStage} />
-      </div>
+      <PipelineTape trace={trace} selectedId={selected?.stage_id} onSelect={onSelectStage} />
       <aside className="panel inspector">
-        <h3>Inspector del span</h3>
-        {!selected ? <div className="empty">Selecciona un span emitido.</div> : <SpanInspector span={selected} />}
+        <h3>Qué emitió este paso</h3>
+        {!selected ? <div className="empty">Elige un paso de la línea de tiempo.</div> : <SpanInspector span={selected} />}
       </aside>
     </div>
   );
@@ -129,12 +108,10 @@ function SpanInspector({ span }: { span: TraceSpan }) {
       </dd>
       <dt>Duración</dt>
       <dd>{span.duration_ms == null ? 'Pendiente' : `${span.duration_ms} ms`}</dd>
-      <dt>Componente</dt>
-      <dd>{componentLabel(span.component)}</dd>
       {entries.map(([key, value]) => (
         <Fragment key={key}>
-          <dt>{key}</dt>
-          <dd>{Array.isArray(value) ? value.join(' · ') || 'Ninguno' : factLabel(value)}</dd>
+          <dt>{structuredKeyLabel(key)}</dt>
+          <dd>{Array.isArray(value) ? value.map((item) => factLabel(item)).join(' · ') || 'Ninguno' : factLabel(value)}</dd>
         </Fragment>
       ))}
     </dl>

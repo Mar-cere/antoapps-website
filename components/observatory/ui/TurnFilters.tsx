@@ -16,26 +16,26 @@ export function TurnFilters({
   return (
     <form className="turn-filters" onSubmit={(event) => event.preventDefault()} aria-label="Filtros de turno">
       <label>
-        Surface
+        Quién
         <select
           value={value.surface}
           onChange={(event) => onChange({ ...value, surface: event.target.value as TurnFilterState['surface'] })}
         >
-          <option value="all">Todas</option>
-          <option value="registered">registered</option>
-          <option value="guest">guest</option>
+          <option value="all">Todos</option>
+          <option value="registered">Cuenta</option>
+          <option value="guest">Invitado</option>
         </select>
       </label>
       <label>
-        extras.mode
+        Extras
         <select
           value={value.extrasMode}
           onChange={(event) => onChange({ ...value, extrasMode: event.target.value as TurnFilterState['extrasMode'] })}
         >
           <option value="all">Todos</option>
-          <option value="shadow">shadow</option>
-          <option value="applied">applied</option>
-          <option value="missing">Sin extras.evaluated</option>
+          <option value="applied">Canary aplicado</option>
+          <option value="shadow">Solo observó</option>
+          <option value="missing">Sin extras</option>
         </select>
       </label>
       <label className="check">
@@ -44,7 +44,7 @@ export function TurnFilters({
           checked={value.muteSoftLanding}
           onChange={(event) => onChange({ ...value, muteSoftLanding: event.target.checked })}
         />
-        muteFlags contiene soft_landing
+        Aterrizaje suave
       </label>
       <label className="check">
         <input
@@ -52,7 +52,7 @@ export function TurnFilters({
           checked={value.familyDomain}
           onChange={(event) => onChange({ ...value, familyDomain: event.target.checked })}
         />
-        activeDomain=family
+        Dominio familiar
       </label>
       <label className="check">
         <input
@@ -60,10 +60,10 @@ export function TurnFilters({
           checked={value.domainCarried}
           onChange={(event) => onChange({ ...value, domainCarried: event.target.checked })}
         />
-        domainSource=carried
+        Traído de antes
       </label>
       <p className="s">
-        {count} de {total} turnos
+        {count} de {total}
       </p>
     </form>
   );

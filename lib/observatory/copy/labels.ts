@@ -80,23 +80,23 @@ export const PROVENANCE_LABELS: Record<
   string
 > = {
   simulated: 'Simulado',
-  unavailable: 'No está en este projector',
-  derived: 'Vista derivada',
-  live_trace: 'Traza live',
-  script_offline: 'Script de ops',
+  unavailable: 'No está aquí',
+  derived: 'Calculado aquí',
+  live_trace: 'Live',
+  script_offline: 'Fuera de este poll',
 };
 
 export const MUTE_FLAG_LABELS: Record<string, string> = {
-  soft_landing: 'soft_landing',
-  crisis_extras: 'crisis_extras',
-  hard_stop: 'hard_stop',
-  protocol_93: 'protocol_93',
-  soft_19: 'soft_19',
-  safeguard_239: 'safeguard_239',
-  reentry: 'reentry',
-  guest: 'guest',
-  canvas_open: 'canvas_open',
-  technique_handoff: 'technique_handoff',
+  soft_landing: 'Aterrizaje suave',
+  crisis_extras: 'Crisis: extras off',
+  hard_stop: 'Parada dura',
+  protocol_93: 'Protocolo 93',
+  soft_19: 'Suave 19',
+  safeguard_239: 'Salvaguarda 239',
+  reentry: 'Reentrada',
+  guest: 'Invitado',
+  canvas_open: 'Canvas abierto',
+  technique_handoff: 'Pase a técnica',
 };
 
 export const PIPELINE_EVENTS = [
@@ -147,6 +147,32 @@ export const CHOICE_LABELS: Record<string, string> = {
   blocked: 'Bloqueada',
   validate: 'Validar',
   implicit_llm: 'Generación implícita',
+  allow: 'Permitió',
+  suppress: 'Silenció',
+  chat: 'Chat',
+  registered: 'Cuenta',
+  guest: 'Invitado',
+  family: 'Familiar',
+  self: 'Propio',
+  work: 'Trabajo',
+  carried: 'De turnos anteriores',
+  current: 'De este turno',
+  runtime: 'Decidió ahora',
+  shadow: 'Observó',
+  high: 'Alta',
+  HIGH: 'Alta',
+  mid: 'Media',
+  MID: 'Media',
+  low: 'Baja',
+  LOW: 'Baja',
+  open: 'Abierta',
+  ok: 'Ok',
+  morning: 'Mañana',
+  evening: 'Tarde',
+  night: 'Noche',
+  steady: 'Estable',
+  easing: 'Bajando',
+  pattern_candidate: 'Patrón (candidato)',
 };
 
 export const SLICE_LABELS: Record<string, string> = {
@@ -171,17 +197,60 @@ export function sliceLabel(value: string | null | undefined): string {
 export function factLabel(
   value: string | number | boolean | string[] | null | undefined
 ): string {
-  if (Array.isArray(value)) return value.length ? value.join(' · ') : 'Ninguno';
+  if (Array.isArray(value)) {
+    if (!value.length) return 'Ninguno';
+    return value.map((item) => factLabel(item)).join(' · ');
+  }
   if (value == null || value === '') return 'Sin dato';
-  if (value === 'unspecified') return 'Sin estimar';
+  if (value === 'unspecified' || value === 'unknown') return 'Sin estimar';
   if (value === 'none') return 'Ninguna';
   if (typeof value === 'boolean') return value ? 'Sí' : 'No';
-  if (value === 'shadow') return 'shadow';
-  if (value === 'applied') return 'applied';
-  if (value === 'runtime') return 'runtime';
-  if (value === 'carried') return 'carried';
-  if (value === 'current') return 'current';
   return CHOICE_LABELS[String(value)] ?? SLICE_LABELS[String(value)] ?? MUTE_FLAG_LABELS[String(value)] ?? String(value);
+}
+
+export const STRUCTURED_KEY_LABELS: Record<string, string> = {
+  choice: 'Elección',
+  mode: 'Modo',
+  deliberation: 'Vía',
+  candidateCount: 'Opciones',
+  constraintCount: 'Restricciones',
+  muteFlags: 'Silenciado',
+  activeDomain: 'Dominio',
+  domainSource: 'Origen del dominio',
+  domainCandidate: 'Candidato del turno',
+  thirdPartyBand: 'Terceros',
+  applied: 'Insertó en el chat',
+  decision: 'Decisión de extras',
+  reasonCodes: 'Motivos',
+  candidateKindsBefore: 'Tipos antes',
+  candidateKindsAfter: 'Tipos después',
+  selectedCandidateKind: 'Tipo elegido',
+  candidateCountBefore: 'Inventario antes',
+  candidateCountAfter: 'Inventario después',
+  conversionSuppression: 'Supresión de conversión',
+  modality: 'Canal',
+  cue: 'Señal',
+  reason: 'Motivo',
+  safetyRoute: 'Ruta de safety',
+  riskClass: 'Riesgo',
+  personaGrant: 'Persona',
+  activationBand: 'Activación',
+  loadBand: 'Carga',
+  opennessBand: 'Apertura',
+  timeBand: 'Tiempo',
+  directionBand: 'Trayectoria',
+  claimType: 'Tipo de claim',
+  slice: 'Slice relacional',
+  stance: 'Postura',
+  ttftMs: 'TTFT (ms)',
+  surface: 'Quién',
+  transport: 'Canal técnico',
+  packId: 'Pack',
+  purposeDecisionCount: 'Finalidades',
+};
+
+export function structuredKeyLabel(key: string): string {
+  return STRUCTURED_KEY_LABELS[key] ?? key;
 }
 
 export const SPAN_STATUS_LABELS: Record<SpanStatus, string> = {

@@ -57,9 +57,9 @@ export function buildStaticSnapshot(): ObservatorySnapshot {
       {
         alert_id: 'extras_applied_soft_landing',
         severity: 'warning',
-        title: 'Canary de extras con mute soft_landing',
+        title: 'Aterrizaje suave con extras en modo applied',
         detail:
-          'Fixture: extras.mode=applied y muteFlags.soft_landing. El canary está vivo; el inventario gobernado puede estar vacío.',
+          'El canary de extras está vivo y hay aterrizaje suave. El inventario de extras puede ir vacío.',
         related_component: 'experience',
         href: '/observatorio/decisiones',
         provenance: 'simulated',
