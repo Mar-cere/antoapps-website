@@ -41,6 +41,25 @@ function trace(spans: TraceEnvelope['spans']): TraceEnvelope {
   };
 }
 
+test('storyFromTrace titula cue applied y motivo de despedida', () => {
+  const story = storyFromTrace(
+    trace([
+      span('turn.started', { surface: 'registered' }),
+      span('experience.evaluated', {
+        mode: 'applied',
+        cue: 'close_explicit',
+        reason: 'explicit_farewell',
+      }),
+      span('turn.completed'),
+    ])
+  );
+  assert.equal(story.experienceMode, 'applied');
+  assert.equal(story.cue, 'close_explicit');
+  assert.equal(story.reason, 'explicit_farewell');
+  assert.match(story.headline, /Aplicó cerrar/i);
+  assert.match(story.headline, /despedida explícita/i);
+});
+
 test('storyFromTrace muestra carry familiar y mute soft_landing sin texto', () => {
   const story = storyFromTrace(
     trace([

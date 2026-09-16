@@ -11,6 +11,8 @@ export type TurnReading = {
   muteFlags: string[];
   familyCarried: boolean;
   cue: string | null;
+  experienceMode: string | null;
+  reason: string | null;
   safetyRoute: string | null;
 };
 
@@ -90,8 +92,19 @@ export function muteHeadline(flags: string[]): string {
   return `Silenció ${flags.map(muteFlagLabel).join(', ')}.`;
 }
 
+export function experienceHeadline(
+  story: Pick<TurnReading, 'cue' | 'experienceMode' | 'reason'>
+): string {
+  if (!story.cue || story.cue === 'unspecified') return '';
+  const verb = story.experienceMode === 'applied' ? 'Aplicó' : 'Anotó';
+  const reason = story.reason && story.reason !== 'insufficient_signal' ? ` (${choiceLabel(story.reason).toLowerCase()})` : '';
+  return `${verb} ${choiceLabel(story.cue).toLowerCase()}${reason}.`;
+}
+
 export function turnHeadline(story: TurnReading): string {
-  return [engineHeadline(story), extrasHeadline(story), muteHeadline(story.muteFlags)].filter(Boolean).join(' ');
+  return [engineHeadline(story), extrasHeadline(story), experienceHeadline(story), muteHeadline(story.muteFlags)]
+    .filter(Boolean)
+    .join(' ');
 }
 
 export function extrasTone(story: Pick<TurnReading, 'extrasMode' | 'extrasApplied'>): 'ok' | 'watch' | undefined {
@@ -127,6 +140,16 @@ export function turnSignals(story: TurnReading): TurnSignal[] {
       id: 'experience',
       label: 'Forma',
       value: choiceLabel(story.cue),
+      hint: [
+        story.experienceMode === 'applied'
+          ? 'Aplicó al prompt'
+          : story.experienceMode === 'shadow'
+            ? 'Solo observó'
+            : null,
+        story.reason && story.reason !== 'insufficient_signal' ? choiceLabel(story.reason) : null,
+      ]
+        .filter(Boolean)
+        .join(' · ') || undefined,
     },
     {
       id: 'mute',

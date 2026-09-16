@@ -101,7 +101,7 @@ export const FAMILY_CARRIED_TURN: TraceEnvelope = turn({
     'experience.planned': { modality: 'chat', conversionSuppression: 'none' },
     'persona.snapshotted': { personaGrant: 'allow' },
     'trajectory.estimated': { directionBand: 'steady' },
-    'experience.evaluated': { cue: 'listen', mode: 'shadow' },
+    'experience.evaluated': { cue: 'listen', mode: 'shadow', reason: 'high_activation' },
     'extras.evaluated': {
       mode: 'shadow',
       decision: 'suppress',
@@ -158,7 +158,7 @@ export const SOFT_LANDING_APPLIED_TURN: TraceEnvelope = turn({
     'experience.planned': { modality: 'chat', conversionSuppression: 'none' },
     'persona.snapshotted': { personaGrant: 'allow' },
     'trajectory.estimated': { directionBand: 'easing' },
-    'experience.evaluated': { cue: 'listen', mode: 'shadow' },
+    'experience.evaluated': { cue: 'listen', mode: 'shadow', reason: 'high_activation' },
     'extras.evaluated': {
       mode: 'applied',
       decision: 'allow',

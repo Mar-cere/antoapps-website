@@ -38,6 +38,7 @@ export function TurnPicker({ traces, selectedId, onSelect }: TurnPickerProps) {
             <span className="turn-extra">{pickerExtrasLine(story)}</span>
             <span className="s">
               {formatTurnWhen(trace.started_at)} · {factLabel(story.surface)}
+              {story.cue && story.cue !== 'unspecified' ? ` · ${choiceLabel(story.cue)}` : ''}
               {domain ? ` · ${domain}` : ''}
             </span>
             <MuteChips flags={story.muteFlags} />

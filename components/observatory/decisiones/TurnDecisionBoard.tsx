@@ -65,7 +65,7 @@ export function TurnDecisionBoard({
         <p className="decision-choice">{choiceLabel(story.cue)}</p>
         <dl className="col-facts">
           <div>
-            <dt>Cue</dt>
+            <dt>Modo</dt>
             <dd>
               {story.experienceMode === 'applied'
                 ? 'Aplicó la forma'
@@ -73,6 +73,10 @@ export function TurnDecisionBoard({
                   ? 'Observó'
                   : factLabel(story.experienceMode)}
             </dd>
+          </div>
+          <div>
+            <dt>Motivo</dt>
+            <dd>{factLabel(story.reason)}</dd>
           </div>
           <div>
             <dt>Canal</dt>
@@ -138,7 +142,7 @@ export function TurnDecisionBoard({
               {story.extrasReasonCodes.length > 0 ? (
                 <div>
                   <dt>Motivos</dt>
-                  <dd>{story.extrasReasonCodes.join(' · ')}</dd>
+                  <dd>{factLabel(story.extrasReasonCodes)}</dd>
                 </div>
               ) : null}
             </dl>

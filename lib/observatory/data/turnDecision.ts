@@ -106,6 +106,8 @@ function headlineFor(story: {
   muteFlags: string[];
   familyCarried: boolean;
   cue: string | null;
+  experienceMode: string | null;
+  reason: string | null;
   safetyRoute: string | null;
 }): string {
   return turnHeadline(story);
@@ -137,6 +139,8 @@ export function storyFromTrace(trace: TraceEnvelope): TurnDecisionStory {
   const split = Boolean(engineChoice && shadowChoice && engineChoice !== shadowChoice);
   const familyCarried = extrasActiveDomain === 'family' && extrasDomainSource === 'carried';
   const cue = str(evaluated, 'cue');
+  const experienceMode = str(evaluated, 'mode');
+  const reason = str(evaluated, 'reason');
   const safetyRoute = str(safety, 'safetyRoute') ?? str(engine, 'safetyRoute') ?? str(started, 'safetyRoute');
   const pathTypes = new Set<string>(DECISION_PATH_EVENTS);
   const path = PIPELINE_EVENTS.map((name) => trace.spans.find((span) => span.canonical_name === name)).filter(
@@ -156,6 +160,8 @@ export function storyFromTrace(trace: TraceEnvelope): TurnDecisionStory {
     muteFlags,
     familyCarried,
     cue,
+    experienceMode,
+    reason,
     safetyRoute,
   };
 
@@ -171,7 +177,6 @@ export function storyFromTrace(trace: TraceEnvelope): TurnDecisionStory {
     shadowDeliberation: str(shadow, 'deliberation'),
     modality: str(planned, 'modality'),
     conversionSuppression: str(planned, 'conversionSuppression'),
-    experienceMode: str(evaluated, 'mode'),
     extrasMode,
     extrasDecision,
     extrasApplied,
@@ -198,7 +203,8 @@ export function storyFromTrace(trace: TraceEnvelope): TurnDecisionStory {
     directionBand: str(trajectory, 'directionBand'),
     claimType: str(state, 'claimType'),
     cue,
-    reason: str(evaluated, 'reason'),
+    reason,
+    experienceMode,
     ttftMs: num(completed, 'ttftMs'),
     surface: str(started, 'surface') ?? trace.surface ?? null,
     transport: str(started, 'transport') ?? trace.transport ?? null,
