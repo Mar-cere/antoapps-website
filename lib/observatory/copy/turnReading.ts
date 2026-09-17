@@ -42,7 +42,7 @@ export function extrasOutcomeLabel(story: Pick<TurnReading, 'extrasMode' | 'extr
     if (story.extrasApplied === true) {
       return story.extrasDecision === 'suppress' ? 'Llegó al chat y se silenció' : 'Llegó al chat';
     }
-    return story.extrasDecision === 'suppress' ? 'No insertó; habría silenciado' : 'No insertó extra';
+    return story.extrasDecision === 'suppress' ? 'No insertó; silenció' : 'No insertó extra';
   }
   return story.extrasMode;
 }

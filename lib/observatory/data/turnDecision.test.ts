@@ -60,6 +60,23 @@ test('storyFromTrace titula cue applied y motivo de despedida', () => {
   assert.match(story.headline, /despedida explícita/i);
 });
 
+test('extras applied y suppress no usa el condicional de sombra', () => {
+  const story = storyFromTrace(
+    trace([
+      span('turn.started', { surface: 'registered' }),
+      span('extras.evaluated', {
+        mode: 'applied',
+        decision: 'suppress',
+        applied: false,
+        activeDomain: 'family',
+        domainSource: 'current',
+      }),
+    ])
+  );
+  assert.match(story.headline, /No insertó; silenció/);
+  assert.equal(story.headline.includes('habría silenciado'), false);
+});
+
 test('storyFromTrace muestra carry familiar y mute soft_landing sin texto', () => {
   const story = storyFromTrace(
     trace([
