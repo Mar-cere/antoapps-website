@@ -38,7 +38,7 @@ export default function HomeV2PageContent({
 
   return (
     <LocaleProvider locale={locale}>
-      <div className="home-v2-shell">
+      <div className="home-v2-shell home-v2-shell--nexus-dark">
         <ClientInitializer />
         <HomeMinimalNav
           locale={locale}

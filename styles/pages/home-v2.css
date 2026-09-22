@@ -6,37 +6,31 @@
 @import '../components/premium-store-cta.css';
 
 .home-v2-shell {
-  /* Nexus dark token overrides — scoped to home only */
-  --color-primary: #22d3ee;
-  --color-primary-hover: #2de1f5;
-  --color-primary-light: rgba(34, 211, 238, 0.12);
-  --color-primary-lightest: rgba(34, 211, 238, 0.18);
-  --color-primary-dark: #1bbdd8;
-  --color-secondary: #8b5cf6;
-  --color-secondary-hover: #9d6ff7;
-  --color-secondary-light: rgba(139, 92, 246, 0.12);
-  --color-bg-primary: #020711;
-  --color-bg-secondary: #030a18;
-  --color-bg-tertiary: #04101f;
-  --color-bg-dark: #020711;
-  --color-bg-darker: #010409;
-  --color-text-secondary: rgba(244, 247, 251, 0.62);
-  --color-text-tertiary: rgba(244, 247, 251, 0.42);
-  --color-text-disabled: rgba(244, 247, 251, 0.30);
-  --color-text-muted: rgba(244, 247, 251, 0.62);
-  --color-text-on-primary: #020711;
-  --color-link: #22d3ee;
-  --color-link-hover: #2de1f5;
-
-  /* Home-specific layout tokens */
   --home-v2-radius: 0.5rem;
   --home-v2-radius-media: 0.85rem;
-  --home-v2-hairline: rgba(255, 255, 255, 0.08);
-  --home-v2-hairline-strong: rgba(255, 255, 255, 0.12);
+  --home-v2-hairline: rgba(255, 255, 255, 0.09);
+  --home-v2-hairline-strong: rgba(255, 255, 255, 0.14);
   --home-v2-section-y: clamp(3.25rem, 7.5vh, 5.25rem);
   --home-v2-section-y-sm: clamp(2.5rem, 5.5vh, 3.25rem);
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
+}
+
+/* Nexus dark colors — ONLY for home page */
+.home-v2-shell--nexus-dark {
+  --color-primary: #22d3ee;
+  --color-primary-hover: #2de1f5;
+  --color-primary-light: rgba(34, 211, 238, 0.12);
+  --color-bg-primary: #020711;
+  --color-bg-secondary: #030a18;
+  --color-bg-tertiary: #04101f;
+  --color-text-secondary: rgba(244, 247, 251, 0.62);
+  --color-text-tertiary: rgba(244, 247, 251, 0.42);
+  --color-text-muted: rgba(244, 247, 251, 0.62);
+  --color-text-on-primary: #020711;
+  --home-v2-hairline: rgba(255, 255, 255, 0.08);
+  --home-v2-hairline-strong: rgba(255, 255, 255, 0.12);
+  background: #020711;
 }
 
 .home-v2-shell .home-landing-nav {
