@@ -226,20 +226,20 @@ body:has(.nexus-page) {
   align-items: center;
   justify-content: center;
   height: 2.5rem;
-  padding: 0 1rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 0 0.5rem;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 0.5rem;
-  color: var(--nexus-text);
   text-decoration: none;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .nexus-hero__store-badge:hover,
 .nexus-invite__store-badge:hover,
 .nexus-product-proof__store-badge:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.24);
+  background: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .nexus-hero__store-badge:focus-visible,
@@ -249,12 +249,12 @@ body:has(.nexus-page) {
   outline-offset: 3px;
 }
 
-.nexus-hero__store-icon,
-.nexus-invite__store-icon,
-.nexus-product-proof__store-icon {
-  width: 5.5rem;
-  height: auto;
-  opacity: 0.9;
+.nexus-hero__store-img,
+.nexus-invite__store-img,
+.nexus-product-proof__store-img {
+  height: 100%;
+  width: auto;
+  display: block;
 }
 
 .nexus-hero__try,
@@ -606,7 +606,7 @@ body:has(.nexus-page) {
   .nexus-invite__inner {
     position: sticky;
     isolation: isolate;
-    top: calc(4.25rem + env(safe-area-inset-top, 0px) + 5vh);
+    top: calc(4.25rem + env(safe-area-inset-top, 0px) + 1.5rem);
     padding-right: 1.25rem;
     padding-top: 0.25rem;
     padding-bottom: 6vh;
@@ -818,6 +818,10 @@ body:has(.nexus-page) {
   padding: clamp(3rem, 8vh, 5rem) var(--nexus-pad-x) clamp(2rem, 6vh, 3.5rem);
   background: transparent;
   scroll-margin-top: calc(4.25rem + env(safe-area-inset-top, 0px) + 1rem);
+}
+
+.nexus-page:has(.cookie-consent.show) .nexus-product-proof {
+  padding-bottom: clamp(5rem, 10vh, 7rem);
 }
 
 .nexus-product-proof__content {
