@@ -146,7 +146,7 @@ export default function NexusWorld({ locale, copy }: NexusWorldProps) {
           <div className="nexus-hero__ctas">
             <div className="nexus-hero__stores">
               <a
-                href="https://apps.apple.com/app/anto/id6670394042"
+                href="https://apps.apple.com/app/anto/id6756631911"
                 className="nexus-hero__store-badge"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -211,7 +211,7 @@ export default function NexusWorld({ locale, copy }: NexusWorldProps) {
           <div className="nexus-invite__ctas">
             <div className="nexus-invite__stores">
               <a
-                href="https://apps.apple.com/app/anto/id6670394042"
+                href="https://apps.apple.com/app/anto/id6756631911"
                 className="nexus-invite__store-badge"
                 target="_blank"
                 rel="noopener noreferrer"
