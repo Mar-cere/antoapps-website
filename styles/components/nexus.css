@@ -219,42 +219,8 @@ body:has(.nexus-page) {
   flex-wrap: wrap;
 }
 
-.nexus-hero__store-badge,
-.nexus-invite__store-badge,
-.nexus-product-proof__store-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.5rem;
-  padding: 0 0.5rem;
-  background: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 0.5rem;
-  text-decoration: none;
-  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.nexus-hero__store-badge:hover,
-.nexus-invite__store-badge:hover,
-.nexus-product-proof__store-badge:hover {
-  background: #fff;
-  border-color: rgba(255, 255, 255, 0.28);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.nexus-hero__store-badge:focus-visible,
-.nexus-invite__store-badge:focus-visible,
-.nexus-product-proof__store-badge:focus-visible {
-  outline: 2px solid var(--nexus-cyan);
-  outline-offset: 3px;
-}
-
-.nexus-hero__store-img,
-.nexus-invite__store-img,
-.nexus-product-proof__store-img {
-  height: 100%;
-  width: auto;
-  display: block;
+.nexus-store-cta {
+  max-width: 20rem;
 }
 
 .nexus-hero__try,

@@ -7,8 +7,7 @@ import type { Locale } from '@/lib/i18n/config';
 import type { NexusActiveBeat, NexusPageCopy } from '@/lib/i18n/copy/pages/nexus';
 import { NEXUS_CONSTELLATION_PLATE, NEXUS_CONSTELLATION_PLATE_PNG } from '@/lib/nexus/field';
 import { appStoreHref, googlePlayHref } from '@/lib/download-links';
-import AppStoreBadge from '@/components/AppStoreBadge';
-import GooglePlayBadge from '@/components/GooglePlayBadge';
+import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
 import NexusProductProof from '@/components/nexus/NexusProductProof';
 
 const NexusOrganism = dynamic(() => import('@/components/nexus/NexusOrganism'), {
@@ -148,24 +147,30 @@ export default function NexusWorld({ locale, copy }: NexusWorldProps) {
 
           <div className="nexus-hero__ctas">
             <div className="nexus-hero__stores">
-              <a
-                href={appStoreHref()}
-                className="nexus-hero__store-badge"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={copy.hero.storeApp}
-              >
-                <AppStoreBadge locale={locale} className="nexus-hero__store-img" priority />
-              </a>
-              <a
-                href={googlePlayHref(locale)}
-                className="nexus-hero__store-badge"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={copy.hero.storeGoogle}
-              >
-                <GooglePlayBadge locale={locale} className="nexus-hero__store-img" priority />
-              </a>
+              <PremiumStoreCta
+                store="apple"
+                storeHref={appStoreHref()}
+                storeLabel={locale === 'es' ? 'Descargar en' : 'Download on the'}
+                storeName="App Store"
+                badge={locale === 'es' ? '1 día gratis' : '1 day free'}
+                ariaLabel={copy.hero.storeApp}
+                trackingPlacement="nexus_hero_app_store"
+                trackingPage="/nexus"
+                trackingLabel="nexus_hero_ios"
+                className="nexus-store-cta"
+              />
+              <PremiumStoreCta
+                store="google"
+                storeHref={googlePlayHref(locale)}
+                storeLabel={locale === 'es' ? 'Disponible en' : 'Get it on'}
+                storeName="Google Play"
+                badge={locale === 'es' ? '1 día gratis' : '1 day free'}
+                ariaLabel={copy.hero.storeGoogle}
+                trackingPlacement="nexus_hero_play_store"
+                trackingPage="/nexus"
+                trackingLabel="nexus_hero_android"
+                className="nexus-store-cta"
+              />
             </div>
             <Link href={copy.hero.tryHref} className="nexus-hero__try">
               {copy.hero.tryOutline}
@@ -199,24 +204,30 @@ export default function NexusWorld({ locale, copy }: NexusWorldProps) {
           </h2>
           <div className="nexus-invite__ctas">
             <div className="nexus-invite__stores">
-              <a
-                href={appStoreHref()}
-                className="nexus-invite__store-badge"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={copy.invite.storeApp}
-              >
-                <AppStoreBadge locale={locale} className="nexus-invite__store-img" />
-              </a>
-              <a
-                href={googlePlayHref(locale)}
-                className="nexus-invite__store-badge"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={copy.invite.storeGoogle}
-              >
-                <GooglePlayBadge locale={locale} className="nexus-invite__store-img" />
-              </a>
+              <PremiumStoreCta
+                store="apple"
+                storeHref={appStoreHref()}
+                storeLabel={locale === 'es' ? 'Descargar en' : 'Download on the'}
+                storeName="App Store"
+                badge={locale === 'es' ? '1 día gratis' : '1 day free'}
+                ariaLabel={copy.invite.storeApp}
+                trackingPlacement="nexus_invite_app_store"
+                trackingPage="/nexus"
+                trackingLabel="nexus_invite_ios"
+                className="nexus-store-cta"
+              />
+              <PremiumStoreCta
+                store="google"
+                storeHref={googlePlayHref(locale)}
+                storeLabel={locale === 'es' ? 'Disponible en' : 'Get it on'}
+                storeName="Google Play"
+                badge={locale === 'es' ? '1 día gratis' : '1 day free'}
+                ariaLabel={copy.invite.storeGoogle}
+                trackingPlacement="nexus_invite_play_store"
+                trackingPage="/nexus"
+                trackingLabel="nexus_invite_android"
+                className="nexus-store-cta"
+              />
             </div>
             <Link href={copy.invite.tryHref} className="nexus-invite__try">
               {copy.invite.tryOutline}

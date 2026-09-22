@@ -6,8 +6,7 @@ import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
 import type { NexusProductProofCopy, NexusTabId } from '@/lib/i18n/copy/pages/nexus';
 import { appStoreHref, googlePlayHref } from '@/lib/download-links';
-import AppStoreBadge from '@/components/AppStoreBadge';
-import GooglePlayBadge from '@/components/GooglePlayBadge';
+import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
 
 type NexusProductProofProps = {
   locale: Locale;
@@ -142,24 +141,30 @@ const NexusProductProof = forwardRef<HTMLElement, NexusProductProofProps>(
 
         <div className="nexus-product-proof__cta-section">
           <div className="nexus-product-proof__stores">
-            <a
-              href={appStoreHref()}
-              className="nexus-product-proof__store-badge"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={storeApp}
-            >
-              <AppStoreBadge locale={locale} className="nexus-product-proof__store-img" />
-            </a>
-            <a
-              href={googlePlayHref(locale)}
-              className="nexus-product-proof__store-badge"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={storeGoogle}
-            >
-              <GooglePlayBadge locale={locale} className="nexus-product-proof__store-img" />
-            </a>
+            <PremiumStoreCta
+              store="apple"
+              storeHref={appStoreHref()}
+              storeLabel={locale === 'es' ? 'Descargar en' : 'Download on the'}
+              storeName="App Store"
+              badge={locale === 'es' ? '1 día gratis' : '1 day free'}
+              ariaLabel={storeApp}
+              trackingPlacement="nexus_product_proof_app_store"
+              trackingPage="/nexus"
+              trackingLabel="nexus_product_proof_ios"
+              className="nexus-store-cta"
+            />
+            <PremiumStoreCta
+              store="google"
+              storeHref={googlePlayHref(locale)}
+              storeLabel={locale === 'es' ? 'Disponible en' : 'Get it on'}
+              storeName="Google Play"
+              badge={locale === 'es' ? '1 día gratis' : '1 day free'}
+              ariaLabel={storeGoogle}
+              trackingPlacement="nexus_product_proof_play_store"
+              trackingPage="/nexus"
+              trackingLabel="nexus_product_proof_android"
+              className="nexus-store-cta"
+            />
           </div>
           <Link href={tryHref} className="nexus-product-proof__try">
             {tryOutline}
