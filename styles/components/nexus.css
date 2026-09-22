@@ -572,7 +572,7 @@ body:has(.nexus-page) {
   .nexus-invite__inner {
     position: sticky;
     isolation: isolate;
-    top: calc(4.25rem + env(safe-area-inset-top, 0px) + 1.5rem);
+    top: calc(4.25rem + env(safe-area-inset-top, 0px) + 2rem);
     padding-right: 1.25rem;
     padding-top: 0.25rem;
     padding-bottom: 6vh;
@@ -786,8 +786,20 @@ body:has(.nexus-page) {
   scroll-margin-top: calc(4.25rem + env(safe-area-inset-top, 0px) + 1rem);
 }
 
-.nexus-page:has(.cookie-consent.show) .nexus-product-proof {
-  padding-bottom: clamp(5rem, 10vh, 7rem);
+.nexus-page:has(.cookie-consent.show) {
+  --nexus-cookie-dock: 4.5rem;
+  padding-bottom: var(--nexus-cookie-dock);
+}
+
+.nexus-page:has(.cookie-consent.show) .nexus-product-proof,
+.nexus-page:has(.cookie-consent.show) .nexus-invite {
+  padding-bottom: calc(2rem + var(--nexus-cookie-dock));
+}
+
+@media (max-width: 767px) {
+  .nexus-page:has(.cookie-consent.show) {
+    --nexus-cookie-dock: 5rem;
+  }
 }
 
 .nexus-product-proof__content {
