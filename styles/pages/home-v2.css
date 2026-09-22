@@ -17,7 +17,7 @@
 }
 
 /* Nexus dark colors — ONLY for home page */
-.home-v2-shell--nexus-dark {
+.home-v2-shell.home-v2-shell--nexus-dark {
   --color-primary: #22d3ee;
   --color-primary-hover: #2de1f5;
   --color-primary-light: rgba(34, 211, 238, 0.12);
@@ -30,7 +30,8 @@
   --color-text-on-primary: #020711;
   --home-v2-hairline: rgba(255, 255, 255, 0.08);
   --home-v2-hairline-strong: rgba(255, 255, 255, 0.12);
-  background: #020711;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
 .home-v2-shell .home-landing-nav {
