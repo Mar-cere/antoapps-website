@@ -683,6 +683,18 @@ body:has(.nexus-page) {
   .nexus-product-proof__panels {
     min-height: 24rem;
   }
+
+  .nexus-product-proof__panel {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .nexus-product-proof__phone {
+    max-width: 22rem;
+    margin: 0;
+  }
 }
 
 @media (max-width: 767px) {
@@ -955,9 +967,16 @@ body:has(.nexus-page) {
 
 .nexus-product-proof__phone {
   position: relative;
-  max-width: 22rem;
-  margin: 0 auto;
-  display: none;
+  max-width: 18rem;
+  margin: 1.5rem auto 0;
+}
+
+.nexus-product-proof__phone-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2.25rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .nexus-product-proof__cta-section {

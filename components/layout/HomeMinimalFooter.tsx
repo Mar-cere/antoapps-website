@@ -30,14 +30,14 @@ export default function HomeMinimalFooter({
         <Link href={homeHref} className="home-landing-footer__brand" aria-label={copy.minimalNav.logoAria}>
           <span className="home-landing-footer__icon" aria-hidden="true">
             <Image
-              src="/assets/images/antoIcon.png"
+              src="/assets/images/brand/anto-icon-loop.png"
               alt=""
               width={28}
               height={28}
               className="home-landing-footer__logo"
             />
           </span>
-          <span className="home-landing-footer__name">Anto</span>
+          <span className="home-landing-footer__name">anto.</span>
         </Link>
         <nav className="home-landing-footer__links" aria-label={minimalFooter.linksAria}>
           {minimalFooter.links.map((link) => (
