@@ -120,7 +120,7 @@ const versionsEs: ChangelogVersion[] = [
       {
         type: 'improvement',
         description:
-          'Análisis emocional ampliado: detección de anhedonia adolescente, imagen corporal y bullying',
+          'Análisis emocional ampliado: reconoce desmotivación, preocupaciones con la imagen y experiencias de acoso',
       },
       {
         type: 'improvement',
@@ -235,13 +235,13 @@ const versionsEs: ChangelogVersion[] = [
     date: '2026-01-08',
     status: 'stable',
     highlights: [
-      'Detección avanzada de distorsiones cognitivas (15 tipos)',
+      'Reconocimiento de patrones de pensamiento (15 tipos)',
       'Optimizaciones móviles avanzadas',
     ],
     changes: [
       {
         type: 'feature',
-        description: 'Detección automática de 15 tipos de distorsiones cognitivas durante las conversaciones',
+        description: 'Reconocimiento de 15 patrones de pensamiento comunes durante las conversaciones',
       },
       {
         type: 'improvement',
@@ -372,7 +372,7 @@ const versionsEn: ChangelogVersion[] = [
       {
         type: 'improvement',
         description:
-          'Expanded emotional analysis: adolescent anhedonia, body image, and bullying detection',
+          'Expanded emotional analysis: recognizes loss of motivation, body image concerns, and bullying experiences',
       },
       {
         type: 'improvement',
@@ -474,13 +474,13 @@ const versionsEn: ChangelogVersion[] = [
     date: '2026-01-08',
     status: 'stable',
     highlights: [
-      'Advanced detection of cognitive distortions (15 types)',
+      'Recognition of thinking patterns (15 types)',
       'Advanced mobile optimizations',
     ],
     changes: [
       {
         type: 'feature',
-        description: 'Automatic detection of 15 types of cognitive distortions during conversations',
+        description: 'Recognition of 15 common thinking patterns during conversations',
       },
       {
         type: 'improvement',
