@@ -72,7 +72,7 @@ const versionsEs: ChangelogVersion[] = [
     date: '2026-06-23',
     status: 'stable',
     highlights: [
-      `Versión 1.5.0 (Expo) — línea actual en tiendas (iOS build 39, Android 25)`,
+      `Versión 1.5.0 (Expo) — iOS build 39, Android 25`,
       'Home y dashboard rediseñados con insights rotativos y foco unificado',
       'Sesión persistente, onboarding renovado y grafo conectado al chat',
     ],
@@ -324,7 +324,7 @@ const versionsEn: ChangelogVersion[] = [
     date: '2026-06-23',
     status: 'stable',
     highlights: [
-      `Version 1.5.0 (Expo) — current store release (iOS build 39, Android 25)`,
+      `Version 1.5.0 (Expo) — iOS build 39, Android 25`,
       'Redesigned home and dashboard with rotating insights and unified focus',
       'Persistent session, renewed onboarding, and graph connected to chat',
     ],
