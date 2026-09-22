@@ -7,7 +7,6 @@ export const NEXUS_OG_CONTENT_TYPE = 'image/png';
 
 export function nexusOpenGraphImage(locale: Locale) {
   const copy = getNexusPageCopy(locale);
-  const headline = `${copy.hero.line1} ${copy.hero.line2} ${copy.hero.line3Prefix}${copy.hero.highlight}`;
 
   return new ImageResponse(
     (
@@ -36,7 +35,7 @@ export function nexusOpenGraphImage(locale: Locale) {
               color: 'rgba(244,247,251,0.55)',
             }}
           >
-            {copy.hero.eyebrow}
+            Nexus
           </span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 780 }}>
@@ -48,10 +47,10 @@ export function nexusOpenGraphImage(locale: Locale) {
               letterSpacing: '-0.035em',
             }}
           >
-            {headline}
+            {copy.hero.title}
           </div>
           <div style={{ fontSize: 22, lineHeight: 1.45, color: 'rgba(244,247,251,0.62)', maxWidth: 640 }}>
-            {copy.hero.supportLines.join(' ')}
+            {copy.hero.dek}
           </div>
         </div>
         <div
@@ -71,7 +70,7 @@ export function nexusOpenGraphImage(locale: Locale) {
               background: '#22D3EE',
             }}
           />
-          <span>{copy.status.active}</span>
+          <span>Sistema activo</span>
         </div>
       </div>
     ),

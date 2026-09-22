@@ -15,14 +15,23 @@ export type NexusEventCopy = {
   subtitle: string;
 };
 
-export type NexusBeatId = 'memory' | 'pattern' | 'strategy';
+export type NexusTabId = 'without-thread' | 'with-memory';
 
-export type NexusActiveBeat = 'hero' | NexusBeatId | 'after';
+export type NexusActiveBeat = 'hero' | 'product-proof' | 'after';
 
-export type NexusBeatCopy = {
-  id: NexusBeatId;
+export type NexusTabCopy = {
+  id: NexusTabId;
+  label: string;
+  description: string;
+};
+
+export type NexusProductProofCopy = {
+  kicker: string;
   title: string;
-  paragraphs: readonly string[];
+  dek: string;
+  tabs: readonly NexusTabCopy[];
+  userMessage: string;
+  replies: readonly [string, string];
 };
 
 export type NexusTrustItem = {
@@ -55,30 +64,24 @@ export type NexusPageCopy = {
     ctaHref: string;
   };
   hero: {
-    eyebrow: string;
-    line1: string;
-    line2: string;
-    line3Prefix: string;
-    highlight: string;
-    supportLines: readonly string[];
+    title: string;
+    dek: string;
+    storeApp: string;
+    storeGoogle: string;
+    tryOutline: string;
+    tryHref: string;
+    micro: string;
+    demoLink: string;
+    demoHref: string;
   };
-  status: {
-    active: string;
-    thinking: string;
-    liveAria: string;
-  };
-  sequence: {
-    aria: string;
-    beats: readonly NexusBeatCopy[];
-  };
-  bridge: {
-    lead: string;
-    promise: string;
-  };
+  productProof: NexusProductProofCopy;
   invite: {
     title: string;
-    cta: string;
-    ctaHref: string;
+    storeApp: string;
+    storeGoogle: string;
+    tryOutline: string;
+    tryHref: string;
+    micro: string;
     limit: string;
   };
   trust: {
@@ -120,61 +123,45 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       ctaHref: localePath('es', '/bienvenida'),
     },
     hero: {
-      eyebrow: 'Inside Anto Nexus',
-      line1: 'Cada conversación',
-      line2: 'forma la inteligencia',
-      line3Prefix: 'que ',
-      highlight: 'te comprende.',
-      supportLines: [
-        'Lo que ya contaste entra en esta respuesta.',
-        'No parte de un mensaje aislado.',
-      ],
+      title: 'No empiezas de cero cada noche.',
+      dek: 'Lo que ya contaste entra en esta respuesta. No parte de un mensaje aislado.',
+      storeApp: 'Descargar en App Store',
+      storeGoogle: 'Disponible en Google Play',
+      tryOutline: 'Probar Anto',
+      tryHref: localePath('es', '/bienvenida'),
+      micro: '1 día gratis · Sin tarjeta · Cancela cuando quieras',
+      demoLink: 'O mira cómo empieza',
+      demoHref: '#mismo-mensaje',
     },
-    status: {
-      active: 'Sistema activo',
-      thinking: 'Nexus está pensando',
-      liveAria: 'Estado del sistema: activo. Nexus está pensando.',
-    },
-    sequence: {
-      aria: 'Cómo Nexus recupera el hilo, nombra lo que se repite y elige un paso',
-      beats: [
+    productProof: {
+      kicker: 'En el teléfono',
+      title: 'El mismo mensaje. Dos noches distintas.',
+      dek: 'Anto no inventa quién eres. Usa lo que ya abriste.',
+      tabs: [
         {
-          id: 'memory',
-          title: 'Recupera el hilo',
-          paragraphs: [
-            'El insomnio de anoche. La conversación que no cerraste.',
-            'Antes de responder, consulta el historial y la memoria de temas que ya abriste.',
-            'La continuidad vale entre sesiones, no solo dentro de este chat.',
-          ],
+          id: 'without-thread',
+          label: 'Sin hilo',
+          description: 'Como si fuera la primera vez.',
         },
         {
-          id: 'pattern',
-          title: 'Nombra lo que se repite',
-          paragraphs: [
-            'La misma prisa al anochecer. El mismo nudo cuando hablas de casa.',
-            'Cruza los temas que vuelven en el proceso. No te asigna un tipo; nombra el hábito que se activó ahora.',
-            'Así responde al estado actual, no solo a esta frase.',
-          ],
-        },
-        {
-          id: 'strategy',
-          title: 'Elige el siguiente paso',
-          paragraphs: [
-            'Una pregunta precisa. Un límite. Un paso que se puede dar ahora.',
-            'Con ese contexto selecciona un micro-paso o un ejercicio del hub de técnicas, según este momento.',
-            'No genera un discurso ni un protocolo clínico.',
-          ],
+          id: 'with-memory',
+          label: 'Con memoria',
+          description: 'Con lo de anoche todavía vivo.',
         },
       ],
-    },
-    bridge: {
-      lead: 'Cada turno se escribe sobre el historial, la recurrencia y el paso elegido.',
-      promise: 'Por eso no vuelves a empezar de cero.',
+      userMessage: 'No puedo dormir. Presentación el viernes y la cabeza no para.',
+      replies: [
+        'Suena agotador. ¿Qué pesa más ahora?',
+        'Anoche también te costó dormir por la presentación. Esta noche solo abre la primera diapositiva. Dos minutos.',
+      ],
     },
     invite: {
       title: 'Cuando quieras, empieza.',
-      cta: 'Probar Anto',
-      ctaHref: localePath('es', '/bienvenida'),
+      storeApp: 'Descargar en App Store',
+      storeGoogle: 'Disponible en Google Play',
+      tryOutline: 'Probar Anto',
+      tryHref: localePath('es', '/bienvenida'),
+      micro: '1 día gratis · Sin tarjeta · Cancela cuando quieras',
       limit: 'Anto no sustituye terapia ni atención clínica.',
     },
     trust: {
@@ -236,61 +223,45 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       ctaHref: localePath('en', '/bienvenida'),
     },
     hero: {
-      eyebrow: 'Inside Anto Nexus',
-      line1: 'Every conversation',
-      line2: 'shapes the intelligence',
-      line3Prefix: 'that ',
-      highlight: 'understands you.',
-      supportLines: [
-        'What you already shared enters this reply.',
-        'It does not start from an isolated message.',
-      ],
+      title: "You don't start from scratch every night.",
+      dek: 'What you already shared enters this reply. It does not start from an isolated message.',
+      storeApp: 'Download on the App Store',
+      storeGoogle: 'Get it on Google Play',
+      tryOutline: 'Try Anto',
+      tryHref: localePath('en', '/bienvenida'),
+      micro: '1 day free · No card · Cancel anytime',
+      demoLink: 'Or see how it starts',
+      demoHref: '#same-message',
     },
-    status: {
-      active: 'System active',
-      thinking: 'Nexus is thinking',
-      liveAria: 'System status: active. Nexus is thinking.',
-    },
-    sequence: {
-      aria: 'How Nexus recovers the thread, names what repeats and chooses a next step',
-      beats: [
+    productProof: {
+      kicker: 'On the phone',
+      title: 'Same message. Two different nights.',
+      dek: "Anto doesn't invent who you are. It uses what you already opened.",
+      tabs: [
         {
-          id: 'memory',
-          title: 'Recovers the thread',
-          paragraphs: [
-            'Last night without sleep. The conversation you did not close.',
-            'Before it replies, it consults the history and the topic memory you already opened.',
-            'Continuity holds across sessions, not only inside this chat.',
-          ],
+          id: 'without-thread',
+          label: 'No thread',
+          description: 'As if it were the first time.',
         },
         {
-          id: 'pattern',
-          title: 'Names what repeats',
-          paragraphs: [
-            'The same rush at dusk. The same knot when home comes up.',
-            'It crosses themes that return in the process. It does not assign you a type; it names the habit that activated now.',
-            'That lets it answer the current state, not only this sentence.',
-          ],
-        },
-        {
-          id: 'strategy',
-          title: 'Chooses the next step',
-          paragraphs: [
-            'A precise question. A boundary. A step you can take now.',
-            'With that context it selects a micro-step or an exercise from the techniques hub, for this moment.',
-            'It does not generate a speech or a clinical protocol.',
-          ],
+          id: 'with-memory',
+          label: 'With memory',
+          description: 'With last night still alive.',
         },
       ],
-    },
-    bridge: {
-      lead: 'Each reply is written on the history, the recurrence and the step already chosen.',
-      promise: 'That is why you do not start from scratch again.',
+      userMessage: "Can't sleep. Presentation Friday and my head won't shut up.",
+      replies: [
+        'That sounds exhausting. What weighs most right now?',
+        'Last night sleep was hard because of the presentation too. Tonight just open slide one. Two minutes.',
+      ],
     },
     invite: {
       title: 'Start when you are ready.',
-      cta: 'Try Anto',
-      ctaHref: localePath('en', '/bienvenida'),
+      storeApp: 'Download on the App Store',
+      storeGoogle: 'Get it on Google Play',
+      tryOutline: 'Try Anto',
+      tryHref: localePath('en', '/bienvenida'),
+      micro: '1 day free · No card · Cancel anytime',
       limit: 'Anto does not replace therapy or clinical care.',
     },
     trust: {

@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import type { NexusActiveBeat, NexusBeatId, NexusPageCopy } from '@/lib/i18n/copy/pages/nexus';
+import type { Locale } from '@/lib/i18n/config';
+import type { NexusActiveBeat, NexusPageCopy } from '@/lib/i18n/copy/pages/nexus';
 import { NEXUS_CONSTELLATION_PLATE, NEXUS_CONSTELLATION_PLATE_PNG } from '@/lib/nexus/field';
-import NexusEventMark from '@/components/nexus/NexusEventMark';
+import NexusProductProof from '@/components/nexus/NexusProductProof';
 
 const NexusOrganism = dynamic(() => import('@/components/nexus/NexusOrganism'), {
   ssr: false,
@@ -22,19 +23,17 @@ const NexusOrganism = dynamic(() => import('@/components/nexus/NexusOrganism'), 
 });
 
 type NexusWorldProps = {
+  locale: Locale;
   copy: NexusPageCopy;
 };
 
-const SEQUENCE_BEATS: readonly NexusBeatId[] = ['memory', 'pattern', 'strategy'];
-
-export default function NexusWorld({ copy }: NexusWorldProps) {
+export default function NexusWorld({ locale, copy }: NexusWorldProps) {
   const [activeBeat, setActiveBeat] = useState<NexusActiveBeat>('hero');
   const [released, setReleased] = useState(false);
   const [tracking, setTracking] = useState(false);
   const [inviting, setInviting] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
-  const beatRefs = useRef<Partial<Record<NexusBeatId, HTMLElement | null>>>({});
-  const afterRef = useRef<HTMLDivElement>(null);
+  const productProofRef = useRef<HTMLElement>(null);
   const inviteRef = useRef<HTMLElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
 
@@ -44,14 +43,8 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
     if (heroRef.current) {
       items.push({ id: 'hero', el: heroRef.current });
     }
-    for (const id of SEQUENCE_BEATS) {
-      const el = beatRefs.current[id];
-      if (el) {
-        items.push({ id, el });
-      }
-    }
-    if (afterRef.current) {
-      items.push({ id: 'after', el: afterRef.current });
+    if (productProofRef.current) {
+      items.push({ id: 'product-proof', el: productProofRef.current });
     }
     if (inviteRef.current) {
       items.push({ id: 'after', el: inviteRef.current });
@@ -146,57 +139,65 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
       >
         <div className="nexus-copy">
           <h1 id="nexus-title" className="nexus-title">
-            <span className="nexus-title__line">{copy.hero.line1}</span>
-            <span className="nexus-title__line">{copy.hero.line2}</span>
-            <span className="nexus-title__line">
-              {copy.hero.line3Prefix}
-              <span className="nexus-highlight">{copy.hero.highlight}</span>
-            </span>
+            {copy.hero.title}
           </h1>
-          <p className="nexus-support">
-            {copy.hero.supportLines.map((line) => (
-              <span key={line}>{line}</span>
-            ))}
-          </p>
-        </div>
-      </section>
-      <section className="nexus-sequence" aria-label={copy.sequence.aria}>
-        {copy.sequence.beats.map((beat) => (
-          <article
-            key={beat.id}
-            ref={(el) => {
-              beatRefs.current[beat.id] = el;
-            }}
-            className="nexus-beat"
-            data-nexus-beat={beat.id}
-            data-event={beat.id}
-            aria-labelledby={`nexus-beat-${beat.id}`}
-          >
-            <div className="nexus-beat__copy">
-              <p className="nexus-beat__mark" aria-hidden="true">
-                <NexusEventMark id={beat.id} className="nexus-beat__icon" />
-              </p>
-              <h2 id={`nexus-beat-${beat.id}`} className="nexus-beat__title">
-                {beat.title}
-              </h2>
-              {beat.paragraphs.map((paragraph, index) => (
-                <p
-                  key={paragraph}
-                  className={index === 0 ? 'nexus-beat__body nexus-beat__lead' : 'nexus-beat__body'}
+          <p className="nexus-support">{copy.hero.dek}</p>
+
+          <div className="nexus-hero__ctas">
+            <div className="nexus-hero__stores">
+              <a
+                href="https://apps.apple.com/app/anto/id6670394042"
+                className="nexus-hero__store-badge"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="visually-hidden">{copy.hero.storeApp}</span>
+                <svg
+                  className="nexus-hero__store-icon"
+                  viewBox="0 0 120 40"
+                  fill="currentColor"
+                  aria-hidden="true"
                 >
-                  {paragraph}
-                </p>
-              ))}
+                  <path d="M110.135 0H9.865C9.425 0 8.99 0 8.55 0.002 8.185 0.005 7.822 0.011 7.455 0.019 6.632 0.034 5.812 0.096 5 0.205 4.189 0.317 3.395 0.54 2.642 0.868 1.891 1.199 1.196 1.643 0.582 2.185 0.064 2.625 0.002 3.105 0.002 3.592V36.408c0 0.487 0.062 0.967 0.58 1.407 0.614 0.542 1.309 0.986 2.06 1.317 0.753 0.328 1.547 0.551 2.358 0.663 0.812 0.109 1.632 0.171 2.455 0.186 0.367 0.008 0.73 0.014 1.095 0.017 0.44 0.002 0.875 0.002 1.315 0.002h100.27c0.435 0 0.865 0 1.3-0.002 0.361-0.003 0.73-0.009 1.09-0.017 0.822-0.015 1.642-0.077 2.455-0.186 0.81-0.112 1.604-0.335 2.355-0.663 0.753-0.331 1.448-0.775 2.065-1.317 0.518-0.44 0.58-0.92 0.58-1.407V3.592c0-0.487-0.062-0.967-0.58-1.407-0.617-0.542-1.312-0.986-2.065-1.317-0.751-0.328-1.545-0.551-2.355-0.663-0.813-0.109-1.633-0.171-2.455-0.186-0.36-0.008-0.729-0.014-1.09-0.017C111 0 110.57 0 110.135 0z" />
+                </svg>
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.anto.app"
+                className="nexus-hero__store-badge"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="visually-hidden">{copy.hero.storeGoogle}</span>
+                <svg
+                  className="nexus-hero__store-icon"
+                  viewBox="0 0 135 40"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M130 40H5c-2.8 0-5-2.2-5-5V5c0-2.8 2.2-5 5-5h125c2.8 0 5 2.2 5 5v30c0 2.8-2.2 5-5 5z" />
+                </svg>
+              </a>
             </div>
-          </article>
-        ))}
-        <div ref={afterRef} className="nexus-bridge" data-nexus-beat="after">
-          <div className="nexus-bridge__copy">
-            <p className="nexus-bridge__lead">{copy.bridge.lead}</p>
-            <p className="nexus-bridge__promise">{copy.bridge.promise}</p>
+            <Link href={copy.hero.tryHref} className="nexus-hero__try">
+              {copy.hero.tryOutline}
+            </Link>
+            <p className="nexus-hero__micro">{copy.hero.micro}</p>
+            <a href={copy.hero.demoHref} className="nexus-hero__demo-link">
+              {copy.hero.demoLink}
+            </a>
           </div>
         </div>
       </section>
+      <NexusProductProof
+        ref={productProofRef}
+        locale={locale}
+        copy={copy.productProof}
+        storeApp={copy.invite.storeApp}
+        storeGoogle={copy.invite.storeGoogle}
+        tryOutline={copy.invite.tryOutline}
+        tryHref={copy.invite.tryHref}
+        micro={copy.invite.micro}
+      />
       <section
         ref={inviteRef}
         className="nexus-invite"
@@ -207,9 +208,46 @@ export default function NexusWorld({ copy }: NexusWorldProps) {
           <h2 id="nexus-invite-title" className="nexus-invite__title">
             {copy.invite.title}
           </h2>
-          <Link href={copy.invite.ctaHref} className="nexus-invite__cta">
-            {copy.invite.cta}
-          </Link>
+          <div className="nexus-invite__ctas">
+            <div className="nexus-invite__stores">
+              <a
+                href="https://apps.apple.com/app/anto/id6670394042"
+                className="nexus-invite__store-badge"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="visually-hidden">{copy.invite.storeApp}</span>
+                <svg
+                  className="nexus-invite__store-icon"
+                  viewBox="0 0 120 40"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M110.135 0H9.865C9.425 0 8.99 0 8.55 0.002 8.185 0.005 7.822 0.011 7.455 0.019 6.632 0.034 5.812 0.096 5 0.205 4.189 0.317 3.395 0.54 2.642 0.868 1.891 1.199 1.196 1.643 0.582 2.185 0.064 2.625 0.002 3.105 0.002 3.592V36.408c0 0.487 0.062 0.967 0.58 1.407 0.614 0.542 1.309 0.986 2.06 1.317 0.753 0.328 1.547 0.551 2.358 0.663 0.812 0.109 1.632 0.171 2.455 0.186 0.367 0.008 0.73 0.014 1.095 0.017 0.44 0.002 0.875 0.002 1.315 0.002h100.27c0.435 0 0.865 0 1.3-0.002 0.361-0.003 0.73-0.009 1.09-0.017 0.822-0.015 1.642-0.077 2.455-0.186 0.81-0.112 1.604-0.335 2.355-0.663 0.753-0.331 1.448-0.775 2.065-1.317 0.518-0.44 0.58-0.92 0.58-1.407V3.592c0-0.487-0.062-0.967-0.58-1.407-0.617-0.542-1.312-0.986-2.065-1.317-0.751-0.328-1.545-0.551-2.355-0.663-0.813-0.109-1.633-0.171-2.455-0.186-0.36-0.008-0.729-0.014-1.09-0.017C111 0 110.57 0 110.135 0z" />
+                </svg>
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.anto.app"
+                className="nexus-invite__store-badge"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="visually-hidden">{copy.invite.storeGoogle}</span>
+                <svg
+                  className="nexus-invite__store-icon"
+                  viewBox="0 0 135 40"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M130 40H5c-2.8 0-5-2.2-5-5V5c0-2.8 2.2-5 5-5h125c2.8 0 5 2.2 5 5v30c0 2.8-2.2 5-5 5z" />
+                </svg>
+              </a>
+            </div>
+            <Link href={copy.invite.tryHref} className="nexus-invite__try">
+              {copy.invite.tryOutline}
+            </Link>
+            <p className="nexus-invite__micro">{copy.invite.micro}</p>
+          </div>
           <p className="nexus-invite__limit">{copy.invite.limit}</p>
         </div>
       </section>
