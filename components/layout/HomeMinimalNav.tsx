@@ -40,7 +40,7 @@ export default function HomeMinimalNav({
         <Link href={homeHref} className="home-landing-nav__brand" aria-label={copy.minimalNav.logoAria}>
           <span className="home-landing-nav__icon" aria-hidden="true">
             <Image
-              src="/assets/images/antoIcon.png"
+              src="/assets/images/brand/anto-icon-loop.png"
               alt=""
               width={28}
               height={28}
@@ -48,7 +48,7 @@ export default function HomeMinimalNav({
               priority
             />
           </span>
-          <span className="home-landing-nav__name">Anto</span>
+          <span className="home-landing-nav__name">anto.</span>
         </Link>
         {ctaHref ? (
           <Link href={ctaHref} className="home-landing-nav__cta" aria-label={aria}>
