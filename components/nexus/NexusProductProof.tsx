@@ -140,7 +140,7 @@ const NexusProductProof = forwardRef<HTMLElement, NexusProductProofProps>(
         <div className="nexus-product-proof__cta-section">
           <div className="nexus-product-proof__stores">
             <a
-              href="https://apps.apple.com/app/anto/id6670394042"
+              href="https://apps.apple.com/app/anto/id6756631911"
               className="nexus-product-proof__store-badge"
               target="_blank"
               rel="noopener noreferrer"
