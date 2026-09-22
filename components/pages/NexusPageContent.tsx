@@ -37,7 +37,7 @@ export default function NexusPageContent({ locale }: NexusPageContentProps) {
         </a>
         <NexusNav locale={locale} copy={copy.nav} />
         <main id="main-content" lang={locale}>
-          <NexusWorld copy={copy} />
+          <NexusWorld locale={locale} copy={copy} />
           <section className="nexus-trust" aria-labelledby="nexus-trust-title">
             <h2 id="nexus-trust-title" className="visually-hidden">
               {copy.trust.aria}
