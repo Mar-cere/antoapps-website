@@ -4,31 +4,31 @@
 
 :root {
     /* Colores principales */
-    --color-primary: #22d3ee; /* Nexus cyan accent */
-    --color-primary-hover: #2de1f5;
-    --color-primary-light: rgba(34, 211, 238, 0.12);
-    --color-primary-lightest: rgba(34, 211, 238, 0.18);
-    --color-primary-dark: #1bbdd8;
+    --color-primary: #1adddb;
+    --color-primary-hover: #1be8e6;
+    --color-primary-light: rgba(26, 221, 219, 0.12);
+    --color-primary-lightest: rgba(26, 221, 219, 0.18);
+    --color-primary-dark: #12c9c7;
 
-    --color-secondary: #8b5cf6; /* Nexus violet accent */
-    --color-secondary-hover: #9d6ff7;
-    --color-secondary-light: rgba(139, 92, 246, 0.12);
+    --color-secondary: #a3b8e8;
+    --color-secondary-hover: #b8c9f0;
+    --color-secondary-light: rgba(163, 184, 232, 0.12);
 
-    /* Fondos — Nexus dark system */
-    --color-bg-primary: #020711;
-    --color-bg-secondary: #030a18;
-    --color-bg-tertiary: #04101f;
-    --color-bg-dark: #020711;
-    --color-bg-darker: #010409;
+    /* Fondos */
+    --color-bg-primary: #030a24;
+    --color-bg-secondary: #0a1529;
+    --color-bg-tertiary: #112040;
+    --color-bg-dark: #030a24;
+    --color-bg-darker: #010512;
     --color-bg-light: rgba(255, 255, 255, 0.06);
 
-    /* Texto — Nexus hierarchy */
+    /* Texto */
     --color-text-primary: #f4f7fb;
-    --color-text-secondary: rgba(244, 247, 251, 0.62);
-    --color-text-tertiary: rgba(244, 247, 251, 0.42);
-    --color-text-disabled: rgba(244, 247, 251, 0.30);
-    --color-text-muted: rgba(244, 247, 251, 0.62);
-    --color-text-on-primary: #020711;
+    --color-text-secondary: rgba(244, 247, 251, 0.68);
+    --color-text-tertiary: rgba(244, 247, 251, 0.45);
+    --color-text-disabled: rgba(244, 247, 251, 0.35);
+    --color-text-muted: rgba(244, 247, 251, 0.68);
+    --color-text-on-primary: #030a24;
 
     /* Alias legacy */
     --white: var(--color-text-primary);
