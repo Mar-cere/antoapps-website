@@ -1,3 +1,73 @@
+/* Legal: chrome del shell, texto en medida de lectura */
+
+.legal-shell {
+    background: var(--color-bg-primary);
+    min-height: 100dvh;
+}
+
+.legal-page.home-landing-page--v2 {
+    background: transparent;
+}
+
+.legal-page .privacy-hero {
+    background: transparent;
+    text-align: left;
+    padding: 1.5rem 0 0.25rem;
+}
+
+.legal-page .privacy-hero .section-title,
+.legal-page .privacy-hero .section-subtitle,
+.legal-page .disclaimer-text {
+    text-align: left;
+}
+
+.legal-page .container {
+    max-width: min(72rem, 100%);
+}
+
+.legal-page .privacy-wrapper {
+    max-width: 65ch;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.legal-page .privacy-section p,
+.legal-page .privacy-section li {
+    max-width: 65ch;
+}
+
+.legal-page .privacy-intro,
+.legal-page .privacy-section {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0 0 1.75rem;
+    border-bottom: 1px solid var(--home-v2-hairline, rgba(255, 255, 255, 0.1));
+}
+
+.legal-page .privacy-section:hover,
+.legal-page .privacy-intro:hover {
+    border-color: var(--home-v2-hairline, rgba(255, 255, 255, 0.1));
+    box-shadow: none;
+    transform: none;
+}
+
+.legal-page .privacy-hero .last-updated::before {
+    content: none;
+}
+
+.legal-page .legal-disclaimer .disclaimer-text {
+    max-width: 65ch;
+    margin-left: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .legal-page .reveal-on-scroll {
+        transition: none;
+    }
+}
+
 /* ============================================
    PRIVACY PAGE STYLES
    ============================================ */

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import BienvenidaLanding, { bienvenidaMetadata } from '@/components/bienvenida/BienvenidaLanding';
+import EditorialWebPageJsonLd from '@/components/seo/EditorialWebPageJsonLd';
 import { getServerLandingDevice } from '@/lib/device/landing-device-server';
 import { parseBienvenidaVariant } from '@/lib/bienvenida/parse-variant';
 
@@ -13,10 +14,13 @@ export default async function BienvenidaLandingPageEn({ searchParams }: Bienveni
   const params = await searchParams;
   const initialDevice = await getServerLandingDevice();
   return (
-    <BienvenidaLanding
-      locale="en"
-      landingVariant={parseBienvenidaVariant(params?.ab)}
-      initialDevice={initialDevice}
-    />
+    <>
+      <EditorialWebPageJsonLd locale="en" path="/bienvenida" />
+      <BienvenidaLanding
+        locale="en"
+        landingVariant={parseBienvenidaVariant(params?.ab)}
+        initialDevice={initialDevice}
+      />
+    </>
   );
 }

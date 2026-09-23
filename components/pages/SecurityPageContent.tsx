@@ -31,6 +31,7 @@ export default function SecurityPageContent({ locale }: SecurityPageContentProps
           locale={locale}
           ctaHref={localePath(locale, '/bienvenida')}
           ctaLabel={nav.cta}
+          ctaAria={nav.ctaAria}
         />
         <main
           id="main-content"
@@ -52,12 +53,30 @@ export default function SecurityPageContent({ locale }: SecurityPageContentProps
                 </nav>
 
                 <div className="security-page__masthead">
-                  <header className="security-page__header">
-                    <h1 className="security-page__title">{copy.hero.title}</h1>
-                  </header>
-                  <blockquote className="security-page__pullquote">
-                    <p>{copy.pullQuote}</p>
-                  </blockquote>
+                  <div className="security-page__masthead-copy">
+                    <header className="security-page__header">
+                      <h1 className="security-page__title">{copy.hero.title}</h1>
+                    </header>
+                    <blockquote className="security-page__pullquote">
+                      <p>{copy.pullQuote}</p>
+                    </blockquote>
+                  </div>
+                  <figure className="security-page__figure">
+                    <div className="security-page__figure-frame">
+                      <Image
+                        src={copy.figure.src}
+                        alt={copy.figure.alt}
+                        width={copy.figure.width}
+                        height={copy.figure.height}
+                        className="security-page__figure-img"
+                        sizes="(max-width: 959px) 100vw, 36rem"
+                        priority
+                      />
+                    </div>
+                    <figcaption className="security-page__figure-caption">
+                      {copy.figure.caption}
+                    </figcaption>
+                  </figure>
                 </div>
 
                 <section
@@ -69,23 +88,6 @@ export default function SecurityPageContent({ locale }: SecurityPageContentProps
                     <p key={paragraph.slice(0, 48)}>{paragraph}</p>
                   ))}
                 </section>
-
-                <figure className="security-page__figure">
-                  <div className="security-page__figure-frame">
-                    <Image
-                      src={copy.figure.src}
-                      alt={copy.figure.alt}
-                      width={copy.figure.width}
-                      height={copy.figure.height}
-                      className="security-page__figure-img"
-                      sizes="(max-width: 720px) 100vw, (max-width: 1100px) 90vw, 76rem"
-                      priority
-                    />
-                  </div>
-                  <figcaption className="security-page__figure-caption">
-                    {copy.figure.caption}
-                  </figcaption>
-                </figure>
 
                 <section className="security-page__takes" aria-labelledby="security-takes-title">
                   <h2 id="security-takes-title" className="security-page__takes-title">

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
+import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 
 export type ContactPageMetadata = {
   title: string;
@@ -50,21 +51,21 @@ export type ContactPageCopy = {
 
 const metadataByLocale: Record<Locale, ContactPageMetadata> = {
   es: {
-    title: 'Contacto | Anto',
+    title: 'Contacto | Una persona te responde',
     description:
       'Una persona. Te respondo cuando pueda.',
     openGraph: {
-      title: 'Contacto | Anto',
+      title: 'Contacto | Una persona te responde',
       description: 'Una persona. Te respondo cuando pueda.',
       url: 'https://antoapps.com/contacto',
     },
   },
   en: {
-    title: 'Contact | Anto',
+    title: 'Contact | One person writes back',
     description:
       "One person. I'll get back when I can.",
     openGraph: {
-      title: 'Contact | Anto',
+      title: 'Contact | One person writes back',
       description: "One person. I'll get back when I can.",
       url: 'https://antoapps.com/en/contacto',
     },
@@ -158,7 +159,24 @@ function buildContactPageCopy(locale: Locale): ContactPageCopy {
 export function contactPageMetadata(locale: Locale): Metadata {
 
   const meta = metadataByLocale[locale];
-  return buildLocalizedPageMetadata(locale, '/contacto', meta);
+  const alt =
+    locale === 'en'
+      ? 'Rainy night desk with an open notebook and a warm lamp'
+      : 'Escritorio de noche con lluvia en la ventana, libreta abierta y lámpara cálida';
+  return buildLocalizedPageMetadata(locale, '/contacto', {
+    ...meta,
+    openGraph: {
+      ...meta.openGraph,
+      images: [
+        {
+          url: getEditorialImagePath('deskRain'),
+          width: 1536,
+          height: 1024,
+          alt,
+        },
+      ],
+    },
+  });
 }
 
 export function getContactPageCopy(locale: Locale): ContactPageCopy {

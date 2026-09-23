@@ -2,18 +2,20 @@
 
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import {
   getChangelogPageCopy,
   type ChangelogChangeType,
   type ChangelogVersionStatus,
 } from '@/lib/i18n/copy/pages/changelog';
+import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import '@/styles/pages/home-landing-final.css';
-import '@/styles/utils/hl-chrome-wrapper.css';
+import '@/styles/pages/home-v2.css';
 import '@/styles/components/changelog.css';
 
 type ChangelogPageContentProps = {
@@ -44,6 +46,7 @@ function getStatusLabel(
 
 export default function ChangelogPageContent({ locale }: ChangelogPageContentProps) {
   const copy = getChangelogPageCopy(locale);
+  const nav = getHomeV2Copy(locale).nav;
   const disclaimer =
     locale === 'en'
       ? 'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.'
@@ -52,9 +55,19 @@ export default function ChangelogPageContent({ locale }: ChangelogPageContentPro
   return (
     <LocaleProvider locale={locale}>
       <ClientInitializer />
-      <div className="hl-chrome-wrapper">
-        <HomeMinimalNav locale={locale} />
-        <main id="main-content" role="main" className="changelog-page" lang={locale}>
+      <div className="home-v2-shell changelog-shell">
+        <HomeMinimalNav
+          locale={locale}
+          ctaHref={localePath(locale, '/bienvenida')}
+          ctaLabel={nav.cta}
+          ctaAria={nav.ctaAria}
+        />
+        <main
+          id="main-content"
+          role="main"
+          className="home-landing-page home-landing-page--v2 changelog-page"
+          lang={locale}
+        >
           <div className="container">
             <div className="changelog-container">
             <div className="changelog-header">
@@ -69,15 +82,13 @@ export default function ChangelogPageContent({ locale }: ChangelogPageContentPro
             </div>
 
             <div className="changelog-timeline">
-              {copy.versions.map((version, index) => {
+              {copy.versions.map((version) => {
                 const statusLabel = getStatusLabel(version.status, copy.versionLabels);
 
                 return (
                   <div
                     key={version.version}
                     className={`version-card ${version.status === 'current' ? 'version-current' : ''}`}
-                    data-stagger-item
-                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div className="version-header">
                       <div className="version-info">

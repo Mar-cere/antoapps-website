@@ -56,40 +56,40 @@ const PAGE_LABELS: Record<Locale, Record<string, string>> = {
 
 const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
   es: {
-    '': 'Home editorial: acompañamiento para horas quietas, demos de producto, foundation (memoria/técnicas), reviews, precios, FAQ y descarga en App Store y Google Play.',
-    '/bienvenida': 'Landing de conversión (Meta Ads): apoyo emocional para ansiedad en iPhone y Android; prueba 1 día gratis.',
-    '/app': 'Detalle de funcionalidades, capturas y enlaces de descarga.',
+    '': 'Home editorial. H1: «Cuando todo cuesta un poco más.» Acompañamiento para ansiedad y horas quietas, entre sesiones o en el día a día. Demos de producto, foundation (memoria/técnicas), reviews, precios, FAQ y descarga en App Store y Google Play. Complementa; no reemplaza terapia.',
+    '/bienvenida': 'Landing de anuncios (Meta): apoyo emocional para ansiedad en iPhone y Android; prueba 1 día gratis. Botones de tienda en el pliegue y CTA fijo.',
+    '/app': 'App para iPhone y Android: qué es, capturas reales y enlaces de descarga. Complementa; no reemplaza terapia.',
     '/seguridad':
       'Por qué Anto y el modelo leen el hilo, cifrado en tránsito y en reposo, cómo pedir que se borre, y el aviso de que no es terapia.',
     '/investigacion': 'Cómo Anto lee TCC, GAD-7 y agentes conversacionales; cómo se ve en el producto; citas APA; sin ensayos propios de Anto.',
     '/recursos':
       `Hub editorial: atajos humanos (ansiedad, pensamientos en bucle, sueño, TCC) + ${PSYCHOEDUCATION_SLUGS.length} guías de psicoeducación y páginas Sobre Anto (app, seguridad, investigación). Material educativo; no diagnóstico.`,
-    '/changelog': 'Novedades por versión (app Expo ' + APP_VERSION + ').',
-    '/sobre-nosotros': 'Acompañamiento emocional con IA; no diagnostica ni reemplaza terapia. Hecho en Chile.',
-    '/contacto': 'Formulario y email soporte@antoapps.com.',
-    '/desarrollo': 'Estado del producto y roadmap público.',
+    '/changelog': 'Historial de versiones de la app (Expo ' + APP_VERSION + '), en orden cronológico.',
+    '/sobre-nosotros': 'Qué es Anto y qué no es: acompañamiento emocional con IA para las horas quietas. No diagnostica ni reemplaza terapia. Hecho en Chile. Descarga en iPhone y Android.',
+    '/contacto': 'Formulario para escribir a una persona, y el correo marcelo.ull@antoapps.com.',
+    '/desarrollo': 'Ingeniería de Anto: stack en producción, arquitectura y cómo se despliega. El detalle técnico está bajo el titular.',
     '/nexus':
       'Inside Anto Nexus: cada conversación forma la inteligencia que te comprende. Constelación viva; al scroll, historial, recurrencia y un paso concreto. CTA a probar Anto; privacidad, ciencia y límites al final. Sin métricas promocionales. No sustituye atención profesional.',
-    '/privacidad': 'Tratamiento de datos, cifrado, derechos del usuario.',
-    '/terminos': 'Condiciones de uso del servicio.',
+    '/privacidad': 'Política de privacidad: tratamiento de datos, cifrado y derechos. El texto legal queda en medida de lectura.',
+    '/terminos': 'Términos de servicio y condiciones de uso de la aplicación.',
   },
   en: {
-    '': 'Editorial home: support for quiet hours, product demos, foundation (memory/techniques), reviews, pricing, FAQ, App Store and Google Play download.',
-    '/bienvenida': 'Conversion landing (Meta Ads): emotional support for anxiety on iPhone and Android; 1-day free trial.',
-    '/app': 'Feature detail, screenshots, download links.',
+    '': 'Editorial home. H1: “When everything costs a little more.” Support for anxiety and quiet hours, between sessions or day to day. Product demos, foundation (memory/techniques), reviews, pricing, FAQ, App Store and Google Play download. Complements; does not replace therapy.',
+    '/bienvenida': 'Ad landing (Meta): emotional support for anxiety on iPhone and Android; 1-day free trial. Store buttons in the fold and a fixed CTA.',
+    '/app': 'iPhone and Android app: what it is, real screenshots, and download links. Complements; does not replace therapy.',
     '/seguridad':
       'Why Anto and the model read the thread, encryption in transit and at rest, how to request deletion, and the notice that this is not therapy.',
     '/investigacion': 'How Anto reads CBT, GAD-7, and conversational agents; how it shows in the product; APA citations; no Anto-specific trials claimed.',
     '/recursos':
       `Editorial hub: human entry points (anxiety, looping thoughts, sleep, CBT) + ${PSYCHOEDUCATION_SLUGS.length} psychoeducation guides and About Anto pages (app, safety, research). Educational material; not a diagnosis.`,
-    '/changelog': 'Release notes by version (Expo app ' + APP_VERSION + ').',
-    '/sobre-nosotros': 'AI emotional accompaniment; does not diagnose or replace therapy. Made in Chile.',
-    '/contacto': 'Contact form and email soporte@antoapps.com.',
-    '/desarrollo': 'Product status and public roadmap.',
+    '/changelog': 'App version history (Expo ' + APP_VERSION + '), in chronological order.',
+    '/sobre-nosotros': 'What Anto is and is not: AI emotional accompaniment for the quiet hours. It does not diagnose or replace therapy. Made in Chile. Download on iPhone and Android.',
+    '/contacto': 'A form to write to one person, and the address marcelo.ull@antoapps.com.',
+    '/desarrollo': 'How Anto is engineered: production stack, architecture, and deploy. Technical detail sits under the headline.',
     '/nexus':
       'Inside Anto Nexus: every conversation shapes the intelligence that understands you. Living constellation; on scroll, history, recurrence and a concrete step. CTA to try Anto; privacy, science and limits at the end. No promotional metrics. Does not replace professional care.',
-    '/privacidad': 'Data handling, encryption, user rights.',
-    '/terminos': 'Terms of service.',
+    '/privacidad': 'Privacy policy: data handling, encryption, and user rights. Legal text stays in a reading measure.',
+    '/terminos': 'Terms of service and conditions of use for the app.',
   },
 };
 

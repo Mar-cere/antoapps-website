@@ -1,6 +1,4 @@
-import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
-import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 
 const CANONICAL_PATH = '/seguridad';
@@ -74,7 +72,7 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
       },
       crumbAria: 'Breadcrumb',
       meta: {
-        title: 'How we care for what you write - Anto',
+        title: 'How we care for what you write | Encryption and limits - Anto',
         description:
           'Anto keeps the thread so you do not start over. It travels encrypted (TLS) and is stored encrypted. Anto and the model read the text. Not a substitute for therapy.',
         openGraphTitle: 'How we care for what you write - Anto',
@@ -147,7 +145,7 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
     },
     crumbAria: 'Miga de pan',
     meta: {
-      title: 'Cómo cuidamos lo que escribes - Anto',
+      title: 'Cómo cuidamos lo que escribes | Cifrado y límites - Anto',
       description:
         'Anto guarda el hilo para no empezar de cero. Viaja cifrado (TLS) y se guarda cifrado. Anto y el modelo leen el texto. No sustituye terapia.',
       openGraphTitle: 'Cómo cuidamos lo que escribes - Anto',
@@ -214,16 +212,4 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
 
 export function getSecurityPageCopy(locale: Locale): SecurityPageCopy {
   return buildSecurityPageCopy(locale);
-}
-
-export function securityPageMetadata(locale: Locale): Metadata {
-  const { meta } = buildSecurityPageCopy(locale);
-  return buildLocalizedPageMetadata(locale, meta.canonicalPath, {
-    title: meta.title,
-    description: meta.description,
-    openGraph: {
-      title: meta.openGraphTitle,
-      description: meta.openGraphDescription,
-    },
-  });
 }

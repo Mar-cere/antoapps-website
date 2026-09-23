@@ -84,7 +84,7 @@ export default function BienvenidaLandingV2({
             <div className="lad-v2-hero-photo">
               <Image
                 src={photoSrc}
-                alt=""
+                alt={v2.photoAlt}
                 fill
                 sizes="(min-width: 960px) 40vw, 100vw"
                 className="lad-v2-hero-photo-img"
@@ -100,7 +100,6 @@ export default function BienvenidaLandingV2({
                 className="lad-v2-chat"
               />
             </div>
-            <span className="sr-only">{v2.photoAlt}</span>
           </div>
         </section>
 

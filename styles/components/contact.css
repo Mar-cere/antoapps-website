@@ -1,4 +1,139 @@
 /* ============================================
+   CONTACT PAGE — masthead editorial, el formulario es el trabajo
+   ============================================ */
+
+.contact-page.home-landing-page--v2 {
+    overflow-x: clip;
+}
+
+.contact-page__shell {
+    padding-top: 1.35rem;
+    padding-bottom: 3.5rem;
+}
+
+.contact-page__masthead {
+    display: grid;
+    gap: 1.25rem;
+    margin: 0 0 2.25rem;
+}
+
+.contact-page__title {
+    margin: 0 0 0.75rem;
+    max-width: 12ch;
+    font-size: clamp(2.2rem, 7vw, 3.25rem);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 1.02;
+    color: var(--home-v2-ink, var(--color-text-primary));
+    text-wrap: balance;
+}
+
+.contact-page__support {
+    margin: 0;
+    max-width: 28ch;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.45;
+    color: var(--color-secondary);
+}
+
+.contact-page__figure {
+    margin: 0;
+}
+
+.contact-page__figure-frame {
+    overflow: hidden;
+    border-radius: 0.35rem;
+    background: var(--color-bg-tertiary);
+}
+
+.contact-page__figure-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: center 45%;
+}
+
+.contact-page__work {
+    display: grid;
+    gap: 1.75rem;
+    align-items: start;
+}
+
+.contact-page .contact-form-container,
+.contact-page__work .contact-form {
+    max-width: 40rem;
+    margin: 0;
+}
+
+.contact-page__aside {
+    max-width: 36ch;
+}
+
+.contact-page__mail {
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+.contact-page__mail:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+.contact-page__disclaimer {
+    margin: 1rem 0 0;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--home-v2-muted, rgba(244, 247, 251, 0.78));
+}
+
+@media (min-width: 768px) {
+    .contact-page__masthead {
+        grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.9fr);
+        gap: 1.5rem 2.5rem;
+        align-items: end;
+    }
+}
+
+@media (min-width: 960px) {
+    .contact-page__shell {
+        padding-top: 2rem;
+        padding-bottom: 4.5rem;
+    }
+
+    .contact-page__masthead {
+        grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 1.1fr);
+        gap: 2rem 3.5rem;
+        align-items: center;
+        margin-bottom: 3rem;
+    }
+
+    .contact-page__title {
+        font-size: clamp(3rem, 4.5vw, 4.25rem);
+    }
+
+    .contact-page__figure-img {
+        aspect-ratio: 16 / 10;
+        min-height: 16rem;
+    }
+
+    .contact-page__work {
+        grid-template-columns: minmax(0, 38rem) minmax(14rem, 1fr);
+        gap: 2rem 4rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-page .contact-form-feedback {
+        animation: none;
+    }
+}
+
+/* ============================================
    CONTACT PAGE STYLES
    ============================================ */
 

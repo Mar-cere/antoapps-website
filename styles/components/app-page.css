@@ -4,47 +4,76 @@
    APP PAGE STYLES
    ============================================ */
 
-/* Hero Section (Estilo Apple) */
+/* Hero: texto y una captura, sin badges */
 .app-hero {
-    padding: var(--page-hero-padding-top) 0 var(--page-hero-padding-bottom);
+    display: flex;
+    align-items: flex-start;
+    min-height: calc(100dvh - 4.25rem);
+    padding: 1.25rem 0 1.75rem;
     background: var(--color-bg-primary);
-    text-align: center;
-    position: relative;
+    text-align: left;
 }
 
-.app-hero-content {
-    max-width: 900px;
-    margin: 0 auto;
+.app-hero__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    width: 100%;
 }
 
-.app-hero-title {
-    font-size: clamp(2.375rem, 6vw, 3.75rem);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-primary);
-    margin-bottom: var(--spacing-md);
-    line-height: var(--line-height-tight);
-    letter-spacing: var(--letter-spacing-tight);
+.app-hero__brand {
+    margin: 0 0 0.55rem;
+    font-size: clamp(1.65rem, 4vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+    color: var(--color-primary);
 }
 
-.app-hero-subtitle {
-    font-size: clamp(1.125rem, 2.2vw, 1.5rem);
-    font-weight: var(--font-weight-normal);
-    color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-6);
-    line-height: var(--line-height-relaxed);
+.app-hero__title {
+    margin: 0 0 0.75rem;
+    max-width: 18ch;
+    font-size: clamp(1.85rem, 6.2vw, 2.45rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    color: var(--home-v2-ink, var(--color-text-primary));
+    text-wrap: balance;
 }
 
-.app-hero-badges {
-    display: flex;
-    gap: var(--spacing-sm);
-    justify-content: center;
-    flex-wrap: wrap;
+.app-hero__support {
+    margin: 0 0 1.15rem;
+    max-width: 42ch;
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: var(--home-v2-muted, var(--color-text-secondary));
 }
 
-.app-hero-stores {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--spacing-6);
+.app-hero__stores .premium-store-cta-stack,
+.app-hero__stores .premium-store-cta {
+    width: 100%;
+    max-width: 22rem;
+}
+
+.app-hero__figure {
+    margin: 0.35rem 0 0;
+}
+
+.app-hero__shot {
+    width: min(15rem, 68%);
+    overflow: hidden;
+    border-radius: 1.15rem;
+    border: 1px solid var(--home-v2-hairline, rgba(255, 255, 255, 0.1));
+    background: var(--color-bg-tertiary);
+}
+
+.app-hero__shot-img {
+    display: block;
+    width: 100%;
+    height: min(42vh, 22rem);
+    object-fit: cover;
+    object-position: top center;
 }
 
 .app-hero-stores .premium-store-cta-stack,
@@ -559,8 +588,106 @@
     line-height: 1.55;
     color: rgba(244, 247, 251, 0.74);
     margin: 0;
-    text-align: center;
-    max-width: 48rem;
-    margin-inline: auto;
+    text-align: left;
+    max-width: 62ch;
+}
+
+.app-page.home-landing-page--v2 section {
+    padding: clamp(2.5rem, 6vw, 4.25rem) 0;
+}
+
+.app-page.home-landing-page--v2 section.app-hero {
+    padding: 1.25rem 0 1.5rem;
+}
+
+.app-page .section-title,
+.app-page .section-subtitle,
+.app-page .app-what-is__body,
+.app-page .screenshot-info {
+    text-align: left;
+}
+
+.app-page .section-subtitle,
+.app-page .app-what-is__body {
+    max-width: 62ch;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.app-page .container {
+    max-width: min(72rem, 100%);
+}
+
+.app-page .insight-card {
+    text-align: left;
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+    border-radius: 0;
+    border-top: 1px solid var(--home-v2-hairline, rgba(255, 255, 255, 0.1));
+    padding: 1.35rem 0 0.35rem;
+}
+
+.app-page .insights-grid {
+    grid-template-columns: 1fr;
+    gap: 0.25rem 2.5rem;
+}
+
+.app-page .insight-icon {
+    display: none;
+}
+
+.app-page .screenshot-description {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media (min-width: 768px) {
+    .app-page .insights-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 960px) {
+    .app-hero {
+        align-items: center;
+    }
+
+    .app-hero__grid {
+        grid-template-columns: minmax(0, 1.15fr) minmax(14rem, 18rem);
+        gap: 2rem 3.5rem;
+        align-items: center;
+    }
+
+    .app-hero__title {
+        font-size: clamp(2.35rem, 3.4vw, 3.15rem);
+    }
+
+    .app-hero__shot {
+        width: min(17.5rem, 100%);
+    }
+
+    .app-hero__shot-img {
+        height: min(68vh, 34rem);
+    }
+
+    .app-page .screenshots-grid {
+        grid-template-columns: repeat(2, minmax(0, 22rem));
+        justify-content: start;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .app-page .insight-card,
+    .app-page .screenshot-card,
+    .app-page .premium-store-cta {
+        transition: none;
+    }
+
+    .app-page .insight-card:hover,
+    .app-page .screenshot-card:hover,
+    .app-page .premium-store-cta:hover {
+        transform: none;
+    }
 }
 

@@ -1,24 +1,33 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getDesarrolloPageCopy } from '@/lib/i18n/copy/pages/desarrollo';
+import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
+import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import '@/styles/pages/home-landing-final.css';
-import '@/styles/utils/hl-chrome-wrapper.css';
+import '@/styles/pages/home-v2.css';
 import '@/styles/components/development.css';
 
 type DesarrolloPageContentProps = {
   locale: Locale;
 };
 
+const FIGURE_ALT = {
+  es: 'Manos con el teléfono abierto a un chat sin respuesta y, al lado, un cuaderno con preguntas escritas a mano',
+  en: 'Hands holding a phone open to an unanswered chat, beside a notebook with handwritten questions',
+} as const;
+
 export default function DesarrolloPageContent({ locale }: DesarrolloPageContentProps) {
   const copy = getDesarrolloPageCopy(locale);
-  const marqueeTechs = [...copy.hero.highlightTechs, ...copy.hero.highlightTechs];
+  const nav = getHomeV2Copy(locale).nav;
   const disclaimer =
     locale === 'en'
       ? 'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.'
@@ -27,34 +36,44 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
   return (
     <LocaleProvider locale={locale}>
       <ClientInitializer />
-      <div className="hl-chrome-wrapper">
-        <HomeMinimalNav locale={locale} />
-        <main lang={locale}>
-          <section className="development-hero" data-fade-section>
-          <div className="container">
-            <span className="development-badge reveal-on-scroll">{copy.hero.badge}</span>
-            <h1 className="development-title reveal-on-scroll">{copy.hero.title}</h1>
-            <p className="development-subtitle reveal-on-scroll">{copy.hero.subtitle}</p>
-            <pre className="development-stack-line reveal-on-scroll" aria-label={copy.hero.stackLine}>
-              <code>{copy.hero.stackLine}</code>
-            </pre>
-          </div>
-          <div className="development-tech-marquee" aria-hidden="true">
-            <div className="development-tech-marquee__track">
-              {marqueeTechs.map((tech, index) => (
-                <span key={`${tech}-${index}`} className="development-tech-pill">
-                  {tech}
-                </span>
-              ))}
+      <div className="home-v2-shell development-shell">
+        <HomeMinimalNav
+          locale={locale}
+          ctaHref={localePath(locale, '/bienvenida')}
+          ctaLabel={nav.cta}
+          ctaAria={nav.ctaAria}
+        />
+        <main id="main-content" className="home-landing-page home-landing-page--v2 development-page" lang={locale}>
+          <header className="development-masthead">
+            <div className="home-landing-container development-masthead__grid">
+              <div className="development-masthead__copy">
+                <h1 className="development-masthead__title">{copy.hero.title}</h1>
+                <p className="development-masthead__support">{copy.hero.subtitle}</p>
+              </div>
+              <figure className="development-masthead__figure">
+                <div className="development-masthead__frame">
+                  <Image
+                    src={getEditorialImagePath('thoughtLoop')}
+                    alt={FIGURE_ALT[locale]}
+                    width={1536}
+                    height={1024}
+                    className="development-masthead__img"
+                    sizes="(max-width: 959px) 100vw, 34rem"
+                    priority
+                  />
+                </div>
+              </figure>
             </div>
-          </div>
-        </section>
+          </header>
 
         <section className="tech-stack-section tech-stack-section--featured" data-fade-section>
           <div className="container">
             <div className="tech-stack">
-              <h2 className="section-title reveal-on-scroll">{copy.techStack.title}</h2>
-              <p className="tech-stack-intro reveal-on-scroll">{copy.techStack.intro}</p>
+              <h2 className="section-title">{copy.techStack.title}</h2>
+              <p className="tech-stack-intro">{copy.techStack.intro}</p>
+              <pre className="development-stack-line" aria-label={copy.hero.stackLine}>
+                <code>{copy.hero.stackLine}</code>
+              </pre>
               <div className="tech-grid tech-grid--detailed" data-stagger>
                 {copy.techStack.categories.map((category) => (
                   <div key={category.title} className="tech-category reveal-on-scroll" data-stagger-item>

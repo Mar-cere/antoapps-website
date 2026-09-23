@@ -31,7 +31,7 @@ export function homePageMetadata(locale: Locale): Metadata {
 
   if (locale === 'en') {
     return {
-      title: 'Anto — When everything costs a little more | Ongoing emotional support',
+      title: 'Anto — When everything costs a little more | Anxiety, between sessions',
       description:
         'Ongoing emotional support for anxiety and quiet hours — between therapy sessions or day to day. Write what you feel, leave with clarity and one concrete step. AI assistance in the background. Complements care; does not replace a human therapist. Available on iPhone and Android. Free 1-day trial.',
       keywords:
@@ -56,7 +56,7 @@ export function homePageMetadata(locale: Locale): Metadata {
   }
 
   return {
-    title: 'Anto — Cuando todo cuesta un poco más | Acompañamiento emocional',
+    title: 'Anto — Cuando todo cuesta un poco más | Ansiedad, entre sesiones',
     description:
       'Acompañamiento emocional continuo para ansiedad y horas quietas — entre sesiones de terapia o en el día a día. Escribe lo que sientes, sal con claridad y un paso concreto. Apoyo de IA en segundo plano. Complementa — no reemplaza — a un terapeuta humano. Disponible en iPhone y Android. Prueba de 1 día gratis.',
     keywords:

@@ -2,6 +2,11 @@
 
 @import '../components/premium-store-cta.css';
 
+.lad-page.lad-page--v2 {
+    background: var(--color-bg-primary, #030a24);
+    color: var(--color-text-primary, #f4f7fb);
+}
+
 .lad-page--v2 {
     --home-accent: var(--color-primary, #1adddb);
     --lad-v2-accent: var(--color-primary, #1adddb);
@@ -81,9 +86,9 @@
 .lad-v2-hero-h1 {
     font-size: clamp(1.5rem, 5.4vw, 2.15rem);
     font-weight: 500;
-    color: #fff;
-    line-height: 1.18;
-    letter-spacing: -0.03em;
+    color: var(--color-text-primary, #f4f7fb);
+    line-height: 1.12;
+    letter-spacing: -0.04em;
     margin: 0 0 0.55rem;
     text-wrap: balance;
 }
@@ -797,16 +802,12 @@
     }
 
     .lad-v2-hero-photo-img {
-        opacity: 0.7;
+        opacity: 1;
+        object-position: center 40%;
     }
 
     .lad-v2-hero-photo-scrim {
-        background:
-            linear-gradient(
-                180deg,
-                rgba(3, 10, 36, 0.28) 0%,
-                rgba(3, 10, 36, 0.72) 100%
-            );
+        background: linear-gradient(to top, rgba(3, 10, 36, 0.5) 0%, transparent 46%);
     }
 
     .lad-v2-hero-product {
@@ -820,7 +821,8 @@
     }
 
     .lad-v2-hero-h1 {
-        font-size: clamp(2rem, 3.2vw, 2.75rem);
+        font-size: clamp(2.15rem, 3.4vw, 3.15rem);
+        line-height: 1.06;
         margin-bottom: 0.75rem;
     }
 

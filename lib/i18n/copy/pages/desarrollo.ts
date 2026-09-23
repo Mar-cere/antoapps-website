@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
+import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 const CANONICAL_PATH = '/desarrollo';
 
 const GITHUB_PROFILE = 'https://github.com/Mar-cere';
@@ -610,7 +611,7 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
       linkedinHref: LINKEDIN_PROFILE,
     },
     cta: {
-      title: 'Si tenés una duda sobre cómo está armado Anto, escribime.',
+      title: 'Si tienes una duda sobre cómo está armado Anto, escríbeme.',
       description: '',
       contactLabel: 'Contactar',
       contactHref: localePath(locale, '/contacto'),
@@ -626,12 +627,24 @@ export function getDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
 
 export function desarrolloPageMetadata(locale: Locale): Metadata {
   const { meta } = buildDesarrolloPageCopy(locale);
+  const alt =
+    locale === 'en'
+      ? 'Hands holding a phone open to an unanswered chat, beside a notebook with handwritten questions'
+      : 'Manos con el teléfono abierto a un chat sin respuesta y, al lado, un cuaderno con preguntas escritas a mano';
   return buildLocalizedPageMetadata(locale, meta.canonicalPath, {
     title: meta.title,
     description: meta.description,
     openGraph: {
       title: meta.openGraphTitle,
       description: meta.openGraphDescription,
+      images: [
+        {
+          url: getEditorialImagePath('thoughtLoop'),
+          width: 1536,
+          height: 1024,
+          alt,
+        },
+      ],
     },
   });
 }

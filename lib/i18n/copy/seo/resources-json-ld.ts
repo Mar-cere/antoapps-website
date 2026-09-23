@@ -1,3 +1,4 @@
+import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { siteUrl } from '@/lib/i18n/metadata';
 import {
@@ -40,6 +41,13 @@ export function getResourcesCollectionJsonLd(locale: Locale) {
         description: copy.meta.description,
         url: hubUrl,
         inLanguage: isEn ? 'en' : 'es',
+        primaryImageOfPage: {
+          '@type': 'ImageObject',
+          url: `${SITE_ORG}${getEditorialImagePath('morningPause')}`,
+          caption: isEn
+            ? 'Morning light on an empty chair by the window'
+            : 'Luz de mañana sobre una silla vacía junto a la ventana',
+        },
         datePublished: RESOURCES_COLLECTION_DATE_PUBLISHED,
         dateModified: RESOURCES_COLLECTION_DATE_MODIFIED,
         isPartOf: {
