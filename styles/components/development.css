@@ -1,5 +1,141 @@
 /* ============================================
-   DEVELOPMENT PAGE - Estilo Apple/Tesla
+   DEVELOPMENT PAGE — masthead editorial; el detalle técnico va debajo
+   ============================================ */
+
+.development-page.home-landing-page--v2 {
+    overflow-x: clip;
+}
+
+.development-masthead {
+    padding: 1.35rem 0 0.5rem;
+}
+
+.development-masthead__grid {
+    display: grid;
+    gap: 1.25rem;
+    align-items: end;
+}
+
+.development-masthead__title {
+    margin: 0 0 0.8rem;
+    max-width: 16ch;
+    font-size: clamp(2rem, 6vw, 2.75rem);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: var(--home-v2-ink, var(--color-text-primary));
+    text-wrap: balance;
+}
+
+.development-masthead__support {
+    margin: 0;
+    max-width: 42ch;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--color-secondary);
+}
+
+.development-masthead__figure {
+    margin: 0;
+}
+
+.development-masthead__frame {
+    overflow: hidden;
+    border-radius: 0.35rem;
+    background: var(--color-bg-tertiary);
+}
+
+.development-masthead__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: 42% 52%;
+}
+
+.development-page .section-title,
+.development-page .section-subtitle,
+.development-page .development-intro,
+.development-page .cta-content,
+.development-page .cta-content p,
+.development-page .tech-stack-intro {
+    text-align: left;
+}
+
+.development-page .cta-content p {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 62ch;
+}
+
+.development-page .cta-buttons {
+    justify-content: flex-start;
+}
+
+.development-page .container {
+    max-width: min(72rem, 100%);
+}
+
+.development-page .development-stack-line {
+    max-width: 62ch;
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.85rem 0;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid var(--home-v2-hairline, rgba(255, 255, 255, 0.1));
+    border-bottom: 1px solid var(--home-v2-hairline, rgba(255, 255, 255, 0.1));
+    border-radius: 0;
+    box-shadow: none;
+    text-align: left;
+}
+
+.development-page .development-stack-line code {
+    color: var(--color-secondary);
+    white-space: normal;
+}
+
+@media (min-width: 768px) {
+    .development-masthead__grid {
+        grid-template-columns: minmax(0, 1.05fr) minmax(16rem, 0.95fr);
+        gap: 1.5rem 2.5rem;
+        align-items: center;
+    }
+}
+
+@media (min-width: 960px) {
+    .development-masthead {
+        padding-top: 2rem;
+    }
+
+    .development-masthead__grid {
+        gap: 2rem 3.5rem;
+    }
+
+    .development-masthead__title {
+        font-size: clamp(2.6rem, 4vw, 3.6rem);
+    }
+
+    .development-masthead__img {
+        aspect-ratio: 4 / 3;
+        min-height: 16rem;
+    }
+
+    .development-page .tech-grid--detailed {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .development-page .tech-category,
+    .development-page .arch-layer,
+    .development-page .challenge-card {
+        transition: none;
+    }
+}
+
+/* ============================================
+   DEVELOPMENT PAGE - detalle bajo el masthead
    ============================================ */
 
 .development-hero {

@@ -195,3 +195,46 @@ export function getHomeWebPageJsonLd(locale: Locale): JsonLd {
     },
   };
 }
+
+export type EditorialWebPageInput = {
+  locale: Locale;
+  path: string;
+  name: string;
+  headline: string;
+  description: string;
+  imagePath: string;
+  imageCaption: string;
+};
+
+/** WebPage de una ruta marketing: mismo contrato que la home, con la foto de esa página. */
+export function getEditorialWebPageJsonLd(input: EditorialWebPageInput): JsonLd {
+  const url = `${SITE_ORIGIN}${localePath(input.locale, input.path)}`;
+  const imageUrl = input.imagePath.startsWith('http')
+    ? input.imagePath
+    : `${SITE_ORIGIN}${input.imagePath}`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: input.name,
+    headline: input.headline,
+    url,
+    description: input.description,
+    inLanguage: input.locale === 'en' ? 'en' : 'es',
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: imageUrl,
+      caption: input.imageCaption,
+    },
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'Anto',
+      url: SITE_ORIGIN,
+    },
+    about: {
+      '@type': 'SoftwareApplication',
+      name: 'Anto',
+      url: input.locale === 'en' ? `${SITE_ORIGIN}/en` : SITE_ORIGIN,
+    },
+  };
+}

@@ -2,6 +2,12 @@ import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
+import {
+  APP_SCREENSHOT_HEIGHT,
+  APP_SCREENSHOT_WIDTH,
+  getAppScreenshotAlt,
+  getAppScreenshotPath,
+} from '@/lib/assets/app-screenshots';
 
 export type AppPageMetadata = {
   title: string;
@@ -365,7 +371,17 @@ export function appPageMetadata(locale: Locale, versionLabel?: string): Metadata
   return buildLocalizedPageMetadata(locale, '/app', {
     title: meta.title,
     description,
-    openGraph: meta.openGraph,
+    openGraph: {
+      ...meta.openGraph,
+      images: [
+        {
+          url: getAppScreenshotPath('chat'),
+          width: APP_SCREENSHOT_WIDTH,
+          height: APP_SCREENSHOT_HEIGHT,
+          alt: getAppScreenshotAlt('chat', locale),
+        },
+      ],
+    },
   });
 }
 

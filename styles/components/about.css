@@ -1,84 +1,167 @@
-/* /sobre-nosotros — columna de manifiesto, chrome de home */
+/* /sobre-nosotros — shell editorial, prosa en medida */
 
-.about-page {
-    --hl-max: 72rem;
-    --hl-pad-x: 2rem;
-    --home-accent: var(--color-primary, #1adddb);
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    background:
-        radial-gradient(ellipse 85% 55% at 72% -8%, rgba(26, 221, 219, 0.07), transparent 58%),
-        radial-gradient(ellipse 55% 45% at 8% 18%, rgba(163, 184, 232, 0.05), transparent 52%),
-        #050d1f;
-    color: var(--color-text-primary, #f4f7fb);
+.about-page.home-landing-page--v2 {
+  overflow-x: clip;
 }
 
-.about-page__main {
-    flex: 1;
-    padding: 3.25rem 1.25rem 4rem;
+.about-page__article {
+  padding: 1.35rem 0 3.5rem;
 }
 
-.about-page__column {
-    max-width: 36rem;
-    margin: 0 auto;
+.about-page__article > .home-landing-container {
+  max-width: min(72rem, 100%);
+}
+
+.about-page__masthead {
+  display: grid;
+  gap: 1.35rem;
+  margin: 0 0 2.25rem;
+}
+
+.about-page__brand {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.65rem, 4vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--color-primary);
 }
 
 .about-page__title {
-    font-size: clamp(2rem, 5.2vw, 2.75rem);
-    font-weight: var(--font-weight-bold, 700);
-    letter-spacing: -0.03em;
-    line-height: 1.12;
-    margin: 0 0 0.85rem;
-    color: var(--color-text-primary, #f4f7fb);
+  margin: 0 0 0.85rem;
+  max-width: 16ch;
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  color: var(--home-v2-ink, var(--color-text-primary));
+  text-wrap: balance;
 }
 
 .about-page__lede {
-    font-size: clamp(1.125rem, 2.5vw, 1.3125rem);
-    line-height: 1.45;
-    color: var(--color-secondary, #a3b8e8);
-    margin: 0 0 2rem;
+  margin: 0;
+  max-width: 36ch;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.45;
+  color: var(--color-secondary);
+}
+
+.about-page__figure {
+  margin: 0;
+}
+
+.about-page__figure-frame {
+  overflow: hidden;
+  border-radius: 0.35rem;
+  background: var(--color-bg-tertiary);
+}
+
+.about-page__figure-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.about-page__figure-caption {
+  margin: 0.7rem 0 0;
+  max-width: 42ch;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--home-v2-soft, rgba(244, 247, 251, 0.7));
+}
+
+.about-page__reading {
+  max-width: 65ch;
+  margin: 0 0 2.5rem;
 }
 
 .about-page__body {
-    font-size: 1.0625rem;
-    line-height: 1.7;
-    color: rgba(244, 247, 251, 0.84);
-    margin: 0 0 1.2rem;
+  margin: 0 0 1.15rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--home-v2-muted, rgba(244, 247, 251, 0.86));
 }
 
-.about-page__stores {
-    margin: 2.15rem 0 0.9rem;
+.about-page__body:last-child {
+  margin-bottom: 0;
+}
+
+.about-page__close {
+  display: grid;
+  gap: 1.5rem;
+  padding-top: 0.5rem;
 }
 
 .about-page__stores .premium-store-cta-stack,
 .about-page__stores .premium-store-cta {
-    width: 100%;
-    max-width: none;
+  width: 100%;
+  max-width: 22rem;
 }
 
 .about-page__micro {
-    font-size: 0.8125rem;
-    line-height: 1.5;
-    color: rgba(244, 247, 251, 0.58);
-    margin: 0 0 1.75rem;
+  margin: 0.85rem 0 0;
+  max-width: 36ch;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--home-v2-soft, rgba(244, 247, 251, 0.62));
 }
 
 .about-page__disclaimer {
-    font-size: 0.9375rem;
-    line-height: 1.55;
-    color: rgba(244, 247, 251, 0.74);
-    margin: 0;
+  margin: 0;
+  max-width: 52ch;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--home-v2-muted, rgba(244, 247, 251, 0.78));
 }
 
 @media (min-width: 768px) {
-    .about-page__main {
-        padding: 4.5rem 2rem 5.25rem;
-    }
+  .about-page__article {
+    padding: 1.75rem 0 4.5rem;
+  }
+
+  .about-page__masthead {
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.9fr);
+    gap: 1.5rem 2.5rem;
+    align-items: end;
+  }
+}
+
+@media (min-width: 960px) {
+  .about-page__article {
+    padding: 2rem 0 5rem;
+  }
+
+  .about-page__masthead {
+    grid-template-columns: minmax(0, 0.95fr) minmax(20rem, 1.05fr);
+    gap: 2rem 3.5rem;
+    margin-bottom: 3rem;
+    align-items: center;
+  }
+
+  .about-page__title {
+    font-size: clamp(2.6rem, 4vw, 3.5rem);
+    line-height: 1.02;
+  }
+
+  .about-page__figure-img {
+    aspect-ratio: 16 / 11;
+    min-height: 18rem;
+  }
+
+  .about-page__close {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem 4rem;
+    align-items: start;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--home-v2-hairline, rgba(255, 255, 255, 0.08));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .about-page__stores .premium-store-cta:hover {
-        transform: none;
-    }
+  .about-page__stores .premium-store-cta:hover {
+    transform: none;
+  }
 }

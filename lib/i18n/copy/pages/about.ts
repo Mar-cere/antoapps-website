@@ -1,8 +1,8 @@
-import type { Metadata } from 'next';
 import type { Locale } from '@/lib/i18n/config';
-import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
+import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 
-const CANONICAL_PATH = '/sobre-nosotros';
+const EDITORIAL_WIDTH = 1536;
+const EDITORIAL_HEIGHT = 1024;
 
 export type AboutPageCopy = {
   meta: {
@@ -12,6 +12,13 @@ export type AboutPageCopy = {
   h1: string;
   lede: string;
   paragraphs: readonly [string, string, string];
+  figure: {
+    src: string;
+    alt: string;
+    caption: string;
+    width: number;
+    height: number;
+  };
   microcopy: string;
   storeBadge: string;
   disclaimer: string;
@@ -22,11 +29,18 @@ function buildAboutPageCopy(locale: Locale): AboutPageCopy {
     const lede = 'A companion for when everything costs a little more.';
     return {
       meta: {
-        title: 'About Anto | Emotional accompaniment',
-        description: lede,
+        title: 'About Anto | What it is and is not',
+        description: `${lede} It does not diagnose or replace therapy. Made in Chile.`,
       },
       h1: 'About Anto',
       lede,
+      figure: {
+        src: getEditorialImagePath('evening'),
+        alt: 'Quiet evening light through a window, empty room at dusk',
+        caption: 'Made in Chile, by one person.',
+        width: EDITORIAL_WIDTH,
+        height: EDITORIAL_HEIGHT,
+      },
       paragraphs: [
         'Anto is an AI emotional companion. For the quiet hours, between the day and bed, or between sessions. You write what you feel. You leave with some clarity and a small next step.',
         'It does not diagnose or replace therapy. A human therapist or professional remains the stronger recommendation.',
@@ -42,11 +56,18 @@ function buildAboutPageCopy(locale: Locale): AboutPageCopy {
   const lede = 'Un acompañante para cuando todo cuesta un poco más.';
   return {
     meta: {
-      title: 'Sobre Anto | Acompañamiento emocional',
-      description: lede,
+      title: 'Sobre Anto | Qué es y qué no es',
+      description: `${lede} No diagnostica ni reemplaza terapia. Hecho en Chile.`,
     },
     h1: 'Sobre Anto',
     lede,
+    figure: {
+      src: getEditorialImagePath('evening'),
+      alt: 'Luz de tarde en una habitación quieta, ventana al anochecer',
+      caption: 'Hecho en Chile, por una persona.',
+      width: EDITORIAL_WIDTH,
+      height: EDITORIAL_HEIGHT,
+    },
     paragraphs: [
       'Anto es una app de acompañamiento emocional con IA. Para las horas quietas, entre el día y la cama, o entre sesiones. Escribes lo que sientes. Sales con claridad y un paso concreto.',
       'No diagnostica ni reemplaza terapia. Un terapeuta o profesional humano sigue siendo lo más recomendable.',
@@ -61,16 +82,4 @@ function buildAboutPageCopy(locale: Locale): AboutPageCopy {
 
 export function getAboutPageCopy(locale: Locale): AboutPageCopy {
   return buildAboutPageCopy(locale);
-}
-
-export function aboutPageMetadata(locale: Locale): Metadata {
-  const { meta } = buildAboutPageCopy(locale);
-  return buildLocalizedPageMetadata(locale, CANONICAL_PATH, {
-    title: meta.title,
-    description: meta.description,
-    openGraph: {
-      title: meta.title,
-      description: meta.description,
-    },
-  });
 }
