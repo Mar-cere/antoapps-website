@@ -95,16 +95,16 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
   es: {
     skip: 'Saltar al contenido',
     meta: {
-      title: 'Inside Anto Nexus | Anto',
+      title: 'Dentro de Anto Nexus | Anto',
       description:
         'Cada conversación forma la inteligencia que te comprende. Historial, recurrencia y un paso concreto. Complementa; no sustituye atención profesional.',
       keywords:
         'Anto Nexus, inteligencia adaptativa, acompañamiento emocional, contexto personal, aprendizaje continuo',
-      openGraphTitle: 'Inside Anto Nexus',
+      openGraphTitle: 'Dentro de Anto Nexus',
       openGraphDescription:
         'Cada conversación forma la inteligencia que te comprende. Historial, recurrencia y un paso concreto.',
       canonicalPath: CANONICAL_PATH,
-      ogAlt: 'Inside Anto Nexus. Cada conversación forma la inteligencia que te comprende.',
+      ogAlt: 'Dentro de Anto Nexus. Cada conversación forma la inteligencia que te comprende.',
     },
     nav: {
       aria: 'Navegación de Nexus',
