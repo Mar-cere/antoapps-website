@@ -11,7 +11,10 @@ type HomeV2HeroProps = {
   locale?: Locale;
 };
 
-/** Hero tipográfico + foto + chat. Motion: solo burbujas del chat. */
+/**
+ * Hero: marca + H1 + apoyo + par de tiendas + una figura (foto y chat).
+ * La foto es el plano; el chat se apoya en su base, no flota como chip.
+ */
 export default function HomeV2Hero({ locale = 'es' }: HomeV2HeroProps) {
   const copy = getHomeV2Copy(locale);
   const hero = copy.hero;
@@ -19,19 +22,6 @@ export default function HomeV2Hero({ locale = 'es' }: HomeV2HeroProps) {
 
   return (
     <section id="inicio" className="home-v2-hero" aria-labelledby="home-v2-hero-title">
-      <div className="home-v2-hero__photo" aria-hidden="true">
-        <Image
-          src={getEditorialImagePath('evening')}
-          alt=""
-          fill
-          priority
-          className="home-v2-hero__photo-img"
-          sizes="100vw"
-          quality={80}
-        />
-        <div className="home-v2-hero__photo-scrim" />
-      </div>
-      <div className="home-v2-hero__wash" aria-hidden="true" />
       <div className="home-landing-container home-v2-hero__grid">
         <div className="home-v2-hero__copy">
           <p className="home-v2-hero__brand">{hero.brand}</p>
@@ -39,10 +29,6 @@ export default function HomeV2Hero({ locale = 'es' }: HomeV2HeroProps) {
             {hero.titleLine1} <em>{hero.titleAccent}</em>
           </h1>
           <p className="home-v2-hero__support">{hero.support}</p>
-        </div>
-
-        <div className="home-v2-hero__media">
-          <HomeV2ChatVignette thread={hero.chat} locale={locale} size="hero" />
         </div>
 
         <div className="home-v2-hero__cta">
@@ -55,6 +41,22 @@ export default function HomeV2Hero({ locale = 'es' }: HomeV2HeroProps) {
           />
           <p className="home-v2-hero__micro">{hero.ctaMicro}</p>
         </div>
+
+        <figure className="home-v2-hero__figure">
+          <Image
+            src={getEditorialImagePath('evening')}
+            alt=""
+            fill
+            priority
+            className="home-v2-hero__figure-img"
+            sizes="(max-width: 959px) 100vw, 48vw"
+            quality={80}
+          />
+          <div className="home-v2-hero__figure-shade" aria-hidden="true" />
+          <div className="home-v2-hero__figure-chat">
+            <HomeV2ChatVignette thread={hero.chat} locale={locale} size="hero" />
+          </div>
+        </figure>
       </div>
       <span className="sr-only">{hero.imageAlt}</span>
     </section>

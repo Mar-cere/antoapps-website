@@ -56,7 +56,7 @@ const PAGE_LABELS: Record<Locale, Record<string, string>> = {
 
 const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
   es: {
-    '': 'Home editorial: acompañamiento para horas quietas, demos de producto, foundation (memoria/técnicas), reviews, precios, FAQ y descarga en App Store y Google Play.',
+    '': 'Home editorial. H1: «Cuando todo cuesta un poco más.» Acompañamiento para ansiedad y horas quietas, entre sesiones o en el día a día. Demos de producto, foundation (memoria/técnicas), reviews, precios, FAQ y descarga en App Store y Google Play. Complementa; no reemplaza terapia.',
     '/bienvenida': 'Landing de conversión (Meta Ads): apoyo emocional para ansiedad en iPhone y Android; prueba 1 día gratis.',
     '/app': 'Detalle de funcionalidades, capturas y enlaces de descarga.',
     '/seguridad':
@@ -74,7 +74,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '/terminos': 'Condiciones de uso del servicio.',
   },
   en: {
-    '': 'Editorial home: support for quiet hours, product demos, foundation (memory/techniques), reviews, pricing, FAQ, App Store and Google Play download.',
+    '': 'Editorial home. H1: “When everything costs a little more.” Support for anxiety and quiet hours, between sessions or day to day. Product demos, foundation (memory/techniques), reviews, pricing, FAQ, App Store and Google Play download. Complements; does not replace therapy.',
     '/bienvenida': 'Conversion landing (Meta Ads): emotional support for anxiety on iPhone and Android; 1-day free trial.',
     '/app': 'Feature detail, screenshots, download links.',
     '/seguridad':

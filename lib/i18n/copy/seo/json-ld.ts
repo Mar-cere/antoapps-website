@@ -1,5 +1,6 @@
 import { APP_VERSION } from '@/lib/app-version';
-import type { Locale } from '@/lib/i18n/config';
+import { localePath, type Locale } from '@/lib/i18n/config';
+import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { DEFAULT_APP_STORE_URL, DEFAULT_GOOGLE_PLAY_URL_ES } from '@/lib/download-links';
 
@@ -128,19 +129,21 @@ export function getFaqPageJsonLd(locale: Locale): JsonLd {
   };
 }
 
+function websiteDescription(locale: Locale): string {
+  return locale === 'en'
+    ? 'Anto — when everything costs a little more. Ongoing emotional support on iPhone and Android for anxiety and quiet hours, between therapy sessions or day to day. Complements clinical care; does not replace a human therapist.'
+    : 'Anto — cuando todo cuesta un poco más. Acompañamiento emocional continuo en iPhone y Android para ansiedad y horas quietas, entre sesiones de terapia o en el día a día. Complementa la atención clínica; no reemplaza a un terapeuta humano.';
+}
+
 export function getWebSiteJsonLd(locale: Locale): JsonLd {
   const url = locale === 'en' ? `${SITE_ORIGIN}/en` : SITE_ORIGIN;
-  const description =
-    locale === 'en'
-      ? 'Anto — when everything costs a little more. Ongoing emotional support on iPhone and Android for anxiety and quiet hours, between therapy sessions or day to day. Complements clinical care; does not replace a human therapist.'
-      : 'Anto — cuando todo cuesta un poco más. Acompañamiento emocional continuo en iPhone y Android para ansiedad y horas quietas, entre sesiones de terapia o en el día a día. Complementa la atención clínica; no reemplaza a un terapeuta humano.';
 
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Anto',
     url,
-    description,
+    description: websiteDescription(locale),
     inLanguage: locale === 'en' ? 'en' : 'es',
     publisher: {
       '@type': 'Organization',
@@ -150,9 +153,45 @@ export function getWebSiteJsonLd(locale: Locale): JsonLd {
     significantLink: [
       `${SITE_ORIGIN}/llms.txt`,
       `${SITE_ORIGIN}/llms-full.txt`,
-      `${SITE_ORIGIN}/recursos`,
+      `${SITE_ORIGIN}${localePath(locale, '/recursos')}`,
+      `${SITE_ORIGIN}${localePath(locale, '/nexus')}`,
+      `${SITE_ORIGIN}${localePath(locale, '/investigacion')}`,
+      `${SITE_ORIGIN}${localePath(locale, '/seguridad')}`,
+      `${SITE_ORIGIN}${localePath(locale, '/app')}`,
       DEFAULT_APP_STORE_URL,
       DEFAULT_GOOGLE_PLAY_URL_ES,
     ],
+  };
+}
+
+/** WebPage de la home: el H1 visible y la foto del hero, para buscadores y agentes. */
+export function getHomeWebPageJsonLd(locale: Locale): JsonLd {
+  const hero = getHomeV2Copy(locale).hero;
+  const headline = `${hero.titleLine1} ${hero.titleAccent}`.replace(/\s+/g, ' ').trim();
+  const url = locale === 'en' ? `${SITE_ORIGIN}/en` : SITE_ORIGIN;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: headline,
+    headline,
+    url,
+    description: websiteDescription(locale),
+    inLanguage: locale === 'en' ? 'en' : 'es',
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: `${SITE_ORIGIN}${getEditorialImagePath('evening')}`,
+      caption: hero.imageAlt,
+    },
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'Anto',
+      url: SITE_ORIGIN,
+    },
+    about: {
+      '@type': 'SoftwareApplication',
+      name: 'Anto',
+      url,
+    },
   };
 }
