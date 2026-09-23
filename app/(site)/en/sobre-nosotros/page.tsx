@@ -1,8 +1,14 @@
 import AboutPageContent from '@/components/pages/AboutPageContent';
-import { aboutPageMetadata } from '@/lib/i18n/copy/pages/about';
+import EditorialWebPageJsonLd from '@/components/seo/EditorialWebPageJsonLd';
+import { aboutPageMetadata } from '@/lib/i18n/copy/pages/about-metadata';
 
 export const metadata = aboutPageMetadata('en');
 
 export default function AboutPageEn() {
-  return <AboutPageContent locale="en" />;
+  return (
+    <>
+      <EditorialWebPageJsonLd locale="en" path="/sobre-nosotros" />
+      <AboutPageContent locale="en" />
+    </>
+  );
 }
