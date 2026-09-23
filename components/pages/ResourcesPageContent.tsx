@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
@@ -10,6 +11,7 @@ import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import ResourcesLibrary from '@/components/resources/ResourcesLibrary';
+import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import ResourcesJsonLd from '@/components/seo/ResourcesJsonLd';
 import '@/styles/pages/home-landing-final.css';
 import '@/styles/pages/home-v2.css';
@@ -31,6 +33,7 @@ export default function ResourcesPageContent({ locale }: ResourcesPageContentPro
           locale={locale}
           ctaHref={localePath(locale, '/bienvenida')}
           ctaLabel={nav.cta}
+          ctaAria={nav.ctaAria}
         />
         <main
           id="main-content"
@@ -51,11 +54,30 @@ export default function ResourcesPageContent({ locale }: ResourcesPageContentPro
                   <span className="resources-crumb__current">{copy.breadcrumbs.currentLabel}</span>
                 </nav>
 
-                <h1 className="resources-hero__title reveal-on-scroll">{copy.hero.title}</h1>
-                <div className="resources-hero__copy reveal-on-scroll">
-                  <p className="resources-hero__support">{copy.hero.subtitle}</p>
-                  <p className="resources-hero__seo-intro">{copy.hero.seoIntro}</p>
+                <div className="resources-hero__lead">
+                  <h1 className="resources-hero__title">{copy.hero.title}</h1>
+                  <div className="resources-hero__copy">
+                    <p className="resources-hero__support">{copy.hero.subtitle}</p>
+                    <p className="resources-hero__seo-intro">{copy.hero.seoIntro}</p>
+                  </div>
                 </div>
+                <figure className="resources-hero__figure">
+                  <div className="resources-hero__frame">
+                    <Image
+                      src={getEditorialImagePath('morningPause')}
+                      alt={
+                        locale === 'en'
+                          ? 'Morning light on an empty chair by the window'
+                          : 'Luz de mañana sobre una silla vacía junto a la ventana'
+                      }
+                      width={1536}
+                      height={1024}
+                      className="resources-hero__img"
+                      sizes="(max-width: 959px) 100vw, 34rem"
+                      priority
+                    />
+                  </div>
+                </figure>
 
                 <nav
                   className="resources-featured reveal-on-scroll"

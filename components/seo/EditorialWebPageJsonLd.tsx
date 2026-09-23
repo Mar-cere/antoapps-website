@@ -3,13 +3,27 @@ import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import { APP_VERSION_LABEL } from '@/lib/app-version';
 import type { Locale } from '@/lib/i18n/config';
 import { getAppPageCopy } from '@/lib/i18n/copy/app';
+import { getBienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 import { getContactPageCopy } from '@/lib/i18n/copy/contact';
 import { getAboutPageCopy } from '@/lib/i18n/copy/pages/about';
+import { getChangelogPageCopy } from '@/lib/i18n/copy/pages/changelog';
 import { getDesarrolloPageCopy } from '@/lib/i18n/copy/pages/desarrollo';
 import { getSecurityPageCopy } from '@/lib/i18n/copy/pages/security';
+import { getPrivacyPageCopy } from '@/lib/i18n/copy/privacy';
+import { getTermsPageCopy } from '@/lib/i18n/copy/terms';
 import { getEditorialWebPageJsonLd } from '@/lib/i18n/copy/seo/json-ld';
 
-const PATHS = ['/sobre-nosotros', '/app', '/seguridad', '/contacto', '/desarrollo'] as const;
+const PATHS = [
+  '/sobre-nosotros',
+  '/app',
+  '/seguridad',
+  '/contacto',
+  '/desarrollo',
+  '/bienvenida',
+  '/changelog',
+  '/privacidad',
+  '/terminos',
+] as const;
 
 export type EditorialWebPagePath = (typeof PATHS)[number];
 
@@ -72,16 +86,60 @@ function fieldsFor(locale: Locale, path: EditorialWebPagePath) {
     };
   }
 
-  const copy = getDesarrolloPageCopy(locale);
+  if (path === '/desarrollo') {
+    const copy = getDesarrolloPageCopy(locale);
+    return {
+      name: copy.meta.title,
+      headline: copy.hero.title,
+      description: copy.meta.description,
+      imagePath: getEditorialImagePath('thoughtLoop'),
+      imageCaption:
+        locale === 'en'
+          ? 'Hands holding a phone open to an unanswered chat, beside a notebook with handwritten questions'
+          : 'Manos con el teléfono abierto a un chat sin respuesta y, al lado, un cuaderno con preguntas escritas a mano',
+    };
+  }
+
+  if (path === '/bienvenida') {
+    const copy = getBienvenidaCopy(locale);
+    return {
+      name: copy.meta.title,
+      headline: `${copy.v2.heroTitlePrefix} ${copy.v2.heroTitleHighlight}`,
+      description: copy.meta.description,
+      imagePath: getEditorialImagePath('sleeplessNight'),
+      imageCaption: copy.v2.photoAlt,
+    };
+  }
+
+  if (path === '/changelog') {
+    const copy = getChangelogPageCopy(locale);
+    return {
+      name: copy.meta.title,
+      headline: copy.header.title,
+      description: copy.meta.description,
+    };
+  }
+
+  if (path === '/privacidad') {
+    const copy = getPrivacyPageCopy(locale);
+    return {
+      name: locale === 'en' ? 'Privacy Policy - Anto' : 'Política de Privacidad - Anto',
+      headline: copy.title,
+      description:
+        locale === 'en'
+          ? 'Anto privacy policy. Learn how we protect and handle your personal data.'
+          : 'Política de privacidad de Anto. Conoce cómo protegemos y manejamos tus datos personales.',
+    };
+  }
+
+  const copy = getTermsPageCopy(locale);
   return {
-    name: copy.meta.title,
-    headline: copy.hero.title,
-    description: copy.meta.description,
-    imagePath: getEditorialImagePath('thoughtLoop'),
-    imageCaption:
+    name: locale === 'en' ? 'Terms of Service - Anto | Conditions of Use' : 'Términos de Servicio - Anto | Condiciones de Uso',
+    headline: copy.title,
+    description:
       locale === 'en'
-        ? 'Hands holding a phone open to an unanswered chat, beside a notebook with handwritten questions'
-        : 'Manos con el teléfono abierto a un chat sin respuesta y, al lado, un cuaderno con preguntas escritas a mano',
+        ? 'Terms and conditions for using the Anto app. Read our terms of service before using the application.'
+        : 'Términos y condiciones de uso de la aplicación Anto. Lee nuestras condiciones de servicio antes de usar la aplicación.',
   };
 }
 

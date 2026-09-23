@@ -202,16 +202,25 @@ export type EditorialWebPageInput = {
   name: string;
   headline: string;
   description: string;
-  imagePath: string;
-  imageCaption: string;
+  imagePath?: string;
+  imageCaption?: string;
 };
 
-/** WebPage de una ruta marketing: mismo contrato que la home, con la foto de esa página. */
+/** WebPage de una ruta marketing: mismo contrato que la home. La foto entra solo si la página la muestra. */
 export function getEditorialWebPageJsonLd(input: EditorialWebPageInput): JsonLd {
   const url = `${SITE_ORIGIN}${localePath(input.locale, input.path)}`;
-  const imageUrl = input.imagePath.startsWith('http')
-    ? input.imagePath
-    : `${SITE_ORIGIN}${input.imagePath}`;
+  const image =
+    input.imagePath
+      ? {
+          primaryImageOfPage: {
+            '@type': 'ImageObject',
+            url: input.imagePath.startsWith('http')
+              ? input.imagePath
+              : `${SITE_ORIGIN}${input.imagePath}`,
+            ...(input.imageCaption ? { caption: input.imageCaption } : {}),
+          },
+        }
+      : {};
 
   return {
     '@context': 'https://schema.org',
@@ -221,11 +230,7 @@ export function getEditorialWebPageJsonLd(input: EditorialWebPageInput): JsonLd 
     url,
     description: input.description,
     inLanguage: input.locale === 'en' ? 'en' : 'es',
-    primaryImageOfPage: {
-      '@type': 'ImageObject',
-      url: imageUrl,
-      caption: input.imageCaption,
-    },
+    ...image,
     isPartOf: {
       '@type': 'WebSite',
       name: 'Anto',

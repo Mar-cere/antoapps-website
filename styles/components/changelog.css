@@ -1,3 +1,102 @@
+/* Changelog dentro del shell editorial: claridad, no campaña */
+
+.changelog-page.home-landing-page--v2 {
+    padding: 1.5rem 0 3.5rem;
+    background: var(--color-bg-primary);
+}
+
+.changelog-page .container {
+    max-width: min(72rem, 100%);
+}
+
+.changelog-page .changelog-container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.changelog-page .changelog-header,
+.changelog-page .changelog-subtitle,
+.changelog-page .changelog-status-note,
+.changelog-page .changelog-footer,
+.changelog-page .changelog-disclaimer .disclaimer-text {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.changelog-page .changelog-title {
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    max-width: 16ch;
+}
+
+.changelog-page .changelog-subtitle {
+    max-width: 48ch;
+}
+
+.changelog-page .changelog-status-note {
+    max-width: 46rem;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid var(--home-v2-hairline, rgba(255, 255, 255, 0.1));
+    border-radius: 0;
+    padding: 1rem 0 0;
+}
+
+.changelog-page .status-badge-current-banner {
+    background: transparent;
+    color: var(--color-primary);
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+
+.changelog-page .version-card,
+.changelog-page .version-current {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    margin-left: 0;
+    padding: 1.35rem 0;
+    border-top: 1px solid var(--home-v2-hairline, rgba(255, 255, 255, 0.1));
+}
+
+.changelog-page .version-card::before {
+    display: none;
+}
+
+.changelog-page .version-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+@media (min-width: 960px) {
+    .changelog-page .version-card {
+        display: grid;
+        grid-template-columns: minmax(11rem, 16rem) minmax(0, 1fr);
+        gap: 0.5rem 2.75rem;
+        align-items: start;
+    }
+
+    .changelog-page .version-changes,
+    .changelog-page .version-highlights {
+        grid-column: 2;
+    }
+
+    .changelog-page .changes-list {
+        columns: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .changelog-page .version-card {
+        animation: none;
+    }
+}
+
 /* ============================================
    CHANGELOG PAGE - Estilo Apple/Tesla
    ============================================ */
