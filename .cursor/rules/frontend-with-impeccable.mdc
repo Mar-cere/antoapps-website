@@ -1,5 +1,5 @@
 ---
-description: Aplica por defecto Editorial Emotional + Taste + Impeccable en UI; preserva identidad Anto
+description: Aplica Nexus esencial + Taste + Impeccable en UI; la foto editorial no redefine la materia visual
 globs: "**/*.{tsx,jsx,css,scss,html}"
 alwaysApply: true
 ---
@@ -10,19 +10,21 @@ En trabajo de UI/frontend de este repo, **aplica estas skills sin que el usuario
 
 ## Principio regidor
 
-**`editorial-emotional-web`** define la dirección de arte del sitio marketing: composición editorial viva, fotografía cotidiana, narrativa emocional, tipografía expresiva (vía escala del sistema), ritmo y prohibiciones anti-clínica / anti-SaaS / anti-wellness-pastel.
+**Anto Nexus esencial** (`anto-nexus-esencial` + `DESIGN.md`) es el estilo vigente de la web y de la app: calmado, plano y premium. Periwinkle, papel o carbón, sans del sistema, cards con hairline. En la interfaz no aparece el wordmark «Nexus»; la marca visible es el M1 Möbius.
 
-Taste e Impeccable **ejecutan** craft, anti-slop y audit bajo esa dirección; no la sustituyen.
+**`editorial-emotional-web`** aporta, solo en marketing, fotografía cotidiana, narrativa y ritmo. No redefine color, tipo, superficies ni motion.
+
+Taste e Impeccable **ejecutan** craft, anti-slop y audit bajo Nexus esencial; no lo sustituyen.
 
 ## Auto-carga
 
 | Señal de tarea | Cargar automáticamente |
 |----------------|------------------------|
-| Landing, marketing, rediseño visual, “mejor diseño”, páginas HTML/CSS del sitio, propuesta/evaluación estética | Skill `editorial-emotional-web` (dirección) + `design-taste-frontend` (Design Read + dials Anto + anti-slop) |
-| Mejorar UI existente, a11y, polish, tipografía, motion, layout, critique técnico | Skill `impeccable` (flujo `context.mjs` + comando implícito más cercano); si es marketing, también `editorial-emotional-web` |
+| Landing, marketing, rediseño visual, “mejor diseño”, páginas HTML/CSS del sitio, propuesta/evaluación estética | Rule `anto-nexus-esencial` + `DESIGN.md`; skill `editorial-emotional-web` solo para foto y narrativa; `design-taste-frontend` (Design Read + dials Anto + anti-slop) |
+| Mejorar UI existente, a11y, polish, tipografía, motion, layout, critique técnico | Skill `impeccable` (flujo `context.mjs` + comando implícito más cercano) bajo Nexus esencial; si es marketing, también `editorial-emotional-web` para foto y narrativa |
 | Layout / adapt responsive de marketing o ensayos (`/investigacion`, guías, home) | Rule `marketing-responsive-editorial` + `editorial-emotional-web/anto-responsive.md`; comando Impeccable `adapt`/`layout` si hace falta |
 | Home-v2, guías `/recursos`, copy ES/EN, SEO/IA de esas superficies | Rule `marketing-editorial-form` (forma + anti-reverberación + checklist SEO/llms); skills editorial/impeccable según el resto |
-| Rediseño visual grande | Editorial primero → Taste (dials) → tokens Anto → Impeccable `polish`/`audit` al cierre |
+| Rediseño visual grande | Nexus esencial primero → Taste (composición 6, motion 4, densidad 3) → tokens de `DESIGN.md` → Impeccable `polish`/`audit` al cierre |
 | Solo backend / API / infra sin UI | No cargar ninguna |
 
 Si varias aplican, úsalas; no esperes a que el usuario diga “usa Editorial”, “usa Taste” o “usa Impeccable”.
@@ -31,34 +33,29 @@ Si varias aplican, úsalas; no esperes a que el usuario diga “usa Editorial”
 
 | Decisión | Dueño |
 |---------|-------|
-| Dirección de arte, narrativa, foto, voz, ritmo editorial, evaluación estética 1–10 | `editorial-emotional-web` |
+| Color, tipo, superficies, radios, motion, marca visible | Rule `anto-nexus-esencial` + `DESIGN.md` |
+| Narrativa, foto y ritmo de marketing | `editorial-emotional-web` |
 | Anti-slop, Design Read, dials, pre-flight de layout | `design-taste-frontend` |
 | Craft/audit/critique/polish estructurado, PRODUCT.md, UI de producto | `impeccable` |
 | Forma de home/guías, anti-reverberación de copy, checklist SEO/IA de marketing | Rule `marketing-editorial-form` |
-| Tokens, Inter/SF, teal `#1adddb`, dark azul, CSS del repo | Esta rule + `PRODUCT.md` + puente Anto en la skill editorial |
+| Voz, promesa y límites de producto | `PRODUCT.md` + `narrativa-producto-anto` |
 
-Conflicto: **editorial-emotional (dirección) > identidad Anto (tokens) > PRODUCT.md > skill pedida > defaults de Taste/Impeccable**.
+Conflicto: **Nexus esencial (materia visual) > PRODUCT.md > editorial-emotional (foto y narrativa) > skill pedida > defaults de Taste/Impeccable**.
 
-## Preset Anto (Taste, bajo Editorial)
+## Preset Anto (Taste, bajo Nexus esencial)
 
 Salvo overhaul explícito:
 
-- `DESIGN_VARIANCE: 5`
-- `MOTION_INTENSITY: 3`
+- `DESIGN_VARIANCE: 6` en la composición (editorial, no plantilla de 1 o 2 columnas)
+- `MOTION_INTENSITY: 4` (controles cortos; la página tiene animación visible y profesional)
 - `VISUAL_DENSITY: 3`
-- Redesign mode: **preserve**
-- Design Read: *landing consumer editorial-emocional para Anto, trust-first calmado, dark + teal + fotografía cotidiana, CSS tokens del repo (no Tailwind forzado).*
+- Accent 2 y materia plana: un solo acento, periwinkle. Expression 3 aplica a color y superficie, no a la retícula.
+- Redesign mode: **alinear a Nexus esencial**. No preservar teal, navy, glass de card ni gradiente.
+- Design Read: *superficie Anto Nexus esencial, editorial y profesional, papel o carbón plano, periwinkle `#6868DF` / `#A5A4FF`, composición variable, movimiento con intención, sans de sistema, CSS del repo (no Tailwind forzado).*
 
-## Paleta editorial → tokens Anto
+## Paleta
 
-No abrir paletas morado-neón / pastel / cream. Traducir la dirección editorial así:
-
-| Rol | Token |
-|-----|--------|
-| Fondo profundo | `#030a24` / `--color-bg-*` |
-| Acento luminoso | `#1adddb` / `--color-primary` |
-| Apoyo lavanda-azul | `#a3b8e8` / `--color-secondary` |
-| Acento amarillo raro | `#ffd93d` / `--color-warning` (puntual) |
+La tabla normativa está en `anto-nexus-esencial` y en `DESIGN.md`. No reabrir teal `#1adddb`, navy `#030a24`, lavanda `#a3b8e8` ni amarillo `#ffd93d` como identidad. El periwinkle de marca no es un gradiente lila-azul ni un morado neón.
 
 ## Responsive editorial (evitar reiterar)
 
@@ -66,11 +63,11 @@ No abrir paletas morado-neón / pastel / cream. Traducir la dirección editorial
 
 ## Overrides no negociables
 
-1. No migrar a Tailwind/shadcn/Material sin petición.
-2. No “arreglar” Inter/system ni el primary teal.
-3. No cream/purple-neón/glass genérico.
-4. Hero: brand + headline + apoyo + CTA + imagen; sin chips flotantes.
-5. Motion contenido + `prefers-reduced-motion`.
+1. No migrar a Tailwind/shadcn/Material sin petición. Sin FAB ni elevation alta.
+2. No sustituir la sans del sistema ni “corregir” el primario de vuelta a teal.
+3. No glass de card, gradiente lila-azul, partículas, orbital SVG ni hex sueltos fuera de la paleta.
+4. Hero de marketing: brand + headline + apoyo + CTA + imagen; sin chips flotantes. El hero de continuidad de la app es solo tipografía.
+5. Movimiento en dos capas: controles a escala 0.95; composición editorial con entradas y hover con intención. `prefers-reduced-motion` apaga ambas. Sin bucles ni partículas.
 6. React: no `useMemo`/`useCallback` por defecto salvo criterio del repo.
-7. No estética clínica, meditación genérica ni landing de IA; sí marca cultural-emocional con tecnología.
+7. No estética clínica, meditación genérica ni landing de IA. No wordmark «Nexus» en la interfaz.
 8. No dejar marketing/ensayos en `max-width: ~46rem` en todo el desktop; recomponer layout.

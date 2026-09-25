@@ -12,8 +12,8 @@ Efecto en desktop: una sola columna larga, márgenes laterales muertos, sensaci�
 
 ```
 Mobile:  stack vertical, shell ≈ medida
-Tablet:  shell crece; primeras recomposiciones (2 cols)
-Desktop: shell ~56–72rem; medida solo en prosa; secciones recomponen
+Tablet:  shell crece; la primera sección ya cambia de familia, sin abrir en dos columnas iguales
+Desktop: shell ~56–72rem; medida solo en prosa; cada tramo cambia de corte, escala y ritmo
 ```
 
 ### CSS mental model
@@ -30,16 +30,19 @@ Desktop: shell ~56–72rem; medida solo en prosa; secciones recomponen
 
 ## Familias de layout por sección (rotar)
 
+Una columna y dos columnas iguales no son el punto de partida. Rotar de verdad: al menos tres familias, y no todas con el mismo corte.
+
 | Familia | Cuándo |
 |---------|--------|
-| Masthead 2 cols | Título + cita / apoyo |
+| Masthead de escalas distintas | Título grande y apoyo que no compite en el mismo ancho |
 | Reading measure | Ensayo, límites, disclaimer |
-| Full-shell figure | Foto editorial |
-| Grid 2×N | Takes, ideas pares |
-| Split texto \| media | Puente producto / viñetas |
-| Closing 2 cols | Límites + refs / CTA + nota |
+| Figura a sangre | Foto con tipo superpuesto o al borde |
+| Ritmo irregular | Un take grande y el resto menor, o una banda |
+| Corte asimétrico | Texto y media en 7/5 u 8/4, no en 50/50 |
+| Acompañante sticky | Una nota que sigue mientras el cuerpo avanza |
+| Banda horizontal | Una secuencia que se recorre de lado, con propósito |
 
-No repetir la misma familia en 3+ secciones seguidas.
+No repetir la misma familia en 3+ secciones seguidas. Un split 50/50, como máximo una vez en la página.
 
 ## Canon en el repo
 

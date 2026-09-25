@@ -7,7 +7,7 @@ Private Operate dashboard. Not marketing. Not `/nexus`.
 A quiet late-night work desk. The operator watches a living system without theatrical glow.
 
 ## Color
-Dark navy `#030a24` / `#0a1529`. Accent teal `#1adddb`. Component colors as 8px swatches, not neon edges.
+Misma materia que Anto Nexus esencial, tema oscuro. Carbón `#101216`, superficie `#191D24`, acento periwinkle `#A5A4FF`. Swatches de 8 px, sin bordes neón. Sin teal `#1adddb` ni navy `#030a24`. El wordmark «Nexus» no aparece en la interfaz.
 
 ## Type
 System / SF / Inter. Fixed product scale, not fluid display type.

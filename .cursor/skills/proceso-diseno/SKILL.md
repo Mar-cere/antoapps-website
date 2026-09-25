@@ -39,6 +39,7 @@ Verifica que la dirección propuesta respete la narrativa de Anto:
 - ¿Refuerza la promesa "nunca vuelves a empezar desde cero" (continuidad, memoria)?
 - ¿Deja al usuario con menos intensidad emocional, más claridad y un siguiente paso?
 - ¿Respeta los 7 principios (usuario primero, comprender antes que responder, no juzgar, acompañar sin reemplazar, privacidad/confianza)?
+- Si hay UI: ¿la materia es Anto Nexus esencial (periwinkle, fondo plano, sans, hairline) y no el teal legado?
 
 ## Paso 4 — Plantear opciones con tradeoffs
 

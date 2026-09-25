@@ -1,5 +1,5 @@
 ---
-description: Layout responsive editorial Anto — shell ancho en desktop, medida de lectura en prosa; no columna móvil en pantallas grandes
+description: Layout responsive editorial Anto — composición variable en desktop; la prosa tiene medida, la página no es una ni dos columnas por defecto
 globs: "**/{components,styles,app}/**/*.{tsx,jsx,css,scss}"
 alwaysApply: false
 ---
@@ -8,7 +8,7 @@ alwaysApply: false
 
 ## Tesis
 
-Mobile-first es el **orden CSS**, no el layout final de desktop. Si en ≥960px la página se ve como un tubo centrado (~46rem) con márgenes muertos, el layout está incompleto.
+Mobile-first es el **orden CSS**, no el layout final de desktop. Si en ≥960px la página se ve como un tubo centrado (~46rem) o como una sucesión de splits 50/50, el layout está incompleto. La página es editorial: cambia de escala, de corte y de ritmo. Una columna y dos columnas iguales no son el punto de partida.
 
 ## Separar dos anchos
 
@@ -21,26 +21,27 @@ No aplicar `max-width: 46rem` al contenedor raíz de toda la página en desktop.
 
 ## Breakpoints de composición (referencia)
 
-- **<768px:** una columna; ritmo vertical.
-- **≥768px:** empieza a usar ancho (p. ej. takes en 2 cols; shell intermedio ~56rem).
-- **≥960px:** composición editorial (masthead split, figura a shell, producto texto|media, cierre 2 cols).
+- **<768px:** flujo vertical con contraste de escala (tipo grande, figura ancha). No es un desktop encogido.
+- **≥768px:** el shell crece y la primera sección ya cambia de familia. No abrir con una grilla de dos columnas iguales.
+- **≥960px:** composición editorial variable. Cortes asimétricos, figura a sangre, tipo superpuesto, bloque desplazado, banda horizontal o acompañante sticky. Un split igual, como máximo una vez.
 
 ## Páginas tipo ensayo (`/investigacion`, guías)
 
 Canon vivo: `styles/components/research.css` + `ResearchPageContent.tsx`.
 
-1. **Masthead:** título + pullquote / apoyo en 2 columnas.
+1. **Masthead:** título y apoyo con escalas distintas. Puede romperse el eje; no es un par de columnas iguales por defecto.
 2. **Reading:** medida controlada, anclada (no centrar el vacío).
-3. **Figura:** ancho de shell; caption con medida corta.
-4. **Takes / ideas:** rejilla 2×2 (o 2 cols), sin cards SaaS.
-5. **Puente producto:** texto | viñeta (sin zigzag si la media es alta).
-6. **Cierre:** límites + referencias en paralelo cuando el contenido lo permita.
+3. **Figura:** ancho de shell o a sangre; el tipo puede superponerse. Caption con medida corta.
+4. **Takes / ideas:** ritmo irregular (un take grande y el resto menor, o una banda). Sin cards SaaS y sin 2×2 como reflejo.
+5. **Puente producto:** texto y viñeta con pesos distintos. Sin zigzag si la media es alta.
+6. **Cierre:** límites y referencias en una composición propia, no en el mismo corte que el masthead.
 
 ## Checklist antes de dar por listo un layout marketing
 
 - [ ] Desktop ≥1280px no es “mobile más padding”.
 - [ ] Shell y medida no son el mismo `max-width`.
-- [ ] Al menos 2 familias de layout distintas en la página (no solo stack).
+- [ ] Al menos 3 familias de layout distintas, y no son todas de una o dos columnas iguales.
+- [ ] Hay un momento de movimiento editorial (entrada, hover o banda) que se apaga con `prefers-reduced-motion`.
 - [ ] Mobile <720px sigue legible y sin grids rotos.
 - [ ] Sin cards decorativas ni chips en hero.
 

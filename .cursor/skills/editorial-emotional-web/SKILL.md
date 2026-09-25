@@ -1,12 +1,11 @@
 ---
 name: editorial-emotional-web
 description: >-
-  Principio regidor de dirección de arte para el sitio Anto: diseño editorial
-  emocional contemporáneo (fotografía lifestyle, tipografía expresiva, narrativa,
-  composición de revista). Usar en landings, marketing, rediseños visuales,
-  critique/evaluación estética y copy de marca. No para dashboards ni UI de
-  producto densa. Integra tokens Anto (teal #1adddb, dark azul) sin estética
-  clínica, SaaS genérica ni wellness pastel.
+  Narrativa y fotografía del marketing Anto: diseño editorial emocional
+  (fotografía lifestyle, composición, copy observacional). Usar en landings,
+  marketing, critique estético y copy de marca. No redefine color, tipo ni
+  superficies: eso lo fija Anto Nexus esencial (periwinkle, papel o carbón,
+  sans de sistema, plano). No para dashboards ni UI de producto densa.
 ---
 
 # Editorial Emotional Web Design
@@ -19,67 +18,68 @@ Tu función es diseñar, evaluar y mejorar interfaces web que se sientan humanas
 
 ## Puente Anto (obligatorio en este repo)
 
-Esta skill es el **principio regidor** de dirección de arte del sitio marketing de Anto. Taste e Impeccable ejecutan craft, anti-slop y audit; no sustituyen esta dirección.
+Esta skill aporta **fotografía, narrativa, voz y ritmo** del marketing. La materia visual la fija **Anto Nexus esencial** (rule `anto-nexus-esencial` y `DESIGN.md`): calmado, plano y premium. Taste e Impeccable ejecutan craft; no sustituyen ni esta narrativa ni esa materia.
 
 ### Orden de conflicto
 
-1. Esta skill (composición, fotografía, narrativa, voz, ritmo, prohibiciones visuales).
-2. Identidad Anto en tokens (`styles/tokens/`, `styles/base/variables.css`): teal, dark azul, tipografía del repo.
-3. `PRODUCT.md`.
+1. Nexus esencial: color, tipo, superficies, radios, motion, marca visible.
+2. `PRODUCT.md`.
+3. Esta skill: composición, fotografía, narrativa, voz y ritmo de marketing.
 4. Defaults de `design-taste-frontend` / `impeccable`.
 
-### Paleta Anto editorial (no inventar otra)
+### Paleta
 
-La skill genérica permite azul eléctrico, morado, lavanda, cian, amarillo. En Anto se **traduce** a tokens existentes; no se abre una paleta SaaS/IA nueva.
+No inventar otra. El primario es periwinkle. El fondo es plano: papel `#FAFAFC` o carbón `#101216`. La card es superficie opaca con hairline.
 
-| Rol editorial | Token / valor Anto | Uso |
+| Rol | Claro | Oscuro |
 |---|---|---|
-| Negro azulado / fondo profundo | `--color-bg-primary` `#030a24`, `--color-bg-secondary` `#0a1529`, `--color-bg-tertiary` `#112040` | Planos editoriales, secciones monocromáticas |
-| Cian luminoso (acento primario) | `--color-primary` `#1adddb` | CTA, enlaces, acentos, ritmo de color |
-| Lavanda / azul suave (secundario) | `--color-secondary` `#a3b8e8` | Apoyo tipográfico, capas, contraste editorial suave |
-| Texto | `--color-text-primary` `#f4f7fb`, secondary/tertiary del token | Cuerpo y jerarquía |
-| Amarillo (acento raro) | `--color-warning` `#ffd93d` | Solo momentos puntuales; nunca dominante |
-| Glow ambiental | `--color-bg-glow` | Atmósfera discreta, no mesh tecnológico |
+| Primario | `#6868DF` | `#A5A4FF` |
+| Fondo | `#FAFAFC` | `#101216` |
+| Superficie | `#FFFFFF` | `#191D24` |
+| Texto | `#121722` | `#F4F6FC` |
 
-**Permitido en Anto:** bloques de color amplios con los azules profundos; secciones monocromáticas; superposiciones foto + tipografía; acentos teal luminosos; secondary lavanda con moderación; gradientes discretos solo con propósito (p. ej. glow existente).
+**Permitido en Anto:** fotografía cotidiana sobre fondo plano; secciones monocromáticas de papel o carbón; superposición foto + tipo; acento periwinkle sólido en CTA y enlaces.
 
-**Prohibido aunque la skill genérica lo liste:** morado neón sobre negro (IA), pastel wellness, beige dominante, gradientes tech genéricos, sustituir el primary teal, cream/sand “editorial AI”.
+**Prohibido aunque la skill genérica lo liste:** teal `#1adddb`, navy `#030a24`, glow, gradiente lila-azul, glass de card, partículas, orbital SVG, serif, morado neón sobre negro, pastel wellness, cream/sand “editorial AI”, wordmark «Nexus».
+
+El periwinkle de marca no es un gradiente de inteligencia artificial. Es un sólido, una vez por pantalla.
 
 ### Tipografía Anto
 
-No sustituir Inter / SF Pro / system stack del repo sin overhaul explícito. La expresión editorial se logra con:
+Sans del sistema. No hay serif editorial ni una segunda familia. La expresión se logra con:
 
-* Escala fluida `clamp()` y contraste de tamaño/peso.
-* Saltos de línea intencionales y titulares grandes.
-* Ancho de medida controlado (≈45–65ch).
+* Escala y contraste de tamaño/peso dentro de la sans.
+* Saltos de línea intencionales.
+* Ancho de medida controlado (≈45–65ch) solo en prosa.
 * Cursiva o énfasis **dentro de la misma familia** cuando aporte.
 
-Una display distinta solo con brief explícito de tipografía.
+Escala de producto cuando la superficie es app: 24 / 18 / 16 / 14 / 12. En marketing el titular puede crecer, sin cambiar de familia.
 
 ### Stack de implementación Anto
 
-* CSS nativo / tokens del repo. No migrar a Tailwind / shadcn / Material sin petición.
+* CSS nativo. No migrar a Tailwind / shadcn / Material sin petición.
 * React / Next.js según el proyecto.
-* Motion contenido; dials Taste Anto: `DESIGN_VARIANCE: 5`, `MOTION_INTENSITY: 3`, `VISUAL_DENSITY: 3` salvo overhaul.
-* Redesign mode: **preserve** salvo petición contraria.
+* Dials Taste Anto: `DESIGN_VARIANCE: 6` en la composición, `MOTION_INTENSITY: 4`, `VISUAL_DENSITY: 3`. La materia sigue plana y de un solo acento.
+* Redesign mode: **alinear a Nexus esencial**. No preservar teal ni glass.
 
 ### Qué no debe parecer Anto
 
 La interfaz no debe parecer una cuenta de psicología, una clínica, una aplicación de meditación genérica ni una landing page de inteligencia artificial.
 
-Debe parecer una marca cultural y emocional que utiliza tecnología.
+Debe parecer una marca cultural y emocional que utiliza tecnología, con materia plana y un solo acento.
 
-Diferenciar de la lane “editorial-typographic” saturada (serif display + mono labels + sin foto): Anto es **editorial emocional fotográfico** — imagen cotidiana + tipografía del sistema + color Anto + narrativa.
+Diferenciar de la lane “editorial-typographic” saturada (serif display + mono labels + sin foto): Anto es **fotografía cotidiana + sans del sistema + periwinkle + narrativa**.
 
 ### Relación con otras skills
 
 | Skill | Rol |
 |---|---|
-| `editorial-emotional-web` | Dirección de arte, narrativa, foto, copy, evaluación estética |
+| `anto-nexus-esencial` / `DESIGN.md` | Color, tipo, superficies, motion, marca |
+| `editorial-emotional-web` | Foto, narrativa, copy, ritmo de marketing |
 | `design-taste-frontend` | Anti-slop, Design Read, dials, pre-flight técnico de layout |
-| `impeccable` | Craft/audit/polish/a11y estructurado; PRODUCT.md; UI de producto |
+| `impeccable` | Craft/audit/polish/a11y estructurado; UI de producto |
 
-En marketing: cargar esta skill primero; Taste e Impeccable refuerzan, no redirigen la estética.
+En marketing: la materia Nexus esencial manda; esta skill cuenta la historia encima, sin reabrir la paleta anterior.
 
 ---
 
@@ -239,19 +239,17 @@ Cuando no existan fotografías propias, el diseño debe compensarlo mediante enc
 
 La paleta debe tener personalidad y suficiente contraste para detener el scroll.
 
-En este repo aplica la tabla del **Puente Anto**. En abstracto (fuera de tokens Anto) la dirección admite azul profundo, cian, lavanda, acentos luminosos y neutros con temperatura; aquí se materializa con `#030a24` + `#1adddb` + `#a3b8e8`.
+En este repo aplica la tabla del **Puente Anto**: periwinkle sobre papel o carbón, fondo plano, sin glow. En Anto no hay gradiente, ni fondo navy, ni acento teal. Un bloque amplio es papel, carbón o fotografía, no un mesh.
 
-Los colores deben utilizarse de forma editorial, no como un sistema corporativo rígido.
+Los colores deben utilizarse con intención, no como un sistema corporativo rígido.
 
-Permite:
+Permite, fuera de Anto o solo si el Puente Anto ya lo autoriza:
 
 * Bloques de color amplios.
 * Superposiciones.
 * Secciones monocromáticas.
 * Contrastes inesperados.
-* Fondos profundos.
-* Acentos luminosos.
-* Gradientes discretos cuando tengan propósito.
+* Acento sólido, una vez.
 
 Evita:
 
@@ -271,7 +269,7 @@ El color debe construir ritmo, jerarquía y emoción.
 
 La tipografía es uno de los principales elementos gráficos.
 
-En Anto: misma familia del sistema (Inter / SF / system). Expresión vía escala, peso, ritmo y composición — ver Puente Anto.
+En Anto: sans del sistema, sin serif. Expresión vía escala, peso, ritmo y composición — ver Puente Anto.
 
 Combina, cuando sea apropiado (y el brief lo permita fuera de Anto lock):
 
@@ -394,7 +392,7 @@ Utiliza:
 * Capas.
 * Elementos gráficos mínimos pero intencionales.
 
-La página debe tener ritmo visual.
+La página debe tener ritmo visual. En Anto, una columna y dos columnas iguales no son el layout por defecto. Desde 768 px cada tramo cambia de familia: corte asimétrico, figura a sangre, tipo superpuesto, bloque desplazado, banda horizontal o acompañante sticky. Un split igual cabe una vez. La prosa sigue en su medida.
 
 No todas las secciones deben utilizar la misma estructura.
 
@@ -526,7 +524,7 @@ Evita:
 * Brillos, partículas o blobs decorativos.
 * Movimiento que compita con el contenido.
 
-En Anto, con `MOTION_INTENSITY: 3`, prioriza hover/focus y 2–3 reveals motivados; no coreografías de agency.
+En Anto, con `MOTION_INTENSITY: 4`, hay dos capas. Los controles van a escala 0.95 en unos 120 ms, sin rebote. La página tiene animación editorial visible: entrada por líneas, figura con opacidad y desplazamiento corto, hover con recorte o escala mínima, 480–700 ms, una vez. Sin partículas, sin orbital, sin bucle, sin parallax fuerte y sin coreografía de agency. `prefers-reduced-motion` apaga las dos capas.
 
 ⸻
 
@@ -799,7 +797,7 @@ Luego define:
 
 Antes de código en marketing Anto, declara en una línea el Design Read, p. ej.:
 
-*Reading this as: landing consumer editorial-emocional para Anto, trust-first calmado, dark + teal + fotografía cotidiana, CSS tokens del repo.*
+*Reading this as: superficie Anto Nexus esencial, editorial y profesional, papel o carbón plano, periwinkle, composición variable, movimiento con intención, fotografía cotidiana solo si la página es marketing.*
 
 ⸻
 
@@ -892,7 +890,7 @@ Cuando exista un conflicto entre dos alternativas, prioriza en este orden:
 
 No sigas una tendencia si debilita la identidad.
 
-En Anto, “Identidad” incluye tokens teal/dark y tipografía del repo.
+En Anto, “Identidad” incluye periwinkle, fondo plano, sans del sistema y el M1. No incluye teal ni serif.
 
 ⸻
 

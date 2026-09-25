@@ -8,6 +8,17 @@ description: Anti-slop frontend skill for landing pages, portfolios, and redesig
 > Landing pages, portfolios, and redesigns. Not dashboards, not data tables, not multi-step product UI.
 > Every rule below is **contextual**. None of it fires automatically. First read the brief, then pull only what fits.
 
+## Override de este repo (Anto)
+
+Antes de los defaults de abajo, aplica Anto Nexus esencial:
+
+- Dials: `DESIGN_VARIANCE: 6` en la composición, `MOTION_INTENSITY: 4`, `VISUAL_DENSITY: 3`. Accent 2 = un solo periwinkle (`#6868DF` claro, `#A5A4FF` oscuro). La materia sigue plana. La página no es una plantilla de una o dos columnas.
+- Redesign mode: alinear a ese sistema. No preservar teal `#1adddb` ni navy `#030a24`.
+- Styling: CSS del repo. No introducir Tailwind, shadcn ni Material.
+- Type: sans del sistema. La regla anti-Inter de esta skill no aplica aquí.
+- El periwinkle es el acento de marca, sólido. No es gradiente lila-azul, glass ni morado neón. La LILA RULE no lo “corrige”.
+- Norma completa: rule `anto-nexus-esencial` y `DESIGN.md`.
+
 ---
 
 ## 0. BRIEF INFERENCE (Read the Room Before Anything Else)

@@ -30,4 +30,4 @@ Descargar Anto: **par igual** App Store + Google Play en hero, pricing y Final C
 Reconocimiento observacional (*Cuando todo cuesta un poco más*) + viñeta de chat nocturna.
 
 ## Constraints
-Preserve tokens Anto (teal `#1adddb`, dark `#030a24`), tipografía system/Inter/SF, dirección `editorial-emotional-web`. Paridad ES/EN de estructura y claims. No Tailwind migration.
+Materia visual: Anto Nexus esencial (periwinkle, fondo plano, sans de sistema, card con hairline). Foto y narrativa: `editorial-emotional-web`, sin reabrir teal ni glass. Paridad ES/EN de estructura y claims. No Tailwind migration. `styles/tokens/colors.css` es legado; al tocar esta superficie, migrar sus roles.

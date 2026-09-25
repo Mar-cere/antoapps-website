@@ -6,7 +6,9 @@ alwaysApply: false
 
 # Forma editorial: home + guías de recursos
 
-Canon vivo: `home-v2.ts`, guías en `psychoeducation/{es,en}.ts`, CSS `psychoeducation-article.css` / `home-v2.css`. Dirección de arte: skill `editorial-emotional-web`. Responsive: rule `marketing-responsive-editorial`.
+Canon vivo: `home-v2.ts`, guías en `psychoeducation/{es,en}.ts`, CSS `psychoeducation-article.css` / `home-v2.css`. Materia visual: rule `anto-nexus-esencial`. Foto y narrativa: skill `editorial-emotional-web`. Responsive: rule `marketing-responsive-editorial`.
+
+La anatomía de un bloque no convierte la página en una columna ni en dos columnas iguales. En desktop el conjunto cambia de escala y de corte. El movimiento de esa composición es visible, profesional, y se apaga con `prefers-reduced-motion`.
 
 ## Guías `/recursos/[slug]`
 
@@ -42,4 +44,4 @@ Presupuesto hero: **brand + H1 + apoyo + CTA + 1 ancla visual/chat**. Recognize 
 
 ## Conflicto
 
-Editorial emotional > tokens Anto > esta rule (forma/copy/SEO de superficies) > defaults Taste/Impeccable.
+Nexus esencial > PRODUCT.md > editorial (foto y narrativa) > esta rule (forma/copy/SEO de superficies) > defaults Taste/Impeccable.

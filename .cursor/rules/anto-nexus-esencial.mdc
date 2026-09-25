@@ -1,0 +1,141 @@
+---
+description: Estilo vigente de la web y la app — Anto Nexus esencial (plano, periwinkle, sans de sistema)
+globs: "**/*.{tsx,jsx,css,scss,html}"
+alwaysApply: true
+---
+
+# Anto Nexus esencial
+
+Estilo vigente de la web y de la app. Calmado, plano y premium.
+
+Nexus es el motor interno. En la interfaz no aparece el wordmark «Nexus». La marca visible es el símbolo M1 Möbius.
+
+Preset de materia: **Expression 3 / Accent 2**. Sans clara, aire, un solo acento periwinkle, superficies planas.
+
+Preset de página: composición editorial variable y movimiento con intención. No es la plantilla de una columna ni de dos columnas iguales.
+
+En Taste: `DESIGN_VARIANCE: 6` en la composición, `MOTION_INTENSITY: 4`, `VISUAL_DENSITY: 3`. La materia sigue plana y de un solo acento.
+
+## Quién manda
+
+1. Esta rule y `DESIGN.md` (color, tipo, superficie, radio, motion, marca).
+2. `PRODUCT.md` (producto, voz, límites).
+3. `editorial-emotional-web` solo en marketing: foto, narrativa y ritmo. No puede reabrir teal, serif, glass, gradiente ni partículas.
+4. Forma de home y guías (`marketing-editorial-form`) y responsive (`marketing-responsive-editorial`).
+5. Defaults de Taste o Impeccable.
+
+`styles/tokens/colors.css` todavía describe el sistema anterior (teal `#1adddb`, navy `#030a24`, superficies translúcidas). No extenderlo. Al tocar una superficie, pasar sus colores a los roles de esta rule. No introducir hex sueltos fuera de estos roles.
+
+## Paleta
+
+El primario es periwinkle en los dos temas.
+
+| Rol | Claro | Oscuro |
+|-----|--------|--------|
+| Primario | `#6868DF` | `#A5A4FF` |
+| Primario brillante | `#A5A4FF` | `#C4C3FF` |
+| Fondo | papel `#FAFAFC` | carbón `#101216` |
+| Superficie / card | `#FFFFFF` | `#191D24` |
+| Texto | tinta `#121722` | marfil `#F4F6FC` |
+| Texto secundario | tinta al 64 % | marfil al 72 % |
+| Texto atenuado | tinta al 48 % | marfil al 48 % |
+| Texto sobre primario | `#FFFFFF` | `#101216` |
+| Hairline / borde | `#D2D6DE` | marfil al 12 % |
+| Input y listas agrupadas | `#EEEFF3` | marfil al 8 % |
+| Burbuja de Anto | `#FFFFFF` | `#1F242C` |
+| Acento cálido | `#E89BB8` | `#E89BB8` |
+| Acento secundario (índigo) | `#5B4BD4` | `#8B7FE8` |
+| Error | `#FF6B6B` | `#FF6B6B` |
+| Éxito | `#4CAF50` | `#4CAF50` |
+| Aviso | `#B8750A` | `#F0C14A` |
+
+El fondo es plano: el inicio y el fin del gradiente son el mismo papel o el mismo carbón. El glass solo si el sistema pide desenfoque en la barra flotante. Las cards van con superficie casi opaca y un hairline, no con vidrio.
+
+El índigo y el acento cálido son apoyo puntual (estado, calidez). No son un segundo acento de marca en CTAs.
+
+## Tipografía
+
+Sans del sistema en toda la app y la web. No hay serif editorial.
+
+| Token | Tamaño | Uso |
+|-------|--------|-----|
+| TITLE | 24 | Título de pantalla |
+| SUBTITLE | 18 | Subtítulo |
+| BODY | 16 | Cuerpo e inputs |
+| CAPTION | 14 | Meta, hints |
+| SMALL | 12 | Badges y labels |
+
+En el tablero, el eyebrow va en 11–13 px, mayúsculas, tracking 1.2–1.6 y color atenuado. El título de fila es 16 px y peso 600. La meta de fila es 13 px y color secundario. El hero de continuidad ronda 22–28 px, solo tipografía, sin ilustración de fondo.
+
+La jerarquía de lectura es eyebrow → título → cuerpo → meta.
+
+## Espaciado y forma
+
+| Token | Valor | Uso |
+|-------|--------|-----|
+| Borde de pantalla | 12 | Gutter horizontal |
+| Dentro de card | 10 | Padding de panel |
+| Input | 12 | Campos |
+| Chip / CTA | 10 o 12 | Compacto o estándar |
+| Hero | 14 o 16 | Superficies generosas |
+| Ritmo | 4, 8, 16, 24, 32, 48 | xs a xxl |
+
+Radios: bloques y wraps de icono a 12 px; hero y pastilla de navegación hasta 20–22 px; pills, chips y CTAs a 999 (cápsula). El input usa radio 12.
+
+Si el scroll ya tiene el gutter de 12, los hijos no lo repiten. Con la barra flotante, el scroll deja 132 px abajo más el inset del sistema.
+
+## Superficies y controles
+
+- Card: superficie + hairline. Sombra mínima o nula (en claro, opacidad ≤ 0.08).
+- Lista tipo iOS: contenedor con overflow oculto, filas de altura mínima 68, separador hairline, icono 44×44 con radio 12 sobre un tinte suave del primario.
+- Botón primario: fondo periwinkle, texto sobre primario, cápsula.
+- Secundario: fondo de superficie y borde de acento.
+- Destructivo: rojo suave con borde de peligro.
+- Pill seleccionada: tinte del primario, borde primario, texto primario en peso 600.
+- Header sticky: opaco, con hairline inferior.
+- Modal: superficie de modal sobre un overlay (tinta al 42 % en claro, negro al 65 % en oscuro).
+
+## Zonas de la app
+
+Inicio es un tablero de continuidad, en este orden: wordmark anto con el punto violeta y el avatar de perfil; saludo con el nombre; check-in en grilla 2×2 (calm, anxious, tired, good); cuerpo de continuidad con CTA a conversar; una fila «Un paso posible»; una fila «Un hilo de tu semana»; la racha con color de nivel.
+
+Chat: atrás, símbolo M1, «Anto» y menú. El texto de Anto va sobre una superficie mínima; en oscuro, un paso por encima del carbón. La burbuja del usuario es periwinkle suave. Como máximo una card de paso por turno. El campo es una cápsula y el pie «Anto puede equivocarse.» vive dentro del dock.
+
+Navegación: cinco pestañas con etiqueta — Inicio, Mi día, Anto, Explorar, Ajustes. La pestaña Anto es un icono de chat, no el logo recortado.
+
+Mi día: un solo scroll, pills Día | Tareas | Hábitos y una tira semanal táctil.
+
+Explorar: título a 24, herramientas en grilla de dos columnas (icono + etiqueta corta) y, debajo, el catálogo de técnicas.
+
+Ajustes: título a la izquierda, sin botón atrás. Sistema en una lista agrupada. Los sheets de selección ocupan el ancho de pantalla.
+
+Bienvenida y cuenta: firma horizontal del M1, fondo plano, primario sólido en cápsula y secundario con contorno.
+
+En la web, las mismas reglas de superficie, tipo y color. La home de marketing puede conservar fotografía y narrativa; la materia (fondo plano, periwinkle, sans, hairline, cápsula) es esta.
+
+## Composición
+
+Una página editorial no nace como una columna ni como dos columnas iguales.
+
+- En menos de 768 px el flujo es vertical, con contraste de escala: tipo grande y figura que ocupa ancho. No es el desktop encogido.
+- Desde 768 px la página cambia de familia en cada tramo. Una sección puede ser un corte asimétrico (7/5, 8/4), una figura a sangre con tipo encima, un bloque desplazado, una banda horizontal, un acompañante sticky o un titular que rompe la medida.
+- Dos columnas iguales caben una vez, cuando el par lo pide. No son el esqueleto de la página.
+- La prosa larga sigue en 45–65 ch. El shell de la página no.
+- Chat, ajustes y listas de tarea siguen siendo listas. Ahí el dinamismo es el movimiento de estado, no una retícula de revista.
+
+## Marca y movimiento
+
+- Inicio: AntoWordmark.
+- Chat, onboarding, paywall, FAQ y carga: símbolo M1 (AntoAppLogo), entero, sin recorte circular.
+- Bienvenida y Sobre Anto: firma AntoLockup (horizontal o apilada).
+
+Hay dos capas de movimiento, y las dos se apagan con `prefers-reduced-motion`.
+
+- Controles: presión a escala 0.95 y selección del check-in, unos 120 ms. Sin rebote.
+- Página: animación editorial visible. Entrada por líneas, figura que aparece con opacidad y un desplazamiento corto, hover con recorte o escala mínima, una banda horizontal con propósito. Duración típica 480–700 ms, una vez, con easing de salida. No compite con la lectura ni retrasa el clic.
+
+Queda fuera el bucle infinito, el parallax fuerte, el cursor propio, el 3D, las partículas y el orbital.
+
+## Fuera de este estilo
+
+Glass como fondo de card, gradiente lila-azul, partículas, orbital SVG, wordmark «Nexus» en la interfaz, Material (FAB, elevation alta), serif editorial, teal `#1adddb`, navy `#030a24` y colores hex sueltos fuera de esta paleta.
