@@ -39,7 +39,7 @@ export default function HomeV2Moments({ locale = 'es' }: HomeV2MomentsProps) {
       {moments.map((moment) => (
         <section
           key={moment.id}
-          className={`home-v2-moment ${moment.reverse ? 'home-v2-moment--reverse' : ''}`}
+          className={`home-v2-moment home-v2-moment--${moment.id}`}
           aria-labelledby={`home-v2-moment-${moment.id}`}
           data-fade-section
         >

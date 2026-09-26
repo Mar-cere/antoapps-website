@@ -70,6 +70,10 @@ typography:
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: 0.08em
+  scale:
+    marketing-title: 32px
+    marketing-display: 40px
+    marketing-brand: 48px
 rounded:
   block: 12px
   hero: 22px
@@ -187,7 +191,7 @@ Periwinkle sobre neutros fríos. El mismo rol cambia de valor entre claro y oscu
 
 ### Hierarchy
 
-- **Title** (600, 24 px): título de pantalla.
+- **Title** (600, 24 px): título de pantalla. En marketing el titular puede subir a 32, 40 o 48 px, sin cambiar de familia.
 - **Subtitle** (600, 18 px): subtítulo.
 - **Body** (400, 16 px): cuerpo e inputs.
 - **Caption** (400, 14 px): meta y hints.
