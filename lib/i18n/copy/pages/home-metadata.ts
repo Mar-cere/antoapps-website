@@ -33,15 +33,15 @@ export function homePageMetadata(locale: Locale): Metadata {
     return {
       title: 'Anto — When everything costs a little more | Anxiety, between sessions',
       description:
-        'Ongoing emotional support for anxiety and quiet hours — between therapy sessions or day to day. Write what you feel, leave with clarity and one concrete step. AI assistance in the background. Complements care; does not replace a human therapist. Available on iPhone and Android. Free 1-day trial.',
+        'Ongoing emotional support for anxiety and quiet hours, between sessions or day to day. Memory, one concrete step, and techniques such as CBT and grounding. On iPhone and Android. Does not replace a human therapist. Free 1-day trial.',
       keywords:
-        'Anto, ongoing emotional support, anxiety app, quiet hours, between therapy sessions, grounding, CBT, iPhone, Android, free trial, emotional support app',
+        'Anto, ongoing emotional support, anxiety, quiet hours, between therapy sessions, grounding, CBT, iPhone, Android, free trial',
       alternates,
       openGraph: {
         type: 'website',
         url: canonical,
         title: 'Anto — When everything costs a little more',
-        description: `Ongoing emotional support for anxiety and quiet hours on iPhone and Android — between sessions or day to day. Complements care; does not replace a human therapist. ${trial.short}.`,
+        description: `Ongoing emotional support for anxiety and quiet hours, between sessions or day to day. On iPhone and Android. Does not replace a human therapist. ${trial.pricingNote}`,
         siteName: 'Anto',
         locale: 'en_US',
         images: [ogImage],
@@ -49,7 +49,7 @@ export function homePageMetadata(locale: Locale): Metadata {
       twitter: {
         card: 'summary_large_image',
         title: 'Anto — When everything costs a little more',
-        description: `Ongoing emotional support for anxiety and quiet hours on iPhone and Android — between sessions or day to day. Complements care; does not replace a human therapist. ${trial.short}.`,
+        description: `Ongoing emotional support for anxiety and quiet hours, between sessions or day to day. On iPhone and Android. Does not replace a human therapist. ${trial.short}.`,
         images: [ogImageUrl],
       },
     };
@@ -58,15 +58,15 @@ export function homePageMetadata(locale: Locale): Metadata {
   return {
     title: 'Anto — Cuando todo cuesta un poco más | Ansiedad, entre sesiones',
     description:
-      'Acompañamiento emocional continuo para ansiedad y horas quietas — entre sesiones de terapia o en el día a día. Escribe lo que sientes, sal con claridad y un paso concreto. Apoyo de IA en segundo plano. Complementa — no reemplaza — a un terapeuta humano. Disponible en iPhone y Android. Prueba de 1 día gratis.',
+      'Acompañamiento emocional continuo para la ansiedad y las horas quietas, entre sesiones o en el día a día. Memoria, un paso concreto y técnicas como TCC y grounding. En iPhone y Android. No sustituye a un terapeuta. Prueba de 1 día gratis.',
     keywords:
-      'Anto, acompañamiento emocional, ansiedad, horas quietas, entre sesiones, grounding, TCC, app salud mental, iPhone, Android, prueba gratis',
+      'Anto, acompañamiento emocional continuo, ansiedad, horas quietas, entre sesiones, grounding, TCC, iPhone, Android, prueba gratis',
     alternates,
     openGraph: {
       type: 'website',
       url: canonical,
       title: 'Anto — Cuando todo cuesta un poco más',
-      description: `Acompañamiento emocional continuo para ansiedad y horas quietas en iPhone y Android — entre sesiones o en el día a día. Complementa — no reemplaza — a un terapeuta humano. ${trial.pricingNote}`,
+      description: `Acompañamiento emocional continuo para la ansiedad y las horas quietas, entre sesiones o en el día a día. En iPhone y Android. No sustituye a un terapeuta. ${trial.pricingNote}`,
       images: [ogImage],
       siteName: 'Anto',
       locale: 'es_CL',
@@ -74,7 +74,7 @@ export function homePageMetadata(locale: Locale): Metadata {
     twitter: {
       card: 'summary_large_image',
       title: 'Anto — Cuando todo cuesta un poco más',
-      description: `Acompañamiento emocional continuo para ansiedad y horas quietas en iPhone y Android — entre sesiones o en el día a día. Complementa — no reemplaza — a un terapeuta humano. ${trial.short}.`,
+      description: `Acompañamiento emocional continuo para la ansiedad y las horas quietas, entre sesiones o en el día a día. En iPhone y Android. No sustituye a un terapeuta. ${trial.short}.`,
       images: [ogImageUrl],
     },
   };

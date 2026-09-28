@@ -269,18 +269,18 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       },
       recognize: {
         lead: 'Some days you are not exactly unwell.',
-        body: 'You do not need a full crisis to need company. Anto is there for the stretch between the day and sleep - no appointment required.',
+        body: 'You do not need a full crisis to need company. Anto is there for the stretch between the day and sleep, without an appointment.',
         imageAlt: 'Rainy night desk with an open notebook and a warm lamp',
       },
       inPhone: {
         kicker: 'On the phone',
         title: 'This is what you see when you open it.',
-        dek: "Chat, one step, and the hub if talking isn't enough.",
+        dek: 'Three screens: chat, one step for tonight, and the hub.',
         tabs: [
           {
             index: '01',
             label: 'Chat',
-            body: 'You write. Anto gives you something concrete.',
+            body: 'You write. Anto answers from what you already said.',
             imageSrc: '/assets/images/product/anto-phone-chat-en.webp',
             imageAlt: 'Chat de Anto en el teléfono',
           },
@@ -294,7 +294,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             index: '03',
             label: 'The hub',
-            body: "Short exercises and the ABC canvas, if talking isn't enough.",
+            body: 'Short exercises and the ABC canvas.',
             imageSrc: '/assets/images/product/anto-phone-hub-en.webp',
             imageAlt: 'Hub de técnicas en Anto',
           },
@@ -304,7 +304,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           id: 'distortion',
           title: 'It catches the spiral. Then helps you loosen it.',
-          body: 'When your mind jumps to the worst ending, Anto names it - and offers a small way through.',
+          body: 'When your mind jumps to the worst ending, Anto names it and offers a small way through.',
           media: {
             kind: 'distortion',
             distortion: {
@@ -315,7 +315,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
               labelHint: 'Sounds like',
               labelName: 'Jumping to the worst ending',
               reframeLabel: 'Another way to hold it',
-              reframe: 'Blanking on one slide is awkward - not the end of a career.',
+              reframe: 'Blanking on one slide is awkward, not the end of a career.',
               techniqueLabel: 'A next move',
               technique: 'A short exercise (~3 min): separate what happened from what you imagined.',
             },
@@ -347,14 +347,14 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
               insightLabel: 'What stood out',
               insight: 'The nights you scrolled less, things felt a bit quieter the next day',
               disclaimer:
-                'Just an example. These check-ins help you notice patterns - they do not diagnose or replace professional care.',
+                'Just an example. These check-ins help you notice patterns. They do not diagnose or replace professional care.',
             },
           },
         },
         {
           id: 'privacy',
           title: 'Your space stays yours.',
-          body: 'TLS in transit and encryption at rest. Anto and the model read the text to provide the service. We do not sell your story or build ads on it.',
+          body: 'Anto and the model read the text only to provide the service.',
           media: {
             kind: 'privacy',
             privacy: {
@@ -372,16 +372,15 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       ],
       foundation: {
         title: 'Not a chat that forgets.',
-        support:
-          'Anto keeps the thread, offers techniques when talking is not enough, and is there when there is no appointment.',
+        support: 'What you say today is still there the next time.',
         pillars: [
           {
             title: 'Memory that stays with you',
-            body: 'Themes that return, patterns you can notice, and one concrete next step - not a blank conversation every time.',
+            body: 'Themes that return, patterns you can notice, and one concrete next step, not a blank conversation every time.',
           },
           {
             title: 'Techniques when you need them',
-            body: 'A hub with evidence-based exercises - CBT, exposure, mindfulness - including an interactive ABC canvas.',
+            body: 'A hub of evidence-based exercises: CBT, exposure, and mindfulness, with an interactive ABC canvas.',
           },
           {
             title: 'Between sessions',
@@ -401,7 +400,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       pricing: {
         title: 'Start when you need it.',
         subtitle: 'One free day. Full access on every plan. Cancel anytime.',
-        popularBadge: 'Often chosen',
+        popularBadge: 'Most chosen',
         cards: [
           { period: '1 month', price: usdAmount(PRICING_USD.month), unit: '/ mo' },
           {
@@ -434,12 +433,12 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'What is Anto?',
             answer:
-              'Anto is an app for ongoing emotional support between sessions or day to day. It uses AI assistance in the background. It does not replace clinical care - a human therapist or professional remains the stronger recommendation. Available on iPhone and Android.',
+              'Anto is an app for ongoing emotional support between sessions or day to day. It uses AI assistance in the background. It does not replace clinical care. A human therapist remains the stronger recommendation. Available on iPhone and Android.',
           },
           {
             question: 'What else is there besides chat?',
             answer:
-              'Theme memory, a techniques hub (including an interactive ABC canvas), quiet check-ins to notice patterns, and a home for day-to-day tasks. Not only conversation: a system that stays with you when talking is not enough.',
+              'Theme memory, a techniques hub (including an interactive ABC canvas), check-ins to notice patterns, and a home screen for the day. Conversation is one part, not the whole product.',
           },
           {
             question: 'Are my conversations private?',
@@ -449,7 +448,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'Does Anto replace therapy?',
             answer:
-              'No. It accompanies you between sessions or on hard days. It is not a substitute for professional care.',
+              'No. It stays with you on hard days and between one session and the next. Professional care remains separate.',
           },
           {
             question: 'Is there a free trial?',
@@ -490,7 +489,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         },
       },
       finalCta: {
-        title: 'When the intensity needs to ease.',
+        title: 'When you need the intensity to ease.',
         subtitle: 'Start today. One free day, no card.',
         imageAlt: 'Quiet sleepless night: dim room, soft lamp light near an empty bed',
       },
@@ -542,18 +541,18 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
     },
     recognize: {
       lead: 'Hay días en que no estás exactamente mal.',
-      body: 'No hace falta estar en crisis para necesitar compañía. Anto está para ese rato entre el día y la cama - sin cita previa.',
+      body: 'No hace falta estar en crisis para necesitar compañía. Anto está para ese rato entre el día y la cama, sin cita previa.',
       imageAlt: 'Escritorio de noche con lluvia en la ventana, libreta abierta y lámpara cálida',
     },
     inPhone: {
       kicker: 'En el teléfono',
       title: 'Así se ve cuando la abres.',
-      dek: 'Chat, un paso, y el hub si hablar no alcanza.',
+      dek: 'Tres pantallas: el chat, un paso para esta noche y el hub.',
       tabs: [
         {
           index: '01',
           label: 'El chat',
-          body: 'Escribes. Anto te devuelve algo concreto.',
+          body: 'Escribes. Anto responde desde lo que ya contaste.',
           imageSrc: '/assets/images/product/anto-phone-chat-es.webp',
           imageAlt: 'Chat de Anto en el teléfono',
         },
@@ -567,7 +566,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           index: '03',
           label: 'El hub',
-          body: 'Ejercicios cortos y el lienzo ABC, si con hablar no alcanza.',
+          body: 'Ejercicios cortos y el lienzo ABC.',
           imageSrc: '/assets/images/product/anto-phone-hub-es.webp',
           imageAlt: 'Hub de técnicas en Anto',
         },
@@ -577,7 +576,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       {
         id: 'distortion',
         title: 'Atrapa la espiral. Después ayuda a soltarla.',
-        body: 'Cuando la mente salta al peor final, Anto lo nombra - y ofrece un camino pequeño.',
+        body: 'Cuando la mente salta al peor final, Anto lo nombra y ofrece un camino pequeño.',
         media: {
           kind: 'distortion',
           distortion: {
@@ -588,7 +587,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             labelHint: 'Suena a',
             labelName: 'Imaginar el peor final',
             reframeLabel: 'Otra forma de verlo',
-            reframe: 'Quedarte en blanco en una diapositiva es incómodo - no el fin de una carrera.',
+            reframe: 'Quedarte en blanco en una diapositiva es incómodo, no el fin de una carrera.',
             techniqueLabel: 'Un siguiente paso',
             technique: 'Un ejercicio corto (~3 min): separar lo que pasó de lo que imaginaste.',
           },
@@ -609,7 +608,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             currentLabel: 'Esta semana',
             currentValue: '8',
             trendLabel: 'Últimamente',
-            trend: 'Un poco más liviana que hace un mes',
+            trend: 'Un poco más leve que hace un mes',
             scaleMax: 21,
             bars: [
               { label: 'S1', value: 14 },
@@ -618,16 +617,16 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
               { label: 'S4', value: 8 },
             ],
             insightLabel: 'Lo que se notó',
-            insight: 'Las noches con menos scroll, al día siguiente se sintió un poco más quieto',
+            insight: 'Las noches en que miraste menos el teléfono, al día siguiente se sintió un poco más quieto',
             disclaimer:
-              'Solo un ejemplo. Estos chequeos ayudan a notar patrones - no diagnostican ni reemplazan el cuidado profesional.',
+              'Solo un ejemplo. Estos chequeos ayudan a notar patrones. No diagnostican ni reemplazan el cuidado profesional.',
           },
         },
       },
       {
         id: 'privacy',
         title: 'Tu espacio sigue siendo tuyo.',
-        body: 'Cifrado en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos tu historia ni hacemos anuncios con ella.',
+        body: 'Anto y el modelo leen el texto solo para prestarte el servicio.',
         media: {
           kind: 'privacy',
           privacy: {
@@ -645,16 +644,15 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
     ],
     foundation: {
       title: 'No es un chat que olvida.',
-      support:
-        'Anto guarda el hilo, ofrece técnicas cuando hablar no alcanza, y está cuando no hay cita.',
+      support: 'Lo que cuentas hoy queda para la próxima conversación.',
       pillars: [
         {
           title: 'Memoria que acompaña',
-          body: 'Temas que vuelven, patrones que se notan y un siguiente paso concreto - no una conversación en blanco cada vez.',
+          body: 'Temas que vuelven, patrones que se notan y un siguiente paso concreto, no una conversación en blanco cada vez.',
         },
         {
           title: 'Técnicas cuando hacen falta',
-          body: 'Un hub con ejercicios basados en evidencia - TCC, exposición, mindfulness - incluido un lienzo ABC interactivo.',
+          body: 'Un hub con ejercicios basados en evidencia: TCC, exposición y mindfulness, con un lienzo ABC interactivo.',
         },
         {
           title: 'Entre sesiones',
@@ -663,7 +661,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       ],
     },
     still: {
-      line: 'Hay noches que solo necesitan dónde aterrizar.',
+      line: 'Hay noches que solo necesitan un lugar donde aterrizar.',
       imageAlt: 'Luz de mañana sobre una silla vacía junto a la ventana',
     },
     reviews: {
@@ -674,7 +672,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
     pricing: {
       title: 'Empieza cuando lo necesites.',
       subtitle: 'Un día gratis. Acceso completo en todos los planes. Cancela cuando quieras.',
-      popularBadge: 'Suele elegirse',
+      popularBadge: 'El más elegido',
       cards: [
         { period: '1 mes', price: usdAmount(PRICING_USD.month), unit: '/ mes' },
         {
@@ -712,7 +710,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           question: '¿Qué hay además del chat?',
           answer:
-            'Memoria de temas, un hub de técnicas (incluido un lienzo ABC interactivo), chequeos quietos para notar patrones y un home para el día a día. No es solo conversación: es un sistema que permanece cuando hablar no alcanza.',
+            'Memoria de temas, un hub de técnicas (incluido un lienzo ABC interactivo), chequeos para notar patrones y el inicio del día. La conversación es una parte, no el producto entero.',
         },
         {
           question: '¿Mis conversaciones son privadas?',
@@ -722,7 +720,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           question: '¿Anto reemplaza la terapia?',
           answer:
-            'No. Te acompaña entre sesiones o en los días duros. No sustituye atención profesional.',
+            'No. Te acompaña en los días duros y entre una sesión y la siguiente. La atención profesional sigue siendo otra cosa.',
         },
         {
           question: '¿Hay prueba gratis?',
