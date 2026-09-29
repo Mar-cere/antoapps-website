@@ -100,6 +100,7 @@ export type HomeV2Moment = {
   body: string;
   media: HomeV2MomentMedia;
   reverse?: boolean;
+  imageAlt?: string;
 };
 
 export type HomeV2PriceCard = {
@@ -259,6 +260,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       moments: [
         {
           id: 'distortion',
+          imageAlt: 'Hands by a window, a phone, a cup, and an open notebook',
           title: 'It catches the spiral. Then helps you loosen it.',
           body: 'When your mind jumps to the worst ending, Anto names it and offers a small way through.',
           media: {
@@ -503,6 +505,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
     moments: [
       {
         id: 'distortion',
+        imageAlt: 'Manos junto a la ventana, un teléfono, una taza y una libreta abierta',
         title: 'Atrapa la espiral. Después ayuda a soltarla.',
         body: 'Cuando la mente salta al peor final, Anto lo nombra y ofrece un camino pequeño.',
         media: {

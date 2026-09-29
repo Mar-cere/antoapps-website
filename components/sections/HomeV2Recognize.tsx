@@ -14,7 +14,7 @@ export default function HomeV2Recognize({ locale = 'es' }: HomeV2RecognizeProps)
   return (
     <section className="home-v2-recognize" aria-labelledby="home-v2-recognize-title" data-fade-section>
       <div className="home-landing-container home-v2-recognize__grid">
-        <div className="home-v2-recognize__media">
+        <div className="home-v2-recognize__media" data-home-reveal="image">
           <Image
             src={getEditorialImagePath('deskRain')}
             alt={copy.imageAlt}
@@ -25,7 +25,7 @@ export default function HomeV2Recognize({ locale = 'es' }: HomeV2RecognizeProps)
             quality={85}
           />
         </div>
-        <div className="home-v2-recognize__text">
+        <div className="home-v2-recognize__text" data-home-reveal data-home-delay="1">
           <h2 id="home-v2-recognize-title" className="home-v2-recognize__lead">
             {copy.lead}
           </h2>

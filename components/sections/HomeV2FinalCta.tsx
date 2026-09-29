@@ -29,7 +29,7 @@ export default function HomeV2FinalCta({ locale = 'es' }: HomeV2FinalCtaProps) {
         />
         <div className="home-v2-final-cta__scrim" />
       </div>
-      <div className="home-landing-container home-v2-final-cta__inner">
+      <div className="home-landing-container home-v2-final-cta__inner" data-home-reveal>
         <h2 id="home-v2-final-cta-title" className="home-v2-final-cta__title">
           {copy.finalCta.title}
         </h2>

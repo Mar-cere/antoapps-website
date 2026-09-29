@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import HomeV2ChatVignette from '@/components/sections/HomeV2ChatVignette';
 import HomeV2DistortionPanel from '@/components/sections/HomeV2DistortionPanel';
 import HomeV2EvidencePanel from '@/components/sections/HomeV2EvidencePanel';
@@ -7,6 +8,7 @@ import HomeV2PrivacyPanel from '@/components/sections/HomeV2PrivacyPanel';
 import HomeV2SessionSummary from '@/components/sections/HomeV2SessionSummary';
 import HomeV2TechniqueCard from '@/components/sections/HomeV2TechniqueCard';
 import type { Locale } from '@/lib/i18n/config';
+import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import { getHomeV2Copy, type HomeV2MomentMedia } from '@/lib/i18n/copy/home/home-v2';
 
 type HomeV2MomentsProps = {
@@ -43,8 +45,20 @@ export default function HomeV2Moments({ locale = 'es' }: HomeV2MomentsProps) {
           aria-labelledby={`home-v2-moment-${moment.id}`}
           data-fade-section
         >
+          {moment.imageAlt ? (
+            <figure className="home-v2-moment__bleed" data-home-reveal="image">
+              <Image
+                src={getEditorialImagePath('thoughtLoop')}
+                alt={moment.imageAlt}
+                fill
+                className="home-v2-moment__bleed-img"
+                sizes="100vw"
+                quality={80}
+              />
+            </figure>
+          ) : null}
           <div className="home-landing-container home-v2-moment__grid">
-            <div className="home-v2-moment__text">
+            <div className="home-v2-moment__text" data-home-reveal>
               <h2 id={`home-v2-moment-${moment.id}`} className="home-v2-moment__title">
                 {moment.title}
               </h2>

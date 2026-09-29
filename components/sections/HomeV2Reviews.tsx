@@ -17,7 +17,7 @@ export default function HomeV2Reviews({ locale = 'es' }: HomeV2ReviewsProps) {
   return (
     <section className="home-v2-reviews" aria-labelledby="home-v2-reviews-title" data-fade-section>
       <div className="home-landing-container">
-        <div className="home-v2-reviews__head">
+        <div className="home-v2-reviews__head" data-home-reveal>
           <h2 id="home-v2-reviews-title" className="home-v2-reviews__title">
             {section.title}
           </h2>

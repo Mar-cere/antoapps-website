@@ -2619,7 +2619,7 @@ body:has(.home-v2-shell) {
 @keyframes home-v2-figure-in {
   from {
     opacity: 0;
-    transform: translateY(0.85rem);
+    transform: translateY(1.5rem);
   }
   to {
     opacity: 1;
@@ -2673,8 +2673,76 @@ body:has(.home-v2-shell) {
   }
 
   .home-v2-still:hover .home-v2-still__img,
+  .home-v2-recognize:hover .home-v2-recognize__img,
+  .home-v2-moment__bleed:hover .home-v2-moment__bleed-img,
+  .home-v2-final-cta:hover .home-v2-final-cta__bg,
   .home-v2-shell .home-landing-nav__cta:active,
   .home-landing-page--v2 .premium-store-cta:active {
     transform: none;
+  }
+}
+
+.home-v2-moment__bleed {
+  position: relative;
+  height: clamp(16rem, 42vh, 28rem);
+  margin: 0 0 1.75rem;
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+.home-v2-moment__bleed-img {
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.home-v2-recognize__media {
+  overflow: hidden;
+}
+
+@media (min-width: 960px) {
+  .home-v2-moment--distortion .home-v2-moment__bleed {
+    width: 100%;
+    height: clamp(22rem, 58vh, 38rem);
+    margin: 0 0 2.75rem;
+    border-radius: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-v2-recognize__img,
+  .home-v2-moment__bleed-img,
+  .home-v2-final-cta__bg {
+    transition: transform 700ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1));
+  }
+
+  .home-v2-recognize:hover .home-v2-recognize__img,
+  .home-v2-moment__bleed:hover .home-v2-moment__bleed-img,
+  .home-v2-final-cta:hover .home-v2-final-cta__bg {
+    transform: scale(1.045);
+  }
+
+  html.home-v2-motion [data-home-reveal] {
+    opacity: 0;
+    transform: translateY(1.35rem);
+  }
+
+  html.home-v2-motion [data-home-reveal='image'] {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(16% 8% 18% 8%);
+  }
+
+  html.home-v2-motion [data-home-reveal].is-in {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0);
+    transition:
+      opacity 640ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1)),
+      transform 680ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1)),
+      clip-path 700ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1));
+  }
+
+  html.home-v2-motion [data-home-reveal][data-home-delay='1'].is-in {
+    transition-delay: 120ms;
   }
 }

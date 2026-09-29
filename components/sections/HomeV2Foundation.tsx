@@ -19,7 +19,7 @@ export default function HomeV2Foundation({ locale = 'es' }: HomeV2FoundationProp
       data-fade-section
     >
       <div className="home-landing-container">
-        <div className="home-v2-foundation__head">
+        <div className="home-v2-foundation__head" data-home-reveal>
           <h2 id="home-v2-foundation-title" className="home-v2-foundation__title">
             {foundation.title}
           </h2>

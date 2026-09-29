@@ -9,6 +9,7 @@ import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 import PullToRefresh from '@/components/ui/PullToRefresh';
 import HomeV2Hero from '@/components/sections/HomeV2Hero';
+import HomeV2Reveal from '@/components/sections/HomeV2Reveal';
 import HomeV2Recognize from '@/components/sections/HomeV2Recognize';
 import HomeV2Moments from '@/components/sections/HomeV2Moments';
 import HomeV2Foundation from '@/components/sections/HomeV2Foundation';
@@ -39,6 +40,7 @@ export default function HomeV2PageContent({
     <LocaleProvider locale={locale}>
       <div className="home-v2-shell">
         <ClientInitializer />
+        <HomeV2Reveal />
         <HomeMinimalNav
           locale={locale}
           ctaLabel={nav.cta}
