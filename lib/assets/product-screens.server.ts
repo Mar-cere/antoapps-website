@@ -16,6 +16,6 @@ function screenFileExists(locale: Locale, kind: ProductScreenKind): boolean {
 export function getHomeProductScreens(locale: Locale): HomeProductScreens {
   return {
     chat: screenFileExists(locale, 'chat'),
-    step: screenFileExists(locale, 'step'),
+    guide: screenFileExists(locale, 'guide'),
   };
 }

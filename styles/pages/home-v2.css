@@ -2816,24 +2816,24 @@ body:has(.home-v2-shell) {
     width: min(26rem, 34vw);
   }
 
-  .home-v2-foundation--with-step .home-v2-foundation__layout {
+  .home-v2-foundation--with-guide .home-v2-foundation__layout {
     display: grid;
     grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
     gap: clamp(2rem, 4vw, 3.5rem);
     align-items: start;
   }
 
-  .home-v2-foundation--with-step .home-v2-product--step {
+  .home-v2-foundation--with-guide .home-v2-product--guide {
     position: sticky;
     top: 5.5rem;
     order: 2;
   }
 
-  .home-v2-foundation--with-step .home-v2-product__frame {
+  .home-v2-foundation--with-guide .home-v2-product__frame {
     width: min(18rem, 100%);
   }
 
-  .home-v2-foundation--with-step .home-v2-product__caption {
+  .home-v2-foundation--with-guide .home-v2-product__caption {
     margin-inline: 0;
     text-align: left;
   }

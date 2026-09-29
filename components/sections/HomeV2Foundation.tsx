@@ -4,7 +4,7 @@ import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 
 type HomeV2FoundationProps = {
   locale?: Locale;
-  showStep?: boolean;
+  showGuide?: boolean;
 };
 
 /**
@@ -13,24 +13,24 @@ type HomeV2FoundationProps = {
  */
 export default function HomeV2Foundation({
   locale = 'es',
-  showStep = false,
+  showGuide = false,
 }: HomeV2FoundationProps) {
   const { foundation, product } = getHomeV2Copy(locale);
 
   return (
     <section
-      className={`home-v2-foundation${showStep ? ' home-v2-foundation--with-step' : ''}`}
+      className={`home-v2-foundation${showGuide ? ' home-v2-foundation--with-guide' : ''}`}
       aria-labelledby="home-v2-foundation-title"
       data-fade-section
     >
       <div className="home-landing-container home-v2-foundation__layout">
-        {showStep ? (
+        {showGuide ? (
           <HomeV2ProductFigure
             locale={locale}
-            kind="step"
-            caption={product.stepCaption}
-            alt={product.stepAlt}
-            frameClassName="home-v2-product--step"
+            kind="guide"
+            caption={product.guideCaption}
+            alt={product.guideAlt}
+            frameClassName="home-v2-product--guide"
           />
         ) : null}
         <div className="home-v2-foundation__copy">

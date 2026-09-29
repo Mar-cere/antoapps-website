@@ -14,10 +14,10 @@ Persuade
 Visitante que busca apoyo emocional digital y evalúa confianza, claridad y privacidad antes de descargar.
 
 ## Primary action
-Descargar Anto: **par igual** App Store + Google Play en hero, pricing y Final CTA (`PremiumStoreCtaPair`). Nav “Descargar” abre la store del dispositivo (iOS → App Store, Android → Play; desktop → App Store). Sin sección `#android` dedicada. La figura de producto (chat y un paso) no lleva otro par de tiendas.
+Descargar Anto: **par igual** App Store + Google Play en hero, pricing y Final CTA (`PremiumStoreCtaPair`). Nav “Descargar” abre la store del dispositivo (iOS → App Store, Android → Play; desktop → App Store). Sin sección `#android` dedicada. La figura de chat no lleva otro par de tiendas.
 
 ## Product proof
-Dos capturas de la app actual, carbón, sin teal: chat después del reconocimiento y «un paso» junto al fundamento. Archivos `anto-now-chat-{es,en}.webp` y `anto-now-step-{es,en}.webp`. Si faltan, la figura no se publica. Prohibida la franja de tres pestañas.
+Dos capturas de la app actual, carbón, sin teal: el chat después del reconocimiento y una micro-guía junto al fundamento. Archivos `anto-now-chat-{es,en}.webp` y `anto-now-guide-{es,en}.webp`. Si falta un archivo, esa figura no se publica. No hay pantalla de «un paso»; ese paso aparece dentro del hilo. Prohibida la franja de tres pestañas.
 
 ## Sprint A–C contracts (binding)
 1. Hero budget: brand + H1 + apoyo corto + par de stores + ancla chat/foto. Límite clínico con fuerza en FAQ + coda Explore (no en el support del hero).

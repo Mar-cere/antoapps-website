@@ -166,8 +166,8 @@ export type HomeV2Copy = {
   product: {
     chatCaption: string;
     chatAlt: string;
-    stepCaption: string;
-    stepAlt: string;
+    guideCaption: string;
+    guideAlt: string;
   };
   foundation: {
     title: string;
@@ -342,8 +342,8 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       product: {
         chatCaption: 'This is the thread when you write at night.',
         chatAlt: 'Anto chat on a charcoal screen',
-        stepCaption: 'One step for tonight. Not a life plan.',
-        stepAlt: 'Anto screen with one step for tonight',
+        guideCaption: 'A short guide, and a small gesture at the end.',
+        guideAlt: 'Social anxiety micro-guide in Anto, with three steps',
       },
       foundation: {
         title: 'Not a chat that forgets.',
@@ -598,8 +598,8 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
     product: {
       chatCaption: 'Así se lee cuando escribes de noche.',
       chatAlt: 'Chat de Anto en una pantalla carbón',
-      stepCaption: 'Un paso para esta noche. No un plan.',
-      stepAlt: 'Pantalla de Anto con un paso para esta noche',
+      guideCaption: 'Una guía corta, y al final un gesto pequeño.',
+      guideAlt: 'Micro-guía de ansiedad social en Anto, con tres pasos',
     },
     foundation: {
       title: 'No es un chat que olvida.',

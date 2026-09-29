@@ -1,10 +1,10 @@
 import type { Locale } from '@/lib/i18n/config';
 
-export type ProductScreenKind = 'chat' | 'step';
+export type ProductScreenKind = 'chat' | 'guide';
 
 export type HomeProductScreens = {
   chat: boolean;
-  step: boolean;
+  guide: boolean;
 };
 
 /** Ruta pública. El archivo vive en public/assets/images/product/. */

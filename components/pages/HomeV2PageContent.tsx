@@ -36,7 +36,7 @@ type HomeV2PageContentProps = {
 export default function HomeV2PageContent({
   locale,
   initialDevice = 'ios',
-  screens = { chat: false, step: false },
+  screens = { chat: false, guide: false },
 }: HomeV2PageContentProps) {
   const copy = getHomeV2Copy(locale);
   const { nav, hero, product } = copy;
@@ -81,7 +81,7 @@ export default function HomeV2PageContent({
                 </section>
               ) : null}
               <HomeV2Moments locale={locale} />
-              <HomeV2Foundation locale={locale} showStep={screens.step} />
+              <HomeV2Foundation locale={locale} showGuide={screens.guide} />
               <HomeV2Still locale={locale} />
               <HomeV2Reviews locale={locale} />
               <HomeV2Pricing locale={locale} />
