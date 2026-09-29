@@ -6,10 +6,12 @@ import { getHomeSectionsCopy } from '@/lib/i18n/copy/home/sections';
 import { getWhatsNewCopy } from '@/lib/i18n/copy/home/whats-new';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
+import { googlePlayHref } from '@/lib/download-links';
 import { PRICING_USD } from '@/lib/pricing/plans';
 import {
   getFaqPageJsonLd,
   getSoftwareApplicationJsonLd,
+  getWebSiteJsonLd,
 } from '@/lib/i18n/copy/seo/json-ld';
 
 const LOCALES: readonly Locale[] = ['es', 'en'];
@@ -123,6 +125,19 @@ export function assertHomeCopyInvariants(): string[] {
     }
 
     const software = getSoftwareApplicationJsonLd(locale);
+    const playHref = googlePlayHref(locale);
+    const downloadUrls = Array.isArray(software.downloadUrl) ? software.downloadUrl : [];
+    const installUrls = Array.isArray(software.installUrl) ? software.installUrl : [];
+    if (!downloadUrls.includes(playHref) || !installUrls.includes(playHref)) {
+      errors.push(
+        `${tag} JSON-LD downloadUrl/installUrl debe usar la ficha de Google Play de ese locale`
+      );
+    }
+    const significant = getWebSiteJsonLd(locale).significantLink;
+    const significantLinks = Array.isArray(significant) ? significant : [];
+    if (!significantLinks.includes(playHref)) {
+      errors.push(`${tag} JSON-LD WebSite.significantLink debe usar la ficha de Google Play de ese locale`);
+    }
     const featureList = Array.isArray(software.featureList)
       ? (software.featureList as string[]).join(' ')
       : '';

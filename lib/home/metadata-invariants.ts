@@ -1,6 +1,7 @@
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { homePageMetadata } from '@/lib/i18n/copy/pages/home-metadata';
+import { homeOgImageAlt } from '@/lib/home/opengraph-image';
 
 const LOCALES: readonly Locale[] = ['es', 'en'];
 
@@ -35,8 +36,12 @@ export function assertHomeMetadataInvariants(): string[] {
       errors.push(`${tag} metadata title/og/twitter incompletos`);
     }
 
-    if (!title.toLowerCase().includes(accent.toLowerCase())) {
-      errors.push(`${tag} metadata.title debe incluir hero.titleAccent ("${accent}")`);
+    if (locale === 'es') {
+      if (!/^Anto, app de acompañamiento emocional \| Ansiedad, entre sesiones$/.test(title)) {
+        errors.push(`${tag} metadata.title debe nombrar la app y la intención, sin sustituir el H1`);
+      }
+    } else if (!/^Anto, an emotional support app \| Anxiety, between sessions$/.test(title)) {
+      errors.push(`${tag} metadata.title must name the app and the intent, and leave the H1 unchanged`);
     }
     if (!ogTitle.toLowerCase().includes(accent.toLowerCase())) {
       errors.push(`${tag} openGraph.title debe incluir hero.titleAccent ("${accent}")`);
@@ -48,6 +53,9 @@ export function assertHomeMetadataInvariants(): string[] {
 
     if (!description.trim() || !ogDescription.trim()) {
       errors.push(`${tag} metadata description/ogDescription vacíos`);
+    }
+    if (!/\bapp\b/i.test(description)) {
+      errors.push(`${tag} metadata.description debe decir que Anto es una app`);
     }
 
     if (locale === 'es') {
@@ -78,21 +86,20 @@ export function assertHomeMetadataInvariants(): string[] {
       }
     }
 
-    const ogImages = meta.openGraph?.images;
-    const ogImage = Array.isArray(ogImages) ? ogImages[0] : ogImages;
-    const altText =
-      ogImage && typeof ogImage === 'object' && 'alt' in ogImage && typeof ogImage.alt === 'string'
-        ? ogImage.alt
-        : '';
-    const imageUrl =
-      ogImage && typeof ogImage === 'object' && 'url' in ogImage
-        ? metaText(ogImage.url)
-        : typeof ogImage === 'string'
-          ? ogImage
-          : '';
-    if (!imageUrl.includes('/opengraph-image')) {
-      errors.push(`${tag} openGraph image debe usar /opengraph-image generado`);
+    // El archivo está en el route group (site). Next sirve
+    // /opengraph-image-<sufijo>, no /opengraph-image. Declarar images aquí
+    // sustituye esa URL y el HTML anuncia un 404.
+    if (meta.openGraph && Object.prototype.hasOwnProperty.call(meta.openGraph, 'images')) {
+      errors.push(
+        `${tag} openGraph.images no debe fijarse: lo publica app/(site)/opengraph-image.tsx`
+      );
     }
+    if (meta.twitter && Object.prototype.hasOwnProperty.call(meta.twitter, 'images')) {
+      errors.push(
+        `${tag} twitter.images no debe fijarse: debe heredar la imagen de la convención de archivo`
+      );
+    }
+    const altText = homeOgImageAlt(locale);
     if (!altText.toLowerCase().includes(accent.toLowerCase())) {
       errors.push(`${tag} openGraph image alt debe incluir hero.titleAccent`);
     }
