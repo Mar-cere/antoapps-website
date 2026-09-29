@@ -34,7 +34,7 @@ type HomeV2ChatExcerptProps = {
 /** Fragmento de chat en texto. La captura real es un enlace, no el diseño. */
 export function HomeV2ChatExcerpt({ locale, product, showScreen }: HomeV2ChatExcerptProps) {
   return (
-    <div className="home-v2-excerpt home-v2-excerpt--chat">
+    <div className="home-v2-excerpt home-v2-excerpt--chat" data-home-reveal data-home-delay="1">
       <ol className="home-v2-thread">
         {product.chat.map((message) => (
           <li
@@ -49,7 +49,9 @@ export function HomeV2ChatExcerpt({ locale, product, showScreen }: HomeV2ChatExc
         ))}
       </ol>
       {showScreen ? (
-        <FullScreenLink locale={locale} kind="chat" label={product.fullScreen} />
+        <p className="home-v2-excerpt__links">
+          <FullScreenLink locale={locale} kind="chat" label={product.fullScreen} />
+        </p>
       ) : null}
     </div>
   );
@@ -64,7 +66,7 @@ type HomeV2GuideExcerptProps = {
 /** Micro-guía en texto, dentro de la sección de técnicas. */
 export function HomeV2GuideExcerpt({ locale, product, showScreen }: HomeV2GuideExcerptProps) {
   return (
-    <div className="home-v2-excerpt home-v2-excerpt--guide">
+    <div className="home-v2-excerpt home-v2-excerpt--guide" data-home-reveal data-home-delay="1">
       <p className="home-v2-guide__kicker">{product.guideKicker}</p>
       <p className="home-v2-guide__title">{product.guideTitle}</p>
       <p className="home-v2-guide__dek">{product.guideDek}</p>
@@ -81,9 +83,14 @@ export function HomeV2GuideExcerpt({ locale, product, showScreen }: HomeV2GuideE
           </li>
         ))}
       </ol>
-      {showScreen ? (
-        <FullScreenLink locale={locale} kind="guide" label={product.fullScreen} />
-      ) : null}
+      <p className="home-v2-excerpt__links">
+        <a className="home-v2-excerpt__full" href={product.guideRead.href}>
+          {product.guideRead.label}
+        </a>
+        {showScreen ? (
+          <FullScreenLink locale={locale} kind="guide" label={product.fullScreen} />
+        ) : null}
+      </p>
     </div>
   );
 }

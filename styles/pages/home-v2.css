@@ -2811,8 +2811,8 @@ body:has(.home-v2-shell) {
 }
 
 .home-v2-thread__item--anto {
-  align-self: flex-start;
-  max-width: 92%;
+  align-self: stretch;
+  max-width: none;
 }
 
 .home-v2-thread__item--anto p {
@@ -2822,9 +2822,16 @@ body:has(.home-v2-shell) {
   border: 1px solid rgba(244, 246, 252, 0.12);
 }
 
+.home-v2-excerpt__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 1.25rem;
+  margin: 0.85rem 0 0;
+}
+
 .home-v2-excerpt__full {
   display: inline-block;
-  margin-top: 0.85rem;
   color: #A5A4FF;
   font-size: 0.875rem;
   font-weight: 600;
@@ -2952,7 +2959,7 @@ body:has(.home-v2-shell) {
   .home-v2-chat-excerpt__layout {
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: clamp(2rem, 4vw, 3.5rem);
   }
 
@@ -2962,8 +2969,12 @@ body:has(.home-v2-shell) {
   }
 
   .home-v2-excerpt--chat {
-    flex: 1 1 28rem;
-    max-width: 34rem;
+    flex: 1 1 0;
+    max-width: none;
+  }
+
+  .home-v2-foundation__item--example .home-v2-foundation__item-title {
+    font-size: 1.5rem;
   }
 
   .home-v2-foundation__list {

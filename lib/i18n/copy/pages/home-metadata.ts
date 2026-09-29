@@ -29,9 +29,9 @@ export function homePageMetadata(locale: Locale): Metadata {
     return {
       title: 'Anto, an emotional support app | Anxiety, between sessions',
       description:
-        'Anto is an ongoing emotional support app for anxiety and quiet hours, between sessions or day to day. You write what keeps looping and leave with one concrete step. On iPhone and Android. Does not replace a human therapist. Free 1-day trial.',
+        'Anto is an ongoing emotional support app for anxiety, including social anxiety, and quiet hours, between sessions or day to day. You write what keeps looping and leave with one concrete step. On iPhone and Android. Does not replace a human therapist. Free 1-day trial.',
       keywords:
-        'Anto, ongoing emotional support, anxiety, quiet hours, between therapy sessions, grounding, CBT, iPhone, Android, free trial',
+        'Anto, ongoing emotional support, anxiety, social anxiety, quiet hours, between therapy sessions, grounding, CBT, iPhone, Android, free trial',
       alternates,
       openGraph: {
         type: 'website',
@@ -52,9 +52,9 @@ export function homePageMetadata(locale: Locale): Metadata {
   return {
     title: 'Anto, app de acompañamiento emocional | Ansiedad, entre sesiones',
     description:
-      'Anto es una app de acompañamiento emocional continuo para la ansiedad y las horas quietas, entre sesiones o en el día a día. Escribes lo que da vueltas y te llevas un paso concreto. En iPhone y Android. No sustituye a un terapeuta. Prueba de 1 día gratis.',
+      'Anto es una app de acompañamiento emocional continuo para la ansiedad, incluida la social, y las horas quietas, entre sesiones o en el día a día. Escribes lo que da vueltas y te llevas un paso concreto. En iPhone y Android. No sustituye a un terapeuta. Prueba de 1 día gratis.',
     keywords:
-      'Anto, acompañamiento emocional continuo, ansiedad, horas quietas, entre sesiones, grounding, TCC, iPhone, Android, prueba gratis',
+      'Anto, acompañamiento emocional continuo, ansiedad, ansiedad social, horas quietas, entre sesiones, grounding, TCC, iPhone, Android, prueba gratis',
     alternates,
     openGraph: {
       type: 'website',

@@ -41,7 +41,7 @@ export default function HomeV2Foundation({
               >
                 {pillar.example === 'guide' ? (
                   <>
-                    <div className="home-v2-foundation__example-copy">
+                    <div className="home-v2-foundation__example-copy" data-home-reveal>
                       <h3 className="home-v2-foundation__item-title">{pillar.title}</h3>
                       <p className="home-v2-foundation__item-body">{pillar.body}</p>
                     </div>

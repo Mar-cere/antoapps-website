@@ -174,6 +174,7 @@ export type HomeV2Copy = {
     guideTitle: string;
     guideDek: string;
     guideSteps: readonly { title: string; body: string }[];
+    guideRead: { href: string; label: string };
   };
   foundation: {
     title: string;
@@ -346,22 +347,18 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         },
       ],
       product: {
-        chatCaption: 'This is the thread when you write at night.',
+        chatCaption: 'This is how Anto answers that night.',
         youLabel: 'You',
         antoLabel: 'Anto',
         fullScreen: 'View full screen',
         chat: [
           {
-            role: 'user',
-            text: "Can't sleep. Presentation Friday and my head won't shut up.",
-          },
-          {
             role: 'anto',
             text: 'Your mind is doing overtime before Friday. Try writing down the three most urgent thoughts on paper, then set them aside for tonight. If you want, I can help you sort those thoughts into “fix now” and “leave for later.”',
           },
           {
-            role: 'user',
-            text: 'Blanking out. Looking stupid in front of everyone.',
+            role: 'anto',
+            text: "That sounds like the worst part: not the presentation itself, but the image your mind is pushing at you. Let's stay with the immediate moment first—what is the strongest thought repeating right now?",
           },
         ],
         guideKicker: 'Micro-guide',
@@ -381,6 +378,10 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             body: 'Define the smallest social gesture (greet, one question).',
           },
         ],
+        guideRead: {
+          href: localePath('en', '/recursos/ansiedad-y-preocupacion'),
+          label: 'Anxiety and worry',
+        },
       },
       foundation: {
         title: 'Not a chat that forgets.',
@@ -488,6 +489,11 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             href: '/recursos/grounding-ansiedad-crisis',
             label: 'When anxiety rises',
             description: 'Grounding 5-4-3-2-1 for intense moments',
+          },
+          {
+            href: '/recursos/ansiedad-y-preocupacion',
+            label: 'Anxiety and worry',
+            description: 'The map, including social anxiety',
           },
           {
             href: '/app',
@@ -634,22 +640,18 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       },
     ],
     product: {
-      chatCaption: 'Así se lee cuando escribes de noche.',
+      chatCaption: 'Así responde Anto en esa noche.',
       youLabel: 'Tú',
       antoLabel: 'Anto',
       fullScreen: 'Ver pantalla completa',
       chat: [
         {
-          role: 'user',
-          text: 'No puedo dormir. Presentación el viernes y la cabeza no para.',
-        },
-        {
           role: 'anto',
           text: 'La cabeza se te quedó en modo alerta, y eso agota mucho. Si te sirve, podemos bajar un poco la presión de esta noche y ordenar qué es lo que más te está dando vueltas.',
         },
         {
-          role: 'user',
-          text: 'Quedarme en blanco. Que se note delante de todos.',
+          role: 'anto',
+          text: 'Eso pesa mucho porque no es solo la presentación; es la idea de exponerte y sentir que todos lo verían. Si quieres, podemos aterrizar justo ese miedo y dejarlo un poco más manejable.',
         },
       ],
       guideKicker: 'Micro-guía',
@@ -669,6 +671,10 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           body: 'Define el primer gesto social mínimo (saludar, una pregunta).',
         },
       ],
+      guideRead: {
+        href: localePath('es', '/recursos/ansiedad-y-preocupacion'),
+        label: 'Ansiedad y preocupación',
+      },
     },
     foundation: {
       title: 'No es un chat que olvida.',
@@ -776,6 +782,11 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           href: '/recursos/grounding-ansiedad-crisis',
           label: 'Cuando la ansiedad sube',
           description: 'Grounding 5-4-3-2-1 para momentos intensos',
+        },
+        {
+          href: '/recursos/ansiedad-y-preocupacion',
+          label: 'Ansiedad y preocupación',
+          description: 'El mapa, incluida la ansiedad social',
         },
         {
           href: '/app',

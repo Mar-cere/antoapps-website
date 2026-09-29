@@ -166,8 +166,8 @@ function formatResourcesDiscoveryBlock(locale: Locale): string[] {
     slugs: readonly PsychoeducationSlug[];
   }[] = [
     {
-      labelEs: 'Ansiedad / crisis / grounding',
-      labelEn: 'Anxiety / crisis / grounding',
+      labelEs: 'Ansiedad (incluida la social) / crisis / grounding',
+      labelEn: 'Anxiety (including social) / crisis / grounding',
       slugs: ['grounding-ansiedad-crisis', 'ansiedad-y-preocupacion', 'estres-y-carga'],
     },
     {

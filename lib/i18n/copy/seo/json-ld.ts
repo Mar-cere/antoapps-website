@@ -21,7 +21,7 @@ const softwareCopy: Record<
   es: {
     operatingSystem: 'iOS (App Store), Android (Google Play)',
     description:
-      'App de acompañamiento emocional continuo en iPhone y Android para la ansiedad y las horas quietas, entre sesiones o en el día a día. Escribes lo que da vueltas y te llevas un paso concreto. Hub de técnicas (TCC, grounding) y chequeos. No sustituye a un terapeuta humano.',
+      'App de acompañamiento emocional continuo en iPhone y Android para la ansiedad, incluida la social, y las horas quietas, entre sesiones o en el día a día. Escribes lo que da vueltas y te llevas un paso concreto. Hub de técnicas (TCC, grounding) y chequeos. No sustituye a un terapeuta humano.',
     featureList: [
       'Acompañamiento emocional continuo',
       'Memoria de temas y patrones',
@@ -39,7 +39,7 @@ const softwareCopy: Record<
   en: {
     operatingSystem: 'iOS (App Store), Android (Google Play)',
     description:
-      'Ongoing emotional support app for iPhone and Android, for anxiety and quiet hours, between sessions or day to day. You write what keeps looping and leave with one concrete step. Techniques hub (CBT, grounding) and check-ins. Does not replace a human therapist.',
+      'Ongoing emotional support app for iPhone and Android, for anxiety, including social anxiety, and quiet hours, between sessions or day to day. You write what keeps looping and leave with one concrete step. Techniques hub (CBT, grounding) and check-ins. Does not replace a human therapist.',
     featureList: [
       'Ongoing emotional support',
       'Theme memory and patterns',
@@ -59,11 +59,11 @@ const softwareCopy: Record<
 const orgCopy: Record<Locale, { description: string }> = {
   es: {
     description:
-      'Anto ofrece acompañamiento emocional continuo para la ansiedad y las horas quietas, entre sesiones o en el día a día. Complementa la atención clínica y no reemplaza a un terapeuta humano.',
+      'Anto ofrece acompañamiento emocional continuo para la ansiedad, incluida la social, y las horas quietas, entre sesiones o en el día a día. Complementa la atención clínica y no reemplaza a un terapeuta humano.',
   },
   en: {
     description:
-      'Anto provides ongoing emotional support for anxiety and quiet hours, between sessions or day to day. It complements clinical care and does not replace a human therapist.',
+      'Anto provides ongoing emotional support for anxiety, including social anxiety, and quiet hours, between sessions or day to day. It complements clinical care and does not replace a human therapist.',
   },
 };
 
@@ -131,8 +131,8 @@ export function getFaqPageJsonLd(locale: Locale): JsonLd {
 
 function websiteDescription(locale: Locale): string {
   return locale === 'en'
-    ? 'Anto — when everything costs a little more. Ongoing emotional support on iPhone and Android for anxiety and quiet hours, between sessions or day to day. Does not replace a human therapist.'
-    : 'Anto — cuando todo cuesta un poco más. Acompañamiento emocional continuo en iPhone y Android para la ansiedad y las horas quietas, entre sesiones o en el día a día. No sustituye a un terapeuta humano.';
+    ? 'Anto — when everything costs a little more. Ongoing emotional support on iPhone and Android for anxiety, including social anxiety, and quiet hours, between sessions or day to day. Does not replace a human therapist.'
+    : 'Anto — cuando todo cuesta un poco más. Acompañamiento emocional continuo en iPhone y Android para la ansiedad, incluida la social, y las horas quietas, entre sesiones o en el día a día. No sustituye a un terapeuta humano.';
 }
 
 export function getWebSiteJsonLd(locale: Locale): JsonLd {

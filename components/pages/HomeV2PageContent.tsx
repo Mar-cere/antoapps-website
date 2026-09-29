@@ -72,7 +72,11 @@ export default function HomeV2PageContent({
               <HomeV2Recognize locale={locale} />
               <section className="home-v2-chat-excerpt" aria-labelledby="home-v2-chat-excerpt-title">
                 <div className="home-landing-container home-v2-chat-excerpt__layout">
-                  <p id="home-v2-chat-excerpt-title" className="home-v2-chat-excerpt__lead">
+                  <p
+                    id="home-v2-chat-excerpt-title"
+                    className="home-v2-chat-excerpt__lead"
+                    data-home-reveal
+                  >
                     {product.chatCaption}
                   </p>
                   <HomeV2ChatExcerpt
