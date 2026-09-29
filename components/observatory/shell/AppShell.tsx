@@ -55,8 +55,8 @@ function connectionBanner(connection: ObservatoryConnection) {
   if (connection.kind === 'http' && connection.reachable) {
     return {
       kind: 'live',
-      title: 'Projector live',
-      text: 'Vista derivada de nexus_turn_traces. No es /health. Content-off. El dashboard no consulta Mongo ni Atlas.',
+      title: 'Live',
+      text: 'Turnos reales, sin texto de conversación.',
     };
   }
   if (connection.configured) {
@@ -64,13 +64,13 @@ function connectionBanner(connection: ObservatoryConnection) {
     return {
       kind: 'down',
       title: 'Runtime no alcanzable',
-      text: `${detail} Se muestran fixtures hasta que GET /v1/observatory/snapshot responda.`,
+      text: `${detail} Mientras tanto se ven fixtures.`,
     };
   }
   return {
     kind: 'sim',
-    title: 'Modo simulación',
-    text: 'Sin URL de runtime. Datos ficticios. No es tráfico de producción ni una segunda fuente de verdad.',
+    title: 'Simulación',
+    text: 'Datos ficticios. No es tráfico de producción.',
   };
 }
 

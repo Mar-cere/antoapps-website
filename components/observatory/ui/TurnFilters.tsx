@@ -33,7 +33,7 @@ export function TurnFilters({
           onChange={(event) => onChange({ ...value, extrasMode: event.target.value as TurnFilterState['extrasMode'] })}
         >
           <option value="all">Todos</option>
-          <option value="applied">Canary aplicado</option>
+          <option value="applied">Podía insertar</option>
           <option value="shadow">Solo observó</option>
           <option value="missing">Sin extras</option>
         </select>

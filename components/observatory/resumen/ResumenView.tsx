@@ -5,6 +5,7 @@ import { TurnDecisionBoard } from '@/components/observatory/decisiones/TurnDecis
 import { Provenance } from '@/components/observatory/ui/Provenance';
 import { SurveillancePanel } from '@/components/observatory/ui/SurveillancePanel';
 import { useObservatory } from '@/components/observatory/shell/ObservatoryProvider';
+import { metricLabel, metricValue } from '@/lib/observatory/copy/labels';
 import { storyFromTrace } from '@/lib/observatory/data/turnDecision';
 
 export function ResumenView() {
@@ -78,8 +79,8 @@ export function ResumenView() {
           <div className="metrics">
             {snapshot.metrics.map((m) => (
               <article key={m.metric_id} className="metric">
-                <p className="label">{m.label}</p>
-                <p className="value">{m.value}</p>
+                <p className="label">{metricLabel(m.metric_id, m.label)}</p>
+                <p className="value">{metricValue(m.metric_id, m.value)}</p>
                 <Provenance kind={m.provenance} />
                 <details className="obs-fold">
                   <summary>Qué cuenta</summary>

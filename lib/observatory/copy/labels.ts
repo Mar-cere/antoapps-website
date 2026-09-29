@@ -257,6 +257,42 @@ export function factLabel(
   return CHOICE_LABELS[String(value)] ?? SLICE_LABELS[String(value)] ?? MUTE_FLAG_LABELS[String(value)] ?? String(value);
 }
 
+export const METRIC_LABELS: Record<string, string> = {
+  trace_coverage: 'Cobertura de turnos',
+  ttft_p95: 'TTFT p95',
+  extras_mode: 'Extras',
+  family_carried: 'Familiar traído',
+  slice_couple: 'Sombra de pareja',
+  slice_vent: 'Sombra de desahogo',
+  slice_couple_and_vent: 'Pareja y desahogo',
+  domain_candidates: 'Candidato de dominio',
+};
+
+export function metricLabel(id: string, fallback: string): string {
+  return METRIC_LABELS[id] ?? fallback;
+}
+
+export function metricValue(id: string, value: string): string {
+  if (id === 'extras_mode') {
+    return value
+      .replace(/shadow:/g, 'observó ')
+      .replace(/applied:/g, 'podía insertar ')
+      .replace(/sin evento:/g, 'sin extras ');
+  }
+  return value
+    .split(' · ')
+    .map((part) => {
+      const sep = part.indexOf(':');
+      if (sep < 0) return factLabel(part);
+      return `${factLabel(part.slice(0, sep))} ${part.slice(sep + 1)}`;
+    })
+    .join(' · ');
+}
+
+export function isEmptyFact(value: string | null | undefined): boolean {
+  return !value || value === 'Sin dato' || value === 'Ninguna' || value === 'Ninguno' || value === 'Sin estimar';
+}
+
 export const STRUCTURED_KEY_LABELS: Record<string, string> = {
   choice: 'Elección',
   mode: 'Modo',

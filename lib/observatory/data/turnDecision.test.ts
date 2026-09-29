@@ -73,8 +73,8 @@ test('extras applied y suppress no usa el condicional de sombra', () => {
       }),
     ])
   );
-  assert.match(story.headline, /No insertó; silenció/);
-  assert.equal(story.headline.includes('habría silenciado'), false);
+  assert.match(story.headline, /No insertó; habría silenciado/);
+  assert.equal(story.headline.includes('Observó;'), false);
 });
 
 test('storyFromTrace muestra carry familiar y mute soft_landing sin texto', () => {

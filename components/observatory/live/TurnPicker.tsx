@@ -2,6 +2,7 @@
 
 import { MuteChips } from '@/components/observatory/ui/MuteChips';
 import { choiceLabel, factLabel } from '@/lib/observatory/copy/labels';
+import { isSuppressionWatch } from '@/lib/observatory/copy/weekReading';
 import { domainLine, pickerExtrasLine } from '@/lib/observatory/copy/turnReading';
 import { formatTurnWhen, storyFromTrace } from '@/lib/observatory/data/turnDecision';
 import type { TraceEnvelope } from '@/lib/observatory/data/types';
@@ -23,17 +24,20 @@ export function TurnPicker({ traces, selectedId, onSelect }: TurnPickerProps) {
         const story = storyFromTrace(trace);
         const selected = trace.trace_id === selectedId;
         const domain = domainLine(story);
+        const watch = isSuppressionWatch(story);
         return (
           <button
             key={trace.trace_id}
             type="button"
             role="option"
             aria-selected={selected}
+            data-case={watch ? 'suppression' : undefined}
             onClick={() => onSelect(trace.trace_id)}
           >
             <span className="t">
               <span className="turn-star" data-choice={story.engineChoice ?? ''} aria-hidden="true" />
               {choiceLabel(story.engineChoice)}
+              {watch ? <span className="turn-case">Caso</span> : null}
             </span>
             <span className="turn-extra">{pickerExtrasLine(story)}</span>
             <span className="s">

@@ -2,6 +2,7 @@
 
 import { Fragment } from 'react';
 import { TurnPicker } from '@/components/observatory/live/TurnPicker';
+import { WeekReadingNote } from '@/components/observatory/ui/WeekReadingNote';
 import { PipelineTape } from '@/components/observatory/live/PipelineTape';
 import { SimControls } from '@/components/observatory/live/SimControls';
 import { TurnDecisionBoard } from '@/components/observatory/decisiones/TurnDecisionBoard';
@@ -54,6 +55,7 @@ export function LiveView() {
         <div className="live-layout">
           <section className="turn-rail">
             <h3>Turnos</h3>
+            <WeekReadingNote stories={filteredTraces.map(storyFromTrace)} />
             <TurnPicker traces={filteredTraces} selectedId={trace.trace_id} onSelect={selectTrace} />
           </section>
           <div className="decision-main">

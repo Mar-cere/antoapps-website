@@ -1,14 +1,25 @@
 'use client';
 
 import { TurnPicker } from '@/components/observatory/live/TurnPicker';
+import { WeekReadingNote } from '@/components/observatory/ui/WeekReadingNote';
 import { PipelineTape } from '@/components/observatory/live/PipelineTape';
 import { TurnDecisionBoard } from '@/components/observatory/decisiones/TurnDecisionBoard';
 import { ObservatoryLegend } from '@/components/observatory/ui/ObservatoryLegend';
 import { TurnFilters } from '@/components/observatory/ui/TurnFilters';
 import { TurnLede } from '@/components/observatory/ui/TurnLede';
 import { useObservatory } from '@/components/observatory/shell/ObservatoryProvider';
-import { factLabel, sliceLabel } from '@/lib/observatory/copy/labels';
+import { factLabel, isEmptyFact, sliceLabel } from '@/lib/observatory/copy/labels';
 import { storyFromTrace } from '@/lib/observatory/data/turnDecision';
+
+function ContextItem({ label, value }: { label: string; value: string | null | undefined }) {
+  if (isEmptyFact(value)) return null;
+  return (
+    <div>
+      <dt>{label}</dt>
+      <dd>{value}</dd>
+    </div>
+  );
+}
 
 export function DecisionesView() {
   const { snapshot, selectedTrace, selectTrace, selectStage, selectedStageId, filteredTraces, filters, setFilters } =
@@ -35,33 +46,42 @@ export function DecisionesView() {
         <div className="decision-layout">
           <section className="turn-rail">
             <h3>Turnos</h3>
+            <WeekReadingNote stories={filteredTraces.map(storyFromTrace)} />
             <TurnPicker traces={filteredTraces} selectedId={selectedTrace.trace_id} onSelect={selectTrace} />
           </section>
           <div className="decision-main">
             <TurnLede story={story} trace={selectedTrace} />
             <TurnDecisionBoard story={story} density="full" />
-            <dl className="inspector decision-facts">
-              <dt>Consentimiento</dt>
-              <dd>
-                {story.consentPurposeCount == null
-                  ? 'Este turno no trajo consentimiento.'
-                  : `${story.consentPurposeCount} finalidades. El deny de purpose no silencia extras.`}
-              </dd>
-              <dt>Estado</dt>
-              <dd>
-                {factLabel(story.claimType)} · activación {factLabel(story.activationBand)} · carga{' '}
-                {factLabel(story.loadBand)} · apertura {factLabel(story.opennessBand)} · tiempo {factLabel(story.timeBand)}
-              </dd>
-              <dt>Trayectoria</dt>
-              <dd>{factLabel(story.directionBand)}</dd>
-              <dt>Persona</dt>
-              <dd>{factLabel(story.personaGrant)}</dd>
-              <dt>Relación (sombra)</dt>
-              <dd>
-                {sliceLabel(story.slice)} · {factLabel(story.stance)}
-              </dd>
-              <dt>TTFT</dt>
-              <dd>{story.ttftMs == null ? 'No medida' : `${story.ttftMs} ms`}</dd>
+            <dl className="turn-context" aria-label="Contexto del turno">
+              <ContextItem
+                label="Consentimiento"
+                value={
+                  story.consentPurposeCount == null ? null : `${story.consentPurposeCount} finalidades`
+                }
+              />
+              <ContextItem
+                label="Estado"
+                value={[
+                  factLabel(story.claimType),
+                  isEmptyFact(factLabel(story.activationBand)) ? null : `activación ${factLabel(story.activationBand)}`,
+                  isEmptyFact(factLabel(story.loadBand)) ? null : `carga ${factLabel(story.loadBand)}`,
+                  isEmptyFact(factLabel(story.opennessBand)) ? null : `apertura ${factLabel(story.opennessBand)}`,
+                  isEmptyFact(factLabel(story.timeBand)) ? null : factLabel(story.timeBand),
+                ]
+                  .filter(Boolean)
+                  .join(' · ') || null}
+              />
+              <ContextItem label="Trayectoria" value={isEmptyFact(factLabel(story.directionBand)) ? null : factLabel(story.directionBand)} />
+              <ContextItem label="Persona" value={isEmptyFact(factLabel(story.personaGrant)) ? null : factLabel(story.personaGrant)} />
+              <ContextItem
+                label="Relación"
+                value={
+                  !story.slice || story.slice === 'none'
+                    ? factLabel(story.stance)
+                    : `${sliceLabel(story.slice)} · ${factLabel(story.stance)}`
+                }
+              />
+              <ContextItem label="TTFT" value={story.ttftMs == null ? null : `${story.ttftMs} ms`} />
             </dl>
             <details className="obs-fold pipeline-fold">
               <summary>Línea de tiempo</summary>

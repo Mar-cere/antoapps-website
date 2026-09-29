@@ -1,7 +1,19 @@
 import { MuteChips } from '@/components/observatory/ui/MuteChips';
-import { choiceLabel, factLabel } from '@/lib/observatory/copy/labels';
+import { choiceLabel, factLabel, isEmptyFact } from '@/lib/observatory/copy/labels';
 import { domainLine, extrasOutcomeLabel, muteSummary, turnSignals } from '@/lib/observatory/copy/turnReading';
 import type { TurnDecisionStory } from '@/lib/observatory/data/turnDecision';
+
+const CHANNELS = new Set(['chat', 'voice', 'audio', 'text']);
+
+function Fact({ label, value }: { label: string; value: string | null | undefined }) {
+  if (isEmptyFact(value)) return null;
+  return (
+    <div>
+      <dt>{label}</dt>
+      <dd>{value}</dd>
+    </div>
+  );
+}
 
 export function TurnDecisionBoard({
   story,
@@ -64,52 +76,50 @@ export function TurnDecisionBoard({
         <h3>Forma</h3>
         <p className="decision-choice">{choiceLabel(story.cue)}</p>
         <dl className="col-facts">
-          <div>
-            <dt>Modo</dt>
-            <dd>
-              {story.experienceMode === 'applied'
+          <Fact
+            label="Modo"
+            value={
+              story.experienceMode === 'applied'
                 ? 'Aplicó la forma'
                 : story.experienceMode === 'shadow'
                   ? 'Observó'
-                  : factLabel(story.experienceMode)}
-            </dd>
-          </div>
-          <div>
-            <dt>Motivo</dt>
-            <dd>{factLabel(story.reason)}</dd>
-          </div>
-          <div>
-            <dt>Canal</dt>
-            <dd>{choiceLabel(story.modality)}</dd>
-          </div>
-          <div>
-            <dt>Conversión</dt>
-            <dd>
-              {story.conversionSuppression === 'none' || !story.conversionSuppression
-                ? 'Sin supresión'
-                : factLabel(story.conversionSuppression)}
-            </dd>
-          </div>
+                  : factLabel(story.experienceMode)
+            }
+          />
+          <Fact
+            label="Motivo"
+            value={story.reason && story.reason !== 'insufficient_signal' ? factLabel(story.reason) : null}
+          />
+          <Fact
+            label="Canal"
+            value={story.modality && CHANNELS.has(story.modality) ? choiceLabel(story.modality) : null}
+          />
+          <Fact
+            label="Conversión"
+            value={
+              !story.conversionSuppression || story.conversionSuppression === 'none'
+                ? null
+                : story.conversionSuppression === 'planned'
+                  ? 'Prevista'
+                  : factLabel(story.conversionSuppression)
+            }
+          />
         </dl>
       </article>
       <article className="decision-col" data-role="extras">
         <h3>Extras</h3>
         <p className="decision-choice">{extrasOutcomeLabel(story)}</p>
         <dl className="col-facts">
-          {domain ? (
-            <div>
-              <dt>Dominio</dt>
-              <dd>{domain}</dd>
-            </div>
-          ) : null}
-          <div>
-            <dt>Decisión</dt>
-            <dd>{factLabel(story.extrasDecision)}</dd>
-          </div>
-          <div>
-            <dt>Terceros</dt>
-            <dd>{factLabel(story.extrasThirdPartyBand)}</dd>
-          </div>
+          <Fact label="Dominio" value={domain} />
+          <Fact label="Decisión" value={factLabel(story.extrasDecision)} />
+          <Fact
+            label="Terceros"
+            value={
+              !story.extrasThirdPartyBand || story.extrasThirdPartyBand === 'none'
+                ? null
+                : factLabel(story.extrasThirdPartyBand)
+            }
+          />
         </dl>
         {extrasKinds || extrasCounts || story.extrasReasonCodes.length > 0 ? (
           <details className="obs-fold">
