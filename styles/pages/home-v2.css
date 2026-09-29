@@ -2815,52 +2815,77 @@ body:has(.home-v2-shell) {
 
 @media (min-width: 960px) {
   .home-v2-product-band .home-v2-product {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
-    gap: clamp(2rem, 5vw, 4.5rem);
-    width: min(72rem, calc(100% - 3rem));
+    justify-content: center;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    width: min(64rem, calc(100% - 3rem));
     margin-inline: auto;
   }
 
   .home-v2-product-band .home-v2-product__caption {
+    flex: 0 1 16rem;
     order: -1;
     margin: 0;
-    max-width: 14ch;
-    font-size: 1.5rem;
+    max-width: 16rem;
+    font-size: 2rem;
     font-weight: 500;
     letter-spacing: -0.03em;
-    line-height: 1.2;
+    line-height: 1.15;
     text-align: left;
     color: #F4F6FC;
   }
 
   .home-v2-product-band .home-v2-product__frame {
-    height: min(32rem, 68vh);
+    flex: none;
+    height: min(36rem, 70vh);
     margin: 0;
   }
 
   .home-v2-foundation--with-guide .home-v2-foundation__layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
-    gap: clamp(2rem, 4vw, 3.5rem);
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
     align-items: start;
+  }
+
+  .home-v2-foundation--with-guide .home-v2-foundation__list {
+    display: block;
+    border-top: 1px solid rgba(244, 246, 252, 0.18);
+  }
+
+  .home-v2-foundation--with-guide .home-v2-foundation__item,
+  .home-v2-foundation--with-guide .home-v2-foundation__item:first-child {
+    display: block;
+    grid-row: auto;
+    border-right: 0;
+    border-bottom: 1px solid rgba(244, 246, 252, 0.12);
+    padding-right: 0;
+  }
+
+  .home-v2-foundation--with-guide .home-v2-foundation__item-title,
+  .home-v2-foundation--with-guide .home-v2-foundation__item:first-child .home-v2-foundation__item-title {
+    margin-bottom: 0.4rem;
+    font-size: 1.125rem;
   }
 
   .home-v2-foundation--with-guide .home-v2-product--guide {
     position: sticky;
     top: 5.5rem;
     order: 2;
+    width: 14rem;
   }
 
   .home-v2-foundation--with-guide .home-v2-product__frame {
-    height: min(26rem, 58vh);
-    width: auto;
-    max-width: 100%;
+    height: auto;
+    width: 14rem;
+    aspect-ratio: 472 / 1024;
+    max-width: none;
   }
 
   .home-v2-foundation--with-guide .home-v2-product__caption {
-    margin-inline: 0;
+    margin: 0.85rem 0 0;
+    max-width: none;
     text-align: left;
   }
 }
