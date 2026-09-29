@@ -163,10 +163,21 @@ export type HomeV2Copy = {
     imageAlt: string;
   };
   moments: readonly HomeV2Moment[];
+  product: {
+    chatCaption: string;
+    chatAlt: string;
+    stepCaption: string;
+    stepAlt: string;
+  };
   foundation: {
     title: string;
     support: string;
     pillars: readonly HomeV2FoundationPillar[];
+    guide: {
+      href: string;
+      label: string;
+      note: string;
+    };
   };
   still: {
     line: string;
@@ -215,7 +226,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         titleLine1: 'When everything costs',
         titleAccent: 'a little more.',
         support:
-          'Ongoing emotional support for quiet hours: write what you feel, leave with clarity and one concrete step.',
+          'For the quiet hours, between a session and the rest of the day. You write what keeps looping and leave with one step for tonight.',
         ctaStoreLabel: 'Download on',
         ctaStoreText: 'App Store',
         ctaBadge: trial.short,
@@ -328,13 +339,24 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           },
         },
       ],
+      product: {
+        chatCaption: 'This is the thread when you write at night.',
+        chatAlt: 'Anto chat on a charcoal screen',
+        stepCaption: 'One step for tonight. Not a life plan.',
+        stepAlt: 'Anto screen with one step for tonight',
+      },
       foundation: {
         title: 'Not a chat that forgets.',
         support: 'What you say today is still there the next time.',
+        guide: {
+          href: localePath('en', '/recursos/grounding-ansiedad-crisis'),
+          label: 'When anxiety rises',
+          note: 'A short grounding guide, if the moment tightens.',
+        },
         pillars: [
           {
             title: 'Memory that stays with you',
-            body: 'Themes that return, patterns you can notice, and one concrete next step, not a blank conversation every time.',
+            body: 'Themes that return and patterns you can notice, not a blank conversation every time.',
           },
           {
             title: 'Techniques when you need them',
@@ -401,7 +423,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'Are my conversations private?',
             answer:
-              'Yes. They are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell the thread or use it for ads.',
+              'Yes. They are encrypted in transit (TLS) and at rest. We do not sell the thread or use it for ads.',
           },
           {
             question: 'Does Anto replace therapy?',
@@ -459,8 +481,8 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       brand: 'Anto',
       titleLine1: 'Cuando todo cuesta',
       titleAccent: 'un poco más.',
-      support:
-        'Acompañamiento emocional continuo para las horas quietas: escribe lo que sientes, sal con claridad y un paso concreto.',
+        support:
+          'Para las horas quietas, entre una sesión y el resto del día. Escribes lo que da vueltas y te llevas un paso para esta noche.',
       ctaStoreLabel: 'Descargar en',
       ctaStoreText: 'App Store',
       ctaBadge: trial.short,
@@ -573,13 +595,24 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         },
       },
     ],
+    product: {
+      chatCaption: 'Así se lee cuando escribes de noche.',
+      chatAlt: 'Chat de Anto en una pantalla carbón',
+      stepCaption: 'Un paso para esta noche. No un plan.',
+      stepAlt: 'Pantalla de Anto con un paso para esta noche',
+    },
     foundation: {
       title: 'No es un chat que olvida.',
       support: 'Lo que cuentas hoy queda para la próxima conversación.',
+      guide: {
+        href: localePath('es', '/recursos/grounding-ansiedad-crisis'),
+        label: 'Cuando la ansiedad sube',
+        note: 'Una guía corta de grounding, si el momento aprieta.',
+      },
       pillars: [
         {
           title: 'Memoria que acompaña',
-          body: 'Temas que vuelven, patrones que se notan y un siguiente paso concreto, no una conversación en blanco cada vez.',
+          body: 'Temas que vuelven y patrones que se notan, no una conversación en blanco cada vez.',
         },
         {
           title: 'Técnicas cuando hacen falta',
@@ -646,7 +679,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           question: '¿Mis conversaciones son privadas?',
           answer:
-            'Sí. Van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos el hilo ni lo usamos para anuncios.',
+            'Sí. Van cifradas en tránsito (TLS) y en reposo. No vendemos el hilo ni lo usamos para anuncios.',
         },
         {
           question: '¿Anto reemplaza la terapia?',

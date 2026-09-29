@@ -81,6 +81,10 @@ Diferenciar de la lane “editorial-typographic” saturada (serif display + mon
 
 En marketing: la materia Nexus esencial manda; esta skill cuenta la historia encima, sin reabrir la paleta anterior.
 
+### Apple calma
+
+La página puede ser llamativa y seguir en calma. Foto dominante, un producto real por tramo, tipo con aire. El movimiento es una entrada (opacidad y un desplazamiento corto, 640–800 ms, una vez) y un recorte al hover. Se apaga con `prefers-reduced-motion`. Sin bucle, partículas ni parallax fuerte. La captura de producto es la interfaz actual, en carbón. No se rearma una franja de pestañas ni se vuelve al teal.
+
 ---
 
 ## Objetivo general

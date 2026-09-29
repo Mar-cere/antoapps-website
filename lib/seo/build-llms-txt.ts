@@ -549,9 +549,9 @@ export function buildLlmsTxt(): string {
 
   const lines = [
     '# Anto',
-    `> ${homeEs.hero.support} Available on iPhone and Android. Complements — does not replace — clinical care.`,
+    `> ${homeEs.hero.support} En iPhone y Android. No sustituye la atención clínica.`,
     '',
-    `> ${homeEn.hero.support}`,
+    `> ${homeEn.hero.support} On iPhone and Android. Does not replace clinical care.`,
     '',
     '---',
     '',

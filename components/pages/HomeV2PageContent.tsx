@@ -11,6 +11,7 @@ import PullToRefresh from '@/components/ui/PullToRefresh';
 import HomeV2Hero from '@/components/sections/HomeV2Hero';
 import HomeV2Reveal from '@/components/sections/HomeV2Reveal';
 import HomeV2Recognize from '@/components/sections/HomeV2Recognize';
+import HomeV2ProductFigure from '@/components/sections/HomeV2ProductFigure';
 import HomeV2Moments from '@/components/sections/HomeV2Moments';
 import HomeV2Foundation from '@/components/sections/HomeV2Foundation';
 import HomeV2Still from '@/components/sections/HomeV2Still';
@@ -20,6 +21,7 @@ import HomeV2Faq from '@/components/sections/HomeV2Faq';
 import HomeV2FinalCta from '@/components/sections/HomeV2FinalCta';
 import HomeV2Explore from '@/components/sections/HomeV2Explore';
 import FaqJsonLd from '@/components/seo/FaqJsonLd';
+import type { HomeProductScreens } from '@/lib/assets/product-screens';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import '@/styles/pages/home-landing-final.css';
 import '@/styles/pages/home-v2.css';
@@ -27,14 +29,17 @@ import '@/styles/pages/home-v2.css';
 type HomeV2PageContentProps = {
   locale: Locale;
   initialDevice?: LandingDevice;
+  screens?: HomeProductScreens;
 };
 
 /** Home publicada — editorial Anto. */
 export default function HomeV2PageContent({
   locale,
   initialDevice = 'ios',
+  screens = { chat: false, step: false },
 }: HomeV2PageContentProps) {
-  const { nav, hero } = getHomeV2Copy(locale);
+  const copy = getHomeV2Copy(locale);
+  const { nav, hero, product } = copy;
 
   return (
     <LocaleProvider locale={locale}>
@@ -65,8 +70,18 @@ export default function HomeV2PageContent({
             <div className="home-landing-page__content">
               <HomeV2Hero locale={locale} />
               <HomeV2Recognize locale={locale} />
+              {screens.chat ? (
+                <section className="home-v2-product-band" aria-label={product.chatCaption}>
+                  <HomeV2ProductFigure
+                    locale={locale}
+                    kind="chat"
+                    caption={product.chatCaption}
+                    alt={product.chatAlt}
+                  />
+                </section>
+              ) : null}
               <HomeV2Moments locale={locale} />
-              <HomeV2Foundation locale={locale} />
+              <HomeV2Foundation locale={locale} showStep={screens.step} />
               <HomeV2Still locale={locale} />
               <HomeV2Reviews locale={locale} />
               <HomeV2Pricing locale={locale} />

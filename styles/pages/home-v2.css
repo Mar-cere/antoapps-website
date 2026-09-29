@@ -2676,6 +2676,7 @@ body:has(.home-v2-shell) {
   .home-v2-recognize:hover .home-v2-recognize__img,
   .home-v2-moment__bleed:hover .home-v2-moment__bleed-img,
   .home-v2-final-cta:hover .home-v2-final-cta__bg,
+  .home-v2-product:hover .home-v2-product__img,
   .home-v2-shell .home-landing-nav__cta:active,
   .home-landing-page--v2 .premium-store-cta:active {
     transform: none;
@@ -2702,7 +2703,7 @@ body:has(.home-v2-shell) {
 @media (min-width: 960px) {
   .home-v2-moment--distortion .home-v2-moment__bleed {
     width: 100%;
-    height: clamp(22rem, 58vh, 38rem);
+    height: clamp(26rem, 68vh, 44rem);
     margin: 0 0 2.75rem;
     border-radius: 0;
   }
@@ -2711,25 +2712,27 @@ body:has(.home-v2-shell) {
 @media (prefers-reduced-motion: no-preference) {
   .home-v2-recognize__img,
   .home-v2-moment__bleed-img,
-  .home-v2-final-cta__bg {
-    transition: transform 700ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1));
+  .home-v2-final-cta__bg,
+  .home-v2-product__img {
+    transition: transform 800ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1));
   }
 
   .home-v2-recognize:hover .home-v2-recognize__img,
   .home-v2-moment__bleed:hover .home-v2-moment__bleed-img,
-  .home-v2-final-cta:hover .home-v2-final-cta__bg {
+  .home-v2-final-cta:hover .home-v2-final-cta__bg,
+  .home-v2-product:hover .home-v2-product__img {
     transform: scale(1.045);
   }
 
   html.home-v2-motion [data-home-reveal] {
     opacity: 0;
-    transform: translateY(1.35rem);
+    transform: translateY(2rem);
   }
 
   html.home-v2-motion [data-home-reveal='image'] {
     opacity: 1;
     transform: none;
-    clip-path: inset(16% 8% 18% 8%);
+    clip-path: inset(18% 10% 20% 10%);
   }
 
   html.home-v2-motion [data-home-reveal].is-in {
@@ -2737,12 +2740,101 @@ body:has(.home-v2-shell) {
     transform: none;
     clip-path: inset(0);
     transition:
-      opacity 640ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1)),
-      transform 680ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1)),
-      clip-path 700ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1));
+      opacity 720ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1)),
+      transform 800ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1)),
+      clip-path 800ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1));
   }
 
   html.home-v2-motion [data-home-reveal][data-home-delay='1'].is-in {
     transition-delay: 120ms;
+  }
+}
+
+.home-v2-foundation {
+  overflow: visible;
+}
+
+.home-v2-product-band {
+  padding: var(--home-v2-section-y) 0;
+}
+
+.home-v2-product {
+  margin: 0;
+}
+
+.home-v2-product__frame {
+  position: relative;
+  width: min(22rem, 86vw);
+  margin-inline: auto;
+  aspect-ratio: 390 / 844;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(244, 246, 252, 0.12);
+  background: #101216;
+}
+
+.home-v2-product__img {
+  object-fit: cover;
+}
+
+.home-v2-product__caption {
+  margin: 1rem auto 0;
+  max-width: 36ch;
+  font-size: 1rem;
+  line-height: 1.45;
+  text-align: center;
+  color: rgba(244, 246, 252, 0.72);
+}
+
+.home-v2-foundation__guide {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 1.5rem 0 0;
+  max-width: 42ch;
+}
+
+.home-v2-foundation__guide a {
+  color: #A5A4FF;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.home-v2-foundation__guide a:hover {
+  color: #C4C3FF;
+}
+
+.home-v2-foundation__guide span {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: rgba(244, 246, 252, 0.72);
+}
+
+@media (min-width: 960px) {
+  .home-v2-product-band .home-v2-product__frame {
+    width: min(26rem, 34vw);
+  }
+
+  .home-v2-foundation--with-step .home-v2-foundation__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+
+  .home-v2-foundation--with-step .home-v2-product--step {
+    position: sticky;
+    top: 5.5rem;
+    order: 2;
+  }
+
+  .home-v2-foundation--with-step .home-v2-product__frame {
+    width: min(18rem, 100%);
+  }
+
+  .home-v2-foundation--with-step .home-v2-product__caption {
+    margin-inline: 0;
+    text-align: left;
   }
 }

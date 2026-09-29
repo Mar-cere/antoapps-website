@@ -21,7 +21,7 @@ const softwareCopy: Record<
   es: {
     operatingSystem: 'iOS (App Store), Android (Google Play)',
     description:
-      'App de acompañamiento emocional continuo en iPhone y Android para la ansiedad y las horas quietas, entre sesiones o en el día a día. Memoria, un paso concreto, hub de técnicas (TCC, grounding) y chequeos. Asistencia de IA en segundo plano. No sustituye a un terapeuta humano.',
+      'App de acompañamiento emocional continuo en iPhone y Android para la ansiedad y las horas quietas, entre sesiones o en el día a día. Escribes lo que da vueltas y te llevas un paso concreto. Hub de técnicas (TCC, grounding) y chequeos. No sustituye a un terapeuta humano.',
     featureList: [
       'Acompañamiento emocional continuo',
       'Memoria de temas y patrones',
@@ -39,7 +39,7 @@ const softwareCopy: Record<
   en: {
     operatingSystem: 'iOS (App Store), Android (Google Play)',
     description:
-      'Ongoing emotional support app for iPhone and Android, for anxiety and quiet hours, between sessions or day to day. Memory, one concrete step, a techniques hub (CBT, grounding), and check-ins. AI assistance in the background. Does not replace a human therapist.',
+      'Ongoing emotional support app for iPhone and Android, for anxiety and quiet hours, between sessions or day to day. You write what keeps looping and leave with one concrete step. Techniques hub (CBT, grounding) and check-ins. Does not replace a human therapist.',
     featureList: [
       'Ongoing emotional support',
       'Theme memory and patterns',
