@@ -127,6 +127,7 @@ function usdPerMonth(total: number, months: number): string {
 export type HomeV2FoundationPillar = {
   title: string;
   body: string;
+  example?: 'guide';
 };
 
 export type HomeV2ExploreLink = {
@@ -165,9 +166,14 @@ export type HomeV2Copy = {
   moments: readonly HomeV2Moment[];
   product: {
     chatCaption: string;
-    chatAlt: string;
-    guideCaption: string;
-    guideAlt: string;
+    youLabel: string;
+    antoLabel: string;
+    fullScreen: string;
+    chat: readonly { role: 'user' | 'anto'; text: string }[];
+    guideKicker: string;
+    guideTitle: string;
+    guideDek: string;
+    guideSteps: readonly { title: string; body: string }[];
   };
   foundation: {
     title: string;
@@ -341,9 +347,40 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       ],
       product: {
         chatCaption: 'This is the thread when you write at night.',
-        chatAlt: 'Anto chat on a charcoal screen',
-        guideCaption: 'A short guide, and a small gesture at the end.',
-        guideAlt: 'Social anxiety micro-guide in Anto, with three steps',
+        youLabel: 'You',
+        antoLabel: 'Anto',
+        fullScreen: 'View full screen',
+        chat: [
+          {
+            role: 'user',
+            text: "Can't sleep. Presentation Friday and my head won't shut up.",
+          },
+          {
+            role: 'anto',
+            text: 'Your mind is doing overtime before Friday. Try writing down the three most urgent thoughts on paper, then set them aside for tonight. If you want, I can help you sort those thoughts into “fix now” and “leave for later.”',
+          },
+          {
+            role: 'user',
+            text: 'Blanking out. Looking stupid in front of everyone.',
+          },
+        ],
+        guideKicker: 'Micro-guide',
+        guideTitle: 'Social anxiety',
+        guideDek: 'Prep for interactions that raise tension.',
+        guideSteps: [
+          {
+            title: 'Prediction',
+            body: 'What do you think will happen? Write it as a hypothesis.',
+          },
+          {
+            title: 'Alternative',
+            body: 'What other explanation is possible?',
+          },
+          {
+            title: 'Micro-step',
+            body: 'Define the smallest social gesture (greet, one question).',
+          },
+        ],
       },
       foundation: {
         title: 'Not a chat that forgets.',
@@ -360,7 +397,8 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           },
           {
             title: 'Techniques when you need them',
-            body: 'A hub of evidence-based exercises: CBT, exposure, and mindfulness, with an interactive ABC canvas.',
+            body: 'Short guides in the hub, a few minutes each.',
+            example: 'guide',
           },
           {
             title: 'Between sessions',
@@ -597,9 +635,40 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
     ],
     product: {
       chatCaption: 'Así se lee cuando escribes de noche.',
-      chatAlt: 'Chat de Anto en una pantalla carbón',
-      guideCaption: 'Una guía corta, y al final un gesto pequeño.',
-      guideAlt: 'Micro-guía de ansiedad social en Anto, con tres pasos',
+      youLabel: 'Tú',
+      antoLabel: 'Anto',
+      fullScreen: 'Ver pantalla completa',
+      chat: [
+        {
+          role: 'user',
+          text: 'No puedo dormir. Presentación el viernes y la cabeza no para.',
+        },
+        {
+          role: 'anto',
+          text: 'La cabeza se te quedó en modo alerta, y eso agota mucho. Si te sirve, podemos bajar un poco la presión de esta noche y ordenar qué es lo que más te está dando vueltas.',
+        },
+        {
+          role: 'user',
+          text: 'Quedarme en blanco. Que se note delante de todos.',
+        },
+      ],
+      guideKicker: 'Micro-guía',
+      guideTitle: 'Ansiedad social',
+      guideDek: 'Preparación para interacciones que te generan tensión.',
+      guideSteps: [
+        {
+          title: 'Predicción',
+          body: '¿Qué crees que ocurrirá? Escríbelo como hipótesis, no hecho.',
+        },
+        {
+          title: 'Evidencia alternativa',
+          body: '¿Qué otra explicación es posible?',
+        },
+        {
+          title: 'Micro-paso',
+          body: 'Define el primer gesto social mínimo (saludar, una pregunta).',
+        },
+      ],
     },
     foundation: {
       title: 'No es un chat que olvida.',
@@ -616,7 +685,8 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         },
         {
           title: 'Técnicas cuando hacen falta',
-          body: 'Un hub con ejercicios basados en evidencia: TCC, exposición y mindfulness, con un lienzo ABC interactivo.',
+          body: 'Guías de unos minutos, en el hub.',
+          example: 'guide',
         },
         {
           title: 'Entre sesiones',

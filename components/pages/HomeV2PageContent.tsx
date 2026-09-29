@@ -11,7 +11,7 @@ import PullToRefresh from '@/components/ui/PullToRefresh';
 import HomeV2Hero from '@/components/sections/HomeV2Hero';
 import HomeV2Reveal from '@/components/sections/HomeV2Reveal';
 import HomeV2Recognize from '@/components/sections/HomeV2Recognize';
-import HomeV2ProductFigure from '@/components/sections/HomeV2ProductFigure';
+import { HomeV2ChatExcerpt } from '@/components/sections/HomeV2ProductFigure';
 import HomeV2Moments from '@/components/sections/HomeV2Moments';
 import HomeV2Foundation from '@/components/sections/HomeV2Foundation';
 import HomeV2Still from '@/components/sections/HomeV2Still';
@@ -70,18 +70,20 @@ export default function HomeV2PageContent({
             <div className="home-landing-page__content">
               <HomeV2Hero locale={locale} />
               <HomeV2Recognize locale={locale} />
-              {screens.chat ? (
-                <section className="home-v2-product-band" aria-label={product.chatCaption}>
-                  <HomeV2ProductFigure
+              <section className="home-v2-chat-excerpt" aria-labelledby="home-v2-chat-excerpt-title">
+                <div className="home-landing-container home-v2-chat-excerpt__layout">
+                  <p id="home-v2-chat-excerpt-title" className="home-v2-chat-excerpt__lead">
+                    {product.chatCaption}
+                  </p>
+                  <HomeV2ChatExcerpt
                     locale={locale}
-                    kind="chat"
-                    caption={product.chatCaption}
-                    alt={product.chatAlt}
+                    product={product}
+                    showScreen={screens.chat}
                   />
-                </section>
-              ) : null}
+                </div>
+              </section>
               <HomeV2Moments locale={locale} />
-              <HomeV2Foundation locale={locale} showGuide={screens.guide} />
+              <HomeV2Foundation locale={locale} showGuideScreen={screens.guide} />
               <HomeV2Still locale={locale} />
               <HomeV2Reviews locale={locale} />
               <HomeV2Pricing locale={locale} />

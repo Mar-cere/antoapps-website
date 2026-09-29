@@ -1,36 +1,89 @@
-import Image from 'next/image';
 import { productScreenSrc, type ProductScreenKind } from '@/lib/assets/product-screens';
 import type { Locale } from '@/lib/i18n/config';
+import type { HomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 
-type HomeV2ProductFigureProps = {
-  locale: Locale;
-  kind: ProductScreenKind;
-  caption: string;
-  alt: string;
-  frameClassName?: string;
-};
+type ProductCopy = HomeV2Copy['product'];
 
-/** Captura actual, sin marco de marketing. El borde lo pone la página. */
-export default function HomeV2ProductFigure({
+function FullScreenLink({
   locale,
   kind,
-  caption,
-  alt,
-  frameClassName = '',
-}: HomeV2ProductFigureProps) {
+  label,
+}: {
+  locale: Locale;
+  kind: ProductScreenKind;
+  label: string;
+}) {
   return (
-    <figure className={`home-v2-product ${frameClassName}`.trim()} data-home-reveal="image">
-      <div className="home-v2-product__frame">
-        <Image
-          src={productScreenSrc(locale, kind)}
-          alt={alt}
-          fill
-          className="home-v2-product__img"
-          sizes="(max-width: 959px) 86vw, 26rem"
-          quality={90}
-        />
-      </div>
-      <figcaption className="home-v2-product__caption">{caption}</figcaption>
-    </figure>
+    <a
+      className="home-v2-excerpt__full"
+      href={productScreenSrc(locale, kind)}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {label}
+    </a>
+  );
+}
+
+type HomeV2ChatExcerptProps = {
+  locale: Locale;
+  product: ProductCopy;
+  showScreen: boolean;
+};
+
+/** Fragmento de chat en texto. La captura real es un enlace, no el diseño. */
+export function HomeV2ChatExcerpt({ locale, product, showScreen }: HomeV2ChatExcerptProps) {
+  return (
+    <div className="home-v2-excerpt home-v2-excerpt--chat">
+      <ol className="home-v2-thread">
+        {product.chat.map((message) => (
+          <li
+            key={message.text}
+            className={`home-v2-thread__item home-v2-thread__item--${message.role}`}
+          >
+            <span className="sr-only">
+              {message.role === 'user' ? product.youLabel : product.antoLabel}
+            </span>
+            <p>{message.text}</p>
+          </li>
+        ))}
+      </ol>
+      {showScreen ? (
+        <FullScreenLink locale={locale} kind="chat" label={product.fullScreen} />
+      ) : null}
+    </div>
+  );
+}
+
+type HomeV2GuideExcerptProps = {
+  locale: Locale;
+  product: ProductCopy;
+  showScreen: boolean;
+};
+
+/** Micro-guía en texto, dentro de la sección de técnicas. */
+export function HomeV2GuideExcerpt({ locale, product, showScreen }: HomeV2GuideExcerptProps) {
+  return (
+    <div className="home-v2-excerpt home-v2-excerpt--guide">
+      <p className="home-v2-guide__kicker">{product.guideKicker}</p>
+      <p className="home-v2-guide__title">{product.guideTitle}</p>
+      <p className="home-v2-guide__dek">{product.guideDek}</p>
+      <ol className="home-v2-guide__steps">
+        {product.guideSteps.map((step, index) => (
+          <li key={step.title}>
+            <span className="home-v2-guide__index" aria-hidden="true">
+              {index + 1}
+            </span>
+            <span>
+              <span className="home-v2-guide__step-title">{step.title}</span>
+              <span className="home-v2-guide__step-body">{step.body}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+      {showScreen ? (
+        <FullScreenLink locale={locale} kind="guide" label={product.fullScreen} />
+      ) : null}
+    </div>
   );
 }

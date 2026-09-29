@@ -1,10 +1,10 @@
-import HomeV2ProductFigure from '@/components/sections/HomeV2ProductFigure';
+import { HomeV2GuideExcerpt } from '@/components/sections/HomeV2ProductFigure';
 import type { Locale } from '@/lib/i18n/config';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 
 type HomeV2FoundationProps = {
   locale?: Locale;
-  showGuide?: boolean;
+  showGuideScreen?: boolean;
 };
 
 /**
@@ -13,26 +13,17 @@ type HomeV2FoundationProps = {
  */
 export default function HomeV2Foundation({
   locale = 'es',
-  showGuide = false,
+  showGuideScreen = false,
 }: HomeV2FoundationProps) {
   const { foundation, product } = getHomeV2Copy(locale);
 
   return (
     <section
-      className={`home-v2-foundation${showGuide ? ' home-v2-foundation--with-guide' : ''}`}
+      className="home-v2-foundation"
       aria-labelledby="home-v2-foundation-title"
       data-fade-section
     >
       <div className="home-landing-container home-v2-foundation__layout">
-        {showGuide ? (
-          <HomeV2ProductFigure
-            locale={locale}
-            kind="guide"
-            caption={product.guideCaption}
-            alt={product.guideAlt}
-            frameClassName="home-v2-product--guide"
-          />
-        ) : null}
         <div className="home-v2-foundation__copy">
           <div className="home-v2-foundation__head" data-home-reveal>
             <h2 id="home-v2-foundation-title" className="home-v2-foundation__title">
@@ -42,9 +33,30 @@ export default function HomeV2Foundation({
           </div>
           <ul className="home-v2-foundation__list">
             {foundation.pillars.map((pillar) => (
-              <li key={pillar.title} className="home-v2-foundation__item">
-                <h3 className="home-v2-foundation__item-title">{pillar.title}</h3>
-                <p className="home-v2-foundation__item-body">{pillar.body}</p>
+              <li
+                key={pillar.title}
+                className={`home-v2-foundation__item${
+                  pillar.example ? ' home-v2-foundation__item--example' : ''
+                }`}
+              >
+                {pillar.example === 'guide' ? (
+                  <>
+                    <div className="home-v2-foundation__example-copy">
+                      <h3 className="home-v2-foundation__item-title">{pillar.title}</h3>
+                      <p className="home-v2-foundation__item-body">{pillar.body}</p>
+                    </div>
+                    <HomeV2GuideExcerpt
+                      locale={locale}
+                      product={product}
+                      showScreen={showGuideScreen}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <h3 className="home-v2-foundation__item-title">{pillar.title}</h3>
+                    <p className="home-v2-foundation__item-body">{pillar.body}</p>
+                  </>
+                )}
               </li>
             ))}
           </ul>

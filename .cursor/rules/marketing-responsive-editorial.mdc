@@ -24,7 +24,7 @@ No aplicar `max-width: 46rem` al contenedor raíz de toda la página en desktop.
 - **<768px:** flujo vertical con contraste de escala (tipo grande, figura ancha). No es un desktop encogido.
 - **≥768px:** el shell crece y la primera sección ya cambia de familia. No abrir con una grilla de dos columnas iguales.
 - **≥960px:** composición editorial variable. Cortes asimétricos, figura a sangre, tipo superpuesto, bloque desplazado, banda horizontal o acompañante sticky. Un split igual, como máximo una vez.
-- **Figura de producto:** una por tramo, grande (más alta que una card). En desktop acompaña el texto; no se encoge a un tubo ni se parte en una galería de pestañas.
+- **Figura de producto:** en la home, una viñeta HTML por tramo (chat, micro-guía), a la altura del texto. La captura real se abre con un enlace. No es un teléfono gigante ni una galería de pestañas.
 
 ## Páginas tipo ensayo (`/investigacion`, guías)
 
