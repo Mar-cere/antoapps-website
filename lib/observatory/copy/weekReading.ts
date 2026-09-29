@@ -55,8 +55,10 @@ export function windowReading(stories: WeekStory[]): WindowReading {
     plans += 1;
     if (isSuppressionWatch(story)) drifted += 1;
   }
-  const note = drifted > 0 ? 'vigilar' : 'no_es_bug';
-  const reading = { note, plans, drifted, crisis, line: '' };
-  reading.line = lineFor(reading);
-  return reading;
+  const counts = { plans, drifted, crisis };
+  return {
+    note: drifted > 0 ? 'vigilar' : 'no_es_bug',
+    ...counts,
+    line: lineFor(counts),
+  };
 }
