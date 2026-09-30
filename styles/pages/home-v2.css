@@ -2745,6 +2745,39 @@ body:has(.home-v2-shell) {
   html.home-v2-motion [data-home-reveal][data-home-delay='1'].is-in {
     transition-delay: 120ms;
   }
+
+  /* El titular del chat abre. Las respuestas entran después, una vez. */
+  html.home-v2-motion .home-v2-excerpt--chat[data-home-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  html.home-v2-motion .home-v2-excerpt--chat .home-v2-thread__item,
+  html.home-v2-motion .home-v2-excerpt--chat .home-v2-excerpt__links {
+    opacity: 0;
+    transform: translateY(0.65rem);
+  }
+
+  html.home-v2-motion .home-v2-excerpt--chat.is-in .home-v2-thread__item,
+  html.home-v2-motion .home-v2-excerpt--chat.is-in .home-v2-excerpt__links {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 640ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1)),
+      transform 700ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1));
+  }
+
+  html.home-v2-motion .home-v2-excerpt--chat.is-in .home-v2-thread__item:nth-child(1) {
+    transition-delay: 180ms;
+  }
+
+  html.home-v2-motion .home-v2-excerpt--chat.is-in .home-v2-thread__item:nth-child(2) {
+    transition-delay: 420ms;
+  }
+
+  html.home-v2-motion .home-v2-excerpt--chat.is-in .home-v2-excerpt__links {
+    transition-delay: 620ms;
+  }
 }
 
 .home-v2-foundation {

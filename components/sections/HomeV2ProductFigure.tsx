@@ -34,7 +34,7 @@ type HomeV2ChatExcerptProps = {
 /** Fragmento de chat en texto. La captura real es un enlace, no el diseño. */
 export function HomeV2ChatExcerpt({ locale, product, showScreen }: HomeV2ChatExcerptProps) {
   return (
-    <div className="home-v2-excerpt home-v2-excerpt--chat" data-home-reveal data-home-delay="1">
+    <div className="home-v2-excerpt home-v2-excerpt--chat" data-home-reveal>
       <ol className="home-v2-thread">
         {product.chat.map((message) => (
           <li
