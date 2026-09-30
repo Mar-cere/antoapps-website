@@ -2,12 +2,7 @@ import type { Metadata } from 'next';
 import { localePath, type Locale } from '@/lib/i18n/config';
 import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
-import {
-  APP_SCREENSHOT_HEIGHT,
-  APP_SCREENSHOT_WIDTH,
-  getAppScreenshotAlt,
-  getAppScreenshotPath,
-} from '@/lib/assets/app-screenshots';
+import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 
 export type AppPageMetadata = {
   title: string;
@@ -113,7 +108,7 @@ const metadataByLocale: Record<Locale, AppPageMetadata> = {
 function buildAppPageCopy(locale: Locale): AppPageCopy {
   const trial = getTrialCopy(locale);
   const isEn = locale === 'en';
-  const featuresHref = localePath(locale, '/#home-feat-product');
+  const featuresHref = localePath(locale, '/');
 
   if (isEn) {
     return {
@@ -138,8 +133,8 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
         body: 'It is not a replacement for therapy or clinical care. It is a daily companion: you write how you feel, receive clear guidance, and build habits that support your wellbeing—with respect for your privacy and your pace.',
       },
       screenshots: {
-        title: 'Inside the app',
-        subtitle: 'Real screens from Anto — chat support and your daily hub.',
+        title: 'How it reads inside',
+        subtitle: 'One night in the thread, and a short guide.',
       },
       benefits: {
         title: 'Why use Anto',
@@ -260,8 +255,8 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       body: 'No sustituye terapia ni atención clínica. Es un acompañante para el día a día: escribes cómo te sientes, recibes orientación clara y construyes hábitos que cuidan tu bienestar, con respeto por tu privacidad y tu ritmo.',
     },
     screenshots: {
-      title: 'Así se ve por dentro',
-      subtitle: 'Capturas reales de Anto — chat de apoyo y tu hub diario.',
+      title: 'Así se lee por dentro',
+      subtitle: 'El hilo de una noche, y una guía corta.',
     },
     benefits: {
       title: 'Por qué usar Anto',
@@ -375,10 +370,11 @@ export function appPageMetadata(locale: Locale, versionLabel?: string): Metadata
       ...meta.openGraph,
       images: [
         {
-          url: getAppScreenshotPath('chat'),
-          width: APP_SCREENSHOT_WIDTH,
-          height: APP_SCREENSHOT_HEIGHT,
-          alt: getAppScreenshotAlt('chat', locale),
+          url: getEditorialImagePath('evening'),
+          alt:
+            locale === 'en'
+              ? 'Low light of an evening at home'
+              : 'Luz baja de una noche en casa',
         },
       ],
     },

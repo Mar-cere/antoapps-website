@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { APP_VERSION, APP_VERSION_LABEL } from '@/lib/app-version';
 import type { Locale } from '@/lib/i18n/config';
@@ -8,17 +7,15 @@ import { localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getAppPageCopy } from '@/lib/i18n/copy/app';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
-import {
-  APP_SCREENSHOT_HEIGHT,
-  APP_SCREENSHOT_WIDTH,
-  getAppScreenshotAlt,
-  getAppScreenshotPath,
-} from '@/lib/assets/app-screenshots';
 import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
-import AppScreenshots from '@/components/sections/AppScreenshots';
+import HomeV2Reveal from '@/components/sections/HomeV2Reveal';
+import {
+  HomeV2ChatExcerpt,
+  HomeV2GuideExcerpt,
+} from '@/components/sections/HomeV2ProductFigure';
 import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import { getTrialCopy } from '@/lib/i18n/copy/trial';
 import '@/styles/pages/home-landing-final.css';
@@ -35,7 +32,9 @@ type AppPageContentProps = {
 
 export default function AppPageContent({ locale }: AppPageContentProps) {
   const copy = getAppPageCopy(locale);
-  const nav = getHomeV2Copy(locale).nav;
+  const home = getHomeV2Copy(locale);
+  const nav = home.nav;
+  const product = home.product;
   const trial = getTrialCopy(locale);
   const storePair = {
     ctaStoreLabel: locale === 'en' ? 'Download on' : 'Descargar en',
@@ -57,6 +56,7 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
     <LocaleProvider locale={locale}>
       <ClientInitializer />
       <div className="home-v2-shell app-shell">
+        <HomeV2Reveal />
         <HomeMinimalNav
           locale={locale}
           ctaHref={localePath(locale, '/bienvenida')}
@@ -67,7 +67,7 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
           <section className="app-hero">
             <div className="home-landing-container">
               <div className="app-hero__grid">
-                <div className="app-hero__copy">
+                <div className="app-hero__copy" data-home-reveal>
                   <p className="app-hero__brand">anto.</p>
                   <h1 className="app-hero__title">{copy.hero.title}</h1>
                   <p className="app-hero__support">{fillVars(copy.hero.subtitle)}</p>
@@ -81,97 +81,83 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
                     />
                   </div>
                 </div>
-                <figure className="app-hero__figure">
-                  <div className="app-hero__shot">
-                    <Image
-                      src={getAppScreenshotPath('chat')}
-                      alt={getAppScreenshotAlt('chat', locale)}
-                      width={APP_SCREENSHOT_WIDTH}
-                      height={APP_SCREENSHOT_HEIGHT}
-                      className="app-hero__shot-img"
-                      sizes="(max-width: 959px) 70vw, 18rem"
-                      priority
-                    />
-                  </div>
-                </figure>
+                <HomeV2ChatExcerpt product={product} />
               </div>
             </div>
           </section>
 
-          <section className="app-what-is">
-            <div className="container">
-              <h2 className="section-title">{copy.whatIs.title}</h2>
-              <p className="app-what-is__body">{copy.whatIs.body}</p>
+          <section className="app-what-is" aria-labelledby="app-what-title">
+            <div className="home-landing-container app-what-is__layout">
+              <h2 id="app-what-title" className="app-section-title" data-home-reveal>
+                {copy.whatIs.title}
+              </h2>
+              <p className="app-what-is__body" data-home-reveal data-home-delay="1">
+                {copy.whatIs.body}
+              </p>
             </div>
           </section>
 
-          <AppScreenshots
-            locale={locale}
-            title={copy.screenshots.title}
-            subtitle={copy.screenshots.subtitle}
-          />
-
-          <section className="app-benefits">
-            <div className="container">
-              <h2 className="section-title">{copy.benefits.title}</h2>
-              <p className="section-subtitle">{copy.benefits.subtitle}</p>
-              <div className="insights-grid">
-                {copy.benefits.cards.map((card) => (
-                  <div key={card.label} className="insight-card">
-                    <div className="insight-label">{card.label}</div>
-                    <p className="insight-description">{card.description}</p>
-                  </div>
-                ))}
+          <section className="app-inside" aria-labelledby="app-inside-title">
+            <div className="home-landing-container">
+              <div className="app-inside__head" data-home-reveal>
+                <h2 id="app-inside-title" className="app-section-title">
+                  {copy.screenshots.title}
+                </h2>
+                <p className="app-section-support">{copy.screenshots.subtitle}</p>
+              </div>
+              <div className="app-inside__pair">
+                <HomeV2GuideExcerpt product={product} />
+                <ul className="app-rows">
+                  {copy.benefits.cards.map((card) => (
+                    <li key={card.label}>
+                      <h3>{card.label}</h3>
+                      <p>{card.description}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </section>
 
-          <section className="app-updates">
-            <div className="container">
-              <h2 className="section-title">{copy.latestUpdates.title}</h2>
-              <p className="section-subtitle">{copy.latestUpdates.subtitle}</p>
-              <div className="insights-grid insights-grid--compact">
+          <section className="app-updates" aria-labelledby="app-updates-title">
+            <div className="home-landing-container">
+              <h2 id="app-updates-title" className="app-section-title" data-home-reveal>
+                {copy.latestUpdates.title}
+              </h2>
+              <p className="app-section-support">{copy.latestUpdates.subtitle}</p>
+              <ul className="app-rows app-rows--updates">
                 {copy.latestUpdates.cards.map((card) => (
-                  <div key={card.label} className="insight-card">
-                    <div className="insight-label">{card.label}</div>
-                    <p className="insight-description">{card.description}</p>
-                  </div>
+                  <li key={card.label}>
+                    <h3>{card.label}</h3>
+                    <p>{card.description}</p>
+                  </li>
                 ))}
-              </div>
-              <div className="screenshots-note">
-                <p>
-                  {copy.latestUpdates.note.beforeChangelog}{' '}
-                  <Link href={copy.latestUpdates.note.changelogHref} className="app-inline-link">
-                    {copy.latestUpdates.note.changelogLabel}
-                  </Link>
-                  {copy.latestUpdates.note.betweenChangelogBienvenida}{' '}
-                  <Link href={copy.latestUpdates.note.bienvenidaHref} className="app-inline-link">
-                    {copy.latestUpdates.note.bienvenidaLabel}
-                  </Link>
-                  {copy.latestUpdates.note.betweenBienvenidaPrivacidad}{' '}
-                  <Link href={copy.latestUpdates.note.privacidadHref} className="app-inline-link">
-                    {copy.latestUpdates.note.privacidadLabel}
-                  </Link>
-                  {copy.latestUpdates.note.afterPrivacidad}
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="app-features-link">
-            <div className="container container--narrow">
-              <h2 className="section-title">{copy.featuresLink.title}</h2>
-              <p className="section-subtitle">{copy.featuresLink.subtitle}</p>
-              <div className="app-features-link__action">
-                <Link href={copy.featuresLink.href} className="btn btn-secondary btn-large">
+              </ul>
+              <p className="app-updates__note">
+                {copy.latestUpdates.note.beforeChangelog}{' '}
+                <Link href={copy.latestUpdates.note.changelogHref} className="app-inline-link">
+                  {copy.latestUpdates.note.changelogLabel}
+                </Link>
+                {copy.latestUpdates.note.betweenChangelogBienvenida}{' '}
+                <Link href={copy.latestUpdates.note.bienvenidaHref} className="app-inline-link">
+                  {copy.latestUpdates.note.bienvenidaLabel}
+                </Link>
+                {copy.latestUpdates.note.betweenBienvenidaPrivacidad}{' '}
+                <Link href={copy.latestUpdates.note.privacidadHref} className="app-inline-link">
+                  {copy.latestUpdates.note.privacidadLabel}
+                </Link>
+                {copy.latestUpdates.note.afterPrivacidad}
+              </p>
+              <p className="app-updates__more">
+                <Link href={copy.featuresLink.href} className="app-inline-link">
                   {copy.featuresLink.label}
                 </Link>
-              </div>
+              </p>
             </div>
           </section>
 
           <section className="app-cta">
-            <div className="container">
+            <div className="home-landing-container">
               <h2 className="section-title">{copy.cta.title}</h2>
               <p className="section-subtitle">{copy.cta.subtitle}</p>
               <div className="app-cta-buttons">
@@ -190,7 +176,7 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
           </section>
 
           <section className="app-disclaimer">
-            <div className="container">
+            <div className="home-landing-container">
               <p className="disclaimer-text">{disclaimer}</p>
             </div>
           </section>

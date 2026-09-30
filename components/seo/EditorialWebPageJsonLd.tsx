@@ -1,4 +1,3 @@
-import { getAppScreenshotAlt, getAppScreenshotPath } from '@/lib/assets/app-screenshots';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import { APP_VERSION_LABEL } from '@/lib/app-version';
 import type { Locale } from '@/lib/i18n/config';
@@ -56,8 +55,9 @@ function fieldsFor(locale: Locale, path: EditorialWebPagePath) {
         : 'Anto — App para iPhone y Android | Acompañamiento emocional',
       headline: copy.hero.title,
       description,
-      imagePath: getAppScreenshotPath('chat'),
-      imageCaption: getAppScreenshotAlt('chat', locale),
+      imagePath: getEditorialImagePath('evening'),
+      imageCaption:
+        locale === 'en' ? 'Low light of an evening at home' : 'Luz baja de una noche en casa',
     };
   }
 

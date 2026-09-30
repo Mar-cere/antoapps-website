@@ -58,7 +58,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
   es: {
     '': 'Home editorial. H1: «Cuando todo cuesta un poco más.» Acompañamiento para ansiedad y horas quietas, entre sesiones o en el día a día. Demos de producto, foundation (memoria/técnicas), reviews, precios, FAQ y descarga en App Store y Google Play. Complementa; no reemplaza terapia.',
     '/bienvenida': 'Landing de anuncios (Meta): apoyo emocional para ansiedad en iPhone y Android; prueba 1 día gratis. Botones de tienda en el pliegue y CTA fijo.',
-    '/app': 'App para iPhone y Android: qué es, capturas reales y enlaces de descarga. Complementa; no reemplaza terapia.',
+    '/app': 'App para iPhone y Android: qué es, el hilo y una guía corta en texto, y enlaces de descarga. Complementa; no reemplaza terapia.',
     '/seguridad':
       'Por qué Anto y el modelo leen el hilo, cifrado en tránsito y en reposo, cómo pedir que se borre, y el aviso de que no es terapia.',
     '/investigacion': 'Cómo Anto lee TCC, GAD-7 y agentes conversacionales; cómo se ve en el producto; citas APA; sin ensayos propios de Anto.',
@@ -76,7 +76,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
   en: {
     '': 'Editorial home. H1: “When everything costs a little more.” Support for anxiety and quiet hours, between sessions or day to day. Product demos, foundation (memory/techniques), reviews, pricing, FAQ, App Store and Google Play download. Complements; does not replace therapy.',
     '/bienvenida': 'Ad landing (Meta): emotional support for anxiety on iPhone and Android; 1-day free trial. Store buttons in the fold and a fixed CTA.',
-    '/app': 'iPhone and Android app: what it is, real screenshots, and download links. Complements; does not replace therapy.',
+    '/app': 'iPhone and Android app: what it is, the thread and a short guide in text, and download links. Complements; does not replace therapy.',
     '/seguridad':
       'Why Anto and the model read the thread, encryption in transit and at rest, how to request deletion, and the notice that this is not therapy.',
     '/investigacion': 'How Anto reads CBT, GAD-7, and conversational agents; how it shows in the product; APA citations; no Anto-specific trials claimed.',
