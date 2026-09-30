@@ -70,7 +70,6 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
             <div className="home-landing-container">
               <div className="app-hero__grid">
                 <div className="app-hero__copy" data-home-reveal>
-                  <p className="app-hero__brand">anto.</p>
                   <h1 className="app-hero__title">{copy.hero.title}</h1>
                   <p className="app-hero__support">{fillVars(copy.hero.subtitle)}</p>
                   <div className="app-hero__stores">

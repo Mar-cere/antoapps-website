@@ -57,9 +57,20 @@ export type ChangelogPageCopy = {
 
 const versionsEs: ChangelogVersion[] = [
   {
+    version: '1.7.0',
+    date: '2026-09-26',
+    status: 'current',
+    highlights: [
+      'Rediseño visual y el símbolo M1 en correos y notificaciones.',
+      'Bienvenida, registro, mapa y decisiones más claros.',
+      'El cierre de sesión nombra el hilo, sin puntaje, y deja una nota para el diario.',
+    ],
+    changes: [],
+  },
+  {
     version: '1.6.1',
     date: '2026-08-27',
-    status: 'current',
+    status: 'stable',
     highlights: [
       'Onboarding más corto: un tour de 3 pasos que termina en el chat.',
       'Las escalas de auto-chequeo ya no salen al empezar.',
@@ -309,9 +320,20 @@ const versionsEs: ChangelogVersion[] = [
 
 const versionsEn: ChangelogVersion[] = [
   {
+    version: '1.7.0',
+    date: '2026-09-26',
+    status: 'current',
+    highlights: [
+      'Visual redesign, and the M1 symbol in email and notifications.',
+      'Clearer welcome, sign-up, map, and decisions.',
+      'Session close names the thread, without a score, and leaves a note for the journal.',
+    ],
+    changes: [],
+  },
+  {
     version: '1.6.1',
     date: '2026-08-27',
-    status: 'current',
+    status: 'stable',
     highlights: [
       'Shorter onboarding: a 3-step tour that ends in chat.',
       'Self-check scales no longer appear when you start.',
@@ -556,9 +578,9 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
       },
       meta: {
         title: 'Version history | Anto',
-        description: `Anto app version history (Expo). Current version ${APP_VERSION}: 1-day trial, i18n ES/EN, and chat UX improvements.`,
+        description: `Anto app version history (Expo). Current version ${APP_VERSION}: a clearer interface and a session close that names the thread.`,
         openGraphTitle: 'Version history | Anto',
-        openGraphDescription: `Anto app changelog: ${APP_VERSION} published with i18n and chat improvements.`,
+        openGraphDescription: `Anto app changelog: ${APP_VERSION} published with a clearer interface and a session close that names the thread.`,
         canonicalPath: CANONICAL_PATH,
       },
       header: {
@@ -594,9 +616,9 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
     },
     meta: {
       title: 'Historial de versiones | Anto',
-      description: `Historial de versiones de la app Anto (Expo). Versión actual ${APP_VERSION}: prueba 1 día, i18n ES/EN y mejoras de UX de chat.`,
+      description: `Historial de versiones de la app Anto (Expo). Versión actual ${APP_VERSION}: interfaz más clara y cierre de sesión que nombra el hilo.`,
       openGraphTitle: 'Historial de versiones | Anto',
-      openGraphDescription: `Changelog de la aplicación Anto: ${APP_VERSION} publicada con i18n y mejoras de chat.`,
+      openGraphDescription: `Changelog de la aplicación Anto: ${APP_VERSION} publicada con una interfaz más clara y un cierre que nombra el hilo.`,
       canonicalPath: CANONICAL_PATH,
     },
     header: {

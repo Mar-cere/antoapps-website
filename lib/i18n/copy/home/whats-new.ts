@@ -25,7 +25,7 @@ export type WhatsNewCopy = {
 const whatsNewCopy: Record<Locale, WhatsNewCopy> = {
   es: {
     title: 'Novedades en Anto',
-    subtitle: `Lo más reciente en la versión ${APP_VERSION}: un home más humano y herramientas que conectan con tu día a día.`,
+    subtitle: `Lo más reciente en la versión ${APP_VERSION}: una interfaz más clara y un cierre de sesión que nombra el hilo.`,
     versionBadge: APP_VERSION_LABEL,
     footnote:
       'Escalas PHQ-9/GAD-7, protocolos estructurados y detección de crisis siguen disponibles en Características.',
@@ -76,7 +76,7 @@ const whatsNewCopy: Record<Locale, WhatsNewCopy> = {
   },
   en: {
     title: 'What\'s New in Anto',
-    subtitle: `The latest in version ${APP_VERSION}: a more human home and tools that connect to your daily routine.`,
+    subtitle: `The latest in version ${APP_VERSION}: a clearer interface and a session close that names the thread.`,
     versionBadge: APP_VERSION_LABEL,
     footnote:
       'PHQ-9/GAD-7 scales, structured protocols, and crisis detection remain available in Features.',
