@@ -92,6 +92,22 @@
   gap: 1.25rem;
 }
 
+.app-what-is__body {
+  margin-top: 0.75rem;
+}
+
+.app-what-is__figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.app-what-is__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .app-inside__head {
   margin-bottom: 1.5rem;
 }
@@ -135,6 +151,12 @@
 .app-updates__note,
 .app-updates__more {
   margin-top: 1.25rem;
+}
+
+.app-updates__more {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
 }
 
 .app-inline-link {
@@ -198,14 +220,15 @@
     align-items: start;
   }
 
-  .app-what-is__layout {
-    grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1.3fr);
-    gap: 1.5rem 3rem;
-    align-items: start;
-  }
 }
 
 @media (min-width: 960px) {
+  .app-what-is__layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 1.5rem 3rem;
+    align-items: center;
+  }
+
   .app-hero__grid {
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     gap: 2rem 3rem;

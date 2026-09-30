@@ -35,6 +35,7 @@ export type AppPageCopy = {
   whatIs: {
     title: string;
     body: string;
+    imageAlt: string;
   };
   screenshots: {
     title: string;
@@ -67,6 +68,8 @@ export type AppPageCopy = {
     subtitle: string;
     label: string;
     href: string;
+    resourcesLabel: string;
+    resourcesHref: string;
   };
   cta: {
     title: string;
@@ -118,9 +121,9 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
         currentLabel: 'The App',
       },
       hero: {
-        title: 'When everything costs a little more. On your phone.',
+        title: 'Emotional support, on your phone.',
         subtitle:
-          'Anto is a mobile app that accompanies you with guided conversation, self-care tools, and support when you need it most. Current version {version}.',
+          'On iPhone and Android. You write what keeps looping and leave with one step. A 1-day trial. Current version {version}.',
         badges: {
           versionLabel: '{versionLabel}',
           availability: '⏰ Available 24/7',
@@ -131,6 +134,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       whatIs: {
         title: 'What is Anto?',
         body: 'It is not a replacement for therapy or clinical care. It is a daily companion: you write how you feel, receive clear guidance, and build habits that support your wellbeing—with respect for your privacy and your pace.',
+        imageAlt: 'Morning light on an empty chair by the window',
       },
       screenshots: {
         title: 'How it reads inside',
@@ -197,8 +201,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
         {
           icon: '🔐',
           label: 'Persistent session',
-          description:
-            'Return without re-entering your password; automatic JWT refresh and renewed onboarding.',
+          description: 'You come back and the thread is still there. You do not start from zero.',
         },
       ],
       note: {
@@ -219,6 +222,8 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
         subtitle: 'What Anto includes: chat, exercise hub, check-ins, home.',
         label: 'View on the home page',
         href: featuresHref,
+        resourcesLabel: 'View the guides',
+        resourcesHref: localePath(locale, '/recursos'),
       },
       cta: {
         title: 'Ready to try Anto?',
@@ -240,9 +245,9 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       currentLabel: 'La Aplicación',
     },
     hero: {
-      title: 'Cuando todo cuesta un poco más. En el teléfono.',
+      title: 'Acompañamiento emocional, en el teléfono.',
       subtitle:
-        'Anto es una aplicación móvil que te acompaña con conversación guiada, herramientas de autocuidado y apoyo cuando más lo necesitas. Versión actual {version}.',
+        'En iPhone y Android. Escribes lo que da vueltas y te llevas un paso. Prueba de 1 día. Versión actual {version}.',
       badges: {
         versionLabel: '{versionLabel}',
         availability: '⏰ Disponible 24/7',
@@ -253,6 +258,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
     whatIs: {
       title: '¿Qué es Anto?',
       body: 'No sustituye terapia ni atención clínica. Es un acompañante para el día a día: escribes cómo te sientes, recibes orientación clara y construyes hábitos que cuidan tu bienestar, con respeto por tu privacidad y tu ritmo.',
+      imageAlt: 'Luz de mañana sobre una silla vacía junto a la ventana',
     },
     screenshots: {
       title: 'Así se lee por dentro',
@@ -319,8 +325,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
         {
           icon: '🔐',
           label: 'Sesión persistente',
-          description:
-            'Vuelve sin reingresar contraseña; refresh automático de JWT y onboarding renovado.',
+          description: 'Vuelves y el hilo sigue ahí. No hace falta empezar de cero.',
         },
       ],
       note: {
@@ -341,6 +346,8 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       subtitle: 'Qué incluye Anto: chat, hub de ejercicios, chequeos, home.',
       label: 'Ver en el inicio',
       href: featuresHref,
+      resourcesLabel: 'Ver las guías',
+      resourcesHref: localePath(locale, '/recursos'),
     },
     cta: {
       title: '¿Listo para probar Anto?',

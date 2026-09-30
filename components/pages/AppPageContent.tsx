@@ -1,7 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { APP_VERSION, APP_VERSION_LABEL } from '@/lib/app-version';
+import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
@@ -88,12 +90,23 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
 
           <section className="app-what-is" aria-labelledby="app-what-title">
             <div className="home-landing-container app-what-is__layout">
-              <h2 id="app-what-title" className="app-section-title" data-home-reveal>
-                {copy.whatIs.title}
-              </h2>
-              <p className="app-what-is__body" data-home-reveal data-home-delay="1">
-                {copy.whatIs.body}
-              </p>
+              <div data-home-reveal>
+                <h2 id="app-what-title" className="app-section-title">
+                  {copy.whatIs.title}
+                </h2>
+                <p className="app-what-is__body">{copy.whatIs.body}</p>
+              </div>
+              <figure className="app-what-is__figure" data-home-reveal="image">
+                <Image
+                  src={getEditorialImagePath('morningPause')}
+                  alt={copy.whatIs.imageAlt}
+                  width={1600}
+                  height={900}
+                  className="app-what-is__img"
+                  sizes="(max-width: 959px) 100vw, 46vw"
+                  quality={85}
+                />
+              </figure>
             </div>
           </section>
 
@@ -151,6 +164,9 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
               <p className="app-updates__more">
                 <Link href={copy.featuresLink.href} className="app-inline-link">
                   {copy.featuresLink.label}
+                </Link>
+                <Link href={copy.featuresLink.resourcesHref} className="app-inline-link">
+                  {copy.featuresLink.resourcesLabel}
                 </Link>
               </p>
             </div>
