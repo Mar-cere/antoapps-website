@@ -184,24 +184,25 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       },
       latestUpdates: {
         title: 'What we have been improving',
-        subtitle: 'A quick look at recent changes in the app and on this site.',
+        subtitle: 'What changed in version 1.7.0.',
       cards: [
         {
           icon: '🏠',
-          label: 'Redesigned home (v1.5)',
+          label: 'A clearer path',
           description:
-            'Personalized daily insight, techniques hub in navigation, and unified tasks and habits screen.',
+            'Home, My day, chat, Explore, and Settings, in everyday language.',
         },
         {
-          icon: '📊',
-          label: 'Actionable summaries',
+          icon: '💬',
+          label: 'The first conversation starts in chat',
           description:
-            'Observational reports and navigable "what helps you" after a conversation.',
+            'You choose what matters now and can edit the line you open with.',
         },
         {
-          icon: '🔐',
-          label: 'Persistent session',
-          description: 'You come back and the thread is still there. You do not start from zero.',
+          icon: '📝',
+          label: 'The close names the thread',
+          description:
+            'No score or emotion label. You can note what you take with you and ask for one reminder to return.',
         },
       ],
       note: {
@@ -308,24 +309,25 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
     },
     latestUpdates: {
       title: 'Qué hemos ido mejorando',
-      subtitle: 'Un vistazo breve a cambios recientes en la app y en este sitio.',
+      subtitle: 'Lo que cambió en la versión 1.7.0.',
       cards: [
         {
           icon: '🏠',
-          label: 'Home renovado (v1.5)',
+          label: 'Un recorrido más claro',
           description:
-            'Insight diario personalizado, hub de técnicas en la navegación y pantalla unificada de tareas y hábitos.',
+            'Inicio, Mi día, chat, Explorar y Ajustes, con un lenguaje cotidiano.',
         },
         {
-          icon: '📊',
-          label: 'Resúmenes accionables',
+          icon: '💬',
+          label: 'La primera conversación empieza en el chat',
           description:
-            'Informes observacionales y «lo que te ayuda» navegable después de una conversación.',
+            'Eliges qué te importa ahora y puedes editar la frase con la que abres.',
         },
         {
-          icon: '🔐',
-          label: 'Sesión persistente',
-          description: 'Vuelves y el hilo sigue ahí. No hace falta empezar de cero.',
+          icon: '📝',
+          label: 'Al cerrar, el resumen nombra el hilo',
+          description:
+            'Sin puntaje ni etiqueta de emoción. Puedes anotar lo que te llevas y pedir un solo aviso para volver.',
         },
       ],
       note: {
