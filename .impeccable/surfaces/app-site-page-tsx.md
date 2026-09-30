@@ -17,7 +17,7 @@ Visitante que busca apoyo emocional digital y evalúa confianza, claridad y priv
 Descargar Anto: **par igual** App Store + Google Play en hero, pricing y Final CTA (`PremiumStoreCtaPair`). Nav “Descargar” abre la store del dispositivo (iOS → App Store, Android → Play; desktop → App Store). Sin sección `#android` dedicada. La figura de chat no lleva otro par de tiendas.
 
 ## Product proof
-El chat y la micro-guía se leen como texto de la home. La captura (`anto-now-chat-{es,en}.webp`, `anto-now-guide-{es,en}.webp`) se abre con «Ver pantalla completa» / «View full screen». Si falta el archivo, no hay enlace. No hay pantalla de «un paso»; ese paso aparece dentro del hilo. Prohibida la franja de tres pestañas y el teléfono gigante.
+El chat y la micro-guía se leen como texto de la home. No hay enlace a la captura. No hay pantalla de «un paso»; ese paso aparece dentro del hilo. Prohibida la franja de tres pestañas y el teléfono gigante.
 
 ## Sprint A–C contracts (binding)
 1. Hero budget: brand + H1 + apoyo corto + par de stores + ancla chat/foto. Límite clínico con fuerza en FAQ + coda Explore (no en el support del hero).

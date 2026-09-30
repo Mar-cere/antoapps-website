@@ -2752,14 +2752,12 @@ body:has(.home-v2-shell) {
     transform: none;
   }
 
-  html.home-v2-motion .home-v2-excerpt--chat .home-v2-thread__item,
-  html.home-v2-motion .home-v2-excerpt--chat .home-v2-excerpt__links {
+  html.home-v2-motion .home-v2-excerpt--chat .home-v2-thread__item {
     opacity: 0;
     transform: translateY(0.65rem);
   }
 
-  html.home-v2-motion .home-v2-excerpt--chat.is-in .home-v2-thread__item,
-  html.home-v2-motion .home-v2-excerpt--chat.is-in .home-v2-excerpt__links {
+  html.home-v2-motion .home-v2-excerpt--chat.is-in .home-v2-thread__item {
     opacity: 1;
     transform: none;
     transition:
@@ -2773,10 +2771,6 @@ body:has(.home-v2-shell) {
 
   html.home-v2-motion .home-v2-excerpt--chat.is-in .home-v2-thread__item:nth-child(2) {
     transition-delay: 420ms;
-  }
-
-  html.home-v2-motion .home-v2-excerpt--chat.is-in .home-v2-excerpt__links {
-    transition-delay: 620ms;
   }
 }
 

@@ -4,7 +4,6 @@ import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 
 type HomeV2FoundationProps = {
   locale?: Locale;
-  showGuideScreen?: boolean;
 };
 
 /**
@@ -13,7 +12,6 @@ type HomeV2FoundationProps = {
  */
 export default function HomeV2Foundation({
   locale = 'es',
-  showGuideScreen = false,
 }: HomeV2FoundationProps) {
   const { foundation, product } = getHomeV2Copy(locale);
 
@@ -45,11 +43,7 @@ export default function HomeV2Foundation({
                       <h3 className="home-v2-foundation__item-title">{pillar.title}</h3>
                       <p className="home-v2-foundation__item-body">{pillar.body}</p>
                     </div>
-                    <HomeV2GuideExcerpt
-                      locale={locale}
-                      product={product}
-                      showScreen={showGuideScreen}
-                    />
+                    <HomeV2GuideExcerpt product={product} />
                   </>
                 ) : (
                   <>

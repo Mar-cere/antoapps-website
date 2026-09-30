@@ -168,7 +168,6 @@ export type HomeV2Copy = {
     chatCaption: string;
     youLabel: string;
     antoLabel: string;
-    fullScreen: string;
     chat: readonly { role: 'user' | 'anto'; text: string }[];
     guideKicker: string;
     guideTitle: string;
@@ -350,7 +349,6 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         chatCaption: 'This is how Anto answers that night.',
         youLabel: 'You',
         antoLabel: 'Anto',
-        fullScreen: 'View full screen',
         chat: [
           {
             role: 'anto',
@@ -643,7 +641,6 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       chatCaption: 'Así responde Anto en esa noche.',
       youLabel: 'Tú',
       antoLabel: 'Anto',
-      fullScreen: 'Ver pantalla completa',
       chat: [
         {
           role: 'anto',

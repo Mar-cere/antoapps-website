@@ -83,7 +83,7 @@ En marketing: la materia Nexus esencial manda; esta skill cuenta la historia enc
 
 ### Apple calma
 
-La página puede ser llamativa y seguir en calma. Foto dominante, una viñeta de producto por tramo, tipo con aire. El movimiento es una entrada (opacidad y un desplazamiento corto, 640–800 ms, una vez) y un recorte al hover. Se apaga con `prefers-reduced-motion`. Sin bucle, partículas ni parallax fuerte. La captura real no sostiene el diseño: se abre desde «Ver pantalla completa». No se rearma una franja de pestañas ni se vuelve al teal.
+La página puede ser llamativa y seguir en calma. Foto dominante, una viñeta de producto por tramo, tipo con aire. El movimiento es una entrada (opacidad y un desplazamiento corto, 640–800 ms, una vez) y un recorte al hover. Se apaga con `prefers-reduced-motion`. Sin bucle, partículas ni parallax fuerte. La viñeta de texto es el diseño. No hay enlace a la captura. No se rearma una franja de pestañas ni se vuelve al teal.
 
 ---
 

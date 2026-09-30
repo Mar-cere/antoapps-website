@@ -21,7 +21,6 @@ import HomeV2Faq from '@/components/sections/HomeV2Faq';
 import HomeV2FinalCta from '@/components/sections/HomeV2FinalCta';
 import HomeV2Explore from '@/components/sections/HomeV2Explore';
 import FaqJsonLd from '@/components/seo/FaqJsonLd';
-import type { HomeProductScreens } from '@/lib/assets/product-screens';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import '@/styles/pages/home-landing-final.css';
 import '@/styles/pages/home-v2.css';
@@ -29,14 +28,12 @@ import '@/styles/pages/home-v2.css';
 type HomeV2PageContentProps = {
   locale: Locale;
   initialDevice?: LandingDevice;
-  screens?: HomeProductScreens;
 };
 
 /** Home publicada — editorial Anto. */
 export default function HomeV2PageContent({
   locale,
   initialDevice = 'ios',
-  screens = { chat: false, guide: false },
 }: HomeV2PageContentProps) {
   const copy = getHomeV2Copy(locale);
   const { nav, hero, product } = copy;
@@ -79,15 +76,11 @@ export default function HomeV2PageContent({
                   >
                     {product.chatCaption}
                   </p>
-                  <HomeV2ChatExcerpt
-                    locale={locale}
-                    product={product}
-                    showScreen={screens.chat}
-                  />
+                  <HomeV2ChatExcerpt product={product} />
                 </div>
               </section>
               <HomeV2Moments locale={locale} />
-              <HomeV2Foundation locale={locale} showGuideScreen={screens.guide} />
+              <HomeV2Foundation locale={locale} />
               <HomeV2Still locale={locale} />
               <HomeV2Reviews locale={locale} />
               <HomeV2Pricing locale={locale} />
