@@ -18,6 +18,7 @@ export type AppBenefitCard = {
   icon: string;
   label: string;
   description: string;
+  link?: { href: string; label: string };
 };
 
 export type AppPageCopy = {
@@ -179,6 +180,10 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
             label: 'Support in difficult moments',
             description:
               'If risk signals come up, the app can guide you toward resources and people you trust.',
+            link: {
+              href: localePath(locale, '/recursos/grounding-ansiedad-crisis'),
+              label: 'When anxiety rises',
+            },
           },
         ],
       },
@@ -304,6 +309,10 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
           label: 'Apoyo en momentos difíciles',
           description:
             'Si aparecen señales de riesgo, la app puede orientarte hacia recursos y personas de confianza.',
+          link: {
+            href: localePath(locale, '/recursos/grounding-ansiedad-crisis'),
+            label: 'Cuando la ansiedad sube',
+          },
         },
       ],
     },

@@ -123,7 +123,16 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
                   {copy.benefits.cards.map((card) => (
                     <li key={card.label}>
                       <h3>{card.label}</h3>
-                      <p>{card.description}</p>
+                      <div>
+                        <p>{card.description}</p>
+                        {card.link ? (
+                          <p className="app-rows__link">
+                            <Link href={card.link.href} className="app-inline-link">
+                              {card.link.label}
+                            </Link>
+                          </p>
+                        ) : null}
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -137,7 +146,7 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
                 {copy.latestUpdates.title}
               </h2>
               <p className="app-section-support">{copy.latestUpdates.subtitle}</p>
-              <ul className="app-rows app-rows--updates">
+              <ul className="app-rows app-rows--updates" data-home-reveal>
                 {copy.latestUpdates.cards.map((card) => (
                   <li key={card.label}>
                     <h3>{card.label}</h3>

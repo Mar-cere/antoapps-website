@@ -133,6 +133,10 @@
   color: rgba(244, 246, 252, 0.72);
 }
 
+.app-rows p.app-rows__link {
+  margin-top: 0.5rem;
+}
+
 .app-updates,
 .app-cta,
 .app-disclaimer {
@@ -215,9 +219,13 @@
 
 @media (min-width: 960px) {
   .app-what-is__layout {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: 1.5rem 3rem;
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .app-what-is__body {
+    max-width: 62ch;
   }
 
   .app-hero__grid {
@@ -242,6 +250,34 @@
   .app-section-title,
   .app-cta .section-title {
     font-size: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.home-v2-motion .app-rows--updates[data-home-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  html.home-v2-motion .app-rows--updates li {
+    opacity: 0;
+    transform: translateY(0.65rem);
+  }
+
+  html.home-v2-motion .app-rows--updates.is-in li {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 640ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1)),
+      transform 700ms var(--home-ease, cubic-bezier(0.16, 1, 0.3, 1));
+  }
+
+  html.home-v2-motion .app-rows--updates.is-in li:nth-child(2) {
+    transition-delay: 180ms;
+  }
+
+  html.home-v2-motion .app-rows--updates.is-in li:nth-child(3) {
+    transition-delay: 420ms;
   }
 }
 
