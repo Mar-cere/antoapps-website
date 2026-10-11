@@ -1,0 +1,11 @@
+/* Aire entre la sección que sube y la foto. El resto del artículo no se toca. */
+
+.psycho-guide__lead {
+  margin: 0 0 2rem;
+}
+
+@media (min-width: 960px) {
+  .psycho-guide--brief .psycho-guide__lead {
+    margin-bottom: 3rem;
+  }
+}

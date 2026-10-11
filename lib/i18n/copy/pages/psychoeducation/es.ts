@@ -982,6 +982,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       height: 1024,
       objectPosition: '48% 42%',
       desktopAspectRatio: '3 / 2',
+      placeAfterHeading: 'Rangos orientativos',
     },
     sections: [
       {
@@ -1063,13 +1064,19 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Ir más a fondo',
       support:
-        'Si el ánimo es lo que está detrás del número, sigue aquí — señales, duración y un paso pequeño:',
+        'Si el número apunta al ánimo o a la ansiedad, sigue en la guía que corresponde:',
       links: [
         {
           label: 'Depresión: guía breve',
           description:
             'Cuando el bajón dura, qué suele ayudar y cómo se distingue de una tristeza puntual.',
           href: '/recursos/depresion-guia-breve',
+        },
+        {
+          label: 'Ansiedad y preocupación',
+          description:
+            'El mapa de la activación, la evitación y cuándo pedir evaluación.',
+          href: '/recursos/ansiedad-y-preocupacion',
         },
       ],
     },

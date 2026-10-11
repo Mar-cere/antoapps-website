@@ -982,6 +982,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       height: 1024,
       objectPosition: '48% 42%',
       desktopAspectRatio: '3 / 2',
+      placeAfterHeading: 'Orienting ranges',
     },
     sections: [
       {
@@ -1063,13 +1064,18 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Go deeper',
       support:
-        'If mood is what sits behind the number, continue here — signs, duration, and a small step:',
+        'If the number points to mood or to anxiety, continue in the matching guide:',
       links: [
         {
           label: 'Depression: brief guide',
           description:
             'When the low mood lasts, what tends to help, and how it differs from a passing sadness.',
           href: '/recursos/depresion-guia-breve',
+        },
+        {
+          label: 'Anxiety and worry',
+          description: 'The map: activation, avoidance, and when to seek assessment.',
+          href: '/recursos/ansiedad-y-preocupacion',
         },
       ],
     },

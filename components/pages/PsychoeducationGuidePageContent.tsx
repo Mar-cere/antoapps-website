@@ -20,6 +20,7 @@ import ArticleJsonLd from '@/components/seo/ArticleJsonLd';
 import '@/styles/pages/home-landing-final.css';
 import '@/styles/pages/home-v2.css';
 import '@/styles/components/psychoeducation-article.css';
+import '@/styles/components/psychoeducation-lead.css';
 
 type PsychoeducationGuidePageContentProps = {
   locale: Locale;
@@ -115,6 +116,125 @@ function findSectionAnchor(
   return sectionAnchorId(sections[index].heading, index);
 }
 
+function GuideSectionStack({
+  section,
+  index,
+  productMoment,
+  locale,
+  externalLinkHint,
+}: {
+  section: PsychoeducationGuide['sections'][number];
+  index: number;
+  productMoment: PsychoeducationGuide['productMoment'] | null;
+  locale: Locale;
+  externalLinkHint: string;
+}) {
+  const ListTag = section.ordered ? 'ol' : 'ul';
+  const anchorId = sectionAnchorId(section.heading, index);
+
+  return (
+    <div className="psycho-guide__section-stack">
+      <section
+        id={anchorId}
+        className={`psycho-guide__section${
+          section.ordered ? ' psycho-guide__section--steps' : ''
+        }${section.emphasis === 'crisis' ? ' psycho-guide__section--crisis' : ''} reveal-on-scroll`}
+      >
+        <h2>{section.heading}</h2>
+        {section.paragraphs?.map((paragraph) => (
+          <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+        ))}
+        {section.bullets && (
+          <ListTag>
+            {section.bullets.map((bullet) => (
+              <li key={bullet}>{bullet}</li>
+            ))}
+          </ListTag>
+        )}
+        {section.bands && (
+          <div className="psycho-guide__bands">
+            {section.bands.map((group) => (
+              <div key={group.label} className="psycho-guide__bands-group">
+                <p className="psycho-guide__bands-label">{group.label}</p>
+                <dl className="psycho-guide__bands-dl">
+                  {group.items.map((item) => (
+                    <div key={`${group.label}-${item.range}`} className="psycho-guide__bands-row">
+                      <dt>{item.range}</dt>
+                      <dd>{item.label}</dd>
+                    </div>
+                  ))}
+                </dl>
+                {group.note ? <p className="psycho-guide__bands-note">{group.note}</p> : null}
+              </div>
+            ))}
+          </div>
+        )}
+        {section.link ? (
+          <p className="psycho-guide__section-action">
+            {section.link.external ||
+            section.link.href.startsWith('http://') ||
+            section.link.href.startsWith('https://') ? (
+              <a
+                href={section.link.href}
+                className="psycho-guide__section-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {section.link.label}
+                <span className="visually-hidden"> {externalLinkHint}</span>
+              </a>
+            ) : (
+              <Link
+                href={resolveGuideHref(locale, section.link.href)}
+                className="psycho-guide__section-link"
+              >
+                {section.link.label}
+              </Link>
+            )}
+          </p>
+        ) : null}
+      </section>
+
+      {productMoment ? (
+        <aside
+          className="psycho-guide__product reveal-on-scroll"
+          aria-labelledby="psycho-guide-product-title"
+        >
+          <div className="psycho-guide__product-copy">
+            <h2 id="psycho-guide-product-title" className="psycho-guide__product-title">
+              {productMoment.title}
+            </h2>
+            <p className="psycho-guide__product-body">{productMoment.body}</p>
+          </div>
+          <div className="psycho-guide__product-stage">
+            <HomeV2ChatVignette
+              thread={productMoment.chat}
+              locale={locale}
+              size="moment"
+              className="psycho-guide__product-chat"
+            />
+            <div className="psycho-guide__product-suggestions">
+              <p className="psycho-guide__product-suggestions-label">{productMoment.suggestionsLabel}</p>
+              <ul
+                className="psycho-guide__product-suggestions-list"
+                aria-label={
+                  locale === 'en' ? 'Example phrases shown in the app' : 'Ejemplos de frases en la app'
+                }
+              >
+                {productMoment.suggestions.map((suggestion) => (
+                  <li key={suggestion}>
+                    <span className="psycho-guide__product-chip">{suggestion}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </aside>
+      ) : null}
+    </div>
+  );
+}
+
 export default function PsychoeducationGuidePageContent({
   locale,
   slug,
@@ -144,6 +264,12 @@ export default function PsychoeducationGuidePageContent({
   const sectionIds = guide.sections.map((section, index) =>
     sectionAnchorId(section.heading, index)
   );
+  const leadHeading = guide.figure?.placeAfterHeading;
+  const leadIndex =
+    leadHeading != null
+      ? guide.sections.findIndex((section) => section.heading === leadHeading)
+      : -1;
+  const leadSection = leadIndex >= 0 ? guide.sections[leadIndex] : null;
 
   const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
   const [tocOpen, setTocOpen] = useState(true);
@@ -292,6 +418,22 @@ export default function PsychoeducationGuidePageContent({
                   ) : null}
                 </div>
 
+                {leadSection ? (
+                  <div className="psycho-guide__lead">
+                    <GuideSectionStack
+                      section={leadSection}
+                      index={leadIndex}
+                      productMoment={
+                        guide.productMoment?.afterHeading === leadSection.heading
+                          ? guide.productMoment
+                          : null
+                      }
+                      locale={locale}
+                      externalLinkHint={ui.externalLinkHint}
+                    />
+                  </div>
+                ) : null}
+
                 {guide.figure ? (
                   <figure
                     className="psycho-guide__figure reveal-on-scroll"
@@ -378,134 +520,21 @@ export default function PsychoeducationGuidePageContent({
                   <div className="psycho-guide__stream">
                     <div className="psycho-guide__body">
                       {guide.sections.map((section, index) => {
-                        const ListTag = section.ordered ? 'ol' : 'ul';
+                        if (index === leadIndex) return null;
                         const showProduct =
                           guide.productMoment?.afterHeading === section.heading
                             ? guide.productMoment
                             : null;
-                        const anchorId = sectionAnchorId(section.heading, index);
 
                         return (
-                          <div key={section.heading} className="psycho-guide__section-stack">
-                            <section
-                              id={anchorId}
-                              className={`psycho-guide__section${
-                                section.ordered ? ' psycho-guide__section--steps' : ''
-                              }${
-                                section.emphasis === 'crisis'
-                                  ? ' psycho-guide__section--crisis'
-                                  : ''
-                              } reveal-on-scroll`}
-                            >
-                              <h2>{section.heading}</h2>
-                              {section.paragraphs?.map((paragraph) => (
-                                <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-                              ))}
-                              {section.bullets && (
-                                <ListTag>
-                                  {section.bullets.map((bullet) => (
-                                    <li key={bullet}>{bullet}</li>
-                                  ))}
-                                </ListTag>
-                              )}
-                              {section.bands && (
-                                <div className="psycho-guide__bands">
-                                  {section.bands.map((group) => (
-                                    <div key={group.label} className="psycho-guide__bands-group">
-                                      <p className="psycho-guide__bands-label">{group.label}</p>
-                                      <dl className="psycho-guide__bands-dl">
-                                        {group.items.map((item) => (
-                                          <div
-                                            key={`${group.label}-${item.range}`}
-                                            className="psycho-guide__bands-row"
-                                          >
-                                            <dt>{item.range}</dt>
-                                            <dd>{item.label}</dd>
-                                          </div>
-                                        ))}
-                                      </dl>
-                                      {group.note ? (
-                                        <p className="psycho-guide__bands-note">{group.note}</p>
-                                      ) : null}
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-                              {section.link ? (
-                                <p className="psycho-guide__section-action">
-                                  {section.link.external ||
-                                  section.link.href.startsWith('http://') ||
-                                  section.link.href.startsWith('https://') ? (
-                                    <a
-                                      href={section.link.href}
-                                      className="psycho-guide__section-link"
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                    >
-                                      {section.link.label}
-                                      <span className="visually-hidden">
-                                        {' '}
-                                        {ui.externalLinkHint}
-                                      </span>
-                                    </a>
-                                  ) : (
-                                    <Link
-                                      href={resolveGuideHref(locale, section.link.href)}
-                                      className="psycho-guide__section-link"
-                                    >
-                                      {section.link.label}
-                                    </Link>
-                                  )}
-                                </p>
-                              ) : null}
-                            </section>
-
-                            {showProduct ? (
-                              <aside
-                                className="psycho-guide__product reveal-on-scroll"
-                                aria-labelledby="psycho-guide-product-title"
-                              >
-                                <div className="psycho-guide__product-copy">
-                                  <h2
-                                    id="psycho-guide-product-title"
-                                    className="psycho-guide__product-title"
-                                  >
-                                    {showProduct.title}
-                                  </h2>
-                                  <p className="psycho-guide__product-body">{showProduct.body}</p>
-                                </div>
-                                <div className="psycho-guide__product-stage">
-                                  <HomeV2ChatVignette
-                                    thread={showProduct.chat}
-                                    locale={locale}
-                                    size="moment"
-                                    className="psycho-guide__product-chat"
-                                  />
-                                  <div className="psycho-guide__product-suggestions">
-                                    <p className="psycho-guide__product-suggestions-label">
-                                      {showProduct.suggestionsLabel}
-                                    </p>
-                                    <ul
-                                      className="psycho-guide__product-suggestions-list"
-                                      aria-label={
-                                        locale === 'en'
-                                          ? 'Example phrases shown in the app'
-                                          : 'Ejemplos de frases en la app'
-                                      }
-                                    >
-                                      {showProduct.suggestions.map((suggestion) => (
-                                        <li key={suggestion}>
-                                          <span className="psycho-guide__product-chip">
-                                            {suggestion}
-                                          </span>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                </div>
-                              </aside>
-                            ) : null}
-                          </div>
+                          <GuideSectionStack
+                            key={section.heading}
+                            section={section}
+                            index={index}
+                            productMoment={showProduct}
+                            locale={locale}
+                            externalLinkHint={ui.externalLinkHint}
+                          />
                         );
                       })}
                     </div>

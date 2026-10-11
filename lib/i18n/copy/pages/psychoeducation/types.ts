@@ -52,6 +52,11 @@ export type PsychoeducationFigure = {
    * Usar un valor más bajo (p. ej. 2 / 1) si la foto necesita más altura útil.
    */
   desktopAspectRatio?: string;
+  /**
+   * Si coincide con el heading de una sección, esa sección (y su momento
+   * de producto) se renderiza antes de la foto. El resto del cuerpo sigue después.
+   */
+  placeAfterHeading?: string;
 };
 
 export type PsychoeducationFurtherLink = {
