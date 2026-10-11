@@ -27,6 +27,7 @@
 
 .contact-page .contact-form input,
 .contact-page .contact-form textarea {
+  background: color-mix(in srgb, var(--color-text-primary) 8%, var(--color-bg-primary));
   border-color: var(--color-border);
   border-radius: 12px;
   animation: none;
@@ -41,9 +42,29 @@
 
 .contact-page .contact-form input:focus,
 .contact-page .contact-form textarea:focus {
+  background: color-mix(in srgb, var(--color-text-primary) 8%, var(--color-bg-primary));
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px var(--color-primary-light);
   transform: none;
+}
+
+.contact-page .contact-form input:-webkit-autofill,
+.contact-page .contact-form input:-webkit-autofill:hover,
+.contact-page .contact-form textarea:-webkit-autofill,
+.contact-page .contact-form textarea:-webkit-autofill:hover {
+  -webkit-text-fill-color: var(--color-text-primary);
+  caret-color: var(--color-text-primary);
+  box-shadow: 0 0 0 1000px color-mix(in srgb, var(--color-text-primary) 8%, var(--color-bg-primary)) inset;
+}
+
+.contact-page .contact-form input:-webkit-autofill:focus,
+.contact-page .contact-form textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-text-primary);
+  caret-color: var(--color-text-primary);
+  border-color: var(--color-primary);
+  box-shadow:
+    0 0 0 1000px color-mix(in srgb, var(--color-text-primary) 8%, var(--color-bg-primary)) inset,
+    0 0 0 3px var(--color-primary-light);
 }
 
 .contact-page .contact-form .form-field.error input,
