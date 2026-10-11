@@ -4,8 +4,25 @@
   margin: 0 0 2rem;
 }
 
+.psycho-guide__figure-aside {
+  margin: 0 0 1rem;
+  max-width: 34rem;
+}
+
 @media (min-width: 960px) {
   .psycho-guide--brief .psycho-guide__lead {
     margin-bottom: 3rem;
+  }
+
+  .psycho-guide--brief .psycho-guide__masthead:not(:has(.psycho-guide__pullquote)) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .psycho-guide--brief .psycho-guide__masthead:not(:has(.psycho-guide__pullquote)) .psycho-guide__title {
+    max-width: 18ch;
+  }
+
+  .psycho-guide--brief .psycho-guide__pullquote.psycho-guide__figure-aside {
+    margin: 0 0 1.5rem;
   }
 }

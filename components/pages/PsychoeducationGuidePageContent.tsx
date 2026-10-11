@@ -411,7 +411,7 @@ export default function PsychoeducationGuidePageContent({
                     {companionInHero ? companionBlock : null}
                   </header>
 
-                  {guide.pullQuote ? (
+                  {guide.pullQuote && !leadSection ? (
                     <blockquote className="psycho-guide__pullquote reveal-on-scroll">
                       <p>{guide.pullQuote}</p>
                     </blockquote>
@@ -432,6 +432,12 @@ export default function PsychoeducationGuidePageContent({
                       externalLinkHint={ui.externalLinkHint}
                     />
                   </div>
+                ) : null}
+
+                {leadSection && guide.pullQuote ? (
+                  <blockquote className="psycho-guide__pullquote psycho-guide__figure-aside reveal-on-scroll">
+                    <p>{guide.pullQuote}</p>
+                  </blockquote>
                 ) : null}
 
                 {guide.figure ? (
