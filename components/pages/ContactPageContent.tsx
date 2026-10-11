@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
@@ -15,6 +16,7 @@ import ContactForm from '@/components/forms/ContactForm';
 import '@/styles/pages/home-landing-final.css';
 import '@/styles/pages/home-v2.css';
 import '@/styles/components/contact.css';
+import '@/styles/components/contact-layout.css';
 
 const FIGURE = {
   es: {
@@ -36,6 +38,8 @@ export default function ContactPageContent({ locale }: ContactPageContentProps) 
     locale === 'en'
       ? 'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.'
       : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
+  const crisisLabel = locale === 'en' ? 'When anxiety rises' : 'Cuando la ansiedad sube';
+  const crisisHref = localePath(locale, '/recursos/grounding-ansiedad-crisis');
 
   return (
     <LocaleProvider locale={locale}>
@@ -58,19 +62,6 @@ export default function ContactPageContent({ locale }: ContactPageContentProps) 
                 <h1 className="contact-page__title">{copy.hero.title}</h1>
                 <p className="contact-page__support">{copy.hero.subtitle}</p>
               </div>
-              <figure className="contact-page__figure">
-                <div className="contact-page__figure-frame">
-                  <Image
-                    src={getEditorialImagePath('deskRain')}
-                    alt={FIGURE[locale].alt}
-                    width={1536}
-                    height={1024}
-                    className="contact-page__figure-img"
-                    sizes="(max-width: 959px) 100vw, 34rem"
-                    priority
-                  />
-                </div>
-              </figure>
             </header>
 
             <div className="contact-page__work">
@@ -79,9 +70,27 @@ export default function ContactPageContent({ locale }: ContactPageContentProps) 
                 <a className="contact-page__mail" href="mailto:marcelo.ull@antoapps.com">
                   marcelo.ull@antoapps.com
                 </a>
-                <p className="contact-page__disclaimer">{disclaimer}</p>
+                <p className="contact-page__disclaimer">
+                  {disclaimer}{' '}
+                  <Link href={crisisHref} className="contact-page__crisis">
+                    {crisisLabel}
+                  </Link>
+                </p>
               </aside>
             </div>
+
+            <figure className="contact-page__figure">
+              <div className="contact-page__figure-frame">
+                <Image
+                  src={getEditorialImagePath('deskRain')}
+                  alt={FIGURE[locale].alt}
+                  width={1536}
+                  height={1024}
+                  className="contact-page__figure-img"
+                  sizes="(max-width: 959px) 100vw, min(72rem, 100vw)"
+                />
+              </div>
+            </figure>
           </div>
         </main>
         <HomeMinimalFooter locale={locale} switchPath="/contacto" />

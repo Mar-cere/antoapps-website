@@ -53,20 +53,22 @@ const metadataByLocale: Record<Locale, ContactPageMetadata> = {
   es: {
     title: 'Contacto | Una persona te responde',
     description:
-      'Una persona. Te respondo cuando pueda.',
+      'Te respondo cuando pueda. Escribe por la app, por tu cuenta o por un problema.',
     openGraph: {
       title: 'Contacto | Una persona te responde',
-      description: 'Una persona. Te respondo cuando pueda.',
+      description:
+        'Te respondo cuando pueda. Escribe por la app, por tu cuenta o por un problema.',
       url: 'https://antoapps.com/contacto',
     },
   },
   en: {
     title: 'Contact | One person writes back',
     description:
-      "One person. I'll get back when I can.",
+      "I'll get back when I can. Write about the app, your account, or a problem.",
     openGraph: {
       title: 'Contact | One person writes back',
-      description: "One person. I'll get back when I can.",
+      description:
+        "I'll get back when I can. Write about the app, your account, or a problem.",
       url: 'https://antoapps.com/en/contacto',
     },
   },
@@ -82,9 +84,9 @@ function buildContactPageCopy(locale: Locale): ContactPageCopy {
         currentLabel: 'Contact',
       },
       hero: {
-        title: 'Contact',
+        title: 'One person writes back',
         subtitle:
-          "One person. I'll get back when I can.",
+          "I'll get back when I can. Write about the app, your account, or a problem.",
       },
       formSection: {
         title: 'Send us a message',
@@ -123,9 +125,9 @@ function buildContactPageCopy(locale: Locale): ContactPageCopy {
       currentLabel: 'Contacto',
     },
     hero: {
-      title: 'Contacto',
+      title: 'Una persona te responde',
       subtitle:
-        'Una persona. Te respondo cuando pueda.',
+        'Te respondo cuando pueda. Escribe por la app, por tu cuenta o por un problema.',
     },
     formSection: {
       title: 'Envíanos un mensaje',

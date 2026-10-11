@@ -66,7 +66,8 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
       `Hub editorial: atajos humanos (ansiedad, pensamientos en bucle, sueño, TCC) + ${PSYCHOEDUCATION_SLUGS.length} guías de psicoeducación y páginas Sobre Anto (app, seguridad, investigación). Material educativo; no diagnóstico.`,
     '/changelog': 'Historial de versiones de la app (Expo ' + APP_VERSION + '), en orden cronológico.',
     '/sobre-nosotros': 'Qué es Anto y qué no es: acompañamiento emocional con IA para las horas quietas. No diagnostica ni reemplaza terapia. Hecho en Chile. Descarga en iPhone y Android.',
-    '/contacto': 'Formulario para escribir a una persona, y el correo marcelo.ull@antoapps.com.',
+    '/contacto':
+      'Formulario para escribir a una persona por la app, la cuenta o un problema, y el correo marcelo.ull@antoapps.com.',
     '/desarrollo': 'Ingeniería de Anto: stack en producción, arquitectura y cómo se despliega. El detalle técnico está bajo el titular.',
     '/nexus':
       'Inside Anto Nexus: cada conversación forma la inteligencia que te comprende. Constelación viva; al scroll, historial, recurrencia y un paso concreto. CTA a probar Anto; privacidad, ciencia y límites al final. Sin métricas promocionales. No sustituye atención profesional.',
@@ -84,7 +85,8 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
       `Editorial hub: human entry points (anxiety, looping thoughts, sleep, CBT) + ${PSYCHOEDUCATION_SLUGS.length} psychoeducation guides and About Anto pages (app, safety, research). Educational material; not a diagnosis.`,
     '/changelog': 'App version history (Expo ' + APP_VERSION + '), in chronological order.',
     '/sobre-nosotros': 'What Anto is and is not: AI emotional accompaniment for the quiet hours. It does not diagnose or replace therapy. Made in Chile. Download on iPhone and Android.',
-    '/contacto': 'A form to write to one person, and the address marcelo.ull@antoapps.com.',
+    '/contacto':
+      'A form to write to one person about the app, your account, or a problem, and the address marcelo.ull@antoapps.com.',
     '/desarrollo': 'How Anto is engineered: production stack, architecture, and deploy. Technical detail sits under the headline.',
     '/nexus':
       'Inside Anto Nexus: every conversation shapes the intelligence that understands you. Living constellation; on scroll, history, recurrence and a concrete step. CTA to try Anto; privacy, science and limits at the end. No promotional metrics. Does not replace professional care.',

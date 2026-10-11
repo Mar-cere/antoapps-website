@@ -1,0 +1,48 @@
+/* El formulario es el primer trabajo. La foto cierra la página. */
+
+.contact-page__title {
+  max-width: 18ch;
+}
+
+.contact-page__support {
+  max-width: 42ch;
+}
+
+.contact-page__figure {
+  margin-top: 2rem;
+}
+
+.contact-page__crisis {
+  color: var(--color-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.contact-page__crisis:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .contact-page__masthead {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 40rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .contact-page__masthead {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 40rem;
+  }
+
+  .contact-page__figure {
+    margin-top: 3rem;
+  }
+
+  .contact-page__figure-img {
+    min-height: 0;
+  }
+}
