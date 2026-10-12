@@ -1880,6 +1880,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       height: 1024,
       objectPosition: '50% 40%',
       desktopAspectRatio: '3 / 2',
+      placeAfterHeading: '5-4-3-2-1 exercise',
     },
     sections: [
       {
@@ -1897,13 +1898,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         bullets: [
           'The body can read threat even when there is no objective danger.',
           'Grounding does not deny the emotion: it widens the sensory frame around it.',
-          'If intensity is 9/10, start with a single anchor (feet on the floor) before the full 5-4-3-2-1.',
         ],
       },
       {
         heading: '5-4-3-2-1 exercise',
         paragraphs: [
-          'Go slowly. If one sense does not answer, skip to the next. There is no perfect score — work with what you find.',
+          'If intensity is 9/10, start with a single anchor (feet on the floor) before the full 5-4-3-2-1.',
         ],
         ordered: true,
         bullets: [
@@ -1913,6 +1913,8 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           '2 things you smell — or, if nothing is clear, calmly recall a familiar scent without forcing a scene.',
           '1 thing you taste — a sip of water, the taste in your mouth, or simply noticing your tongue.',
         ],
+        closing:
+          'Go slowly. If one sense does not answer, skip to the next. There is no perfect score — work with what you find.',
       },
       {
         heading: 'Other quick options',

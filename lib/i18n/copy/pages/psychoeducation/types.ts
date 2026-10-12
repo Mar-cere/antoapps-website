@@ -15,6 +15,8 @@ export type PsychoeducationSection = {
   bands?: readonly PsychoeducationBandGroup[];
   /** Si true, renderiza <ol> en vez de <ul> (p. ej. ejercicios paso a paso). */
   ordered?: boolean;
+  /** Párrafo después de la lista. El ritmo del ejercicio, no un paso más. */
+  closing?: string;
   /**
    * Énfasis visual distinto al H2 estándar.
    * `crisis`: contrato de seguridad (no card SaaS; plano editorial con acento secondary).

@@ -9,6 +9,11 @@
   max-width: 34rem;
 }
 
+.psycho-guide__section p.psycho-guide__section-closing {
+  margin-top: 0.85rem;
+  margin-bottom: 0;
+}
+
 @media (min-width: 960px) {
   .psycho-guide--brief .psycho-guide__lead {
     margin-bottom: 3rem;

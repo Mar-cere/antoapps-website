@@ -151,6 +151,7 @@ function GuideSectionStack({
             ))}
           </ListTag>
         )}
+        {section.closing ? <p className="psycho-guide__section-closing">{section.closing}</p> : null}
         {section.bands && (
           <div className="psycho-guide__bands">
             {section.bands.map((group) => (

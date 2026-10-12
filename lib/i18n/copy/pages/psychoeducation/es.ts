@@ -1880,6 +1880,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       height: 1024,
       objectPosition: '50% 40%',
       desktopAspectRatio: '3 / 2',
+      placeAfterHeading: 'Ejercicio 5-4-3-2-1',
     },
     sections: [
       {
@@ -1897,13 +1898,12 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         bullets: [
           'El cuerpo puede leer amenaza aunque no haya peligro objetivo.',
           'El grounding no niega la emoción: le da un marco sensorial más amplio.',
-          'Si la intensidad es 9/10, empieza por un solo ancla (pies en el suelo) antes del 5-4-3-2-1 completo.',
         ],
       },
       {
         heading: 'Ejercicio 5-4-3-2-1',
         paragraphs: [
-          'Hazlo despacio. Si un sentido no responde, salta al siguiente. No hay nota perfecta: trabaja con lo que encuentres.',
+          'Si la intensidad es 9/10, empieza por un solo ancla (pies en el suelo) antes del 5-4-3-2-1 completo.',
         ],
         ordered: true,
         bullets: [
@@ -1913,6 +1913,8 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           '2 cosas que hueles — o, si no hay olor claro, recuerda uno familiar sin forzar la escena.',
           '1 cosa que saboreas — un trago de agua, el sabor en la boca, o simplemente notar la lengua.',
         ],
+        closing:
+          'Hazlo despacio. Si un sentido no responde, salta al siguiente. No hay nota perfecta: trabaja con lo que encuentres.',
       },
       {
         heading: 'Otras opciones rápidas',
