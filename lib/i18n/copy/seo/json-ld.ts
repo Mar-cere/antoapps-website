@@ -1,5 +1,5 @@
 import { APP_VERSION } from '@/lib/app-version';
-import { localePath, type Locale } from '@/lib/i18n/config';
+import { localePath, type LegalLocale, type Locale } from '@/lib/i18n/config';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { DEFAULT_APP_STORE_URL, googlePlayHref } from '@/lib/download-links';
@@ -197,7 +197,7 @@ export function getHomeWebPageJsonLd(locale: Locale): JsonLd {
 }
 
 export type EditorialWebPageInput = {
-  locale: Locale;
+  locale: LegalLocale;
   path: string;
   name: string;
   headline: string;
@@ -229,7 +229,7 @@ export function getEditorialWebPageJsonLd(input: EditorialWebPageInput): JsonLd 
     headline: input.headline,
     url,
     description: input.description,
-    inLanguage: input.locale === 'en' ? 'en' : 'es',
+    inLanguage: input.locale === 'en' ? 'en' : input.locale === 'pt' ? 'pt-BR' : 'es',
     ...image,
     isPartOf: {
       '@type': 'WebSite',

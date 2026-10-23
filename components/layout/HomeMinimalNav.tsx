@@ -16,6 +16,10 @@ type HomeMinimalNavProps = {
   ctaLabel?: string;
   /** Aria del CTA (App Store / ancla). */
   ctaAria?: string;
+  /** Aria de la navegación cuando el chrome no coincide con el locale del sitio. */
+  navAria?: string;
+  /** Aria del logotipo cuando el destino sigue siendo la home existente. */
+  logoAria?: string;
   /** Aria del CTA en Android cuando el destino es device-store. */
   ctaAriaAndroid?: string;
   /** Hint SSR para evitar flash de store incorrecta. */
@@ -27,6 +31,8 @@ export default function HomeMinimalNav({
   ctaHref,
   ctaLabel,
   ctaAria,
+  navAria,
+  logoAria,
 }: HomeMinimalNavProps) {
   const copy = getHomeLandingFinalCopy(locale);
   const layout = getSiteLayoutCopy(locale);
@@ -36,8 +42,8 @@ export default function HomeMinimalNav({
 
   return (
     <header className="home-landing-nav" role="banner">
-      <nav className="home-landing-nav__inner" aria-label={copy.minimalNav.aria}>
-        <Link href={homeHref} className="home-landing-nav__brand" aria-label={copy.minimalNav.logoAria}>
+      <nav className="home-landing-nav__inner" aria-label={navAria ?? copy.minimalNav.aria}>
+        <Link href={homeHref} className="home-landing-nav__brand" aria-label={logoAria ?? copy.minimalNav.logoAria}>
           <span className="home-landing-nav__icon" aria-hidden="true">
             <Image
               src="/assets/images/brand/anto-icon-loop.png"

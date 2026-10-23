@@ -4,6 +4,7 @@ import { headers } from 'next/headers';
 import HtmlLang from '@/components/i18n/HtmlLang';
 import { ToastProvider } from '@/components/ui/ToastContainer';
 import ClarityAnalytics from '@/components/Clarity';
+import { htmlLanguage, isLegalLocale } from '@/lib/i18n/config';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -34,10 +35,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const headersList = await headers();
-  const locale = headersList.get('x-locale') || 'es';
+  const headerLocale = headersList.get('x-locale') || 'es';
+  const locale = isLegalLocale(headerLocale) ? headerLocale : 'es';
 
   return (
-    <html lang={locale} className={inter.variable}>
+    <html lang={htmlLanguage(locale)} className={inter.variable}>
       <body className={inter.className}>
         <ClarityAnalytics />
         <HtmlLang />

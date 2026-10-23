@@ -1,6 +1,6 @@
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import { APP_VERSION_LABEL } from '@/lib/app-version';
-import type { Locale } from '@/lib/i18n/config';
+import type { LegalLocale, Locale } from '@/lib/i18n/config';
 import { getAppPageCopy } from '@/lib/i18n/copy/app';
 import { getBienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 import { getContactPageCopy } from '@/lib/i18n/copy/contact';
@@ -27,11 +27,37 @@ const PATHS = [
 export type EditorialWebPagePath = (typeof PATHS)[number];
 
 type EditorialWebPageJsonLdProps = {
-  locale: Locale;
+  locale: LegalLocale;
   path: EditorialWebPagePath;
 };
 
-function fieldsFor(locale: Locale, path: EditorialWebPagePath) {
+function fieldsFor(locale: LegalLocale, path: EditorialWebPagePath) {
+  if (locale === 'pt') {
+    if (path === '/privacidad') {
+      const copy = getPrivacyPageCopy('pt');
+      return {
+        name: 'Política de Privacidade - Anto',
+        headline: copy.title,
+        description:
+          'Política de privacidade da Anto. Saiba como protegemos e tratamos seus dados pessoais.',
+      };
+    }
+    if (path === '/terminos') {
+      const copy = getTermsPageCopy('pt');
+      return {
+        name: 'Termos de Serviço - Anto | Condições de Uso',
+        headline: copy.title,
+        description:
+          'Termos e condições de uso do aplicativo Anto. Leia nossas condições de serviço antes de usar o aplicativo.',
+      };
+    }
+    throw new Error(`Locale pt solo está definido para las páginas legales (${path}).`);
+  }
+
+  return fieldsForSite(locale, path);
+}
+
+function fieldsForSite(locale: Locale, path: EditorialWebPagePath) {
   if (path === '/sobre-nosotros') {
     const copy = getAboutPageCopy(locale);
     return {
