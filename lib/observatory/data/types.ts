@@ -437,10 +437,55 @@ export type ObservatoryConnection = {
   detail: string;
 };
 
+export type WeeklyReviewMark = 'esperada' | 'a_mirar' | 'applied';
+
+export type WeeklyReviewReading = 'empty' | 'unmarked' | 'watch' | 'expected';
+
+export type WeeklyReviewRow = {
+  ref: string;
+  at: string | null;
+  surface: 'registered';
+  slice: string | null;
+  conversionSuppression: 'planned' | 'applied';
+  activationBand: string | null;
+  safetyRoute: string | null;
+  riskClass: string | null;
+  cue: string | null;
+  mode: string | null;
+  reason: string | null;
+  extrasDecision: string | null;
+  extrasDomain: string | null;
+  muteFlags: string[];
+  mark: WeeklyReviewMark;
+};
+
+export type WeeklyReview = {
+  mode: 'weekly';
+  days: number;
+  surface: 'registered';
+  doc_limit: number | null;
+  truncated: boolean;
+  documents: number;
+  usable_documents: number;
+  turns: number;
+  traces_present: boolean;
+  rows: WeeklyReviewRow[];
+  counts: {
+    planned_outside: number;
+    applied: number;
+    esperada: number;
+    a_mirar: number;
+  };
+  reading: WeeklyReviewReading;
+  note: string;
+};
+
 export type ObservatoryFeed = {
   connection: ObservatoryConnection;
   snapshot: ObservatorySnapshot;
   scenarios: ScenarioDefinition[];
+  weeklyReview: WeeklyReview | null;
+  weeklyError: string | null;
 };
 
 export type SurveillanceNote = {

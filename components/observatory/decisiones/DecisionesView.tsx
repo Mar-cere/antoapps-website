@@ -1,5 +1,6 @@
 'use client';
 
+import { WeeklyReviewPanel } from '@/components/observatory/decisiones/WeeklyReview';
 import { TurnPicker } from '@/components/observatory/live/TurnPicker';
 import { WeekReadingNote } from '@/components/observatory/ui/WeekReadingNote';
 import { PipelineTape } from '@/components/observatory/live/PipelineTape';
@@ -22,8 +23,25 @@ function ContextItem({ label, value }: { label: string; value: string | null | u
 }
 
 export function DecisionesView() {
-  const { snapshot, selectedTrace, selectTrace, selectStage, selectedStageId, filteredTraces, filters, setFilters } =
-    useObservatory();
+  const {
+    snapshot,
+    selectedTrace,
+    selectTrace,
+    selectStage,
+    selectedStageId,
+    filteredTraces,
+    filters,
+    setFilters,
+    demoPlayback,
+    weeklyReview,
+    weeklyError,
+  } = useObservatory();
+
+  if (!demoPlayback || weeklyReview || weeklyError) {
+    return (
+      <WeeklyReviewPanel review={weeklyReview} error={weeklyError} stageLabel={snapshot.stage_label} />
+    );
+  }
   const story = selectedTrace ? storyFromTrace(selectedTrace) : null;
   const selectedSpan =
     story?.path.find((span) => span.stage_id === selectedStageId) ?? story?.path[0] ?? null;

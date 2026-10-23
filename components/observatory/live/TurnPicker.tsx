@@ -2,7 +2,7 @@
 
 import { MuteChips } from '@/components/observatory/ui/MuteChips';
 import { choiceLabel, factLabel } from '@/lib/observatory/copy/labels';
-import { isSuppressionWatch } from '@/lib/observatory/copy/weekReading';
+import { suppressionMark } from '@/lib/observatory/copy/weekReading';
 import { domainLine, pickerExtrasLine } from '@/lib/observatory/copy/turnReading';
 import { formatTurnWhen, storyFromTrace } from '@/lib/observatory/data/turnDecision';
 import type { TraceEnvelope } from '@/lib/observatory/data/types';
@@ -24,20 +24,22 @@ export function TurnPicker({ traces, selectedId, onSelect }: TurnPickerProps) {
         const story = storyFromTrace(trace);
         const selected = trace.trace_id === selectedId;
         const domain = domainLine(story);
-        const watch = isSuppressionWatch(story);
+        const mark = suppressionMark(story);
+        const badge = mark === 'applied' ? 'Applied' : mark === 'a_mirar' ? 'A mirar' : mark === 'esperada' ? 'No es bug' : null;
         return (
           <button
             key={trace.trace_id}
             type="button"
             role="option"
             aria-selected={selected}
-            data-case={watch ? 'suppression' : undefined}
+            data-case={mark === 'a_mirar' || mark === 'applied' ? 'suppression' : undefined}
             onClick={() => onSelect(trace.trace_id)}
           >
             <span className="t">
               <span className="turn-star" data-choice={story.engineChoice ?? ''} aria-hidden="true" />
               {choiceLabel(story.engineChoice)}
-              {watch ? <span className="turn-case">Caso</span> : null}
+              {mark === 'esperada' ? <span className="s">No es bug</span> : null}
+              {mark === 'a_mirar' || mark === 'applied' ? <span className="turn-case">{badge}</span> : null}
             </span>
             <span className="turn-extra">{pickerExtrasLine(story)}</span>
             <span className="s">

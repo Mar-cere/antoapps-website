@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { isSuppressionWatch, windowReading } from './weekReading.ts';
+import { isSuppressionWatch, suppressionMark, weeklyReviewMessage, windowReading } from './weekReading.ts';
 
 test('no marca sin supresión ni la intersección ni la crisis', () => {
   assert.equal(isSuppressionWatch({
@@ -51,4 +51,42 @@ test('la nota de la ventana no pide abrir filas silenciadas sin el caso', () => 
   assert.equal(watch.drifted, 1);
   assert.equal(watch.plans, 2);
   assert.match(watch.line, /1 de 2 planes/);
+});
+
+test('planned por activationBand high no es fallo', () => {
+  const story = {
+    conversionSuppression: 'planned',
+    slice: 'none',
+    safetyRoute: 'none',
+    activationBand: 'high',
+    riskClass: 'LOW',
+  };
+  assert.equal(suppressionMark(story), 'esperada');
+  assert.equal(isSuppressionWatch(story), false);
+  const reading = windowReading([story]);
+  assert.equal(reading.note, 'no_es_bug');
+  assert.equal(reading.drifted, 0);
+  assert.match(reading.line, /No es bug/);
+});
+
+test('planned fuera de couple_and_vent sin esa causa queda a mirar', () => {
+  const story = {
+    conversionSuppression: 'planned',
+    slice: 'couple',
+    safetyRoute: 'none',
+    activationBand: 'low',
+    riskClass: 'LOW',
+  };
+  assert.equal(suppressionMark(story), 'a_mirar');
+  assert.equal(isSuppressionWatch(story), true);
+});
+
+test('la semana con trazas no dice que el runtime no publicó', () => {
+  const message = weeklyReviewMessage({
+    traces_present: true,
+    rows: [],
+    note: 'El runtime no publicó turnos en esta ventana.',
+  });
+  assert.match(message, /Ninguna fila marcada/);
+  assert.doesNotMatch(message, /no publicó/);
 });

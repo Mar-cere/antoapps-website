@@ -15,6 +15,7 @@ import type {
   ObservatoryFeed,
   ObservatorySnapshot,
   ScenarioDefinition,
+  WeeklyReview,
   ScenarioId,
   TraceEnvelope,
 } from '@/lib/observatory/data/types';
@@ -43,6 +44,8 @@ type ObservatoryContextValue = {
   filteredTraces: TraceEnvelope[];
   filters: TurnFilterState;
   setFilters: (next: TurnFilterState) => void;
+  weeklyReview: WeeklyReview | null;
+  weeklyError: string | null;
   demoPlayback: boolean;
   refresh: () => void;
   setScenarioId: (id: ScenarioId) => void;
@@ -91,6 +94,8 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
       connection: data.connection,
       snapshot: data.snapshot,
       scenarios: data.scenarios,
+      weeklyReview: data.weeklyReview ?? null,
+      weeklyError: data.weeklyError ?? null,
     });
   }, []);
 
@@ -286,6 +291,8 @@ export function ObservatoryProvider({ children }: { children: ReactNode }) {
     filteredTraces,
     filters,
     setFilters,
+    weeklyReview: feed.weeklyReview,
+    weeklyError: feed.weeklyError,
     demoPlayback,
     refresh: () => {
       load().catch(() => undefined);
