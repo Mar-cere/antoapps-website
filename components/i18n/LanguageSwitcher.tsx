@@ -1,9 +1,9 @@
-import type { Locale } from '@/lib/i18n/config';
-import { localePath } from '@/lib/i18n/config';
+import type { LegalLocale } from '@/lib/i18n/config';
+import { hasPortugueseLegalPage, localePath } from '@/lib/i18n/config';
 import Link from 'next/link';
 
 type LanguageSwitcherProps = {
-  locale: Locale;
+  locale: LegalLocale;
   /** Ruta sin prefijo de idioma, p. ej. `/bienvenida` o `/` */
   path: string;
   className?: string;
@@ -12,6 +12,7 @@ type LanguageSwitcherProps = {
 export default function LanguageSwitcher({ locale, path, className = '' }: LanguageSwitcherProps) {
   const esHref = localePath('es', path);
   const enHref = localePath('en', path);
+  const showPt = hasPortugueseLegalPage(path);
 
   return (
     <nav
@@ -35,6 +36,19 @@ export default function LanguageSwitcher({ locale, path, className = '' }: Langu
       >
         EN
       </Link>
+      {showPt ? (
+        <>
+          <span aria-hidden="true">·</span>
+          <Link
+            href={localePath('pt', path)}
+            lang="pt-BR"
+            aria-current={locale === 'pt' ? 'page' : undefined}
+            className={locale === 'pt' ? 'is-active' : undefined}
+          >
+            PT
+          </Link>
+        </>
+      ) : null}
     </nav>
   );
 }

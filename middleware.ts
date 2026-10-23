@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { pathLocaleFromPathname } from '@/lib/i18n/path-from-pathname';
 import {
   OBSERVATORY_COOKIE,
   OBSERVATORY_HOME,
@@ -11,7 +12,7 @@ import { isValidSessionToken } from '@/lib/observatory/session';
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const locale = pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'es';
+  const locale = pathLocaleFromPathname(pathname);
   const response = NextResponse.next();
   response.headers.set('x-locale', locale);
 

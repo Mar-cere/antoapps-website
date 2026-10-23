@@ -580,6 +580,8 @@ export function buildLlmsTxt(): string {
     '',
     `- Español (x-default): ${SITE_ORIGIN}/`,
     `- English: ${absoluteUrl('en', '')}`,
+    `- Português (Brasil), termos: ${SITE_ORIGIN}/pt/terminos`,
+    `- Português (Brasil), privacidade: ${SITE_ORIGIN}/pt/privacidad`,
     `- Sitemap (${sitemapCount} URLs): ${SITE_ORIGIN}/sitemap.xml`,
     `- Robots: ${SITE_ORIGIN}/robots.txt`,
     `- LLMs index (this file): ${SITE_ORIGIN}/llms.txt`,
@@ -619,6 +621,7 @@ export function buildLlmsTxt(): string {
     '',
     `- Site pages / Páginas del sitio: ${INDEXABLE_ROUTES.length} logical routes × 2 locales = ${INDEXABLE_ROUTES.length * 2} URLs`,
     `- Psychoeducation / Psicoeducación: ${PSYCHOEDUCATION_SLUGS.length} guides × 2 locales = ${PSYCHOEDUCATION_SLUGS.length * 2} URLs`,
+    `- Legal pt-BR / Páginas legais: ${SITE_ORIGIN}/pt/terminos, ${SITE_ORIGIN}/pt/privacidad (2 URLs, sem homepage)`,
     `- Total sitemap: ${sitemapCount} URLs`,
     `- AI discovery: ${SITE_ORIGIN}/llms.txt · ${SITE_ORIGIN}/llms-full.txt`,
     '',
@@ -704,6 +707,8 @@ export function llmsTxtRequiredSnippets(): string[] {
     'apps.apple.com',
     DEFAULT_GOOGLE_PLAY_URL_ES,
     'play.google.com',
+    '/pt/terminos',
+    '/pt/privacidad',
   ];
 
   for (const slug of PSYCHOEDUCATION_SLUGS) {

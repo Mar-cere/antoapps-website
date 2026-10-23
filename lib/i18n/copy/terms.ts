@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { localePath, type Locale } from '@/lib/i18n/config';
+import { localePath, type LegalLocale } from '@/lib/i18n/config';
 import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 import type { LegalPageCopy } from '@/lib/i18n/copy/legal-shared';
 
@@ -13,7 +13,7 @@ export type TermsPageMetadata = {
   };
 };
 
-const metadataByLocale: Record<Locale, TermsPageMetadata> = {
+const metadataByLocale: Record<LegalLocale, TermsPageMetadata> = {
   es: {
     title: 'Términos de Servicio - Anto | Condiciones de Uso',
     description:
@@ -34,9 +34,19 @@ const metadataByLocale: Record<Locale, TermsPageMetadata> = {
       url: 'https://antoapps.com/en/terminos',
     },
   },
+  pt: {
+    title: 'Termos de Serviço - Anto | Condições de Uso',
+    description:
+      'Termos e condições de uso do aplicativo Anto. Leia nossas condições de serviço antes de usar o aplicativo.',
+    openGraph: {
+      title: 'Termos de Serviço - Anto',
+      description: 'Termos e condições de uso do aplicativo Anto.',
+      url: 'https://antoapps.com/pt/terminos',
+    },
+  },
 };
 
-function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
+function buildTermsSections(locale: LegalLocale): LegalPageCopy['sections'] {
   if (locale === 'en') {
     return [
       {
@@ -223,6 +233,200 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
             kind: 'p-link',
             before: 'For more information about how we handle your data, see our ',
             linkText: 'Privacy Policy',
+            linkHref: localePath(locale, '/privacidad'),
+            after: '.',
+          },
+        ],
+      },
+    ];
+  }
+
+  if (locale === 'pt') {
+    return [
+      {
+        title: '1. Aceitação dos Termos',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'Ao acessar e usar o aplicativo Anto ("o Aplicativo" ou "o Serviço"), você concorda em ficar vinculado a estes Termos de Serviço ("Termos"). Se você não concordar com qualquer parte destes termos, não deve usar o Aplicativo.',
+          },
+          {
+            kind: 'p',
+            text: 'Estes Termos constituem um acordo legalmente vinculativo entre você ("Usuário" ou "você") e Anto ("nós", "nosso" ou "a Empresa").',
+          },
+        ],
+      },
+      {
+        title: '2. Uso do Serviço',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'A Anto é um aplicativo de acompanhamento emocional. Oferece apoio por meio de inteligência artificial. O serviço foi pensado para complementar, e não substituir, o tratamento profissional de saúde mental.',
+          },
+        ],
+      },
+      {
+        title: '3. Assinaturas com renovação automática',
+        blocks: [
+          { kind: 'h3', text: '3.1. Descrição do serviço de assinatura' },
+          {
+            kind: 'p',
+            text: 'A Anto oferece planos de assinatura com renovação automática que dão acesso completo a todas as funcionalidades do aplicativo, incluindo:',
+          },
+          {
+            kind: 'ul',
+            items: [
+              'Assistente de IA para bem-estar emocional 24/7 (não substitui atendimento clínico)',
+              'Ferramentas de bem-estar e acompanhamento do progresso',
+            ],
+          },
+          { kind: 'h3', text: '3.2. Renovação automática' },
+          {
+            kind: 'p',
+            text: 'As assinaturas são renovadas automaticamente ao final de cada período de cobrança (mensal, trimestral, semestral ou anual, conforme o plano escolhido), a menos que sejam canceladas antes do fim do período atual.',
+          },
+          {
+            kind: 'p',
+            text: 'Na renovação, o preço da assinatura é cobrado automaticamente no método de pagamento associado à Apple App Store (iPhone) ou ao Google Play (Android).',
+          },
+          { kind: 'h3', text: '3.3. Preços e cobrança' },
+          {
+            kind: 'p',
+            text: 'Os preços das assinaturas são exibidos com clareza antes da compra e podem variar conforme o plano escolhido:',
+          },
+          {
+            kind: 'ul',
+            items: [
+              'Plano mensal: US$4.20',
+              'Plano de 3 meses: US$12.62',
+              'Plano de 6 meses: US$22.09 (Economize 12%)',
+              'Plano anual: US$42.09 (Economize 17%)',
+            ],
+          },
+          {
+            kind: 'p',
+            text: 'Todos os preços incluem os impostos aplicáveis. Os pagamentos são processados pela Apple App Store (iPhone) ou pelo Google Play (Android) e estão sujeitos aos respectivos termos e condições.',
+          },
+          { kind: 'h3', text: '3.4. Cancelamento da assinatura' },
+          {
+            kind: 'p',
+            text: 'Você pode cancelar sua assinatura a qualquer momento. O cancelamento entra em vigor ao final do período de cobrança atual, e você mantém o acesso a todas as funcionalidades até esse momento.',
+          },
+          { kind: 'p', text: 'Para cancelar no iPhone (iOS):' },
+          {
+            kind: 'ol',
+            items: [
+              'Abra o app Ajustes no seu dispositivo iOS',
+              'Toque no seu nome na parte superior',
+              'Toque em "Mídia e Compras" ou "Assinaturas"',
+              'Toque em "Gerenciar" e selecione sua assinatura da Anto',
+              'Toque em "Cancelar assinatura"',
+            ],
+          },
+          { kind: 'p', text: 'Para cancelar no Android:' },
+          {
+            kind: 'ol',
+            items: [
+              'Abra o app Google Play Store',
+              'Toque no ícone do seu perfil no canto superior direito',
+              'Toque em "Pagamentos e assinaturas" → "Assinaturas"',
+              'Selecione sua assinatura da Anto',
+              'Toque em "Cancelar assinatura" e siga as instruções',
+            ],
+          },
+          { kind: 'h3', text: '3.5. Reembolsos' },
+          {
+            kind: 'p',
+            text: 'Os reembolsos estão sujeitos à política de reembolso da Apple App Store (iPhone) ou do Google Play (Android).',
+          },
+          {
+            kind: 'p',
+            text: 'No iPhone: entre em contato direto com o suporte da Apple em reportaproblema.apple.com.',
+          },
+          {
+            kind: 'p',
+            text: 'No Android: solicite um reembolso pela Google Play Store (Pagamentos e assinaturas → Orçamento e histórico → encontre a compra → Solicitar reembolso) ou entre em contato com o suporte do Google Play.',
+          },
+          {
+            kind: 'p',
+            text: 'A Anto não processa reembolsos diretamente, pois todas as transações são feitas pelas respectivas lojas de aplicativos.',
+          },
+          { kind: 'h3', text: '3.6. Alterações de preço' },
+          {
+            kind: 'p',
+            text: 'Reservamos o direito de modificar os preços das assinaturas a qualquer momento. Se aumentarmos o preço do seu plano atual, avisaremos você com pelo menos 30 dias de antecedência. Se você não aceitar o novo preço, pode cancelar a assinatura antes que a alteração entre em vigor.',
+          },
+          { kind: 'h3', text: '3.7. Período de teste gratuito' },
+          {
+            kind: 'p',
+            text: 'A Anto pode oferecer um período de teste de 1 dia para explorar as funcionalidades, conforme o plano e a loja de aplicativos. As condições exatas (início, alcance e cobrança após o teste) são mostradas no momento da compra ou da assinatura no aplicativo e na Apple App Store (iPhone) ou no Google Play (Android).',
+          },
+        ],
+      },
+      {
+        title: '4. Conta de usuário',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'Para usar a Anto, você precisa criar uma conta com informações precisas e atualizadas. Você é responsável por manter a confidencialidade das credenciais da sua conta e por todas as atividades realizadas nela.',
+          },
+        ],
+      },
+      {
+        title: '5. Propriedade intelectual',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'Todo o conteúdo do aplicativo, incluindo, sem limitação, textos, gráficos, logotipos, ícones, imagens, clipes de áudio, downloads digitais e compilações de dados, é de propriedade da Anto ou de seus fornecedores de conteúdo e está protegido pelas leis de propriedade intelectual.',
+          },
+        ],
+      },
+      {
+        title: '6. Limitação de responsabilidade',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'A Anto é uma ferramenta de apoio emocional e não substitui o tratamento profissional de saúde mental. Em caso de emergência médica ou crise de saúde mental, você deve entrar em contato imediatamente com os serviços de emergência ou com profissionais de saúde mental.',
+          },
+          {
+            kind: 'p',
+            text: 'A Anto não se responsabiliza por decisões tomadas com base no conteúdo ou nas recomendações fornecidas pelo aplicativo.',
+          },
+        ],
+      },
+      {
+        title: '7. Alterações dos Termos',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'Reservamos o direito de modificar estes termos a qualquer momento. As alterações entram em vigor imediatamente após a publicação nesta página. É sua responsabilidade revisar estes termos periodicamente.',
+          },
+          {
+            kind: 'p',
+            text: 'O uso contínuo do aplicativo após qualquer alteração constitui sua aceitação dos novos termos.',
+          },
+        ],
+      },
+      {
+        title: '8. Lei aplicável',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'Estes termos são regidos pelas leis do Chile. Qualquer disputa relacionada a estes termos ou ao uso do aplicativo será resolvida nos tribunais competentes do Chile.',
+          },
+        ],
+      },
+      {
+        title: '9. Contato',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'Para perguntas sobre estes termos, fale conosco em: soporte@antoapps.com',
+          },
+          {
+            kind: 'p-link',
+            before: 'Para mais informações sobre como tratamos seus dados, consulte nossa ',
+            linkText: 'Política de Privacidade',
             linkHref: localePath(locale, '/privacidad'),
             after: '.',
           },
@@ -424,7 +628,7 @@ function buildTermsSections(locale: Locale): LegalPageCopy['sections'] {
   ];
 }
 
-function buildTermsPageCopy(locale: Locale): LegalPageCopy {
+function buildTermsPageCopy(locale: LegalLocale): LegalPageCopy {
   if (locale === 'en') {
     return {
       breadcrumbs: {
@@ -434,6 +638,19 @@ function buildTermsPageCopy(locale: Locale): LegalPageCopy {
       },
       title: 'Terms of Service',
       lastUpdated: 'Last updated: January 2025',
+      sections: buildTermsSections(locale),
+    };
+  }
+
+  if (locale === 'pt') {
+    return {
+      breadcrumbs: {
+        homeLabel: 'Início',
+        homeHref: '/',
+        currentLabel: 'Termos de Serviço',
+      },
+      title: 'Termos de Serviço',
+      lastUpdated: 'Última atualização: janeiro de 2025',
       sections: buildTermsSections(locale),
     };
   }
@@ -450,11 +667,11 @@ function buildTermsPageCopy(locale: Locale): LegalPageCopy {
   };
 }
 
-export function termsPageMetadata(locale: Locale): Metadata {
+export function termsPageMetadata(locale: LegalLocale): Metadata {
   const meta = metadataByLocale[locale];
   return buildLocalizedPageMetadata(locale, '/terminos', meta);
 }
 
-export function getTermsPageCopy(locale: Locale): LegalPageCopy {
+export function getTermsPageCopy(locale: LegalLocale): LegalPageCopy {
   return buildTermsPageCopy(locale);
 }

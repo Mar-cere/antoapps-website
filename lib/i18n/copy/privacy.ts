@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { localePath, type Locale } from '@/lib/i18n/config';
+import { localePath, type LegalLocale } from '@/lib/i18n/config';
 import { buildLocalizedPageMetadata } from '@/lib/i18n/metadata';
 import type { LegalPageCopy } from '@/lib/i18n/copy/legal-shared';
 
@@ -13,7 +13,7 @@ export type PrivacyPageMetadata = {
   };
 };
 
-const metadataByLocale: Record<Locale, PrivacyPageMetadata> = {
+const metadataByLocale: Record<LegalLocale, PrivacyPageMetadata> = {
   es: {
     title: 'Política de Privacidad - Anto',
     description:
@@ -34,9 +34,19 @@ const metadataByLocale: Record<Locale, PrivacyPageMetadata> = {
       url: 'https://antoapps.com/en/privacidad',
     },
   },
+  pt: {
+    title: 'Política de Privacidade - Anto',
+    description:
+      'Política de privacidade da Anto. Saiba como protegemos e tratamos seus dados pessoais.',
+    openGraph: {
+      title: 'Política de Privacidade - Anto',
+      description: 'Saiba como protegemos e tratamos seus dados pessoais.',
+      url: 'https://antoapps.com/pt/privacidad',
+    },
+  },
 };
 
-function buildPrivacySections(locale: Locale): LegalPageCopy['sections'] {
+function buildPrivacySections(locale: LegalLocale): LegalPageCopy['sections'] {
   if (locale === 'en') {
     return [
       {
@@ -226,6 +236,203 @@ function buildPrivacySections(locale: Locale): LegalPageCopy['sections'] {
             kind: 'p-link',
             before: 'For more information about the app terms of use, see our ',
             linkText: 'Terms of Service',
+            linkHref: localePath(locale, '/terminos'),
+            after: '.',
+          },
+        ],
+      },
+    ];
+  }
+
+  if (locale === 'pt') {
+    return [
+      {
+        title: '1. Informações que coletamos',
+        blocks: [
+          { kind: 'h3', text: '1.1. Informações que você fornece' },
+          {
+            kind: 'p',
+            text: 'Coletamos informações que você nos fornece diretamente quando:',
+          },
+          {
+            kind: 'ul',
+            items: [
+              'Cria uma conta no aplicativo',
+              'Usa o assistente de IA e compartilha conversas',
+              'Preenche formulários ou pesquisas no aplicativo',
+              'Fala com o nosso suporte',
+            ],
+          },
+          {
+            kind: 'p',
+            text: 'Essas informações podem incluir: nome, endereço de e-mail, conversas com o assistente de IA, respostas a escalas clínicas (PHQ-9, GAD-7) e qualquer outra informação que você escolha compartilhar.',
+          },
+          { kind: 'h3', text: '1.2. Informações coletadas automaticamente' },
+          {
+            kind: 'p',
+            text: 'Quando você usa a Anto, coletamos automaticamente algumas informações sobre o seu dispositivo e o uso do aplicativo, incluindo:',
+          },
+          {
+            kind: 'ul',
+            items: [
+              'Informações do dispositivo (modelo, sistema operacional, versão)',
+              'Identificadores únicos do dispositivo',
+              'Dados de uso do aplicativo (frequência de uso, funções utilizadas)',
+              'Informações de diagnóstico e desempenho',
+            ],
+          },
+          { kind: 'h3', text: '1.3. Informações de assinaturas' },
+          {
+            kind: 'p',
+            text: 'Quando você faz uma compra pela Apple App Store, a Apple processa o pagamento e nos fornece informações sobre a sua assinatura, incluindo o status da assinatura e o período de cobrança. Não armazenamos informações de cartão de crédito ou de métodos de pagamento, pois tudo é tratado pela Apple.',
+          },
+        ],
+      },
+      {
+        title: '2. Como usamos suas informações',
+        blocks: [
+          { kind: 'p', text: 'Usamos as informações coletadas para:' },
+          {
+            kind: 'ul',
+            items: [
+              'Fornecer e melhorar o serviço: Usamos suas conversas e dados para personalizar as respostas do assistente de IA e melhorar a qualidade do serviço.',
+              'Análise emocional: Tratamos suas conversas para fazer análise emocional e detectar possíveis distorções cognitivas, usando escalas clínicas validadas.',
+              'Detecção de crise: Analisamos seu conteúdo para identificar sinais de risco e oferecer recursos de apoio quando for necessário.',
+              'Gestão de assinaturas: Tratamos informações de assinatura para gerenciar sua conta e dar acesso a funcionalidades premium.',
+              'Comunicação: Entramos em contato com você sobre atualizações do serviço, mudanças nos termos ou nas políticas, ou para responder às suas perguntas.',
+              'Segurança e prevenção de fraude: Usamos informações para proteger a segurança do aplicativo e prevenir atividades fraudulentas.',
+            ],
+          },
+        ],
+      },
+      {
+        title: '3. Compartilhamento de informações',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'Não vendemos nem alugamos suas informações pessoais a terceiros.',
+          },
+          { kind: 'p', text: 'Compartilhamos informações apenas nas seguintes circunstâncias:' },
+          {
+            kind: 'ul',
+            items: [
+              'Fornecedores de serviços: Compartilhamos informações com fornecedores de serviços que nos ajudam a operar o aplicativo (hospedagem, análise, processamento de pagamentos pela Apple).',
+              'Cumprimento legal: Podemos divulgar informações se isso for exigido por lei ou em resposta a solicitações legais válidas.',
+              'Emergências de saúde: Em casos de emergência médica ou risco iminente de dano, podemos compartilhar informações relevantes com serviços de emergência ou profissionais de saúde mental.',
+              'Com o seu consentimento: Compartilhamos informações quando você nos dá consentimento explícito para isso.',
+            ],
+          },
+        ],
+      },
+      {
+        title: '4. Segurança dos dados',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'Adotamos medidas de segurança técnicas e organizacionais para proteger suas informações pessoais contra acesso não autorizado, alteração, divulgação ou destruição:',
+          },
+          {
+            kind: 'ul',
+            items: [
+              'Criptografia de dados em trânsito e em repouso',
+              'Autenticação de dois fatores quando aplicável',
+              'Acesso restrito às informações pessoais, apenas para pessoal autorizado',
+              'Monitoramento regular dos sistemas para detectar vulnerabilidades',
+              'Conformidade com padrões de segurança do setor',
+            ],
+          },
+          {
+            kind: 'p',
+            text: 'No entanto, nenhum método de transmissão pela internet ou de armazenamento eletrônico é 100% seguro. Embora nos esforcemos para proteger suas informações, não podemos garantir segurança absoluta.',
+          },
+        ],
+      },
+      {
+        title: '5. Retenção de dados',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'Mantemos suas informações pessoais enquanto sua conta estiver ativa ou pelo tempo necessário para prestar os serviços, cumprir obrigações legais, resolver disputas e fazer cumprir nossos acordos.',
+          },
+          {
+            kind: 'p',
+            text: 'Você pode solicitar a exclusão da sua conta e dos seus dados a qualquer momento, entrando em contato conosco em soporte@antoapps.com. Excluiremos suas informações de acordo com nossas políticas de retenção e exigências legais.',
+          },
+        ],
+      },
+      {
+        title: '6. Seus direitos',
+        blocks: [
+          { kind: 'p', text: 'Você tem direito a:' },
+          {
+            kind: 'ul',
+            items: [
+              'Acesso: Solicitar uma cópia das informações pessoais que temos sobre você.',
+              'Retificação: Corrigir informações inexatas ou incompletas.',
+              'Exclusão: Solicitar a exclusão das suas informações pessoais quando elas não forem mais necessárias.',
+              'Portabilidade: Receber suas informações pessoais em um formato estruturado e de uso comum.',
+              'Oposição: Opor-se ao tratamento das suas informações pessoais em determinadas circunstâncias.',
+              'Retirada do consentimento: Retirar seu consentimento para o tratamento de dados quando ele se basear em consentimento.',
+            ],
+          },
+          {
+            kind: 'p',
+            text: 'Para exercer esses direitos, fale conosco em soporte@antoapps.com. Responderemos à sua solicitação em um prazo razoável.',
+          },
+        ],
+      },
+      {
+        title: '7. Privacidade de menores',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'A Anto não se destina a menores de 18 anos. Não coletamos intencionalmente informações pessoais de menores de 18 anos. Se descobrirmos que coletamos informações de um menor sem o consentimento dos pais, tomaremos medidas para excluir essas informações.',
+          },
+        ],
+      },
+      {
+        title: '8. Alterações desta Política',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'Podemos atualizar esta Política de Privacidade de tempos em tempos. Avisaremos você sobre mudanças significativas publicando a nova política nesta página e atualizando a data de "Última atualização".',
+          },
+          {
+            kind: 'p',
+            text: 'Recomendamos que você revise esta política periodicamente para se manter informado sobre como protegemos suas informações.',
+          },
+        ],
+      },
+      {
+        title: '9. Transferências internacionais',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'Suas informações podem ser transferidas e tratadas em países diferentes do seu. Ao usar a Anto, você consente a transferência das suas informações para esses países. Garantimos que haja salvaguardas adequadas para proteger suas informações nessas transferências.',
+          },
+        ],
+      },
+      {
+        title: '10. Cookies e tecnologias semelhantes',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'Usamos cookies e tecnologias semelhantes para melhorar sua experiência, analisar o uso do aplicativo e personalizar o conteúdo. Você pode gerenciar suas preferências de cookies nas configurações do seu dispositivo ou navegador.',
+          },
+        ],
+      },
+      {
+        title: '11. Contato',
+        blocks: [
+          {
+            kind: 'p',
+            text: 'Se você tiver perguntas, dúvidas ou solicitações relacionadas a esta Política de Privacidade ou ao tratamento dos seus dados pessoais, fale conosco em:',
+          },
+          { kind: 'p', text: 'E-mail: soporte@antoapps.com' },
+          {
+            kind: 'p-link',
+            before: 'Para mais informações sobre os termos de uso do aplicativo, consulte nossos ',
+            linkText: 'Termos de Serviço',
             linkHref: localePath(locale, '/terminos'),
             after: '.',
           },
@@ -430,7 +637,7 @@ function buildPrivacySections(locale: Locale): LegalPageCopy['sections'] {
   ];
 }
 
-function buildPrivacyPageCopy(locale: Locale): LegalPageCopy {
+function buildPrivacyPageCopy(locale: LegalLocale): LegalPageCopy {
   if (locale === 'en') {
     return {
       breadcrumbs: {
@@ -440,6 +647,19 @@ function buildPrivacyPageCopy(locale: Locale): LegalPageCopy {
       },
       title: 'Privacy Policy',
       lastUpdated: 'Last updated: January 2025',
+      sections: buildPrivacySections(locale),
+    };
+  }
+
+  if (locale === 'pt') {
+    return {
+      breadcrumbs: {
+        homeLabel: 'Início',
+        homeHref: '/',
+        currentLabel: 'Privacidade',
+      },
+      title: 'Política de Privacidade',
+      lastUpdated: 'Última atualização: janeiro de 2025',
       sections: buildPrivacySections(locale),
     };
   }
@@ -456,11 +676,11 @@ function buildPrivacyPageCopy(locale: Locale): LegalPageCopy {
   };
 }
 
-export function privacyPageMetadata(locale: Locale): Metadata {
+export function privacyPageMetadata(locale: LegalLocale): Metadata {
   const meta = metadataByLocale[locale];
   return buildLocalizedPageMetadata(locale, '/privacidad', meta);
 }
 
-export function getPrivacyPageCopy(locale: Locale): LegalPageCopy {
+export function getPrivacyPageCopy(locale: LegalLocale): LegalPageCopy {
   return buildPrivacyPageCopy(locale);
 }

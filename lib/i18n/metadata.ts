@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { localePath, type Locale } from '@/lib/i18n/config';
+import { hasPortugueseLegalPage, localePath, type LegalLocale } from '@/lib/i18n/config';
 import { SITE_ORIGIN } from '@/lib/seo/site';
 
-export function siteUrl(locale: Locale, path: string): string {
+export function siteUrl(locale: LegalLocale, path: string): string {
   return `${SITE_ORIGIN}${localePath(locale, path)}`;
 }
 
@@ -24,7 +24,7 @@ type LocalizedMetaInput = {
 };
 
 export function buildLocalizedPageMetadata(
-  locale: Locale,
+  locale: LegalLocale,
   path: string,
   meta: LocalizedMetaInput
 ): Metadata {
@@ -35,6 +35,14 @@ export function buildLocalizedPageMetadata(
     ...(image.height ? { height: image.height } : {}),
     ...(image.alt ? { alt: image.alt } : {}),
   }));
+  const languages: Record<string, string> = {
+    es: siteUrl('es', path),
+    en: siteUrl('en', path),
+    'x-default': siteUrl('es', path),
+  };
+  if (hasPortugueseLegalPage(path)) {
+    languages['pt-BR'] = siteUrl('pt', path);
+  }
 
   return {
     title: meta.title,
@@ -42,11 +50,7 @@ export function buildLocalizedPageMetadata(
     ...(meta.keywords ? { keywords: meta.keywords } : {}),
     alternates: {
       canonical,
-      languages: {
-        es: siteUrl('es', path),
-        en: siteUrl('en', path),
-        'x-default': siteUrl('es', path),
-      },
+      languages,
     },
     openGraph: {
       title: meta.openGraph.title,
@@ -54,7 +58,11 @@ export function buildLocalizedPageMetadata(
       url: canonical,
       type: meta.openGraph.type ?? 'website',
       siteName: 'Anto',
-      ...(locale === 'en' ? { locale: 'en_US' as const } : { locale: 'es_CL' as const }),
+      ...(locale === 'en'
+        ? { locale: 'en_US' as const }
+        : locale === 'pt'
+          ? { locale: 'pt_BR' as const }
+          : { locale: 'es_CL' as const }),
       ...(ogImages?.length ? { images: ogImages } : {}),
     },
     ...(ogImages?.length

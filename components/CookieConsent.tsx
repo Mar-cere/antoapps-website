@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCookieConsent } from '@/lib/hooks/useCookieConsent';
 import { localePath, type Locale } from '@/lib/i18n/config';
-import { localeFromPathname } from '@/lib/i18n/path-from-pathname';
+import { pathLocaleFromPathname } from '@/lib/i18n/path-from-pathname';
 import { getSiteLayoutCopy } from '@/lib/i18n/copy/home';
 import '@/styles/components/cookie-consent.css';
 
@@ -17,8 +17,18 @@ type CookieConsentProps = {
   mobileMaxWidthPx?: number;
 };
 
+const cookieCopyPt = {
+  title: 'Uso de cookies',
+  compact: 'Usamos cookies para análise.',
+  full: 'Usamos cookies para melhorar sua experiência, analisar o tráfego do site e personalizar o conteúdo. Ao clicar em "Aceitar", você concorda com o uso de cookies de acordo com nossa',
+  privacy: 'Política de Privacidade',
+  reject: 'Recusar',
+  accept: 'Aceitar',
+};
+
 function resolveLocale(pathname: string): Locale {
-  return localeFromPathname(pathname);
+  const locale = pathLocaleFromPathname(pathname);
+  return locale === 'pt' ? 'es' : locale;
 }
 
 export default function CookieConsent({
@@ -29,10 +39,11 @@ export default function CookieConsent({
   mobileShowAfterScrollPx,
   mobileMaxWidthPx,
 }: CookieConsentProps) {
-  const pathname = usePathname();
-  const locale = resolveLocale(pathname ?? '');
-  const copy = getSiteLayoutCopy(locale).cookies;
-  const privacyHref = localePath(locale, '/privacidad');
+  const pathname = usePathname() ?? '';
+  const pathLocale = pathLocaleFromPathname(pathname);
+  const locale = resolveLocale(pathname);
+  const copy = pathLocale === 'pt' ? cookieCopyPt : getSiteLayoutCopy(locale).cookies;
+  const privacyHref = pathLocale === 'pt' ? '/pt/privacidad' : localePath(locale, '/privacidad');
 
   const { showBanner, acceptCookies, rejectCookies } = useCookieConsent({
     bannerDelayMs,
