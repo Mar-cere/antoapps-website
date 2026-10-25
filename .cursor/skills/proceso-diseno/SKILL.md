@@ -18,7 +18,7 @@ SOP para convertir un requerimiento en una propuesta de diseño o arquitectura s
 
 - `narrativa-producto-anto`: propósito, promesa y principios que toda decisión debe respetar.
 - `arquitectura-codigo`: dónde vive cada cosa y patrones del repositorio.
-- `i18n-bilingue`: reglas de contenido bilingüe y español neutro.
+- `marketing-editorial-form`: el sitio se escribe en tres idiomas. Español por defecto, sin prefijo. Inglés en `/en`. Portugués de Brasil en `/pt`, con locale y hreflang `pt-BR`. No es portugués europeo. Toda página, guía, metadata, selector, hreflang y copy de producto va en los tres.
 
 ## Paso 1 — Entender el requerimiento
 
@@ -50,20 +50,20 @@ Verifica que la dirección propuesta respete la narrativa de Anto:
 ## Paso 5 — Recomendar y decidir
 
 - Recomienda una opción y justifica por qué es la mejor según producto + arquitectura + costo/riesgo.
-- Respeta las convenciones existentes (thin wrappers, copy en `lib/i18n/copy/`, CSS global con tokens, alias `@/…`, paridad es/en).
+- Respeta las convenciones existentes (thin wrappers, copy en `lib/i18n/copy/`, CSS global con tokens, alias `@/…`, paridad ES / EN / pt-BR).
 - Prefiere reutilizar patrones existentes antes que introducir nuevos. Si introduces un patrón nuevo, justifícalo.
 - Para cambios de alcance o acciones destructivas, confirma antes de ejecutar.
 
 ## Paso 6 — Definir el plan de implementación
 
 - Divide en pasos accionables y verificables.
-- Anota los puntos de integración obligatorios: paridad de rutas es/en, registro en `lib/seo/indexable-routes.ts` y `lib/seo/metadata-paths.ts`, invariantes en `lib/*/invariants.ts`.
+- Anota los puntos de integración obligatorios: paridad de rutas es, `/en` y `/pt`, registro en `lib/seo/indexable-routes.ts` y `lib/seo/metadata-paths.ts`, invariantes en `lib/*/invariants.ts`. El `hreflang` lleva `es`, `en`, `pt-BR` y `x-default`.
 - Identifica qué validadores (`scripts/validate-*.ts`) cubren el cambio o si hace falta uno nuevo.
 
 ## Paso 7 — Validar
 
 - Ejecuta `npm run validate` (incluye `validate:landing` + `type-check`) y `npm run build` cuando aplique.
-- Verifica paridad es/en y estilo de texto (español neutro, sin voseo ni modismos).
+- Verifica paridad ES / EN / pt-BR y estilo de texto: español neutro, sin voseo ni modismos; inglés como ya está en el archivo; portugués de Brasil (`você`, gerundio), nunca portugués europeo.
 - Para cambios de UI, revisa el resultado renderizado en desarrollo (`npm run dev`).
 
 ## Principios del proceso
@@ -71,4 +71,4 @@ Verifica que la dirección propuesta respete la narrativa de Anto:
 - Comprender antes de proponer; explorar el código antes de escribir.
 - Coherencia sobre novedad: sigue los patrones del repositorio.
 - Decisiones explícitas: opciones, tradeoffs y una recomendación justificada.
-- Nada sin bilingüe ni sin validación: cada entrega respeta es/en y pasa los validadores.
+- Nada sin los tres idiomas ni sin validación: cada entrega respeta español, inglés y portugués de Brasil, y pasa los validadores.
