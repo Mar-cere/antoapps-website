@@ -372,7 +372,7 @@ No abuses de términos como:
 
 Utilízalos solo cuando el contenido realmente los necesite.
 
-Copy en español neutro (sin modismos regionales), alineado al producto.
+Copy en español neutro (sin modismos regionales), alineado al producto. El mismo bloque se escribe también en inglés (`/en`) y en portugués de Brasil (`/pt`, locale y hreflang `pt-BR`). La voz no cambia: reconocimiento antes que consejo. En portugués, `você` y uso de Brasil; nunca portugués europeo.
 
 ⸻
 

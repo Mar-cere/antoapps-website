@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { detectInAppBrowser } from '@/lib/device/in-app-browser';
+import type { Locale } from '@/lib/i18n/config';
 import type { BienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 
 type InstagramBrowserHintProps = {
   copy: BienvenidaCopy['inAppHint'];
-  locale: 'es' | 'en';
+  locale: Locale;
   /** banner = arriba; cta = nota corta junto al CTA de descarga */
   variant?: 'banner' | 'cta';
 };
@@ -36,6 +37,10 @@ export default function InstagramBrowserHint({
           <>
             If it doesn&apos;t open: <strong>⋯</strong> → <strong>{browserAction}</strong>
           </>
+        ) : locale === 'pt' ? (
+          <>
+            Se não abrir: <strong>⋯</strong> → <strong>{browserAction}</strong>
+          </>
         ) : (
           <>
             Si no abre: <strong>⋯</strong> → <strong>{browserAction}</strong>
@@ -51,6 +56,10 @@ export default function InstagramBrowserHint({
         {locale === 'en' ? (
           <>
             Tap <strong>⋯</strong> → <strong>{browserAction}</strong> to download
+          </>
+        ) : locale === 'pt' ? (
+          <>
+            Toque em <strong>⋯</strong> → <strong>{browserAction}</strong> para baixar
           </>
         ) : (
           <>

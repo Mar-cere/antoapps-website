@@ -6,7 +6,7 @@ export type ContactEmailPayload = {
   name: string;
   email: string;
   message: string;
-  locale?: 'es' | 'en';
+  locale?: 'es' | 'en' | 'pt';
 };
 
 function getGmailConfig() {
@@ -81,7 +81,9 @@ export async function sendContactEmail(payload: ContactEmailPayload): Promise<vo
   const subject =
     payload.locale === 'en'
       ? `[Anto Contact] Message from ${payload.name}`
-      : `[Anto Contacto] Mensaje de ${payload.name}`;
+      : payload.locale === 'pt'
+        ? `[Anto Contato] Mensagem de ${payload.name}`
+        : `[Anto Contacto] Mensaje de ${payload.name}`;
 
   const body = [
     `Nombre / Name: ${payload.name}`,

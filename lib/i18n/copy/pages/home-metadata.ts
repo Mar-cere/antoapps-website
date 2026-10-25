@@ -21,9 +21,34 @@ export function homePageMetadata(locale: Locale): Metadata {
     languages: {
       es: siteUrl('es', '/'),
       en: siteUrl('en', '/'),
+      'pt-BR': siteUrl('pt', '/'),
       'x-default': siteUrl('es', '/'),
     },
   };
+
+  if (locale === 'pt') {
+    return {
+      title: 'Anto, app de acompanhamento emocional | Ansiedade, entre sessões',
+      description:
+        'A Anto é um app de acompanhamento emocional contínuo para a ansiedade, inclusive a social, e as horas quietas, entre sessões ou no dia a dia. Você escreve o que fica em loop e sai com um passo concreto. No iPhone e no Android. Não substitui um terapeuta. Teste grátis de 1 dia.',
+      keywords:
+        'Anto, acompanhamento emocional contínuo, ansiedade, ansiedade social, horas quietas, entre sessões, grounding, TCC, iPhone, Android, teste grátis',
+      alternates,
+      openGraph: {
+        type: 'website',
+        url: canonical,
+        title: 'Anto — Quando tudo custa um pouco mais',
+        description: `Acompanhamento emocional contínuo para a ansiedade e as horas quietas, entre sessões ou no dia a dia. No iPhone e no Android. Não substitui um terapeuta. ${trial.pricingNote}`,
+        siteName: 'Anto',
+        locale: 'pt_BR',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: 'Anto — Quando tudo custa um pouco mais',
+        description: `Acompanhamento emocional contínuo para a ansiedade e as horas quietas, entre sessões ou no dia a dia. No iPhone e no Android. Não substitui um terapeuta. ${trial.short}.`,
+      },
+    };
+  }
 
   if (locale === 'en') {
     return {

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import type { Locale } from '@/lib/i18n/config';
-import { localePath } from '@/lib/i18n/config';
+import { htmlLanguage, localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getAboutPageCopy } from '@/lib/i18n/copy/pages/about';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
@@ -24,7 +24,7 @@ export default function AboutPageContent({ locale }: AboutPageContentProps) {
   const copy = getAboutPageCopy(locale);
   const nav = getHomeV2Copy(locale).nav;
   const homeHero = getHomeLandingFinalCopy(locale).hero;
-  const pagePath = locale === 'en' ? '/en/sobre-nosotros' : '/sobre-nosotros';
+  const pagePath = localePath(locale, '/sobre-nosotros');
   const storeCopy = {
     ...homeHero,
     ctaBadge: copy.storeBadge,
@@ -44,7 +44,7 @@ export default function AboutPageContent({ locale }: AboutPageContentProps) {
         <main
           id="main-content"
           className="home-landing-page home-landing-page--v2 about-page"
-          lang={locale}
+          lang={htmlLanguage(locale)}
         >
           <article className="about-page__article">
             <div className="home-landing-container">

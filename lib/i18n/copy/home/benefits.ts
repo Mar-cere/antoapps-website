@@ -172,6 +172,83 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
       ],
     },
   },
+  pt: {
+    title: 'Benefícios para todo mundo',
+    subtitle: 'Escolha o seu perfil e veja em que a Anto ajuda.',
+    tabs: [
+      { id: 'usuarios', label: 'Para usuários' },
+      { id: 'profesionales', label: 'Para profissionais' },
+      { id: 'organizaciones', label: 'Para organizações' },
+    ],
+    items: {
+      usuarios: [
+        {
+          title: 'Acesso imediato 24/7',
+          description:
+            'Sem espera e sem hora marcada: apoio quando você precisar, também de noite ou no fim de semana.',
+        },
+        {
+          title: 'Privacidade garantida',
+          description:
+            'Conversas confidenciais, criptografadas em trânsito (TLS) e em repouso. A Anto e o modelo leem o texto para prestar o serviço. Não vendemos os seus dados.',
+        },
+        {
+          title: 'Apoio que se adapta a você',
+          description:
+            'Respostas de acordo com a sua situação, com modos de conversa e preferências de estilo quando o aplicativo permite.',
+        },
+        {
+          title: 'Apoio se você estiver em crise',
+          description:
+            'Indicamos recursos e linhas de ajuda. Não substitui uma emergência nem um profissional.',
+        },
+      ],
+      profesionales: [
+        {
+          title: 'Apoio entre sessões',
+          description:
+            'Seus pacientes têm continuidade, com ferramentas de cuidado, quando não estão em consulta com você.',
+        },
+        {
+          title: 'Acompanhamento anonimizado',
+          description:
+            'Tendências agregadas do percurso emocional para orientar o trabalho na sessão.',
+        },
+        {
+          title: 'Recursos para o paciente',
+          description:
+            'Podem acessar linhas de ajuda e recursos. Isso não substitui o seu critério clínico nem uma urgência.',
+        },
+        {
+          title: 'Dados para a consulta',
+          description:
+            'Os pacientes podem compartilhar relatórios com você, com segurança, se eles escolherem.',
+        },
+      ],
+      organizaciones: [
+        {
+          title: 'Cuidado acessível 24/7',
+          description:
+            'Apoio emocional discreto para toda a equipe, qualquer dia e a qualquer hora.',
+        },
+        {
+          title: 'Privacidade de propósito',
+          description:
+            'Só métricas agregadas: você nunca acessa as conversas individuais de quem trabalha na equipe.',
+        },
+        {
+          title: 'Painel para o RH',
+          description:
+            'Usuários, políticas de uso e assinaturas num único lugar de gestão.',
+        },
+        {
+          title: 'Impacto na equipe',
+          description:
+            'Visibilidade do cuidado na organização para ajustar programas sem expor dados pessoais.',
+        },
+      ],
+    },
+  },
 };
 
 export function getHomeBenefitsCopy(locale: Locale): HomeBenefitsCopy {

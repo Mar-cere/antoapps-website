@@ -14,7 +14,12 @@ export default function HomeHeroTrust({ locale = 'es' }: HomeHeroTrustProps) {
   const items = getHomeLandingFinalCopy(locale).footerTrust.items;
 
   return (
-    <ul className="home-landing-hero-trust" aria-label={locale === 'en' ? 'Trust signals' : 'Señales de confianza'}>
+    <ul
+      className="home-landing-hero-trust"
+      aria-label={
+        locale === 'en' ? 'Trust signals' : locale === 'pt' ? 'Sinais de confiança' : 'Señales de confianza'
+      }
+    >
       {items.map((item, index) => (
         <li key={item.label} className="home-landing-hero-trust__item">
           <BienvenidaV2TrustIcon id={TRUST_ICONS[index]} />

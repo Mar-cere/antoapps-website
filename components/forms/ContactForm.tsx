@@ -31,9 +31,15 @@ export default function ContactForm({ copy, locale = 'es' }: ContactFormProps) {
       maxLength: (max) =>
         locale === 'en'
           ? `This field cannot exceed ${max} characters`
-          : `Este campo no puede tener más de ${max} caracteres`,
+          : locale === 'pt'
+            ? `Este campo não pode ter mais de ${max} caracteres`
+            : `Este campo no puede tener más de ${max} caracteres`,
       invalidFormat:
-        locale === 'en' ? 'The entered format is not valid' : 'El formato ingresado no es válido',
+        locale === 'en'
+          ? 'The entered format is not valid'
+          : locale === 'pt'
+            ? 'O formato informado não é válido'
+            : 'El formato ingresado no es válido',
       submitError: copy.toast.error,
     }),
     [copy, locale]

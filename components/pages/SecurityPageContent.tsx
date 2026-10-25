@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
-import { localePath } from '@/lib/i18n/config';
+import { htmlLanguage, localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getSecurityPageCopy } from '@/lib/i18n/copy/pages/security';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
@@ -37,7 +37,7 @@ export default function SecurityPageContent({ locale }: SecurityPageContentProps
           id="main-content"
           className="home-landing-page home-landing-page--v2 security-page"
           role="main"
-          lang={locale}
+          lang={htmlLanguage(locale)}
         >
           <div className="home-landing-page__content">
             <article className="security-page__article" data-fade-section>

@@ -174,6 +174,72 @@ const layoutCopy: Record<Locale, SiteLayoutCopy> = {
       emailAria: 'Corporate email',
     },
   },
+  pt: {
+    header: {
+      navAria: 'Navegação principal',
+      logoAria: 'Anto - Ir para o início',
+      menuToggleAria: 'Abrir ou fechar o menu de navegação',
+      downloadAria: 'Escolher a loja para baixar a Anto',
+      download: 'Baixar',
+      appStore: 'App Store',
+      googlePlay: 'Google Play',
+      appStoreAria: 'Baixar a Anto na App Store',
+      googlePlayAria: 'Baixar a Anto no Google Play',
+      links: [
+        { href: '/pt', label: 'Início' },
+        { href: '/pt/app', label: 'O App' },
+        { href: '/pt#home-feat-product', label: 'O app' },
+        { href: '/pt/desarrollo', label: 'Desenvolvimento' },
+        { href: '/pt/contacto', label: 'Contato' },
+      ],
+    },
+    stickyNav: {
+      aria: 'Navegação rápida',
+      items: [
+        { id: 'inicio', label: 'Início', href: '#inicio' },
+        { id: 'home-feat-product', label: 'O app', href: '#home-feat-product' },
+        { id: 'precios', label: 'Preços', href: '#precios' },
+      ],
+    },
+    footer: {
+      tagline: 'Melhorando a saúde mental, uma conversa de cada vez.',
+      product: 'Produto',
+      company: 'Empresa',
+      legal: 'Legal',
+      rights: 'Todos os direitos reservados.',
+      productLinks: [
+        { href: '/pt/app', label: 'O Aplicativo' },
+        { href: '/pt#home-feat-product', label: 'O app' },
+        { href: '/pt#precios', label: 'Preços' },
+        { href: '/pt/privacidad', label: 'Privacidade' },
+      ],
+      companyLinks: [
+        { href: '/pt/sobre-nosotros', label: 'Sobre Nós' },
+        { href: '/pt/contacto', label: 'Contato' },
+        { href: '/pt/recursos', label: 'Recursos' },
+        { href: '/pt/desarrollo', label: 'Desenvolvimento' },
+        { href: '/pt/changelog', label: 'Controle de Versões' },
+      ],
+      legalLinks: [
+        { href: '/pt/privacidad', label: 'Política de Privacidade' },
+        { href: '/pt/terminos', label: 'Termos de Serviço' },
+        { href: '/pt/seguridad', label: 'Segurança' },
+      ],
+    },
+    cookies: {
+      title: '🍪 Uso de cookies',
+      compact: 'Usamos cookies para análise.',
+      full:
+        'Usamos cookies para melhorar sua experiência, analisar o tráfego do site e personalizar o conteúdo. Ao clicar em "Aceitar", você concorda com o uso de cookies de acordo com nossa',
+      privacy: 'Política de Privacidade',
+      reject: 'Recusar',
+      accept: 'Aceitar',
+    },
+    ui: {
+      scrollToTop: 'Voltar ao topo',
+      emailAria: 'E-mail corporativo',
+    },
+  },
 };
 
 export function getSiteLayoutCopy(locale: Locale): SiteLayoutCopy {

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
-import { localePath } from '@/lib/i18n/config';
+import { htmlLanguage, localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import {
   getChangelogPageCopy,
@@ -50,7 +50,9 @@ export default function ChangelogPageContent({ locale }: ChangelogPageContentPro
   const disclaimer =
     locale === 'en'
       ? 'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.'
-      : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
+      : locale === 'pt'
+        ? 'A Anto não substitui terapia nem atendimento clínico profissional. Se você estiver em crise, procure ajuda de emergência no seu país.'
+        : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
 
   return (
     <LocaleProvider locale={locale}>
@@ -66,7 +68,7 @@ export default function ChangelogPageContent({ locale }: ChangelogPageContentPro
           id="main-content"
           role="main"
           className="home-landing-page home-landing-page--v2 changelog-page"
-          lang={locale}
+          lang={htmlLanguage(locale)}
         >
           <div className="container">
             <div className="changelog-container">

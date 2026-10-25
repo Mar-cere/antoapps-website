@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { APP_VERSION, APP_VERSION_LABEL } from '@/lib/app-version';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import type { Locale } from '@/lib/i18n/config';
-import { localePath } from '@/lib/i18n/config';
+import { htmlLanguage, localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getAppPageCopy } from '@/lib/i18n/copy/app';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
@@ -39,20 +39,22 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
   const product = home.product;
   const trial = getTrialCopy(locale);
   const storePair = {
-    ctaStoreLabel: locale === 'en' ? 'Download on' : 'Descargar en',
+    ctaStoreLabel: locale === 'en' ? 'Download on' : locale === 'pt' ? 'Baixar na' : 'Descargar en',
     ctaStoreText: copy.cta.appStoreLabel,
     ctaBadge: trial.short,
     storeAria: copy.cta.appStoreAria,
-    ctaPlayLabel: locale === 'en' ? 'Get it on' : 'Disponible en',
+    ctaPlayLabel: locale === 'en' ? 'Get it on' : locale === 'pt' ? 'Disponível no' : 'Disponible en',
     ctaPlayText: copy.cta.playLabel,
     ctaPlayBadge: trial.short,
     androidStoreAria: copy.cta.playAria,
   };
-  const pagePath = locale === 'en' ? '/en/app' : '/app';
+  const pagePath = localePath(locale, '/app');
   const disclaimer =
     locale === 'en'
       ? 'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.'
-      : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
+      : locale === 'pt'
+        ? 'A Anto não substitui terapia nem atendimento clínico profissional. Se você estiver em crise, procure ajuda de emergência no seu país.'
+        : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
 
   return (
     <LocaleProvider locale={locale}>
@@ -65,7 +67,7 @@ export default function AppPageContent({ locale }: AppPageContentProps) {
           ctaLabel={nav.cta}
           ctaAria={nav.ctaAria}
         />
-        <main id="main-content" className="home-landing-page home-landing-page--v2 app-page" lang={locale}>
+        <main id="main-content" className="home-landing-page home-landing-page--v2 app-page" lang={htmlLanguage(locale)}>
           <section className="app-hero">
             <div className="home-landing-container">
               <div className="app-hero__grid">

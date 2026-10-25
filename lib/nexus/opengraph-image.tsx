@@ -70,7 +70,7 @@ export function nexusOpenGraphImage(locale: Locale) {
               background: '#22D3EE',
             }}
           />
-          <span>Sistema activo</span>
+          <span>{locale === 'pt' ? 'Sistema ativo' : 'Sistema activo'}</span>
         </div>
       </div>
     ),

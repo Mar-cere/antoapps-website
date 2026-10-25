@@ -13,6 +13,9 @@ export const DEFAULT_GOOGLE_PLAY_URL_ES =
 /** Ficha oficial en Google Play (EN US). */
 export const DEFAULT_GOOGLE_PLAY_URL_EN =
   'https://play.google.com/store/apps/details?id=com.anto.app&hl=en_us';
+/** Ficha oficial en Google Play (pt-BR). */
+export const DEFAULT_GOOGLE_PLAY_URL_PT =
+  'https://play.google.com/store/apps/details?id=com.anto.app&hl=pt_br';
 /** @deprecated Prefer DEFAULT_GOOGLE_PLAY_URL_ES / _EN según locale. */
 export const DEFAULT_GOOGLE_PLAY_URL = DEFAULT_GOOGLE_PLAY_URL_ES;
 
@@ -24,6 +27,7 @@ export const APP_STORE_BADGE_EN_PATH = '/assets/badges/download-on-the-app-store
 export const APP_STORE_BADGE_SVG_PATH = APP_STORE_BADGE_ES_PATH;
 export const GOOGLE_PLAY_BADGE_ES_PATH = '/assets/badges/get-it-on-google-play-es.svg';
 export const GOOGLE_PLAY_BADGE_EN_PATH = '/assets/badges/get-it-on-google-play-en.svg';
+export const GOOGLE_PLAY_BADGE_PT_PATH = '/assets/badges/get-it-on-google-play-pt.svg';
 /** @deprecated Use googlePlayBadgePath(locale) */
 export const GOOGLE_PLAY_BADGE_SVG_PATH = GOOGLE_PLAY_BADGE_ES_PATH;
 
@@ -35,7 +39,9 @@ export function appStoreHref(): string {
 export function googlePlayHref(locale: Locale = 'es'): string {
   const u = process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL?.trim();
   if (u && u.length > 0) return u;
-  return locale === 'en' ? DEFAULT_GOOGLE_PLAY_URL_EN : DEFAULT_GOOGLE_PLAY_URL_ES;
+  if (locale === 'en') return DEFAULT_GOOGLE_PLAY_URL_EN;
+  if (locale === 'pt') return DEFAULT_GOOGLE_PLAY_URL_PT;
+  return DEFAULT_GOOGLE_PLAY_URL_ES;
 }
 
 export function isExternalStoreUrl(href: string): boolean {
@@ -85,5 +91,7 @@ export function appStoreBadgePath(locale: Locale = 'es'): string {
 
 /** Badge Google Play según idioma. */
 export function googlePlayBadgePath(locale: Locale = 'es'): string {
-  return locale === 'en' ? GOOGLE_PLAY_BADGE_EN_PATH : GOOGLE_PLAY_BADGE_ES_PATH;
+  if (locale === 'en') return GOOGLE_PLAY_BADGE_EN_PATH;
+  if (locale === 'pt') return GOOGLE_PLAY_BADGE_PT_PATH;
+  return GOOGLE_PLAY_BADGE_ES_PATH;
 }

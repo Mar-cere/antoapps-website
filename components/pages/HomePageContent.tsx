@@ -1,6 +1,7 @@
 'use client';
 
 import type { Locale } from '@/lib/i18n/config';
+import { htmlLanguage } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
 import HomeMinimalFooter from '@/components/layout/HomeMinimalFooter';
@@ -37,7 +38,7 @@ export default function HomePageContent({ locale }: HomePageContentProps) {
         }}
         threshold={80}
       >
-        <main id="main-content" className="home-landing-page" role="main" lang={locale}>
+        <main id="main-content" className="home-landing-page" role="main" lang={htmlLanguage(locale)}>
           <HomeLandingAtmosphere />
           <div className="home-landing-page__content">
             <Hero locale={locale} />

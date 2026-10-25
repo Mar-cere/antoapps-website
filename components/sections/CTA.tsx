@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { htmlLanguage } from '@/lib/i18n/config';
 import { usePathname } from 'next/navigation';
 import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import { getHomeCtaCopy } from '@/lib/i18n/copy/home/cta';
@@ -14,7 +15,7 @@ export default function CTA() {
   const hero = getHomeV2Copy(locale).hero;
 
   return (
-    <section id="descargar" className="cta" data-fade-section lang={locale}>
+    <section id="descargar" className="cta" data-fade-section lang={htmlLanguage(locale)}>
       <div className="container">
         <h2 className="section-title reveal-on-scroll">{copy.title}</h2>
         <p className="section-subtitle reveal-on-scroll">{copy.subtitle}</p>

@@ -19,7 +19,7 @@ export default function HomeV2ChatVignette({
   className = '',
 }: HomeV2ChatVignetteProps) {
   const antoLabel = 'Anto';
-  const youLabel = locale === 'en' ? 'You' : 'Tú';
+  const youLabel = locale === 'en' ? 'You' : locale === 'pt' ? 'Você' : 'Tú';
   const chatClass =
     size === 'hero' ? 'home-v2-chat--live' : size === 'ads' ? 'home-v2-chat--ads' : '';
 

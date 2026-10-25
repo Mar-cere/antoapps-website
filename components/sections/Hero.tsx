@@ -10,6 +10,7 @@ import {
   getHomeLandingScreenshotPath,
 } from '@/lib/assets/app-screenshots';
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 import HomeHeroTrust from '@/components/sections/HomeHeroTrust';
 import HomeKickerSparkle from '@/components/ui/HomeKickerSparkle';
@@ -21,7 +22,7 @@ type HeroProps = {
 
 export default function Hero({ locale = 'es' }: HeroProps) {
   const copy = getHomeLandingFinalCopy(locale).hero;
-  const pagePath = locale === 'en' ? '/en' : '/';
+  const pagePath = localePath(locale, '/');
 
   return (
     <section id="inicio" className="home-landing-hero" data-fade-section aria-labelledby="hero-title">

@@ -518,13 +518,306 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
     };
   }
 
+  if (locale === 'pt') {
+    return {
+      hero: {
+        brand: 'Anto',
+        titleLine1: 'Quando tudo custa',
+        titleAccent: 'um pouco mais.',
+        support:
+          'Para as horas quietas, entre uma sessão e o resto do dia. Você escreve o que fica se repetindo e sai com um passo para esta noite.',
+        ctaStoreLabel: 'Baixar na',
+        ctaStoreText: 'App Store',
+        ctaBadge: trial.short,
+        ctaMicro: `${trial.short} · Sem cartão · Cancele quando quiser`,
+        storeAria: 'Baixar a Anto na App Store',
+        ctaPlayLabel: 'Disponível no',
+        ctaPlayText: 'Google Play',
+        ctaPlayBadge: trial.short,
+        androidStoreAria: 'Baixar a Anto no Google Play',
+        imageAlt: 'Luz do fim da tarde num quarto quieto, janela ao anoitecer',
+        chat: {
+          ariaLabel: 'Conversa de exemplo na Anto sobre ansiedade no trabalho',
+          messages: [
+            {
+              role: 'user',
+              text: 'Não consigo dormir. Apresentação na sexta e a cabeça não para.',
+            },
+            {
+              role: 'anto',
+              text: 'O que mais fica voltando?',
+            },
+            {
+              role: 'user',
+              text: 'Ficar em branco. Que todo mundo perceba.',
+            },
+            {
+              role: 'anto',
+              text: 'Esta noite, abra só o primeiro slide. Dois minutos. Depois feche. Não precisa sair bem.',
+            },
+          ],
+        },
+      },
+      nav: {
+        cta: 'Baixar',
+        ctaAria: 'Baixar a Anto para o seu celular',
+      },
+      recognize: {
+        lead: 'Tem dias em que você não está exatamente mal.',
+        body: 'Não precisa estar em crise para precisar de companhia. A Anto fica nesse intervalo entre o dia e a cama, sem hora marcada.',
+        imageAlt: 'Escrivaninha à noite, chuva na janela, caderno aberto e abajur aceso',
+      },
+      moments: [
+        {
+          id: 'distortion',
+          imageAlt: 'Mãos junto à janela, um celular, uma xícara e um caderno aberto',
+          title: 'Segura a espiral. Depois ajuda a soltar.',
+          body: 'Quando a mente salta para o pior final, a Anto dá nome a isso e oferece um caminho pequeno.',
+          media: {
+            kind: 'distortion',
+            distortion: {
+              ariaLabel: 'Exemplo de nomear um pensamento catastrófico e sugerir um exercício breve',
+              chromeTitle: 'No chat',
+              thoughtLabel: 'O que apareceu',
+              thought: '“Se eu ficar em branco, acabou a minha carreira.”',
+              labelHint: 'Parece',
+              labelName: 'Imaginar o pior final',
+              reframeLabel: 'Outro jeito de ver',
+              reframe: 'Ficar em branco num slide é constrangedor, não o fim de uma carreira.',
+              techniqueLabel: 'Um próximo passo',
+              technique: 'Um exercício curto (~3 min): separar o que aconteceu do que você imaginou.',
+            },
+          },
+        },
+        {
+          id: 'evidence',
+          title: 'Check-ins quietos. Para notar o que aliviou.',
+          body: 'Não é um diagnóstico. Só um espelho de como as semanas se sentiram.',
+          reverse: true,
+          media: {
+            kind: 'evidence',
+            evidence: {
+              ariaLabel: 'Exemplo de como a ansiedade se sentiu em quatro semanas',
+              chromeTitle: 'Check-in',
+              scaleName: 'Ansiedade',
+              scaleRange: 'check-in breve',
+              currentLabel: 'Esta semana',
+              currentValue: '8',
+              trendLabel: 'Ultimamente',
+              trend: 'Um pouco mais leve do que há um mês',
+              scaleMax: 21,
+              bars: [
+                { label: 'S1', value: 14 },
+                { label: 'S2', value: 12 },
+                { label: 'S3', value: 10 },
+                { label: 'S4', value: 8 },
+              ],
+              insightLabel: 'O que se notou',
+              insight: 'Nas noites em que você olhou menos o celular, o dia seguinte pareceu um pouco mais quieto',
+              disclaimer:
+                'Só um exemplo. Esses check-ins ajudam a notar padrões. Não diagnosticam nem substituem o cuidado profissional.',
+            },
+          },
+        },
+        {
+          id: 'privacy',
+          title: 'O seu espaço continua sendo seu.',
+          body: 'A Anto e o modelo leem o texto só para prestar o serviço.',
+          media: {
+            kind: 'privacy',
+            privacy: {
+              ariaLabel: 'Compromissos de privacidade na Anto',
+              chromeTitle: 'Privacidade',
+              lead: 'Cuidado sem plateia.',
+              points: [
+                'Conversas criptografadas em trânsito e em repouso',
+                'Não vendemos os seus dados',
+                'Sem anúncios em cima da sua história',
+              ],
+            },
+          },
+        },
+      ],
+      product: {
+        chatCaption: 'É assim que a Anto responde nessa noite.',
+        youLabel: 'Você',
+        antoLabel: 'Anto',
+        chat: [
+          {
+            role: 'anto',
+            text: 'A cabeça entrou em modo de alerta, e isso cansa demais. Se servir, a gente pode baixar um pouco a pressão desta noite e ordenar o que mais está voltando.',
+          },
+          {
+            role: 'anto',
+            text: 'Isso pesa porque não é só a apresentação. É a ideia de se expor e sentir que todo mundo veria. Se você quiser, a gente pode ficar nesse medo e deixá-lo um pouco mais manejável.',
+          },
+        ],
+        guideKicker: 'Microguia',
+        guideTitle: 'Ansiedade social',
+        guideDek: 'Preparação para interações que geram tensão.',
+        guideSteps: [
+          {
+            title: 'Predição',
+            body: 'O que você acha que vai acontecer? Escreva como hipótese, não como fato.',
+          },
+          {
+            title: 'Evidência alternativa',
+            body: 'Que outra explicação é possível?',
+          },
+          {
+            title: 'Micropasso',
+            body: 'Defina o menor gesto social (cumprimentar, uma pergunta).',
+          },
+        ],
+        guideRead: {
+          href: localePath('pt', '/recursos/ansiedad-y-preocupacion'),
+          label: 'Ansiedade e preocupação',
+        },
+      },
+      foundation: {
+        title: 'Não é um chat que esquece.',
+        support: 'O que você conta hoje continua na próxima conversa.',
+        guide: {
+          href: localePath('pt', '/recursos/grounding-ansiedad-crisis'),
+          label: 'Quando a ansiedade sobe',
+          note: 'Um guia curto de grounding, se o momento apertar.',
+        },
+        pillars: [
+          {
+            title: 'Memória que acompanha',
+            body: 'Temas que voltam e padrões que se notam, não uma conversa em branco toda vez.',
+          },
+          {
+            title: 'Técnicas quando fazem falta',
+            body: 'Guias de alguns minutos, no hub.',
+            example: 'guide',
+          },
+          {
+            title: 'Entre sessões',
+            body: 'Disponível a qualquer hora, também nas noites em que não há consulta à vista.',
+          },
+        ],
+      },
+      still: {
+        line: 'Tem noites que só precisam de um lugar para pousar.',
+        imageAlt: 'Luz da manhã sobre uma cadeira vazia junto à janela',
+      },
+      reviews: {
+        title: 'Pessoas reais. Noites difíceis.',
+        sourceLabel: 'Avaliações públicas na App Store',
+        starsAria: '5 estrelas na App Store',
+      },
+      pricing: {
+        title: 'Comece quando precisar.',
+        subtitle: 'Um dia grátis. Acesso completo em todos os planos. Cancele quando quiser.',
+        popularBadge: 'O mais escolhido',
+        cards: [
+          { period: '1 mês', price: usdAmount(PRICING_USD.month), unit: '/ mês' },
+          {
+            period: '3 meses',
+            price: usdAmount(PRICING_USD.threeMonths),
+            unit: 'USD',
+            perMonth: `${usdPerMonth(PRICING_USD.threeMonths, 3)} / mês · USD`,
+            popular: true,
+          },
+          {
+            period: '6 meses',
+            price: usdAmount(PRICING_USD.sixMonths),
+            unit: 'USD',
+            perMonth: `${usdPerMonth(PRICING_USD.sixMonths, 6)} / mês`,
+            save: 'Economize 12%',
+          },
+          {
+            period: '1 ano',
+            price: usdAmount(PRICING_USD.year),
+            unit: 'USD',
+            perMonth: `${usdPerMonth(PRICING_USD.year, 12)} / mês`,
+            save: 'Economize 17%',
+          },
+        ],
+        ctaMicro: `${trial.short} · Sem cartão`,
+      },
+      faq: {
+        title: 'O que costuma ser perguntado.',
+        items: [
+          {
+            question: 'O que é a Anto?',
+            answer:
+              'A Anto é um aplicativo de acompanhamento emocional contínuo entre sessões ou no dia a dia. Usa assistência de IA em segundo plano. Não substitui atendimento clínico: um terapeuta ou profissional humano continua sendo o mais recomendável. Disponível no iPhone e no Android.',
+          },
+          {
+            question: 'O que existe além do chat?',
+            answer:
+              'Memória de temas, um hub de técnicas (com um quadro ABC interativo), check-ins para notar padrões e o início do dia. A conversa é uma parte, não o produto inteiro.',
+          },
+          {
+            question: 'Minhas conversas são privadas?',
+            answer:
+              'Sim. Vão criptografadas em trânsito (TLS) e em repouso. Não vendemos a conversa nem a usamos para anúncios.',
+          },
+          {
+            question: 'A Anto substitui a terapia?',
+            answer:
+              'Não. Acompanha você nos dias difíceis e entre uma sessão e a seguinte. O atendimento profissional continua sendo outra coisa.',
+          },
+          {
+            question: 'Tem teste grátis?',
+            answer: trial.faqPremiumAnswer,
+          },
+        ],
+        moreHref: localePath('pt', '/recursos'),
+        moreLabel: 'Mais recursos',
+      },
+      explore: {
+        title: 'Continuar explorando',
+        links: [
+          {
+            href: '/recursos',
+            label: 'Recursos',
+            description: 'Guias de ansiedade, grounding, TCC e mais',
+          },
+          {
+            href: '/recursos/grounding-ansiedad-crisis',
+            label: 'Quando a ansiedade sobe',
+            description: 'Grounding 5-4-3-2-1 para momentos intensos',
+          },
+          {
+            href: '/recursos/ansiedad-y-preocupacion',
+            label: 'Ansiedade e preocupação',
+            description: 'O mapa, incluindo a ansiedade social',
+          },
+          {
+            href: '/app',
+            label: 'O aplicativo',
+            description: 'O que a Anto inclui no iPhone e no Android',
+          },
+          {
+            href: '/seguridad',
+            label: 'Segurança',
+            description: 'Por que a conversa é lida, e como ela é cuidada',
+          },
+        ],
+        coda: {
+          trust: ['Privado de propósito', 'Sem cartão'],
+          disclaimer:
+            'A Anto não substitui terapia nem atendimento clínico profissional. Se você estiver em crise, procure ajuda de emergência no seu país.',
+        },
+      },
+      finalCta: {
+        title: 'Quando você precisar diminuir a intensidade.',
+        subtitle: 'Comece hoje. Um dia grátis, sem cartão.',
+        imageAlt: 'Noite em claro: quarto na penumbra, luz suave de abajur junto a uma cama',
+      },
+    };
+  }
+
   return {
     hero: {
       brand: 'Anto',
       titleLine1: 'Cuando todo cuesta',
       titleAccent: 'un poco más.',
-        support:
-          'Para las horas quietas, entre una sesión y el resto del día. Escribes lo que da vueltas y te llevas un paso para esta noche.',
+      support:
+        'Para las horas quietas, entre una sesión y el resto del día. Escribes lo que da vueltas y te llevas un paso para esta noche.',
       ctaStoreLabel: 'Descargar en',
       ctaStoreText: 'App Store',
       ctaBadge: trial.short,

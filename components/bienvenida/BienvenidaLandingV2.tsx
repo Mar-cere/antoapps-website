@@ -13,7 +13,7 @@ import {
 import HomeV2ChatVignette from '@/components/sections/HomeV2ChatVignette';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 import type { Locale } from '@/lib/i18n/config';
-import { localePath } from '@/lib/i18n/config';
+import { htmlLanguage, localePath } from '@/lib/i18n/config';
 import type { LandingDevice } from '@/lib/device/landing-device';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import { getBienvenidaCopy, type BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
@@ -41,7 +41,7 @@ export default function BienvenidaLandingV2({
   const photoSrc = getEditorialImagePath('sleeplessNight');
 
   return (
-    <div className="lad-page lad-page--v2" lang={locale}>
+    <div className="lad-page lad-page--v2" lang={htmlLanguage(locale)}>
       <MetaPixelNoscript />
       <BienvenidaLandingTracker landingVariant={landingVariant} pagePath={pagePath} />
       <header className="lad-topbar lad-v2-topbar" role="banner">

@@ -18,6 +18,8 @@ export function getArticleJsonLd(locale: Locale, path: string, guide: Psychoeduc
   const url = siteUrl(locale, path);
   const hubUrl = siteUrl(locale, '/recursos');
   const isEn = locale === 'en';
+  const isPt = locale === 'pt';
+  const inLanguage = isEn ? 'en' : isPt ? 'pt-BR' : 'es';
   const bodyText = guide.sections
     .flatMap((section) => [
       ...(section.paragraphs ?? []),
@@ -49,7 +51,9 @@ export function getArticleJsonLd(locale: Locale, path: string, guide: Psychoeduc
       '@type': 'Thing',
       name: isEn
         ? 'Mental health psychoeducation'
-        : 'Psicoeducación en salud mental',
+        : isPt
+          ? 'Psicoeducação em saúde mental'
+          : 'Psicoeducación en salud mental',
     },
     ...topicNames.slice(0, 6).map((name) => ({
       '@type': 'Thing',
@@ -63,7 +67,7 @@ export function getArticleJsonLd(locale: Locale, path: string, guide: Psychoeduc
     headline: guide.hero.title,
     alternativeHeadline: guide.meta.openGraphTitle,
     description: guide.meta.description,
-    inLanguage: isEn ? 'en' : 'es',
+    inLanguage,
     url,
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -75,14 +79,18 @@ export function getArticleJsonLd(locale: Locale, path: string, guide: Psychoeduc
     articleSection: guide.layout === 'dossier'
       ? isEn
         ? 'Clinical map'
-        : 'Mapa clínico'
+        : isPt
+          ? 'Mapa clínico'
+          : 'Mapa clínico'
       : isEn
         ? 'Brief guide'
-        : 'Guía breve',
+        : isPt
+          ? 'Guia breve'
+          : 'Guía breve',
     isPartOf: {
       '@type': 'CollectionPage',
       '@id': `${hubUrl}#collection`,
-      name: isEn ? 'Anto resources' : 'Recursos Anto',
+      name: isEn ? 'Anto resources' : isPt ? 'Recursos Anto' : 'Recursos Anto',
       url: hubUrl,
     },
     author: {
@@ -103,7 +111,7 @@ export function getArticleJsonLd(locale: Locale, path: string, guide: Psychoeduc
     about,
     keywords,
     isAccessibleForFree: true,
-    educationalUse: isEn ? 'Psychoeducation' : 'Psicoeducación',
+    educationalUse: isEn ? 'Psychoeducation' : isPt ? 'Psicoeducação' : 'Psicoeducación',
   };
 
   if (imageUrl && guide.figure) {
@@ -164,7 +172,7 @@ export function getArticleJsonLd(locale: Locale, path: string, guide: Psychoeduc
       '@id': `${url}#howto`,
       name: guide.howTo.name,
       description: guide.howTo.description,
-      inLanguage: isEn ? 'en' : 'es',
+      inLanguage,
       ...(guide.howTo.totalTime ? { totalTime: guide.howTo.totalTime } : {}),
       step: guide.howTo.steps.map((text, index) => ({
         '@type': 'HowToStep',

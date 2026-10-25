@@ -301,6 +301,274 @@ function buildFaqCopy(locale: Locale): HomeFaqCopy {
     };
   }
 
+  if (locale === 'pt') {
+    return {
+      title: 'Perguntas frequentes',
+      subtitle: 'Respostas às perguntas mais comuns sobre a Anto',
+      ui: {
+        searchPlaceholder: 'Buscar nas perguntas frequentes...',
+        searchAriaLabel: 'Buscar perguntas frequentes',
+        clearSearchAriaLabel: 'Limpar busca',
+        clearSearch: 'Limpar busca',
+        showMore: 'Ver todas as perguntas frequentes →',
+        noResultsPrefix: 'Nenhum resultado para',
+        resultCount: {
+          singular: 'resultado encontrado',
+          plural: 'resultados encontrados',
+        },
+      },
+      categories: [
+        { id: 'all', label: 'Todas' },
+        { id: 'privacidad', label: 'Privacidade' },
+        { id: 'funcionalidad', label: 'Funcionalidade' },
+        { id: 'precios', label: 'Preços' },
+        { id: 'tecnica', label: 'Técnica' },
+        { id: 'empresarial', label: 'Empresas' },
+      ],
+      faqData: [
+        {
+          id: 101,
+          question: 'O que é a Anto?',
+          answer:
+            'A Anto é um aplicativo de acompanhamento emocional contínuo: um lugar para chegar quando você precisa de apoio entre sessões ou no dia a dia. Usa assistência de IA em segundo plano, com ferramentas e acompanhamento pensados para o cuidado. Não substitui atendimento clínico: um terapeuta ou profissional humano continua sendo o mais recomendável. Disponível no iPhone e no Android.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 102,
+          question: 'A Anto substitui um terapeuta ou psicólogo?',
+          answer:
+            'Não. A Anto é um complemento de acompanhamento emocional, não terapia nem atendimento clínico. Um terapeuta, psicólogo ou outro profissional humano capacitado continua sendo o mais recomendável quando você precisa de avaliação, diagnóstico ou tratamento. Se você já tem acompanhamento profissional, a Anto pode ajudar entre sessões; não substitui.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 103,
+          question: 'A Anto é um aplicativo de IA?',
+          answer:
+            'Usa assistência de IA para conversar e acompanhar você, mas o foco não é “mais um chat genérico”: é acompanhamento emocional contínuo, com ferramentas, acompanhamento e limites claros. A IA serve ao cuidado; não substitui o critério de um profissional humano.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 104,
+          question: 'A Anto é grátis?',
+          answer: trial.faqPricingAnswer,
+          category: 'precios',
+        },
+        {
+          id: 105,
+          question: 'Para quem é a Anto?',
+          answer:
+            'Para adultos que buscam acompanhamento emocional contínuo no dia a dia ou entre sessões com um profissional. Não foi feita para diagnosticar, tratar crises graves sozinha nem substituir atendimento clínico. Se os sintomas estiverem intensos ou você se sentir em risco, priorize ajuda humana especializada.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 106,
+          question: 'Em que a Anto é diferente do ChatGPT ou de outros chats de IA?',
+          answer:
+            'A Anto é voltada ao cuidado emocional: memória de temas, técnicas e exercícios no hub, escalas de acompanhamento (como PHQ-9 e GAD-7) e uma privacidade pensada para o acompanhamento. Um chat generalista conversa sobre qualquer coisa; a Anto fica no apoio emocional contínuo e não pretende ser terapia nem diagnóstico.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 107,
+          question: 'Quando devo procurar ajuda humana em vez da Anto, ou junto com ela?',
+          answer:
+            'Quando os sintomas são intensos ou persistentes, há risco de se machucar ou de machucar outras pessoas, você precisa de diagnóstico ou tratamento, ou simplesmente prefere a relação com um terapeuta. Nesses casos, um profissional humano vem primeiro. A Anto pode acompanhar em paralelo ou entre sessões, mas não cobre o que o atendimento clínico oferece.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 108,
+          question: 'Posso usar a Anto só entre sessões com o meu terapeuta?',
+          answer:
+            'Sim. Esse é um dos usos mais alinhados com a Anto: acompanhamento emocional contínuo entre consultas, um olhar para o dia a dia e um lugar para chegar quando não há sessão. Não substitui o trabalho com o seu terapeuta; complementa, se você e o profissional acharem útil.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 1,
+          question: 'Minhas conversas são mesmo privadas?',
+          answer:
+            'Sim. Vão criptografadas em trânsito (TLS) e em repouso. A Anto e o modelo leem o texto para prestar o serviço. Não vendemos a conversa nem a usamos para anúncios.',
+          category: 'privacidad',
+        },
+        {
+          id: 2,
+          question: 'Como funciona o assistente da Anto?',
+          answer:
+            'Você conversa num espaço de acompanhamento emocional. Por trás há assistência de IA (OpenAI GPT-5.4 Mini) com técnicas alinhadas à evidência quando cabem (por exemplo abordagens do tipo TCC), num tom profissional e prático. Não substitui terapia presencial nem diagnóstico clínico. Pode lembrar temas recorrentes, ligar padrões ao grafo de insights e ao hub de técnicas, e incluir escalas validadas (PHQ-9, GAD-7). Você pode ajustar preferências de estilo quando o aplicativo oferece.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 3,
+          question: 'Posso usar a Anto se já tenho um terapeuta?',
+          answer:
+            'Sim. A Anto foi pensada para complementar — nunca substituir — o trabalho com um terapeuta ou profissional humano. Muita gente usa entre sessões ou para o acompanhamento do dia. Se o seu profissional achar útil, você pode compartilhar relatórios ou insights; a relação terapêutica humana continua sendo o mais importante.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 4,
+          question: 'O que acontece se eu estiver em crise?',
+          answer:
+            'Se você se sentir em risco, procure ajuda humana agora: linhas de apoio 24 horas, contatos de emergência locais ou serviços de urgência. A Anto pode indicar esses recursos. Não substitui uma emergência.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 5,
+          question: 'Tem um período de teste grátis?',
+          answer: trial.faqPremiumAnswer,
+          category: 'precios',
+        },
+        {
+          id: 6,
+          question: 'Em quais aparelhos a Anto está disponível?',
+          answer:
+            'A Anto está na App Store para iOS (iPhone e iPad com iOS 13 ou superior) e no Google Play para Android. Estamos trabalhando numa versão web do aplicativo, prevista para os próximos meses. O site já está em português; o aplicativo móvel segue em espanhol e inglês.',
+          category: 'tecnica',
+        },
+        {
+          id: 7,
+          question: 'Quanto custa usar a Anto?',
+          answer:
+            'Oferecemos planos flexíveis por duração: 1 mês (US$4.20), 3 meses (US$12.62), 6 meses (US$22.09) e 1 ano (US$42.09). Todos os planos incluem as mesmas funções premium: acesso completo ao assistente de IA, análise emocional avançada, ferramentas de cuidado e suporte 24/7.',
+          category: 'precios',
+        },
+        {
+          id: 8,
+          question: 'O aplicativo está disponível em inglês?',
+          answer:
+            'Sim. Desde a versão 1.4, o aplicativo é bilíngue: você pode usar o aplicativo, o chat, os e-mails e as notificações push em espanhol ou inglês. O site também está em português. O backend adapta as respostas e os resumos de sessão ao idioma configurado no seu perfil. O aplicativo móvel não está em português.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 9,
+          question: 'O que são os modos de conversa?',
+          answer:
+            'São jeitos diferentes do assistente, conforme o que você precisa em cada momento: orientação prática com micropassos, exploração emocional mais conversada ou acompanhamento estruturado com exercícios do hub. Você escolhe o modo que melhor combina com a situação.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 10,
+          question: 'Quais escalas clínicas a Anto usa?',
+          answer:
+            'A Anto integra as escalas validadas PHQ-9 (depressão) e GAD-7 (ansiedade). Elas são preenchidas de forma automática a partir da análise das suas conversas e aparecem no histórico, com tendências e relatórios. Não substituem uma avaliação clínica presencial.',
+          category: 'funcionalidad',
+        },
+      ],
+      faqMoreData: [
+        {
+          id: 109,
+          question: 'Preciso já ter feito terapia para usar a Anto?',
+          answer:
+            'Não. Você pode começar sem ter ido à terapia: o aplicativo acompanha com uma linguagem acessível e ferramentas claras. Se você já tem um percurso terapêutico, também pode usar entre sessões. Nos dois casos continua sendo um complemento, não um substituto do atendimento profissional.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 110,
+          question: 'A Anto está disponível no Android?',
+          answer:
+            'Sim. A Anto está no Google Play para Android e na App Store para iPhone (iOS). Você pode baixar na loja do seu celular.',
+          category: 'tecnica',
+        },
+        {
+          id: 111,
+          question: 'Minhas conversas são usadas para treinar modelos de IA?',
+          answer:
+            'Não vendemos as suas conversas nem as usamos para publicidade. O processamento com fornecedores de IA serve para prestar o serviço de acompanhamento, conforme a nossa Política de Privacidade. Não comercializamos as suas informações com terceiros. Para o detalhe legal, leia a política de privacidade do site.',
+          category: 'privacidad',
+        },
+        {
+          id: 12,
+          question: 'Preciso de internet para usar a Anto?',
+          answer:
+            'Sim. A Anto precisa de conexão com a internet para a maior parte das funções, porque o processamento do assistente de IA e a análise emocional acontecem em servidores seguros. Algumas funções básicas, como exercícios de mindfulness e técnicas de relaxamento, ficam disponíveis offline. Estamos trabalhando numa versão offline mais completa, que vai permitir guardar conversas no aparelho e sincronizar quando houver conexão.',
+          category: 'tecnica',
+        },
+        {
+          id: 13,
+          question: 'Como funciona a análise emocional?',
+          answer:
+            'A análise emocional da Anto usa processamento de linguagem natural e aprendizado de máquina para ler as suas conversas, padrões de uso e respostas a questionários. O sistema identifica emoções e padrões ao longo do tempo e devolve insights personalizados sobre o seu cuidado. Você recebe gráficos do estado emocional e relatórios semanais e mensais, com recomendações pensadas para você.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 14,
+          question: 'Posso exportar os meus dados?',
+          answer:
+            'Sim. Você pode exportar as suas informações em formatos padrão (JSON, CSV, PDF): conversas, análises e relatórios. Também pode pedir a exclusão dos dados na configuração do aplicativo. Depois desse pedido, apagamos de forma permanente em até 30 dias.',
+          category: 'privacidad',
+        },
+        {
+          id: 15,
+          question: 'A Anto pode diagnosticar condições de saúde mental?',
+          answer:
+            'Não. A Anto não diagnostica e não deve ser usada para isso. É acompanhamento emocional contínuo e apoio ao cuidado; o diagnóstico cabe a um profissional humano qualificado. Se você estiver preocupado com a sua saúde mental, fale com um terapeuta ou profissional habilitado — isso continua sendo o mais recomendável.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 16,
+          question: 'Como cancelo a minha assinatura?',
+          answer:
+            'Você pode cancelar a assinatura a qualquer momento na configuração do aplicativo ou falando com a gente. Se cancelar, o acesso segue até o fim do período de cobrança atual. Não há multa nem taxa de cancelamento. Se cancelar durante o teste, nada é cobrado. A conta passa automaticamente para uma conta gratuita limitada, e você pode reativar a assinatura quando quiser.',
+          category: 'precios',
+        },
+        {
+          id: 17,
+          question: 'A Anto serve para adolescentes?',
+          answer:
+            'A Anto foi pensada para usuários de 18 anos ou mais. Para menores de 18, recomendamos o uso com a supervisão de um pai, uma mãe ou um responsável legal. Estamos desenvolvendo uma versão específica para adolescentes (13–17 anos), com conteúdo adaptado e controles parentais, que deve sair em breve. Se você é pai, mãe ou responsável e tem dúvidas sobre o uso da Anto por um menor, escreva para marcelo.ull@antoapps.com ou pelo Telegram: t.me/marcere23.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 18,
+          question: 'Que tipo de exercícios de cuidado a Anto inclui?',
+          answer:
+            'A Anto inclui uma biblioteca com mais de 100 exercícios de cuidado: meditações guiadas personalizadas, técnicas de respiração (4-7-8, respiração diafragmática), exercícios de mindfulness, relaxamento muscular progressivo, visualizações guiadas, exercícios de gratidão e técnicas de grounding. Os exercícios foram desenhados por profissionais de saúde mental e se adaptam ao seu estado emocional do momento. Dá para acessar a qualquer hora, mesmo offline.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 19,
+          question: 'O que torna a Anto uma ferramenta de cuidado diferente?',
+          answer:
+            'A Anto junta um assistente de IA com memória de temas, hub de técnicas, grafo de insights com «o que ajuda você», tarefas e hábitos unificados, início personalizado com insight diário, sessão persistente e suporte bilíngue ES/EN no aplicativo. O site também está em português. Priorizamos privacidade, transparência e utilidade prática — sem vender dados de usuários. ' +
+            trial.differentiatorSuffix,
+          category: 'funcionalidad',
+        },
+        {
+          id: 20,
+          question: 'Posso usar a Anto em vários aparelhos?',
+          answer:
+            'Sim. Você pode usar a Anto em vários aparelhos com uma só conta. No iOS e no Android, dados, conversas e análises se sincronizam de forma automática e segura.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 21,
+          question: 'O que faço se tiver um problema técnico?',
+          answer:
+            'Oferecemos suporte técnico 24/7 por vários canais: e-mail (marcelo.ull@antoapps.com), Telegram (t.me/marcere23) e LinkedIn. A equipe de suporte costuma responder em menos de 2 horas. Também há uma seção de ajuda dentro do aplicativo, com guias passo a passo e soluções para problemas comuns. Se encontrar um bug, você pode reportar direto no aplicativo e a gente corrige o quanto antes.',
+          category: 'tecnica',
+        },
+        {
+          id: 22,
+          question: 'O que é o hub de técnicas?',
+          answer:
+            'É um catálogo completo de técnicas terapêuticas, acessível pela navegação principal do aplicativo (v1.5). Inclui acesso rápido a exercícios, um quadro ABC interativo e conexão direta com o grafo de insights para ver quais técnicas se relacionam com os seus padrões. Você também pode abrir o Pomodoro ao focar uma tarefa na tela unificada de tarefas e hábitos.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 23,
+          question: 'O que é o WAI pós-sessão?',
+          answer:
+            'WAI (Working Alliance Inventory) é uma avaliação breve pós-sessão que mede a aliança terapêutica em 4 eixos: vínculo, objetivos, tarefas e feedback. Aparece depois de conversas relevantes e ajuda você a perceber como se sente com o acompanhamento. Não substitui a relação com um profissional presencial, mas traz sinais úteis para o seu acompanhamento.',
+          category: 'funcionalidad',
+        },
+        {
+          id: 24,
+          question: 'Preciso entrar de novo toda vez que abro o aplicativo?',
+          answer:
+            'Não. Desde a versão 1.5, a Anto mantém uma sessão persistente com renovação automática do token JWT. Você pode fechar e reabrir o aplicativo sem digitar a senha toda vez. Se sair manualmente ou trocar de aparelho, vai precisar autenticar de novo, por segurança.',
+          category: 'tecnica',
+        },
+      ],
+    };
+  }
+
   return {
     title: 'Frequently Asked Questions',
     subtitle: 'Find answers to the most common questions about Anto',

@@ -1,32 +1,28 @@
 import type { MetadataRoute } from 'next';
-import { hasPortugueseLegalPage, localePath, type LegalLocale } from '@/lib/i18n/config';
+import { localePath, type Locale } from '@/lib/i18n/config';
 import { INDEXABLE_ROUTES } from '@/lib/seo/indexable-routes';
 import { PSYCHOEDUCATION_INDEXABLE_ROUTES } from '@/lib/seo/psychoeducation-routes';
 import { SITE_ORIGIN } from '@/lib/seo/site';
 
 const ALL_INDEXABLE_ROUTES = [...INDEXABLE_ROUTES, ...PSYCHOEDUCATION_INDEXABLE_ROUTES];
 
-function absoluteUrl(locale: LegalLocale, logicalPath: string): string {
+function absoluteUrl(locale: Locale, logicalPath: string): string {
   return `${SITE_ORIGIN}${localePath(locale, logicalPath)}`;
 }
 
 function buildLanguageAlternates(logicalPath: string): Record<string, string> {
   const esUrl = absoluteUrl('es', logicalPath);
-  const enUrl = absoluteUrl('en', logicalPath);
-  const languages: Record<string, string> = {
+  return {
     es: esUrl,
-    en: enUrl,
+    en: absoluteUrl('en', logicalPath),
+    'pt-BR': absoluteUrl('pt', logicalPath),
     'x-default': esUrl,
   };
-  if (hasPortugueseLegalPage(logicalPath)) {
-    languages['pt-BR'] = absoluteUrl('pt', logicalPath);
-  }
-  return languages;
 }
 
 /**
  * Genera entradas del sitemap con hreflang (alternates.languages).
- * Cada ruta ES/EN aparece una vez. Las páginas legales suman pt-BR.
+ * Cada ruta lógica aparece en español, inglés y portugués de Brasil.
  */
 export function buildSitemapEntries(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
@@ -51,25 +47,21 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
       alternates: { languages },
     });
 
-    if (hasPortugueseLegalPage(route.path)) {
-      entries.push({
-        url: absoluteUrl('pt', route.path),
-        lastModified,
-        changeFrequency: route.changeFrequency,
-        priority: route.priorityEn,
-        alternates: { languages },
-      });
-    }
+    entries.push({
+      url: absoluteUrl('pt', route.path),
+      lastModified,
+      changeFrequency: route.changeFrequency,
+      priority: route.priorityEn,
+      alternates: { languages },
+    });
   }
 
   return entries;
 }
 
-/** Número esperado de URLs en el sitemap (es/en de cada ruta, más las legales pt-BR). */
+/** Número esperado de URLs en el sitemap (es, en y pt-BR de cada ruta). */
 export function expectedSitemapUrlCount(): number {
-  const bilingual = (INDEXABLE_ROUTES.length + PSYCHOEDUCATION_INDEXABLE_ROUTES.length) * 2;
-  const portugueseLegal = ALL_INDEXABLE_ROUTES.filter((route) => hasPortugueseLegalPage(route.path)).length;
-  return bilingual + portugueseLegal;
+  return (INDEXABLE_ROUTES.length + PSYCHOEDUCATION_INDEXABLE_ROUTES.length) * 3;
 }
 
 /** Todas las URLs absolutas que debe contener el sitemap. */

@@ -33,4 +33,4 @@ El chat y la micro-guía se leen como texto de la home. No hay enlace a la captu
 Reconocimiento observacional (*Cuando todo cuesta un poco más*) + viñeta de chat nocturna.
 
 ## Constraints
-Materia visual: Anto Nexus esencial (periwinkle, fondo plano, sans de sistema, card con hairline). Foto y narrativa: `editorial-emotional-web`, sin reabrir teal ni glass. Paridad ES/EN de estructura y claims. No Tailwind migration. `styles/tokens/colors.css` es legado; al tocar esta superficie, migrar sus roles.
+Materia visual: Anto Nexus esencial (periwinkle, fondo plano, sans de sistema, card con hairline). Foto y narrativa: `editorial-emotional-web`, sin reabrir teal ni glass. Paridad ES / EN / pt-BR de estructura y claims. Español sin prefijo, inglés en `/en`, portugués de Brasil en `/pt` (hreflang `pt-BR`). No Tailwind migration. `styles/tokens/colors.css` es legado; al tocar esta superficie, migrar sus roles.

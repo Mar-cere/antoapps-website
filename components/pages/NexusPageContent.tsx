@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
+import { htmlLanguage } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getNexusPageCopy } from '@/lib/i18n/copy/pages/nexus';
 import ClientInitializer from '@/components/ClientInitializer';
@@ -36,7 +37,7 @@ export default function NexusPageContent({ locale }: NexusPageContentProps) {
           {copy.skip}
         </a>
         <NexusNav locale={locale} copy={copy.nav} />
-        <main id="main-content" lang={locale}>
+        <main id="main-content" lang={htmlLanguage(locale)}>
           <NexusWorld locale={locale} copy={copy} />
           <section className="nexus-trust" aria-labelledby="nexus-trust-title">
             <h2 id="nexus-trust-title" className="visually-hidden">

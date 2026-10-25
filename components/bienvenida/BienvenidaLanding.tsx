@@ -19,7 +19,7 @@ import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 import BienvenidaLandingV2 from '@/components/bienvenida/BienvenidaLandingV2';
 import type { LandingDevice } from '@/lib/device/landing-device';
 import type { Locale } from '@/lib/i18n/config';
-import { localePath } from '@/lib/i18n/config';
+import { htmlLanguage, localePath } from '@/lib/i18n/config';
 import { getBienvenidaCopy, type BienvenidaVariant } from '@/lib/i18n/copy/bienvenida';
 import { appStoreHref } from '@/lib/download-links';
 import '@/styles/components/buttons.css';
@@ -61,7 +61,7 @@ export function bienvenidaMetadata(locale: Locale): Metadata {
       title: copy.meta.title,
       description: copy.meta.socialDescription,
       siteName: 'Anto',
-      locale: locale === 'en' ? 'en_US' : 'es_CL',
+      locale: locale === 'en' ? 'en_US' : locale === 'pt' ? 'pt_BR' : 'es_CL',
     },
     twitter: {
       card: 'summary_large_image',
@@ -96,7 +96,7 @@ export default function BienvenidaLanding({
   const year = new Date().getFullYear();
 
   return (
-    <div className="lad-page" lang={locale}>
+    <div className="lad-page" lang={htmlLanguage(locale)}>
       <MetaPixelNoscript />
       <BienvenidaLandingTracker landingVariant={landingVariant} pagePath={pagePath} />
       <header className="lad-topbar" role="banner">

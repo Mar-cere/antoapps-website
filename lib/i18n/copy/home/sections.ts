@@ -645,6 +645,267 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
       },
     },
   }),
+  pt: (trialNote) => ({
+    features: {
+      title: 'Funcionalidades principais',
+      subtitle: 'Do chat ao hub de técnicas e ao grafo de insights — tudo na versão 1.5',
+      cards: [
+        {
+          icon: 'ai',
+          title: 'Assistente de IA',
+          description:
+            'Chat com memória de temas recorrentes, sugestões que continuam ao reabrir e melhor manejo de mensagens curtas ou pensamentos difíceis. Modos de conversa e tom profissional.',
+        },
+        {
+          icon: 'dashboard',
+          title: 'Início personalizado',
+          description:
+            'Insight diário adaptado a você, sequência do ecossistema centrada no chat e um painel de foco claro para começar cada dia com direção.',
+        },
+        {
+          icon: 'techniques',
+          title: 'Hub de técnicas',
+          description:
+            'Catálogo completo de técnicas terapêuticas na navegação: acesso rápido, quadro ABC interativo e conexão direta com o grafo de insights.',
+        },
+        {
+          icon: 'insights',
+          title: 'Grafo e relatórios',
+          description:
+            'Veja padrões, «o que ajuda você» navegável, relatórios observacionais acionáveis e WAI pós-sessão (aliança terapêutica em 4 eixos).',
+        },
+        {
+          icon: 'scales',
+          title: 'Escalas PHQ-9 e GAD-7',
+          description:
+            'Avaliação automática com escalas clínicas validadas para depressão e ansiedade, com histórico, tendências e relatórios.',
+        },
+        {
+          icon: 'protocols',
+          title: 'Hub de exercícios',
+          description:
+            'No hub há exercícios (TCC, ABC, mindfulness) para quando falar não basta. Não é tratamento nem substitui um profissional.',
+        },
+        {
+          icon: 'tasks',
+          title: 'Tarefas e hábitos unificados',
+          description:
+            'Uma só tela para a sua rotina terapêutica: lembretes, Pomodoro ao focar uma tarefa e textos orientados ao cuidado.',
+        },
+        {
+          icon: 'crisis',
+          title: 'Se você estiver em crise',
+          description:
+            'Linhas de ajuda, contatos de emergência e recursos de apoio. Não substitui serviços de urgência.',
+        },
+        {
+          icon: 'language',
+          title: 'Bilíngue e sessão persistente',
+          description:
+            'O aplicativo está em espanhol e inglês. O site, em português. Volte sem digitar a senha a cada abertura, com sessão persistente e renovação automática do JWT.',
+        },
+      ],
+    },
+    howItWorks: {
+      title: 'Como funciona',
+      subtitle:
+        'Em 4 passos simples, você começa. A Anto foi pensada para ser intuitiva e acessível, independente da sua familiaridade com tecnologia.',
+      steps: [
+        {
+          title: 'Baixe o aplicativo',
+          description:
+            'Disponível grátis na App Store e no Google Play. Baixar é rápido (menos de 40MB) e a instalação leva menos de um minuto.',
+        },
+        {
+          title: 'Crie o seu perfil',
+          description:
+            'Configure o perfil de forma privada e segura em menos de 2 minutos. Só precisa de um e-mail para começar. Tudo fica criptografado desde o primeiro momento.',
+        },
+        {
+          title: 'Comece a conversar',
+          description:
+            'Inicie uma conversa com o assistente de IA, que entende as suas emoções. Você pode escrever com liberdade, fazer perguntas ou usar os guias de conversa sugeridos.',
+        },
+        {
+          title: 'Receba um apoio pensado para você',
+          description:
+            'Respostas adaptadas, ferramentas de cuidado e acompanhamento contínuo. O sistema aprende com cada interação para oferecer um apoio cada vez mais personalizado.',
+        },
+      ],
+      proTip: {
+        title: 'Dica',
+        description:
+          'Para melhores resultados, use a Anto com regularidade. O assistente aprende mais sobre você a cada conversa e pode oferecer uma orientação cada vez mais precisa.',
+      },
+    },
+    appShowcase: {
+      label: 'Mais do que um chat',
+      title: 'O seu cuidado,\norganizado.',
+      subtitle: 'Hábitos, pendências e acompanhamento emocional num só lugar.',
+      description:
+        'O painel de início mostra o seu progresso, as tarefas e o estado emocional sem perder o foco no que importa.',
+    },
+    scienceBacked: {
+      title: 'Com base na ciência',
+      subtitle:
+        'A Anto se apoia em estudos científicos publicados em revistas reconhecidas internacionalmente',
+      studies: [
+        {
+          badge: '📄 JMIR Mental Health',
+          title: 'Eficácia de agentes terapêuticos de conversa',
+          authors: 'Fitzpatrick et al. (2017)',
+          abstract:
+            'Ensaio controlado randomizado que mostrou reduções significativas em sintomas de depressão e ansiedade com agentes de conversa baseados em terapia cognitivo-comportamental.',
+          metrics: ['RCT', '70 participantes'],
+          linkText: 'Ver estudo completo →',
+          href: 'https://www.jmir.org/2017/6/e19/',
+        },
+        {
+          badge: '📊 World Psychiatry',
+          title: 'Meta-análise de aplicativos móveis',
+          authors: 'Firth et al. (2019)',
+          abstract:
+            'Meta-análise de 83 estudos confirma que intervenções digitais são eficazes para reduzir sintomas de depressão e ansiedade.',
+          metrics: ['Meta-análise', '83 estudos'],
+          linkText: 'Ver estudo completo →',
+          href: 'https://onlinelibrary.wiley.com/doi/10.1002/wps.20673',
+        },
+        {
+          badge: '🔬 npj Digital Medicine',
+          title: 'Agentes de IA na saúde mental',
+          authors: 'Vaidyam et al. (2022)',
+          abstract:
+            'Revisão que analisa a eficácia de agentes de IA e conclui que são ferramentas valiosas para apoio emocional e detecção precoce.',
+          metrics: ['Nature', 'Revisão'],
+          linkText: 'Ver estudo completo →',
+          href: 'https://www.nature.com/articles/s41746-022-00642-8',
+        },
+      ],
+      cta: 'Ver todos os estudos científicos →',
+      ctaHref: localePath('pt', '/investigacion'),
+    },
+    technologies: {
+      title: 'Stack tecnológico atual',
+      subtitle:
+        'Tecnologias atuais (2025) escolhidas pelo desempenho, pela escala e por um ecossistema ativo',
+      categories: [
+        {
+          title: 'Inteligência artificial',
+          items: [
+            { name: 'OpenAI GPT-5.4 Mini', description: 'API principal para conversas' },
+            { name: 'NLP Processing', description: 'Processamento de linguagem natural' },
+            { name: 'Sentiment Analysis', description: 'Análise emocional em tempo real' },
+          ],
+        },
+        {
+          title: 'Frontend',
+          items: [
+            { name: 'React Native', description: 'Framework multiplataforma iOS/Android' },
+            { name: 'Expo SDK', description: 'Desenvolvimento e publicação rápida' },
+            { name: 'React Navigation', description: 'Navegação fluida' },
+          ],
+        },
+        {
+          title: 'Backend',
+          items: [
+            { name: 'Node.js', description: 'Runtime JavaScript' },
+            { name: 'Express.js', description: 'Framework web' },
+            { name: 'MongoDB', description: 'Banco de dados NoSQL' },
+            { name: 'Socket.IO', description: 'WebSockets em tempo real' },
+          ],
+        },
+        {
+          title: 'Segurança',
+          items: [
+            { name: 'JWT', description: 'Autenticação segura' },
+            { name: 'bcrypt', description: 'Hash de senhas' },
+            { name: 'Helmet.js', description: 'Cabeçalhos de segurança' },
+          ],
+        },
+        {
+          title: 'Integrações',
+          items: [
+            { name: 'Mercado Pago', description: 'Processamento de pagamentos' },
+            { name: 'SendGrid', description: 'E-mails transacionais' },
+            { name: 'OpenAI API', description: 'IA conversacional' },
+          ],
+        },
+      ],
+    },
+    security: {
+      title: 'Como cuidamos do que você escreve',
+      subtitle:
+        'TLS em trânsito e criptografia em repouso. A Anto e o modelo leem o texto para prestar o serviço.',
+      cards: [
+        {
+          icon: 'encryption',
+          title: 'Trânsito',
+          description: 'O tráfego entre o seu aparelho e os servidores vai por HTTPS (TLS).',
+          features: ['HTTPS (TLS) no caminho', 'Não é criptografia de ponta a ponta'],
+        },
+        {
+          icon: 'compliance',
+          title: 'Repouso',
+          description: 'Os dados ficam criptografados em repouso, AES-256, na hospedagem (Render).',
+          features: ['AES-256 na infraestrutura', 'Não há chave única por pessoa'],
+        },
+        {
+          icon: 'auth',
+          title: 'Quem lê',
+          description: 'Você, ao entrar. A Anto e o modelo, para responder. Não vendemos a conversa.',
+          features: [
+            'Você, a Anto e o modelo',
+            'O modelo processa o texto',
+            'Sem venda a terceiros nem anúncios',
+          ],
+        },
+      ],
+      cta: 'Como cuidamos do que você escreve',
+      ctaHref: localePath('pt', '/seguridad'),
+    },
+    aiExplained: {
+      title: 'Como funciona a nossa inteligência artificial',
+      subtitle:
+        'Tecnologia atual, pensada para entender e responder às emoções humanas',
+      steps: [
+        {
+          title: 'Integração com a OpenAI API',
+          description:
+            'Conexão direta com o GPT-5.4 Mini via API REST. Prioriza um tom profissional e prático (orientação e micropassos; não substitui terapia clínica). As conversas ficam guardadas para dar continuidade entre sessões.',
+          techBadges: ['OpenAI GPT-5.4 Mini', 'MongoDB', 'NLP'],
+        },
+        {
+          title: 'Recursos em momentos difíceis',
+          description:
+            'Linhas de ajuda e, se o usuário configurar, aviso a contatos de confiança via Twilio (WhatsApp/SMS) e SendGrid. Não substitui serviços de urgência.',
+          techBadges: ['Análise de padrões', 'Twilio', 'SendGrid'],
+        },
+        {
+          title: 'Motor de apoio estruturado',
+          description:
+            'Conforme o contexto de cada conversa, o sistema sugere exercícios do hub (TCC, ABC, mindfulness). Não é tratamento nem substitui um profissional.',
+          techBadges: ['Automatizado', 'Com base em evidência', 'Contextual'],
+        },
+        {
+          title: 'Comunicação em tempo real',
+          description:
+            'WebSockets com Socket.IO para respostas em menos de 2,5 segundos. O backend Node.js consulta o histórico no MongoDB antes de gerar cada resposta.',
+          techBadges: ['Socket.IO', 'WebSockets', 'Tempo real'],
+        },
+      ],
+      cta: 'Ver detalhes técnicos completos →',
+      ctaHref: localePath('pt', '/desarrollo'),
+    },
+    pricing: {
+      title: 'Planos e preços',
+      subtitle: `Escolha a duração que melhor combina com o que você precisa. Todos os planos incluem acesso completo ao aplicativo. ${trialNote}`,
+      valueBanner: {
+        label: 'Melhor valor',
+        highlight:
+          'Os planos mais longos oferecem até 17% de economia. Todas as funções estão incluídas.',
+      },
+    },
+  }),
 };
 
 export function getHomeSectionsCopy(locale: Locale): HomeSectionsCopy {

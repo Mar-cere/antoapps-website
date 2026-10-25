@@ -125,6 +125,57 @@ const whatsNewCopy: Record<Locale, WhatsNewCopy> = {
       appHref: localePath('en', '/app'),
     },
   },
+  pt: {
+    title: 'Novidades na Anto',
+    subtitle: `O mais recente na versão ${APP_VERSION}: uma presença mais clara e um acompanhamento que segue o fio.`,
+    versionBadge: APP_VERSION_LABEL,
+    footnote:
+      'Escalas PHQ-9/GAD-7, protocolos estruturados e detecção de crise continuam disponíveis em Funcionalidades.',
+    items: [
+      {
+        icon: '🏠',
+        title: 'Início e painel renovados',
+        description:
+          'Insight inicial personalizado, sequência do ecossistema centrada no chat e um painel de foco mais claro para começar o dia.',
+      },
+      {
+        icon: '🧰',
+        title: 'Hub de técnicas terapêuticas',
+        description:
+          'Catálogo completo de técnicas na navegação, acesso rápido, quadro ABC interativo e conexão com o grafo de insights.',
+      },
+      {
+        icon: '✅',
+        title: 'Tarefas e hábitos unificados',
+        description:
+          'Uma só tela para organizar a sua rotina, com tom de cuidado, Pomodoro ao focar uma tarefa e textos mais humanos.',
+      },
+      {
+        icon: '📊',
+        title: 'Resumo e relatório acionáveis',
+        description:
+          '«O que ajuda você» navegável, WAI pós-sessão (aliança terapêutica) e memória de temas recorrentes no chat.',
+      },
+      {
+        icon: '🔐',
+        title: 'Sessão persistente e onboarding',
+        description:
+          'Volte ao aplicativo sem digitar a senha toda vez; onboarding redesenhado com benefícios, validação e tema claro/escuro.',
+      },
+      {
+        icon: '💬',
+        title: 'Chat mais firme',
+        description:
+          'Sugestões que continuam ao reabrir, melhor manejo de pensamentos intrusivos e sinais ampliados (anedonia, imagem corporal, bullying).',
+      },
+    ],
+    cta: {
+      changelogLabel: 'Ver histórico completo →',
+      changelogHref: localePath('pt', '/changelog'),
+      appLabel: 'Conhecer o aplicativo →',
+      appHref: localePath('pt', '/app'),
+    },
+  },
 };
 
 export function getWhatsNewCopy(locale: Locale): WhatsNewCopy {

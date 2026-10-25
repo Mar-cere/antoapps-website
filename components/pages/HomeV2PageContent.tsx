@@ -1,6 +1,7 @@
 'use client';
 
 import type { Locale } from '@/lib/i18n/config';
+import { htmlLanguage } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import type { LandingDevice } from '@/lib/device/landing-device';
 import HomeMinimalNav from '@/components/layout/HomeMinimalNav';
@@ -62,7 +63,7 @@ export default function HomeV2PageContent({
             id="main-content"
             className="home-landing-page home-landing-page--v2"
             role="main"
-            lang={locale}
+            lang={htmlLanguage(locale)}
           >
             <div className="home-landing-page__content">
               <HomeV2Hero locale={locale} />

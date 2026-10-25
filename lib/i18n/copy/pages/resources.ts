@@ -81,8 +81,10 @@ function hubBlurb(text: string): string {
   return text
     .replace(/\s*Psicoeducación[^.]*\.?/gi, '')
     .replace(/\s*Psychoeducation[^.]*\.?/gi, '')
+    .replace(/\s*Psicoeducação[^.]*\.?/gi, '')
     .replace(/\s*no sustituye[^.]*\.?/gi, '')
     .replace(/\s*does not replace[^.]*\.?/gi, '')
+    .replace(/\s*não substitui[^.]*\.?/gi, '')
     .trim();
 }
 
@@ -115,6 +117,13 @@ export const FEATURED_HUMAN_LABELS: Record<
     'distorsiones-cognitivas': 'Thoughts in a loop',
     'higiene-sueno-salud-mental': 'When you cannot sleep (sleep)',
     'que-es-tcc': 'Thoughts and emotions (CBT)',
+  },
+  pt: {
+    'grounding-ansiedad-crisis': 'Quando a ansiedade sobe (grounding)',
+    'escalas-phq9-gad7': 'PHQ-9 e GAD-7',
+    'distorsiones-cognitivas': 'Pensamentos em loop',
+    'higiene-sueno-salud-mental': 'Quando você não consegue dormir (sono)',
+    'que-es-tcc': 'Pensamentos e emoções (TCC)',
   },
 };
 
@@ -168,6 +177,41 @@ function siteResources(locale: Locale): ResourceItem[] {
     ];
   }
 
+  if (locale === 'pt') {
+    return [
+      {
+        id: 'site-1',
+        title: 'O que é a Anto',
+        description: 'Um acompanhamento para quando tudo custa um pouco mais.',
+        link: localePath(locale, '/sobre-nosotros'),
+      },
+      {
+        id: 'site-3',
+        title: 'Segurança e privacidade',
+        description: 'Por que o fio é lido, como ele viaja e como pedir a exclusão.',
+        link: localePath(locale, '/seguridad'),
+      },
+      {
+        id: 'site-4',
+        title: 'Evidência que informa a Anto',
+        description: 'Literatura de categoria, ponte com o produto, limites honestos e citações APA.',
+        link: localePath(locale, '/investigacion'),
+      },
+      {
+        id: 'site-2',
+        title: 'Histórico de versões',
+        description: 'O que mudou nas versões recentes.',
+        link: localePath(locale, '/changelog'),
+      },
+      {
+        id: 'site-5',
+        title: 'Perguntas frequentes',
+        description: 'Acompanhamento, privacidade, preço e o teste grátis.',
+        link: homeFaq,
+      },
+    ];
+  }
+
   return [
     {
       id: 'site-1',
@@ -203,8 +247,8 @@ function siteResources(locale: Locale): ResourceItem[] {
 }
 
 function groupsForLocale(locale: Locale): ResourceGroup[] {
-  const guidesTitle = locale === 'en' ? 'Guides' : 'Guías';
-  const antoTitle = locale === 'en' ? 'About Anto' : 'Sobre Anto';
+  const guidesTitle = locale === 'en' ? 'Guides' : locale === 'pt' ? 'Guias' : 'Guías';
+  const antoTitle = locale === 'en' ? 'About Anto' : locale === 'pt' ? 'Sobre a Anto' : 'Sobre Anto';
 
   return [
     {
@@ -255,6 +299,43 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         searchAriaLabel: 'Search resources',
         emptyMessage: 'Nothing matches that search.',
         viewResourceLabel: 'Read',
+        groups,
+      },
+    };
+  }
+
+  if (locale === 'pt') {
+    return {
+      breadcrumbs: {
+        homeLabel: 'Início',
+        homeHref: localePath(locale, '/'),
+        currentLabel: 'Recursos',
+      },
+      meta: {
+        title: 'Recursos — Anto | Psicoeducação para ansiedade, TCC, sono e horas quietas',
+        description:
+          `${PSYCHOEDUCATION_SLUGS.length} guias gratuitos de psicoeducação: ansiedade, TCC, distorções cognitivas (breve + mapa clínico), sono (breve + mapa completo), grounding, depressão, PHQ-9/GAD-7 e mais — além da Anto no iPhone e no Android, privacidade e evidência. Complementa; não substitui um terapeuta.`,
+        openGraphTitle: 'Recursos da Anto — guias para ansiedade e horas quietas',
+        openGraphDescription:
+          'Comece pela ansiedade, pelos pensamentos em loop, pelo sono ou pela TCC. Guias educativos curtos — não são um diagnóstico.',
+        canonicalPath: CANONICAL_PATH,
+      },
+      hero: {
+        title: 'Guias para encontrar o chão',
+        subtitle:
+          'Psicoeducação breve sobre ansiedade, técnicas e padrões — e como a Anto funciona. Não substitui atendimento profissional.',
+        seoIntro:
+          'Guias educativos sobre ansiedade, terapia cognitivo-comportamental (TCC), pensamentos em loop, o mapa clínico das distorções (níveis, clusters, experimentos comportamentais), grounding, sono, depressão, regulação emocional, burnout e escalas como PHQ-9 e GAD-7. Leitura gratuita. Complementam — não substituem — a terapia humana.',
+      },
+      featured: {
+        ariaLabel: 'Comece por aqui',
+        links: featuredLinksForLocale(locale),
+      },
+      library: {
+        searchPlaceholder: 'Buscar…',
+        searchAriaLabel: 'Buscar recursos',
+        emptyMessage: 'Nada corresponde a essa busca.',
+        viewResourceLabel: 'Ler',
         groups,
       },
     };

@@ -53,6 +53,34 @@ function buildAboutPageCopy(locale: Locale): AboutPageCopy {
     };
   }
 
+  if (locale === 'pt') {
+    const lede = 'Um acompanhamento para quando tudo custa um pouco mais.';
+    return {
+      meta: {
+        title: 'Sobre a Anto | O que é e o que não é',
+        description: `${lede} Não diagnostica e não substitui terapia. Feito no Chile.`,
+      },
+      h1: 'Sobre a Anto',
+      lede,
+      figure: {
+        src: getEditorialImagePath('evening'),
+        alt: 'Luz da tarde numa sala quieta, janela ao anoitecer',
+        caption: 'Feito no Chile, por uma pessoa.',
+        width: EDITORIAL_WIDTH,
+        height: EDITORIAL_HEIGHT,
+      },
+      paragraphs: [
+        'A Anto é um aplicativo de acompanhamento emocional contínuo com IA. Para as horas quietas, entre o dia e a cama, ou entre sessões. Você escreve o que sente. Sai com clareza e um passo concreto.',
+        'Não diagnostica e não substitui terapia. Um terapeuta ou profissional humano continua sendo o mais recomendável.',
+        'Feito no Chile, por uma pessoa. Sem anúncios com a sua história. As conversas são suas.',
+      ],
+      microcopy: 'iPhone e Android · 1 dia grátis · Sem cartão · Cancele quando quiser',
+      storeBadge: '1 dia grátis',
+      disclaimer:
+        'A Anto não substitui terapia nem atendimento clínico profissional. Se você está em crise, procure ajuda de emergência no seu país.',
+    };
+  }
+
   const lede = 'Un acompañante para cuando todo cuesta un poco más.';
   return {
     meta: {

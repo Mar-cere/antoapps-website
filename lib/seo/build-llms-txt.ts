@@ -52,6 +52,21 @@ const PAGE_LABELS: Record<Locale, Record<string, string>> = {
     '/privacidad': 'Privacy policy',
     '/terminos': 'Terms of service',
   },
+  pt: {
+    '': 'Início — produto e download',
+    '/bienvenida': 'Landing de conversão (Meta Ads, /l)',
+    '/app': 'Página de produto / download',
+    '/seguridad': 'Como o fio é cuidado: por que é lido, criptografia, limites',
+    '/investigacion': 'Evidência que informa a Anto: ensaio editorial, ponte com o produto, APA e limites honestos',
+    '/recursos': 'Hub de recursos — guias de psicoeducação + Anto',
+    '/changelog': 'Histórico de versões do app',
+    '/sobre-nosotros': 'O que a Anto é e o que não é',
+    '/contacto': 'Contato e suporte',
+    '/desarrollo': 'Roteiro do produto',
+    '/nexus': 'Inside Anto Nexus — visualização da inteligência adaptativa',
+    '/privacidad': 'Política de privacidade',
+    '/terminos': 'Termos de serviço',
+  },
 };
 
 const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
@@ -93,7 +108,32 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '/privacidad': 'Privacy policy: data handling, encryption, and user rights. Legal text stays in a reading measure.',
     '/terminos': 'Terms of service and conditions of use for the app.',
   },
+  pt: {
+    '': 'Home editorial. H1: «Quando tudo custa um pouco mais.» Acompanhamento para ansiedade e horas quietas, entre sessões ou no dia a dia. Demos do produto, foundation (memória/técnicas), avaliações, preços, FAQ e download na App Store e no Google Play. Complementa; não substitui a terapia.',
+    '/bienvenida': 'Landing de anúncios (Meta): apoio emocional para ansiedade no iPhone e no Android; teste grátis de 1 dia. Botões das lojas na dobra e CTA fixo.',
+    '/app': 'App para iPhone e Android: o que é, o fio e um guia curto em texto, e links de download. Complementa; não substitui a terapia.',
+    '/seguridad':
+      'Por que a Anto e o modelo leem o fio, criptografia em trânsito e em repouso, como pedir a exclusão, e o aviso de que não é terapia.',
+    '/investigacion': 'Como a Anto lê TCC, GAD-7 e agentes conversacionais; como isso aparece no produto; citações APA; sem ensaios próprios da Anto.',
+    '/recursos':
+      `Hub editorial: atalhos humanos (ansiedade, pensamentos em loop, sono, TCC) + ${PSYCHOEDUCATION_SLUGS.length} guias de psicoeducação e páginas Sobre a Anto (app, segurança, pesquisa). Material educativo; não é diagnóstico.`,
+    '/changelog': 'Histórico de versões do app (Expo ' + APP_VERSION + '), em ordem cronológica.',
+    '/sobre-nosotros': 'O que a Anto é e o que não é: acompanhamento emocional com IA para as horas quietas. Não diagnostica nem substitui a terapia. Feito no Chile. Download no iPhone e no Android.',
+    '/contacto':
+      'Formulário para escrever a uma pessoa sobre o app, a conta ou um problema, e o e-mail marcelo.ull@antoapps.com.',
+    '/desarrollo': 'Engenharia da Anto: stack em produção, arquitetura e como o deploy acontece. O detalhe técnico fica abaixo do título.',
+    '/nexus':
+      'Inside Anto Nexus: cada conversa forma a inteligência que entende você. Constelação viva; no scroll, histórico, recorrência e um passo concreto. CTA para testar a Anto; privacidade, ciência e limites no final. Sem métricas promocionais. Não substitui o cuidado profissional.',
+    '/privacidad': 'Política de privacidade: tratamento de dados, criptografia e direitos. O texto legal fica na medida de leitura.',
+    '/terminos': 'Termos de serviço e condições de uso do aplicativo.',
+  },
 };
+
+function t(locale: Locale, es: string, en: string, pt: string): string {
+  if (locale === 'en') return en;
+  if (locale === 'pt') return pt;
+  return es;
+}
 
 function absoluteUrl(locale: Locale, logicalPath: string): string {
   return `${SITE_ORIGIN}${localePath(locale, logicalPath)}`;
@@ -105,14 +145,13 @@ function cleanGuideTitle(title: string): string {
 
 function formatPricingBlock(locale: Locale): string[] {
   const trial = getTrialCopy(locale);
-  const isEs = locale === 'es';
   return [
-    isEs ? '### Planes (USD, App Store)' : '### Plans (USD, App Store)',
-    `- 1 ${isEs ? 'mes' : 'month'}: ${formatUsdPrice(PRICING_USD.month, locale)}`,
-    `- 3 ${isEs ? 'meses' : 'months'}: ${formatUsdPrice(PRICING_USD.threeMonths, locale)} (${isEs ? 'más popular' : 'most popular'})`,
-    `- 6 ${isEs ? 'meses' : 'months'}: ${formatUsdPrice(PRICING_USD.sixMonths, locale)} (${isEs ? 'ahorra 12%' : 'save 12%'})`,
-    `- 1 ${isEs ? 'año' : 'year'}: ${formatUsdPrice(PRICING_USD.year, locale)} (${isEs ? 'ahorra 17%' : 'save 17%'})`,
-    `- ${trial.label}. ${isEs ? 'Sin tarjeta para empezar' : 'No card required to start'}.`,
+    t(locale, '### Planes (USD, App Store)', '### Plans (USD, App Store)', '### Planos (USD, App Store)'),
+    `- 1 ${t(locale, 'mes', 'month', 'mês')}: ${formatUsdPrice(PRICING_USD.month, locale)}`,
+    `- 3 ${t(locale, 'meses', 'months', 'meses')}: ${formatUsdPrice(PRICING_USD.threeMonths, locale)} (${t(locale, 'más popular', 'most popular', 'mais popular')})`,
+    `- 6 ${t(locale, 'meses', 'months', 'meses')}: ${formatUsdPrice(PRICING_USD.sixMonths, locale)} (${t(locale, 'ahorra 12%', 'save 12%', 'economiza 12%')})`,
+    `- 1 ${t(locale, 'año', 'year', 'ano')}: ${formatUsdPrice(PRICING_USD.year, locale)} (${t(locale, 'ahorra 17%', 'save 17%', 'economiza 17%')})`,
+    `- ${trial.label}. ${t(locale, 'Sin tarjeta para empezar', 'No card required to start', 'Sem cartão para começar')}.`,
   ];
 }
 
@@ -152,7 +191,6 @@ function formatPageBlock(locale: Locale): string[] {
 
 /** Intención humana + índice temático para agentes / búsqueda IA. */
 function formatResourcesDiscoveryBlock(locale: Locale): string[] {
-  const isEs = locale === 'es';
   const hubUrl = absoluteUrl(locale, '/recursos');
   const { hero } = getResourcesPageCopy(locale);
 
@@ -165,16 +203,19 @@ function formatResourcesDiscoveryBlock(locale: Locale): string[] {
   const topicGroups: readonly {
     labelEs: string;
     labelEn: string;
+    labelPt: string;
     slugs: readonly PsychoeducationSlug[];
   }[] = [
     {
       labelEs: 'Ansiedad (incluida la social) / crisis / grounding',
       labelEn: 'Anxiety (including social) / crisis / grounding',
+      labelPt: 'Ansiedade (inclusive a social) / crise / grounding',
       slugs: ['grounding-ansiedad-crisis', 'ansiedad-y-preocupacion', 'estres-y-carga'],
     },
     {
       labelEs: 'TCC / distorsiones (breve + mapa: niveles y experimentos) / ABC',
       labelEn: 'CBT / distortions (brief + map: levels and experiments) / ABC',
+      labelPt: 'TCC / distorções (breve + mapa: níveis e experimentos) / ABC',
       slugs: [
         'que-es-tcc',
         'distorsiones-cognitivas',
@@ -185,6 +226,7 @@ function formatResourcesDiscoveryBlock(locale: Locale): string[] {
     {
       labelEs: 'Sueño (breve + mapa: ciclo, higiene, TCC-I) / regulación / mindfulness',
       labelEn: 'Sleep (brief + map: cycle, hygiene, CBT-I) / regulation / mindfulness',
+      labelPt: 'Sono (breve + mapa: ciclo, higiene, TCC-I) / regulação / mindfulness',
       slugs: [
         'higiene-sueno-salud-mental',
         'mapa-sueno-e-insomnio',
@@ -196,11 +238,13 @@ function formatResourcesDiscoveryBlock(locale: Locale): string[] {
     {
       labelEs: 'Ánimo / depresión / activación',
       labelEn: 'Mood / depression / activation',
+      labelPt: 'Humor / depressão / ativação',
       slugs: ['depresion-guia-breve', 'activacion-conductual', 'agotamiento-y-burnout'],
     },
     {
       labelEs: 'PHQ-9 y GAD-7 / protocolos (TOC, trauma, ira, duelo)',
       labelEn: 'PHQ-9 and GAD-7 / protocols (OCD, trauma, anger, grief)',
+      labelPt: 'PHQ-9 e GAD-7 / protocolos (TOC, trauma, raiva, luto)',
       slugs: [
         'escalas-phq9-gad7',
         'toc-y-erp',
@@ -212,7 +256,7 @@ function formatResourcesDiscoveryBlock(locale: Locale): string[] {
   ];
 
   const topicLines = topicGroups.flatMap((group) => {
-    const label = isEs ? group.labelEs : group.labelEn;
+    const label = t(locale, group.labelEs, group.labelEn, group.labelPt);
     const urls = group.slugs
       .map((slug) => absoluteUrl(locale, `/recursos/${slug}`))
       .join(', ');
@@ -220,36 +264,37 @@ function formatResourcesDiscoveryBlock(locale: Locale): string[] {
   });
 
   return [
-    isEs
-      ? '### Recursos — puntos de entrada (intención humana)'
-      : '### Resources — entry points (human intent)',
+    t(
+      locale,
+      '### Recursos — puntos de entrada (intención humana)',
+      '### Resources — entry points (human intent)',
+      '### Recursos — pontos de entrada (intenção humana)'
+    ),
     `- Hub: ${hubUrl}`,
-    `- ${isEs ? 'Orientación' : 'Orientation'}: ${hero.seoIntro}`,
+    `- ${t(locale, 'Orientación', 'Orientation', 'Orientação')}: ${hero.seoIntro}`,
     '',
-    isEs ? '**Empieza por aquí:**' : '**Start here:**',
+    t(locale, '**Empieza por aquí:**', '**Start here:**', '**Comece por aqui:**'),
     ...entryLines,
     '',
-    isEs ? '**Índice temático → URLs:**' : '**Topic index → URLs:**',
+    t(locale, '**Índice temático → URLs:**', '**Topic index → URLs:**', '**Índice temático → URLs:**'),
     ...topicLines,
     '',
-    isEs
-      ? '**Sobre Anto (mismo hub):** app, seguridad, investigación, changelog, FAQ — ver páginas del sitio.'
-      : '**About Anto (same hub):** app, safety, research, changelog, FAQ — see site pages.',
+    t(
+      locale,
+      '**Sobre Anto (mismo hub):** app, seguridad, investigación, changelog, FAQ — ver páginas del sitio.',
+      '**About Anto (same hub):** app, safety, research, changelog, FAQ — see site pages.',
+      '**Sobre a Anto (mesmo hub):** app, segurança, pesquisa, changelog, FAQ — veja as páginas do site.'
+    ),
     '',
   ];
 }
 
 function formatGuideBlock(locale: Locale): string[] {
   const guides = getAllPsychoeducationGuides(locale);
-  const isEs = locale === 'es';
-  return guides.flatMap((guide) => formatGuideEntry(locale, guide, isEs));
+  return guides.flatMap((guide) => formatGuideEntry(locale, guide));
 }
 
-function formatGuideEntry(
-  locale: Locale,
-  guide: PsychoeducationGuide,
-  isEs: boolean
-): string[] {
+function formatGuideEntry(locale: Locale, guide: PsychoeducationGuide): string[] {
   const title = cleanGuideTitle(guide.meta.title);
   const url = absoluteUrl(locale, `/recursos/${guide.slug}`);
   const topics = guide.sections.map((s) => s.heading).join(' · ');
@@ -261,23 +306,17 @@ function formatGuideEntry(
   const lines = [
     `### ${title}`,
     `- URL: ${url}`,
-    `- ${isEs ? 'Formato' : 'Format'}: ${
+    `- ${t(locale, 'Formato', 'Format', 'Formato')}: ${
       guide.layout === 'dossier'
-        ? isEs
-          ? 'mapa clínico'
-          : 'clinical map'
+        ? t(locale, 'mapa clínico', 'clinical map', 'mapa clínico')
         : guide.layout === 'brief'
-          ? isEs
-            ? 'guía breve'
-            : 'brief guide'
-          : isEs
-            ? 'guía'
-            : 'guide'
+          ? t(locale, 'guía breve', 'brief guide', 'guia breve')
+          : t(locale, 'guía', 'guide', 'guia')
     }`,
-    `- ${isEs ? 'Tiempo de lectura' : 'Reading time'}: ~${guide.readingMinutes} min`,
-    `- ${isEs ? 'Resumen' : 'Summary'}: ${guide.hero.subtitle}`,
-    `- ${isEs ? 'Descripción' : 'Description'}: ${guide.meta.description}`,
-    `- ${isEs ? 'Temas cubiertos' : 'Topics covered'}: ${topics}`,
+    `- ${t(locale, 'Tiempo de lectura', 'Reading time', 'Tempo de leitura')}: ~${guide.readingMinutes} min`,
+    `- ${t(locale, 'Resumen', 'Summary', 'Resumo')}: ${guide.hero.subtitle}`,
+    `- ${t(locale, 'Descripción', 'Description', 'Descrição')}: ${guide.meta.description}`,
+    `- ${t(locale, 'Temas cubiertos', 'Topics covered', 'Temas cobertos')}: ${topics}`,
   ];
 
   if (guide.meta.keywords) {
@@ -285,16 +324,16 @@ function formatGuideEntry(
   }
 
   if (guide.pullQuote) {
-    lines.push(`- ${isEs ? 'Cita clave' : 'Key line'}: ${guide.pullQuote}`);
+    lines.push(`- ${t(locale, 'Cita clave', 'Key line', 'Frase-chave')}: ${guide.pullQuote}`);
   }
 
   if (guide.figure) {
     const img = guide.figure.src.startsWith('http')
       ? guide.figure.src
       : `${SITE_ORIGIN}${guide.figure.src}`;
-    lines.push(`- ${isEs ? 'Imagen' : 'Image'}: ${img}`);
+    lines.push(`- ${t(locale, 'Imagen', 'Image', 'Imagem')}: ${img}`);
     if (guide.figure.caption) {
-      lines.push(`- ${isEs ? 'Pie de foto' : 'Caption'}: ${guide.figure.caption}`);
+      lines.push(`- ${t(locale, 'Pie de foto', 'Caption', 'Legenda')}: ${guide.figure.caption}`);
     }
   }
 
@@ -308,22 +347,22 @@ function formatGuideEntry(
       ? companionLink.href
       : absoluteUrl(locale, companionLink.href);
     lines.push(
-      `- ${isEs ? 'Hermana / lectura relacionada' : 'Companion / related reading'}: [${companionLink.label}](${companionUrl})`
+      `- ${t(locale, 'Hermana / lectura relacionada', 'Companion / related reading', 'Irmã / leitura relacionada')}: [${companionLink.label}](${companionUrl})`
     );
   }
 
   if (guide.howTo) {
     lines.push(
-      `- HowTo: ${guide.howTo.name} (${guide.howTo.steps.length} ${isEs ? 'pasos' : 'steps'})`
+      `- HowTo: ${guide.howTo.name} (${guide.howTo.steps.length} ${t(locale, 'pasos', 'steps', 'passos')})`
     );
   }
 
   if (guide.productMoment) {
     lines.push(
-      `- ${isEs ? 'Momento de producto' : 'Product moment'}: ${guide.productMoment.title} — ${guide.productMoment.body}`
+      `- ${t(locale, 'Momento de producto', 'Product moment', 'Momento do produto')}: ${guide.productMoment.title} — ${guide.productMoment.body}`
     );
     for (const message of guide.productMoment.chat.messages) {
-      const who = message.role === 'user' ? (isEs ? 'Usuario' : 'User') : 'Anto';
+      const who = message.role === 'user' ? t(locale, 'Usuario', 'User', 'Usuário') : 'Anto';
       lines.push(`  - ${who}: ${message.text}`);
     }
     if (guide.productMoment.suggestions.length > 0) {
@@ -334,7 +373,7 @@ function formatGuideEntry(
   }
 
   if (guide.furtherReading) {
-    lines.push(`- ${isEs ? 'Ir más a fondo' : 'Go deeper'}:`);
+    lines.push(`- ${t(locale, 'Ir más a fondo', 'Go deeper', 'Ir mais a fundo')}:`);
     for (const link of guide.furtherReading.links) {
       const href =
         link.external || link.href.startsWith('http')
@@ -345,7 +384,7 @@ function formatGuideEntry(
   }
 
   if (guide.references?.items.length) {
-    lines.push(`- ${isEs ? 'Referencias (APA)' : 'References (APA)'}:`);
+    lines.push(`- ${t(locale, 'Referencias (APA)', 'References (APA)', 'Referências (APA)')}:`);
     for (const ref of guide.references.items) {
       const note = ref.note ? ` — ${ref.note}` : '';
       lines.push(`  - [${ref.apa}](${ref.href})${note}`);
@@ -353,8 +392,8 @@ function formatGuideEntry(
   }
 
   lines.push(
-    `- ${isEs ? 'Guías relacionadas' : 'Related guides'}: ${related}`,
-    `- ${isEs ? 'Aviso' : 'Notice'}: ${guide.disclaimer}`,
+    `- ${t(locale, 'Guías relacionadas', 'Related guides', 'Guias relacionadas')}: ${related}`,
+    `- ${t(locale, 'Aviso', 'Notice', 'Aviso')}: ${guide.disclaimer}`,
     ''
   );
 
@@ -363,39 +402,48 @@ function formatGuideEntry(
 
 function formatResearchEvidenceBlock(locale: Locale): string[] {
   const research = getResearchPageCopy(locale);
-  const isEs = locale === 'es';
   const url = absoluteUrl(locale, '/investigacion');
 
   return [
-    isEs
-      ? '### Investigación — evidencia que informa Anto'
-      : '### Research — evidence that informs Anto',
+    t(
+      locale,
+      '### Investigación — evidencia que informa Anto',
+      '### Research — evidence that informs Anto',
+      '### Pesquisa — evidência que informa a Anto'
+    ),
     `- URL: ${url}`,
-    `- ${isEs ? 'Tesis' : 'Thesis'}: ${research.hero.title}`,
-    `- ${isEs ? 'Resumen' : 'Summary'}: ${research.hero.subtitle}`,
-    `- ${isEs ? 'Cita clave' : 'Key line'}: ${research.pullQuote}`,
+    `- ${t(locale, 'Tesis', 'Thesis', 'Tese')}: ${research.hero.title}`,
+    `- ${t(locale, 'Resumen', 'Summary', 'Resumo')}: ${research.hero.subtitle}`,
+    `- ${t(locale, 'Cita clave', 'Key line', 'Frase-chave')}: ${research.pullQuote}`,
     '',
-    isEs ? '**Qué tomamos (no ensayos de Anto):**' : '**What we take (not Anto trials):**',
+    t(
+      locale,
+      '**Qué tomamos (no ensayos de Anto):**',
+      '**What we take (not Anto trials):**',
+      '**O que levamos (não são ensaios da Anto):**'
+    ),
     ...research.takes.items.map((take) => `- **${take.title}**: ${take.body}`),
     '',
-    isEs ? '**Qué no afirmamos:**' : '**What we do not claim:**',
+    t(locale, '**Qué no afirmamos:**', '**What we do not claim:**', '**O que não afirmamos:**'),
     ...research.limits.paragraphs.map((paragraph) => `- ${paragraph}`),
     '',
-    isEs
-      ? '**Referencias APA (DOI — evidencia de categoría):**'
-      : '**APA references (DOI — category evidence):**',
+    t(
+      locale,
+      '**Referencias APA (DOI — evidencia de categoría):**',
+      '**APA references (DOI — category evidence):**',
+      '**Referências APA (DOI — evidência de categoria):**'
+    ),
     ...research.references.items.map((ref) => `- [${ref.label}](${ref.href}) — ${ref.apa}`),
-    `- ${isEs ? 'Aviso' : 'Notice'}: ${research.disclaimer}`,
+    `- ${t(locale, 'Aviso', 'Notice', 'Aviso')}: ${research.disclaimer}`,
     '',
   ];
 }
 
 function localeNarrative(locale: Locale): string[] {
   const copy = getHomeV2Copy(locale);
-  const isEs = locale === 'es';
 
   return [
-    isEs ? '## Qué es Anto (español)' : '## What is Anto (English)',
+    t(locale, '## Qué es Anto (español)', '## What is Anto (English)', '## O que é a Anto (português)'),
     '',
     `**${copy.hero.brand} — ${copy.hero.titleLine1} ${copy.hero.titleAccent}**`,
     copy.hero.support,
@@ -403,25 +451,40 @@ function localeNarrative(locale: Locale): string[] {
     `**${copy.foundation.title}**`,
     copy.foundation.support,
     '',
-    isEs ? '### Por qué no es un chat genérico' : '### Why it is not a generic chat',
+    t(
+      locale,
+      '### Por qué no es un chat genérico',
+      '### Why it is not a generic chat',
+      '### Por que não é uma conversa genérica'
+    ),
     ...formatFoundation(locale),
     '',
     ...copy.explore.coda.trust.map((item) => `- ${item}`),
     '',
     ...formatPricingBlock(locale),
     '',
-    isEs ? '### Preguntas frecuentes (home)' : '### Frequently asked questions (home)',
+    t(
+      locale,
+      '### Preguntas frecuentes (home)',
+      '### Frequently asked questions (home)',
+      '### Perguntas frequentes (home)'
+    ),
     '',
     ...formatHomeFaqBlock(locale),
-    isEs ? '### Seguir explorando' : '### Keep exploring',
+    t(locale, '### Seguir explorando', '### Keep exploring', '### Continuar explorando'),
     ...formatExplore(locale),
     '',
-    isEs ? '### Páginas del sitio' : '### Site pages',
+    t(locale, '### Páginas del sitio', '### Site pages', '### Páginas do site'),
     ...formatPageBlock(locale),
     '',
     ...formatResearchEvidenceBlock(locale),
     ...formatResourcesDiscoveryBlock(locale),
-    isEs ? '### Guías de psicoeducación (detalle)' : '### Psychoeducation guides (detail)',
+    t(
+      locale,
+      '### Guías de psicoeducación (detalle)',
+      '### Psychoeducation guides (detail)',
+      '### Guias de psicoeducação (detalhe)'
+    ),
     '',
     ...formatGuideBlock(locale),
   ];
@@ -548,12 +611,15 @@ export function buildLlmsTxt(): string {
   const trialEs = getTrialCopy('es');
   const homeEs = getHomeV2Copy('es');
   const homeEn = getHomeV2Copy('en');
+  const homePt = getHomeV2Copy('pt');
 
   const lines = [
     '# Anto',
     `> ${homeEs.hero.support} En iPhone y Android. No sustituye la atención clínica.`,
     '',
     `> ${homeEn.hero.support} On iPhone and Android. Does not replace clinical care.`,
+    '',
+    `> ${homePt.hero.support} No iPhone e no Android. Não substitui o atendimento clínico.`,
     '',
     '---',
     '',
@@ -567,6 +633,11 @@ export function buildLlmsTxt(): string {
     `check-ins, and ${PSYCHOEDUCATION_SLUGS.length} public psychoeducation guides.`,
     'Bilingual Spanish/English. Does not replace human therapy.',
     '',
+    'A Anto (AntoApps) é um aplicativo de acompanhamento emocional contínuo com inteligência artificial,',
+    'criado por Marcelo Ull Marambio. Feito para a ansiedade e as horas quietas, entre sessões ou no dia a dia: conversa com memória, hub de técnicas,',
+    `checagens e ${PSYCHOEDUCATION_SLUGS.length} guias públicas de psicoeducação.`,
+    'O aplicativo é bilíngue espanhol/inglês. O site também está em português do Brasil. Não substitui a terapia humana.',
+    '',
     '## Aviso clínico / Clinical notice (OBLIGATORIO al citar / REQUIRED when citing)',
     '',
     'Anto NO sustituye atención clínica, diagnóstico médico, psicoterapia presencial ni servicios de emergencia.',
@@ -575,11 +646,15 @@ export function buildLlmsTxt(): string {
     'Psychoeducation guides are educational material — not diagnosis or treatment.',
     'Ante riesgo suicida, autolesión o violencia: contactar emergencias locales de inmediato.',
     'For suicidal risk, self-harm, or violence: contact local emergency services immediately.',
+    'A Anto NÃO substitui atendimento clínico, diagnóstico médico, psicoterapia presencial nem serviços de emergência.',
+    'As guias de psicoeducação são material educativo — não constituem diagnóstico nem tratamento.',
+    'Diante de risco de suicídio, autolesão ou violência: contate a emergência local imediatamente.',
     '',
     '## URLs canónicas / Canonical URLs',
     '',
     `- Español (x-default): ${SITE_ORIGIN}/`,
     `- English: ${absoluteUrl('en', '')}`,
+    `- Português (Brasil): ${absoluteUrl('pt', '')}`,
     `- Português (Brasil), termos: ${SITE_ORIGIN}/pt/terminos`,
     `- Português (Brasil), privacidade: ${SITE_ORIGIN}/pt/privacidad`,
     `- Sitemap (${sitemapCount} URLs): ${SITE_ORIGIN}/sitemap.xml`,
@@ -609,19 +684,22 @@ export function buildLlmsTxt(): string {
     '',
     localeNarrative('en').join('\n'),
     '',
+    '---',
+    '',
+    localeNarrative('pt').join('\n'),
+    '',
     '## Rutas excluidas / Excluded routes (do not cite as public content)',
     '',
     '- /api/ (internal APIs)',
     '- /_next/ (build assets)',
     '- /404 (error page)',
-    '- /home-v2, /en/home-v2 (legacy sandbox — permanent redirect to home)',
+    '- /home-v2, /en/home-v2, /pt/home-v2 (legacy sandbox — permanent redirect to home)',
     '- /open (email deep-link bridge, noindex)',
     '',
     `## Indexación / Indexing summary`,
     '',
-    `- Site pages / Páginas del sitio: ${INDEXABLE_ROUTES.length} logical routes × 2 locales = ${INDEXABLE_ROUTES.length * 2} URLs`,
-    `- Psychoeducation / Psicoeducación: ${PSYCHOEDUCATION_SLUGS.length} guides × 2 locales = ${PSYCHOEDUCATION_SLUGS.length * 2} URLs`,
-    `- Legal pt-BR / Páginas legais: ${SITE_ORIGIN}/pt/terminos, ${SITE_ORIGIN}/pt/privacidad (2 URLs, sem homepage)`,
+    `- Site pages / Páginas del sitio / Páginas do site: ${INDEXABLE_ROUTES.length} logical routes × 3 locales = ${INDEXABLE_ROUTES.length * 3} URLs`,
+    `- Psychoeducation / Psicoeducación / Psicoeducação: ${PSYCHOEDUCATION_SLUGS.length} guides × 3 locales = ${PSYCHOEDUCATION_SLUGS.length * 3} URLs`,
     `- Total sitemap: ${sitemapCount} URLs`,
     `- AI discovery: ${SITE_ORIGIN}/llms.txt · ${SITE_ORIGIN}/llms-full.txt`,
     '',
@@ -652,12 +730,18 @@ export function buildLlmsFullTxt(): string {
     '## Extended site FAQ (English)',
     '',
     ...formatExtendedFaqBlock('en'),
+    '## FAQ ampliado do site (português)',
+    '',
+    ...formatExtendedFaqBlock('pt'),
     '## Moments highlighted on the home (product demos)',
     '',
     ...getHomeV2Copy('es').moments.flatMap((m) => [`### ${m.title}`, m.body, '']),
     '## Home moments (English)',
     '',
     ...getHomeV2Copy('en').moments.flatMap((m) => [`### ${m.title}`, m.body, '']),
+    '## Momentos da home (português)',
+    '',
+    ...getHomeV2Copy('pt').moments.flatMap((m) => [`### ${m.title}`, m.body, '']),
     `Generated dynamically — companion to ${SITE_ORIGIN}/llms.txt`,
     '',
   ];

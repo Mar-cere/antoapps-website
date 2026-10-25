@@ -2,6 +2,7 @@
 
 import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 
 type HomePricingSimpleProps = {
@@ -12,7 +13,7 @@ export default function HomePricingSimple({ locale = 'es' }: HomePricingSimplePr
   const copy = getHomeLandingFinalCopy(locale);
   const pricing = copy.pricing;
   const hero = copy.hero;
-  const pagePath = locale === 'en' ? '/en' : '/';
+  const pagePath = localePath(locale, '/');
 
   return (
     <section

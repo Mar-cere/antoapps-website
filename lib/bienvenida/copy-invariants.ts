@@ -2,7 +2,7 @@ import type { Locale } from '@/lib/i18n/config';
 import { getBienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 import { BIENVENIDA_VARIANTS } from '@/lib/bienvenida/parse-variant';
 
-const LOCALES: readonly Locale[] = ['es', 'en'];
+const LOCALES: readonly Locale[] = ['es', 'en', 'pt'];
 const VARIANTS = BIENVENIDA_VARIANTS;
 
 const PLACEHOLDER_AUTHORS = /usuario de app store|app store user/i;
@@ -84,6 +84,15 @@ export function assertBienvenidaCopyInvariants(): string[] {
       }
       if (!copy.meta.ogHeadline.trim()) {
         errors.push(`${tag} meta.ogHeadline empty`);
+      }
+    }
+
+    if (locale === 'pt') {
+      if (!/ansiedade/i.test(copy.meta.description)) {
+        errors.push(`${tag} meta.description deve mencionar ansiedade`);
+      }
+      if (!copy.meta.ogHeadline.trim()) {
+        errors.push(`${tag} meta.ogHeadline vazio`);
       }
     }
 

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { localePath, type Locale } from '@/lib/i18n/config';
+import { htmlLanguage, localePath, type Locale } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import {
   getResearchPageCopy,
@@ -69,7 +69,7 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
           id="main-content"
           className="home-landing-page home-landing-page--v2 research-page"
           role="main"
-          lang={locale}
+          lang={htmlLanguage(locale)}
         >
           <div className="home-landing-page__content">
             <article className="research-page__article" data-fade-section>
@@ -89,7 +89,7 @@ export default function ResearchPageContent({ locale }: ResearchPageContentProps
                 <div className="research-page__masthead">
                   <header className="research-page__header reveal-on-scroll">
                     <p className="research-page__eyebrow">
-                      {locale === 'en' ? 'Evidence' : 'Evidencia'}
+                      {locale === 'en' ? 'Evidence' : locale === 'pt' ? 'Evidência' : 'Evidencia'}
                     </p>
                     <h1 className="research-page__title">{copy.hero.title}</h1>
                     <p className="research-page__subtitle">{copy.hero.subtitle}</p>

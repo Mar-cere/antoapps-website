@@ -27,6 +27,18 @@ export function getHomeCtaCopy(locale: Locale): HomeCtaCopy {
     };
   }
 
+  if (locale === 'pt') {
+    return {
+      title: 'Pronto para começar?',
+      subtitle: `Baixe a Anto no seu dispositivo: a conta e o uso completo ficam no aplicativo. ${trial.heroNote}`,
+      storeAria: 'Baixar a Anto na App Store',
+      androidStoreAria: 'Baixar a Anto no Google Play',
+      privacyLabel: 'Ver Política de Privacidade',
+      privacyHref: localePath('pt', '/privacidad'),
+      trackingPage: '/pt',
+    };
+  }
+
   return {
     title: '¿Listo para comenzar?',
     subtitle: `Descarga Anto en tu dispositivo: la cuenta y el uso completo son en la aplicación móvil. ${trial.heroNote}`,

@@ -5,9 +5,12 @@ export const siteKeywords: Record<Locale, string> = {
     'Anto, acompañamiento emocional continuo, ansiedad, horas quietas, entre sesiones, grounding, 5-4-3-2-1, TCC, psicoeducación, iPhone, Android, prueba gratis',
   en:
     'Anto, ongoing emotional support, anxiety, quiet hours, between therapy sessions, grounding, 5-4-3-2-1, CBT, psychoeducation, iPhone, Android, free trial',
+  pt:
+    'Anto, acompanhamento emocional contínuo, ansiedade, horas quietas, entre sessões, grounding, 5-4-3-2-1, TCC, psicoeducação, iPhone, Android, teste grátis',
 };
 
 export const manifestPath: Record<Locale, string> = {
   es: '/manifest.json',
   en: '/manifest.en.json',
+  pt: '/manifest.pt.json',
 };

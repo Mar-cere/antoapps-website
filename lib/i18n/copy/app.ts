@@ -107,6 +107,17 @@ const metadataByLocale: Record<Locale, AppPageMetadata> = {
       url: 'https://antoapps.com/en/app',
     },
   },
+  pt: {
+    title: 'Anto — Aplicativo para iPhone e Android | Acompanhamento emocional',
+    description:
+      'Baixe a Anto na App Store (iPhone) ou no Google Play (Android): acompanhamento emocional contínuo, privacidade e ferramentas para o dia a dia. Teste disponível ao instalar. Complementa — não substitui — um terapeuta ou profissional humano. Versão {versionLabel}.',
+    openGraph: {
+      title: 'Anto — Aplicativo para iPhone e Android',
+      description:
+        'Baixe na App Store ou no Google Play. Acompanhamento emocional contínuo no iPhone e no Android. Complementa — não substitui — um terapeuta humano.',
+      url: 'https://antoapps.com/pt/app',
+    },
+  },
 };
 
 function buildAppPageCopy(locale: Locale): AppPageCopy {
@@ -239,6 +250,136 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
         appStoreAria: 'Download Anto on the App Store',
         playAria: 'Download Anto on Google Play',
         contactLabel: 'Contact',
+        contactHref: localePath(locale, '/contacto'),
+      },
+    };
+  }
+
+  if (locale === 'pt') {
+    return {
+      breadcrumbs: {
+        homeLabel: 'Início',
+        homeHref: localePath(locale, '/'),
+        currentLabel: 'O aplicativo',
+      },
+      hero: {
+        title: 'Acompanhamento emocional, no celular.',
+        subtitle:
+          'No iPhone e no Android. Você escreve o que fica em loop e sai com um passo. Teste de 1 dia. Versão atual {version}.',
+        badges: {
+          versionLabel: '{versionLabel}',
+          availability: '⏰ Disponível 24/7',
+          privacy: '🔒 Privacidade em primeiro lugar',
+          languages: '🌍 Espanhol e inglês',
+        },
+      },
+      whatIs: {
+        title: 'O que é a Anto?',
+        body: 'Não substitui terapia nem atendimento clínico. É um acompanhamento para o dia a dia: você escreve como se sente, recebe uma orientação clara e constrói hábitos no seu ritmo, com respeito à sua privacidade.',
+        imageAlt: 'Luz da manhã sobre uma cadeira vazia junto à janela',
+      },
+      screenshots: {
+        title: 'Como se lê por dentro',
+        subtitle: 'O fio de uma noite, e um guia curto.',
+      },
+      benefits: {
+        title: 'Por que usar a Anto',
+        subtitle: 'O que você nota nas primeiras conversas, não uma lista técnica.',
+        cards: [
+          {
+            icon: '💬',
+            label: 'Alguém com quem falar, a qualquer hora',
+            description:
+              'Abra o aplicativo quando a mente acelera ou você precisa de clareza. Sem hora marcada nem fila.',
+          },
+          {
+            icon: '🎯',
+            label: 'Uma orientação que se ajusta a você',
+            description:
+              'As respostas seguem o que você conta: um passo prático, espaço para nomear o que sente ou um apoio mais estruturado.',
+          },
+          {
+            icon: '🔒',
+            label: 'Um espaço seu',
+            description:
+              'As conversas ficam em sigilo. Você decide o que compartilhar e como usar o aplicativo.',
+          },
+          {
+            icon: '🧘',
+            label: 'Ferramentas para o dia a dia',
+            description:
+              'Tarefas, hábitos, diário e lembretes ligados ao que você está sentindo de verdade.',
+          },
+          {
+            icon: '📈',
+            label: 'Ver o que vai mudando',
+            description:
+              'Tendências e resumos ajudam a notar padrões e a reconhecer avanços pequenos.',
+          },
+          {
+            icon: '🚨',
+            label: 'Apoio em momentos difíceis',
+            description:
+              'Se aparecerem sinais de risco, o aplicativo pode orientar você para recursos e pessoas de confiança. Não substitui uma emergência.',
+            link: {
+              href: localePath(locale, '/recursos/grounding-ansiedad-crisis'),
+              label: 'Quando a ansiedade sobe',
+            },
+          },
+        ],
+      },
+      latestUpdates: {
+        title: 'O que fomos melhorando',
+        subtitle: 'O que mudou na versão 1.7.0.',
+        cards: [
+          {
+            icon: '🏠',
+            label: 'Um percurso mais claro',
+            description:
+              'Início, Meu dia, chat, Explorar e Ajustes, em linguagem do dia a dia.',
+          },
+          {
+            icon: '💬',
+            label: 'A primeira conversa começa no chat',
+            description:
+              'Você escolhe o que importa agora e pode editar a frase com que abre.',
+          },
+          {
+            icon: '📝',
+            label: 'Ao fechar, o resumo nomeia o fio',
+            description:
+              'Sem pontuação nem rótulo de emoção. Você pode anotar o que leva e pedir um único aviso para voltar.',
+          },
+        ],
+        note: {
+          beforeChangelog: 'O detalhe completo está no',
+          changelogLabel: 'Histórico de versões',
+          changelogHref: localePath(locale, '/changelog'),
+          betweenChangelogBienvenida: ', veja o fluxo de',
+          bienvenidaLabel: 'Boas-vindas',
+          bienvenidaHref: localePath(locale, '/bienvenida'),
+          betweenBienvenidaPrivacidad: ' e consulte',
+          privacidadLabel: 'Privacidade',
+          privacidadHref: localePath(locale, '/privacidad'),
+          afterPrivacidad: '.',
+        },
+      },
+      featuresLink: {
+        title: 'Quer mais detalhe?',
+        subtitle: 'O que a Anto inclui: chat, hub de exercícios, checagens, início.',
+        label: 'Ver no início',
+        href: featuresHref,
+        resourcesLabel: 'Ver os guias',
+        resourcesHref: localePath(locale, '/recursos'),
+      },
+      cta: {
+        title: 'Quer testar a Anto?',
+        subtitle: `Baixe o aplicativo e comece no seu ritmo. ${trial.heroNote}`,
+        appStoreLabel: 'App Store',
+        playLabel: 'Google Play',
+        appStoreAria: 'Baixar a Anto na App Store',
+        playAria: 'Baixar a Anto no Google Play',
+        contactLabel: 'Falar com a gente',
         contactHref: localePath(locale, '/contacto'),
       },
     };
@@ -392,7 +533,9 @@ export function appPageMetadata(locale: Locale, versionLabel?: string): Metadata
           alt:
             locale === 'en'
               ? 'Low light of an evening at home'
-              : 'Luz baja de una noche en casa',
+              : locale === 'pt'
+                ? 'Luz baixa de uma noite em casa'
+                : 'Luz baja de una noche en casa',
         },
       ],
     },

@@ -6,7 +6,7 @@ import {
   PSYCHOEDUCATION_SLUGS,
 } from '@/lib/i18n/copy/pages/psychoeducation';
 
-const LOCALES: readonly Locale[] = ['es', 'en'];
+const LOCALES: readonly Locale[] = ['es', 'en', 'pt'];
 
 const MIN_SECTIONS = 3;
 const MIN_PARAGRAPH_CHARS = 40;
@@ -41,9 +41,13 @@ export function assertPsychoeducationInvariants(): string[] {
           ? /no sustituye|no reemplaza|no es consejo|material educativo|psicoeducación|guía de psicoeducación/.test(
               disclaimer
             )
-          : /does not|do not|not a substitute|not medical|educational|psychoeducation/.test(
-              disclaimer
-            );
+          : locale === 'pt'
+            ? /não substitui|não substitui|material educativo|psicoeducação|guia de psicoeducação/.test(
+                disclaimer
+              )
+            : /does not|do not|not a substitute|not medical|educational|psychoeducation/.test(
+                disclaimer
+              );
       if (!hasClinicalDisclaimer) {
         errors.push(`${tag} guía "${guide.slug}" debe incluir disclaimer clínico`);
       }

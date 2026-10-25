@@ -72,6 +72,17 @@ const metadataByLocale: Record<Locale, ContactPageMetadata> = {
       url: 'https://antoapps.com/en/contacto',
     },
   },
+  pt: {
+    title: 'Contato | Uma pessoa responde',
+    description:
+      'Eu respondo quando puder. Escreva sobre o aplicativo, sua conta ou um problema.',
+    openGraph: {
+      title: 'Contato | Uma pessoa responde',
+      description:
+        'Eu respondo quando puder. Escreva sobre o aplicativo, sua conta ou um problema.',
+      url: 'https://antoapps.com/pt/contacto',
+    },
+  },
 };
 
 
@@ -112,6 +123,48 @@ function buildContactPageCopy(locale: Locale): ContactPageCopy {
             required: 'This field is required',
             emailInvalid: 'Please enter a valid email address',
             minLength: (min) => `This field must be at least ${min} characters`,
+          },
+        },
+      },
+    };
+  }
+
+  if (locale === 'pt') {
+    return {
+      breadcrumbs: {
+        homeLabel: 'Início',
+        homeHref: localePath(locale, '/'),
+        currentLabel: 'Contato',
+      },
+      hero: {
+        title: 'Uma pessoa responde',
+        subtitle:
+          'Eu respondo quando puder. Escreva sobre o aplicativo, sua conta ou um problema.',
+      },
+      formSection: {
+        title: 'Envie uma mensagem',
+        form: {
+          labels: {
+            name: 'Nome',
+            email: 'E-mail',
+            message: 'Mensagem',
+            requiredMark: '*',
+          },
+          submit: 'Enviar',
+          sending: 'Enviando...',
+          success: {
+            title: 'Mensagem enviada',
+            message:
+              'Recebi a sua mensagem e respondo quando puder. Olhe a caixa de entrada, caso eu precise de mais dados.',
+            dismiss: 'Enviar outra mensagem',
+          },
+          toast: {
+            error: 'Não foi possível enviar a mensagem. Tente de novo.',
+          },
+          validation: {
+            required: 'Este campo é obrigatório',
+            emailInvalid: 'Digite um e-mail válido',
+            minLength: (min) => `Este campo precisa ter pelo menos ${min} caracteres`,
           },
         },
       },
@@ -164,7 +217,9 @@ export function contactPageMetadata(locale: Locale): Metadata {
   const alt =
     locale === 'en'
       ? 'Rainy night desk with an open notebook and a warm lamp'
-      : 'Escritorio de noche con lluvia en la ventana, libreta abierta y lámpara cálida';
+      : locale === 'pt'
+        ? 'Escrivaninha à noite, com chuva na janela, caderno aberto e uma luminária quente'
+        : 'Escritorio de noche con lluvia en la ventana, libreta abierta y lámpara cálida';
   return buildLocalizedPageMetadata(locale, '/contacto', {
     ...meta,
     openGraph: {

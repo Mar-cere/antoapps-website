@@ -156,7 +156,17 @@ function referencesFor(locale: Locale): ResearchReference[] {
     'Torok et al. (2020) — digital prevention',
     'Craske et al. (2014) — inhibitory exposure',
   ] as const;
-  const labels = locale === 'en' ? labelsEn : labelsEs;
+  const labelsPt = [
+    'Woebot — RCT conversacional com TCC',
+    'Firth et al. (2017a) — aplicativos e depressão',
+    'Firth et al. (2017b) — aplicativos e ansiedade',
+    'Hofmann & Smits (2008) — TCC e ansiedade',
+    'Spitzer et al. (2006) — GAD-7',
+    'Vaidyam et al. (2019) — agentes conversacionais',
+    'Torok et al. (2020) — prevenção digital',
+    'Craske et al. (2014) — exposição inibitória',
+  ] as const;
+  const labels = locale === 'en' ? labelsEn : locale === 'pt' ? labelsPt : labelsEs;
   return REFERENCES.map((item, index) => ({
     ...item,
     label: labels[index],
@@ -339,6 +349,182 @@ function buildResearchPageCopy(locale: Locale): ResearchPageCopy {
         href: localePath(locale, '/recursos'),
       },
       externalLinkHint: 'Opens in a new tab',
+    };
+  }
+
+  if (locale === 'pt') {
+    return {
+      breadcrumbs: {
+        homeLabel: 'Início',
+        homeHref: localePath(locale, '/'),
+        currentLabel: 'Pesquisa',
+      },
+      crumbAria: 'Trilha de navegação',
+      meta: {
+        title: 'Pesquisa — evidência que informa a Anto | Anto',
+        description:
+          'Como a Anto lê a evidência clínica e de saúde mental digital: TCC, GAD-7, agentes conversacionais — e o que não afirma. Literatura de categoria com DOI em APA. Complementa; não substitui atendimento profissional.',
+        openGraphTitle: 'Pesquisa — evidência que informa a Anto',
+        openGraphDescription:
+          'Uma leitura editorial da literatura por trás da Anto: o que levamos, como aparece no produto e limites claros.',
+        canonicalPath: CANONICAL_PATH,
+        keywords:
+          'Anto pesquisa, evidência TCC, GAD-7, saúde mental digital, agentes conversacionais, citações APA, evidência de categoria, base da Anto',
+      },
+      hero: {
+        title: 'Lemos a evidência. Não a transformamos em promessa.',
+        subtitle:
+          'A Anto se informa na literatura clínica e de saúde mental digital — não em ensaios da própria Anto. Não substitui a terapia humana.',
+      },
+      pullQuote:
+        'A evidência orienta o desenho. Não transforma um aplicativo em diagnóstico, cura nem substituição de um clínico.',
+      reading: {
+        title: 'Como lemos',
+        paragraphs: [
+          'O campo cresce: acompanhamento conversacional, técnicas com base em TCC, escalas validadas, rotas de risco. A literatura mostra o que se sustenta e o que não. Desenhamos para o que se sustenta e nomeamos o limite.',
+          'Esta página não afirma ensaios aleatorizados da própria Anto. Mostra a evidência de categoria que molda protocolos, psicoeducação e decisões de produto — com fontes que você pode abrir.',
+        ],
+      },
+      figure: {
+        src: getEditorialImagePath('deskRain'),
+        alt: 'Escrivaninha à noite junto a uma janela com chuva — caderno aberto e luminária quente, um lugar quieto para ler o que informa o produto',
+        caption:
+          'A evidência se lê numa escrivaninha, não se anuncia como cura — horas comuns, limites reais.',
+        width: EDITORIAL_WIDTH,
+        height: EDITORIAL_HEIGHT,
+      },
+      takes: {
+        title: 'O que levamos',
+        support: 'Quatro ideias que de fato movem o produto — não um despejo de papers.',
+        items: [
+          {
+            title: 'TCC como marco clínico',
+            body: 'Metanálises apoiam a TCC para ansiedade em adultos frente a placebo (Hofmann & Smits, 2008). Os caminhos da Anto tomam esse modelo: pensamentos, emoções, comportamentos — sem chamar o chat de terapia.',
+          },
+          {
+            title: 'Efeitos digitais, em geral modestos',
+            body: 'Metanálises de aplicativos relatam redução de sintomas frente ao controle, muitas vezes maior frente a controles inativos (Firth et al., 2017a, 2017b). Reais, de pequenos a moderados — não remissão como promessa.',
+          },
+          {
+            title: 'Agentes como categoria, com lacunas',
+            body: 'RCTs como o Woebot (Fitzpatrick et al., 2017) e revisões de agentes conversacionais (Vaidyam et al., 2019) sugerem ajuda entre sessões para algumas pessoas — e sublinham ética, segurança e lacunas de evidência.',
+          },
+          {
+            title: 'Rastreio, não diagnóstico',
+            body: 'O GAD-7 (Spitzer et al., 2006) acompanha tendências na atenção primária. Na Anto serve para observar o tempo — nunca como rótulo clínico por si só.',
+          },
+        ],
+      },
+      product: {
+        title: 'Como aparece na Anto',
+        support:
+          'Vinhetas editoriais — o tom do produto, não capturas da App Store como prova.',
+        items: [
+          {
+            title: 'Conversa com estrutura',
+            body: 'Quando alguém nomeia a ansiedade, a Anto pode ficar no momento e oferecer um passo concreto — mais perto de um agente com componentes de TCC do que de um chat aberto.',
+            media: {
+              kind: 'chat',
+              chat: {
+                ariaLabel: 'Exemplo de chat na Anto: ansiedade nomeada e um passo concreto',
+                messages: [
+                  {
+                    role: 'user',
+                    text: 'Estou num 8. Peito apertado. A mente não baixa.',
+                  },
+                  {
+                    role: 'anto',
+                    text: 'Essa intensidade é real. Antes de analisar — um passo pequeno: nomeie uma coisa que você sente sob os pés.',
+                  },
+                  {
+                    role: 'user',
+                    text: 'O chão. Frio.',
+                  },
+                  {
+                    role: 'anto',
+                    text: 'Fique aí por duas respirações. Depois olhamos o que está girando na mente — sem forçar que pare.',
+                  },
+                ],
+              },
+            },
+          },
+          {
+            title: 'Tendências, não rótulos',
+            body: 'As checagens breves tomam a ideia das escalas validadas: padrões ao longo de semanas, não um diagnóstico carimbado num número.',
+            media: {
+              kind: 'evidence',
+              evidence: {
+                ariaLabel: 'Exemplo de checagem de ansiedade em quatro semanas — não um diagnóstico',
+                chromeTitle: 'Checagem',
+                scaleName: 'Ansiedade',
+                scaleRange: 'checagem breve',
+                currentLabel: 'Esta semana',
+                currentValue: '8',
+                trendLabel: 'Ultimamente',
+                trend: 'Um pouco mais leve do que há um mês',
+                scaleMax: 21,
+                bars: [
+                  { label: 'S1', value: 14 },
+                  { label: 'S2', value: 12 },
+                  { label: 'S3', value: 10 },
+                  { label: 'S4', value: 8 },
+                ],
+                insightLabel: 'O que se destacou',
+                insight: 'As noites mais quietas vieram depois de dias com um passo concreto',
+                disclaimer:
+                  'Só um exemplo. Material educativo informado por checagens breves como o GAD-7 — tendências, não um rótulo clínico. Não substitui avaliação.',
+              },
+            },
+          },
+          {
+            title: 'Um fechamento que nomeia o padrão',
+            body: 'Os fechamentos de sessão destacam vínculos pensamento–emoção–comportamento — o triângulo da TCC — sem afirmar um curso de tratamento.',
+            media: {
+              kind: 'summary',
+              summary: {
+                ariaLabel: 'Exemplo de fechamento de sessão que nomeia um padrão pensamento–emoção',
+                chromeTitle: 'Fechamento',
+                moodFrom: 'Apertado',
+                moodTo: 'mais firme',
+                moodLabel: 'arco do ânimo',
+                theme: 'Ansiedade no trabalho antes de uma apresentação — a mente pulou para o pior final.',
+                patternLabel: 'Padrão',
+                pattern: 'Pensamento → alarme no corpo → vontade de evitar preparar',
+                helpedLabel: 'O que ajudou',
+                helped: 'Um passo concreto (abrir o primeiro slide) em vez de resolver o medo inteiro',
+              },
+            },
+          },
+        ],
+      },
+      limits: {
+        title: 'O que não afirmamos',
+        paragraphs: [
+          'A Anto não diagnostica, não prescreve e não substitui uma emergência. Sinais digitais de risco podem mostrar recursos; não substituem uma linha de crise nem os serviços de emergência locais.',
+          'A evidência de categoria não é um ensaio de eficácia da Anto. Quando existir pesquisa própria, ela entra aqui com o mesmo padrão bibliográfico.',
+        ],
+      },
+      references: {
+        title: 'Referências (APA)',
+        summaryLabel: 'Ver citações completas',
+        support: 'Links de DOI estáveis para cada fonte nomeada nesta página.',
+        items: references,
+      },
+      disclaimer:
+        'Psicoeducação e transparência de produto. Não substitui avaliação nem tratamento clínico. Diante de risco suicida ou violência, procure ajuda de emergência local imediatamente.',
+      cta: {
+        bridge:
+          'Se você pesquisa saúde mental digital e quer falar de métodos, limites ou colaboração — escreva para a gente.',
+        contactLabel: 'Contato',
+        contactHref: localePath(locale, '/contacto'),
+        emailLabel: DEVELOPER_EMAIL,
+        emailHref: `mailto:${DEVELOPER_EMAIL}`,
+      },
+      resourcesLink: {
+        label: 'Voltar aos recursos',
+        href: localePath(locale, '/recursos'),
+      },
+      externalLinkHint: 'Abre numa nova aba',
     };
   }
 

@@ -576,6 +576,273 @@ const versionsEn: ChangelogVersion[] = [
   },
 ];
 
+const versionsPt: ChangelogVersion[] = [
+  {
+    version: '1.7.0',
+    date: '2026-09-26',
+    status: 'current',
+    highlights: [
+      'Nova imagem e um aplicativo mais fácil de percorrer: Início, Meu dia, chat, Explorar e Ajustes, em linguagem do dia a dia.',
+      'A primeira conversa começa no chat. Você escolhe o que importa agora e pode editar a frase com que abre.',
+      'Boas-vindas, cadastro, mapa de temas e decisões mais claros.',
+      'Ao fechar uma conversa, o resumo nomeia o fio. Sem pontuação nem rótulo de emoção. Você pode anotar o que leva no diário e pedir um único aviso para voltar: hoje à tarde, amanhã ou em 3 dias.',
+      'O resumo e o perfil se leem com mais calma. A atividade mostra presença, não um avanço. Os padrões só abrem se você confirmar que já está melhor.',
+      'Você revisa o que a Anto lembra: confirma, descarta ou pede para esquecer. O histórico do chat não é apagado. Você pode deixar de usar essas memórias no chat.',
+      'Num momento difícil, os recursos se leem com mais calma e você pode ocultar o teclado.',
+    ],
+    changes: [],
+  },
+  {
+    version: '1.6.1',
+    date: '2026-08-27',
+    status: 'stable',
+    highlights: [
+      'Entrada mais curta: um tour de 3 passos que termina no chat.',
+      'As escalas de autochecagem não aparecem mais no começo.',
+      'O interesse inicial é opcional. O Início espera até existir um fio.',
+    ],
+    changes: [],
+  },
+  {
+    version: '1.5.0',
+    date: '2026-06-23',
+    status: 'stable',
+    highlights: [
+      'Versão 1.5.0 (Expo) — iOS build 39, Android 25',
+      'Início e painel redesenhados, com insights rotativos e um foco unificado',
+      'Sessão persistente, boas-vindas renovadas e grafo ligado ao chat',
+    ],
+    changes: [
+      {
+        type: 'feature',
+        description:
+          'Painel consolidado: insight inicial mais humano, sequência do ecossistema centrada no chat e início otimizado',
+      },
+      {
+        type: 'feature',
+        description:
+          'Hub de técnicas na barra de navegação: catálogo completo, acesso rápido e tela ABC interativa',
+      },
+      {
+        type: 'feature',
+        description:
+          'Tarefas e hábitos numa só tela, com tom de cuidado e Pomodoro ao focar uma tarefa',
+      },
+      {
+        type: 'feature',
+        description:
+          'Grafo e insights ligados a técnicas concretas; memória de temas recorrentes no prompt do chat',
+      },
+      {
+        type: 'feature',
+        description:
+          'Resumo e relatório observacional redesenhados, com «o que ajuda você» navegável e uma experiência acionável',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Boas-vindas redesenhadas: benefícios, validação, tema claro/escuro e carregamento sem piscadas',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Sessão persistente: o aplicativo restaura a sessão sem pedir senha a cada abertura; refresh automático do JWT',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Chat: sugestões que continuam ao reabrir, melhor manejo de pensamentos intrusivos e continuidade em mensagens curtas',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Análise emocional ampliada: reconhece desmotivação, preocupações com a imagem e experiências de assédio',
+      },
+      {
+        type: 'improvement',
+        description: 'Tela de assinatura redesenhada, com memória do dia e plano anual em destaque',
+      },
+      {
+        type: 'improvement',
+        description: 'Android: minSdk 26 para compatibilidade com o Health Connect',
+      },
+      {
+        type: 'fix',
+        description: 'Contatos de emergência, crise e alertas restaurados; fechamento das boas-vindas e acesso ao chat corrigidos',
+      },
+    ],
+  },
+  {
+    version: '1.4.1',
+    date: '2026-05-30',
+    status: 'stable',
+    highlights: [
+      'Versão 1.4.1 (Expo) — iOS build 31, Android 17',
+      'Teste grátis padronizado em 1 dia',
+      'Modo escuro na navegação e melhorias de UX no chat',
+    ],
+    changes: [
+      {
+        type: 'improvement',
+        description:
+          'Período de teste unificado em 1 dia (APP_TRIAL_DAYS) no cadastro, na assinatura e nas comunicações',
+      },
+      {
+        type: 'improvement',
+        description:
+          'FloatingNavBar com modo escuro, ícones dinâmicos e mais visibilidade nos dois temas',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Chat: cabeçalho simplificado; resumos de sessão com datas localizadas (ES/EN)',
+      },
+      {
+        type: 'improvement',
+        description: 'Diário de gratidão: rodapé refinado e melhor interação com o teclado',
+      },
+    ],
+  },
+  {
+    version: '1.4.0',
+    date: '2026-05-26',
+    status: 'stable',
+    highlights: [
+      'Internacionalização do aplicativo (espanhol e inglês)',
+      'Backend do chat ciente do idioma do usuário',
+      'Modos de conversa e fluxo de chat ampliado',
+      'Recuperação de senha e estado da assinatura mais claros',
+    ],
+    changes: [
+      {
+        type: 'feature',
+        description: 'i18n completo no aplicativo, e-mails, push e checkout: suporte ES/EN no frontend e no backend',
+      },
+      {
+        type: 'feature',
+        description: 'Backend do chat com respostas e resumos adaptados ao idioma do perfil',
+      },
+      {
+        type: 'feature',
+        description: 'Novos modos de conversa integrados na experiência de chat',
+      },
+      {
+        type: 'improvement',
+        description: 'Resumos de sessão e painel com localização e fechamento emocional da sessão mais claro',
+      },
+      {
+        type: 'improvement',
+        description: 'Fluxo de recuperação de senha com validação reforçada',
+      },
+      {
+        type: 'improvement',
+        description: 'Visualização do estado da assinatura e do período de teste mais clara no aplicativo',
+      },
+      {
+        type: 'improvement',
+        description: 'E-mails de retenção e resumo semanal com a lógica de presente de teste melhorada',
+      },
+    ],
+  },
+  {
+    version: '1.2.7',
+    date: '2026-03-27',
+    status: 'stable',
+    highlights: [
+      'Versão 1.2.7 (Expo)',
+      'Melhor experiência de chat (v1.2.x)',
+      'Preferências de tom e estilo de resposta (quando o aplicativo oferece)',
+      'Transparência: privacidade integrada na conversa',
+    ],
+    changes: [
+      { type: 'improvement', description: 'Chat: refinamento de UX e coerência com o perfil do usuário e a API' },
+      {
+        type: 'improvement',
+        description: 'Preferências de conversa: ajustes de estilo de resposta quando vale',
+      },
+      {
+        type: 'improvement',
+        description: 'Transparência: informação de privacidade integrada na experiência de chat',
+      },
+    ],
+  },
+  {
+    version: '1.1.0',
+    date: '2026-01-08',
+    status: 'stable',
+    highlights: [
+      'Reconhecimento de padrões de pensamento (15 tipos)',
+      'Otimizações móveis avançadas',
+    ],
+    changes: [
+      {
+        type: 'feature',
+        description: 'Reconhecimento de 15 padrões de pensamento comuns durante as conversas',
+      },
+      {
+        type: 'improvement',
+        description:
+          'Sistema de chat melhorado, com acompanhamento emocional e ferramentas do hub conforme o contexto',
+      },
+      {
+        type: 'improvement',
+        description:
+          'A análise emocional avançada agora inclui acompanhamento de tendências ao longo do tempo',
+      },
+      { type: 'feature', description: 'Puxar para atualizar em dispositivos móveis' },
+      { type: 'feature', description: 'Gestos de deslizar melhorados para navegação móvel e para fechar menus' },
+      {
+        type: 'improvement',
+        description: 'Otimizações de toque: áreas de toque maiores (mínimo de 48px), retorno visual melhor',
+      },
+      {
+        type: 'improvement',
+        description: 'Viewport otimizado para aparelhos com notch (iPhone X e posteriores)',
+      },
+      {
+        type: 'improvement',
+        description: 'Menu móvel melhorado, com gestos de deslizar para fechar e animações mais fluidas',
+      },
+      { type: 'improvement', description: 'Prevenção de zoom acidental em campos móveis (font-size: 16px)' },
+      {
+        type: 'improvement',
+        description: 'Rolagem tátil otimizada com -webkit-overflow-scrolling: touch e scroll snap',
+      },
+      { type: 'fix', description: 'Corrigido o problema de expansão nas perguntas frequentes (FAQ)' },
+    ],
+  },
+  {
+    version: '1.0.0',
+    date: '2025-01-15',
+    highlights: [
+      'Lançamento inicial da Anto',
+      'Acompanhamento emocional com IA',
+    ],
+    changes: [
+      {
+        type: 'feature',
+        description: 'Acompanhamento com IA: conversas orientadas ao que você sente e técnicas com base em evidência',
+      },
+      {
+        type: 'feature',
+        description: 'Análise emocional avançada, com acompanhamento de padrões e de estados de ânimo',
+      },
+      {
+        type: 'feature',
+        description: 'Ferramentas práticas: exercícios de mindfulness, meditação e técnicas de relaxamento',
+      },
+      { type: 'feature', description: 'Criptografia em trânsito (TLS) e em repouso para proteger os dados' },
+      { type: 'feature', description: 'Disponível 24/7, sem limite de uso nem fila' },
+      { type: 'feature', description: 'Autenticação segura com JWT e autenticação biométrica' },
+      { type: 'feature', description: 'Integração com o Mercado Pago para assinaturas e pagamentos seguros' },
+      { type: 'feature', description: 'Interface intuitiva e acessível, pensada para as pessoas' },
+      { type: 'feature', description: 'Relatórios e acompanhamento do que vai mudando' },
+      { type: 'feature', description: 'Notificações push personalizadas para lembretes e apoio' },
+      { type: 'feature', description: 'Suporte a iOS e Android com React Native' },
+    ],
+  },
+];
+
 function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
   if (locale === 'en') {
     return {
@@ -612,6 +879,45 @@ function buildChangelogPageCopy(locale: Locale): ChangelogPageCopy {
         contactLinkLabel: 'our contact form',
         contactHref: localePath(locale, '/contacto'),
         textAfterContact: ' to report issues or request support.',
+      },
+    };
+  }
+
+  if (locale === 'pt') {
+    return {
+      breadcrumbs: {
+        homeLabel: 'Início',
+        homeHref: localePath(locale, '/'),
+        currentLabel: 'Versões',
+      },
+      meta: {
+        title: 'Histórico de versões | Anto',
+        description: `Histórico de versões do aplicativo Anto (Expo). Versão atual ${APP_VERSION}: uma presença mais clara e um acompanhamento que segue o fio.`,
+        openGraphTitle: 'Histórico de versões | Anto',
+        openGraphDescription: `Histórico do aplicativo Anto: ${APP_VERSION}, uma presença mais clara e um acompanhamento que segue o fio.`,
+        canonicalPath: CANONICAL_PATH,
+      },
+      header: {
+        title: 'Histórico de versões',
+        subtitle: 'Histórico de versões e atualizações do aplicativo Anto',
+        storeVersionBadge: `Versão nas lojas: ${APP_VERSION}`,
+        statusText: 'Este site é a referência pública do histórico de versões e das novidades da Anto.',
+      },
+      versionLabels: {
+        highlightsTitle: 'Destaques',
+        changesTitle: 'Mudanças',
+        statusCurrent: 'Atual',
+        statusStable: 'Estável',
+        statusBeta: 'Beta',
+        statusDeprecated: 'Descontinuada',
+      },
+      dateLocale: 'pt-BR',
+      versions: versionsPt,
+      footer: {
+        textBeforeContact: 'Tem uma sugestão ou encontrou um erro? Escreva pelo',
+        contactLinkLabel: 'formulário de contato',
+        contactHref: localePath(locale, '/contacto'),
+        textAfterContact: ' para relatar um problema ou pedir ajuda.',
       },
     };
   }

@@ -1,6 +1,6 @@
 'use client';
 
-import type { LegalLocale, Locale } from '@/lib/i18n/config';
+import type { LegalLocale } from '@/lib/i18n/config';
 import { htmlLanguage, localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import type { LegalPageCopy } from '@/lib/i18n/copy/legal-shared';
@@ -26,27 +26,21 @@ export default function LegalPageContent({ locale, copy }: LegalPageContentProps
       : locale === 'pt'
         ? 'A Anto não substitui terapia nem atendimento clínico profissional. Se você estiver em crise, procure ajuda de emergência no seu país.'
         : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
-  const siteLocale: Locale = locale === 'pt' ? 'es' : locale;
-  const nav =
-    locale === 'pt'
-      ? { cta: 'Baixar', ctaAria: 'Baixar a Anto para o seu dispositivo' }
-      : getHomeV2Copy(locale).nav;
+  const nav = getHomeV2Copy(locale).nav;
   const label = copy.breadcrumbs.currentLabel.toLowerCase();
   const isPrivacy =
     label.includes('privacidad') || label.includes('privacidade') || label.includes('privacy');
   const switchPath = isPrivacy ? '/privacidad' : '/terminos';
 
   return (
-    <LocaleProvider locale={siteLocale}>
+    <LocaleProvider locale={locale}>
       <ClientInitializer />
       <div className="home-v2-shell legal-shell">
         <HomeMinimalNav
-          locale={siteLocale}
-          ctaHref={locale === 'pt' ? '/bienvenida' : localePath(locale, '/bienvenida')}
+          locale={locale}
+          ctaHref={localePath(locale, '/bienvenida')}
           ctaLabel={nav.cta}
           ctaAria={nav.ctaAria}
-          navAria={locale === 'pt' ? 'Navegação principal' : undefined}
-          logoAria={locale === 'pt' ? 'Anto — Ir ao início' : undefined}
         />
         <main className="home-landing-page home-landing-page--v2 legal-page" lang={htmlLanguage(locale)}>
           <LegalDocument copy={copy} />

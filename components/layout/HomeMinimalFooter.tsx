@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
-import { localePath, type LegalLocale, type Locale } from '@/lib/i18n/config';
+import { localePath, type LegalLocale } from '@/lib/i18n/config';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 
 type HomeMinimalFooterProps = {
@@ -20,18 +20,10 @@ export default function HomeMinimalFooter({
   developerHref,
   developerLabel,
 }: HomeMinimalFooterProps) {
-  const copyLocale: Locale = locale === 'pt' ? 'es' : locale;
-  const copy = getHomeLandingFinalCopy(copyLocale);
+  const copy = getHomeLandingFinalCopy(locale);
   const { minimalFooter } = copy;
-  const links =
-    locale === 'pt'
-      ? minimalFooter.links.map((link) => {
-          if (link.href === '/privacidad') return { href: '/pt/privacidad', label: 'Privacidade' };
-          if (link.href === '/terminos') return { href: '/pt/terminos', label: 'Termos' };
-          return link;
-        })
-      : minimalFooter.links;
-  const homeHref = locale === 'pt' ? '/' : localePath(locale, '/');
+  const links = minimalFooter.links;
+  const homeHref = localePath(locale, '/');
 
   return (
     <footer className="home-landing-footer" role="contentinfo">
@@ -39,7 +31,7 @@ export default function HomeMinimalFooter({
         <Link
           href={homeHref}
           className="home-landing-footer__brand"
-          aria-label={locale === 'pt' ? 'Anto - Ir ao início' : copy.minimalNav.logoAria}
+          aria-label={copy.minimalNav.logoAria}
         >
           <span className="home-landing-footer__icon" aria-hidden="true">
             <Image
@@ -54,7 +46,7 @@ export default function HomeMinimalFooter({
         </Link>
         <nav
           className="home-landing-footer__links"
-          aria-label={locale === 'pt' ? 'Links do site' : minimalFooter.linksAria}
+          aria-label={minimalFooter.linksAria}
         >
           {links.map((link) => (
             <Link key={link.href} href={link.href} className="home-landing-footer__link">
@@ -64,7 +56,7 @@ export default function HomeMinimalFooter({
         </nav>
         <LanguageSwitcher locale={locale} path={switchPath} className="home-landing-footer__lang" />
         <p className="home-landing-footer__copy">
-          {locale === 'pt' ? '© 2026 Anto · Feito com cuidado no Chile' : minimalFooter.copyright}
+          {minimalFooter.copyright}
         </p>
       </div>
       {developerHref && developerLabel ? (

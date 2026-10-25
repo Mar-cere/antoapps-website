@@ -78,4 +78,4 @@ Cada principio incluye su traducción práctica. Al proponer una solución, veri
 - ¿Deja al usuario con menos intensidad emocional, más claridad y un siguiente paso?
 - ¿Respeta los siete principios, en especial no juzgar y acompañar sin reemplazar?
 - ¿Cuida la privacidad y la confianza al aprender del proceso?
-- ¿El tono y los copys son empáticos, cálidos y neutrales (español neutro, sin modismos)?
+- ¿El tono y los copys son empáticos, cálidos y neutrales? En español, neutro y sin modismos. El mismo texto existe en inglés (`/en`) y en portugués de Brasil (`/pt`, hreflang `pt-BR`). No es portugués europeo.

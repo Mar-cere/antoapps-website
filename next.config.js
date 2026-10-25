@@ -37,17 +37,22 @@ const nextConfig = {
     return [
       { source: '/l', destination: '/bienvenida', permanent: false },
       { source: '/en/l', destination: '/en/bienvenida', permanent: false },
+      { source: '/pt/l', destination: '/pt/bienvenida', permanent: false },
       { source: '/welcome', destination: '/en/bienvenida', permanent: true },
       { source: '/en/welcome', destination: '/en/bienvenida', permanent: true },
+      { source: '/pt/welcome', destination: '/pt/bienvenida', permanent: true },
       { source: '/index', destination: '/', permanent: true },
       { source: '/en/index', destination: '/en', permanent: true },
+      { source: '/pt/index', destination: '/pt', permanent: true },
       { source: '/login', destination: '/#descargar', permanent: false },
       { source: '/signup', destination: '/#descargar', permanent: false },
       { source: '/chat', destination: '/#descargar', permanent: false },
       { source: '/home-v2', destination: '/', permanent: true },
       { source: '/en/home-v2', destination: '/en', permanent: true },
+      { source: '/pt/home-v2', destination: '/pt', permanent: true },
       { source: '/comparar', destination: '/recursos', permanent: true },
       { source: '/en/comparar', destination: '/en/recursos', permanent: true },
+      { source: '/pt/comparar', destination: '/pt/recursos', permanent: true },
     ];
   },
   // Preservar archivos estáticos existentes

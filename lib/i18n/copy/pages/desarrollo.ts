@@ -455,6 +455,180 @@ const metricsEs: DesarrolloMetric[] = [];
 
 const metricsEn: DesarrolloMetric[] = [];
 
+const architectureLayersPt: DesarrolloArchitectureLayer[] = [
+  {
+    icon: '📱',
+    title: 'Cliente móvel',
+    description: 'React Native + Expo. Navegação nativa e Socket.IO.',
+    tags: ['React Native', 'Expo', 'TypeScript', 'Socket.IO'],
+  },
+  {
+    icon: '🌐',
+    title: 'Cliente web',
+    description: 'Next.js, TypeScript, rotas do site em es, en e pt.',
+    tags: ['Next.js', 'React', 'TypeScript', 'CSS'],
+  },
+  {
+    icon: '⚙️',
+    title: 'API e tempo real',
+    description: 'Express, REST, Socket.IO, logs Winston.',
+    tags: ['Node.js', 'Express', 'Socket.IO', 'Winston'],
+  },
+  {
+    icon: '🤖',
+    title: 'Camada de IA',
+    description: 'OpenAI, prompts com contexto de sessão, histórico no MongoDB.',
+    tags: ['OpenAI', 'Prompts', 'MongoDB', 'Redis'],
+  },
+  {
+    icon: '💾',
+    title: 'Persistência',
+    description: 'MongoDB (usuários, chat, assinaturas). Redis para a sessão.',
+    tags: ['MongoDB', 'Mongoose', 'Redis', 'Índices'],
+  },
+];
+
+const processStepsPt: DesarrolloProcessStep[] = [
+  {
+    title: 'Plan',
+    description: 'Arquitetura, APIs, como se vê.',
+    details: [],
+  },
+  {
+    title: 'API',
+    description: 'Express, OpenAI, JWT. Criptografia em trânsito (TLS) e em repouso. A Anto e o modelo leem o texto. WebSockets.',
+    details: [],
+  },
+  {
+    title: 'Clientes',
+    description: 'React Native e Next.js.',
+    details: [],
+  },
+  {
+    title: 'Revisão',
+    description: 'Lint, types, build no GitHub Actions.',
+    details: [],
+  },
+  {
+    title: 'Deploy',
+    description: 'Site na Vercel, API no Render, Sentry.',
+    details: [],
+  },
+];
+
+const techStackPt: DesarrolloTechCategory[] = [
+  {
+    icon: '📱',
+    title: 'Frontend móvel',
+    items: [
+      { name: 'React Native', spec: 'iOS e Android' },
+      { name: 'Expo', spec: '' },
+      { name: 'TypeScript', spec: '' },
+      { name: 'React Navigation', spec: '' },
+      { name: 'Socket.IO', spec: '' },
+      { name: 'Expo Notifications', spec: '' },
+    ],
+  },
+  {
+    icon: '🌐',
+    title: 'Frontend web',
+    items: [
+      { name: 'Next.js', spec: '' },
+      { name: 'React', spec: '' },
+      { name: 'TypeScript', spec: '' },
+      { name: 'CSS tokens', spec: '' },
+      { name: 'socket.io-client', spec: '' },
+    ],
+  },
+  {
+    icon: '⚡',
+    title: 'Backend',
+    items: [
+      { name: 'Node.js', spec: '' },
+      { name: 'Express', spec: '' },
+      { name: 'MongoDB', spec: '' },
+      { name: 'Socket.IO', spec: '' },
+      { name: 'Winston', spec: '' },
+      { name: 'Sentry', spec: '' },
+    ],
+  },
+  {
+    icon: '🤖',
+    title: 'IA e dados',
+    items: [
+      { name: 'OpenAI', spec: '' },
+      { name: 'Pipeline de prompts', spec: 'contexto de sessão' },
+      { name: 'Redis', spec: '' },
+      { name: 'i18n ES/EN', spec: '' },
+    ],
+  },
+  {
+    icon: '🔒',
+    title: 'Segurança',
+    items: [
+      { name: 'JWT + refresh', spec: '' },
+      { name: 'bcrypt', spec: '' },
+      { name: 'Helmet', spec: '' },
+      { name: 'validação de payloads', spec: '' },
+      { name: 'rate limiting', spec: '' },
+    ],
+  },
+  {
+    icon: '🚀',
+    title: 'DevOps e integrações',
+    items: [
+      { name: 'GitHub Actions', spec: '' },
+      { name: 'Vercel', spec: '' },
+      { name: 'Render', spec: '' },
+      { name: 'Mercado Pago', spec: '' },
+      { name: 'SendGrid', spec: '' },
+      { name: 'ESLint', spec: '' },
+    ],
+  },
+];
+
+const challengesPt: DesarrolloChallenge[] = [
+  {
+    icon: '⚡',
+    title: 'Tempo real',
+    challenge: 'Responder a conversa no momento.',
+    solution: 'WebSockets com Socket.IO, Redis e consultas simples.',
+  },
+  {
+    icon: '🔒',
+    title: 'Privacidade',
+    challenge: 'Cuidar de conversas privadas.',
+    solution:
+      'Criptografia em trânsito (TLS) e em repouso. A Anto e o modelo leem o texto. Autenticação JWT e headers de segurança.',
+  },
+  {
+    icon: '📱',
+    title: 'Várias plataformas',
+    challenge: 'iOS, Android e web sem três produtos.',
+    solution: 'React Native no celular e este site em Next.js.',
+  },
+  {
+    icon: '🤖',
+    title: 'IA',
+    challenge: 'Integrar a OpenAI com o fio da pessoa.',
+    solution: 'Prompts com contexto de sessão.',
+  },
+  {
+    icon: '📊',
+    title: 'Escala',
+    challenge: 'Escalar o aplicativo e as conversas.',
+    solution: 'API no Render, site na Vercel, GitHub Actions.',
+  },
+  {
+    icon: '🎨',
+    title: 'Uso',
+    challenge: 'Que dê para entender e usar.',
+    solution: 'Uma interface simples, a mesma voz do resto do site.',
+  },
+];
+
+const metricsPt: DesarrolloMetric[] = [];
+
 const heroHighlightTechs = [
   'React Native',
   'Expo',
@@ -549,6 +723,79 @@ function buildDesarrolloPageCopy(locale: Locale): DesarrolloPageCopy {
     };
   }
 
+  if (locale === 'pt') {
+    return {
+      breadcrumbs: {
+        homeLabel: 'Início',
+        homeHref: localePath(locale, '/'),
+        currentLabel: 'Desenvolvimento',
+      },
+      meta: {
+        title: 'Desenvolvimento - Anto | Stack e arquitetura',
+        description:
+          'Arquitetura full-stack, IA conversacional e mensagens em tempo real, pensadas para um uso confiável no dia a dia.',
+        openGraphTitle: 'Desenvolvimento - Anto | Stack tecnológico',
+        openGraphDescription:
+          'React Native · Next.js · Node.js · MongoDB · OpenAI — assim a Anto é construída.',
+        canonicalPath: CANONICAL_PATH,
+      },
+      hero: {
+        badge: 'Stack em produção',
+        title: 'A engenharia por trás da Anto',
+        subtitle:
+          'Arquitetura full-stack, IA conversacional e mensagens em tempo real, pensadas para um uso confiável no dia a dia.',
+        stackLine: 'React Native (Expo) → Express.js / Socket.IO → MongoDB → OpenAI',
+        highlightTechs: heroHighlightTechs,
+      },
+      architecture: {
+        sectionTitle: 'Arquitetura em camadas',
+        intro:
+          'Clientes móvel e web, API Node com WebSockets, pipeline de IA com contexto de sessão, MongoDB e Redis.',
+        layers: architectureLayersPt,
+      },
+      process: {
+        sectionTitle: 'Pipeline de construção',
+        sectionSubtitle: 'Do repositório à produção (Vercel, Render, EAS, GitHub Actions).',
+        steps: processStepsPt,
+      },
+      techStack: {
+        title: 'Stack tecnológico em produção',
+        intro: 'Bibliotecas e serviços que movem o aplicativo, a API e este site.',
+        categories: techStackPt,
+      },
+      challenges: {
+        sectionTitle: 'Desafios e soluções',
+        challengeLabel: 'Desafio:',
+        solutionLabel: 'Solução:',
+        items: challengesPt,
+      },
+      metrics: {
+        sectionTitle: 'Métricas de desenvolvimento',
+        items: metricsPt,
+      },
+      developer: {
+        sectionTitle: 'Quem constrói',
+        name: 'Marcelo Ull Marambio',
+        bio: 'Engenheiro full-stack: React Native/Expo, Next.js, Node.js, MongoDB, Socket.IO e integrações com a OpenAI.',
+        email: DEVELOPER_EMAIL,
+        githubAriaLabel: 'Marcelo Ull Marambio no GitHub',
+        githubLabel: 'GitHub',
+        githubHref: GITHUB_PROFILE,
+        linkedinAriaLabel: 'Marcelo Ull Marambio no LinkedIn',
+        linkedinLabel: 'LinkedIn',
+        linkedinHref: LINKEDIN_PROFILE,
+      },
+      cta: {
+        title: 'Se você tem uma dúvida sobre como a Anto é construída, escreva para mim.',
+        description: '',
+        contactLabel: 'Contato',
+        contactHref: localePath(locale, '/contacto'),
+        emailLabel: 'E-mail direto',
+        emailHref: `mailto:${DEVELOPER_EMAIL}`,
+      },
+    };
+  }
+
   return {
     breadcrumbs: {
       homeLabel: 'Inicio',
@@ -630,7 +877,9 @@ export function desarrolloPageMetadata(locale: Locale): Metadata {
   const alt =
     locale === 'en'
       ? 'Hands holding a phone open to an unanswered chat, beside a notebook with handwritten questions'
-      : 'Manos con el teléfono abierto a un chat sin respuesta y, al lado, un cuaderno con preguntas escritas a mano';
+      : locale === 'pt'
+        ? 'Mãos segurando um celular aberto num chat sem resposta e, ao lado, um caderno com perguntas escritas à mão'
+        : 'Manos con el teléfono abierto a un chat sin respuesta y, al lado, un cuaderno con preguntas escritas a mano';
   return buildLocalizedPageMetadata(locale, meta.canonicalPath, {
     title: meta.title,
     description: meta.description,

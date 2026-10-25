@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
-import { localePath } from '@/lib/i18n/config';
+import { htmlLanguage, localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getContactPageCopy } from '@/lib/i18n/copy/contact';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
@@ -25,6 +25,9 @@ const FIGURE = {
   en: {
     alt: 'Rainy night desk with an open notebook and a warm lamp',
   },
+  pt: {
+    alt: 'Escrivaninha à noite com chuva na janela, caderno aberto e abajur aceso',
+  },
 } as const;
 
 type ContactPageContentProps = {
@@ -37,8 +40,11 @@ export default function ContactPageContent({ locale }: ContactPageContentProps) 
   const disclaimer =
     locale === 'en'
       ? 'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.'
-      : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
-  const crisisLabel = locale === 'en' ? 'When anxiety rises' : 'Cuando la ansiedad sube';
+      : locale === 'pt'
+        ? 'A Anto não substitui terapia nem atendimento clínico profissional. Se você estiver em crise, procure ajuda de emergência no seu país.'
+        : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
+  const crisisLabel =
+    locale === 'en' ? 'When anxiety rises' : locale === 'pt' ? 'Quando a ansiedade sobe' : 'Cuando la ansiedad sube';
   const crisisHref = localePath(locale, '/recursos/grounding-ansiedad-crisis');
 
   return (
@@ -54,7 +60,7 @@ export default function ContactPageContent({ locale }: ContactPageContentProps) 
         <main
           id="main-content"
           className="home-landing-page home-landing-page--v2 contact-page"
-          lang={locale}
+          lang={htmlLanguage(locale)}
         >
           <div className="home-landing-container contact-page__shell">
             <header className="contact-page__masthead">

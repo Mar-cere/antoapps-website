@@ -40,18 +40,29 @@ export async function POST(request: Request) {
   const name = cleanText(body.name, 100);
   const email = cleanText(body.email, 254).toLowerCase();
   const message = cleanText(body.message, 500);
-  const locale = body.locale === 'en' ? 'en' : 'es';
+  const locale = body.locale === 'en' ? 'en' : body.locale === 'pt' ? 'pt' : 'es';
+  const invalidName = locale === 'pt' ? 'Nome inválido.' : 'Nombre inválido.';
+  const invalidEmail = locale === 'pt' ? 'E-mail inválido.' : 'Correo inválido.';
+  const shortMessage = locale === 'pt' ? 'Mensagem curta demais.' : 'Mensaje demasiado corto.';
+  const sendFailed =
+    locale === 'pt'
+      ? 'Não foi possível enviar a mensagem. Tente de novo mais tarde.'
+      : 'No se pudo enviar el mensaje. Intenta de nuevo más tarde.';
+  const notConfigured =
+    locale === 'pt'
+      ? 'O envio por e-mail não está configurado no servidor.'
+      : 'El envío por correo no está configurado en el servidor.';
 
   if (name.length < 2) {
-    return NextResponse.json({ ok: false, error: 'Nombre inválido.' }, { status: 422 });
+    return NextResponse.json({ ok: false, error: invalidName }, { status: 422 });
   }
 
   if (!EMAIL_RE.test(email)) {
-    return NextResponse.json({ ok: false, error: 'Correo inválido.' }, { status: 422 });
+    return NextResponse.json({ ok: false, error: invalidEmail }, { status: 422 });
   }
 
   if (message.length < 10) {
-    return NextResponse.json({ ok: false, error: 'Mensaje demasiado corto.' }, { status: 422 });
+    return NextResponse.json({ ok: false, error: shortMessage }, { status: 422 });
   }
 
   try {
@@ -61,16 +72,10 @@ export async function POST(request: Request) {
     console.error('[contact][send]', { code });
 
     if (code === 'GMAIL_NOT_CONFIGURED') {
-      return NextResponse.json(
-        { ok: false, error: 'El envío por correo no está configurado en el servidor.' },
-        { status: 503 }
-      );
+      return NextResponse.json({ ok: false, error: notConfigured }, { status: 503 });
     }
 
-    return NextResponse.json(
-      { ok: false, error: 'No se pudo enviar el mensaje. Intenta de nuevo más tarde.' },
-      { status: 502 }
-    );
+    return NextResponse.json({ ok: false, error: sendFailed }, { status: 502 });
   }
 
   return NextResponse.json({ ok: true });

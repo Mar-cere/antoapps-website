@@ -5,6 +5,7 @@ import Link from 'next/link';
 import HeaderDownloadChooser from '@/components/layout/HeaderDownloadChooser';
 import type { LandingDevice } from '@/lib/device/landing-device';
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 import { getSiteLayoutCopy } from '@/lib/i18n/copy/home';
 
@@ -36,7 +37,7 @@ export default function HomeMinimalNav({
 }: HomeMinimalNavProps) {
   const copy = getHomeLandingFinalCopy(locale);
   const layout = getSiteLayoutCopy(locale);
-  const homeHref = locale === 'en' ? '/en' : '/';
+  const homeHref = localePath(locale, '/');
   const label = ctaLabel ?? copy.minimalNav.cta;
   const aria = ctaAria ?? copy.hero.storeAria;
 

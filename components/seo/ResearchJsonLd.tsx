@@ -16,6 +16,8 @@ export function getResearchJsonLd(locale: Locale) {
   const url = siteUrl(locale, RESEARCH_PATH);
   const homeUrl = siteUrl(locale, '/');
   const isEn = locale === 'en';
+  const isPt = locale === 'pt';
+  const inLanguage = isEn ? 'en' : isPt ? 'pt-BR' : 'es';
 
   const imageUrl = copy.figure.src.startsWith('http')
     ? copy.figure.src
@@ -26,7 +28,9 @@ export function getResearchJsonLd(locale: Locale) {
       '@type': 'Thing',
       name: isEn
         ? 'Digital mental health evidence'
-        : 'Evidencia en salud mental digital',
+        : isPt
+          ? 'Evidência em saúde mental digital'
+          : 'Evidencia en salud mental digital',
     },
     ...copy.takes.items.map((take) => ({
       '@type': 'Thing',
@@ -41,7 +45,7 @@ export function getResearchJsonLd(locale: Locale) {
     name: copy.hero.title,
     headline: copy.hero.title,
     description: copy.meta.description,
-    inLanguage: isEn ? 'en' : 'es',
+    inLanguage,
     datePublished: DATE_PUBLISHED,
     dateModified: DATE_MODIFIED,
     isPartOf: {

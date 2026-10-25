@@ -6,7 +6,9 @@ alwaysApply: false
 
 # Forma editorial: home + guías de recursos
 
-Canon vivo: `home-v2.ts`, guías en `psychoeducation/{es,en}.ts`, CSS `psychoeducation-article.css` / `home-v2.css`. Materia visual: rule `anto-nexus-esencial`. Foto y narrativa: skill `editorial-emotional-web`. Responsive: rule `marketing-responsive-editorial`.
+Canon vivo: `home-v2.ts`, guías en `psychoeducation/{es,en,pt}.ts`, CSS `psychoeducation-article.css` / `home-v2.css`. Materia visual: rule `anto-nexus-esencial`. Foto y narrativa: skill `editorial-emotional-web`. Responsive: rule `marketing-responsive-editorial`.
+
+El sitio se escribe en tres idiomas: español (por defecto, sin prefijo), inglés (`/en`) y portugués de Brasil (`/pt`, locale y hreflang `pt-BR`, nunca portugués europeo). Toda página, guía, metadata, selector, hreflang y copy de producto va en los tres. Lo que existe en español e inglés también se traduce al portugués de Brasil.
 
 La anatomía de un bloque no convierte la página en una columna ni en dos columnas iguales. En desktop el conjunto cambia de escala y de corte. El movimiento de esa composición es visible, profesional, y se apaga con `prefers-reduced-motion`.
 
@@ -32,12 +34,12 @@ Presupuesto hero: **brand + H1 humano + apoyo que dice el producto + CTA + 1 anc
 
 **Prohibido en la home:** franja de tres pestañas con un teléfono; capturas de la interfaz teal; un par de tiendas extra sobre la figura de producto. El par de tiendas vive en hero, precios y cierre. Las capturas actuales son WebP en `public/assets/images/product/anto-now-chat-{es,en}.webp` y `anto-now-guide-{es,en}.webp`. Si el archivo no está, esa figura no se publica.
 
-## Copy ES/EN (antes de pulir UI)
+## Copy ES / EN / pt-BR (antes de pulir UI)
 
 1. **Una idea una vez** — si el heading ya lo dice, el párrafo aporta dato nuevo o se corta.
 2. **Motivo ≠ eco** — pull/caption/CTA pueden rimar; no clonar la misma frase en 3 bloques seguidos.
-3. **Paridad ES/EN** — misma estructura y claims; español neutro; EN UK (`behaviour`, `colour`) si el archivo ya lo usa.
-4. **Voz** — reconocimiento antes que consejo; límites clínicos honestos; sin wellness vacío.
+3. **Paridad ES / EN / pt-BR** — misma estructura y claims en los tres idiomas. Español neutro, sin prefijo de URL. Inglés en `/en`; ortografía UK (`behaviour`, `colour`) si el archivo ya la usa. Portugués de Brasil en `/pt`: `você`, gerundio, léxico de Brasil. Nunca portugués europeo (autocarro, ficheiro, comboio, ecrã). Locale y hreflang: `pt-BR`.
+4. **Voz** — reconocimiento antes que consejo; límites clínicos honestos; sin wellness vacío. La voz no cambia de idioma a idioma; cambia el uso de cada lengua.
 
 ## SEO + búsqueda IA (checklist mínimo)
 
