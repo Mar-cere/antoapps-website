@@ -2,6 +2,7 @@
 
 import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 
 type HomeFinalCtaProps = {
@@ -11,7 +12,7 @@ type HomeFinalCtaProps = {
 export default function HomeFinalCta({ locale = 'es' }: HomeFinalCtaProps) {
   const copy = getHomeLandingFinalCopy(locale);
   const { finalCta, hero } = copy;
-  const pagePath = locale === 'en' ? '/en' : '/';
+  const pagePath = localePath(locale, '/');
 
   return (
     <section

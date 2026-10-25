@@ -2,6 +2,7 @@ import type { Locale } from '@/lib/i18n/config';
 import { localePath } from '@/lib/i18n/config';
 import { getPsychoeducationGuideEn } from './en';
 import { getPsychoeducationGuideEs } from './es';
+import { getPsychoeducationGuidePt } from './pt';
 import {
   PSYCHOEDUCATION_SLUGS,
   type PsychoeducationGuide,
@@ -26,7 +27,9 @@ export function getPsychoeducationGuide(
   if (!isPsychoeducationSlug(slug)) {
     return undefined;
   }
-  return locale === 'en' ? getPsychoeducationGuideEn(slug) : getPsychoeducationGuideEs(slug);
+  if (locale === 'en') return getPsychoeducationGuideEn(slug);
+  if (locale === 'pt') return getPsychoeducationGuidePt(slug);
+  return getPsychoeducationGuideEs(slug);
 }
 
 export function getAllPsychoeducationGuides(locale: Locale): PsychoeducationGuide[] {

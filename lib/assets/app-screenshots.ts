@@ -28,10 +28,12 @@ const altByKey: Record<AppScreenshotKey, Record<Locale, string>> = {
   chat: {
     es: 'Conversación real en Anto — el usuario escribe que no puede dormir y Anto responde con empatía y un paso concreto',
     en: 'Real Anto conversation — user writes they cannot sleep and Anto responds with empathy and a concrete step',
+    pt: 'Conversa real na Anto — a pessoa escreve que não consegue dormir e a Anto responde com empatia e um passo concreto',
   },
   home: {
     es: 'Pantalla de inicio de Anto con hábitos, continuidad del chat y pendientes',
     en: 'Anto home screen with habits, chat continuity, and tasks',
+    pt: 'Tela inicial da Anto com hábitos, continuidade da conversa e pendências',
   },
 };
 
@@ -39,38 +41,45 @@ const homeLandingAltByKey: Record<HomeLandingScreenshotKey, Record<Locale, strin
   chatAnxiety: {
     es: 'Anto respondiendo a ansiedad laboral con empatía y sugerencias concretas',
     en: 'Anto responding to work anxiety with empathy and concrete suggestions',
+    pt: 'A Anto respondendo à ansiedade no trabalho com empatia e sugestões concretas',
   },
   sessionSummary: {
     es: 'Resumen de sesión de Anto mostrando patrón de pensamiento detectado',
     en: 'Anto session summary showing detected thought pattern',
+    pt: 'Resumo de sessão da Anto mostrando um padrão de pensamento detectado',
   },
   tccProtocol: {
     es: 'Protocolo de pensamiento automático TCC en Anto, paso 1 de 3',
     en: 'Automatic thought CBT protocol in Anto, step 1 of 3',
+    pt: 'Protocolo de pensamento automático de TCC na Anto, passo 1 de 3',
   },
   weeklySummary: {
     es: 'Resumen semanal de Anto con métricas de bienestar',
     en: 'Anto weekly summary with wellbeing metrics',
+    pt: 'Resumo semanal da Anto com métricas de bem-estar',
   },
   emotionalDashboard: {
     es: 'Panel de tendencias emocionales y seguimiento en Anto',
     en: 'Emotional trends and tracking dashboard in Anto',
+    pt: 'Painel de tendências emocionais e acompanhamento na Anto',
   },
 };
 
 const labelByKey: Record<AppScreenshotKey, Record<Locale, string>> = {
-  chat: { es: 'Chat de apoyo', en: 'Support chat' },
-  home: { es: 'Tu día organizado', en: 'Your day, organized' },
+  chat: { es: 'Chat de apoyo', en: 'Support chat', pt: 'Conversa de apoio' },
+  home: { es: 'Tu día organizado', en: 'Your day, organized', pt: 'O seu dia organizado' },
 };
 
 const descriptionByKey: Record<AppScreenshotKey, Record<Locale, string>> = {
   chat: {
     es: 'Escribe lo que sientes y recibe claridad en segundos.',
     en: 'Write what you feel and get clarity in seconds.',
+    pt: 'Escreva o que você sente e receba clareza em segundos.',
   },
   home: {
     es: 'Hábitos, pendientes y seguimiento en un solo lugar.',
     en: 'Habits, tasks, and tracking in one place.',
+    pt: 'Hábitos, pendências e acompanhamento num só lugar.',
   },
 };
 

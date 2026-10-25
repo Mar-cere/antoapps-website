@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
-import { localePath } from '@/lib/i18n/config';
+import { htmlLanguage, localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getDesarrolloPageCopy } from '@/lib/i18n/copy/pages/desarrollo';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
@@ -23,6 +23,7 @@ type DesarrolloPageContentProps = {
 const FIGURE_ALT = {
   es: 'Manos con el teléfono abierto a un chat sin respuesta y, al lado, un cuaderno con preguntas escritas a mano',
   en: 'Hands holding a phone open to an unanswered chat, beside a notebook with handwritten questions',
+  pt: 'Mãos com o celular aberto num chat sem resposta e, ao lado, um caderno com perguntas escritas à mão',
 } as const;
 
 export default function DesarrolloPageContent({ locale }: DesarrolloPageContentProps) {
@@ -31,7 +32,9 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
   const disclaimer =
     locale === 'en'
       ? 'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.'
-      : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
+      : locale === 'pt'
+        ? 'A Anto não substitui terapia nem atendimento clínico profissional. Se você estiver em crise, procure ajuda de emergência no seu país.'
+        : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
 
   return (
     <LocaleProvider locale={locale}>
@@ -43,7 +46,7 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
           ctaLabel={nav.cta}
           ctaAria={nav.ctaAria}
         />
-        <main id="main-content" className="home-landing-page home-landing-page--v2 development-page" lang={locale}>
+        <main id="main-content" className="home-landing-page home-landing-page--v2 development-page" lang={htmlLanguage(locale)}>
           <header className="development-masthead">
             <div className="home-landing-container development-masthead__grid">
               <div className="development-masthead__copy">

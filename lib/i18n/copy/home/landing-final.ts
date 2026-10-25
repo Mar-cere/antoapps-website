@@ -323,6 +323,219 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
   };
   }
 
+  if (locale === 'pt') {
+    return {
+      hero: {
+        kicker: 'Apoio emocional com IA · iPhone e Android',
+        titleLine1: 'Sua mente tem',
+        titleLine2: 'um lugar para',
+        titleAccent: 'pousar.',
+        subtitle:
+          'A Anto acompanha você com conversa e um hub de exercícios quando falar não basta. Sem consultas. Sem horários. Sem julgamento.',
+        ctaStoreLabel: 'Baixar na',
+        ctaStoreText: 'App Store',
+        ctaBadge: 'Grátis',
+        ctaMicro: '1 dia de teste · Sem cartão · Cancele quando quiser',
+        ctaPlayLabel: 'Disponível no',
+        ctaPlayText: 'Google Play',
+        ctaPlayBadge: 'Grátis',
+        storeAria: 'Baixar a Anto na App Store',
+        androidStoreAria: 'Baixar a Anto no Google Play',
+        heroReview: {
+          quote: 'Uso quando a ansiedade me acorda. Em minutos a intensidade baixa um pouco.',
+          author: 'Camila S.',
+          source: 'App Store',
+        },
+        starsAria: '5 estrelas na App Store',
+        heroScreenshot: 'chatAnxiety',
+      },
+      featureRows: [
+        {
+          id: 'product',
+          eyebrow: 'O produto',
+          titlePrefix: 'Não é só conversa.',
+          titleHighlight: 'É um sistema.',
+          subtitle:
+            'Chat com memória de temas, sugestões que continuam quando você reabre e um início renovado com insight diário. A Anto entende o contexto, percebe padrões e sugere um passo concreto.',
+          tags: [
+            'Responde em menos de 3 s',
+            'Hub de técnicas',
+            'Hub de exercícios',
+            'PHQ-9 · GAD-7',
+          ],
+          screenshot: 'chatAnxiety',
+        },
+        {
+          id: 'analysis',
+          eyebrow: 'Grafo e insights',
+          titlePrefix: 'Padrões em que',
+          titleHighlight: 'dá para agir.',
+          subtitle:
+            'Veja conexões entre conversas e técnicas concretas. «O que ajuda você» navegável, relatórios acionáveis e WAI pós-sessão para refletir sobre a aliança terapêutica.',
+          tags: [
+            'Grafo de insights',
+            'WAI pós-sessão (4 eixos)',
+            'O que ajuda você',
+          ],
+          screenshot: 'sessionSummary',
+          reverse: true,
+        },
+        {
+          id: 'protocols',
+          eyebrow: 'Hub de técnicas',
+          titlePrefix: 'Catálogo completo,',
+          titleHighlight: 'acesso imediato.',
+          subtitle:
+            'Técnicas terapêuticas na navegação principal, quadro ABC interativo e exercícios (TCC, ABC, mindfulness) para quando falar não basta.',
+          tags: ['ABC interativo', '1 hub de exercícios', 'TCC passo a passo', 'Com base em evidência'],
+          screenshot: 'tccProtocol',
+        },
+        {
+          id: 'progress',
+          eyebrow: 'O seu dia a dia',
+          titlePrefix: 'Início, tarefas',
+          titleHighlight: 'e sequência.',
+          subtitle:
+            'Tarefas e hábitos unificados numa tela, Pomodoro ao focar uma tarefa, sequência centrada no chat e sessão persistente para voltar sem digitar a senha de novo.',
+          tags: [
+            'Insight diário',
+            '1 tela unificada',
+            'Sessão persistente',
+            'Pomodoro integrado',
+          ],
+          screenshot: 'weeklySummary',
+          screenshotCrop: true,
+          reverse: true,
+        },
+      ],
+      credentials: {
+        eyebrow: 'Acompanhamento',
+        title: 'Um lugar para\npousar.',
+        subtitle: 'Não é tratamento nem substitui um profissional. É apoio para o dia a dia.',
+        stats: [
+          {
+            value: 'Hub',
+            label: 'Exercícios',
+            detail: 'TCC, ABC e mindfulness — para quando falar não basta',
+          },
+          {
+            value: 'Chat',
+            label: 'Acompanhamento',
+            detail: 'Você escreve como se sente. Recebe um passo concreto. Sem rótulo de transtorno',
+          },
+          {
+            value: '5.0',
+            label: 'Na App Store',
+            detail: 'Nota pública de usuários reais',
+          },
+          {
+            value: '24/7',
+            label: 'Sempre disponível',
+            detail: 'Sem consultas, sem horários, sem lista de espera',
+          },
+        ],
+        accompaniment: {
+          title: 'O que tem no hub',
+          body: 'Exercícios (TCC, ABC, mindfulness) para quando falar não basta. Não é tratamento nem detecção. Não substitui um profissional.',
+        },
+      },
+      pricing: {
+        eyebrow: 'Planos',
+        title: 'Sem compromisso.',
+        subtitle: 'Comece grátis. Escolha o que você precisa.',
+        popularBadge: 'Mais popular',
+        cards: [
+          { period: '1 mês', price: `$${PRICING_USD.month.toFixed(2)}`, unit: 'USD / mês' },
+          {
+            period: '3 meses',
+            price: `$${PRICING_USD.threeMonths.toFixed(2)}`,
+            unit: 'USD',
+            popular: true,
+          },
+          {
+            period: '6 meses',
+            price: `$${PRICING_USD.sixMonths.toFixed(2)}`,
+            unit: 'USD',
+            save: 'Economize 12%',
+          },
+          {
+            period: '1 ano',
+            price: `$${PRICING_USD.year.toFixed(2)}`,
+            unit: 'USD',
+            save: 'Economize 17%',
+          },
+        ],
+        ctaMicro: 'Todos os planos incluem acesso completo · 1 dia grátis',
+        unitMonth: 'USD / mês',
+        unitTotal: 'USD',
+        saveLabel: (pct) => `Economize ${pct}%`,
+      },
+      footerTrust: {
+        items: [
+          { label: 'Privado de propósito' },
+          { label: 'Sem cartão' },
+          { label: 'Feito no Chile' },
+        ],
+        disclaimer:
+          'A Anto não substitui terapia nem atendimento clínico profissional. Se você estiver em crise, procure ajuda de emergência no seu país.',
+      },
+      minimalNav: {
+        cta: 'Baixar grátis',
+        aria: 'Navegação principal',
+        logoAria: 'Anto - Ir ao início',
+      },
+      reviews: {
+        eyebrow: 'App Store',
+        title: 'Pessoas reais, noites difíceis.',
+        sourceLabel: 'Avaliações públicas na App Store',
+        starsAria: '5 estrelas na App Store',
+      },
+      faqLite: {
+        eyebrow: 'Perguntas frequentes',
+        title: 'O essencial, sem rodeios.',
+        items: [
+          {
+            question: 'Minhas conversas são privadas?',
+            answer:
+              'Sim. Vão criptografadas em trânsito (TLS) e em repouso. A Anto e o modelo leem o texto para prestar o serviço. Não vendemos a conversa nem a usamos para anúncios.',
+          },
+          {
+            question: 'A Anto substitui a terapia?',
+            answer:
+              'Não. A Anto complementa o apoio profissional: acompanha você entre sessões, com ferramentas baseadas em evidência.',
+          },
+          {
+            question: 'Tem teste grátis?',
+            answer: trial.faqPremiumAnswer,
+          },
+          {
+            question: 'O que o hub de técnicas inclui?',
+            answer:
+              'Catálogo completo na navegação, quadro ABC interativo e conexão com o grafo de insights para ver quais técnicas combinam com os seus padrões. Você também pode abrir o Pomodoro ao focar uma tarefa.',
+          },
+        ],
+        moreHref: localePath('pt', '/recursos'),
+        moreLabel: 'Explorar a biblioteca de recursos →',
+      },
+      finalCta: {
+        title: 'Sua mente merece um lugar para pousar.',
+        subtitle: 'Comece hoje. Um dia grátis, sem cartão.',
+      },
+      minimalFooter: {
+        links: [
+          { href: localePath('pt', '/recursos'), label: 'Recursos' },
+          { href: localePath('pt', '/app'), label: 'App' },
+          { href: localePath('pt', '/seguridad'), label: 'Segurança' },
+          { href: localePath('pt', '/privacidad'), label: 'Privacidade' },
+          { href: localePath('pt', '/terminos'), label: 'Termos' },
+          { href: localePath('pt', '/contacto'), label: 'Contato' },
+        ],
+        copyright: '© 2026 Anto · Feito com cuidado no Chile',
+        linksAria: 'Links do site',
+      },
+    };
+  }
+
   return {
     hero: {
       kicker: 'AI emotional support · iPhone and Android',

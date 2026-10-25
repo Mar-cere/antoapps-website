@@ -34,7 +34,7 @@ export default function PricingCalculator({ locale = 'es' }: PricingCalculatorPr
 
   const formatPrice = (price: number) => formatUsdPrice(price, locale);
 
-  const downloadHref = locale === 'en' ? '/en/bienvenida' : '/bienvenida';
+  const downloadHref = localePath(locale, '/bienvenida');
   const termsHref = localePath(locale, '/terminos');
   const privacyHref = localePath(locale, '/privacidad');
 

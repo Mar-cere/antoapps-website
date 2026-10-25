@@ -23,6 +23,12 @@ const copy: Record<Locale, Omit<NotFoundCopy, 'homeHref' | 'downloadHref'>> = {
     homeLabel: 'Back to Home',
     downloadLabel: 'Download',
   },
+  pt: {
+    title: 'Página não encontrada',
+    lead: 'Desculpe, a página que você procura não existe.',
+    homeLabel: 'Voltar ao Início',
+    downloadLabel: 'Baixar',
+  },
 };
 
 export function getNotFoundCopy(locale: Locale): NotFoundCopy {

@@ -79,6 +79,41 @@ const copy: Record<Locale, { title: string; links: { href: string; label: string
       },
     ],
   },
+  pt: {
+    title: 'Explorar a Anto',
+    links: [
+      {
+        href: '/recursos',
+        label: 'Recursos',
+        description: 'Biblioteca de psicoeducação',
+      },
+      {
+        href: '/recursos/escalas-phq9-gad7',
+        label: 'PHQ-9 e GAD-7',
+        description: 'O que medem e como ler',
+      },
+      {
+        href: '/recursos/que-es-tcc',
+        label: 'Pensamentos e emoções (TCC)',
+        description: 'Guia breve: a interpretação e um passo pequeno',
+      },
+      {
+        href: '/recursos/grounding-ansiedade-crisis',
+        label: 'Grounding',
+        description: 'Técnicas para ansiedade e crise',
+      },
+      {
+        href: '/app',
+        label: 'O app',
+        description: 'A Anto no iPhone e no Android — o que inclui',
+      },
+      {
+        href: '/seguridad',
+        label: 'Segurança',
+        description: 'Criptografia, privacidade e limites clínicos',
+      },
+    ],
+  },
 };
 
 export default function HomeExploreLinks({ locale = 'es' }: HomeExploreLinksProps) {

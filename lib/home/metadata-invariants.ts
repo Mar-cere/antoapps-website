@@ -3,7 +3,7 @@ import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { homePageMetadata } from '@/lib/i18n/copy/pages/home-metadata';
 import { homeOgImageAlt } from '@/lib/home/opengraph-image';
 
-const LOCALES: readonly Locale[] = ['es', 'en'];
+const LOCALES: readonly Locale[] = ['es', 'en', 'pt'];
 
 const LEGACY_HEADLINE = /apoyo emocional 24\/7|24\/7 emotional support|home v2|sandbox/i;
 
@@ -40,6 +40,10 @@ export function assertHomeMetadataInvariants(): string[] {
       if (!/^Anto, app de acompañamiento emocional \| Ansiedad, entre sesiones$/.test(title)) {
         errors.push(`${tag} metadata.title debe nombrar la app y la intención, sin sustituir el H1`);
       }
+    } else if (locale === 'pt') {
+      if (!/^Anto, app de acompanhamento emocional \| Ansiedade, entre sessões$/.test(title)) {
+        errors.push(`${tag} metadata.title deve nomear o app e a intenção, sem substituir o H1`);
+      }
     } else if (!/^Anto, an emotional support app \| Anxiety, between sessions$/.test(title)) {
       errors.push(`${tag} metadata.title must name the app and the intent, and leave the H1 unchanged`);
     }
@@ -70,6 +74,19 @@ export function assertHomeMetadataInvariants(): string[] {
       }
       if (!/no reemplaza|no sustituye/i.test(description)) {
         errors.push(`${tag} metadata.description debe aclarar que no reemplaza terapia`);
+      }
+    } else if (locale === 'pt') {
+      if (!/acompanh|horas quietas|passo concreto/i.test(description)) {
+        errors.push(`${tag} metadata.description deve refletir a voz editorial`);
+      }
+      if (!/ansiedade/i.test(description) || !/entre sessões/i.test(description)) {
+        errors.push(`${tag} metadata.description deve incluir intenções (ansiedade, entre sessões)`);
+      }
+      if (!/iPhone/i.test(description) || !/teste|grátis/i.test(description)) {
+        errors.push(`${tag} metadata.description deve mencionar iPhone e teste`);
+      }
+      if (!/não substitui/i.test(description)) {
+        errors.push(`${tag} metadata.description deve deixar claro que não substitui terapia`);
       }
     } else {
       if (!/quiet hours|concrete step|ongoing emotional/i.test(description)) {

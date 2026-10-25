@@ -4,6 +4,7 @@ import Image from 'next/image';
 import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import HomeV2ChatVignette from '@/components/sections/HomeV2ChatVignette';
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 
@@ -18,7 +19,7 @@ type HomeV2HeroProps = {
 export default function HomeV2Hero({ locale = 'es' }: HomeV2HeroProps) {
   const copy = getHomeV2Copy(locale);
   const hero = copy.hero;
-  const pagePath = locale === 'en' ? '/en' : '/';
+  const pagePath = localePath(locale, '/');
 
   return (
     <section id="inicio" className="home-v2-hero" aria-labelledby="home-v2-hero-title">

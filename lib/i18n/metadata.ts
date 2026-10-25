@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { hasPortugueseLegalPage, localePath, type LegalLocale } from '@/lib/i18n/config';
+import { localePath, type Locale } from '@/lib/i18n/config';
 import { SITE_ORIGIN } from '@/lib/seo/site';
 
-export function siteUrl(locale: LegalLocale, path: string): string {
+export function siteUrl(locale: Locale, path: string): string {
   return `${SITE_ORIGIN}${localePath(locale, path)}`;
 }
 
@@ -24,7 +24,7 @@ type LocalizedMetaInput = {
 };
 
 export function buildLocalizedPageMetadata(
-  locale: LegalLocale,
+  locale: Locale,
   path: string,
   meta: LocalizedMetaInput
 ): Metadata {
@@ -38,11 +38,9 @@ export function buildLocalizedPageMetadata(
   const languages: Record<string, string> = {
     es: siteUrl('es', path),
     en: siteUrl('en', path),
+    'pt-BR': siteUrl('pt', path),
     'x-default': siteUrl('es', path),
   };
-  if (hasPortugueseLegalPage(path)) {
-    languages['pt-BR'] = siteUrl('pt', path);
-  }
 
   return {
     title: meta.title,

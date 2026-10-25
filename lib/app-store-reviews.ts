@@ -39,6 +39,23 @@ const reviewsEn: readonly AppStoreReviewSnippet[] = [
   },
 ];
 
+const reviewsPt: readonly AppStoreReviewSnippet[] = [
+  {
+    quote: 'Me ajuda a organizar o que eu sinto quando não tenho com quem falar nessa hora.',
+    author: 'Valentina R.',
+  },
+  {
+    quote: 'Não é uma conversa genérica: sinto que entende o contexto e me deixa um passo concreto.',
+    author: 'Tomás M.',
+  },
+  {
+    quote: 'Uso quando a ansiedade me acorda. Em minutos a intensidade baixa um pouco.',
+    author: 'Camila S.',
+  },
+];
+
 export function getAppStoreReviewSnippets(locale: Locale): readonly AppStoreReviewSnippet[] {
-  return locale === 'en' ? reviewsEn : reviewsEs;
+  if (locale === 'en') return reviewsEn;
+  if (locale === 'pt') return reviewsPt;
+  return reviewsEs;
 }

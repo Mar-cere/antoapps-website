@@ -137,6 +137,80 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
     };
   }
 
+  if (locale === 'pt') {
+    return {
+      breadcrumbs: {
+        homeLabel: 'Início',
+        homeHref: localePath(locale, '/'),
+        currentLabel: 'Segurança',
+      },
+      crumbAria: 'Trilha de navegação',
+      meta: {
+        title: 'Como cuidamos do que você escreve | Criptografia e limites - Anto',
+        description:
+          'A Anto guarda o fio para você não começar do zero. Ele viaja criptografado (TLS) e fica criptografado. A Anto e o modelo leem o texto. Não substitui terapia.',
+        openGraphTitle: 'Como cuidamos do que você escreve - Anto',
+        openGraphDescription:
+          'Por que o fio é lido, criptografia em trânsito e em repouso, como pedir a exclusão. Não é um serviço clínico.',
+        canonicalPath: CANONICAL_PATH,
+      },
+      hero: {
+        title: 'Como cuidamos do que você escreve',
+      },
+      pullQuote:
+        'A Anto guarda o fio para você não recomeçar em branco. Isso pede ler o que você escreve. Não pede uma plateia.',
+      reading: {
+        title: 'Por que é lido',
+        paragraphs: [
+          'Para acompanhar você, a Anto precisa do texto: responder, lembrar o que volta, oferecer um passo concreto. Essa é a promessa de não começar do zero. A Anto e o modelo leem essas palavras para prestar o serviço.',
+          'O fio não é vendido. Não é usado para anúncios.',
+        ],
+      },
+      figure: {
+        src: figureSrc,
+        alt: 'Pessoa de costas caminha pela sala com o celular na mão, luz da janela',
+        caption: 'O fio fica na sua conta. Não num palco.',
+        width: EDITORIAL_WIDTH,
+        height: EDITORIAL_HEIGHT,
+      },
+      takes: {
+        title: 'O caminho e o arquivo',
+        items: [
+          {
+            title: 'No caminho',
+            body: 'O tráfego entre o seu dispositivo e os servidores vai por HTTPS (TLS). Isso protege o trajeto. Ao chegar, o serviço lê o texto: não é criptografia de ponta a ponta.',
+          },
+          {
+            title: 'Guardado',
+            body: 'Os dados ficam criptografados em repouso, AES-256, nos nossos servidores. É criptografia de infraestrutura.',
+          },
+          {
+            title: 'Quem lê',
+            body: 'Você, ao entrar. A Anto e o modelo, para responder e lembrar. O modelo é um provedor de IA que processa o texto.',
+          },
+          {
+            title: 'Pedir para apagar',
+            body: 'Você pode pedir que a gente apague a sua conta e os seus dados. Fazemos isso segundo as políticas de retenção e as exigências legais.',
+          },
+        ],
+      },
+      limits: {
+        title: 'Limites',
+        body: 'A Anto não substitui terapia nem atendimento clínico profissional. Se você está em crise, procure ajuda de emergência no seu país.',
+      },
+      contact: {
+        title: 'Contato',
+        securityLead: 'Se você encontrar uma falha de segurança, escreva para',
+        securityEmail: DEVELOPER_EMAIL,
+        dataLead: 'Para acessar os seus dados ou pedir a exclusão, escreva para',
+        dataEmail: SUPPORT_EMAIL,
+        privacyPrefix: 'O detalhe legal está na',
+        privacyLabel: 'política de privacidade',
+        privacyHref,
+      },
+    };
+  }
+
   return {
     breadcrumbs: {
       homeLabel: 'Inicio',

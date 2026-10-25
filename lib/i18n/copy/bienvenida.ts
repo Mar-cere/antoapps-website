@@ -443,6 +443,294 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
     };
   }
 
+  if (locale === 'pt') {
+    return {
+      meta: {
+        title: 'Quando a mente não para, a Anto ajuda você a encontrar o chão.',
+        description:
+          'Aplicativo de acompanhamento emocional para iPhone e Android: quando a ansiedade ou a mente não param, você escreve o que sente e sai com clareza e um passo concreto. Teste de 1 dia grátis na App Store ou no Google Play. Não substitui um terapeuta.',
+        socialDescription:
+          'Comece grátis hoje · Sem cartão · Privado',
+        ogHeadline: 'Acompanhamento emocional quando a mente não para',
+        ogSubline:
+          'Escreva o que sente. Clareza e um passo concreto — não só uma resposta genérica.',
+        ogAlt: 'Anto — Acompanhamento emocional para ansiedade no iPhone e no Android',
+      },
+      hero: {
+        titleLine1: 'Quando a mente não para,',
+        titleLine2: {
+          A: 'Organize o que você sente com a Anto',
+          B: 'A Anto ajuda você a ordenar',
+          C: 'A Anto ajuda você a encontrar o chão.',
+        },
+        subheadline: {
+          A: 'Escreva o que sente — a IA devolve clareza e um passo concreto em segundos.',
+          B: 'Escreva o que sente — a IA devolve clareza e um passo concreto em segundos.',
+          C: 'Escreva o que sente. Clareza e um passo concreto em segundos.',
+        },
+      },
+      trial: {
+        heroCta: {
+          A: 'Baixar na App Store',
+          B: 'Começar na App Store',
+          C: 'App Store',
+        },
+        stickyCta: {
+          A: `Comece — ${trial.short}`,
+          B: `Baixar — ${trial.short}`,
+          C: `Baixar — ${trial.short}`,
+        },
+        stickyAndroidCta: 'Baixar no Google Play',
+        stickyDesktopCta: 'Ver opções para baixar',
+        stickyAndroidAria: 'Baixar a Anto no Google Play',
+        stickyDesktopAria: 'Ir às opções para baixar',
+        finalCta: `Baixar na App Store — ${trial.short}`,
+        line: `${trial.short} · cancele quando quiser na App Store`,
+        pricingLine: 'Depois US$4.20/mês · cancele quando quiser',
+        noCreditCard: 'Sem cartão de crédito para começar',
+        aria: 'Baixar a Anto na App Store. Inclui 1 dia de teste grátis.',
+        stickyAria: 'Baixar a Anto na App Store. Teste grátis de 1 dia.',
+        faqAnswer: trial.faqPricingAnswer,
+      },
+      privacyBadge: 'Suas conversas são privadas',
+      androidHeroCta: 'Google Play',
+      androidLink: 'Também no Google Play para Android',
+      androidStoreAria: 'Baixar a Anto no Google Play',
+      desktopPicker: {
+        prompt: 'De qual aparelho você está vindo?',
+        iphone: 'Eu tenho iPhone',
+        android: 'Eu tenho Android',
+        changeDevice: 'Trocar aparelho',
+        iphoneHint: 'Abre a App Store — instale no seu iPhone',
+      },
+      androidDevice: {
+        leadLine: 'A Anto está no Google Play. Baixe no seu Android.',
+        iosFallback: 'Tem iPhone? Baixe na App Store',
+      },
+      reviews: {
+        sectionTitle: 'O que dizem na App Store',
+        sourceLabel: 'Avaliações públicas na App Store',
+        starsAria: '5 de 5 estrelas',
+        items: [
+          {
+            quote: 'Me ajuda a organizar o que eu sinto quando não tenho com quem falar nessa hora.',
+            author: 'Valentina R.',
+          },
+          {
+            quote: 'Não é uma conversa genérica: sinto que entende o contexto e me deixa um passo concreto.',
+            author: 'Tomás M.',
+          },
+          {
+            quote: 'Eu uso quando a ansiedade me acorda. Em minutos a intensidade baixa um pouco.',
+            author: 'Camila S.',
+          },
+        ],
+      },
+      clinicalPillars: {
+        sectionTitle: 'Por que a Anto é diferente',
+        items: [
+          {
+            icon: 'evidence',
+            title: 'Com base clínica',
+            description: 'Exercícios no hub (TCC, ABC, mindfulness) — não é uma conversa genérica.',
+          },
+          {
+            icon: 'crisis',
+            title: 'Se você está em crise',
+            description:
+              'A Anto pode orientar você a linhas de ajuda e recursos. Não substitui uma emergência nem um profissional.',
+          },
+          {
+            icon: 'privacy',
+            title: 'Privacidade total',
+            description: 'As conversas são suas. Sem anúncio e sem venda de dados.',
+          },
+        ],
+      },
+      conversationDemo: {
+        ariaLabel: 'Demonstração animada de uma conversa com a Anto',
+        label: 'Uma conversa real, do começo ao fim',
+        messages: [
+          { role: 'user', text: 'não consigo dormir, fico pensando em tudo de ruim do trabalho' },
+          {
+            role: 'anto',
+            text: 'Parece exaustivo. O que pesa mais agora: o medo, a culpa ou a incerteza?',
+          },
+          { role: 'user', text: 'mais o medo de amanhã no trabalho' },
+          {
+            role: 'anto',
+            text: 'Vamos deixar isso menor. Um passo para hoje: escreva 3 coisas que você controla amanhã. Quer tentar?',
+          },
+        ],
+      },
+      audience: {
+        sectionTitle: 'A Anto é para você se…',
+        items: [
+          {
+            title: 'A ansiedade não deixa você dormir',
+            description: 'Você precisa encontrar o chão às 2 da manhã, não esperar até terça na terapia.',
+          },
+          {
+            title: 'O estresse do trabalho transborda',
+            description: 'Você quer um passo concreto hoje — não mais uma fala sobre produtividade.',
+          },
+          {
+            title: 'Você está atravessando um término ou uma perda',
+            description: 'Você precisa de um espaço seguro para desenredar o que sente, no seu ritmo.',
+          },
+        ],
+      },
+      inAppHint: {
+        iosBrowser: 'Abrir no Safari',
+        androidBrowser: 'Abrir no Chrome',
+      },
+      how: {
+        sectionTitle: 'Como funciona',
+        steps: [
+          'Escreva o que sente, sem filtro.',
+          'Receba clareza e um passo concreto para hoje.',
+          'Volte quando precisar.',
+        ],
+      },
+      faq: {
+        sectionTitle: 'Dúvidas frequentes',
+        items: [
+          {
+            question: 'É a mesma coisa que terapia?',
+            answer:
+              'Não. A Anto é acompanhamento emocional com IA: ajuda a ordenar o que você sente e a seguir com um passo concreto. Não diagnostica e não substitui atendimento clínico.',
+            privacyLinkLabel: 'Política de Privacidade',
+          },
+          {
+            question: 'Quanto custa depois do teste?',
+            answer: trial.faqPricingAnswer,
+            privacyLinkLabel: 'Política de Privacidade',
+          },
+          {
+            question: 'Quem vê o que eu escrevo?',
+            answer:
+              'Suas conversas são privadas. Não vendemos os seus dados nem usamos para publicidade. Mais detalhe na nossa',
+            privacyLinkLabel: 'Política de Privacidade',
+          },
+        ],
+      },
+      final: {
+        headline: 'Quer testar a Anto?',
+      },
+      disclaimer:
+        'A Anto não substitui terapia nem atendimento clínico. Se você está em crise, procure ajuda profissional ou de emergência no seu país.',
+      footer: {
+        privacy: 'Privacidade',
+        terms: 'Termos',
+        contact: 'Contato',
+        tagline: '© {year} Anto · Feito com cuidado no Chile',
+      },
+      trustStrip: {
+        ratingOnAppStore: appStoreRatingWithReviews('pt'),
+        availableOn: 'Disponível no iPhone e no Android',
+      },
+      androidCta: 'Baixar no Google Play',
+      appPreview: {
+        ariaLabel: 'Prévia do aplicativo Anto',
+        userMessage: 'não consigo parar de pensar em tudo de ruim',
+        antoMessage:
+          'Parece exaustivo. O que pesa mais agora: o medo, a culpa ou a incerteza?',
+        inputPlaceholder: 'Escreva uma mensagem…',
+      },
+      screenshots: {
+        sectionTitle: 'Assim se vê o aplicativo',
+        images: [
+          {
+            src: APP_SCREENSHOT_PATHS.chat,
+            alt: 'Conversa no aplicativo: a pessoa escreve que não consegue dormir e a Anto responde com reconhecimento e um passo concreto',
+          },
+          {
+            src: APP_SCREENSHOT_PATHS.home,
+            alt: 'Tela inicial da Anto com hábitos, continuidade do chat e pendências',
+          },
+        ],
+      },
+      v2: {
+        eyebrow: 'Acompanhamento emocional para ansiedade',
+        heroTitlePrefix: 'Quando a mente não para,',
+        heroTitleHighlight: 'a Anto ajuda você a encontrar o chão.',
+        heroSub:
+          'Escreva o que sente. Clareza e um passo concreto quando a ansiedade não solta.',
+        heroReview: {
+          quote:
+            'Eu uso quando a ansiedade me acorda. Em minutos a intensidade baixa um pouco.',
+          author: 'Camila S.',
+          source: 'App Store',
+        },
+        ctaStoreLabel: 'Baixar na',
+        ctaStoreText: 'App Store',
+        ctaBadge: trial.short,
+        ctaMicro: 'Comece grátis hoje · Sem cartão · Privado',
+        ctaPlayLabel: 'Disponível no',
+        ctaPlayText: 'Google Play',
+        ctaPlayBadge: trial.short,
+        chatSectionLabel: 'Assim no seu iPhone',
+        chat: {
+          ariaLabel: 'Chat de exemplo na Anto: mente que não para e um passo concreto',
+          messages: [
+            {
+              role: 'user',
+              text: 'A mente não para. Não consigo dormir.',
+            },
+            {
+              role: 'anto',
+              text: 'Parece exaustivo. O que pesa mais agora?',
+            },
+            {
+              role: 'anto',
+              text: 'Um passo para hoje à noite: escreva 3 coisas que você controla. Quer tentar?',
+            },
+          ],
+        },
+        features: [
+          { icon: 'privacy', title: 'Privado', subtitle: 'A Anto e o modelo leem o texto. Criptografado em trânsito (TLS) e em repouso.' },
+          { icon: 'clock', title: 'Quando você precisa', subtitle: 'Ali quando a mente não para' },
+          { icon: 'evidence', title: 'Passos claros', subtitle: 'Um passo concreto, não um conselho vago' },
+          { icon: 'crisis', title: 'Sem julgamento', subtitle: 'Um espaço calmo para ordenar o que você sente' },
+        ],
+        dashboard: {
+          label: 'Um espelho do que você escreveu',
+          headline: 'Um espelho do que você escreveu.',
+          subtitle:
+            'Depois de falar, a Anto devolve o que foi ouvido e um passo concreto. Sem rótulo. Sem pontuação.',
+          mock: {
+            title: 'O que foi ouvido',
+            quote: 'A mente não para. Não consigo dormir.',
+            reframe: 'Esta noite está pesada. Não precisa resolver tudo agora.',
+            step: 'Escreva 3 coisas que você controla. Dois minutos.',
+            footnote: 'Só um exemplo. Não é um diagnóstico.',
+          },
+        },
+        trustItems: [
+          { icon: 'lock', label: 'Privado' },
+          { icon: 'no-card', label: 'Sem cartão' },
+          { icon: 'chile', label: 'Feito no Chile' },
+        ],
+        photoAlt: 'Um quarto à noite, quando o sono não chega',
+        limitsHeading: 'Vale saber',
+        limits: [
+          {
+            title: 'Não é terapia',
+            body: 'A Anto não diagnostica e não substitui atendimento clínico.',
+          },
+          {
+            title: 'Privado',
+            body: 'Vão criptografadas em trânsito (TLS) e em repouso. A Anto e o modelo leem o texto para prestar o serviço.',
+          },
+          {
+            title: 'Se você está em crise',
+            body: 'Procure ajuda profissional ou de emergência no seu país.',
+          },
+        ],
+      },
+    };
+  }
+
   return {
     meta: {
       title: 'Cuando tu mente no para, Anto te ayuda a aterrizar.',

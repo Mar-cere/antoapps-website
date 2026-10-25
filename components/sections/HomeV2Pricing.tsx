@@ -2,6 +2,7 @@
 
 import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 
 type HomeV2PricingProps = {
@@ -11,7 +12,7 @@ type HomeV2PricingProps = {
 /** Plan destacado + lista + CTA en una sola composición. */
 export default function HomeV2Pricing({ locale = 'es' }: HomeV2PricingProps) {
   const { pricing, hero } = getHomeV2Copy(locale);
-  const pagePath = locale === 'en' ? '/en' : '/';
+  const pagePath = localePath(locale, '/');
   const featured = pricing.cards.find((card) => card.popular) ?? pricing.cards[0];
   const others = pricing.cards.filter((card) => card !== featured);
 

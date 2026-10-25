@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { htmlLanguage } from '@/lib/i18n/config';
 import { usePathname } from 'next/navigation';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { localeFromPathname } from '@/lib/i18n/path-from-pathname';
@@ -19,7 +20,7 @@ export default function NotFoundContent() {
     <LocaleProvider locale={locale}>
       <ClientInitializer />
       <Header />
-      <main lang={locale}>
+      <main lang={htmlLanguage(locale)}>
         <section className="error-page">
           <div className="container">
             <div className="error-404-inner">

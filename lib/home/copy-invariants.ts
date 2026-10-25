@@ -7,7 +7,7 @@ import {
 import { getHomeLandingFinalCopy } from '@/lib/i18n/copy/home/landing-final';
 import { PRICING_USD } from '@/lib/pricing/plans';
 
-const LOCALES: readonly Locale[] = ['es', 'en'];
+const LOCALES: readonly Locale[] = ['es', 'en', 'pt'];
 
 const PLACEHOLDER_AUTHORS = /usuario de app store|app store user/i;
 
@@ -27,6 +27,14 @@ const FOOTER_LINK_PATHS: Record<Locale, readonly string[]> = {
     localePath('en', '/privacidad'),
     localePath('en', '/terminos'),
     localePath('en', '/contacto'),
+  ],
+  pt: [
+    localePath('pt', '/recursos'),
+    localePath('pt', '/app'),
+    localePath('pt', '/seguridad'),
+    localePath('pt', '/privacidad'),
+    localePath('pt', '/terminos'),
+    localePath('pt', '/contacto'),
   ],
 };
 
@@ -56,6 +64,9 @@ export function assertHomeLandingCopyInvariants(): string[] {
     if (!hero.ctaMicro.toLowerCase().includes('card') && locale === 'en') {
       errors.push(`${tag} hero.ctaMicro must mention card`);
     }
+    if (!hero.ctaMicro.toLowerCase().includes('cartão') && locale === 'pt') {
+      errors.push(`${tag} hero.ctaMicro deve mencionar cartão`);
+    }
     if (!copy.minimalNav.cta.trim()) {
       errors.push(`${tag} minimalNav.cta vacío`);
     }
@@ -84,6 +95,9 @@ export function assertHomeLandingCopyInvariants(): string[] {
       }
       if (locale === 'en' && !link.href.startsWith('/en')) {
         errors.push(`${tag} minimalFooter link debe usar prefijo /en: ${link.href}`);
+      }
+      if (locale === 'pt' && !link.href.startsWith('/pt')) {
+        errors.push(`${tag} minimalFooter link deve usar o prefixo /pt: ${link.href}`);
       }
     }
     const footerHrefs = copy.minimalFooter.links.map((l) => l.href);
@@ -148,7 +162,7 @@ export function assertHomeLandingCopyInvariants(): string[] {
     if (!/tcc|cbt/i.test(accompaniment) || !/mindfulness/i.test(accompaniment)) {
       errors.push(`${tag} credentials.accompaniment debe mencionar el hub (TCC/CBT y mindfulness)`);
     }
-    if (!/no es tratamiento|not treatment/i.test(accompaniment)) {
+    if (!/no es tratamiento|not treatment|não é tratamento/i.test(accompaniment)) {
       errors.push(`${tag} credentials.accompaniment debe decir que no es tratamiento`);
     }
 
@@ -201,7 +215,7 @@ export function assertHomeLandingCopyInvariants(): string[] {
     if (copy.footerTrust.items.length !== 3) {
       errors.push(`${tag} footerTrust debe tener 3 ítems`);
     }
-    if (!copy.footerTrust.disclaimer.toLowerCase().includes('crisis')) {
+    if (!/crisis|crise/.test(copy.footerTrust.disclaimer.toLowerCase())) {
       errors.push(`${tag} footerTrust.disclaimer debe mencionar crisis`);
     }
   }

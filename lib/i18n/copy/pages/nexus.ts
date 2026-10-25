@@ -292,6 +292,106 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
     },
     organismAria: 'Decorative visualization of a living intelligence field in motion.',
   },
+  pt: {
+    skip: 'Pular para o conteúdo',
+    meta: {
+      title: 'Dentro da Anto Nexus | Anto',
+      description:
+        'Cada conversa forma a inteligência que entende você. Histórico, recorrência e um passo concreto. Complementa; não substitui atendimento profissional.',
+      keywords:
+        'Anto Nexus, inteligência adaptativa, acompanhamento emocional contínuo, contexto pessoal, aprendizado contínuo',
+      openGraphTitle: 'Dentro da Anto Nexus',
+      openGraphDescription:
+        'Cada conversa forma a inteligência que entende você. Histórico, recorrência e um passo concreto.',
+      canonicalPath: CANONICAL_PATH,
+      ogAlt: 'Dentro da Anto Nexus. Cada conversa forma a inteligência que entende você.',
+    },
+    nav: {
+      aria: 'Navegação do Nexus',
+      logoAria: 'Anto, ir para o início',
+      wordmark: 'anto.',
+      menuLabel: 'Abrir menu',
+      menuClose: 'Fechar menu',
+      items: [
+        { href: localePath('pt', '/app'), label: 'Como funciona' },
+        { href: localePath('pt', '/investigacion'), label: 'Ciência' },
+        { href: localePath('pt', '/seguridad'), label: 'Segurança' },
+        { href: localePath('pt', '/desarrollo'), label: 'Evolução' },
+        { href: localePath('pt', '/sobre-nosotros'), label: 'Sobre a Anto' },
+      ],
+      cta: 'Testar a Anto',
+      ctaHref: localePath('pt', '/bienvenida'),
+    },
+    hero: {
+      title: 'Você não começa do zero toda noite.',
+      dek: 'O que você já contou entra nesta resposta. Ela não parte de uma mensagem isolada.',
+      storeApp: 'Baixar na App Store',
+      storeGoogle: 'Disponível no Google Play',
+      tryOutline: 'Testar a Anto',
+      tryHref: localePath('pt', '/bienvenida'),
+      micro: '1 dia grátis · Sem cartão · Cancele quando quiser',
+      demoLink: 'Ou veja como começa',
+      demoHref: '#same-message',
+    },
+    productProof: {
+      kicker: 'No celular',
+      title: 'A mesma mensagem. Duas noites diferentes.',
+      dek: 'A Anto não inventa quem você é. Usa o que você já abriu.',
+      tabs: [
+        {
+          id: 'without-thread',
+          label: 'Sem fio',
+          description: 'Como se fosse a primeira vez.',
+        },
+        {
+          id: 'with-memory',
+          label: 'Com memória',
+          description: 'Com a noite de ontem ainda viva.',
+        },
+      ],
+      userMessage: 'Não consigo dormir. Apresentação na sexta e a cabeça não para.',
+      replies: [
+        'Parece exaustivo. O que pesa mais agora?',
+        'Ontem à noite também foi difícil dormir por causa da apresentação. Hoje à noite, só abra o primeiro slide. Dois minutos.',
+      ],
+    },
+    invite: {
+      title: 'Quando quiser, comece.',
+      storeApp: 'Baixar na App Store',
+      storeGoogle: 'Disponível no Google Play',
+      tryOutline: 'Testar a Anto',
+      tryHref: localePath('pt', '/bienvenida'),
+      micro: '1 dia grátis · Sem cartão · Cancele quando quiser',
+      limit: 'A Anto não substitui terapia nem atendimento clínico.',
+    },
+    trust: {
+      aria: 'Privacidade, ciência e limites',
+      items: [
+        {
+          id: 'privacy',
+          title: 'Privacidade',
+          body: 'As conversas vão criptografadas. Só você entra na sua conta.',
+          href: localePath('pt', '/seguridad'),
+          linkLabel: 'Segurança',
+        },
+        {
+          id: 'science',
+          title: 'Ciência',
+          body: 'A Anto se informa na literatura clínica e nomeia os próprios limites. Não afirma ensaios próprios.',
+          href: localePath('pt', '/investigacion'),
+          linkLabel: 'Pesquisa',
+        },
+        {
+          id: 'limits',
+          title: 'Limites',
+          body: 'Não diagnostica e não substitui um profissional. Se você está em crise, procure ajuda de emergência no seu país.',
+          href: localePath('pt', '/seguridad'),
+          linkLabel: 'Limites clínicos',
+        },
+      ],
+    },
+    organismAria: 'Visualização decorativa de um campo de inteligência em movimento.',
+  },
 };
 
 export function getNexusPageCopy(locale: Locale): NexusPageCopy {

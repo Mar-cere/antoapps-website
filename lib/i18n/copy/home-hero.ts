@@ -78,6 +78,33 @@ const homeHeroCopy: Record<Locale, (trialShort: string) => HomeHeroCopy> = {
     ],
     appHref: localePath('en', '/app'),
   }),
+  pt: (trialShort) => ({
+    eyebrow: 'Apoio emocional com IA',
+    titlePrefix: 'Quando a sua mente\nnão para,',
+    titleHighlight: 'a Anto ajuda\nvocê a aterrissar.',
+    subtitle: 'Escreva o que você sente. Receba clareza e um passo concreto em segundos.',
+    heroReview: {
+      quote: 'Uso quando a ansiedade me acorda. Em minutos a intensidade baixa um pouco.',
+      author: 'Camila S.',
+      source: 'App Store',
+    },
+    ctaStoreLabel: 'Baixar na',
+    ctaStoreText: 'App Store',
+    ctaBadge: trialShort,
+    ctaMicro: `${trialShort} · Sem cartão · Cancele quando quiser`,
+    ctaSecondary: 'Ver como funciona',
+    storeAria: 'Baixar a Anto na App Store',
+    androidCta: 'Baixar no Google Play',
+    androidLink: 'Também no Google Play',
+    androidStoreAria: 'Baixar a Anto no Google Play',
+    starsAria: '5 estrelas na App Store',
+    trustItems: [
+      { icon: 'lock', label: 'Privado' },
+      { icon: 'no-card', label: 'Sem cartão' },
+      { icon: 'chile', label: 'Feito no Chile' },
+    ],
+    appHref: localePath('pt', '/app'),
+  }),
 };
 
 export function getHomeHeroCopy(locale: Locale): HomeHeroCopy {

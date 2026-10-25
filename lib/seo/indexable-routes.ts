@@ -154,6 +154,7 @@ export const ROBOTS_DISALLOW_PATH_PREFIXES = [
   '/404',
   '/home-v2',
   '/en/home-v2',
+  '/pt/home-v2',
   '/open',
   '/nexus/ingreso',
   '/observatorio',
@@ -178,4 +179,9 @@ export const REDIRECT_ONLY_PATHS = [
   '/chat',
   '/home-v2',
   '/en/home-v2',
+  '/pt/home-v2',
+  '/pt/l',
+  '/pt/welcome',
+  '/pt/index',
+  '/pt/comparar',
 ] as const;

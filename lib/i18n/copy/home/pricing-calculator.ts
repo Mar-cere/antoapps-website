@@ -164,6 +164,62 @@ const pricingCalculatorCopy: Record<Locale, PricingCalculatorCopy> = {
       { id: '1-year', name: '1 Year', duration: '1 year', price: PRICING_USD.year, period: 'Save 17%', discount: 17 },
     ],
   },
+  pt: {
+    toggle: {
+      selectPlan: 'Escolher plano',
+      comparePlans: 'Comparar planos',
+    },
+    popularBadge: 'Popular',
+    summary: {
+      title: 'Resumo do plano escolhido',
+      planLabel: 'Plano:',
+      totalPriceLabel: 'Preço total:',
+      discountLabel: 'Desconto:',
+      totalSavingsLabel: 'Economia total:',
+      averageMonthlyLabel: 'Preço médio por mês:',
+      startWith: (planName) => `Começar com ${planName}`,
+    },
+    comparison: {
+      headers: {
+        plan: 'Plano',
+        duration: 'Duração',
+        totalPrice: 'Preço total',
+        pricePerMonth: 'Preço/mês',
+        savings: 'Economia',
+        discount: 'Desconto',
+      },
+      savingsPerMonth: '/ mês',
+      noSavings: '-',
+      priceNote: 'Preços em dólares americanos (USD). A assinatura é gerenciada pela App Store.',
+    },
+    legal: {
+      subscribePrefix: 'Ao assinar, você aceita nossos',
+      termsOfUse: 'Termos de Uso',
+      and: 'e',
+      privacyPolicy: 'Política de Privacidade',
+      autoRenewal: 'As assinaturas se renovam automaticamente.',
+    },
+    plans: [
+      { id: '1-month', name: '1 mês', duration: '1 mês', price: PRICING_USD.month, period: 'Plano mensal' },
+      {
+        id: '3-months',
+        name: '3 meses',
+        duration: '3 meses',
+        price: PRICING_USD.threeMonths,
+        period: 'Plano trimestral',
+        popular: true,
+      },
+      {
+        id: '6-months',
+        name: '6 meses',
+        duration: '6 meses',
+        price: PRICING_USD.sixMonths,
+        period: 'Economize 12%',
+        discount: 12,
+      },
+      { id: '1-year', name: '1 ano', duration: '1 ano', price: PRICING_USD.year, period: 'Economize 17%', discount: 17 },
+    ],
+  },
 };
 
 export function getPricingCalculatorCopy(locale: Locale): PricingCalculatorCopy {

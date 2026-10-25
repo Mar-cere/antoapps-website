@@ -10,6 +10,18 @@ type JsonLd = Record<string, unknown>;
 
 const SITE_ORIGIN = 'https://antoapps.com';
 
+function schemaInLanguage(locale: Locale): 'es' | 'en' | 'pt-BR' {
+  if (locale === 'en') return 'en';
+  if (locale === 'pt') return 'pt-BR';
+  return 'es';
+}
+
+function localeHomeUrl(locale: Locale): string {
+  if (locale === 'en') return `${SITE_ORIGIN}/en`;
+  if (locale === 'pt') return `${SITE_ORIGIN}/pt`;
+  return SITE_ORIGIN;
+}
+
 const softwareCopy: Record<
   Locale,
   {
@@ -54,6 +66,24 @@ const softwareCopy: Record<
       '1-day free trial',
     ],
   },
+  pt: {
+    operatingSystem: 'iOS (App Store), Android (Google Play)',
+    description:
+      'App de acompanhamento emocional contínuo no iPhone e no Android para a ansiedade, inclusive a social, e as horas quietas, entre sessões ou no dia a dia. Você escreve o que fica em loop e sai com um passo concreto. Hub de técnicas (TCC, grounding) e checagens. Não substitui um terapeuta humano.',
+    featureList: [
+      'Acompanhamento emocional contínuo',
+      'Memória de temas e padrões',
+      'Hub de técnicas (TCC, exposição, mindfulness)',
+      'Quadro ABC interativo',
+      'Grafo de insights, o que ajuda você e WAI pós-sessão',
+      'Sessão persistente e insight diário',
+      'Checagens quietas para notar padrões',
+      'Conversas criptografadas em trânsito (TLS) e em repouso; a Anto e o modelo leem o texto',
+      'App bilíngue espanhol e inglês',
+      'Disponível no iPhone e no Android',
+      'Teste grátis de 1 dia',
+    ],
+  },
 };
 
 const orgCopy: Record<Locale, { description: string }> = {
@@ -64,6 +94,10 @@ const orgCopy: Record<Locale, { description: string }> = {
   en: {
     description:
       'Anto provides ongoing emotional support for anxiety, including social anxiety, and quiet hours, between sessions or day to day. It complements clinical care and does not replace a human therapist.',
+  },
+  pt: {
+    description:
+      'A Anto oferece acompanhamento emocional contínuo para a ansiedade, inclusive a social, e as horas quietas, entre sessões ou no dia a dia. Complementa o cuidado clínico e não substitui um terapeuta humano.',
   },
 };
 
@@ -76,7 +110,7 @@ export function getSoftwareApplicationJsonLd(locale: Locale): JsonLd {
     name: 'Anto',
     softwareVersion: APP_VERSION,
     applicationCategory: 'HealthApplication',
-    inLanguage: locale === 'en' ? 'en' : 'es',
+    inLanguage: schemaInLanguage(locale),
     operatingSystem: copy.operatingSystem,
     offers: {
       '@type': 'Offer',
@@ -86,7 +120,7 @@ export function getSoftwareApplicationJsonLd(locale: Locale): JsonLd {
     description: copy.description,
     screenshot: getAppScreenshotUrl('chat', SITE_ORIGIN),
     featureList: copy.featureList,
-    url: locale === 'en' ? `${SITE_ORIGIN}/en` : SITE_ORIGIN,
+    url: localeHomeUrl(locale),
     downloadUrl: [DEFAULT_APP_STORE_URL, googlePlayHref(locale)],
     installUrl: [DEFAULT_APP_STORE_URL, googlePlayHref(locale)],
   };
@@ -106,7 +140,7 @@ export function getOrganizationJsonLd(locale: Locale): JsonLd {
       '@type': 'ContactPoint',
       email: 'marcelo.ull@antoapps.com',
       contactType: 'customer service',
-      availableLanguage: ['Spanish', 'English'],
+      availableLanguage: ['Spanish', 'English', 'Portuguese'],
     },
   };
 }
@@ -130,13 +164,17 @@ export function getFaqPageJsonLd(locale: Locale): JsonLd {
 }
 
 function websiteDescription(locale: Locale): string {
-  return locale === 'en'
-    ? 'Anto — when everything costs a little more. Ongoing emotional support on iPhone and Android for anxiety, including social anxiety, and quiet hours, between sessions or day to day. Does not replace a human therapist.'
-    : 'Anto — cuando todo cuesta un poco más. Acompañamiento emocional continuo en iPhone y Android para la ansiedad, incluida la social, y las horas quietas, entre sesiones o en el día a día. No sustituye a un terapeuta humano.';
+  if (locale === 'en') {
+    return 'Anto — when everything costs a little more. Ongoing emotional support on iPhone and Android for anxiety, including social anxiety, and quiet hours, between sessions or day to day. Does not replace a human therapist.';
+  }
+  if (locale === 'pt') {
+    return 'Anto — quando tudo custa um pouco mais. Acompanhamento emocional contínuo no iPhone e no Android para a ansiedade, inclusive a social, e as horas quietas, entre sessões ou no dia a dia. Não substitui um terapeuta humano.';
+  }
+  return 'Anto — cuando todo cuesta un poco más. Acompañamiento emocional continuo en iPhone y Android para la ansiedad, incluida la social, y las horas quietas, entre sesiones o en el día a día. No sustituye a un terapeuta humano.';
 }
 
 export function getWebSiteJsonLd(locale: Locale): JsonLd {
-  const url = locale === 'en' ? `${SITE_ORIGIN}/en` : SITE_ORIGIN;
+  const url = localeHomeUrl(locale);
 
   return {
     '@context': 'https://schema.org',
@@ -144,7 +182,7 @@ export function getWebSiteJsonLd(locale: Locale): JsonLd {
     name: 'Anto',
     url,
     description: websiteDescription(locale),
-    inLanguage: locale === 'en' ? 'en' : 'es',
+    inLanguage: schemaInLanguage(locale),
     publisher: {
       '@type': 'Organization',
       name: 'Anto',
@@ -168,7 +206,7 @@ export function getWebSiteJsonLd(locale: Locale): JsonLd {
 export function getHomeWebPageJsonLd(locale: Locale): JsonLd {
   const hero = getHomeV2Copy(locale).hero;
   const headline = `${hero.titleLine1} ${hero.titleAccent}`.replace(/\s+/g, ' ').trim();
-  const url = locale === 'en' ? `${SITE_ORIGIN}/en` : SITE_ORIGIN;
+  const url = localeHomeUrl(locale);
 
   return {
     '@context': 'https://schema.org',
@@ -177,7 +215,7 @@ export function getHomeWebPageJsonLd(locale: Locale): JsonLd {
     headline,
     url,
     description: websiteDescription(locale),
-    inLanguage: locale === 'en' ? 'en' : 'es',
+    inLanguage: schemaInLanguage(locale),
     primaryImageOfPage: {
       '@type': 'ImageObject',
       url: `${SITE_ORIGIN}${getEditorialImagePath('evening')}`,
@@ -229,7 +267,7 @@ export function getEditorialWebPageJsonLd(input: EditorialWebPageInput): JsonLd 
     headline: input.headline,
     url,
     description: input.description,
-    inLanguage: input.locale === 'en' ? 'en' : input.locale === 'pt' ? 'pt-BR' : 'es',
+    inLanguage: schemaInLanguage(input.locale),
     ...image,
     isPartOf: {
       '@type': 'WebSite',
@@ -239,7 +277,7 @@ export function getEditorialWebPageJsonLd(input: EditorialWebPageInput): JsonLd 
     about: {
       '@type': 'SoftwareApplication',
       name: 'Anto',
-      url: input.locale === 'en' ? `${SITE_ORIGIN}/en` : SITE_ORIGIN,
+      url: localeHomeUrl(input.locale),
     },
   };
 }

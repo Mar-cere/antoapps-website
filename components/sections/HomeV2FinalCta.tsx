@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import type { Locale } from '@/lib/i18n/config';
+import { localePath } from '@/lib/i18n/config';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 
@@ -13,7 +14,7 @@ type HomeV2FinalCtaProps = {
 /** Cierre peak-end: foto distinta del hero + par App Store / Google Play. */
 export default function HomeV2FinalCta({ locale = 'es' }: HomeV2FinalCtaProps) {
   const copy = getHomeV2Copy(locale);
-  const pagePath = locale === 'en' ? '/en' : '/';
+  const pagePath = localePath(locale, '/');
   const hero = copy.hero;
 
   return (

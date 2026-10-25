@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState, type CSSProperties } from 'react';
 import type { Locale } from '@/lib/i18n/config';
-import { localePath } from '@/lib/i18n/config';
+import { htmlLanguage, localePath } from '@/lib/i18n/config';
 import type { PsychoeducationGuide } from '@/lib/i18n/copy/pages/psychoeducation';
 import {
   getPsychoeducationGuide,
@@ -86,6 +86,25 @@ const uiCopy: Record<Locale, GuideUiCopy> = {
     guideKindDefault: 'Guide',
     guideKindDossier: 'Map',
     guideKindBrief: 'Brief guide',
+  },
+  pt: {
+    resourcesLabel: 'Recursos',
+    resourcesHref: '/recursos',
+    homeLabel: 'Início',
+    readingTime: (m) => `${m} min de leitura`,
+    relatedTitle: 'Guias relacionadas',
+    disclaimerLabel: 'Aviso',
+    backToLibrary: 'Voltar aos recursos',
+    crumbAria: 'Trilha',
+    externalLinkHint: 'Abre numa nova aba',
+    mapIndexLabel: 'Mapa',
+    mapIndexAria: 'Índice do mapa',
+    mapIndexToggle: 'Ver mapa',
+    refsExpandHint: 'Mostrar',
+    refsCollapseHint: 'Ocultar',
+    guideKindDefault: 'Guia',
+    guideKindDossier: 'Mapa',
+    guideKindBrief: 'Guia breve',
   },
 };
 
@@ -219,7 +238,11 @@ function GuideSectionStack({
               <ul
                 className="psycho-guide__product-suggestions-list"
                 aria-label={
-                  locale === 'en' ? 'Example phrases shown in the app' : 'Ejemplos de frases en la app'
+                  locale === 'en'
+                    ? 'Example phrases shown in the app'
+                    : locale === 'pt'
+                      ? 'Exemplos de frases no app'
+                      : 'Ejemplos de frases en la app'
                 }
               >
                 {productMoment.suggestions.map((suggestion) => (
@@ -357,11 +380,13 @@ export default function PsychoeducationGuidePageContent({
         <HomeMinimalNav
           locale={locale}
           ctaHref={localePath(locale, '/bienvenida')}
-          ctaLabel={locale === 'en' ? 'Support' : 'Apoyo'}
+          ctaLabel={locale === 'en' ? 'Support' : locale === 'pt' ? 'Apoio' : 'Apoyo'}
           ctaAria={
             locale === 'en'
               ? 'Continue to Anto support'
-              : 'Continuar al apoyo en Anto'
+              : locale === 'pt'
+                ? 'Continuar para o apoio na Anto'
+                : 'Continuar al apoyo en Anto'
           }
         />
         <main
@@ -374,7 +399,7 @@ export default function PsychoeducationGuidePageContent({
                 : ''
           }`}
           role="main"
-          lang={locale}
+          lang={htmlLanguage(locale)}
         >
           <div className="home-landing-page__content">
             <article className="psycho-guide__article" data-fade-section>

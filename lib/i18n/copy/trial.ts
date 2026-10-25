@@ -35,6 +35,18 @@ const trialCopy: Record<Locale, TrialCopy> = {
     pricingNote: 'Includes a 1-day free trial on the App Store or Google Play when you download.',
     heroNote: 'Try it free for 1 day on iPhone or Android.',
   },
+  pt: {
+    short: '1 dia grátis',
+    label: 'Teste grátis de 1 dia',
+    faqPremiumAnswer:
+      'Sim. Um dia inteiro, sem cartão. Acesso completo. Cancele quando quiser. iPhone e Android.',
+    faqPricingAnswer:
+      'Baixar é grátis e inclui 1 dia de teste sem custo. Depois, o plano mensal começa em US$4.20. Você pode cancelar quando quiser na App Store (iPhone) ou no Google Play (Android).',
+    differentiatorSuffix:
+      'O preço é acessível e há um teste de 1 dia para explorar as funções (conforme o fluxo no app).',
+    pricingNote: 'Inclui 1 dia grátis na App Store ou no Google Play ao baixar.',
+    heroNote: 'Teste 1 dia grátis no iPhone ou no Android.',
+  },
 };
 
 export function getTrialCopy(locale: Locale): TrialCopy {

@@ -8,7 +8,7 @@ import { useMobileMenu } from '@/lib/hooks/useNavigation';
 import { useSwipeGestures } from '@/lib/hooks/useSwipeGestures';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 import HeaderDownloadChooser from '@/components/layout/HeaderDownloadChooser';
-import { type Locale } from '@/lib/i18n/config';
+import { localePath, type Locale } from '@/lib/i18n/config';
 import { localeFromPathname, pathWithoutLocale } from '@/lib/i18n/path-from-pathname';
 import { getSiteLayoutCopy } from '@/lib/i18n/copy/home';
 import '@/styles/layout/header.css';
@@ -21,7 +21,7 @@ export default function Header() {
   const pathname = usePathname();
   const locale = resolveLocale(pathname ?? '');
   const copy = getSiteLayoutCopy(locale);
-  const homeHref = locale === 'en' ? '/en' : '/';
+  const homeHref = localePath(locale, '/');
   const langSwitchPath = pathWithoutLocale(pathname ?? '/');
 
   const [isScrolled, setIsScrolled] = useState(false);

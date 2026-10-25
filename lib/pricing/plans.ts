@@ -9,7 +9,7 @@ export const PRICING_USD = {
 } as const;
 
 export function formatUsdPrice(amount: number, locale: Locale = 'es'): string {
-  return new Intl.NumberFormat(locale === 'en' ? 'en-US' : 'es-US', {
+  return new Intl.NumberFormat(locale === 'en' ? 'en-US' : locale === 'pt' ? 'pt-BR' : 'es-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 2,

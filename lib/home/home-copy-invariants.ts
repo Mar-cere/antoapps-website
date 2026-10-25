@@ -14,7 +14,7 @@ import {
   getWebSiteJsonLd,
 } from '@/lib/i18n/copy/seo/json-ld';
 
-const LOCALES: readonly Locale[] = ['es', 'en'];
+const LOCALES: readonly Locale[] = ['es', 'en', 'pt'];
 
 const EXPECTED_FEATURE_CARD_COUNT = 9;
 const EXPECTED_WHATS_NEW_ITEMS = 6;
@@ -23,11 +23,13 @@ const EXPECTED_FAQ_VISIBLE = 18;
 const V15_LANDING_MARKERS: Record<Locale, RegExp[]> = {
   es: [/hub de técnicas/i, /grafo/i, /sesión persistente|insight diario/i],
   en: [/techniques hub/i, /graph/i, /persistent session|daily insight/i],
+  pt: [/hub de técnicas/i, /grafo/i, /sessão persistente|insight diário/i],
 };
 
 const V15_JSON_LD_MARKERS: Record<Locale, RegExp[]> = {
   es: [/hub de técnicas/i, /grafo de insights/i, /WAI/i, /sesión persistente/i],
   en: [/techniques hub/i, /insights graph/i, /WAI/i, /persistent session/i],
+  pt: [/hub de técnicas/i, /grafo de insights/i, /WAI/i, /sessão persistente/i],
 };
 
 function collectFaqIds(locale: Locale): number[] {
@@ -102,6 +104,7 @@ export function assertHomeCopyInvariants(): string[] {
     const requiredV15FaqQuestions: Record<Locale, RegExp[]> = {
       es: [/hub de técnicas/i, /WAI post-sesión/i, /iniciar sesión cada vez/i],
       en: [/techniques hub/i, /post-session WAI/i, /log in every time/i],
+      pt: [/hub de técnicas/i, /WAI pós-sessão/i, /entrar de novo toda vez/i],
     };
     const faqQuestions = allFaq.map((item) => item.question).join('\n');
     for (const pattern of requiredV15FaqQuestions[locale]) {
@@ -163,15 +166,15 @@ export function assertHomeCopyInvariants(): string[] {
     if (clinicalInHero) {
       errors.push(`${tag} home-v2 hero.support no debe cargar el límite clínico (va en FAQ/coda)`);
     }
-    if (!/crisis/i.test(homeV2.explore.coda.disclaimer)) {
+    if (!/crisis|crise/i.test(homeV2.explore.coda.disclaimer)) {
       errors.push(`${tag} home-v2 explore.coda.disclaimer debe mencionar crisis`);
     }
     const appExplore = homeV2.explore.links.find((link) => link.href === '/app');
     if (!appExplore || !/android/i.test(appExplore.description)) {
       errors.push(`${tag} home-v2 explore /app debe mencionar Android`);
     }
-    if (homeV2.explore.links.length !== 4) {
-      errors.push(`${tag} home-v2 explore debe tener 4 links (hub + guía + app + seguridad)`);
+    if (homeV2.explore.links.length !== 5) {
+      errors.push(`${tag} home-v2 explore debe tener 5 links (hub + grounding + mapa de ansiedad + app + seguridad)`);
     }
     if (homeV2.moments.length !== 3) {
       errors.push(`${tag} home-v2 moments debe tener 3 ítems`);
@@ -191,8 +194,8 @@ export function assertHomeCopyInvariants(): string[] {
     }
 
     const [monthCard, threeCard, sixCard, yearCard] = homeV2.pricing.cards;
-    const monthUnit = locale === 'en' ? '/ mo' : '/ mes';
-    const perMonthUnit = locale === 'en' ? '/ mo' : '/ mes';
+    const monthUnit = locale === 'en' ? '/ mo' : locale === 'pt' ? '/ mês' : '/ mes';
+    const perMonthUnit = locale === 'en' ? '/ mo' : locale === 'pt' ? '/ mês' : '/ mes';
     const threePerMonth = (PRICING_USD.threeMonths / 3).toFixed(2);
     const sixPerMonth = (PRICING_USD.sixMonths / 6).toFixed(2);
     const yearPerMonth = (PRICING_USD.year / 12).toFixed(2);
@@ -235,6 +238,9 @@ export function assertHomeCopyInvariants(): string[] {
     if (locale === 'en' && (sixCard.save !== 'Save 12%' || yearCard.save !== 'Save 17%')) {
       errors.push(`${tag} home-v2 6-month/year must show Save 12% and 17%`);
     }
+    if (locale === 'pt' && (sixCard.save !== 'Economize 12%' || yearCard.save !== 'Economize 17%')) {
+      errors.push(`${tag} home-v2 6 meses/ano devem mostrar Economize 12% e 17%`);
+    }
 
     const heroMessages = homeV2.hero.chat.messages;
     if (heroMessages.length !== 4) {
@@ -245,6 +251,13 @@ export function assertHomeCopyInvariants(): string[] {
       }
       if (!/esta noche solo abre la primera diapositiva/i.test(heroMessages[3].text)) {
         errors.push(`${tag} home-v2 hero chat móvil (Anto) debe ser el segundo intercambio`);
+      }
+    } else if (locale === 'pt') {
+      if (!/ficar em branco/i.test(heroMessages[2].text)) {
+        errors.push(`${tag} home-v2 hero chat (usuário) deve ser o segundo turno`);
+      }
+      if (!/primeiro slide/i.test(heroMessages[3].text)) {
+        errors.push(`${tag} home-v2 hero chat (Anto) deve ser o segundo turno`);
       }
     } else if (
       !/blanking out/i.test(heroMessages[2].text) ||

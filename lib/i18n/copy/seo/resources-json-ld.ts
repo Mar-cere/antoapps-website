@@ -10,6 +10,18 @@ import { getResourcesPageCopy } from '@/lib/i18n/copy/pages/resources';
 const RESOURCES_PATH = '/recursos';
 const SITE_ORG = 'https://antoapps.com';
 
+function schemaInLanguage(locale: Locale): 'en' | 'es' | 'pt-BR' {
+  if (locale === 'en') return 'en';
+  if (locale === 'pt') return 'pt-BR';
+  return 'es';
+}
+
+function locText(locale: Locale, en: string, pt: string, es: string): string {
+  if (locale === 'en') return en;
+  if (locale === 'pt') return pt;
+  return es;
+}
+
 /** Fecha de publicación de la colección (ISO date). */
 export const RESOURCES_COLLECTION_DATE_PUBLISHED = '2026-05-01';
 /** Última actualización relevante del hub / guías para schema. */
@@ -20,7 +32,6 @@ export function getResourcesCollectionJsonLd(locale: Locale) {
   const hubUrl = siteUrl(locale, RESOURCES_PATH);
   const homeUrl = siteUrl(locale, '/');
   const guides = getAllPsychoeducationGuides(locale);
-  const isEn = locale === 'en';
 
   const itemListElement = guides.map((guide: PsychoeducationGuide, index: number) => ({
     '@type': 'ListItem',
@@ -40,13 +51,16 @@ export function getResourcesCollectionJsonLd(locale: Locale) {
         headline: copy.hero.title,
         description: copy.meta.description,
         url: hubUrl,
-        inLanguage: isEn ? 'en' : 'es',
+        inLanguage: schemaInLanguage(locale),
         primaryImageOfPage: {
           '@type': 'ImageObject',
           url: `${SITE_ORG}${getEditorialImagePath('morningPause')}`,
-          caption: isEn
-            ? 'Morning light on an empty chair by the window'
-            : 'Luz de mañana sobre una silla vacía junto a la ventana',
+          caption: locText(
+            locale,
+            'Morning light on an empty chair by the window',
+            'Luz da manhã sobre uma cadeira vazia junto à janela',
+            'Luz de mañana sobre una silla vacía junto a la ventana'
+          ),
         },
         datePublished: RESOURCES_COLLECTION_DATE_PUBLISHED,
         dateModified: RESOURCES_COLLECTION_DATE_MODIFIED,
@@ -58,37 +72,55 @@ export function getResourcesCollectionJsonLd(locale: Locale) {
         about: [
           {
             '@type': 'Thing',
-            name: isEn ? 'Anxiety psychoeducation' : 'Psicoeducación sobre ansiedad',
+            name: locText(locale, 'Anxiety psychoeducation', 'Psicoeducação sobre ansiedade', 'Psicoeducación sobre ansiedad'),
           },
           {
             '@type': 'Thing',
-            name: isEn
-              ? 'Grounding and sensory regulation (5-4-3-2-1)'
-              : 'Grounding y regulación sensorial (5-4-3-2-1)',
+            name: locText(
+              locale,
+              'Grounding and sensory regulation (5-4-3-2-1)',
+              'Grounding e regulação sensorial (5-4-3-2-1)',
+              'Grounding y regulación sensorial (5-4-3-2-1)'
+            ),
           },
           {
             '@type': 'Thing',
-            name: isEn ? 'Cognitive behavioural therapy (CBT)' : 'Terapia cognitivo-conductual (TCC)',
+            name: locText(
+              locale,
+              'Cognitive behavioural therapy (CBT)',
+              'Terapia cognitivo-comportamental (TCC)',
+              'Terapia cognitivo-conductual (TCC)'
+            ),
           },
           {
             '@type': 'Thing',
-            name: isEn ? 'Cognitive distortions' : 'Distorsiones cognitivas',
+            name: locText(locale, 'Cognitive distortions', 'Distorções cognitivas', 'Distorsiones cognitivas'),
           },
           {
             '@type': 'Thing',
-            name: isEn ? 'Cognitive restructuring' : 'Reestructuración cognitiva',
+            name: locText(locale, 'Cognitive restructuring', 'Reestruturação cognitiva', 'Reestructuración cognitiva'),
           },
           {
             '@type': 'Thing',
-            name: isEn ? 'Behavioural experiments' : 'Experimentos conductuales',
+            name: locText(locale, 'Behavioural experiments', 'Experimentos comportamentais', 'Experimentos conductuales'),
           },
           {
             '@type': 'Thing',
-            name: isEn ? 'Sleep and insomnia psychoeducation' : 'Psicoeducación sobre sueño e insomnio',
+            name: locText(
+              locale,
+              'Sleep and insomnia psychoeducation',
+              'Psicoeducação sobre sono e insônia',
+              'Psicoeducación sobre sueño e insomnio'
+            ),
           },
           {
             '@type': 'Thing',
-            name: isEn ? 'Emotional support education' : 'Educación en acompañamiento emocional',
+            name: locText(
+              locale,
+              'Emotional support education',
+              'Educação em acompanhamento emocional',
+              'Educación en acompañamiento emocional'
+            ),
           },
         ],
         mainEntity: {
@@ -107,9 +139,12 @@ export function getResourcesCollectionJsonLd(locale: Locale) {
       {
         '@type': 'ItemList',
         '@id': `${hubUrl}#itemlist`,
-        name: isEn
-          ? 'Anto psychoeducation guides'
-          : 'Guías de psicoeducación de Anto',
+        name: locText(
+          locale,
+          'Anto psychoeducation guides',
+          'Guias de psicoeducação da Anto',
+          'Guías de psicoeducación de Anto'
+        ),
         numberOfItems: guides.length,
         itemListOrder: 'https://schema.org/ItemListOrderAscending',
         itemListElement,
@@ -144,8 +179,8 @@ export function getGuideBreadcrumbJsonLd(
   const articleUrl = siteUrl(locale, path);
   const hubUrl = siteUrl(locale, RESOURCES_PATH);
   const homeUrl = siteUrl(locale, '/');
-  const homeLabel = locale === 'en' ? 'Home' : 'Inicio';
-  const hubLabel = locale === 'en' ? 'Resources' : 'Recursos';
+  const homeLabel = locText(locale, 'Home', 'Início', 'Inicio');
+  const hubLabel = locText(locale, 'Resources', 'Recursos', 'Recursos');
 
   return {
     '@type': 'BreadcrumbList',

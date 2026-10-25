@@ -1,6 +1,6 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
-import { hasPortugueseLegalPage, localePath, LOCALES, PT_LEGAL_PATHS, type Locale } from '@/lib/i18n/config';
+import { localePath, LOCALES, type Locale } from '@/lib/i18n/config';
 import { siteUrl } from '@/lib/i18n/metadata';
 import { buildSitemapEntries, expectedSitemapUrlCount } from '@/lib/seo/build-sitemap';
 import {
@@ -220,16 +220,33 @@ function assertFilesystemCoverage(root: string, errors: string[]): void {
     }
   }
 
-  if (existsSync(join(sitePagesDir, 'pt', 'page.tsx'))) {
-    errors.push('No debe existir una home en portugués: app/(site)/pt/page.tsx');
+  assertPortugueseMirrorsEnglish(sitePagesDir, errors);
+}
+
+function assertPortugueseMirrorsEnglish(sitePagesDir: string, errors: string[]): void {
+  const enDir = join(sitePagesDir, 'en');
+  if (!existsSync(enDir)) {
+    errors.push('Falta app/(site)/en para contrastar el espejo pt-BR.');
+    return;
   }
 
-  for (const logical of PT_LEGAL_PATHS) {
-    const pageFile = join(sitePagesDir, 'pt', logical.slice(1), 'page.tsx');
-    if (!existsSync(pageFile)) {
-      errors.push(`Falta la página legal pt-BR: app/(site)/pt${logical}/page.tsx`);
+  function walk(dir: string): void {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const full = join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walk(full);
+        continue;
+      }
+      if (entry.name !== 'page.tsx') continue;
+      const relativePage = relative(enDir, full);
+      const ptPage = join(sitePagesDir, 'pt', relativePage);
+      if (!existsSync(ptPage)) {
+        errors.push(`Falta el espejo pt-BR de app/(site)/en/${relativePage}`);
+      }
     }
   }
+
+  walk(enDir);
 }
 
 function assertNonSitePagesAreNonIndexable(root: string, errors: string[]): void {
@@ -310,7 +327,7 @@ function assertSitemapStructure(errors: string[]): void {
 
   if (entries.length !== expectedCount) {
     errors.push(
-      `Sitemap: se esperaban ${expectedCount} URLs (${ALL_INDEXABLE_ROUTES.length} rutas × 2 idiomas + ${PT_LEGAL_PATHS.length} legales pt-BR), hay ${entries.length}.`
+      `Sitemap: se esperaban ${expectedCount} URLs (${ALL_INDEXABLE_ROUTES.length} rutas × 3 idiomas), hay ${entries.length}.`
     );
   }
 
@@ -330,24 +347,10 @@ function assertSitemapStructure(errors: string[]): void {
     );
   }
 
-  if (ptUrls.length !== PT_LEGAL_PATHS.length) {
+  if (ptUrls.length !== ALL_INDEXABLE_ROUTES.length) {
     errors.push(
-      `Sitemap: se esperaban ${PT_LEGAL_PATHS.length} URLs pt-BR legales, hay ${ptUrls.length}.`
+      `Sitemap: se esperaban ${ALL_INDEXABLE_ROUTES.length} URLs pt-BR, hay ${ptUrls.length}.`
     );
-  }
-
-  for (const logical of PT_LEGAL_PATHS) {
-    const ptUrl = siteUrl('pt', logical);
-    if (!urlSet.has(ptUrl)) {
-      errors.push(`Sitemap: falta URL pt-BR para "${logical}": ${ptUrl}`);
-    }
-  }
-
-  for (const entry of ptUrls) {
-    const pathname = pathnameFromAbsolute(entry.url);
-    if (pathname === '/pt' || pathname === '/pt/') {
-      errors.push(`Sitemap: no debe incluir una home en portugués: ${entry.url}`);
-    }
   }
 
   for (const entry of entries) {
@@ -409,10 +412,6 @@ function assertSitemapStructure(errors: string[]): void {
     if (!isEn && !isPt && pathname.startsWith('/en')) {
       errors.push(`Sitemap: URL ES no debe usar prefijo /en: ${entry.url}`);
     }
-    if (isPt && pathname !== '/pt/privacidad' && pathname !== '/pt/terminos') {
-      errors.push(`Sitemap: URL pt-BR fuera de las páginas legales: ${entry.url}`);
-    }
-
     const logicalPath = isEn
       ? pathname === '/en'
         ? ''
@@ -422,14 +421,10 @@ function assertSitemapStructure(errors: string[]): void {
           ? ''
           : pathname.slice(3)
         : pathname;
-    if (hasPortugueseLegalPage(logicalPath)) {
-      if (alternates['pt-BR'] !== siteUrl('pt', logicalPath)) {
-        errors.push(`Sitemap: hreflang pt-BR incorrecto en ${entry.url}`);
-      } else if (!urlSet.has(alternates['pt-BR'])) {
-        errors.push(`Sitemap: hreflang pt-BR ausente del sitemap: ${alternates['pt-BR']}`);
-      }
-    } else if (alternates['pt-BR']) {
-      errors.push(`Sitemap: ${entry.url} no debe anunciar pt-BR`);
+    if (alternates['pt-BR'] !== siteUrl('pt', logicalPath)) {
+      errors.push(`Sitemap: hreflang pt-BR incorrecto en ${entry.url}`);
+    } else if (!urlSet.has(alternates['pt-BR'])) {
+      errors.push(`Sitemap: hreflang pt-BR ausente del sitemap: ${alternates['pt-BR']}`);
     }
   }
 

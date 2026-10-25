@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { localePath, type Locale } from '@/lib/i18n/config';
+import { htmlLanguage, localePath, type Locale } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getResourcesPageCopy } from '@/lib/i18n/copy/pages/resources';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
@@ -39,7 +39,7 @@ export default function ResourcesPageContent({ locale }: ResourcesPageContentPro
           id="main-content"
           className="home-landing-page home-landing-page--v2 resources-page"
           role="main"
-          lang={locale}
+          lang={htmlLanguage(locale)}
         >
           <div className="home-landing-page__content">
             <section className="resources-hero" data-fade-section>
@@ -68,7 +68,9 @@ export default function ResourcesPageContent({ locale }: ResourcesPageContentPro
                       alt={
                         locale === 'en'
                           ? 'Morning light on an empty chair by the window'
-                          : 'Luz de mañana sobre una silla vacía junto a la ventana'
+                          : locale === 'pt'
+                            ? 'Luz da manhã sobre uma cadeira vazia junto à janela'
+                            : 'Luz de mañana sobre una silla vacía junto a la ventana'
                       }
                       width={1536}
                       height={1024}

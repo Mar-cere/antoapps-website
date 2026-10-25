@@ -59,6 +59,25 @@ const uiCopy: Record<Locale, SharedUiCopy> = {
     pullToRefreshHint: 'Pull to refresh',
     pullToRefreshRefreshing: 'Refreshing...',
   },
+  pt: {
+    loading: 'Carregando',
+    loadingSrOnly: 'Carregando...',
+    closeNotification: 'Fechar notificação',
+    notifications: 'Notificações',
+    closeModal: 'Fechar modal',
+    breadcrumb: 'Trilha de navegação',
+    tabsNav: 'Navegação por abas',
+    faqSearchPlaceholder: 'Pesquisar nas perguntas frequentes...',
+    faqSearchAria: 'Pesquisar perguntas frequentes',
+    clearSearch: 'Limpar pesquisa',
+    clearSearchButton: 'Limpar pesquisa',
+    faqAllCategories: 'Todas',
+    faqNoResults: (query) => `Nenhum resultado encontrado para "${query}"`,
+    faqResultSingular: 'resultado encontrado',
+    faqResultPlural: 'resultados encontrados',
+    pullToRefreshHint: 'Deslize para atualizar',
+    pullToRefreshRefreshing: 'Atualizando...',
+  },
 };
 
 export function getUiCopy(locale: Locale): SharedUiCopy {
