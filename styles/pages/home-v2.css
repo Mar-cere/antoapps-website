@@ -2086,6 +2086,7 @@ body:has(.home-v2-shell) {
 .home-v2-final-cta {
   position: relative;
   isolation: isolate;
+  scroll-margin-top: 4.5rem;
   padding: clamp(4.5rem, 12vh, 7rem) 0;
   text-align: left;
   overflow: hidden;

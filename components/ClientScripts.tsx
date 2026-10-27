@@ -39,7 +39,11 @@ export default function ClientScripts() {
     }
   }, []);
 
-  if (pathname === '/nexus/ingreso') {
+  if (
+    pathname === '/nexus/ingreso' ||
+    pathname === '/en/nexus/ingreso' ||
+    pathname === '/pt/nexus/ingreso'
+  ) {
     return null;
   }
 

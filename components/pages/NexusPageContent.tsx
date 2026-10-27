@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
-import { htmlLanguage } from '@/lib/i18n/config';
+import { htmlLanguage, localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getNexusPageCopy } from '@/lib/i18n/copy/pages/nexus';
 import ClientInitializer from '@/components/ClientInitializer';
@@ -59,7 +59,7 @@ export default function NexusPageContent({ locale }: NexusPageContentProps) {
         <HomeMinimalFooter
           locale={locale}
           switchPath="/nexus"
-          developerHref="/nexus/ingreso"
+          developerHref={localePath(locale, '/nexus/ingreso')}
           developerLabel="ingreso desarrolladores"
         />
         <CookieConsent
