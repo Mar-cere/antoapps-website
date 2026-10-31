@@ -145,7 +145,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       },
       whatIs: {
         title: 'What is Anto?',
-        body: 'It is not a replacement for therapy or clinical care. It is a daily companion: you write how you feel, receive clear guidance, and build habits that support your wellbeing—with respect for your privacy and your pace.',
+        body: 'It does not tell you if you have a health condition, and it does not replace help from a professional. It is a daily companion: you write how you feel, receive clear guidance, and build habits that support your wellbeing—with respect for your privacy and your pace.',
         imageAlt: 'Morning light on an empty chair by the window',
       },
       screenshots: {
@@ -158,9 +158,9 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
         cards: [
           {
             icon: '💬',
-            label: 'Someone to talk to, anytime',
+            label: 'Someone to talk to, whenever you need',
             description:
-              'Open the app when your mind races or you need clarity. No appointments or waiting lists.',
+              'Open the app when your mind races or you need clarity. No appointments or waiting lists. The app is available any time; it is not an emergency line.',
           },
           {
             icon: '🎯',
@@ -172,7 +172,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
             icon: '🔒',
             label: 'A safe space',
             description:
-              'Your conversations stay confidential. You control what you share and how you use the app.',
+              'Your conversations are private. You decide what to share and how to use the app.',
           },
           {
             icon: '🧘',
@@ -275,7 +275,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       },
       whatIs: {
         title: 'O que é a Anto?',
-        body: 'Não substitui terapia nem atendimento clínico. É um acompanhamento para o dia a dia: você escreve como se sente, recebe uma orientação clara e constrói hábitos no seu ritmo, com respeito à sua privacidade.',
+        body: 'Não diz se você tem uma condição de saúde e não substitui a ajuda de um profissional. É um acompanhamento para o dia a dia: você escreve como se sente, recebe uma orientação clara e constrói hábitos no seu ritmo, com respeito à sua privacidade.',
         imageAlt: 'Luz da manhã sobre uma cadeira vazia junto à janela',
       },
       screenshots: {
@@ -288,9 +288,9 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
         cards: [
           {
             icon: '💬',
-            label: 'Alguém com quem falar, a qualquer hora',
+            label: 'Alguém para conversar, quando você precisar',
             description:
-              'Abra o aplicativo quando a mente acelera ou você precisa de clareza. Sem hora marcada nem fila.',
+              'Abra o aplicativo quando a mente acelera ou você precisa de clareza. Sem hora marcada nem fila. O aplicativo está disponível a qualquer hora; não é uma linha de emergência.',
           },
           {
             icon: '🎯',
@@ -302,7 +302,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
             icon: '🔒',
             label: 'Um espaço seu',
             description:
-              'As conversas ficam em sigilo. Você decide o que compartilhar e como usar o aplicativo.',
+              'Suas conversas são privadas. Você decide o que compartilhar e como usar o aplicativo.',
           },
           {
             icon: '🧘',
@@ -404,7 +404,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
     },
     whatIs: {
       title: '¿Qué es Anto?',
-      body: 'No sustituye terapia ni atención clínica. Es un acompañante para el día a día: escribes cómo te sientes, recibes orientación clara y construyes hábitos que cuidan tu bienestar, con respeto por tu privacidad y tu ritmo.',
+      body: 'No te dice si tienes una condición de salud ni reemplaza la ayuda de un profesional. Es un acompañante para el día a día: escribes cómo te sientes, recibes orientación clara y construyes hábitos que cuidan tu bienestar, con respeto por tu privacidad y tu ritmo.',
       imageAlt: 'Luz de mañana sobre una silla vacía junto a la ventana',
     },
     screenshots: {
@@ -417,9 +417,9 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
       cards: [
         {
           icon: '💬',
-          label: 'Alguien con quien hablar, siempre',
+          label: 'Alguien con quien hablar, cuando lo necesites',
           description:
-            'Abre la app cuando tu mente va a mil o necesitas claridad. Sin citas ni listas de espera.',
+            'Abre la app cuando tu mente va a mil o necesitas claridad. Sin citas ni listas de espera. La app está disponible a cualquier hora; no es una línea de emergencia.',
         },
         {
           icon: '🎯',
@@ -431,7 +431,7 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
           icon: '🔒',
           label: 'Un espacio seguro',
           description:
-            'Tus conversaciones son confidenciales. Tú decides qué compartir y cómo usar la app.',
+            'Tus conversaciones son privadas. Tú decides qué compartir y cómo usar la app.',
         },
         {
           icon: '🧘',

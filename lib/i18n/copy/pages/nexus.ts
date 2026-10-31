@@ -162,7 +162,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       tryOutline: 'Probar Anto',
       tryHref: localePath('es', '/bienvenida'),
       micro: '1 día gratis · Sin tarjeta · Cancela cuando quieras',
-      limit: 'Anto no sustituye terapia ni atención clínica.',
+      limit: 'Anto no te dice si tienes una condición de salud ni reemplaza la ayuda de un profesional.',
     },
     trust: {
       aria: 'Privacidad, ciencia y límites',
@@ -170,7 +170,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
         {
           id: 'privacy',
           title: 'Privacidad',
-          body: 'Las conversaciones van cifradas. Solo tú inicias sesión en tu cuenta.',
+          body: 'Las conversaciones viajan cifradas entre tu teléfono y nuestros servidores. Solo tú accedes a tu cuenta.',
           href: localePath('es', '/seguridad'),
           linkLabel: 'Seguridad',
         },
@@ -184,7 +184,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
         {
           id: 'limits',
           title: 'Límites',
-          body: 'No diagnostica ni sustituye a un profesional. Si estás en crisis, busca ayuda de emergencia en tu país.',
+          body: 'No te dice si tienes una condición de salud ni reemplaza a un profesional. Si estás en crisis, busca ayuda de emergencia en tu país.',
           href: localePath('es', '/seguridad'),
           linkLabel: 'Límites clínicos',
         },
@@ -262,7 +262,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       tryOutline: 'Try Anto',
       tryHref: localePath('en', '/bienvenida'),
       micro: '1 day free · No card · Cancel anytime',
-      limit: 'Anto does not replace therapy or clinical care.',
+      limit: 'Anto does not tell you if you have a health condition, and it does not replace help from a professional.',
     },
     trust: {
       aria: 'Privacy, science and limits',
@@ -270,7 +270,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
         {
           id: 'privacy',
           title: 'Privacy',
-          body: 'Conversations are encrypted. Only you sign in to your account.',
+          body: 'Conversations travel encrypted between your phone and our servers. Only you can access your account.',
           href: localePath('en', '/seguridad'),
           linkLabel: 'Safety',
         },
@@ -284,7 +284,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
         {
           id: 'limits',
           title: 'Limits',
-          body: 'It does not diagnose or replace a professional. If you are in crisis, seek emergency help in your country.',
+          body: 'It does not tell you if you have a health condition, and it does not replace a professional. If you are in crisis, seek emergency help in your country.',
           href: localePath('en', '/seguridad'),
           linkLabel: 'Clinical limits',
         },
@@ -362,7 +362,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       tryOutline: 'Testar a Anto',
       tryHref: localePath('pt', '/bienvenida'),
       micro: '1 dia grátis · Sem cartão · Cancele quando quiser',
-      limit: 'A Anto não substitui terapia nem atendimento clínico.',
+      limit: 'A Anto não diz se você tem uma condição de saúde e não substitui a ajuda de um profissional.',
     },
     trust: {
       aria: 'Privacidade, ciência e limites',
@@ -370,7 +370,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
         {
           id: 'privacy',
           title: 'Privacidade',
-          body: 'As conversas vão criptografadas. Só você entra na sua conta.',
+          body: 'As conversas viajam criptografadas entre seu celular e nossos servidores. Só você acessa sua conta.',
           href: localePath('pt', '/seguridad'),
           linkLabel: 'Segurança',
         },
@@ -384,7 +384,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
         {
           id: 'limits',
           title: 'Limites',
-          body: 'Não diagnostica e não substitui um profissional. Se você está em crise, procure ajuda de emergência no seu país.',
+          body: 'Não diz se você tem uma condição de saúde e não substitui um profissional. Se você está em crise, procure ajuda de emergência no seu país.',
           href: localePath('pt', '/seguridad'),
           linkLabel: 'Limites clínicos',
         },
