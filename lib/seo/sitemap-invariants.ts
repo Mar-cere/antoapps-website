@@ -554,7 +554,13 @@ function assertNextRedirectsSynced(root: string, errors: string[]): void {
       source === '/welcome' ||
       source === '/login' ||
       source === '/signup' ||
-      source === '/chat'
+      source === '/chat' ||
+      source === '/en/login' ||
+      source === '/en/signup' ||
+      source === '/en/chat' ||
+      source === '/pt/login' ||
+      source === '/pt/signup' ||
+      source === '/pt/chat'
   );
 
   for (const source of marketingRedirects) {

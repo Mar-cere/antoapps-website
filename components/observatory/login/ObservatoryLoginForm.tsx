@@ -3,9 +3,45 @@
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
+import { localePath, type Locale } from '@/lib/i18n/config';
 import { OBSERVATORY_HOME, safeObservatoryNext } from '@/lib/observatory/routes';
 
-export default function ObservatoryLoginForm() {
+const formCopy = {
+  es: {
+    email: 'Correo',
+    password: 'Contraseña',
+    submit: 'Entrar',
+    pending: 'Entrando…',
+    back: 'Volver a Nexus',
+    error: 'No se pudo entrar.',
+    retry: 'No se pudo entrar. Inténtalo de nuevo.',
+  },
+  en: {
+    email: 'Email',
+    password: 'Password',
+    submit: 'Sign in',
+    pending: 'Signing in…',
+    back: 'Back to Nexus',
+    error: 'Could not sign in.',
+    retry: 'Could not sign in. Try again.',
+  },
+  pt: {
+    email: 'E-mail',
+    password: 'Senha',
+    submit: 'Entrar',
+    pending: 'Entrando…',
+    back: 'Voltar ao Nexus',
+    error: 'Não foi possível entrar.',
+    retry: 'Não foi possível entrar. Tente de novo.',
+  },
+} as const;
+
+type ObservatoryLoginFormProps = {
+  locale?: Locale;
+};
+
+export default function ObservatoryLoginForm({ locale = 'es' }: ObservatoryLoginFormProps) {
+  const copy = formCopy[locale];
   const router = useRouter();
   const searchParams = useSearchParams();
   const next = safeObservatoryNext(searchParams.get('next'));
@@ -22,17 +58,17 @@ export default function ObservatoryLoginForm() {
       const response = await fetch('/api/observatorio/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password, locale }),
       });
       const data = (await response.json()) as { ok?: boolean; error?: string };
       if (!response.ok || !data.ok) {
-        setError(data.error ?? 'No se pudo entrar.');
+        setError(data.error ?? copy.error);
         return;
       }
       router.replace(next || OBSERVATORY_HOME);
       router.refresh();
     } catch {
-      setError('No se pudo entrar. Inténtalo de nuevo.');
+      setError(copy.retry);
     } finally {
       setPending(false);
     }
@@ -41,7 +77,7 @@ export default function ObservatoryLoginForm() {
   return (
     <form className="obs-login__form" onSubmit={onSubmit}>
       <label className="obs-login__field">
-        Correo
+        {copy.email}
         <input
           type="email"
           name="username"
@@ -52,7 +88,7 @@ export default function ObservatoryLoginForm() {
         />
       </label>
       <label className="obs-login__field">
-        Contraseña
+        {copy.password}
         <input
           type="password"
           name="password"
@@ -68,10 +104,10 @@ export default function ObservatoryLoginForm() {
         </p>
       ) : null}
       <button className="obs-login__submit" type="submit" disabled={pending}>
-        {pending ? 'Entrando…' : 'Entrar'}
+        {pending ? copy.pending : copy.submit}
       </button>
-      <Link className="obs-login__back" href="/nexus">
-        Volver a Nexus
+      <Link className="obs-login__back" href={localePath(locale, '/nexus')}>
+        {copy.back}
       </Link>
     </form>
   );

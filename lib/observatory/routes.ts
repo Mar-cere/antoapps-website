@@ -1,5 +1,11 @@
 export const OBSERVATORY_HOME = '/observatorio';
 export const OBSERVATORY_LOGIN = '/nexus/ingreso';
+
+const OBSERVATORY_LOGIN_PATHS = ['/nexus/ingreso', '/en/nexus/ingreso', '/pt/nexus/ingreso'] as const;
+
+export function isObservatoryLoginPath(pathname: string): boolean {
+  return (OBSERVATORY_LOGIN_PATHS as readonly string[]).includes(pathname);
+}
 export const OBSERVATORY_COOKIE = 'obs_session';
 
 export const OBSERVATORY_NAV = [

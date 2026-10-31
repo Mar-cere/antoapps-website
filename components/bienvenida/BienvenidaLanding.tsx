@@ -40,6 +40,7 @@ export function bienvenidaMetadata(locale: Locale): Metadata {
   const canonical = `${baseUrl}${path}`;
   const alternateEs = `${baseUrl}/bienvenida`;
   const alternateEn = `${baseUrl}/en/bienvenida`;
+  const alternatePt = `${baseUrl}/pt/bienvenida`;
 
   return {
     title: copy.meta.title,
@@ -49,6 +50,7 @@ export function bienvenidaMetadata(locale: Locale): Metadata {
       languages: {
         es: alternateEs,
         en: alternateEn,
+        'pt-BR': alternatePt,
         'x-default': alternateEs,
       },
     },

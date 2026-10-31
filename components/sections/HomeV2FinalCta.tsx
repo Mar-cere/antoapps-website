@@ -18,7 +18,12 @@ export default function HomeV2FinalCta({ locale = 'es' }: HomeV2FinalCtaProps) {
   const hero = copy.hero;
 
   return (
-    <section className="home-v2-final-cta" aria-labelledby="home-v2-final-cta-title" data-fade-section>
+    <section
+      id="descargar"
+      className="home-v2-final-cta"
+      aria-labelledby="home-v2-final-cta-title"
+      data-fade-section
+    >
       <div className="home-v2-final-cta__media" aria-hidden="true">
         <Image
           src={getEditorialImagePath('sleeplessNight')}

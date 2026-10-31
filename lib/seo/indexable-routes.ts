@@ -9,7 +9,7 @@ import type { MetadataRoute } from 'next';
  * - /zt9kq7m2v8n4xpw6rb3yjh1cw5df8a (validador opaco, noindex)
  * - /open (puente HTTPS deep link correos, noindex)
  * - /nexus/ingreso y /observatorio (operador, noindex)
- * - Redirects temporales: /l, /en/l, /welcome, /login, /signup, /chat
+ * - Redirects temporales: /l, /en/l, /pt/l, /welcome, /login, /signup, /chat y sus prefijos /en y /pt
  */
 export type SitemapChangeFrequency = NonNullable<
   MetadataRoute.Sitemap[number]['changeFrequency']
@@ -157,6 +157,8 @@ export const ROBOTS_DISALLOW_PATH_PREFIXES = [
   '/pt/home-v2',
   '/open',
   '/nexus/ingreso',
+  '/en/nexus/ingreso',
+  '/pt/nexus/ingreso',
   '/observatorio',
 ] as const;
 
@@ -177,6 +179,12 @@ export const REDIRECT_ONLY_PATHS = [
   '/login',
   '/signup',
   '/chat',
+  '/en/login',
+  '/en/signup',
+  '/en/chat',
+  '/pt/login',
+  '/pt/signup',
+  '/pt/chat',
   '/home-v2',
   '/en/home-v2',
   '/pt/home-v2',
