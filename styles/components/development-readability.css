@@ -1,0 +1,5 @@
+/* Los 22 bloques con data-stagger-item heredan opacidad 0.4
+   y esta página no les añade .stagger-animated. */
+.development-page.home-landing-page [data-stagger-item] {
+    opacity: 1;
+}
