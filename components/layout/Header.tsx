@@ -112,7 +112,7 @@ export default function Header() {
                 placeholder="blur"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
               />
-              <span>Anto</span>
+              <span>anto</span>
             </Link>
           </div>
 

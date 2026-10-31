@@ -195,10 +195,10 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Cognitive distortions: spot them and question them | Anto',
       description:
-        'Brief guide to cognitive distortions: everyday examples (catastrophising, all-or-nothing, mind reading), separating fact from story, and a short exercise to look closely at a thought. Links to the clinical map (levels, experiments). Does not replace professional care.',
+        'Brief guide to cognitive distortions: everyday examples (catastrophising, all-or-nothing, mind reading), separating fact from story, and a short exercise to look closely at a thought. Links to the map (levels, experiments). Does not replace professional care.',
       openGraphTitle: 'Cognitive distortions — recognise and question',
       openGraphDescription:
-        'When a silence becomes a verdict: everyday examples, fact vs. story, and the path to the clinical map.',
+        'When a silence becomes a verdict: everyday examples, fact vs. story, and the path to the map.',
       keywords:
         'cognitive distortions, thoughts in a loop, unanswered message, mind reading, fact vs story, automatic thoughts, catastrophising, all-or-nothing, reframing, brief guide, CBT, ABC technique, psychoeducation, Anto',
     },
@@ -208,7 +208,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         'Those mental shortcuts that turn a silence into a verdict. Naming them helps you not believe them instantly — without forcing yourself to “think positive.”',
       companionLink: {
         href: '/recursos/mapa-distorsiones-cognitivas',
-        support: 'Want the clinical map?',
+        support: 'Want the full map?',
         label: 'Go to the full guide →',
       },
     },
@@ -314,7 +314,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Go deeper',
       support:
-        'This page is practical and brief. If you want the clinical map — levels, clusters, maintenance, experiments — start here:',
+        'This page is practical and brief. If you want the map — levels, clusters, maintenance, experiments — start here:',
       links: [
         {
           label: 'Cognitive distortions (full map)',
@@ -389,14 +389,14 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 12,
     layout: 'dossier',
     meta: {
-      title: 'Cognitive distortions: full clinical map | Anto',
+      title: 'Cognitive distortions: full map | Anto',
       description:
-        'Clinical map of cognitive distortions: three levels of the model (automatic thoughts, rules, core beliefs), functional clusters, maintenance cycles, techniques beyond labelling, designing behavioural experiments, downward arrow, and anxiety vs. depression profiles. Complements the brief guide; does not diagnose or replace therapy.',
-      openGraphTitle: 'Cognitive distortions — clinical map',
+        'Map of cognitive distortions: three levels of the model (automatic thoughts, rules, core beliefs), functional clusters, maintenance cycles, techniques beyond labelling, designing behavioural experiments, downward arrow, and anxiety vs. depression profiles. Complements the brief guide; does not diagnose or replace therapy.',
+      openGraphTitle: 'Cognitive distortions — full map',
       openGraphDescription:
         'Beyond labelling the bias: cognitive levels, maintenance, behavioural experiments, and clinical profiles.',
       keywords:
-        'cognitive distortions, clinical map, functional clusters, core beliefs, behavioural experiment, downward arrow, safety behaviours, cognitive maintenance, threat biases, cognitive restructuring, CBT, Beck, clinical psychoeducation, Anto',
+        'cognitive distortions, map, functional clusters, core beliefs, behavioural experiment, downward arrow, safety behaviours, cognitive maintenance, threat biases, cognitive restructuring, CBT, Beck, clinical psychoeducation, Anto',
     },
     hero: {
       title: 'Cognitive distortions: full map',
@@ -414,7 +414,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       src: '/assets/images/editorial/anto-editorial-desk-rain.webp',
       alt: 'Night desk by a rainy window, lamp on, open notebook and pen — space to write a prediction and a test',
       caption:
-        'Rain outside, prediction in the notebook. The clinical map is written: hypothesis, test, data — not only argued.',
+        'Rain outside, prediction in the notebook. The map is written: hypothesis, test, data — not only argued.',
       width: 1536,
       height: 1024,
       objectPosition: '38% 58%',
@@ -553,7 +553,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Go deeper',
       support:
-        'This text is the clinical map. To recognise a thought in everyday life, keep an ABC record, or read about anxiety/depression, continue here:',
+        'This text is the map. To recognise a thought in everyday life, keep an ABC record, or read about anxiety/depression, continue here:',
       links: [
         {
           label: 'Cognitive distortions (brief guide)',
@@ -865,7 +865,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/mapa-distorsiones-cognitivas',
         },
         {
-          label: 'PHQ-9 and GAD-7',
+          label: 'How to read a mood check',
           description:
             'Screening scales: what they measure, orienting ranges, and limits versus diagnosis.',
           href: '/recursos/escalas-phq9-gad7',
@@ -953,19 +953,19 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 6,
     layout: 'brief',
     meta: {
-      title: 'PHQ-9 and GAD-7: score ranges and how to read them | Anto',
+      title: 'How to read a mood and anxiety check | Anto',
       description:
-        'What PHQ-9 (mood) and GAD-7 (anxiety) measure, orienting ranges, and official instruments. Two-week screening, not a diagnosis. In Anto the readings land in your history.',
-      openGraphTitle: 'PHQ-9 and GAD-7: what they measure and how to read them',
+        'What a mood check and an anxiety check look at, with orienting ranges. Not a diagnosis. In Anto the readings land in your history.',
+      openGraphTitle: 'How to read a mood and anxiety check',
       openGraphDescription:
         'Mood and anxiety screening: ranges, trend, and why a number is not a diagnosis.',
       keywords:
         'PHQ-9, GAD-7, PHQ-9 GAD-7, score ranges, depression screening, anxiety screening, history, psychoeducation, Anto',
     },
     hero: {
-      title: 'PHQ-9 and GAD-7: what they measure and how to read them',
+      title: 'How to read a mood and anxiety check',
       subtitle:
-        'Two screening scales about the last two weeks. They help you see whether it rises, falls, or holds — not to give yourself a diagnosis.',
+        'Two readings of the last two weeks. They help you see whether it rises, falls, or holds — not to give yourself a diagnosis.',
       scanLink: {
         label: 'Go to the ranges →',
         sectionHeading: 'Orienting ranges',
@@ -1183,7 +1183,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         'Better sleep does not fix everything. But poor sleep amplifies anxiety, irritability, and the voice that replays the day once the body is already in bed.',
       companionLink: {
         href: '/recursos/mapa-sueno-e-insomnio',
-        support: 'Want the clinical map?',
+        support: 'Want the full map?',
         label: 'Go to the full guide →',
       },
     },
@@ -1328,14 +1328,14 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 12,
     layout: 'dossier',
     meta: {
-      title: 'Sleep and insomnia: full clinical map | Anto',
+      title: 'Sleep and insomnia: full map | Anto',
       description:
-        'Clinical map of sleep and insomnia: presentations, maintenance cycle, limits of sleep hygiene, CBT-I-style components (stimulus control, sleep window), links to anxiety/mood, and when to seek evaluation. Complements the brief guide; does not diagnose or replace sleep therapy.',
-      openGraphTitle: 'Sleep and insomnia — clinical map',
+        'Map of sleep and insomnia: presentations, maintenance cycle, limits of sleep hygiene, CBT-I-style components (stimulus control, sleep window), links to anxiety/mood, and when to seek evaluation. Complements the brief guide; does not diagnose or replace sleep therapy.',
+      openGraphTitle: 'Sleep and insomnia — full map',
       openGraphDescription:
         'Beyond one bad night: what maintains insomnia, how far hygiene goes, and what CBT-I usually includes.',
       keywords:
-        'insomnia, sleep, clinical map, sleep map, CBT-I, cognitive behavioural therapy for insomnia, sleep hygiene, stimulus control, sleep restriction, sleep window, sleep efficiency, maintenance cycle, night rumination, night anxiety, chronic insomnia, psychoeducation, Anto',
+        'insomnia, sleep, map, sleep map, CBT-I, cognitive behavioural therapy for insomnia, sleep hygiene, stimulus control, sleep restriction, sleep window, sleep efficiency, maintenance cycle, night rumination, night anxiety, chronic insomnia, psychoeducation, Anto',
     },
     hero: {
       title: 'Sleep and insomnia: full map',

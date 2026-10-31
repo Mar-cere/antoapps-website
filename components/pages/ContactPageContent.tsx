@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
 import { htmlLanguage, localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
@@ -44,8 +43,12 @@ export default function ContactPageContent({ locale }: ContactPageContentProps) 
         ? 'A Anto não substitui terapia nem atendimento clínico profissional. Se você estiver em crise, procure ajuda de emergência no seu país.'
         : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
   const crisisLabel =
-    locale === 'en' ? 'When anxiety rises' : locale === 'pt' ? 'Quando a ansiedade sobe' : 'Cuando la ansiedad sube';
-  const crisisHref = localePath(locale, '/recursos/grounding-ansiedad-crisis');
+    locale === 'en'
+      ? 'Emergency lines by country'
+      : locale === 'pt'
+        ? 'Linhas de emergência por país'
+        : 'Líneas de emergencia por país';
+  const crisisHref = 'https://findahelpline.com/';
 
   return (
     <LocaleProvider locale={locale}>
@@ -78,9 +81,14 @@ export default function ContactPageContent({ locale }: ContactPageContentProps) 
                 </a>
                 <p className="contact-page__disclaimer">
                   {disclaimer}{' '}
-                  <Link href={crisisHref} className="contact-page__crisis">
+                  <a
+                    href={crisisHref}
+                    className="contact-page__crisis"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {crisisLabel}
-                  </Link>
+                  </a>
                 </p>
               </aside>
             </div>

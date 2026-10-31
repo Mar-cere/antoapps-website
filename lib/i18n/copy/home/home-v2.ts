@@ -218,6 +218,7 @@ export type HomeV2Copy = {
   finalCta: {
     title: string;
     subtitle: string;
+    micro: string;
     imageAlt: string;
   };
 };
@@ -442,7 +443,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             save: 'Save 17%',
           },
         ],
-        ctaMicro: `${trial.short} · No card required`,
+        ctaMicro: trial.short,
       },
       faq: {
         title: 'What people usually ask.',
@@ -469,7 +470,8 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           },
           {
             question: 'Is there a free trial?',
-            answer: trial.faqPremiumAnswer,
+            answer:
+              'Yes. A full day. Full access. Cancel anytime. iPhone and Android.',
           },
         ],
         moreHref: localePath('en', '/recursos'),
@@ -505,14 +507,15 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           },
         ],
         coda: {
-          trust: ['Private by design', 'No card required'],
+          trust: ['Private by design'],
           disclaimer:
             'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.',
         },
       },
       finalCta: {
         title: 'When you need the intensity to ease.',
-        subtitle: 'Start today. One free day, no card.',
+        subtitle: 'Start today. One free day.',
+        micro: `${trial.short} · Cancel anytime`,
         imageAlt: 'Quiet sleepless night: dim room, soft lamp light near an empty bed',
       },
     };
@@ -735,7 +738,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             save: 'Economize 17%',
           },
         ],
-        ctaMicro: `${trial.short} · Sem cartão`,
+        ctaMicro: trial.short,
       },
       faq: {
         title: 'O que costuma ser perguntado.',
@@ -762,7 +765,8 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           },
           {
             question: 'Tem teste grátis?',
-            answer: trial.faqPremiumAnswer,
+            answer:
+              'Sim. Um dia inteiro. Acesso completo. Cancele quando quiser. iPhone e Android.',
           },
         ],
         moreHref: localePath('pt', '/recursos'),
@@ -798,14 +802,15 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           },
         ],
         coda: {
-          trust: ['Privado de propósito', 'Sem cartão'],
+          trust: ['Privado de propósito'],
           disclaimer:
             'A Anto não substitui terapia nem atendimento clínico profissional. Se você estiver em crise, procure ajuda de emergência no seu país.',
         },
       },
       finalCta: {
         title: 'Quando você precisar diminuir a intensidade.',
-        subtitle: 'Comece hoje. Um dia grátis, sem cartão.',
+        subtitle: 'Comece hoje. Um dia grátis.',
+        micro: `${trial.short} · Cancele quando quiser`,
         imageAlt: 'Noite em claro: quarto na penumbra, luz suave de abajur junto a uma cama',
       },
     };
@@ -1027,7 +1032,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           save: 'Ahorra 17%',
         },
       ],
-      ctaMicro: `${trial.short} · Sin tarjeta`,
+      ctaMicro: trial.short,
     },
     faq: {
       title: 'Lo que suele preguntarse.',
@@ -1054,7 +1059,8 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         },
         {
           question: '¿Hay prueba gratis?',
-          answer: trial.faqPremiumAnswer,
+          answer:
+            'Sí. Un día completo. Acceso completo. Cancela cuando quieras. iPhone y Android.',
         },
       ],
       moreHref: localePath('es', '/recursos'),
@@ -1090,14 +1096,15 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         },
       ],
       coda: {
-        trust: ['Privado por diseño', 'Sin tarjeta'],
+        trust: ['Privado por diseño'],
         disclaimer:
           'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.',
       },
     },
     finalCta: {
       title: 'Cuando necesites bajar la intensidad.',
-      subtitle: 'Empieza hoy. Un día gratis, sin tarjeta.',
+      subtitle: 'Empieza hoy. Un día gratis.',
+      micro: `${trial.short} · Cancela cuando quieras`,
       imageAlt: 'Noche en vela: habitación en penumbra, luz suave de lámpara junto a una cama',
     },
   };

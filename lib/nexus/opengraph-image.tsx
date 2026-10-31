@@ -25,7 +25,7 @@ export function nexusOpenGraphImage(locale: Locale) {
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span style={{ fontSize: 28, fontWeight: 500, letterSpacing: '-0.04em', color: '#ffffff' }}>
-            anto.
+            anto
           </span>
           <span
             style={{

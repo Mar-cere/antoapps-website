@@ -109,7 +109,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
     nav: {
       aria: 'Navegación de Nexus',
       logoAria: 'Anto, ir al inicio',
-      wordmark: 'anto.',
+      wordmark: 'anto',
       menuLabel: 'Abrir menú',
       menuClose: 'Cerrar menú',
       items: [
@@ -209,7 +209,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
     nav: {
       aria: 'Nexus navigation',
       logoAria: 'Anto, go to home',
-      wordmark: 'anto.',
+      wordmark: 'anto',
       menuLabel: 'Open menu',
       menuClose: 'Close menu',
       items: [
@@ -309,7 +309,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
     nav: {
       aria: 'Navegação do Nexus',
       logoAria: 'Anto, ir para o início',
-      wordmark: 'anto.',
+      wordmark: 'anto',
       menuLabel: 'Abrir menu',
       menuClose: 'Fechar menu',
       items: [

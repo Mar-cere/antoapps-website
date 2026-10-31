@@ -36,13 +36,14 @@ function primaryCtaLabel(
 type TrustLinesProps = {
   copy: BienvenidaCopy;
   showIosTrial: boolean;
+  showNoCard: boolean;
 };
 
-function TrustLines({ copy, showIosTrial }: TrustLinesProps) {
+function TrustLines({ copy, showIosTrial, showNoCard }: TrustLinesProps) {
   return (
     <>
       {showIosTrial && <p className="lad-hero-trial-line">{copy.trial.line}</p>}
-      {showIosTrial && <p className="lad-hero-no-cc-line">{copy.trial.noCreditCard}</p>}
+      {showIosTrial && showNoCard && <p className="lad-hero-no-cc-line">{copy.trial.noCreditCard}</p>}
       {showIosTrial && <p className="lad-hero-pricing-line">{copy.trial.pricingLine}</p>}
       <p className="lad-hero-privacy">
         <svg
@@ -166,7 +167,7 @@ export default function HeroDualCta({
             {renderPlayStoreCta()}
           </div>
         )}
-        <TrustLines copy={copy} showIosTrial />
+        <TrustLines copy={copy} showIosTrial showNoCard={!isFinal} />
       </div>
     );
   }
@@ -179,7 +180,7 @@ export default function HeroDualCta({
       >
         <p className="lad-hero-android-lead">{copy.androidDevice.leadLine}</p>
         {renderPlayStoreCta()}
-        <TrustLines copy={copy} showIosTrial={false} />
+        <TrustLines copy={copy} showIosTrial={false} showNoCard={false} />
         <p className="lad-hero-ios-fallback">
           <DownloadLink
             href={storeHref}
@@ -221,7 +222,7 @@ export default function HeroDualCta({
             {copy.desktopPicker.android}
           </button>
         </div>
-        <TrustLines copy={copy} showIosTrial={false} />
+        <TrustLines copy={copy} showIosTrial={false} showNoCard={false} />
       </div>
     );
   }
@@ -234,7 +235,7 @@ export default function HeroDualCta({
       >
         <div className="lad-hero-cta-single">{renderIosStoreCta(true, 'lad-hero-cta-badge-wrap--desktop')}</div>
         <p className="lad-desktop-iphone-hint">{copy.desktopPicker.iphoneHint}</p>
-        <TrustLines copy={copy} showIosTrial />
+        <TrustLines copy={copy} showIosTrial showNoCard={!isFinal} />
         <button type="button" className="lad-desktop-change-device" onClick={() => setDesktopChoice(null)}>
           {copy.desktopPicker.changeDevice}
         </button>
@@ -249,7 +250,7 @@ export default function HeroDualCta({
     >
       <p className="lad-hero-android-lead">{copy.androidDevice.leadLine}</p>
       {renderPlayStoreCta()}
-      <TrustLines copy={copy} showIosTrial={false} />
+      <TrustLines copy={copy} showIosTrial={false} showNoCard={false} />
       <button type="button" className="lad-desktop-change-device" onClick={() => setDesktopChoice(null)}>
         {copy.desktopPicker.changeDevice}
       </button>

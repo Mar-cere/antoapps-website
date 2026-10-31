@@ -109,8 +109,11 @@ export function assertBienvenidaCopyInvariants(): string[] {
     if (v2.features.length !== 4) {
       errors.push(`${tag} v2.features debe tener 4 ítems`);
     }
-    if (v2.trustItems.length !== 3) {
-      errors.push(`${tag} v2.trustItems debe tener 3 ítems`);
+    if (v2.trustItems.length !== 2) {
+      errors.push(`${tag} v2.trustItems debe tener 2 ítems`);
+    }
+    if (!v2.ctaMicroClose.trim()) {
+      errors.push(`${tag} v2.ctaMicroClose vacío`);
     }
     if (!v2.chat.ariaLabel.trim()) {
       errors.push(`${tag} v2.chat.ariaLabel vacío`);

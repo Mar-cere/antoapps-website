@@ -47,7 +47,7 @@ export default function HomeV2FinalCta({ locale = 'es' }: HomeV2FinalCtaProps) {
           trackingPlacementPrefix="home_final"
           trackingLabel="home_final_cta"
         />
-        <p className="home-v2-final-cta__micro">{hero.ctaMicro}</p>
+        <p className="home-v2-final-cta__micro">{copy.finalCta.micro}</p>
       </div>
       <span className="sr-only">{copy.finalCta.imageAlt}</span>
     </section>

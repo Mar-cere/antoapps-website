@@ -10,7 +10,6 @@ import BienvenidaAudience from '@/components/bienvenida/BienvenidaAudience';
 import BienvenidaClinicalPillars from '@/components/bienvenida/BienvenidaClinicalPillars';
 import BienvenidaConversationDemo from '@/components/bienvenida/BienvenidaConversationDemo';
 import BienvenidaFaq from '@/components/bienvenida/BienvenidaFaq';
-import BienvenidaReviews from '@/components/bienvenida/BienvenidaReviews';
 import BienvenidaStickyCta from '@/components/bienvenida/BienvenidaStickyCta';
 import BienvenidaTrustStrip from '@/components/bienvenida/BienvenidaTrustStrip';
 import HeroDualCta from '@/components/bienvenida/HeroDualCta';
@@ -112,7 +111,7 @@ export default function BienvenidaLanding({
             className="lad-brand-icon"
             priority
           />
-          <span>Anto</span>
+          <span>anto</span>
         </div>
         <LanguageSwitcher locale={locale} path="/bienvenida" />
       </header>
@@ -140,7 +139,6 @@ export default function BienvenidaLanding({
         </section>
 
         <div className="lad-hero-social">
-          <BienvenidaReviews copy={copy.reviews} />
           <BienvenidaAppPreview copy={copy.appPreview} />
         </div>
 

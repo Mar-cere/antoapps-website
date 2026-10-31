@@ -140,6 +140,8 @@ export type BienvenidaCopy = {
     ctaStoreText: string;
     ctaBadge: string;
     ctaMicro: string;
+    /** Cierre: la misma línea, sin repetir «sin tarjeta». */
+    ctaMicroClose: string;
     ctaPlayLabel: string;
     ctaPlayText: string;
     ctaPlayBadge: string;
@@ -335,7 +337,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         privacy: 'Privacy',
         terms: 'Terms',
         contact: 'Contact',
-        tagline: '© {year} Anto · Made with care in Chile',
+        tagline: '© {year} anto · Made with care in Chile',
       },
       trustStrip: {
         ratingOnAppStore: appStoreRatingWithReviews('en'),
@@ -378,6 +380,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ctaStoreText: 'App Store',
         ctaBadge: trial.short,
         ctaMicro: `Start free today · No card · Private`,
+        ctaMicroClose: 'Start free today · Private',
         ctaPlayLabel: 'Get it on',
         ctaPlayText: 'Google Play',
         ctaPlayBadge: trial.short,
@@ -420,7 +423,6 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         },
         trustItems: [
           { icon: 'lock', label: 'Private' },
-          { icon: 'no-card', label: 'No card' },
           { icon: 'chile', label: 'Made in Chile' },
         ],
         photoAlt: 'A quiet bedroom at night when sleep will not come',
@@ -623,7 +625,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         privacy: 'Privacidade',
         terms: 'Termos',
         contact: 'Contato',
-        tagline: '© {year} Anto · Feito com cuidado no Chile',
+        tagline: '© {year} anto · Feito com cuidado no Chile',
       },
       trustStrip: {
         ratingOnAppStore: appStoreRatingWithReviews('pt'),
@@ -666,6 +668,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ctaStoreText: 'App Store',
         ctaBadge: trial.short,
         ctaMicro: 'Comece grátis hoje · Sem cartão · Privado',
+        ctaMicroClose: 'Comece grátis hoje · Privado',
         ctaPlayLabel: 'Disponível no',
         ctaPlayText: 'Google Play',
         ctaPlayBadge: trial.short,
@@ -708,7 +711,6 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         },
         trustItems: [
           { icon: 'lock', label: 'Privado' },
-          { icon: 'no-card', label: 'Sem cartão' },
           { icon: 'chile', label: 'Feito no Chile' },
         ],
         photoAlt: 'Um quarto à noite, quando o sono não chega',
@@ -897,7 +899,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       privacy: 'Privacidad',
       terms: 'Términos',
       contact: 'Contacto',
-      tagline: '© {year} Anto · Hecho con cuidado en Chile',
+      tagline: '© {year} anto · Hecho con cuidado en Chile',
     },
     trustStrip: {
       ratingOnAppStore: appStoreRatingWithReviews('es'),
@@ -940,6 +942,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       ctaStoreText: 'App Store',
       ctaBadge: trial.short,
       ctaMicro: `Empieza gratis hoy · Sin tarjeta · Privado`,
+      ctaMicroClose: 'Empieza gratis hoy · Privado',
       ctaPlayLabel: 'Disponible en',
       ctaPlayText: 'Google Play',
       ctaPlayBadge: trial.short,
@@ -982,7 +985,6 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       },
       trustItems: [
         { icon: 'lock', label: 'Privado' },
-        { icon: 'no-card', label: 'Sin tarjeta' },
         { icon: 'chile', label: 'Hecho en Chile' },
       ],
       photoAlt: 'Una habitación de noche, cuando el sueño no llega',

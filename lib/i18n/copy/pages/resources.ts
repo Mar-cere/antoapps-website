@@ -106,21 +106,21 @@ export const FEATURED_HUMAN_LABELS: Record<
 > = {
   es: {
     'grounding-ansiedad-crisis': 'Cuando la ansiedad sube (grounding)',
-    'escalas-phq9-gad7': 'PHQ-9 y GAD-7',
+    'escalas-phq9-gad7': 'Cómo leer un chequeo de ánimo',
     'distorsiones-cognitivas': 'Pensamientos en bucle',
     'higiene-sueno-salud-mental': 'Cuando no puedes dormir (sueño)',
     'que-es-tcc': 'Pensamientos y emociones (TCC)',
   },
   en: {
     'grounding-ansiedad-crisis': 'When anxiety rises (grounding)',
-    'escalas-phq9-gad7': 'PHQ-9 and GAD-7',
+    'escalas-phq9-gad7': 'How to read a mood check',
     'distorsiones-cognitivas': 'Thoughts in a loop',
     'higiene-sueno-salud-mental': 'When you cannot sleep (sleep)',
     'que-es-tcc': 'Thoughts and emotions (CBT)',
   },
   pt: {
     'grounding-ansiedad-crisis': 'Quando a ansiedade sobe (grounding)',
-    'escalas-phq9-gad7': 'PHQ-9 e GAD-7',
+    'escalas-phq9-gad7': 'Como ler um cheque de humor',
     'distorsiones-cognitivas': 'Pensamentos em loop',
     'higiene-sueno-salud-mental': 'Quando você não consegue dormir (sono)',
     'que-es-tcc': 'Pensamentos e emoções (TCC)',
@@ -277,7 +277,7 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
       meta: {
         title: 'Resources — Anto | Psychoeducation for anxiety, CBT, sleep and quiet hours',
         description:
-        `${PSYCHOEDUCATION_SLUGS.length} free psychoeducation guides: anxiety, CBT, cognitive distortions (brief + clinical map), sleep (brief + full map), grounding, depression, PHQ-9/GAD-7, and more — plus Anto on iPhone and Android, privacy, and evidence. Complements care; does not replace a therapist.`,
+        `${PSYCHOEDUCATION_SLUGS.length} free psychoeducation guides: anxiety, CBT, looping thoughts, sleep, grounding, depression, and more — plus Anto on iPhone and Android, privacy, and evidence. Complements care; does not diagnose or replace a therapist.`,
         openGraphTitle: 'Anto resources — guides for anxiety and quiet hours',
         openGraphDescription:
           'Start with anxiety, looping thoughts, sleep, or CBT. Short educational guides — not a diagnosis.',
@@ -288,7 +288,7 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         subtitle:
           'Short psychoeducation on anxiety, techniques, and patterns — plus how Anto works. Not a substitute for professional care.',
         seoIntro:
-          'Educational guides on anxiety, cognitive behavioural therapy (CBT), looping thoughts, the clinical map of cognitive distortions (levels, clusters, behavioural experiments), grounding, sleep, depression, emotional regulation, burnout, and clinical scales such as PHQ-9 and GAD-7. Free to read. Complements — does not replace — human therapy.',
+          'Educational guides on anxiety, cognitive behavioural therapy (CBT), looping thoughts, a map of how thoughts get stuck (levels, clusters, small tests), grounding, sleep, depression, emotional regulation, and burnout. Free to read. They complement — and do not diagnose or replace — human therapy.',
       },
       featured: {
         ariaLabel: 'Start here',
@@ -314,7 +314,7 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
       meta: {
         title: 'Recursos — Anto | Psicoeducação para ansiedade, TCC, sono e horas quietas',
         description:
-          `${PSYCHOEDUCATION_SLUGS.length} guias gratuitos de psicoeducação: ansiedade, TCC, distorções cognitivas (breve + mapa clínico), sono (breve + mapa completo), grounding, depressão, PHQ-9/GAD-7 e mais — além da Anto no iPhone e no Android, privacidade e evidência. Complementa; não substitui um terapeuta.`,
+          `${PSYCHOEDUCATION_SLUGS.length} guias gratuitos de psicoeducação: ansiedade, TCC, pensamentos em loop, sono, grounding, depressão e mais — além da Anto no iPhone e no Android, privacidade e evidência. Complementa; não diagnostica nem substitui um terapeuta.`,
         openGraphTitle: 'Recursos da Anto — guias para ansiedade e horas quietas',
         openGraphDescription:
           'Comece pela ansiedade, pelos pensamentos em loop, pelo sono ou pela TCC. Guias educativos curtos — não são um diagnóstico.',
@@ -325,7 +325,7 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         subtitle:
           'Psicoeducação breve sobre ansiedade, técnicas e padrões — e como a Anto funciona. Não substitui atendimento profissional.',
         seoIntro:
-          'Guias educativos sobre ansiedade, terapia cognitivo-comportamental (TCC), pensamentos em loop, o mapa clínico das distorções (níveis, clusters, experimentos comportamentais), grounding, sono, depressão, regulação emocional, burnout e escalas como PHQ-9 e GAD-7. Leitura gratuita. Complementam — não substituem — a terapia humana.',
+          'Guias educativos sobre ansiedade, terapia cognitivo-comportamental (TCC), pensamentos em loop, um mapa de como os pensamentos se enroscam (níveis, agrupamentos, provas pequenas), grounding, sono, depressão, regulação emocional e burnout. Leitura gratuita. Complementam — não diagnosticam nem substituem — a terapia humana.',
       },
       featured: {
         ariaLabel: 'Comece por aqui',
@@ -350,7 +350,7 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
     meta: {
       title: 'Recursos — Anto | Psicoeducación para ansiedad, TCC, sueño y horas quietas',
       description:
-        `${PSYCHOEDUCATION_SLUGS.length} guías gratuitas de psicoeducación: ansiedad, TCC, distorsiones cognitivas (breve + mapa clínico), sueño (breve + mapa completo), grounding, depresión, PHQ-9/GAD-7 y más — más Anto en iPhone, privacidad y evidencia. Complementa; no reemplaza a un terapeuta.`,
+        `${PSYCHOEDUCATION_SLUGS.length} guías gratuitas de psicoeducación: ansiedad, TCC, pensamientos en bucle, sueño, grounding, depresión y más — más Anto en iPhone, privacidad y evidencia. Complementa; no diagnostica ni reemplaza a un terapeuta.`,
       openGraphTitle: 'Recursos Anto — guías para ansiedad y horas quietas',
       openGraphDescription:
         'Empieza por ansiedad, pensamientos en bucle, sueño o TCC. Guías educativas breves — no son un diagnóstico.',
@@ -361,7 +361,7 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
       subtitle:
         'Psicoeducación breve sobre ansiedad, técnicas y patrones — y cómo funciona Anto. No sustituye atención profesional.',
       seoIntro:
-        'Guías educativas sobre ansiedad, terapia cognitivo-conductual (TCC), pensamientos en bucle, el mapa clínico de distorsiones (niveles, clusters, experimentos conductuales), grounding, sueño, depresión, regulación emocional, burnout y escalas como PHQ-9 y GAD-7. Lectura gratuita. Complementan — no reemplazan — la terapia humana.',
+        'Guías educativas sobre ansiedad, terapia cognitivo-conductual (TCC), pensamientos en bucle, un mapa de cómo se enredan los pensamientos (niveles, agrupaciones, pruebas pequeñas), grounding, sueño, depresión, regulación emocional y burnout. Lectura gratuita. Complementan — no diagnostican ni reemplazan — la terapia humana.',
     },
     featured: {
       ariaLabel: 'Empieza por aquí',

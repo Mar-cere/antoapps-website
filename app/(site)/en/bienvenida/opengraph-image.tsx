@@ -50,7 +50,7 @@ export default function BienvenidaOpenGraphImageEn() {
           >
             A
           </div>
-          <span style={{ fontSize: 42, fontWeight: 700, letterSpacing: '-0.03em' }}>Anto</span>
+          <span style={{ fontSize: 42, fontWeight: 700, letterSpacing: '-0.03em' }}>anto</span>
         </div>
         <div
           style={{

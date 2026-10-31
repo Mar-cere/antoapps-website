@@ -317,7 +317,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         { href: localePath('es', '/terminos'), label: 'Términos' },
         { href: localePath('es', '/contacto'), label: 'Contacto' },
       ],
-      copyright: '© 2026 Anto · Hecho con cuidado en Chile',
+      copyright: '© 2026 anto · Hecho con cuidado en Chile',
       linksAria: 'Enlaces del sitio',
     },
   };
@@ -530,7 +530,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
           { href: localePath('pt', '/terminos'), label: 'Termos' },
           { href: localePath('pt', '/contacto'), label: 'Contato' },
         ],
-        copyright: '© 2026 Anto · Feito com cuidado no Chile',
+        copyright: '© 2026 anto · Feito com cuidado no Chile',
         linksAria: 'Links do site',
       },
     };
@@ -742,7 +742,7 @@ function buildLandingFinalCopy(locale: Locale): HomeLandingFinalCopy {
         { href: localePath('en', '/terminos'), label: 'Terms' },
         { href: localePath('en', '/contacto'), label: 'Contact' },
       ],
-      copyright: '© 2026 Anto · Made with care in Chile',
+      copyright: '© 2026 anto · Made with care in Chile',
       linksAria: 'Site links',
     },
   };

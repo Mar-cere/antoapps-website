@@ -52,7 +52,7 @@ export function renderHomeOpenGraphImage(locale: Locale) {
           >
             A
           </div>
-          <span style={{ fontSize: 32, fontWeight: 600, letterSpacing: '-0.02em' }}>Anto</span>
+          <span style={{ fontSize: 32, fontWeight: 600, letterSpacing: '-0.02em' }}>anto</span>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 980 }}>

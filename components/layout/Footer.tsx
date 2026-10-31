@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3>Anto</h3>
+            <h3>anto</h3>
             <p>{copy.footer.tagline}</p>
             <div className="social-links">
               <a
