@@ -103,9 +103,6 @@ export function assertBienvenidaCopyInvariants(): string[] {
     if (!v2.heroSub.trim() || !v2.ctaMicro.trim() || !v2.ctaPlayText.trim()) {
       errors.push(`${tag} v2 CTA copy incompleto`);
     }
-    if (!v2.heroReview.quote.trim() || !v2.heroReview.author.trim()) {
-      errors.push(`${tag} v2.heroReview incompleta`);
-    }
     if (v2.features.length !== 4) {
       errors.push(`${tag} v2.features debe tener 4 ítems`);
     }

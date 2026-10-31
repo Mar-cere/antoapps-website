@@ -14,17 +14,19 @@ export default function BienvenidaReviews({ copy }: BienvenidaReviewsProps) {
         <p className="lad-reviews-source">{copy.sourceLabel}</p>
       </div>
       <ul className="lad-reviews-list">
-        {copy.items.map((review) => (
-          <li key={`${review.author}-${review.quote.slice(0, 24)}`} className="lad-review-card">
-            <p className="lad-review-stars" aria-label={copy.starsAria}>
-              <span aria-hidden="true">★★★★★</span>
-            </p>
-            <blockquote cite="https://apps.apple.com">
-              <p className="lad-review-quote">&ldquo;{review.quote}&rdquo;</p>
-            </blockquote>
-            <p className="lad-review-author">{review.author}</p>
-          </li>
-        ))}
+        {copy.items
+          .filter((review) => review.author !== 'Camila S.')
+          .map((review) => (
+            <li key={`${review.author}-${review.quote.slice(0, 24)}`} className="lad-review-card">
+              <p className="lad-review-stars" aria-label={copy.starsAria}>
+                <span aria-hidden="true">★★★★★</span>
+              </p>
+              <blockquote cite="https://apps.apple.com">
+                <p className="lad-review-quote">&ldquo;{review.quote}&rdquo;</p>
+              </blockquote>
+              <p className="lad-review-author">{review.author}</p>
+            </li>
+          ))}
       </ul>
     </section>
   );
