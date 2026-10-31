@@ -26,6 +26,19 @@
         ],
         "createdAt": "2026-08-28T00:03:07.809Z",
         "reason": "Brief de /nexus: highlight violeta-cian solo en understands you / te comprende"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "app/(site)/bienvenida/opengraph-image.tsx",
+          "app/(site)/en/bienvenida/opengraph-image.tsx",
+          "app/(site)/pt/bienvenida/opengraph-image.tsx",
+          "lib/home/opengraph-image.tsx",
+          "lib/nexus/opengraph-image.tsx"
+        ],
+        "createdAt": "2026-10-31T05:04:06.938Z",
+        "reason": "Imágenes OG con color inline previo. Esta tarea solo cambia la firma a anto y no toca la paleta."
       }
     ],
     "ignoreRules": [],

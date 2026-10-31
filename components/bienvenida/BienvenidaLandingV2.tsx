@@ -4,7 +4,6 @@ import CookieConsent from '@/components/CookieConsent';
 import BienvenidaLandingTracker from '@/components/analytics/BienvenidaLandingTracker';
 import MetaPixelNoscript from '@/components/analytics/MetaPixelNoscript';
 import BienvenidaV2HeroFold from '@/components/bienvenida/v2/BienvenidaV2HeroFold';
-import BienvenidaV2HeroReview from '@/components/bienvenida/v2/BienvenidaV2HeroReview';
 import BienvenidaV2StickyCta from '@/components/bienvenida/v2/BienvenidaV2StickyCta';
 import {
   BienvenidaV2FeatureIcon,
@@ -54,7 +53,7 @@ export default function BienvenidaLandingV2({
             className="lad-brand-icon"
             priority
           />
-          <span>Anto</span>
+          <span>anto</span>
         </div>
         <LanguageSwitcher locale={locale} path="/bienvenida" className="lad-v2-lang" />
       </header>
@@ -117,10 +116,6 @@ export default function BienvenidaLandingV2({
               </li>
             ))}
           </ul>
-        </section>
-
-        <section className="lad-v2-s-review" aria-label={copy.reviews.sectionTitle}>
-          <BienvenidaV2HeroReview copy={copy} />
         </section>
 
         <section className="lad-v2-s4" aria-labelledby="lad-v2-dash-headline">

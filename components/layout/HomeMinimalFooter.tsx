@@ -42,7 +42,7 @@ export default function HomeMinimalFooter({
               className="home-landing-footer__logo"
             />
           </span>
-          <span className="home-landing-footer__name">anto.</span>
+          <span className="home-landing-footer__name">anto</span>
         </Link>
         <nav
           className="home-landing-footer__links"

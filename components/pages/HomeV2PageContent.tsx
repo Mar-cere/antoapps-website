@@ -16,7 +16,6 @@ import { HomeV2ChatExcerpt } from '@/components/sections/HomeV2ProductFigure';
 import HomeV2Moments from '@/components/sections/HomeV2Moments';
 import HomeV2Foundation from '@/components/sections/HomeV2Foundation';
 import HomeV2Still from '@/components/sections/HomeV2Still';
-import HomeV2Reviews from '@/components/sections/HomeV2Reviews';
 import HomeV2Pricing from '@/components/sections/HomeV2Pricing';
 import HomeV2Faq from '@/components/sections/HomeV2Faq';
 import HomeV2FinalCta from '@/components/sections/HomeV2FinalCta';
@@ -83,7 +82,6 @@ export default function HomeV2PageContent({
               <HomeV2Moments locale={locale} />
               <HomeV2Foundation locale={locale} />
               <HomeV2Still locale={locale} />
-              <HomeV2Reviews locale={locale} />
               <HomeV2Pricing locale={locale} />
               <HomeV2Faq locale={locale} />
               <HomeV2Explore locale={locale} />

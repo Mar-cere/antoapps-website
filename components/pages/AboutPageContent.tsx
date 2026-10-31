@@ -50,7 +50,7 @@ export default function AboutPageContent({ locale }: AboutPageContentProps) {
             <div className="home-landing-container">
               <div className="about-page__masthead">
                 <header className="about-page__header">
-                  <p className="about-page__brand">anto.</p>
+                  <p className="about-page__brand">anto</p>
                   <h1 className="about-page__title">{copy.h1}</h1>
                   <p className="about-page__lede">{copy.lede}</p>
                 </header>

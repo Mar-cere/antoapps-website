@@ -55,7 +55,7 @@ export default function HomeMinimalNav({
               priority
             />
           </span>
-          <span className="home-landing-nav__name">anto.</span>
+          <span className="home-landing-nav__name">anto</span>
         </Link>
         {ctaHref ? (
           <Link href={ctaHref} className="home-landing-nav__cta" aria-label={aria}>

@@ -76,7 +76,9 @@ export default function BienvenidaV2HeroFold({
 
       {!androidFirst && playCta}
 
-      {(showIosStoreCta || androidFirst) && <p className="lad-v2-cta-micro">{v2.ctaMicro}</p>}
+      {(showIosStoreCta || androidFirst) && (
+        <p className="lad-v2-cta-micro">{isHero ? v2.ctaMicro : v2.ctaMicroClose}</p>
+      )}
 
       {isHero && showIosStoreCta && (
         <InstagramBrowserHint copy={copy.inAppHint} locale={locale} variant="cta" />

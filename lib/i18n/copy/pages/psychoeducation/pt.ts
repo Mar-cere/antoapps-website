@@ -195,10 +195,10 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Distorções cognitivas: reconhecer e questionar | Anto',
       description:
-        'Guia breve de distorções cognitivas: exemplos do dia a dia (catastrofização, tudo ou nada, leitura mental), separar fato de história e um exercício curto para olhar um pensamento de perto. Link para o mapa clínico (níveis, experimentos). Não substitui atendimento profissional.',
+        'Guia breve de distorções cognitivas: exemplos do dia a dia (catastrofização, tudo ou nada, leitura mental), separar fato de história e um exercício curto para olhar um pensamento de perto. Link para o mapa (níveis, experimentos). Não substitui atendimento profissional.',
       openGraphTitle: 'Distorções cognitivas — reconhecer e questionar',
       openGraphDescription:
-        'Quando um silêncio vira veredito: exemplos do dia a dia, fato versus história e o caminho até o mapa clínico.',
+        'Quando um silêncio vira veredito: exemplos do dia a dia, fato versus história e o caminho até o mapa.',
       keywords:
         'distorções cognitivas, pensamentos em loop, mensagem sem resposta, leitura mental, fato versus história, pensamentos automáticos, catastrofização, tudo ou nada, reformulação, guia breve, TCC, técnica ABC, psicoeducação, Anto',
     },
@@ -208,7 +208,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         'Atalhos mentais que fazem um silêncio parecer um veredito. Nomeá-los ajuda a não acreditar na hora — sem a obrigação de “pensar positivo”.',
       companionLink: {
         href: '/recursos/mapa-distorsiones-cognitivas',
-        support: 'Quer o mapa clínico?',
+        support: 'Quer o mapa?',
         label: 'Ir para a guia completa →',
       },
     },
@@ -314,7 +314,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Para aprofundar',
       support:
-        'Esta página é prática e breve. Se você quiser o mapa clínico — níveis, agrupamentos, manutenção, experimentos — comece aqui:',
+        'Esta página é prática e breve. Se você quiser o mapa — níveis, agrupamentos, manutenção, experimentos — comece aqui:',
       links: [
         {
           label: 'Distorções cognitivas (mapa completo)',
@@ -389,14 +389,14 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 12,
     layout: 'dossier',
     meta: {
-      title: 'Distorções cognitivas: mapa clínico completo | Anto',
+      title: 'Distorções cognitivas: mapa completo | Anto',
       description:
-        'Mapa clínico de distorções cognitivas: três níveis do modelo (automáticos, regras, crenças nucleares), agrupamentos funcionais, ciclos de manutenção, técnicas além do rótulo, desenho de experimentos comportamentais, seta descendente e perfis na ansiedade versus depressão. Complementa a guia breve; não diagnostica nem substitui terapia.',
-      openGraphTitle: 'Distorções cognitivas — mapa clínico',
+        'Mapa de distorções cognitivas: três níveis do modelo (automáticos, regras, crenças nucleares), agrupamentos funcionais, ciclos de manutenção, técnicas além do rótulo, desenho de experimentos comportamentais, seta descendente e perfis na ansiedade versus depressão. Complementa a guia breve; não diagnostica nem substitui terapia.',
+      openGraphTitle: 'Distorções cognitivas — mapa completo',
       openGraphDescription:
         'Além de rotular o viés: níveis cognitivos, manutenção, experimentos comportamentais e perfis clínicos.',
       keywords:
-        'distorções cognitivas, mapa clínico, agrupamentos funcionais, crenças nucleares, experimento comportamental, seta descendente, comportamentos de segurança, manutenção cognitiva, vieses de ameaça, reestruturação cognitiva, TCC, Beck, psicoeducação clínica, Anto',
+        'distorções cognitivas, mapa, agrupamentos funcionais, crenças nucleares, experimento comportamental, seta descendente, comportamentos de segurança, manutenção cognitiva, vieses de ameaça, reestruturação cognitiva, TCC, Beck, psicoeducação clínica, Anto',
     },
     hero: {
       title: 'Distorções cognitivas: mapa completo',
@@ -414,7 +414,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       src: '/assets/images/editorial/anto-editorial-desk-rain.webp',
       alt: 'Escrivaninha à noite com chuva na janela, abajur aceso e caderno aberto com caneta — o espaço para registrar uma previsão e um teste',
       caption:
-        'Chuva lá fora, previsão no caderno. O mapa clínico se escreve: hipótese, teste, dado — não só se discute.',
+        'Chuva lá fora, previsão no caderno. O mapa se escreve: hipótese, teste, dado — não só se discute.',
       width: 1536,
       height: 1024,
       objectPosition: '38% 58%',
@@ -553,7 +553,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     furtherReading: {
       title: 'Para aprofundar',
       support:
-        'Este texto é o mapa clínico. Para reconhecer um pensamento no dia a dia, registrar o ABC ou ler ansiedade e depressão, siga aqui:',
+        'Este texto é o mapa. Para reconhecer um pensamento no dia a dia, registrar o ABC ou ler ansiedade e depressão, siga aqui:',
       links: [
         {
           label: 'Distorções cognitivas (guia breve)',
@@ -865,7 +865,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
           href: '/recursos/mapa-distorsiones-cognitivas',
         },
         {
-          label: 'PHQ-9 e GAD-7',
+          label: 'Como ler um cheque de humor',
           description:
             'Escalas de rastreamento: o que medem, faixas orientativas e limites diante do diagnóstico.',
           href: '/recursos/escalas-phq9-gad7',
@@ -953,19 +953,19 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 6,
     layout: 'brief',
     meta: {
-      title: 'PHQ-9 e GAD-7: faixas e como ler | Anto',
+      title: 'Como ler um cheque de humor e de ansiedade | Anto',
       description:
-        'O que medem o PHQ-9 (humor) e o GAD-7 (ansiedade), faixas orientativas e instrumentos oficiais. Rastreamento de duas semanas, não diagnóstico. Na Anto, as leituras vão para o histórico.',
-      openGraphTitle: 'PHQ-9 e GAD-7: o que medem e como ler',
+        'O que um cheque de humor e um de ansiedade observam, com faixas orientativas. Não é um diagnóstico. Na Anto, as leituras vão para o histórico.',
+      openGraphTitle: 'Como ler um cheque de humor e de ansiedade',
       openGraphDescription:
         'Rastreamento de humor e ansiedade: faixas, tendência e por que um número não é um diagnóstico.',
       keywords:
         'PHQ-9, GAD-7, PHQ-9 GAD-7, faixas, rastreamento depressão, rastreamento ansiedade, histórico, psicoeducação, Anto',
     },
     hero: {
-      title: 'PHQ-9 e GAD-7: o que medem e como ler',
+      title: 'Como ler um cheque de humor e de ansiedade',
       subtitle:
-        'Duas escalas de rastreamento sobre as últimas duas semanas. Servem para ver se sobe, desce ou fica — não para colar um diagnóstico.',
+        'Duas leituras das últimas duas semanas. Servem para ver se sobe, desce ou fica — não para colar um diagnóstico.',
       scanLink: {
         label: 'Ir para as faixas →',
         sectionHeading: 'Faixas orientativas',
@@ -1184,7 +1184,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         'Dormir melhor não cura tudo. Mas um sono ruim amplifica ansiedade, irritabilidade e essa voz que repassa o dia quando o corpo já está na cama.',
       companionLink: {
         href: '/recursos/mapa-sueno-e-insomnio',
-        support: 'Quer o mapa clínico?',
+        support: 'Quer o mapa?',
         label: 'Ir para a guia completa →',
       },
     },
@@ -1329,14 +1329,14 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 12,
     layout: 'dossier',
     meta: {
-      title: 'Sono e insônia: mapa clínico completo | Anto',
+      title: 'Sono e insônia: mapa completo | Anto',
       description:
-        'Mapa clínico de sono e insônia: apresentações, ciclo de manutenção, limites da higiene do sono, componentes no estilo da TCC-I (controle de estímulos, janela de sono), vínculo com ansiedade e humor, e quando pedir avaliação. Complementa a guia breve; não diagnostica nem substitui terapia do sono.',
-      openGraphTitle: 'Sono e insônia — mapa clínico',
+        'Mapa de sono e insônia: apresentações, ciclo de manutenção, limites da higiene do sono, componentes no estilo da TCC-I (controle de estímulos, janela de sono), vínculo com ansiedade e humor, e quando pedir avaliação. Complementa a guia breve; não diagnostica nem substitui terapia do sono.',
+      openGraphTitle: 'Sono e insônia — mapa completo',
       openGraphDescription:
         'Além de uma noite ruim: o que sustenta a insônia, até onde a higiene chega e o que a TCC-I costuma incluir.',
       keywords:
-        'insônia, sono, mapa clínico, mapa sono, TCC-I, terapia cognitivo-comportamental para insônia, higiene do sono, controle de estímulos, restrição de sono, janela de sono, eficiência do sono, ciclo de manutenção, ruminação noturna, ansiedade noturna, insônia crônica, psicoeducação, Anto',
+        'insônia, sono, mapa, mapa sono, TCC-I, terapia cognitivo-comportamental para insônia, higiene do sono, controle de estímulos, restrição de sono, janela de sono, eficiência do sono, ciclo de manutenção, ruminação noturna, ansiedade noturna, insônia crônica, psicoeducação, Anto',
     },
     hero: {
       title: 'Sono e insônia: mapa completo',

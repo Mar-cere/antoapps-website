@@ -242,9 +242,9 @@ function formatResourcesDiscoveryBlock(locale: Locale): string[] {
       slugs: ['depresion-guia-breve', 'activacion-conductual', 'agotamiento-y-burnout'],
     },
     {
-      labelEs: 'PHQ-9 y GAD-7 / protocolos (TOC, trauma, ira, duelo)',
-      labelEn: 'PHQ-9 and GAD-7 / protocols (OCD, trauma, anger, grief)',
-      labelPt: 'PHQ-9 e GAD-7 / protocolos (TOC, trauma, raiva, luto)',
+      labelEs: 'Chequeos de ánimo / protocolos (TOC, trauma, ira, duelo)',
+      labelEn: 'Mood checks / protocols (OCD, trauma, anger, grief)',
+      labelPt: 'Cheques de humor / protocolos (TOC, trauma, raiva, luto)',
       slugs: [
         'escalas-phq9-gad7',
         'toc-y-erp',
@@ -308,7 +308,7 @@ function formatGuideEntry(locale: Locale, guide: PsychoeducationGuide): string[]
     `- URL: ${url}`,
     `- ${t(locale, 'Formato', 'Format', 'Formato')}: ${
       guide.layout === 'dossier'
-        ? t(locale, 'mapa clínico', 'clinical map', 'mapa clínico')
+        ? t(locale, 'mapa', 'map', 'mapa')
         : guide.layout === 'brief'
           ? t(locale, 'guía breve', 'brief guide', 'guia breve')
           : t(locale, 'guía', 'guide', 'guia')
@@ -777,8 +777,8 @@ export function llmsTxtRequiredSnippets(): string[] {
     'doi.org/10.4088/jcp.v69n0415',
     'pensamientos en bucle',
     'thoughts in a loop',
-    'mapa clínico completo',
-    'full clinical map',
+    'mapa completo',
+    'full map',
     'experimento conductual',
     'behavioural experiment',
     'clusters funcionales',
