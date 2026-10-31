@@ -360,7 +360,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           },
         ],
         guideKicker: 'Micro-guide',
-        guideTitle: 'Social anxiety',
+        guideTitle: 'Nervous around people',
         guideDek: 'Prep for interactions that raise tension.',
         guideSteps: [
           {
@@ -491,7 +491,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             href: '/recursos/ansiedad-y-preocupacion',
             label: 'Anxiety and worry',
-            description: 'The map, including social anxiety',
+            description: 'The map, including when you feel nervous around people',
           },
           {
             href: '/app',
@@ -653,7 +653,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           },
         ],
         guideKicker: 'Microguia',
-        guideTitle: 'Ansiedade social',
+        guideTitle: 'Nervosismo perto de pessoas',
         guideDek: 'Preparação para interações que geram tensão.',
         guideSteps: [
           {
@@ -784,7 +784,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             href: '/recursos/ansiedad-y-preocupacion',
             label: 'Ansiedade e preocupação',
-            description: 'O mapa, incluindo a ansiedade social',
+            description: 'O mapa, incluindo quando bate o nervosismo perto de outras pessoas',
           },
           {
             href: '/app',
@@ -945,7 +945,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         },
       ],
       guideKicker: 'Micro-guía',
-      guideTitle: 'Ansiedad social',
+      guideTitle: 'Nervios con otras personas',
       guideDek: 'Preparación para interacciones que te generan tensión.',
       guideSteps: [
         {
@@ -1076,7 +1076,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           href: '/recursos/ansiedad-y-preocupacion',
           label: 'Ansiedad y preocupación',
-          description: 'El mapa, incluida la ansiedad social',
+          description: 'El mapa, incluido cuando te dan nervios con otras personas',
         },
         {
           href: '/app',
