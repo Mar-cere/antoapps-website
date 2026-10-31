@@ -6,6 +6,10 @@ import { parseBienvenidaVariant } from '@/lib/bienvenida/parse-variant';
 
 export const metadata: Metadata = bienvenidaMetadata('pt');
 
+export const viewport = {
+  themeColor: '#101216',
+};
+
 type BienvenidaLandingPageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 };

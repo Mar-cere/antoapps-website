@@ -1,0 +1,286 @@
+/* /bienvenida — carbón plano de Nexus esencial, encima del landing legado. */
+
+.lad-page {
+  --color-primary: #A5A4FF;
+  --color-primary-hover: #C4C3FF;
+  --color-primary-light: rgba(165, 164, 255, 0.16);
+  --color-primary-lightest: rgba(165, 164, 255, 0.22);
+  --color-bg-primary: #101216;
+  --color-bg-secondary: #191D24;
+  --color-bg-tertiary: #1F242C;
+  --color-bg-glow: #101216;
+  --color-text-primary: #F4F6FC;
+  --color-text-secondary: rgba(244, 246, 252, 0.72);
+  --color-text-tertiary: rgba(244, 246, 252, 0.48);
+  --color-text-on-primary: #101216;
+  --color-surface: #191D24;
+  --color-surface-card: #191D24;
+  --color-surface-hover: #1F242C;
+  --color-border: rgba(244, 246, 252, 0.12);
+  --color-border-hover: #A5A4FF;
+  --lad-bg: #101216;
+  --lad-bg-soft: #191D24;
+  --lad-surface: #191D24;
+  --lad-surface-strong: #1F242C;
+  --lad-border: rgba(244, 246, 252, 0.12);
+  --lad-border-accent: #A5A4FF;
+  --lad-text: #F4F6FC;
+  --lad-text-muted: rgba(244, 246, 252, 0.72);
+  --lad-accent: #A5A4FF;
+  --lad-accent-soft: rgba(165, 164, 255, 0.16);
+  --lad-v2-accent: #A5A4FF;
+  --home-accent: #A5A4FF;
+  --lad-v2-text-secondary: rgba(244, 246, 252, 0.72);
+  --lad-v2-text-tertiary: rgba(244, 246, 252, 0.48);
+  --lad-v2-text-muted: rgba(244, 246, 252, 0.48);
+  background: #101216;
+  color: #F4F6FC;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+}
+
+.lad-page.lad-page--v2 {
+  background: #101216;
+  color: #F4F6FC;
+}
+
+html:has(.lad-page),
+body:has(.lad-page) {
+  background: #101216;
+  background-image: none;
+  color: #F4F6FC;
+}
+
+.lad-page .btn,
+.lad-page .premium-store-cta,
+.lad-page .lad-hero-cta-btn,
+.lad-page .lad-sticky-cta-btn,
+.lad-page .lad-v2-sticky__alt,
+.lad-page .lad-hero-cta-badge-wrap,
+.lad-page .lad-desktop-picker-btn {
+  min-height: 44px;
+  height: 44px;
+  border-radius: 999px;
+  box-shadow: none;
+}
+
+.lad-page .lad-hero-cta-btn,
+.lad-page .lad-sticky-cta-btn,
+.lad-page .btn-primary {
+  background: #A5A4FF;
+  color: #101216;
+  border: 0;
+  animation: none;
+  filter: none;
+}
+
+.lad-page .lad-hero-cta-btn:hover,
+.lad-page .lad-sticky-cta-btn:hover,
+.lad-page .btn-primary:hover {
+  background: #C4C3FF;
+  color: #101216;
+  box-shadow: none;
+  filter: none;
+  transform: none;
+}
+
+.lad-page .lad-hero-cta-btn:active,
+.lad-page .lad-sticky-cta-btn:active,
+.lad-page .btn-primary:active,
+.lad-page .premium-store-cta:active,
+.lad-page .lad-v2-sticky__alt:active {
+  transform: scale(0.95);
+}
+
+.lad-page .lad-hero-cta-btn--android,
+.lad-page .btn-secondary,
+.lad-page .lad-v2-sticky__alt {
+  background: #191D24;
+  color: #A5A4FF;
+  border: 1px solid #A5A4FF;
+  box-shadow: none;
+}
+
+.lad-page .lad-hero-cta-btn--android:hover,
+.lad-page .btn-secondary:hover,
+.lad-page .lad-v2-sticky__alt:hover {
+  background: #A5A4FF;
+  color: #101216;
+  box-shadow: none;
+  filter: none;
+}
+
+.lad-sticky-cta {
+  background: #101216;
+  border-top: 1px solid rgba(244, 246, 252, 0.12);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.lad-v2-sticky {
+  background: #101216;
+  border-top: 1px solid rgba(244, 246, 252, 0.12);
+}
+
+.lad-app-screen {
+  background: #101216;
+  border: 1px solid rgba(244, 246, 252, 0.12);
+  border-radius: 22px;
+  box-shadow: none;
+}
+
+.lad-app-msg--user {
+  background: rgba(165, 164, 255, 0.22);
+}
+
+.lad-app-msg--user p {
+  color: #F4F6FC;
+}
+
+.lad-app-msg--anto,
+.lad-convo-demo-typing {
+  background: #1F242C;
+  border: 1px solid rgba(244, 246, 252, 0.12);
+}
+
+.lad-app-msg--anto p {
+  color: #F4F6FC;
+}
+
+.lad-app-screen-input-send {
+  background: #A5A4FF;
+  color: #101216;
+}
+
+.lad-hero-cta-badge-wrap {
+  background: #101216;
+  border: 1px solid rgba(244, 246, 252, 0.12);
+}
+
+.lad-page .premium-store-cta {
+  width: 100%;
+  max-width: none;
+  padding: 0 12px 0 8px;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+}
+
+.lad-page .premium-store-cta:hover {
+  background: #A5A4FF;
+  border-color: #A5A4FF;
+  box-shadow: none;
+  transform: none;
+}
+
+.lad-page .premium-store-cta__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 12px;
+  background: #101216;
+  color: #F4F6FC;
+}
+
+.lad-page .premium-store-cta__label {
+  font-size: 12px;
+  color: #121722;
+}
+
+.lad-page .premium-store-cta__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #101216;
+}
+
+.lad-page .premium-store-cta__badge,
+.lad-page--v2 .premium-store-cta__badge {
+  background: #101216;
+  color: #A5A4FF;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.lad-page .premium-store-cta:hover .premium-store-cta__name,
+.lad-page .premium-store-cta:hover .premium-store-cta__label,
+.lad-page .premium-store-cta:hover .premium-store-cta__badge {
+  color: #101216;
+}
+
+.lad-page .premium-store-cta:hover .premium-store-cta__icon {
+  background: #101216;
+  color: #A5A4FF;
+}
+
+.lad-page .premium-store-cta:hover .premium-store-cta__badge {
+  background: rgba(16, 18, 22, 0.18);
+}
+
+.lad-v2-hero-photo {
+  border-radius: 12px;
+}
+
+.lad-v2-hero-photo-scrim {
+  background: rgba(16, 18, 22, 0.28);
+}
+
+.lad-page--v2 .home-v2-panel--ads {
+  --panel-surface: #191D24;
+  --panel-ink: #F4F6FC;
+  --panel-muted: rgba(244, 246, 252, 0.72);
+  --panel-line: rgba(244, 246, 252, 0.12);
+  --chat-user: rgba(165, 164, 255, 0.22);
+  --chat-anto: #1F242C;
+  background: #191D24;
+  border: 1px solid rgba(244, 246, 252, 0.12);
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.lad-page--v2 .home-v2-chat--ads .home-v2-chat__row--anto:last-child .home-v2-chat__bubble {
+  border-color: rgba(165, 164, 255, 0.45);
+  background: rgba(165, 164, 255, 0.16);
+}
+
+.lad-page .cookie-consent,
+.lad-page .cookie-consent--compact,
+.lad-page--v2 .cookie-consent,
+.lad-page--v2 .cookie-consent--compact {
+  background: #101216;
+  border-top-color: rgba(165, 164, 255, 0.45);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.lad-page .cookie-consent .btn,
+.lad-page .cookie-consent--compact .btn {
+  height: 44px;
+  min-height: 44px;
+}
+
+.lad-page .lad-hero-cta-btn:focus-visible,
+.lad-page .lad-sticky-cta-btn:focus-visible,
+.lad-page .premium-store-cta:focus-visible,
+.lad-page .btn:focus-visible {
+  outline: 2px solid #A5A4FF;
+  outline-offset: 3px;
+}
+
+@media (min-width: 960px) {
+  .lad-v2-hero-photo {
+    border-radius: 22px;
+  }
+
+  .lad-v2-hero-photo-scrim {
+    background: rgba(16, 18, 22, 0.28);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lad-page .btn,
+  .lad-page .premium-store-cta,
+  .lad-page .lad-hero-cta-btn,
+  .lad-page .lad-sticky-cta-btn {
+    animation: none;
+    transition: none;
+  }
+}
