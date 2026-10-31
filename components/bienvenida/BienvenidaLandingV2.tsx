@@ -21,6 +21,7 @@ import { appStoreHref } from '@/lib/download-links';
 import '@/styles/components/buttons.css';
 import '@/styles/pages/landing-ad.css';
 import '@/styles/pages/landing-ad-v2.css';
+import '@/styles/pages/bienvenida-esencial.css';
 
 type BienvenidaLandingV2Props = {
   locale: Locale;

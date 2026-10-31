@@ -24,6 +24,7 @@ import { getBienvenidaCopy, type BienvenidaVariant } from '@/lib/i18n/copy/bienv
 import { appStoreHref } from '@/lib/download-links';
 import '@/styles/components/buttons.css';
 import '@/styles/pages/landing-ad.css';
+import '@/styles/pages/bienvenida-esencial.css';
 
 const baseUrl = 'https://antoapps.com';
 const APP_STORE_ID = '6756631911';

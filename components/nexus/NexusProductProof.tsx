@@ -6,6 +6,7 @@ import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
 import type { NexusProductProofCopy, NexusTabId } from '@/lib/i18n/copy/pages/nexus';
 import { appStoreHref, googlePlayHref } from '@/lib/download-links';
+import { nexusStoreButtonCopy } from '@/lib/nexus/store-button-copy';
 import PremiumStoreCta from '@/components/ui/PremiumStoreCta';
 
 type NexusProductProofProps = {
@@ -61,6 +62,7 @@ const NexusProductProof = forwardRef<HTMLElement, NexusProductProofProps>(
       locale === 'es'
         ? '/assets/images/product/anto-phone-chat-es.webp'
         : '/assets/images/product/anto-phone-chat-en.webp';
+    const stores = nexusStoreButtonCopy(locale);
 
     return (
       <section
@@ -144,9 +146,9 @@ const NexusProductProof = forwardRef<HTMLElement, NexusProductProofProps>(
             <PremiumStoreCta
               store="apple"
               storeHref={appStoreHref()}
-              storeLabel={locale === 'es' ? 'Descargar en' : 'Download on the'}
+              storeLabel={stores.appleLabel}
               storeName="App Store"
-              badge={locale === 'es' ? '1 día gratis' : '1 day free'}
+              badge={stores.badge}
               ariaLabel={storeApp}
               trackingPlacement="nexus_product_proof_app_store"
               trackingPage="/nexus"
@@ -156,9 +158,9 @@ const NexusProductProof = forwardRef<HTMLElement, NexusProductProofProps>(
             <PremiumStoreCta
               store="google"
               storeHref={googlePlayHref(locale)}
-              storeLabel={locale === 'es' ? 'Disponible en' : 'Get it on'}
+              storeLabel={stores.googleLabel}
               storeName="Google Play"
-              badge={locale === 'es' ? '1 día gratis' : '1 day free'}
+              badge={stores.badge}
               ariaLabel={storeGoogle}
               trackingPlacement="nexus_product_proof_play_store"
               trackingPage="/nexus"
