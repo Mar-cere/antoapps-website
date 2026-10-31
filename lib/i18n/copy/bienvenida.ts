@@ -1,6 +1,5 @@
 import type { Locale } from '@/lib/i18n/config';
 import { getAppStoreReviewSnippets } from '@/lib/app-store-reviews';
-import { appStoreRatingWithReviews } from '@/lib/app-store-social-proof';
 import {
   APP_SCREENSHOT_PATHS,
   getAppScreenshotAlt,
@@ -117,7 +116,6 @@ export type BienvenidaCopy = {
   };
   trustStrip: {
     availableOn: string;
-    ratingOnAppStore: string;
   };
   androidCta: string;
   appPreview: {
@@ -135,7 +133,6 @@ export type BienvenidaCopy = {
     heroTitlePrefix: string;
     heroTitleHighlight: string;
     heroSub: string;
-    heroReview: { quote: string; author: string; source: string };
     ctaStoreLabel: string;
     ctaStoreText: string;
     ctaBadge: string;
@@ -238,7 +235,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         sectionTitle: 'What users say on the App Store',
         sourceLabel: 'Public App Store reviews',
         starsAria: '5 out of 5 stars',
-        items: getAppStoreReviewSnippets('en'),
+        items: getAppStoreReviewSnippets('en').filter((review) => review.author !== 'Camila S.'),
       },
       clinicalPillars: {
         sectionTitle: 'Why Anto is different',
@@ -340,7 +337,6 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         tagline: '© {year} anto · Made with care in Chile',
       },
       trustStrip: {
-        ratingOnAppStore: appStoreRatingWithReviews('en'),
         availableOn: 'Available on iPhone and Android',
       },
       androidCta: 'Get it on Google Play',
@@ -370,12 +366,6 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         heroTitleHighlight: 'Anto helps you land.',
         heroSub:
           'Write what you feel. Get clarity and one concrete step when anxiety won\'t let go.',
-        heroReview: {
-          quote:
-            'I use it when anxiety wakes me up. Within minutes the intensity eases a bit.',
-          author: 'Camila S.',
-          source: 'App Store',
-        },
         ctaStoreLabel: 'Download on',
         ctaStoreText: 'App Store',
         ctaBadge: trial.short,
@@ -522,10 +512,6 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
             quote: 'Não é uma conversa genérica: sinto que entende o contexto e me deixa um passo concreto.',
             author: 'Tomás M.',
           },
-          {
-            quote: 'Eu uso quando a ansiedade me acorda. Em minutos a intensidade baixa um pouco.',
-            author: 'Camila S.',
-          },
         ],
       },
       clinicalPillars: {
@@ -628,7 +614,6 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         tagline: '© {year} anto · Feito com cuidado no Chile',
       },
       trustStrip: {
-        ratingOnAppStore: appStoreRatingWithReviews('pt'),
         availableOn: 'Disponível no iPhone e no Android',
       },
       androidCta: 'Baixar no Google Play',
@@ -658,12 +643,6 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         heroTitleHighlight: 'a Anto ajuda você a encontrar o chão.',
         heroSub:
           'Escreva o que sente. Clareza e um passo concreto quando a ansiedade não solta.',
-        heroReview: {
-          quote:
-            'Eu uso quando a ansiedade me acorda. Em minutos a intensidade baixa um pouco.',
-          author: 'Camila S.',
-          source: 'App Store',
-        },
         ctaStoreLabel: 'Baixar na',
         ctaStoreText: 'App Store',
         ctaBadge: trial.short,
@@ -800,7 +779,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       sectionTitle: 'Lo que dicen en App Store',
       sourceLabel: 'Reseñas públicas en App Store',
       starsAria: '5 de 5 estrellas',
-      items: getAppStoreReviewSnippets('es'),
+      items: getAppStoreReviewSnippets('es').filter((review) => review.author !== 'Camila S.'),
     },
     clinicalPillars: {
       sectionTitle: 'Por qué Anto es distinto',
@@ -902,7 +881,6 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       tagline: '© {year} anto · Hecho con cuidado en Chile',
     },
     trustStrip: {
-      ratingOnAppStore: appStoreRatingWithReviews('es'),
       availableOn: 'Disponible en iPhone y Android',
     },
     androidCta: 'Descargar en Google Play',
@@ -932,12 +910,6 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
       heroTitleHighlight: 'Anto te ayuda a aterrizar.',
       heroSub:
         'Escribe lo que sientes. Claridad y un paso concreto cuando la ansiedad no te deja.',
-      heroReview: {
-        quote:
-          'La uso cuando la ansiedad me despierta. En minutos bajo un poco la intensidad.',
-        author: 'Camila S.',
-        source: 'App Store',
-      },
       ctaStoreLabel: 'Descargar en',
       ctaStoreText: 'App Store',
       ctaBadge: trial.short,
