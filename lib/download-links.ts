@@ -4,8 +4,14 @@
 import type { Locale } from '@/lib/i18n/config';
 export const FALLBACK_DOWNLOAD_HREF = '/bienvenida';
 
-/** Ficha oficial en App Store (Chile). Sobreescribible con NEXT_PUBLIC_APP_STORE_URL. */
-export const DEFAULT_APP_STORE_URL = 'https://apps.apple.com/cl/app/anto/id6756631911';
+/** Ficha App Store (Chile). Solo español. */
+export const DEFAULT_APP_STORE_URL_ES = 'https://apps.apple.com/cl/app/anto/id6756631911';
+/** Ficha App Store sin país. Inglés. */
+export const DEFAULT_APP_STORE_URL_EN = 'https://apps.apple.com/app/anto/id6756631911';
+/** Ficha App Store sin país. Portugués de Brasil. */
+export const DEFAULT_APP_STORE_URL_PT = 'https://apps.apple.com/app/anto/id6756631911';
+/** @deprecated Prefer appStoreHref(locale). Alias de la ficha en español. */
+export const DEFAULT_APP_STORE_URL = DEFAULT_APP_STORE_URL_ES;
 
 /** Ficha oficial en Google Play (ES LatAm). Sobreescribible con NEXT_PUBLIC_GOOGLE_PLAY_URL. */
 export const DEFAULT_GOOGLE_PLAY_URL_ES =
@@ -31,9 +37,17 @@ export const GOOGLE_PLAY_BADGE_PT_PATH = '/assets/badges/get-it-on-google-play-p
 /** @deprecated Use googlePlayBadgePath(locale) */
 export const GOOGLE_PLAY_BADGE_SVG_PATH = GOOGLE_PLAY_BADGE_ES_PATH;
 
-export function appStoreHref(): string {
+/**
+ * Ficha de App Store según idioma.
+ * ES conserva /cl. EN y PT usan la ficha sin país.
+ * NEXT_PUBLIC_APP_STORE_URL, si está definida, sustituye la ficha en todos los idiomas.
+ */
+export function appStoreHref(locale: Locale = 'es'): string {
   const u = process.env.NEXT_PUBLIC_APP_STORE_URL?.trim();
-  return u && u.length > 0 ? u : DEFAULT_APP_STORE_URL;
+  if (u && u.length > 0) return u;
+  if (locale === 'en') return DEFAULT_APP_STORE_URL_EN;
+  if (locale === 'pt') return DEFAULT_APP_STORE_URL_PT;
+  return DEFAULT_APP_STORE_URL_ES;
 }
 
 export function googlePlayHref(locale: Locale = 'es'): string {

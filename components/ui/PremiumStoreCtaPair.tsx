@@ -37,7 +37,7 @@ export default function PremiumStoreCtaPair({
     <div className={`premium-store-cta-stack ${className}`.trim()}>
       <PremiumStoreCta
         store="apple"
-        storeHref={appStoreHref()}
+        storeHref={appStoreHref(locale)}
         storeLabel={copy.ctaStoreLabel}
         storeName={copy.ctaStoreText}
         badge={copy.ctaBadge}

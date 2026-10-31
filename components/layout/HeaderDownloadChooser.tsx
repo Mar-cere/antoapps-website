@@ -70,7 +70,7 @@ export default function HeaderDownloadChooser({
       </button>
       <div id={menuId} className="nav-download__menu" hidden={!open} role="menu">
         <DownloadLink
-          href={appStoreHref()}
+          href={appStoreHref(locale)}
           className="nav-download__item"
           role="menuitem"
           trackingPlacement="header_app_store"

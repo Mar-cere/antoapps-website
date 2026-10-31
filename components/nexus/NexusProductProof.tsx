@@ -145,7 +145,7 @@ const NexusProductProof = forwardRef<HTMLElement, NexusProductProofProps>(
           <div className="nexus-product-proof__stores">
             <PremiumStoreCta
               store="apple"
-              storeHref={appStoreHref()}
+              storeHref={appStoreHref(locale)}
               storeLabel={stores.appleLabel}
               storeName="App Store"
               badge={stores.badge}
