@@ -10,6 +10,7 @@ import {
 } from '@/lib/i18n/copy/pages/psychoeducation';
 
 const CANONICAL_PATH = '/recursos';
+const CRISIS_LINES_HREF = 'https://findahelpline.com/';
 
 /**
  * Atajos del hero — orden y labels humanos (no índice clínico).
@@ -67,6 +68,12 @@ export type ResourcesPageCopy = {
     emptyMessage: string;
     viewResourceLabel: string;
     groups: ResourceGroup[];
+  };
+  crisis: {
+    text: string;
+    linkLabel: string;
+    linkHref: string;
+    externalHint: string;
   };
 };
 
@@ -301,6 +308,12 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         viewResourceLabel: 'Read',
         groups,
       },
+      crisis: {
+        text: 'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.',
+        linkLabel: 'Emergency lines by country',
+        linkHref: CRISIS_LINES_HREF,
+        externalHint: 'Opens in a new tab',
+      },
     };
   }
 
@@ -338,6 +351,12 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         viewResourceLabel: 'Ler',
         groups,
       },
+      crisis: {
+        text: 'A Anto não substitui terapia nem atendimento clínico profissional. Se você estiver em crise, procure ajuda de emergência no seu país.',
+        linkLabel: 'Linhas de emergência por país',
+        linkHref: CRISIS_LINES_HREF,
+        externalHint: 'Abre numa nova aba',
+      },
     };
   }
 
@@ -373,6 +392,12 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
       emptyMessage: 'Nada coincide con esa búsqueda.',
       viewResourceLabel: 'Leer',
       groups,
+    },
+    crisis: {
+      text: 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.',
+      linkLabel: 'Líneas de emergencia por país',
+      linkHref: CRISIS_LINES_HREF,
+      externalHint: 'Abre en una pestaña nueva',
     },
   };
 }

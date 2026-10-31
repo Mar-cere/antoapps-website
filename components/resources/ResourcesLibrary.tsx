@@ -3,27 +3,25 @@
 import Link from 'next/link';
 import { useId, useState } from 'react';
 import type { ResourceGroup, ResourcesPageCopy } from '@/lib/i18n/copy/pages/resources';
+import { resourceMatchesQuery } from '@/lib/resources/search';
 
 type ResourcesLibraryProps = {
   library: ResourcesPageCopy['library'];
+  crisis: ResourcesPageCopy['crisis'];
 };
 
 function filterGroup(group: ResourceGroup, query: string): ResourceGroup {
   if (query === '') return group;
   return {
     ...group,
-    items: group.items.filter(
-      (item) =>
-        item.title.toLowerCase().includes(query) ||
-        item.description.toLowerCase().includes(query)
-    ),
+    items: group.items.filter((item) => resourceMatchesQuery(item, query)),
   };
 }
 
-export default function ResourcesLibrary({ library }: ResourcesLibraryProps) {
+export default function ResourcesLibrary({ library, crisis }: ResourcesLibraryProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const searchId = useId();
-  const query = searchQuery.trim().toLowerCase();
+  const query = searchQuery.trim();
 
   const visibleGroups = library.groups
     .map((group) => filterGroup(group, query))
@@ -78,6 +76,21 @@ export default function ResourcesLibrary({ library }: ResourcesLibraryProps) {
             ))}
           </div>
         )}
+
+        <aside className="resources-crisis" role="note">
+          <p>
+            {crisis.text}{' '}
+            <a
+              href={crisis.linkHref}
+              className="resources-crisis__link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {crisis.linkLabel}
+              <span className="visually-hidden"> ({crisis.externalHint})</span>
+            </a>
+          </p>
+        </aside>
       </div>
     </section>
   );

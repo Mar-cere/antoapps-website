@@ -16,6 +16,7 @@ import ResourcesJsonLd from '@/components/seo/ResourcesJsonLd';
 import '@/styles/pages/home-landing-final.css';
 import '@/styles/pages/home-v2.css';
 import '@/styles/components/resources-library.css';
+import '@/styles/components/resources-crisis.css';
 
 type ResourcesPageContentProps = {
   locale: Locale;
@@ -98,7 +99,7 @@ export default function ResourcesPageContent({ locale }: ResourcesPageContentPro
               </div>
             </section>
 
-            <ResourcesLibrary library={copy.library} />
+            <ResourcesLibrary library={copy.library} crisis={copy.crisis} />
           </div>
         </main>
         <HomeMinimalFooter locale={locale} switchPath="/recursos" />

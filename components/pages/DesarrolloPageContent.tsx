@@ -15,6 +15,7 @@ import CookieConsent from '@/components/CookieConsent';
 import '@/styles/pages/home-landing-final.css';
 import '@/styles/pages/home-v2.css';
 import '@/styles/components/development.css';
+import '@/styles/components/development-readability.css';
 
 type DesarrolloPageContentProps = {
   locale: Locale;
