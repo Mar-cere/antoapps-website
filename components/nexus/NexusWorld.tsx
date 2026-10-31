@@ -128,7 +128,7 @@ export default function NexusWorld({ locale, copy }: NexusWorldProps) {
             <div className="nexus-hero__stores">
               <PremiumStoreCta
                 store="apple"
-                storeHref={appStoreHref()}
+                storeHref={appStoreHref(locale)}
                 storeLabel={stores.appleLabel}
                 storeName="App Store"
                 badge={stores.badge}
@@ -185,7 +185,7 @@ export default function NexusWorld({ locale, copy }: NexusWorldProps) {
             <div className="nexus-invite__stores">
               <PremiumStoreCta
                 store="apple"
-                storeHref={appStoreHref()}
+                storeHref={appStoreHref(locale)}
                 storeLabel={stores.appleLabel}
                 storeName="App Store"
                 badge={stores.badge}

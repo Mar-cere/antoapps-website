@@ -35,7 +35,7 @@ export default function BienvenidaLandingV2({
 }: BienvenidaLandingV2Props) {
   const copy = getBienvenidaCopy(locale);
   const v2 = copy.v2;
-  const storeHref = appStoreHref();
+  const storeHref = appStoreHref(locale);
   const pagePath = localePath(locale, '/bienvenida');
   const year = new Date().getFullYear();
   const photoSrc = getEditorialImagePath('sleeplessNight');

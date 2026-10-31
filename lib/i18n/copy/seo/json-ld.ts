@@ -2,7 +2,7 @@ import { APP_VERSION } from '@/lib/app-version';
 import { localePath, type LegalLocale, type Locale } from '@/lib/i18n/config';
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
 import { getHomeV2Copy } from '@/lib/i18n/copy/home/home-v2';
-import { DEFAULT_APP_STORE_URL, googlePlayHref } from '@/lib/download-links';
+import { appStoreHref, googlePlayHref } from '@/lib/download-links';
 
 import { getAppScreenshotUrl } from '@/lib/assets/app-screenshots';
 
@@ -121,8 +121,8 @@ export function getSoftwareApplicationJsonLd(locale: Locale): JsonLd {
     screenshot: getAppScreenshotUrl('chat', SITE_ORIGIN),
     featureList: copy.featureList,
     url: localeHomeUrl(locale),
-    downloadUrl: [DEFAULT_APP_STORE_URL, googlePlayHref(locale)],
-    installUrl: [DEFAULT_APP_STORE_URL, googlePlayHref(locale)],
+    downloadUrl: [appStoreHref(locale), googlePlayHref(locale)],
+    installUrl: [appStoreHref(locale), googlePlayHref(locale)],
   };
 }
 
@@ -196,7 +196,7 @@ export function getWebSiteJsonLd(locale: Locale): JsonLd {
       `${SITE_ORIGIN}${localePath(locale, '/investigacion')}`,
       `${SITE_ORIGIN}${localePath(locale, '/seguridad')}`,
       `${SITE_ORIGIN}${localePath(locale, '/app')}`,
-      DEFAULT_APP_STORE_URL,
+      appStoreHref(locale),
       googlePlayHref(locale),
     ],
   };

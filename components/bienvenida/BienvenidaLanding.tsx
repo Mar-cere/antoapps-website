@@ -93,7 +93,7 @@ export default function BienvenidaLanding({
   }
 
   const copy = getBienvenidaCopy(locale);
-  const storeHref = appStoreHref();
+  const storeHref = appStoreHref(locale);
   const pagePath = localePath(locale, '/bienvenida');
   const year = new Date().getFullYear();
 
