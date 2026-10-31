@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { htmlLanguage } from '@/lib/i18n/config';
+import { htmlLanguage, type Locale } from '@/lib/i18n/config';
 import { usePathname } from 'next/navigation';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { localeFromPathname } from '@/lib/i18n/path-from-pathname';
@@ -11,9 +11,14 @@ import Footer from '@/components/layout/Footer';
 import ClientInitializer from '@/components/ClientInitializer';
 import CookieConsent from '@/components/CookieConsent';
 
-export default function NotFoundContent() {
+type NotFoundContentProps = {
+  /** Locale de la ruta, cuando el servidor ya lo resolvió (not-found). */
+  locale?: Locale;
+};
+
+export default function NotFoundContent({ locale: localeFromRoute }: NotFoundContentProps) {
   const pathname = usePathname();
-  const locale = localeFromPathname(pathname ?? '/');
+  const locale = localeFromRoute ?? localeFromPathname(pathname ?? '/');
   const copy = getNotFoundCopy(locale);
 
   return (

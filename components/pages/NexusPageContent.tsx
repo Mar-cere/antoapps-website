@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
-import { htmlLanguage } from '@/lib/i18n/config';
+import { htmlLanguage, localePath } from '@/lib/i18n/config';
 import { LocaleProvider } from '@/lib/i18n/context';
 import { getNexusPageCopy } from '@/lib/i18n/copy/pages/nexus';
 import ClientInitializer from '@/components/ClientInitializer';
@@ -17,12 +17,12 @@ type NexusPageContentProps = {
   locale: Locale;
 };
 
-const CONTRACT = `THESIS: Anto's intelligence as a living constellation, not a brain, a cloud, or a particle sphere.
-OWN-WORLD: Near-black navy, Inter/SF, teal chrome; plate plus subtle WebGL.
+const CONTRACT = `THESIS: Anto's intelligence as continuity, told in type on a flat carbon page.
+OWN-WORLD: Carbon #101216, system sans, solid periwinkle. No particle field, no teal, no navy wash.
 STORY: Conversations shape a system that understands you; memory, pattern, strategy; try Anto.
-FIRST VIEWPORT: copy left, organic constellation center-right, CTA in nav only.
-SECOND ACT: same field continues; thoughts become reading; large CTA after; trust last.
-FORM: brief-pinned cinematic constellation in one world, two acts.
+FIRST VIEWPORT: title and store CTAs on carbon. No constellation.
+SECOND ACT: the same message, two nights; trust last.
+FORM: Nexus esencial. Flat surfaces, capsule CTAs, one accent.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md`;
 
 export default function NexusPageContent({ locale }: NexusPageContentProps) {
@@ -59,7 +59,7 @@ export default function NexusPageContent({ locale }: NexusPageContentProps) {
         <HomeMinimalFooter
           locale={locale}
           switchPath="/nexus"
-          developerHref="/nexus/ingreso"
+          developerHref={localePath(locale, '/nexus/ingreso')}
           developerLabel="ingreso desarrolladores"
         />
         <CookieConsent

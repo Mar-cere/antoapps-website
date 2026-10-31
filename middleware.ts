@@ -5,6 +5,7 @@ import {
   OBSERVATORY_COOKIE,
   OBSERVATORY_HOME,
   OBSERVATORY_LOGIN,
+  isObservatoryLoginPath,
   isObservatoryPath,
   safeObservatoryNext,
 } from '@/lib/observatory/routes';
@@ -27,7 +28,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (pathname === OBSERVATORY_LOGIN && signedIn) {
+  if (isObservatoryLoginPath(pathname) && signedIn) {
     const url = request.nextUrl.clone();
     url.pathname = safeObservatoryNext(request.nextUrl.searchParams.get('next'));
     url.search = '';
@@ -38,7 +39,7 @@ export async function middleware(request: NextRequest) {
     response.headers.set('x-robots-tag', 'noindex, nofollow');
   }
 
-  if (pathname === OBSERVATORY_LOGIN) {
+  if (isObservatoryLoginPath(pathname)) {
     response.headers.set('x-robots-tag', 'noindex, nofollow');
   }
 
