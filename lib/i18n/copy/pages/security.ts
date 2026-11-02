@@ -74,10 +74,10 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
       meta: {
         title: 'How we care for what you write | Encryption and limits - Anto',
         description:
-          'Anto keeps the thread so you do not start over. It travels encrypted (TLS) and is stored encrypted. Anto and the model read the text. Not a substitute for therapy.',
+          'Anto keeps the thread so you do not start over. Conversations travel encrypted between your phone and our servers. Only you can access your account. Anto and the model read the text. Not a substitute for therapy.',
         openGraphTitle: 'How we care for what you write - Anto',
         openGraphDescription:
-          'Why the thread is read, encryption in transit and at rest, how to ask for deletion. Not a clinical service.',
+          'Why the thread is read, how conversations travel encrypted to the servers, and who can access the account. Not a clinical service.',
         canonicalPath: CANONICAL_PATH,
       },
       hero: {
@@ -108,7 +108,7 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
           },
           {
             title: 'Stored',
-            body: 'Data is stored encrypted at rest, AES-256, on our servers. That is infrastructure encryption.',
+            body: 'The thread is kept in your account, on our servers, so you do not start over. Only you can access that account.',
           },
           {
             title: 'Who reads',
@@ -148,10 +148,10 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
       meta: {
         title: 'Como cuidamos do que você escreve | Criptografia e limites - Anto',
         description:
-          'A Anto guarda o fio para você não começar do zero. Ele viaja criptografado (TLS) e fica criptografado. A Anto e o modelo leem o texto. Não substitui terapia.',
+          'A Anto guarda o fio para você não começar do zero. As conversas viajam criptografadas entre seu celular e nossos servidores. Só você acessa sua conta. A Anto e o modelo leem o texto. Não substitui terapia.',
         openGraphTitle: 'Como cuidamos do que você escreve - Anto',
         openGraphDescription:
-          'Por que o fio é lido, criptografia em trânsito e em repouso, como pedir a exclusão. Não é um serviço clínico.',
+          'Por que o fio é lido, como as conversas viajam criptografadas até os servidores e quem acessa a conta. Não é um serviço clínico.',
         canonicalPath: CANONICAL_PATH,
       },
       hero: {
@@ -182,7 +182,7 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
           },
           {
             title: 'Guardado',
-            body: 'Os dados ficam criptografados em repouso, AES-256, nos nossos servidores. É criptografia de infraestrutura.',
+            body: 'O fio fica na sua conta, nos nossos servidores, para você não começar do zero. Só você acessa essa conta.',
           },
           {
             title: 'Quem lê',
@@ -221,10 +221,10 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
     meta: {
       title: 'Cómo cuidamos lo que escribes | Cifrado y límites - Anto',
       description:
-        'Anto guarda el hilo para no empezar de cero. Viaja cifrado (TLS) y se guarda cifrado. Anto y el modelo leen el texto. No sustituye terapia.',
+        'Anto guarda el hilo para no empezar de cero. Las conversaciones viajan cifradas entre tu teléfono y nuestros servidores. Solo tú accedes a tu cuenta. Anto y el modelo leen el texto. No sustituye terapia.',
       openGraphTitle: 'Cómo cuidamos lo que escribes - Anto',
       openGraphDescription:
-        'Por qué se lee el hilo, cifrado en tránsito y en reposo, cómo pedir que se borre. No es un servicio clínico.',
+        'Por qué se lee el hilo, cómo viajan cifradas las conversaciones hasta los servidores y quién accede a la cuenta. No es un servicio clínico.',
       canonicalPath: CANONICAL_PATH,
     },
     hero: {
@@ -255,7 +255,7 @@ function buildSecurityPageCopy(locale: Locale): SecurityPageCopy {
         },
         {
           title: 'Guardado',
-          body: 'Los datos se guardan cifrados en reposo, AES-256, en nuestros servidores. Es cifrado de infraestructura.',
+          body: 'El hilo se guarda en tu cuenta, en nuestros servidores, para no empezar de cero. Solo tú accedes a esa cuenta.',
         },
         {
           title: 'Quién lee',

@@ -179,7 +179,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         {
           title: 'Crea tu Perfil',
           description:
-            'Configura tu perfil de forma privada y segura en menos de 2 minutos. Solo necesitas un email y puedes empezar. Toda tu información está encriptada desde el primer momento.',
+            'Configura tu perfil de forma privada en menos de 2 minutos. Solo necesitas un email y puedes empezar. Las conversaciones viajan cifradas entre tu teléfono y nuestros servidores. Solo tú accedes a tu cuenta.',
         },
         {
           title: 'Comienza a Chatear',
@@ -295,7 +295,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
     security: {
       title: 'Cómo cuidamos lo que escribes',
       subtitle:
-        'TLS en tránsito y cifrado en reposo. Anto y el modelo leen el texto para prestar el servicio.',
+        'Las conversaciones viajan cifradas entre tu teléfono y nuestros servidores. Solo tú accedes a tu cuenta. Anto y el modelo leen el texto para prestar el servicio.',
       cards: [
         {
           icon: 'encryption',
@@ -309,12 +309,12 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
         {
           icon: 'compliance',
-          title: 'Reposo',
+          title: 'Cuenta',
           description:
-            'Los datos se guardan cifrados en reposo, AES-256, en el hosting (Render).',
+            'El hilo se guarda en tu cuenta, en nuestros servidores. Solo tú accedes a ella.',
           features: [
-            'AES-256 en infraestructura',
-            'No hay clave única por persona',
+            'En tu cuenta',
+            'Solo tú accedes a ella',
           ],
         },
         {
@@ -449,7 +449,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         {
           title: 'Create Your Profile',
           description:
-            'Set up your profile privately and securely in under 2 minutes. You only need an email to get started. All your information is encrypted from the first moment.',
+            'Set up your profile privately in under 2 minutes. You only need an email to get started. Conversations travel encrypted between your phone and our servers. Only you can access your account.',
         },
         {
           title: 'Start Chatting',
@@ -565,7 +565,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
     security: {
       title: 'How we care for what you write',
       subtitle:
-        'TLS in transit and encryption at rest. Anto and the model read the text to provide the service.',
+        'Conversations travel encrypted between your phone and our servers. Only you can access your account. Anto and the model read the text to provide the service.',
       cards: [
         {
           icon: 'encryption',
@@ -579,12 +579,12 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
         {
           icon: 'compliance',
-          title: 'At rest',
+          title: 'Account',
           description:
-            'Data is stored encrypted at rest, AES-256, on the host (Render).',
+            'The thread is kept in your account, on our servers. Only you can access it.',
           features: [
-            'AES-256 at the infrastructure layer',
-            'No unique key per person',
+            'In your account',
+            'Only you can access it',
           ],
         },
         {
@@ -719,7 +719,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         {
           title: 'Crie o seu perfil',
           description:
-            'Configure o perfil de forma privada e segura em menos de 2 minutos. Só precisa de um e-mail para começar. Tudo fica criptografado desde o primeiro momento.',
+            'Configure o perfil de forma privada em menos de 2 minutos. Só precisa de um e-mail para começar. As conversas viajam criptografadas entre seu celular e nossos servidores. Só você acessa sua conta.',
         },
         {
           title: 'Comece a conversar',
@@ -835,7 +835,7 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
     security: {
       title: 'Como cuidamos do que você escreve',
       subtitle:
-        'TLS em trânsito e criptografia em repouso. A Anto e o modelo leem o texto para prestar o serviço.',
+        'As conversas viajam criptografadas entre seu celular e nossos servidores. Só você acessa sua conta. A Anto e o modelo leem o texto para prestar o serviço.',
       cards: [
         {
           icon: 'encryption',
@@ -845,9 +845,9 @@ const sectionsCopy: Record<Locale, (trialNote: string) => HomeSectionsCopy> = {
         },
         {
           icon: 'compliance',
-          title: 'Repouso',
-          description: 'Os dados ficam criptografados em repouso, AES-256, na hospedagem (Render).',
-          features: ['AES-256 na infraestrutura', 'Não há chave única por pessoa'],
+          title: 'Conta',
+          description: 'O fio fica na sua conta, nos nossos servidores. Só você acessa essa conta.',
+          features: ['Na sua conta', 'Só você acessa essa conta'],
         },
         {
           icon: 'auth',

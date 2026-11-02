@@ -181,7 +181,7 @@ const processStepsEs: DesarrolloProcessStep[] = [
   },
   {
     title: 'API',
-    description: 'Express, OpenAI, JWT. Cifrado en tránsito (TLS) y en reposo. Anto y el modelo leen el texto. WebSockets.',
+    description: 'Express, OpenAI, JWT. Las conversaciones viajan cifradas entre tu teléfono y nuestros servidores. Solo tú accedes a tu cuenta. Anto y el modelo leen el texto. WebSockets.',
     details: [],
   },
   {
@@ -209,7 +209,7 @@ const processStepsEn: DesarrolloProcessStep[] = [
   },
   {
     title: 'API',
-    description: 'Express, OpenAI, JWT. Encryption in transit (TLS) and at rest. Anto and the model read the text. WebSockets.',
+    description: 'Express, OpenAI, JWT. Conversations travel encrypted between your phone and our servers. Only you can access your account. Anto and the model read the text. WebSockets.',
     details: [],
   },
   {
@@ -383,7 +383,7 @@ const challengesEs: DesarrolloChallenge[] = [
     title: 'Privacidad',
     challenge: 'Cuidar conversaciones privadas.',
     solution:
-      'Cifrado en tránsito (TLS) y en reposo. Anto y el modelo leen el texto. Autenticación JWT y headers de seguridad.',
+      'Las conversaciones viajan cifradas entre tu teléfono y nuestros servidores. Solo tú accedes a tu cuenta. Anto y el modelo leen el texto. Autenticación JWT y headers de seguridad.',
   },
   {
     icon: '📱',
@@ -423,7 +423,7 @@ const challengesEn: DesarrolloChallenge[] = [
     title: 'Privacy',
     challenge: 'Keep conversations private.',
     solution:
-      'Encryption in transit (TLS) and at rest. Anto and the model read the text. JWT auth and security headers.',
+      'Conversations travel encrypted between your phone and our servers. Only you can access your account. Anto and the model read the text. JWT auth and security headers.',
   },
   {
     icon: '📱',
@@ -496,7 +496,7 @@ const processStepsPt: DesarrolloProcessStep[] = [
   },
   {
     title: 'API',
-    description: 'Express, OpenAI, JWT. Criptografia em trânsito (TLS) e em repouso. A Anto e o modelo leem o texto. WebSockets.',
+    description: 'Express, OpenAI, JWT. As conversas viajam criptografadas entre seu celular e nossos servidores. Só você acessa sua conta. A Anto e o modelo leem o texto. WebSockets.',
     details: [],
   },
   {
@@ -599,7 +599,7 @@ const challengesPt: DesarrolloChallenge[] = [
     title: 'Privacidade',
     challenge: 'Cuidar de conversas privadas.',
     solution:
-      'Criptografia em trânsito (TLS) e em repouso. A Anto e o modelo leem o texto. Autenticação JWT e headers de segurança.',
+      'As conversas viajam criptografadas entre seu celular e nossos servidores. Só você acessa sua conta. A Anto e o modelo leem o texto. Autenticação JWT e headers de segurança.',
   },
   {
     icon: '📱',

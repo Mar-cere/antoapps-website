@@ -34,9 +34,9 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
             'Sin esperas ni citas: apoyo cuando lo necesites, también de noche o en fin de semana.',
         },
         {
-          title: 'Privacidad Garantizada',
+          title: 'Privacidad',
           description:
-            'Conversaciones confidenciales, cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio. No vendemos tus datos.',
+            'Las conversaciones viajan cifradas entre tu teléfono y nuestros servidores. Solo tú accedes a tu cuenta. Anto y el modelo leen el texto para prestar el servicio. No vendemos tus datos.',
         },
         {
           title: 'Apoyo que se adapta a ti',
@@ -111,9 +111,9 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
             'No waiting or appointments — support when you need it, including nights and weekends.',
         },
         {
-          title: 'Privacy Guaranteed',
+          title: 'Privacy',
           description:
-            'Confidential conversations, encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service. We do not sell your data.',
+            'Conversations travel encrypted between your phone and our servers. Only you can access your account. Anto and the model read the text to provide the service. We do not sell your data.',
         },
         {
           title: 'Support that adapts to you',
@@ -188,9 +188,9 @@ const benefitsCopy: Record<Locale, HomeBenefitsCopy> = {
             'Sem espera e sem hora marcada: apoio quando você precisar, também de noite ou no fim de semana.',
         },
         {
-          title: 'Privacidade garantida',
+          title: 'Privacidade',
           description:
-            'Conversas confidenciais, criptografadas em trânsito (TLS) e em repouso. A Anto e o modelo leem o texto para prestar o serviço. Não vendemos os seus dados.',
+            'As conversas viajam criptografadas entre seu celular e nossos servidores. Só você acessa sua conta. A Anto e o modelo leem o texto para prestar o serviço. Não vendemos os seus dados.',
         },
         {
           title: 'Apoio que se adapta a você',
