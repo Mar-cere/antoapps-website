@@ -75,7 +75,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '/bienvenida': 'Landing de anuncios (Meta): apoyo emocional para ansiedad en iPhone y Android; prueba 1 día gratis. Botones de tienda en el pliegue y CTA fijo.',
     '/app': 'App para iPhone y Android: qué es, el hilo y una guía corta en texto, y enlaces de descarga. Complementa; no reemplaza terapia.',
     '/seguridad':
-      'Por qué Anto y el modelo leen el hilo, cifrado en tránsito y en reposo, cómo pedir que se borre, y el aviso de que no es terapia.',
+      'Por qué Anto y el modelo leen el hilo. Las conversaciones viajan cifradas entre tu teléfono y nuestros servidores. Solo tú accedes a tu cuenta. Cómo pedir que se borre, y el aviso de que no es terapia.',
     '/investigacion': 'Cómo Anto lee TCC, GAD-7 y agentes conversacionales; cómo se ve en el producto; citas APA; sin ensayos propios de Anto.',
     '/recursos':
       `Hub editorial: atajos humanos (ansiedad, pensamientos en bucle, sueño, TCC) + ${PSYCHOEDUCATION_SLUGS.length} guías de psicoeducación y páginas Sobre Anto (app, seguridad, investigación). Material educativo; no diagnóstico.`,
@@ -94,7 +94,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '/bienvenida': 'Ad landing (Meta): emotional support for anxiety on iPhone and Android; 1-day free trial. Store buttons in the fold and a fixed CTA.',
     '/app': 'iPhone and Android app: what it is, the thread and a short guide in text, and download links. Complements; does not replace therapy.',
     '/seguridad':
-      'Why Anto and the model read the thread, encryption in transit and at rest, how to request deletion, and the notice that this is not therapy.',
+      'Why Anto and the model read the thread. Conversations travel encrypted between your phone and our servers. Only you can access your account. How to request deletion, and the notice that this is not therapy.',
     '/investigacion': 'How Anto reads CBT, GAD-7, and conversational agents; how it shows in the product; APA citations; no Anto-specific trials claimed.',
     '/recursos':
       `Editorial hub: human entry points (anxiety, looping thoughts, sleep, CBT) + ${PSYCHOEDUCATION_SLUGS.length} psychoeducation guides and About Anto pages (app, safety, research). Educational material; not a diagnosis.`,
@@ -113,7 +113,7 @@ const PAGE_SUMMARIES: Record<Locale, Record<string, string>> = {
     '/bienvenida': 'Landing de anúncios (Meta): apoio emocional para ansiedade no iPhone e no Android; teste grátis de 1 dia. Botões das lojas na dobra e CTA fixo.',
     '/app': 'App para iPhone e Android: o que é, o fio e um guia curto em texto, e links de download. Complementa; não substitui a terapia.',
     '/seguridad':
-      'Por que a Anto e o modelo leem o fio, criptografia em trânsito e em repouso, como pedir a exclusão, e o aviso de que não é terapia.',
+      'Por que a Anto e o modelo leem o fio. As conversas viajam criptografadas entre seu celular e nossos servidores. Só você acessa sua conta. Como pedir a exclusão, e o aviso de que não é terapia.',
     '/investigacion': 'Como a Anto lê TCC, GAD-7 e agentes conversacionais; como isso aparece no produto; citações APA; sem ensaios próprios da Anto.',
     '/recursos':
       `Hub editorial: atalhos humanos (ansiedade, pensamentos em loop, sono, TCC) + ${PSYCHOEDUCATION_SLUGS.length} guias de psicoeducação e páginas Sobre a Anto (app, segurança, pesquisa). Material educativo; não é diagnóstico.`,
@@ -526,7 +526,7 @@ function featuresInventory(): string[] {
     '- Tareas y hábitos unificados + Pomodoro integrado',
     '- Diario de gratitud, resúmenes de sesión, informes accionables',
     '- Sesión persistente (JWT refresh) — volver sin reingresar contraseña',
-    '- Cifrado TLS en tránsito y cifrado en reposo. Anto y el modelo leen el texto para prestar el servicio. Sin venta de datos a terceros',
+    '- Las conversaciones viajan cifradas entre tu teléfono y nuestros servidores. Solo tú accedes a tu cuenta. Anto y el modelo leen el texto para prestar el servicio. Sin venta de datos a terceros',
     '- App bilingüe ES/EN',
     '',
     '### English',
@@ -537,7 +537,7 @@ function featuresInventory(): string[] {
     '- Unified tasks/habits + integrated Pomodoro',
     '- Gratitude journal, session summaries, actionable reports',
     '- Persistent session (JWT refresh)',
-    '- TLS in transit and encryption at rest. Anto and the model read the text to provide the service. No third-party data sales',
+    '- Conversations travel encrypted between your phone and our servers. Only you can access your account. Anto and the model read the text to provide the service. No third-party data sales',
     '- Bilingual ES/EN app',
   ];
 }
@@ -594,7 +594,7 @@ function productFactsTable(trialLabel: string): string[] {
     '| Platforms | iOS (App Store), Android (Google Play) |',
     '| Languages | Spanish (ES), English (EN) |',
     '| Exercise hub | CBT, ABC, mindfulness — not treatment |',
-    '| Privacy | TLS in transit + encryption at rest. Anto and the model read the text to provide the service. No data sold to third parties |',
+    '| Privacy | Conversations travel encrypted between your phone and our servers. Only you can access your account. Anto and the model read the text to provide the service. No data sold to third parties |',
     '| App Store rating | 5.0 (public) |',
     '| Contact | soporte@antoapps.com |',
     '| Creator | Marcelo Ull Marambio |',

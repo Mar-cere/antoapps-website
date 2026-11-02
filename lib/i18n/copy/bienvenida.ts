@@ -393,7 +393,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           ],
         },
       features: [
-        { icon: 'privacy', title: 'Private', subtitle: 'Anto and the model read the text. Encrypted in transit (TLS) and at rest.' },
+        { icon: 'privacy', title: 'Private', subtitle: 'Conversations travel encrypted between your phone and our servers. Only you can access your account.' },
         { icon: 'clock', title: 'Anytime', subtitle: 'There when your mind won\'t stop' },
           { icon: 'evidence', title: 'Clear steps', subtitle: 'One concrete next step, not vague advice' },
           { icon: 'crisis', title: 'No judgment', subtitle: 'A calm space to untangle what you feel' },
@@ -424,7 +424,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           },
           {
             title: 'Private',
-            body: 'They are encrypted in transit (TLS) and at rest. Anto and the model read the text to provide the service.',
+            body: 'Conversations travel encrypted between your phone and our servers. Only you can access your account. Anto and the model read the text to provide the service.',
           },
           {
             title: 'If you are in crisis',
@@ -670,7 +670,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           ],
         },
         features: [
-          { icon: 'privacy', title: 'Privado', subtitle: 'A Anto e o modelo leem o texto. Criptografado em trânsito (TLS) e em repouso.' },
+          { icon: 'privacy', title: 'Privado', subtitle: 'As conversas viajam criptografadas entre seu celular e nossos servidores. Só você acessa sua conta.' },
           { icon: 'clock', title: 'Quando você precisa', subtitle: 'Ali quando a mente não para' },
           { icon: 'evidence', title: 'Passos claros', subtitle: 'Um passo concreto, não um conselho vago' },
           { icon: 'crisis', title: 'Sem julgamento', subtitle: 'Um espaço calmo para ordenar o que você sente' },
@@ -701,7 +701,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
           },
           {
             title: 'Privado',
-            body: 'Vão criptografadas em trânsito (TLS) e em repouso. A Anto e o modelo leem o texto para prestar o serviço.',
+            body: 'As conversas viajam criptografadas entre seu celular e nossos servidores. Só você acessa sua conta. A Anto e o modelo leem o texto para prestar o serviço.',
           },
           {
             title: 'Se você está em crise',
@@ -937,7 +937,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         ],
       },
       features: [
-        { icon: 'privacy', title: 'Privado', subtitle: 'Anto y el modelo leen el texto. Cifrado en tránsito (TLS) y en reposo.' },
+        { icon: 'privacy', title: 'Privado', subtitle: 'Las conversaciones viajan cifradas entre tu teléfono y nuestros servidores. Solo tú accedes a tu cuenta.' },
         { icon: 'clock', title: 'Cuando lo necesitas', subtitle: 'Ahí cuando tu mente no para' },
         { icon: 'evidence', title: 'Pasos claros', subtitle: 'Un siguiente paso concreto, no consejos vagos' },
         { icon: 'crisis', title: 'Sin juicio', subtitle: 'Un espacio calmado para ordenar lo que sientes' },
@@ -968,7 +968,7 @@ function buildBienvenidaCopy(locale: Locale): BienvenidaCopy {
         },
         {
           title: 'Privado',
-          body: 'Van cifradas en tránsito (TLS) y en reposo. Anto y el modelo leen el texto para prestar el servicio.',
+          body: 'Las conversaciones viajan cifradas entre tu teléfono y nuestros servidores. Solo tú accedes a tu cuenta. Anto y el modelo leen el texto para prestar el servicio.',
         },
         {
           title: 'Si estás en crisis',

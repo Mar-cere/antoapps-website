@@ -137,7 +137,7 @@ function buildPrivacySections(locale: LegalLocale): LegalPageCopy['sections'] {
           {
             kind: 'ul',
             items: [
-              'Encryption of data in transit and at rest',
+              'Conversations travel encrypted between your phone and our servers. Only you can access your account.',
               'Two-factor authentication where applicable',
               'Restricted access to personal information for authorized personnel only',
               'Regular system monitoring to detect vulnerabilities',
@@ -334,7 +334,7 @@ function buildPrivacySections(locale: LegalLocale): LegalPageCopy['sections'] {
           {
             kind: 'ul',
             items: [
-              'Criptografia de dados em trânsito e em repouso',
+              'As conversas viajam criptografadas entre seu celular e nossos servidores. Só você acessa sua conta.',
               'Autenticação de dois fatores quando aplicável',
               'Acesso restrito às informações pessoais, apenas para pessoal autorizado',
               'Monitoramento regular dos sistemas para detectar vulnerabilidades',
@@ -530,7 +530,7 @@ function buildPrivacySections(locale: LegalLocale): LegalPageCopy['sections'] {
         {
           kind: 'ul',
           items: [
-            'Encriptación de datos en tránsito y en reposo',
+            'Las conversaciones viajan cifradas entre tu teléfono y nuestros servidores. Solo tú accedes a tu cuenta.',
             'Autenticación de dos factores cuando sea aplicable',
             'Acceso restringido a información personal solo para personal autorizado',
             'Monitoreo regular de sistemas para detectar vulnerabilidades',

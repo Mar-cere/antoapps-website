@@ -14,7 +14,7 @@ Sitio web moderno y profesional para **Anto**, aplicación móvil de bienestar e
 - 📊 **Análisis Emocional Avanzado**: Detección de patrones emocionales, evaluación clínica automática y reportes profesionales con estadísticas detalladas
 - 🚨 **Detección de Crisis**: Sistema de alertas tempranas para situaciones de riesgo
 - 🛠️ **Herramientas de Bienestar**: Ejercicios, meditaciones y recursos de salud mental
-- 🔒 **Privacidad y Seguridad**: Encriptación de extremo a extremo y cumplimiento de normativas
+- 🔒 **Privacidad y Seguridad**: Las conversaciones viajan cifradas entre tu teléfono y nuestros servidores. Solo tú accedes a tu cuenta.
 - 📈 **Reportes Profesionales**: Análisis detallado de progreso con escalas clínicas y estadísticas de distorsiones cognitivas
 
 ### 🎯 Respaldado por Ciencia
