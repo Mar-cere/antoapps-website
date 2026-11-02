@@ -97,6 +97,12 @@ body:has(.home-v2-shell) {
   outline-offset: 3px;
 }
 
+.home-v2-shell .nav-download__item:hover,
+.home-v2-shell .nav-download__item:focus-visible {
+  background: rgba(165, 164, 255, 0.16);
+  color: #A5A4FF;
+}
+
 .home-landing-page--v2 {
   --hl-accent: #A5A4FF;
   --hl-accent-soft: #C4C3FF;
