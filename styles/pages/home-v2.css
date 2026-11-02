@@ -37,6 +37,15 @@
 
   background: #101216;
   color: #F4F6FC;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+}
+
+.home-v2-shell section::before,
+.home-v2-shell section:hover::before {
+  content: none;
+  background: none;
+  background-image: none;
+  opacity: 0;
 }
 
 html:has(.home-v2-shell),
@@ -86,6 +95,12 @@ body:has(.home-v2-shell) {
 .home-v2-shell .home-landing-nav__cta:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
+}
+
+.home-v2-shell .nav-download__item:hover,
+.home-v2-shell .nav-download__item:focus-visible {
+  background: rgba(165, 164, 255, 0.16);
+  color: #A5A4FF;
 }
 
 .home-landing-page--v2 {
@@ -261,7 +276,7 @@ body:has(.home-v2-shell) {
   margin: 0.2rem 0 0;
   min-height: 22rem;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: var(--home-v2-radius-hero);
   background: var(--color-bg-tertiary);
 }
 
@@ -2322,7 +2337,7 @@ body:has(.home-v2-shell) {
 }
 
 .home-v2-hero__figure {
-  border-radius: 22px;
+  border-radius: var(--home-v2-radius-hero, 22px);
 }
 
 .home-v2-panel {
