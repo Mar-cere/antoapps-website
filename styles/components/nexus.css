@@ -36,6 +36,14 @@ body:has(.nexus-page) {
   color: #F4F6FC;
 }
 
+.nexus-page section::before,
+.nexus-page section:hover::before {
+  content: none;
+  background: none;
+  background-image: none;
+  opacity: 0;
+}
+
 .nexus-page .visually-hidden {
   position: absolute;
   width: 1px;
