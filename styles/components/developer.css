@@ -55,7 +55,7 @@
 
 .developer-details h3 {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-text-primary);
     margin-bottom: 0.75rem;
     background: linear-gradient(135deg, #1ADDDB 0%, #A3B8E8 100%);
