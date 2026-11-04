@@ -1,5 +1,6 @@
 import { headers } from 'next/headers';
 import NotFoundContent from '@/components/pages/NotFoundContent';
+import '@/styles/main.css';
 import { isLegalLocale } from '@/lib/i18n/config';
 
 export const dynamic = 'force-dynamic';

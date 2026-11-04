@@ -593,8 +593,11 @@ body:has(.nexus-page) {
 }
 
 .nexus-page .cookie-consent .btn-primary {
-  background: #A5A4FF;
-  color: #101216;
+  background-color: var(--color-primary);
+  background-image: none;
+  color: var(--color-text-on-primary);
+  border: none;
+  box-shadow: none;
 }
 
 .nexus-nav__link:focus-visible,

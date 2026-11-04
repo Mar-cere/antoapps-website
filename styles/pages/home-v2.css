@@ -2261,18 +2261,20 @@ body:has(.home-v2-shell) {
 }
 
 .home-v2-shell .cookie-consent--compact .btn-primary {
-  background: var(--color-primary) !important;
-  color: #101216 !important;
-  border: 0 !important;
-  filter: none !important;
-  box-shadow: none !important;
+  background-color: var(--color-primary);
+  background-image: none;
+  color: var(--color-text-on-primary);
+  border: none;
+  box-shadow: none;
+  filter: none;
   min-height: 2.75rem;
 }
 
 .home-v2-shell .cookie-consent--compact .btn-primary:hover:not(:disabled) {
-  background: var(--color-primary) !important;
-  filter: brightness(1.06) !important;
-  box-shadow: none !important;
+  background-color: var(--color-primary-hover);
+  background-image: none;
+  filter: none;
+  box-shadow: none;
   transform: none;
 }
 
@@ -2455,13 +2457,14 @@ body:has(.home-v2-shell) {
 }
 
 .home-v2-shell .cookie-consent--compact .btn-primary {
-  color: #101216 !important;
+  color: var(--color-text-on-primary);
   border-radius: 999px;
 }
 
 .home-v2-shell .cookie-consent--compact .btn-primary:hover:not(:disabled) {
-  background: #C4C3FF !important;
-  filter: none !important;
+  background-color: var(--color-primary-hover);
+  background-image: none;
+  filter: none;
 }
 
 .home-v2-shell .cookie-consent--compact .btn-primary:active {

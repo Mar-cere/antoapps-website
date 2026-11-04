@@ -8,7 +8,7 @@
 :root {
     --surface-glass: rgba(255, 255, 255, 0.045);
     --surface-glass-hover: rgba(255, 255, 255, 0.07);
-    --gradient-accent: linear-gradient(135deg, #1adddb 0%, #6366f1 55%, #a855f7 100%);
+    --gradient-accent: var(--color-primary);
     --gradient-accent-soft: linear-gradient(
         135deg,
         rgba(26, 221, 219, 0.18) 0%,
@@ -80,19 +80,6 @@ body {
     box-shadow:
         0 8px 40px rgba(26, 221, 219, 0.12),
         0 0 0 1px rgba(26, 221, 219, 0.25);
-}
-
-.btn-primary {
-    background: var(--gradient-accent);
-    border: none;
-    box-shadow: 0 4px 16px rgba(26, 221, 219, 0.25);
-}
-
-@media (hover: hover) {
-    .btn-primary:hover:not(:disabled) {
-        box-shadow: 0 6px 24px rgba(26, 221, 219, 0.35);
-        transform: translateY(-1px);
-    }
 }
 
 .tab-btn.active {
@@ -459,10 +446,6 @@ body {
         transform: none;
     }
 
-    .btn-primary:active:not(:disabled) {
-        transform: scale(0.98);
-        opacity: 0.92;
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {

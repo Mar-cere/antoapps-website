@@ -27,7 +27,7 @@
 }
 
 .premium-store-cta:focus-visible {
-    outline: 2px solid var(--home-accent, var(--color-primary, #1adddb));
+    outline: 2px solid var(--home-accent, var(--color-primary));
     outline-offset: 3px;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .premium-store-cta__badge {
-    background: var(--home-accent, var(--color-primary, #1adddb));
+    background: var(--home-accent, var(--color-primary));
     border-radius: 1.25rem;
     padding: 0.3125rem 0.75rem;
     font-size: 0.75rem;
@@ -89,7 +89,7 @@
 }
 
 .premium-store-cta--google .premium-store-cta__badge {
-    background: var(--home-accent, var(--color-primary, #1adddb));
+    background: var(--home-accent, var(--color-primary));
     color: #030a24;
 }
 

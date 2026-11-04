@@ -44,30 +44,7 @@
     gap: var(--spacing-2);
 }
 
-/* Button Variants */
-.btn-primary {
-    background: var(--color-primary);
-    color: var(--color-bg-dark);
-    border-color: var(--color-primary);
-    box-shadow: var(--shadow-sm);
-}
-
-.btn-primary:hover:not(:disabled) {
-    background: var(--color-primary-hover);
-    border-color: var(--color-primary-hover);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-.btn-primary:active:not(:disabled) {
-    transform: translateY(0);
-    box-shadow: var(--shadow-sm);
-}
-
-.btn-primary:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-}
+/* El primario vive en buttons.css. */
 
 .btn-secondary {
     background: transparent;
@@ -211,10 +188,6 @@
 .btn:active::after {
     width: 300px;
     height: 300px;
-}
-
-.btn-primary::after {
-    background: rgba(0, 0, 0, 0.2);
 }
 
 /* Reduced Motion */
