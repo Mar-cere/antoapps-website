@@ -88,6 +88,33 @@
         ],
         "createdAt": "2026-11-02T22:09:26.053Z",
         "reason": "HTML legado que redirige. El usuario pidió no cambiar la fuente; solo quitar esa frase de cifrado."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "styles/components/development.css"
+        ],
+        "createdAt": "2026-11-04T14:44:07.064Z",
+        "reason": "La página de desarrollo conserva su escala; el encargo pide no tocar el layout."
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "*",
+        "files": [
+          "styles/components/development.css"
+        ],
+        "createdAt": "2026-11-04T14:44:07.097Z",
+        "reason": "Los radios existentes se conservan; el encargo pide no tocar el layout."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "styles/components/development.css"
+        ],
+        "createdAt": "2026-11-04T14:44:07.131Z",
+        "reason": "La monoespaciada de código ya estaba; el encargo no cambia la tipografía."
       }
     ],
     "ignoreRules": [],
