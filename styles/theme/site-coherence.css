@@ -131,7 +131,7 @@ main.legal-page {
 /* Badges técnicos en fondo oscuro */
 .tech-badge {
     background: var(--color-primary-light);
-    border-color: rgba(26, 221, 219, 0.35);
+    border-color: rgba(165, 164, 255, 0.35);
     color: var(--color-primary);
 }
 

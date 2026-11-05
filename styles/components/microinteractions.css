@@ -39,7 +39,7 @@
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(26, 221, 219, 0.1),
+        rgba(165, 164, 255, 0.1),
         transparent
     );
     transition: left 0.5s ease;
@@ -60,7 +60,7 @@
 .feature-card:hover .feature-icon,
 .value-card:hover .value-icon {
     transform: scale(1.15) rotate(5deg);
-    filter: drop-shadow(0 4px 8px rgba(26, 221, 219, 0.3));
+    filter: drop-shadow(0 4px 8px rgba(165, 164, 255, 0.3));
 }
 
 /* Ripple Effect Mejorado para Botones */
@@ -388,10 +388,10 @@ button,
 
 @keyframes glow-pulse {
     0%, 100% {
-        box-shadow: 0 0 5px rgba(26, 221, 219, 0.5);
+        box-shadow: 0 0 5px rgba(165, 164, 255, 0.5);
     }
     50% {
-        box-shadow: 0 0 20px rgba(26, 221, 219, 0.8), 0 0 30px rgba(26, 221, 219, 0.6);
+        box-shadow: 0 0 20px rgba(165, 164, 255, 0.8), 0 0 30px rgba(165, 164, 255, 0.6);
     }
 }
 
@@ -402,7 +402,7 @@ button,
 
 .hover-lift:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(26, 221, 219, 0.3);
+    box-shadow: 0 10px 30px rgba(165, 164, 255, 0.3);
 }
 
 /* Button Press Effect */

@@ -166,12 +166,12 @@
 @media (hover: hover) {
   .psycho-guide__companion-link:hover {
     color: var(--home-v2-ink);
-    text-decoration-color: color-mix(in srgb, var(--color-primary, #1adddb) 55%, transparent);
+    text-decoration-color: color-mix(in srgb, var(--color-primary, #A5A4FF) 55%, transparent);
   }
 }
 
 .psycho-guide__companion-link:focus-visible {
-  outline: 2px solid var(--color-primary, #1adddb);
+  outline: 2px solid var(--color-primary, #A5A4FF);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -1523,7 +1523,7 @@
 }
 
 .psycho-guide__refs-details > summary:focus-visible {
-  outline: 2px solid var(--color-primary, #1adddb);
+  outline: 2px solid var(--color-primary, #A5A4FF);
   outline-offset: 4px;
   border-radius: 2px;
 }

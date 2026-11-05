@@ -11,17 +11,17 @@
     --gradient-accent: var(--color-primary);
     --gradient-accent-soft: linear-gradient(
         135deg,
-        rgba(26, 221, 219, 0.18) 0%,
+        rgba(165, 164, 255, 0.18) 0%,
         rgba(99, 102, 241, 0.12) 50%,
         rgba(168, 85, 247, 0.08) 100%
     );
     --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.06);
-    --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(26, 221, 219, 0.2);
+    --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(165, 164, 255, 0.2);
 }
 
 body {
     background-image:
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(26, 221, 219, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(165, 164, 255, 0.12) 0%, transparent 55%),
         radial-gradient(ellipse 60% 40% at 100% 50%, rgba(99, 102, 241, 0.06) 0%, transparent 50%),
         var(--color-bg-glow),
         var(--color-bg-primary);
@@ -70,28 +70,28 @@ body {
     .benefit-item:hover,
     .whats-new__card:hover {
         box-shadow: var(--shadow-card-hover);
-        border-color: rgba(26, 221, 219, 0.25);
+        border-color: rgba(165, 164, 255, 0.25);
     }
 }
 
 .pricing-card.featured {
     background: var(--gradient-accent-soft);
-    border-color: rgba(26, 221, 219, 0.35);
+    border-color: rgba(165, 164, 255, 0.35);
     box-shadow:
-        0 8px 40px rgba(26, 221, 219, 0.12),
-        0 0 0 1px rgba(26, 221, 219, 0.25);
+        0 8px 40px rgba(165, 164, 255, 0.12),
+        0 0 0 1px rgba(165, 164, 255, 0.25);
 }
 
 .tab-btn.active {
     background: var(--gradient-accent);
     border-color: transparent;
-    box-shadow: 0 4px 16px rgba(26, 221, 219, 0.2);
+    box-shadow: 0 4px 16px rgba(165, 164, 255, 0.2);
 }
 
 .whats-new__badge {
     color: #7dd3fc;
-    background: rgba(26, 221, 219, 0.1);
-    border-color: rgba(26, 221, 219, 0.28);
+    background: rgba(165, 164, 255, 0.1);
+    border-color: rgba(165, 164, 255, 0.28);
 }
 
 /* ── Mobile-first: max-width 767px ── */

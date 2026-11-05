@@ -6,7 +6,7 @@
     background: linear-gradient(
         90deg,
         var(--color-bg-primary) 0%,
-        rgba(26, 221, 219, 0.05) 50%,
+        rgba(165, 164, 255, 0.05) 50%,
         var(--color-bg-primary) 100%
     );
     background-size: 200% 100%;
@@ -74,9 +74,9 @@
 .skeleton {
     background: linear-gradient(
         90deg,
-        rgba(26, 221, 219, 0.1) 0%,
-        rgba(26, 221, 219, 0.2) 50%,
-        rgba(26, 221, 219, 0.1) 100%
+        rgba(165, 164, 255, 0.1) 0%,
+        rgba(165, 164, 255, 0.2) 50%,
+        rgba(165, 164, 255, 0.1) 100%
     );
     background-size: 200% 100%;
     border-radius: 8px;

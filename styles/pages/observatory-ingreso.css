@@ -10,10 +10,10 @@ body:has(.obs-login) {
   padding: 48px 24px;
   color: #f4f7fb;
   background:
-    radial-gradient(ellipse 46% 40% at 82% 8%, rgba(26, 221, 219, 0.07), transparent 68%),
+    radial-gradient(ellipse 46% 40% at 82% 8%, rgba(165, 164, 255, 0.07), transparent 68%),
     radial-gradient(ellipse 38% 34% at 8% 82%, rgba(28, 72, 168, 0.16), transparent 70%),
     radial-gradient(1.2px 1.2px at 18% 22%, rgba(244, 247, 251, 0.38), transparent),
-    radial-gradient(1px 1px at 72% 16%, rgba(26, 221, 219, 0.45), transparent),
+    radial-gradient(1px 1px at 72% 16%, rgba(165, 164, 255, 0.45), transparent),
     radial-gradient(1px 1px at 88% 64%, rgba(244, 247, 251, 0.22), transparent),
     #020711;
 }
@@ -62,7 +62,7 @@ body:has(.obs-login) {
 }
 
 .obs-login__field input:focus-visible {
-  outline: 2px solid #1adddb;
+  outline: 2px solid #A5A4FF;
   outline-offset: 2px;
 }
 
@@ -76,18 +76,18 @@ body:has(.obs-login) {
   margin-top: 6px;
   background: rgba(4, 8, 23, 0.55);
   color: #f4f7fb;
-  border: 1px solid rgba(26, 221, 219, 0.45);
+  border: 1px solid rgba(165, 164, 255, 0.45);
   border-radius: 8px;
   padding: 10px 14px;
   font: inherit;
   font-weight: 500;
   letter-spacing: 0.01em;
   cursor: pointer;
-  box-shadow: 0 2px 14px rgba(26, 221, 219, 0.1);
+  box-shadow: 0 2px 14px rgba(165, 164, 255, 0.1);
 }
 
 .obs-login__submit:hover:not(:disabled) {
-  border-color: rgba(26, 221, 219, 0.7);
+  border-color: rgba(165, 164, 255, 0.7);
 }
 
 .obs-login__submit:disabled {
@@ -106,5 +106,5 @@ body:has(.obs-login) {
 }
 
 .obs-login__back:hover {
-  color: #1adddb;
+  color: #A5A4FF;
 }

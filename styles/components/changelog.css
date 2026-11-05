@@ -140,8 +140,8 @@
 }
 
 .changelog-status-note {
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.05) 0%, rgba(3, 105, 161, 0.05) 100%);
-    border: 1px solid rgba(26, 221, 219, 0.2);
+    background: linear-gradient(135deg, rgba(165, 164, 255, 0.05) 0%, rgba(3, 105, 161, 0.05) 100%);
+    border: 1px solid rgba(165, 164, 255, 0.2);
     border-radius: var(--radius-lg);
     padding: var(--spacing-5);
     max-width: 700px;
@@ -163,9 +163,9 @@
 
 /* Banner superior: versión en producción (antes usaba review = naranja) */
 .status-badge-current-banner {
-    background: linear-gradient(135deg, var(--color-primary) 0%, rgba(26, 221, 219, 0.85) 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, rgba(165, 164, 255, 0.85) 100%);
     color: var(--color-text-on-primary);
-    box-shadow: 0 2px 8px rgba(26, 221, 219, 0.35);
+    box-shadow: 0 2px 8px rgba(165, 164, 255, 0.35);
 }
 
 .status-badge-review {
@@ -200,7 +200,7 @@
     background: linear-gradient(
         180deg,
         var(--color-primary) 0%,
-        rgba(26, 221, 219, 0.3) 50%,
+        rgba(165, 164, 255, 0.3) 50%,
         transparent 100%
     );
 }
@@ -238,9 +238,9 @@
 }
 
 .version-current {
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.03) 0%, rgba(3, 105, 161, 0.03) 100%);
+    background: linear-gradient(135deg, rgba(165, 164, 255, 0.03) 0%, rgba(3, 105, 161, 0.03) 100%);
     border-color: var(--color-primary);
-    box-shadow: 0 4px 16px rgba(26, 221, 219, 0.1);
+    box-shadow: 0 4px 16px rgba(165, 164, 255, 0.1);
 }
 
 .version-current::before {
@@ -304,9 +304,9 @@
 }
 
 .version-badge-current {
-    background: linear-gradient(135deg, var(--color-primary) 0%, rgba(26, 221, 219, 0.8) 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, rgba(165, 164, 255, 0.8) 100%);
     color: var(--color-bg-primary);
-    box-shadow: 0 2px 8px rgba(26, 221, 219, 0.3);
+    box-shadow: 0 2px 8px rgba(165, 164, 255, 0.3);
 }
 
 .version-badge-stable {
@@ -331,9 +331,9 @@
 .version-highlights {
     margin-bottom: var(--spacing-5);
     padding: var(--spacing-4);
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.05) 0%, rgba(3, 105, 161, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(165, 164, 255, 0.05) 0%, rgba(3, 105, 161, 0.05) 100%);
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(26, 221, 219, 0.1);
+    border: 1px solid rgba(165, 164, 255, 0.1);
 }
 
 .highlights-title {

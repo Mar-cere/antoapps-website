@@ -193,10 +193,10 @@
     border-radius: 1.25rem;
     overflow: hidden;
     background: #030a24;
-    border: 1px solid rgba(26, 221, 219, 0.22);
+    border: 1px solid rgba(165, 164, 255, 0.22);
     box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.04) inset,
-        0 0 40px rgba(26, 221, 219, 0.08),
+        0 0 40px rgba(165, 164, 255, 0.08),
         0 24px 56px rgba(0, 0, 0, 0.45);
 }
 
@@ -252,7 +252,7 @@
 
 .lad-app-msg--user {
     align-self: flex-end;
-    background: linear-gradient(135deg, #1adddb, #12b8b6);
+    background: linear-gradient(135deg, #A5A4FF, #12b8b6);
     font-weight: var(--font-weight-medium);
     border-bottom-right-radius: 0.25rem;
 }
@@ -298,7 +298,7 @@
     font-size: 0.875rem;
     font-weight: var(--font-weight-bold);
     color: #030a24;
-    background: #1adddb;
+    background: #A5A4FF;
     border-radius: 50%;
     flex-shrink: 0;
 }
@@ -622,7 +622,7 @@
 
 .lad-page .lad-hero-cta-btn,
 .lad-page .lad-sticky-cta-btn {
-    background: linear-gradient(135deg, #1adddb 0%, #12c9c7 52%, #0fb8b6 100%);
+    background: linear-gradient(135deg, #A5A4FF 0%, #12c9c7 52%, #0fb8b6 100%);
     color: #030a24;
     border: 1px solid rgba(255, 255, 255, 0.18);
     transition:
@@ -640,8 +640,8 @@
     filter: brightness(1.06);
     transform: translateY(-2px);
     box-shadow:
-        0 12px 32px rgba(26, 221, 219, 0.45),
-        0 0 0 1px rgba(26, 221, 219, 0.2);
+        0 12px 32px rgba(165, 164, 255, 0.45),
+        0 0 0 1px rgba(165, 164, 255, 0.2);
 }
 
 .lad-page .lad-hero-cta-btn:active,
@@ -941,8 +941,8 @@
 .lad-hero-fold-cta--ios .lad-hero-cta-btn--ios,
 .lad-hero-fold-cta--ios .lad-hero-cta-badge-wrap {
     box-shadow:
-        0 10px 28px rgba(26, 221, 219, 0.42),
-        0 0 0 2px rgba(26, 221, 219, 0.12);
+        0 10px 28px rgba(165, 164, 255, 0.42),
+        0 0 0 2px rgba(165, 164, 255, 0.12);
 }
 
 .lad-hero-fold-cta--ios .lad-hero-cta-btn--android {
@@ -953,7 +953,7 @@
     border-color: var(--lad-accent);
     background: var(--lad-accent-soft);
     color: var(--lad-accent);
-    box-shadow: 0 8px 24px rgba(26, 221, 219, 0.2);
+    box-shadow: 0 8px 24px rgba(165, 164, 255, 0.2);
 }
 
 .lad-hero-fold-cta--android .lad-hero-cta-btn--ios,
@@ -999,7 +999,7 @@
 
 .lad-page .lad-sticky-cta-btn {
     border-radius: var(--radius-full);
-    box-shadow: 0 6px 20px rgba(26, 221, 219, 0.32);
+    box-shadow: 0 6px 20px rgba(165, 164, 255, 0.32);
 }
 
 .lad-section--anchor {
@@ -1157,13 +1157,13 @@
     0%,
     100% {
         box-shadow:
-            0 4px 18px rgba(26, 221, 219, 0.32),
-            0 0 0 0 rgba(26, 221, 219, 0);
+            0 4px 18px rgba(165, 164, 255, 0.32),
+            0 0 0 0 rgba(165, 164, 255, 0);
     }
     50% {
         box-shadow:
-            0 10px 28px rgba(26, 221, 219, 0.48),
-            0 0 0 3px rgba(26, 221, 219, 0.07);
+            0 10px 28px rgba(165, 164, 255, 0.48),
+            0 0 0 3px rgba(165, 164, 255, 0.07);
     }
 }
 

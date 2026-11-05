@@ -140,7 +140,7 @@
     justify-content: space-between;
     align-items: center;
     padding: var(--spacing-sm) 0;
-    border-bottom: 1px solid rgba(26, 221, 219, 0.2);
+    border-bottom: 1px solid rgba(165, 164, 255, 0.2);
 }
 
 .result-item:last-child {
@@ -285,7 +285,7 @@
 
     .comparison-cell {
         padding: var(--spacing-xs) 0;
-        border-bottom: 1px solid rgba(26, 221, 219, 0.1);
+        border-bottom: 1px solid rgba(165, 164, 255, 0.1);
     }
 
     .comparison-cell:last-child {
