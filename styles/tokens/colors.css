@@ -73,7 +73,7 @@
     /* Bordes */
     --color-border: rgba(255, 255, 255, 0.1);
     --color-border-light: rgba(255, 255, 255, 0.06);
-    --color-border-hover: rgba(26, 221, 219, 0.28);
+    --color-border-hover: rgba(165, 164, 255, 0.28);
     --color-border-focus: var(--color-primary);
     --color-border-error: rgba(255, 107, 107, 0.45);
     --color-border-success: rgba(76, 175, 80, 0.45);
@@ -86,7 +86,7 @@
     /* Gradiente ambiental (hero / páginas) */
     --color-bg-glow: radial-gradient(
         90% 70% at 50% -10%,
-        rgba(26, 221, 219, 0.14) 0%,
+        rgba(165, 164, 255, 0.14) 0%,
         transparent 55%
     );
 

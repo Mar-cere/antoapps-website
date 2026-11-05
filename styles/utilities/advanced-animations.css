@@ -119,7 +119,7 @@ section[data-fade-section].section-visible {
 
 .btn-modern:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 40px rgba(26, 221, 219, 0.3);
+    box-shadow: 0 10px 40px rgba(165, 164, 255, 0.3);
 }
 
 /* Glassmorphism effect */
@@ -204,7 +204,7 @@ section::before {
     background: linear-gradient(
         180deg,
         transparent 0%,
-        rgba(26, 221, 219, 0.03) 50%,
+        rgba(165, 164, 255, 0.03) 50%,
         transparent 100%
     );
     opacity: 0;

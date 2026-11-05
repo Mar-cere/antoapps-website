@@ -100,9 +100,9 @@
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-md);
     padding: var(--spacing-md);
-    background: rgba(26, 221, 219, 0.05);
+    background: rgba(165, 164, 255, 0.05);
     border-radius: 12px;
-    border: 1px solid rgba(26, 221, 219, 0.1);
+    border: 1px solid rgba(165, 164, 255, 0.1);
 }
 
 .case-study-metric {

@@ -405,7 +405,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.02) 0%, rgba(3, 105, 161, 0.02) 100%);
+    background: linear-gradient(135deg, rgba(165, 164, 255, 0.02) 0%, rgba(3, 105, 161, 0.02) 100%);
     pointer-events: none;
 }
 
@@ -458,7 +458,7 @@
     position: absolute;
     width: 120%;
     height: 120%;
-    background: radial-gradient(circle, rgba(26, 221, 219, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(165, 164, 255, 0.08) 0%, transparent 70%);
     border-radius: 50%;
     z-index: -1;
     animation: pulse 4s ease-in-out infinite;

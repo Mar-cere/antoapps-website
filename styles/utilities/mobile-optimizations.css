@@ -141,7 +141,7 @@ body.pull-to-refresh-active::before {
     background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(26, 221, 219, 0.1) 50%,
+        rgba(165, 164, 255, 0.1) 50%,
         transparent 100%
     );
     opacity: 0;
@@ -236,7 +236,7 @@ body.pull-to-refresh-active::before {
     width: 0;
     height: 0;
     border-radius: var(--radius-full);
-    background: rgba(26, 221, 219, 0.2);
+    background: rgba(165, 164, 255, 0.2);
     transform: translate(-50%, -50%);
     transition: width 0.3s ease, height 0.3s ease;
     pointer-events: none;
@@ -254,7 +254,7 @@ body.pull-to-refresh-active::before {
     .btn,
     .nav-link,
     .nav-toggle {
-        -webkit-tap-highlight-color: rgba(26, 221, 219, 0.2);
+        -webkit-tap-highlight-color: rgba(165, 164, 255, 0.2);
         -webkit-touch-callout: none;
         user-select: none;
     }

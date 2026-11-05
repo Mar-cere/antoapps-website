@@ -63,7 +63,7 @@
 
 .study-preview-card:hover {
     border-color: var(--color-primary);
-    box-shadow: 0 8px 24px rgba(26, 221, 219, 0.15),
+    box-shadow: 0 8px 24px rgba(165, 164, 255, 0.15),
                 0 4px 12px rgba(0, 0, 0, 0.08);
     transform: translateY(-4px);
 }

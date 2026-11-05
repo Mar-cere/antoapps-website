@@ -4,7 +4,7 @@
 
 .metrics-section {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(135deg, rgba(26, 221, 219, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(165, 164, 255, 0.1) 0%, rgba(163, 184, 232, 0.1) 100%);
 }
 
 .metrics-grid {
@@ -35,7 +35,7 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(26, 221, 219, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(165, 164, 255, 0.1) 0%, transparent 70%);
     opacity: 0;
     transition: opacity 0.5s ease;
 }

@@ -420,7 +420,7 @@ button.home-landing-nav__cta {
 
 .nav-download__item:hover,
 .nav-download__item:focus-visible {
-    background: rgba(26, 221, 219, 0.12);
+    background: rgba(165, 164, 255, 0.12);
     color: var(--color-primary);
     outline: none;
 }

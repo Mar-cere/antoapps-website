@@ -747,15 +747,15 @@
 
 .quick-contact-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(26, 221, 219, 0.6);
+    box-shadow: 0 6px 20px rgba(165, 164, 255, 0.6);
 }
 
 @keyframes pulse {
     0%, 100% {
-        box-shadow: 0 4px 12px rgba(26, 221, 219, 0.4);
+        box-shadow: 0 4px 12px rgba(165, 164, 255, 0.4);
     }
     50% {
-        box-shadow: 0 4px 20px rgba(26, 221, 219, 0.8);
+        box-shadow: 0 4px 20px rgba(165, 164, 255, 0.8);
     }
 }
 

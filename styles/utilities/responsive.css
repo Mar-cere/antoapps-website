@@ -590,11 +590,11 @@
     
     .faq-question {
         cursor: pointer;
-        -webkit-tap-highlight-color: rgba(26, 221, 219, 0.2);
+        -webkit-tap-highlight-color: rgba(165, 164, 255, 0.2);
     }
     
     .tab-btn {
-        -webkit-tap-highlight-color: rgba(26, 221, 219, 0.2);
+        -webkit-tap-highlight-color: rgba(165, 164, 255, 0.2);
     }
 }
 

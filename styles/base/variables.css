@@ -71,7 +71,7 @@
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
     --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
-    --shadow-glow: 0 0 0 1px rgba(26, 221, 219, 0.1);
+    --shadow-glow: 0 0 0 1px rgba(165, 164, 255, 0.1);
     
     /* Z-index Layers */
     --z-base: 1;

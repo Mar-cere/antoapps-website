@@ -8,7 +8,7 @@ body:has(.obs-root){
 .obs-root {
   min-height: 100dvh;
   isolation: isolate;
-  --color-primary: #1adddb;
+  --color-primary: #A5A4FF;
   --color-secondary: #a3b8e8;
   --color-bg-primary: #020711;
   --color-bg-secondary: #06101c;
@@ -27,7 +27,7 @@ body:has(.obs-root){
   --psyche: #a3b8e8;
   --persona: #ffd93d;
   --state: #e6c435;
-  --cortex: #1adddb;
+  --cortex: #A5A4FF;
   --nexus: #4ed6d0;
   --experience: #c5d4f5;
   --governance: #ff6b6b;
@@ -51,13 +51,13 @@ body:has(.obs-root){
   font-size: 15px;
   line-height: 1.45;
   background:
-    radial-gradient(ellipse 46% 40% at 82% 6%, rgba(26, 221, 219, 0.07), transparent 68%),
+    radial-gradient(ellipse 46% 40% at 82% 6%, rgba(165, 164, 255, 0.07), transparent 68%),
     radial-gradient(ellipse 38% 34% at 6% 82%, rgba(28, 72, 168, 0.16), transparent 70%),
     radial-gradient(ellipse 28% 24% at 74% 64%, rgba(163, 184, 232, 0.05), transparent 64%),
     radial-gradient(1.2px 1.2px at 12% 18%, rgba(244, 247, 251, 0.4), transparent),
-    radial-gradient(1px 1px at 28% 44%, rgba(26, 221, 219, 0.5), transparent),
+    radial-gradient(1px 1px at 28% 44%, rgba(165, 164, 255, 0.5), transparent),
     radial-gradient(1px 1px at 64% 12%, rgba(244, 247, 251, 0.28), transparent),
-    radial-gradient(1.4px 1.4px at 90% 32%, rgba(26, 221, 219, 0.38), transparent),
+    radial-gradient(1.4px 1.4px at 90% 32%, rgba(165, 164, 255, 0.38), transparent),
     radial-gradient(1px 1px at 76% 84%, rgba(244, 247, 251, 0.22), transparent),
     radial-gradient(1px 1px at 42% 90%, rgba(163, 184, 232, 0.42), transparent),
     var(--color-bg-primary);
@@ -249,7 +249,7 @@ body:has(.obs-root){
   flex-direction: column;
   justify-content: center;
   background:
-    radial-gradient(ellipse 80% 70% at 12% 12%, rgba(26, 221, 219, 0.1), transparent 68%),
+    radial-gradient(ellipse 80% 70% at 12% 12%, rgba(165, 164, 255, 0.1), transparent 68%),
     rgba(4, 16, 31, 0.82);
 }
 .obs-root .band__process{ grid-area: process; }
@@ -343,9 +343,9 @@ body:has(.obs-root){
   grid-column: 1;
   grid-row: 1 / span 2;
   background:
-    radial-gradient(ellipse 70% 60% at 8% 10%, rgba(26, 221, 219, 0.1), transparent 66%),
+    radial-gradient(ellipse 70% 60% at 8% 10%, rgba(165, 164, 255, 0.1), transparent 66%),
     rgba(4, 16, 31, 0.78);
-  border-color: rgba(26, 221, 219, 0.28);
+  border-color: rgba(165, 164, 255, 0.28);
 }
 .obs-root .comp-cell header{
   display: flex;
@@ -466,7 +466,7 @@ body:has(.obs-root){
 }
 .obs-root .pill[data-kind='live_trace']{
   color: var(--color-primary);
-  border-color: rgba(26, 221, 219, 0.35);
+  border-color: rgba(165, 164, 255, 0.35);
 }
 .obs-root .pill[data-kind='script_offline']{
   color: var(--color-secondary);
@@ -574,7 +574,7 @@ body:has(.obs-root){
   background: var(--color-surface-hover);
 }
 .obs-root .flow-node[aria-selected='true']{
-  background: rgba(26, 221, 219, 0.08);
+  background: rgba(165, 164, 255, 0.08);
 }
 .obs-root .flow-node .idx{
   font-family: var(--mono);
@@ -670,7 +670,7 @@ body:has(.obs-root){
 .obs-root .turn-star[data-choice='validate'],
 .obs-root .turn-star[data-choice='apply']{
   background: var(--color-primary);
-  box-shadow: 0 1px 6px rgba(26, 221, 219, 0.45);
+  box-shadow: 0 1px 6px rgba(165, 164, 255, 0.45);
 }
 .obs-root .turn-star[data-choice='abstain']{
   background: var(--color-secondary);
@@ -718,11 +718,11 @@ body:has(.obs-root){
   border: 1px solid var(--hairline);
   border-radius: 16px;
   background:
-    radial-gradient(ellipse 70% 80% at 24% 48%, rgba(26, 221, 219, 0.08), transparent 62%),
+    radial-gradient(ellipse 70% 80% at 24% 48%, rgba(165, 164, 255, 0.08), transparent 62%),
     radial-gradient(ellipse 48% 50% at 88% 16%, rgba(163, 184, 232, 0.07), transparent 70%),
     radial-gradient(ellipse 40% 48% at 84% 86%, rgba(28, 72, 168, 0.16), transparent 72%),
     radial-gradient(1.2px 1.2px at 16% 18%, rgba(244, 247, 251, 0.4), transparent),
-    radial-gradient(1px 1px at 58% 10%, rgba(26, 221, 219, 0.55), transparent),
+    radial-gradient(1px 1px at 58% 10%, rgba(165, 164, 255, 0.55), transparent),
     radial-gradient(1px 1px at 92% 48%, rgba(244, 247, 251, 0.28), transparent),
     #04101f;
 }
@@ -734,9 +734,9 @@ body:has(.obs-root){
   top: 16%;
   width: 24%;
   height: 68%;
-  border-right: 1px solid rgba(26, 221, 219, 0.2);
-  border-top: 1px solid rgba(26, 221, 219, 0.12);
-  border-bottom: 1px solid rgba(26, 221, 219, 0.12);
+  border-right: 1px solid rgba(165, 164, 255, 0.2);
+  border-top: 1px solid rgba(165, 164, 255, 0.12);
+  border-bottom: 1px solid rgba(165, 164, 255, 0.12);
   border-radius: 0 46% 46% 0;
   pointer-events: none;
   z-index: 0;
@@ -762,7 +762,7 @@ body:has(.obs-root){
   flex-direction: column;
   justify-content: center;
   padding: 28px 26px 30px;
-  border: 1px solid rgba(26, 221, 219, 0.3);
+  border: 1px solid rgba(165, 164, 255, 0.3);
   border-radius: 14px;
   background: rgba(4, 16, 31, 0.58);
   box-shadow: 0 12px 28px rgba(1, 5, 18, 0.42);
@@ -799,7 +799,7 @@ body:has(.obs-root){
   margin-bottom: 14px;
   border-radius: 50%;
   background: var(--color-primary);
-  box-shadow: 0 2px 10px rgba(26, 221, 219, 0.4);
+  box-shadow: 0 2px 10px rgba(165, 164, 255, 0.4);
 }
 .obs-root .decision-node[data-role='experience'] .decision-node__star{
   background: var(--experience);
@@ -868,7 +868,7 @@ body:has(.obs-root){
   background: rgba(4, 16, 31, 0.55);
 }
 .obs-root .decision-col[data-role='engine']{
-  border-color: rgba(26, 221, 219, 0.32);
+  border-color: rgba(165, 164, 255, 0.32);
 }
 .obs-root .decision-col[data-role='safety']{
   border-color: rgba(255, 107, 107, 0.28);
@@ -1125,8 +1125,8 @@ body:has(.obs-root){
 }
 .obs-root .pipeline-slot[data-selected='yes'],
 .obs-root .pipeline-slot button[aria-selected='true']{
-  border-color: rgba(26, 221, 219, 0.45);
-  background: rgba(26, 221, 219, 0.08);
+  border-color: rgba(165, 164, 255, 0.45);
+  background: rgba(165, 164, 255, 0.08);
 }
 .obs-root .pipeline-slot button{
   display: grid;
@@ -1224,7 +1224,7 @@ body:has(.obs-root){
   top: 50%;
   width: 22px;
   height: 1px;
-  background: linear-gradient(90deg, rgba(26, 221, 219, 0.4), rgba(255, 255, 255, 0.08));
+  background: linear-gradient(90deg, rgba(165, 164, 255, 0.4), rgba(255, 255, 255, 0.08));
 }
 .obs-root .path-node:last-child{
   margin-right: 0;
@@ -1237,7 +1237,7 @@ body:has(.obs-root){
 }
 .obs-root .path-node[aria-selected='true']::before{
   background: var(--color-primary);
-  box-shadow: 0 2px 8px rgba(26, 221, 219, 0.45);
+  box-shadow: 0 2px 8px rgba(165, 164, 255, 0.45);
 }
 .obs-root .path-node[aria-selected='true'] strong{
   color: var(--color-primary);
@@ -1314,7 +1314,7 @@ body:has(.obs-root){
   border-bottom: 1px solid var(--color-border);
 }
 .obs-root .sprint-list article.current{
-  background: rgba(26, 221, 219, 0.05);
+  background: rgba(165, 164, 255, 0.05);
   margin: 0 -16px;
   padding: 12px 16px;
 }
@@ -1360,7 +1360,7 @@ body:has(.obs-root){
   top: 6px;
   width: 24px;
   height: 1px;
-  background: linear-gradient(90deg, rgba(26, 221, 219, 0.4), rgba(255, 255, 255, 0.08));
+  background: linear-gradient(90deg, rgba(165, 164, 255, 0.4), rgba(255, 255, 255, 0.08));
 }
 .obs-root .gate-node:last-child::after{
   display: none;
@@ -1563,17 +1563,17 @@ body:has(.obs-root){
 
 .obs-root .obs-logout {
   background: rgba(4, 8, 23, 0.55);
-  border: 1px solid rgba(26, 221, 219, 0.38);
+  border: 1px solid rgba(165, 164, 255, 0.38);
   border-radius: 8px;
   padding: 6px 12px;
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(26, 221, 219, 0.08);
+  box-shadow: 0 2px 12px rgba(165, 164, 255, 0.08);
 }
 
 .obs-root .obs-logout:hover {
-  border-color: rgba(26, 221, 219, 0.7);
+  border-color: rgba(165, 164, 255, 0.7);
 }
 
 .obs-root .mobile-nav a{
