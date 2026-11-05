@@ -3,12 +3,12 @@
    ============================================ */
 
 :root {
-    /* Colores principales — claro. El oscuro vive en prefers-color-scheme. */
-    --color-primary: #6868DF;
-    --color-primary-hover: #5757C9;
-    --color-primary-light: rgba(104, 104, 223, 0.12);
-    --color-primary-lightest: rgba(104, 104, 223, 0.18);
-    --color-primary-dark: #5757C9;
+    /* El sitio solo tiene fondos oscuros. El mismo periwinkle vale en los dos esquemas. */
+    --color-primary: #A5A4FF;
+    --color-primary-hover: #C4C3FF;
+    --color-primary-light: rgba(165, 164, 255, 0.16);
+    --color-primary-lightest: rgba(165, 164, 255, 0.22);
+    --color-primary-dark: #C4C3FF;
 
     --color-secondary: #a3b8e8;
     --color-secondary-hover: #b8c9f0;
@@ -28,7 +28,7 @@
     --color-text-tertiary: rgba(244, 247, 251, 0.45);
     --color-text-disabled: rgba(244, 247, 251, 0.35);
     --color-text-muted: rgba(244, 247, 251, 0.68);
-    --color-text-on-primary: #FFFFFF;
+    --color-text-on-primary: #101216;
 
     /* Alias legacy */
     --white: var(--color-text-primary);
@@ -57,8 +57,8 @@
     --info: var(--color-info);
 
     /* Enlaces */
-    --color-link: #6868DF;
-    --color-link-hover: #5757C9;
+    --color-link: #A5A4FF;
+    --color-link-hover: #C4C3FF;
 
     /* Superficies */
     --color-surface: rgba(255, 255, 255, 0.06);
@@ -99,17 +99,4 @@
     --z-modal: 500;
     --z-tooltip: 600;
     --z-toast: 700;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-primary: #A5A4FF;
-        --color-primary-hover: #B8B7FF;
-        --color-primary-light: rgba(165, 164, 255, 0.16);
-        --color-primary-lightest: rgba(165, 164, 255, 0.22);
-        --color-primary-dark: #B8B7FF;
-        --color-link: #A5A4FF;
-        --color-link-hover: #B8B7FF;
-        --color-text-on-primary: #101216;
-    }
 }
