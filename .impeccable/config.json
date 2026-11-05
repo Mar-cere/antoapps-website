@@ -112,10 +112,11 @@
           "styles/components/developer.css",
           "styles/observatory.css",
           "styles/pages/home-landing-final.css",
-          "styles/theme/static-blocks.css"
+          "styles/theme/static-blocks.css",
+          "styles/components/development.css"
         ],
         "createdAt": "2026-11-04T14:41:33.934Z",
-        "reason": "Cambio quirúrgico de fuente. El usuario pidió no tocar color, radio, tamaño ni el degradado de estas superficies."
+        "reason": "Cambio quirúrgico de fuente y escala de /desarrollo. El usuario pidió no tocar tamaño ni layout."
       },
       {
         "rule": "design-system-radius",
@@ -126,10 +127,11 @@
           "styles/components/developer.css",
           "styles/observatory.css",
           "styles/pages/home-landing-final.css",
-          "styles/theme/static-blocks.css"
+          "styles/theme/static-blocks.css",
+          "styles/components/development.css"
         ],
         "createdAt": "2026-11-04T14:41:33.968Z",
-        "reason": "Cambio quirúrgico de fuente. El usuario pidió no tocar color, radio, tamaño ni el degradado de estas superficies."
+        "reason": "Cambio quirúrgico de fuente y radios de /desarrollo. El usuario pidió no tocar radio ni layout."
       },
       {
         "rule": "gradient-text",
@@ -149,6 +151,15 @@
         ],
         "createdAt": "2026-11-04T14:41:34.055Z",
         "reason": "El borde lateral ya estaba. Esta tarea solo cambia el peso del título 404."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "styles/components/development.css"
+        ],
+        "createdAt": "2026-11-04T14:44:07.131Z",
+        "reason": "La monoespaciada de código ya estaba; el encargo no cambia la tipografía."
       }
     ],
     "ignoreRules": [],

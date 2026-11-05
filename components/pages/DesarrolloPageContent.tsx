@@ -1,5 +1,6 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
@@ -26,6 +27,130 @@ const FIGURE_ALT = {
   en: 'Hands holding a phone open to an unanswered chat, beside a notebook with handwritten questions',
   pt: 'Mãos com o celular aberto num chat sem resposta e, ao lado, um caderno com perguntas escritas à mão',
 } as const;
+
+const iconStroke = {
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 1.75,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
+};
+
+function LineIcon({ glyph }: { glyph: string }) {
+  let body: ReactNode = null;
+  switch (glyph) {
+    case '📱':
+      body = (
+        <>
+          <rect x="7" y="2.5" width="10" height="19" rx="2" {...iconStroke} />
+          <path d="M11 18.5h2" {...iconStroke} />
+        </>
+      );
+      break;
+    case '🌐':
+      body = (
+        <>
+          <circle cx="12" cy="12" r="9" {...iconStroke} />
+          <path d="M3 12h18M12 3c2.4 2.6 2.4 15.4 0 18M12 3c-2.4 2.6-2.4 15.4 0 18" {...iconStroke} />
+        </>
+      );
+      break;
+    case '⚙️':
+      body = (
+        <>
+          <circle cx="12" cy="12" r="3" {...iconStroke} />
+          <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.8 5.8l1.6 1.6M16.6 16.6l1.6 1.6M18.2 5.8l-1.6 1.6M7.4 16.6l-1.6 1.6" {...iconStroke} />
+        </>
+      );
+      break;
+    case '🤖':
+      body = (
+        <>
+          <rect x="7" y="7" width="10" height="10" rx="2" {...iconStroke} />
+          <path d="M12 3.5V7M12 17v3.5M3.5 12H7M17 12h3.5M9.5 12h5" {...iconStroke} />
+        </>
+      );
+      break;
+    case '💾':
+      body = (
+        <>
+          <ellipse cx="12" cy="7" rx="7" ry="3" {...iconStroke} />
+          <path d="M5 7v10c0 1.7 3.1 3 7 3s7-1.3 7-3V7M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3" {...iconStroke} />
+        </>
+      );
+      break;
+    case '⚡':
+      body = <path d="M13 3 6 13h5l-1 8 8-11h-5l0-7z" {...iconStroke} />;
+      break;
+    case '🔒':
+      body = (
+        <>
+          <rect x="5" y="10" width="14" height="10" rx="2" {...iconStroke} />
+          <path d="M8 10V7a4 4 0 0 1 8 0v3" {...iconStroke} />
+        </>
+      );
+      break;
+    case '🚀':
+      body = (
+        <>
+          <path d="M4 15v4h16v-4" {...iconStroke} />
+          <path d="M12 15V4M8 8l4-4 4 4" {...iconStroke} />
+        </>
+      );
+      break;
+    case '📊':
+      body = (
+        <>
+          <path d="M4 19h16" {...iconStroke} />
+          <path d="M7 16v-5M12 16V8M17 16v-8" {...iconStroke} />
+        </>
+      );
+      break;
+    case '🎨':
+      body = (
+        <>
+          <rect x="3.5" y="4.5" width="17" height="15" rx="2" {...iconStroke} />
+          <path d="M3.5 9h17" {...iconStroke} />
+        </>
+      );
+      break;
+    case '👨‍💻':
+      body = (
+        <>
+          <circle cx="12" cy="8" r="3.2" {...iconStroke} />
+          <path d="M5.5 19.2c1.2-3 3.4-4.4 6.5-4.4s5.3 1.4 6.5 4.4" {...iconStroke} />
+        </>
+      );
+      break;
+    case '📧':
+      body = (
+        <>
+          <rect x="3.5" y="5.5" width="17" height="13" rx="2" {...iconStroke} />
+          <path d="M4 7.5 12 13l8-5.5" {...iconStroke} />
+        </>
+      );
+      break;
+    case '💻':
+      body = <path d="M8 8 4 12l4 4M16 8l4 4-4 4M13 6l-2 12" {...iconStroke} />;
+      break;
+    case '🔗':
+      body = (
+        <>
+          <path d="M10 13a5 5 0 0 0 7.1.7l1.8-1.8a5 5 0 0 0-7.1-7.1L10.5 6" {...iconStroke} />
+          <path d="M14 11a5 5 0 0 0-7.1-.7l-1.8 1.8a5 5 0 0 0 7.1 7.1L13.5 18" {...iconStroke} />
+        </>
+      );
+      break;
+    default:
+      return null;
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" className="dev-line-icon" aria-hidden="true">
+      {body}
+    </svg>
+  );
+}
 
 export default function DesarrolloPageContent({ locale }: DesarrolloPageContentProps) {
   const copy = getDesarrolloPageCopy(locale);
@@ -83,7 +208,7 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
                   <div key={category.title} className="tech-category reveal-on-scroll" data-stagger-item>
                     <h3>
                       <span className="tech-category-icon" aria-hidden="true">
-                        {category.icon}
+                        <LineIcon glyph={category.icon} />
                       </span>
                       {category.title}
                     </h3>
@@ -112,7 +237,9 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
             <div className="architecture-diagram" data-stagger>
               {copy.architecture.layers.map((layer) => (
                 <div key={layer.title} className="arch-layer reveal-on-scroll" data-stagger-item>
-                  <div className="arch-icon">{layer.icon}</div>
+                  <div className="arch-icon" aria-hidden="true">
+                    <LineIcon glyph={layer.icon} />
+                  </div>
                   <h3>{layer.title}</h3>
                   <p>{layer.description}</p>
                   <div className="tech-tags">
@@ -135,7 +262,9 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
             <div className="challenges-grid" data-stagger>
               {copy.challenges.items.map((item) => (
                 <div key={item.title} className="challenge-card reveal-on-scroll" data-stagger-item>
-                  <div className="challenge-icon">{item.icon}</div>
+                  <div className="challenge-icon" aria-hidden="true">
+                    <LineIcon glyph={item.icon} />
+                  </div>
                   <h3>{item.title}</h3>
                   <p>
                     <strong>{copy.challenges.challengeLabel}</strong> {item.challenge}
@@ -177,7 +306,9 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
           <div className="container">
             <div className="developer-card">
               <div className="developer-header">
-                <div className="developer-avatar">👨‍💻</div>
+                <div className="developer-avatar" aria-hidden="true">
+                  <LineIcon glyph="👨‍💻" />
+                </div>
                 <div className="developer-details">
                   <h2 className="reveal-on-scroll">{copy.developer.sectionTitle}</h2>
                   <h3 className="reveal-on-scroll">{copy.developer.name}</h3>
@@ -186,7 +317,7 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
               </div>
               <div className="developer-contact">
                 <a href={`mailto:${copy.developer.email}`} className="developer-email">
-                  <span>📧</span>
+                  <LineIcon glyph="📧" />
                   <span>{copy.developer.email}</span>
                 </a>
                 <div className="developer-social">
@@ -197,7 +328,7 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
                     className="social-link"
                     aria-label={copy.developer.githubAriaLabel}
                   >
-                    <span>💻</span>
+                    <LineIcon glyph="💻" />
                     <span>{copy.developer.githubLabel}</span>
                   </a>
                   <a
@@ -207,7 +338,7 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
                     className="social-link"
                     aria-label={copy.developer.linkedinAriaLabel}
                   >
-                    <span>🔗</span>
+                    <LineIcon glyph="🔗" />
                     <span>{copy.developer.linkedinLabel}</span>
                   </a>
                 </div>
@@ -240,8 +371,8 @@ export default function DesarrolloPageContent({ locale }: DesarrolloPageContentP
         </section>
       </main>
       <HomeMinimalFooter locale={locale} switchPath="/desarrollo" />
-      </div>
       <CookieConsent compact bannerDelayMs={3000} showAfterScrollPx={120} />
+      </div>
     </LocaleProvider>
   );
 }
