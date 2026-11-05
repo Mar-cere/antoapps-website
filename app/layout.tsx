@@ -1,16 +1,9 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { headers } from 'next/headers';
 import HtmlLang from '@/components/i18n/HtmlLang';
 import { ToastProvider } from '@/components/ui/ToastContainer';
 import ClarityAnalytics from '@/components/Clarity';
 import { htmlLanguage, isLegalLocale } from '@/lib/i18n/config';
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
 
 /** Metadatos mínimos: la marca Anto vive en `app/(site)/layout.tsx` y en cada página. */
 export const metadata: Metadata = {
@@ -39,8 +32,13 @@ export default async function RootLayout({
   const locale = isLegalLocale(headerLocale) ? headerLocale : 'es';
 
   return (
-    <html lang={htmlLanguage(locale)} className={inter.variable}>
-      <body className={inter.className}>
+    <html lang={htmlLanguage(locale)}>
+      <body
+        style={{
+          fontFamily:
+            'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        }}
+      >
         <ClarityAnalytics />
         <HtmlLang />
         <ToastProvider>{children}</ToastProvider>

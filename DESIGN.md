@@ -35,37 +35,37 @@ colors:
   overlay-dark: "rgba(0, 0, 0, 0.65)"
 typography:
   title:
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
     fontSize: 24px
     fontWeight: 600
     lineHeight: 1.25
     letterSpacing: normal
   subtitle:
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
     fontSize: 18px
     fontWeight: 600
     lineHeight: 1.35
     letterSpacing: normal
   body:
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.5
     letterSpacing: normal
   caption:
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.4
     letterSpacing: normal
   small:
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
     fontSize: 12px
     fontWeight: 500
     lineHeight: 1.3
     letterSpacing: normal
   eyebrow:
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
     fontSize: 12px
     fontWeight: 600
     lineHeight: 1.2
@@ -183,7 +183,7 @@ Periwinkle sobre neutros fríos. El mismo rol cambia de valor entre claro y oscu
 
 ## Typography
 
-**Display Font:** sans del sistema (SF Pro / system-ui)
+**Display Font:** sans del sistema (`system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`)
 **Body Font:** la misma sans
 **Label/Mono Font:** la misma sans; no hay mono de marca ni serif
 
