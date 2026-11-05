@@ -33,7 +33,12 @@ export default async function RootLayout({
 
   return (
     <html lang={htmlLanguage(locale)}>
-      <body>
+      <body
+        style={{
+          fontFamily:
+            'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        }}
+      >
         <ClarityAnalytics />
         <HtmlLang />
         <ToastProvider>{children}</ToastProvider>
