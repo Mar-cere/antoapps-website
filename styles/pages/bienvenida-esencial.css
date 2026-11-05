@@ -74,8 +74,9 @@ body:has(.lad-page) {
 .lad-page .lad-hero-cta-btn,
 .lad-page .lad-sticky-cta-btn,
 .lad-page .btn-primary {
-  background: #A5A4FF;
-  color: #101216;
+  background-color: var(--color-primary);
+  background-image: none;
+  color: var(--color-text-on-primary);
   border: 0;
   animation: none;
   filter: none;
@@ -84,8 +85,9 @@ body:has(.lad-page) {
 .lad-page .lad-hero-cta-btn:hover,
 .lad-page .lad-sticky-cta-btn:hover,
 .lad-page .btn-primary:hover {
-  background: #C4C3FF;
-  color: #101216;
+  background-color: var(--color-primary-hover);
+  background-image: none;
+  color: var(--color-text-on-primary);
   box-shadow: none;
   filter: none;
   transform: none;

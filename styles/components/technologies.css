@@ -16,7 +16,7 @@
     margin-top: var(--spacing-6);
 }
 
-.tech-category:nth-child(1) { --category-color: #1ADDDB; }
+.tech-category:nth-child(1) { --category-color: var(--color-primary); }
 .tech-category:nth-child(2) { --category-color: #61DAFB; }
 .tech-category:nth-child(3) { --category-color: #339933; }
 .tech-category:nth-child(4) { --category-color: #FF6B6B; }

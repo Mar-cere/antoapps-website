@@ -160,6 +160,322 @@
         ],
         "createdAt": "2026-11-04T14:44:07.131Z",
         "reason": "La monoespaciada de código ya estaba; el encargo no cambia la tipografía."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "app/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a/resultado/resultado.module.css",
+          "app/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a/validacion.module.css",
+          "styles/components/developer.css",
+          "styles/observatory.css",
+          "styles/pages/home-landing-final.css",
+          "styles/theme/static-blocks.css"
+        ],
+        "createdAt": "2026-11-04T14:41:33.934Z",
+        "reason": "Cambio quirúrgico de fuente. El usuario pidió no tocar color, radio, tamaño ni el degradado de estas superficies."
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "*",
+        "files": [
+          "app/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a/resultado/resultado.module.css",
+          "app/zt9kq7m2v8n4xpw6rb3yjh1cw5df8a/validacion.module.css",
+          "styles/components/developer.css",
+          "styles/observatory.css",
+          "styles/pages/home-landing-final.css",
+          "styles/theme/static-blocks.css"
+        ],
+        "createdAt": "2026-11-04T14:41:33.968Z",
+        "reason": "Cambio quirúrgico de fuente. El usuario pidió no tocar color, radio, tamaño ni el degradado de estas superficies."
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "styles/theme/mobile-modern.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.231Z",
+        "reason": "El pedido solo cambia el botón primario. El texto en degradado de títulos ya estaba y no se reestiliza."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "styles/theme/mobile-modern.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.264Z",
+        "reason": "El pedido solo quita el teal de .btn-primary. El resto de colores previos del archivo queda."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "styles/theme/mobile-modern.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.301Z",
+        "reason": "El pedido dice no tocar la fuente. Los tamaños previos quedan."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "styles/theme/site-coherence.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.335Z",
+        "reason": "El pedido solo quita el degradado teal de .btn-primary. El badge técnico previo queda."
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "*",
+        "files": [
+          "styles/components/button-variants.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.367Z",
+        "reason": "El spinner previo no forma parte del cambio del botón primario."
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "styles/components/button-variants.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.399Z",
+        "reason": "El ripple general de .btn queda. Solo se neutraliza el de .btn-primary."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "styles/components/microinteractions.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.430Z",
+        "reason": "Bordes de estado previos. El pedido solo neutraliza el pulso teal de .btn-primary."
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "*",
+        "files": [
+          "styles/components/microinteractions.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.463Z",
+        "reason": "Animación bounce-in previa, fuera del botón primario."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "styles/components/microinteractions.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.494Z",
+        "reason": "El pedido solo quita el pulso teal de .btn-primary. El resto de colores previos queda."
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "*",
+        "files": [
+          "styles/utilities/enhanced-animations.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.527Z",
+        "reason": "Rebotes previos del archivo. Solo se quita .btn-primary del glow."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "styles/utilities/enhanced-animations.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.559Z",
+        "reason": "Color previo del archivo. Solo se quita .btn-primary del glow."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "styles/pages/home-v2.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.593Z",
+        "reason": "La home ya usa su paleta. Este cambio solo pasa el cookie-consent a tokens."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "styles/pages/home-v2.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.625Z",
+        "reason": "No se toca la tipografía de la home."
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "styles/pages/home-v2.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.658Z",
+        "reason": "No se reestiliza el texto de la home."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "styles/components/nexus.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.691Z",
+        "reason": "Nexus ya tiene su paleta. El cookie .btn-primary pasa a tokens."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "styles/pages/bienvenida-esencial.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.725Z",
+        "reason": "Bienvenida ya es carbón. El .btn-primary pasa a leer el token."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "styles/pages/bienvenida-esencial.css"
+        ],
+        "createdAt": "2026-11-04T14:44:26.757Z",
+        "reason": "No se toca la tipografía de bienvenida."
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "styles/components/microinteractions.css"
+        ],
+        "createdAt": "2026-11-04T14:45:02.953Z",
+        "reason": "El ripple de ancho en .btn ya estaba. El pedido solo quita el ::after y el pulso de .btn-primary."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "styles/components/premium-store-cta.css"
+        ],
+        "createdAt": "2026-11-04T14:47:58.091Z",
+        "reason": "El botón de tienda no se rediseña. Solo se quita el fallback #1adddb para que el CSS de / no lo contenga."
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "*",
+        "files": [
+          "styles/components/premium-store-cta.css"
+        ],
+        "createdAt": "2026-11-04T14:47:58.131Z",
+        "reason": "Radios previos del botón de tienda. No se rediseña."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "styles/components/premium-store-cta.css"
+        ],
+        "createdAt": "2026-11-04T14:47:58.168Z",
+        "reason": "Tipografía previa del botón de tienda. No se rediseña."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "styles/components/stats.css"
+        ],
+        "createdAt": "2026-11-04T14:54:08.172Z",
+        "reason": "Solo se cambia el hex teal del número por el token. El resto del archivo queda."
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "*",
+        "files": [
+          "styles/components/stats.css"
+        ],
+        "createdAt": "2026-11-04T14:54:08.206Z",
+        "reason": "Radio previo. No se rediseña la sección."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "styles/components/stats.css"
+        ],
+        "createdAt": "2026-11-04T14:54:08.245Z",
+        "reason": "Tamaño previo. No se toca la tipografía."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "styles/components/technologies.css"
+        ],
+        "createdAt": "2026-11-04T14:54:08.281Z",
+        "reason": "Solo se cambia el hex teal de la primera categoría por el token."
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "styles/components/technologies.css"
+        ],
+        "createdAt": "2026-11-04T14:54:08.333Z",
+        "reason": "Animación previa de la sección. No se rediseña."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "styles/components/technologies.css"
+        ],
+        "createdAt": "2026-11-04T14:54:08.377Z",
+        "reason": "Borde previo de la sección. No se rediseña."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "styles/components/developer.css"
+        ],
+        "createdAt": "2026-11-04T14:54:08.421Z",
+        "reason": "Solo se sustituye el hex teal por el token para que / no lo cargue."
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "*",
+        "files": [
+          "styles/components/developer.css"
+        ],
+        "createdAt": "2026-11-04T14:54:08.468Z",
+        "reason": "Radio previo. No se rediseña."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "styles/components/developer.css"
+        ],
+        "createdAt": "2026-11-04T14:54:08.501Z",
+        "reason": "Tipografía previa. No se toca."
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "styles/components/developer.css"
+        ],
+        "createdAt": "2026-11-04T14:54:08.545Z",
+        "reason": "Texto en degradado previo. No se rediseña esa sección."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "styles/components/technologies.css"
+        ],
+        "createdAt": "2026-11-04T14:54:15.439Z",
+        "reason": "Tamaño previo de la sección. Solo se cambia el hex teal."
       }
     ],
     "ignoreRules": [],

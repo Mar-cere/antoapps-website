@@ -110,17 +110,7 @@ textarea::placeholder {
     color: var(--color-link);
 }
 
-/* CTAs primarios — gradiente como landing */
-.btn-primary {
-    background: linear-gradient(135deg, #1adddb 0%, #12c9c7 52%, #0fb8b6 100%);
-    color: var(--color-text-on-primary);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.btn-primary:hover:not(:disabled) {
-    background: linear-gradient(135deg, #1be8e6 0%, #14d4d2 52%, #12c9c7 100%);
-    filter: brightness(1.05);
-}
+/* El primario es la cápsula de buttons.css. */
 
 /* Heroes internos — mismo glow que landing */
 .about-hero,

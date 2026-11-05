@@ -87,30 +87,6 @@
     height: 300px;
 }
 
-.btn-primary::after {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-/* Pulse Animation para CTAs Importantes */
-.btn-primary.btn-large,
-.btn-primary.btn-cta {
-    animation: pulseCTA 2s ease-in-out infinite;
-}
-
-@keyframes pulseCTA {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(26, 221, 219, 0.7);
-    }
-    50% {
-        box-shadow: 0 0 0 10px rgba(26, 221, 219, 0);
-    }
-}
-
-.btn-primary.btn-large:hover,
-.btn-primary.btn-cta:hover {
-    animation: none;
-}
-
 /* Feedback Visual Inmediato en Formularios */
 input:focus,
 textarea:focus,
@@ -212,11 +188,6 @@ button,
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-    .btn-primary.btn-large,
-    .btn-primary.btn-cta {
-        animation: none;
-    }
-
     .reveal-on-scroll {
         opacity: 1;
         transform: none;
