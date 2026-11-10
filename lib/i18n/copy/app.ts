@@ -86,35 +86,35 @@ export type AppPageCopy = {
 
 const metadataByLocale: Record<Locale, AppPageMetadata> = {
   es: {
-    title: 'Anto — App para iPhone y Android | Acompañamiento emocional',
+    title: 'Anto: descarga la app para iPhone y Android',
     description:
-      'Descarga Anto en App Store (iPhone) o Google Play (Android): acompañamiento emocional continuo, privacidad y herramientas para el día a día. Prueba disponible al instalar. Complementa — no reemplaza — a un terapeuta o profesional humano. Versión {versionLabel}.',
+      'Descarga Anto en App Store o Google Play. Escribes lo que da vueltas y te llevas un paso concreto. No sustituye a un terapeuta. Prueba de 1 día.',
     openGraph: {
-      title: 'Anto — App para iPhone y Android',
+      title: 'Anto: descarga la app para iPhone y Android',
       description:
-        'Descarga en App Store o Google Play. Acompañamiento emocional continuo en iPhone y Android. Complementa — no reemplaza — a un terapeuta humano.',
+        'Descarga Anto en App Store o Google Play. Escribes lo que da vueltas y te llevas un paso concreto. No sustituye a un terapeuta. Prueba de 1 día.',
       url: 'https://antoapps.com/app',
     },
   },
   en: {
-    title: 'Anto — iPhone and Android app | Ongoing emotional support',
+    title: 'Anto: download the app for iPhone and Android',
     description:
-      'Download Anto on the App Store (iPhone) or Google Play (Android): ongoing emotional support, privacy, and everyday tools. Trial available when you install. Complements — does not replace — a human therapist or professional. Version {versionLabel}.',
+      'Download Anto on the App Store or Google Play. You write what keeps looping and leave with one concrete step. Does not replace a therapist. 1-day trial.',
     openGraph: {
-      title: 'Anto — iPhone and Android app',
+      title: 'Anto: download the app for iPhone and Android',
       description:
-        'Download on the App Store or Google Play. Ongoing emotional support on iPhone and Android. Complements — does not replace — a human therapist.',
+        'Download Anto on the App Store or Google Play. You write what keeps looping and leave with one concrete step. Does not replace a therapist. 1-day trial.',
       url: 'https://antoapps.com/en/app',
     },
   },
   pt: {
-    title: 'Anto — Aplicativo para iPhone e Android | Acompanhamento emocional',
+    title: 'Anto: baixe o app para iPhone e Android',
     description:
-      'Baixe a Anto na App Store (iPhone) ou no Google Play (Android): acompanhamento emocional contínuo, privacidade e ferramentas para o dia a dia. Teste disponível ao instalar. Complementa — não substitui — um terapeuta ou profissional humano. Versão {versionLabel}.',
+      'Baixe a Anto na App Store ou no Google Play. Você escreve o que fica em loop e sai com um passo concreto. Não substitui um terapeuta. Teste de 1 dia.',
     openGraph: {
-      title: 'Anto — Aplicativo para iPhone e Android',
+      title: 'Anto: baixe o app para iPhone e Android',
       description:
-        'Baixe na App Store ou no Google Play. Acompanhamento emocional contínuo no iPhone e no Android. Complementa — não substitui — um terapeuta humano.',
+        'Baixe a Anto na App Store ou no Google Play. Você escreve o que fica em loop e sai com um passo concreto. Não substitui um terapeuta. Teste de 1 dia.',
       url: 'https://antoapps.com/pt/app',
     },
   },
@@ -516,15 +516,12 @@ function buildAppPageCopy(locale: Locale): AppPageCopy {
 
 const appPageCopyCache: Partial<Record<Locale, AppPageCopy>> = {};
 
-export function appPageMetadata(locale: Locale, versionLabel?: string): Metadata {
+export function appPageMetadata(locale: Locale, _versionLabel?: string): Metadata {
   const meta = metadataByLocale[locale];
-  const description = versionLabel
-    ? meta.description.replace('{versionLabel}', versionLabel)
-    : meta.description;
 
   return buildLocalizedPageMetadata(locale, '/app', {
     title: meta.title,
-    description,
+    description: meta.description,
     openGraph: {
       ...meta.openGraph,
       images: [

@@ -1854,7 +1854,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Grounding 5-4-3-2-1: quando a ansiedade sobe | Anto',
       description:
-        'Exercício de grounding (ancoragem) 5-4-3-2-1 para ansiedade intensa, pânico ou crise: âncoras sensoriais, sinais no corpo, alternativas rápidas e quando pedir ajuda. Guia breve Anto; complementa o mapa de ansiedade. Não substitui terapia nem emergência.',
+        'Como fazer o exercício de grounding 5-4-3-2-1, com âncoras sensoriais. Guia breve da Anto. Não substitui um terapeuta nem uma emergência.',
       openGraphTitle: 'Quando a ansiedade sobe — grounding 5-4-3-2-1',
       openGraphDescription:
         'Exercício 5-4-3-2-1 e âncoras sensoriais quando a ansiedade sobe. Guia breve de grounding e o caminho até o mapa de ansiedade.',

@@ -1854,7 +1854,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Grounding 5-4-3-2-1: when anxiety rises | Anto',
       description:
-        '5-4-3-2-1 grounding exercise for intense anxiety, panic, or crisis: sensory anchors, body signals, quick alternatives, and when to seek help. Anto brief guide; complements the anxiety map. Does not replace therapy or emergency care.',
+        'How to do the 5-4-3-2-1 grounding exercise, with sensory anchors. Brief Anto guide. Does not replace a therapist or an emergency.',
       openGraphTitle: 'When anxiety rises — grounding 5-4-3-2-1',
       openGraphDescription:
         '5-4-3-2-1 exercise and sensory anchors when anxiety rises. A short grounding guide plus a path to the fuller anxiety map.',
