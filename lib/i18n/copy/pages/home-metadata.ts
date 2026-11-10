@@ -5,7 +5,8 @@ import { siteUrl } from '@/lib/i18n/metadata';
 
 /**
  * Metadata de la home publicada (voz editorial home-v2).
- * El título nombra la app para una consulta ambigua; el H1 sigue siendo la frase editorial.
+ * Title y description responden a «qué es Anto» / «what is Anto» / «o que é a Anto».
+ * El H1 sigue siendo la frase editorial.
  *
  * La imagen social no se declara aquí. Vive en `app/(site)/opengraph-image.tsx`
  * (y en `app/(site)/en/opengraph-image.tsx`). Como el archivo está dentro del
@@ -28,71 +29,71 @@ export function homePageMetadata(locale: Locale): Metadata {
 
   if (locale === 'pt') {
     return {
-      title: 'Anto, app de acompanhamento emocional | Ansiedade, entre sessões',
+      title: 'O que é a Anto: app de acompanhamento emocional',
       description:
-        'A Anto é um app de acompanhamento emocional contínuo para a ansiedade, o nervosismo social e as horas quietas, entre sessões ou no dia a dia. Você escreve o que fica em loop e sai com um passo concreto. No iPhone e no Android. Não substitui um terapeuta. Teste grátis de 1 dia.',
+        'A Anto é um app para escrever o que fica em loop e sair com um passo concreto. No iPhone e no Android. Não substitui um terapeuta. Inclui 1 dia de teste.',
       keywords:
-        'Anto, acompanhamento emocional contínuo, ansiedade, nervosismo social, horas quietas, entre sessões, grounding, TCC, iPhone, Android, teste grátis',
+        'Anto, o que é a Anto, acompanhamento emocional, passo concreto, iPhone, Android, teste grátis',
       alternates,
       openGraph: {
         type: 'website',
         url: canonical,
         title: 'Anto — Quando tudo custa um pouco mais',
-        description: `Acompanhamento emocional contínuo para a ansiedade e as horas quietas, entre sessões ou no dia a dia. No iPhone e no Android. Não substitui um terapeuta. ${trial.pricingNote}`,
+        description: `A Anto é um app de acompanhamento emocional. Você escreve o que fica em loop e sai com um passo concreto. No iPhone e no Android. Não substitui um terapeuta. ${trial.pricingNote}`,
         siteName: 'Anto',
         locale: 'pt_BR',
       },
       twitter: {
         card: 'summary_large_image',
         title: 'Anto — Quando tudo custa um pouco mais',
-        description: `Acompanhamento emocional contínuo para a ansiedade e as horas quietas, entre sessões ou no dia a dia. No iPhone e no Android. Não substitui um terapeuta. ${trial.short}.`,
+        description: `A Anto é um app de acompanhamento emocional. Você escreve o que fica em loop e sai com um passo concreto. No iPhone e no Android. Não substitui um terapeuta. ${trial.short}.`,
       },
     };
   }
 
   if (locale === 'en') {
     return {
-      title: 'Anto, an emotional support app | Anxiety, between sessions',
+      title: 'What is Anto? An emotional support app',
       description:
-        'Anto is an ongoing emotional support app for anxiety, for being nervous around people, and quiet hours, between sessions or day to day. You write what keeps looping and leave with one concrete step. On iPhone and Android. Does not replace a human therapist. Free 1-day trial.',
+        'Anto is an app to write looping thoughts and leave with one concrete step. On iPhone and Android. Does not replace a therapist. Includes a 1-day trial.',
       keywords:
-        'Anto, ongoing emotional support, anxiety, nervous around people, quiet hours, between sessions, grounding, CBT, iPhone, Android, free trial',
+        'Anto, what is Anto, emotional support app, concrete step, iPhone, Android, free trial',
       alternates,
       openGraph: {
         type: 'website',
         url: canonical,
         title: 'Anto — When everything costs a little more',
-        description: `Ongoing emotional support for anxiety and quiet hours, between sessions or day to day. On iPhone and Android. Does not replace a human therapist. ${trial.pricingNote}`,
+        description: `Anto is an emotional support app. You write looping thoughts and leave with one concrete step. On iPhone and Android. Does not replace a therapist. ${trial.pricingNote}`,
         siteName: 'Anto',
         locale: 'en_US',
       },
       twitter: {
         card: 'summary_large_image',
         title: 'Anto — When everything costs a little more',
-        description: `Ongoing emotional support for anxiety and quiet hours, between sessions or day to day. On iPhone and Android. Does not replace a human therapist. ${trial.short}.`,
+        description: `Anto is an emotional support app. You write looping thoughts and leave with one concrete step. On iPhone and Android. Does not replace a therapist. ${trial.short}.`,
       },
     };
   }
 
   return {
-    title: 'Anto, app de acompañamiento emocional | Ansiedad, entre sesiones',
+    title: 'Qué es Anto: app de acompañamiento emocional',
     description:
-      'Anto es una app de acompañamiento emocional continuo para la ansiedad, los nervios en situaciones sociales y las horas quietas, entre sesiones o en el día a día. Escribes lo que da vueltas y te llevas un paso concreto. En iPhone y Android. No sustituye a un terapeuta. Prueba de 1 día gratis.',
+      'Anto es una app para escribir lo que te da vueltas y salir con un paso concreto. En iPhone y Android. No sustituye a un terapeuta. Incluye 1 día de prueba.',
     keywords:
-      'Anto, acompañamiento emocional continuo, ansiedad, nervios en situaciones sociales, horas quietas, entre sesiones, grounding, TCC, iPhone, Android, prueba gratis',
+      'Anto, qué es Anto, acompañamiento emocional, paso concreto, iPhone, Android, prueba gratis',
     alternates,
     openGraph: {
       type: 'website',
       url: canonical,
       title: 'Anto — Cuando todo cuesta un poco más',
-      description: `Acompañamiento emocional continuo para la ansiedad y las horas quietas, entre sesiones o en el día a día. En iPhone y Android. No sustituye a un terapeuta. ${trial.pricingNote}`,
+      description: `Anto es una app de acompañamiento emocional. Escribes lo que te da vueltas y sales con un paso concreto. En iPhone y Android. No sustituye a un terapeuta. ${trial.pricingNote}`,
       siteName: 'Anto',
       locale: 'es_CL',
     },
     twitter: {
       card: 'summary_large_image',
       title: 'Anto — Cuando todo cuesta un poco más',
-      description: `Acompañamiento emocional continuo para la ansiedad y las horas quietas, entre sesiones o en el día a día. En iPhone y Android. No sustituye a un terapeuta. ${trial.short}.`,
+      description: `Anto es una app de acompañamiento emocional. Escribes lo que te da vueltas y sales con un paso concreto. En iPhone y Android. No sustituye a un terapeuta. ${trial.short}.`,
     },
   };
 }

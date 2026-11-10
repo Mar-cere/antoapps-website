@@ -6,6 +6,11 @@ import { homeOgImageAlt } from '@/lib/home/opengraph-image';
 const LOCALES: readonly Locale[] = ['es', 'en', 'pt'];
 
 const LEGACY_HEADLINE = /apoyo emocional 24\/7|24\/7 emotional support|home v2|sandbox/i;
+const CLINICAL_OR_LEGACY_INTENT =
+  /ansiedad|ansiedade|anxiety|entre sesiones|entre sessões|between (therapy )?sessions|diagn[oó]stic|diagnostica|treats? |cura |cure /i;
+
+const TITLE_MAX = 60;
+const DESCRIPTION_MAX = 155;
 
 function metaText(value: unknown): string {
   if (typeof value === 'string') return value;
@@ -14,6 +19,10 @@ function metaText(value: unknown): string {
     return typeof absolute === 'string' ? absolute : '';
   }
   return '';
+}
+
+function charCount(value: string): number {
+  return [...value].length;
 }
 
 /** Invariantes SEO de la home publicada (voz editorial). */
@@ -37,22 +46,38 @@ export function assertHomeMetadataInvariants(): string[] {
     }
 
     if (locale === 'es') {
-      if (!/^Anto, app de acompañamiento emocional \| Ansiedad, entre sesiones$/.test(title)) {
-        errors.push(`${tag} metadata.title debe nombrar la app y la intención, sin sustituir el H1`);
+      if (!/^Qué es Anto: app de acompañamiento emocional$/.test(title)) {
+        errors.push(`${tag} metadata.title debe responder «qué es Anto», sin sustituir el H1`);
       }
     } else if (locale === 'pt') {
-      if (!/^Anto, app de acompanhamento emocional \| Ansiedade, entre sessões$/.test(title)) {
-        errors.push(`${tag} metadata.title deve nomear o app e a intenção, sem substituir o H1`);
+      if (!/^O que é a Anto: app de acompanhamento emocional$/.test(title)) {
+        errors.push(`${tag} metadata.title deve responder «o que é a Anto», sem substituir o H1`);
       }
-    } else if (!/^Anto, an emotional support app \| Anxiety, between sessions$/.test(title)) {
-      errors.push(`${tag} metadata.title must name the app and the intent, and leave the H1 unchanged`);
+    } else if (!/^What is Anto\? An emotional support app$/.test(title)) {
+      errors.push(`${tag} metadata.title must answer “what is Anto”, and leave the H1 unchanged`);
     }
+
+    if (charCount(title) > TITLE_MAX) {
+      errors.push(`${tag} metadata.title supera ${TITLE_MAX} caracteres (${charCount(title)})`);
+    }
+    if (charCount(description) > DESCRIPTION_MAX) {
+      errors.push(
+        `${tag} metadata.description supera ${DESCRIPTION_MAX} caracteres (${charCount(description)})`
+      );
+    }
+
     if (!ogTitle.toLowerCase().includes(accent.toLowerCase())) {
       errors.push(`${tag} openGraph.title debe incluir hero.titleAccent ("${accent}")`);
     }
 
     if (LEGACY_HEADLINE.test(title) || LEGACY_HEADLINE.test(ogTitle) || LEGACY_HEADLINE.test(description)) {
       errors.push(`${tag} metadata usa headline legacy o copy de sandbox`);
+    }
+
+    if (CLINICAL_OR_LEGACY_INTENT.test(title) || CLINICAL_OR_LEGACY_INTENT.test(description)) {
+      errors.push(
+        `${tag} title/description no deben usar términos clínicos ni intenciones legacy (ansiedad / entre sesiones)`
+      );
     }
 
     if (!description.trim() || !ogDescription.trim()) {
@@ -63,40 +88,40 @@ export function assertHomeMetadataInvariants(): string[] {
     }
 
     if (locale === 'es') {
-      if (!/acompaña|horas quietas|paso concreto/i.test(description)) {
+      if (!/paso concreto/i.test(description) || !/da vueltas|escribir/i.test(description)) {
         errors.push(`${tag} metadata.description debe reflejar la voz editorial`);
       }
-      if (!/ansiedad/i.test(description) || !/entre sesiones/i.test(description)) {
-        errors.push(`${tag} metadata.description debe incluir intenciones (ansiedad, entre sesiones)`);
+      if (!/iPhone/i.test(description) || !/Android/i.test(description)) {
+        errors.push(`${tag} metadata.description debe mencionar iPhone y Android`);
       }
-      if (!/iPhone/i.test(description) || !/prueba|gratis/i.test(description)) {
-        errors.push(`${tag} metadata.description debe mencionar iPhone y prueba`);
+      if (!/prueba|1 d[ií]a/i.test(description)) {
+        errors.push(`${tag} metadata.description debe mencionar la prueba de 1 día`);
       }
       if (!/no reemplaza|no sustituye/i.test(description)) {
         errors.push(`${tag} metadata.description debe aclarar que no reemplaza terapia`);
       }
     } else if (locale === 'pt') {
-      if (!/acompanh|horas quietas|passo concreto/i.test(description)) {
+      if (!/passo concreto/i.test(description) || !/em loop|escrever/i.test(description)) {
         errors.push(`${tag} metadata.description deve refletir a voz editorial`);
       }
-      if (!/ansiedade/i.test(description) || !/entre sessões/i.test(description)) {
-        errors.push(`${tag} metadata.description deve incluir intenções (ansiedade, entre sessões)`);
+      if (!/iPhone/i.test(description) || !/Android/i.test(description)) {
+        errors.push(`${tag} metadata.description deve mencionar iPhone e Android`);
       }
-      if (!/iPhone/i.test(description) || !/teste|grátis/i.test(description)) {
-        errors.push(`${tag} metadata.description deve mencionar iPhone e teste`);
+      if (!/teste|1 dia/i.test(description)) {
+        errors.push(`${tag} metadata.description deve mencionar o teste de 1 dia`);
       }
       if (!/não substitui/i.test(description)) {
         errors.push(`${tag} metadata.description deve deixar claro que não substitui terapia`);
       }
     } else {
-      if (!/quiet hours|concrete step|ongoing emotional/i.test(description)) {
+      if (!/concrete step/i.test(description) || !/looping|write/i.test(description)) {
         errors.push(`${tag} metadata.description must reflect editorial voice`);
       }
-      if (!/anxiety/i.test(description) || !/between (therapy )?sessions/i.test(description)) {
-        errors.push(`${tag} metadata.description must include intents (anxiety, between sessions)`);
+      if (!/iPhone/i.test(description) || !/Android/i.test(description)) {
+        errors.push(`${tag} metadata.description must mention iPhone and Android`);
       }
-      if (!/iPhone/i.test(description) || !/trial|free/i.test(description)) {
-        errors.push(`${tag} metadata.description must mention iPhone and trial`);
+      if (!/trial|1-day/i.test(description)) {
+        errors.push(`${tag} metadata.description must mention the 1-day trial`);
       }
       if (!/does not replace|doesn't replace/i.test(description)) {
         errors.push(`${tag} metadata.description must clarify it does not replace therapy`);
