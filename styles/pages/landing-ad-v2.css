@@ -55,6 +55,11 @@
 }
 
 .lad-page--v2 .lad-v2-lang a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 44px;
     opacity: 0.72;
 }
 
@@ -88,7 +93,7 @@
 
 .lad-v2-hero-h1 {
     font-size: clamp(1.5rem, 5vw, 2rem);
-    font-weight: 500;
+    font-weight: 600;
     color: #F4F6FC;
     line-height: 1.12;
     letter-spacing: -0.04em;
