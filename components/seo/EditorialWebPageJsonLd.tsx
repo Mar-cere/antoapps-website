@@ -1,7 +1,6 @@
 import { getEditorialImagePath } from '@/lib/assets/editorial-images';
-import { APP_VERSION_LABEL } from '@/lib/app-version';
 import type { LegalLocale, Locale } from '@/lib/i18n/config';
-import { getAppPageCopy } from '@/lib/i18n/copy/app';
+import { appPageMetadata, getAppPageCopy } from '@/lib/i18n/copy/app';
 import { getBienvenidaCopy } from '@/lib/i18n/copy/bienvenida';
 import { getContactPageCopy } from '@/lib/i18n/copy/contact';
 import { getAboutPageCopy } from '@/lib/i18n/copy/pages/about';
@@ -55,19 +54,11 @@ function fieldsForSite(locale: Locale, path: EditorialWebPagePath) {
 
   if (path === '/app') {
     const copy = getAppPageCopy(locale);
-    const description = locText(
-      locale,
-      `Download Anto on the App Store (iPhone) or Google Play (Android): ongoing emotional support, privacy, and everyday tools. Trial available when you install. Complements — does not replace — a human therapist or professional. Version ${APP_VERSION_LABEL}.`,
-      `Baixe a Anto na App Store (iPhone) ou no Google Play (Android): acompanhamento emocional contínuo, privacidade e ferramentas para o dia a dia. Teste disponível ao instalar. Complementa — não substitui — um terapeuta ou profissional humano. Versão ${APP_VERSION_LABEL}.`,
-      `Descarga Anto en App Store (iPhone) o Google Play (Android): acompañamiento emocional continuo, privacidad y herramientas para el día a día. Prueba disponible al instalar. Complementa — no reemplaza — a un terapeuta o profesional humano. Versión ${APP_VERSION_LABEL}.`
-    );
+    const meta = appPageMetadata(locale);
+    const name = typeof meta.title === 'string' ? meta.title : '';
+    const description = typeof meta.description === 'string' ? meta.description : '';
     return {
-      name: locText(
-        locale,
-        'Anto — iPhone and Android app | Ongoing emotional support',
-        'Anto — App para iPhone e Android | Acompanhamento emocional',
-        'Anto — App para iPhone y Android | Acompañamiento emocional'
-      ),
+      name,
       headline: copy.hero.title,
       description,
       imagePath: getEditorialImagePath('evening'),
