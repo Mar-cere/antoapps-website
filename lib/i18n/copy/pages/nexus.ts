@@ -95,19 +95,19 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
   es: {
     skip: 'Saltar al contenido',
     meta: {
-      title: 'Dentro de Anto Nexus | Anto',
+      title: 'Dentro de anto | anto',
       description:
         'Cada conversación forma la inteligencia que te comprende. Historial, recurrencia y un paso concreto. Complementa; no sustituye atención profesional.',
       keywords:
-        'Anto Nexus, inteligencia adaptativa, acompañamiento emocional, contexto personal, aprendizaje continuo',
-      openGraphTitle: 'Dentro de Anto Nexus',
+        'anto, inteligencia adaptativa, acompañamiento emocional, contexto personal, aprendizaje continuo',
+      openGraphTitle: 'Dentro de anto',
       openGraphDescription:
         'Cada conversación forma la inteligencia que te comprende. Historial, recurrencia y un paso concreto.',
       canonicalPath: CANONICAL_PATH,
-      ogAlt: 'Dentro de Anto Nexus. Cada conversación forma la inteligencia que te comprende.',
+      ogAlt: 'Dentro de anto. Cada conversación forma la inteligencia que te comprende.',
     },
     nav: {
-      aria: 'Navegación de Nexus',
+      aria: 'Navegación de anto',
       logoAria: 'Anto, ir al inicio',
       wordmark: 'anto',
       menuLabel: 'Abrir menú',
@@ -161,7 +161,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       storeGoogle: 'Disponible en Google Play',
       tryOutline: 'Probar Anto',
       tryHref: localePath('es', '/bienvenida'),
-      micro: '1 día gratis · Sin tarjeta · Cancela cuando quieras',
+      micro: '1 día gratis · Cancela cuando quieras',
       limit: 'Anto no te dice si tienes una condición de salud ni reemplaza la ayuda de un profesional.',
     },
     trust: {
@@ -195,19 +195,19 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
   en: {
     skip: 'Skip to content',
     meta: {
-      title: 'Inside Anto Nexus | Anto',
+      title: 'Inside anto | anto',
       description:
         'Every conversation shapes the intelligence that understands you. History, recurrence and a concrete step. Complements; does not replace professional care.',
       keywords:
-        'Anto Nexus, adaptive intelligence, emotional companion, personal context, continuous learning',
-      openGraphTitle: 'Inside Anto Nexus',
+        'anto, adaptive intelligence, emotional companion, personal context, continuous learning',
+      openGraphTitle: 'Inside anto',
       openGraphDescription:
         'Every conversation shapes the intelligence that understands you. History, recurrence and a concrete step.',
       canonicalPath: CANONICAL_PATH,
-      ogAlt: 'Inside Anto Nexus. Every conversation shapes the intelligence that understands you.',
+      ogAlt: 'Inside anto. Every conversation shapes the intelligence that understands you.',
     },
     nav: {
-      aria: 'Nexus navigation',
+      aria: 'anto navigation',
       logoAria: 'Anto, go to home',
       wordmark: 'anto',
       menuLabel: 'Open menu',
@@ -261,7 +261,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       storeGoogle: 'Get it on Google Play',
       tryOutline: 'Try Anto',
       tryHref: localePath('en', '/bienvenida'),
-      micro: '1 day free · No card · Cancel anytime',
+      micro: '1 day free · Cancel anytime',
       limit: 'Anto does not tell you if you have a health condition, and it does not replace help from a professional.',
     },
     trust: {
@@ -295,19 +295,19 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
   pt: {
     skip: 'Pular para o conteúdo',
     meta: {
-      title: 'Dentro da Anto Nexus | Anto',
+      title: 'Dentro de anto | anto',
       description:
         'Cada conversa forma a inteligência que entende você. Histórico, recorrência e um passo concreto. Complementa; não substitui atendimento profissional.',
       keywords:
-        'Anto Nexus, inteligência adaptativa, acompanhamento emocional contínuo, contexto pessoal, aprendizado contínuo',
-      openGraphTitle: 'Dentro da Anto Nexus',
+        'anto, inteligência adaptativa, acompanhamento emocional contínuo, contexto pessoal, aprendizado contínuo',
+      openGraphTitle: 'Dentro de anto',
       openGraphDescription:
         'Cada conversa forma a inteligência que entende você. Histórico, recorrência e um passo concreto.',
       canonicalPath: CANONICAL_PATH,
-      ogAlt: 'Dentro da Anto Nexus. Cada conversa forma a inteligência que entende você.',
+      ogAlt: 'Dentro de anto. Cada conversa forma a inteligência que entende você.',
     },
     nav: {
-      aria: 'Navegação do Nexus',
+      aria: 'Navegação de anto',
       logoAria: 'Anto, ir para o início',
       wordmark: 'anto',
       menuLabel: 'Abrir menu',
@@ -361,7 +361,7 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
       storeGoogle: 'Disponível no Google Play',
       tryOutline: 'Testar a Anto',
       tryHref: localePath('pt', '/bienvenida'),
-      micro: '1 dia grátis · Sem cartão · Cancele quando quiser',
+      micro: '1 dia grátis · Cancele quando quiser',
       limit: 'A Anto não diz se você tem uma condição de saúde e não substitui a ajuda de um profissional.',
     },
     trust: {
