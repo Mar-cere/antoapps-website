@@ -10,4 +10,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log('OK: invariantes de metadata home (es + en).');
+console.log('OK: invariantes de metadata home (es + en + pt).');
