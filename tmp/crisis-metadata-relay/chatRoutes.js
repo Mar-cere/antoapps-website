@@ -1,0 +1,4106 @@
+/**
+ * Rutas de Chat - Gestiona conversaciones, mensajes y análisis emocional/contextual
+ */
+import express from 'express';
+import mongoose from 'mongoose';
+import {
+    buildOpenaiCrisisContext,
+    evaluateSuicideRisk,
+    normalizeStoredCrisisRiskLevel,
+    shouldAttachCrisisContextToPrompt,
+    shouldIncludeCrisisInOpenaiContext,
+} from '../constants/crisis.js';
+import { resolveHarmIntrusiveDistressContext, clampEmotionalIntensity, HARM_INTRUSIVE_DISTRESS_THEME } from '../constants/harmIntrusiveThoughts.js';
+import { persistUserMessageCrisisMetadata } from '../utils/persistUserMessageCrisisMetadata.js';
+import { isLlmCrisisTherapeuticExtrasBlocked } from '../utils/chatObservationalContext.js';
+import {
+  applyEmotionalThreadContinuity,
+  collectRecentUserTexts,
+} from '../services/chat/emotionalThreadContinuity.js';
+import {
+  buildStreamingTtftMetrics,
+  sanitizePhaseMs,
+  streamingTtftMetricPayload,
+} from '../utils/chatStreamingMetrics.js';
+import {
+    normalizeSessionIntention,
+    sanitizeSessionIntentionForClient,
+    wasSessionIntentionProvided
+} from '../constants/sessionIntention.js';
+import { authenticateToken as protect } from '../middleware/auth.js';
+import { requireActiveSubscription } from '../middleware/checkSubscription.js';
+import ClinicalScaleResult from '../models/ClinicalScaleResult.js';
+import CognitiveDistortionReport from '../models/CognitiveDistortionReport.js';
+import {
+    Conversation,
+    Message,
+    TherapeuticRecord
+} from '../models/index.js';
+import User from '../models/User.js';
+import actionSuggestionService from '../services/actionSuggestionService.js';
+import {
+    analyzeAssistantResponseTemplateSignals,
+    encodeChatPreferencesKey
+} from '../services/chat/chatTemplateSignals.js';
+import { analyzeConversationPattern } from '../services/chat/conversationPatternAnalyzer.js';
+import {
+  assessConversationProgressionStructure,
+  collectConversationProgressionSignals,
+} from '../services/chat/conversationProgressionSignals.js';
+import { detectFactualModeFromMessage } from '../services/chat/factualQueryDetector.js';
+import { detectShortModeFromSession } from '../services/chat/responseLengthPreference.js';
+import { inferChatSessionPhase } from '../services/chat/sessionPhaseHints.js';
+import chatProductActionLlmService from '../services/chatProductActionLlmService.js';
+import chatProductActionProposalService from '../services/chatProductActionProposalService.js';
+import {
+  buildProductActionResolveMetricData,
+  resolveTurnProposedProductActions,
+} from '../services/chat/productActionTool.js';
+import clinicalScalesService from '../services/clinicalScalesService.js';
+import conversationProductProposalCapService from '../services/conversationProductProposalCapService.js';
+import chatCommitmentProposalService from '../services/chatCommitmentProposalService.js';
+import { scheduleRollingSummaryRefresh } from '../services/conversationRollingSummaryService.js';
+import { buildCrisisRoutingMetricData } from '../utils/crisisRoutingMetricPayload.js';
+import crisisBackgroundActionsService from '../services/crisisBackgroundActionsService.js';
+import crisisTrendAnalyzer from '../services/crisisTrendAnalyzer.js';
+import {
+    contextAnalyzer,
+    conversationDepthAnalyzer,
+    emotionalAnalyzer,
+    engagementTracker,
+    intenseChatCheckInService,
+    memoryService,
+    openaiService,
+    progressTracker,
+    userProfileService,
+    writingStyleDetector
+} from '../services/index.js';
+import { scheduleLastSessionSummary } from '../services/lastSessionSummaryService.js';
+import { scheduleExperientialPatternExtract } from '../services/experientialPatternExtractService.js';
+import { getTodayDailyMoodCheckIn } from '../services/dailyMoodCheckInService.js';
+import { buildMoodBridgeWelcome } from '../utils/dailyMoodCopy.js';
+import { recordEngagementSignal } from '../services/engagementStreakService.js';
+import { buildSessionInsight } from '../services/sessionInsightService.js';
+import {
+  buildSessionWaiClientPayload,
+  skipSessionAllianceFeedback,
+  submitSessionAllianceFeedback,
+} from '../services/sessionAllianceFeedbackService.js';
+import { safeBuildImmediateOutcomeClientPayload, ineligibleImmediatePayload } from '../services/nexus/outcomeReporter.js';
+import metricsService from '../services/metricsService.js';
+import { buildHistoryForPromptFromMessages } from '../services/openai/openaiPromptBuilder.js';
+import paymentAuditService from '../services/paymentAuditService.js';
+import sessionEmotionalMemory from '../services/sessionEmotionalMemory.js';
+import {
+  buildSessionToneCore,
+  withCalmForced,
+  resolveCalmForcedFromGates,
+} from '../services/sessionToneService.js';
+import { buildSessionRetentionPayload, withThematicMicroClosureRetention } from '../services/sessionRetentionHints.js';
+import {
+  getInterventionCatalogEntry,
+  getInterventionCatalogLabel,
+  isValidInterventionId,
+} from '../constants/interventionCatalog.js';
+import chatInterventionGraphService from '../services/chatInterventionGraphService.js';
+import {
+  sanitizeInterventionEventMeta,
+  sanitizeInterventionSource,
+  sanitizeInterventionTopicFree,
+  sanitizeInterventionTopicTag,
+} from '../utils/interventionEventGuards.js';
+import {
+  buildPreviousEmotionalPatterns,
+  EMOTIONAL_CONTEXT_SELECT,
+  assembleTurnHistory,
+} from '../utils/previousEmotionalPatterns.js';
+import { isTopicFreeEmbeddingsEnabled } from '../services/topicFreeEmbeddingService.js';
+import { buildInterventionGraphPhase3Payload } from '../services/interventionGraphPhase3Service.js';
+import { enrichInterventionGraphLabels } from '../services/graphSourceLabelService.js';
+import { getVectorSearchMode } from '../services/topicFreeVectorSearchService.js';
+import {
+  filterPublicGraphCorrelations,
+  filterPublicGraphInterventionEdges,
+} from '../utils/internalGraphInterventions.js';
+import { buildChatTccContinuity } from '../services/chatTccContinuityService.js';
+import {
+  shouldHardStopCrisisLlm,
+} from '../services/crisisHardStopService.js';
+import {
+  persistCrisisStructuredAssistantTurn,
+  readProtocolWasActive,
+  resolveCrisisStructuredAssistantContent,
+  wasLastAssistantTurnCrisisHardStop,
+} from '../services/crisisStructuredTurnService.js';
+import { crisisResourcesForTurn } from '../services/crisisResourcesService.js';
+import { applyCrisisProtocolForTurn } from '../services/crisisTurnClientExtrasService.js';
+import { hasCrisisBatterySignal } from '../services/crisisProtocolService.js';
+import { indexPersonalPatternFromUserMessage, startPersonalPatternRagSnippet } from '../services/personalPatternRagService.js';
+import { startDigitalPhenotypeChatSnippet } from '../services/digitalPhenotypeChatContextService.js';
+import { startRecentAbcChatSnippet } from '../services/recentAbcChatContextService.js';
+import { startSessionCommitmentChatSnippet } from '../services/sessionCommitmentPromptSnippet.js';
+import { startExperientialFollowUpChatSnippet } from '../services/experientialFollowUpService.js';
+import { startExperientialRecallChatSnippet } from '../services/experientialRecallService.js';
+import { getPostCrisisWindow, getPostCrisisReentryWindow } from '../utils/postCrisisWindowGuard.js';
+import features from '../config/features.js';
+import { safeEvaluateTurnPolicy } from '../services/nexus/turnPolicyEvaluator.js';
+import {
+  beginTurnTrace,
+  emitTurnTraceCompleted,
+  emitTurnTraceConsentChecked,
+  emitTurnTraceDecisionShadowed,
+  emitTurnTraceFailed,
+  emitTurnTraceSafety,
+  emitTurnTraceSafetyThenState,
+  attachConversationExtrasContext,
+  noteTurnTraceAnalysis,
+  noteTurnTraceShadow,
+  priorAssistantCountFromHistory,
+  priorIntensityFromHistory,
+  noteTurnTraceProgressionAssessment,
+} from '../services/nexus/turnTraceTurn.js';
+import { buildTurnPurposeSnapshot } from '../services/nexus/turnPurposeSnapshot.js';
+import {
+  collectPersonaProjectionMeta,
+  emptyPersonaProjectionMeta,
+} from '../services/nexus/personaProjection.js';
+import {
+  planChatTurnEnhancements,
+  emptyChatTurnEnhancements,
+  settleChatTurnEnhancements,
+  buildOpenaiEnhancementSnippets,
+  buildAssistantMetadataWithEnhancements,
+  finalizeChatTurnEnhancements,
+  persistProposedCommitmentsOnMessage,
+  buildClientTurnPayload,
+} from '../services/chatTurnEnhancementsService.js';
+import { attachAiReleaseMetadata } from '../services/aiRelease/promptPackService.js';
+import { awaitWithBudget, CHAT_PRE_LLM_ENHANCEMENT_BUDGET_MS } from '../utils/awaitWithBudget.js';
+import { attachInferredBlocksToMetadata } from '../utils/chatMessageBlocksHelper.js';
+import {
+  buildTechniqueHandoffPromptSnippet,
+  normalizeResumeFromTechnique,
+} from '../services/chat/techniqueHandoffPromptSnippet.js';
+import {
+  buildArrivalReplyPromptSnippet,
+  injectArrivalAnchorIntoPromptHistory,
+  muteSessionRetentionForArrivalReply,
+  resolveArrivalReplyActive,
+} from '../services/chat/arrivalReplyPromptSnippet.js';
+import {
+  buildResumeFromCanvasPromptSnippet,
+} from '../services/chat/decisionCanvasTool.js';
+import {
+  applyInteractiveCanvasCompetition,
+  resolveInteractiveCanvasForTurn,
+  syncInteractiveCanvasStatus,
+} from '../services/chat/interactiveCanvasTurn.js';
+import {
+  acquireConversationTurnLock,
+  closeOrphanUserTurn,
+  CONVERSATION_BUSY_CODE,
+  persistAssistantFallbackForUserMessage,
+  releaseConversationTurnLock,
+} from '../services/chat/conversationTurnLockService.js';
+import {
+  isProcessingFallbackAssistant,
+  resolveIncomingChatTurn,
+  removeProcessingFallbackAssistant,
+} from '../services/chat/processingFallbackTurn.js';
+import {
+  iterateAssistantStreamWithRetry,
+  callAssistantOnceWithRetry,
+} from '../services/chat/iterateAssistantStreamWithRetry.js';
+import { finalizeTurnPayload } from '../services/chat/chatTurnPayloadSchema.js';
+import { shouldShowCommitmentFollowUpChips } from '../services/commitmentFollowUpService.js';
+import { shouldShowExperientialFollowUpChips } from '../services/experientialFollowUpService.js';
+import {
+  resolveSoftLandingForTurn,
+} from '../services/softLandingPostCrisisService.js';
+import { toTccLiteClientPayload } from '../services/chatTccLiteService.js';
+import { detectsLackOfUnderstanding } from '../services/chat/paraphrasisPolicySnippet.js';
+import { normalizeTccLiteState } from '../services/tccLiteConversationStateService.js';
+import { tccLiteStepIndex, tccLiteStepOrder } from '../utils/tccLiteCopy.js';
+import { getAutomaticThoughtDistortionLabel } from '../constants/automaticThoughtDistortionPicker.js';
+import { resetConversationSessionState } from '../services/conversationClearService.js';
+import { cursorPaginate } from '../utils/pagination.js';
+import {
+    HISTORIAL_LIMITE,
+    LIMITE_MENSAJES,
+    MAX_USER_MESSAGE_LENGTH,
+    analyzeMessageFrequency,
+    deleteConversationLimiter,
+    detectAbruptToneChange,
+    detectEmotionalEscalation,
+    detectHelpRejection,
+    detectSilenceAfterNegative,
+    isValidObjectId,
+    messageFeedbackLimiter,
+    patchMessageLimiter,
+    scheduleSessionSummaryLimiter,
+    sendMessageLimiter,
+    sessionWaiLimiter,
+    shouldShowChatActionSuggestions,
+    validarConversacion,
+    validarConversationId
+} from './chat/index.js';
+
+import { resolveRequestLanguage } from '../utils/apiLanguage.js';
+import { chatApiCopy } from '../utils/chatApiCopy.js';
+import { ENGAGEMENT_SIGNAL } from '../utils/engagementStreakWeights.js';
+import { attachApiCopy } from '../middleware/apiLanguageMiddleware.js';
+import {
+  clampInt,
+  escapeRegexForMongo,
+  safeErrorMessage,
+} from '../utils/safeApiError.js';
+
+const router = express.Router();
+const MAX_CONVERSATION_LIST_LIMIT = 50;
+const MAX_MESSAGE_STATUS_BATCH = 100;
+const MAX_SEARCH_QUERY_LENGTH = 200;
+
+router.use((req, res, next) => {
+  const language = resolveRequestLanguage(req);
+  req.appLanguage = language;
+  req.apiCopy = chatApiCopy(language);
+  next();
+});
+
+// Obtener mensajes de una conversación (paginado)
+router.get('/conversations/:conversationId', protect, validarConversationId, validarConversacion, async (req, res) => {
+  try {
+    const { conversationId } = req.params;
+    const { 
+      page = 1, 
+      limit = 50, 
+      status, 
+      role 
+    } = req.query;
+
+    // Asegurar que los IDs sean ObjectIds válidos
+    const userId = mongoose.Types.ObjectId.isValid(req.user._id) 
+      ? new mongoose.Types.ObjectId(req.user._id) 
+      : req.user._id;
+    const convId = mongoose.Types.ObjectId.isValid(conversationId) 
+      ? new mongoose.Types.ObjectId(conversationId) 
+      : conversationId;
+    
+    const query = {
+      conversationId: convId,
+      userId: userId,
+      ...(status && { 'metadata.status': status }),
+      ...(role && { role })
+    };
+
+    const [messages, total, convMeta] = await Promise.all([
+      Message.find(query)
+        .sort({ createdAt: -1 })
+        .skip((page - 1) * limit)
+        .limit(parseInt(limit))
+        .lean(),
+      Message.countDocuments(query),
+      Conversation.findById(convId).select('sessionIntention tccLiteState').lean()
+    ]);
+
+    // Asegurar que el primer mensaje del historial sea del asistente (y quede persistido).
+    // Idempotente: solo crea un welcome si no existe ya uno para la conversación.
+    // Importante: solo hacerlo en la primera página y sin filtros, para evitar efectos laterales inesperados.
+    const shouldEnsureWelcome =
+      parseInt(page) === 1 &&
+      !status &&
+      !role;
+
+    if (shouldEnsureWelcome) {
+      const existingWelcome = await Message.findOne({
+        conversationId: convId,
+        userId,
+        'metadata.type': 'welcome',
+        role: 'assistant'
+      })
+        .select('_id createdAt')
+        .lean();
+
+      if (!existingWelcome) {
+        // Consultar el mensaje más antiguo para saber si ya inicia con assistant.
+        const earliestMessage = await Message.findOne({
+          conversationId: convId,
+          userId
+        })
+          .sort({ createdAt: 1 })
+          .select('role createdAt')
+          .lean();
+
+        const earliestIsAssistant = earliestMessage?.role === 'assistant';
+
+        if (!earliestMessage || !earliestIsAssistant) {
+          const baseTime = earliestMessage?.createdAt
+            ? new Date(earliestMessage.createdAt).getTime()
+            : Date.now();
+          const welcomeCreatedAt = new Date(baseTime - 1000);
+
+          // Puente de check-in solo en hilos vacíos: en hilos con historial el welcome
+          // se retro-fecha y hablar del ánimo de hoy quedaría fuera de contexto.
+          const todayMood = earliestMessage
+            ? null
+            : await getTodayDailyMoodCheckIn(userId, {
+                language: req.appLanguage,
+              }).catch(() => null);
+          const moodBridgeWelcome = buildMoodBridgeWelcome(todayMood, req.appLanguage);
+          const welcomeUserTz = await User.findById(userId)
+            .select('preferences.timezone')
+            .lean()
+            .catch(() => null);
+          const welcomeContent =
+            moodBridgeWelcome ||
+            openaiService.generarSaludoPersonalizado({
+              language: req.appLanguage,
+              timezone: welcomeUserTz?.preferences?.timezone,
+            });
+          const welcomeMessage = new Message({
+            userId,
+            content: welcomeContent,
+            role: 'assistant',
+            conversationId: convId,
+            metadata: attachAiReleaseMetadata(
+              {
+                context: { preferences: {} },
+                status: 'sent',
+                type: 'welcome',
+                ...(moodBridgeWelcome
+                  ? {
+                      fromMoodCheckIn: true,
+                      moodCheckInMood: todayMood.mood,
+                      moodCheckInDateKey: todayMood.dateKey || null,
+                    }
+                  : {}),
+              },
+              { model: null, surface: 'welcome' },
+            )
+          });
+          await welcomeMessage.save();
+
+          // Backdate: forzar que aparezca primero.
+          await Message.updateOne(
+            { _id: welcomeMessage._id },
+            { $set: { createdAt: welcomeCreatedAt } }
+          ).catch(() => {});
+
+          // Reconsultar solo la primera página para incluir el nuevo welcome.
+          const refreshed = await Message.find(query)
+            .sort({ createdAt: -1 })
+            .skip(0)
+            .limit(parseInt(limit))
+            .lean();
+
+          messages.length = 0;
+          messages.push(...refreshed);
+        }
+      }
+    }
+
+    // Eliminar duplicados basándose en _id y contenido para evitar mensajes repetidos
+    const uniqueMessages = messages.reduce((acc, message) => {
+      const messageId = message._id?.toString();
+      if (!messageId) {
+        return acc;
+      }
+      
+      // Verificar si ya existe un mensaje con este ID
+      const exists = acc.some(
+        msg => msg._id?.toString() === messageId
+      );
+      
+      if (!exists) {
+        acc.push(message);
+      }
+      
+      return acc;
+    }, []);
+
+    metricsService.bumpChatExploration('load_messages', {
+      page: parseInt(page, 10) || 1
+    });
+
+    const appLanguage = req.appLanguage || resolveRequestLanguage(req);
+    const persistedTcc = normalizeTccLiteState(convMeta?.tccLiteState);
+    let tccLite = null;
+    if (persistedTcc && !persistedTcc.completed && persistedTcc.step) {
+      const dtype = persistedTcc.distortionType;
+      tccLite = toTccLiteClientPayload(
+        {
+          active: true,
+          step: persistedTcc.step,
+          stepIndex: tccLiteStepIndex(persistedTcc.step),
+          stepTotal: tccLiteStepOrder().length,
+          distortionType: dtype,
+          distortionLabel: dtype
+            ? getAutomaticThoughtDistortionLabel(dtype, appLanguage) || null
+            : null,
+          completed: false,
+          atHandoff: null,
+        },
+        appLanguage,
+      );
+    }
+
+    res.json({
+      messages: uniqueMessages.reverse(),
+      sessionIntention: sanitizeSessionIntentionForClient(convMeta?.sessionIntention),
+      tccLite,
+      pagination: {
+        total,
+        page: parseInt(page),
+        pages: Math.ceil(total / limit)
+      }
+    });
+  } catch (error) {
+    console.error('Error obteniendo mensajes:', error);
+    metricsService.bumpChatFriction('load_messages_server_error', {
+      httpStatus: 500,
+      surface: 'registered'
+    });
+    res.status(500).json({
+      message: req.apiCopy.historyError,
+      error: safeErrorMessage(error)
+    });
+  }
+});
+
+// Fijar intención de sesión (#72) antes del primer mensaje del usuario
+router.patch(
+  '/conversations/:conversationId/session-intention',
+  protect,
+  requireActiveSubscription(true),
+  validarConversationId,
+  validarConversacion,
+  async (req, res) => {
+    try {
+      const { conversationId } = req.params;
+      const intention = normalizeSessionIntention(req.body?.sessionIntention);
+      if (!intention) {
+        metricsService.bumpChatFriction('session_intention_invalid_on_patch', {
+          httpStatus: 400,
+          surface: 'registered'
+        });
+        return res.status(400).json({
+          message: req.apiCopy.sessionIntentionInvalid
+        });
+      }
+      const userMsgCount = await Message.countDocuments({
+        conversationId: new mongoose.Types.ObjectId(conversationId),
+        userId: req.user._id,
+        role: 'user'
+      });
+      if (userMsgCount > 0) {
+        metricsService.bumpChatFriction('session_intention_patch_too_late', {
+          httpStatus: 409,
+          surface: 'registered'
+        });
+        return res.status(409).json({
+          message: req.apiCopy.sessionIntentionTooLate,
+        });
+      }
+      const updated = await Conversation.findOneAndUpdate(
+        { _id: new mongoose.Types.ObjectId(conversationId), userId: req.user._id },
+        { $set: { sessionIntention: intention } },
+        { returnDocument: 'after', runValidators: true }
+      )
+        .select('sessionIntention')
+        .lean();
+      if (!updated) {
+        return res.status(404).json({ message: req.apiCopy.conversationNotFound });
+      }
+      res.json({ sessionIntention: sanitizeSessionIntentionForClient(updated.sessionIntention) });
+    } catch (error) {
+      console.error('Error al actualizar intención de sesión:', error);
+      res.status(500).json({
+        message: req.apiCopy.sessionIntentionSaveError,
+        error: safeErrorMessage(error)
+      });
+    }
+  }
+);
+
+// Feedback de propuestas productivas en la conversación (aceptada/rechazada)
+router.post(
+  '/conversations/:conversationId/product-proposal-feedback',
+  protect,
+  requireActiveSubscription(true),
+  validarConversationId,
+  validarConversacion,
+  async (req, res) => {
+    try {
+      const { conversationId } = req.params;
+      const action = String(req.body?.action || '').trim();
+      if (action !== 'accepted' && action !== 'rejected') {
+        return res.status(400).json({ message: req.apiCopy.proposalActionInvalid });
+      }
+      await conversationProductProposalCapService.registerProductProposalFeedback(
+        conversationId,
+        action
+      );
+      metricsService
+        .recordMetric(
+          'product_action_feedback',
+          { action },
+          req.user._id.toString(),
+          { conversationId: String(conversationId) }
+        )
+        .catch(() => {});
+      return res.status(204).end();
+    } catch (error) {
+      console.error('Error guardando feedback de propuesta productiva:', error);
+      return res.status(500).json({ message: req.apiCopy.proposalFeedbackError });
+    }
+  }
+);
+
+// Eventos del grafo tema–intervención (#127): biblioteca / sin conversación activa en cliente.
+router.post(
+  '/interventions/events',
+  protect,
+  requireActiveSubscription(true),
+  async (req, res) => {
+    try {
+      const interventionId = String(req.body?.interventionId || '').trim();
+      const eventType = String(req.body?.eventType || '').trim();
+      if (!interventionId || !isValidInterventionId(interventionId)) {
+        return res.status(400).json({ message: req.apiCopy?.invalidRequest || 'Solicitud inválida' });
+      }
+      const allowed = ['opened', 'shown', 'clicked', 'dismissed', 'completed'];
+      if (!allowed.includes(eventType)) {
+        return res.status(400).json({ message: req.apiCopy?.invalidRequest || 'Solicitud inválida' });
+      }
+      const topicTag = sanitizeInterventionTopicTag(req.body?.topicTag, 'library');
+      const topicFree = sanitizeInterventionTopicFree(req.body?.topicFree);
+      const source = sanitizeInterventionSource(req.body?.source, 'library_v1');
+      const meta = sanitizeInterventionEventMeta(req.body?.meta);
+
+      chatInterventionGraphService
+        .recordUserInterventionEvent({
+          userId: req.user._id,
+          interventionId,
+          eventType,
+          topicTag,
+          topicFree,
+          source,
+          meta,
+        })
+        .catch(() => {});
+      return res.status(204).end();
+    } catch (error) {
+      console.error('[ChatRoutes] POST /interventions/events:', error);
+      return res.status(500).json({ message: req.apiCopy?.serverError || 'Error del servidor' });
+    }
+  },
+);
+
+// Eventos del grafo tema–intervención (#127): clicked/dismissed/completed.
+router.post(
+  '/conversations/:conversationId/interventions/events',
+  protect,
+  requireActiveSubscription(true),
+  validarConversationId,
+  validarConversacion,
+  async (req, res) => {
+    try {
+      const { conversationId } = req.params;
+      const interventionId = String(req.body?.interventionId || '').trim();
+      const eventType = String(req.body?.eventType || '').trim();
+      if (!interventionId || !isValidInterventionId(interventionId)) {
+        return res.status(400).json({ message: req.apiCopy?.invalidRequest || 'Solicitud inválida' });
+      }
+      if (!['clicked', 'dismissed', 'completed'].includes(eventType)) {
+        return res.status(400).json({ message: req.apiCopy?.invalidRequest || 'Solicitud inválida' });
+      }
+      // best-effort: no bloquear el flujo del usuario si hay fallo de DB
+      chatInterventionGraphService
+        .recordInterventionEvent({
+          userId: req.user._id,
+          conversationId: new mongoose.Types.ObjectId(conversationId),
+          interventionId,
+          eventType,
+          assistantMessageId: null,
+          emotionalAnalysis: null,
+          contextualAnalysis: null,
+          riskLevel: null,
+          source: 'chat_suggestions_v1',
+        })
+        .catch(() => {});
+      return res.status(204).end();
+    } catch (error) {
+      console.error('[ChatRoutes] interventions/events:', error);
+      return res.status(500).json({ message: req.apiCopy?.serverError || 'Error del servidor' });
+    }
+  }
+);
+
+/**
+ * GET /api/chat/interventions/graph
+ * Agregado del grafo tema–intervención (#127) para el usuario autenticado.
+ * Query:
+ * - days: ventana (default 14, min 1, max 180)
+ * - limit: máximo de edges (default 60, min 1, max 300)
+ */
+router.get('/interventions/graph', protect, requireActiveSubscription(true), async (req, res) => {
+  try {
+    const daysRaw = req.query?.days;
+    const limitRaw = req.query?.limit;
+    const days = Math.max(1, Math.min(180, Number(daysRaw ?? 14) || 14));
+    const limit = Math.max(1, Math.min(300, Number(limitRaw ?? 60) || 60));
+    const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
+
+    const edges = await chatInterventionGraphService.aggregateInterventionGraph({
+      userId: req.user._id,
+      since,
+      limit,
+    });
+    const topicFreeLimit = Math.max(1, Math.min(80, Math.floor(limit * 0.75) || 30));
+    const topicFreeRaw = await chatInterventionGraphService.aggregateTopicFreeGraph({
+      userId: req.user._id,
+      since,
+      limit: topicFreeLimit,
+    });
+    const language = req.appLanguage || resolveRequestLanguage(req);
+
+    const mapEdge = (e, includeTopicFree = false) => {
+      const interventionId = String(e?._id?.interventionId || '').slice(0, 80);
+      const entry = getInterventionCatalogEntry(interventionId);
+      return {
+        topicTag: String(
+          includeTopicFree ? e?.topicTag || 'general' : e?._id?.topicTag || 'general',
+        ).slice(0, 64),
+        ...(includeTopicFree
+          ? { topicFree: String(e?._id?.topicFree || '').slice(0, 128) }
+          : {}),
+        interventionId,
+        interventionLabel: getInterventionCatalogLabel(entry, language) || interventionId,
+        shown: e.shown || 0,
+        clicked: e.clicked || 0,
+        dismissed: e.dismissed || 0,
+        completed: e.completed || 0,
+        ctr: typeof e.ctr === 'number' ? e.ctr : 0,
+        completionRate: typeof e.completionRate === 'number' ? e.completionRate : 0,
+        lastAt: e.lastAt,
+      };
+    };
+
+    const mappedEdges = filterPublicGraphInterventionEdges(edges.map((e) => mapEdge(e, false)));
+    const mappedTopicFreeEdges = filterPublicGraphInterventionEdges(
+      topicFreeRaw.map((e) => mapEdge(e, true)),
+    );
+
+    const phase3 = await buildInterventionGraphPhase3Payload({
+      userId: req.user._id,
+      since,
+      topicTagEdges: mappedEdges,
+      topicFreeEdges: mappedTopicFreeEdges,
+      language,
+    });
+
+    const labeled = await enrichInterventionGraphLabels({
+      topicFreeEdges: mappedTopicFreeEdges,
+      conceptNodes: phase3.conceptNodes,
+      language,
+    });
+
+    res.json({
+      success: true,
+      aggregationMode: 'session',
+      windowDays: days,
+      since: since.toISOString(),
+      count: edges.length,
+      topicFreeCount: topicFreeRaw.length,
+      embeddingsEnabled: isTopicFreeEmbeddingsEnabled(),
+      vectorSearchMode: getVectorSearchMode(),
+      language,
+      edges: mappedEdges,
+      topicFreeEdges: labeled.topicFreeEdges,
+      conceptNodes: labeled.conceptNodes,
+      conceptEdges: filterPublicGraphInterventionEdges(phase3.conceptEdges),
+      correlations: filterPublicGraphCorrelations(phase3.correlations),
+      correlationSummary: phase3.correlationSummary,
+      features: {
+        phase: 3,
+        vectorSearch: phase3.vectorSearch,
+      },
+    });
+  } catch (error) {
+    console.error('[ChatRoutes] GET /interventions/graph:', error);
+    res.status(500).json({ success: false, message: req.apiCopy?.serverError || 'Error del servidor' });
+  }
+});
+
+/**
+ * GET /api/chat/tcc-continuity
+ * Ítems accionables para retomar protocolos TCC (BA, exposición) en el chat.
+ */
+router.get('/tcc-continuity', protect, requireActiveSubscription(true), async (req, res) => {
+  try {
+    const language = req.appLanguage || resolveRequestLanguage(req);
+    const conversationId = String(req.query?.conversationId || '').trim();
+    const data = await buildChatTccContinuity({
+      userId: req.user._id,
+      language,
+      conversationId: conversationId || null,
+    });
+    if (
+      conversationId &&
+      mongoose.Types.ObjectId.isValid(conversationId) &&
+      Array.isArray(data?.items) &&
+      data.items.length > 0
+    ) {
+      chatInterventionGraphService
+        .recordContinuityItemsShown({
+          userId: req.user._id,
+          conversationId: new mongoose.Types.ObjectId(conversationId),
+          items: data.items,
+        })
+        .catch(() => {});
+    }
+    return res.json({ success: true, data, language });
+  } catch (error) {
+    console.error('[ChatRoutes] GET /tcc-continuity:', error);
+    return res.status(500).json({ success: false, message: req.apiCopy?.serverError || 'Error del servidor' });
+  }
+});
+
+// Crear nueva conversación con mensaje de bienvenida
+// Optimizado: saludo sin cargar perfil en la ruta crítica para reducir latencia (<1s)
+router.post('/conversations', protect, requireActiveSubscription(true), async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const intention = normalizeSessionIntention(req.body?.sessionIntention);
+    if (wasSessionIntentionProvided(req.body?.sessionIntention) && !intention) {
+      metricsService.bumpChatFriction('session_intention_invalid_on_create', {
+        httpStatus: 400,
+        surface: 'registered'
+      });
+      return res.status(400).json({
+        message: req.apiCopy.sessionIntentionInvalidShort
+      });
+    }
+
+    // Crear conversación (el check-in del día se consulta en paralelo para no sumar latencia)
+    const conversation = new Conversation({
+      userId,
+      ...(intention ? { sessionIntention: intention } : {})
+    });
+    const [todayMood, welcomeUserTz] = await Promise.all([
+      getTodayDailyMoodCheckIn(userId, { language: req.appLanguage }).catch(() => null),
+      User.findById(userId).select('preferences.timezone').lean().catch(() => null),
+      conversation.save(),
+    ]);
+
+    // Mensaje de bienvenida: si hay check-in de ánimo hoy, usar puente (no repreguntar el ánimo).
+    const moodBridgeWelcome = buildMoodBridgeWelcome(todayMood, req.appLanguage);
+    const welcomeContent =
+      moodBridgeWelcome ||
+      openaiService.generarSaludoPersonalizado({
+        language: req.appLanguage,
+        timezone: welcomeUserTz?.preferences?.timezone,
+      });
+    const welcomeMessage = new Message({
+      userId,
+      content: welcomeContent,
+      role: 'assistant',
+      conversationId: conversation._id,
+      metadata: attachAiReleaseMetadata(
+        {
+          context: { preferences: {} },
+          status: 'sent',
+          type: 'welcome',
+          ...(moodBridgeWelcome
+            ? {
+                fromMoodCheckIn: true,
+                moodCheckInMood: todayMood.mood,
+                moodCheckInDateKey: todayMood.dateKey || null,
+              }
+            : {}),
+        },
+        { model: null, surface: 'welcome' },
+      ),
+    });
+    await welcomeMessage.save();
+
+    await Conversation.findByIdAndUpdate(conversation._id, { lastMessage: welcomeMessage._id });
+
+    metricsService
+      .recordMetric(
+        'chat_usage',
+        { action: 'conversation_created', isGuest: false },
+        req.user._id.toString(),
+        { conversationId: String(conversation._id) }
+      )
+      .catch(() => {});
+
+    res.status(201).json({
+      conversationId: conversation._id.toString(),
+      sessionIntention: sanitizeSessionIntentionForClient(conversation.sessionIntention),
+      message: welcomeMessage
+    });
+  } catch (error) {
+    console.error('Error al crear conversación:', error);
+    metricsService.bumpChatFriction('create_conversation_server_error', {
+      httpStatus: 500,
+      surface: 'registered'
+    });
+    res.status(500).json({
+      message: req.apiCopy.createConversationError,
+      error: safeErrorMessage(error)
+    });
+  }
+});
+
+/**
+ * POST /api/chat/conversations/:conversationId/session-summary/schedule
+ * Programa generación de la continuidad del último chat tras inactividad (#4 + #47).
+ * Body opcional: { delayMinutes: number } entre 5 y 12 (default 7).
+ */
+router.post(
+  '/conversations/:conversationId/session-summary/schedule',
+  protect,
+  requireActiveSubscription(true),
+  scheduleSessionSummaryLimiter,
+  validarConversationId,
+  validarConversacion,
+  async (req, res) => {
+    try {
+      const rawDelay = req.body?.delayMinutes;
+      const delayMinutes =
+        rawDelay === undefined || rawDelay === null || rawDelay === ''
+          ? undefined
+          : Number(rawDelay);
+      if (
+        rawDelay !== undefined &&
+        rawDelay !== null &&
+        rawDelay !== '' &&
+        !Number.isFinite(delayMinutes)
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: req.apiCopy.delayMinutesInvalid
+        });
+      }
+      const data = await scheduleLastSessionSummary(req.user._id, req.params.conversationId, {
+        delayMinutes
+      });
+      // Best-effort: extracción de patrones experienciales (#203) en el mismo disparo.
+      let experientialExtract = null;
+      try {
+        experientialExtract = await scheduleExperientialPatternExtract(
+          req.user._id,
+          req.params.conversationId,
+          { delayMinutes },
+        );
+      } catch (extractErr) {
+        console.warn(
+          '[chatRoutes] experiential extract schedule skipped:',
+          extractErr?.message || extractErr,
+        );
+      }
+      return res.status(202).json({
+        success: true,
+        data: { ...data, experientialExtract },
+      });
+    } catch (error) {
+      if (error?.code === 'INVALID_IDS') {
+        return res.status(400).json({ success: false, message: req.apiCopy.invalidIds });
+      }
+      if (error?.code === 'CONVERSATION_NOT_FOUND') {
+        return res.status(404).json({ success: false, message: req.apiCopy.conversationNotFound });
+      }
+      console.error('[chatRoutes] session-summary/schedule:', error);
+      return res.status(500).json({
+        success: false,
+        message: req.apiCopy.scheduleContinuityError
+      });
+    }
+  }
+);
+
+/**
+ * GET /api/chat/conversations/:conversationId/session-insight
+ * Insight inmediato al cerrar el chat (emoción, patrón, paso sugerido).
+ */
+router.get(
+  '/conversations/:conversationId/session-insight',
+  protect,
+  requireActiveSubscription(true),
+  validarConversationId,
+  validarConversacion,
+  async (req, res) => {
+    try {
+      const language = req.appLanguage || resolveRequestLanguage(req);
+      const insight = await buildSessionInsight({
+        userId: req.user._id,
+        conversationId: req.params.conversationId,
+        language,
+      });
+      const sessionWai = await buildSessionWaiClientPayload({
+        userId: req.user._id,
+        conversationId: req.params.conversationId,
+        insight,
+        language,
+      });
+      let sessionOutcome;
+      try {
+        sessionOutcome = await safeBuildImmediateOutcomeClientPayload({
+          userId: req.user._id,
+          conversationId: req.params.conversationId,
+          insight,
+        });
+      } catch {
+        sessionOutcome = ineligibleImmediatePayload(req.params.conversationId);
+      }
+      return res.json({ success: true, data: { ...insight, sessionWai, sessionOutcome } });
+    } catch (error) {
+      console.error('[chatRoutes] session-insight:', error);
+      return res.status(500).json({
+        success: false,
+        message: req.apiCopy.sessionInsightError,
+      });
+    }
+  },
+);
+
+router.post(
+  '/conversations/:conversationId/session-wai/submit',
+  protect,
+  requireActiveSubscription(true),
+  sessionWaiLimiter,
+  validarConversationId,
+  validarConversacion,
+  async (req, res) => {
+    try {
+      const language = req.appLanguage || resolveRequestLanguage(req);
+      const insight = await buildSessionInsight({
+        userId: req.user._id,
+        conversationId: req.params.conversationId,
+        language,
+      });
+      const result = await submitSessionAllianceFeedback(req.user._id, req.params.conversationId, {
+        insight,
+        scores: req.body?.scores,
+        language,
+      });
+      if (result.code === 'not_eligible') {
+        return res.status(400).json({ success: false, message: req.apiCopy.sessionWaiNotEligible });
+      }
+      if (result.code === 'invalid_scores') {
+        return res.status(400).json({ success: false, message: req.apiCopy.sessionWaiScoresInvalid });
+      }
+      if (result.code === 'already_recorded') {
+        return res.status(409).json({ success: false, message: req.apiCopy.sessionWaiAlreadyRecorded });
+      }
+      const sessionWai = await buildSessionWaiClientPayload({
+        userId: req.user._id,
+        conversationId: req.params.conversationId,
+        insight,
+        language,
+      });
+      return res.json({ success: true, data: { feedback: result.feedback, sessionWai } });
+    } catch (error) {
+      console.error('[chatRoutes] session-wai submit:', error);
+      return res.status(500).json({ success: false, message: req.apiCopy.sessionWaiSubmitError });
+    }
+  },
+);
+
+router.post(
+  '/conversations/:conversationId/session-wai/skip',
+  protect,
+  requireActiveSubscription(true),
+  sessionWaiLimiter,
+  validarConversationId,
+  validarConversacion,
+  async (req, res) => {
+    try {
+      const language = req.appLanguage || resolveRequestLanguage(req);
+      const insight = await buildSessionInsight({
+        userId: req.user._id,
+        conversationId: req.params.conversationId,
+        language,
+      });
+      const result = await skipSessionAllianceFeedback(req.user._id, req.params.conversationId, {
+        insight,
+        language,
+      });
+      if (result.code === 'not_eligible') {
+        return res.status(400).json({ success: false, message: req.apiCopy.sessionWaiNotEligible });
+      }
+      if (result.code === 'already_recorded') {
+        return res.status(409).json({ success: false, message: req.apiCopy.sessionWaiAlreadyRecorded });
+      }
+      const sessionWai = await buildSessionWaiClientPayload({
+        userId: req.user._id,
+        conversationId: req.params.conversationId,
+        insight,
+        language,
+      });
+      return res.json({ success: true, data: { feedback: result.feedback, sessionWai } });
+    } catch (error) {
+      console.error('[chatRoutes] session-wai skip:', error);
+      return res.status(500).json({ success: false, message: req.apiCopy.sessionWaiSkipError });
+    }
+  },
+);
+
+// Crear nuevo mensaje
+router.post('/messages', protect, requireActiveSubscription(true), sendMessageLimiter, async (req, res) => {
+  const startTime = Date.now();
+  /** @type {Record<string, number>} */
+  const phaseMs = {};
+  const markPhase = (name) => {
+    phaseMs[name] = Date.now() - startTime;
+  };
+  const logs = [];
+  let userMessage = null;
+  let assistantMessage = null;
+  let turnTrace = null;
+  let purposeSnapshot = null;
+  let personaProjectionPromise = null;
+  
+  try {
+    const {
+      conversationId,
+      content: contentRaw,
+      resumeTccLite = null,
+      resumeCommitmentFollowUp = false,
+      resumeExperientialFollowUp = false,
+      resumeMirrorDeepen = false,
+      resumeFromTechnique = null,
+      resumeFromCanvas = false,
+      replyToArrival = false,
+      resumeFailedTurn: resumeFailedTurnRaw = false,
+    } = req.body;
+    let content = contentRaw;
+    let resumeFailedTurn = resumeFailedTurnRaw === true;
+
+    if (req.body?.role != null && req.body.role !== 'user') {
+      metricsService.bumpChatFriction('message_invalid_role', {
+        httpStatus: 400,
+        surface: 'registered',
+      });
+      return res.status(400).json({ message: req.apiCopy.contentRequired });
+    }
+    const role = 'user';
+
+    // SEGURIDAD: Validar formato de conversationId
+    if (!conversationId) {
+      metricsService.bumpChatFriction('message_missing_conversation_id', {
+        httpStatus: 400,
+        surface: 'registered'
+      });
+      return res.status(400).json({
+        message: req.apiCopy.conversationIdRequired
+      });
+    }
+
+    if (!isValidObjectId(conversationId)) {
+      // Registrar intento de acceso con ID inválido
+      await paymentAuditService.logEvent('SECURITY_INVALID_CONVERSATION_ID', {
+        userId: req.user._id?.toString(),
+        conversationId,
+        ip: req.ip,
+        userAgent: req.get('user-agent'),
+        endpoint: req.path,
+      }, req.user._id?.toString()).catch(() => {});
+
+      metricsService.bumpChatFriction('message_invalid_conversation_id', {
+        httpStatus: 400,
+        surface: 'registered'
+      });
+      
+      return res.status(400).json({
+        message: req.apiCopy.conversationIdInvalid
+      });
+    }
+
+    // SEGURIDAD: Validar que la conversación pertenece al usuario autenticado
+    const conversation = await Conversation.findOne({
+      _id: new mongoose.Types.ObjectId(conversationId),
+      userId: new mongoose.Types.ObjectId(req.user._id)
+    })
+      .select('_id userId rollingSummary rollingSummaryAtMessageCount sessionIntention sessionEmotionalState')
+      .lean();
+
+    if (!conversation) {
+      // Registrar intento de acceso a conversación no autorizada
+      await paymentAuditService.logEvent('SECURITY_UNAUTHORIZED_CONVERSATION_ACCESS', {
+        userId: req.user._id?.toString(),
+        conversationId,
+        ip: req.ip,
+        userAgent: req.get('user-agent'),
+        endpoint: req.path,
+      }, req.user._id?.toString()).catch(() => {});
+
+      metricsService.bumpChatFriction('message_unauthorized_conversation', {
+        httpStatus: 403,
+        surface: 'registered'
+      });
+      
+      return res.status(403).json({
+        message: req.apiCopy.conversationForbidden
+      });
+    }
+
+    // SEGURIDAD: Validación adicional de suscripción (defense in depth)
+    // Verificar que la suscripción sigue activa después del middleware
+    if (
+      !req.subscription ||
+      (!req.subscription.isActive &&
+        !req.subscription.isInTrial &&
+        !req.subscription.firstSessionGrace)
+    ) {
+      await paymentAuditService.logEvent('SECURITY_SUBSCRIPTION_BYPASS_ATTEMPT', {
+        userId: req.user._id?.toString(),
+        conversationId,
+        subscriptionInfo: req.subscription,
+        ip: req.ip,
+        userAgent: req.get('user-agent'),
+        endpoint: req.path,
+      }, req.user._id?.toString()).catch(() => {});
+
+      metricsService.bumpChatFriction('subscription_required_for_chat', {
+        httpStatus: 403,
+        surface: 'registered'
+      });
+      
+      return res.status(403).json({
+        success: false,
+        error: req.apiCopy.subscriptionRequired,
+        requiresSubscription: true
+      });
+    }
+
+    if (!String(content || '').trim() && !resumeFailedTurn) {
+      metricsService.bumpChatFriction('message_empty_content', {
+        httpStatus: 400,
+        surface: 'registered'
+      });
+      return res.status(400).json({
+        message: req.apiCopy.contentRequired
+      });
+    }
+
+    let trimmedContent = String(content || '').trim();
+    if (trimmedContent.length > MAX_USER_MESSAGE_LENGTH) {
+      metricsService.bumpChatFriction('message_content_too_long', {
+        httpStatus: 400,
+        surface: 'registered',
+      });
+      return res.status(400).json({
+        message: req.apiCopy.contentTooLong,
+        code: 'CONTENT_TOO_LONG',
+        maxLength: MAX_USER_MESSAGE_LENGTH,
+      });
+    }
+
+    // Validar límite de mensajes (permitir crear el mensaje si estamos justo en el límite)
+    // El límite se aplica ANTES de crear el nuevo mensaje, así que si hay LIMITE_MENSAJES o más, no permitimos crear más
+    const messageCount = await Message.countDocuments({ conversationId });
+    if (messageCount >= LIMITE_MENSAJES) {
+      metricsService.bumpChatFriction('message_thread_limit_reached', {
+        httpStatus: 400,
+        surface: 'registered'
+      });
+      return res.status(400).json({ 
+        message: req.apiCopy.messageLimit(LIMITE_MENSAJES),
+        limit: LIMITE_MENSAJES,
+        currentCount: messageCount
+      });
+    }
+
+    logs.push(`[${Date.now() - startTime}ms] Iniciando procesamiento de mensaje`);
+
+    // Idempotencia: evita doble POST (doble tap / reintentos) duplicando user+assistant en BD
+    if (role === 'user') {
+      const recentDupUser = await Message.findOne({
+        conversationId,
+        userId: req.user._id,
+        role: 'user',
+        content: trimmedContent,
+        createdAt: { $gte: new Date(Date.now() - 8000) }
+      })
+        .sort({ createdAt: -1 })
+        .lean();
+
+      if (recentDupUser) {
+        const assistantAfter = await Message.findOne({
+          conversationId,
+          userId: req.user._id,
+          role: 'assistant',
+          createdAt: { $gt: recentDupUser.createdAt }
+        })
+          .sort({ createdAt: 1 })
+          .lean();
+
+        if (assistantAfter) {
+          if (isProcessingFallbackAssistant(assistantAfter)) {
+            resumeFailedTurn = true;
+          } else {
+          metricsService
+            .recordMetric(
+              'chat_usage',
+              { action: 'message_idempotent_replay', isGuest: false },
+              req.user._id.toString(),
+              { conversationId: String(conversationId) }
+            )
+            .catch(() => {});
+
+          return res.status(201).json({
+            userMessage: recentDupUser,
+            assistantMessage: assistantAfter,
+            idempotentReplay: true,
+            context: {
+              emotional: assistantAfter?.metadata?.context?.emotional || null,
+              contextual: assistantAfter?.metadata?.context?.contextual || null
+            },
+            suggestions: [],
+            clinicalScale: null,
+            cognitiveDistortions: null,
+            processingTime: Date.now() - startTime
+          });
+          }
+        }
+
+        metricsService.bumpChatFriction('message_duplicate_in_flight', {
+          httpStatus: 429,
+          surface: 'registered'
+        });
+        return res.status(429).json({
+          message: req.apiCopy.messageProcessing,
+          code: 'MESSAGE_IN_FLIGHT'
+        });
+      }
+    }
+
+    let turnLockOwner = null;
+    try {
+      turnLockOwner = (await acquireConversationTurnLock(conversationId)).owner;
+    } catch (lockErr) {
+      if (lockErr?.code === CONVERSATION_BUSY_CODE) {
+        metricsService.bumpChatFriction('conversation_busy', {
+          httpStatus: 429,
+          surface: 'registered',
+        });
+        return res.status(429).json({
+          message: req.apiCopy.conversationBusy,
+          code: CONVERSATION_BUSY_CODE,
+        });
+      }
+      throw lockErr;
+    }
+
+    try {
+      const historyFind = () =>
+        Message.find({ conversationId })
+          .select(EMOTIONAL_CONTEXT_SELECT)
+          .sort({ createdAt: -1 })
+          .limit(HISTORIAL_LIMITE)
+          .lean();
+      const resolvedTurn = await resolveIncomingChatTurn({
+        conversationId,
+        incomingText: trimmedContent,
+        resumeFailedTurn,
+      });
+      const isResumeTurn = resolvedTurn.mode === 'resume';
+      if (!isResumeTurn && !resolvedTurn.text) {
+        metricsService.bumpChatFriction('message_empty_content', {
+          httpStatus: 400,
+          surface: 'registered'
+        });
+        return res.status(400).json({
+          message: req.apiCopy.contentRequired
+        });
+      }
+      trimmedContent = resolvedTurn.text;
+      content = resolvedTurn.text;
+
+      let orphanAssistant = null;
+      let priorHistoryRaw;
+      if (isResumeTurn) {
+        await removeProcessingFallbackAssistant(resolvedTurn.fallbackAssistant._id);
+        userMessage = resolvedTurn.userMessage;
+        priorHistoryRaw = await historyFind();
+        markPhase('saveUser');
+        logs.push(`[${Date.now() - startTime}ms] Reanudando turno fallido`);
+      } else {
+        const [orphanClosed, historySnapshot] = await Promise.all([
+          closeOrphanUserTurn({
+            conversationId,
+            userId: req.user._id,
+            fallbackContent: req.apiCopy.assistantProcessingFallback,
+          }),
+          historyFind(),
+        ]);
+        orphanAssistant = orphanClosed;
+        priorHistoryRaw = historySnapshot;
+        userMessage = new Message({
+          userId: req.user._id,
+          content: trimmedContent,
+          role,
+          conversationId,
+          metadata: {
+            status: 'sent'
+          }
+        });
+        await userMessage.save();
+        markPhase('saveUser');
+        logs.push(`[${Date.now() - startTime}ms] Mensaje del usuario guardado`);
+      }
+    const conversationHistoryPrepended = assembleTurnHistory({
+      priorHistory: priorHistoryRaw,
+      orphanAssistant,
+      userMessage,
+      limit: HISTORIAL_LIMITE,
+    });
+    turnTrace = beginTurnTrace({
+      transport: req.query.stream === 'true' ? 'sse' : 'http',
+      surface: 'registered',
+      subject: { kind: 'user', id: req.user._id },
+      conversationId: String(conversationId),
+      userText: trimmedContent,
+    });
+
+    metricsService
+      .recordMetric(
+        'chat_usage',
+        {
+          action: isResumeTurn ? 'failed_turn_resume' : 'user_message_saved',
+          isGuest: false,
+          chars: content.trim().length
+        },
+        req.user._id.toString(),
+        { conversationId: String(conversationId) }
+      )
+      .catch(() => {});
+
+    if (role === 'user') {
+      if (!isResumeTurn) {
+        recordEngagementSignal(req.user._id, ENGAGEMENT_SIGNAL.CHAT_USER_MESSAGE).catch(() => {});
+      }
+      /** Persistido en mensajes para continuidad post-chat / SLO (collectRiskLevelsFromMessages). */
+      let riskLevel = 'LOW';
+      try {
+        // 2. Obtener contexto e historial (en paralelo)
+        logs.push(`[${Date.now() - startTime}ms] Obteniendo contexto e historial`);
+        const deferPreLlm = features.chatDeferPreLlm === true;
+        const therapeuticRecordPromise = TherapeuticRecord.findOne({ userId: req.user._id }).lean();
+        const dailyMoodCheckInPromise = getTodayDailyMoodCheckIn(req.user._id, {
+          language: resolveRequestLanguage(req),
+        }).catch(() => null);
+        // Optimización: Usar índices compuestos y proyección para reducir datos transferidos
+        const [conversationHistory, userProfile, therapeuticRecordEager, user, priorConversationCount, dailyMoodEager] = await Promise.all([
+          Promise.resolve(conversationHistoryPrepended),
+          userProfileService.getOrCreateProfile(req.user._id),
+          deferPreLlm ? Promise.resolve(null) : therapeuticRecordPromise,
+          User.findById(req.user._id)
+            .select('preferences phone signalConsent deletedAt lastSessionSummary.generatedAt')
+            .lean(), // preferences + teléfono + grants Sprint 2 + frescura Persona
+          Conversation.countDocuments({
+            userId: req.user._id,
+            _id: { $ne: conversationId }
+          }).catch(() => null),
+          deferPreLlm ? Promise.resolve(null) : dailyMoodCheckInPromise,
+        ]);
+        let therapeuticRecord = therapeuticRecordEager;
+        let dailyMoodCheckIn = dailyMoodEager;
+        markPhase('convProfile');
+        markPhase('history');
+        purposeSnapshot = buildTurnPurposeSnapshot({ surface: 'registered', user });
+        emitTurnTraceConsentChecked(turnTrace, purposeSnapshot);
+        personaProjectionPromise = collectPersonaProjectionMeta({
+          purposeSnapshot,
+          surface: 'registered',
+          userId: req.user._id,
+          lastSessionGeneratedAt: user?.lastSessionSummary?.generatedAt ?? null,
+        }).catch(() => emptyPersonaProjectionMeta({ surface: 'registered', purposeSnapshot }));
+
+        const conversationPattern = analyzeConversationPattern(conversationHistory, content.trim());
+
+        // NUEVO: Pasar conversationId al contexto para referencias a conversaciones anteriores
+        const currentConversationId = conversationId;
+
+        // 3. Análisis completo del mensaje (solo análisis críticos en paralelo)
+        // Extraer patrones emocionales del historial para mejorar el análisis
+        const previousEmotionalPatterns = buildPreviousEmotionalPatterns(conversationHistory);
+
+        logs.push(`[${Date.now() - startTime}ms] Realizando análisis crítico del mensaje`);
+        
+        // OPTIMIZACIÓN: Solo análisis críticos en paralelo (emocional y contextual)
+        // Análisis de tendencias y crisis se harán después si es necesario
+        const [emotionalAnalysisRaw, contextualAnalysis] = await Promise.all([
+          emotionalAnalyzer.analyzeEmotion(content, previousEmotionalPatterns),
+          contextAnalyzer.analizarMensaje(userMessage, conversationHistory)
+        ]);
+        const emotionalAnalysis = applyEmotionalThreadContinuity(
+          emotionalAnalysisRaw,
+          collectRecentUserTexts(conversationHistory, content, { newestFirst: true }),
+        );
+        markPhase('analyze');
+
+        const memoryPrefetchPromise = memoryService
+          .getRelevantContext(
+            req.user._id,
+            content.trim(),
+            {
+              emotional: emotionalAnalysis,
+              contextual: contextualAnalysis,
+            },
+            { purposeSnapshot },
+          )
+          .catch((err) => {
+            console.warn('[ChatRoutes] memoria (prefetch):', err?.message);
+            return null;
+          });
+        
+        // OPTIMIZACIÓN: Análisis de tendencias y crisis solo si hay indicadores de riesgo
+        // Evaluar riesgo básico primero (más rápido)
+        const basicRiskLevel = evaluateSuicideRisk(
+          emotionalAnalysis, 
+          contextualAnalysis, 
+          content,
+          {
+            trendAnalysis: null, // No esperar análisis de tendencias
+            crisisHistory: null,
+            conversationContext: {}
+          }
+        );
+        
+        // Solo hacer análisis completo de tendencias/crisis si hay indicadores de riesgo
+        let trendAnalysis = null;
+        let crisisHistory = null;
+        if (basicRiskLevel !== 'LOW' || emotionalAnalysis?.intensity >= 7) {
+          logs.push(`[${Date.now() - startTime}ms] Indicadores de riesgo detectados, analizando tendencias`);
+          [trendAnalysis, crisisHistory] = await Promise.all([
+            crisisTrendAnalyzer.analyzeTrends(req.user._id).catch(err => {
+              console.error('[ChatRoutes] Error analizando tendencias:', err);
+              return null;
+            }),
+            crisisTrendAnalyzer.getCrisisHistory(req.user._id, 30).catch(err => {
+              console.error('[ChatRoutes] Error obteniendo historial de crisis:', err);
+              return null;
+            })
+          ]);
+        }
+
+        // NUEVO: Agregar análisis emocional a la memoria de sesión
+        sessionEmotionalMemory.addAnalysis(req.user._id.toString(), emotionalAnalysis);
+        
+        // NUEVO: Registrar métricas de forma asíncrona (no bloquea la respuesta)
+        Promise.all([
+          metricsService.recordMetric('emotional_analysis', emotionalAnalysis, req.user._id.toString()).catch(() => {}),
+          Promise.resolve().then(() => {
+            const sessionBuffer = sessionEmotionalMemory.getBuffer(req.user._id.toString());
+            return metricsService.recordMetric('session_memory', {
+              action: 'add',
+              bufferSize: sessionBuffer.length
+            }, req.user._id.toString());
+          }).catch(() => {})
+        ]).catch(() => {}); // Ignorar errores en operaciones no críticas
+        
+        // NUEVO: Obtener tendencias de la sesión actual
+        const sessionTrends = deferPreLlm
+          ? { peakIntensity: 0 }
+          : sessionEmotionalMemory.analyzeTrends(req.user._id.toString());
+        const sessionPeakIntensity = clampEmotionalIntensity(
+          Math.max(
+            sessionTrends.peakIntensity || 0,
+            emotionalAnalysis.intensity || 0,
+            conversation?.sessionEmotionalState?.peakIntensity || 0
+          )
+        );
+
+        // Analizar contexto conversacional para detectar escaladas y patrones
+        const conversationContext = {
+          emotionalEscalation: detectEmotionalEscalation(conversationHistory, emotionalAnalysis),
+          helpRejected: detectHelpRejection(conversationHistory, content),
+          abruptToneChange: detectAbruptToneChange(conversationHistory, emotionalAnalysis),
+          frequencyAnalysis: analyzeMessageFrequency(conversationHistory, content),
+          silenceAfterNegative: detectSilenceAfterNegative(conversationHistory)
+        };
+
+        // Estilo / profundidad / engagement: síncronos baratos, pero no alimentan el gate.
+        const userMessagesForAnalysis = conversationHistory
+          .filter(m => m.role === 'user')
+          .map(m => ({ content: m.content || '' }))
+          .slice(-8);
+        let depthAnalysis = null;
+        let writingStyle = null;
+        let engagement = null;
+        const ensureStyleSignals = () => {
+          if (writingStyle || engagement || depthAnalysis) return;
+          depthAnalysis = conversationDepthAnalyzer.analyzeDepth({
+            content,
+            conversationHistory: conversationHistory.map(m => ({ role: m.role, content: m.content || '' })),
+            emotionalAnalysis
+          });
+          writingStyle = writingStyleDetector.detectWritingStyle({
+            content,
+            userMessages: userMessagesForAnalysis.slice(0, -1)
+          });
+          engagement = engagementTracker.analyzeEngagement(userMessagesForAnalysis);
+        };
+        if (!deferPreLlm) {
+          ensureStyleSignals();
+        }
+
+        // Evaluar riesgo de crisis/suicida con análisis mejorado
+        riskLevel = evaluateSuicideRisk(
+          emotionalAnalysis, 
+          contextualAnalysis, 
+          content,
+          {
+            trendAnalysis,
+            crisisHistory,
+            conversationContext
+          }
+        );
+        markPhase('crisisCtx');
+        const harmDistressContext = resolveHarmIntrusiveDistressContext({
+          content,
+          persistedDistressTheme: conversation?.sessionEmotionalState?.distressTheme || null,
+          riskLevel,
+          persistedDistress: conversation?.sessionEmotionalState?.distressTheme === HARM_INTRUSIVE_DISTRESS_THEME
+            ? { level: 'moderate', rejectedIntent: true }
+            : null
+        });
+
+        Conversation.updateOne(
+          { _id: conversation._id },
+          {
+            $set: {
+              sessionEmotionalState: {
+                peakIntensity: sessionPeakIntensity,
+                peakIntensityAt: new Date(),
+                dominantEmotion: emotionalAnalysis.mainEmotion || null,
+                distressTheme: harmDistressContext.active ? HARM_INTRUSIVE_DISTRESS_THEME : null
+              }
+            }
+          }
+        ).catch(() => {});
+
+        try {
+          // resumeFailedTurn trae userMessage plano (.lean()): sin save/markModified.
+          await persistUserMessageCrisisMetadata(userMessage, {
+            riskLevel,
+            emotionalIntensity: emotionalAnalysis.intensity || 0,
+            peakIntensity: sessionPeakIntensity,
+            distress: harmDistressContext.distress || undefined,
+            logPrefix: '[ChatRoutes]',
+          });
+        } catch (persistRiskMetaErr) {
+          console.warn('[ChatRoutes] metadata.crisis en mensaje usuario:', persistRiskMetaErr?.message);
+        }
+        indexPersonalPatternFromUserMessage({
+          userId: req.user._id,
+          conversationId,
+          content: content.trim(),
+          riskLevel,
+        }).catch(() => {});
+        const softLandingWindowPromise = features.softLandingPostCrisis
+          ? getPostCrisisWindow(req.user._id)
+          : Promise.resolve({ active: false, anchorAt: null, endsAt: null });
+        const reentryWindowPromise = features.softLandingPostCrisis
+          ? getPostCrisisReentryWindow(req.user._id)
+          : Promise.resolve({ active: false, anchorAt: null, endsAt: null, softLandingEndsAt: null });
+        const phenotypeLang = req.appLanguage || resolveRequestLanguage(req);
+        const personalPatternRagHandle = startPersonalPatternRagSnippet({
+          userId: req.user._id,
+          userContent: content.trim(),
+          conversationId,
+          language: phenotypeLang,
+          riskLevel,
+          purposeSnapshot,
+        });
+        const phenotypeHandle = startDigitalPhenotypeChatSnippet({
+          userId: req.user._id,
+          language: phenotypeLang,
+          purposeSnapshot,
+        });
+        const abcHandle = startRecentAbcChatSnippet({
+          userId: req.user._id,
+          userContent: content.trim(),
+          language: phenotypeLang,
+          riskLevel,
+          purposeSnapshot,
+        });
+        const isCrisis =
+          riskLevel === 'MEDIUM' ||
+          riskLevel === 'HIGH' ||
+          (contextualAnalysis?.intencion?.tipo === 'CRISIS' &&
+            contextualAnalysis?.intencion?.confianza >= 0.9 &&
+            riskLevel !== 'LOW');
+        noteTurnTraceAnalysis(turnTrace, {
+          riskClass: riskLevel,
+          intentTipo: contextualAnalysis?.intencion?.tipo,
+          topicTema: contextualAnalysis?.tema?.categoria,
+        });
+        const commitmentHandle = startSessionCommitmentChatSnippet({
+          userId: req.user._id,
+          conversationId,
+          language: phenotypeLang,
+          riskLevel,
+          isCrisis,
+          conversationHistory,
+          forceFollowUp: resumeCommitmentFollowUp === true,
+          postCrisisWindowPromise: softLandingWindowPromise,
+          purposeSnapshot,
+        });
+        const expFuHandle = startExperientialFollowUpChatSnippet({
+          userId: req.user._id,
+          conversationHistory,
+          language: phenotypeLang,
+          riskLevel,
+          forceFollowUp: resumeExperientialFollowUp === true,
+          postCrisisWindowPromise: softLandingWindowPromise,
+          purposeSnapshot,
+        });
+        const recallHandle = startExperientialRecallChatSnippet({
+          userId: req.user._id,
+          userContent: content.trim(),
+          language: phenotypeLang,
+          riskLevel,
+          postCrisisWindowPromise: softLandingWindowPromise,
+          purposeSnapshot,
+        });
+        markPhase('ragStart');
+
+        const willHardStopEarly = shouldHardStopCrisisLlm({
+          riskLevel,
+          messageContent: content.trim(),
+        });
+
+        if (isCrisis) {
+          logs.push(`[${Date.now() - startTime}ms] ⚠️ Crisis detectada - Nivel de riesgo: ${riskLevel}`);
+          if (trendAnalysis?.warnings?.length > 0) {
+            logs.push(
+              `[${Date.now() - startTime}ms] 📊 Advertencias de tendencias: ${trendAnalysis.warnings.join('; ')}`,
+            );
+          }
+        }
+
+        const crisisTransport = req.query.stream === 'true' ? 'sse' : 'http';
+        let crisisBgResult = null;
+        try {
+          crisisBgResult = await crisisBackgroundActionsService.runCrisisBackgroundActionsForTurn({
+            userId: req.user._id,
+            messageId: userMessage._id,
+            messageContent: content,
+            riskLevel,
+            emotionalAnalysis,
+            contextualAnalysis,
+            trendAnalysis,
+            crisisHistory,
+            conversationContext,
+            conversationId: conversation._id,
+            transport: crisisTransport,
+            isCrisis,
+            log: (msg) => logs.push(`[${Date.now() - startTime}ms] ${msg}`),
+          });
+        } catch (bgErr) {
+          console.error('[ChatRoutes] Error en acciones de crisis en segundo plano:', bgErr);
+          logs.push(`[${Date.now() - startTime}ms] ❌ Error acciones crisis: ${bgErr.message}`);
+        }
+        markPhase('crisisBg');
+
+        // 4. Generar respuesta usando el análisis ya realizado (mensaje ya guardado arriba)
+        // Preparar historial de conversación en formato para el prompt
+        const historialParaPrompt = buildHistoryForPromptFromMessages(conversationHistory, {
+          emotional: emotionalAnalysis,
+          contextual: contextualAnalysis,
+          currentMessage: content,
+          _promptTelemetry: {
+            userId: req.user._id,
+            conversationId,
+            source: 'http',
+            callSite: 'buildHistoryForPromptFromMessages'
+          }
+        });
+
+        logs.push(`[${Date.now() - startTime}ms] Generando respuesta con análisis previo`);
+
+        let memoriaParaOpenAI = null;
+        if (!deferPreLlm) {
+          memoriaParaOpenAI = await memoryPrefetchPromise;
+        }
+        
+        // Combinar UserProfile con User para tener acceso a todas las preferencias
+        const combinedProfile = {
+          ...userProfile,
+          phone: user?.phone,
+          preferences: {
+            ...userProfile?.preferences,
+            ...user?.preferences, // Incluir responseStyle de User
+            language: req.appLanguage || resolveRequestLanguage(req),
+          }
+        };
+
+        const appLanguageForChat = req.appLanguage || resolveRequestLanguage(req);
+        const willHardStop = willHardStopEarly;
+        const protocolWasActive = readProtocolWasActive(conversation);
+        const previousAssistantWasHardStop =
+          wasLastAssistantTurnCrisisHardStop(conversationHistory);
+
+        let crisisTurnClientExtras = await applyCrisisProtocolForTurn({
+          conversation,
+          userId: req.user._id,
+          user,
+          riskLevel,
+          messageContent: content.trim(),
+          contextualAnalysis,
+          trendAnalysis,
+          crisisHistory,
+          conversationContext,
+          hardStop: willHardStop,
+          isCrisis,
+          hadContactAlert: crisisBgResult?.alertSent === true,
+          language: appLanguageForChat,
+          preferences: combinedProfile?.preferences,
+          phone: combinedProfile?.phone,
+        });
+        markPhase('crisisProto');
+
+        /** @type {object|null} */
+        let softLandingClientPayload = null;
+        /** Core de #84: una sola vez por turno (evita avanzar hysteresis en cada attach). */
+        let sessionToneCore = undefined;
+
+        const attachTurnCrisisResources = (payload, { hardStop = false } = {}) => {
+          const protocolActive = crisisTurnClientExtras?.crisisProtocolState?.active === true;
+          const batterySignal = hasCrisisBatterySignal(
+            content.trim(),
+            crisisTurnClientExtras?.crisisDecision,
+          );
+          if (hardStop) {
+            crisisTurnClientExtras = {
+              ...crisisTurnClientExtras,
+              crisisResources: crisisResourcesForTurn({
+                riskLevel,
+                hardStop: true,
+                isCrisis: true,
+                hasBatterySignal: batterySignal,
+                crisisProtocolActive: protocolActive,
+                preferences: combinedProfile?.preferences,
+                phone: combinedProfile?.phone,
+                language: appLanguageForChat,
+                showContactAlertNotice:
+                  crisisTurnClientExtras?.crisisProtocolState?.hadContactAlert === true ||
+                  crisisBgResult?.alertSent === true,
+              }),
+            };
+          }
+          const crisisResources =
+            crisisTurnClientExtras?.crisisResources ??
+            crisisResourcesForTurn({
+              riskLevel,
+              hardStop,
+              isCrisis,
+              hasBatterySignal: batterySignal,
+              crisisProtocolActive: protocolActive,
+              preferences: combinedProfile?.preferences,
+              phone: combinedProfile?.phone,
+              language: appLanguageForChat,
+              showContactAlertNotice:
+                crisisTurnClientExtras?.crisisProtocolState?.hadContactAlert === true ||
+                crisisBgResult?.alertSent === true,
+            });
+          let out = crisisResources ? { ...payload, crisisResources } : { ...payload };
+          if (crisisTurnClientExtras?.proposedEmergencyContactAlert) {
+            out.proposedEmergencyContactAlert =
+              crisisTurnClientExtras.proposedEmergencyContactAlert;
+          }
+          if (crisisTurnClientExtras?.softCrisisCheckIn) {
+            out.softCrisisCheckIn = crisisTurnClientExtras.softCrisisCheckIn;
+          }
+          if (crisisTurnClientExtras?.safeguardingOverlay) {
+            out.safeguardingOverlay = crisisTurnClientExtras.safeguardingOverlay;
+          }
+          if (softLandingClientPayload) {
+            out.softLanding = softLandingClientPayload;
+          }
+          const calmForced = resolveCalmForcedFromGates({
+            hasCrisisResources: Boolean(out.crisisResources),
+            hasSoftCrisisCheckIn: Boolean(out.softCrisisCheckIn),
+            hasSafeguardingOverlay: Boolean(out.safeguardingOverlay),
+            hasSoftLanding: Boolean(out.softLanding?.strip),
+            crisisHardStop: hardStop === true,
+            protocolActive,
+          });
+          if (sessionToneCore === undefined) {
+            sessionToneCore = buildSessionToneCore({
+              userId: req.user._id.toString(),
+              emotionalAnalysis,
+              sessionEmotionalState: conversation?.sessionEmotionalState || null,
+              recordInMemory: false,
+            });
+          }
+          const sessionTone = withCalmForced(sessionToneCore, calmForced);
+          if (sessionTone) {
+            out.sessionTone = sessionTone;
+          }
+          return out;
+        };
+
+        const structuredCrisisTurn = resolveCrisisStructuredAssistantContent({
+          willHardStop,
+          protocolWasActive,
+          previousAssistantWasHardStop,
+          protocolExitingThisTurn: Boolean(crisisTurnClientExtras?.crisisProtocolExit),
+          messageContent: content.trim(),
+          language: appLanguageForChat,
+          preferences: combinedProfile?.preferences,
+          phone: combinedProfile?.phone,
+        });
+        const structuredHardStop =
+          structuredCrisisTurn?.hardStop === true || structuredCrisisTurn?.kind === 'hard_stop';
+        const personaInput = personaProjectionPromise
+          ? await personaProjectionPromise
+          : emptyPersonaProjectionMeta({ surface: 'registered', purposeSnapshot });
+        emitTurnTraceSafetyThenState(turnTrace, {
+          safetySignals: {
+            hardStop: structuredCrisisTurn?.content ? structuredHardStop : willHardStop === true,
+            crisisResources: crisisTurnClientExtras?.crisisResources,
+            softCrisisCheckIn: crisisTurnClientExtras?.softCrisisCheckIn,
+            safeguardingOverlay: crisisTurnClientExtras?.safeguardingOverlay,
+          },
+          stateInput: {
+            emotionalAnalysis,
+            conversationPattern,
+            timezone: user?.preferences?.timezone || null,
+          },
+          priorAssistantCount: priorAssistantCountFromHistory(conversationHistory),
+          personaInput,
+          trajectoryInput: {
+            emotionalAnalysis,
+            conversationPattern,
+            priorIntensity: priorIntensityFromHistory(conversationHistory),
+            priorPeakIntensity: conversation?.sessionEmotionalState?.peakIntensity,
+          },
+          progressionSignals: collectConversationProgressionSignals({
+            userMessage: content.trim(),
+            conversationHistory,
+            conversationPattern,
+            sessionIntention: conversation?.sessionIntention || null,
+          }),
+        });
+
+        attachConversationExtrasContext(turnTrace, {
+          conversationHistory,
+        });
+
+        if (structuredCrisisTurn?.content) {
+          if (structuredCrisisTurn.kind === 'hard_stop') {
+            logs.push(`[${Date.now() - startTime}ms] Crisis hard-stop (#205): respuesta estructurada sin LLM`);
+            metricsService
+              .recordMetric(
+                'crisis_hard_stop',
+                buildCrisisRoutingMetricData({
+                  riskLevel,
+                  transport: req.query.stream === 'true' ? 'sse' : 'http',
+                  messageContent: content.trim(),
+                }),
+                req.user._id.toString(),
+                { conversationId: String(conversationId) },
+              )
+              .catch(() => {});
+          } else {
+            logs.push(
+              `[${Date.now() - startTime}ms] Crisis protocol follow-up: respuesta estructurada sin LLM`,
+            );
+          }
+
+          const { assistantMessage: structuredAssistant, clientTurn: structuredClientTurn } =
+            await persistCrisisStructuredAssistantTurn({
+              userId: req.user._id,
+              conversationId,
+              content: structuredCrisisTurn.content,
+              riskLevel,
+              hardStop: structuredCrisisTurn.hardStop,
+              kind: structuredCrisisTurn.kind,
+              emotionalAnalysis,
+              contextualAnalysis,
+              language: appLanguageForChat,
+            });
+          assistantMessage = structuredAssistant;
+          const structuredTurnPolicy = safeEvaluateTurnPolicy({
+            surface: 'registered',
+            crisisExtras: true,
+            hardStop: structuredHardStop,
+            protocol93:
+              structuredCrisisTurn.kind === 'protocol_follow_up' ||
+              crisisTurnClientExtras?.crisisProtocolState?.active === true,
+            soft19: Boolean(crisisTurnClientExtras?.softCrisisCheckIn),
+            safeguarding: Boolean(crisisTurnClientExtras?.safeguardingOverlay),
+          });
+          noteTurnTraceAnalysis(turnTrace, {
+            muteFlags: structuredTurnPolicy.muteFlags,
+          });
+          emitTurnTraceSafety(turnTrace, {
+            hardStop: structuredHardStop,
+            crisisResources: crisisTurnClientExtras?.crisisResources,
+            softCrisisCheckIn: crisisTurnClientExtras?.softCrisisCheckIn,
+            safeguardingOverlay: crisisTurnClientExtras?.safeguardingOverlay,
+          });
+          noteTurnTraceShadow(turnTrace, {
+            choice: structuredHardStop ? 'hard_stop' : 'implicit_llm',
+            constraints: structuredTurnPolicy.muteFlags,
+            payload: {
+              suggestions: structuredClientTurn.suggestions,
+              tccLite: structuredClientTurn.tccLite,
+              proposedProductActions: [],
+              proposedCommitments: [],
+              crisisResources: crisisTurnClientExtras?.crisisResources,
+              safeguardingOverlay: crisisTurnClientExtras?.safeguardingOverlay,
+            },
+          });
+          noteTurnTraceProgressionAssessment(
+            turnTrace,
+            assessConversationProgressionStructure(turnTrace?.progression, structuredCrisisTurn.content),
+          );
+          emitTurnTraceCompleted(turnTrace, { model: null });
+
+          intenseChatCheckInService
+            .maybeSchedule({
+              userId: req.user._id,
+              conversationId,
+              assistantMessageId: structuredAssistant._id,
+              emotionalAnalysis,
+              riskLevel,
+              isCrisis: true,
+            })
+            .catch(() => {});
+
+          scheduleRollingSummaryRefresh({
+            conversationId,
+            userId: req.user._id,
+            isGuest: false,
+          });
+
+          const responseTimeStructured = Date.now() - startTime;
+          const structuredPayload = {
+            done: true,
+            messageId: structuredAssistant._id?.toString(),
+            content: structuredCrisisTurn.content,
+            crisisHardStop: structuredCrisisTurn.hardStop === true,
+            context: { emotional: emotionalAnalysis, contextual: contextualAnalysis },
+            suggestions: structuredClientTurn.suggestions,
+            suggestionsPersonalized: structuredClientTurn.suggestionsPersonalized,
+            proposedProductActions: [],
+            proposedCommitments: [],
+            productActionStatus: { paused: false, reason: null, askFirst: false },
+            clinicalScale: null,
+            cognitiveDistortions: null,
+            tccLite: structuredClientTurn.tccLite,
+            processingTime: responseTimeStructured,
+          };
+
+          if (req.query.stream === 'true') {
+            res.setHeader('Content-Type', 'text/event-stream');
+            res.setHeader('Cache-Control', 'no-cache');
+            res.setHeader('Connection', 'keep-alive');
+            res.setHeader('X-Accel-Buffering', 'no');
+            res.flushHeaders();
+            res.write('data: ' + JSON.stringify({ content: structuredCrisisTurn.content }) + '\n\n');
+            res.write(
+              'data: ' +
+                JSON.stringify(
+                  attachTurnCrisisResources(structuredPayload, {
+                    hardStop: structuredCrisisTurn.hardStop === true,
+                  }),
+                ) +
+                '\n\n',
+            );
+            res.end();
+            return;
+          }
+
+          return res.status(201).json(
+            attachTurnCrisisResources(
+              {
+                userMessage,
+                assistantMessage: structuredAssistant,
+                crisisHardStop: structuredCrisisTurn.hardStop === true,
+                context: {
+                  emotional: emotionalAnalysis,
+                  contextual: contextualAnalysis,
+                },
+                suggestions: structuredClientTurn.suggestions,
+                suggestionsPersonalized: structuredClientTurn.suggestionsPersonalized,
+                proposedProductActions: [],
+                proposedCommitments: [],
+                productActionStatus: { paused: false, reason: null, askFirst: false },
+                clinicalScale: null,
+                cognitiveDistortions: null,
+                tccLite: structuredClientTurn.tccLite,
+                processingTime: responseTimeStructured,
+              },
+              { hardStop: structuredCrisisTurn.hardStop === true },
+            ),
+          );
+        }
+
+        emitTurnTraceSafety(turnTrace, {
+          hardStop: willHardStop === true,
+          crisisResources: crisisTurnClientExtras?.crisisResources,
+          softCrisisCheckIn: crisisTurnClientExtras?.softCrisisCheckIn,
+          safeguardingOverlay: crisisTurnClientExtras?.safeguardingOverlay,
+        });
+
+        const sessionPhase = inferChatSessionPhase({
+          riskLevel,
+          contextualAnalysis,
+          userContent: content.trim(),
+          conversationHistoryNewestFirst: conversationHistory
+        });
+        const sessionRetention = withThematicMicroClosureRetention(
+          buildSessionRetentionPayload({
+            conversationHistoryNewestFirst: conversationHistory,
+            userContent: content.trim(),
+            priorConversationCount,
+            threadMessageLimit: LIMITE_MENSAJES,
+            conversationPattern
+          }),
+          { sessionPhase, conversationHistoryNewestFirst: conversationHistory }
+        );
+        const sessionIntentionSafe = sanitizeSessionIntentionForClient(conversation?.sessionIntention);
+        const responseStrategyHint =
+          sessionIntentionSafe === 'vent'
+            ? 'validate_first_then_action'
+            : sessionIntentionSafe === 'plan'
+              ? 'action_first_then_validation'
+              : 'balanced';
+        const forceShortMode = detectShortModeFromSession({
+          currentMessage: content,
+          conversationHistoryNewestFirst: conversationHistory
+        });
+        const forceFactualMode = detectFactualModeFromMessage({ currentMessage: content });
+
+        const [softLandingWindowEarly, reentryWindowEarly] = await Promise.all([
+          softLandingWindowPromise,
+          reentryWindowPromise,
+        ]);
+        markPhase('softLandingPeek');
+        const softLandingActiveEarly = softLandingWindowEarly?.active === true;
+        const reentryActiveEarly = reentryWindowEarly?.active === true;
+        const resumeFromTechniqueNormalized = normalizeResumeFromTechnique(resumeFromTechnique);
+        const techniqueHandoffPromptSnippet = buildTechniqueHandoffPromptSnippet(
+          resumeFromTechniqueNormalized,
+          appLanguageForChat,
+        );
+        const resumeFromCanvasActive = resumeFromCanvas === true;
+        const resumeFromCanvasPromptSnippet = buildResumeFromCanvasPromptSnippet(
+          resumeFromCanvasActive,
+          appLanguageForChat,
+        );
+        const arrivalReplyActive = resolveArrivalReplyActive({
+          replyToArrival: replyToArrival === true,
+          conversationHistory,
+        });
+        const arrivalReplyPromptSnippet = buildArrivalReplyPromptSnippet(
+          arrivalReplyActive,
+          appLanguageForChat,
+        );
+        const sessionRetentionForPrompt = muteSessionRetentionForArrivalReply(
+          sessionRetention,
+          arrivalReplyActive,
+        );
+        const historialParaPromptConLlegada = injectArrivalAnchorIntoPromptHistory(
+          historialParaPrompt,
+          { active: arrivalReplyActive, language: appLanguageForChat },
+        );
+        const softCrisisCheckInActive =
+          crisisTurnClientExtras?.softCrisisCheckInState?.active === true ||
+          Boolean(crisisTurnClientExtras?.softCrisisCheckIn);
+        const safeguardingOverlayActive =
+          crisisTurnClientExtras?.safeguardingOverlayState?.active === true;
+        const enhancementsPromise = planChatTurnEnhancements({
+          userId: req.user._id,
+          conversationId,
+          userContent: content,
+          conversationHistory,
+          emotionalAnalysis,
+          contextualAnalysis,
+          riskLevel,
+          sessionIntention: sessionIntentionSafe,
+          language: appLanguageForChat,
+          resumeTccLite:
+            resumeTccLite && typeof resumeTccLite === 'object' ? resumeTccLite : null,
+          resumeCommitmentFollowUp: resumeCommitmentFollowUp === true,
+          resumeExperientialFollowUp: resumeExperientialFollowUp === true,
+          resumeMirrorDeepen: resumeMirrorDeepen === true,
+          resumeFromTechnique: resumeFromTechniqueNormalized,
+          resumeFromCanvas: resumeFromCanvasActive,
+          isCrisis,
+          softLandingActive: softLandingActiveEarly,
+          reentryActive: reentryActiveEarly,
+          safeguardingOverlayActive:
+            crisisTurnClientExtras?.safeguardingOverlayState?.active === true,
+          ragHandle: personalPatternRagHandle,
+          phenotypeHandle,
+          abcHandle,
+          commitmentHandle,
+          expFuHandle,
+          recallHandle,
+          persistedTccLiteState: normalizeTccLiteState(conversation?.tccLiteState),
+          turnTrace,
+        });
+        const [softLandingResolved, turnEnhancementsPrompt, memoriaJoin, therapeuticJoin, dailyMoodJoin] =
+          await Promise.all([
+            resolveSoftLandingForTurn({
+              userId: req.user._id,
+              language: appLanguageForChat,
+              window: softLandingWindowEarly,
+              suppressStrip:
+                softCrisisCheckInActive ||
+                Boolean(crisisTurnClientExtras?.safeguardingOverlay) ||
+                crisisTurnClientExtras?.crisisProtocolState?.active === true ||
+                willHardStop ||
+                Boolean(crisisTurnClientExtras?.crisisResources),
+            }),
+            deferPreLlm
+              ? awaitWithBudget(
+                  enhancementsPromise,
+                  CHAT_PRE_LLM_ENHANCEMENT_BUDGET_MS,
+                  emptyChatTurnEnhancements(),
+                )
+              : enhancementsPromise,
+            deferPreLlm
+              ? awaitWithBudget(memoryPrefetchPromise, CHAT_PRE_LLM_ENHANCEMENT_BUDGET_MS, null)
+              : Promise.resolve(memoriaParaOpenAI),
+            deferPreLlm
+              ? awaitWithBudget(therapeuticRecordPromise, CHAT_PRE_LLM_ENHANCEMENT_BUDGET_MS, null)
+              : Promise.resolve(therapeuticRecord),
+            deferPreLlm
+              ? awaitWithBudget(dailyMoodCheckInPromise, CHAT_PRE_LLM_ENHANCEMENT_BUDGET_MS, null)
+              : Promise.resolve(dailyMoodCheckIn),
+          ]);
+        if (deferPreLlm) {
+          memoriaParaOpenAI = memoriaJoin;
+          therapeuticRecord = therapeuticJoin;
+          dailyMoodCheckIn = dailyMoodJoin;
+        }
+        let turnEnhancements = turnEnhancementsPrompt;
+        markPhase('enhancements');
+        let { suggestionPlan, tccLitePlan } = turnEnhancements;
+        const settleEnhancementsForExtras = async () => {
+          if (!deferPreLlm) return;
+          turnEnhancements = await settleChatTurnEnhancements(enhancementsPromise);
+          suggestionPlan = turnEnhancements.suggestionPlan;
+          tccLitePlan = turnEnhancements.tccLitePlan;
+        };
+        const ragJoinMeta = turnEnhancements?.personalPatternRagJoin || {};
+        const phenotypeJoinMeta = turnEnhancements?.digitalPhenotypeJoin || {};
+        const abcJoinMeta = turnEnhancements?.recentAbcJoin || {};
+        const commitmentJoinMeta = turnEnhancements?.commitmentJoin || {};
+        const expFuJoinMeta = turnEnhancements?.expFuJoin || {};
+        const recallJoinMeta = turnEnhancements?.recallJoin || {};
+        metricsService
+          .recordMetric(
+            'chat_usage',
+            {
+              action: `rag_join_${ragJoinMeta.joinStatus || 'miss'}`,
+              isGuest: false,
+              ...(ragJoinMeta.ragMs != null ? { ragMs: ragJoinMeta.ragMs } : {}),
+            },
+            req.user._id.toString(),
+            {
+              conversationId: String(conversationId),
+              transport: crisisTransport,
+              endpoint: 'chat',
+              surface: 'registered',
+            },
+          )
+          .catch(() => {});
+        metricsService
+          .recordMetric(
+            'chat_usage',
+            {
+              action: `phenotype_join_${phenotypeJoinMeta.joinStatus || 'miss'}`,
+              isGuest: false,
+            },
+            req.user._id.toString(),
+            { conversationId: String(conversationId), transport: crisisTransport },
+          )
+          .catch(() => {});
+        metricsService
+          .recordMetric(
+            'chat_usage',
+            {
+              action: `abc_join_${abcJoinMeta.joinStatus || 'miss'}`,
+              isGuest: false,
+            },
+            req.user._id.toString(),
+            { conversationId: String(conversationId), transport: crisisTransport },
+          )
+          .catch(() => {});
+        for (const [prefix, meta] of [
+          ['commitment_join', commitmentJoinMeta],
+          ['exp_fu_join', expFuJoinMeta],
+          ['recall_join', recallJoinMeta],
+        ]) {
+          metricsService
+            .recordMetric(
+              'chat_usage',
+              {
+                action: `${prefix}_${meta.joinStatus || 'miss'}`,
+                isGuest: false,
+              },
+              req.user._id.toString(),
+              { conversationId: String(conversationId), transport: crisisTransport },
+            )
+            .catch(() => {});
+        }
+        const showCommitmentFollowUpChips = shouldShowCommitmentFollowUpChips({
+          conversationHistory,
+          forceFollowUp: resumeCommitmentFollowUp === true,
+        });
+        const showExperientialFollowUpChips = shouldShowExperientialFollowUpChips({
+          conversationHistory,
+          forceFollowUp: resumeExperientialFollowUp === true,
+        });
+        const turnPolicy = safeEvaluateTurnPolicy({
+          surface: 'registered',
+          crisisExtras: isLlmCrisisTherapeuticExtrasBlocked({
+            riskLevel,
+            userMessage: content.trim(),
+          }),
+          hardStop: willHardStop === true,
+          protocol93: crisisTurnClientExtras?.crisisProtocolState?.active === true,
+          soft19: softCrisisCheckInActive === true,
+          safeguarding: safeguardingOverlayActive === true,
+          softLanding: softLandingActiveEarly === true,
+          reentry: reentryActiveEarly === true,
+          canvas: resumeFromCanvasActive === true,
+          techniqueHandoff: Boolean(resumeFromTechniqueNormalized),
+        });
+        const blockCrisisExtras = turnPolicy.blockTherapeuticExtras;
+        noteTurnTraceAnalysis(turnTrace, {
+          riskClass: riskLevel,
+          intentTipo: contextualAnalysis?.intencion?.tipo,
+          topicTema: contextualAnalysis?.tema?.categoria,
+          muteFlags: turnPolicy.muteFlags,
+        });
+        const promptSnippets = buildOpenaiEnhancementSnippets(turnEnhancements, {
+          blockTherapeuticExtras: blockCrisisExtras,
+          blockCrisisExtras,
+          language: appLanguageForChat,
+        });
+        softLandingClientPayload = softLandingResolved.softLanding;
+        const softLandingActive = softLandingResolved.softLandingActive === true;
+        const reentryActive = softLandingResolved.reentryActive === true;
+
+        const openaiContext = {
+          userId: req.user?._id?.toString?.() || String(req.user?._id || ''),
+          rollingSummary: conversation?.rollingSummary || null,
+          timezone: combinedProfile?.preferences?.timezone || user?.preferences?.timezone || null,
+          sessionPhase,
+          safetyHistory: conversationHistory.map((m) => ({
+            role: m.role,
+            content: m.content || ''
+          })),
+          history: historialParaPromptConLlegada,
+          emotional: emotionalAnalysis,
+          contextual: contextualAnalysis,
+          profile: combinedProfile,
+          therapeutic: therapeuticRecord,
+          currentConversationId: conversationId,
+          conversationContext,
+          depthPreference: depthAnalysis?.depthPreference,
+          inferredWritingStyle: writingStyle?.style,
+          preferredResponseLength: engagement?.preferredResponseLength,
+          language: appLanguageForChat,
+          forceShortMode,
+          forceFactualMode,
+          sessionEmotionalIntensity: sessionPeakIntensity,
+          sessionTrends,
+          userMessage: content.trim(),
+          distress: harmDistressContext.distress,
+          softCrisisCheckInActive,
+          softLandingActive,
+          reentryActive,
+          softLandingPromptSnippet: softLandingResolved.softLandingPromptSnippet,
+          safeguardingOverlayActive,
+          safeguardingOverlayMinorInText:
+            crisisTurnClientExtras?.safeguardingOverlayState?.minorInText === true,
+          resumeFromTechniqueActive: Boolean(resumeFromTechniqueNormalized),
+          techniqueHandoffPromptSnippet,
+          resumeFromCanvasActive,
+          resumeFromCanvasPromptSnippet,
+          arrivalReplyActive,
+          arrivalReplyPromptSnippet,
+          _promptTelemetry: {
+            userId: req.user._id,
+            conversationId,
+            source: 'http',
+            callSite: 'buildHistoryForPromptFromMessages'
+          },
+          crisis: buildOpenaiCrisisContext({
+            riskLevel,
+            isCrisis,
+            userMessage: content.trim(),
+            preferences: combinedProfile?.preferences || user?.preferences || null,
+            phone: user?.phone || null,
+          }),
+          ...(memoriaParaOpenAI ? { memory: memoriaParaOpenAI } : {}),
+          sessionRetention: sessionRetentionForPrompt,
+          sessionIntention: sessionIntentionSafe,
+          responseStrategyHint,
+          conversationPattern,
+          dailyMoodCheckIn: dailyMoodCheckIn || null,
+          conversationProgression: turnTrace?.progression || null,
+          experienceLoadCue: turnTrace?.experience?.loadCue || null,
+          experienceModality: turnTrace?.experience?.modality || null,
+          experienceTimingCue: turnTrace?.experience?.timingCue || null,
+          experienceSessionBand: turnTrace?.experience?.sessionBand || null,
+          experienceCloseCue: turnTrace?.experience?.closeCue || null,
+          nexusTurnId: turnTrace?.turnId || null,
+          activationBand: turnTrace?.state?.activationBand || null,
+          loadBand: turnTrace?.state?.loadBand || null,
+          opennessBand: turnTrace?.state?.opennessBand || null,
+          intentCandidate: turnTrace?.intentCandidate || null,
+          safetyRoute: turnTrace?.safetyRoute || 'none',
+          muteFlags: Array.isArray(turnPolicy.muteFlags) ? turnPolicy.muteFlags : [],
+          conversationExtrasEligibility: turnTrace?.extrasEligibility || null,
+          purposeSnapshot,
+          psychoeducationPromptSnippet: promptSnippets.psychoeducationPromptSnippet,
+          activeTccProtocolsPromptSnippet: promptSnippets.activeTccProtocolsPromptSnippet,
+          tccLitePromptSnippet: promptSnippets.tccLitePromptSnippet,
+          digitalPhenotypePromptSnippet: promptSnippets.digitalPhenotypePromptSnippet,
+          recentAbcPromptSnippet: promptSnippets.recentAbcPromptSnippet,
+          personalPatternRagPromptSnippet: promptSnippets.personalPatternRagPromptSnippet,
+          commitmentFollowUpPromptSnippet: promptSnippets.commitmentFollowUpPromptSnippet,
+          sessionCommitmentPromptSnippet: promptSnippets.sessionCommitmentPromptSnippet,
+          experientialFollowUpPromptSnippet: promptSnippets.experientialFollowUpPromptSnippet,
+          experientialRecallPromptSnippet: promptSnippets.experientialRecallPromptSnippet,
+          techniqueSuggestionPromptSnippet: promptSnippets.techniqueSuggestionPromptSnippet,
+          gratitudeJournalPromptSnippet: promptSnippets.gratitudeJournalPromptSnippet,
+          crisisMetricTransport: req.query.stream === 'true' ? 'sse' : 'http',
+        };
+
+        if (
+          shouldIncludeCrisisInOpenaiContext(riskLevel, {
+            isCrisis,
+            userMessage: content.trim(),
+          })
+        ) {
+          metricsService
+            .recordMetric(
+              'crisis_llm_path',
+              buildCrisisRoutingMetricData({
+                riskLevel,
+                transport: req.query.stream === 'true' ? 'sse' : 'http',
+                messageContent: content.trim(),
+              }),
+              req.user._id.toString(),
+              { conversationId: String(conversationId) },
+            )
+            .catch(() => {});
+        }
+
+        metricsService
+          .recordMetric(
+            'chat_turn_policy',
+            {
+              questionStreakCount: conversationPattern.questionStreakCount,
+              shortReplyStreak: conversationPattern.shortReplyStreak,
+              cognitiveLoadSignal: conversationPattern.cognitiveLoadSignal || 'none',
+              closureRisk: conversationPattern.closureRisk === true
+            },
+            req.user._id.toString(),
+            { conversationId: String(conversationId) }
+          )
+          .catch(() => {});
+
+        // Streaming: si se pide stream=true, responder por SSE
+        if (req.query.stream === 'true') {
+          metricsService
+            .recordMetric(
+              'chat_usage',
+              { action: 'streaming_request', isGuest: false },
+              req.user._id.toString(),
+              {
+                conversationId: String(conversationId),
+                transport: 'http',
+                endpoint: 'chat',
+                surface: 'registered',
+                streaming: true
+              }
+            )
+            .catch(() => {});
+
+          res.setHeader('Content-Type', 'text/event-stream');
+          res.setHeader('Cache-Control', 'no-cache');
+          res.setHeader('Connection', 'keep-alive');
+          res.setHeader('X-Accel-Buffering', 'no');
+          res.flushHeaders();
+
+          try {
+            let firstChunkAt = null;
+            const preLlmEndAt = Date.now();
+            for await (const event of iterateAssistantStreamWithRetry(
+              () => openaiService.generarRespuestaStream(userMessage, openaiContext),
+            )) {
+              if (event.type === 'chunk') {
+                if (!firstChunkAt) {
+                  firstChunkAt = Date.now();
+                  const ttftMetrics = buildStreamingTtftMetrics({
+                    startTime,
+                    preLlmEndAt,
+                    firstChunkAt,
+                  });
+                  const phaseMsSafe = sanitizePhaseMs(phaseMs);
+                  metricsService
+                    .recordMetric(
+                      'chat_usage',
+                      {
+                        action: 'streaming_first_chunk',
+                        isGuest: false,
+                        ...streamingTtftMetricPayload(ttftMetrics),
+                      },
+                      req.user._id.toString(),
+                      {
+                        conversationId: String(conversationId),
+                        transport: 'http',
+                        endpoint: 'chat',
+                        surface: 'registered',
+                        streaming: true,
+                        ...(phaseMsSafe ? { phaseMs: phaseMsSafe } : {}),
+                      }
+                    )
+                    .catch(() => {});
+                }
+                res.write('data: ' + JSON.stringify({ content: event.content }) + '\n\n');
+              } else if (event.type === 'done') {
+                await settleEnhancementsForExtras();
+                const response = { content: event.content, context: event.context };
+                const emocionalNormalizado = openaiService.normalizarAnalisisEmocional(emotionalAnalysis);
+                const therapeutic = response.context?.therapeutic;
+                const modelRouting = response.context?.modelRouting || null;
+
+                try {
+                  assistantMessage = new Message({
+                    userId: req.user._id,
+                    content: response.content,
+                    role: 'assistant',
+                    conversationId,
+                    metadata: attachInferredBlocksToMetadata(
+                      buildAssistantMetadataWithEnhancements({
+                      status: 'sent',
+                      crisis: { riskLevel: normalizeStoredCrisisRiskLevel(riskLevel) },
+                      context: {
+                        emotional: emocionalNormalizado,
+                        contextual: contextualAnalysis,
+                        response: JSON.stringify(response.context),
+                        ...(therapeutic && { therapeutic: { technique: therapeutic.technique, type: therapeutic.type } })
+                      }
+                    }, tccLitePlan, appLanguageForChat, {
+                      model: modelRouting?.model || null,
+                      surface: 'chat',
+                    }), response.content),
+                  });
+                  await assistantMessage.save();
+                } catch (saveError) {
+                  if (saveError.name === 'ValidationError' && saveError.errors?.['metadata.context.emotional.mainEmotion']) {
+                    assistantMessage = new Message({
+                      userId: req.user._id,
+                      content: response.content,
+                      role: 'assistant',
+                      conversationId,
+                      metadata: attachInferredBlocksToMetadata(
+                      buildAssistantMetadataWithEnhancements({
+                        status: 'sent',
+                        crisis: { riskLevel: normalizeStoredCrisisRiskLevel(riskLevel) },
+                        context: {
+                          emotional: { mainEmotion: 'neutral', intensity: emocionalNormalizado.intensity || 5 },
+                          contextual: contextualAnalysis,
+                          response: JSON.stringify(response.context),
+                          ...(therapeutic && { therapeutic: { technique: therapeutic.technique, type: therapeutic.type } })
+                        }
+                      }, tccLitePlan, appLanguageForChat, {
+                        model: modelRouting?.model || null,
+                        surface: 'chat',
+                      }), response.content),
+                    });
+                    await assistantMessage.save();
+                  } else throw saveError;
+                }
+
+                metricsService
+                  .recordMetric(
+                    'chat_usage',
+                    {
+                      action: 'assistant_message_saved',
+                      isGuest: false,
+                      chars: (response.content || '').length
+                    },
+                    req.user._id.toString(),
+                    { conversationId: String(conversationId), streaming: true }
+                  )
+                  .catch(() => {});
+
+                {
+                  const ttftMetrics = firstChunkAt
+                    ? buildStreamingTtftMetrics({
+                        startTime,
+                        preLlmEndAt,
+                        firstChunkAt,
+                      })
+                    : null;
+                  noteTurnTraceProgressionAssessment(
+                    turnTrace,
+                    assessConversationProgressionStructure(turnTrace?.progression, response.content),
+                  );
+                  emitTurnTraceCompleted(turnTrace, {
+                    model: modelRouting?.model || null,
+                    ttftMs: ttftMetrics?.ttftMs ?? null,
+                    preLlmMs: ttftMetrics?.preLlmMs ?? null,
+                    deferShadow: true,
+                  });
+                }
+
+                metricsService
+                  .recordMetric(
+                    'chat_template_signals',
+                    {
+                      ...analyzeAssistantResponseTemplateSignals(response.content, content),
+                      responseStyle: combinedProfile?.preferences?.responseStyle || 'balanced',
+                      chatPrefsKey: encodeChatPreferencesKey(combinedProfile?.preferences?.chatPreferences)
+                    },
+                    req.user._id.toString(),
+                    {
+                      conversationId: String(conversationId),
+                      responseStyle: combinedProfile?.preferences?.responseStyle || 'balanced',
+                      chatPrefsKey: encodeChatPreferencesKey(combinedProfile?.preferences?.chatPreferences),
+                      riskLevel
+                    }
+                  )
+                  .catch(() => {});
+
+                intenseChatCheckInService
+                  .maybeSchedule({
+                    userId: req.user._id,
+                    conversationId,
+                    assistantMessageId: assistantMessage._id,
+                    emotionalAnalysis,
+                    riskLevel,
+                    isCrisis
+                  })
+                  .catch(() => {});
+
+                ensureStyleSignals();
+                Promise.all([
+                  Conversation.findByIdAndUpdate(conversationId, { lastMessage: assistantMessage._id }).catch(() => {}),
+                  progressTracker.trackProgress(req.user._id, { userMessage, assistantMessage, analysis: { emotional: emotionalAnalysis, contextual: contextualAnalysis } }).catch(() => {}),
+                  userProfileService.actualizarPerfil(req.user._id, userMessage, { emotional: emotionalAnalysis, contextual: contextualAnalysis }).catch(() => {}),
+                  userProfileService.updateLongTermProfileFromConversation(req.user._id, { emotionalAnalysis, contextualAnalysis }).catch(() => {}),
+                  ...(userMessagesForAnalysis.length >= 5 ? [userProfileService.inferPreferencesFromBehavior(req.user._id, {
+                    communicationStyle: writingStyle?.confidence >= 0.5 ? { formal: 'formal', casual: 'casual', laconic: 'directo', emotive: 'empatico' }[writingStyle.style] : undefined,
+                    responseLength: engagement?.engagementLevel !== 'unknown' ? engagement.preferredResponseLength : undefined,
+                    responseStyle: engagement?.preferredResponseLength === 'SHORT' ? 'brief' : engagement?.preferredResponseLength === 'LONG' ? 'deep' : undefined
+                  }).catch(() => {})] : [])
+                ]).catch(() => {});
+
+                // Construir contexto de paráfrasis para métricas (#55)
+                const userExpressesLackOfUnderstanding = detectsLackOfUnderstanding(content);
+                const lastAssistantTurn = conversationHistory
+                  .filter((m) => m && m.role === 'assistant')
+                  .pop() || null;
+                const previousTurnWasParaphrasis =
+                  lastAssistantTurn?.metadata?.paraphrasis?.wasParaphrasis === true;
+                const userMessagesInHistory = conversationHistory.filter((m) => m && m.role === 'user') || [];
+                const isFirstTurn = userMessagesInHistory.length === 0;
+                const paraphrasisContext = {
+                  emotionalIntensity:
+                    typeof emotionalAnalysis?.intensity === 'number' && !isNaN(emotionalAnalysis.intensity)
+                      ? Math.max(0, Math.min(10, emotionalAnalysis.intensity))
+                      : 5,
+                  mainEmotion:
+                    typeof emotionalAnalysis?.mainEmotion === 'string'
+                      ? emotionalAnalysis.mainEmotion
+                      : undefined,
+                  isFirstTurn: Boolean(isFirstTurn),
+                  isCrisisActive: Boolean(isCrisis),
+                  isFactualQuery: Boolean(forceFactualMode),
+                  messageLength: String(content || '').length,
+                  hasAbruptToneChange: false, // TODO: implementar detección de cambio de tono
+                  previousTurnWasParaphrasis: Boolean(previousTurnWasParaphrasis),
+                  userExpressesLackOfUnderstanding: Boolean(userExpressesLackOfUnderstanding),
+                  language: appLanguageForChat || 'es',
+                };
+
+                await finalizeChatTurnEnhancements({
+                  conversationId,
+                  userId: req.user._id,
+                  assistantMessageId: assistantMessage._id,
+                  tccLitePlan,
+                  suggestionPlan,
+                  emotionalAnalysis,
+                  contextualAnalysis,
+                  userContent: content,
+                  riskLevel,
+                  commitmentFollowUpPlan: turnEnhancements.commitmentFollowUpPlan,
+                  commitmentFollowUpCommitmentId: turnEnhancements.commitmentFollowUpCommitmentId,
+                  showCommitmentFollowUpChips,
+                  experientialFollowUpPlan: turnEnhancements.experientialFollowUpPlan,
+                  showExperientialFollowUpChips,
+                  assistantMessageContent: response.content,
+                  paraphrasisContext,
+                }).catch(() => {});
+
+                scheduleRollingSummaryRefresh({
+                  conversationId,
+                  userId: req.user._id,
+                  isGuest: false
+                });
+
+                const responseTime = Date.now() - startTime;
+                const blockClinicalExtras = isLlmCrisisTherapeuticExtrasBlocked({
+                  riskLevel,
+                  userMessage: content.trim(),
+                });
+                let scaleSuggestion = null;
+                try {
+                  if (!blockClinicalExtras) {
+                    scaleSuggestion = await clinicalScalesService.shouldAdministerScale(emotionalAnalysis, contextualAnalysis, req.user._id);
+                  }
+                } catch (_) {}
+                const cognitiveDistortions = blockClinicalExtras
+                  ? null
+                  : contextualAnalysis?.cognitiveDistortions || null;
+                const primaryDistortion = contextualAnalysis?.primaryDistortion || null;
+                const distortionIntervention = contextualAnalysis?.distortionIntervention || null;
+                const clientTurn = buildClientTurnPayload({
+                  tccLitePlan,
+                  suggestionPlan,
+                  language: appLanguageForChat,
+                  riskLevel,
+                  userMessage: content.trim(),
+                  commitmentFollowUpPlan: turnEnhancements.commitmentFollowUpPlan,
+                  showCommitmentFollowUpChips,
+                  experientialFollowUpPlan: turnEnhancements.experientialFollowUpPlan,
+                  showExperientialFollowUpChips,
+                });
+                if (suggestionPlan.actionIds?.length > 0) {
+                  suggestionPlan.actionIds.forEach((suggestionType) => {
+                    metricsService
+                      .recordMetric(
+                        'action_suggestion',
+                        { action: 'generate', suggestionType },
+                        req.user._id.toString(),
+                      )
+                      .catch(() => {});
+                  });
+                }
+
+                let proposedProductActions = [];
+                let productActionStatus = { paused: false, reason: null, askFirst: false };
+                const productActionEnrichmentCtx =
+                  chatProductActionProposalService.resolveProductActionEnrichmentContext({
+                    userContent: content,
+                    assistantContent: response.content,
+                    conversationHistory,
+                  });
+                let productActionSource = 'none';
+                let productActionToolEnabledForTurn =
+                  response.context?.productActionToolEnabled === true;
+                try {
+                  const resolved = resolveTurnProposedProductActions({
+                    toolActions: response.context?.toolProposedProductActions,
+                    productActionToolEnabled: productActionToolEnabledForTurn,
+                    userContent: content,
+                    buildHeuristic: () =>
+                      chatProductActionProposalService.buildProposedProductActions({
+                        riskLevel,
+                        isCrisis,
+                        softLandingActive,
+                        reentryActive,
+                        safeguardingOverlayActive,
+                        language: appLanguageForChat,
+                        userContent: content,
+                        assistantContent: response.content,
+                        sessionIntention: conversation?.sessionIntention,
+                        conversationId,
+                        assistantMessageId: assistantMessage._id,
+                        conversationHistory,
+                      }),
+                  });
+                  proposedProductActions = resolved.actions;
+                  productActionSource = resolved.source;
+                  productActionToolEnabledForTurn = resolved.toolEnabled;
+                } catch (propErr) {
+                  console.error('[ChatRoutes] proposedProductActions (stream):', propErr);
+                }
+
+                if (proposedProductActions.length > 0) {
+                  try {
+                    const proposalEval =
+                      await conversationProductProposalCapService.evaluateProposedProductActionsState(
+                        content,
+                        conversationId,
+                        proposedProductActions
+                      );
+                    proposedProductActions = proposalEval.actions;
+                    productActionStatus = proposalEval.status || productActionStatus;
+                  } catch (capErr) {
+                    console.warn('[ChatRoutes] product proposal cap (stream):', capErr?.message || capErr);
+                  }
+                }
+
+                if (proposedProductActions.length > 0) {
+                  try {
+                    proposedProductActions =
+                      await chatProductActionLlmService.enrichProposedProductActionsWithLlm(
+                        proposedProductActions,
+                        {
+                          userContent: productActionEnrichmentCtx.userContent,
+                          assistantContent: productActionEnrichmentCtx.assistantContent,
+                          primaryPsychoeducationId: suggestionPlan.primaryPsychoeducationId,
+                          language: appLanguageForChat,
+                        }
+                      );
+                  } catch (llmPropErr) {
+                    console.warn('[ChatRoutes] proposedProductActions LLM (stream):', llmPropErr?.message || llmPropErr);
+                  }
+                  
+                  // Filtrado de reentrada (#229): 1 CTA global — home viva ⇒ chat 0; omitida ⇒ máx 1
+                  if (reentryActive && proposedProductActions.length > 0) {
+                    try {
+                      const { applyReentryChatProductActionCap } = await import('../services/reentryProductOfferService.js');
+                      const reentryWindow = await import('../utils/postCrisisWindowGuard.js')
+                        .then(m => m.getPostCrisisReentryWindow(req.user._id));
+                      proposedProductActions = await applyReentryChatProductActionCap(
+                        proposedProductActions,
+                        {
+                          userId: req.user._id,
+                          reentryActive: true,
+                          reentryAnchorAt: reentryWindow?.anchorAt,
+                        },
+                      );
+                    } catch (reentryErr) {
+                      console.warn('[ChatRoutes] reentry filter (stream):', reentryErr?.message || reentryErr);
+                    }
+                  }
+                  
+                  metricsService
+                    .recordMetric(
+                      'product_action_proposed',
+                      {
+                        count: proposedProductActions.length,
+                        types: proposedProductActions.map((a) => a.type),
+                        source: productActionSource,
+                        transport: 'sse'
+                      },
+                      req.user._id.toString(),
+                      { conversationId: String(conversationId) }
+                    )
+                    .catch(() => {});
+                  conversationProductProposalCapService
+                    .incrementNonExplicitProductProposalCountIfApplied(
+                      content,
+                      conversationId,
+                      proposedProductActions.length
+                    )
+                    .catch((incErr) =>
+                      console.warn('[ChatRoutes] product proposal cap inc (stream):', incErr?.message || incErr)
+                    );
+                }
+
+                metricsService
+                  .recordMetric(
+                    'product_action_resolve',
+                    buildProductActionResolveMetricData({
+                      toolEnabled: productActionToolEnabledForTurn,
+                      source: productActionSource,
+                      actions: proposedProductActions,
+                      transport: 'sse',
+                    }),
+                    req.user._id.toString(),
+                    { conversationId: String(conversationId) }
+                  )
+                  .catch(() => {});
+
+                const proposedCommitments =
+                  proposedProductActions.length > 0
+                    ? []
+                    : await chatCommitmentProposalService.resolveProposedCommitmentsForTurn(
+                        {
+                          userId: req.user._id,
+                          riskLevel,
+                          isCrisis,
+                          userContent: content,
+                          assistantContent: response.content,
+                          sessionIntention: conversation?.sessionIntention,
+                          conversationId,
+                          assistantMessageId: assistantMessage._id,
+                          interventionId: suggestionPlan.primaryPsychoeducationId || null,
+                          language: appLanguageForChat,
+                        },
+                        { transport: 'sse' },
+                      );
+
+                await persistProposedCommitmentsOnMessage(
+                  assistantMessage._id,
+                  proposedCommitments,
+                ).catch(() => {});
+
+                let interactiveCanvas = await resolveInteractiveCanvasForTurn({
+                  toolCanvas: response.context?.toolProposedInteractiveCanvas,
+                  conversationId,
+                  assistantMessageId: assistantMessage._id,
+                  userId: req.user._id,
+                  transport: 'sse',
+                });
+                let turnOut = finalizeTurnPayload(
+                  applyInteractiveCanvasCompetition(
+                    {
+                      suggestions: clientTurn.suggestions,
+                      suggestionsPersonalized: clientTurn.suggestionsPersonalized,
+                      proposedProductActions,
+                      proposedCommitments,
+                      commitmentFollowUp: clientTurn.commitmentFollowUp,
+                      experientialFollowUp: clientTurn.experientialFollowUp,
+                      tccLite: clientTurn.tccLite,
+                    },
+                    interactiveCanvas,
+                  ),
+                  response.context,
+                );
+
+                const sseDonePayload = attachTurnCrisisResources({
+                  done: true,
+                  messageId: assistantMessage._id?.toString(),
+                  content: response.content,
+                  context: { emotional: emotionalAnalysis, contextual: contextualAnalysis },
+                  suggestions: turnOut.suggestions,
+                  suggestionsPersonalized: turnOut.suggestionsPersonalized,
+                  proposedProductActions: turnOut.proposedProductActions,
+                  proposedCommitments: turnOut.proposedCommitments,
+                  productActionStatus: interactiveCanvas
+                    ? { paused: false, reason: null, askFirst: false }
+                    : productActionStatus,
+                  clinicalScale: scaleSuggestion ? { ...scaleSuggestion, suggestion: clinicalScalesService.generateScaleSuggestion(scaleSuggestion.scale, scaleSuggestion.reason), automaticResult: null } : null,
+                  cognitiveDistortions: cognitiveDistortions?.length > 0 ? { detected: cognitiveDistortions, primary: primaryDistortion, intervention: distortionIntervention } : null,
+                  tccLite: turnOut.tccLite,
+                  commitmentFollowUp: turnOut.commitmentFollowUp,
+                  experientialFollowUp: turnOut.experientialFollowUp,
+                  interactiveCanvas: turnOut.interactiveCanvas || null,
+                  listedHabits: turnOut.listedHabits ?? null,
+                  proposedScaleCheckin: turnOut.proposedScaleCheckin ?? null,
+                  openSavedDecision: turnOut.openSavedDecision ?? null,
+                  processingTime: responseTime
+                });
+                noteTurnTraceShadow(turnTrace, {
+                  choice: 'implicit_llm',
+                  constraints: turnPolicy.muteFlags,
+                  payload: sseDonePayload,
+                });
+                emitTurnTraceDecisionShadowed(turnTrace);
+                res.write('data: ' + JSON.stringify(sseDonePayload) + '\n\n');
+
+                metricsService
+                  .recordMetric(
+                    'chat_usage',
+                    {
+                      action: 'streaming_done',
+                      isGuest: false,
+                      timeToDoneMs: Date.now() - startTime
+                    },
+                    req.user._id.toString(),
+                    {
+                      conversationId: String(conversationId),
+                      model: modelRouting?.model,
+                      route: modelRouting?.route,
+                      routeReason: modelRouting?.reason
+                    }
+                  )
+                  .catch(() => {});
+
+                res.end();
+                return;
+              }
+            }
+          } catch (streamErr) {
+            console.error('[ChatRoutes] Error en streaming:', streamErr);
+            emitTurnTraceFailed(turnTrace, {
+              errorCode: streamErr?.code || streamErr?.status || 'streaming_error',
+            });
+            if (userMessage?._id) {
+              await persistAssistantFallbackForUserMessage({
+                userMessage,
+                conversationId,
+                userId: req.user._id,
+                fallbackContent: req.apiCopy.assistantProcessingFallback,
+              }).catch(() => {});
+            }
+            metricsService
+              .recordMetric(
+                'chat_usage',
+                {
+                  action: 'error',
+                  isGuest: false,
+                  code: streamErr?.code || streamErr?.status || 'streaming_error'
+                },
+                req.user._id.toString(),
+                { conversationId: String(conversationId), streaming: true }
+              )
+              .catch(() => {});
+            res.write(
+              'data: ' +
+                JSON.stringify({
+                  error: streamErr.message || req.apiCopy.streamError,
+                }) +
+                '\n\n',
+            );
+            res.end();
+            return;
+          }
+        }
+
+        const response = await callAssistantOnceWithRetry(() =>
+          openaiService.generarRespuesta(userMessage, openaiContext),
+        );
+        await settleEnhancementsForExtras();
+        const modelRouting = response.context?.modelRouting || null;
+
+        metricsService
+          .recordMetric(
+            'chat_usage',
+            {
+              action: 'non_stream_response_ready',
+              isGuest: false,
+              latencyMs: Date.now() - startTime
+            },
+            req.user._id.toString(),
+            {
+              conversationId: String(conversationId),
+              streaming: false,
+              transport: 'http',
+              endpoint: 'chat',
+              surface: 'registered',
+              model: modelRouting?.model,
+              route: modelRouting?.route,
+              routeReason: modelRouting?.reason
+            }
+          )
+          .catch(() => {});
+
+        // Nota: La validación de coherencia emocional ya se realiza dentro de generarRespuesta()
+        // en el método validarYMejorarRespuesta(), por lo que no es necesario hacerla aquí
+
+        // 6. Crear y guardar mensaje del asistente
+        // Normalizar objeto emocional para asegurar compatibilidad con el esquema
+        const emocionalNormalizado = openaiService.normalizarAnalisisEmocional(emotionalAnalysis);
+        
+        try {
+          const therapeutic = response.context?.therapeutic;
+          assistantMessage = new Message({
+            userId: req.user._id,
+            content: response.content,
+            role: 'assistant',
+            conversationId,
+            metadata: attachInferredBlocksToMetadata(
+              buildAssistantMetadataWithEnhancements({
+              status: 'sent',
+              crisis: { riskLevel: normalizeStoredCrisisRiskLevel(riskLevel) },
+              context: {
+                emotional: emocionalNormalizado,
+                contextual: contextualAnalysis,
+                response: JSON.stringify(response.context),
+                ...(therapeutic && { therapeutic: { technique: therapeutic.technique, type: therapeutic.type } })
+              }
+            }, tccLitePlan, appLanguageForChat, {
+              model: modelRouting?.model || null,
+              surface: 'chat',
+            }), response.content),
+          });
+          await assistantMessage.save();
+        } catch (saveError) {
+          // Si hay error de validación del enum, intentar guardar con 'neutral' como fallback
+          if (saveError.name === 'ValidationError' && saveError.errors?.['metadata.context.emotional.mainEmotion']) {
+            console.warn('⚠️ Error de validación de enum emocional. Guardando con neutral como fallback:', saveError.message);
+            const therapeutic = response.context?.therapeutic;
+            assistantMessage = new Message({
+              userId: req.user._id,
+              content: response.content,
+              role: 'assistant',
+              conversationId,
+              metadata: attachInferredBlocksToMetadata(
+              buildAssistantMetadataWithEnhancements({
+                status: 'sent',
+                crisis: { riskLevel: normalizeStoredCrisisRiskLevel(riskLevel) },
+                context: {
+                  emotional: {
+                    mainEmotion: 'neutral',
+                    intensity: emocionalNormalizado.intensity || 5
+                  },
+                  contextual: contextualAnalysis,
+                  response: JSON.stringify(response.context),
+                  ...(therapeutic && { therapeutic: { technique: therapeutic.technique, type: therapeutic.type } })
+                }
+              }, tccLitePlan, appLanguageForChat, {
+                model: modelRouting?.model || null,
+                surface: 'chat',
+              }), response.content),
+            });
+            await assistantMessage.save();
+          } else {
+            throw saveError;
+          }
+        }
+
+        noteTurnTraceProgressionAssessment(
+          turnTrace,
+          assessConversationProgressionStructure(turnTrace?.progression, response.content),
+        );
+        emitTurnTraceCompleted(turnTrace, {
+          model: modelRouting?.model || null,
+          deferShadow: true,
+        });
+
+        metricsService
+          .recordMetric(
+            'chat_usage',
+            {
+              action: 'assistant_message_saved',
+              isGuest: false,
+              chars: (response.content || '').length
+            },
+            req.user._id.toString(),
+            { conversationId: String(conversationId), streaming: false }
+          )
+          .catch(() => {});
+
+        metricsService
+          .recordMetric(
+            'chat_template_signals',
+            {
+              ...analyzeAssistantResponseTemplateSignals(response.content, content),
+              responseStyle: combinedProfile?.preferences?.responseStyle || 'balanced',
+              chatPrefsKey: encodeChatPreferencesKey(combinedProfile?.preferences?.chatPreferences)
+            },
+            req.user._id.toString(),
+            {
+              conversationId: String(conversationId),
+              responseStyle: combinedProfile?.preferences?.responseStyle || 'balanced',
+              chatPrefsKey: encodeChatPreferencesKey(combinedProfile?.preferences?.chatPreferences),
+              riskLevel
+            }
+          )
+          .catch(() => {});
+
+        intenseChatCheckInService
+          .maybeSchedule({
+            userId: req.user._id,
+            conversationId,
+            assistantMessageId: assistantMessage._id,
+            emotionalAnalysis,
+            riskLevel,
+            isCrisis
+          })
+          .catch(() => {});
+
+        // 7. Actualizar registros de forma asíncrona (no bloquea la respuesta)
+        // Solo actualizar lastMessage de forma síncrona, el resto puede ser asíncrono
+        ensureStyleSignals();
+        Promise.all([
+          Conversation.findByIdAndUpdate(conversationId, { lastMessage: assistantMessage._id }).catch(() => {}),
+          progressTracker.trackProgress(req.user._id, {
+            userMessage,
+            assistantMessage,
+            analysis: {
+              emotional: emotionalAnalysis,
+              contextual: contextualAnalysis
+            }
+          }).catch(() => {}),
+          userProfileService.actualizarPerfil(req.user._id, userMessage, {
+            emotional: emotionalAnalysis,
+            contextual: contextualAnalysis
+          }).catch(() => {}),
+          // Personalización a largo plazo: temas recurrentes, emociones predominantes, topicsOfInterest
+          userProfileService.updateLongTermProfileFromConversation(req.user._id, {
+            emotionalAnalysis,
+            contextualAnalysis
+          }).catch(() => {}),
+          // Fase 3: Inferir preferencias desde comportamiento (solo si hay suficientes mensajes)
+          ...(userMessagesForAnalysis.length >= 5 ? [userProfileService.inferPreferencesFromBehavior(req.user._id, {
+            communicationStyle: writingStyle?.confidence >= 0.5 ? { formal: 'formal', casual: 'casual', laconic: 'directo', emotive: 'empatico' }[writingStyle.style] : undefined,
+            responseLength: engagement?.engagementLevel !== 'unknown' ? engagement.preferredResponseLength : undefined,
+            responseStyle: engagement?.preferredResponseLength === 'SHORT' ? 'brief' : engagement?.preferredResponseLength === 'LONG' ? 'deep' : undefined
+          }).catch(() => {})] : [])
+        ]).catch(() => {}); // Ignorar errores en operaciones no críticas
+
+        // Construir contexto de paráfrasis para métricas (#55)
+        const userExpressesLackOfUnderstanding = detectsLackOfUnderstanding(content);
+        const lastAssistantTurn = conversationHistory
+          .filter((m) => m && m.role === 'assistant')
+          .pop() || null;
+        const previousTurnWasParaphrasis =
+          lastAssistantTurn?.metadata?.paraphrasis?.wasParaphrasis === true;
+        const userMessagesInHistory = conversationHistory.filter((m) => m && m.role === 'user') || [];
+        const isFirstTurn = userMessagesInHistory.length === 0;
+        const paraphrasisContext = {
+          emotionalIntensity:
+            typeof emotionalAnalysis?.intensity === 'number' && !isNaN(emotionalAnalysis.intensity)
+              ? Math.max(0, Math.min(10, emotionalAnalysis.intensity))
+              : 5,
+          mainEmotion:
+            typeof emotionalAnalysis?.mainEmotion === 'string'
+              ? emotionalAnalysis.mainEmotion
+              : undefined,
+          isFirstTurn: Boolean(isFirstTurn),
+          isCrisisActive: Boolean(isCrisis),
+          isFactualQuery: Boolean(forceFactualMode),
+          messageLength: String(content || '').length,
+          hasAbruptToneChange: false, // TODO: implementar detección de cambio de tono
+          previousTurnWasParaphrasis: Boolean(previousTurnWasParaphrasis),
+          userExpressesLackOfUnderstanding: Boolean(userExpressesLackOfUnderstanding),
+          language: appLanguageForChat || 'es',
+        };
+
+        await finalizeChatTurnEnhancements({
+          conversationId,
+          userId: req.user._id,
+          assistantMessageId: assistantMessage._id,
+          tccLitePlan,
+          suggestionPlan,
+          emotionalAnalysis,
+          contextualAnalysis,
+          userContent: content,
+          riskLevel,
+          commitmentFollowUpPlan: turnEnhancements.commitmentFollowUpPlan,
+          commitmentFollowUpCommitmentId: turnEnhancements.commitmentFollowUpCommitmentId,
+          showCommitmentFollowUpChips,
+          experientialFollowUpPlan: turnEnhancements.experientialFollowUpPlan,
+          showExperientialFollowUpChips,
+          assistantMessageContent: response.content,
+          paraphrasisContext,
+        }).catch(() => {});
+
+        scheduleRollingSummaryRefresh({
+          conversationId,
+          userId: req.user._id,
+          isGuest: false
+        });
+
+        // OPTIMIZACIÓN: Generar sugerencias solo cuando sea apropiado (no en cada mensaje)
+        const responseTime = Date.now() - startTime;
+        const blockClinicalExtras = isLlmCrisisTherapeuticExtrasBlocked({
+          riskLevel,
+          userMessage: content.trim(),
+        });
+        
+        // NUEVO: Verificar si se debe administrar una escala clínica
+        let scaleSuggestion = null;
+        try {
+          if (!blockClinicalExtras) {
+            scaleSuggestion = await clinicalScalesService.shouldAdministerScale(
+              emotionalAnalysis,
+              contextualAnalysis,
+              req.user._id
+            );
+          }
+        } catch (error) {
+          console.error('[ChatRoutes] Error verificando escalas clínicas:', error);
+        }
+        
+        // NUEVO: Detectar distorsiones cognitivas (ya integrado en contextualAnalysis)
+        const cognitiveDistortions = blockClinicalExtras
+          ? null
+          : contextualAnalysis?.cognitiveDistortions || null;
+        const primaryDistortion = contextualAnalysis?.primaryDistortion || null;
+        const distortionIntervention = contextualAnalysis?.distortionIntervention || null;
+        
+        // NUEVO: Guardar distorsiones cognitivas detectadas para reportes (asíncrono)
+        if (cognitiveDistortions && cognitiveDistortions.length > 0) {
+          Promise.resolve().then(async () => {
+            try {
+              // SEGURIDAD: Validar y sanitizar datos antes de guardar
+              const safeDistortions = cognitiveDistortions
+                .filter(d => d && d.type && d.name && typeof d.confidence === 'number')
+                .map(d => ({
+                  type: String(d.type).substring(0, 50),
+                  name: String(d.name).substring(0, 200),
+                  confidence: Math.max(0, Math.min(1, d.confidence || 0)),
+                  matchedPattern: d.matchedPattern ? String(d.matchedPattern).substring(0, 200) : undefined
+                }));
+              
+              const report = new CognitiveDistortionReport({
+                userId: req.user._id,
+                messageId: userMessage._id,
+                messageContent: content ? String(content).substring(0, 2000).trim() : undefined,
+                distortions: safeDistortions,
+                primaryDistortion: primaryDistortion && safeDistortions.length > 0 ? {
+                  type: String(primaryDistortion.type || '').substring(0, 50),
+                  name: String(primaryDistortion.name || '').substring(0, 200),
+                  confidence: Math.max(0, Math.min(1, primaryDistortion.confidence || 0)),
+                  intervention: distortionIntervention?.intervention 
+                    ? String(distortionIntervention.intervention).substring(0, 500) 
+                    : undefined
+                } : null,
+                emotionalContext: {
+                  emotion: emotionalAnalysis?.mainEmotion ? String(emotionalAnalysis.mainEmotion).substring(0, 50) : undefined,
+                  intensity: typeof emotionalAnalysis?.intensity === 'number' 
+                    ? Math.max(0, Math.min(10, emotionalAnalysis.intensity)) 
+                    : undefined
+                }
+              });
+              await report.save();
+            } catch (error) {
+              console.error('[ChatRoutes] Error guardando reporte de distorsiones:', error);
+            }
+          }).catch(() => {});
+        }
+        
+        // NUEVO: Completar automáticamente la escala si se detecta
+        let automaticScaleResult = null;
+        if (scaleSuggestion) {
+          try {
+            // Obtener historial reciente para mejor análisis
+            const recentMessages = conversationHistory
+              .filter(msg => msg.role === 'user')
+              .slice(0, 3)
+              .map(msg => ({ content: msg.content || '' }));
+            
+            // Completar escala automáticamente (síncrono para incluir en respuesta)
+            const completedScale = clinicalScalesService.completeScaleAutomatically(
+              content,
+              scaleSuggestion.scale,
+              emotionalAnalysis,
+              contextualAnalysis,
+              recentMessages
+            );
+            
+            if (completedScale && completedScale.totalScore >= 0) {
+              // Guardar resultado de forma asíncrona (no bloquea la respuesta)
+              Promise.resolve().then(async () => {
+                try {
+                  const result = new ClinicalScaleResult({
+                    userId: req.user._id,
+                    scaleType: scaleSuggestion.scale,
+                    totalScore: completedScale.totalScore,
+                    itemScores: completedScale.itemScores,
+                    interpretation: completedScale.interpretation,
+                    administrationMethod: 'automatic',
+                    notes: `Completada automáticamente basada en análisis del mensaje. Confianza: ${(completedScale.confidence * 100).toFixed(0)}%`
+                  });
+                  await result.save();
+                  logs.push(`[${Date.now() - startTime}ms] ✅ Escala ${scaleSuggestion.scale} completada automáticamente: ${completedScale.totalScore} puntos`);
+                } catch (error) {
+                  console.error('[ChatRoutes] Error guardando escala automática:', error);
+                }
+              }).catch(() => {});
+              
+              // Incluir resultado en la respuesta
+              automaticScaleResult = {
+                completed: true,
+                totalScore: completedScale.totalScore,
+                interpretation: completedScale.interpretation,
+                confidence: completedScale.confidence,
+                itemScores: completedScale.itemScores.map(item => ({
+                  itemId: item.itemId,
+                  question: item.question,
+                  score: item.score
+                }))
+              };
+              
+              logs.push(`[${Date.now() - startTime}ms] 📊 Escala ${scaleSuggestion.scale} completada automáticamente: ${completedScale.totalScore} puntos (${completedScale.interpretation.severity})`);
+            }
+          } catch (error) {
+            console.error('[ChatRoutes] Error completando escala automáticamente:', error);
+          }
+        }
+        
+        const clientTurn = buildClientTurnPayload({
+          tccLitePlan,
+          suggestionPlan,
+          language: appLanguageForChat,
+          riskLevel,
+          userMessage: content.trim(),
+          commitmentFollowUpPlan: turnEnhancements.commitmentFollowUpPlan,
+          showCommitmentFollowUpChips,
+          experientialFollowUpPlan: turnEnhancements.experientialFollowUpPlan,
+          showExperientialFollowUpChips,
+        });
+        if (suggestionPlan.actionIds?.length > 0) {
+          suggestionPlan.actionIds.forEach((suggestionType) => {
+            metricsService
+              .recordMetric(
+                'action_suggestion',
+                { action: 'generate', suggestionType },
+                req.user._id.toString(),
+              )
+              .catch(() => {});
+          });
+        }
+
+        let proposedProductActions = [];
+        let productActionStatus = { paused: false, reason: null, askFirst: false };
+        const productActionEnrichmentCtx =
+          chatProductActionProposalService.resolveProductActionEnrichmentContext({
+            userContent: content,
+            assistantContent: response.content,
+            conversationHistory,
+          });
+        let productActionSource = 'none';
+        let productActionToolEnabledForTurn =
+          response.context?.productActionToolEnabled === true;
+        try {
+          const resolved = resolveTurnProposedProductActions({
+            toolActions: response.context?.toolProposedProductActions,
+            productActionToolEnabled: productActionToolEnabledForTurn,
+            userContent: content,
+            buildHeuristic: () =>
+              chatProductActionProposalService.buildProposedProductActions({
+                riskLevel,
+                isCrisis,
+                softLandingActive,
+                reentryActive,
+                safeguardingOverlayActive,
+                language: appLanguageForChat,
+                userContent: content,
+                assistantContent: response.content,
+                sessionIntention: conversation?.sessionIntention,
+                conversationId,
+                assistantMessageId: assistantMessage._id,
+                conversationHistory,
+              }),
+          });
+          proposedProductActions = resolved.actions;
+          productActionSource = resolved.source;
+          productActionToolEnabledForTurn = resolved.toolEnabled;
+        } catch (propErr) {
+          console.error('[ChatRoutes] proposedProductActions (non-stream):', propErr);
+        }
+
+        if (proposedProductActions.length > 0) {
+          try {
+            const proposalEval =
+              await conversationProductProposalCapService.evaluateProposedProductActionsState(
+                content,
+                conversationId,
+                proposedProductActions
+              );
+            proposedProductActions = proposalEval.actions;
+            productActionStatus = proposalEval.status || productActionStatus;
+          } catch (capErr) {
+            console.warn('[ChatRoutes] product proposal cap (non-stream):', capErr?.message || capErr);
+          }
+        }
+
+        if (proposedProductActions.length > 0) {
+          try {
+            proposedProductActions =
+              await chatProductActionLlmService.enrichProposedProductActionsWithLlm(
+                proposedProductActions,
+                {
+                  userContent: productActionEnrichmentCtx.userContent,
+                  assistantContent: productActionEnrichmentCtx.assistantContent,
+                  primaryPsychoeducationId: suggestionPlan.primaryPsychoeducationId,
+                  language: appLanguageForChat,
+                }
+              );
+          } catch (llmPropErr) {
+            console.warn('[ChatRoutes] proposedProductActions LLM (non-stream):', llmPropErr?.message || llmPropErr);
+          }
+          
+          // Filtrado de reentrada (#229): 1 CTA global — home viva ⇒ chat 0; omitida ⇒ máx 1
+          if (reentryActive && proposedProductActions.length > 0) {
+            try {
+              const { applyReentryChatProductActionCap } = await import('../services/reentryProductOfferService.js');
+              const reentryWindow = await import('../utils/postCrisisWindowGuard.js')
+                .then(m => m.getPostCrisisReentryWindow(req.user._id));
+              proposedProductActions = await applyReentryChatProductActionCap(
+                proposedProductActions,
+                {
+                  userId: req.user._id,
+                  reentryActive: true,
+                  reentryAnchorAt: reentryWindow?.anchorAt,
+                },
+              );
+            } catch (reentryErr) {
+              console.warn('[ChatRoutes] reentry filter (non-stream):', reentryErr?.message || reentryErr);
+            }
+          }
+          
+          metricsService
+            .recordMetric(
+              'product_action_proposed',
+              {
+                count: proposedProductActions.length,
+                types: proposedProductActions.map((a) => a.type),
+                source: productActionSource,
+                transport: 'http_json'
+              },
+              req.user._id.toString(),
+              { conversationId: String(conversationId) }
+            )
+            .catch(() => {});
+          conversationProductProposalCapService
+            .incrementNonExplicitProductProposalCountIfApplied(
+              content,
+              conversationId,
+              proposedProductActions.length
+            )
+            .catch((incErr) =>
+              console.warn('[ChatRoutes] product proposal cap inc (non-stream):', incErr?.message || incErr)
+            );
+        }
+
+        metricsService
+          .recordMetric(
+            'product_action_resolve',
+            buildProductActionResolveMetricData({
+              toolEnabled: productActionToolEnabledForTurn,
+              source: productActionSource,
+              actions: proposedProductActions,
+              transport: 'http_json',
+            }),
+            req.user._id.toString(),
+            { conversationId: String(conversationId) }
+          )
+          .catch(() => {});
+
+        const proposedCommitments =
+          proposedProductActions.length > 0
+            ? []
+            : await chatCommitmentProposalService.resolveProposedCommitmentsForTurn(
+                {
+                  userId: req.user._id,
+                  riskLevel,
+                  isCrisis,
+                  userContent: content,
+                  assistantContent: response.content,
+                  sessionIntention: conversation?.sessionIntention,
+                  conversationId,
+                  assistantMessageId: assistantMessage._id,
+                  interventionId: suggestionPlan.primaryPsychoeducationId || null,
+                  language: appLanguageForChat,
+                },
+                { transport: 'http' },
+              );
+
+        await persistProposedCommitmentsOnMessage(
+          assistantMessage._id,
+          proposedCommitments,
+        ).catch(() => {});
+
+        const interactiveCanvas = await resolveInteractiveCanvasForTurn({
+          toolCanvas: response.context?.toolProposedInteractiveCanvas,
+          conversationId,
+          assistantMessageId: assistantMessage._id,
+          userId: req.user._id,
+          transport: 'http_json',
+        });
+        const turnOut = finalizeTurnPayload(
+          applyInteractiveCanvasCompetition(
+            {
+              suggestions: clientTurn.suggestions,
+              suggestionsPersonalized: clientTurn.suggestionsPersonalized,
+              proposedProductActions,
+              proposedCommitments,
+              commitmentFollowUp: clientTurn.commitmentFollowUp,
+              experientialFollowUp: clientTurn.experientialFollowUp,
+              tccLite: clientTurn.tccLite,
+            },
+            interactiveCanvas,
+          ),
+          response.context,
+        );
+        
+        // Registrar métrica de tiempo de respuesta de forma asíncrona
+        metricsService.recordMetric('response_generation', {
+          time: responseTime,
+          success: true
+        }, req.user._id.toString()).catch(() => {});
+        
+        logs.push(`[${Date.now() - startTime}ms] Proceso completado exitosamente`);
+        
+        const httpDonePayload = attachTurnCrisisResources({
+          userMessage,
+          assistantMessage,
+          context: {
+            emotional: emotionalAnalysis,
+            contextual: contextualAnalysis
+          },
+          suggestions: turnOut.suggestions,
+          suggestionsPersonalized: turnOut.suggestionsPersonalized,
+          proposedProductActions: turnOut.proposedProductActions,
+          proposedCommitments: turnOut.proposedCommitments,
+          productActionStatus: interactiveCanvas
+            ? { paused: false, reason: null, askFirst: false }
+            : productActionStatus,
+          // NUEVO: Información de escalas clínicas y distorsiones cognitivas
+          clinicalScale: scaleSuggestion ? {
+            ...scaleSuggestion,
+            suggestion: clinicalScalesService.generateScaleSuggestion(scaleSuggestion.scale, scaleSuggestion.reason),
+            automaticResult: automaticScaleResult || null
+          } : null,
+          cognitiveDistortions: cognitiveDistortions && cognitiveDistortions.length > 0 ? {
+            detected: cognitiveDistortions,
+            primary: primaryDistortion,
+            intervention: distortionIntervention
+          } : null,
+          tccLite: turnOut.tccLite,
+          commitmentFollowUp: turnOut.commitmentFollowUp,
+          experientialFollowUp: turnOut.experientialFollowUp,
+          interactiveCanvas: turnOut.interactiveCanvas || null,
+          listedHabits: turnOut.listedHabits ?? null,
+          proposedScaleCheckin: turnOut.proposedScaleCheckin ?? null,
+          openSavedDecision: turnOut.openSavedDecision ?? null,
+          processingTime: responseTime
+        });
+        noteTurnTraceShadow(turnTrace, {
+          choice: 'implicit_llm',
+          constraints: turnPolicy.muteFlags,
+          payload: httpDonePayload,
+        });
+        emitTurnTraceDecisionShadowed(turnTrace);
+        return res.status(201).json(httpDonePayload);
+
+      } catch (error) {
+        logs.push(`[${Date.now() - startTime}ms] Error: ${error.message}`);
+        console.error('Error procesando mensaje:', {
+          error,
+          logs,
+          userId: req.user._id,
+        });
+        emitTurnTraceFailed(turnTrace, {
+          errorCode: error?.code || error?.status || 'chat_message_error',
+        });
+
+        metricsService
+          .recordMetric(
+            'chat_usage',
+            {
+              action: 'error',
+              isGuest: false,
+              code: error?.code || error?.status || 'chat_message_error'
+            },
+            req.user._id.toString(),
+            { conversationId: String(conversationId) }
+          )
+          .catch(() => {});
+
+        metricsService.bumpChatFriction('message_processing_failed', {
+          httpStatus: 500,
+          surface: 'registered'
+        });
+
+        if (userMessage?._id) {
+          assistantMessage = await persistAssistantFallbackForUserMessage({
+            userMessage,
+            conversationId,
+            userId: req.user._id,
+            fallbackContent: req.apiCopy.assistantProcessingFallback,
+          }).catch(() => null);
+        }
+
+        return res.status(500).json({
+          message: req.apiCopy.processMessageError,
+          userMessage: userMessage._id ? userMessage : null,
+          errorMessage: assistantMessage,
+        });
+      }
+    }
+
+    } finally {
+      if (turnLockOwner) {
+        await releaseConversationTurnLock(conversationId, turnLockOwner).catch(() => {});
+      }
+    }
+
+  } catch (error) {
+    logs.push(`[${Date.now() - startTime}ms] Error crítico: ${error.message}`);
+    console.error('Error crítico en POST /messages:', {
+      error,
+      logs,
+      userId: req?.user?._id
+    });
+    emitTurnTraceFailed(turnTrace, {
+      errorCode: error?.code || error?.status || 'chat_messages_critical',
+    });
+
+    metricsService
+      .recordMetric(
+        'chat_usage',
+        {
+          action: 'error',
+          isGuest: false,
+          code: error?.code || error?.status || 'chat_messages_critical'
+        },
+        req?.user?._id?.toString?.() || null,
+        { endpoint: '/api/chat/messages' }
+      )
+      .catch(() => {});
+
+    metricsService.bumpChatFriction('message_post_critical_error', {
+      httpStatus: 500,
+      surface: 'registered'
+    });
+
+    return res.status(500).json({
+      message: req.apiCopy.criticalProcessError,
+      error: safeErrorMessage(error),
+    });
+  }
+});
+
+// Feedback rápido (útil / poco útil) en mensajes del asistente — usuarios registrados
+router.patch(
+  '/conversations/:conversationId/messages/:messageId/interactive-canvas',
+  protect,
+  requireActiveSubscription(true),
+  async (req, res) => {
+    try {
+      const { conversationId, messageId } = req.params;
+      const result = await syncInteractiveCanvasStatus({
+        conversationId,
+        assistantMessageId: messageId,
+        patch: req.body || {},
+        userId: req.user._id,
+      });
+      if (!result.ok) {
+        const status = result.code === 'NOT_FOUND' ? 404 : 400;
+        const messageByCode = {
+          NOT_FOUND: req.apiCopy?.notFound || 'Not found',
+          CLOSED: req.apiCopy?.validationError || 'Canvas already closed',
+          INCOMPLETE: req.apiCopy?.validationError || 'Canvas incomplete',
+          NO_CANVAS: req.apiCopy?.validationError || 'Invalid canvas',
+          INVALID: req.apiCopy?.validationError || 'Invalid canvas',
+        };
+        return res.status(status).json({
+          message: messageByCode[result.code] || req.apiCopy?.validationError || 'Invalid canvas',
+          code: result.code,
+        });
+      }
+      return res.json({ success: true, data: { interactiveCanvas: result.canvas } });
+    } catch (err) {
+      console.error('[ChatRoutes] interactive-canvas patch:', err);
+      return res.status(500).json({ message: req.apiCopy?.serverError || 'Error' });
+    }
+  },
+);
+
+router.patch('/messages/:messageId/feedback', protect, messageFeedbackLimiter, async (req, res) => {
+  try {
+    const { messageId } = req.params;
+    const { helpful } = req.body;
+
+    if (!mongoose.isValidObjectId(messageId)) {
+      metricsService.bumpChatFriction('feedback_invalid_message_id', {
+        httpStatus: 400,
+        surface: 'registered'
+      });
+      return res.status(400).json({ message: req.apiCopy.messageIdInvalid });
+    }
+
+    if (!Object.prototype.hasOwnProperty.call(req.body, 'helpful')) {
+      metricsService.bumpChatFriction('feedback_missing_helpful_field', {
+        httpStatus: 400,
+        surface: 'registered'
+      });
+      return res.status(400).json({ message: req.apiCopy.helpfulRequired });
+    }
+
+    if (helpful !== null && helpful !== 'up' && helpful !== 'down') {
+      metricsService.bumpChatFriction('feedback_invalid_helpful_value', {
+        httpStatus: 400,
+        surface: 'registered'
+      });
+      return res.status(400).json({ message: req.apiCopy.helpfulInvalid });
+    }
+
+    const oid = new mongoose.Types.ObjectId(messageId);
+    const feedbackPayload =
+      helpful === null
+        ? null
+        : { helpful, at: new Date().toISOString() };
+
+    const update =
+      helpful === null
+        ? { $unset: { 'metadata.userFeedback': '' } }
+        : { $set: { 'metadata.userFeedback': feedbackPayload } };
+
+    const updated = await Message.findOneAndUpdate(
+      { _id: oid, userId: req.user._id, role: 'assistant' },
+      update,
+      { returnDocument: 'after', runValidators: false }
+    )
+      .select('conversationId metadata.userFeedback')
+      .lean();
+
+    if (!updated) {
+      metricsService.bumpChatFriction('feedback_message_not_found', {
+        httpStatus: 404,
+        surface: 'registered'
+      });
+      return res.status(404).json({ message: req.apiCopy.assistantMessageNotFound });
+    }
+
+    metricsService
+      .recordMetric(
+        'message_feedback',
+        { helpful: helpful === null ? 'cleared' : helpful, messageId: String(oid) },
+        req.user._id.toString(),
+        { conversationId: String(updated.conversationId) }
+      )
+      .catch(() => {});
+
+    metricsService
+      .recordMetric(
+        'chat_usage',
+        { action: 'message_feedback', isGuest: false },
+        req.user._id.toString(),
+        { conversationId: String(updated.conversationId) }
+      )
+      .catch(() => {});
+
+    res.json({
+      success: true,
+      messageId: String(oid),
+      userFeedback: updated.metadata?.userFeedback ?? null
+    });
+  } catch (error) {
+    console.error('[ChatRoutes] Error en PATCH /messages/:messageId/feedback:', error);
+    metricsService.bumpChatFriction('feedback_server_error', {
+      httpStatus: 500,
+      surface: 'registered'
+    });
+    res.status(500).json({
+      message: req.apiCopy.ratingSaveError,
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
+  }
+});
+
+// Obtener todas las conversaciones del usuario con estadísticas
+router.get('/conversations', protect, async (req, res) => {
+  try {
+    const { page = 1, limit = 10, cursor, paginationType = 'offset' } = req.query;
+    const listLimit = clampInt(limit, { min: 1, max: MAX_CONVERSATION_LIST_LIMIT, fallback: 10 });
+    
+    // Usar cursor-based pagination si se especifica o si hay muchos resultados
+    if (paginationType === 'cursor' || cursor) {
+      const result = await cursorPaginate({
+        query: { userId: new mongoose.Types.ObjectId(req.user._id) },
+        model: Message,
+        cursor: cursor || null,
+        limit: listLimit,
+        sort: { createdAt: -1 },
+        select: 'conversationId content role metadata.context.emotional createdAt'
+      });
+      
+      // Agrupar por conversación
+      const conversationMap = new Map();
+      result.data.forEach(msg => {
+        const convId = msg.conversationId.toString();
+        if (!conversationMap.has(convId)) {
+          conversationMap.set(convId, {
+            _id: msg.conversationId,
+            lastMessage: msg.content,
+            lastMessageRole: msg.role,
+            updatedAt: msg.createdAt,
+            messageCount: 1,
+            emotionalContext: msg.metadata?.context?.emotional
+          });
+        } else {
+          const conv = conversationMap.get(convId);
+          conv.messageCount++;
+          if (msg.createdAt > conv.updatedAt) {
+            conv.updatedAt = msg.createdAt;
+            conv.lastMessage = msg.content;
+            conv.lastMessageRole = msg.role;
+            conv.emotionalContext = msg.metadata?.context?.emotional;
+          }
+        }
+      });
+      
+      const conversations = Array.from(conversationMap.values());
+
+      metricsService.bumpChatExploration('list_conversations', {
+        paginationType: 'cursor'
+      });
+      
+      return res.json({
+        conversations,
+        pagination: {
+          type: 'cursor',
+          nextCursor: result.nextCursor,
+          hasMore: result.hasMore,
+          count: conversations.length
+        }
+      });
+    }
+    
+    // Paginación tradicional (offset-based)
+    const skip = (clampInt(page, { min: 1, max: 10_000, fallback: 1 }) - 1) * listLimit;
+    
+    // Optimización: Usar índices existentes (userId, createdAt) y proyección
+    const conversations = await Message.aggregate([
+      { 
+        $match: { 
+          userId: new mongoose.Types.ObjectId(req.user._id) 
+        } 
+      },
+      {
+        // Optimización: Proyectar solo campos necesarios antes de agrupar
+        $project: {
+          conversationId: 1,
+          content: 1,
+          role: 1,
+          createdAt: 1,
+          'metadata.status': 1,
+          'metadata.context.emotional': 1
+        }
+      },
+      { 
+        $group: {
+          _id: '$conversationId',
+          lastMessage: { $last: '$content' },
+          lastMessageRole: { $last: '$role' },
+          updatedAt: { $max: '$createdAt' },
+          messageCount: { $sum: 1 },
+          unreadCount: {
+            $sum: { $cond: [{ $eq: ['$metadata.status', 'sent'] }, 1, 0] }
+          },
+          emotionalContext: {
+            $last: '$metadata.context.emotional'
+          }
+        }
+      },
+      { $sort: { updatedAt: -1 } },
+      { $skip: skip },
+      { $limit: listLimit }
+    ]);
+
+    // Calcular estadísticas básicas
+    const stats = {
+      total: conversations.length,
+      active: conversations.filter(c => !c.archived).length,
+      archived: conversations.filter(c => c.archived).length
+    };
+
+    metricsService.bumpChatExploration('list_conversations', {
+      paginationType: 'offset'
+    });
+
+    res.json({ 
+      conversations,
+      stats
+    });
+  } catch (error) {
+    console.error('Error al obtener conversaciones:', error);
+    metricsService.bumpChatFriction('list_conversations_server_error', {
+      httpStatus: 500,
+      surface: 'registered'
+    });
+    res.status(500).json({
+      message: req.apiCopy.listConversationsError,
+      error: safeErrorMessage(error)
+    });
+  }
+});
+
+// Actualizar estado de mensajes (sent, delivered, read, failed)
+router.patch('/messages/status', protect, patchMessageLimiter, async (req, res) => {
+  try {
+    const { messageIds, status } = req.body;
+
+    if (!Array.isArray(messageIds) || !messageIds.length) {
+      metricsService.bumpChatFriction('message_status_missing_ids', {
+        httpStatus: 400,
+        surface: 'registered'
+      });
+      return res.status(400).json({
+        message: req.apiCopy.messageIdsRequired
+      });
+    }
+
+    if (messageIds.length > MAX_MESSAGE_STATUS_BATCH) {
+      metricsService.bumpChatFriction('message_status_batch_too_large', {
+        httpStatus: 400,
+        surface: 'registered',
+      });
+      return res.status(400).json({
+        message: req.apiCopy.messageIdsInvalid,
+        maxBatch: MAX_MESSAGE_STATUS_BATCH,
+      });
+    }
+
+    const validStatuses = ['sent', 'delivered', 'read', 'failed'];
+    if (!validStatuses.includes(status)) {
+      metricsService.bumpChatFriction('message_status_invalid_status', {
+        httpStatus: 400,
+        surface: 'registered'
+      });
+      return res.status(400).json({
+        message: req.apiCopy.messageStatusInvalid
+      });
+    }
+
+    // Validar que todos los IDs son válidos
+    const validIds = messageIds.filter(id => mongoose.Types.ObjectId.isValid(id));
+    if (validIds.length !== messageIds.length) {
+      metricsService.bumpChatFriction('message_status_invalid_message_ids', {
+        httpStatus: 400,
+        surface: 'registered'
+      });
+      return res.status(400).json({ 
+        message: req.apiCopy.messageIdsInvalid 
+      });
+    }
+
+    // Optimización: Solo verificar existencia, no cargar datos completos
+    const messageCount = await Message.countDocuments({ 
+      _id: { $in: validIds }, 
+      userId: req.user._id 
+    });
+    
+    if (messageCount !== validIds.length) {
+      metricsService.bumpChatFriction('message_status_not_owned_or_missing', {
+        httpStatus: 400,
+        surface: 'registered'
+      });
+      return res.status(400).json({ 
+        message: req.apiCopy.messagesNotOwned 
+      });
+    }
+
+    // Actualizar estado
+    const result = await Message.updateMany(
+      {
+        _id: { $in: validIds },
+        userId: req.user._id
+      },
+      {
+        $set: { 
+          'metadata.status': status,
+          'metadata.lastStatusUpdate': new Date()
+        }
+      }
+    );
+
+    res.json({
+      message: req.apiCopy.messagesUpdated(result.modifiedCount),
+      status,
+      timestamp: new Date()
+    });
+  } catch (error) {
+    console.error('Error al actualizar estado de mensajes:', error);
+    res.status(500).json({
+      message: req.apiCopy.updateStatusError,
+      error: safeErrorMessage(error)
+    });
+  }
+});
+
+// Eliminar mensajes de una conversación (opcional: filtrar por rol)
+router.delete('/conversations/:conversationId', protect, validarConversationId, validarConversacion, deleteConversationLimiter, async (req, res) => {
+  try {
+    const { conversationId } = req.params;
+    const { role } = req.query;
+
+    // Antes del delete: capturar transcript para extract de memoria del proceso.
+    if (!role) {
+      try {
+        await scheduleExperientialPatternExtract(req.user._id, conversationId, {
+          captureSnapshot: true,
+          delayMinutes: 1,
+        });
+      } catch (scheduleErr) {
+        console.warn(
+          '[experientialExtract] schedule on clear skipped',
+          scheduleErr?.message || scheduleErr,
+        );
+      }
+    }
+
+    const query = {
+      conversationId,
+      userId: req.user._id,
+      ...(role && { role })
+    };
+
+    const result = await Message.deleteMany(query);
+
+    if (!role) {
+      await resetConversationSessionState(conversationId, {
+        full: true,
+        userId: req.user._id,
+      });
+    }
+
+    res.json({
+      message: req.apiCopy.messagesDeletedSuccess,
+      deletedCount: result.deletedCount
+    });
+  } catch (error) {
+    console.error('Error al eliminar mensajes:', error);
+    res.status(500).json({
+      message: req.apiCopy.deleteMessagesError,
+      error: safeErrorMessage(error)
+    });
+  }
+});
+
+// Búsqueda avanzada de mensajes (por contenido, rol, estado, emociones, fechas)
+router.get('/messages/search', protect, async (req, res) => {
+  try {
+    const { 
+      query: searchText,
+      role,
+      status,
+      startDate,
+      endDate,
+      emotion,
+      intensity
+    } = req.query;
+
+    const searchQuery = {
+      userId: req.user._id,
+      ...(searchText && {
+        content: {
+          $regex: escapeRegexForMongo(String(searchText).trim().slice(0, MAX_SEARCH_QUERY_LENGTH)),
+          $options: 'i',
+        },
+      }),
+      ...(role && { role }),
+      ...(status && { 'metadata.status': status }),
+      ...(emotion && { 'metadata.context.emotional.mainEmotion': emotion }),
+      ...(intensity && { 'metadata.context.emotional.intensity': parseInt(intensity) })
+    };
+
+    // Filtrar por rango de fechas
+    if (startDate || endDate) {
+      searchQuery.createdAt = {
+        ...(startDate && { $gte: new Date(startDate) }),
+        ...(endDate && { $lte: new Date(endDate) })
+      };
+    }
+
+    // Optimización: Usar proyección para reducir datos transferidos
+    const messages = await Message.find(searchQuery)
+      .select('content role metadata createdAt') // Solo campos necesarios
+      .sort({ createdAt: -1 })
+      .limit(LIMITE_MENSAJES)
+      .lean();
+
+    res.json({ 
+      messages,
+      count: messages.length,
+      query: searchQuery
+    });
+  } catch (error) {
+    console.error('Error en búsqueda de mensajes:', error);
+    res.status(500).json({
+      message: req.apiCopy.searchMessagesError,
+      error: safeErrorMessage(error)
+    });
+  }
+});
+
+export default router;
