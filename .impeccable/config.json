@@ -476,6 +476,42 @@
         ],
         "createdAt": "2026-11-04T14:54:15.439Z",
         "reason": "Tamaño previo de la sección. Solo se cambia el hex teal."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "styles/pages/landing-ad.css"
+        ],
+        "createdAt": "2026-11-11T06:31:47.106Z",
+        "reason": "Landing A/B legacy (v1). Esta tarea solo limpia navy/teal; tipografía queda hasta retirar v1."
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "*",
+        "files": [
+          "styles/pages/landing-ad.css"
+        ],
+        "createdAt": "2026-11-11T06:31:47.141Z",
+        "reason": "Landing A/B legacy (v1). Esta tarea solo limpia navy/teal; radios quedan hasta retirar v1."
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "*",
+        "files": [
+          "styles/pages/landing-ad.css"
+        ],
+        "createdAt": "2026-11-11T06:31:47.175Z",
+        "reason": "Landing A/B legacy (v1). Motion de typing queda hasta retirar v1."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "styles/pages/landing-ad.css"
+        ],
+        "createdAt": "2026-11-11T06:31:47.207Z",
+        "reason": "Landing A/B legacy (v1). Limpieza navy/teal in scope; otros hex fuera de alcance quedan hasta retirar v1."
       }
     ],
     "ignoreRules": [],
