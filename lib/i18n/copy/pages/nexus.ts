@@ -95,16 +95,16 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
   es: {
     skip: 'Saltar al contenido',
     meta: {
-      title: 'Dentro de anto | anto',
+      title: 'Dentro de Anto | Anto',
       description:
         'Cada conversación forma la inteligencia que te comprende. Historial, recurrencia y un paso concreto. Complementa; no sustituye atención profesional.',
       keywords:
         'anto, inteligencia adaptativa, acompañamiento emocional, contexto personal, aprendizaje continuo',
-      openGraphTitle: 'Dentro de anto',
+      openGraphTitle: 'Dentro de Anto | Anto',
       openGraphDescription:
         'Cada conversación forma la inteligencia que te comprende. Historial, recurrencia y un paso concreto.',
       canonicalPath: CANONICAL_PATH,
-      ogAlt: 'Dentro de anto. Cada conversación forma la inteligencia que te comprende.',
+      ogAlt: 'Dentro de Anto. Cada conversación forma la inteligencia que te comprende.',
     },
     nav: {
       aria: 'Navegación de anto',
@@ -195,16 +195,16 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
   en: {
     skip: 'Skip to content',
     meta: {
-      title: 'Inside anto | anto',
+      title: 'Inside Anto | Anto',
       description:
         'Every conversation shapes the intelligence that understands you. History, recurrence and a concrete step. Complements; does not replace professional care.',
       keywords:
         'anto, adaptive intelligence, emotional companion, personal context, continuous learning',
-      openGraphTitle: 'Inside anto',
+      openGraphTitle: 'Inside Anto | Anto',
       openGraphDescription:
         'Every conversation shapes the intelligence that understands you. History, recurrence and a concrete step.',
       canonicalPath: CANONICAL_PATH,
-      ogAlt: 'Inside anto. Every conversation shapes the intelligence that understands you.',
+      ogAlt: 'Inside Anto. Every conversation shapes the intelligence that understands you.',
     },
     nav: {
       aria: 'anto navigation',
@@ -295,16 +295,16 @@ const copyByLocale: Record<Locale, NexusPageCopy> = {
   pt: {
     skip: 'Pular para o conteúdo',
     meta: {
-      title: 'Dentro de anto | anto',
+      title: 'Por dentro da Anto | Anto',
       description:
         'Cada conversa forma a inteligência que entende você. Histórico, recorrência e um passo concreto. Complementa; não substitui atendimento profissional.',
       keywords:
         'anto, inteligência adaptativa, acompanhamento emocional contínuo, contexto pessoal, aprendizado contínuo',
-      openGraphTitle: 'Dentro de anto',
+      openGraphTitle: 'Por dentro da Anto | Anto',
       openGraphDescription:
         'Cada conversa forma a inteligência que entende você. Histórico, recorrência e um passo concreto.',
       canonicalPath: CANONICAL_PATH,
-      ogAlt: 'Dentro de anto. Cada conversa forma a inteligência que entende você.',
+      ogAlt: 'Por dentro da Anto. Cada conversa forma a inteligência que entende você.',
     },
     nav: {
       aria: 'Navegação de anto',
