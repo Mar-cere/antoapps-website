@@ -31,7 +31,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Pensamentos, emoções e comportamento (TCC) | Guia breve Anto',
       description:
-        'Guia breve de terapia cognitivo-comportamental (TCC): como pensamento, emoção e comportamento se ligam, um exemplo do dia a dia e um passo pequeno para olhar a interpretação. Porta de entrada para distorções e ABC. Psicoeducação; não substitui atendimento profissional.',
+        'O que é a terapia cognitivo-comportamental (TCC): como pensamento, emoção e comportamento se ligam, com exemplo cotidiano. Psicoeducação; não diagnostica.',
       openGraphTitle: 'Pensamentos, emoções e o que você faz depois',
       openGraphDescription:
         'TCC em versão breve: não é pensar positivo — é olhar a interpretação e testar um passo pequeno.',
@@ -195,7 +195,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Distorções cognitivas: reconhecer e questionar | Anto',
       description:
-        'Guia breve de distorções cognitivas: exemplos do dia a dia (catastrofização, tudo ou nada, leitura mental), separar fato de história e um exercício curto para olhar um pensamento de perto. Link para o mapa (níveis, experimentos). Não substitui atendimento profissional.',
+        'Distorções cognitivas com exemplos do dia a dia (catastrofização, tudo ou nada, leitura mental) e um exercício curto. Não substitui ajuda profissional.',
       openGraphTitle: 'Distorções cognitivas — reconhecer e questionar',
       openGraphDescription:
         'Quando um silêncio vira veredito: exemplos do dia a dia, fato versus história e o caminho até o mapa.',
@@ -391,7 +391,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Distorções cognitivas: mapa completo | Anto',
       description:
-        'Mapa de distorções cognitivas: três níveis do modelo (automáticos, regras, crenças nucleares), agrupamentos funcionais, ciclos de manutenção, técnicas além do rótulo, desenho de experimentos comportamentais, seta descendente e perfis na ansiedade versus depressão. Complementa a guia breve; não diagnostica nem substitui terapia.',
+        'Mapa de distorções cognitivas: níveis do pensamento, ciclos que as mantêm, experimentos comportamentais e seta descendente. Psicoeducação; não diagnostica.',
       openGraphTitle: 'Distorções cognitivas — mapa completo',
       openGraphDescription:
         'Além de rotular o viés: níveis cognitivos, manutenção, experimentos comportamentais e perfis clínicos.',
@@ -647,7 +647,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Técnica ABC passo a passo | Psicoeducação Anto',
       description:
-        'A técnica ABC (Ativador, Crença, Consequência) para olhar situações difíceis e o que a emoção faz em seguida. Psicoeducação; não substitui atendimento profissional.',
+        'Técnica ABC passo a passo (Ativador, Crença, Consequência) para olhar uma situação difícil e a sua reação. Não substitui atendimento profissional.',
       openGraphTitle: 'Técnica ABC — guia passo a passo',
       openGraphDescription: 'Registre situações, pensamentos e emoções com o modelo ABC da TCC.',
     },
@@ -695,7 +695,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Ansiedade e preocupação: um mapa para entender | Anto',
       description:
-        'Psicoeducação sobre ansiedade e preocupação: ativação do sistema nervoso, preocupação e ansiedade, sintomas, comportamentos de segurança, apresentações frequentes, intervenções (regulação, grounding, exposição, adiamento da preocupação), rastreamento GAD-7 e critérios para buscar ajuda. Não diagnostica nem substitui terapia.',
+        'Ansiedade e preocupação: o que acontece no corpo, comportamentos de segurança, grounding, adiar a preocupação e quando buscar ajuda. Não diagnostica.',
       openGraphTitle: 'Ansiedade e preocupação — guia completa',
       openGraphDescription:
         'Da ativação antecipatória ao mapa: sintomas, evitação, intervenções com base em TCC e quando pedir avaliação.',
@@ -1123,7 +1123,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Autocompaixão: o que é e exercícios breves | Anto',
       description:
-        'O que a autocompaixão significa na psicologia com base em evidência, por que não é indulgência e como praticá-la em momentos difíceis. Psicoeducação; não substitui atendimento profissional.',
+        'Autocompaixão: o que é, por que não é indulgência e um exercício breve para momentos difíceis. Psicoeducação; não substitui atendimento profissional.',
       openGraphTitle: 'Guia de autocompaixão',
       openGraphDescription: 'Tratar a si com o mesmo cuidado que você ofereceria a alguém que importa.',
     },
@@ -1171,7 +1171,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Quando você não consegue dormir | Guia breve Anto',
       description:
-        'Guia breve sobre sono e emoções: por que a noite amplifica a ruminação, hábitos concretos de descanso, um ritual quando a mente não para e quando pedir ajuda. Complementa o mapa de sono e insônia. Psicoeducação; não substitui atendimento profissional nem terapia do sono.',
+        'Quando você não consegue dormir: por que a noite amplia a ruminação, hábitos de descanso e um ritual se a mente não para. Não substitui um profissional.',
       openGraphTitle: 'Quando você não consegue dormir — guia breve',
       openGraphDescription:
         'A cama acesa às 3h: vínculo sono–humor, hábitos úteis e um ritual curto quando a mente não solta.',
@@ -1331,7 +1331,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Sono e insônia: mapa completo | Anto',
       description:
-        'Mapa de sono e insônia: apresentações, ciclo de manutenção, limites da higiene do sono, componentes no estilo da TCC-I (controle de estímulos, janela de sono), vínculo com ansiedade e humor, e quando pedir avaliação. Complementa a guia breve; não diagnostica nem substitui terapia do sono.',
+        'Mapa de sono e insônia: o ciclo que o mantém, limites da higiene do sono, controle de estímulos e quando pedir avaliação. Psicoeducação; não diagnostica.',
       openGraphTitle: 'Sono e insônia — mapa completo',
       openGraphDescription:
         'Além de uma noite ruim: o que sustenta a insônia, até onde a higiene chega e o que a TCC-I costuma incluir.',
@@ -1560,7 +1560,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Mindfulness: guia breve para começar | Anto',
       description:
-        'O que é mindfulness (atenção plena), mitos frequentes, exercícios de 3–5 minutos e como combinar com terapia ou apoio digital. Psicoeducação; não substitui atendimento profissional.',
+        'Mindfulness (atenção plena) para começar: o que é, mitos frequentes e exercícios de 3–5 minutos. Psicoeducação; não substitui atendimento profissional.',
       openGraphTitle: 'Mindfulness — guia para começar',
       openGraphDescription: 'Atenção plena sem misticismo: exercícios curtos para acalmar o sistema nervoso.',
     },
@@ -1608,7 +1608,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Depressão: sinais e o que você pode fazer | Guia Anto',
       description:
-        'O que é a depressão, sinais frequentes, diferença em relação à tristeza comum e estratégias como a ativação comportamental. Psicoeducação; não substitui diagnóstico nem atendimento clínico.',
+        'Depressão: sinais frequentes, diferença em relação à tristeza comum e passos como a ativação comportamental. Não substitui atendimento profissional.',
       openGraphTitle: 'Depressão — guia de psicoeducação',
       openGraphDescription:
         'Sintomas depressivos e ferramentas práticas para começar a retomar rotina e vínculo.',
@@ -1660,7 +1660,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Ativação comportamental: guia prático | Anto',
       description:
-        'O que é a ativação comportamental, por que ajuda na depressão e como planejar atividades pequenas mesmo sem motivação. Psicoeducação; não substitui atendimento profissional.',
+        'Ativação comportamental: como planejar atividades pequenas quando o humor está baixo, mesmo sem motivação. Não substitui atendimento profissional.',
       openGraphTitle: 'Ativação comportamental — guia breve',
       openGraphDescription: 'Retome rotina e humor com passos de comportamento pequenos e sustentáveis.',
     },
@@ -1709,7 +1709,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'TOC e exposição com prevenção de resposta (ERP) | Anto',
       description:
-        'O que é o transtorno obsessivo-compulsivo, como funcionam obsessões e compulsões, e por que a ERP é a abordagem com mais evidência. Psicoeducação; não substitui tratamento com um profissional.',
+        'TOC e ERP: como funcionam obsessões e compulsões, exemplos frequentes e o que é a exposição com prevenção de resposta. Não substitui ajuda profissional.',
       openGraphTitle: 'TOC e ERP — guia de psicoeducação',
       openGraphDescription: 'O ciclo obsessivo-compulsivo e a abordagem terapêutica com mais respaldo.',
     },
@@ -1758,7 +1758,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Trauma e TEPT: respostas normais do corpo | Anto',
       description:
-        'O que é o trauma psicológico, sintomas frequentes do TEPT, por que aparecem flashbacks e quando buscar ajuda especializada. Psicoeducação; não substitui atendimento profissional.',
+        'Trauma e TEPT: o que é o trauma, reações frequentes como flashbacks e quando buscar ajuda especializada. Não substitui atendimento profissional.',
       openGraphTitle: 'Trauma e TEPT — guia breve',
       openGraphDescription: 'Psicoeducação sobre respostas ao trauma e caminhos de recuperação com base em evidência.',
     },
@@ -1806,7 +1806,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Manejo da raiva: guia prático | Anto',
       description:
-        'O que dispara a raiva, sinais corporais precoces e técnicas de regulação com base em TCC para responder com mais escolha. Psicoeducação; não substitui atendimento profissional.',
+        'Manejo da raiva: o que a dispara, sinais corporais precoces e estratégias para escolher como responder. Não substitui atendimento profissional.',
       openGraphTitle: 'Manejo da raiva — guia breve',
       openGraphDescription: 'Identifique gatilhos e baixe a intensidade antes de reagir.',
     },
@@ -2021,7 +2021,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Estresse: como o corpo responde e o que fazer | Anto',
       description:
-        'O que é o estresse, sinais físicos e emocionais, estresse agudo e crônico, e formas de cuidar de si sem esperar o burnout. Psicoeducação; não substitui atendimento profissional.',
+        'Estresse: sinais físicos e emocionais, estresse agudo e crônico, e formas de cuidar de si antes do burnout. Não substitui atendimento profissional.',
       openGraphTitle: 'Estresse — guia de psicoeducação',
       openGraphDescription: 'A resposta ao estresse e ferramentas práticas para recuperar equilíbrio.',
     },
@@ -2069,7 +2069,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Regulação emocional: guia prático | Anto',
       description:
-        'Habilidades para reconhecer, nomear e modular emoções intensas sem reprimi-las nem reagir no automático. Psicoeducação; não substitui atendimento profissional.',
+        'Regulação emocional: reconhecer, nomear e modular emoções intensas sem reprimi-las nem reagir no automático. Não substitui atendimento profissional.',
       openGraphTitle: 'Regulação emocional — guia breve',
       openGraphDescription: 'Reconhecer emoções e escolher respostas mais úteis.',
     },
@@ -2117,7 +2117,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Luto e perda: guia de psicoeducação | Anto',
       description:
-        'Como o luto costuma se desenrolar, mitos frequentes e formas de se acompanhar sem forçar um «encerramento» cedo demais. Psicoeducação; não substitui atendimento profissional.',
+        'Luto e perda: como o luto costuma se desenrolar, mitos frequentes e formas de se acompanhar sem forçar um «encerramento». Não substitui ajuda profissional.',
       openGraphTitle: 'Luto e perda — guia breve',
       openGraphDescription: 'O luto como processo humano, e como cuidar de si com paciência.',
     },
@@ -2164,7 +2164,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Esgotamento e burnout: sinais e primeiros passos | Anto',
       description:
-        'Sinais de sobrecarga contínua, diferença em relação ao cansaço comum e passos iniciais de recuperação. Psicoeducação; não substitui atendimento profissional.',
+        'Esgotamento e burnout: sinais de sobrecarga contínua, diferença do cansaço comum e primeiros passos de recuperação. Não substitui atendimento profissional.',
       openGraphTitle: 'Esgotamento e burnout — guia breve',
       openGraphDescription: 'Reconheça o burnout e comece a recuperar energia com mudanças realistas.',
     },
