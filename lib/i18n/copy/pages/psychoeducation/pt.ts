@@ -31,7 +31,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Pensamentos, emoções e comportamento (TCC) | Guia breve Anto',
       description:
-        'O que é a terapia cognitivo-comportamental (TCC): como pensamento, emoção e comportamento se ligam, com um exemplo do dia a dia. Psicoeducação.',
+        'O que é a terapia cognitivo-comportamental (TCC): como pensamento, emoção e comportamento se ligam, com exemplo cotidiano. Psicoeducação; não diagnostica.',
       openGraphTitle: 'Pensamentos, emoções e o que você faz depois',
       openGraphDescription:
         'TCC em versão breve: não é pensar positivo — é olhar a interpretação e testar um passo pequeno.',
