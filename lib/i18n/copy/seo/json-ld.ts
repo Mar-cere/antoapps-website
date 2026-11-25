@@ -9,6 +9,12 @@ import { getAppScreenshotUrl } from '@/lib/assets/app-screenshots';
 type JsonLd = Record<string, unknown>;
 
 const SITE_ORIGIN = 'https://antoapps.com';
+const ORG_ID = `${SITE_ORIGIN}/#organization`;
+const APP_ID = `${SITE_ORIGIN}/#app`;
+const INSTAGRAM_ES = 'https://www.instagram.com/antoapp.es/';
+const INSTAGRAM_EN = 'https://www.instagram.com/antoapp.en/';
+const APP_STORE_CANONICAL = 'https://apps.apple.com/app/anto/id6756631911';
+const GOOGLE_PLAY_CANONICAL = 'https://play.google.com/store/apps/details?id=com.anto.app';
 
 function schemaInLanguage(locale: Locale): 'es' | 'en' | 'pt-BR' {
   if (locale === 'en') return 'en';
@@ -33,7 +39,7 @@ const softwareCopy: Record<
   es: {
     operatingSystem: 'iOS (App Store), Android (Google Play)',
     description:
-      'App de acompañamiento emocional continuo en iPhone y Android para la ansiedad y las horas quietas, entre sesiones o en el día a día. Cuando te dan nervios con otras personas, escribes lo que da vueltas y te llevas un paso concreto. Hub de técnicas (TCC, grounding) y chequeos. No sustituye a un terapeuta humano.',
+      'App de acompañamiento emocional continuo en iPhone y Android, para la ansiedad y las horas quietas, en el día a día. Cuando te dan nervios con otras personas, escribes lo que da vueltas y te llevas un paso concreto. Hub de técnicas (TCC, grounding) y chequeos. No diagnostica ni sustituye a un terapeuta.',
     featureList: [
       'Acompañamiento emocional continuo',
       'Memoria de temas y patrones',
@@ -51,7 +57,7 @@ const softwareCopy: Record<
   en: {
     operatingSystem: 'iOS (App Store), Android (Google Play)',
     description:
-      'Ongoing emotional support app for iPhone and Android, for anxiety and quiet hours, between sessions or day to day. When you feel nervous around people, you write what keeps looping and leave with one concrete step. Techniques hub (CBT, grounding) and check-ins. Does not replace a human therapist.',
+      'Ongoing emotional support app for iPhone and Android, for anxiety and quiet hours, day to day. When you feel nervous around people, you write what keeps looping and leave with one concrete step. Techniques hub (CBT, grounding) and check-ins. It does not diagnose or replace a therapist.',
     featureList: [
       'Ongoing emotional support',
       'Theme memory and patterns',
@@ -69,7 +75,7 @@ const softwareCopy: Record<
   pt: {
     operatingSystem: 'iOS (App Store), Android (Google Play)',
     description:
-      'App de acompanhamento emocional contínuo no iPhone e no Android para a ansiedade e as horas quietas, entre sessões ou no dia a dia. Quando bate o nervosismo perto de outras pessoas, você escreve o que fica em loop e sai com um passo concreto. Hub de técnicas (TCC, grounding) e checagens. Não substitui um terapeuta humano.',
+      'App de acompanhamento emocional contínuo no iPhone e no Android, para a ansiedade e as horas quietas, no dia a dia. Quando bate o nervosismo perto de outras pessoas, você escreve o que fica em loop e sai com um passo concreto. Hub de técnicas (TCC, grounding) e checagens. Não diagnostica nem substitui um terapeuta.',
     featureList: [
       'Acompanhamento emocional contínuo',
       'Memória de temas e padrões',
@@ -89,15 +95,15 @@ const softwareCopy: Record<
 const orgCopy: Record<Locale, { description: string }> = {
   es: {
     description:
-      'Cuando te dan nervios con otras personas, Anto ofrece acompañamiento emocional continuo para la ansiedad y las horas quietas, entre sesiones o en el día a día. Complementa la atención clínica y no reemplaza a un terapeuta humano.',
+      'Cuando te dan nervios con otras personas, Anto ofrece acompañamiento emocional continuo para la ansiedad y las horas quietas, en el día a día. No diagnostica ni reemplaza a un terapeuta.',
   },
   en: {
     description:
-      'When you feel nervous around people, Anto provides ongoing emotional support for anxiety and quiet hours, between sessions or day to day. It complements clinical care and does not replace a human therapist.',
+      'When you feel nervous around people, Anto offers ongoing emotional support for anxiety and quiet hours, day to day. It does not diagnose or replace a therapist.',
   },
   pt: {
     description:
-      'Quando bate o nervosismo perto de outras pessoas, a Anto oferece acompanhamento emocional contínuo para a ansiedade e as horas quietas, entre sessões ou no dia a dia. Complementa o cuidado clínico e não substitui um terapeuta humano.',
+      'Quando bate o nervosismo perto de outras pessoas, a Anto oferece acompanhamento emocional contínuo para a ansiedade e as horas quietas, no dia a dia. Não diagnostica nem substitui um terapeuta.',
   },
 };
 
@@ -107,7 +113,9 @@ export function getSoftwareApplicationJsonLd(locale: Locale): JsonLd {
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
+    '@id': APP_ID,
     name: 'Anto',
+    alternateName: locale === 'en' ? ['Anto app', 'Anto AI'] : ['Anto app', 'Anto IA'],
     softwareVersion: APP_VERSION,
     applicationCategory: 'HealthApplication',
     inLanguage: schemaInLanguage(locale),
@@ -123,6 +131,8 @@ export function getSoftwareApplicationJsonLd(locale: Locale): JsonLd {
     url: localeHomeUrl(locale),
     downloadUrl: [appStoreHref(locale), googlePlayHref(locale)],
     installUrl: [appStoreHref(locale), googlePlayHref(locale)],
+    publisher: { '@id': ORG_ID },
+    sameAs: [APP_STORE_CANONICAL, GOOGLE_PLAY_CANONICAL],
   };
 }
 
@@ -132,10 +142,13 @@ export function getOrganizationJsonLd(locale: Locale): JsonLd {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': ORG_ID,
     name: 'Anto',
+    alternateName: ['Anto app', 'Anto IA', 'Anto AI'],
     url: SITE_ORIGIN,
     logo: `${SITE_ORIGIN}/assets/images/antoIcon.png`,
     description: copy.description,
+    sameAs: [INSTAGRAM_ES, INSTAGRAM_EN, APP_STORE_CANONICAL, GOOGLE_PLAY_CANONICAL],
     contactPoint: {
       '@type': 'ContactPoint',
       email: 'marcelo.ull@antoapps.com',
@@ -165,12 +178,12 @@ export function getFaqPageJsonLd(locale: Locale): JsonLd {
 
 function websiteDescription(locale: Locale): string {
   if (locale === 'en') {
-    return 'Anto — when everything costs a little more. When you feel nervous around people, there is ongoing emotional support on iPhone and Android for anxiety and quiet hours, between sessions or day to day. Does not replace a human therapist.';
+    return 'Anto — when everything costs a little more. When you feel nervous around people, there is ongoing emotional support on iPhone and Android for anxiety and quiet hours, day to day. It does not diagnose or replace a therapist.';
   }
   if (locale === 'pt') {
-    return 'Anto — quando tudo custa um pouco mais. Quando bate o nervosismo perto de outras pessoas, há acompanhamento emocional contínuo no iPhone e no Android para a ansiedade e as horas quietas, entre sessões ou no dia a dia. Não substitui um terapeuta humano.';
+    return 'Anto — quando tudo custa um pouco mais. Quando bate o nervosismo perto de outras pessoas, há acompanhamento emocional contínuo no iPhone e no Android para a ansiedade e as horas quietas, no dia a dia. Não diagnostica nem substitui um terapeuta.';
   }
-  return 'Anto — cuando todo cuesta un poco más. Cuando te dan nervios con otras personas, hay acompañamiento emocional continuo en iPhone y Android para la ansiedad y las horas quietas, entre sesiones o en el día a día. No sustituye a un terapeuta humano.';
+  return 'Anto — cuando todo cuesta un poco más. Cuando te dan nervios con otras personas, hay acompañamiento emocional continuo en iPhone y Android para la ansiedad y las horas quietas, en el día a día. No diagnostica ni sustituye a un terapeuta.';
 }
 
 export function getWebSiteJsonLd(locale: Locale): JsonLd {
@@ -179,15 +192,12 @@ export function getWebSiteJsonLd(locale: Locale): JsonLd {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': `${localeHomeUrl(locale)}#website`,
     name: 'Anto',
     url,
     description: websiteDescription(locale),
     inLanguage: schemaInLanguage(locale),
-    publisher: {
-      '@type': 'Organization',
-      name: 'Anto',
-      url: SITE_ORIGIN,
-    },
+    publisher: { '@id': ORG_ID },
     significantLink: [
       `${SITE_ORIGIN}/llms.txt`,
       `${SITE_ORIGIN}/llms-full.txt`,
@@ -226,11 +236,8 @@ export function getHomeWebPageJsonLd(locale: Locale): JsonLd {
       name: 'Anto',
       url: SITE_ORIGIN,
     },
-    about: {
-      '@type': 'SoftwareApplication',
-      name: 'Anto',
-      url,
-    },
+    about: { '@id': APP_ID },
+    publisher: { '@id': ORG_ID },
   };
 }
 
@@ -274,10 +281,6 @@ export function getEditorialWebPageJsonLd(input: EditorialWebPageInput): JsonLd 
       name: 'Anto',
       url: SITE_ORIGIN,
     },
-    about: {
-      '@type': 'SoftwareApplication',
-      name: 'Anto',
-      url: localeHomeUrl(input.locale),
-    },
+    about: { '@id': APP_ID },
   };
 }

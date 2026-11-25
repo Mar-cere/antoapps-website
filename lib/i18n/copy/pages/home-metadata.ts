@@ -5,7 +5,7 @@ import { siteUrl } from '@/lib/i18n/metadata';
 
 /**
  * Metadata de la home publicada (voz editorial home-v2).
- * Title y description responden a «qué es Anto» / «what is Anto» / «o que é a Anto».
+ * El title pone la marca primero («Anto app») para desambiguar la búsqueda «anto».
  * El H1 sigue siendo la frase editorial.
  *
  * La imagen social no se declara aquí. Vive en `app/(site)/opengraph-image.tsx`
@@ -53,11 +53,11 @@ export function homePageMetadata(locale: Locale): Metadata {
 
   if (locale === 'en') {
     return {
-      title: 'What is Anto? An emotional support app',
+      title: 'Anto app: AI emotional support for iPhone and Android',
       description:
-        'Anto is an app to write looping thoughts and leave with one concrete step. On iPhone and Android. Does not replace a therapist. Includes a 1-day trial.',
+        'Anto is an AI app to write down looping thoughts and leave with one concrete step. On iPhone and Android. Does not replace professional help. 1-day trial.',
       keywords:
-        'Anto, what is Anto, emotional support app, concrete step, iPhone, Android, free trial',
+        'Anto, Anto app, Anto AI, what is Anto, emotional support app, concrete step, iPhone, Android, free trial',
       alternates,
       openGraph: {
         type: 'website',
@@ -76,11 +76,11 @@ export function homePageMetadata(locale: Locale): Metadata {
   }
 
   return {
-    title: 'Qué es Anto: app de acompañamiento emocional',
+    title: 'Anto app: acompañamiento emocional con IA',
     description:
-      'Anto es una app para escribir lo que te da vueltas y salir con un paso concreto. En iPhone y Android. No sustituye a un terapeuta. Incluye 1 día de prueba.',
+      'Anto es una app con IA: escribes lo que te da vueltas y sales con un paso concreto. En iPhone y Android. No sustituye la ayuda profesional. Prueba 1 día.',
     keywords:
-      'Anto, qué es Anto, acompañamiento emocional, paso concreto, iPhone, Android, prueba gratis',
+      'Anto, Anto app, Anto IA, qué es Anto, acompañamiento emocional, paso concreto, iPhone, Android, prueba gratis',
     alternates,
     openGraph: {
       type: 'website',

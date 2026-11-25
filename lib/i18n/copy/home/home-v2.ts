@@ -233,7 +233,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         titleLine1: 'When everything costs',
         titleAccent: 'a little more.',
         support:
-          'For the quiet hours, between a session and the rest of the day. You write what keeps looping and leave with one step for tonight.',
+          "For the quiet hours, when the day is over and your head isn't. You write what keeps looping and leave with one step for tonight.",
         ctaStoreLabel: 'Download on',
         ctaStoreText: 'App Store',
         ctaBadge: trial.short,
@@ -401,8 +401,8 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             example: 'guide',
           },
           {
-            title: 'Between sessions',
-            body: 'Available any hour, including nights when there is no appointment in sight.',
+            title: 'Any hour',
+            body: 'Even at 3 a.m., with nothing to book.',
           },
         ],
       },
@@ -451,7 +451,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'What is Anto?',
             answer:
-              'Anto is an app for ongoing emotional support between sessions or day to day. It uses AI assistance in the background. It does not replace clinical care. A human therapist remains the stronger recommendation. Available on iPhone and Android.',
+              'Anto is an app for everyday emotional support. It uses AI assistance in the background. It does not diagnose or replace a therapist. Available on iPhone and Android.',
           },
           {
             question: 'What else is there besides chat?',
@@ -466,7 +466,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'Does Anto replace therapy?',
             answer:
-              'No. It stays with you on hard days and between one session and the next. Professional care remains separate.',
+              'No. It stays with you on hard days and in the quiet hours. It does not diagnose or replace a therapist.',
           },
           {
             question: 'Is there a free trial?',
@@ -496,6 +496,11 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             description: 'The map, including when you feel nervous around people',
           },
           {
+            href: '/recursos/escalas-phq9-gad7',
+            label: 'Self-check questionnaires',
+            description: 'What these questionnaires ask and their limits',
+          },
+          {
             href: '/app',
             label: 'The app',
             description: 'What Anto includes on iPhone and Android',
@@ -509,7 +514,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         coda: {
           trust: ['Private by design'],
           disclaimer:
-            'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.',
+            'Anto does not diagnose or replace a therapist. If you are in crisis, seek emergency help in your country.',
         },
       },
       finalCta: {
@@ -528,7 +533,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         titleLine1: 'Quando tudo custa',
         titleAccent: 'um pouco mais.',
         support:
-          'Para as horas quietas, entre uma sessão e o resto do dia. Você escreve o que fica se repetindo e sai com um passo para esta noite.',
+          'Para as horas quietas, quando o dia já acabou e a cabeça não. Você escreve o que fica se repetindo e sai com um passo para esta noite.',
         ctaStoreLabel: 'Baixar na',
         ctaStoreText: 'App Store',
         ctaBadge: trial.short,
@@ -696,8 +701,8 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             example: 'guide',
           },
           {
-            title: 'Entre sessões',
-            body: 'Disponível a qualquer hora, também nas noites em que não há consulta à vista.',
+            title: 'A qualquer hora',
+            body: 'Também às três da manhã, sem marcar nada.',
           },
         ],
       },
@@ -746,7 +751,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'O que é a Anto?',
             answer:
-              'A Anto é um aplicativo de acompanhamento emocional contínuo entre sessões ou no dia a dia. Usa assistência de IA em segundo plano. Não substitui atendimento clínico: um terapeuta ou profissional humano continua sendo o mais recomendável. Disponível no iPhone e no Android.',
+              'A Anto é um aplicativo de acompanhamento emocional para o dia a dia. Usa assistência de IA em segundo plano. Não diagnostica nem substitui um terapeuta. Disponível no iPhone e no Android.',
           },
           {
             question: 'O que existe além do chat?',
@@ -761,7 +766,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           {
             question: 'A Anto substitui a terapia?',
             answer:
-              'Não. Acompanha você nos dias difíceis e entre uma sessão e a seguinte. O atendimento profissional continua sendo outra coisa.',
+              'Não. Acompanha você nos dias difíceis e nas horas quietas. Não diagnostica nem substitui um terapeuta.',
           },
           {
             question: 'Tem teste grátis?',
@@ -791,6 +796,11 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
             description: 'O mapa, incluindo quando bate o nervosismo perto de outras pessoas',
           },
           {
+            href: '/recursos/escalas-phq9-gad7',
+            label: 'Questionários de autoavaliação',
+            description: 'O que esses questionários perguntam e o que não dizem',
+          },
+          {
             href: '/app',
             label: 'O aplicativo',
             description: 'O que a Anto inclui no iPhone e no Android',
@@ -804,7 +814,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         coda: {
           trust: ['Privado de propósito'],
           disclaimer:
-            'A Anto não substitui terapia nem atendimento clínico profissional. Se você estiver em crise, procure ajuda de emergência no seu país.',
+            'A Anto não diagnostica nem substitui um terapeuta. Se você estiver em crise, procure ajuda de emergência no seu país.',
         },
       },
       finalCta: {
@@ -822,7 +832,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       titleLine1: 'Cuando todo cuesta',
       titleAccent: 'un poco más.',
       support:
-        'Para las horas quietas, entre una sesión y el resto del día. Escribes lo que da vueltas y te llevas un paso para esta noche.',
+        'Para las horas quietas, cuando el día ya terminó y la cabeza no. Escribes lo que da vueltas y te llevas un paso para esta noche.',
       ctaStoreLabel: 'Descargar en',
       ctaStoreText: 'App Store',
       ctaBadge: trial.short,
@@ -990,8 +1000,8 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           example: 'guide',
         },
         {
-          title: 'Entre sesiones',
-          body: 'Disponible a cualquier hora, también las noches en que no hay cita a la vista.',
+          title: 'A cualquier hora',
+          body: 'También a las tres de la mañana, sin agendar nada.',
         },
       ],
     },
@@ -1040,7 +1050,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           question: '¿Qué es Anto?',
           answer:
-            'Anto es una app de acompañamiento emocional continuo entre sesiones o en el día a día. Usa asistencia de IA en segundo plano. No sustituye atención clínica: un terapeuta o profesional humano sigue siendo lo más recomendable. Disponible en iPhone y Android.',
+            'Anto es una app de acompañamiento emocional para el día a día. Usa asistencia de IA en segundo plano. No diagnostica ni sustituye a un terapeuta. Disponible en iPhone y Android.',
         },
         {
           question: '¿Qué hay además del chat?',
@@ -1055,7 +1065,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
         {
           question: '¿Anto reemplaza la terapia?',
           answer:
-            'No. Te acompaña en los días duros y entre una sesión y la siguiente. La atención profesional sigue siendo otra cosa.',
+            'No. Te acompaña en los días duros y en las horas quietas. No diagnostica ni sustituye a un terapeuta.',
         },
         {
           question: '¿Hay prueba gratis?',
@@ -1085,6 +1095,11 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
           description: 'El mapa, incluido cuando te dan nervios con otras personas',
         },
         {
+          href: '/recursos/escalas-phq9-gad7',
+          label: 'Cuestionarios de chequeo',
+          description: 'Qué preguntan estos cuestionarios y qué no te dicen',
+        },
+        {
           href: '/app',
           label: 'La app',
           description: 'Qué incluye Anto en iPhone y Android',
@@ -1098,7 +1113,7 @@ function buildHomeV2Copy(locale: Locale): HomeV2Copy {
       coda: {
         trust: ['Privado por diseño'],
         disclaimer:
-          'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.',
+          'Anto no diagnostica ni sustituye a un terapeuta. Si estás en crisis, busca ayuda de emergencia en tu país.',
       },
     },
     finalCta: {

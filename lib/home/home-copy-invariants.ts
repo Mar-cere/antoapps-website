@@ -10,6 +10,7 @@ import { googlePlayHref } from '@/lib/download-links';
 import { PRICING_USD } from '@/lib/pricing/plans';
 import {
   getFaqPageJsonLd,
+  getOrganizationJsonLd,
   getSoftwareApplicationJsonLd,
   getWebSiteJsonLd,
 } from '@/lib/i18n/copy/seo/json-ld';
@@ -173,8 +174,36 @@ export function assertHomeCopyInvariants(): string[] {
     if (!appExplore || !/android/i.test(appExplore.description)) {
       errors.push(`${tag} home-v2 explore /app debe mencionar Android`);
     }
-    if (homeV2.explore.links.length !== 5) {
-      errors.push(`${tag} home-v2 explore debe tener 5 links (hub + grounding + mapa de ansiedad + app + seguridad)`);
+    if (homeV2.explore.links.length !== 6) {
+      errors.push(
+        `${tag} home-v2 explore debe tener 6 links (hub + grounding + mapa de ansiedad + cuestionarios + app + seguridad)`
+      );
+    }
+
+    const productDescriptions = [
+      String(software.description ?? ''),
+      String(getOrganizationJsonLd(locale).description ?? ''),
+      String(getWebSiteJsonLd(locale).description ?? ''),
+    ].join('\n');
+    if (
+      /entre sesiones|between sessions|entre sessões|terapeuta humano|human therapist|atención clínica|clinical care|cuidado clínico/i.test(
+        productDescriptions
+      )
+    ) {
+      errors.push(
+        `${tag} JSON-LD de producto no debe volver a «entre sesiones», «terapeuta humano» ni «atención clínica»`
+      );
+    }
+
+    const homeV2Surface = JSON.stringify(homeV2);
+    if (
+      /sesión|sesiones|\bsession\b|sessão|sessões|terapeuta humano|human therapist|atención clínica|clinical care|atendimento clínico/i.test(
+        homeV2Surface
+      )
+    ) {
+      errors.push(
+        `${tag} home-v2 no debe contener lenguaje de sesión / terapeuta humano / atención clínica`
+      );
     }
     if (homeV2.moments.length !== 3) {
       errors.push(`${tag} home-v2 moments debe tener 3 ítems`);

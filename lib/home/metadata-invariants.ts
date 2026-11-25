@@ -46,15 +46,15 @@ export function assertHomeMetadataInvariants(): string[] {
     }
 
     if (locale === 'es') {
-      if (!/^Qué es Anto: app de acompañamiento emocional$/.test(title)) {
-        errors.push(`${tag} metadata.title debe responder «qué es Anto», sin sustituir el H1`);
+      if (!/^Anto app: acompañamiento emocional con IA$/.test(title)) {
+        errors.push(`${tag} metadata.title debe empezar por la marca: Anto app`);
       }
     } else if (locale === 'pt') {
       if (!/^O que é a Anto: app de acompanhamento emocional$/.test(title)) {
         errors.push(`${tag} metadata.title deve responder «o que é a Anto», sem substituir o H1`);
       }
-    } else if (!/^What is Anto\? An emotional support app$/.test(title)) {
-      errors.push(`${tag} metadata.title must answer “what is Anto”, and leave the H1 unchanged`);
+    } else if (!/^Anto app: AI emotional support for iPhone and Android$/.test(title)) {
+      errors.push(`${tag} metadata.title must start with the brand: Anto app`);
     }
 
     if (charCount(title) > TITLE_MAX) {
