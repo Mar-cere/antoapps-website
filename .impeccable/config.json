@@ -512,6 +512,63 @@
         ],
         "createdAt": "2026-11-11T06:31:47.207Z",
         "reason": "Landing A/B legacy (v1). Limpieza navy/teal in scope; otros hex fuera de alcance quedan hasta retirar v1."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "styles/components/psychoeducation-article.css"
+        ],
+        "createdAt": "2026-11-25T13:59:53.002Z",
+        "reason": "Guía psicoeducación: tipografía editorial previa. Esta tarea solo sustituye navy residual; no se rediseña la escala."
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "*",
+        "files": [
+          "styles/components/psychoeducation-article.css"
+        ],
+        "createdAt": "2026-11-25T13:59:53.035Z",
+        "reason": "Guía psicoeducación: radios previos. Esta tarea solo sustituye navy residual."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "styles/components/psychoeducation-article.css"
+        ],
+        "createdAt": "2026-11-25T13:59:53.070Z",
+        "reason": "Guía psicoeducación: limpieza navy in scope; otros hex fuera de alcance (#a3b8e8, #112040) quedan."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "lib/bienvenida/opengraph-image.tsx"
+        ],
+        "createdAt": "2026-11-25T13:59:53.103Z",
+        "reason": "OG bienvenida: colores inline de ImageResponse (#101216 / marfil). Misma excepción que lib/nexus y rutas opengraph-image."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "lib/bienvenida/opengraph-image.tsx",
+          "lib/nexus/opengraph-image.tsx"
+        ],
+        "createdAt": "2026-11-25T13:59:53.134Z",
+        "reason": "OG ImageResponse: tamaños tipográficos de composición 1200x630, no ramp de UI."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "app/(site)/bienvenida/opengraph-image.tsx",
+          "app/(site)/en/bienvenida/opengraph-image.tsx",
+          "app/(site)/pt/bienvenida/opengraph-image.tsx"
+        ],
+        "createdAt": "2026-11-25T13:59:53.165Z",
+        "reason": "Wrappers OG; tipografía vive en el helper."
       }
     ],
     "ignoreRules": [],

@@ -214,8 +214,8 @@
   color: rgba(244, 247, 251, 0.92);
   background: linear-gradient(
     to top,
-    rgba(3, 10, 36, 0.88) 0%,
-    rgba(3, 10, 36, 0.45) 55%,
+    rgba(16, 18, 22, 0.88) 0%,
+    rgba(16, 18, 22, 0.45) 55%,
     transparent 100%
   );
   text-wrap: pretty;
@@ -501,7 +501,7 @@
   place-items: center;
   border-radius: 999px;
   background: var(--color-primary);
-  color: #030a24;
+  color: var(--color-text-on-primary);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -810,7 +810,7 @@
   padding: 0.65rem 1.15rem;
   border-radius: var(--home-v2-radius);
   background: var(--color-primary);
-  color: #030a24;
+  color: var(--color-text-on-primary);
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -818,7 +818,7 @@
   transition: filter 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Texto siempre oscuro sobre teal (ganarle a link-hover-enhanced y a estilos globales de a:hover). */
+/* Texto sobre primary (ganarle a link-hover-enhanced y a estilos globales de a:hover). */
 .psycho-guide__cta-link,
 .psycho-guide__cta-link:link,
 .psycho-guide__cta-link:visited,
@@ -827,7 +827,7 @@
 .psycho-guide__cta-link:focus,
 .psycho-guide__cta-link.link-hover-enhanced,
 .psycho-guide__cta-link.link-hover-enhanced:hover {
-  color: #030a24 !important;
+  color: var(--color-text-on-primary) !important;
 }
 
 .psycho-guide__cta-link.link-hover-enhanced::after,

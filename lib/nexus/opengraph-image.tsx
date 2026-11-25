@@ -18,26 +18,14 @@ export function nexusOpenGraphImage(locale: Locale) {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '64px 72px',
-          background: '#02040C',
-          color: '#f4f7fb',
+          background: '#101216',
+          color: '#F4F6FC',
           fontFamily: 'system-ui, sans-serif',
         }}
       >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontSize: 28, fontWeight: 500, letterSpacing: '-0.04em', color: '#ffffff' }}>
-            anto
-          </span>
-          <span
-            style={{
-              fontSize: 16,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: 'rgba(244,247,251,0.55)',
-            }}
-          >
-            Nexus
-          </span>
-        </div>
+        <span style={{ fontSize: 28, fontWeight: 500, letterSpacing: '-0.04em', color: '#F4F6FC' }}>
+          anto
+        </span>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 780 }}>
           <div
             style={{
@@ -49,28 +37,9 @@ export function nexusOpenGraphImage(locale: Locale) {
           >
             {copy.hero.title}
           </div>
-          <div style={{ fontSize: 22, lineHeight: 1.45, color: 'rgba(244,247,251,0.62)', maxWidth: 640 }}>
+          <div style={{ fontSize: 22, lineHeight: 1.45, color: 'rgba(244,246,252,0.72)', maxWidth: 640 }}>
             {copy.hero.dek}
           </div>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 10,
-            fontSize: 18,
-            color: '#22D3EE',
-          }}
-        >
-          <div
-            style={{
-              width: 10,
-              height: 10,
-              borderRadius: 10,
-              background: '#22D3EE',
-            }}
-          />
-          <span>{locale === 'pt' ? 'Sistema ativo' : 'Sistema activo'}</span>
         </div>
       </div>
     ),
