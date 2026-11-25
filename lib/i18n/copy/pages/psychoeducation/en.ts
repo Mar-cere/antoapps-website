@@ -31,7 +31,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Thoughts, emotions, and behaviour (CBT) | Anto brief guide',
       description:
-        'Brief guide to cognitive behavioural therapy (CBT): how thought, emotion, and behaviour connect, an everyday example, and a small step to look at the interpretation. Gateway to distortions and ABC. Psychoeducation; does not replace professional care.',
+        'What cognitive behavioural therapy (CBT) is: how thoughts, emotions, and behaviour connect, with an everyday example. Psychoeducation; does not diagnose.',
       openGraphTitle: 'Thoughts, emotions, and what you do next',
       openGraphDescription:
         'CBT in brief: not positive thinking — looking at the interpretation and trying a small step.',
@@ -195,7 +195,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Cognitive distortions: spot them and question them | Anto',
       description:
-        'Brief guide to cognitive distortions: everyday examples (catastrophising, all-or-nothing, mind reading), separating fact from story, and a short exercise to look closely at a thought. Links to the map (levels, experiments). Does not replace professional care.',
+        'Cognitive distortions with everyday examples (catastrophising, all-or-nothing, mind reading) and a short exercise. Does not replace professional care.',
       openGraphTitle: 'Cognitive distortions — recognise and question',
       openGraphDescription:
         'When a silence becomes a verdict: everyday examples, fact vs. story, and the path to the map.',
@@ -391,7 +391,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Cognitive distortions: full map | Anto',
       description:
-        'Map of cognitive distortions: three levels of the model (automatic thoughts, rules, core beliefs), functional clusters, maintenance cycles, techniques beyond labelling, designing behavioural experiments, downward arrow, and anxiety vs. depression profiles. Complements the brief guide; does not diagnose or replace therapy.',
+        'Map of cognitive distortions: levels of thinking, cycles that keep them going, behavioural experiments, and the downward arrow. Does not diagnose.',
       openGraphTitle: 'Cognitive distortions — full map',
       openGraphDescription:
         'Beyond labelling the bias: cognitive levels, maintenance, behavioural experiments, and clinical profiles.',
@@ -647,7 +647,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'ABC technique step by step | Anto psychoeducation',
       description:
-        'Learn the ABC technique (Activating event, Belief, Consequence) to analyse difficult situations and shift emotional responses. Psychoeducation; does not replace professional care.',
+        'The ABC technique step by step (Activating event, Belief, Consequence) to look at a hard situation and your reaction. Does not replace professional care.',
       openGraphTitle: 'ABC technique — step-by-step guide',
       openGraphDescription: 'Record situations, thoughts, and emotions with the CBT ABC model.',
     },
@@ -695,7 +695,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Anxiety and worry: a map to understand it | Anto',
       description:
-        'Psychoeducation on anxiety and worry: autonomic activation, worry vs. anxiety, symptoms, safety behaviours, common presentations, interventions (regulation, grounding, exposure, worry postponement), GAD-7 screening, and when to seek assessment. Does not diagnose or replace therapy.',
+        'Anxiety and worry: what happens in the body, safety behaviours, grounding, worry postponement, and when to seek help. Psychoeducation; does not diagnose.',
       openGraphTitle: 'Anxiety and worry — complete guide',
       openGraphDescription:
         'From anticipatory arousal to a map: symptoms, avoidance, CBT-informed interventions, and when to seek evaluation.',
@@ -1122,7 +1122,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Self-compassion: what it is and brief exercises | Anto',
       description:
-        'What self-compassion means in evidence-based psychology, why it is not indulgence, and how to practice it in hard moments. Psychoeducation; does not replace professional care.',
+        'Self-compassion: what it is, why it is not indulgence, and a brief exercise for hard moments. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Self-compassion guide',
       openGraphDescription: 'Learn to treat yourself with the same care you would offer someone you love.',
     },
@@ -1170,7 +1170,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'When you cannot sleep | Anto brief guide',
       description:
-        'Brief guide on sleep and emotions: why night amplifies rumination, concrete rest habits, a short ritual when the mind will not stop, and when to seek help. Complements the sleep and insomnia map. Psychoeducation; does not replace professional care or sleep therapy.',
+        'When you cannot sleep: why night amplifies rumination, rest habits, and a ritual when your mind will not stop. Does not replace professional care.',
       openGraphTitle: 'When you cannot sleep — brief guide',
       openGraphDescription:
         'The light still on at 3am: sleep–mood link, useful habits, and a short ritual when the mind will not let go.',
@@ -1330,7 +1330,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Sleep and insomnia: full map | Anto',
       description:
-        'Map of sleep and insomnia: presentations, maintenance cycle, limits of sleep hygiene, CBT-I-style components (stimulus control, sleep window), links to anxiety/mood, and when to seek evaluation. Complements the brief guide; does not diagnose or replace sleep therapy.',
+        'Sleep and insomnia map: the cycle that keeps it going, limits of sleep hygiene, stimulus control, and when to seek evaluation. Does not diagnose.',
       openGraphTitle: 'Sleep and insomnia — full map',
       openGraphDescription:
         'Beyond one bad night: what maintains insomnia, how far hygiene goes, and what CBT-I usually includes.',
@@ -1559,7 +1559,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Mindfulness: brief guide to get started | Anto',
       description:
-        'What mindfulness is, common myths, 3–5 minute exercises, and how to combine it with therapy or digital support. Psychoeducation; does not replace professional care.',
+        'Mindfulness to get started: what it is, common myths, and 3–5 minute exercises, without emptying your mind. Does not replace professional care.',
       openGraphTitle: 'Mindfulness — guide to get started',
       openGraphDescription: 'Present-moment attention without mysticism: short exercises to calm the nervous system.',
     },
@@ -1607,7 +1607,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Depression: signs and what you can do | Anto Guide',
       description:
-        'What depression is, common signs, how it differs from normal sadness, and strategies such as behavioural activation. Psychoeducation; does not replace diagnosis or clinical care.',
+        'Depression: common signs, how it differs from sadness, and steps such as behavioural activation. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Depression — psychoeducation guide',
       openGraphDescription:
         'Understand depressive symptoms and practical tools to start rebuilding routine and connection.',
@@ -1659,7 +1659,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Behavioural activation: practical guide | Anto',
       description:
-        'What behavioural activation is, why it helps with depression, and how to plan small activities even when motivation is low. Psychoeducation; does not replace professional care.',
+        'Behavioural activation: how to plan small activities when your mood is low, even without motivation. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Behavioural activation — brief guide',
       openGraphDescription: 'Rebuild routine and mood with small, sustainable behavioural steps.',
     },
@@ -1708,7 +1708,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'OCD and exposure with response prevention (ERP) | Anto',
       description:
-        'What obsessive-compulsive disorder is, how obsessions and compulsions work, and why ERP is the most evidence-based approach. Psychoeducation; does not replace treatment with a professional.',
+        'OCD and ERP: how obsessions and compulsions work, common examples, and what exposure and response prevention is. Does not replace professional care.',
       openGraphTitle: 'OCD and ERP — psychoeducation guide',
       openGraphDescription: 'Understand the obsessive-compulsive cycle and the recommended therapeutic approach.',
     },
@@ -1757,7 +1757,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Trauma and PTSD: normal body responses | Anto',
       description:
-        'What psychological trauma is, common PTSD symptoms, why flashbacks appear, and when to seek specialised help. Psychoeducation; does not replace professional care.',
+        'Trauma and PTSD: what trauma is, common reactions such as flashbacks, and when to seek specialised help. Does not replace professional care.',
       openGraphTitle: 'Trauma and PTSD — brief guide',
       openGraphDescription: 'Psychoeducation on trauma responses and evidence-based recovery paths.',
     },
@@ -1806,7 +1806,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Anger management: practical guide | Anto',
       description:
-        'What triggers anger, early body signals, and CBT-based regulation techniques to respond with more control. Psychoeducation; does not replace professional care.',
+        'Anger management: what triggers it, early body signals, and strategies to choose how you respond. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Anger management — brief guide',
       openGraphDescription: 'Identify triggers and learn to lower intensity before reacting.',
     },
@@ -2021,7 +2021,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Stress: how your body responds and what to do | Anto',
       description:
-        'What stress is, physical and emotional signs, acute vs. chronic stress, and ways to care for yourself before burnout. Psychoeducation; does not replace professional care.',
+        'Stress: physical and emotional signs, acute vs. chronic stress, and ways to care for yourself before burnout. Does not replace professional care.',
       openGraphTitle: 'Stress — psychoeducation guide',
       openGraphDescription: 'Understand the stress response and practical tools to regain balance.',
     },
@@ -2069,7 +2069,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Emotion regulation: practical guide | Anto',
       description:
-        'Skills to recognise, name, and modulate intense emotions without suppressing them or reacting on autopilot. Psychoeducation; does not replace professional care.',
+        'Emotional regulation: recognise, name, and modulate intense emotions without suppressing them or reacting on autopilot. Does not replace professional care.',
       openGraphTitle: 'Emotion regulation — brief guide',
       openGraphDescription: 'Learn to recognise emotions and choose more helpful responses.',
     },
@@ -2117,7 +2117,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     meta: {
       title: 'Grief and loss: psychoeducation guide | Anto',
       description:
-        'How grief often unfolds, common myths, and ways to support yourself without forcing premature “closure.” Psychoeducation; does not replace professional care.',
+        'Grief and loss: how it often unfolds, common myths, and ways to support yourself without forcing “closure.” Does not replace professional care.',
       openGraphTitle: 'Grief and loss — brief guide',
       openGraphDescription: 'Understand grief as a human process and how to care for yourself patiently.',
     },
