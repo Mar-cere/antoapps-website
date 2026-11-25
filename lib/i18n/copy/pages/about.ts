@@ -22,7 +22,12 @@ export type AboutPageCopy = {
   microcopy: string;
   storeBadge: string;
   disclaimer: string;
+  crisisLinkLabel: string;
+  crisisLinkHref: string;
+  crisisExternalHint: string;
 };
+
+const CRISIS_LINES_HREF = 'https://findahelpline.com/';
 
 function buildAboutPageCopy(locale: Locale): AboutPageCopy {
   if (locale === 'en') {
@@ -49,7 +54,10 @@ function buildAboutPageCopy(locale: Locale): AboutPageCopy {
       microcopy: 'iPhone and Android · 1 day free · No card · Cancel anytime',
       storeBadge: '1 day free',
       disclaimer:
-        'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.',
+        'Anto does not diagnose or replace a therapist. If you are in crisis, seek emergency help in your country.',
+      crisisLinkLabel: 'Emergency lines by country',
+      crisisLinkHref: CRISIS_LINES_HREF,
+      crisisExternalHint: 'Opens in a new tab',
     };
   }
 
@@ -77,7 +85,10 @@ function buildAboutPageCopy(locale: Locale): AboutPageCopy {
       microcopy: 'iPhone e Android · 1 dia grátis · Sem cartão · Cancele quando quiser',
       storeBadge: '1 dia grátis',
       disclaimer:
-        'A Anto não substitui terapia nem atendimento clínico profissional. Se você está em crise, procure ajuda de emergência no seu país.',
+        'A Anto não diagnostica nem substitui um terapeuta. Se você estiver em crise, procure ajuda de emergência no seu país.',
+      crisisLinkLabel: 'Linhas de emergência por país',
+      crisisLinkHref: CRISIS_LINES_HREF,
+      crisisExternalHint: 'Abre numa nova aba',
     };
   }
 
@@ -104,7 +115,10 @@ function buildAboutPageCopy(locale: Locale): AboutPageCopy {
     microcopy: 'iPhone y Android · 1 día gratis · Sin tarjeta · Cancela cuando quieras',
     storeBadge: '1 día gratis',
     disclaimer:
-      'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.',
+      'Anto no diagnostica ni sustituye a un terapeuta. Si estás en crisis, busca ayuda de emergencia en tu país.',
+    crisisLinkLabel: 'Líneas de emergencia por país',
+    crisisLinkHref: CRISIS_LINES_HREF,
+    crisisExternalHint: 'Abre en una pestaña nueva',
   };
 }
 
