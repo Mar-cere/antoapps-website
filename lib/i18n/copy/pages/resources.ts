@@ -282,9 +282,9 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         currentLabel: 'Resources',
       },
       meta: {
-        title: 'Resources — Anto | Psychoeducation for anxiety, CBT, sleep and quiet hours',
+        title: 'Resources: guides on anxiety, CBT, sleep and more | Anto',
         description:
-        `${PSYCHOEDUCATION_SLUGS.length} free psychoeducation guides: anxiety, CBT, looping thoughts, sleep, grounding, depression, and more — plus Anto on iPhone and Android, privacy, and evidence. Complements care; does not diagnose or replace a therapist.`,
+        `${PSYCHOEDUCATION_SLUGS.length} free psychoeducation guides on anxiety, CBT, looping thoughts, sleep, grounding, depression and more, plus how Anto works. Does not diagnose.`,
         openGraphTitle: 'Anto resources — guides for anxiety and quiet hours',
         openGraphDescription:
           'Start with anxiety, looping thoughts, sleep, or CBT. Short educational guides — not a diagnosis.',
@@ -325,9 +325,9 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
         currentLabel: 'Recursos',
       },
       meta: {
-        title: 'Recursos — Anto | Psicoeducação para ansiedade, TCC, sono e horas quietas',
+        title: 'Recursos: guias de ansiedade, TCC, sono e mais | Anto',
         description:
-          `${PSYCHOEDUCATION_SLUGS.length} guias gratuitos de psicoeducação: ansiedade, TCC, pensamentos em loop, sono, grounding, depressão e mais — além da Anto no iPhone e no Android, privacidade e evidência. Complementa; não diagnostica nem substitui um terapeuta.`,
+          `${PSYCHOEDUCATION_SLUGS.length} guias gratuitos de psicoeducação: ansiedade, TCC, pensamentos em loop, sono, grounding, depressão e mais, e como a Anto funciona. Não diagnostica.`,
         openGraphTitle: 'Recursos da Anto — guias para ansiedade e horas quietas',
         openGraphDescription:
           'Comece pela ansiedade, pelos pensamentos em loop, pelo sono ou pela TCC. Guias educativos curtos — não são um diagnóstico.',
@@ -367,9 +367,9 @@ function buildResourcesPageCopy(locale: Locale): ResourcesPageCopy {
       currentLabel: 'Recursos',
     },
     meta: {
-      title: 'Recursos — Anto | Psicoeducación para ansiedad, TCC, sueño y horas quietas',
+      title: 'Recursos: guías de ansiedad, TCC, sueño y más | Anto',
       description:
-        `${PSYCHOEDUCATION_SLUGS.length} guías gratuitas de psicoeducación: ansiedad, TCC, pensamientos en bucle, sueño, grounding, depresión y más — más Anto en iPhone, privacidad y evidencia. Complementa; no diagnostica ni reemplaza a un terapeuta.`,
+        `${PSYCHOEDUCATION_SLUGS.length} guías gratuitas de psicoeducación: ansiedad, TCC, pensamientos en bucle, sueño, grounding, depresión y más, y cómo funciona Anto. No diagnostica.`,
       openGraphTitle: 'Recursos Anto — guías para ansiedad y horas quietas',
       openGraphDescription:
         'Empieza por ansiedad, pensamientos en bucle, sueño o TCC. Guías educativas breves — no son un diagnóstico.',

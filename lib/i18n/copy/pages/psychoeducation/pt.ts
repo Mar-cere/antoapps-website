@@ -29,9 +29,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 6,
     layout: 'brief',
     meta: {
-      title: 'Pensamentos, emoções e comportamento (TCC) | Guia breve Anto',
+      title: 'O que é a TCC: pensamentos, emoções e comportamento | Anto',
       description:
-        'O que é a terapia cognitivo-comportamental (TCC): como pensamento, emoção e comportamento se ligam, com exemplo cotidiano. Psicoeducação; não diagnostica.',
+        'O que é a terapia cognitivo-comportamental (TCC): como pensamento, emoção e comportamento se ligam, com um exemplo do dia a dia. Psicoeducação.',
       openGraphTitle: 'Pensamentos, emoções e o que você faz depois',
       openGraphDescription:
         'TCC em versão breve: não é pensar positivo — é olhar a interpretação e testar um passo pequeno.',
@@ -70,7 +70,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Para que costuma ser usada?',
         paragraphs: [
-          'É uma das intervenções psicológicas com mais respaldo para ansiedade, depressão, fobias, insônia e estresse prolongado (Hofmann et al., 2012). Não substitui uma avaliação clínica, mas oferece ferramentas concretas para o dia a dia.',
+          'A TCC reúne técnicas com bastante pesquisa publicada sobre ansiedade, ânimo, fobias, sono e estresse prolongado (Hofmann et al., 2012). Este guia as apresenta como ferramentas; não substitui uma avaliação nem indica um tratamento.',
         ],
         bullets: [
           'Identificar pensamentos automáticos diante de situações difíceis',
@@ -170,7 +170,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.distortionsMap, SLUGS.anxiety],
+    relatedSlugs: [SLUGS.distortionsMap, SLUGS.anxiety, SLUGS.ocdErp],
     disclaimer:
       'Psicoeducação. Não diagnostica nem substitui avaliação ou tratamento clínico. Diante de risco de suicídio ou violência, procure ajuda de emergência local imediatamente.',
     ctaBridge:
@@ -193,7 +193,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.distortions,
     readingMinutes: 8,
     meta: {
-      title: 'Distorções cognitivas: reconhecer e questionar | Anto',
+      title: 'Distorções cognitivas: exemplos e como questionar | Anto',
       description:
         'Distorções cognitivas com exemplos do dia a dia (catastrofização, tudo ou nada, leitura mental) e um exercício curto. Não substitui ajuda profissional.',
       openGraphTitle: 'Distorções cognitivas — reconhecer e questionar',
@@ -389,7 +389,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 12,
     layout: 'dossier',
     meta: {
-      title: 'Distorções cognitivas: mapa completo | Anto',
+      title: 'Mapa das distorções cognitivas: níveis e ciclos | Anto',
       description:
         'Mapa de distorções cognitivas: níveis do pensamento, ciclos que as mantêm, experimentos comportamentais e seta descendente. Psicoeducação; não diagnostica.',
       openGraphTitle: 'Distorções cognitivas — mapa completo',
@@ -513,7 +513,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'Critérios clínicos e limites de uso',
         paragraphs: [
           'Vale uma avaliação profissional se o padrão persiste, há prejuízo funcional, anedonia ou desesperança intensas, substâncias para modular o sofrimento, ou se os experimentos e a reestruturação aumentam a ruminação sem alívio.',
-          'Diante de ideação suicida, risco imediato ou incapacidade de cuidar de si: emergência ou linha de crise do seu país. A Anto pode detectar sinais e oferecer recursos; não substitui esses serviços nem o tratamento clínico.',
+          'Diante de ideação suicida, risco imediato ou incapacidade de cuidar de si: fale com a emergência ou uma linha de crise do seu país. A Anto pode mostrar recursos de ajuda; não detecta um diagnóstico nem substitui esses serviços nem o cuidado profissional.',
         ],
         bullets: [
           'Esta página assume que você já praticou reconhecer um pensamento (guia breve).',
@@ -645,7 +645,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.abc,
     readingMinutes: 6,
     meta: {
-      title: 'Técnica ABC passo a passo | Psicoeducação Anto',
+      title: 'Técnica ABC passo a passo, com um exemplo | Anto',
       description:
         'Técnica ABC passo a passo (Ativador, Crença, Consequência) para olhar uma situação difícil e a sua reação. Não substitui atendimento profissional.',
       openGraphTitle: 'Técnica ABC — guia passo a passo',
@@ -815,7 +815,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'Quando pedir avaliação',
         paragraphs: [
           'Vale uma avaliação profissional se os sintomas persistem por várias semanas, pioram, geram prejuízo funcional claro, ou se há uso de álcool ou outras substâncias para modular a ansiedade. Também se a evitação reduz, aos poucos, o raio da vida.',
-          'Diante de ideação suicida, risco imediato ou incapacidade de cuidar de si: fale com a emergência ou uma linha de crise do seu país. A Anto pode detectar sinais de risco e oferecer recursos; não substitui serviços de emergência nem tratamento clínico.',
+          'Diante de ideação suicida, risco imediato ou incapacidade de cuidar de si: fale com a emergência ou uma linha de crise do seu país. A Anto pode mostrar recursos de ajuda; não detecta um diagnóstico nem substitui esses serviços nem o cuidado profissional.',
         ],
       },
     ],
@@ -928,11 +928,11 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.grounding, SLUGS.distortionsMap, SLUGS.tcc],
+    relatedSlugs: [SLUGS.grounding, SLUGS.ocdErp, SLUGS.distortionsMap],
     disclaimer:
       'Psicoeducação. Não diagnostica nem substitui avaliação ou tratamento clínico. Diante de risco de suicídio ou violência, procure ajuda de emergência local imediatamente.',
     ctaBridge:
-      'Se você quiser companhia entre sessões — ou enquanto decide pedir avaliação — pode continuar no celular, no seu ritmo.',
+      'Se você quiser companhia no dia a dia — ou enquanto decide pedir avaliação — pode continuar no celular, no seu ritmo.',
     cta: { label: 'Apoio na Anto →', path: '/bienvenida' },
     howTo: {
       name: 'Adiar a preocupação (janela de preocupação)',
@@ -953,9 +953,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 6,
     layout: 'brief',
     meta: {
-      title: 'Como ler um cheque de humor e de ansiedade | Anto',
+      title: 'PHQ-9 e GAD-7: o que medem e o que não dizem | Anto',
       description:
-        'O que um cheque de humor e um de ansiedade observam, com faixas orientativas. Não é um diagnóstico. Na Anto, as leituras vão para o histórico.',
+        'PHQ-9 e GAD-7: o que são esses questionários breves de humor e ansiedade, o que perguntam e por que um número só mostra uma tendência. Não diagnostica.',
       openGraphTitle: 'Como ler um cheque de humor e de ansiedade',
       openGraphDescription:
         'Rastreamento de humor e ansiedade: faixas, tendência e por que um número não é um diagnóstico.',
@@ -1097,7 +1097,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [],
+    relatedSlugs: [SLUGS.anxiety, SLUGS.depression, SLUGS.grounding],
     disclaimer:
       'Psicoeducação. As escalas não diagnosticam nem substituem avaliação ou tratamento clínico. Diante de risco de suicídio ou violência, procure ajuda de emergência local imediatamente.',
     ctaBridge:
@@ -1169,7 +1169,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 6,
     layout: 'brief',
     meta: {
-      title: 'Quando você não consegue dormir | Guia breve Anto',
+      title: 'Higiene do sono: quando você não consegue dormir | Anto',
       description:
         'Quando você não consegue dormir: por que a noite amplia a ruminação, hábitos de descanso e um ritual se a mente não para. Não substitui um profissional.',
       openGraphTitle: 'Quando você não consegue dormir — guia breve',
@@ -1329,7 +1329,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 12,
     layout: 'dossier',
     meta: {
-      title: 'Sono e insônia: mapa completo | Anto',
+      title: 'Insônia e sono: o ciclo que a mantém | Anto',
       description:
         'Mapa de sono e insônia: o ciclo que o mantém, limites da higiene do sono, controle de estímulos e quando pedir avaliação. Psicoeducação; não diagnostica.',
       openGraphTitle: 'Sono e insônia — mapa completo',
@@ -1606,7 +1606,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.depression,
     readingMinutes: 7,
     meta: {
-      title: 'Depressão: sinais e o que você pode fazer | Guia Anto',
+      title: 'Depressão: sinais e o que você pode fazer | Anto',
       description:
         'Depressão: sinais frequentes, diferença em relação à tristeza comum e passos como a ativação comportamental. Não substitui atendimento profissional.',
       openGraphTitle: 'Depressão — guia de psicoeducação',
@@ -1649,7 +1649,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         ],
       },
     ],
-    relatedSlugs: [SLUGS.behavioralActivation, SLUGS.scales, SLUGS.tcc],
+    relatedSlugs: [SLUGS.behavioralActivation, SLUGS.scales, SLUGS.grief],
     disclaimer:
       'Material de psicoeducação. Não substitui avaliação nem tratamento profissional. Se você tem ideias de se machucar, procure ajuda de emergência imediatamente.',
     cta: { label: 'Companhia na Anto →', path: '/bienvenida' },
@@ -1658,7 +1658,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.behavioralActivation,
     readingMinutes: 6,
     meta: {
-      title: 'Ativação comportamental: guia prático | Anto',
+      title: 'Ativação comportamental: agir primeiro, sentir depois | Anto',
       description:
         'Ativação comportamental: como planejar atividades pequenas quando o humor está baixo, mesmo sem motivação. Não substitui atendimento profissional.',
       openGraphTitle: 'Ativação comportamental — guia breve',
@@ -1707,15 +1707,15 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.ocdErp,
     readingMinutes: 8,
     meta: {
-      title: 'TOC e exposição com prevenção de resposta (ERP) | Anto',
+      title: 'TOC e ERP: exposição com prevenção de resposta | Anto',
       description:
         'TOC e ERP: como funcionam obsessões e compulsões, exemplos frequentes e o que é a exposição com prevenção de resposta. Não substitui ajuda profissional.',
       openGraphTitle: 'TOC e ERP — guia de psicoeducação',
-      openGraphDescription: 'O ciclo obsessivo-compulsivo e a abordagem terapêutica com mais respaldo.',
+      openGraphDescription: 'O que é o ciclo de obsessões e compulsões, e o que é a ERP. Guia educativa; não indica um tratamento.',
     },
     hero: {
       title: 'TOC e exposição com prevenção de resposta (ERP)',
-      subtitle: 'Obsessões, compulsões e o tratamento com mais respaldo para o transtorno obsessivo-compulsivo.',
+      subtitle: 'O que são obsessões e compulsões, e o que é a ERP. Este guia informa; não diagnostica nem indica um tratamento.',
     },
     sections: [
       {
@@ -1798,13 +1798,13 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     relatedSlugs: [SLUGS.grounding, SLUGS.mindfulness, SLUGS.anxiety],
     disclaimer:
       'Material educativo. Não diagnostica TEPT. Não substitui atendimento profissional. Se você tem flashbacks intensos ou risco de dano, procure ajuda especializada.',
-    cta: { label: 'Apoio entre sessões →', path: '/bienvenida' },
+    cta: { label: 'Seguir na Anto →', path: '/bienvenida' },
   },
   [SLUGS.anger]: {
     slug: SLUGS.anger,
     readingMinutes: 6,
     meta: {
-      title: 'Manejo da raiva: guia prático | Anto',
+      title: 'Controle da raiva: entender e escolher como reagir | Anto',
       description:
         'Manejo da raiva: o que a dispara, sinais corporais precoces e estratégias para escolher como responder. Não substitui atendimento profissional.',
       openGraphTitle: 'Manejo da raiva — guia breve',
@@ -1852,9 +1852,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.grounding,
     readingMinutes: 7,
     meta: {
-      title: 'Grounding 5-4-3-2-1: quando a ansiedade sobe | Anto',
+      title: 'Técnica 5-4-3-2-1 (grounding): se a ansiedade sobe | Anto',
       description:
-        'Como fazer o exercício de grounding 5-4-3-2-1, com âncoras sensoriais. Guia breve da Anto. Não substitui um terapeuta nem uma emergência.',
+        'Técnica 5-4-3-2-1 de grounding passo a passo: use os cinco sentidos para se ancorar no presente quando a ansiedade sobe. Não substitui ajuda profissional.',
       openGraphTitle: 'Quando a ansiedade sobe — grounding 5-4-3-2-1',
       openGraphDescription:
         'Exercício 5-4-3-2-1 e âncoras sensoriais quando a ansiedade sobe. Guia breve de grounding e o caminho até o mapa de ansiedade.',
@@ -1978,7 +1978,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.mindfulness, SLUGS.emotionRegulation],
+    relatedSlugs: [SLUGS.mindfulness, SLUGS.emotionRegulation, SLUGS.trauma],
     references: {
       title: 'Referências (APA)',
       support:
@@ -2067,7 +2067,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.emotionRegulation,
     readingMinutes: 6,
     meta: {
-      title: 'Regulação emocional: guia prático | Anto',
+      title: 'Regulação emocional: como lidar com emoções intensas | Anto',
       description:
         'Regulação emocional: reconhecer, nomear e modular emoções intensas sem reprimi-las nem reagir no automático. Não substitui atendimento profissional.',
       openGraphTitle: 'Regulação emocional — guia breve',
@@ -2106,7 +2106,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         ],
       },
     ],
-    relatedSlugs: [SLUGS.mindfulness, SLUGS.grounding, SLUGS.abc],
+    relatedSlugs: [SLUGS.mindfulness, SLUGS.grounding, SLUGS.anger],
     disclaimer:
       'Psicoeducação geral. Não substitui atendimento profissional. Se as emoções transbordam de forma recorrente ou há risco de dano, procure ajuda profissional.',
     cta: { label: 'Praticar técnicas →', path: '/app' },
@@ -2115,7 +2115,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.grief,
     readingMinutes: 7,
     meta: {
-      title: 'Luto e perda: guia de psicoeducação | Anto',
+      title: 'Luto e perda: mitos e como se acompanhar | Anto',
       description:
         'Luto e perda: como o luto costuma se desenrolar, mitos frequentes e formas de se acompanhar sem forçar um «encerramento». Não substitui ajuda profissional.',
       openGraphTitle: 'Luto e perda — guia breve',
@@ -2149,7 +2149,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'Na Anto',
         paragraphs: [
-          'A Anto pode oferecer espaço para ordenar o que você sente entre sessões com um terapeuta ou uma rede de apoio; não substitui luto terapêutico especializado.',
+          'A Anto pode oferecer um espaço para ordenar o que você sente, no seu ritmo, também se você já tem um terapeuta ou uma rede de apoio. Não substitui o acompanhamento profissional do luto.',
         ],
       },
     ],

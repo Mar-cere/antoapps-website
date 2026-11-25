@@ -29,7 +29,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 6,
     layout: 'brief',
     meta: {
-      title: 'Thoughts, emotions, and behaviour (CBT) | Anto brief guide',
+      title: 'What is CBT: thoughts, emotions and behaviour | Anto',
       description:
         'What cognitive behavioural therapy (CBT) is: how thoughts, emotions, and behaviour connect, with an everyday example. Psychoeducation; does not diagnose.',
       openGraphTitle: 'Thoughts, emotions, and what you do next',
@@ -70,7 +70,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'What is it used for?',
         paragraphs: [
-          'It is among the most supported psychological approaches for anxiety, depression, phobias, insomnia, and prolonged stress (Hofmann et al., 2012). It does not replace a clinical assessment, but it offers concrete tools for everyday life.',
+          'CBT brings together techniques with a substantial published research base on anxiety, mood, phobias, sleep, and prolonged stress (Hofmann et al., 2012). This guide presents them as tools; it does not replace an assessment or recommend a treatment.',
         ],
         bullets: [
           'Identify automatic thoughts in difficult situations',
@@ -170,7 +170,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.distortionsMap, SLUGS.anxiety],
+    relatedSlugs: [SLUGS.distortionsMap, SLUGS.anxiety, SLUGS.ocdErp],
     disclaimer:
       'Psychoeducation. Does not diagnose or replace clinical evaluation or treatment. If there is suicide risk or violence, seek local emergency help immediately.',
     ctaBridge:
@@ -193,7 +193,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.distortions,
     readingMinutes: 8,
     meta: {
-      title: 'Cognitive distortions: spot them and question them | Anto',
+      title: 'Cognitive distortions: examples and how to spot them | Anto',
       description:
         'Cognitive distortions with everyday examples (catastrophising, all-or-nothing, mind reading) and a short exercise. Does not replace professional care.',
       openGraphTitle: 'Cognitive distortions — recognise and question',
@@ -389,7 +389,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 12,
     layout: 'dossier',
     meta: {
-      title: 'Cognitive distortions: full map | Anto',
+      title: 'Cognitive distortions map: levels and cycles | Anto',
       description:
         'Map of cognitive distortions: levels of thinking, cycles that keep them going, behavioural experiments, and the downward arrow. Does not diagnose.',
       openGraphTitle: 'Cognitive distortions — full map',
@@ -513,7 +513,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'Clinical criteria and limits of use',
         paragraphs: [
           'Professional assessment is warranted if the pattern is persistent, there is functional impairment, intense anhedonia or hopelessness, substances used to modulate distress, or if experiments and restructuring increase rumination without relief.',
-          'If there is suicidal ideation, immediate risk, or inability to care for yourself: emergency services or a crisis line in your country. Anto can detect signals and offer resources; it does not replace those services or clinical treatment.',
+          'If there is suicidal ideation, immediate risk, or inability to care for yourself: contact emergency services or a crisis line in your country. Anto can show help resources; it does not detect a diagnosis and does not replace those services or professional care.',
         ],
         bullets: [
           'This page assumes you have already practised recognising a thought (brief guide).',
@@ -645,7 +645,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.abc,
     readingMinutes: 6,
     meta: {
-      title: 'ABC technique step by step | Anto psychoeducation',
+      title: 'ABC technique step by step, with an example | Anto',
       description:
         'The ABC technique step by step (Activating event, Belief, Consequence) to look at a hard situation and your reaction. Does not replace professional care.',
       openGraphTitle: 'ABC technique — step-by-step guide',
@@ -815,7 +815,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         heading: 'When to seek assessment',
         paragraphs: [
           'Professional assessment is warranted if symptoms persist for several weeks, worsen, cause clear functional impairment, or if alcohol or other substances are used to modulate anxiety. Also if avoidance progressively shrinks your range of life.',
-          'If there is suicidal ideation, immediate risk, or you cannot care for yourself: contact emergency services or a crisis line in your country. Anto can detect risk signals and offer resources; it does not replace emergency care or clinical treatment.',
+          'If there is suicidal ideation, immediate risk, or inability to care for yourself: contact emergency services or a crisis line in your country. Anto can show help resources; it does not detect a diagnosis and does not replace those services or professional care.',
         ],
       },
     ],
@@ -928,11 +928,11 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.grounding, SLUGS.distortionsMap, SLUGS.tcc],
+    relatedSlugs: [SLUGS.grounding, SLUGS.ocdErp, SLUGS.distortionsMap],
     disclaimer:
       'Psychoeducation. Does not diagnose or replace clinical assessment or treatment. In suicidal risk or violence, seek local emergency help immediately.',
     ctaBridge:
-      'If you want company between sessions — or while you decide to seek assessment — you can continue on your phone, at your pace.',
+      'If you want company day to day — or while you decide to seek assessment — you can continue on your phone, at your pace.',
     cta: { label: 'Support in Anto →', path: '/bienvenida' },
     howTo: {
       name: 'Worry postponement (worry window)',
@@ -953,9 +953,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 6,
     layout: 'brief',
     meta: {
-      title: 'How to read a mood and anxiety check | Anto',
+      title: 'PHQ-9 and GAD-7: what they measure and their limits | Anto',
       description:
-        'What a mood check and an anxiety check look at, with orienting ranges. Not a diagnosis. In Anto the readings land in your history.',
+        'PHQ-9 and GAD-7: what these short mood and anxiety questionnaires ask and why a number only shows a trend. Psychoeducation; does not diagnose.',
       openGraphTitle: 'How to read a mood and anxiety check',
       openGraphDescription:
         'Mood and anxiety screening: ranges, trend, and why a number is not a diagnosis.',
@@ -1096,7 +1096,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [],
+    relatedSlugs: [SLUGS.anxiety, SLUGS.depression, SLUGS.grounding],
     disclaimer:
       'Psychoeducation. The scales do not diagnose or replace clinical assessment or treatment. In suicidal risk or violence, seek local emergency help immediately.',
     ctaBridge:
@@ -1168,7 +1168,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 6,
     layout: 'brief',
     meta: {
-      title: 'When you cannot sleep | Anto brief guide',
+      title: 'Sleep hygiene: what to do when you can’t sleep | Anto',
       description:
         'When you cannot sleep: why night amplifies rumination, rest habits, and a ritual when your mind will not stop. Does not replace professional care.',
       openGraphTitle: 'When you cannot sleep — brief guide',
@@ -1328,7 +1328,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     readingMinutes: 12,
     layout: 'dossier',
     meta: {
-      title: 'Sleep and insomnia: full map | Anto',
+      title: 'Insomnia and sleep: the cycle that keeps it going | Anto',
       description:
         'Sleep and insomnia map: the cycle that keeps it going, limits of sleep hygiene, stimulus control, and when to seek evaluation. Does not diagnose.',
       openGraphTitle: 'Sleep and insomnia — full map',
@@ -1605,7 +1605,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.depression,
     readingMinutes: 7,
     meta: {
-      title: 'Depression: signs and what you can do | Anto Guide',
+      title: 'Depression: signs and what you can do | Anto',
       description:
         'Depression: common signs, how it differs from sadness, and steps such as behavioural activation. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Depression — psychoeducation guide',
@@ -1648,7 +1648,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         ],
       },
     ],
-    relatedSlugs: [SLUGS.behavioralActivation, SLUGS.scales, SLUGS.tcc],
+    relatedSlugs: [SLUGS.behavioralActivation, SLUGS.scales, SLUGS.grief],
     disclaimer:
       'Psychoeducation material. Does not replace professional evaluation or treatment. If you have thoughts of harming yourself, seek emergency help immediately.',
     cta: { label: 'Support in Anto →', path: '/bienvenida' },
@@ -1657,7 +1657,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.behavioralActivation,
     readingMinutes: 6,
     meta: {
-      title: 'Behavioural activation: practical guide | Anto',
+      title: 'Behavioural activation: act first, feel later | Anto',
       description:
         'Behavioural activation: how to plan small activities when your mood is low, even without motivation. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Behavioural activation — brief guide',
@@ -1706,15 +1706,15 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.ocdErp,
     readingMinutes: 8,
     meta: {
-      title: 'OCD and exposure with response prevention (ERP) | Anto',
+      title: 'OCD and ERP: exposure and response prevention | Anto',
       description:
         'OCD and ERP: how obsessions and compulsions work, common examples, and what exposure and response prevention is. Does not replace professional care.',
       openGraphTitle: 'OCD and ERP — psychoeducation guide',
-      openGraphDescription: 'Understand the obsessive-compulsive cycle and the recommended therapeutic approach.',
+      openGraphDescription: 'What the obsession-compulsion cycle is, and what ERP is. An educational guide; it does not recommend a treatment.',
     },
     hero: {
       title: 'OCD and exposure with response prevention (ERP)',
-      subtitle: 'Obsessions, compulsions, and the treatment with the strongest support for obsessive-compulsive disorder.',
+      subtitle: 'What obsessions and compulsions are, and what ERP is. This guide is educational; it does not diagnose or recommend a treatment.',
     },
     sections: [
       {
@@ -1798,13 +1798,13 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     relatedSlugs: [SLUGS.grounding, SLUGS.mindfulness, SLUGS.anxiety],
     disclaimer:
       'Educational material. Does not diagnose PTSD. If you have intense flashbacks or risk of harm, seek specialised professional help.',
-    cta: { label: 'Between-session support →', path: '/bienvenida' },
+    cta: { label: 'Continue in Anto →', path: '/bienvenida' },
   },
   [SLUGS.anger]: {
     slug: SLUGS.anger,
     readingMinutes: 6,
     meta: {
-      title: 'Anger management: practical guide | Anto',
+      title: 'Anger management: understand it and choose a response | Anto',
       description:
         'Anger management: what triggers it, early body signals, and strategies to choose how you respond. Psychoeducation; does not replace professional care.',
       openGraphTitle: 'Anger management — brief guide',
@@ -1852,9 +1852,9 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.grounding,
     readingMinutes: 7,
     meta: {
-      title: 'Grounding 5-4-3-2-1: when anxiety rises | Anto',
+      title: '5-4-3-2-1 grounding technique: when anxiety rises | Anto',
       description:
-        'How to do the 5-4-3-2-1 grounding exercise, with sensory anchors. Brief Anto guide. Does not replace a therapist or an emergency.',
+        '5-4-3-2-1 grounding technique step by step: use your five senses to anchor in the present when anxiety rises. Does not replace professional help.',
       openGraphTitle: 'When anxiety rises — grounding 5-4-3-2-1',
       openGraphDescription:
         '5-4-3-2-1 exercise and sensory anchors when anxiety rises. A short grounding guide plus a path to the fuller anxiety map.',
@@ -1978,7 +1978,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         },
       ],
     },
-    relatedSlugs: [SLUGS.mindfulness, SLUGS.emotionRegulation],
+    relatedSlugs: [SLUGS.mindfulness, SLUGS.emotionRegulation, SLUGS.trauma],
     references: {
       title: 'References (APA)',
       support:
@@ -2067,7 +2067,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.emotionRegulation,
     readingMinutes: 6,
     meta: {
-      title: 'Emotion regulation: practical guide | Anto',
+      title: 'Emotion regulation: handling intense emotions | Anto',
       description:
         'Emotional regulation: recognise, name, and modulate intense emotions without suppressing them or reacting on autopilot. Does not replace professional care.',
       openGraphTitle: 'Emotion regulation — brief guide',
@@ -2106,7 +2106,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
         ],
       },
     ],
-    relatedSlugs: [SLUGS.mindfulness, SLUGS.grounding, SLUGS.abc],
+    relatedSlugs: [SLUGS.mindfulness, SLUGS.grounding, SLUGS.anger],
     disclaimer:
       'General psychoeducation. If emotions overwhelm you recurrently or there is risk of harm, seek professional help.',
     cta: { label: 'Practice techniques →', path: '/app' },
@@ -2115,7 +2115,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
     slug: SLUGS.grief,
     readingMinutes: 7,
     meta: {
-      title: 'Grief and loss: psychoeducation guide | Anto',
+      title: 'Grief and loss: myths and how to support yourself | Anto',
       description:
         'Grief and loss: how it often unfolds, common myths, and ways to support yourself without forcing “closure.” Does not replace professional care.',
       openGraphTitle: 'Grief and loss — brief guide',
@@ -2149,7 +2149,7 @@ const guides: Record<PsychoeducationSlug, PsychoeducationGuide> = {
       {
         heading: 'In Anto',
         paragraphs: [
-          'Anto can offer space to organise what you feel between sessions with a therapist or support network; it does not replace specialised grief therapy.',
+          'Anto can offer a space to organise what you feel, at your pace, including if you already have a therapist or a support network. It does not replace professional grief support.',
         ],
       },
     ],
