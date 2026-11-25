@@ -2,21 +2,11 @@ import type { Metadata } from 'next';
 import '../../styles/main.css';
 import SiteJsonLd from '@/components/seo/SiteJsonLd';
 import ClientScripts from '@/components/ClientScripts';
+import { manifestPath, siteKeywords } from '@/lib/i18n/copy/seo/site-metadata';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://antoapps.com'),
-  keywords: [
-    'Anto',
-    'acompañamiento emocional continuo',
-    'ansiedad',
-    'horas quietas',
-    'entre sesiones',
-    'grounding',
-    'TCC',
-    'iPhone',
-    'Android',
-    'prueba gratis',
-  ].join(', '),
+  keywords: siteKeywords.es,
   authors: [{ name: 'Marcelo Ull Marambio', url: 'https://github.com/Mar-cere' }],
   creator: 'Marcelo Ull Marambio',
   publisher: 'AntoApps',
@@ -33,7 +23,7 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: '/apple-touch-icon.png?v=m1', sizes: '180x180', type: 'image/png' }],
   },
-  manifest: '/manifest.json',
+  manifest: manifestPath.es,
 };
 
 export const viewport = {
