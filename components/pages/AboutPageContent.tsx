@@ -15,6 +15,7 @@ import PremiumStoreCtaPair from '@/components/ui/PremiumStoreCtaPair';
 import '@/styles/pages/home-landing-final.css';
 import '@/styles/pages/home-v2.css';
 import '@/styles/components/about.css';
+import '@/styles/components/resources-crisis.css';
 
 type AboutPageContentProps = {
   locale: Locale;
@@ -89,7 +90,18 @@ export default function AboutPageContent({ locale }: AboutPageContentProps) {
                   />
                   <p className="about-page__micro">{copy.microcopy}</p>
                 </div>
-                <p className="about-page__disclaimer">{copy.disclaimer}</p>
+                <p className="about-page__disclaimer">
+                  {copy.disclaimer}{' '}
+                  <a
+                    href={copy.crisisLinkHref}
+                    className="resources-crisis__link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {copy.crisisLinkLabel}
+                    <span className="visually-hidden"> ({copy.crisisExternalHint})</span>
+                  </a>
+                </p>
               </div>
             </div>
           </article>
