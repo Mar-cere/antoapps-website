@@ -36,19 +36,6 @@ type ContactPageContentProps = {
 export default function ContactPageContent({ locale }: ContactPageContentProps) {
   const copy = getContactPageCopy(locale);
   const nav = getHomeV2Copy(locale).nav;
-  const disclaimer =
-    locale === 'en'
-      ? 'Anto does not replace therapy or professional clinical care. If you are in crisis, seek emergency help in your country.'
-      : locale === 'pt'
-        ? 'A Anto não substitui terapia nem atendimento clínico profissional. Se você estiver em crise, procure ajuda de emergência no seu país.'
-        : 'Anto no sustituye terapia ni atención clínica profesional. Si estás en crisis, busca ayuda de emergencia en tu país.';
-  const crisisLabel =
-    locale === 'en'
-      ? 'Emergency lines by country'
-      : locale === 'pt'
-        ? 'Linhas de emergência por país'
-        : 'Líneas de emergencia por país';
-  const crisisHref = 'https://findahelpline.com/';
 
   return (
     <LocaleProvider locale={locale}>
@@ -80,14 +67,15 @@ export default function ContactPageContent({ locale }: ContactPageContentProps) 
                   marcelo.ull@antoapps.com
                 </a>
                 <p className="contact-page__disclaimer">
-                  {disclaimer}{' '}
+                  {copy.disclaimer}{' '}
                   <a
-                    href={crisisHref}
+                    href={copy.crisisLinkHref}
                     className="contact-page__crisis"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {crisisLabel}
+                    {copy.crisisLinkLabel}
+                    <span className="visually-hidden"> ({copy.crisisExternalHint})</span>
                   </a>
                 </p>
               </aside>
